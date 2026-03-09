@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="da" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy Execution Governance | Thomas Friisnæs | SEG & SSI</title>
+    <meta name="description" content="Strategy Execution Governance (SEG) og Strategisk Sundheds Index (SSI). Luk eksekveringsgabet med datadrevet governance for ledelsesteams. Thomas Friisnæs, Holte.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.friisnaes.com/seg.html">
+    <meta property="og:title" content="Strategy Execution Governance | Thomas Friisnæs">
+    <meta property="og:description" content="Op mod 90% af alle virksomheder fejler i at nå deres strategiske mål. SEG lukker gabet mellem strategi og eksekvering.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--ink:#1C1C1C;--ink-soft:#2A2A2A;--ink-muted:#666;--cream:#F7F5F0;--cream-dark:#EDE9E0;--white:#FFF;--red:#C0392B;--red-light:#E74C3C;--red-muted:rgba(192,57,43,.08);--display:'Playfair Display',Georgia,serif;--body:'Outfit',-apple-system,sans-serif;--max:1200px;--wide:1400px;--pad:clamp(20px,5vw,60px);--ease:cubic-bezier(.16,1,.3,1)}
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+        body{font-family:var(--body);color:var(--ink);background:var(--cream);line-height:1.7;overflow-x:hidden}
+        a{text-decoration:none;color:inherit;transition:color .3s var(--ease)}
+        .c{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}.cw{max-width:var(--wide)}
+        .rv{opacity:0;transform:translateY(35px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+        .rv.vis{opacity:1;transform:translateY(0)}.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(28,28,28,.97);backdrop-filter:blur(16px);padding:14px 0}
+        .nav .ni{max-width:var(--wide);margin:0 auto;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between}
+        .nav .lo{font-family:var(--display);font-size:1.4rem;font-weight:700;color:var(--cream)}.nav .lo i{color:var(--red);font-style:normal}
+        .nl{display:flex;align-items:center;gap:28px;list-style:none}
+        .nl a{font-family:var(--body);font-size:.78rem;font-weight:500;color:rgba(247,245,240,.7);letter-spacing:.1em;text-transform:uppercase;transition:color .3s}.nl a:hover{color:var(--red-light)}
+        .nl .cta-l{color:var(--cream)!important;background:var(--red);padding:9px 22px;font-weight:600}.nl .cta-l:hover{background:var(--red-light)}
+        .ls{display:flex;gap:3px;margin-left:6px}
+        .ls button{background:none;border:1px solid transparent;color:rgba(247,245,240,.4);font-family:var(--body);font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;cursor:pointer;transition:all .3s;border-radius:2px}
+        .ls button.on{color:var(--red);border-color:var(--red)}.ls span{color:rgba(247,245,240,.25);font-size:.65rem}
+        .nt{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+        .nt span{display:block;width:22px;height:1.5px;background:var(--cream);transition:all .3s var(--ease)}
+        .nt.act span:nth-child(1){transform:rotate(45deg) translate(4px,5px)}.nt.act span:nth-child(2){opacity:0}.nt.act span:nth-child(3){transform:rotate(-45deg) translate(4px,-5px)}
+        .se{font-family:var(--body);font-size:.68rem;font-weight:600;color:var(--red);letter-spacing:.25em;text-transform:uppercase;margin-bottom:16px}
+        .st{font-family:var(--display);font-size:clamp(2rem,3.8vw,3.2rem);font-weight:400;color:var(--ink);line-height:1.12}.st em{font-style:italic;color:var(--red)}
+
+        .hd{background:var(--ink);padding:140px 0 80px}
+        .hd h1{font-family:var(--display);font-size:clamp(2.8rem,5.5vw,4.5rem);font-weight:400;color:var(--cream);line-height:1.08;margin-bottom:20px;max-width:800px}
+        .hd h1 em{color:var(--red);font-style:italic}
+        .hd p{font-family:var(--body);font-size:1.05rem;color:rgba(247,245,240,.55);max-width:650px;line-height:1.8}
+        .hd .stats{display:flex;gap:48px;margin-top:48px;padding-top:32px;border-top:1px solid rgba(247,245,240,.1)}
+        .hd .stat-n{font-family:var(--display);font-size:2.5rem;font-weight:400;color:var(--red);line-height:1;margin-bottom:4px}
+        .hd .stat-l{font-family:var(--body);font-size:.7rem;color:rgba(247,245,240,.4);letter-spacing:.12em;text-transform:uppercase}
+
+        .gap{padding:clamp(60px,8vw,100px) 0;background:var(--white)}
+        .gap .gg{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:48px}
+        .gap .gi{padding:36px;border:1px solid var(--cream-dark);transition:all .4s var(--ease)}
+        .gap .gi:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 16px 48px rgba(28,28,28,.06)}
+        .gap .gn{font-family:var(--display);font-size:1.15rem;font-weight:700;color:var(--red);margin-bottom:10px}
+        .gap .gt{font-family:var(--body);font-size:.88rem;color:var(--ink-muted);line-height:1.75}
+
+        .sol{padding:clamp(60px,8vw,100px) 0;background:var(--cream)}
+        .sol .sg{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:48px}
+        .sol .sl{padding:44px;background:var(--ink)}
+        .sol .sl h3{font-family:var(--display);font-size:1.5rem;font-weight:600;color:var(--red);margin-bottom:16px}
+        .sol .sl p{font-family:var(--body);font-size:.9rem;color:rgba(247,245,240,.65);line-height:1.8;margin-bottom:16px}
+        .sol .sr{display:flex;flex-direction:column;gap:0}
+        .sol .sv{padding:18px 0;border-bottom:1px solid var(--cream-dark);display:grid;grid-template-columns:80px 1fr;gap:14px;align-items:baseline}
+        .sol .sv:last-child{border-bottom:none}
+        .sol .sv-cat{font-family:var(--body);font-size:.62rem;font-weight:600;color:var(--red);letter-spacing:.15em;text-transform:uppercase}
+        .sol .sv-name{font-family:var(--display);font-size:1rem;font-weight:600;color:var(--ink)}
+        .sol .sv-desc{font-family:var(--body);font-size:.8rem;color:var(--ink-muted);grid-column:2}
+
+        .how{padding:clamp(60px,8vw,100px) 0;background:var(--ink)}
+        .how .st{color:var(--cream)}
+        .how .hg{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}
+        .how .hi{padding:36px;border:1px solid rgba(247,245,240,.08);transition:border-color .3s}
+        .how .hi:hover{border-color:var(--red)}
+        .how .hn{font-family:var(--display);font-size:1.2rem;font-weight:700;color:var(--red);margin-bottom:12px}
+        .how .ht{font-family:var(--body);font-size:.88rem;color:rgba(247,245,240,.55);line-height:1.75}
+
+        .val{padding:clamp(60px,8vw,100px) 0;background:var(--white)}
+        .val .vg{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--cream-dark);margin-top:48px}
+        .val .vi{padding:40px 28px;text-align:center;border-right:1px solid var(--cream-dark);transition:background .3s}.val .vi:last-child{border-right:none}.val .vi:hover{background:var(--red-muted)}
+        .val .vi::before{content:'';display:block;width:32px;height:2px;background:var(--red);margin:0 auto 20px}
+        .val .vn{font-family:var(--display);font-size:1.2rem;font-weight:600;color:var(--ink);margin-bottom:8px}
+        .val .vt{font-family:var(--body);font-size:.82rem;color:var(--ink-muted);line-height:1.6}
+
+        .nxt{padding:clamp(60px,8vw,100px) 0;background:var(--cream);text-align:center}
+        .nxt .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:15px 32px;background:var(--red);color:var(--cream);border:none;cursor:pointer;transition:all .4s var(--ease);margin-top:24px}
+        .nxt .btn:hover{background:var(--red-light);transform:translateY(-2px)}
+
+        .foo{background:var(--ink);padding:44px 0 28px;border-top:1px solid rgba(247,245,240,.06)}
+        .foo .fi3{display:flex;justify-content:space-between;align-items:center;max-width:var(--wide);margin:0 auto;padding:0 var(--pad)}
+        .foo .fb{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--cream)}.foo .fb i{color:var(--red);font-style:normal}
+        .foo .ft3{font-family:var(--display);font-size:.95rem;font-style:italic;color:rgba(247,245,240,.3)}
+        .foo .fc{font-family:var(--body);font-size:.72rem;color:rgba(247,245,240,.3)}
+
+        @media(max-width:1024px){.gap .gg{grid-template-columns:1fr}.sol .sg{grid-template-columns:1fr}.how .hg{grid-template-columns:1fr}}
+        @media(max-width:768px){
+            .nl{display:none;position:fixed;inset:0;background:rgba(28,28,28,.98);backdrop-filter:blur(16px);flex-direction:column;justify-content:center;align-items:center;gap:24px;z-index:999}
+            .nl.open{display:flex}.nl a{font-size:1rem}.nt{display:flex;z-index:1001}
+            .hd .stats{flex-direction:column;gap:24px}
+            .val .vg{grid-template-columns:1fr}.val .vi{border-right:none;border-bottom:1px solid var(--cream-dark)}.val .vi:last-child{border-bottom:none}
+            .foo .fi3{flex-direction:column;gap:12px;text-align:center}
+        }
+    </style>
+</head>
+<body>
+<nav class="nav"><div class="ni">
+    <a href="index.html" class="lo">Fr<i>ii</i>snæs</a>
+    <ul class="nl" id="nm">
+        <li><a href="index.html" data-da="Forside" data-en="Home">Forside</a></li>
+        <li><a href="testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
+        <li><a href="blog.html" data-da="Indsigter" data-en="Insights">Indsigter</a></li>
+        <li><a href="index.html#kontakt" class="cta-l" data-da="Book 20 min." data-en="Book 20 min.">Book 20 min.</a></li>
+        <li class="ls"><button onclick="setLang('da')" class="on">DA</button><span>/</span><button onclick="setLang('en')">EN</button></li>
+    </ul>
+    <button class="nt" id="nt" aria-label="Menu"><span></span><span></span><span></span></button>
+</div></nav>
+
+<header class="hd">
+    <div class="c cw">
+        <p class="se rv">Strategy Execution Governance</p>
+        <h1 class="rv" data-da="Luk gabet mellem<br>strategi og <em>eksekvering.</em>" data-en="Close the gap between<br>strategy and <em>execution.</em>">Luk gabet mellem<br>strategi og <em>eksekvering.</em></h1>
+        <p class="rv" data-da="Datadrevet governance for ledelsesteams der vil omsætte strategisk intention til forretningsværdi. Ikke flere planer der samler støv. Ikke flere initiativer uden accountability." data-en="Data-driven governance for executive teams who want to turn strategic intent into business value. No more plans collecting dust. No more initiatives without accountability.">Datadrevet governance for ledelsesteams der vil omsætte strategisk intention til forretningsværdi. Ikke flere planer der samler støv. Ikke flere initiativer uden accountability.</p>
+        <div class="stats rv">
+            <div><div class="stat-n">90%</div><div class="stat-l" data-da="Fejler på eksekvering" data-en="Fail on execution">Fejler på eksekvering</div></div>
+            <div><div class="stat-n">63%</div><div class="stat-l" data-da="Af strategisk værdi leveres" data-en="Of strategic value delivered">Af strategisk værdi leveres</div></div>
+            <div><div class="stat-n">82%</div><div class="stat-l" data-da="Måles aldrig reelt" data-en="Never truly measured">Måles aldrig reelt</div></div>
+        </div>
+    </div>
+</header>
+
+<section class="gap">
+    <div class="c cw">
+        <p class="se rv" data-da="The Execution Gap" data-en="The Execution Gap">The Execution Gap</p>
+        <h2 class="st rv" data-da="Hvorfor fejler vi på <em>målstregen?</em>" data-en="Why do we fail at the <em>finish line?</em>">Hvorfor fejler vi på <em>målstregen?</em></h2>
+        <div class="gg">
+            <div class="gi rv d1"><h3 class="gn" data-da="Silotænkning og mistro" data-en="Silo thinking and distrust">Silotænkning og mistro</h3><p class="gt" data-da="84% af ledere stoler på deres egen afdeling, men kun 9% stoler fuldt ud på kolleger i andre funktioner. Det dræber tværgående initiativer." data-en="84% of leaders trust their own department, but only 9% fully trust colleagues in other functions. This kills cross-functional initiatives.">84% af ledere stoler på deres egen afdeling, men kun 9% stoler fuldt ud på kolleger i andre funktioner. Det dræber tværgående initiativer.</p></div>
+            <div class="gi rv d2"><h3 class="gn" data-da="Ressource-overload" data-en="Resource overload">Ressource-overload</h3><p class="gt" data-da="For mange samtidige projekter skaber flaskehalse. Kortsigtede driftskrav vinder altid over langsigtede strategiske indsatser." data-en="Too many simultaneous projects create bottlenecks. Short-term operational demands always win over long-term strategic efforts.">For mange samtidige projekter skaber flaskehalse. Kortsigtede driftskrav vinder altid over langsigtede strategiske indsatser.</p></div>
+            <div class="gi rv d3"><h3 class="gn" data-da="Uklart ejerskab" data-en="Unclear ownership">Uklart ejerskab</h3><p class="gt" data-da="Topledelsen bliver ofte en flaskehals frem for at bemyndige lederne i driften til at handle agilt. Rigid målstyring kvæler initiativ." data-en="Top management often becomes a bottleneck instead of empowering operational leaders to act with agility. Rigid goal management kills initiative.">Topledelsen bliver ofte en flaskehals frem for at bemyndige lederne i driften til at handle agilt. Rigid målstyring kvæler initiativ.</p></div>
+            <div class="gi rv d4"><h3 class="gn" data-da="Vi flyver i blinde" data-en="We're flying blind">Vi flyver i blinde</h3><p class="gt" data-da="Over 82% af strategiske initiativer måles aldrig på den reelle fremdrift – de forbliver teoretiske antagelser uden feedback-loops." data-en="Over 82% of strategic initiatives are never measured on real progress – they remain theoretical assumptions without feedback loops.">Over 82% af strategiske initiativer måles aldrig på den reelle fremdrift – de forbliver teoretiske antagelser uden feedback-loops.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="sol">
+    <div class="c cw">
+        <p class="se rv" data-da="Løsningen" data-en="The solution">Løsningen</p>
+        <h2 class="st rv" data-da="SEG + Strategisk <em>Sundheds Index</em>" data-en="SEG + Strategic <em>Health Index</em>">SEG + Strategisk <em>Sundheds Index</em></h2>
+        <div class="sg">
+            <div class="sl rv">
+                <h3 data-da="Et nyt ledelsessystem" data-en="A new management system">Et nyt ledelsessystem</h3>
+                <p data-da="SEG bygger bro mellem strategisk planlægning og operationel handling. Vi skifter fokus fra forsinkede finansielle resultater (lagging) til førende adfærdsindikatorer (leading)." data-en="SEG bridges the gap between strategic planning and operational action. We shift focus from lagging financial results to leading behavioral indicators.">SEG bygger bro mellem strategisk planlægning og operationel handling. Vi skifter fokus fra forsinkede finansielle resultater (lagging) til førende adfærdsindikatorer (leading).</p>
+                <p data-da="SSI-dashboardet måler organisationens strategiske sundhed i realtid via 8 kritiske variabler, der afslører usynlige flaskehalse og silokonflikter før de rammer bundlinjen." data-en="The SSI dashboard measures the organization's strategic health in real-time via 8 critical variables that reveal invisible bottlenecks and silo conflicts before they hit the bottom line.">SSI-dashboardet måler organisationens strategiske sundhed i realtid via 8 kritiske variabler, der afslører usynlige flaskehalse og silokonflikter før de rammer bundlinjen.</p>
+                <p data-da="Min rolle: Ekstern Trusted Advisor. Jeg leverer data og værktøjer der giver jeres PMO mandat og jeres direktion overblik. Månedlig 1:1 ledelsesdialog med hvert direktionsmedlem, baseret på SSI-data." data-en="My role: External Trusted Advisor. I deliver data and tools that give your PMO mandate and your executive team oversight. Monthly 1:1 leadership dialogues with each board member, based on SSI data.">Min rolle: Ekstern Trusted Advisor. Jeg leverer data og værktøjer der giver jeres PMO mandat og jeres direktion overblik. Månedlig 1:1 ledelsesdialog med hvert direktionsmedlem, baseret på SSI-data.</p>
+            </div>
+            <div class="sr rv d2">
+                <p class="se" data-da="De 8 SSI-variabler" data-en="The 8 SSI variables">De 8 SSI-variabler</p>
+                <div class="sv"><span class="sv-cat" data-da="Kapacitet" data-en="Capacity">Kapacitet</span><div><div class="sv-name">Capacity Realism</div><div class="sv-desc" data-da="Har vi ressourcerne til det vi har sagt ja til?" data-en="Do we have the resources for what we've committed to?">Har vi ressourcerne til det vi har sagt ja til?</div></div></div>
+                <div class="sv"><span class="sv-cat" data-da="Kapacitet" data-en="Capacity">Kapacitet</span><div><div class="sv-name">Decision Speed</div><div class="sv-desc" data-da="Er ledelsen en flaskehals eller en accelerator?" data-en="Is leadership a bottleneck or an accelerator?">Er ledelsen en flaskehals eller en accelerator?</div></div></div>
+                <div class="sv"><span class="sv-cat" data-da="Fremdrift" data-en="Progress">Fremdrift</span><div><div class="sv-name">Closure Rate</div><div class="sv-desc" data-da="Får vi lukket projekterne – eller hober de sig op?" data-en="Are we closing projects – or are they piling up?">Får vi lukket projekterne – eller hober de sig op?</div></div></div>
+                <div class="sv"><span class="sv-cat" data-da="Fremdrift" data-en="Progress">Fremdrift</span><div><div class="sv-name">Milestone Hit Rate</div><div class="sv-desc" data-da="Når vi delmålene – eller rykker vi deadlines?" data-en="Are we hitting milestones – or moving deadlines?">Når vi delmålene – eller rykker vi deadlines?</div></div></div>
+                <div class="sv"><span class="sv-cat" data-da="Samarbejde" data-en="Collaboration">Samarbejde</span><div><div class="sv-name">Friction Load</div><div class="sv-desc" data-da="Hvor mange tværgående konflikter blokerer os?" data-en="How many cross-functional conflicts are blocking us?">Hvor mange tværgående konflikter blokerer os?</div></div></div>
+                <div class="sv"><span class="sv-cat" data-da="Risiko" data-en="Risk">Risiko</span><div><div class="sv-name">Risk Exposure</div><div class="sv-desc" data-da="Reagerer vi proaktivt eller reaktivt på risici?" data-en="Are we reacting proactively or reactively to risks?">Reagerer vi proaktivt eller reaktivt på risici?</div></div></div>
+                <div class="sv"><span class="sv-cat" data-da="Mennesker" data-en="People">Mennesker</span><div><div class="sv-name">Team Confidence</div><div class="sv-desc" data-da="Tror teamet på strategien – eller spiller de med?" data-en="Does the team believe in the strategy – or just play along?">Tror teamet på strategien – eller spiller de med?</div></div></div>
+                <div class="sv"><span class="sv-cat" data-da="Mennesker" data-en="People">Mennesker</span><div><div class="sv-name">Competence Readiness</div><div class="sv-desc" data-da="Har vi de rette kompetencer til det vi har besluttet?" data-en="Do we have the right competencies for what we've decided?">Har vi de rette kompetencer til det vi har besluttet?</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how">
+    <div class="c cw">
+        <p class="se rv" data-da="I praksis" data-en="In practice">I praksis</p>
+        <h2 class="st rv" data-da="Maksimal indsigt – <em>minimal administration</em>" data-en="Maximum insight – <em>minimal administration</em>">Maksimal indsigt – <em>minimal administration</em></h2>
+        <div class="hg">
+            <div class="hi rv d1"><h3 class="hn" data-da="Projektejerne" data-en="Project owners">Projektejerne</h3><p class="ht" data-da="Bruger kun ~30 minutter om måneden på at levere data ind i systemet. Ingen tunge rapporteringskrav." data-en="Spend only ~30 minutes per month providing data to the system. No heavy reporting requirements.">Bruger kun ~30 minutter om måneden på at levere data ind i systemet. Ingen tunge rapporteringskrav.</p></div>
+            <div class="hi rv d2"><h3 class="hn" data-da="Konsolidering" data-en="Consolidation">Konsolidering</h3><p class="ht" data-da="Jeg håndterer alt 'heavy lifting': Bygger SSI'en, konsoliderer data og udarbejder ledelsesrapporteringen." data-en="I handle all 'heavy lifting': Build the SSI, consolidate data, and prepare management reporting.">Jeg håndterer alt 'heavy lifting': Bygger SSI'en, konsoliderer data og udarbejder ledelsesrapporteringen.</p></div>
+            <div class="hi rv d3"><h3 class="hn" data-da="Præsentation" data-en="Presentation">Præsentation</h3><p class="ht" data-da="Månedlig afrapportering til direktion og forretningsledelse. Tendenser, flaskehalse, beslutningspunkter – alt i ét overblik." data-en="Monthly reporting to executive management. Trends, bottlenecks, decision points – all in one overview.">Månedlig afrapportering til direktion og forretningsledelse. Tendenser, flaskehalse, beslutningspunkter – alt i ét overblik.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="val">
+    <div class="c cw">
+        <p class="se rv" data-da="Værdien" data-en="The value">Værdien</p>
+        <h2 class="st rv" data-da="Hvorfor <em>SEG?</em>" data-en="Why <em>SEG?</em>">Hvorfor <em>SEG?</em></h2>
+        <div class="vg rv">
+            <div class="vi"><h3 class="vn" data-da="Silo-nedbrydning" data-en="Silo breakdown">Silo-nedbrydning</h3><p class="vt" data-da="Data neutraliserer ledelseskonflikter og mistro og skaber et samlet ledelseshold." data-en="Data neutralizes leadership conflicts and distrust, creating a unified leadership team.">Data neutraliserer ledelseskonflikter og mistro og skaber et samlet ledelseshold.</p></div>
+            <div class="vi"><h3 class="vn" data-da="Tidlig varsling" data-en="Early warning">Tidlig varsling</h3><p class="vt" data-da="Overvåg eksekveringen løbende og justér kursen i stedet for at vente på årsregnskabet." data-en="Monitor execution continuously and adjust course instead of waiting for the annual report.">Overvåg eksekveringen løbende og justér kursen i stedet for at vente på årsregnskabet.</p></div>
+            <div class="vi"><h3 class="vn" data-da="Dokumenteret eksekveringskraft" data-en="Documented execution power">Dokumenteret eksekveringskraft</h3><p class="vt" data-da="Sikkerhed for at tid og kapital investeret i strategiplaner faktisk bliver til virkelighed." data-en="Assurance that time and capital invested in strategic plans actually becomes reality.">Sikkerhed for at tid og kapital investeret i strategiplaner faktisk bliver til virkelighed.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="nxt">
+    <div class="c">
+        <p class="se rv" data-da="Næste skridt" data-en="Next step">Næste skridt</p>
+        <h2 class="st rv" data-da="Klar til at lukke <em>gabet?</em>" data-en="Ready to close the <em>gap?</em>">Klar til at lukke <em>gabet?</em></h2>
+        <a href="index.html#kontakt" class="btn rv" data-da="Book 20 minutter →" data-en="Book 20 minutes →">Book 20 minutter →</a>
+    </div>
+</section>
+
+<footer class="foo"><div class="fi3"><div class="fb">Fr<i>ii</i>snæs</div><div class="ft3">Success is no accident</div><div class="fc">&copy; 2026 Friisnæs.</div></div></footer>
+
+<script>
+let cl='da';
+function setLang(l){cl=l;document.documentElement.lang=l;document.querySelectorAll('[data-da][data-en]').forEach(e=>{if(e.tagName!=='INPUT'&&e.tagName!=='TEXTAREA')e.innerHTML=e.getAttribute('data-'+l);});document.querySelectorAll('.ls button').forEach(b=>{b.classList.toggle('on',b.textContent===l.toUpperCase());});const u=new URL(location);l==='da'?u.searchParams.delete('lang'):u.searchParams.set('lang',l);history.replaceState(null,'',u);}
+(function(){if(new URLSearchParams(location.search).get('lang')==='en')setLang('en');})();
+const tg=document.getElementById('nt'),mn=document.getElementById('nm');
+tg.addEventListener('click',()=>{const o=mn.classList.toggle('open');tg.classList.toggle('act');document.body.style.overflow=o?'hidden':'';});
+mn.querySelectorAll('a').forEach(a=>{a.addEventListener('click',()=>{mn.classList.remove('open');tg.classList.remove('act');document.body.style.overflow='';});});
+const ob=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');ob.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.rv').forEach(e=>ob.observe(e));
+</script>
+</body>
+</html>
