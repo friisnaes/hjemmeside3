@@ -4,912 +4,1070 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>30 Dages Karakterudfordring</title>
+<title>30 Dages Karakterudfordring · Friisnaes</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-
 <style>
-  :root {
-    --black: #080808;
-    --white: #f0ece4;
-    --red: #8B0000;
-    --red-dim: rgba(139, 0, 0, 0.15);
-    --grey: #2a2a2a;
-    --grey-mid: #444;
-    --grey-light: #888;
-    --border: rgba(240, 236, 228, 0.1);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 18px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-
-  /* ── SCROLLBAR ── */
-  ::-webkit-scrollbar { width: 3px; }
-  ::-webkit-scrollbar-track { background: var(--black); }
-  ::-webkit-scrollbar-thumb { background: var(--red); }
-
-  /* ── LAYOUT ── */
-  .container {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  section {
-    padding: 6rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    padding: 1.4rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(8,8,8,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-brand {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-  }
-
-  .nav-day {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    color: var(--red);
-    text-transform: uppercase;
-    opacity: 0;
-    transition: opacity 0.4s;
-  }
-
-  .nav-day.visible { opacity: 1; }
-
-  /* ── HERO ── */
-  #hero {
-    padding-top: 10rem;
-    padding-bottom: 7rem;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-
-  #hero::before {
-    content: '30';
-    position: absolute;
-    right: -1rem;
-    top: 50%;
-    transform: translateY(-55%);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(12rem, 30vw, 22rem);
-    font-weight: 300;
-    color: rgba(139,0,0,0.04);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    width: 2rem;
-    height: 1px;
-    background: var(--red);
-    flex-shrink: 0;
-  }
-
-  h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.8rem, 7vw, 5.2rem);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    margin-bottom: 1.5rem;
-    color: var(--white);
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--white);
-  }
-
-  .hero-sub {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    color: var(--grey-light);
-    margin-bottom: 3rem;
-    text-transform: uppercase;
-  }
-
-  .hero-intro {
-    font-size: 1.25rem;
-    font-weight: 300;
-    font-style: italic;
-    color: rgba(240,236,228,0.65);
-    max-width: 480px;
-    margin-bottom: 3.5rem;
-    line-height: 1.7;
-  }
-
-  .btn {
-    display: inline-block;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1rem 2.4rem;
-    border: 1px solid var(--red);
-    color: var(--white);
-    background: transparent;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .btn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--red);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.25s ease;
-    z-index: -1;
-  }
-
-  .btn:hover::after { transform: scaleX(1); }
-  .btn:hover { color: var(--white); }
-
-  .btn-ghost {
-    border-color: var(--border);
-    color: var(--grey-light);
-  }
-  .btn-ghost::after { background: var(--grey); }
-  .btn-ghost:hover { color: var(--white); }
-
-  /* ── SECTION TITLES ── */
-  .section-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 3rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .section-label::before {
-    content: '';
-    width: 2rem;
-    height: 1px;
-    background: var(--red);
-    flex-shrink: 0;
-  }
-
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 300;
-    letter-spacing: -0.01em;
-    line-height: 1.15;
-    margin-bottom: 2.5rem;
-  }
-
-  /* ── RULES ── */
-  .rules-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .rules-list li {
-    padding: 1.6rem 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-    font-size: 1.15rem;
-    font-weight: 300;
-    color: rgba(240,236,228,0.85);
-    transition: color 0.2s;
-  }
-
-  .rules-list li:hover { color: var(--white); }
-
-  .rules-list li:first-child { border-top: 1px solid var(--border); }
-
-  .rule-num {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    color: var(--red);
-    flex-shrink: 0;
-    padding-top: 0.15em;
-  }
-
-  /* ── CURRENT DAY MODULE ── */
-  #challenge {
-    background: linear-gradient(135deg, rgba(139,0,0,0.06) 0%, transparent 60%);
-  }
-
-  .challenge-card {
-    border: 1px solid rgba(139,0,0,0.3);
-    padding: 3rem;
-    position: relative;
-    background: rgba(139,0,0,0.03);
-  }
-
-  .challenge-day-num {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 1.5rem;
-  }
-
-  .challenge-action {
-    font-size: clamp(1.25rem, 3vw, 1.7rem);
-    font-weight: 300;
-    line-height: 1.4;
-    margin-bottom: 2.5rem;
-    color: var(--white);
-  }
-
-  .challenge-reflection-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-    margin-bottom: 0.8rem;
-  }
-
-  .challenge-reflection {
-    font-style: italic;
-    font-weight: 300;
-    font-size: 1.05rem;
-    color: rgba(240,236,228,0.55);
-    line-height: 1.6;
-    padding-left: 1.2rem;
-    border-left: 1px solid var(--red);
-  }
-
-  .challenge-nav {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
-  .challenge-nav button {
-    background: none;
-    border: none;
-    color: var(--grey-light);
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding: 0.5rem 0;
-    transition: color 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .challenge-nav button:hover { color: var(--white); }
-  .challenge-nav button:disabled { opacity: 0.2; cursor: default; }
-
-  .challenge-progress {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-    position: relative;
-  }
-
-  .challenge-progress-fill {
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    background: var(--red);
-    transition: width 0.4s ease;
-  }
-
-  /* ── TRACKER ── */
-  .tracker-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0.5rem;
-  }
-
-  @media (max-width: 480px) {
-    .tracker-grid { grid-template-columns: repeat(5, 1fr); }
-  }
-
-  .tracker-day {
-    aspect-ratio: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3rem;
-    border: 1px solid var(--border);
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s;
-    position: relative;
-    user-select: none;
-  }
-
-  .tracker-day:hover { border-color: rgba(139,0,0,0.4); }
-
-  .tracker-day.done {
-    background: var(--red-dim);
-    border-color: var(--red);
-  }
-
-  .tracker-day.done::after {
-    content: '✓';
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.85rem;
-    color: var(--red);
-  }
-
-  .tracker-day-num {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    color: var(--grey-light);
-    transition: opacity 0.2s;
-  }
-
-  .tracker-day.done .tracker-day-num { opacity: 0; }
-
-  .tracker-stats {
-    margin-top: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .tracker-stat {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--grey-light);
-  }
-
-  .tracker-stat span {
-    display: block;
-    font-size: 1.4rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    color: var(--white);
-    margin-bottom: 0.2rem;
-    letter-spacing: 0;
-  }
-
-  .tracker-reset {
-    margin-left: auto;
-    background: none;
-    border: none;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--grey-mid);
-    cursor: pointer;
-    padding: 0;
-    transition: color 0.2s;
-  }
-
-  .tracker-reset:hover { color: var(--grey-light); }
-
-  /* ── PHILOSOPHY ── */
-  #philosophy {
-    text-align: center;
-    padding: 8rem 0;
-  }
-
-  .philosophy-quote {
-    font-size: clamp(1.6rem, 4vw, 2.6rem);
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.3;
-    color: var(--white);
-    max-width: 560px;
-    margin: 0 auto 1.5rem;
-  }
-
-  .philosophy-attr {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red);
-  }
-
-  /* ── FINAL CTA ── */
-  #final-cta {
-    border-bottom: none;
-    text-align: center;
-    padding: 8rem 0 6rem;
-  }
-
-  #final-cta h2 {
-    margin-bottom: 1rem;
-  }
-
-  .final-sub {
-    font-style: italic;
-    font-weight: 300;
-    font-size: 1.1rem;
-    color: rgba(240,236,228,0.5);
-    margin-bottom: 3rem;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 2rem;
-    text-align: center;
-    border-top: 1px solid var(--border);
-  }
-
-  footer p {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--grey-mid);
-  }
-
-  footer a {
-    color: var(--grey-light);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  footer a:hover { color: var(--red); }
-
-  /* ── ENTRY ANIMATION ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(1.5rem); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .fade-up {
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards;
-  }
-
-  .fade-up.d1 { animation-delay: 0.1s; }
-  .fade-up.d2 { animation-delay: 0.25s; }
-  .fade-up.d3 { animation-delay: 0.4s; }
-  .fade-up.d4 { animation-delay: 0.55s; }
-  .fade-up.d5 { animation-delay: 0.7s; }
-
-  /* ── DIVIDER ── */
-  .rule-divider {
-    width: 2rem;
-    height: 1px;
-    background: var(--red);
-    margin: 4rem auto;
-    display: block;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    section { padding: 4rem 0; }
-    .challenge-card { padding: 2rem 1.5rem; }
-    .tracker-stats { flex-wrap: wrap; gap: 1.5rem; }
-    #hero::before { font-size: 10rem; right: -0.5rem; top: auto; bottom: 0; }
-  }
+/* ═══════════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════════ */
+:root {
+  --black:      #080808;
+  --white:      #f0ece4;
+  --red:        #8B0000;
+  --red-dim:    rgba(139,0,0,0.12);
+  --red-border: rgba(139,0,0,0.35);
+  --grey:       #1a1a1a;
+  --grey-mid:   #3a3a3a;
+  --grey-light: #888;
+  --border:     rgba(240,236,228,0.09);
+  --border-soft:rgba(240,236,228,0.05);
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-mono:  'Courier Prime', 'Courier New', monospace;
+  --ease:       cubic-bezier(0.25,0.1,0.25,1);
+}
+
+/* ═══════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════ */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--black);
+  color:var(--white);
+  font-family:var(--font-serif);
+  font-size:18px;
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::-webkit-scrollbar { width:2px; }
+::-webkit-scrollbar-track { background:var(--black); }
+::-webkit-scrollbar-thumb { background:var(--red); }
+
+/* ═══════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════ */
+.container { max-width:740px; margin:0 auto; padding:0 2rem; }
+section { padding:5.5rem 0; border-bottom:1px solid var(--border); }
+section:last-of-type { border-bottom:none; }
+
+/* ═══════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════ */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  padding:1.2rem 2rem;
+  display:flex; justify-content:space-between; align-items:center;
+  background:rgba(8,8,8,0.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  transition:border-color 0.3s;
+}
+.nav-brand {
+  font-family:var(--font-mono);
+  font-size:0.65rem;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  color:var(--grey-light);
+  text-decoration:none;
+}
+.nav-meta {
+  display:flex; align-items:center; gap:1.5rem;
+}
+.nav-status {
+  font-family:var(--font-mono);
+  font-size:0.6rem;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--red);
+  opacity:0;
+  transition:opacity 0.4s;
+}
+.nav-status.visible { opacity:1; }
+
+/* ═══════════════════════════════════════════
+   COMMITMENT BANNER (top state)
+═══════════════════════════════════════════ */
+.commitment-bar {
+  margin-top:4rem;
+  padding:0;
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+  max-height:0;
+  transition:max-height 0.5s var(--ease), padding 0.4s;
+}
+.commitment-bar.active {
+  max-height:60px;
+  padding:1rem 0;
+}
+.commitment-inner {
+  display:flex; align-items:center; gap:1rem;
+  font-family:var(--font-mono);
+  font-size:0.6rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--red);
+}
+.commitment-inner::before {
+  content:'';
+  display:inline-block;
+  width:6px; height:6px;
+  border-radius:50%;
+  background:var(--red);
+  flex-shrink:0;
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════ */
+#hero {
+  padding-top:9rem;
+  padding-bottom:6rem;
+  position:relative;
+  overflow:hidden;
+}
+#hero::before {
+  content:'30';
+  position:absolute; right:-0.5rem; bottom:-1rem;
+  font-family:var(--font-serif);
+  font-size:clamp(11rem,28vw,20rem);
+  font-weight:300;
+  color:rgba(139,0,0,0.035);
+  line-height:1;
+  pointer-events:none;
+  user-select:none;
+}
+.eyebrow {
+  font-family:var(--font-mono);
+  font-size:0.62rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:2rem;
+  display:flex; align-items:center; gap:0.9rem;
+}
+.eyebrow::before {
+  content:''; width:1.8rem; height:1px;
+  background:var(--red); flex-shrink:0;
+}
+h1 {
+  font-family:var(--font-serif);
+  font-size:clamp(2.6rem,7vw,5rem);
+  font-weight:300;
+  line-height:1.04;
+  letter-spacing:-0.02em;
+  margin-bottom:1.5rem;
+}
+h1 em { font-style:italic; }
+.hero-sub {
+  font-family:var(--font-mono);
+  font-size:0.78rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--grey-light);
+  margin-bottom:2.5rem;
+}
+.hero-intro {
+  font-size:1.2rem; font-weight:300; font-style:italic;
+  color:rgba(240,236,228,0.55);
+  max-width:460px; margin-bottom:3rem; line-height:1.7;
+}
+
+/* Commitment CTA in hero */
+.commit-zone {
+  display:flex; align-items:center; gap:2rem; flex-wrap:wrap;
+  margin-bottom:1rem;
+}
+.commit-btn {
+  display:flex; align-items:center; gap:0.8rem;
+  background:none; border:1px solid var(--border);
+  padding:0.9rem 1.6rem;
+  cursor:pointer; color:var(--grey-light);
+  font-family:var(--font-mono);
+  font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase;
+  transition:border-color 0.25s, color 0.25s;
+}
+.commit-btn:hover { border-color:rgba(240,236,228,0.25); color:var(--white); }
+.commit-btn.committed {
+  border-color:var(--red-border);
+  color:var(--red);
+}
+.commit-check {
+  width:14px; height:14px;
+  border:1px solid currentColor;
+  border-radius:2px;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; transition:background 0.2s;
+}
+.commit-btn.committed .commit-check {
+  background:var(--red); border-color:var(--red);
+}
+.commit-check-mark {
+  opacity:0; font-size:9px; color:var(--white);
+  transition:opacity 0.2s;
+}
+.commit-btn.committed .commit-check-mark { opacity:1; }
+
+.hero-cta {
+  display:inline-block;
+  font-family:var(--font-mono); font-size:0.68rem;
+  letter-spacing:0.18em; text-transform:uppercase;
+  text-decoration:none; padding:1rem 2.2rem;
+  border:1px solid var(--red); color:var(--white);
+  background:transparent; cursor:pointer;
+  transition:background 0.22s, color 0.22s;
+}
+.hero-cta:hover { background:var(--red); }
+
+/* ═══════════════════════════════════════════
+   SECTION LABELS / HEADINGS
+═══════════════════════════════════════════ */
+.section-label {
+  font-family:var(--font-mono); font-size:0.6rem;
+  letter-spacing:0.28em; text-transform:uppercase;
+  color:var(--red); margin-bottom:2.5rem;
+  display:flex; align-items:center; gap:0.9rem;
+}
+.section-label::before {
+  content:''; width:1.8rem; height:1px;
+  background:var(--red); flex-shrink:0;
+}
+h2 {
+  font-family:var(--font-serif);
+  font-size:clamp(1.7rem,4vw,2.6rem);
+  font-weight:300; letter-spacing:-0.01em;
+  line-height:1.15; margin-bottom:2.5rem;
+}
+
+/* ═══════════════════════════════════════════
+   RULES
+═══════════════════════════════════════════ */
+.rules-list { list-style:none; }
+.rules-list li {
+  padding:1.4rem 0;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:baseline; gap:1.4rem;
+  font-size:1.1rem; font-weight:300;
+  color:rgba(240,236,228,0.8);
+  transition:color 0.2s;
+}
+.rules-list li:first-child { border-top:1px solid var(--border); }
+.rules-list li:hover { color:var(--white); }
+.rule-n {
+  font-family:var(--font-mono); font-size:0.58rem;
+  letter-spacing:0.15em; color:var(--red); flex-shrink:0;
+}
+
+/* ═══════════════════════════════════════════
+   DAILY CHALLENGE MODULE
+═══════════════════════════════════════════ */
+#challenge { background:linear-gradient(160deg,rgba(139,0,0,0.04) 0%,transparent 55%); }
+
+.challenge-card {
+  border:1px solid var(--red-border);
+  background:rgba(139,0,0,0.025);
+  padding:2.8rem;
+  position:relative;
+}
+
+/* header row */
+.c-header {
+  display:flex; justify-content:space-between; align-items:flex-start;
+  margin-bottom:2rem; gap:1rem;
+}
+.c-day-badge {
+  font-family:var(--font-mono); font-size:0.58rem;
+  letter-spacing:0.22em; text-transform:uppercase; color:var(--red);
+}
+.c-category {
+  font-family:var(--font-mono); font-size:0.55rem;
+  letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--grey-light);
+  border:1px solid var(--border);
+  padding:0.3rem 0.7rem;
+}
+
+/* title */
+.c-title {
+  font-family:var(--font-serif);
+  font-size:clamp(1.5rem,3.5vw,2.1rem);
+  font-weight:300; font-style:italic;
+  line-height:1.2; margin-bottom:1.6rem;
+  color:var(--white);
+}
+
+/* action */
+.c-action-label {
+  font-family:var(--font-mono); font-size:0.55rem;
+  letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--grey-light); margin-bottom:0.7rem;
+}
+.c-action {
+  font-size:1.1rem; font-weight:300; line-height:1.65;
+  color:rgba(240,236,228,0.9); margin-bottom:2rem;
+}
+
+/* reflection */
+.c-reflection-wrap {
+  padding:1.2rem 1.4rem;
+  border-left:1px solid var(--red-border);
+  background:rgba(139,0,0,0.04);
+  margin-bottom:2rem;
+}
+.c-reflection-label {
+  font-family:var(--font-mono); font-size:0.52rem;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--grey-light); margin-bottom:0.5rem;
+}
+.c-reflection {
+  font-style:italic; font-weight:300; font-size:1rem;
+  color:rgba(240,236,228,0.5); line-height:1.6;
+}
+
+/* footer row */
+.c-footer {
+  display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+}
+.c-mark-btn {
+  font-family:var(--font-mono); font-size:0.6rem;
+  letter-spacing:0.16em; text-transform:uppercase;
+  padding:0.75rem 1.4rem;
+  border:1px solid var(--red-border);
+  background:transparent; color:var(--white);
+  cursor:pointer; transition:background 0.22s, color 0.22s;
+  display:flex; align-items:center; gap:0.6rem;
+}
+.c-mark-btn:hover { background:var(--red); border-color:var(--red); }
+.c-mark-btn.done { background:var(--red-dim); border-color:var(--red); color:var(--red); }
+.c-mark-btn.done:hover { background:rgba(139,0,0,0.08); }
+
+.c-nav { display:flex; align-items:center; gap:0.8rem; margin-left:auto; }
+.c-nav-btn {
+  background:none; border:none;
+  font-family:var(--font-mono); font-size:0.6rem;
+  letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--grey-light); cursor:pointer; padding:0.5rem 0;
+  transition:color 0.2s;
+}
+.c-nav-btn:hover:not(:disabled) { color:var(--white); }
+.c-nav-btn:disabled { opacity:0.2; cursor:default; }
+
+/* ═══════════════════════════════════════════
+   DAY PICKER GRID
+═══════════════════════════════════════════ */
+.day-picker {
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:4px;
+  margin-top:2rem;
+}
+@media(max-width:520px) { .day-picker { grid-template-columns:repeat(6,1fr); } }
+
+.dp-cell {
+  aspect-ratio:1;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono); font-size:0.55rem;
+  letter-spacing:0.05em;
+  border:1px solid var(--border);
+  cursor:pointer; color:var(--grey-light);
+  transition:border-color 0.18s, color 0.18s, background 0.18s;
+  position:relative;
+  user-select:none;
+}
+.dp-cell:hover { border-color:rgba(240,236,228,0.2); color:var(--white); }
+.dp-cell.is-current {
+  border-color:var(--white); color:var(--white);
+}
+.dp-cell.is-done {
+  background:var(--red-dim); border-color:var(--red-border); color:var(--red);
+}
+.dp-cell.is-done::after {
+  content:'✓';
+  position:absolute; inset:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.6rem;
+}
+.dp-cell.is-done span { opacity:0; }
+
+/* ═══════════════════════════════════════════
+   PROGRESS SECTION
+═══════════════════════════════════════════ */
+.progress-stats {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:0; margin-bottom:2.5rem;
+  border:1px solid var(--border);
+}
+.p-stat {
+  padding:1.6rem 1.4rem;
+  border-right:1px solid var(--border);
+}
+.p-stat:last-child { border-right:none; }
+.p-stat-num {
+  font-family:var(--font-serif); font-size:2.4rem;
+  font-weight:300; line-height:1; margin-bottom:0.4rem;
+  color:var(--white);
+  transition:color 0.3s;
+}
+.p-stat-num.highlight { color:var(--red); }
+.p-stat-label {
+  font-family:var(--font-mono); font-size:0.55rem;
+  letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--grey-light);
+}
+
+/* progress bar */
+.progress-bar-wrap {
+  height:2px; background:var(--border); margin-bottom:2rem; position:relative;
+}
+.progress-bar-fill {
+  position:absolute; top:0; left:0; bottom:0;
+  background:var(--red);
+  transition:width 0.6s var(--ease);
+}
+
+/* reset */
+.progress-actions {
+  display:flex; align-items:center; justify-content:flex-end;
+}
+.reset-btn {
+  background:none; border:none;
+  font-family:var(--font-mono); font-size:0.55rem;
+  letter-spacing:0.16em; text-transform:uppercase;
+  color:var(--grey-mid); cursor:pointer; padding:0;
+  transition:color 0.2s;
+}
+.reset-btn:hover { color:var(--grey-light); }
+
+/* ═══════════════════════════════════════════
+   PHILOSOPHY
+═══════════════════════════════════════════ */
+#philosophy {
+  text-align:center;
+  padding:7rem 0;
+}
+.philosophy-quote {
+  font-size:clamp(1.5rem,4vw,2.4rem);
+  font-weight:300; font-style:italic;
+  line-height:1.3; max-width:520px; margin:0 auto 1.8rem;
+}
+.philosophy-rule {
+  width:2rem; height:1px; background:var(--red);
+  margin:0 auto 1.4rem;
+}
+.philosophy-attr {
+  font-family:var(--font-mono); font-size:0.6rem;
+  letter-spacing:0.22em; text-transform:uppercase; color:var(--red);
+}
+
+/* ═══════════════════════════════════════════
+   FINAL CTA — default state
+═══════════════════════════════════════════ */
+#final-cta {
+  padding:7rem 0 5rem;
+  text-align:center;
+  border-bottom:none;
+}
+#final-cta h2 { margin-bottom:0.8rem; }
+.cta-sub {
+  font-style:italic; font-weight:300; font-size:1.05rem;
+  color:rgba(240,236,228,0.4); margin-bottom:3rem;
+}
+
+/* Completion state */
+#final-cta.completed h2 { font-style:italic; }
+#final-cta.completed .cta-sub { color:rgba(240,236,228,0.6); }
+.cta-proof {
+  display:none;
+  font-family:var(--font-mono); font-size:0.6rem;
+  letter-spacing:0.2em; text-transform:uppercase;
+  color:var(--red); margin-bottom:2rem;
+  align-items:center; justify-content:center; gap:0.8rem;
+}
+.cta-proof::before {
+  content:''; width:1.5rem; height:1px; background:var(--red);
+}
+.cta-proof::after {
+  content:''; width:1.5rem; height:1px; background:var(--red);
+}
+#final-cta.completed .cta-proof { display:flex; }
+
+/* ═══════════════════════════════════════════
+   BUTTON
+═══════════════════════════════════════════ */
+.btn {
+  display:inline-block;
+  font-family:var(--font-mono); font-size:0.68rem;
+  letter-spacing:0.18em; text-transform:uppercase;
+  text-decoration:none; padding:1rem 2.2rem;
+  border:1px solid var(--red); color:var(--white);
+  background:transparent; cursor:pointer;
+  transition:background 0.22s;
+}
+.btn:hover { background:var(--red); }
+
+/* ═══════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════ */
+footer {
+  padding:2rem;
+  text-align:center;
+  border-top:1px solid var(--border);
+}
+footer p {
+  font-family:var(--font-mono); font-size:0.55rem;
+  letter-spacing:0.18em; text-transform:uppercase; color:var(--grey-mid);
+}
+footer a { color:var(--grey-light); text-decoration:none; transition:color 0.2s; }
+footer a:hover { color:var(--red); }
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(1.2rem); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.fade-up { opacity:0; animation:fadeUp 0.7s var(--ease) forwards; }
+.d1{animation-delay:0.08s} .d2{animation-delay:0.2s}
+.d3{animation-delay:0.33s} .d4{animation-delay:0.46s}
+.d5{animation-delay:0.6s}
+
+@keyframes pulse {
+  0%,100% { opacity:1; } 50% { opacity:0.5; }
+}
+.c-mark-btn.just-done { animation:pulse 0.5s ease; }
+
+/* ═══════════════════════════════════════════
+   MOBILE
+═══════════════════════════════════════════ */
+@media(max-width:600px) {
+  section { padding:4rem 0; }
+  .challenge-card { padding:1.8rem 1.4rem; }
+  .c-footer { flex-direction:column; align-items:flex-start; }
+  .c-nav { margin-left:0; }
+  .progress-stats { grid-template-columns:repeat(3,1fr); }
+  .p-stat { padding:1.2rem 0.8rem; }
+  .p-stat-num { font-size:1.8rem; }
+  #hero::before { font-size:9rem; }
+  .commit-zone { flex-direction:column; align-items:flex-start; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══════════════════════ NAV ══════════════════════ -->
 <nav>
-  <span class="nav-brand">Karakterudfordring</span>
-  <span class="nav-day" id="nav-day-label">— dag 1</span>
+  <a class="nav-brand" href="https://friisnaes.github.io/hjemmeside3/">Friisnaes</a>
+  <div class="nav-meta">
+    <span class="nav-status" id="nav-status">— Dag 1</span>
+  </div>
 </nav>
 
-<!-- HERO -->
+<!-- ══════════════════════ COMMITMENT BAR ══════════════════════ -->
+<div class="commitment-bar" id="commitment-bar">
+  <div class="container">
+    <div class="commitment-inner" id="commitment-inner">
+      Jeg er i gang — ingen genveje
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
 <section id="hero">
   <div class="container">
-    <p class="hero-eyebrow fade-up d1">Executive Development · Friisnaes.com</p>
+    <p class="eyebrow fade-up d1">Executive Development · Friisnaes</p>
     <h1 class="fade-up d2">30 Dages<br><em>Karakter</em><br>Udfordring</h1>
     <p class="hero-sub fade-up d3">5 minutter om dagen. Ingen undskyldninger.</p>
     <p class="hero-intro fade-up d4">"Karakter udvikles ikke af ord, men af handlinger."</p>
-    <a href="#challenge" class="btn fade-up d5">Start dag 1 →</a>
+
+    <div class="commit-zone fade-up d5">
+      <button class="commit-btn" id="commit-btn" onclick="toggleCommit()">
+        <span class="commit-check">
+          <span class="commit-check-mark">✓</span>
+        </span>
+        Jeg er i gang. Ingen genveje.
+      </button>
+      <a href="#challenge" class="hero-cta">Start dag 1 →</a>
+    </div>
   </div>
 </section>
 
-<!-- RULES -->
+<!-- ══════════════════════ RULES ══════════════════════ -->
 <section id="rules">
   <div class="container">
     <p class="section-label">Spilleregler</p>
     <ul class="rules-list">
-      <li><span class="rule-num">01</span>30 dage — uden pause, uden forhandling</li>
-      <li><span class="rule-num">02</span>1 handling dagligt — konkret, målbar, ubehagelig</li>
-      <li><span class="rule-num">03</span>Ingen over — ingen genveje</li>
-      <li><span class="rule-num">04</span>Du logger din fremgang — ikke for mig, men for dig</li>
-      <li><span class="rule-num">05</span>Disciplin er ikke motivation. Det er valg.</li>
+      <li><span class="rule-n">01</span>30 dage — ingen pause, ingen forhandling</li>
+      <li><span class="rule-n">02</span>1 handling dagligt — konkret, målbar, ubehagelig</li>
+      <li><span class="rule-n">03</span>Ingen over — ingen genveje</li>
+      <li><span class="rule-n">04</span>Du logger din fremgang — ikke for mig, men for dig</li>
+      <li><span class="rule-n">05</span>Disciplin er ikke motivation. Det er valg.</li>
     </ul>
   </div>
 </section>
 
-<!-- DAILY CHALLENGE MODULE -->
+<!-- ══════════════════════ DAILY CHALLENGE ══════════════════════ -->
 <section id="challenge">
   <div class="container">
     <p class="section-label">Dagens udfordring</p>
-    <h2>Hvad kræver det af dig<br>at gøre det rigtigt — i dag?</h2>
+    <h2 id="challenge-heading">Dag 1</h2>
 
     <div class="challenge-card">
-      <div class="challenge-day-num" id="c-day-label">Dag 1 · Ansvar</div>
-      <div class="challenge-action" id="c-action">—</div>
-      <div class="challenge-reflection-label">Refleksion</div>
-      <div class="challenge-reflection" id="c-reflection">—</div>
-      <div class="challenge-nav">
-        <button id="btn-prev" onclick="changeDay(-1)" disabled>← Forrige</button>
-        <div class="challenge-progress">
-          <div class="challenge-progress-fill" id="progress-fill"></div>
+      <div class="c-header">
+        <span class="c-day-badge" id="c-day-badge">Dag 1 af 30</span>
+        <span class="c-category" id="c-category">—</span>
+      </div>
+      <div class="c-title" id="c-title">—</div>
+      <div class="c-action-label">Handling</div>
+      <div class="c-action" id="c-action">—</div>
+      <div class="c-reflection-wrap">
+        <div class="c-reflection-label">Refleksion</div>
+        <div class="c-reflection" id="c-reflection">—</div>
+      </div>
+      <div class="c-footer">
+        <button class="c-mark-btn" id="c-mark-btn" onclick="markCurrentDay()">
+          <span id="c-mark-label">Markér som gennemført</span>
+        </button>
+        <div class="c-nav">
+          <button class="c-nav-btn" id="btn-prev" onclick="changeDay(-1)" disabled>← Forrige</button>
+          <button class="c-nav-btn" id="btn-next" onclick="changeDay(1)">Næste →</button>
         </div>
-        <button id="btn-next" onclick="changeDay(1)">Næste →</button>
       </div>
     </div>
+
+    <!-- Day Picker -->
+    <div class="day-picker" id="day-picker"></div>
   </div>
 </section>
 
-<!-- TRACKER -->
-<section id="tracker">
+<!-- ══════════════════════ PROGRESS ══════════════════════ -->
+<section id="progress">
   <div class="container">
     <p class="section-label">Fremgang</p>
     <h2>30 dage.<br>Én af gangen.</h2>
 
-    <div class="tracker-grid" id="tracker-grid"></div>
+    <div class="progress-stats">
+      <div class="p-stat">
+        <div class="p-stat-num" id="stat-done">0</div>
+        <div class="p-stat-label">Gennemført</div>
+      </div>
+      <div class="p-stat">
+        <div class="p-stat-num" id="stat-left">30</div>
+        <div class="p-stat-label">Tilbage</div>
+      </div>
+      <div class="p-stat">
+        <div class="p-stat-num" id="stat-pct">0%</div>
+        <div class="p-stat-label">Fremgang</div>
+      </div>
+    </div>
 
-    <div class="tracker-stats">
-      <div class="tracker-stat"><span id="stat-done">0</span>Gennemført</div>
-      <div class="tracker-stat"><span id="stat-left">30</span>Tilbage</div>
-      <div class="tracker-stat"><span id="stat-pct">0%</span>Fremgang</div>
-      <button class="tracker-reset" onclick="resetProgress()">Nulstil</button>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-fill"></div>
+    </div>
+
+    <div class="progress-actions">
+      <button class="reset-btn" onclick="resetProgress()">Nulstil fremgang</button>
     </div>
   </div>
 </section>
 
-<!-- PHILOSOPHY -->
+<!-- ══════════════════════ PHILOSOPHY ══════════════════════ -->
 <section id="philosophy">
   <div class="container">
-    <p class="philosophy-quote">"Karakter er det du gør,<br>når ingen kigger."</p>
-    <span class="rule-divider"></span>
-    <p class="philosophy-attr">Karakter · Disciplin · Klarhed</p>
+    <div class="philosophy-quote">"Karakter er det du gør,<br>når ingen kigger."</div>
+    <div class="philosophy-rule"></div>
+    <div class="philosophy-attr">Karakter · Disciplin · Klarhed</div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
+<!-- ══════════════════════ FINAL CTA ══════════════════════ -->
 <section id="final-cta">
   <div class="container">
     <p class="section-label">Næste skridt</p>
-    <h2>Gennemført?<br>Klar til næste niveau?</h2>
-    <p class="final-sub">30 dage er beviset. Nu er det tid til en plan.</p>
-    <a href="https://friisnaes.github.io/hjemmeside3/#kontakt" class="btn" target="_blank">Book 20 minutter — ét problem, én plan →</a>
+    <div class="cta-proof" id="cta-proof">30 dage gennemført</div>
+    <h2 id="cta-headline">Gennemført?<br>Klar til næste niveau?</h2>
+    <p class="cta-sub" id="cta-sub">30 dage er beviset. Nu er det tid til en plan.</p>
+    <a href="https://friisnaes.github.io/hjemmeside3/#kontakt" class="btn">Book 20 minutter — ét problem, én plan →</a>
   </div>
 </section>
 
 <footer>
-  <p>© <span id="yr"></span> <a href="https://friisnaes.com" target="_blank">Friisnaes.com</a> · Karakter · Disciplin · Klarhed</p>
+  <p>© <span id="yr"></span> <a href="https://friisnaes.github.io/hjemmeside3/">Friisnaes.com</a> · Karakter · Disciplin · Klarhed</p>
 </footer>
 
 <script>
-// ─── CHALLENGES ──────────────────────────────────────────────────────────────
+/* ══════════════════════════════════════════════════════
+   DATA — 30 CHALLENGES
+══════════════════════════════════════════════════════ */
 const challenges = [
   {
-    day: 1,
-    category: "Ansvar",
-    action: "Skriv én ting du har undgået at tage fuldt ansvar for. Sig det højt — for dig selv. Ingen tilskuere nødvendige.",
-    reflection: "Hvad koster det dig at bære den undgåelse videre?"
+    day: 1, category: "Sandhed",
+    title: "Sandheden",
+    action: "Skriv én ting ned, du ved, du burde gøre – men ikke gør. Gør det. I dag.",
+    reflection: "Hvad fortæller det om din karakter, at du ikke allerede havde gjort det?"
   },
   {
-    day: 2,
-    category: "Beslutning",
-    action: "Tag én beslutning du har udskudt i over tre dage. Ikke i morgen. Nu. Skriv den ned og kommuniker den til den relevante person.",
-    reflection: "Hvad har udskydelsen allerede kostet dig i energi og troværdighed?"
+    day: 2, category: "Ansvar",
+    title: "Ansvar",
+    action: "Tag 100% ansvar for én situation, hvor du normalt ville forklare dig. Ingen forklaringer. Ingen undskyldninger. Kun: \"Det er mit ansvar.\"",
+    reflection: "Hvad sker der, når du fjerner forklaringen?"
   },
   {
-    day: 3,
-    category: "Selvbevidsthed",
-    action: "Spørg én kollega eller medarbejder: 'Hvad er min største blindspot som leder?' Lyt. Sig ikke et ord. Tak dem bagefter.",
-    reflection: "Hvad var din første reaktion — og hvad siger den om dig?"
+    day: 3, category: "Disciplin",
+    title: "Disciplin",
+    action: "Gør noget, du ikke har lyst til – men som er godt for dig. Ikke stort. Bare ærligt.",
+    reflection: "Handler du efter lyst – eller efter retning?"
   },
   {
-    day: 4,
-    category: "Disciplin",
-    action: "Identificér tre apps du bruger som mentalt flugt. Slet dem fra din telefon nu. Alle tre.",
-    reflection: "Hvad flygter du egentlig fra, når du åbner dem?"
+    day: 4, category: "Integritet",
+    title: "Integritet",
+    action: "Sig én sandhed, du normalt ville pakke ind. Respektfuldt. Men klart.",
+    reflection: "Hvor ofte justerer du sandheden for at gøre det nemmere?"
   },
   {
-    day: 5,
-    category: "Lederskab",
-    action: "Skriv en direkte, specifik besked til ét teammedlem om præcis hvad de gør godt. Ingen generelle vendinger. Send den nu.",
-    reflection: "Hvornår sagde du det sidst — og hvad siger intervallet om din ledelsesstil?"
+    day: 5, category: "Fokus",
+    title: "Fokus",
+    action: "Fjern én distraktion i 60 minutter. Telefon væk. Notifikationer væk. Lav én ting færdig.",
+    reflection: "Er du travl – eller er du effektiv?"
   },
   {
-    day: 6,
-    category: "Ansvar",
-    action: "Find en fejl du har bortforklaret eller skyldt på omstændighederne. Skriv din reelle andel ned — uden forbehold.",
-    reflection: "Hvem skylder du en ægte undskyldning?"
+    day: 6, category: "Mod",
+    title: "Mod",
+    action: "Gør noget i dag, du normalt undgår.",
+    reflection: "Hvad koster din undgåelse dig?"
   },
   {
-    day: 7,
-    category: "Beslutning",
-    action: "Vælg ét projekt, initiativ eller relation du bør afslutte. Sæt en endelig deadline. Skriv den i din kalender nu.",
-    reflection: "Hvad holder dig i gang med noget, du ved ikke virker?"
+    day: 7, category: "Afslutning",
+    title: "Afslutning",
+    action: "Luk en opgave, du har haft åben for længe.",
+    reflection: "Hvor meget mental plads tager åbne loops?"
   },
   {
-    day: 8,
-    category: "Selvbevidsthed",
-    action: "Sæt en timer på fem minutter. Spørg dig selv: 'Hvad driver mig egentlig — frygt eller ambition?' Skriv sandheden ned.",
-    reflection: "Hvor stor en rolle spiller andres anerkendelse i dine valg?"
+    day: 8, category: "Tydelighed",
+    title: "Tydelighed",
+    action: "Sig klart, hvad du forventer af en anden.",
+    reflection: "Er du tydelig – eller håber du bare?"
   },
   {
-    day: 9,
-    category: "Disciplin",
-    action: "Beslut nu: ingen telefon de første 30 minutter i morgen. Sæt alarmen, læg telefonen i et andet rum og hold det.",
-    reflection: "Hvad tror du, du mister — og hvad ville du faktisk vinde?"
+    day: 9, category: "Lytning",
+    title: "Lytning",
+    action: "Lyt uden at afbryde eller forberede svar.",
+    reflection: "Lytter du for at forstå – eller for at svare?"
   },
   {
-    day: 10,
-    category: "Lederskab",
-    action: "Identificér det teammedlem, der er mest undervurderet. Fortæl dem specifikt, præcist og direkte hvad du ser i dem. I dag.",
-    reflection: "Hvorfor har det ventet, og hvad siger det om din prioritering?"
+    day: 10, category: "Prioritering",
+    title: "Prioritering",
+    action: "Vælg én vigtig ting. Drop resten i 2 timer.",
+    reflection: "Hvis alt er vigtigt – hvad er så vigtigt?"
   },
   {
-    day: 11,
-    category: "Ansvar",
-    action: "Er der et løfte du ikke har holdt — til en medarbejder, kollega eller partner? Tag det op. Indrøm det. Lav en ny aftale.",
-    reflection: "Hvad koster brudte løfter dig i tillid over tid?"
+    day: 11, category: "Energi",
+    title: "Energi",
+    action: "Gør noget, der giver dig energi – ikke bare ro.",
+    reflection: "Tanker du op – eller kører du videre tom?"
   },
   {
-    day: 12,
-    category: "Beslutning",
-    action: "Skriv én beslutning du ved du bør tage, men frygter konsekvenserne af. Kortlæg det reelle worst case. Er det acceptabelt?",
-    reflection: "Er din frygt baseret på fakta eller fortælling?"
+    day: 12, category: "Konsekvens",
+    title: "Konsekvens",
+    action: "Følg op på noget, du sagde, du ville gøre.",
+    reflection: "Kan andre regne med dig?"
   },
   {
-    day: 13,
-    category: "Selvbevidsthed",
-    action: "Hvornår var du sidst uærlig over for dig selv om din præstation, dine prioriteter eller dine motivationer? Skriv det ned uden forbehold.",
-    reflection: "Hvilken selvfortælling beskytter du — og hvad beskytter den dig fra?"
+    day: 13, category: "Beslutning",
+    title: "Beslutning",
+    action: "Tag en beslutning, du har udskudt.",
+    reflection: "Hvad koster din ubeslutsomhed?"
   },
   {
-    day: 14,
-    category: "Disciplin",
-    action: "Kig på din kalender. Find det ene møde der ikke burde eksistere. Aflys det eller forkort det med 50%. Gør det nu.",
-    reflection: "Hvad fylder din tid, som burde være andres ansvar?"
+    day: 14, category: "Ordentlighed",
+    title: "Ordentlighed",
+    action: "Gør noget ordentligt, uden nogen opdager det.",
+    reflection: "Hvem er du, når ingen kigger?"
   },
   {
-    day: 15,
-    category: "Lederskab",
-    action: "Bed om feedback fra én person du respekterer, men sjældent spørger. Stil kun dette: 'Hvad bør jeg stoppe med at gøre?'",
-    reflection: "Hvad frygter du mest at høre — og hvad siger det om dig?"
+    day: 15, category: "Feedback",
+    title: "Feedback",
+    action: "Giv ærlig, konstruktiv feedback til én person.",
+    reflection: "Undgår du det svære?"
   },
   {
-    day: 16,
-    category: "Ansvar",
-    action: "Skriv tre ting du er fuldt ansvarlig for i dag — ét der gik godt, ét der gik dårligt, og ét du undgik. Ingen bortforklaringer.",
-    reflection: "Hvad er mønsteret i det du undgår ansvar for?"
+    day: 16, category: "Selvindsigt",
+    title: "Selvindsigt",
+    action: "Identificér én vane, der spænder ben for dig.",
+    reflection: "Hvor længe har du accepteret den?"
   },
   {
-    day: 17,
-    category: "Beslutning",
-    action: "Skriv ned: hvad venter du på for at handle? Læs det igen. Er det en reel forudsætning — eller en undskyldning?",
-    reflection: "Hvad ville du gøre i dag, hvis du vidste du ikke kunne fejle?"
+    day: 17, category: "Tempo",
+    title: "Tempo",
+    action: "Sænk tempoet i én vigtig samtale.",
+    reflection: "Hvad opdager du, når du ikke skynder dig?"
   },
   {
-    day: 18,
-    category: "Selvbevidsthed",
-    action: "Forestil dig din 25-årige udgave. Hvad ville de mene om dit lederskab, dine valg og dine kompromiser i dag? Skriv svaret ned.",
-    reflection: "Er du blevet den leder du engang ønskede at blive?"
+    day: 18, category: "Ejerskab",
+    title: "Ejerskab",
+    action: "Tag ansvar for en fejl – uden at forklare den væk.",
+    reflection: "Hvad gør det ved tilliden?"
   },
   {
-    day: 19,
-    category: "Disciplin",
-    action: "Planlæg to sammenhængende timers offline-arbejde i dag. Ingen notifikationer, ingen afbrydelser. Afhold det. Nøjagtigt som planlagt.",
-    reflection: "Hvad sker der med kvaliteten af dit arbejde, når du ikke kan afbryde dig selv?"
+    day: 19, category: "Nysgerrighed",
+    title: "Nysgerrighed",
+    action: "Stil 3 spørgsmål, før du kommer med din mening.",
+    reflection: "Er du mere optaget af at forstå – eller af at få ret?"
   },
   {
-    day: 20,
-    category: "Lederskab",
-    action: "Der er en svær samtale du har udskudt. Du ved hvem. Book den nu — i dag — med en konkret agenda og et klart formål.",
-    reflection: "Hvad koster undgåelsen den anden person — og dit team?"
+    day: 20, category: "Grænser",
+    title: "Grænser",
+    action: "Sig nej til noget, du normalt ville sige ja til.",
+    reflection: "Hvorfor sagde du ja før?"
   },
   {
-    day: 21,
-    category: "Ansvar",
-    action: "Hvad halter på dit team, din afdeling eller dit projekt, fordi du ikke har grebet ind? Skriv det. Lav en handlingsplan.",
-    reflection: "Hvad fortæller din passivitet dit team om, hvad du accepterer?"
+    day: 21, category: "Kvalitet",
+    title: "Kvalitet",
+    action: "Gør én opgave bedre, end nødvendigt.",
+    reflection: "Hvornår stopper du normalt med at gøre dig umage?"
   },
   {
-    day: 22,
-    category: "Beslutning",
-    action: "Skriv morgendagens top tre prioriteter. Slet alt andet fra din to-do liste. Hold dig til de tre. Kompromisløst.",
-    reflection: "Hvad lægger du til din liste for at undgå at starte på det svære?"
+    day: 22, category: "Tilstedeværelse",
+    title: "Tilstedeværelse",
+    action: "Vær 100% til stede i én samtale.",
+    reflection: "Hvor ofte er du reelt til stede?"
   },
   {
-    day: 23,
-    category: "Selvbevidsthed",
-    action: "Lav to kolonner: hvad giver dig energi som leder — og hvad dræner dig. Vær præcis. Ingen vage svar som 'stress'.",
-    reflection: "Bruger du mere tid på det der dræner dig end det der driver dig?"
+    day: 23, category: "Modstand",
+    title: "Modstand",
+    action: "Gå direkte ind i en opgave, du har modstand på.",
+    reflection: "Hvad sker der, når du starter?"
   },
   {
-    day: 24,
-    category: "Disciplin",
-    action: "Sæt alarmen 30 minutter tidligere i morgen. Ikke for at tjekke mail. Brug de 30 minutter på én ting der flytter dig.",
-    reflection: "Hvad fortæller din morgenrutine om dine faktiske prioriteter?"
+    day: 24, category: "Struktur",
+    title: "Struktur",
+    action: "Planlæg din næste dag med 3 klare prioriteter.",
+    reflection: "Styrer du din dag – eller styrer den dig?"
   },
   {
-    day: 25,
-    category: "Lederskab",
-    action: "Hvem på dit team har du ikke investeret nok i det seneste kvartal? Beslut ét konkret tiltag. Kommuniker det til dem i dag.",
-    reflection: "Hvad signalerer din udviklingsadfærd til dem, du er ansvarlig for?"
+    day: 25, category: "Relation",
+    title: "Relation",
+    action: "Ræk ud til én person uden agenda.",
+    reflection: "Hvornår sidst gjorde du det?"
   },
   {
-    day: 26,
-    category: "Ansvar",
-    action: "Find én situation du har bortforklaret ved at skylde på tid, ressourcer eller andre. Accepter din andel — fuldt ud. Ingen men'er.",
-    reflection: "Hvad ville ændre sig i din kultur, hvis du altid tog dette ansvar?"
+    day: 26, category: "Ærlighed",
+    title: "Ærlighed",
+    action: "Vær ærlig over for dig selv om noget, du undgår.",
+    reflection: "Hvad ved du godt – men ignorerer?"
   },
   {
-    day: 27,
-    category: "Beslutning",
-    action: "Hvad er din plan B, hvis din vigtigste strategi eller antagelse viser sig forkert? Du har fem minutter. Skriv den. Nu.",
-    reflection: "Hvor meget af din planlægning er afhængig af, at alt går som forventet?"
+    day: 27, category: "Vedholdenhed",
+    title: "Vedholdenhed",
+    action: "Bliv i en opgave 10 minutter længere end normalt.",
+    reflection: "Hvor hurtigt giver du slip?"
   },
   {
-    day: 28,
-    category: "Selvbevidsthed",
-    action: "Hvad er din primære forsvarsmekanisme under pres — kontroltrang, tilbagetrækning, aggression, overforklaring? Navngiv den præcist.",
-    reflection: "Hvem betaler prisen, når du aktiverer den mekanisme?"
+    day: 28, category: "Standard",
+    title: "Standard",
+    action: "Hæv standarden for én ting i dit arbejde.",
+    reflection: "Hvad accepterer du, som ikke er godt nok?"
   },
   {
-    day: 29,
-    category: "Disciplin",
-    action: "Skriv morgendagens vigtigste, mest ubehagelige opgave ned — den du typisk udskyder. Planlæg den som første opgave. Luk computeren.",
-    reflection: "Hvad siger dit mønster af udskydelse om din selvdisciplin som leder?"
+    day: 29, category: "Perspektiv",
+    title: "Perspektiv",
+    action: "Se en situation fra den andens side.",
+    reflection: "Hvad overser du normalt?"
   },
   {
-    day: 30,
-    category: "Lederskab",
-    action: "Hvem på dit team fortjener at høre 'Jeg stoler på dig — og her er hvad jeg konkret venter af dig fremover'? Sig det i dag.",
-    reflection: "30 dage er gået. Hvad er den ene ting, du nu ved om dig selv, som du ikke vidste?"
+    day: 30, category: "Karakter",
+    title: "Karakter",
+    action: "Gør én ting i dag, som dit bedste jeg ville gøre.",
+    reflection: "Hvor tæt er du på den version af dig selv?"
   }
 ];
 
-// ─── STATE ───────────────────────────────────────────────────────────────────
-let currentDay = 0;
-let completed = JSON.parse(localStorage.getItem('kc_done') || '[]');
+/* ══════════════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════════════ */
+const LS = {
+  get: k => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+  set: (k,v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+};
 
-// ─── INIT ────────────────────────────────────────────────────────────────────
+let currentDay = LS.get('kc_current') || 0;
+let completed  = LS.get('kc_done') || [];
+let committed  = LS.get('kc_committed') || false;
+
+/* ══════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('yr').textContent = new Date().getFullYear();
-  renderChallenge(0);
-  buildTracker();
-  updateStats();
 
-  // Show nav label after scroll
+  // If committed, find first unfinished day as suggestion
+  if (committed && completed.length < 30) {
+    const firstOpen = challenges.findIndex(c => !completed.includes(c.day - 1));
+    if (firstOpen !== -1 && LS.get('kc_current') === null) currentDay = firstOpen;
+  }
+
+  renderChallenge(currentDay);
+  buildDayPicker();
+  updateStats();
+  applyCommitState();
+
+  // scroll nav
   window.addEventListener('scroll', () => {
-    const label = document.getElementById('nav-day-label');
-    if (window.scrollY > 200) {
-      label.textContent = `— Dag ${currentDay + 1}`;
-      label.classList.add('visible');
+    const status = document.getElementById('nav-status');
+    if (window.scrollY > 180) {
+      status.textContent = `— Dag ${currentDay + 1}`;
+      status.classList.add('visible');
     } else {
-      label.classList.remove('visible');
+      status.classList.remove('visible');
     }
   });
 });
 
-// ─── CHALLENGE RENDERER ──────────────────────────────────────────────────────
+/* ══════════════════════════════════════════════════════
+   RENDER CHALLENGE
+══════════════════════════════════════════════════════ */
 function renderChallenge(idx) {
   currentDay = idx;
-  const c = challenges[idx];
+  LS.set('kc_current', idx);
 
-  document.getElementById('c-day-label').textContent = `Dag ${c.day} · ${c.category}`;
+  const c = challenges[idx];
+  const isDone = completed.includes(idx);
+
+  document.getElementById('challenge-heading').textContent = `Dag ${c.day}`;
+  document.getElementById('c-day-badge').textContent = `Dag ${c.day} af 30`;
+  document.getElementById('c-category').textContent = c.category;
+  document.getElementById('c-title').textContent = c.title;
   document.getElementById('c-action').textContent = c.action;
   document.getElementById('c-reflection').textContent = c.reflection;
 
+  // mark button
+  const markBtn = document.getElementById('c-mark-btn');
+  const markLabel = document.getElementById('c-mark-label');
+  markBtn.classList.toggle('done', isDone);
+  markLabel.textContent = isDone ? '✓ Gennemført' : 'Markér som gennemført';
+
+  // nav buttons
   document.getElementById('btn-prev').disabled = idx === 0;
   document.getElementById('btn-next').disabled = idx === challenges.length - 1;
 
-  const pct = ((idx + 1) / challenges.length) * 100;
-  document.getElementById('progress-fill').style.width = pct + '%';
+  // refresh picker highlight
+  buildDayPicker();
 }
 
+/* ══════════════════════════════════════════════════════
+   NAV
+══════════════════════════════════════════════════════ */
 function changeDay(dir) {
   const next = currentDay + dir;
   if (next < 0 || next >= challenges.length) return;
   renderChallenge(next);
 }
 
-// ─── TRACKER ─────────────────────────────────────────────────────────────────
-function buildTracker() {
-  const grid = document.getElementById('tracker-grid');
-  grid.innerHTML = '';
-  for (let i = 0; i < 30; i++) {
-    const cell = document.createElement('div');
-    cell.className = 'tracker-day' + (completed.includes(i) ? ' done' : '');
-    cell.dataset.idx = i;
-    cell.innerHTML = `<span class="tracker-day-num">${i + 1}</span>`;
-    cell.addEventListener('click', () => toggleDay(i));
-    grid.appendChild(cell);
-  }
-}
+/* ══════════════════════════════════════════════════════
+   MARK DAY
+══════════════════════════════════════════════════════ */
+function markCurrentDay() {
+  const idx = currentDay;
+  const markBtn = document.getElementById('c-mark-btn');
 
-function toggleDay(idx) {
   if (completed.includes(idx)) {
     completed = completed.filter(d => d !== idx);
   } else {
     completed.push(idx);
+    markBtn.classList.add('just-done');
+    setTimeout(() => markBtn.classList.remove('just-done'), 600);
   }
-  localStorage.setItem('kc_done', JSON.stringify(completed));
-  buildTracker();
+
+  LS.set('kc_done', completed);
+  renderChallenge(idx);
+  buildDayPicker();
   updateStats();
+  checkCompletion();
 }
 
+/* ══════════════════════════════════════════════════════
+   DAY PICKER
+══════════════════════════════════════════════════════ */
+function buildDayPicker() {
+  const grid = document.getElementById('day-picker');
+  grid.innerHTML = '';
+  challenges.forEach((c, i) => {
+    const cell = document.createElement('div');
+    cell.className = 'dp-cell';
+    if (i === currentDay) cell.classList.add('is-current');
+    if (completed.includes(i)) cell.classList.add('is-done');
+    cell.innerHTML = `<span>${c.day}</span>`;
+    cell.title = `Dag ${c.day}: ${c.title}`;
+    cell.addEventListener('click', () => renderChallenge(i));
+    grid.appendChild(cell);
+  });
+}
+
+/* ══════════════════════════════════════════════════════
+   STATS
+══════════════════════════════════════════════════════ */
 function updateStats() {
   const done = completed.length;
+  const left = 30 - done;
+  const pct  = Math.round((done / 30) * 100);
+
   document.getElementById('stat-done').textContent = done;
-  document.getElementById('stat-left').textContent = 30 - done;
-  document.getElementById('stat-pct').textContent = Math.round((done / 30) * 100) + '%';
+  document.getElementById('stat-left').textContent = left;
+  document.getElementById('stat-pct').textContent  = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+
+  // highlight numbers when progressing
+  document.getElementById('stat-done').classList.toggle('highlight', done > 0);
+  document.getElementById('stat-pct').classList.toggle('highlight', done > 0);
 }
 
+/* ══════════════════════════════════════════════════════
+   COMPLETION STATE
+══════════════════════════════════════════════════════ */
+function checkCompletion() {
+  const section = document.getElementById('final-cta');
+  if (completed.length === 30) {
+    section.classList.add('completed');
+    document.getElementById('cta-headline').innerHTML = '30 dage er ikke teori.<br><em>Det er bevis.</em>';
+    document.getElementById('cta-sub').textContent = 'Du stoppede ikke. Nu er det tid til næste skridt.';
+  } else {
+    section.classList.remove('completed');
+    document.getElementById('cta-headline').innerHTML = 'Gennemført?<br>Klar til næste niveau?';
+    document.getElementById('cta-sub').textContent = '30 dage er beviset. Nu er det tid til en plan.';
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   COMMITMENT
+══════════════════════════════════════════════════════ */
+function toggleCommit() {
+  committed = !committed;
+  LS.set('kc_committed', committed);
+  applyCommitState();
+}
+
+function applyCommitState() {
+  const btn = document.getElementById('commit-btn');
+  const bar = document.getElementById('commitment-bar');
+
+  btn.classList.toggle('committed', committed);
+  bar.classList.toggle('active', committed);
+}
+
+/* ══════════════════════════════════════════════════════
+   RESET
+══════════════════════════════════════════════════════ */
 function resetProgress() {
   if (!confirm('Nulstil al fremgang? Dette kan ikke fortrydes.')) return;
   completed = [];
-  localStorage.removeItem('kc_done');
-  buildTracker();
+  currentDay = 0;
+  LS.set('kc_done', []);
+  LS.set('kc_current', 0);
+  renderChallenge(0);
+  buildDayPicker();
   updateStats();
+  checkCompletion();
 }
 </script>
 </body>
