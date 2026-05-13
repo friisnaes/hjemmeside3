@@ -75,7 +75,7 @@
         .nl { display: flex; align-items: center; gap: 28px; list-style: none; }
         .nl a { font-family: var(--body); font-size: .76rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
         .nl a:hover { color: var(--white); }
-        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 20px; font-weight: 600; }
+        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 20px; font-weight: 600; white-space: nowrap; }
         .nl .cta-n:hover { background: var(--red-hover); }
         .ls { display: flex; gap: 3px; margin-left: 4px; }
         .ls button { background: none; border: 1px solid transparent; color: rgba(255,255,255,.35); font-family: var(--body); font-size: .65rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 3px 6px; cursor: pointer; transition: all .3s; border-radius: 2px; }
@@ -223,13 +223,13 @@
     <div class="ni">
         <a href="#top" class="lo" aria-label="Friisnæs – Executive Coach, forside">Fr<em>ii</em>snæs</a>
         <ul class="nl" id="nm" aria-label="Primær navigation">
-            <li><a href="#situationer">Situationer</a></li>
+            <li><a href="#situationer" data-da="Situationer" data-en="Situations">Situationer</a></li>
             <li><a href="#format">Format</a></li>
             <li><a href="#om">Om</a></li>
             <li><a href="testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
             <li><a href="blog.html" data-da="Indsigter" data-en="Insights">Indsigter</a></li>
             <li><a href="boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
-            <li><a href="#kontakt" class="cta-n" aria-label="Book en 20-minutters strategisk samtale">Book en 20-minutters samtale</a></li>
+            <li><a href="#kontakt" class="cta-n" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation" aria-label="Book en 20-minutters strategisk samtale">Book en 20-minutters samtale</a></li>
             <li class="ls"><button onclick="setLang('da')" class="on" aria-label="Skift til dansk">DA</button><span aria-hidden="true">/</span><button onclick="setLang('en')" aria-label="Switch to English">EN</button></li>
         </ul>
         <button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
