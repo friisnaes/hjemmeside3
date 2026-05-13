@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bøger | Thomas Friisnæs</title>
+    <meta name="description" content="Bøger af Thomas Friisnæs om lederskab, karakter og poesi. Bestil fysisk eller køb e-bog direkte.">
+    <meta name="author" content="Thomas Friisnæs">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.friisnaes.com/boeger.html">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="apple-touch-icon" href="/favicon-apple.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.friisnaes.com/boeger.html">
+    <meta property="og:title" content="Bøger | Thomas Friisnæs">
+    <meta property="og:description" content="Bøger om lederskab, karakter og poesi af Thomas Friisnæs.">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Friisnæs">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #111; --black-soft: #1a1a1a; --black-light: #222;
+            --gray-dark: #444; --gray: #777; --off-white: #f5f4f0; --white: #fafaf8;
+            --red: #c0392b; --red-hover: #e74c3c;
+            --display: 'Playfair Display', Georgia, serif;
+            --body: 'Outfit', -apple-system, sans-serif;
+            --max: 760px; --wide: 1100px; --pad: clamp(24px, 6vw, 64px);
+            --ease: cubic-bezier(.16, 1, .3, 1);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--body); color: var(--black); background: var(--white); line-height: 1.75; }
+        a { text-decoration: none; color: inherit; transition: color .3s var(--ease); }
+
+        /* ── NAV ── */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(17,17,17,.97); backdrop-filter: blur(12px); }
+        nav .ni { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; }
+        nav .lo { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: .02em; }
+        nav .lo em { color: var(--red); font-style: normal; }
+        .nl { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nl a { font-size: .76rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
+        .nl a:hover, .nl a.active { color: var(--white); }
+        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 20px; font-weight: 600; }
+        .nl .cta-n:hover { background: var(--red-hover); }
+        .nt { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+        .nt span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all .3s; }
+        .nt.act span:nth-child(1) { transform: rotate(45deg) translate(4px,5px); }
+        .nt.act span:nth-child(2) { opacity: 0; }
+        .nt.act span:nth-child(3) { transform: rotate(-45deg) translate(4px,-5px); }
+
+        /* ── HERO ── */
+        .page-hero { background: var(--black); padding: 140px var(--pad) 80px; }
+        .page-hero .inner { max-width: var(--wide); margin: 0 auto; }
+        .page-hero .tag { font-size: .65rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 16px; opacity: 0; animation: fu .7s var(--ease) .2s forwards; }
+        .page-hero h1 { font-family: var(--display); font-size: clamp(2.4rem, 4vw, 3.4rem); font-weight: 400; color: var(--white); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 16px; opacity: 0; animation: fu .7s var(--ease) .4s forwards; }
+        .page-hero h1 em { font-style: italic; color: var(--red); }
+        .page-hero p { font-size: .92rem; color: rgba(255,255,255,.4); max-width: 520px; opacity: 0; animation: fu .7s var(--ease) .6s forwards; }
+        @keyframes fu { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+        /* ── ADMIN TOGGLE (skjult som standard) ── */
+        .admin-bar { background: var(--black-light); border-bottom: 1px solid rgba(255,255,255,.08); padding: 12px var(--pad); display: none; }
+        .admin-bar.visible { display: block; }
+        .admin-bar .inner { max-width: var(--wide); margin: 0 auto; display: flex; align-items: center; gap: 16px; }
+        .admin-bar .ab-label { font-size: .65rem; font-weight: 600; color: rgba(255,255,255,.4); letter-spacing: .15em; text-transform: uppercase; }
+        .mode-toggle { display: flex; gap: 4px; }
+        .mode-btn { font-size: .7rem; font-weight: 600; padding: 5px 14px; border: 1px solid rgba(255,255,255,.15); background: none; color: rgba(255,255,255,.4); cursor: pointer; letter-spacing: .08em; text-transform: uppercase; transition: all .3s; border-radius: 2px; }
+        .mode-btn.active { background: var(--red); border-color: var(--red); color: var(--white); }
+        .admin-key { font-size: .7rem; color: rgba(255,255,255,.2); margin-left: auto; }
+
+        /* ── BOOKS SECTION ── */
+        .books-section { background: var(--white); padding: 80px var(--pad); }
+        .books-section .inner { max-width: var(--wide); margin: 0 auto; }
+        .section-label { font-size: .65rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 14px; }
+        .section-title { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 400; color: var(--black); line-height: 1.15; letter-spacing: -.01em; margin-bottom: 48px; }
+        .section-title em { font-style: italic; color: var(--red); }
+
+        /* ── BOOK CARD ── */
+        .book-card { border: 1px solid rgba(0,0,0,.06); margin-bottom: 2px; display: grid; grid-template-columns: 1fr 1fr; }
+        .book-info { padding: 48px 40px; border-right: 1px solid rgba(0,0,0,.06); }
+        .book-genre { font-size: .62rem; font-weight: 600; color: var(--red); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 12px; }
+        .book-title { font-family: var(--display); font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 400; color: var(--black); line-height: 1.2; letter-spacing: -.01em; margin-bottom: 16px; }
+        .book-desc { font-size: .88rem; color: var(--gray-dark); line-height: 1.75; margin-bottom: 0; }
+
+        .book-buy { padding: 48px 40px; background: var(--off-white); display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+        .buy-mode { display: flex; flex-direction: column; gap: 16px; }
+
+        /* Preorder mode */
+        .preorder-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(192,57,43,.08); border: 1px solid rgba(192,57,43,.2); padding: 6px 14px; margin-bottom: 4px; width: fit-content; }
+        .preorder-badge span { font-size: .62rem; font-weight: 600; color: var(--red); letter-spacing: .15em; text-transform: uppercase; }
+        .preorder-badge::before { content: ''; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+        .preorder-note { font-size: .78rem; color: var(--gray); line-height: 1.6; }
+
+        /* Buy options */
+        .buy-options { display: flex; flex-direction: column; gap: 10px; }
+        .buy-option { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; background: var(--white); border: 1px solid rgba(0,0,0,.06); transition: border-color .3s; }
+        .buy-option:hover { border-color: var(--red); }
+        .buy-option-info { display: flex; flex-direction: column; gap: 2px; }
+        .buy-option-type { font-size: .65rem; font-weight: 600; color: var(--gray); letter-spacing: .12em; text-transform: uppercase; }
+        .buy-option-price { font-family: var(--display); font-size: 1.2rem; color: var(--black); }
+        .btn-buy { display: inline-flex; align-items: center; gap: 6px; font-family: var(--body); font-size: .72rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 10px 20px; background: var(--red); color: var(--white); border: none; cursor: pointer; transition: all .3s var(--ease); white-space: nowrap; }
+        .btn-buy:hover { background: var(--red-hover); }
+        .btn-preorder { background: transparent; color: var(--red); border: 1px solid var(--red); }
+        .btn-preorder:hover { background: var(--red); color: var(--white); }
+
+        /* Bundle card */
+        .bundle-card { border: 1px solid rgba(192,57,43,.2); background: rgba(192,57,43,.02); margin-bottom: 2px; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+        .bundle-info .bundle-label { font-size: .62rem; font-weight: 600; color: var(--red); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 8px; }
+        .bundle-info h3 { font-family: var(--display); font-size: 1.3rem; font-weight: 400; color: var(--black); margin-bottom: 6px; }
+        .bundle-info p { font-size: .84rem; color: var(--gray); }
+        .bundle-buy { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; flex-shrink: 0; }
+
+        /* ── COMING SOON ── */
+        .coming-section { background: var(--off-white); border-top: 1px solid rgba(0,0,0,.06); padding: 80px var(--pad); }
+        .coming-section .inner { max-width: var(--wide); margin: 0 auto; }
+        .coming-grid { display: flex; flex-direction: column; gap: 0; margin-top: 36px; }
+        .coming-item { padding: 24px 0; border-bottom: 1px solid rgba(0,0,0,.06); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+        .coming-item:last-child { border-bottom: none; }
+        .coming-title { font-family: var(--display); font-size: 1.1rem; font-weight: 400; color: var(--black); margin-bottom: 4px; }
+        .coming-desc { font-size: .84rem; color: var(--gray); line-height: 1.6; max-width: 560px; }
+        .coming-badge { font-size: .62rem; font-weight: 600; color: var(--gray); letter-spacing: .15em; text-transform: uppercase; background: rgba(0,0,0,.06); padding: 5px 12px; white-space: nowrap; }
+
+        /* ── CTA ── */
+        .book-cta { background: var(--black); padding: 80px var(--pad); text-align: center; }
+        .book-cta .inner { max-width: 560px; margin: 0 auto; }
+        .book-cta .se { font-size: .65rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 16px; }
+        .book-cta h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 400; color: var(--white); line-height: 1.2; letter-spacing: -.01em; margin-bottom: 16px; }
+        .book-cta h2 em { font-style: italic; color: var(--red); }
+        .book-cta p { font-size: .9rem; color: rgba(255,255,255,.4); margin-bottom: 32px; }
+        .btn { display: inline-flex; align-items: center; font-family: var(--body); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 14px 28px; cursor: pointer; border: none; transition: all .4s var(--ease); }
+        .bp { background: var(--red); color: var(--white); }
+        .bp:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(192,57,43,.25); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); padding: 36px 0 24px; border-top: 1px solid rgba(255,255,255,.04); }
+        footer .fi3 { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; justify-content: space-between; align-items: center; }
+        footer .fb { font-family: var(--display); font-size: .95rem; font-weight: 600; color: var(--white); }
+        footer .fb em { color: var(--red); font-style: normal; }
+        footer .fc { font-size: .68rem; color: rgba(255,255,255,.2); }
+
+        @media (max-width: 800px) {
+            .book-card { grid-template-columns: 1fr; }
+            .book-info { border-right: none; border-bottom: 1px solid rgba(0,0,0,.06); }
+            .bundle-card { flex-direction: column; align-items: flex-start; }
+            .bundle-buy { align-items: flex-start; }
+        }
+        @media (max-width: 600px) {
+            .nl { display: none; position: fixed; inset: 0; background: rgba(17,17,17,.98); backdrop-filter: blur(16px); flex-direction: column; justify-content: center; align-items: center; gap: 24px; z-index: 99; }
+            .nl.open { display: flex; }
+            .nl a { font-size: 1rem; }
+            .nt { display: flex; z-index: 101; }
+            .book-info, .book-buy { padding: 32px 24px; }
+            .bundle-card { padding: 28px 24px; }
+            footer .fi3 { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Admin bar — vises kun med ?admin i URL -->
+<div class="admin-bar" id="adminBar">
+    <div class="inner">
+        <span class="ab-label">Admin</span>
+        <div class="mode-toggle">
+            <button class="mode-btn active" id="btnPreorder" onclick="setMode('preorder')">Forudbestilling</button>
+            <button class="mode-btn" id="btnBuy" onclick="setMode('buy')">Køb nu</button>
+        </div>
+        <span class="admin-key">?admin i URL for at se denne bar</span>
+    </div>
+</div>
+
+<nav role="navigation" aria-label="Hovednavigation">
+    <div class="ni">
+        <a href="/" class="lo" aria-label="Friisnæs forside">Fr<em>ii</em>snæs</a>
+        <ul class="nl" id="nm">
+            <li><a href="/#situationer">Situationer</a></li>
+            <li><a href="/#format">Format</a></li>
+            <li><a href="/#om">Om</a></li>
+            <li><a href="testimonials.html">Klienter</a></li>
+            <li><a href="blog.html">Indsigter</a></li>
+            <li><a href="boeger.html" class="active" style="color:#fff">Bøger</a></li>
+            <li><a href="/#kontakt" class="cta-n">Book en samtale</a></li>
+        </ul>
+        <button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<header class="page-hero">
+    <div class="inner">
+        <p class="tag">Udgivelser</p>
+        <h1>Bøger om lederskab,<br>karakter og <em>poesi.</em></h1>
+        <p>Mine bøger bruges af ledere der ønsker mere refleksion, stærkere karakter og bedre beslutningsgrundlag — og af mennesker der bare vil læse noget ægte.</p>
+    </div>
+</header>
+
+<main>
+
+<!-- ── FAGLITTERATUR ── -->
+<section class="books-section">
+    <div class="inner">
+        <p class="section-label">Faglitteratur</p>
+        <h2 class="section-title">Lederskab der <em>virker i praksis</em></h2>
+
+        <!-- BOG 1: Du ansætter på CV -->
+        <div class="book-card">
+            <div class="book-info">
+                <p class="book-genre">Lederskab · B2B</p>
+                <h2 class="book-title">Du ansætter på CV — men leder på karakter</h2>
+                <p class="book-desc">Der findes ledere, der er dygtige — og så findes der ledere, man følger. Forskellen ligger sjældent i deres CV. Den ligger i deres karakter. Denne bog handler om det, der ikke står på LinkedIn, men som gør hele forskellen, når det brænder på.</p>
+            </div>
+            <div class="book-buy">
+                <div class="buy-mode" id="mode-cv">
+                    <!-- Preorder mode (standard) -->
+                    <div class="preorder-content">
+                        <div class="preorder-badge"><span>Forudbestilling åben</span></div>
+                        <p class="preorder-note">Reservér dit eksemplar nu. Du faktureres og modtager bogen ved udgivelse.</p>
+                        <div class="buy-options" style="margin-top:12px;">
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">Fysisk bog</span>
+                                    <span class="buy-option-price">250 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/fZu28r4Jte1s0HFfmD8bS04" target="_blank" class="btn-buy btn-preorder">Forudbestil →</a>
+                            </div>
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">E-bog (PDF)</span>
+                                    <span class="buy-option-price">125 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/eVqeVd3Fp9LcgGDb6n8bS05" target="_blank" class="btn-buy btn-preorder">Forudbestil →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Buy mode (skjult indtil skiftet) -->
+                    <div class="buy-content" style="display:none;">
+                        <div class="buy-options">
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">Fysisk bog</span>
+                                    <span class="buy-option-price">250 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/fZu28r4Jte1s0HFfmD8bS04" target="_blank" class="btn-buy">Køb →</a>
+                            </div>
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">E-bog (PDF)</span>
+                                    <span class="buy-option-price">125 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/eVqeVd3Fp9LcgGDb6n8bS05" target="_blank" class="btn-buy">Køb →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── POESI ── -->
+        <div style="margin-top:64px;">
+        <p class="section-label">Poesi</p>
+        <h2 class="section-title">Digte101 — <em>en trilogi</em></h2>
+        <p style="font-size:.88rem;color:var(--gray);margin-bottom:32px;max-width:600px;">101 digte om at gøre en forskel. Tre samlinger — én stemme, ét helt liv. Kan købes enkeltvis eller samlet.</p>
+
+        <!-- BOG 2: Delta Plus -->
+        <div class="book-card">
+            <div class="book-info">
+                <p class="book-genre">Poesi · Digte101 samling I/III</p>
+                <h2 class="book-title">Δ+ (Delta Plus)</h2>
+                <p class="book-desc">Bevidst ledelse og selvhjælpsbog kommunikeret som digte. Hvordan filosofiske principper oversættes til konkret lederskab. Fra Easybility og nettopositivitet til at skabe rammer, hvor mennesker blomstrer.</p>
+            </div>
+            <div class="book-buy">
+                <div class="buy-mode" id="mode-delta">
+                    <div class="preorder-content">
+                        <div class="preorder-badge"><span>Forudbestilling åben</span></div>
+                        <p class="preorder-note">Reservér dit eksemplar nu.</p>
+                        <div class="buy-options" style="margin-top:12px;">
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">Fysisk bog</span>
+                                    <span class="buy-option-price">150 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/cNibJ11xhcXocqndev8bS01" target="_blank" class="btn-buy btn-preorder">Forudbestil →</a>
+                            </div>
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">E-bog (PDF)</span>
+                                    <span class="buy-option-price">75 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/aFa14n7VF2iKaifdev8bS06" target="_blank" class="btn-buy btn-preorder">Forudbestil →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buy-content" style="display:none;">
+                        <div class="buy-options">
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">Fysisk bog</span>
+                                    <span class="buy-option-price">150 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/cNibJ11xhcXocqndev8bS01" target="_blank" class="btn-buy">Køb →</a>
+                            </div>
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">E-bog (PDF)</span>
+                                    <span class="buy-option-price">75 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/aFa14n7VF2iKaifdev8bS06" target="_blank" class="btn-buy">Køb →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOG 3: Sigma Equal -->
+        <div class="book-card" style="margin-top:2px;">
+            <div class="book-info">
+                <p class="book-genre">Poesi · Digte101 samling II/III</p>
+                <h2 class="book-title">Σ= (Sigma Equal)</h2>
+                <p class="book-desc">34 digte om balance, struktur og mening. Σ= er regnskabet midt i livet — ikke at starte forfra, men at holde kursen. Digtene kredser om tidsbevidsthed, selvledelse og daglig disciplin.</p>
+            </div>
+            <div class="book-buy">
+                <div class="buy-mode" id="mode-sigma">
+                    <div class="preorder-content">
+                        <div class="preorder-badge"><span>Forudbestilling åben</span></div>
+                        <p class="preorder-note">Reservér dit eksemplar nu.</p>
+                        <div class="buy-options" style="margin-top:12px;">
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">Fysisk bog</span>
+                                    <span class="buy-option-price">150 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/bJecN5gsb8H8aif1vN8bS02" target="_blank" class="btn-buy btn-preorder">Forudbestil →</a>
+                            </div>
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">E-bog (PDF)</span>
+                                    <span class="buy-option-price">75 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/9B68wPek38H8cqnb6n8bS07" target="_blank" class="btn-buy btn-preorder">Forudbestil →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buy-content" style="display:none;">
+                        <div class="buy-options">
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">Fysisk bog</span>
+                                    <span class="buy-option-price">150 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/bJecN5gsb8H8aif1vN8bS02" target="_blank" class="btn-buy">Køb →</a>
+                            </div>
+                            <div class="buy-option">
+                                <div class="buy-option-info">
+                                    <span class="buy-option-type">E-bog (PDF)</span>
+                                    <span class="buy-option-price">75 kr</span>
+                                </div>
+                                <a href="https://buy.stripe.com/9B68wPek38H8cqnb6n8bS07" target="_blank" class="btn-buy">Køb →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BUNDLE -->
+        <div class="bundle-card" style="margin-top:2px;">
+            <div class="bundle-info">
+                <p class="bundle-label">Samlet pris · Spar 50 kr</p>
+                <h3>Δ+ og Σ= — begge digtsamlinger</h3>
+                <p>Køb de to første samlinger i trilogien samlet og spar.</p>
+            </div>
+            <div class="bundle-buy" id="mode-bundle">
+                <div class="preorder-content">
+                    <div class="buy-options" style="gap:8px;">
+                        <div class="buy-option" style="background:var(--white);">
+                            <div class="buy-option-info">
+                                <span class="buy-option-type">Fysiske bøger</span>
+                                <span class="buy-option-price">250 kr</span>
+                            </div>
+                            <a href="https://buy.stripe.com/8x2aEX1xhbTk3TRdev8bS03" target="_blank" class="btn-buy btn-preorder">Forudbestil →</a>
+                        </div>
+                        <div class="buy-option" style="background:var(--white);">
+                            <div class="buy-option-info">
+                                <span class="buy-option-type">E-bøger (PDF)</span>
+                                <span class="buy-option-price">125 kr</span>
+                            </div>
+                            <a href="https://buy.stripe.com/fZufZhek31eGdura2j8bS08" target="_blank" class="btn-buy btn-preorder">Forudbestil →</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="buy-content" style="display:none;">
+                    <div class="buy-options" style="gap:8px;">
+                        <div class="buy-option" style="background:var(--white);">
+                            <div class="buy-option-info">
+                                <span class="buy-option-type">Fysiske bøger</span>
+                                <span class="buy-option-price">250 kr</span>
+                            </div>
+                            <a href="https://buy.stripe.com/8x2aEX1xhbTk3TRdev8bS03" target="_blank" class="btn-buy">Køb →</a>
+                        </div>
+                        <div class="buy-option" style="background:var(--white);">
+                            <div class="buy-option-info">
+                                <span class="buy-option-type">E-bøger (PDF)</span>
+                                <span class="buy-option-price">125 kr</span>
+                            </div>
+                            <a href="https://buy.stripe.com/fZufZhek31eGdura2j8bS08" target="_blank" class="btn-buy">Køb →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── KOMMENDE BØGER ── -->
+<section class="coming-section">
+    <div class="inner">
+        <p class="section-label">Kommende udgivelser</p>
+        <h2 class="section-title">Tre bøger <em>på vej</em></h2>
+        <div class="coming-grid">
+            <div class="coming-item">
+                <div>
+                    <p class="coming-title">Det vigtigste du ikke kan købe til dit barn</p>
+                    <p class="coming-desc">Byg karakter hos dit barn gennem 10 mentale muskler: Ansvarlighed, udholdenhed, mod, empati, selvdisciplin, taknemmelighed, nysgerrighed, integritet, humor og håb. En praktisk guide til at træne de egenskaber, der gør børn livsdygtige.</p>
+                </div>
+                <span class="coming-badge">I produktion</span>
+            </div>
+            <div class="coming-item">
+                <div>
+                    <p class="coming-title">Ferrarimotor med cykelbremser — ADHD som drivkraft og disciplin</p>
+                    <p class="coming-desc">Bogen er til dig med en motor, der aldrig slukker — og til dig, der forsøger at forstå én, der har det sådan. Om at få en ADHD-diagnose som voksen og opdage, at det forklarer alt, men forandrer intet — og alligevel ændrer alt.</p>
+                </div>
+                <span class="coming-badge">I produktion</span>
+            </div>
+            <div class="coming-item">
+                <div>
+                    <p class="coming-title">Ω0 (Omega Zero) — Digte101 samling III/III</p>
+                    <p class="coming-desc">34 digte om afslutning, tilgivelse og efterklang — og en ny start. Ω0 er freden bagefter — essensen, når støjen er trukket ud. Den tredje og afsluttende samling i trilogien Digte101.</p>
+                </div>
+                <span class="coming-badge">I produktion</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="book-cta">
+    <div class="inner">
+        <p class="se">Næste skridt</p>
+        <h2>Klar til en <em>skarp samtale?</em></h2>
+        <p>20 minutter. Ét problem. Én retning.</p>
+        <a href="/#kontakt" class="btn bp">Book en 20-minutters samtale</a>
+    </div>
+</section>
+
+</main>
+
+<footer role="contentinfo">
+    <div class="fi3">
+        <div class="fb">Fr<em>ii</em>snæs</div>
+        <div class="fc">&copy; 2026 Friisnæs. Alle rettigheder forbeholdes.</div>
+    </div>
+</footer>
+
+<script>
+(function(){
+    // Nav
+    var tg=document.getElementById('nt'),mn=document.getElementById('nm');
+    tg.addEventListener('click',function(){
+        var o=mn.classList.toggle('open');
+        tg.classList.toggle('act');
+        tg.setAttribute('aria-expanded',o);
+        document.body.style.overflow=o?'hidden':'';
+    });
+    mn.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click',function(){
+            mn.classList.remove('open');tg.classList.remove('act');
+            tg.setAttribute('aria-expanded','false');document.body.style.overflow='';
+        });
+    });
+
+    // Admin bar — vises kun med ?admin i URL
+    if(window.location.search.includes('admin')) {
+        document.getElementById('adminBar').classList.add('visible');
+        // Load saved mode
+        var saved = localStorage.getItem('bookMode') || 'preorder';
+        applyMode(saved);
+        document.getElementById(saved==='preorder'?'btnPreorder':'btnBuy').classList.add('active');
+        document.getElementById(saved==='preorder'?'btnBuy':'btnPreorder').classList.remove('active');
+    } else {
+        // Apply saved mode for regular visitors too
+        var mode = localStorage.getItem('bookMode') || 'preorder';
+        applyMode(mode);
+    }
+})();
+
+function setMode(mode) {
+    localStorage.setItem('bookMode', mode);
+    applyMode(mode);
+    document.getElementById('btnPreorder').classList.toggle('active', mode==='preorder');
+    document.getElementById('btnBuy').classList.toggle('active', mode==='buy');
+}
+
+function applyMode(mode) {
+    document.querySelectorAll('.preorder-content').forEach(function(el){
+        el.style.display = mode==='preorder' ? '' : 'none';
+    });
+    document.querySelectorAll('.buy-content').forEach(function(el){
+        el.style.display = mode==='buy' ? '' : 'none';
+    });
+}
+</script>
+</body>
+</html>
