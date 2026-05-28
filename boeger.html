@@ -165,8 +165,8 @@
     <div class="inner">
         <span class="ab-label">Admin</span>
         <div class="mode-toggle">
-            <button class="mode-btn active" id="btnPreorder" onclick="setMode('preorder')">Forudbestilling</button>
-            <button class="mode-btn" id="btnBuy" onclick="setMode('buy')">Køb nu</button>
+            <button class="mode-btn" id="btnPreorder" onclick="setMode('preorder')">Forudbestilling</button>
+            <button class="mode-btn active" id="btnBuy" onclick="setMode('buy')">Køb nu</button>
         </div>
         <span class="admin-key">?admin i URL for at se denne bar</span>
     </div>
@@ -489,13 +489,13 @@
     if(window.location.search.includes('admin')) {
         document.getElementById('adminBar').classList.add('visible');
         // Load saved mode
-        var saved = localStorage.getItem('bookMode') || 'preorder';
+        var saved = localStorage.getItem('bookMode') || 'buy';
         applyMode(saved);
         document.getElementById(saved==='preorder'?'btnPreorder':'btnBuy').classList.add('active');
         document.getElementById(saved==='preorder'?'btnBuy':'btnPreorder').classList.remove('active');
     } else {
         // Apply saved mode for regular visitors too
-        var mode = localStorage.getItem('bookMode') || 'preorder';
+        var mode = localStorage.getItem('bookMode') || 'buy';
         applyMode(mode);
     }
 })();
