@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C-Level Serien: Ti papers i fire dele — en anatomi af topledelse | Thomas Friisnæs</title>
+<meta name="description" content="Ti white papers om topledelse — skrevet for dem, der allerede sidder i stolen, og for dem, der er på vej derhen. Fra lederen som menneske til spørgsmålet om, hvad der bliver tilbage.">
+<meta property="og:title" content="C-Level Serien: Ti papers i fire dele">
+<meta property="og:description" content="Topledere fejler sjældent på det, de ikke kan. De fejler på det, de ikke kan se. Ti white papers — en samlet anatomi af topledelse.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://friisnaes.com/c-level-serien">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #0d1f3c; --navy-mid: #162d54; --navy-light: #1e3a6e;
+    --gold: #c9a84c; --gold-light: #e2c47a; --gold-pale: #f5ead2;
+    --cream: #faf7f2; --warm-white: #fffdf9;
+    --text: #1a1a2e; --text-mid: #3a3a5c; --text-light: #6b6b8a;
+    --border: #e8e0d0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* HERO */
+  .hero { background: var(--navy); color: white; padding: 88px 0 76px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -160px; right: -140px; width: 540px; height: 540px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.10); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -200px; left: -160px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.06); pointer-events: none; }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 5px 14px; border-radius: 2px; margin-bottom: 28px; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 62px); font-weight: 400; line-height: 1.06; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 2.6vw, 23px); font-style: italic; font-weight: 300; color: rgba(255,255,255,0.66); margin-bottom: 36px; letter-spacing: 0.01em; }
+  .hero-lead { font-size: 17px; line-height: 1.8; color: rgba(255,255,255,0.82); max-width: 600px; font-weight: 300; }
+  .hero-lead p { margin-bottom: 16px; }
+  .hero-lead p:last-child { margin-bottom: 0; }
+  .hero-lead strong { color: var(--gold-light); font-weight: 400; }
+
+  /* INTRO PROSE */
+  .intro { padding: 72px 0 24px; }
+  .intro-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 18px; }
+  .intro h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 38px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 28px; letter-spacing: -0.005em; }
+  .intro p { font-size: 18px; line-height: 1.85; color: var(--text-mid); margin-bottom: 22px; }
+  .intro p:first-of-type::first-letter { font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+  .intro .lead-statement { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 36px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+
+  /* COLLECTION (matcher samlingsoversigten i hvert paper) */
+  .wp-collection { background: var(--navy); color: white; padding: 72px 0; position: relative; overflow: hidden; margin-top: 56px; }
+  .wp-collection::before { content: ''; position: absolute; top: -100px; right: -100px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.08); pointer-events: none; }
+  .collection-inner { position: relative; z-index: 1; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 38px); font-weight: 400; color: white; margin-bottom: 18px; line-height: 1.1; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 48px; font-weight: 300; }
+  .collection-part { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .part-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .part-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .part-name { font-family: 'Cormorant Garamond', serif; font-size: 25px; color: white; font-weight: 500; }
+  .part-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 22px; font-weight: 300; max-width: 560px; }
+  .part-papers { list-style: none; counter-reset: paper; display: flex; flex-direction: column; gap: 2px; }
+  .part-papers li { counter-increment: paper; display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .part-papers li:last-child { border-bottom: none; }
+  .part-papers li::before { content: counter(paper, decimal-leading-zero); font-size: 10px; color: rgba(201,168,76,0.7); font-weight: 500; min-width: 22px; letter-spacing: 0.05em; padding-top: 5px; }
+  .paper-link { display: flex; flex-direction: column; gap: 3px; text-decoration: none; flex: 1; }
+  .paper-link .pl-title { font-size: 16px; color: rgba(255,255,255,0.86); font-weight: 400; transition: color 0.2s; }
+  .paper-link .pl-sub { font-size: 13px; color: rgba(255,255,255,0.42); font-weight: 300; line-height: 1.5; }
+  .paper-link:hover .pl-title { color: var(--gold-light); }
+
+  /* CTA */
+  .cta-section { background: var(--cream); padding: 72px 0; }
+  .cta-box { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 48px 44px; text-align: center; position: relative; }
+  .cta-box::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--gold); }
+  .cta-box h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 400; color: var(--navy); margin-bottom: 16px; line-height: 1.15; }
+  .cta-box p { font-size: 16px; color: var(--text-mid); max-width: 480px; margin: 0 auto 32px; line-height: 1.7; }
+  .cta-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-bottom: 8px; }
+  .cta-btn { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; text-decoration: none; padding: 14px 28px; border-radius: 2px; transition: all 0.2s; }
+  .cta-btn.primary { background: var(--navy); color: white; }
+  .cta-btn.primary:hover { background: var(--navy-light); }
+  .cta-btn.secondary { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .cta-btn.secondary:hover { border-color: var(--gold); color: var(--navy); }
+
+  /* FOOTER */
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  .footer-series-info a:hover { color: white; }
+
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .hero { padding: 60px 0 50px; }
+    .intro { padding: 52px 0 16px; }
+    .intro p:first-of-type::first-letter { font-size: 52px; }
+    .cta-box { padding: 36px 26px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero-inner">
+    <span class="hero-badge">C-Level Serien</span>
+    <h1>Ti papers.<br>Fire dele.<br><em>Én anatomi af topledelse.</em></h1>
+    <p class="hero-tagline">Skrevet for dem, der allerede sidder i stolen — og for dem, der er på vej derhen.</p>
+    <div class="hero-lead">
+      <p>De fleste fejl i toppen ligner ikke fejl, mens de sker. De ligner travlhed, konsensus, kontinuitet — og opdages først, når de er for dyre at rette.</p>
+      <p><strong>Hvert paper kan læses alene. Tilsammen er de noget andet.</strong></p>
+    </div>
+  </div>
+</header>
+
+<!-- INTRO PROSE -->
+<main>
+<section class="intro">
+  <div class="container">
+    <div class="intro-label">Introduktion</div>
+    <h2>Der findes ingen mangel på råd til ledere. Der findes en mangel på præcision.</h2>
+
+    <p>Præcision om, hvad der faktisk sker i toppen — når presset er reelt, og ingen siger det højt. Det er, hvad tyve års executive coaching og mere end 15.000 samtaler med CEO'er, direktioner og bestyrelser har lært mig at genkende.</p>
+
+    <p>Serien begynder med lederen selv: selvbedraget, karakteren under pres, disciplinen, klarheden. Først mennesket — for før man taler organisation, må man tale menneske.</p>
+
+    <p>Derfra ud i relationerne: hvorfor dygtige ledere bliver flaskehalse, hvorfor modspillet udebliver, hvad der sker, når tavsheden breder sig i ledergruppen. Så ind i magtens strukturer — den CEO, der er blevet usynlig for sin egen organisation, og den bestyrelse, der kun kan stille spørgsmål til det, den får at se. Og til sidst spørgsmålet, alt topledelse fører frem til: Hvad bliver der tilbage efter dig?</p>
+
+    <p class="lead-statement">Topledere fejler sjældent på det, de ikke kan. De fejler på det, de ikke kan se.</p>
+
+    <p>Ti papers. Hver med et navngivet mønster, en pris, og en samtale, de fleste organisationer udskyder — til den ikke kan udskydes længere. Ikke teori. Diagnoser, set gentage sig, organisation efter organisation, indtil de var umulige at overse.</p>
+
+    <p>Læs ét. Eller læs dem som det, de er: en samlet diagnose af, hvad der foregår i toppen — og hvad det koster i tabt retning, tabte mennesker og tabte år, når man lader være med at se på det.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container collection-inner">
+    <div class="collection-label">Den komplette samling</div>
+    <h2 class="collection-title">Ti papers i fire dele</h2>
+    <p class="collection-intro">Serien er bygget som en progression: fra lederen som menneske, til lederen i relationer, til lederen i magtens strukturer, og til sidst spørgsmålet om, hvad der bliver tilbage. Hvert paper kan læses alene. Tilsammen udgør de en samlet anatomi af topledelse.</p>
+
+    <div class="collection-part">
+      <div class="part-header">
+        <span class="part-num">Del 1</span>
+        <span class="part-name">Fundamentet</span>
+      </div>
+      <p class="part-desc">Disse fire handler om lederen selv. Før man taler organisation, må man tale menneske.</p>
+      <ol class="part-papers">
+        <li><a class="paper-link" href="/selvbedrag-i-toppen.html"><span class="pl-title">Selvbedrag i toppen</span><span class="pl-sub">Hvorfor de dygtigste ledere ser mindst klart på sig selv.</span></a></li>
+        <li><a class="paper-link" href="/karakter-under-pres.html"><span class="pl-title">Karakter under pres</span><span class="pl-sub">Afstanden mellem hvad du ved, og hvad du gør — når det koster noget.</span></a></li>
+        <li><a class="paper-link" href="/disciplin-er-ikke-vilkaarsstyrke.html"><span class="pl-title">Disciplin er ikke viljestyrke</span><span class="pl-sub">Hvorfor selvkontrol er et spørgsmål om arkitektur, ikke karakterstyrke.</span></a></li>
+        <li><a class="paper-link" href="/klarhed-som-konkurrencefordel.html"><span class="pl-title">Klarhed som konkurrencefordel</span><span class="pl-sub">Den underkendte disciplin, der adskiller stærke organisationer fra resten.</span></a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="part-header">
+        <span class="part-num">Del 2</span>
+        <span class="part-name">Lederskabet</span>
+      </div>
+      <p class="part-desc">Fokus flytter fra individet til relationerne. Først hvorfor ledere bliver flaskehalse. Derefter hvorfor de mangler modspil. Og til sidst hvad der sker, når tavsheden spreder sig i ledergruppen.</p>
+      <ol class="part-papers">
+        <li><a class="paper-link" href="/fra-manager-til-leder.html"><span class="pl-title">Ekspertfælden&trade;</span><span class="pl-sub">Den skjulte årsag til at dygtige ledere bliver organisatoriske flaskehalse.</span></a></li>
+        <li><a class="paper-link" href="/modspillet-der-mangler.html"><span class="pl-title">Modspillet der mangler</span><span class="pl-sub">Når topledere tier stille — og hvad organisationen mister ved det.</span></a></li>
+        <li><a class="paper-link" href="/den-tavse-direktion.html"><span class="pl-title">Den tavse direktion</span><span class="pl-sub">Konsensuskultur som ledelsessvigt.</span></a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="part-header">
+        <span class="part-num">Del 3</span>
+        <span class="part-name">Magten</span>
+      </div>
+      <p class="part-desc">De tunge papers. De kræver, at læseren allerede har forstået de foregående.</p>
+      <ol class="part-papers">
+        <li><a class="paper-link" href="/den-usynlige-ceo.html"><span class="pl-title">Den usynlige CEO</span><span class="pl-sub">Ledelse fra toppen uden at blive isoleret fra sin egen organisation.</span></a></li>
+        <li><a class="paper-link" href="/bestyrelseskommunikation-som-disciplin.html"><span class="pl-title">Bestyrelseskommunikation som disciplin</span><span class="pl-sub">Det CEO'er sjældent taler om — og som afgør reel governance.</span></a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="part-header">
+        <span class="part-num">Del 4</span>
+        <span class="part-name">Arven</span>
+      </div>
+      <p class="part-desc">Den står sidst, fordi den handler om det spørgsmål, alt det foregående leder frem til: Hvad sker der efter mig?</p>
+      <ol class="part-papers">
+        <li><a class="paper-link" href="/succession-som-strategi.html"><span class="pl-title">Succession som strategi</span><span class="pl-sub">Det ledelsesskifte organisationer ikke er klar til.</span></a></li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Genkender du mønstrene?</h2>
+      <p>Serien beskriver de mønstre, jeg arbejder med i praksis — med CEO'er, direktioner og bestyrelser. Hvis ét af dem føles for velkendt, er det måske der, samtalen begynder.</p>
+      <div class="cta-links">
+        <a class="cta-btn primary" href="/index.html">Start en samtale &rarr;</a>
+        <a class="cta-btn secondary" href="/index.html">Om coaching-arbejdet</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter &middot; Disciplin &middot; Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">C-Level Serien</div>
+        <div class="series-next">Komplet &mdash; ti papers</div>
+        <a href="/blog.html">Se alle white papers &rarr;</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
