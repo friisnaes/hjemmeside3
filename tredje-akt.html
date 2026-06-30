@@ -34,6 +34,7 @@
             --black: #111; --black-soft: #1a1a1a; --black-light: #222;
             --gray-dark: #444; --gray: #777; --off-white: #f5f4f0; --white: #fafaf8;
             --red: #c0392b; --red-hover: #e74c3c;
+            --gold: #b08d57;
             --display: 'Playfair Display', Georgia, serif;
             --body: 'Outfit', -apple-system, sans-serif;
             --max: 680px; --wide: 1100px; --pad: clamp(24px, 6vw, 64px);
@@ -123,6 +124,60 @@
             .article-body p { font-size: 1.05rem; }
             footer .fi3 { flex-direction: column; gap: 10px; text-align: center; }
         }
+
+        /* ===== KARRUSEL ===== */
+        .fk-section { background: var(--off-white); border-top: 1px solid rgba(0,0,0,.06); border-bottom: 1px solid rgba(0,0,0,.06); padding: 72px var(--pad); }
+        .fk-carousel { max-width: 560px; margin: 0 auto; position: relative; }
+        .fk-label { font-size: .65rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 16px; text-align: center; }
+        .fk-viewport { overflow: hidden; border: 1px solid rgba(0,0,0,.08); position: relative; background: var(--black); }
+        .fk-track { display: flex; transition: transform .5s var(--ease); will-change: transform; }
+        .fk-slide { min-width: 100%; aspect-ratio: 4/5; padding: 54px 48px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+        .fk-slide.dark { background: var(--black); color: var(--white); }
+        .fk-slide.soft { background: var(--black-soft); color: var(--white); }
+        .fk-slide.light { background: var(--off-white); color: var(--black); }
+        .fk-tag { font-size: .62rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--red); margin-bottom: 28px; }
+        .fk-rule { width: 48px; height: 4px; background: var(--red); margin-bottom: 26px; }
+        .fk-h { font-family: var(--display); font-weight: 400; line-height: 1.1; letter-spacing: -.01em; }
+        .fk-h.xl { font-size: clamp(2rem, 9vw, 3.1rem); }
+        .fk-h.lg { font-size: clamp(1.7rem, 7.5vw, 2.5rem); }
+        .fk-h em { font-style: italic; color: var(--red); }
+        .fk-sub { font-family: var(--display); font-style: italic; font-size: clamp(1.4rem, 6vw, 2rem); color: var(--gray-dark); line-height: 1.25; margin-top: 18px; }
+        .fk-slide.dark .fk-sub, .fk-slide.soft .fk-sub { color: #bebeb9; }
+        .fk-body { font-size: clamp(.95rem, 3.6vw, 1.15rem); line-height: 1.6; color: #bebeb9; margin-top: 22px; }
+        .fk-slide.light .fk-body { color: var(--gray); }
+        .fk-body.bright { color: var(--white); }
+        .fk-plus { font-family: var(--display); font-size: clamp(3.5rem, 16vw, 6rem); color: var(--red); line-height: .8; margin-bottom: 14px; }
+        .fk-filter { display: grid; grid-template-columns: 46px 1fr; gap: 8px 14px; padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,.08); align-items: baseline; }
+        .fk-filter:last-of-type { border-bottom: none; }
+        .fk-filter .n { font-family: var(--display); font-style: italic; color: var(--red); font-size: 1.05rem; }
+        .fk-filter .t { font-family: var(--display); font-size: 1.45rem; color: var(--black); line-height: 1; }
+        .fk-filter .d { grid-column: 2; font-size: .82rem; color: var(--gray); margin-top: 2px; }
+        .fk-profile-wrap { display: flex; align-items: flex-end; gap: 18px; margin-top: auto; }
+        .fk-profile { width: 108px; height: 108px; border-radius: 50%; object-fit: cover; object-position: 50% 30%; border: 2px solid var(--gold, #b08d57); flex-shrink: 0; }
+        .fk-pname { font-size: .92rem; font-weight: 600; color: var(--white); }
+        .fk-prole { font-size: .78rem; color: #999; }
+        .fk-swipe { font-size: .92rem; color: var(--red-hover); margin-top: 20px; font-weight: 500; }
+        .fk-cta-box { border: 1.5px solid var(--red); padding: 22px 26px; margin-top: auto; }
+        .fk-cta-box .lead { font-family: var(--display); font-style: italic; font-size: 1.35rem; color: var(--white); margin-bottom: 6px; }
+        .fk-cta-box .url { font-size: .85rem; color: var(--red-hover); }
+        .fk-foot { position: absolute; left: 48px; right: 48px; bottom: 30px; display: flex; justify-content: space-between; align-items: center; font-size: .72rem; }
+        .fk-logo { font-family: var(--display); font-weight: 600; }
+        .fk-logo em { font-style: normal; color: var(--red); }
+        .fk-slide.dark .fk-logo, .fk-slide.soft .fk-logo { color: var(--white); }
+        .fk-slide.light .fk-logo { color: var(--black); }
+        .fk-foot .u { color: #999; }
+        .fk-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 20px; }
+        .fk-arrow { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(0,0,0,.15); background: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .3s var(--ease); font-size: 1.1rem; color: var(--black); line-height: 1; }
+        .fk-arrow:hover { background: var(--red); color: #fff; border-color: var(--red); transform: translateY(-2px); }
+        .fk-arrow:disabled { opacity: .25; cursor: default; transform: none; background: var(--white); color: var(--black); border-color: rgba(0,0,0,.15); }
+        .fk-dots { display: flex; gap: 9px; }
+        .fk-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(0,0,0,.18); cursor: pointer; transition: all .3s var(--ease); border: none; padding: 0; }
+        .fk-dot.active { background: var(--red); width: 26px; border-radius: 5px; }
+        @media (max-width: 600px) {
+            .fk-section { padding: 48px var(--pad); }
+            .fk-slide { padding: 44px 32px; }
+            .fk-foot { left: 32px; right: 32px; }
+        }
     </style>
 </head>
 <body>
@@ -161,6 +216,76 @@
                 <div class="sp-item"><div class="sp-num">Energi</div><div class="sp-label">Filter ét</div></div>
                 <div class="sp-item"><div class="sp-num">Indsigt</div><div class="sp-label">Filter to</div></div>
                 <div class="sp-item"><div class="sp-num">Glæde</div><div class="sp-label">Filter tre</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fk-section" aria-label="Karrusel: arbejdslivets 3. akt">
+        <div class="fk-carousel" id="fkCarousel">
+            <p class="fk-label">Swipe gennem nedslagene</p>
+            <div class="fk-viewport" id="fkViewport">
+                <div class="fk-track" id="fkTrack">
+
+                    <div class="fk-slide dark">
+                        <div class="fk-rule"></div>
+                        <p class="fk-tag">Værdier · Identitet · Ledelse</p>
+                        <h3 class="fk-h xl">Arbejdslivets <em>3. akt</em></h3>
+                        <p class="fk-sub">At spille fri foran mål.</p>
+                        <div class="fk-profile-wrap">
+                            <img class="fk-profile" src="thomas-cover.jpg" alt="Thomas Friisnæs" loading="lazy">
+                            <div>
+                                <div class="fk-pname">Thomas Friisnæs</div>
+                                <div class="fk-prole">Executive Coach</div>
+                                <div class="fk-swipe">En sommerrefleksion&nbsp;→</div>
+                            </div>
+                        </div>
+                        <div class="fk-foot"><span class="fk-logo">Fr<em>ii</em>snæs</span><span class="u">friisnaes.com</span></div>
+                    </div>
+
+                    <div class="fk-slide soft">
+                        <p class="fk-tag">Formålet</p>
+                        <h3 class="fk-h lg">Jeg går på arbejde med ét formål:</h3>
+                        <p class="fk-sub" style="color:var(--red);">At spille fri foran mål.</p>
+                        <p class="fk-body">Ikke nødvendigvis at score selv. Men at stille mig dér, hvor spillet bliver enkelt for den næste.</p>
+                        <p class="fk-body bright">Ambitionen lyder beskeden — at være nettopositiv.</p>
+                        <div class="fk-foot"><span class="fk-logo">Fr<em>ii</em>snæs</span><span class="u">friisnaes.com</span></div>
+                    </div>
+
+                    <div class="fk-slide light">
+                        <p class="fk-tag">Filteret</p>
+                        <h3 class="fk-h lg" style="margin-bottom:24px;">Jeg vælger min omgangskreds efter <em>tre ting:</em></h3>
+                        <div class="fk-filter"><span class="n">01</span><span class="t">Energi</span><span class="d">Mennesker, der lader op frem for at tappe.</span></div>
+                        <div class="fk-filter"><span class="n">02</span><span class="t">Indsigt</span><span class="d">Dem, der gør mig klogere.</span></div>
+                        <div class="fk-filter"><span class="n">03</span><span class="t">Glæde</span><span class="d">Dem, jeg bliver gladere af at være sammen med.</span></div>
+                        <div class="fk-foot"><span class="fk-logo">Fr<em>ii</em>snæs</span><span class="u">friisnaes.com</span></div>
+                    </div>
+
+                    <div class="fk-slide dark">
+                        <p class="fk-tag">Mekanismen</p>
+                        <div class="fk-plus">+</div>
+                        <h3 class="fk-h lg">Jeg designer mit liv som et positivsumsspil.</h3>
+                        <p class="fk-body">Jeg hamstrer ikke energi, indsigt og glæde. Jeg bringer dem videre til den næste, jeg møder.</p>
+                        <p class="fk-body bright">Den, der tapper mig, tapper også alle dem, jeg ellers ville have løftet.</p>
+                        <div class="fk-foot"><span class="fk-logo">Fr<em>ii</em>snæs</span><span class="u">friisnaes.com</span></div>
+                    </div>
+
+                    <div class="fk-slide dark">
+                        <div class="fk-rule"></div>
+                        <h3 class="fk-h lg">3. akt er ikke nedtrapning. Det er <em>destillation.</em></h3>
+                        <p class="fk-body">Man kan ikke vinde et positivsumsspil alene. Kun sammen.</p>
+                        <div class="fk-cta-box">
+                            <div class="lead">Læs hele refleksionen</div>
+                            <div class="url">Du er allerede her — scroll videre ↓</div>
+                        </div>
+                        <div class="fk-foot"><span class="fk-logo">Fr<em>ii</em>snæs</span><span class="u">friisnaes.com</span></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="fk-controls">
+                <button class="fk-arrow" id="fkPrev" aria-label="Forrige slide">‹</button>
+                <div class="fk-dots" id="fkDots"></div>
+                <button class="fk-arrow" id="fkNext" aria-label="Næste slide">›</button>
             </div>
         </div>
     </section>
@@ -272,6 +397,38 @@
             tg.setAttribute('aria-expanded','false');document.body.style.overflow='';
         });
     });
+})();
+(function(){
+    var track=document.getElementById('fkTrack');
+    if(!track)return;
+    var total=track.children.length, idx=0;
+    var prev=document.getElementById('fkPrev'), next=document.getElementById('fkNext');
+    var dotsWrap=document.getElementById('fkDots');
+    for(var i=0;i<total;i++){
+        var b=document.createElement('button');
+        b.className='fk-dot'+(i===0?' active':'');
+        b.setAttribute('aria-label','Gå til slide '+(i+1));
+        (function(n){b.addEventListener('click',function(){go(n);});})(i);
+        dotsWrap.appendChild(b);
+    }
+    var dots=dotsWrap.children;
+    function go(n){
+        idx=Math.max(0,Math.min(total-1,n));
+        track.style.transform='translateX(-'+(idx*100)+'%)';
+        for(var i=0;i<total;i++)dots[i].classList.toggle('active',i===idx);
+        prev.disabled=idx===0; next.disabled=idx===total-1;
+    }
+    prev.addEventListener('click',function(){go(idx-1);});
+    next.addEventListener('click',function(){go(idx+1);});
+    var x0=null, vp=document.getElementById('fkViewport');
+    vp.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+    vp.addEventListener('touchend',function(e){
+        if(x0===null)return;
+        var dx=e.changedTouches[0].clientX-x0;
+        if(Math.abs(dx)>40){dx<0?go(idx+1):go(idx-1);}
+        x0=null;
+    });
+    go(0);
 })();
 </script>
 </body>
