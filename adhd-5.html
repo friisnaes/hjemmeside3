@@ -46,12 +46,12 @@
         a { text-decoration: none; color: inherit; transition: color .3s var(--ease); }
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(17,17,17,.97); backdrop-filter: blur(12px); }
         nav .ni { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; }
-        nav .lo { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: .02em; }
+        nav .lo { font-family: var(--display); font-size: 1.22rem; font-weight: 600; color: var(--white); letter-spacing: .02em; margin-right: 24px; flex-shrink: 0; white-space: nowrap; }
         nav .lo em { color: var(--red); font-style: normal; }
-        .nl { display: flex; align-items: center; gap: 28px; list-style: none; }
-        .nl a { font-size: .76rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
+        .nl { display: flex; align-items: center; gap: 14px; list-style: none; flex-wrap: nowrap; }
+        .nl a { font-size: .73rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
         .nl a:hover { color: var(--white); }
-        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 20px; font-weight: 600; }
+        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 15px; font-weight: 600; white-space: nowrap; }
         .nl .cta-n:hover { background: var(--red-hover); }
         .nt { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
         .nt span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all .3s; }
@@ -126,6 +126,18 @@
         footer .fb { font-family: var(--display); font-size: .95rem; font-weight: 600; color: var(--white); }
         footer .fb em { color: var(--red); font-style: normal; }
         footer .fc { font-size: .68rem; color: rgba(255,255,255,.2); }
+        @media (max-width: 1240px) and (min-width: 601px) {
+            .nl { gap: 11px; }
+            .nl a { font-size: .68rem; letter-spacing: .03em; }
+            nav .lo { margin-right: 18px; font-size: 1.12rem; }
+            .nl .cta-n { padding: 8px 12px; }
+        }
+        @media (max-width: 1080px) and (min-width: 601px) {
+            .nl { gap: 9px; }
+            .nl a { font-size: .63rem; letter-spacing: .02em; }
+            nav .lo { margin-right: 14px; font-size: 1.05rem; }
+            .nl .cta-n { padding: 7px 10px; }
+        }
         @media (max-width: 600px) {
             .nl { display: none; position: fixed; inset: 0; background: rgba(17,17,17,.98); backdrop-filter: blur(16px); flex-direction: column; justify-content: center; align-items: center; gap: 24px; z-index: 99; }
             .nl.open { display: flex; }
@@ -147,6 +159,8 @@
             <li><a href="/#om">Om</a></li>
             <li><a href="testimonials.html">Klienter</a></li>
             <li><a href="blog.html" style="color:#fff">Indsigter</a></li>
+            <li><a href="library.html">Executive Library</a></li>
+            <li><a href="boeger.html">Bøger</a></li>
             <li><a href="/#kontakt" class="cta-n">Book en 20-minutters samtale</a></li>
         </ul>
         <button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
