@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Executive Library | Thomas Friisnæs — White paper-serier om topledelse og eksekvering</title>
-<meta name="description" content="Executive Library: systematiske white paper-serier for C-level ledere. Eksekveringsserien og C-Level Serien — bygget på karakter, klarhed og eksekvering. Gratis at læse, downloade og dele.">
-<meta name="keywords" content="executive library, white papers, topledelse, eksekvering, C-level, lederskab, Thomas Friisnæs, eksekveringsserien, c-level serien">
+<meta name="description" content="Executive Library: systematiske white paper-serier for C-level ledere. Eksekveringsserien og C-Level Serien — om karakter, klarhed og eksekvering. Gratis at læse, downloade og dele.">
 <meta name="author" content="Thomas Friisnæs">
-<meta property="og:title" content="Executive Library | Thomas Friisnæs">
-<meta property="og:description" content="Systematiske white paper-serier for C-level ledere — om topledelse, karakter og eksekvering. Gratis at læse og downloade.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
-<meta property="og:locale" content="da_DK">
-<meta property="og:site_name" content="Friisnæs">
-<meta property="og:url" content="https://www.friisnaes.com/library.html">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.friisnaes.com/library.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="og:locale" content="da_DK">
+<meta property="og:url" content="https://www.friisnaes.com/library.html">
+<meta property="og:title" content="Executive Library | Thomas Friisnæs">
+<meta property="og:description" content="Systematiske white paper-serier for C-level ledere — om topledelse, karakter og eksekvering. Gratis at læse og downloade.">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
 
 <script type="application/ld+json">
 {
@@ -45,223 +45,228 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --navy: #0d1f3c; --navy-mid: #162d54; --navy-light: #1e3a6e;
-    --gold: #c9a84c; --gold-light: #e2c47a; --gold-pale: #f5ead2;
-    --cream: #faf7f2; --warm-white: #fffdf9;
-    --text: #1a1a2e; --text-mid: #3a3a5c; --text-light: #6b6b8a;
-    --border: #e8e0d0;
+    --black: #111; --black-soft: #1a1a1a; --black-light: #222;
+    --gray-dark: #444; --gray: #777; --gray-light: #bbb;
+    --off-white: #f5f4f0; --white: #fafaf8;
+    --red: #c0392b; --red-hover: #e74c3c; --red-muted: rgba(192,57,43,.06);
+    --display: 'Playfair Display', Georgia, serif;
+    --body: 'Outfit', -apple-system, sans-serif;
+    --max: 760px; --wide: 1100px;
+    --pad: clamp(24px, 6vw, 64px); --gap: clamp(100px, 12vw, 160px);
+    --ease: cubic-bezier(.16, 1, .3, 1);
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
-  .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
-  a { color: inherit; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body { font-family: var(--body); color: var(--black); background: var(--white); line-height: 1.75; }
+  a { text-decoration: none; color: inherit; transition: color .3s var(--ease); }
+  .c { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+  .cw { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); }
+  .rv { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .rv.vis { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; } }
 
-  /* ===== TOP NAV ===== */
-  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(201,168,76,0.14); position: sticky; top: 0; z-index: 50; }
-  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
-  .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; letter-spacing: 0.01em; }
-  .nav-brand em { font-style: italic; color: var(--gold-light); }
-  .nav-links { display: flex; gap: 26px; align-items: center; }
-  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--gold-light); }
-  .nav-links a.active { color: var(--gold-light); }
-  .nav-cta { font-size: 13px !important; color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
-  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
-  .nav-toggle { display: none; }
-  @media (max-width: 780px) {
-    .nav-links { display: none; }
-    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(201,168,76,0.14); }
-    .nav-links.open a { padding: 12px 32px; }
-    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; transition: all .4s var(--ease); }
+  nav.sc { background: rgba(17,17,17,.97); backdrop-filter: blur(12px); padding: 14px 0; }
+  nav .ni { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; }
+  nav .lo { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: .02em; }
+  nav .lo em { color: var(--red); font-style: normal; }
+  .nl { display: flex; align-items: center; gap: 28px; list-style: none; }
+  .nl a { font-family: var(--body); font-size: .76rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
+  .nl a:hover { color: var(--white); }
+  .nl a.here { color: var(--red); }
+  .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 20px; font-weight: 600; white-space: nowrap; }
+  .nl .cta-n:hover { background: var(--red-hover); }
+  .ls { display: flex; gap: 3px; margin-left: 4px; }
+  .ls button { background: none; border: 1px solid transparent; color: rgba(255,255,255,.35); font-family: var(--body); font-size: .65rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 3px 6px; cursor: pointer; transition: all .3s; border-radius: 2px; }
+  .ls button.on { color: var(--red); border-color: var(--red); }
+  .ls span { color: rgba(255,255,255,.2); font-size: .6rem; }
+  .nt { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+  .nt span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all .3s; }
+  .nt.act span:nth-child(1) { transform: rotate(45deg) translate(4px,5px); }
+  .nt.act span:nth-child(2) { opacity: 0; }
+  .nt.act span:nth-child(3) { transform: rotate(-45deg) translate(4px,-5px); }
 
-  /* ===== HERO ===== */
-  .hero { background: var(--navy); color: white; padding: 84px 0 74px; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; top: -160px; right: -140px; width: 540px; height: 540px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.10); pointer-events: none; }
-  .hero::after { content: ''; position: absolute; bottom: -200px; left: -160px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.06); pointer-events: none; }
-  .hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 0 32px; }
-  .hero-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 5px 14px; border-radius: 2px; margin-bottom: 28px; }
-  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 60px); font-weight: 400; line-height: 1.06; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
-  .hero h1 em { font-style: italic; color: var(--gold-light); }
-  .hero-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 2.6vw, 23px); font-style: italic; font-weight: 300; color: rgba(255,255,255,0.66); margin-bottom: 34px; }
-  .hero-lead { font-size: 17px; line-height: 1.8; color: rgba(255,255,255,0.82); max-width: 620px; font-weight: 300; }
-  .hero-lead p { margin-bottom: 16px; }
-  .hero-lead p:last-child { margin-bottom: 0; }
-  .hero-lead strong { color: var(--gold-light); font-weight: 400; }
+  .hero { background: var(--black); position: relative; overflow: hidden; padding: 180px 0 100px; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 70% 40%, rgba(192,57,43,.05), transparent 70%); pointer-events: none; }
+  .hero .hc { position: relative; z-index: 2; max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); }
+  .hero .hl { font-family: var(--body); font-size: .68rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 28px; opacity: 0; animation: fu .7s var(--ease) .2s forwards; }
+  .hero h1 { font-family: var(--display); font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 400; color: var(--white); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 24px; max-width: 900px; opacity: 0; animation: fu .7s var(--ease) .4s forwards; }
+  .hero h1 em { font-style: italic; color: var(--red); }
+  .hero .hp { font-family: var(--body); font-size: 1.02rem; color: rgba(255,255,255,.55); line-height: 1.8; max-width: 600px; margin-bottom: 18px; opacity: 0; animation: fu .7s var(--ease) .6s forwards; }
+  .hero .hp2 { font-family: var(--body); font-size: .88rem; color: rgba(255,255,255,.4); line-height: 1.75; max-width: 560px; opacity: 0; animation: fu .7s var(--ease) .7s forwards; }
+  .hero .hs { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,.08); margin-top: 52px; opacity: 0; animation: fu .7s var(--ease) .9s forwards; }
+  .hero .si { flex: 1; padding: 28px 0; border-right: 1px solid rgba(255,255,255,.08); text-align: center; }
+  .hero .si:last-child { border-right: none; }
+  .hero .sn { font-family: var(--display); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 400; color: var(--red); line-height: 1; margin-bottom: 4px; }
+  .hero .sl { font-family: var(--body); font-size: .65rem; font-weight: 500; color: rgba(255,255,255,.3); letter-spacing: .12em; text-transform: uppercase; }
+  @keyframes fu { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ===== INTRO STRIP ===== */
-  .lib-intro { padding: 64px 0 8px; }
-  .lib-intro-inner { max-width: 760px; margin: 0 auto; padding: 0 32px; }
-  .lib-intro-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 16px; }
-  .lib-intro h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3.6vw, 34px); font-weight: 400; line-height: 1.15; color: var(--navy); margin-bottom: 22px; }
-  .lib-intro p { font-size: 17px; line-height: 1.85; color: var(--text-mid); max-width: 640px; }
+  section { padding: var(--gap) 0; }
+  .se { font-family: var(--body); font-size: .65rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 14px; }
+  h2 { font-family: var(--display); font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 400; color: var(--black); line-height: 1.15; letter-spacing: -.01em; margin-bottom: 24px; }
+  h2 em { font-style: italic; color: var(--red); }
 
-  /* ===== SERIES CARDS ===== */
-  .series-section { padding: 48px 0 24px; }
-  .series-inner { max-width: 860px; margin: 0 auto; padding: 0 32px; }
-  .series-card { background: white; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 36px; transition: box-shadow 0.25s, transform 0.25s; }
-  .series-card:hover { box-shadow: 0 18px 48px rgba(13,31,60,0.10); transform: translateY(-2px); }
-  .sc-top { display: grid; grid-template-columns: 1fr; }
-  .sc-band { background: var(--navy); color: white; padding: 34px 38px 30px; position: relative; overflow: hidden; }
-  .sc-band::before { content: ''; position: absolute; top: -70px; right: -60px; width: 260px; height: 260px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.12); pointer-events: none; }
-  .sc-band-inner { position: relative; z-index: 1; }
-  .sc-eyebrow { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
-  .sc-num { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 10px; border-radius: 2px; font-weight: 600; }
-  .sc-meta { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-  .sc-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 36px); font-weight: 400; color: white; line-height: 1.08; margin-bottom: 10px; }
-  .sc-title em { font-style: italic; color: var(--gold-light); }
-  .sc-tagline { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: rgba(255,255,255,0.6); line-height: 1.4; }
-  .sc-body { padding: 30px 38px 34px; }
-  .sc-desc { font-size: 15.5px; color: var(--text-mid); line-height: 1.75; margin-bottom: 24px; max-width: 620px; }
-  .sc-parts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-  .sc-part-tag { font-size: 12px; color: var(--text-mid); background: var(--cream); border: 1px solid var(--border); border-radius: 20px; padding: 6px 14px; letter-spacing: 0.01em; }
-  .sc-part-tag b { color: var(--navy); font-weight: 500; }
-  .sc-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .sc-btn { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; text-decoration: none; padding: 13px 26px; border-radius: 3px; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; }
-  .sc-btn.primary { background: var(--navy); color: white; }
-  .sc-btn.primary:hover { background: var(--navy-light); }
-  .sc-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
-  .sc-btn.ghost:hover { border-color: var(--gold); }
-  .sc-btn svg { width: 15px; height: 15px; }
+  .intro { background: var(--white); border-bottom: 1px solid rgba(0,0,0,.06); }
+  .intro p { font-family: var(--body); font-size: .98rem; color: var(--gray-dark); line-height: 1.85; margin-bottom: 16px; max-width: 640px; }
 
-  /* toggle-able paper list per series */
-  .sc-papers { margin-top: 26px; border-top: 1px solid var(--border); padding-top: 4px; display: none; }
+  .series { background: var(--off-white); border-bottom: 1px solid rgba(0,0,0,.06); }
+  .series-card { background: var(--white); border: 1px solid rgba(0,0,0,.08); margin-top: 40px; }
+  .series-card:first-of-type { margin-top: 44px; }
+  .sc-head { background: var(--black); padding: 44px 44px 38px; position: relative; overflow: hidden; }
+  .sc-head::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 85% 30%, rgba(192,57,43,.07), transparent 70%); pointer-events: none; }
+  .sc-head-inner { position: relative; z-index: 1; }
+  .sc-eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+  .sc-serienum { font-family: var(--body); font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--white); background: var(--red); padding: 5px 12px; }
+  .sc-count-top { font-family: var(--body); font-size: .65rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+  .sc-title { font-family: var(--display); font-size: clamp(1.9rem, 3.6vw, 2.7rem); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 12px; letter-spacing: -.01em; }
+  .sc-title em { font-style: italic; color: var(--red); }
+  .sc-tagline { font-family: var(--display); font-size: 1.15rem; font-style: italic; color: rgba(255,255,255,.55); line-height: 1.4; }
+  .sc-body { padding: 36px 44px 40px; }
+  .sc-desc { font-family: var(--body); font-size: .95rem; color: var(--gray-dark); line-height: 1.85; margin-bottom: 26px; max-width: 640px; }
+  .sc-desc strong { color: var(--black); font-weight: 600; }
+  .sc-parts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+  .sc-part-tag { font-family: var(--body); font-size: .74rem; color: var(--gray-dark); background: var(--off-white); border: 1px solid rgba(0,0,0,.08); padding: 7px 14px; letter-spacing: .02em; }
+  .sc-part-tag b { color: var(--red); font-weight: 600; }
+  .sc-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--body); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 14px 28px; cursor: pointer; border: none; transition: all .4s var(--ease); }
+  .bp { background: var(--red); color: var(--white); }
+  .bp:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(192,57,43,.25); }
+  .bo { background: transparent; color: var(--gray-dark); border: 1px solid rgba(0,0,0,.15); padding: 13px 27px; }
+  .bo:hover { border-color: var(--red); color: var(--red); }
+  .btn svg { width: 15px; height: 15px; }
+
+  .sc-papers { margin-top: 30px; border-top: 1px solid rgba(0,0,0,.08); padding-top: 6px; display: none; }
   .sc-papers.open { display: block; }
-  .sc-part-group { padding: 18px 0 6px; border-bottom: 1px solid var(--border); }
-  .sc-part-group:last-child { border-bottom: none; }
-  .sc-part-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 10px; }
-  .sc-part-num { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
-  .sc-part-name { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .sc-partgroup { padding: 22px 0 8px; border-bottom: 1px solid rgba(0,0,0,.06); }
+  .sc-partgroup:last-child { border-bottom: none; }
+  .sc-part-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+  .sc-part-num { font-family: var(--body); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--red); font-weight: 600; }
+  .sc-part-name { font-family: var(--display); font-size: 1.1rem; color: var(--black); font-weight: 600; }
   .sc-paper-list { list-style: none; counter-reset: p; }
-  .sc-paper-list li { counter-increment: p; display: flex; gap: 14px; align-items: baseline; padding: 8px 0; }
-  .sc-paper-list li::before { content: counter(p, decimal-leading-zero); font-size: 10px; color: rgba(201,168,76,0.85); font-weight: 600; min-width: 20px; padding-top: 3px; }
-  .sc-paper-list a { display: flex; flex-direction: column; gap: 2px; text-decoration: none; flex: 1; }
-  .sc-paper-list .pl-t { font-size: 15px; color: var(--navy); font-weight: 400; transition: color 0.2s; }
-  .sc-paper-list .pl-s { font-size: 13px; color: var(--text-light); line-height: 1.5; }
-  .sc-paper-list a:hover .pl-t { color: var(--gold); }
+  .sc-paper-list li { counter-increment: p; display: flex; gap: 16px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid rgba(0,0,0,.04); }
+  .sc-paper-list li:last-child { border-bottom: none; }
+  .sc-paper-list li::before { content: counter(p, decimal-leading-zero); font-family: var(--display); font-size: .72rem; color: var(--red); font-weight: 600; min-width: 22px; padding-top: 2px; }
+  .sc-paper-list a { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+  .sc-paper-list .pl-t { font-family: var(--body); font-size: .92rem; color: var(--black); font-weight: 500; transition: color .3s; }
+  .sc-paper-list .pl-s { font-family: var(--body); font-size: .8rem; color: var(--gray); line-height: 1.5; }
+  .sc-paper-list a:hover .pl-t { color: var(--red); }
 
-  /* ===== FEATURE ROW (OPI / FASEL etc) ===== */
-  .lib-note { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 44px 0; }
-  .lib-note-inner { max-width: 760px; margin: 0 auto; padding: 0 32px; }
-  .lib-note-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 12px; }
-  .lib-note p { font-size: 16px; color: var(--text-mid); line-height: 1.8; max-width: 640px; }
-  .lib-note strong { color: var(--navy); font-weight: 500; }
+  .usenote { background: var(--white); border-bottom: 1px solid rgba(0,0,0,.06); }
+  .usenote p { font-family: var(--body); font-size: .95rem; color: var(--gray-dark); line-height: 1.85; max-width: 640px; }
+  .usenote strong { color: var(--black); font-weight: 600; }
 
-  /* ===== CTA ===== */
-  .cta-section { background: var(--warm-white); padding: 64px 0; }
-  .cta-box { max-width: 720px; margin: 0 auto; background: white; border: 1px solid var(--border); border-radius: 6px; padding: 48px 44px; text-align: center; position: relative; }
-  .cta-box::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--gold); }
-  .cta-box h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 400; color: var(--navy); margin-bottom: 16px; line-height: 1.15; }
-  .cta-box h2 em { font-style: italic; color: var(--gold); }
-  .cta-box p { font-size: 16px; color: var(--text-mid); max-width: 480px; margin: 0 auto 30px; line-height: 1.7; }
-  .cta-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-  .cta-btn { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; text-decoration: none; padding: 14px 28px; border-radius: 2px; transition: all 0.2s; }
-  .cta-btn.primary { background: var(--navy); color: white; }
-  .cta-btn.primary:hover { background: var(--navy-light); }
-  .cta-btn.secondary { background: transparent; color: var(--navy); border: 1px solid var(--border); }
-  .cta-btn.secondary:hover { border-color: var(--gold); }
+  .cta { background: var(--black); }
+  .cta h2 { color: var(--white); }
+  .cta .intro-p { font-family: var(--body); font-size: .92rem; color: rgba(255,255,255,.45); line-height: 1.8; margin-bottom: 36px; max-width: 560px; }
+  .cta .ha { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .bg { background: transparent; color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.15); padding: 13px 27px; }
+  .bg:hover { border-color: rgba(255,255,255,.4); color: var(--white); }
 
-  /* ===== FOOTER ===== */
-  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
-  .footer-inner { max-width: 900px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: white; }
-  .footer-brand em { font-style: italic; color: var(--gold-light); }
-  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
-  .footer-links { text-align: right; font-size: 13px; }
-  .footer-links a { display: inline-block; color: rgba(255,255,255,0.7); text-decoration: none; margin-left: 18px; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--gold-light); }
-  .footer-copy { max-width: 900px; margin: 24px auto 0; padding: 20px 32px 0; border-top: 1px solid rgba(255,255,255,0.08); font-size: 12px; color: rgba(255,255,255,0.4); }
+  footer { background: var(--black); padding: 36px 0 24px; border-top: 1px solid rgba(255,255,255,.04); }
+  footer .fi3 { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  footer .fb { font-family: var(--display); font-size: .95rem; font-weight: 600; color: var(--white); }
+  footer .fb em { color: var(--red); font-style: normal; }
+  footer .fnav { display: flex; gap: 20px; flex-wrap: wrap; }
+  footer .fnav a { font-family: var(--body); font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+  footer .fnav a:hover { color: var(--red); }
+  footer .fc { font-family: var(--body); font-size: .68rem; color: rgba(255,255,255,.2); }
+  .footer-copy { max-width: var(--wide); margin: 22px auto 0; padding: 18px var(--pad) 0; border-top: 1px solid rgba(255,255,255,.05); }
 
+  @media (max-width: 900px) {
+    .hero .hs { flex-direction: column; }
+    .hero .si { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 20px 0; text-align: left; }
+    .hero .si:last-child { border-bottom: none; }
+  }
   @media (max-width: 600px) {
-    .container, .hero-inner, .lib-intro-inner, .series-inner, .lib-note-inner { padding-left: 22px; padding-right: 22px; }
-    .hero { padding: 56px 0 48px; }
-    .sc-band, .sc-body { padding-left: 26px; padding-right: 26px; }
-    .cta-box { padding: 36px 26px; }
-    .footer-inner { flex-direction: column; align-items: flex-start; }
-    .footer-links { text-align: left; }
-    .footer-links a { margin-left: 0; margin-right: 18px; }
+    .nl { display: none; position: fixed; inset: 0; background: rgba(17,17,17,.98); backdrop-filter: blur(16px); flex-direction: column; justify-content: center; align-items: center; gap: 24px; z-index: 99; }
+    .nl.open { display: flex; }
+    .nl a { font-size: 1rem; }
+    .nt { display: flex; z-index: 101; }
+    .hero { padding: 130px 0 80px; }
+    .sc-head, .sc-body { padding-left: 26px; padding-right: 26px; }
+    .sc-actions .btn { justify-content: center; width: 100%; }
+    section { padding: clamp(80px, 14vw, 160px) 0; }
+    footer .fi3 { flex-direction: column; gap: 14px; text-align: center; }
   }
 </style>
 </head>
-<body>
+<body id="top">
 
-<!-- ===== TOP NAV ===== -->
-<nav class="site-nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
-    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">☰</button>
-    <div class="nav-links" id="navLinks">
-      <a href="/#situationer">Situationer</a>
-      <a href="/#format">Format</a>
-      <a href="/#om">Om</a>
-      <a href="/testimonials.html">Klienter</a>
-      <a href="/blog.html">Indsigter</a>
-      <a href="/library.html" class="active">Executive Library</a>
-      <a href="/boeger.html">Bøger</a>
-      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
-    </div>
+<nav role="navigation" aria-label="Hovednavigation">
+  <div class="ni">
+    <a href="/" class="lo" aria-label="Friisnæs – Executive Coach, forside">Fr<em>ii</em>snæs</a>
+    <ul class="nl" id="nm" aria-label="Primær navigation">
+      <li><a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a></li>
+      <li><a href="/#format" data-da="Format" data-en="Format">Format</a></li>
+      <li><a href="/#om" data-da="Om" data-en="About">Om</a></li>
+      <li><a href="/testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
+      <li><a href="/blog.html" data-da="Indsigter" data-en="Insights">Indsigter</a></li>
+      <li><a href="/library.html" class="here" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
+      <li><a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
+      <li><a href="/#kontakt" class="cta-n" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation">Book en 20-minutters samtale</a></li>
+      <li class="ls"><button onclick="setLang('da')" class="on" aria-label="Skift til dansk">DA</button><span aria-hidden="true">/</span><button onclick="setLang('en')" aria-label="Switch to English">EN</button></li>
+    </ul>
+    <button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
 <header class="hero">
-  <div class="hero-inner">
-    <span class="hero-badge">Executive Library</span>
-    <h1>Systematisk tænkning om <em>topledelse</em></h1>
-    <p class="hero-tagline">Ikke enkeltstående artikler — men hele universer, bygget til at blive læst, brugt og vendt tilbage til.</p>
-    <div class="hero-lead">
-      <p>De største ledelsesudfordringer løses sjældent med ét godt råd. De kræver en sammenhængende måde at tænke på — og det er, hvad hver serie i biblioteket tilbyder.</p>
-      <p><strong>Hvert paper kan læses alene. Hver serie er noget mere.</strong> Gratis at læse, downloade som PDF og dele.</p>
+  <div class="hc">
+    <div class="hl" data-da="Executive Library" data-en="Executive Library">Executive Library</div>
+    <h1 data-da="Systematisk tænkning om <em>topledelse</em>" data-en="Systematic thinking on <em>executive leadership</em>">Systematisk tænkning om <em>topledelse</em></h1>
+    <p class="hp" data-da="Ikke enkeltstående artikler — men hele universer af white papers, bygget til at blive læst, brugt og vendt tilbage til." data-en="Not one-off articles — but whole universes of white papers, built to be read, used and returned to.">Ikke enkeltstående artikler — men hele universer af white papers, bygget til at blive læst, brugt og vendt tilbage til.</p>
+    <p class="hp2" data-da="De største ledelsesudfordringer løses sjældent med ét godt råd. De kræver en sammenhængende måde at tænke på. Gratis at læse, downloade som PDF og dele." data-en="The biggest leadership challenges are rarely solved by one good piece of advice. They require a coherent way of thinking. Free to read, download as PDF and share.">De største ledelsesudfordringer løses sjældent med ét godt råd. De kræver en sammenhængende måde at tænke på. Gratis at læse, downloade som PDF og dele.</p>
+    <div class="hs">
+      <div class="si"><div class="sn">2</div><div class="sl" data-da="Serier" data-en="Series">Serier</div></div>
+      <div class="si"><div class="sn">20</div><div class="sl" data-da="White papers" data-en="White papers">White papers</div></div>
+      <div class="si"><div class="sn">PDF</div><div class="sl" data-da="Download klar" data-en="Download ready">Download klar</div></div>
+      <div class="si"><div class="sn">Gratis</div><div class="sl" data-da="At læse &amp; dele" data-en="To read &amp; share">At læse &amp; dele</div></div>
     </div>
   </div>
 </header>
 
-<!-- ===== INTRO ===== -->
-<section class="lib-intro">
-  <div class="lib-intro-inner">
-    <div class="lib-intro-label">Om biblioteket</div>
-    <h2>To serier. Tyve papers. Én sammenhængende tænkning.</h2>
-    <p>Executive Library samler mine white paper-serier ét sted. Hver serie tager et afgrænset område af topledelse og bygger det ud i dybden — forankret i forskning, formet af mere end to årtiers arbejde med C-level ledere, og skrevet til at holde over tid. Vælg en serie nedenfor, eller dyk ned i de enkelte papers.</p>
+<section class="intro">
+  <div class="c rv">
+    <div class="se" data-da="Om biblioteket" data-en="About the library">Om biblioteket</div>
+    <h2 data-da="To serier. Tyve papers. <em>Én sammenhængende tænkning.</em>" data-en="Two series. Twenty papers. <em>One coherent line of thought.</em>">To serier. Tyve papers. <em>Én sammenhængende tænkning.</em></h2>
+    <p data-da="Executive Library samler mine white paper-serier ét sted. Hver serie tager et afgrænset område af topledelse og bygger det ud i dybden — forankret i forskning, formet af mere end to årtiers arbejde med C-level ledere, og skrevet til at holde over tid." data-en="The Executive Library gathers my white paper series in one place. Each series takes a defined area of executive leadership and builds it out in depth — grounded in research, shaped by more than two decades of work with C-level leaders, and written to last.">Executive Library samler mine white paper-serier ét sted. Hver serie tager et afgrænset område af topledelse og bygger det ud i dybden — forankret i forskning, formet af mere end to årtiers arbejde med C-level ledere, og skrevet til at holde over tid.</p>
+    <p data-da="Vælg en serie nedenfor, eller dyk ned i de enkelte papers." data-en="Choose a series below, or dive into the individual papers.">Vælg en serie nedenfor, eller dyk ned i de enkelte papers.</p>
   </div>
 </section>
 
-<!-- ===== SERIES CARDS ===== -->
-<section class="series-section">
-  <div class="series-inner">
+<section class="series">
+  <div class="cw">
+    <div class="se rv" data-da="Serierne" data-en="The series">Serierne</div>
+    <h2 class="rv" data-da="Vælg din <em>indgang</em>" data-en="Choose your <em>entry point</em>">Vælg din <em>indgang</em></h2>
 
-    <!-- ===== SERIE 1: EKSEKVERINGSSERIEN ===== -->
-    <article class="series-card">
-      <div class="sc-band">
-        <div class="sc-band-inner">
+    <article class="series-card rv">
+      <div class="sc-head">
+        <div class="sc-head-inner">
           <div class="sc-eyebrow">
-            <span class="sc-num">Serie 01</span>
-            <span class="sc-meta">10 papers · 3 dele</span>
+            <span class="sc-serienum">Serie 01</span>
+            <span class="sc-count-top" data-da="10 papers · 3 dele" data-en="10 papers · 3 parts">10 papers · 3 dele</span>
           </div>
           <div class="sc-title">Eksekverings<em>serien</em></div>
-          <div class="sc-tagline">Maksimalt output. Minimal indsats.</div>
+          <div class="sc-tagline" data-da="Maksimalt output. Minimal indsats." data-en="Maximum output. Minimal effort.">Maksimalt output. Minimal indsats.</div>
         </div>
       </div>
       <div class="sc-body">
-        <p class="sc-desc">Ti white papers om den ledelsesudfordring, der ikke handler om at vide, hvad man skal — men om at få det gjort. Bygget på ét måletal (<strong>OPI</strong> — Output-per-Indsats) og én model (<strong>FASEL</strong>). Fra eksekveringsgabet til ensomheden i toppen.</p>
+        <p class="sc-desc" data-da="Ti white papers om den ledelsesudfordring, der ikke handler om at vide, hvad man skal — men om at få det gjort. Bygget på ét måletal (<strong>OPI</strong> — Output-per-Indsats) og én model (<strong>FASEL</strong>). Fra eksekveringsgabet til ensomheden i toppen." data-en="Ten white papers on the leadership challenge that isn't about knowing what to do — but about getting it done. Built on one metric (<strong>OPI</strong>) and one model (<strong>FASEL</strong>). From the execution gap to loneliness at the top.">Ti white papers om den ledelsesudfordring, der ikke handler om at vide, hvad man skal — men om at få det gjort. Bygget på ét måletal (<strong>OPI</strong> — Output-per-Indsats) og én model (<strong>FASEL</strong>). Fra eksekveringsgabet til ensomheden i toppen.</p>
         <div class="sc-parts">
           <span class="sc-part-tag"><b>Del 1</b> · Flaskehalsen</span>
           <span class="sc-part-tag"><b>Del 2</b> · Belastningen</span>
           <span class="sc-part-tag"><b>Del 3</b> · Lederen selv</span>
         </div>
         <div class="sc-actions">
-          <a href="/eksekveringsserien.html" class="sc-btn primary">Åbn serien
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <button class="sc-btn ghost" onclick="togglePapers('papers-eks', this)">Se alle 10 papers</button>
+          <a href="/eksekveringsserien.html" class="btn bp" data-da="Åbn serien" data-en="Open the series">Åbn serien</a>
+          <button class="btn bo" onclick="togglePapers('papers-eks', this)" data-da="Se alle 10 papers" data-en="See all 10 papers">Se alle 10 papers</button>
         </div>
-
         <div class="sc-papers" id="papers-eks">
-          <div class="sc-part-group">
+          <div class="sc-partgroup">
             <div class="sc-part-head"><span class="sc-part-num">Del 1</span><span class="sc-part-name">Flaskehalsen</span></div>
             <ul class="sc-paper-list">
               <li><a href="/eksekveringsgabet.html"><span class="pl-t">Eksekveringsgabet</span><span class="pl-s">Når strategien lever i PowerPoint og ikke i kalenderen</span></a></li>
@@ -269,7 +274,7 @@
               <li><a href="/den-bookede-kalender.html"><span class="pl-t">Den bookede kalender</span><span class="pl-s">Hvorfor 100 % belægning gør lederen til en flaskehals</span></a></li>
             </ul>
           </div>
-          <div class="sc-part-group">
+          <div class="sc-partgroup">
             <div class="sc-part-head"><span class="sc-part-num">Del 2</span><span class="sc-part-name">Belastningen</span></div>
             <ul class="sc-paper-list">
               <li><a href="/kontekstskiftet.html"><span class="pl-t">Kontekstskiftet</span><span class="pl-s">Når belastningen ikke kommer fra timerne, men fra skiftene</span></a></li>
@@ -278,7 +283,7 @@
               <li><a href="/forandringstraetheden.html"><span class="pl-t">Forandringstrætheden</span><span class="pl-s">Når det ikke er forandringen, der udmatter, men de mange uafsluttede</span></a></li>
             </ul>
           </div>
-          <div class="sc-part-group">
+          <div class="sc-partgroup">
             <div class="sc-part-head"><span class="sc-part-num">Del 3</span><span class="sc-part-name">Lederen selv</span></div>
             <ul class="sc-paper-list">
               <li><a href="/de-udskudte-samtaler.html"><span class="pl-t">De udskudte samtaler</span><span class="pl-s">Hvorfor den svære samtale koster mere, jo længere den venter</span></a></li>
@@ -290,20 +295,19 @@
       </div>
     </article>
 
-    <!-- ===== SERIE 2: C-LEVEL SERIEN ===== -->
-    <article class="series-card">
-      <div class="sc-band">
-        <div class="sc-band-inner">
+    <article class="series-card rv">
+      <div class="sc-head">
+        <div class="sc-head-inner">
           <div class="sc-eyebrow">
-            <span class="sc-num">Serie 02</span>
-            <span class="sc-meta">10 papers · 4 dele</span>
+            <span class="sc-serienum">Serie 02</span>
+            <span class="sc-count-top" data-da="10 papers · 4 dele" data-en="10 papers · 4 parts">10 papers · 4 dele</span>
           </div>
           <div class="sc-title">C-Level <em>Serien</em></div>
-          <div class="sc-tagline">Én anatomi af topledelse.</div>
+          <div class="sc-tagline" data-da="Én anatomi af topledelse." data-en="An anatomy of executive leadership.">Én anatomi af topledelse.</div>
         </div>
       </div>
       <div class="sc-body">
-        <p class="sc-desc">Ti white papers skrevet for dem, der allerede sidder i stolen — og for dem, der er på vej derhen. <strong>Topledere fejler sjældent på det, de ikke kan. De fejler på det, de ikke kan se.</strong> Fra lederen som menneske til spørgsmålet om, hvad der bliver tilbage.</p>
+        <p class="sc-desc" data-da="Ti white papers skrevet for dem, der allerede sidder i stolen — og for dem, der er på vej derhen. <strong>Topledere fejler sjældent på det, de ikke kan. De fejler på det, de ikke kan se.</strong> Fra lederen som menneske til spørgsmålet om, hvad der bliver tilbage." data-en="Ten white papers written for those already in the chair — and those on their way. <strong>Top leaders rarely fail on what they can't do. They fail on what they can't see.</strong> From the leader as a person to the question of what remains.">Ti white papers skrevet for dem, der allerede sidder i stolen — og for dem, der er på vej derhen. <strong>Topledere fejler sjældent på det, de ikke kan. De fejler på det, de ikke kan se.</strong> Fra lederen som menneske til spørgsmålet om, hvad der bliver tilbage.</p>
         <div class="sc-parts">
           <span class="sc-part-tag"><b>Del 1</b> · Lederen som menneske</span>
           <span class="sc-part-tag"><b>Del 2</b> · Lederen &amp; teamet</span>
@@ -311,14 +315,11 @@
           <span class="sc-part-tag"><b>Del 4</b> · Det der bliver tilbage</span>
         </div>
         <div class="sc-actions">
-          <a href="/c-level-serien.html" class="sc-btn primary">Åbn serien
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-          <button class="sc-btn ghost" onclick="togglePapers('papers-clevel', this)">Se alle 10 papers</button>
+          <a href="/c-level-serien.html" class="btn bp" data-da="Åbn serien" data-en="Open the series">Åbn serien</a>
+          <button class="btn bo" onclick="togglePapers('papers-clevel', this)" data-da="Se alle 10 papers" data-en="See all 10 papers">Se alle 10 papers</button>
         </div>
-
         <div class="sc-papers" id="papers-clevel">
-          <div class="sc-part-group">
+          <div class="sc-partgroup">
             <div class="sc-part-head"><span class="sc-part-num">Del 1</span><span class="sc-part-name">Lederen som menneske</span></div>
             <ul class="sc-paper-list">
               <li><a href="/selvbedrag-i-toppen.html"><span class="pl-t">Selvbedrag i toppen</span><span class="pl-s">Hvorfor de dygtigste ledere ser mindst klart på sig selv</span></a></li>
@@ -327,7 +328,7 @@
               <li><a href="/klarhed-som-konkurrencefordel.html"><span class="pl-t">Klarhed som konkurrencefordel</span><span class="pl-s">Den underkendte disciplin, der adskiller stærke organisationer</span></a></li>
             </ul>
           </div>
-          <div class="sc-part-group">
+          <div class="sc-partgroup">
             <div class="sc-part-head"><span class="sc-part-num">Del 2</span><span class="sc-part-name">Lederen &amp; teamet</span></div>
             <ul class="sc-paper-list">
               <li><a href="/fra-manager-til-leder.html"><span class="pl-t">Ekspertfælden™</span><span class="pl-s">Den skjulte årsag til at dygtige ledere bliver organisationens flaskehals</span></a></li>
@@ -335,14 +336,14 @@
               <li><a href="/den-tavse-direktion.html"><span class="pl-t">Den tavse direktion</span><span class="pl-s">Konsensuskultur som ledelsessvigt</span></a></li>
             </ul>
           </div>
-          <div class="sc-part-group">
+          <div class="sc-partgroup">
             <div class="sc-part-head"><span class="sc-part-num">Del 3</span><span class="sc-part-name">Lederen udadtil</span></div>
             <ul class="sc-paper-list">
               <li><a href="/den-usynlige-ceo.html"><span class="pl-t">Den usynlige CEO</span><span class="pl-s">Ledelse fra toppen uden at blive isoleret fra sin egen organisation</span></a></li>
               <li><a href="/bestyrelseskommunikation-som-disciplin.html"><span class="pl-t">Bestyrelseskommunikation som disciplin</span><span class="pl-s">Det CEO'er sjældent taler om — og som afgør reel governance</span></a></li>
             </ul>
           </div>
-          <div class="sc-part-group">
+          <div class="sc-partgroup">
             <div class="sc-part-head"><span class="sc-part-num">Del 4</span><span class="sc-part-name">Det der bliver tilbage</span></div>
             <ul class="sc-paper-list">
               <li><a href="/succession-som-strategi.html"><span class="pl-t">Succession som strategi</span><span class="pl-s">Det ledelsesskifte organisationer ikke er klar til</span></a></li>
@@ -355,52 +356,94 @@
   </div>
 </section>
 
-<!-- ===== NOTE ===== -->
-<section class="lib-note">
-  <div class="lib-note-inner">
-    <div class="lib-note-label">Sådan bruges biblioteket</div>
-    <p>Hvert paper er gratis at læse og kan <strong>downloades som PDF</strong> — både i fuldt design og i en printvenlig udgave. Du kan læse et enkelt paper, følge en hel serie fra ende til anden, eller bruge dem som fælles sprog i din ledergruppe. Der kommer løbende nye serier til biblioteket.</p>
+<section class="usenote">
+  <div class="c rv">
+    <div class="se" data-da="Sådan bruges biblioteket" data-en="How to use the library">Sådan bruges biblioteket</div>
+    <h2 data-da="Læs ét. Eller læs en <em>hel serie.</em>" data-en="Read one. Or read a <em>whole series.</em>">Læs ét. Eller læs en <em>hel serie.</em></h2>
+    <p data-da="Hvert paper er gratis at læse og kan <strong>downloades som PDF</strong> — både i fuldt design og i en printvenlig udgave. Du kan læse et enkelt paper, følge en hel serie fra ende til anden, eller bruge dem som fælles sprog i din ledergruppe. Der kommer løbende nye serier til biblioteket." data-en="Every paper is free to read and can be <strong>downloaded as a PDF</strong> — in full design and in a print-friendly version. Read a single paper, follow a whole series end to end, or use them as a shared language in your leadership team. New series are added to the library over time.">Hvert paper er gratis at læse og kan <strong>downloades som PDF</strong> — både i fuldt design og i en printvenlig udgave. Du kan læse et enkelt paper, følge en hel serie fra ende til anden, eller bruge dem som fælles sprog i din ledergruppe. Der kommer løbende nye serier til biblioteket.</p>
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
-<section class="cta-section">
-  <div class="container">
-    <div class="cta-box">
-      <h2>Fra læsning til <em>reel forandring</em></h2>
-      <p>White papers skaber klarhed. Men den varige forandring sker i arbejdet. Skal vi tage en kort, skarp samtale om det, der fylder hos dig lige nu?</p>
-      <div class="cta-links">
-        <a href="/#kontakt" class="cta-btn primary">Book en 20-minutters samtale</a>
-        <a href="/" class="cta-btn secondary">Se hvordan jeg arbejder</a>
-      </div>
+<section class="cta">
+  <div class="c rv">
+    <div class="se" data-da="Næste skridt" data-en="Next step">Næste skridt</div>
+    <h2 data-da="Fra læsning til <em>reel forandring</em>" data-en="From reading to <em>real change</em>">Fra læsning til <em>reel forandring</em></h2>
+    <p class="intro-p" data-da="White papers skaber klarhed. Men den varige forandring sker i arbejdet. Skal vi tage en kort, skarp samtale om det, der fylder hos dig lige nu?" data-en="White papers create clarity. But lasting change happens in the work. Shall we have a short, sharp conversation about what's on your mind right now?">White papers skaber klarhed. Men den varige forandring sker i arbejdet. Skal vi tage en kort, skarp samtale om det, der fylder hos dig lige nu?</p>
+    <div class="ha">
+      <a href="/#kontakt" class="btn bp" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation">Book en 20-minutters samtale</a>
+      <a href="/" class="btn bg" data-da="Se hvordan jeg arbejder" data-en="See how I work">Se hvordan jeg arbejder</a>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div>
-      <div class="footer-brand">Fr<em>ii</em>snæs</div>
-      <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
-    </div>
-    <div class="footer-links">
-      <a href="/">Forside</a>
-      <a href="/blog.html">Indsigter</a>
-      <a href="/library.html">Executive Library</a>
-      <a href="/boeger.html">Bøger</a>
-      <a href="/#kontakt">Kontakt</a>
+<footer role="contentinfo">
+  <div class="fi3">
+    <div class="fb">Fr<em>ii</em>snæs</div>
+    <div class="fnav">
+      <a href="/" data-da="Forside" data-en="Home">Forside</a>
+      <a href="/blog.html" data-da="Indsigter" data-en="Insights">Indsigter</a>
+      <a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a>
+      <a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a>
+      <a href="/#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
     </div>
   </div>
-  <div class="footer-copy">© 2026 Friisnæs. Alle rettigheder forbeholdes.</div>
+  <div class="footer-copy"><span class="fc">&copy; 2026 Friisnæs. Alle rettigheder forbeholdes.</span></div>
 </footer>
 
 <script>
-  function togglePapers(id, btn) {
-    var el = document.getElementById(id);
-    var open = el.classList.toggle('open');
-    btn.textContent = open ? 'Skjul papers' : (id === 'papers-clevel' ? 'Se alle 10 papers' : 'Se alle 10 papers');
-  }
+(function(){
+  window.setLang=function(l){
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-da][data-en]').forEach(function(e){
+      if(e.tagName!=='INPUT'&&e.tagName!=='TEXTAREA'&&e.tagName!=='SELECT'){
+        if(e.classList.contains('bo')){
+          var pl=e.closest('.sc-body').querySelector('.sc-papers');
+          if(pl&&pl.classList.contains('open')){ e.textContent=(l==='da'?'Skjul papers':'Hide papers'); return; }
+        }
+        e.innerHTML=e.getAttribute('data-'+l);
+      }
+    });
+    document.querySelectorAll('.ls button').forEach(function(b){
+      b.classList.toggle('on',b.textContent===l.toUpperCase());
+    });
+    var u=new URL(location);
+    l==='da'?u.searchParams.delete('lang'):u.searchParams.set('lang',l);
+    history.replaceState(null,'',u);
+  };
+  if(new URLSearchParams(location.search).get('lang')==='en') setLang('en');
+
+  var nv=document.querySelector('nav');
+  window.addEventListener('scroll',function(){nv.classList.toggle('sc',scrollY>50);},{passive:true});
+  nv.classList.toggle('sc',scrollY>50);
+
+  var tg=document.getElementById('nt'),mn=document.getElementById('nm');
+  tg.addEventListener('click',function(){
+    var o=mn.classList.toggle('open');
+    tg.classList.toggle('act');
+    tg.setAttribute('aria-expanded',o);
+    document.body.style.overflow=o?'hidden':'';
+  });
+  mn.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      mn.classList.remove('open');tg.classList.remove('act');
+      tg.setAttribute('aria-expanded','false');document.body.style.overflow='';
+    });
+  });
+
+  if('IntersectionObserver' in window){
+    var ob=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('vis');ob.unobserve(e.target);} });
+    },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rv').forEach(function(e){ob.observe(e);});
+  } else { document.querySelectorAll('.rv').forEach(function(e){e.classList.add('vis');}); }
+
+  window.togglePapers=function(id, btn){
+    var el=document.getElementById(id);
+    var open=el.classList.toggle('open');
+    var lang=document.documentElement.lang==='en'?'en':'da';
+    btn.textContent = open ? (lang==='da'?'Skjul papers':'Hide papers') : btn.getAttribute('data-'+lang);
+  };
+})();
 </script>
 
 </body>
