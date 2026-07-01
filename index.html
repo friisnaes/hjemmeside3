@@ -70,12 +70,12 @@
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; transition: all .4s var(--ease); }
         nav.sc { background: rgba(17,17,17,.97); backdrop-filter: blur(12px); padding: 14px 0; }
         nav .ni { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; }
-        nav .lo { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: .02em; }
+        nav .lo { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: .02em; margin-right: 32px; flex-shrink: 0; white-space: nowrap; }
         nav .lo em { color: var(--red); font-style: normal; }
-        .nl { display: flex; align-items: center; gap: 28px; list-style: none; }
-        .nl a { font-family: var(--body); font-size: .76rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
+        .nl { display: flex; align-items: center; gap: 18px; list-style: none; flex-wrap: nowrap; }
+        .nl a { font-family: var(--body); font-size: .76rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
         .nl a:hover { color: var(--white); }
-        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 20px; font-weight: 600; white-space: nowrap; }
+        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 18px; font-weight: 600; white-space: nowrap; }
         .nl .cta-n:hover { background: var(--red-hover); }
         .ls { display: flex; gap: 3px; margin-left: 4px; }
         .ls button { background: none; border: 1px solid transparent; color: rgba(255,255,255,.35); font-family: var(--body); font-size: .65rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 3px 6px; cursor: pointer; transition: all .3s; border-radius: 2px; }
@@ -149,6 +149,7 @@
         .about p { font-family: var(--body); font-size: .9rem; color: var(--gray-dark); line-height: 1.8; margin-bottom: 14px; }
         .about strong { color: var(--black); }
         .books { background: var(--white); border-top: 1px solid rgba(0,0,0,.06); }
+        .library { background: var(--white); border-top: 1px solid rgba(0,0,0,.06); }
         .books p.intro { font-family: var(--body); font-size: .9rem; color: var(--gray); line-height: 1.75; margin-bottom: 28px; max-width: 600px; }
         .book-list { display: flex; flex-direction: column; gap: 0; }
         .book-item { padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,.04); display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
@@ -206,6 +207,12 @@
             .fr { grid-template-columns: 1fr; }
             footer .fi3 { flex-direction: column; gap: 10px; text-align: center; }
         }
+        @media (max-width: 1180px) and (min-width: 601px) {
+            .nl { gap: 13px; }
+            .nl a { font-size: .68rem; letter-spacing: .04em; }
+            nav .lo { margin-right: 20px; font-size: 1.15rem; }
+            .nl .cta-n { padding: 8px 13px; }
+        }
         @media (max-width: 600px) {
             .nl { display: none; position: fixed; inset: 0; background: rgba(17,17,17,.98); backdrop-filter: blur(16px); flex-direction: column; justify-content: center; align-items: center; gap: 24px; z-index: 99; }
             .nl.open { display: flex; }
@@ -228,6 +235,7 @@
             <li><a href="#om">Om</a></li>
             <li><a href="testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
             <li><a href="blog.html" data-da="Indsigter" data-en="Insights">Indsigter</a></li>
+            <li><a href="library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
             <li><a href="boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
             <li><a href="#kontakt" class="cta-n" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation" aria-label="Book en 20-minutters strategisk samtale">Book en 20-minutters samtale</a></li>
             <li class="ls"><button onclick="setLang('da')" class="on" aria-label="Skift til dansk">DA</button><span aria-hidden="true">/</span><button onclick="setLang('en')" aria-label="Switch to English">EN</button></li>
@@ -376,6 +384,27 @@
         </div>
     </div>
 </section>
+<section class="library rv" aria-labelledby="library-heading">
+    <div class="c">
+        <p class="se" data-da="Executive Library" data-en="Executive Library">Executive Library</p>
+        <h2 id="library-heading" data-da="White papers om <em>topledelse</em>" data-en="White papers on <em>executive leadership</em>">White papers om <em>topledelse</em></h2>
+        <p class="intro" data-da="To serier white papers — gratis at læse og downloade. Systematisk tænkning om eksekvering og topledelse, formet af mere end to årtiers arbejde med C-level ledere." data-en="Two series of white papers — free to read and download. Systematic thinking on execution and executive leadership, shaped by more than two decades of work with C-level leaders.">To serier white papers — gratis at læse og downloade. Systematisk tænkning om eksekvering og topledelse, formet af mere end to årtiers arbejde med C-level ledere.</p>
+        <div class="book-list">
+            <div class="book-item">
+                <span class="book-title">Eksekveringsserien</span>
+                <span class="book-type" data-da="10 papers · 3 dele" data-en="10 papers · 3 parts">10 papers · 3 dele</span>
+            </div>
+            <div class="book-item" style="border-bottom:none;padding-bottom:0;">
+                <span class="book-title">C-Level Serien</span>
+                <span class="book-type" data-da="10 papers · 4 dele" data-en="10 papers · 4 parts">10 papers · 4 dele</span>
+            </div>
+        </div>
+        <div style="margin-top:28px;">
+            <a href="library.html" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:2px;transition:opacity .3s;" data-da="Se hele biblioteket →" data-en="Explore the library →">Se hele biblioteket →</a>
+        </div>
+    </div>
+</section>
+
 <section class="books rv" aria-labelledby="books-heading">
     <div class="c">
         <p class="se" data-da="Udgivelser" data-en="Publications">Udgivelser</p>

@@ -38,12 +38,12 @@
         a { text-decoration: none; color: inherit; transition: color .3s var(--ease); }
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(17,17,17,.97); backdrop-filter: blur(12px); }
         nav .ni { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; }
-        nav .lo { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: .02em; }
+        nav .lo { font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--white); letter-spacing: .02em; margin-right: 32px; flex-shrink: 0; white-space: nowrap; }
         nav .lo em { color: var(--red); font-style: normal; }
-        .nl { display: flex; align-items: center; gap: 28px; list-style: none; }
-        .nl a { font-size: .76rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .1em; text-transform: uppercase; }
+        .nl { display: flex; align-items: center; gap: 18px; list-style: none; flex-wrap: nowrap; }
+        .nl a { font-size: .76rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
         .nl a:hover { color: var(--white); }
-        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 20px; font-weight: 600; }
+        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 18px; font-weight: 600; white-space: nowrap; }
         .nl .cta-n:hover { background: var(--red-hover); }
         .nt { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
         .nt span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all .3s; }
@@ -85,6 +85,12 @@
         footer .fb em { color: var(--red); font-style: normal; }
         footer .fc { font-size: .68rem; color: rgba(255,255,255,.2); }
         @media (max-width: 800px) { .article-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1180px) and (min-width: 601px) {
+            .nl { gap: 13px; }
+            .nl a { font-size: .68rem; letter-spacing: .04em; }
+            nav .lo { margin-right: 20px; font-size: 1.15rem; }
+            .nl .cta-n { padding: 8px 13px; }
+        }
         @media (max-width: 600px) {
             .nl { display: none; position: fixed; inset: 0; background: rgba(17,17,17,.98); backdrop-filter: blur(16px); flex-direction: column; justify-content: center; align-items: center; gap: 24px; z-index: 99; }
             .nl.open { display: flex; }
@@ -248,23 +254,6 @@
 <section class="articles">
     <div class="inner">
         <div class="article-grid">
-
-            <article class="article-card" style="border-color:var(--red);grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;">
-                <div style="padding:48px 40px;display:flex;flex-direction:column;">
-                    <p class="card-tag">Artikelserie · 10 white papers · C-Level · Topledelse</p>
-                    <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:16px;">C-Level Serien<br>— en anatomi af topledelse</h2>
-                    <p class="card-body">Topledere fejler sjældent på det, de ikke kan. De fejler på det, de ikke kan se. Ti white papers i fire dele — om lederen som menneske, om magten, og om hvad der bliver tilbage. Skrevet for dem, der allerede sidder i stolen, og for dem, der er på vej derhen.</p>
-                    <div class="card-stats">
-                        <div><div class="card-stat-num">10</div><div class="card-stat-label">White papers</div></div>
-                        <div><div class="card-stat-num">4</div><div class="card-stat-label">Dele</div></div>
-                        <div><div class="card-stat-num">2026</div><div class="card-stat-label">Udgivet</div></div>
-                    </div>
-                    <a href="c-level-serien.html" class="card-link">Læs serien her</a>
-                </div>
-                <div style="overflow:hidden;min-height:320px;">
-                    <img src="c-level-thomas.jpg" alt="Thomas Friisnæs – C-Level Serien" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;" loading="lazy">
-                </div>
-            </article>
 
             <article class="article-card" style="border-color:var(--red);grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0;">
                 <div style="padding:48px 40px;display:flex;flex-direction:column;">
