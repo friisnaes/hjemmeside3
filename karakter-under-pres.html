@@ -299,6 +299,162 @@
     .pa-item { grid-template-columns: 1fr; }
     .wp-readtime { margin-left: 0; }
   }
+
+  /* ============================================================
+     PDF / PRINT SYSTEM — injected across all Eksekveringsserien files
+     Two modes: .print-ink (design-faithful) and body.print-econo (printvenlig)
+     ============================================================ */
+  .pdf-cta { background: var(--cream, #faf7f2); border-top: 1px solid var(--border, #e8e0d0); padding: 40px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold, #c9a84c); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--navy, #0d1f3c); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid, #3a3a5c); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy, #0d1f3c); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy, #0d1f3c); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(26,39,64,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy, #0d1f3c); }
+  .pdf-btn.ghost:hover { background: rgba(26,39,64,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light, #6b6b8a); margin-top: 16px; font-weight: 300; }
+
+  /* ---------- SCREEN: hide the print-only cover/meta ---------- */
+  .print-only { display: none; }
+
+  /* ============================================================
+     PRINT / PDF RULES — A4 with proper pagination
+     ============================================================ */
+  @page {
+    size: A4;
+    margin: 20mm 18mm 20mm 18mm;
+  }
+
+  @media print {
+    /* --- structural: hide interactive/nav chrome --- */
+    .progress-bar, .wp-toc, .pdf-cta, .commit-actions,
+    .cp-link, .closing-cta, .faq-icon { display: none !important; }
+
+    html, body { background: #fff !important; margin: 0 !important; padding: 0 !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a2740; }
+    .container { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+
+    /* --- print cover page --- */
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 24pt; border-bottom: 2pt solid var(--gold, #c9a84c); margin-bottom: 22pt; page-break-after: avoid; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold, #c9a84c); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Cormorant Garamond', serif; font-size: 26pt; line-height: 1.12; color: var(--navy, #0d1f3c); margin: 10pt 0 8pt; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #55606f; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #55606f; margin-top: 12pt; }
+
+    /* --- header: compress on print --- */
+    .wp-header { background: #fff !important; color: #1a2740 !important; padding: 0 0 12pt !important; }
+    .wp-header * { color: #1a2740 !important; }
+    .wp-header .wp-badge, .wp-header .wp-series, .wp-header .wp-readtime { color: var(--gold, #c9a84c) !important; }
+    .wp-meta { display: none !important; } /* covered by print cover */
+    .wp-header-inner h1 { display: none !important; } /* covered by print cover */
+    .wp-header .wp-subtitle { display: none !important; }
+    .wp-divider { display: none !important; }
+    .wp-author { font-size: 9pt !important; border-top: 0.5pt solid #e8e2d5; padding-top: 8pt; }
+
+    main.wp-body { padding: 0 !important; }
+
+    /* --- section flow & page breaks --- */
+    section { page-break-inside: auto; margin: 0 0 14pt !important; }
+    h2 { page-break-after: avoid; font-family: 'Cormorant Garamond', serif; font-size: 16pt; color: var(--navy, #0d1f3c); margin: 14pt 0 6pt; }
+    h3 { page-break-after: avoid; }
+    .section-label { color: var(--gold, #c9a84c) !important; font-size: 8pt !important; letter-spacing: 0.16em; page-break-after: avoid; }
+    p { orphans: 3; widows: 3; }
+
+    /* keep visual boxes together, don't split mid-box */
+    .pull-quote, .cost-box, .opi-meter, .framework-box, .component-card,
+    .micro-scenario, .exercise-box, .micro-action, .commit-box, .faq-item,
+    .research-note, .dmode-box, .loops-box, .growth-box, .mirror-box, .asym-box,
+    .mtest-box, .residue-box, .sg-item, .template-box, .closing-box {
+      page-break-inside: avoid;
+    }
+
+    /* dark boxes -> keep brand but ensure they render on paper */
+    .framework-box, .opi-meter, .dmode-box, .loops-box, .growth-box,
+    .mirror-box, .asym-box, .mtest-box, .residue-box, .closing-box {
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+
+    /* component cards: light borders survive print */
+    .component-card { border: 0.5pt solid #e8e2d5 !important; box-shadow: none !important; }
+
+    /* FAQ: force-open all answers for print */
+    .faq-a { display: block !important; max-height: none !important; padding: 4pt 0 10pt !important; }
+    .faq-q { cursor: default; font-weight: 600; }
+
+    /* collection + references stay, start on fresh page */
+    .wp-collection { page-break-before: always; background: #fff !important; padding: 0 !important; }
+    .wp-references { background: #fff !important; padding: 12pt 0 0 !important; }
+    .wp-collection *, .wp-references * { color: #1a2740 !important; }
+    .collection-label, .ref-label { color: var(--gold, #c9a84c) !important; }
+    .part-papers a, .il-link { color: #1a2740 !important; text-decoration: none !important; }
+
+    /* footer minimal */
+    .wp-footer { background: #fff !important; padding: 12pt 0 0 !important; border-top: 1pt solid #e8e2d5; page-break-inside: avoid; }
+    .wp-footer * { color: #1a2740 !important; }
+
+    a { color: #1a2740 !important; }
+
+    /* print URL footer note */
+    .print-only.print-foot { display: block; margin-top: 16pt; padding-top: 8pt; border-top: 0.5pt solid #e8e2d5; font-size: 8pt; color: #8a919c; }
+  }
+
+  /* ============================================================
+     ECONO / PRINTVENLIG MODE — flatten dark boxes to save ink
+     Activated by body.print-econo just before print
+     ============================================================ */
+  @media print {
+    body.print-econo .framework-box,
+    body.print-econo .opi-meter,
+    body.print-econo .dmode-box,
+    body.print-econo .loops-box,
+    body.print-econo .growth-box,
+    body.print-econo .mirror-box,
+    body.print-econo .asym-box,
+    body.print-econo .mtest-box,
+    body.print-econo .residue-box,
+    body.print-econo .closing-box,
+    body.print-econo .wp-header {
+      background: #fff !important;
+      border: 0.75pt solid #333 !important;
+    }
+    body.print-econo .framework-box *,
+    body.print-econo .opi-meter *,
+    body.print-econo .dmode-box *,
+    body.print-econo .loops-box *,
+    body.print-econo .growth-box *,
+    body.print-econo .mirror-box *,
+    body.print-econo .asym-box *,
+    body.print-econo .mtest-box *,
+    body.print-econo .residue-box *,
+    body.print-econo .closing-box * {
+      color: #000 !important;
+    }
+    /* econo: strip decorative gradient bars & fills */
+    body.print-econo .framework-box::before,
+    body.print-econo .opi-meter::before,
+    body.print-econo .dmode-box::before,
+    body.print-econo .loops-box::before,
+    body.print-econo .growth-box::before,
+    body.print-econo .mirror-box::before,
+    body.print-econo .asym-box::before,
+    body.print-econo .progress-bar { display: none !important; }
+    body.print-econo .lr-fill, body.print-econo .gc-bar,
+    body.print-econo .cp-fill { background: #888 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body.print-econo * { color: #000 !important; text-shadow: none !important; }
+    body.print-econo .section-label,
+    body.print-econo .pc-badge,
+    body.print-econo .collection-label,
+    body.print-econo .ref-label,
+    body.print-econo .opi-label,
+    body.print-econo .comp-label { color: #333 !important; }
+  }
+
+
 </style>
 </head>
 <body>
@@ -324,6 +480,13 @@
 
 <main class="wp-body">
   <div class="container">
+<div class="print-only print-cover">
+  <div class="pc-badge">C-Level Serien · C-Level Serien · No. 2 · Niveau 2 Framework</div>
+  <div class="pc-title">Karakter under pres</div>
+  <div class="pc-sub">Hvad adskiller ledere der holder fra dem der bøjer — og de fire dimensioner der afgør det, når det tæller.</div>
+  <div class="pc-author">Af Thomas Friisnæs · Executive Coach · Karakter · Disciplin · Klarhed · friisnaes.com</div>
+</div>
+
 
     <nav class="wp-toc" aria-label="Indholdsfortegnelse">
       <div class="wp-toc-title">Indholdsfortegnelse</div>
@@ -792,6 +955,10 @@
     </section>
 
   </div>
+
+<div class="print-only print-foot">
+  friisnaes.com/karakter-under-pres · C-Level Serien · © Thomas Friisnæs
+</div>
 </main>
 
 <section class="wp-references">
@@ -868,6 +1035,26 @@
   </div>
 </section>
 
+<!-- ===== PDF / PRINT DOWNLOAD CTA (injected) ===== -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller dele.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
 <footer class="wp-footer">
   <div class="container">
     <div class="footer-inner">
@@ -878,7 +1065,7 @@
       <div class="footer-series-info">
         <div class="series-label">Næste i serien</div>
         <div class="series-next">Disciplin er ikke viljestyrke</div>
-        <a href="/blog.html">Se alle white papers →</a>
+        <a href="/c-level-serien.html">Se hele serien →</a>
       </div>
     </div>
   </div>

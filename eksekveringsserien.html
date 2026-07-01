@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eksekveringsserien: Ti papers om maksimalt output med minimal indsats | Thomas Friisnæs</title>
+<meta name="description" content="Ti white papers om eksekvering for travle ledere — bygget på ét måletal (OPI) og én model (FASEL). Fra eksekveringsgabet til ensomheden i toppen. Committee dig og følg din progress.">
+<meta property="og:title" content="Eksekveringsserien: Ti papers om maksimalt output med minimal indsats">
+<meta property="og:description" content="Den største ledelsesudfordring er ikke strategi — det er at omsætte intention til handling. Ti papers, ét måletal, én model.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://friisnaes.com/eksekveringsserien">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #0d1f3c; --navy-mid: #162d54; --navy-light: #1e3a6e;
+    --gold: #c9a84c; --gold-light: #e2c47a; --gold-pale: #f5ead2;
+    --cream: #faf7f2; --warm-white: #fffdf9;
+    --text: #1a1a2e; --text-mid: #3a3a5c; --text-light: #6b6b8a; --border: #e8e0d0;
+    --green: #2f7d5b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* HERO */
+  .hero { background: var(--navy); color: white; padding: 88px 0 76px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -160px; right: -140px; width: 540px; height: 540px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.10); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -200px; left: -160px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.06); pointer-events: none; }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-badge { display: inline-block; font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 5px 14px; border-radius: 2px; margin-bottom: 28px; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 62px); font-weight: 400; line-height: 1.06; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(19px, 2.6vw, 23px); font-style: italic; font-weight: 300; color: rgba(255,255,255,0.66); margin-bottom: 36px; }
+  .hero-lead { font-size: 17px; line-height: 1.8; color: rgba(255,255,255,0.82); max-width: 600px; font-weight: 300; }
+  .hero-lead p { margin-bottom: 16px; }
+  .hero-lead p:last-child { margin-bottom: 0; }
+  .hero-lead strong { color: var(--gold-light); font-weight: 400; }
+
+  /* PILLARS: OPI + FASEL */
+  .pillars { padding: 64px 0 8px; }
+  .pillar-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 18px; }
+  .pillar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+  @media (max-width: 620px) { .pillar-grid { grid-template-columns: 1fr; } }
+  .pillar { background: var(--cream); border: 1px solid var(--border); border-top: 3px solid var(--navy); padding: 30px 30px; border-radius: 0 0 3px 3px; }
+  .pillar h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 6px; }
+  .pillar .p-sub { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .pillar p { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+  .pillar .fasel-steps { list-style: none; margin-top: 6px; }
+  .pillar .fasel-steps li { display: flex; gap: 10px; padding: 5px 0; font-size: 14px; color: var(--text-mid); align-items: baseline; }
+  .pillar .fasel-steps li strong { color: var(--navy); font-weight: 500; min-width: 62px; }
+
+  /* PROGRESS DASHBOARD */
+  .dash { padding: 56px 0 8px; }
+  .dash-box { background: var(--navy); color: white; border-radius: 3px; padding: 38px 40px; position: relative; overflow: hidden; }
+  .dash-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), transparent); }
+  .dash-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .dash-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: white; font-weight: 400; margin-bottom: 6px; }
+  .dash-intro { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 26px; max-width: 520px; }
+  .dash-stat { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+  .dash-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; color: var(--gold-light); font-weight: 500; line-height: 1; }
+  .dash-of { font-size: 15px; color: rgba(255,255,255,0.55); }
+  .dash-track { height: 8px; background: rgba(255,255,255,0.08); border-radius: 20px; overflow: hidden; margin-bottom: 22px; }
+  .dash-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); width: 0%; transition: width 0.6s ease; border-radius: 20px; }
+  .dash-commits { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 22px; }
+  .dc-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 500; margin-bottom: 12px; }
+  .dc-empty { font-size: 14px; color: rgba(255,255,255,0.5); font-style: italic; }
+  .dc-item { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: flex-start; }
+  .dc-item:last-child { border-bottom: none; }
+  .dc-num { font-size: 10px; color: var(--gold); font-weight: 500; min-width: 20px; padding-top: 3px; }
+  .dc-text { font-size: 14px; color: rgba(255,255,255,0.78); line-height: 1.5; }
+  .dash-reset { margin-top: 20px; background: transparent; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.6); font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 0.04em; padding: 8px 16px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+  .dash-reset:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* INTRO PROSE */
+  .intro { padding: 64px 0 16px; }
+  .intro-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 18px; }
+  .intro h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 38px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 28px; }
+  .intro p { font-size: 18px; line-height: 1.85; color: var(--text-mid); margin-bottom: 22px; }
+  .intro p:first-of-type::first-letter { font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+  .intro .lead-statement { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 36px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+
+  /* COLLECTION */
+  .wp-collection { background: var(--navy); color: white; padding: 72px 0; position: relative; overflow: hidden; margin-top: 56px; }
+  .wp-collection::before { content: ''; position: absolute; top: -100px; right: -100px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.08); pointer-events: none; }
+  .collection-inner { position: relative; z-index: 1; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 38px); font-weight: 400; color: white; margin-bottom: 18px; line-height: 1.1; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 48px; font-weight: 300; }
+  .collection-part { margin-bottom: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .part-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .part-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .part-name { font-family: 'Cormorant Garamond', serif; font-size: 25px; color: white; font-weight: 500; }
+  .part-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 22px; font-weight: 300; max-width: 560px; }
+  .part-papers { list-style: none; counter-reset: paper; display: flex; flex-direction: column; gap: 2px; }
+  .part-papers li { counter-increment: paper; display: flex; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .part-papers li:last-child { border-bottom: none; }
+  .part-papers li::before { content: counter(paper, decimal-leading-zero); font-size: 10px; color: rgba(201,168,76,0.7); font-weight: 500; min-width: 22px; letter-spacing: 0.05em; }
+  .paper-link { display: flex; flex-direction: column; gap: 3px; text-decoration: none; flex: 1; }
+  .paper-link .pl-title { font-size: 16px; color: rgba(255,255,255,0.86); font-weight: 400; transition: color 0.2s; }
+  .paper-link .pl-sub { font-size: 13px; color: rgba(255,255,255,0.42); font-weight: 300; line-height: 1.5; }
+  .paper-link:hover .pl-title { color: var(--gold-light); }
+  .pl-check { width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; color: transparent; }
+  .pl-check.done { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+  .paper-soon { flex: 1; }
+  .paper-soon .pl-title { font-size: 16px; color: rgba(255,255,255,0.5); font-weight: 400; }
+  .paper-soon .pl-sub { font-size: 13px; color: rgba(255,255,255,0.3); }
+  .soon-tag { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,0.6); border: 1px solid rgba(201,168,76,0.3); padding: 2px 8px; border-radius: 2px; flex-shrink: 0; }
+
+  /* CTA */
+  .cta-section { background: var(--cream); padding: 72px 0; }
+  .cta-box { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 48px 44px; text-align: center; position: relative; }
+  .cta-box::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: var(--gold); }
+  .cta-box h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3.5vw, 34px); font-weight: 400; color: var(--navy); margin-bottom: 16px; line-height: 1.15; }
+  .cta-box p { font-size: 16px; color: var(--text-mid); max-width: 480px; margin: 0 auto 32px; line-height: 1.7; }
+  .cta-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .cta-btn { font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; text-decoration: none; padding: 14px 28px; border-radius: 2px; transition: all 0.2s; }
+  .cta-btn.primary { background: var(--navy); color: white; }
+  .cta-btn.primary:hover { background: var(--navy-light); }
+  .cta-btn.secondary { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .cta-btn.secondary:hover { border-color: var(--gold); }
+
+  /* FOOTER */
+  .wp-footer { background: var(--navy); color: white; padding: 48px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: white; font-weight: 500; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+  .footer-series-info a { font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 520px) { .footer-series-info { text-align: left; } }
+
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
+
+  /* ============================================================
+     PDF / PRINT SYSTEM — injected across all Eksekveringsserien files
+     Two modes: .print-ink (design-faithful) and body.print-econo (printvenlig)
+     ============================================================ */
+  .pdf-cta { background: var(--cream, #faf7f2); border-top: 1px solid var(--border, #e8e0d0); padding: 40px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold, #c9a84c); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--navy, #0d1f3c); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid, #3a3a5c); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy, #0d1f3c); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy, #0d1f3c); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(26,39,64,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy, #0d1f3c); }
+  .pdf-btn.ghost:hover { background: rgba(26,39,64,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light, #6b6b8a); margin-top: 16px; font-weight: 300; }
+
+  /* ---------- SCREEN: hide the print-only cover/meta ---------- */
+  .print-only { display: none; }
+
+  /* ============================================================
+     PRINT / PDF RULES — A4 with proper pagination
+     ============================================================ */
+  @page {
+    size: A4;
+    margin: 20mm 18mm 20mm 18mm;
+  }
+
+  @media print {
+    /* --- structural: hide interactive/nav chrome --- */
+    .progress-bar, .wp-toc, .pdf-cta, .commit-actions,
+    .cp-link, .closing-cta, .faq-icon { display: none !important; }
+
+    html, body { background: #fff !important; margin: 0 !important; padding: 0 !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a2740; }
+    .container { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+
+    /* --- print cover page --- */
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 24pt; border-bottom: 2pt solid var(--gold, #c9a84c); margin-bottom: 22pt; page-break-after: avoid; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold, #c9a84c); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Cormorant Garamond', serif; font-size: 26pt; line-height: 1.12; color: var(--navy, #0d1f3c); margin: 10pt 0 8pt; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #55606f; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #55606f; margin-top: 12pt; }
+
+    /* --- header: compress on print --- */
+    .wp-header { background: #fff !important; color: #1a2740 !important; padding: 0 0 12pt !important; }
+    .wp-header * { color: #1a2740 !important; }
+    .wp-header .wp-badge, .wp-header .wp-series, .wp-header .wp-readtime { color: var(--gold, #c9a84c) !important; }
+    .wp-meta { display: none !important; } /* covered by print cover */
+    .wp-header-inner h1 { display: none !important; } /* covered by print cover */
+    .wp-header .wp-subtitle { display: none !important; }
+    .wp-divider { display: none !important; }
+    .wp-author { font-size: 9pt !important; border-top: 0.5pt solid #e8e2d5; padding-top: 8pt; }
+
+    main.wp-body { padding: 0 !important; }
+
+    /* --- section flow & page breaks --- */
+    section { page-break-inside: auto; margin: 0 0 14pt !important; }
+    h2 { page-break-after: avoid; font-family: 'Cormorant Garamond', serif; font-size: 16pt; color: var(--navy, #0d1f3c); margin: 14pt 0 6pt; }
+    h3 { page-break-after: avoid; }
+    .section-label { color: var(--gold, #c9a84c) !important; font-size: 8pt !important; letter-spacing: 0.16em; page-break-after: avoid; }
+    p { orphans: 3; widows: 3; }
+
+    /* keep visual boxes together, don't split mid-box */
+    .pull-quote, .cost-box, .opi-meter, .framework-box, .component-card,
+    .micro-scenario, .exercise-box, .micro-action, .commit-box, .faq-item,
+    .research-note, .dmode-box, .loops-box, .growth-box, .mirror-box, .asym-box,
+    .mtest-box, .residue-box, .sg-item, .template-box, .closing-box {
+      page-break-inside: avoid;
+    }
+
+    /* dark boxes -> keep brand but ensure they render on paper */
+    .framework-box, .opi-meter, .dmode-box, .loops-box, .growth-box,
+    .mirror-box, .asym-box, .mtest-box, .residue-box, .closing-box {
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+
+    /* component cards: light borders survive print */
+    .component-card { border: 0.5pt solid #e8e2d5 !important; box-shadow: none !important; }
+
+    /* FAQ: force-open all answers for print */
+    .faq-a { display: block !important; max-height: none !important; padding: 4pt 0 10pt !important; }
+    .faq-q { cursor: default; font-weight: 600; }
+
+    /* collection + references stay, start on fresh page */
+    .wp-collection { page-break-before: always; background: #fff !important; padding: 0 !important; }
+    .wp-references { background: #fff !important; padding: 12pt 0 0 !important; }
+    .wp-collection *, .wp-references * { color: #1a2740 !important; }
+    .collection-label, .ref-label { color: var(--gold, #c9a84c) !important; }
+    .part-papers a, .il-link { color: #1a2740 !important; text-decoration: none !important; }
+
+    /* footer minimal */
+    .wp-footer { background: #fff !important; padding: 12pt 0 0 !important; border-top: 1pt solid #e8e2d5; page-break-inside: avoid; }
+    .wp-footer * { color: #1a2740 !important; }
+
+    a { color: #1a2740 !important; }
+
+    /* print URL footer note */
+    .print-only.print-foot { display: block; margin-top: 16pt; padding-top: 8pt; border-top: 0.5pt solid #e8e2d5; font-size: 8pt; color: #8a919c; }
+  }
+
+  /* ============================================================
+     ECONO / PRINTVENLIG MODE — flatten dark boxes to save ink
+     Activated by body.print-econo just before print
+     ============================================================ */
+  @media print {
+    body.print-econo .framework-box,
+    body.print-econo .opi-meter,
+    body.print-econo .dmode-box,
+    body.print-econo .loops-box,
+    body.print-econo .growth-box,
+    body.print-econo .mirror-box,
+    body.print-econo .asym-box,
+    body.print-econo .mtest-box,
+    body.print-econo .residue-box,
+    body.print-econo .closing-box,
+    body.print-econo .wp-header {
+      background: #fff !important;
+      border: 0.75pt solid #333 !important;
+    }
+    body.print-econo .framework-box *,
+    body.print-econo .opi-meter *,
+    body.print-econo .dmode-box *,
+    body.print-econo .loops-box *,
+    body.print-econo .growth-box *,
+    body.print-econo .mirror-box *,
+    body.print-econo .asym-box *,
+    body.print-econo .mtest-box *,
+    body.print-econo .residue-box *,
+    body.print-econo .closing-box * {
+      color: #000 !important;
+    }
+    /* econo: strip decorative gradient bars & fills */
+    body.print-econo .framework-box::before,
+    body.print-econo .opi-meter::before,
+    body.print-econo .dmode-box::before,
+    body.print-econo .loops-box::before,
+    body.print-econo .growth-box::before,
+    body.print-econo .mirror-box::before,
+    body.print-econo .asym-box::before,
+    body.print-econo .progress-bar { display: none !important; }
+    body.print-econo .lr-fill, body.print-econo .gc-bar,
+    body.print-econo .cp-fill { background: #888 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body.print-econo * { color: #000 !important; text-shadow: none !important; }
+    body.print-econo .section-label,
+    body.print-econo .pc-badge,
+    body.print-econo .collection-label,
+    body.print-econo .ref-label,
+    body.print-econo .opi-label,
+    body.print-econo .comp-label { color: #333 !important; }
+  }
+
+</style>
+</head>
+<body>
+
+
+<div class="print-only print-cover">
+  <div class="pc-badge">Eksekveringsserien · Oversigt</div>
+  <div class="pc-title">Maksimalt output. Minimal indsats.</div>
+  <div class="pc-sub">Ti papers om den ledelsesudfordring, der ikke handler om at vide, hvad man skal — men om at få det gjort.</div>
+  <div class="pc-author">Af Thomas Friisnæs · Executive Coach · Karakter · Disciplin · Klarhed · friisnaes.com</div>
+</div>
+<header class="hero">
+  <div class="container hero-inner">
+    <span class="hero-badge">Eksekveringsserien</span>
+    <h1>Maksimalt output.<br><em>Minimal indsats.</em></h1>
+    <p class="hero-tagline">Ti papers om den ledelsesudfordring, der ikke handler om at vide, hvad man skal — men om at få det gjort.</p>
+    <div class="hero-lead">
+      <p>De største ledelsesudfordringer er sjældent mangel på strategi eller faglighed. De handler om at omsætte intention til adfærd — konsekvent, under pres, uden at brænde ud.</p>
+      <p>Denne serie tager de ti udfordringer, der fylder mest hos danske ledere, og giver hver af dem en løsningsvej bygget på ét princip: <strong>få mere afgørende output ud af mindre spredt indsats.</strong></p>
+    </div>
+  </div>
+</header>
+
+<!-- PILLARS: OPI + FASEL -->
+<section class="pillars">
+  <div class="container">
+    <div class="pillar-label">To ting går igen i alle ti papers</div>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <div class="p-sub">Min egen model · måletal</div>
+        <h3>OPI</h3>
+        <p><strong>Output-per-Indsats.</strong> Forholdet mellem det værdiskabende resultat, en handling giver, og den indsats, den koster. Målet er aldrig at gøre mere — det er at hæve OPI. Den leder med højest OPI er ikke den travleste. Det er den, der har skåret hårdest.</p>
+      </div>
+      <div class="pillar">
+        <div class="p-sub">Min egen model · metode</div>
+        <h3>FASEL</h3>
+        <ul class="fasel-steps">
+          <li><strong>Fang</strong> Alt ud af hovedet, ét sted</li>
+          <li><strong>Afklar</strong> Næste konkrete skridt</li>
+          <li><strong>Skær</strong> Fjern det, der ikke hæver OPI</li>
+          <li><strong>Eksekver</strong> Én ting, beskyttet tid</li>
+          <li><strong>Luk</strong> Afslut synligt</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS DASHBOARD -->
+<section class="dash">
+  <div class="container">
+    <div class="dash-box">
+      <div class="dash-label">Din progress</div>
+      <div class="dash-title">Din vej gennem serien</div>
+      <p class="dash-intro">Hvert paper lader dig skrive ét commitment og markere det som gennemført. Det gemmes lokalt i din browser — ingen konto, intet forlader din enhed. Her ser du din samlede status.</p>
+      <div class="dash-stat">
+        <span class="dash-num" id="dashNum">0</span>
+        <span class="dash-of">af 10 papers gennemført</span>
+      </div>
+      <div class="dash-track"><div class="dash-fill" id="dashFill"></div></div>
+      <div class="dash-commits">
+        <div class="dc-label">Dine aktive commitments</div>
+        <div id="dashCommits"><p class="dc-empty">Ingen commitments endnu. Start med paper 01 nedenfor.</p></div>
+        <button class="dash-reset" id="dashReset">Nulstil min progress</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-label">Om serien</div>
+    <h2>Hvorfor endnu en serie om produktivitet?</h2>
+    <p>Fordi de fleste produktivitetssystemer er bygget til at gøre flere ting hurtigere. Det er ikke problemet for en topleder. Problemet er, at der bliver forsøgt for meget på én gang — og at intet bliver skåret væk. Mere hastighed på en for lang liste hæver ikke output. Det udvider gabet.</p>
+    <p>Serien vender logikken om. I stedet for at spørge "hvordan gør jeg mere?", spørger den konsekvent: "hvad kan jeg fjerne, så det vigtigste bliver gjort helt?" Det er dér, output-per-indsats stiger — ikke ved at tilføje, men ved at skære. Til det formål har jeg formuleret to enkle redskaber, der går igen i alle ti papers: OPI som måletal og FASEL som metode.</p>
+    <p class="lead-statement">Den, der lukker tre ting helt, kommer længere end den, der starter tolv.</p>
+    <p>Hvert paper følger samme opbygning: scenariet du kender, problemet navngivet, frameworket, mekanismen, en øvelse, en 2-minutters mikrohandling og et konkret commitment. Du kan læse dem i rækkefølge eller springe til den udfordring, der fylder mest lige nu.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container collection-inner">
+    <div class="collection-label">Den komplette samling</div>
+    <h2 class="collection-title">Ti papers i tre dele</h2>
+    <p class="collection-intro">Serien bevæger sig fra flaskehalsen, der bremser output, til belastningen, der forringer det, og til sidst til lederen selv. Hvert paper kan læses alene. Tilsammen udgør de én sammenhængende model.</p>
+
+    <div class="collection-part">
+      <div class="part-header">
+        <span class="part-num">Del 1</span>
+        <span class="part-name">Flaskehalsen</span>
+      </div>
+      <p class="part-desc">Det, der bremser output, før det overhovedet begynder: gabet, prioriteringen og kalenderen.</p>
+      <ol class="part-papers">
+        <li>
+          <span class="pl-check" data-paper="p01"></span>
+          <a class="paper-link" href="/eksekveringsgabet.html">
+            <span class="pl-title">Eksekveringsgabet</span>
+            <span class="pl-sub">Når strategien lever i PowerPoint og ikke i kalenderen</span>
+          </a>
+        </li>
+        <li>
+          <span class="pl-check" data-paper="p02"></span>
+          <a class="paper-link" href="/prioriteringsparalysen.html">
+            <span class="pl-title">Prioriteringsparalysen</span>
+            <span class="pl-sub">Når alt er vigtigt, bliver intet rigtig vigtigt</span>
+          </a>
+        </li>
+        <li>
+          <span class="pl-check" data-paper="p03"></span>
+          <a class="paper-link" href="/den-bookede-kalender.html">
+            <span class="pl-title">Den bookede kalender</span>
+            <span class="pl-sub">Hvorfor 100 % belægning gør lederen til en flaskehals</span>
+          </a>
+        </li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="part-header">
+        <span class="part-num">Del 2</span>
+        <span class="part-name">Belastningen</span>
+      </div>
+      <p class="part-desc">Det, der forringer output undervejs: kontekstskift, møder, afbrudte beslutninger og forandringstræthed.</p>
+      <ol class="part-papers">
+        <li>
+          <span class="pl-check" data-paper="p04"></span>
+          <a class="paper-link" href="/kontekstskiftet.html">
+            <span class="pl-title">Kontekstskiftet</span>
+            <span class="pl-sub">Hvorfor belastningen ikke kommer fra timerne, men fra skiftene</span>
+          </a>
+        </li>
+        <li>
+          <span class="pl-check" data-paper="p05"></span>
+          <a class="paper-link" href="/moedekulturen.html">
+            <span class="pl-title">Mødekulturen</span>
+            <span class="pl-sub">Når problemet ikke er antallet, men kvaliteten</span>
+          </a>
+        </li>
+        <li>
+          <span class="pl-check" data-paper="p06"></span>
+          <a class="paper-link" href="/beslutning-under-afbrydelse.html">
+            <span class="pl-title">Beslutning under afbrydelse</span>
+            <span class="pl-sub">Hvorfor de bedste ledere først beskytter deres evne til at tænke</span>
+          </a>
+        </li>
+        <li>
+          <span class="pl-check" data-paper="p07"></span>
+          <a class="paper-link" href="/forandringstraetheden.html">
+            <span class="pl-title">Forandringstrætheden</span>
+            <span class="pl-sub">At skabe retning, ro og mening på samme tid</span>
+          </a>
+        </li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="part-header">
+        <span class="part-num">Del 3</span>
+        <span class="part-name">Lederen selv</span>
+      </div>
+      <p class="part-desc">Dér, hvor de svære samtaler, det personlige lederskab og ensomheden afgør, om output holder over tid.</p>
+      <ol class="part-papers">
+        <li>
+          <span class="pl-check" data-paper="p08"></span>
+          <a class="paper-link" href="/de-udskudte-samtaler.html">
+            <span class="pl-title">De udskudte samtaler</span>
+            <span class="pl-sub">Prisen på udvikling og feedback, der bliver udsat</span>
+          </a>
+        </li>
+        <li>
+          <span class="pl-check" data-paper="p09"></span>
+          <a class="paper-link" href="/personligt-lederskab.html">
+            <span class="pl-title">Personligt lederskab</span>
+            <span class="pl-sub">Forskellen på at være dygtig og at være bevidst leder</span>
+          </a>
+        </li>
+        <li>
+          <span class="pl-check" data-paper="p10"></span>
+          <a class="paper-link" href="/ensomheden-i-toppen.html">
+            <span class="pl-title">Ensomheden i toppen</span>
+            <span class="pl-sub">Hvorfor færre lytter, jo højere man kommer — og hvad det koster beslutningerne</span>
+          </a>
+        </li>
+      </ol>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Fra serie til forløb</h2>
+      <p>Serien er skrevet til at kunne bruges alene. Men det stærkeste arbejde sker, når mønstret kortlægges konkret — i din kalender, i din ledergruppe, i din organisation. Det er dét, et coaching-forløb, et foredrag eller en workshop gør.</p>
+      <div class="cta-links">
+        <a href="/index.html" class="cta-btn primary">Start en samtale →</a>
+        <a href="/eksekveringsgabet.html" class="cta-btn secondary">Begynd med paper 01</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PDF / PRINT DOWNLOAD CTA (injected) ===== -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag oversigten med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele seriens oversigt i A4 — de ti papers samlet på ét sted.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<footer class="wp-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisnæs</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Eksekveringsserien</div>
+        <a href="/blog.html">Se alle white papers →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+  /* ===== PDF / PRINT HANDLER (injected) ===== */
+  function friisnaesPdf(econo) {
+    try {
+      var openFaqs = [];
+      document.querySelectorAll('.faq-item').forEach(function (it, i) {
+        if (it.classList.contains('open')) openFaqs.push(i);
+        it.classList.add('open');
+      });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        document.querySelectorAll('.faq-item').forEach(function (it, i) {
+          if (openFaqs.indexOf(i) === -1) it.classList.remove('open');
+        });
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+
+  (function () {
+    var STORE_KEY = 'friisnaes_eksekvering_v1';
+    var TOTAL = 10;
+    var TITLES = {
+      p01: 'Eksekveringsgabet', p02: 'Prioriteringsparalysen', p03: 'Den bookede kalender',
+      p04: 'Kontekstskiftet', p05: 'Mødekulturen', p06: 'Beslutning under afbrydelse',
+      p07: 'Forandringstrætheden', p08: 'De udskudte samtaler', p09: 'Personligt lederskab',
+      p10: 'Ensomheden i toppen'
+    };
+
+    function load() {
+      try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
+      catch (e) { return {}; }
+    }
+
+    function render() {
+      var d = load(); var papers = d.papers || {};
+      var count = 0;
+      for (var k in papers) { if (papers[k] && papers[k].done) count++; }
+      var pct = Math.round((count / TOTAL) * 100);
+
+      document.getElementById('dashNum').textContent = count;
+      document.getElementById('dashFill').style.width = pct + '%';
+
+      // checkmarks in the collection list
+      var checks = document.querySelectorAll('.pl-check');
+      checks.forEach(function (c) {
+        var id = c.getAttribute('data-paper');
+        if (papers[id] && papers[id].done) { c.classList.add('done'); c.textContent = '✓'; }
+        else { c.classList.remove('done'); c.textContent = ''; }
+      });
+
+      // active commitments
+      var wrap = document.getElementById('dashCommits');
+      var items = [];
+      for (var id in papers) {
+        if (papers[id] && papers[id].commitment) {
+          items.push({ id: id, text: papers[id].commitment });
+        }
+      }
+      items.sort(function (a, b) { return a.id.localeCompare(b.id); });
+      if (items.length === 0) {
+        wrap.innerHTML = '<p class="dc-empty">Ingen commitments endnu. Start med paper 01 nedenfor.</p>';
+      } else {
+        var html = '';
+        items.forEach(function (it) {
+          var n = it.id.replace('p', '').replace(/^0/, '');
+          var title = TITLES[it.id] || it.id;
+          html += '<div class="dc-item"><span class="dc-num">' + n + '</span><span class="dc-text"><strong style="color:var(--gold-light);font-weight:400;">' + title + ':</strong> ' + escapeHtml(it.text) + '</span></div>';
+        });
+        wrap.innerHTML = html;
+      }
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    document.getElementById('dashReset').addEventListener('click', function () {
+      if (confirm('Nulstil al din progress og alle commitments? Dette kan ikke fortrydes.')) {
+        try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+        render();
+      }
+    });
+
+    render();
+  })();
+</script>
+
+</body>
+</html>
