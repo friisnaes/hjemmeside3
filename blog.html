@@ -414,5 +414,55 @@
     go(0);
 })();
 </script>
+
+<script>
+/* ===== Auto-sortér artikelkort efter LinkedIn-visninger (flest øverst) ===== */
+(function () {
+    var grid = document.querySelector('.article-grid');
+    if (!grid) return;
+
+    // Parse dansk talformat: "536.577" -> 536577, "3.094" -> 3094.
+    // Punktum er tusindtalsseparator; komma ville være decimaltegn.
+    function parseDanishNumber(txt) {
+        if (!txt) return null;
+        var t = txt.trim().replace(/\s/g, '');
+        // kun cifre og separatorer tæller som et tal
+        if (!/^[0-9.,]+$/.test(t)) return null;
+        // fjern tusindtals-punktummer, konvertér komma til decimalpunktum
+        t = t.replace(/\./g, '').replace(',', '.');
+        var n = parseFloat(t);
+        return isNaN(n) ? null : n;
+    }
+
+    // Find et korts visnings-tal: den stat hvis label er "Visninger".
+    function getViews(card) {
+        var stats = card.querySelectorAll('.card-stats > div');
+        for (var i = 0; i < stats.length; i++) {
+            var label = stats[i].querySelector('.card-stat-label');
+            var num = stats[i].querySelector('.card-stat-num');
+            if (label && num && /visninger/i.test(label.textContent)) {
+                var v = parseDanishNumber(num.textContent);
+                if (v !== null) return v;
+            }
+        }
+        return null; // ingen visninger -> nederst
+    }
+
+    var cards = Array.prototype.slice.call(grid.querySelectorAll(':scope > .article-card'));
+
+    // Stabil sortering: flest visninger øverst; kort uden visninger nederst
+    // (i deres oprindelige indbyrdes rækkefølge).
+    cards.map(function (card, i) {
+        return { card: card, views: getViews(card), idx: i };
+    }).sort(function (a, b) {
+        var av = a.views === null ? -1 : a.views;
+        var bv = b.views === null ? -1 : b.views;
+        if (bv !== av) return bv - av;      // faldende efter visninger
+        return a.idx - b.idx;                // ellers bevar oprindelig rækkefølge
+    }).forEach(function (item) {
+        grid.appendChild(item.card);         // flyt i sorteret rækkefølge
+    });
+})();
+</script>
 </body>
 </html>
