@@ -159,6 +159,16 @@
         .clients { background: var(--off-white); border-top: 1px solid rgba(0,0,0,.06); border-bottom: 1px solid rgba(0,0,0,.06); }
         .client-list { display: flex; flex-wrap: wrap; gap: 10px; }
         .cl-tag { font-family: var(--body); font-size: .8rem; font-weight: 500; color: var(--black); background: var(--white); border: 1px solid rgba(0,0,0,.08); padding: 8px 18px; }
+        .cl-plates { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid rgba(0,0,0,.08); margin-top: 8px; }
+        .cl-plate { padding: 28px 26px; border-right: 1px solid rgba(0,0,0,.08); border-bottom: 1px solid rgba(0,0,0,.08); background: var(--white); transition: background .3s var(--ease); }
+        .cl-plate:nth-child(3n) { border-right: none; }
+        .cl-plate:nth-child(n+4) { border-bottom: none; }
+        .cl-plate:hover { background: var(--off-white); }
+        .cl-plate .cp-name { font-family: var(--display); font-size: 1.28rem; font-weight: 500; color: var(--black); line-height: 1.15; }
+        .cl-plate .cp-role { font-family: var(--body); font-size: .8rem; color: var(--gray); margin-top: 6px; }
+        .cl-plate .cp-org { font-family: var(--body); font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--red); margin-top: 14px; }
+        .cl-plates-note { font-family: var(--body); font-size: .84rem; margin-top: 24px; }
+        .cl-plates-note a { color: var(--red); border-bottom: 1px solid var(--red); }
         .client-sits { display: flex; flex-direction: column; gap: 0; }
         .client-sits p { font-family: var(--body); font-size: .86rem; color: var(--gray-dark); padding: 10px 0; border-bottom: 1px solid rgba(0,0,0,.04); padding-left: 16px; position: relative; }
         .client-sits p::before { content: '–'; position: absolute; left: 0; color: var(--red); font-weight: 600; }
@@ -349,6 +359,16 @@
             <span class="cl-tag" data-da="Direktionsmedlemmer" data-en="Board members">Direktionsmedlemmer</span>
             <span class="cl-tag" data-da="Ledere med stort strategisk ansvar" data-en="Leaders with major strategic responsibility">Ledere med stort strategisk ansvar</span>
         </div>
+        <p style="font-family:var(--body);font-size:.88rem;color:var(--gray);line-height:1.8;max-width:620px;margin-top:28px;margin-bottom:14px" data-da="Udvalgte ledere jeg arbejder med – nævnt med tilladelse:" data-en="Selected leaders I work with – named with permission:">Udvalgte ledere jeg arbejder med – nævnt med tilladelse:</p>
+        <div class="cl-plates">
+            <div class="cl-plate"><div class="cp-name">Casper Stylsvig</div><div class="cp-role">Executive Director</div><div class="cp-org">Hong Kong Jockey Club</div></div>
+            <div class="cl-plate"><div class="cp-name">Kim Kehlet Johansen</div><div class="cp-role">CEO</div><div class="cp-org">Velliv A/S</div></div>
+            <div class="cl-plate"><div class="cp-name">Willy Chavarria</div><div class="cp-role">Owner &amp; CCO</div><div class="cp-org">Willy Chavarria</div></div>
+            <div class="cl-plate"><div class="cp-name">Lars Christensen</div><div class="cp-role">CEO</div><div class="cp-org">WTW</div></div>
+            <div class="cl-plate"><div class="cp-name">Mikkel Kryger</div><div class="cp-role">TV Host</div><div class="cp-org">TV2</div></div>
+            <div class="cl-plate"><div class="cp-name">Henrik Gram</div><div class="cp-role" data-da="Partner / Direktør" data-en="Partner / Director">Partner / Direktør</div><div class="cp-org">Solstra Capital Partners</div></div>
+        </div>
+        <p class="cl-plates-note"><a href="testimonials.html" data-da="Se alle 33 navngivne referencer →" data-en="See all 33 named references →">Se alle 33 navngivne referencer →</a></p>
         <p style="font-family:var(--body);font-size:.88rem;color:var(--gray);line-height:1.8;max-width:620px;margin-top:28px;margin-bottom:8px" data-da="Ofte i situationer hvor:" data-en="Often in situations where:">Ofte i situationer hvor:</p>
         <div class="client-sits">
             <p data-da="Organisationen er vokset hurtigt" data-en="The organization has grown rapidly">Organisationen er vokset hurtigt</p>
@@ -456,27 +476,11 @@
             </div>
             <form class="cform" action="https://formspree.io/f/mnjgnrlb" method="POST" aria-label="Kontaktformular">
                 <input type="hidden" name="_subject" value="Ny henvendelse fra friisnaes.com v3">
-                <div class="fr">
-                    <div class="fg"><label for="name" class="fl" data-da="Navn" data-en="Name">Navn</label><input type="text" id="name" name="name" class="fi" placeholder="Dit fulde navn" required autocomplete="name"></div>
-                    <div class="fg"><label for="role" class="fl" data-da="Rolle" data-en="Role">Rolle</label><input type="text" id="role" name="role" class="fi" placeholder="Fx CEO, CFO, ejer" autocomplete="organization-title"></div>
-                </div>
-                <div class="fr">
-                    <div class="fg"><label for="org" class="fl" data-da="Organisation" data-en="Organization">Organisation</label><input type="text" id="org" name="organization" class="fi" placeholder="Virksomhed" autocomplete="organization"></div>
-                    <div class="fg"><label for="email" class="fl">Email</label><input type="email" id="email" name="email" class="fi" placeholder="din@email.dk" required autocomplete="email"></div>
-                </div>
-                <div class="fg"><label for="phone" class="fl" data-da="Telefon" data-en="Phone">Telefon</label><input type="tel" id="phone" name="phone" class="fi" placeholder="+45" autocomplete="tel"></div>
-                <div class="fg"><label for="interest" class="fl" data-da="Jeg er interesseret i" data-en="I am interested in">Jeg er interesseret i</label>
-                    <select id="interest" name="interest" class="fs" aria-label="Vælg emne">
-                        <option value="" disabled selected>Vælg</option>
-                        <option value="Executive Retainer">Executive Retainer</option>
-                        <option value="Team sparring">Team sparring</option>
-                        <option value="Foredrag">Foredrag</option>
-                        <option value="Ved ikke endnu">Ved ikke endnu</option>
-                    </select>
-                </div>
-                <div class="fg"><label for="challenge" class="fl" data-da="Hvad fylder mest i dit arbejde lige nu?" data-en="What weighs most in your work right now?">Hvad fylder mest i dit arbejde lige nu?</label><textarea id="challenge" name="challenge" class="ft" placeholder="Beskriv kort den største udfordring..."></textarea></div>
-                <div class="fg"><label for="why_now" class="fl" data-da="Hvorfor er det vigtigt at løse nu?" data-en="Why is it important to solve now?">Hvorfor er det vigtigt at løse nu?</label><textarea id="why_now" name="why_now" class="ft" placeholder="Hvad er konsekvensen af at vente?" style="min-height:70px"></textarea></div>
-                <button type="submit" class="btn bp submit-btn" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation">Book en 20-minutters samtale</button>
+                <div class="fg"><label for="name" class="fl" data-da="Navn" data-en="Name">Navn</label><input type="text" id="name" name="name" class="fi" placeholder="Dit navn" required autocomplete="name"></div>
+                <div class="fg"><label for="email" class="fl">Email</label><input type="email" id="email" name="email" class="fi" placeholder="din@email.dk" required autocomplete="email"></div>
+                <div class="fg"><label for="challenge" class="fl" data-da="Hvad fylder lige nu?" data-en="What's on your mind right now?">Hvad fylder lige nu?</label><textarea id="challenge" name="challenge" class="ft" placeholder="Skriv gerne kort – et par linjer er nok." style="min-height:120px"></textarea></div>
+                <button type="submit" class="btn bp submit-btn" data-da="Send besked" data-en="Send message">Send besked</button>
+                <p style="font-family:var(--body);font-size:.78rem;color:rgba(255,255,255,.4);text-align:center;margin-top:14px" data-da="Fortroligt. Jeg vender tilbage inden for 24 timer." data-en="Confidential. I'll reply within 24 hours.">Fortroligt. Jeg vender tilbage inden for 24 timer.</p>
             </form>
         </div>
     </div>
