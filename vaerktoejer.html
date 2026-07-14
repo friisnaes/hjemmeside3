@@ -1,469 +1,450 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ledelsesværktøjer · Thomas Friisnæs</title>
-<meta name="description" content="Et bibliotek af interaktive ledelsesværktøjer bygget på 20 års erfaring og 15.000 coachingsamtaler. Karakter · Disciplin · Klarhed.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --navy:#0F2233;
-  --navy2:#183349;
-  --navy3:#22455F;
-  --gold:#C9A24B;
-  --gold-lt:#DBB968;
-  --gold-dk:#A8842F;
-  --paper:#FBFAF6;
-  --paper2:#F1ECE0;
-  --ink:#0F2233;
-  --muted:#6B7A85;
-  --line:rgba(201,162,75,.22);
-  --line-solid:#E4DCC9;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:'DM Sans',sans-serif;
-  background:var(--paper);
-  color:var(--ink);
-  -webkit-font-smoothing:antialiased;
-  line-height:1.5;
-  overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none;}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ledelsesværktøjer | Thomas Friisnæs</title>
+    <meta name="description" content="Et bibliotek af interaktive ledelsesværktøjer bygget på 22+ års erfaring og 15.000+ coachingsessioner. Fra ny leder til de sværeste samtaler og de strategiske valg.">
+    <meta name="author" content="Thomas Friisnæs">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://www.friisnaes.com/vaerktoejer.html">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="apple-touch-icon" href="/favicon-apple.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.friisnaes.com/vaerktoejer.html">
+    <meta property="og:title" content="Ledelsesværktøjer | Thomas Friisnæs">
+    <meta property="og:description" content="Et bibliotek af interaktive ledelsesværktøjer bygget på 22+ års erfaring og 15.000+ coachingsessioner.">
+    <meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Friisnæs">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #111;
+            --black-soft: #1a1a1a;
+            --black-light: #222;
+            --gray-dark: #444;
+            --gray: #777;
+            --gray-light: #bbb;
+            --off-white: #f5f4f0;
+            --white: #fafaf8;
+            --red: #c0392b;
+            --red-hover: #e74c3c;
+            --red-muted: rgba(192,57,43,.06);
+            --display: 'Playfair Display', Georgia, serif;
+            --body: 'Outfit', -apple-system, sans-serif;
+            --max: 760px;
+            --wide: 1100px;
+            --pad: clamp(24px, 6vw, 64px);
+            --gap: clamp(100px, 12vw, 160px);
+            --ease: cubic-bezier(.16, 1, .3, 1);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        body { font-family: var(--body); color: var(--black); background: var(--white); line-height: 1.75; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { text-decoration: none; color: inherit; transition: color .3s var(--ease); }
+        .c { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+        .cw { max-width: var(--wide); }
+        .rv { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+        .rv.vis { opacity: 1; transform: translateY(0); }
+        @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; } }
 
-/* ---------- eyebrow / labels ---------- */
-.eyebrow{
-  font-family:'DM Mono',monospace;
-  font-size:11px;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--gold-dk);font-weight:500;
-}
+        /* ---- NAV (copied from main site) ---- */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; transition: all .4s var(--ease); }
+        nav.sc { background: rgba(17,17,17,.97); backdrop-filter: blur(12px); padding: 14px 0; }
+        nav.solid { background: rgba(17,17,17,.97); backdrop-filter: blur(12px); }
+        nav .ni { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; }
+        nav .lo { font-family: var(--display); font-size: 1.22rem; font-weight: 600; color: var(--white); letter-spacing: .02em; margin-right: 24px; flex-shrink: 0; white-space: nowrap; }
+        nav .lo em { color: var(--red); font-style: normal; }
+        .nl { display: flex; align-items: center; gap: 14px; list-style: none; flex-wrap: nowrap; }
+        .nl a { font-family: var(--body); font-size: .73rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+        .nl a:hover { color: var(--white); }
+        .nl a.active { color: var(--white); }
+        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 15px; font-weight: 600; white-space: nowrap; }
+        .nl .cta-n:hover { background: var(--red-hover); }
+        .ls { display: flex; gap: 3px; margin-left: 4px; }
+        .ls button { background: none; border: 1px solid transparent; color: rgba(255,255,255,.35); font-family: var(--body); font-size: .65rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 3px 6px; cursor: pointer; transition: all .3s; border-radius: 2px; }
+        .ls button.on { color: var(--red); border-color: var(--red); }
+        .ls span { color: rgba(255,255,255,.2); font-size: .6rem; }
+        .nt { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+        .nt span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all .3s; }
+        .nt.act span:nth-child(1) { transform: rotate(45deg) translate(4px,5px); }
+        .nt.act span:nth-child(2) { opacity: 0; }
+        .nt.act span:nth-child(3) { transform: rotate(-45deg) translate(4px,-5px); }
 
-/* ---------- HERO ---------- */
-.hero{
-  background:var(--navy);color:var(--paper);
-  position:relative;overflow:hidden;
-  padding:clamp(64px,10vw,120px) 0 clamp(56px,8vw,96px);
-}
-.hero::before{
-  content:"";position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 60% 50% at 78% 18%, rgba(201,162,75,.14), transparent 60%),
-    radial-gradient(ellipse 50% 60% at 10% 90%, rgba(34,69,95,.55), transparent 60%);
-  pointer-events:none;
-}
-.hero .wrap{position:relative;z-index:2;}
-.hero .eyebrow{color:var(--gold-lt);}
-.starburst{width:44px;height:44px;margin-bottom:28px;opacity:0;transform:translateY(12px);animation:rise .8s .1s forwards cubic-bezier(.2,.7,.2,1);}
-.hero h1{
-  font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:clamp(38px,6.4vw,72px);line-height:1.02;letter-spacing:-.01em;
-  margin:18px 0 0;max-width:15ch;
-  opacity:0;transform:translateY(16px);animation:rise .9s .22s forwards cubic-bezier(.2,.7,.2,1);
-}
-.hero h1 .it{font-style:italic;font-weight:500;color:var(--gold-lt);}
-.hero .lead{
-  font-family:'Cormorant Garamond',serif;font-weight:400;
-  font-size:clamp(18px,2.4vw,24px);line-height:1.42;
-  color:#C4D2DB;max-width:52ch;margin-top:26px;
-  opacity:0;transform:translateY(16px);animation:rise .9s .34s forwards cubic-bezier(.2,.7,.2,1);
-}
-.triad{
-  display:flex;gap:0;margin-top:38px;flex-wrap:wrap;
-  opacity:0;transform:translateY(16px);animation:rise .9s .46s forwards cubic-bezier(.2,.7,.2,1);
-}
-.triad .t{
-  font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--gold-lt);padding:0 20px;position:relative;
-}
-.triad .t:first-child{padding-left:0;}
-.triad .t:not(:last-child)::after{content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:13px;background:rgba(201,162,75,.4);}
-.hero-meta{
-  margin-top:44px;display:flex;gap:36px;flex-wrap:wrap;
-  opacity:0;animation:fade 1s .7s forwards;
-}
-.hero-meta .m .n{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:600;color:var(--gold-lt);line-height:1;}
-.hero-meta .m .l{font-size:12px;color:#8DA0AC;margin-top:6px;letter-spacing:.02em;}
+        /* ---- HERO ---- */
+        .hero { background: var(--black); position: relative; overflow: hidden; padding: clamp(140px,20vw,200px) 0 clamp(70px,9vw,110px); }
+        .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 72% 40%, rgba(192,57,43,.05), transparent 70%); }
+        .hero .hc { position: relative; z-index: 2; max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); width: 100%; }
+        .hero .hl { font-family: var(--body); font-size: .68rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 28px; opacity: 0; animation: fu .7s var(--ease) .2s forwards; }
+        .hero h1 { font-family: var(--display); font-size: clamp(2.6rem, 5vw, 4rem); font-weight: 400; color: var(--white); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 26px; max-width: 15ch; opacity: 0; animation: fu .7s var(--ease) .4s forwards; }
+        .hero h1 em { font-style: italic; color: var(--red); }
+        .hero .hp { font-family: var(--body); font-size: 1.02rem; color: rgba(255,255,255,.55); line-height: 1.8; max-width: 560px; margin-bottom: 20px; opacity: 0; animation: fu .7s var(--ease) .6s forwards; }
+        .hero .triad { display: flex; gap: 0; margin-top: 30px; opacity: 0; animation: fu .7s var(--ease) .75s forwards; }
+        .hero .triad span { font-family: var(--body); font-size: .7rem; font-weight: 600; color: var(--red); letter-spacing: .22em; text-transform: uppercase; padding: 0 18px; position: relative; }
+        .hero .triad span:first-child { padding-left: 0; }
+        .hero .triad span:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 12px; background: rgba(255,255,255,.2); }
+        .hero .hs { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,.08); margin-top: 48px; opacity: 0; animation: fu .7s var(--ease) .95s forwards; }
+        .hero .si { flex: 1; padding: 28px 0; border-right: 1px solid rgba(255,255,255,.08); text-align: center; }
+        .hero .si:last-child { border-right: none; }
+        .hero .sn { font-family: var(--display); font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 400; color: var(--red); line-height: 1; margin-bottom: 4px; }
+        .hero .sl { font-family: var(--body); font-size: .64rem; font-weight: 500; color: rgba(255,255,255,.3); letter-spacing: .12em; text-transform: uppercase; }
+        @keyframes fu { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 
-@keyframes rise{to{opacity:1;transform:translateY(0);}}
-@keyframes fade{to{opacity:1;}}
+        /* ---- INTRO ---- */
+        section { padding: var(--gap) 0; }
+        .se { font-family: var(--body); font-size: .65rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 14px; }
+        h2 { font-family: var(--display); font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 400; color: var(--black); line-height: 1.15; letter-spacing: -.01em; margin-bottom: 24px; }
+        h2 em { font-style: italic; color: var(--red); }
+        .intro { background: var(--off-white); border-bottom: 1px solid rgba(0,0,0,.06); padding: clamp(64px,9vw,110px) 0; }
+        .intro p { font-family: var(--body); font-size: .98rem; color: var(--gray-dark); line-height: 1.85; max-width: 620px; }
 
-/* ---------- INTRO STRIP ---------- */
-.intro{background:var(--paper2);padding:clamp(44px,6vw,72px) 0;border-bottom:1px solid var(--line-solid);}
-.intro .eyebrow{color:var(--gold-dk);}
-.intro h2{
-  font-family:'Cormorant Garamond',serif;font-weight:500;
-  font-size:clamp(24px,3.6vw,38px);line-height:1.16;letter-spacing:-.005em;
-  margin-top:14px;max-width:26ch;
-}
-.intro h2 .it{font-style:italic;color:var(--gold-dk);}
-.intro p{font-size:16px;color:#42525C;max-width:60ch;margin-top:20px;line-height:1.6;}
+        /* ---- TOOL SECTIONS ---- */
+        .tools { background: var(--white); }
+        .tools:nth-of-type(even) { background: var(--off-white); border-top: 1px solid rgba(0,0,0,.06); border-bottom: 1px solid rgba(0,0,0,.06); }
+        .sec-head { display: grid; grid-template-columns: 40px 1fr; gap: 18px; align-items: start; margin-bottom: 40px; }
+        .sec-num { font-family: var(--display); font-size: 1rem; color: var(--red); font-weight: 600; padding-top: 6px; }
+        .sec-head h3 { font-family: var(--display); font-size: clamp(1.5rem,2.6vw,2rem); font-weight: 500; color: var(--black); line-height: 1.1; letter-spacing: -.01em; }
+        .sec-head .sub { font-family: var(--body); font-size: .9rem; color: var(--gray); line-height: 1.7; margin-top: 10px; max-width: 60ch; }
 
-/* ---------- JOURNEY / SECTIONS ---------- */
-.section{padding:clamp(48px,7vw,90px) 0;}
-.section:nth-child(even){background:var(--paper2);}
-.sec-head{display:flex;align-items:flex-start;gap:20px;margin-bottom:36px;}
-.sec-num{
-  font-family:'DM Mono',monospace;font-size:13px;font-weight:500;
-  color:var(--gold-dk);padding-top:9px;flex:0 0 auto;letter-spacing:.05em;
-}
-.sec-head h3{
-  font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:clamp(26px,4vw,40px);line-height:1.04;letter-spacing:-.008em;
-}
-.sec-head .sub{font-size:15px;color:var(--muted);margin-top:8px;max-width:56ch;line-height:1.5;}
-.sec-rule{height:1px;background:var(--gold);opacity:.5;width:52px;margin-bottom:16px;}
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0; border-top: 1px solid rgba(0,0,0,.08); border-left: 1px solid rgba(0,0,0,.08); }
+        .tools:nth-of-type(even) .grid { border-color: rgba(0,0,0,.1); }
+        .card { display: flex; flex-direction: column; padding: 30px 28px 26px; border-right: 1px solid rgba(0,0,0,.08); border-bottom: 1px solid rgba(0,0,0,.08); background: transparent; transition: background .35s var(--ease); position: relative; }
+        .tools:nth-of-type(even) .card { border-color: rgba(0,0,0,.1); }
+        .card:hover { background: var(--red-muted); }
+        .card:focus-visible { outline: 2px solid var(--red); outline-offset: -2px; }
+        .card .step { font-family: var(--body); font-size: .6rem; font-weight: 600; color: var(--red); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 14px; }
+        .card h4 { font-family: var(--display); font-size: 1.28rem; font-weight: 600; color: var(--black); line-height: 1.15; margin-bottom: 10px; }
+        .card p { font-family: var(--body); font-size: .86rem; color: var(--gray); line-height: 1.65; flex: 1; }
+        .card .go { display: inline-flex; align-items: center; gap: 7px; margin-top: 20px; font-family: var(--body); font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
+        .card .go .arr { transition: transform .3s var(--ease); }
+        .card:hover .go .arr { transform: translateX(4px); }
+        .card .next { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(0,0,0,.07); font-family: var(--body); font-size: .72rem; color: var(--gray); line-height: 1.5; }
+        .card .next b { color: var(--gray-dark); font-weight: 600; }
 
-/* ---------- CARD GRID ---------- */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;}
-.card{
-  display:flex;flex-direction:column;
-  background:var(--paper);border:1px solid var(--line-solid);border-radius:4px;
-  padding:24px 24px 22px;position:relative;
-  transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s;
-  opacity:0;transform:translateY(20px);
-}
-.section:nth-child(even) .card{background:#fff;}
-.card.in{opacity:1;transform:translateY(0);}
-.card:hover{transform:translateY(-4px);box-shadow:0 14px 34px -18px rgba(15,34,51,.4);border-color:var(--gold);}
-.card:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
-.card .step{
-  font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--gold-dk);margin-bottom:12px;
-}
-.card h4{
-  font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:23px;line-height:1.08;letter-spacing:-.005em;color:var(--ink);
-}
-.card p{font-size:13.5px;color:#54636D;margin-top:9px;line-height:1.5;flex:1;}
-.card .go{
-  display:inline-flex;align-items:center;gap:7px;margin-top:18px;
-  font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.08em;
-  color:var(--gold-dk);font-weight:500;
-}
-.card .go .arr{transition:transform .3s;}
-.card:hover .go .arr{transform:translateX(4px);}
-.card .next{
-  margin-top:14px;padding-top:13px;border-top:1px dashed var(--line-solid);
-  font-size:11.5px;color:var(--muted);line-height:1.4;
-}
-.card .next b{color:var(--gold-dk);font-weight:600;}
+        /* ---- BRIDGE ---- */
+        .bridge { background: var(--black); position: relative; overflow: hidden; }
+        .bridge::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 80% 40%, rgba(192,57,43,.06), transparent 70%); }
+        .bridge .c { position: relative; z-index: 2; }
+        .bridge .se { color: var(--red); }
+        .bridge h2 { color: var(--white); max-width: 20ch; }
+        .bridge p { font-family: var(--body); font-size: .96rem; color: rgba(255,255,255,.55); line-height: 1.85; max-width: 56ch; margin-bottom: 36px; }
+        .bridge .ha { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--body); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 14px 28px; cursor: pointer; border: none; transition: all .4s var(--ease); }
+        .bp { background: var(--red); color: var(--white); }
+        .bp:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(192,57,43,.25); }
+        .bg { background: transparent; color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.15); padding: 13px 27px; }
+        .bg:hover { border-color: rgba(255,255,255,.4); color: var(--white); }
+        .bridge .hm { font-family: var(--body); font-size: .75rem; color: rgba(255,255,255,.3); margin-top: 18px; }
 
-/* ---------- BRIDGE (the door to Thomas) ---------- */
-.bridge{background:var(--navy);color:var(--paper);padding:clamp(56px,8vw,100px) 0;position:relative;overflow:hidden;}
-.bridge::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 85% 30%,rgba(201,162,75,.13),transparent 60%);pointer-events:none;}
-.bridge .wrap{position:relative;z-index:2;}
-.bridge .eyebrow{color:var(--gold-lt);}
-.bridge h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(28px,4.4vw,48px);line-height:1.08;margin-top:16px;max-width:20ch;}
-.bridge h3 .it{font-style:italic;color:var(--gold-lt);}
-.bridge p{font-size:16.5px;color:#C4D2DB;max-width:56ch;margin-top:22px;line-height:1.6;}
-.bridge-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;}
-.btn{
-  display:inline-flex;align-items:center;gap:9px;
-  font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:.08em;font-weight:500;
-  padding:15px 26px;border-radius:3px;transition:all .3s;
-}
-.btn-gold{background:var(--gold);color:var(--navy);}
-.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px);}
-.btn-ghost{border:1px solid rgba(201,162,75,.45);color:var(--gold-lt);}
-.btn-ghost:hover{border-color:var(--gold-lt);background:rgba(201,162,75,.08);}
+        /* ---- FOOTER ---- */
+        footer { background: var(--black); padding: 36px 0 24px; border-top: 1px solid rgba(255,255,255,.04); }
+        footer .fi3 { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; justify-content: space-between; align-items: center; }
+        footer .fb { font-family: var(--display); font-size: .95rem; font-weight: 600; color: var(--white); }
+        footer .fb em { color: var(--red); font-style: normal; }
+        footer .fc { font-family: var(--body); font-size: .72rem; color: rgba(255,255,255,.3); }
 
-/* ---------- FOOTER ---------- */
-.foot{background:var(--navy2);color:#9DB0BC;padding:44px 0;font-size:12px;}
-.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;}
-.foot .brand{font-family:'DM Mono',monospace;letter-spacing:.2em;color:var(--gold-lt);font-size:12px;}
-.foot .cols{display:flex;gap:28px;flex-wrap:wrap;}
-.foot a:hover{color:var(--gold-lt);}
-
-@media (max-width:600px){
-  .hero-meta{gap:26px;}
-  .sec-head{flex-direction:column;gap:6px;}
-  .sec-num{padding-top:0;}
-  .triad{gap:0;}
-  .triad .t{padding:0 12px;font-size:10.5px;}
-}
-@media (prefers-reduced-motion:reduce){
-  *{animation:none!important;transition:none!important;}
-  .card{opacity:1;transform:none;}
-  html{scroll-behavior:auto;}
-}
-</style>
+        @media (max-width: 1240px) and (min-width: 601px) {
+            .nl { gap: 11px; } .nl a { font-size: .68rem; letter-spacing: .03em; }
+            nav .lo { margin-right: 18px; font-size: 1.12rem; } .nl .cta-n { padding: 8px 12px; }
+        }
+        @media (max-width: 1080px) and (min-width: 601px) {
+            .nl { gap: 9px; } .nl a { font-size: .63rem; letter-spacing: .02em; }
+            nav .lo { margin-right: 14px; font-size: 1.05rem; } .nl .cta-n { padding: 7px 10px; } .ls { margin-left: 2px; }
+        }
+        @media (max-width: 600px) {
+            .nl { display: none; position: fixed; inset: 0; background: rgba(17,17,17,.98); backdrop-filter: blur(16px); flex-direction: column; justify-content: center; align-items: center; gap: 24px; z-index: 99; }
+            .nl.open { display: flex; } .nl a { font-size: 1rem; }
+            .nt { display: flex; z-index: 101; }
+            .sec-head { grid-template-columns: 1fr; gap: 6px; }
+            .sec-num { padding-top: 0; }
+            .bridge .ha { flex-direction: column; align-items: stretch; }
+            .btn { justify-content: center; }
+            section { padding: clamp(80px, 14vw, 160px) 0; }
+        }
+    </style>
 </head>
 <body>
+<nav role="navigation" aria-label="Hovednavigation" class="solid">
+    <div class="ni">
+        <a href="/" class="lo" aria-label="Friisnæs – Executive Coach, forside">Fr<em>ii</em>snæs</a>
+        <ul class="nl" id="nm" aria-label="Primær navigation">
+            <li><a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a></li>
+            <li><a href="/#format">Format</a></li>
+            <li><a href="/#om">Om</a></li>
+            <li><a href="vaerktoejer.html" class="active" data-da="Værktøjer" data-en="Tools">Værktøjer</a></li>
+            <li><a href="blog.html" data-da="Indsigter" data-en="Insights">Indsigter</a></li>
+            <li><a href="boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
+            <li><a href="/#kontakt" class="cta-n" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation">Book en 20-minutters samtale</a></li>
+            <li class="ls"><button onclick="setLang('da')" class="on" aria-label="Skift til dansk">DA</button><span aria-hidden="true">/</span><button onclick="setLang('en')" aria-label="Switch to English">EN</button></li>
+        </ul>
+        <button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+</nav>
 
-<!-- ===================== HERO ===================== -->
-<header class="hero">
-  <div class="wrap">
-    <svg class="starburst" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-      <g stroke="#DBB968" stroke-width="4" stroke-linecap="round">
-        <line x1="50" y1="8" x2="50" y2="92"/>
-        <line x1="8" y1="50" x2="92" y2="50"/>
-        <line x1="20" y1="20" x2="80" y2="80"/>
-        <line x1="80" y1="20" x2="20" y2="80"/>
-      </g>
-    </svg>
-    <div class="eyebrow">Ledelsesværktøjer · Thomas Friisnæs</div>
-    <h1>Værktøjer, du kan tage med <span class="it">ind i din egen ledelse.</span></h1>
-    <p class="lead">Et bibliotek af interaktive redskaber til den rejse, ledelse i virkeligheden er — fra den første lederrolle til de sværeste samtaler og de strategiske valg. Bygget på 20 års erfaring og mere end 15.000 coachingsamtaler.</p>
-    <div class="triad">
-      <span class="t">Karakter</span>
-      <span class="t">Disciplin</span>
-      <span class="t">Klarhed</span>
+<!-- HERO -->
+<header class="hero" id="top">
+    <div class="hc">
+        <p class="hl">Ledelsesværktøjer</p>
+        <h1 data-da="Værktøjer, du kan tage med ind i din <em>egen ledelse.</em>" data-en="Tools you can take into your <em>own leadership.</em>">Værktøjer, du kan tage med ind i din <em>egen ledelse.</em></h1>
+        <p class="hp" data-da="Et bibliotek af interaktive redskaber til den rejse, ledelse i virkeligheden er — fra den første lederrolle til de sværeste samtaler og de strategiske valg. Bygget på 22+ års erfaring og mere end 15.000 sessioner." data-en="A library of interactive tools for the journey leadership really is — from the first leadership role to the hardest conversations and the strategic choices. Built on 22+ years and more than 15,000 sessions.">Et bibliotek af interaktive redskaber til den rejse, ledelse i virkeligheden er — fra den første lederrolle til de sværeste samtaler og de strategiske valg. Bygget på 22+ års erfaring og mere end 15.000 sessioner.</p>
+        <div class="triad"><span>Karakter</span><span>Disciplin</span><span>Klarhed</span></div>
+        <div class="hs" aria-label="Nøgletal">
+            <div class="si"><div class="sn">15.000+</div><div class="sl" data-da="Sessioner" data-en="Sessions">Sessioner</div></div>
+            <div class="si"><div class="sn">22+</div><div class="sl" data-da="Års erfaring" data-en="Years experience">Års erfaring</div></div>
+            <div class="si"><div class="sn">15+</div><div class="sl" data-da="Værktøjer" data-en="Tools">Værktøjer</div></div>
+        </div>
     </div>
-    <div class="hero-meta">
-      <div class="m"><div class="n">15.000+</div><div class="l">coachingsamtaler</div></div>
-      <div class="m"><div class="n">20 år</div><div class="l">med ledere på øverste niveau</div></div>
-      <div class="m"><div class="n">15+</div><div class="l">værktøjer, klar til brug</div></div>
-    </div>
-  </div>
 </header>
 
-<!-- ===================== INTRO ===================== -->
+<!-- INTRO -->
 <section class="intro">
-  <div class="wrap">
-    <div class="eyebrow">Sådan bruger du biblioteket</div>
-    <h2>Ikke en samling filer. En <span class="it">vej</span> gennem det, ledelse kræver.</h2>
-    <p>Hvert værktøj står på egne ben — vælg det, der rammer din situation nu. Men de er ordnet efter den rejse, de fleste ledere faktisk går: fra ny i rollen, til at lede andre ledere, til at mestre samtalerne, dialogen og de strategiske valg. Alt kører i din browser. Intet sendes til en server. Du gemmer selv din rapport.</p>
-  </div>
+    <div class="c cw">
+        <div class="rv">
+            <p class="se" data-da="Sådan bruger du biblioteket" data-en="How to use the library">Sådan bruger du biblioteket</p>
+            <h2 data-da="Ikke en samling filer. En <em>vej</em> gennem det, ledelse kræver." data-en="Not a collection of files. A <em>path</em> through what leadership demands.">Ikke en samling filer. En <em>vej</em> gennem det, ledelse kræver.</h2>
+            <p data-da="Hvert værktøj står på egne ben — vælg det, der rammer din situation nu. Men de er ordnet efter den rejse, de fleste ledere faktisk går: fra ny i rollen, til at lede andre ledere, til at mestre samtalerne og de strategiske valg. Alt kører i din browser. Intet sendes til en server. Du gemmer selv din rapport." data-en="Each tool stands on its own — pick the one that fits your situation now. But they're arranged around the journey most leaders actually take: from new in the role, to leading other leaders, to mastering the conversations and the strategic choices. Everything runs in your browser. Nothing is sent to a server. You keep your own report.">Hvert værktøj står på egne ben — vælg det, der rammer din situation nu. Men de er ordnet efter den rejse, de fleste ledere faktisk går: fra ny i rollen, til at lede andre ledere, til at mestre samtalerne og de strategiske valg. Alt kører i din browser. Intet sendes til en server. Du gemmer selv din rapport.</p>
+        </div>
+    </div>
 </section>
 
-<!-- ===================== 01 · NY I LEDELSE ===================== -->
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">01</span>
-      <div>
-        <div class="sec-rule"></div>
-        <h3>Trin på lederrejsen</h3>
-        <p class="sub">Fra den første lederrolle til at lede andre ledere. Strukturerede forløb, der møder dig, hvor du er, og peger på det næste skridt.</p>
-      </div>
+<!-- 01 -->
+<section class="tools">
+    <div class="c cw">
+        <div class="sec-head rv">
+            <div class="sec-num">01</div>
+            <div>
+                <h3 data-da="Trin på lederrejsen" data-en="Steps on the leadership journey">Trin på lederrejsen</h3>
+                <p class="sub" data-da="Fra den første lederrolle til at lede andre ledere. Strukturerede forløb, der møder dig, hvor du er, og peger på det næste skridt." data-en="From the first leadership role to leading other leaders. Structured tools that meet you where you are and point to the next step.">Fra den første lederrolle til at lede andre ledere. Strukturerede forløb, der møder dig, hvor du er, og peger på det næste skridt.</p>
+            </div>
+        </div>
+        <div class="grid rv">
+            <a class="card" href="https://friisnaes.github.io/jeg-er-blevet-leder/">
+                <span class="step" data-da="Trin 1 · Ny leder" data-en="Step 1 · New leader">Trin 1 · Ny leder</span>
+                <h4 data-da="Jeg er blevet leder" data-en="I've become a leader">Jeg er blevet leder</h4>
+                <p data-da="Overgangen fra kollega til leder — og de vaner, der skal bygges, før presset kommer." data-en="The shift from colleague to leader — and the habits to build before the pressure hits.">Overgangen fra kollega til leder — og de vaner, der skal bygges, før presset kommer.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Næste skridt: <b>Jeg er blevet leders leder</b>" data-en="Next step: <b>I lead other leaders</b>">Næste skridt: <b>Jeg er blevet leders leder</b></div>
+            </a>
+            <a class="card" href="https://friisnaes.github.io/jeg-er-blevet-leders-leder/">
+                <span class="step" data-da="Trin 2 · Leders leder" data-en="Step 2 · Leader of leaders">Trin 2 · Leders leder</span>
+                <h4 data-da="Jeg er blevet leders leder" data-en="I've become a leader of leaders">Jeg er blevet leders leder</h4>
+                <p data-da="At lede gennem andre ledere kræver en ny slags afkald. Hvad du skal give slip på, og hvad du skal tage på dig." data-en="Leading through other leaders demands a new kind of letting go. What to release, and what to take on.">At lede gennem andre ledere kræver en ny slags afkald. Hvad du skal give slip på, og hvad du skal tage på dig.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Næste skridt: <b>Sådan leder du din leder</b>" data-en="Next step: <b>How to lead your leader</b>">Næste skridt: <b>Sådan leder du din leder</b></div>
+            </a>
+            <a class="card" href="https://friisnaes.github.io/saadan-leder-du-din-leder/">
+                <span class="step" data-da="Trin 3 · Opad" data-en="Step 3 · Upward">Trin 3 · Opad</span>
+                <h4 data-da="Sådan leder du din leder" data-en="How to lead your leader">Sådan leder du din leder</h4>
+                <p data-da="Ledelse går også opad. At skabe klarhed, tillid og retning i forholdet til dem, du selv refererer til." data-en="Leadership also goes upward. Creating clarity, trust and direction with those you report to.">Ledelse går også opad. At skabe klarhed, tillid og retning i forholdet til dem, du selv refererer til.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Byg videre med: <b>Den svære samtale</b>" data-en="Build on: <b>The difficult conversation</b>">Byg videre med: <b>Den svære samtale</b></div>
+            </a>
+        </div>
     </div>
-    <div class="grid">
-
-      <a class="card" href="https://friisnaes.github.io/jeg-er-blevet-leder/">
-        <div class="step">Trin 1 · Ny leder</div>
-        <h4>Jeg er blevet leder</h4>
-        <p>Overgangen fra kollega til leder — og de vaner, der skal bygges, før presset kommer.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Næste skridt: <b>Jeg er blevet leders leder</b></div>
-      </a>
-
-      <a class="card" href="https://friisnaes.github.io/jeg-er-blevet-leders-leder/">
-        <div class="step">Trin 2 · Leders leder</div>
-        <h4>Jeg er blevet leders leder</h4>
-        <p>At lede gennem andre ledere kræver en ny slags afkald. Hvad du skal give slip på, og hvad du skal tage på dig.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Næste skridt: <b>Sådan leder du din leder</b></div>
-      </a>
-
-      <a class="card" href="https://friisnaes.github.io/saadan-leder-du-din-leder/">
-        <div class="step">Trin 3 · Opad</div>
-        <h4>Sådan leder du din leder</h4>
-        <p>Ledelse går også opad. At skabe klarhed, tillid og retning i forholdet til dem, du selv refererer til.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Byg videre med: <b>Den svære samtale</b></div>
-      </a>
-
-    </div>
-  </div>
 </section>
 
-<!-- ===================== 02 · SAMTALEN ===================== -->
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">02</span>
-      <div>
-        <div class="sec-rule"></div>
-        <h3>Samtalen som ledelsesredskab</h3>
-        <p class="sub">Der, hvor ledelse afgøres: i dialogen. Redskaber til de samtaler, der er svære, vigtige eller begge dele.</p>
-      </div>
+<!-- 02 -->
+<section class="tools">
+    <div class="c cw">
+        <div class="sec-head rv">
+            <div class="sec-num">02</div>
+            <div>
+                <h3 data-da="Samtalen som ledelsesredskab" data-en="The conversation as a leadership tool">Samtalen som ledelsesredskab</h3>
+                <p class="sub" data-da="Der, hvor ledelse afgøres: i dialogen. Redskaber til de samtaler, der er svære, vigtige eller begge dele." data-en="Where leadership is decided: in dialogue. Tools for the conversations that are difficult, important, or both.">Der, hvor ledelse afgøres: i dialogen. Redskaber til de samtaler, der er svære, vigtige eller begge dele.</p>
+            </div>
+        </div>
+        <div class="grid rv">
+            <a class="card" href="https://friisnaes.github.io/den-svaere-samtale/">
+                <span class="step" data-da="Samtale" data-en="Conversation">Samtale</span>
+                <h4 data-da="Den svære samtale" data-en="The difficult conversation">Den svære samtale</h4>
+                <p data-da="Forbered, gennemfør og lær af den samtale, du helst ville undgå — så du bevarer både relation og retning." data-en="Prepare, hold and learn from the conversation you'd rather avoid — keeping both the relationship and the direction.">Forbered, gennemfør og lær af den samtale, du helst ville undgå — så du bevarer både relation og retning.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Se også: <b>Den gode 1-on-1</b>" data-en="See also: <b>The good 1-on-1</b>">Se også: <b>Den gode 1-on-1</b></div>
+            </a>
+            <a class="card" href="https://friisnaes.github.io/den-gode-1-on-1/">
+                <span class="step" data-da="Samtale" data-en="Conversation">Samtale</span>
+                <h4 data-da="Den gode 1-on-1" data-en="The good 1-on-1">Den gode 1-on-1</h4>
+                <p data-da="Den tilbagevendende samtale, der bærer relationen — gjort til et redskab i stedet for et punkt på kalenderen." data-en="The recurring conversation that carries the relationship — made a tool rather than a calendar item.">Den tilbagevendende samtale, der bærer relationen — gjort til et redskab i stedet for et punkt på kalenderen.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Se også: <b>Kvaliteten i ledelsesdialoger</b>" data-en="See also: <b>Quality in leadership dialogue</b>">Se også: <b>Kvaliteten i ledelsesdialoger</b></div>
+            </a>
+            <a class="card" href="https://friisnaes.github.io/kvaliteten-i-ledelsesdialoger/">
+                <span class="step" data-da="Samtale" data-en="Conversation">Samtale</span>
+                <h4 data-da="Kvaliteten i ledelsesdialoger" data-en="Quality in leadership dialogue">Kvaliteten i ledelsesdialoger</h4>
+                <p data-da="Hæv niveauet i alle dine samtaler — en diagnose af, hvad der reelt skaber værdi mellem leder og medarbejder." data-en="Raise the level of every conversation — a diagnosis of what truly creates value between leader and employee.">Hæv niveauet i alle dine samtaler — en diagnose af, hvad der reelt skaber værdi mellem leder og medarbejder.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Byg videre med: <b>MUS-forløbet</b>" data-en="Build on: <b>The appraisal cycle</b>">Byg videre med: <b>MUS-forløbet</b></div>
+            </a>
+        </div>
     </div>
-    <div class="grid">
-
-      <a class="card" href="https://friisnaes.github.io/den-svaere-samtale/">
-        <div class="step">Samtale</div>
-        <h4>Den svære samtale</h4>
-        <p>Forbered, gennemfør og lær af den samtale, du helst ville undgå — struktureret, så du bevarer både relation og retning.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Se også: <b>Den gode 1-on-1</b></div>
-      </a>
-
-      <a class="card" href="https://friisnaes.github.io/den-gode-1-on-1/">
-        <div class="step">Samtale</div>
-        <h4>Den gode 1-on-1</h4>
-        <p>Den tilbagevendende samtale, der bærer relationen — gjort til et redskab i stedet for et punkt på kalenderen.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Se også: <b>Kvaliteten i ledelsesdialoger</b></div>
-      </a>
-
-      <a class="card" href="https://friisnaes.github.io/kvaliteten-i-ledelsesdialoger/">
-        <div class="step">Samtale</div>
-        <h4>Kvaliteten i ledelsesdialoger</h4>
-        <p>Hæv niveauet i alle dine samtaler — en diagnose af, hvad der reelt skaber værdi i dialogen mellem leder og medarbejder.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Byg videre med: <b>MUS-forløbet</b></div>
-      </a>
-
-    </div>
-  </div>
 </section>
 
-<!-- ===================== 03 · MUS ===================== -->
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">03</span>
-      <div>
-        <div class="sec-rule"></div>
-        <h3>MUS — fra pligt til værdi</h3>
-        <p class="sub">Den årlige samtale, som de fleste gør forkert. To sider af samme bord, så både leder og medarbejder møder forberedt op.</p>
-      </div>
+<!-- 03 -->
+<section class="tools">
+    <div class="c cw">
+        <div class="sec-head rv">
+            <div class="sec-num">03</div>
+            <div>
+                <h3 data-da="MUS — fra pligt til værdi" data-en="Appraisals — from duty to value">MUS — fra pligt til værdi</h3>
+                <p class="sub" data-da="Den årlige samtale, som de fleste gør forkert. To sider af samme bord, så både leder og medarbejder møder forberedt op." data-en="The annual conversation most get wrong. Two sides of the same table, so both leader and employee arrive prepared.">Den årlige samtale, som de fleste gør forkert. To sider af samme bord, så både leder og medarbejder møder forberedt op.</p>
+            </div>
+        </div>
+        <div class="grid rv">
+            <a class="card" href="https://friisnaes.github.io/den-gode-MUS-leder/">
+                <span class="step" data-da="MUS · Leder" data-en="Appraisal · Leader">MUS · Leder</span>
+                <h4 data-da="Den gode MUS — leder" data-en="The good appraisal — leader">Den gode MUS — leder</h4>
+                <p data-da="Forbered og før medarbejderudviklingssamtalen, så den skaber retning frem for at afvikle en formalitet." data-en="Prepare and lead the appraisal so it creates direction rather than clearing a formality.">Forbered og før medarbejderudviklingssamtalen, så den skaber retning frem for at afvikle en formalitet.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Parret med: <b>Den gode MUS — medarbejder</b>" data-en="Paired with: <b>The good appraisal — employee</b>">Parret med: <b>Den gode MUS — medarbejder</b></div>
+            </a>
+            <a class="card" href="https://friisnaes.github.io/den-gode-MUS-medarbejder/">
+                <span class="step" data-da="MUS · Medarbejder" data-en="Appraisal · Employee">MUS · Medarbejder</span>
+                <h4 data-da="Den gode MUS — medarbejder" data-en="The good appraisal — employee">Den gode MUS — medarbejder</h4>
+                <p data-da="Redskabet til den anden side af bordet — så medarbejderen kommer forberedt og gør samtalen til sin egen." data-en="The tool for the other side of the table — so the employee arrives prepared and owns the conversation.">Redskabet til den anden side af bordet — så medarbejderen kommer forberedt og gør samtalen til sin egen.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Se også: <b>Den gode 1-on-1</b>" data-en="See also: <b>The good 1-on-1</b>">Se også: <b>Den gode 1-on-1</b></div>
+            </a>
+        </div>
     </div>
-    <div class="grid">
-
-      <a class="card" href="https://friisnaes.github.io/den-gode-MUS-leder/">
-        <div class="step">MUS · Leder</div>
-        <h4>Den gode MUS — leder</h4>
-        <p>Forbered og før medarbejderudviklingssamtalen, så den skaber retning frem for at afvikle en formalitet.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Parret med: <b>Den gode MUS — medarbejder</b></div>
-      </a>
-
-      <a class="card" href="https://friisnaes.github.io/den-gode-MUS-medarbejder/">
-        <div class="step">MUS · Medarbejder</div>
-        <h4>Den gode MUS — medarbejder</h4>
-        <p>Redskabet til den anden side af bordet — så medarbejderen kommer forberedt og gør samtalen til sin egen.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Se også: <b>Den gode 1-on-1</b></div>
-      </a>
-
-    </div>
-  </div>
 </section>
 
-<!-- ===================== 04 · SELVINDSIGT ===================== -->
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">04</span>
-      <div>
-        <div class="sec-rule"></div>
-        <h3>Selvindsigt og blinde vinkler</h3>
-        <p class="sub">Ledelse begynder indefra. Redskaber til at se det, du ikke selv kan se — og til at træffe klarere beslutninger.</p>
-      </div>
+<!-- 04 -->
+<section class="tools">
+    <div class="c cw">
+        <div class="sec-head rv">
+            <div class="sec-num">04</div>
+            <div>
+                <h3 data-da="Selvindsigt og blinde vinkler" data-en="Self-insight and blind spots">Selvindsigt og blinde vinkler</h3>
+                <p class="sub" data-da="Ledelse begynder indefra. Redskaber til at se det, du ikke selv kan se — og til at træffe klarere beslutninger." data-en="Leadership begins from within. Tools to see what you can't see yourself — and to make clearer decisions.">Ledelse begynder indefra. Redskaber til at se det, du ikke selv kan se — og til at træffe klarere beslutninger.</p>
+            </div>
+        </div>
+        <div class="grid rv">
+            <a class="card" href="https://friisnaes.github.io/blindspot-ai/">
+                <span class="step" data-da="Selvindsigt" data-en="Self-insight">Selvindsigt</span>
+                <h4 data-da="Blinde vinkler" data-en="Blind spots">Blinde vinkler</h4>
+                <p data-da="Afdæk de mønstre, du ikke selv opdager — der hvor din adfærd står i vejen for din egen ledelse." data-en="Surface the patterns you don't notice — where your behaviour gets in the way of your own leadership.">Afdæk de mønstre, du ikke selv opdager — der hvor din adfærd står i vejen for din egen ledelse.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Se også: <b>Beslutninger uden bias</b>" data-en="See also: <b>Decisions without bias</b>">Se også: <b>Beslutninger uden bias</b></div>
+            </a>
+            <a class="card" href="https://friisnaes.github.io/unbiased-ish/">
+                <span class="step" data-da="Beslutning" data-en="Decision">Beslutning</span>
+                <h4 data-da="Beslutninger uden bias" data-en="Decisions without bias">Beslutninger uden bias</h4>
+                <p data-da="Træf klarere valg ved at gøre dine egne skævheder synlige, før de styrer beslutningen." data-en="Make clearer choices by surfacing your own biases before they steer the decision.">Træf klarere valg ved at gøre dine egne skævheder synlige, før de styrer beslutningen.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Byg videre med: <b>Strategi &amp; eksekvering</b>" data-en="Build on: <b>Strategy &amp; execution</b>">Byg videre med: <b>Strategi &amp; eksekvering</b></div>
+            </a>
+        </div>
     </div>
-    <div class="grid">
-
-      <a class="card" href="https://friisnaes.github.io/blindspot-ai/">
-        <div class="step">Selvindsigt</div>
-        <h4>Blinde vinkler</h4>
-        <p>Afdæk de mønstre, du ikke selv opdager — der hvor din adfærd står i vejen for din egen ledelse.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Se også: <b>Beslutninger uden bias</b></div>
-      </a>
-
-      <a class="card" href="https://friisnaes.github.io/unbiased-ish/">
-        <div class="step">Beslutning</div>
-        <h4>Beslutninger uden bias</h4>
-        <p>Træf klarere valg ved at gøre dine egne skævheder synlige, før de styrer beslutningen.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Byg videre med: <b>Strategi &amp; eksekvering</b></div>
-      </a>
-
-    </div>
-  </div>
 </section>
 
-<!-- ===================== 05 · STRATEGI ===================== -->
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">05</span>
-      <div>
-        <div class="sec-rule"></div>
-        <h3>Strategi &amp; eksekvering</h3>
-        <p class="sub">For direktionen og topledelsen. Redskaber, der forbinder strategi med den adfærd, der faktisk skal føre den ud i livet.</p>
-      </div>
+<!-- 05 -->
+<section class="tools">
+    <div class="c cw">
+        <div class="sec-head rv">
+            <div class="sec-num">05</div>
+            <div>
+                <h3 data-da="Strategi &amp; eksekvering" data-en="Strategy &amp; execution">Strategi &amp; eksekvering</h3>
+                <p class="sub" data-da="For direktionen og topledelsen. Redskaber, der forbinder strategi med den adfærd, der faktisk skal føre den ud i livet." data-en="For the executive team. Tools that connect strategy to the behaviour that actually carries it out.">For direktionen og topledelsen. Redskaber, der forbinder strategi med den adfærd, der faktisk skal føre den ud i livet.</p>
+            </div>
+        </div>
+        <div class="grid rv">
+            <a class="card" href="https://friisnaes.github.io/strategy-launcher/">
+                <span class="step" data-da="Direktion · System" data-en="Executive · System">Direktion · System</span>
+                <h4 data-da="Strategy Execution Observatory" data-en="Strategy Execution Observatory">Strategy Execution Observatory</h4>
+                <p data-da="Det samlede apparat til at måle og styrke eksekveringssundheden — momentum, friktion og strategisk gennemslag." data-en="The full apparatus for measuring and strengthening execution health — momentum, friction and strategic traction.">Det samlede apparat til at måle og styrke eksekveringssundheden — momentum, friktion og strategisk gennemslag.</p>
+                <span class="go" data-da="Åbn systemet" data-en="Open the system">Åbn systemet <span class="arr">→</span></span>
+                <div class="next" data-da="Kernemodul i <b>SXO™</b>" data-en="Core module in <b>SXO™</b>">Kernemodul i <b>SXO™</b></div>
+            </a>
+            <a class="card" href="https://friisnaes.github.io/strat-gap/">
+                <span class="step" data-da="Direktion · Diagnose" data-en="Executive · Diagnosis">Direktion · Diagnose</span>
+                <h4 data-da="Strategisk gab-analyse" data-en="Strategic gap analysis">Strategisk gab-analyse</h4>
+                <p data-da="Afstanden mellem det, strategien lover, og det, organisationen reelt gør — gjort målbar." data-en="The distance between what strategy promises and what the organisation actually does — made measurable.">Afstanden mellem det, strategien lover, og det, organisationen reelt gør — gjort målbar.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Se også: <b>Company Intelligence Observatory</b>" data-en="See also: <b>Company Intelligence Observatory</b>">Se også: <b>Company Intelligence Observatory</b></div>
+            </a>
+            <a class="card" href="https://friisnaes.github.io/company-intelligence-observatory/">
+                <span class="step" data-da="Direktion · Analyse" data-en="Executive · Analysis">Direktion · Analyse</span>
+                <h4 data-da="Company Intelligence Observatory" data-en="Company Intelligence Observatory">Company Intelligence Observatory</h4>
+                <p data-da="Den strukturerede virksomhedsdiagnose — hvor værdien skabes, hvor den låses, og hvor det næste træk ligger." data-en="The structured company diagnosis — where value is created, where it's locked, and where the next move lies.">Den strukturerede virksomhedsdiagnose — hvor værdien skabes, hvor den låses, og hvor det næste træk ligger.</p>
+                <span class="go" data-da="Åbn værktøjet" data-en="Open the tool">Åbn værktøjet <span class="arr">→</span></span>
+                <div class="next" data-da="Byg videre med: <b>Strategy Execution Observatory</b>" data-en="Build on: <b>Strategy Execution Observatory</b>">Byg videre med: <b>Strategy Execution Observatory</b></div>
+            </a>
+        </div>
     </div>
-    <div class="grid">
-
-      <a class="card" href="https://friisnaes.github.io/strategy-launcher/">
-        <div class="step">Direktion · System</div>
-        <h4>Strategy Execution Observatory</h4>
-        <p>Det samlede apparat til at måle og styrke eksekveringssundheden — momentum, friktion og strategisk gennemslag.</p>
-        <span class="go">Åbn systemet <span class="arr">→</span></span>
-        <div class="next">Kernemodul i <b>SXO™</b></div>
-      </a>
-
-      <a class="card" href="https://friisnaes.github.io/strat-gap/">
-        <div class="step">Direktion · Diagnose</div>
-        <h4>Strategisk gab-analyse</h4>
-        <p>Afstanden mellem det, strategien lover, og det, organisationen reelt gør — gjort målbar.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Se også: <b>Company Intelligence Observatory</b></div>
-      </a>
-
-      <a class="card" href="https://friisnaes.github.io/company-intelligence-observatory/">
-        <div class="step">Direktion · Analyse</div>
-        <h4>Company Intelligence Observatory</h4>
-        <p>Den strukturerede virksomhedsdiagnose — hvor værdien skabes, hvor den låses, og hvor det næste træk ligger.</p>
-        <span class="go">Åbn værktøjet <span class="arr">→</span></span>
-        <div class="next">Byg videre med: <b>Strategy Execution Observatory</b></div>
-      </a>
-
-    </div>
-  </div>
 </section>
 
-<!-- ===================== BRIDGE ===================== -->
+<!-- BRIDGE -->
 <section class="bridge">
-  <div class="wrap">
-    <div class="eyebrow">Bag værktøjerne</div>
-    <h3>Værktøjerne er et uddrag af den tænkning, jeg arbejder med <span class="it">1:1.</span></h3>
-    <p>Hvert redskab her er destilleret fra arbejdet med ledere på øverste niveau. Vil du prøve tænkningen på din egen situation — i et rum, hvor det ikke er et værktøj, men en samtale — så står døren åben.</p>
-    <div class="bridge-actions">
-      <a class="btn btn-gold" href="https://friisnaes.com/#kontakt">Tag en samtale <span aria-hidden="true">→</span></a>
-      <a class="btn btn-ghost" href="https://friisnaes.com">Læs mere om Friisnæs</a>
+    <div class="c cw">
+        <div class="rv">
+            <p class="se" data-da="Bag værktøjerne" data-en="Behind the tools">Bag værktøjerne</p>
+            <h2 data-da="Værktøjerne er et uddrag af den tænkning, jeg arbejder med <em>1:1.</em>" data-en="The tools are an extract of the thinking I work with <em>1:1.</em>">Værktøjerne er et uddrag af den tænkning, jeg arbejder med <em>1:1.</em></h2>
+            <p data-da="Hvert redskab her er destilleret fra arbejdet med ledere på øverste niveau. Vil du prøve tænkningen på din egen situation — i et rum, hvor det ikke er et værktøj, men en samtale — så står døren åben." data-en="Each tool here is distilled from working with leaders at the top level. Want to try the thinking on your own situation — in a room where it's not a tool but a conversation — the door is open.">Hvert redskab her er destilleret fra arbejdet med ledere på øverste niveau. Vil du prøve tænkningen på din egen situation — i et rum, hvor det ikke er et værktøj, men en samtale — så står døren åben.</p>
+            <div class="ha">
+                <a href="/#kontakt" class="btn bp" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation">Book en 20-minutters samtale</a>
+                <a href="/" class="btn bg" data-da="Læs mere om Friisnæs" data-en="More about Friisnæs">Læs mere om Friisnæs</a>
+            </div>
+            <p class="hm" data-da="20 minutter. Ét problem. Én plan. Ingen salgsteater." data-en="20 minutes. One problem. One plan. No sales theater.">20 minutter. Ét problem. Én plan. Ingen salgsteater.</p>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
-<footer class="foot">
-  <div class="wrap">
-    <div class="brand">FRIISNÆS · KARAKTER · DISCIPLIN · KLARHED</div>
-    <div class="cols">
-      <a href="https://friisnaes.com">friisnaes.com</a>
-      <a href="https://eq-profile.com">eq-profile.com</a>
-      <a href="https://friisnaes.com/boeger.html">Bøger</a>
+<footer role="contentinfo">
+    <div class="fi3">
+        <div class="fb">Fr<em>ii</em>snæs</div>
+        <div class="fc">&copy; 2026 Friisnæs. Alle rettigheder forbeholdes.</div>
     </div>
-  </div>
 </footer>
 
 <script>
-// Reveal-on-scroll — discreet, respects reduced motion
 (function(){
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.querySelectorAll('.card').forEach(c=>c.classList.add('in'));
-    return;
-  }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        var cards = Array.from(e.target.querySelectorAll('.card'));
-        cards.forEach(function(c,i){ setTimeout(function(){ c.classList.add('in'); }, i*70); });
-        io.unobserve(e.target);
-      }
+  var cl='da';
+  window.setLang=function(l){
+    cl=l;document.documentElement.lang=l;
+    document.querySelectorAll('[data-da][data-en]').forEach(function(e){
+      if(e.tagName!=='INPUT'&&e.tagName!=='TEXTAREA'&&e.tagName!=='SELECT')
+        e.innerHTML=e.getAttribute('data-'+l);
     });
-  },{threshold:.12});
-  document.querySelectorAll('.section .grid').forEach(function(g){ io.observe(g); });
+    document.querySelectorAll('.ls button').forEach(function(b){
+      b.classList.toggle('on',b.textContent===l.toUpperCase());
+    });
+    var u=new URL(location);
+    l==='da'?u.searchParams.delete('lang'):u.searchParams.set('lang',l);
+    history.replaceState(null,'',u);
+  };
+  if(new URLSearchParams(location.search).get('lang')==='en') setLang('en');
+  var tg=document.getElementById('nt'),mn=document.getElementById('nm');
+  tg.addEventListener('click',function(){
+    var o=mn.classList.toggle('open');
+    tg.classList.toggle('act');
+    tg.setAttribute('aria-expanded',o);
+    document.body.style.overflow=o?'hidden':'';
+  });
+  mn.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      mn.classList.remove('open');
+      tg.classList.remove('act');
+      tg.setAttribute('aria-expanded','false');
+      document.body.style.overflow='';
+    });
+  });
+  if('IntersectionObserver' in window){
+    var ob=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('vis');ob.unobserve(e.target);}
+      });
+    },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rv').forEach(function(e){ob.observe(e);});
+  } else {
+    document.querySelectorAll('.rv').forEach(function(e){e.classList.add('vis');});
+  }
 })();
 </script>
-
 </body>
 </html>
