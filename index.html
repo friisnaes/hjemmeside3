@@ -77,6 +77,14 @@
         .nl a:hover { color: var(--white); }
         .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 15px; font-weight: 600; white-space: nowrap; }
         .nl .cta-n:hover { background: var(--red-hover); }
+        /* Dropdown: Indsigter */
+        .nd { position: relative; }
+        .nd-t .nd-c { font-size: .6rem; margin-left: 3px; opacity: .6; transition: transform .3s var(--ease); display: inline-block; }
+        .nd:hover .nd-t .nd-c, .nd:focus-within .nd-t .nd-c { transform: rotate(180deg); }
+        .nd-m { list-style: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 190px; background: rgba(17,17,17,.98); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.08); padding: 8px 0; opacity: 0; visibility: hidden; transition: all .3s var(--ease); }
+        .nd:hover .nd-m, .nd:focus-within .nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); }
+        .nd-m li a { display: block; padding: 10px 20px; font-size: .72rem !important; color: rgba(255,255,255,.6); white-space: nowrap; letter-spacing: .04em; text-transform: uppercase; }
+        .nd-m li a:hover { color: var(--white); background: rgba(255,255,255,.04); }
         .ls { display: flex; gap: 3px; margin-left: 4px; }
         .ls button { background: none; border: 1px solid transparent; color: rgba(255,255,255,.35); font-family: var(--body); font-size: .65rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 3px 6px; cursor: pointer; transition: all .3s; border-radius: 2px; }
         .ls button.on { color: var(--red); border-color: var(--red); }
@@ -233,6 +241,10 @@
         @media (max-width: 600px) {
             .nl { display: none; position: fixed; inset: 0; background: rgba(17,17,17,.98); backdrop-filter: blur(16px); flex-direction: column; justify-content: center; align-items: center; gap: 24px; z-index: 99; }
             .nl.open { display: flex; }
+            .nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; backdrop-filter: none; padding: 8px 0 0; min-width: 0; text-align: center; }
+            .nd:hover .nd-m, .nd:focus-within .nd-m { transform: none; }
+            .nd-m li a { padding: 8px 0; font-size: .85rem !important; color: rgba(255,255,255,.45); }
+            .nd-t .nd-c { display: none; }
             .nl a { font-size: 1rem; }
             .nt { display: flex; z-index: 101; }
             .hero .ha { flex-direction: column; align-items: stretch; }
@@ -251,8 +263,14 @@
             <li><a href="#format">Format</a></li>
             <li><a href="#om">Om</a></li>
             <li><a href="testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
-            <li><a href="blog.html" data-da="Indsigter" data-en="Insights">Indsigter</a></li>
-            <li><a href="library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
+            <li class="nd">
+                <a href="blog.html" class="nd-t" data-da="Indsigter" data-en="Insights" aria-haspopup="true" aria-expanded="false">Indsigter <span class="nd-c" aria-hidden="true">&#9662;</span></a>
+                <ul class="nd-m">
+                    <li><a href="blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a></li>
+                    <li><a href="library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
+                    <li><a href="vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a></li>
+                </ul>
+            </li>
             <li><a href="boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
             <li><a href="#kontakt" class="cta-n" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation" aria-label="Book en 20-minutters strategisk samtale">Book en 20-minutters samtale</a></li>
             <li class="ls"><button onclick="setLang('da')" class="on" aria-label="Skift til dansk">DA</button><span aria-hidden="true">/</span><button onclick="setLang('en')" aria-label="Switch to English">EN</button></li>
