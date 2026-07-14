@@ -142,7 +142,22 @@
             .series-banner .inner { flex-direction: column; gap: 4px; }
             footer .fi3 { flex-direction: column; gap: 10px; text-align: center; }
         }
-    </style>
+    
+        /* Dropdown: Indsigter */
+        .nd { position: relative; }
+        .nd-t .nd-c { font-size: .6rem; margin-left: 3px; opacity: .6; transition: transform .3s ease; display: inline-block; }
+        .nd:hover .nd-t .nd-c, .nd:focus-within .nd-t .nd-c { transform: rotate(180deg); }
+        .nd-m { list-style: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 190px; background: rgba(17,17,17,.98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.08); padding: 8px 0; opacity: 0; visibility: hidden; transition: all .3s ease; z-index: 200; }
+        .nd:hover .nd-m, .nd:focus-within .nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); }
+        .nd-m li a { display: block; padding: 10px 20px; font-size: .72rem !important; color: rgba(255,255,255,.6); white-space: nowrap; letter-spacing: .04em; text-transform: uppercase; }
+        .nd-m li a:hover { color: #fff; background: rgba(255,255,255,.04); }
+        @media (max-width: 600px) {
+            .nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 8px 0 0; min-width: 0; text-align: center; }
+            .nd:hover .nd-m, .nd:focus-within .nd-m { transform: none; }
+            .nd-m li a { padding: 8px 0; font-size: .85rem !important; color: rgba(255,255,255,.45); }
+            .nd-t .nd-c { display: none; }
+        }
+</style>
 </head>
 <body>
 <nav role="navigation" aria-label="Hovednavigation">
@@ -153,8 +168,14 @@
             <li><a href="/#format">Format</a></li>
             <li><a href="/#om">Om</a></li>
             <li><a href="testimonials.html">Klienter</a></li>
-            <li><a href="blog.html" style="color:#fff">Indsigter</a></li>
-            <li><a href="library.html">Executive Library</a></li>
+            <li class="nd">
+                <a href="blog.html" class="nd-t" style="color:#fff" aria-haspopup="true" aria-expanded="false">Indsigter <span class="nd-c" aria-hidden="true">&#9662;</span></a>
+                <ul class="nd-m">
+                    <li><a href="blog.html">Blogindlæg</a></li>
+                    <li><a href="library.html">Executive Library</a></li>
+                    <li><a href="vaerktoejer.html">Værktøjer</a></li>
+                </ul>
+            </li>
             <li><a href="boeger.html">Bøger</a></li>
             <li><a href="/#kontakt" class="cta-n">Book en 20-minutters samtale</a></li>
         </ul>
