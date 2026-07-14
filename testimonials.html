@@ -76,18 +76,42 @@
             .refs{grid-template-columns:repeat(2,1fr)}.foo .fi3{flex-direction:column;gap:12px;text-align:center}
         }
         @media(max-width:480px){.refs{grid-template-columns:1fr}}
-    </style>
+    
+        /* Dropdown: Indsigter */
+        .nd { position: relative; }
+        .nd-t .nd-c { font-size: .6rem; margin-left: 3px; opacity: .6; transition: transform .3s ease; display: inline-block; }
+        .nd:hover .nd-t .nd-c, .nd:focus-within .nd-t .nd-c { transform: rotate(180deg); }
+        .nd-m { list-style: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 190px; background: rgba(17,17,17,.98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.08); padding: 8px 0; opacity: 0; visibility: hidden; transition: all .3s ease; z-index: 200; }
+        .nd:hover .nd-m, .nd:focus-within .nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); }
+        .nd-m li a { display: block; padding: 10px 20px; font-size: .72rem !important; color: rgba(255,255,255,.6); white-space: nowrap; letter-spacing: .04em; text-transform: uppercase; }
+        .nd-m li a:hover { color: #fff; background: rgba(255,255,255,.04); }
+        @media (max-width: 600px) {
+            .nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 8px 0 0; min-width: 0; text-align: center; }
+            .nd:hover .nd-m, .nd:focus-within .nd-m { transform: none; }
+            .nd-m li a { padding: 8px 0; font-size: .85rem !important; color: rgba(255,255,255,.45); }
+            .nd-t .nd-c { display: none; }
+        }
+</style>
 </head>
 <body>
 <nav class="nav"><div class="ni">
     <a href="index.html" class="lo">Fr<i>ii</i>snæs</a>
-    <ul class="nl" id="nm">
-        <li><a href="index.html" data-da="Forside" data-en="Home">Forside</a></li>
-        <li><a href="seg.html" data-da="SEG" data-en="SEG">SEG</a></li>
-        <li><a href="blog.html" data-da="Indsigter" data-en="Insights">Indsigter</a></li>
-        <li><a href="library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
-        <li><a href="index.html#kontakt" class="cta-l" data-da="Book 20 min." data-en="Book 20 min.">Book 20 min.</a></li>
-        <li class="ls"><button onclick="setLang('da')" class="on">DA</button><span>/</span><button onclick="setLang('en')">EN</button></li>
+    <ul class="nl" id="nm" aria-label="Primær navigation">
+        <li><a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a></li>
+        <li><a href="/#format" data-da="Format" data-en="Format">Format</a></li>
+        <li><a href="/#om" data-da="Om" data-en="About">Om</a></li>
+        <li><a href="/testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
+        <li class="nd">
+            <a href="/blog.html" class="nd-t" data-da="Indsigter" data-en="Insights" aria-haspopup="true" aria-expanded="false">Indsigter <span class="nd-c" aria-hidden="true">&#9662;</span></a>
+            <ul class="nd-m">
+                <li><a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a></li>
+                <li><a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
+                <li><a href="/vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a></li>
+            </ul>
+        </li>
+        <li><a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
+        <li><a href="/#kontakt" class="cta-l" data-da="Book 20 min." data-en="Book 20 min.">Book 20 min.</a></li>
+        <li class="ls"><button onclick="setLang('da')" class="on" aria-label="Skift til dansk">DA</button><span aria-hidden="true">/</span><button onclick="setLang('en')" aria-label="Switch to English">EN</button></li>
     </ul>
     <button class="nt" id="nt" aria-label="Menu"><span></span><span></span><span></span></button>
 </div></nav>
