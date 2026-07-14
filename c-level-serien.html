@@ -283,6 +283,21 @@
   }
 
 
+
+  /* Indsigter dropdown (navy/gold site-nav) */
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(201,168,76,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 820px) {
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd:hover .nav-nd-m { transform: none; }
+    .nav-nd-c { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -297,8 +312,14 @@
       <a href="/#format">Format</a>
       <a href="/#om">Om</a>
       <a href="/testimonials.html">Klienter</a>
-      <a href="/blog.html">Indsigter</a>
-      <a href="/library.html" class="active">Executive Library</a>
+      <span class="nav-nd">
+        <a href="/blog.html" class="active nav-nd-t">Indsigter <span class="nav-nd-c" aria-hidden="true">&#9662;</span></a>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindl&aelig;g</a>
+          <a href="/library.html">Executive Library</a>
+          <a href="/vaerktoejer.html">V&aelig;rkt&oslash;jer</a>
+        </span>
+      </span>
       <a href="/boeger.html">B&oslash;ger</a>
       <a href="/#kontakt" class="nav-cta">Book en samtale</a>
     </div>
