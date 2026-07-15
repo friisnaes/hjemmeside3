@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="1.0.0">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<meta name="description" content="Få mere selvtillid — Karakter · Disciplin · Klarhed">
+<title>Selvtillid — Karakter · Disciplin · Klarhed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#111111;--navy2:#1a1a1a;--navy3:#222222;--navy4:#2b2b2b;
+  --blue:#c0392b;--blue2:#e74c3c;
+  --gold:#c0392b;--gold2:#e74c3c;--gdim:rgba(224,168,74,0.14);--gbrd:rgba(192,57,43,0.35);
+  --text:#E4EAF4;--text2:#8A9BB8;--text3:#4E6080;
+  --green:#4CAF82;--red:#E57373;--orange:#E5A048;--accent:#4A8EC2;
+  --brd:rgba(255,255,255,0.07);--brd2:rgba(255,255,255,0.13);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.65;min-height:100vh}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.2}
+button{font-family:'Outfit',sans-serif;cursor:pointer;transition:all .18s}
+input,textarea,select{font-family:'Outfit',sans-serif;font-size:14px;background:var(--navy3);border:1.5px solid var(--brd2);color:var(--text);border-radius:8px;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--blue2)}textarea{resize:vertical}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:var(--navy2)}::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:2px}
+.hidden{display:none!important}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+.fade{animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+#sc-client-login,#sc-admin-login{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(74,142,194,.12) 0%,transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(201,168,76,.05) 0%,transparent 50%),var(--navy);padding:32px 24px}
+.login-logo{text-align:center;margin-bottom:52px}
+.login-logo h1{font-size:38px;letter-spacing:.02em;color:var(--text)}
+.login-logo .tag{font-family:'Outfit';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.login-logo .sub2{font-size:13px;color:var(--text3);margin-top:6px;font-style:italic}
+.login-card{width:100%;max-width:400px;background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:32px}
+.login-card.gold{border-color:var(--gbrd)}
+.login-card h2{font-size:26px;margin-bottom:8px}
+.login-card h2.gold-text{color:var(--gold)}
+.login-card .sub{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.65}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.fg input{width:100%;padding:12px 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border:none;border-radius:8px;font-size:13px;font-weight:500}
+.btn-row{display:flex;gap:10px;margin-top:18px}
+.btn-primary{background:var(--blue);color:#fff;flex:1}.btn-primary:hover{background:var(--blue2)}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:600;flex:1}.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;border:1.5px solid var(--brd2);color:var(--text2)}.btn-ghost:hover{background:var(--navy3);color:var(--text)}
+.err{color:var(--red);font-size:12px;margin-top:8px}
+.gdpr-strip{margin-top:20px;padding:12px 14px;background:rgba(76,175,130,.07);border:1px solid rgba(76,175,130,.2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.7}
+.gdpr-strip strong{color:var(--green)}
+.admin-link{margin-top:28px;text-align:center}
+.admin-link a{font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--brd2);padding-bottom:1px}
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:14px;padding:0 24px;height:56px;background:rgba(12,24,41,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);flex-shrink:0;flex-wrap:wrap}
+.tb-brand{flex:1}.tb-brand .nm{font-family:'Playfair Display',Georgia,serif;font-size:16px;color:var(--text);font-weight:600}
+.tb-brand .sb{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.15em}
+.tb-btn{padding:6px 12px;background:transparent;border:1px solid var(--brd);border-radius:6px;color:var(--text3);font-size:12px}
+.tb-btn:hover{border-color:var(--brd2);color:var(--text2)}.tb-btn.gold{color:var(--gold);border-color:var(--gbrd)}
+.c-main{padding:32px 24px;max-width:960px;margin:0 auto;width:100%}
+.prog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px}
+.prog-header h1{font-size:32px}.prog-header .stat{font-size:13px;color:var(--text3)}
+.ack-box{background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:28px;margin-bottom:28px;text-align:center}
+.ack-box .ack-icon{font-size:42px;margin-bottom:12px}.ack-box h2{font-size:22px;margin-bottom:10px}
+.ack-box p{color:var(--text2);font-size:14px;max-width:640px;margin:0 auto;line-height:1.8}
+.velocity-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:20px;margin-bottom:24px}
+.velocity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.vg-item{text-align:center;padding:10px;background:var(--navy3);border-radius:8px}
+.vg-item .vn{font-size:22px;font-weight:600}.vg-item .vl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.mod-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:22px;cursor:pointer;transition:all .2s}
+.mod-card:hover{border-color:var(--brd2);transform:translateY(-2px)}
+.mod-card.locked{opacity:.45;cursor:default;pointer-events:none}
+.mod-card .mc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mod-card .mc-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff}
+.mod-card .mc-title{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:600;flex:1}
+.mod-card .mc-sub{font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:14px}
+.mod-card .mc-prog{height:4px;background:var(--navy4);border-radius:2px;overflow:hidden}
+.mod-card .mc-prog-fill{height:100%;border-radius:2px;transition:width .4s ease}
+.mod-card .mc-status{font-size:11px;margin-top:8px}
+.mc-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.mod-header{padding:28px 24px;border-bottom:1px solid var(--brd)}
+.mod-header h1{font-size:30px;margin-bottom:4px}.mod-header .mh-sub{font-size:13px;color:var(--text3)}
+.mod-tabs{display:flex;gap:0;border-bottom:1px solid var(--brd);padding:0 24px}
+.mod-tab{padding:12px 20px;font-size:13px;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.mod-tab:hover{color:var(--text2)}.mod-tab.active{color:var(--text);border-bottom-color:var(--gold)}
+.mod-content{padding:32px 24px;max-width:820px;margin:0 auto}
+.sources-box{border-left:3px solid var(--blue);padding:16px 20px;background:var(--navy2);border-radius:0 10px 10px 0;margin-bottom:24px}
+.src-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.src-item{font-size:12px;color:var(--text2);padding:3px 0}
+.why-mod-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:18px 22px;margin-bottom:24px}
+.why-mod-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:10px}
+.why-mod-text{font-size:14px;color:var(--text2);line-height:1.8}
+.learn-body{color:var(--text2);line-height:1.9;font-size:14.5px}
+.learn-body h3{color:var(--text);font-size:20px;margin:28px 0 14px}
+.learn-body p{margin-bottom:14px}
+.learn-body blockquote{border-left:3px solid var(--gold);padding:12px 18px;margin:18px 0;color:var(--text);font-style:italic;background:rgba(201,168,76,.04);border-radius:0 8px 8px 0}
+.learn-body ul,.learn-body ol{margin:12px 0 12px 24px;color:var(--text2)}.learn-body li{margin-bottom:6px}
+.learn-cta{text-align:center;margin-top:32px}
+.takeaways-box{background:rgba(76,175,130,.06);border:1px solid rgba(76,175,130,.15);border-radius:10px;padding:22px 26px;margin-top:28px}
+.tk-title{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;font-weight:600}
+.tk-item{font-size:14px;color:var(--text2);line-height:1.8;padding:6px 0;border-bottom:1px solid rgba(76,175,130,.08)}.tk-item:last-child{border:none}
+.q-progress{position:sticky;top:56px;z-index:50;background:var(--navy2);border-bottom:1px solid var(--brd);padding:10px 24px;display:flex;align-items:center;gap:14px}
+.qp-bar{flex:1;height:6px;background:var(--navy4);border-radius:3px;overflow:hidden}
+.qp-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease}
+.qp-cnt{font-size:12px;color:var(--text3);min-width:50px;text-align:right}
+.q-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:18px}
+.q-card .qlabel{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.q-card .qtext{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.q-card textarea{width:100%;min-height:100px;padding:14px}
+.q-card .scale-row{display:flex;gap:6px;flex-wrap:wrap}
+.q-card .scale-btn{padding:8px 14px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text3);font-size:13px;min-width:40px;text-align:center}
+.q-card .scale-btn.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.q-card .cbtn{padding:8px 16px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text2);font-size:13px;margin:3px}
+.q-card .cbtn.sel{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
+.btn-save{display:block;width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;margin-top:12px}
+.btn-save:hover{background:var(--blue2)}
+.refl-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:22px;margin-bottom:16px}
+.refl-card h4{font-size:16px;margin-bottom:12px}.refl-card label{font-size:12px;color:var(--text3);display:block;margin-bottom:4px;margin-top:10px}
+.refl-card textarea{width:100%;min-height:70px;padding:10px;margin-bottom:4px}
+.refl-card select{padding:8px 12px;margin-bottom:4px;width:100%}
+.radar-wrap{display:flex;justify-content:center;margin:16px 0}
+.radar-wrap svg{max-width:340px}
+.admin-wrap{display:flex;min-height:100vh}
+.admin-side{width:260px;background:var(--navy2);border-right:1px solid var(--brd);padding:20px;flex-shrink:0;overflow-y:auto}
+.admin-main{flex:1;padding:28px;overflow-y:auto}
+.as-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin-bottom:20px}
+.as-nav{list-style:none}.as-nav li{padding:10px 14px;border-radius:8px;font-size:13px;color:var(--text3);cursor:pointer;margin-bottom:4px}
+.as-nav li:hover{background:var(--navy3);color:var(--text2)}
+.as-nav li.active{background:var(--navy3);color:var(--gold);border-left:3px solid var(--gold)}
+.aclient-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:16px;margin-bottom:10px;cursor:pointer}
+.aclient-card:hover{border-color:var(--brd2)}.aclient-card.sel{border-color:var(--gold)}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.astat{background:var(--navy3);border-radius:8px;padding:14px;text-align:center}
+.astat .av{font-size:24px;font-weight:600}.astat .al{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.ai-box{background:var(--navy3);border:1px solid var(--gbrd);border-radius:10px;padding:20px;margin-top:16px}
+.ai-box h3{color:var(--gold);font-size:18px;margin-bottom:12px}
+.ai-result{white-space:pre-wrap;font-size:13px;color:var(--text2);line-height:1.8;max-height:500px;overflow-y:auto}
+.save-feedback{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;z-index:600;animation:fadeIn .3s ease;pointer-events:none}
+.info-container{max-width:820px;margin:0 auto;padding:40px 24px}
+.info-section{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px;margin-bottom:20px}
+.info-section h2{font-size:22px;margin-bottom:14px;color:var(--gold)}
+.info-section p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:10px}
+@media(max-width:900px){.topbar{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px}.tb-brand{width:100%}.prog-header{flex-direction:column}.mods-grid{grid-template-columns:1fr}.admin-side{width:200px}}
+@media(max-width:640px){.login-logo h1{font-size:26px}.astats{grid-template-columns:1fr 1fr}.velocity-grid{grid-template-columns:1fr 1fr}.mod-content{padding:24px 16px}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+<body>
+<!-- CLIENT LOGIN -->
+<div id="sc-client-login" class="screen active">
+  <div class="login-logo">
+    <h1>Få mere selvtillid</h1>
+    <div class="tag">Karakter · Disciplin · Klarhed</div>
+    <div class="sub2">Kan du dette — når det virkelig gælder?</div>
+  </div>
+  <div class="login-card">
+    <h2>Klientadgang</h2>
+    <div class="sub">5 moduler. 30 refleksioner. Fra tøven til handling — din evne til at handle kompetent, selv under usikkerhed.</div>
+    <div class="fg"><label>Dit fulde navn</label><input type="text" id="cl-name" placeholder="Fornavn Efternavn" onkeydown="if(event.key==='Enter')doClientLogin()"></div>
+    <div class="btn-row"><button class="btn btn-primary" onclick="doClientLogin()">Start forløb</button></div>
+    <div id="cl-err" class="err hidden"></div>
+    <div class="gdpr-strip">
+      <strong>🔒 GDPR:</strong> Alle besvarelser gemmes udelukkende lokalt på din enhed.
+      <div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+        <input type="checkbox" id="gdpr-consent" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">
+        <label for="gdpr-consent" style="font-size:12px;color:var(--text2);cursor:pointer;line-height:1.5">Jeg accepterer, at mine besvarelser gemmes lokalt.</label>
+      </div>
+    </div>
+  </div>
+  <div class="admin-link"><a href="?admin">Admin-adgang →</a></div>
+</div>
+<!-- ADMIN LOGIN -->
+<div id="sc-admin-login" class="screen">
+  <div class="login-logo"><h1>Selvtillid</h1><div class="tag">Admin · Thomas Friisnæs</div></div>
+  <div class="login-card gold">
+    <h2 class="gold-text">Admin</h2>
+    <div class="sub">Klientdata, AI-analyse og modulaktivering.</div>
+    <div class="fg"><label>Adgangskode</label><input type="password" id="al-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+    <div class="btn-row"><button class="btn btn-gold" onclick="doAdminLogin()">Log ind</button></div>
+    <div id="al-err" class="err hidden"></div>
+  </div>
+</div>
+<!-- CLIENT DASHBOARD -->
+<div id="sc-client" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm">Selvtillid</div><div class="sb" id="tb-name"></div></div>
+    <button class="tb-btn" onclick="showReadme()">📖 Guide</button>
+    <button class="tb-btn gold" onclick="exportClientJSON()">↓ JSON</button>
+    <button class="tb-btn" onclick="exportClientTXT()">↓ Tekst</button>
+    <button class="tb-btn" onclick="clientDeleteData()" style="color:var(--red)">🗑 Slet</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="c-main" id="client-dash"></div>
+</div>
+<!-- MODULE VIEW -->
+<div id="sc-module" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm" id="mod-title-bar"></div><div class="sb" id="mod-sub-bar"></div></div>
+    <button class="tb-btn" onclick="renderDash();show('client')">← Dashboard</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="mod-header" id="mod-header"></div>
+  <div class="mod-tabs" id="mod-tabs"></div>
+  <div id="tc-learn" class="mod-content"></div>
+  <div id="tc-quest" class="mod-content" style="display:none"></div>
+  <div id="tc-takeaways" class="mod-content" style="display:none"></div>
+  <div id="tc-journal" class="mod-content" style="display:none"></div>
+</div>
+<!-- ADMIN PANEL -->
+<div id="sc-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-side">
+      <div class="as-title">Admin Panel</div>
+      <ul class="as-nav">
+        <li class="active" onclick="setASection('ov')">📊 Oversigt</li>
+        <li onclick="setASection('clients')">👥 Klienter</li>
+        <li onclick="setASection('import')">📥 Import</li>
+        <li onclick="setASection('gdpr')">🔒 GDPR</li>
+      </ul>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--brd)"><button class="tb-btn" style="width:100%" onclick="logout()">Log ud</button></div>
+    </div>
+    <div class="admin-main">
+      <div id="asec-ov"></div>
+      <div id="asec-clients" style="display:none"></div>
+      <div id="asec-import" style="display:none"></div>
+      <div id="asec-gdpr" style="display:none"></div>
+    </div>
+  </div>
+</div>
+<!-- README -->
+<div id="sc-readme" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Guide — Selvtillid</div></div><button class="tb-btn" onclick="closeReadme()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Hvad er dette?</h2><p>Det mest handlingsorienterede forløb i porteføljen. 5 moduler der bygger din selvtillid — din tillid til at du kan handle kompetent, selv under usikkerhed. Baseret på Bandura, Dweck, Csikszentmihalyi, Ericsson og 20+ års coaching.</p></div>
+    <div class="info-section"><h2>Selvtillid vs. Selvværd</h2><p><strong>Selvtillid</strong> = hvad du kan → afhængigt af kompetence → bygningen<br><strong>Selvværd</strong> = hvem du er → uafhængigt af præstation → fundamentet<br><br>Selvtillid uden selvværd er et hus uden fundament. Men selvværd uden selvtillid er et fundament uden hus — du ved du er nok, men du handler ikke.</p></div>
+    <div class="info-section"><h2>Om platformen</h2><p><strong>Thomas Friisnæs</strong> — Personal Excellence Partner. 20+ års erfaring. 15.000+ coaching-sessioner.</p><p><strong>Kontakt:</strong> friisnaes@gmail.com | <strong>Version:</strong> 1.0.0</p></div>
+  </div>
+</div>
+<div id="save-fb" class="save-feedback hidden"></div>
+<script>
+const PLATFORM_VERSION='1.0.0',PLATFORM_NAME='Selvtillid',COACH_EMAIL='friisnaes@gmail.com';
+const KILLERS=['Undg\u00e5else','Overanalyse','Perfektionisme','Sammenligning','Komfortzonen'];
+const KCOLORS=['#E57373','#E5A048','#9B7ACC','#3A6BC2','#4E6080'];
+const DOMAINS=['Faglig','Ledelse','Kommunikation','Relationer','Nye situationer'];
+const DCOLORS=['#4A8EC2','#4CAF82','#C9A84C','#D4856A','#3A6BC2'];
+const LS={g(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(e){return null}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},d(k){try{localStorage.removeItem(k)}catch(e){}}};
+let S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+
+(function(){
+  try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch(e){document.body.innerHTML='<div style="padding:40px;text-align:center;color:#E57373"><h2>localStorage ikke tilg\u00e6ngelig</h2></div>';return}
+  if(location.search.includes('admin')){document.getElementById('sc-client-login').classList.remove('active');document.getElementById('sc-admin-login').classList.add('active')}
+})();
+
+function doClientLogin(){
+  const name=document.getElementById('cl-name').value.trim();
+  if(!name){showErr('cl-err','Indtast dit navn');return}
+  const consent=document.getElementById('gdpr-consent');
+  const clients=LS.g('st_clients')||[];
+  let c=clients.find(x=>x.name.toLowerCase()===name.toLowerCase());
+  if(!c){
+    if(!consent.checked){showErr('cl-err','Accept\u00e9r GDPR-betingelserne');return}
+    c={id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name,createdAt:new Date().toISOString(),gdprConsentAt:new Date().toISOString()};
+    LS.s('st_clients',[...clients,c]);
+  }
+  S.role='client';S.cId=c.id;S.cName=c.name;renderDash();show('client');
+}
+function doAdminLogin(){
+  if(document.getElementById('al-pw').value!=='karakter2024'){showErr('al-err','Forkert adgangskode');return}
+  S.role='admin';renderAdmin();show('admin');
+}
+function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden')}
+function logout(){
+  S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+  document.getElementById('cl-name').value='';document.getElementById('al-pw').value='';
+  ['cl-err','al-err'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  show(location.search.includes('admin')?'admin-login':'client-login');
+}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('sc-'+id).classList.add('active');window.scrollTo(0,0)}
+function showReadme(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('readme')}
+function closeReadme(){show(S.prevScreen||'client')}
+function showSaveFeedback(msg){const el=document.getElementById('save-fb');el.textContent=msg;el.classList.remove('hidden');setTimeout(()=>el.classList.add('hidden'),2200)}
+function getActiveMod(cid){return LS.g('st_active_'+cid)||1}
+function countAns(a){return Object.values(a||{}).filter(v=>v!==undefined&&v!==null&&v!=='').length}
+function getSTProfile(cid){return LS.g('st_profile_'+cid)||{}}
+
+// ══════════════════════════════════════════════════════════════════
+// SVG RADAR (pentagon for 5 domains / 5 killers)
+// ══════════════════════════════════════════════════════════════════
+function renderRadar(labels,scores,colors,size,maxVal){
+  size=size||320;maxVal=maxVal||10;const cx=size/2,cy=size/2,r=size/2-42,n=labels.length;
+  const angle=i=>((Math.PI*2*i)/n)-(Math.PI/2);
+  const pt=(i,v)=>{const a=angle(i);const d=r*(v/maxVal);return[cx+d*Math.cos(a),cy+d*Math.sin(a)]};
+  let svg=`<svg viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">`;
+  const rings=maxVal<=5?5:5;
+  for(let lv=1;lv<=rings;lv++){let pts=[];const val=maxVal*(lv/rings);for(let i=0;i<n;i++){const[x,y]=pt(i,val);pts.push(`${x},${y}`)}svg+=`<polygon points="${pts.join(' ')}" fill="none" stroke="rgba(255,255,255,${lv===rings?.12:.06})" stroke-width="1"/>`}
+  for(let i=0;i<n;i++){const[x,y]=pt(i,maxVal);svg+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,.06)" stroke-width="1"/>`}
+  if(scores.some(s=>s>0)){let pts=[];for(let i=0;i<n;i++){const[x,y]=pt(i,scores[i]||0);pts.push(`${x},${y}`)}svg+=`<polygon points="${pts.join(' ')}" fill="rgba(74,142,194,.15)" stroke="#4A8EC2" stroke-width="2"/>`;for(let i=0;i<n;i++){const[x,y]=pt(i,scores[i]||0);if(scores[i])svg+=`<circle cx="${x}" cy="${y}" r="4" fill="${colors[i]}" stroke="#111111" stroke-width="2"/>`}}
+  for(let i=0;i<n;i++){const a=angle(i);const lx=cx+(r+30)*Math.cos(a);const ly=cy+(r+30)*Math.sin(a);const anchor=Math.abs(Math.cos(a))<.15?'middle':Math.cos(a)>0?'start':'end';svg+=`<text x="${lx}" y="${ly}" text-anchor="${anchor}" dominant-baseline="middle" fill="${colors[i]}" font-size="9" font-family="Outfit,sans-serif">${labels[i]}</text>`}
+  svg+='</svg>';return svg;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// DASHBOARD
+// ══════════════════════════════════════════════════════════════════
+function renderDash(){
+  const el=document.getElementById('client-dash');
+  document.getElementById('tb-name').textContent=S.cName;
+  let totalAns=0,totalQ=0,completedMods=0;
+  const activeMod=getActiveMod(S.cId);
+  MODS.forEach(m=>{const d=LS.g('st_mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);totalAns+=a;totalQ+=m.qs.length;if(a>=m.qs.length)completedMods++});
+  const pct=totalQ?Math.round(totalAns/totalQ*100):0;
+  const sp=getSTProfile(S.cId);
+  const dScores=DOMAINS.map((_,i)=>sp['d'+i]||0);const hasDomains=dScores.some(s=>s>0);
+  const kScores=KILLERS.map((_,i)=>sp['k'+i]||0);const hasKillers=kScores.some(s=>s>0);
+  const challengeLog=(LS.g('st_challog_'+S.cId)||[]).length;
+
+  let ackIcon,ackTitle,ackBody;
+  if(completedMods>=5){ackIcon='\u26a1';ackTitle='Forl\u00f8bet gennemf\u00f8rt';ackBody='5 moduler. 30 refleksioner. Du har nu arkitekturen \u2014 et system for vedvarende selvtillid bygget p\u00e5 handling og evidens.<br><strong>N\u00e6ste skridt:</strong> Hold momentum. Book session med din coach.'}
+  else if(totalAns>0){ackIcon='\ud83d\ude80';ackTitle='Du er i gang';ackBody='Hver handling styrker din tillid til at du kan.'}
+  else{ackIcon='\ud83c\udfaf';ackTitle='Velkommen';ackBody='Selvtillid er din tillid til at du kan handle kompetent \u2014 ogs\u00e5 under usikkerhed. Det er bygningen ovenp\u00e5 selvv\u00e6rd, og den bygges af handling.'}
+
+  let h=`<div class="prog-header"><div><h1>F\u00e5 mere selvtillid</h1><div class="stat">${completedMods}/5 moduler \u00b7 ${totalAns}/${totalQ} svar \u00b7 ${pct}%</div></div></div>`;
+  h+=`<div class="ack-box fade"><div class="ack-icon">${ackIcon}</div><h2>${ackTitle}</h2><p>${ackBody}</p></div>`;
+
+  if(totalAns===0)h+=`<div style="background:rgba(74,142,194,.06);border:1px solid rgba(74,142,194,.15);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:28px"><h3 style="font-size:18px;color:var(--accent);margin-bottom:12px">Grundtesen</h3><p style="color:var(--text2);font-size:14px;line-height:1.85">Selvtillid og selvv\u00e6rd er ikke det samme. <strong>Selvv\u00e6rd er hvem du er. Selvtillid er hvad du kan.</strong> Selvv\u00e6rd genopbygges indefra. Selvtillid bygges af handling. Du kan ikke t\u00e6nke dig til selvtillid \u2014 du kan kun <em>handle</em> dig til den.</p></div>`;
+
+  if(hasDomains){
+    h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:8px">Fem dom\u00e6ner</h3><div class="radar-wrap">${renderRadar(DOMAINS,dScores,DCOLORS,320,10)}</div>`;
+    const maxI=dScores.indexOf(Math.max(...dScores));const minNz=dScores.filter(s=>s>0);const minI=minNz.length?dScores.indexOf(Math.min(...minNz)):-1;
+    if(dScores[maxI])h+=`<div style="text-align:center;font-size:13px;margin-top:8px"><span style="color:${DCOLORS[maxI]}">St\u00e6rkest: <strong>${DOMAINS[maxI]}</strong> (${dScores[maxI]})</span>${minI>=0&&minI!==maxI?` \u00b7 <span style="color:var(--text3)">Svagest: ${DOMAINS[minI]} (${dScores[minI]})</span>`:''}</div>`;
+    h+=`</div>`;
+  }
+
+  if(hasKillers){
+    h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:8px">De fem dr\u00e6bere</h3><div class="radar-wrap">${renderRadar(KILLERS,kScores,KCOLORS,280,5)}</div>`;
+    const maxK=kScores.indexOf(Math.max(...kScores));
+    if(kScores[maxK])h+=`<div style="text-align:center;font-size:13px;margin-top:8px;color:${KCOLORS[maxK]}">Prim\u00e6r dr\u00e6ber: <strong>${KILLERS[maxK]}</strong> (${kScores[maxK]}/5)</div>`;
+    h+=`</div>`;
+  }
+
+  h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:4px">Overblik</h3>
+    <div class="velocity-grid">
+      <div class="vg-item"><div class="vn">${completedMods}</div><div class="vl">Moduler</div></div>
+      <div class="vg-item"><div class="vn">${pct}%</div><div class="vl">Fremgang</div></div>
+      <div class="vg-item"><div class="vn">${challengeLog}</div><div class="vl">Challenges</div></div>
+      <div class="vg-item"><div class="vn">${hasDomains?Math.round(dScores.reduce((a,b)=>a+b,0)/5*10)+'%':'\u2013'}</div><div class="vl">Dom\u00e6ner</div></div>
+    </div></div>`;
+
+  h+='<div class="mods-grid">';
+  MODS.forEach(m=>{
+    const d=LS.g('st_mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);const tot=m.qs.length;const mpct=tot?Math.round(a/tot*100):0;
+    const isActive=m.id<=activeMod;const isDone=a>=tot;
+    let badge='';
+    if(!isActive)badge=`<span class="mc-badge" style="background:var(--navy4);color:var(--text3)">\ud83d\udd12 L\u00e5st</span>`;
+    else if(isDone)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">\u2713 Afsluttet</span>`;
+    else if(a>0)badge=`<span class="mc-badge" style="background:var(--gdim);color:var(--gold)">${a}/${tot}</span>`;
+    else badge=`<span class="mc-badge" style="background:rgba(192,57,43,.15);color:var(--blue2)">Klar</span>`;
+    h+=`<div class="mod-card fade ${isActive?'':'locked'}" ${isActive?`onclick="openMod(${m.id-1})"`:''}>
+      <div class="mc-top"><div class="mc-icon" style="background:${m.color}">${m.icon}</div><div class="mc-title">${m.title}</div></div>
+      <div class="mc-sub">${m.subtitle}</div>
+      <div class="mc-prog"><div class="mc-prog-fill" style="width:${mpct}%;background:${m.color}"></div></div>
+      <div class="mc-status">${badge}</div></div>`;
+  });
+  h+='</div>';el.innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// MODULE VIEW
+// ══════════════════════════════════════════════════════════════════
+function openMod(idx){
+  S.modIdx=idx;S.modTab='learn';const m=MODS[idx];
+  const d=LS.g('st_mod_'+S.cId+'_'+m.id);S.answers=d?.answers||{};
+  document.getElementById('mod-title-bar').textContent='Modul '+m.id+': '+m.title;
+  document.getElementById('mod-sub-bar').textContent=m.subtitle;
+  document.getElementById('mod-header').innerHTML=`<h1 style="color:${m.color}">Modul ${m.id}: ${m.title}</h1><div class="mh-sub">${m.subtitle}</div>`;
+  let tabs=`<div class="mod-tab active" id="tab-l" onclick="setTab('learn')">Indhold</div>`;
+  tabs+=`<div class="mod-tab" id="tab-q" onclick="setTab('questions')">Sp\u00f8rgsm\u00e5l (${countAns(S.answers)}/${m.qs.length})</div>`;
+  tabs+=`<div class="mod-tab" id="tab-t" onclick="setTab('takeaways')">Takeaways</div>`;
+  tabs+=`<div class="mod-tab" id="tab-j" onclick="setTab('journal')">\u00d8velser</div>`;
+  document.getElementById('mod-tabs').innerHTML=tabs;
+  renderLearn(m);renderQuestions(m);renderTakeaways(m);renderExercises(m);
+  setTab('learn');show('module');
+}
+function setTab(t){
+  S.modTab=t;document.querySelectorAll('.mod-tab').forEach(el=>el.classList.remove('active'));
+  ['learn','quest','takeaways','journal'].forEach(id=>document.getElementById('tc-'+id).style.display='none');
+  const map={learn:['tab-l','tc-learn'],questions:['tab-q','tc-quest'],takeaways:['tab-t','tc-takeaways'],journal:['tab-j','tc-journal']};
+  const m=map[t];if(m){document.getElementById(m[0])?.classList.add('active');document.getElementById(m[1]).style.display=''}
+}
+function renderLearn(m){
+  const src=m.sources.map(s=>`<div class="src-item">${s}</div>`).join('');
+  document.getElementById('tc-learn').innerHTML=`
+    <div class="sources-box" style="border-left-color:${m.color}"><div class="src-title">Forskningsgrundlag</div>${src}</div>
+    ${m.whyText?`<div class="why-mod-box"><div class="why-mod-label">Hvorfor dette modul er vigtigt</div><div class="why-mod-text">${m.whyText}</div></div>`:''}
+    <div class="learn-body">${m.learn}</div>
+    <div class="learn-cta"><button class="btn btn-primary" style="padding:12px 28px" onclick="setTab('questions')">G\u00e5 til refleksion \u2192</button></div>`;
+}
+function renderQuestions(m){
+  const ans=countAns(S.answers);const pct=Math.round(ans/m.qs.length*100);
+  let h=`<div class="q-progress"><div class="qp-bar"><div class="qp-fill" id="qp-fill" style="width:${pct}%"></div></div><div class="qp-cnt" id="qp-cnt">${ans}/${m.qs.length}</div></div>`;
+  m.qs.forEach((q,i)=>{
+    const val=S.answers[q.id]||'';
+    h+=`<div class="q-card fade" id="qc-${q.id}"><div class="qlabel">Sp\u00f8rgsm\u00e5l ${i+1} af ${m.qs.length}</div><div class="qtext">${q.l}</div>`;
+    if(q.type==='ta')h+=`<textarea placeholder="Skriv din refleksion..." oninput="setA('${q.id}',this.value)">${val}</textarea>`;
+    else if(q.type==='scale'){h+='<div class="scale-row">';for(let n=q.mn;n<=q.mx;n++)h+=`<button class="scale-btn ${val==n?'sel':''}" onclick="setScale('${q.id}',${n},${q.mn},${q.mx})">${n}</button>`;h+='</div>'}
+    else if(q.type==='choice'){h+='<div style="display:flex;flex-wrap:wrap;gap:4px">';q.opts.forEach(o=>h+=`<button class="cbtn ${val===o?'sel':''}" onclick="setChoice('${q.id}',this)">${o}</button>`);h+='</div>'}
+    h+='</div>';
+  });
+  h+=`<div style="padding:12px 0"><button class="btn-save" id="save-btn" onclick="saveMod()">Gem svar \u2713</button></div>`;
+  document.getElementById('tc-quest').innerHTML=h;
+}
+let _ast=null;
+function setA(id,v){S.answers[id]=v;updateQP();clearTimeout(_ast);_ast=setTimeout(()=>{doSave();showSaveFeedback('Auto-gemt \u2713')},2000)}
+function setScale(id,v,mn,mx){S.answers[id]=v;document.querySelectorAll(`#qc-${id} .scale-btn`).forEach((b,i)=>b.className='scale-btn'+((mn+i)===v?' sel':''));updateQP();doSave()}
+function setChoice(id,btn){const raw=btn.textContent.replace(/^\u2713 /,'');S.answers[id]=raw;document.querySelectorAll(`#qc-${id} .cbtn`).forEach(b=>{const sel=b.textContent.replace(/^\u2713 /,'')===raw;b.className='cbtn'+(sel?' sel':'');b.textContent=(sel?'\u2713 ':'')+b.textContent.replace(/^\u2713 /,'')});updateQP();doSave()}
+function updateQP(){const m=MODS[S.modIdx];const a=countAns(S.answers);const pct=Math.round(a/m.qs.length*100);const f=document.getElementById('qp-fill');if(f)f.style.width=pct+'%';const c=document.getElementById('qp-cnt');if(c)c.textContent=a+'/'+m.qs.length;const tq=document.getElementById('tab-q');if(tq)tq.textContent='Sp\u00f8rgsm\u00e5l ('+a+'/'+m.qs.length+')'}
+function doSave(){const m=MODS[S.modIdx];LS.s('st_mod_'+S.cId+'_'+m.id,{answers:S.answers,savedAt:new Date().toISOString(),clientId:S.cId,clientName:S.cName})}
+function saveMod(){doSave();const b=document.getElementById('save-btn');if(b){b.textContent='\u2713 Gemt!';b.style.background='var(--green)';setTimeout(()=>{b.style.background='';b.textContent='Gem svar \u2713'},2000)}}
+function renderTakeaways(m){let h='<div class="takeaways-box"><div class="tk-title">Vigtigste takeaways</div>';m.takeaways.forEach(t=>h+=`<div class="tk-item">\u2192 ${t}</div>`);h+='</div>';document.getElementById('tc-takeaways').innerHTML=h}
+
+// ══════════════════════════════════════════════════════════════════
+// REFLECTIVE EXERCISES
+// ══════════════════════════════════════════════════════════════════
+function renderExercises(m){
+  let h='<div style="margin-top:8px">';
+  const sp=getSTProfile(S.cId);
+
+  // SELVTILLIDS-JOURNAL (all modules)
+  const sj=LS.g('st_sjentry_'+S.cId+'_'+m.id)||{};
+  h+=`<div class="refl-card fade">
+    <h4>\ud83d\udcdd Selvtillids-Journal</h4>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Hvad handlede du p\u00e5 i dag?</p>
+    <label>Hvad handlede du p\u00e5 i dag \u2014 uanset st\u00f8rrelse?</label>
+    <textarea id="sj-action" placeholder="Beskiv handlingen \u2014 konkret og specifik...">${sj.action||''}</textarea>
+    <label>Hvad l\u00e6rte du?</label>
+    <textarea id="sj-learning" placeholder="Indsigt, overraskelse, evidens...">${sj.learning||''}</textarea>
+    <label>Selvtillid i handling i dag</label>
+    <div class="scale-row" id="sj-score-row" style="margin-bottom:8px">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button class="scale-btn ${sj.score==n?'sel':''}" onclick="setSJScore(${n})">${n}</button>`).join('')}</div>
+    <button class="btn btn-primary" style="margin-top:8px;padding:10px 20px" onclick="saveSJ(${m.id})">Gem journal</button>
+  </div>`;
+
+  // SELVTILLIDS-PROFIL: 5 Killers (mod 2+)
+  if(m.id>=2){
+    h+=`<div class="refl-card fade">
+      <h4>\u2620 De fem dr\u00e6bere</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Score 1-5: Hvor aktiv er denne dr\u00e6ber i dit liv?</p>`;
+    KILLERS.forEach((k,i)=>{
+      const val=sp['k'+i]||0;
+      h+=`<label style="color:${KCOLORS[i]};font-weight:600">${i+1}. ${k}</label>
+        <div class="scale-row" id="kl-${i}" style="margin-bottom:10px">${[1,2,3,4,5].map(n=>`<button class="scale-btn ${val==n?'sel':''}" onclick="setKL(${i},${n})">${n}</button>`).join('')}</div>`;
+    });
+    h+=`<button class="btn btn-primary" style="margin-top:8px;padding:10px 20px" onclick="showSaveFeedback('Dr\u00e6ber-profil gemt \u2713')">Gem profil</button>
+      <div id="kl-radar" style="margin-top:16px"></div></div>`;
+  }
+
+  // DOMAIN SCORES (mod 3+)
+  if(m.id>=3){
+    h+=`<div class="refl-card fade">
+      <h4>\ud83c\udfaf Fem dom\u00e6ner</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Score 1-10 p\u00e5 hvert dom\u00e6ne.</p>`;
+    DOMAINS.forEach((d,i)=>{
+      const val=sp['d'+i]||0;
+      h+=`<label style="color:${DCOLORS[i]};font-weight:600">${d}</label>
+        <div class="scale-row" id="dm-${i}" style="margin-bottom:10px">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button class="scale-btn ${val==n?'sel':''}" onclick="setDM(${i},${n})">${n}</button>`).join('')}</div>`;
+    });
+    h+=`<button class="btn btn-primary" style="margin-top:8px;padding:10px 20px" onclick="showSaveFeedback('Dom\u00e6ner gemt \u2713')">Gem dom\u00e6ner</button>
+      <div id="dm-radar" style="margin-top:16px"></div></div>`;
+  }
+
+  // CHALLENGE-TRACKER (mod 5+)
+  if(m.id>=5){
+    const cl=LS.g('st_challog_'+S.cId)||[];
+    h+=`<div class="refl-card fade">
+      <h4>\ud83d\udcaa Challenge-Tracker</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">12 ugers progressiv eksponering. Log hver challenge.</p>
+      <label>Hvad var din challenge?</label>
+      <textarea id="ch-what" placeholder="Beskriv handlingen" style="min-height:50px"></textarea>
+      <label>Hvilket niveau?</label>
+      <select id="ch-level"><option value="micro">Micro (uge 1-4)</option><option value="medium">Medium (uge 5-8)</option><option value="stretch">Stretch (uge 9-12)</option></select>
+      <label>Hvad l\u00e6rte du?</label>
+      <textarea id="ch-evidence" placeholder="Evidens \u2014 hvad beviste det?" style="min-height:40px"></textarea>
+      <button class="btn btn-primary" style="margin-top:10px;padding:8px 16px" onclick="addCH()">+ Tilf\u00f8j challenge</button>
+      <div id="ch-list" style="margin-top:12px"></div>
+    </div>`;
+    // Selvtillids-erklæring
+    const decl=LS.g('st_decl_'+S.cId)||'';
+    h+=`<div class="refl-card fade">
+      <h4>\u26a1 Selvtillids-erkl\u00e6ring</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">\u00c9n s\u00e6tning: Hvad kan du, hvad har du bevist, og hvad er du klar til?</p>
+      <textarea id="st-decl" placeholder="Skriv din erkl\u00e6ring..." style="min-height:60px;font-size:15px;font-style:italic">${decl}</textarea>
+      <button class="btn btn-primary" style="margin-top:8px;padding:8px 16px" onclick="saveDecl()">Gem erkl\u00e6ring</button>
+    </div>`;
+  }
+
+  h+='</div>';document.getElementById('tc-journal').innerHTML=h;
+  updateKLRadar();updateDMRadar();renderCHList();
+}
+
+let _sjScore=0;
+function setSJScore(n){_sjScore=n;document.querySelectorAll('#sj-score-row .scale-btn').forEach((b,i)=>b.className='scale-btn'+((i+1)===n?' sel':''))}
+function saveSJ(mid){
+  const entry={action:document.getElementById('sj-action')?.value||'',learning:document.getElementById('sj-learning')?.value||'',score:_sjScore||0,date:new Date().toISOString()};
+  LS.s('st_sjentry_'+S.cId+'_'+mid,entry);
+  const all=LS.g('st_sjournal_'+S.cId)||[];all.push(entry);LS.s('st_sjournal_'+S.cId,all);
+  showSaveFeedback('Journal gemt \u2713');
+}
+
+function setKL(idx,val){const sp=getSTProfile(S.cId);sp['k'+idx]=val;LS.s('st_profile_'+S.cId,sp);document.querySelectorAll(`#kl-${idx} .scale-btn`).forEach((b,i)=>b.className='scale-btn'+((i+1)===val?' sel':''));updateKLRadar()}
+function setDM(idx,val){const sp=getSTProfile(S.cId);sp['d'+idx]=val;LS.s('st_profile_'+S.cId,sp);document.querySelectorAll(`#dm-${idx} .scale-btn`).forEach((b,i)=>b.className='scale-btn'+((i+1)===val?' sel':''));updateDMRadar()}
+
+function updateKLRadar(){const el=document.getElementById('kl-radar');if(!el)return;const sp=getSTProfile(S.cId);const s=KILLERS.map((_,i)=>sp['k'+i]||0);if(!s.some(v=>v>0)){el.innerHTML='';return}el.innerHTML=`<div class="radar-wrap">${renderRadar(KILLERS,s,KCOLORS,260,5)}</div>`}
+function updateDMRadar(){const el=document.getElementById('dm-radar');if(!el)return;const sp=getSTProfile(S.cId);const s=DOMAINS.map((_,i)=>sp['d'+i]||0);if(!s.some(v=>v>0)){el.innerHTML='';return}el.innerHTML=`<div class="radar-wrap">${renderRadar(DOMAINS,s,DCOLORS,320,10)}</div>`}
+
+function addCH(){
+  const what=document.getElementById('ch-what')?.value?.trim();
+  if(!what){showSaveFeedback('Beskriv din challenge');return}
+  const cl=LS.g('st_challog_'+S.cId)||[];
+  cl.push({what,level:document.getElementById('ch-level')?.value||'micro',evidence:document.getElementById('ch-evidence')?.value||'',date:new Date().toISOString()});
+  LS.s('st_challog_'+S.cId,cl);
+  ['ch-what','ch-evidence'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});
+  showSaveFeedback('Challenge logget \u2713');renderCHList();
+}
+function delCH(idx){const cl=LS.g('st_challog_'+S.cId)||[];cl.splice(idx,1);LS.s('st_challog_'+S.cId,cl);renderCHList()}
+function renderCHList(){
+  const el=document.getElementById('ch-list');if(!el)return;
+  const cl=LS.g('st_challog_'+S.cId)||[];
+  if(!cl.length){el.innerHTML='';return}
+  const levelColors={micro:'var(--accent)',medium:'var(--orange)',stretch:'var(--gold)'};
+  const levelLabels={micro:'MICRO',medium:'MEDIUM',stretch:'STRETCH'};
+  let h='<div style="border-top:1px solid var(--brd);padding-top:12px"><div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Challenge-log ('+cl.length+')</div>';
+  cl.forEach((c,i)=>{
+    h+=`<div style="padding:10px 12px;background:var(--navy3);border-radius:8px;margin-bottom:6px;border-left:3px solid ${levelColors[c.level]||'var(--accent)'}">
+      <div style="display:flex;justify-content:space-between"><div style="font-size:12px;color:var(--text)"><span style="font-size:10px;color:${levelColors[c.level]||'var(--accent)'};font-weight:600">${levelLabels[c.level]||'MICRO'}</span> ${c.what.slice(0,120)}</div><button onclick="delCH(${i})" style="background:none;border:none;color:var(--red);font-size:12px;cursor:pointer">\u00d7</button></div>
+      ${c.evidence?`<div style="font-size:11px;color:var(--green);margin-top:3px">\u2192 ${c.evidence.slice(0,100)}</div>`:''}
+    </div>`;
+  });
+  h+='</div>';el.innerHTML=h;
+}
+function saveDecl(){const v=document.getElementById('st-decl')?.value||'';LS.s('st_decl_'+S.cId,v);showSaveFeedback('Erkl\u00e6ring gemt \u2713')}
+const MODS=[{id:1,title:'Hvad selvtillid virkelig er',subtitle:'Banduras fire kilder \u00b7 Dom\u00e6nespecificitet \u00b7 Handlingens primat',icon:'\u25C6',color:'#4A8EC2',
+sources:['Bandura, A. \u2014 Self-Efficacy: The Exercise of Control (1997)','Dweck, C. \u2014 Mindset: The New Psychology of Success','Csikszentmihalyi, M. \u2014 Flow: The Psychology of Optimal Experience','Maddux, J.E. \u2014 Self-Efficacy, Adaptation, and Adjustment','Pajares, F. \u2014 Self-Efficacy Beliefs in Academic Settings'],
+whyText:'De fleste forveksler selvtillid med selvv\u00e6rd. Eller med arrogance. Eller med noget man f\u00f8des med. <strong>Selvtillid er ingen af delene</strong> \u2014 det er tillid til at du kan handle kompetent, og den bygges af handling.',
+learn:`<h3>Banduras fire kilder</h3>
+<p>Albert Bandura identificerede fire kilder til self-efficacy \u2014 den akademiske pendant til selvtillid: (1) <strong>Mastery experiences</strong> \u2014 personlige succeserfaringer. Den st\u00e6rkeste kilde. (2) <strong>Vicarious experiences</strong> \u2014 at se nogen der ligner dig lykkes. (3) <strong>Social persuasion</strong> \u2014 trofast feedback fra nogen du respekterer. (4) <strong>Physiological states</strong> \u2014 din kropslige tilstand som signal p\u00e5 om du kan. Hierarkiet er tydeligt: <em>Handling f\u00f8rst</em>. Inspiration, feedback og energi underst\u00f8tter \u2014 men erstatter aldrig erfaring.</p>
+<h3>Selvtillid vs. selvv\u00e6rd</h3>
+<p><strong>Selvv\u00e6rd</strong> svarer p\u00e5: "Er jeg nok?" Det er ubetinget og kontekstuafh\u00e6ngigt. <strong>Selvtillid</strong> svarer p\u00e5: "Kan jeg dette?" Det er betinget og dom\u00e6nespecifikt. Du kan have h\u00f8j selvtillid som leder og lav selvtillid som far. H\u00f8j selvtillid som fagperson og lav selvtillid i nye sociale situationer. Det er ikke en svaghed \u2014 det er pr\u00e6cision.</p>
+<h3>Dom\u00e6nespecificitet</h3>
+<p>Selvtillid er aldrig generel. Den er altid koblet til et specifikt dom\u00e6ne: faglig kompetence, ledelse, kommunikation, relationer, nye situationer. Det betyder at du ikke kan "f\u00e5 mere selvtillid" i abstrakt forstand \u2014 du kan bygge den i konkrete omr\u00e5der gennem konkrete handlinger.</p>
+<h3>Handlingens primat</h3>
+<p>Her adskiller selvtillid sig fundamentalt fra selvv\u00e6rd: Selvv\u00e6rd genopbygges inde fra ud (refleksion \u2192 forst\u00e5else \u2192 accept). Selvtillid bygges ude fra ind (handling \u2192 erfaring \u2192 evidens). Du kan ikke t\u00e6nke dig til selvtillid. Du kan kun <em>handle</em> dig til den.</p>
+<h3>Den onde cirkel</h3>
+<p>Lav selvtillid \u2192 undg\u00e5else \u2192 ingen erfaring \u2192 ingen evidens \u2192 lavere selvtillid. Det er en faldende spiral. Den gode nyhed: Sm\u00e5 handlinger bryder spiralen. \u00c9t skridt er nok til at vende retningen.</p>
+<blockquote>"Du kan ikke t\u00e6nke dig til selvtillid. Du kan kun handle dig til den."</blockquote>`,
+qs:[
+{id:'q1_1',type:'ta',l:'Hvad er forskellen mellem din <strong>selvtillid</strong> (tillid til dine evner) og dit <strong>selvv\u00e6rd</strong> (oplevelsen af at v\u00e6re nok)? Hvilket er st\u00e6rkest \u2014 og hvilket er svagest?'},
+{id:'q1_2',type:'scale',l:'Din generelle tillid til at du kan handle kompetent n\u00e5r det kr\u00e6ves: 1 = "Jeg t\u00f8ver og undg\u00e5r" og 10 = "Jeg handler ogs\u00e5 under usikkerhed."',mn:1,mx:10},
+{id:'q1_3',type:'ta',l:'Beskriv en situation hvor du <strong>handlede trods usikkerhed</strong> \u2014 og det gik godt. Hvad l\u00e6rte du om dig selv?'},
+{id:'q1_4',type:'ta',l:'Beskriv en situation hvor du <strong>undgik at handle</strong> fordi du ikke stolede p\u00e5 dig selv. Hvad kostede det?'},
+{id:'q1_5',type:'choice',l:'Hvilken af Banduras fire kilder er st\u00e6rkest for dig?',opts:['Egne succeserfaringer','At se andre lykkes','Feedback fra nogen jeg respekterer','Min kropslige energi og tilstand']},
+{id:'q1_6',type:'ta',l:'I hvilke <strong>dom\u00e6ner</strong> er din selvtillid h\u00f8j, og i hvilke er den lav? V\u00e6r specifik: Fagligt, ledelse, kommunikation, relationer, nye situationer.'}],
+takeaways:['Selvtillid er ikke et personlighedstr\u00e6k \u2014 det er tillid til handling i specifikke dom\u00e6ner','Banduras fire kilder: Mastery, vicarious, persuasion, physiological \u2014 handling er st\u00e6rkest','Selvtillid er dom\u00e6nespecifik \u2014 h\u00f8j i \u00e9t omr\u00e5de, lav i et andet','Handling f\u00f8rst, f\u00f8lelse bagefter \u2014 du kan kun handle dig til selvtillid','Den onde cirkel (undg\u00e5else \u2192 ingen erfaring) brydes af \u00e9t skridt']},
+{id:2,title:'De fem selvtillids-dr\u00e6bere',subtitle:'Undg\u00e5else \u00b7 Overanalyse \u00b7 Perfektionisme \u00b7 Sammenligning \u00b7 Komfortzonen',icon:'\u25C8',color:'#E57373',
+sources:['Bandura, A. \u2014 Self-Efficacy: The Exercise of Control','Burns, D. \u2014 Feeling Good: The New Mood Therapy','Schwartz, B. \u2014 The Paradox of Choice','Festinger, L. \u2014 Social Comparison Theory','Yerkes & Dodson \u2014 The Yerkes-Dodson Law'],
+whyText:'Selvtillid eroderes af fem systematiske m\u00f8nstre. De forkl\u00e6der sig som <strong>forsigtighed, grundighed og ydmyghed</strong> \u2014 men de er sabotage.',
+learn:`<h3>1. Undg\u00e5else</h3>
+<p>Den mest direkte dr\u00e6ber. Hver gang du undg\u00e5r en handling fordi du er bange for at fejle, bekr\u00e6fter du overfor dig selv at du ikke kan. Undg\u00e5else f\u00f8les som beskyttelse \u2014 men det er nedbrydning. Bandura: Den mest p\u00e5lidelige vej til lav self-efficacy er frav\u00e6r af mastery experiences.</p>
+<h3>2. Overanalyse</h3>
+<p>Analyse forkl\u00e6dt som forberedelse. Du t\u00e6nker dig til d\u00f8de i stedet for at handle. Du venter p\u00e5 det perfekte tidspunkt, den perfekte plan, den perfekte information. Men handling under usikkerhed <em>er</em> selvtillid. Overanalyse er dens modsatte.</p>
+<h3>3. Perfektionisme</h3>
+<p>Ikke at ville g\u00f8re det godt \u2014 men at ville g\u00f8re det <em>fejlfrit</em>. Perfektionisme s\u00e6tter en urealistisk standard og bruger enhver afvigelse som bevis p\u00e5 utilstr\u00e6kkelighed. Burns: Perfektionisme er ikke vejen til succes \u2014 det er vejen til paralyse.</p>
+<h3>4. Sammenligning</h3>
+<p>Ikke som i selvv\u00e6rd (hvor du sammenligner v\u00e6rdi) \u2014 men kompetence-sammenligning: "Hun er bedre end mig." "Han ville have h\u00e5ndteret det bedre." Festinger: Social comparison er uundg\u00e5elig, men opadrettet sammenligning uden kontekst er giftig for din tillid til egne evner.</p>
+<h3>5. Komfortzonen</h3>
+<p>Den mest forf\u00f8rende dr\u00e6ber. Alt er behageligt. Alt er kendt. Ingen risiko. Men Yerkes-Dodson: V\u00e6kst sker i stretch-zonen \u2014 lige udenfor komfort. Bliver du i komfortzonen for l\u00e6nge, skrumper den. Og med den skrumper din selvtillid.</p>
+<h3>Samspillet</h3>
+<p>De fem dr\u00e6bere forst\u00e6rker hinanden: Perfektionisme \u2192 overanalyse \u2192 undg\u00e5else \u2192 komfortzone \u2192 sammenligning med dem der handlede \u2192 lavere selvtillid. At identificere din prim\u00e6re dr\u00e6ber er f\u00f8rste skridt mod at neutralisere den.</p>
+<blockquote>"Undg\u00e5else f\u00f8les som beskyttelse \u2014 men det er systematisk nedbrydning af din tillid til dig selv."</blockquote>`,
+qs:[
+{id:'q2_1',type:'ta',l:'Hvad har du <strong>undg\u00e5et</strong> de seneste 3 m\u00e5neder fordi du ikke stolede p\u00e5 dig selv? V\u00e6r specifik.'},
+{id:'q2_2',type:'scale',l:'Din tendens til overanalyse: 1 = "Jeg handler hurtigt" og 10 = "Jeg t\u00e6nker mig ihjel f\u00f8r jeg handler."',mn:1,mx:10},
+{id:'q2_3',type:'ta',l:'Beskriv hvordan <strong>perfektionisme</strong> konkret bremser dig. Hvad ville du g\u00f8re anderledes med 80% standard?'},
+{id:'q2_4',type:'ta',l:'Hvem sammenligner du dine <strong>kompetencer</strong> med? Og hvad koster den sammenligning dig i handling?'},
+{id:'q2_5',type:'ta',l:'Din komfortzone: Hvad er trygt \u2014 og hvad ville v\u00e6re <strong>\u00e9t skridt udenfor</strong> der ville v\u00e6re udfordrende men realistisk?'},
+{id:'q2_6',type:'choice',l:'Din prim\u00e6re selvtillids-dr\u00e6ber?',opts:['Undg\u00e5else','Overanalyse','Perfektionisme','Sammenligning','Komfortzonen']}],
+takeaways:['Undg\u00e5else er den mest direkte dr\u00e6ber \u2014 frav\u00e6r af handling er frav\u00e6r af evidens','Overanalyse er prokrastinering forkl\u00e6dt som forberedelse','Perfektionisme s\u00e6tter en urealistisk standard der garanterer nederlag','Kompetence-sammenligning uden kontekst er gift for handlingsevnen','Komfortzonen skrumper hvis du bliver for l\u00e6nge \u2014 og med den din selvtillid']},
+{id:3,title:'Handlingens mekanik',subtitle:'Micro-m\u00e5l \u00b7 Progressiv eksponering \u00b7 Fejl som data \u00b7 Flow',icon:'\u25B2',color:'#4CAF82',
+sources:['Bandura, A. \u2014 Self-Efficacy: The Exercise of Control','Csikszentmihalyi, M. \u2014 Flow: The Psychology of Optimal Experience','Dweck, C. \u2014 Mindset: The New Psychology of Success','Fogg, B.J. \u2014 Tiny Habits','Clear, J. \u2014 Atomic Habits'],
+whyText:'Selvtillid bygges af handling. Men handling under usikkerhed kr\u00e6ver en mekanik \u2014 ikke mod. <strong>Micro-m\u00e5l, progressiv eksponering og fejl som data</strong> er systemet der erstatter t\u00f8ven med momentum.',
+learn:`<h3>Micro-m\u00e5l</h3>
+<p>Fogg: Start s\u00e5 sm\u00e5t at det er umuligt at fejle. Ikke "hold en keynote" men "sig \u00e9n s\u00e6tning i m\u00f8det." Ikke "bliv bedre til ledelse" men "giv \u00e9n konkret feedback i morgen." Micro-m\u00e5l eliminerer tersklen for handling \u2014 og hver lille succes er en mastery experience.</p>
+<h3>Progressiv eksponering</h3>
+<p>Angstbehandlingens guldstandard overf\u00f8rt til ledelse: Start med lavrisiko-situationer og byg op. Dag 1: Send en email med din holdning. Dag 30: Sig den h\u00f8jt i m\u00f8det. Dag 90: Pr\u00e6sent\u00e9r den for bestyrelsen. Hver eksponering b\u00e5de beviser og bygger kapacitet.</p>
+<h3>Fejl som data</h3>
+<p>Dweck: Growth mindset er ikke naiv optimisme \u2014 det er at behandle fejl som information, ikke som identitet. "Jeg fejlede" er data. "Jeg er en fiasko" er identitet. Forskellen afg\u00f8r om du pr\u00f8ver igen eller opgiver. Selvtilliden bygges ikke af fejlfrie successer \u2014 men af evnen til at rejse sig efter fejl.</p>
+<h3>Flow-zonen</h3>
+<p>Csikszentmihalyi: Flow opst\u00e5r n\u00e5r udfordring matcher kompetence. For lidt udfordring \u2192 kedsomhed. For meget \u2192 angst. Selvtillidens sweet spot er lige udenfor komfort \u2014 udfordrende nok til at kr\u00e6ve fokus, realistisk nok til at lykkes. Det er her v\u00e6kst sker.</p>
+<h3>Evidens-baseret selvtillid</h3>
+<p>Den mest holdbare selvtillid er ikke baseret p\u00e5 f\u00f8lelse men p\u00e5 evidens: En konkret liste over hvad du har gjort, h\u00e5ndteret, l\u00f8st og overlevet. N\u00e5r t\u00f8ven melder sig, konsult\u00e9r listen \u2014 ikke f\u00f8lelsen.</p>
+<blockquote>"Start s\u00e5 sm\u00e5t at det er umuligt at fejle \u2014 og byg derfra."</blockquote>`,
+qs:[
+{id:'q3_1',type:'ta',l:'Omformuler et stort m\u00e5l til et <strong>micro-m\u00e5l</strong> du kan udf\u00f8re inden 48 timer. G\u00f8r det s\u00e5 lille at det er umuligt at fejle.'},
+{id:'q3_2',type:'scale',l:'Din evne til at behandle fejl som data (ikke identitet): 1 = "Fejl knuser mig" og 10 = "Fejl er information."',mn:1,mx:10},
+{id:'q3_3',type:'ta',l:'Design en <strong>3-trins progressiv eksponering</strong> for noget du undg\u00e5r: Lavrisiko \u2192 Medium \u2192 Fuld eksponering.'},
+{id:'q3_4',type:'ta',l:'Hvorn\u00e5r oplevede du sidst <strong>flow</strong> \u2014 tilstanden hvor udfordring og kompetence var i balance? Hvad gjorde du?'},
+{id:'q3_5',type:'ta',l:'Din <strong>evidens-liste</strong>: 5 konkrete ting du har h\u00e5ndteret, l\u00f8st eller overlevet som beviser at du kan.'},
+{id:'q3_6',type:'choice',l:'Hvad holder dig mest fra at handle?',opts:['For store m\u00e5l','Frygten for fejl','Manglende plan','Lav energi','Perfektionisme']}],
+takeaways:['Micro-m\u00e5l eliminerer tersklen for handling \u2014 start s\u00e5 sm\u00e5t at det er umuligt at fejle','Progressiv eksponering bygger kapacitet systematisk fra lavrisiko til fuld eksponering','Fejl er data, ikke identitet \u2014 forskellen afg\u00f8r om du pr\u00f8ver igen eller opgiver','Flow-zonen er selvtillidens sweet spot: udfordrende nok, realistisk nok','Evidens-baseret selvtillid \u2014 konsult\u00e9r listen, ikke f\u00f8lelsen']},
+{id:4,title:'Kompetence-kapital',subtitle:'Kortl\u00e6gning \u00b7 Handlingshistorik \u00b7 L\u00e6ringskapacitet \u00b7 Gap-analyse',icon:'\u25EF',color:'#E5A048',
+sources:['Ericsson, A. \u2014 Peak: Secrets from the New Science of Expertise','Kolb, D. \u2014 Experiential Learning','Dreyfus & Dreyfus \u2014 Mind over Machine (Skill Acquisition)','Kahneman, D. \u2014 Thinking, Fast and Slow','Bandura, A. \u2014 Self-Efficacy: The Exercise of Control'],
+whyText:'Selvtillid uden kompetence er illusion. Kompetence uden bevidsthed om den er ubrugt potentiale. <strong>Kompetence-kapital</strong> er det systematiske overblik over hvad du kan, hvad du har gjort, og hvad du mangler.',
+learn:`<h3>Kompetence-kortl\u00e6gning</h3>
+<p>De fleste ledere underdriver deres kompetencer. Ikke af ydmyghed \u2014 men fordi kompetence der er automatiseret bliver usynlig. \u00d8velsen: List dine kompetencer p\u00e5 tv\u00e6rs af fem dom\u00e6ner \u2014 faglig, ledelse, kommunikation, relationer, nye situationer. Score hver 1-10. Du vil typisk overraske dig selv.</p>
+<h3>Handlingshistorik</h3>
+<p>Ericsson: Eksperter har tusindvis af timer med deliberate practice. Men de husker dem sjældent. Din handlingshistorik er din evidensbank: Hvad har du h\u00e5ndteret? Hvilke kriser har du l\u00f8st? Hvilke projekter har du leveret? Hvad har du lært under pres? Evidens sl\u00e5r f\u00f8lelse.</p>
+<h3>L\u00e6ringskapacitet</h3>
+<p>Kolb: Erfaring alene er ikke l\u00e6ring \u2014 reflekteret erfaring er. Dreyfus: Fra novice til ekspert g\u00e5r der fem stadier \u2014 og bevidstheden om hvor du er i den rejse er i sig selv selvtillidsbyggende. Du beh\u00f8ver ikke v\u00e6re ekspert. Du beh\u00f8ver vide at du l\u00e6rer.</p>
+<h3>Gap-analyse</h3>
+<p>Selvtillid handler ikke om at vide alt \u2014 men om at vide hvad du ikke ved, og have en plan. Kahneman: Overkonfidens er farlig. Realistisk selvtillid er baseret p\u00e5 pr\u00e6cis selvevaluering: "Det her kan jeg. Det her kan jeg ikke endnu. S\u00e5dan l\u00e6rer jeg det."</p>
+<h3>Fra tavs til eksplicit kompetence</h3>
+<p>Det meste af din kompetence er tavs \u2014 du kan det, men du kan ikke forklare det. At g\u00f8re tavs kompetence eksplicit er en af de mest kraftfulde selvtillids\u00f8velser: N\u00e5r du kan s\u00e6tte ord p\u00e5 hvad du kan, st\u00e5r du p\u00e5 fast grund.</p>
+<blockquote>"Du ved mere end du tror. Du kan mere end du husker. Du har h\u00e5ndteret mere end du giver dig selv kredit for."</blockquote>`,
+qs:[
+{id:'q4_1',type:'ta',l:'<strong>Kompetence-kortl\u00e6gning</strong>: List dine vigtigste kompetencer i hvert dom\u00e6ne \u2014 fagligt, ledelse, kommunikation, relationer, nye situationer.'},
+{id:'q4_2',type:'scale',l:'Din bevidsthed om hvad du faktisk kan: 1 = "Jeg underkender mine evner" og 10 = "Jeg ved pr\u00e6cist hvad jeg kan og ikke kan."',mn:1,mx:10},
+{id:'q4_3',type:'ta',l:'Din <strong>handlingshistorik</strong>: De 5 st\u00f8rste udfordringer du har h\u00e5ndteret. Hvad beviser de om din kapacitet?'},
+{id:'q4_4',type:'ta',l:'Dreyfus\u2019 skala (novice \u2192 avanceret begynder \u2192 kompetent \u2192 kyndig \u2192 ekspert): <strong>Hvor er du</strong> i dit prim\u00e6re dom\u00e6ne? Og hvad er n\u00e6ste stadie?'},
+{id:'q4_5',type:'ta',l:'<strong>Gap-analyse</strong>: Hvad kan du ikke endnu \u2014 som du har brug for at kunne? Og hvad er din plan for at l\u00e6re det?'},
+{id:'q4_6',type:'choice',l:'Hvad undergraver mest din bevidsthed om egne kompetencer?',opts:['Automatisering (kan det, men ser det ikke)','Sammenligning med eksperter','Impostor-f\u00f8lelse','Fokus p\u00e5 mangler frem for styrker','Mangel p\u00e5 feedback']}],
+takeaways:['De fleste ledere underdriver deres kompetencer \u2014 det automatiserede bliver usynligt','Din handlingshistorik er din evidensbank: Evidens sl\u00e5r f\u00f8lelse','L\u00e6ringskapacitet er i sig selv en kompetence \u2014 og den vigtigste','Gap-analyse er ikke svaghed men pr\u00e6cision: "Det her kan jeg ikke endnu"','At g\u00f8re tavs kompetence eksplicit er en af de mest kraftfulde \u00f8velser']},
+{id:5,title:'Selvtillids-arkitektur',subtitle:'Daglig handling \u00b7 Evidens-journal \u00b7 Challenge-ladder \u00b7 Integration',icon:'\u2605',color:'#C9A84C',
+sources:['Bandura, A. \u2014 Self-Efficacy: The Exercise of Control','Dweck, C. \u2014 Mindset: The New Psychology of Success','Clear, J. \u2014 Atomic Habits','Csikszentmihalyi, M. \u2014 Flow: The Psychology of Optimal Experience','Friisn\u00e6s, T. \u2014 Personlig arkitektur og integration'],
+whyText:'Selvtillid er ikke en destination du ankommer til. Det er en <strong>muskel du tr\u00e6ner</strong>. Arkitekturen er dit system \u2014 ikke motivation, men struktur der sikrer daglig handling.',
+learn:`<h3>Den daglige handling</h3>
+<p>Tre sp\u00f8rgsm\u00e5l. <strong>Morgen:</strong> (1) "Hvad er \u00e9n ting jeg kan g\u00f8re i dag der er lidt udenfor min komfort?" (2) "Hvilket micro-m\u00e5l s\u00e6tter jeg?" <strong>Aften:</strong> (3) "Hvad gjorde jeg i dag der beviser at jeg kan?" 5 minutter. Kalibrering fra t\u00f8ven til handling.</p>
+<h3>Evidens-journal</h3>
+<p>F\u00f8r daglig log: Hvad handlede du p\u00e5? Hvad l\u00e6rte du? Hvilket dom\u00e6ne voksede? Over tid bliver journalen din personlige evidensbank \u2014 et konkret modbevis til enhver t\u00f8ven.</p>
+<h3>Challenge-ladder</h3>
+<p>12 ugers progressiv eksponering: Uge 1-4: Micro-challenges (lav risiko, h\u00f8j frekvens). Uge 5-8: Medium challenges (moderat risiko, ugentlig). Uge 9-12: Stretch challenges (h\u00f8j risiko, m\u00e5nedlig). Stigen er synlig \u2014 og hvert trin du tager er beviseligt.</p>
+<h3>Synlighed</h3>
+<p>Del dine kompetencer. Sig ja til muligheder. Tag plads. Synlighed er ikke arrogance \u2014 det er selvtillid i praksis. Og synlighed skaber feedback loops: Jo mere du viser, jo mere evidens f\u00e5r du.</p>
+<h3>Integration</h3>
+<p>Selvtillid er bygningen ovenp\u00e5 selvv\u00e6rd. Den sv\u00e6re samtale kr\u00e6ver selvtillid (du skal turde handle). Impostor syndrom forsvinder med dokumenteret kompetence. Arbejdsgl\u00e6de foruds\u00e6tter tillid til at du mestrer dit arbejde. <strong>Handling er svaret \u2014 p\u00e5 alt.</strong></p>
+<h3>Selvtillids-erkl\u00e6ringen</h3>
+<p>Skriv \u00e9n s\u00e6tning: Hvad kan du, hvad har du bevist, og hvad er du klar til? S\u00e6t den et sted du ser den dagligt. Ikke motivation \u2014 men evidens.</p>
+<blockquote>"Selvtillid er en muskel du tr\u00e6ner \u2014 ikke en gave du f\u00e5r."</blockquote>`,
+qs:[
+{id:'q5_1',type:'ta',l:'Design din personlige <strong>selvtillids-arkitektur</strong>: Daglig handling, evidens-journal, challenge-ladder, synlighed. V\u00e6r pr\u00e6cis.'},
+{id:'q5_2',type:'scale',l:'Hvor sandsynligt er det at du faktisk <strong>f\u00f8lger dette system</strong> dagligt?',mn:1,mx:10},
+{id:'q5_3',type:'ta',l:'Din <strong>challenge-ladder</strong>: 3 micro-challenges (uge 1-4), 2 medium challenges (uge 5-8), 1 stretch challenge (uge 9-12). V\u00e6r konkret.'},
+{id:'q5_4',type:'ta',l:'Hvor er du <strong>usynlig</strong> \u2014 og hvad vil du g\u00f8re for at tage plads? \u00c9n konkret handling denne uge.'},
+{id:'q5_5',type:'ta',l:'Din <strong>selvtillids-erkl\u00e6ring</strong>: Hvad kan du, hvad har du bevist, og hvad er du klar til? \u00c9n s\u00e6tning.'},
+{id:'q5_6',type:'ta',l:'Hvad ville \u00e6ndre sig i dit liv, hvis du handlede med fuld tillid til dine evner \u2014 <strong>hver dag</strong>?'}],
+takeaways:['Selvtillid er en muskel du tr\u00e6ner, ikke en destination du ankommer til','Tre daglige sp\u00f8rgsm\u00e5l kalibrerer fra t\u00f8ven til handling','Evidens-journalen er dit modbevis til enhver tvivl','Challenge-ladder: 12 ugers progressiv eksponering der er synlig og dokumenteret','Handling er svaret p\u00e5 alt \u2014 og alt i portef\u00f8ljen bygger p\u00e5 denne indsigt']}];
+async function deriveKey(pw,salt){const enc=new TextEncoder();const km=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function encryptData(data,pw){const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pw,salt);const enc=new TextEncoder();const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(JSON.stringify(data)));return{v:1,salt:Array.from(salt),iv:Array.from(iv),ct:Array.from(new Uint8Array(ct))}}
+async function decryptData(blob,pw){const salt=new Uint8Array(blob.salt);const iv=new Uint8Array(blob.iv);const ct=new Uint8Array(blob.ct);const key=await deriveKey(pw,salt);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);return JSON.parse(new TextDecoder().decode(pt))}
+
+function gatherClientExport(cid,cname){
+  const exp={platform:PLATFORM_NAME,version:PLATFORM_VERSION,exportedAt:new Date().toISOString(),clientId:cid,clientName:cname,modules:{},journals:{},sjournal:LS.g('st_sjournal_'+cid)||[],profile:getSTProfile(cid),challog:LS.g('st_challog_'+cid)||[],declaration:LS.g('st_decl_'+cid)||''};
+  MODS.forEach(m=>{const d=LS.g('st_mod_'+cid+'_'+m.id);if(d)exp.modules[m.id]={title:m.title,...d};const j=LS.g('st_sjentry_'+cid+'_'+m.id);if(j)exp.journals[m.id]=j});
+  return exp;
+}
+
+async function exportClientJSON(){
+  const data=gatherClientExport(S.cId,S.cName);
+  const pw=prompt('Adgangskode til kryptering:');if(!pw)return;
+  try{
+    const encrypted=await encryptData(data,pw);
+    const blob=new Blob([JSON.stringify(encrypted,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');
+    a.href=url;a.download=`Selvtillid_${S.cName.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();URL.revokeObjectURL(url);showSaveFeedback('Krypteret JSON eksporteret \u2713');
+    setTimeout(()=>{if(confirm('Send til din coach?'))location.href=`mailto:${COACH_EMAIL}?subject=Selvtillid \u2014 ${S.cName}&body=Krypteret JSON vedlagt.`},500);
+  }catch(e){alert('Fejl: '+e.message)}
+}
+
+function exportClientTXT(){
+  const data=gatherClientExport(S.cId,S.cName);
+  let txt=`F\u00c5 MERE SELVTILLID \u2014 BESVARELSER\n${'='.repeat(50)}\nKlient: ${data.clientName}\nDato: ${data.exportedAt}\n\n`;
+  const sp=data.profile;
+  const ds=DOMAINS.map((_,i)=>sp['d'+i]||0);const ks=KILLERS.map((_,i)=>sp['k'+i]||0);
+  if(ds.some(s=>s>0)){txt+='DOM\u00c6NER:\n';DOMAINS.forEach((d,i)=>txt+=`  ${d}: ${ds[i]||'\u2013'}/10\n`);txt+='\n'}
+  if(ks.some(s=>s>0)){txt+='DR\u00c6BERE:\n';KILLERS.forEach((k,i)=>txt+=`  ${k}: ${ks[i]||'\u2013'}/5\n`);txt+='\n'}
+  if(data.declaration)txt+=`ERKL\u00c6RING: "${data.declaration}"\n\n`;
+  MODS.forEach(m=>{
+    const md=data.modules[m.id];if(!md)return;
+    txt+=`${'-'.repeat(50)}\nMODUL ${m.id}: ${m.title.toUpperCase()}\n${'-'.repeat(50)}\n`;
+    m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')txt+=`\n${q.l.replace(/<[^>]+>/g,'')}\n\u2192 ${v}\n`});txt+='\n';
+  });
+  if(data.challog.length){txt+=`${'-'.repeat(50)}\nCHALLENGE-LOG (${data.challog.length})\n${'-'.repeat(50)}\n`;data.challog.forEach(c=>txt+=`[${(c.level||'micro').toUpperCase()}] ${c.what} | Evidens: ${c.evidence}\n`)}
+  const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=`Selvtillid_${S.cName.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.txt`;
+  a.click();URL.revokeObjectURL(url);showSaveFeedback('Tekst eksporteret \u2713');
+}
+
+function clientDeleteData(){
+  if(!confirm('Slet alle dine data permanent?'))return;
+  if(!confirm('Kan IKKE fortrydes.'))return;
+  MODS.forEach(m=>{LS.d('st_mod_'+S.cId+'_'+m.id);LS.d('st_sjentry_'+S.cId+'_'+m.id)});
+  LS.d('st_profile_'+S.cId);LS.d('st_sjournal_'+S.cId);LS.d('st_challog_'+S.cId);LS.d('st_active_'+S.cId);LS.d('st_decl_'+S.cId);
+  const clients=(LS.g('st_clients')||[]).filter(c=>c.id!==S.cId);LS.s('st_clients',clients);
+  showSaveFeedback('Slettet');logout();
+}
+
+function setASection(sec){
+  S.aSection=sec;
+  document.querySelectorAll('.as-nav li').forEach((li,i)=>{li.classList.remove('active');const map=['ov','clients','import','gdpr'];if(map[i]===sec)li.classList.add('active')});
+  ['ov','clients','import','gdpr'].forEach(s=>document.getElementById('asec-'+s).style.display=s===sec?'':'none');
+  renderAdmin();
+}
+function renderAdmin(){
+  const clients=LS.g('st_clients')||[];
+  let totalAns=0;clients.forEach(c=>{MODS.forEach(m=>{const d=LS.g('st_mod_'+c.id+'_'+m.id);totalAns+=countAns(d?.answers)})});
+
+  document.getElementById('asec-ov').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Oversigt</h2>
+    <div class="astats">
+      <div class="astat"><div class="av">${clients.length}</div><div class="al">Klienter</div></div>
+      <div class="astat"><div class="av">${totalAns}</div><div class="al">Svar</div></div>
+      <div class="astat"><div class="av">${MODS.length}</div><div class="al">Moduler</div></div>
+    </div>
+    ${clients.map(c=>{
+      let ca=0,cm=0;MODS.forEach(m=>{const d=LS.g('st_mod_'+c.id+'_'+m.id);const a=countAns(d?.answers);ca+=a;if(a>=m.qs.length)cm++});
+      return`<div class="aclient-card" onclick="S.aSel='${c.id}';setASection('clients')">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><strong>${c.name}</strong><div style="font-size:11px;color:var(--text3)">${new Date(c.createdAt).toLocaleDateString('da-DK')}</div></div>
+          <div style="text-align:right"><div style="font-size:18px;font-weight:600">${cm}/5</div></div>
+        </div></div>`}).join('')}`;
+
+  if(S.aSection==='clients'){
+    let ch='<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Klienter</h2>';
+    ch+='<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">';
+    clients.forEach(c=>ch+=`<div class="aclient-card ${S.aSel===c.id?'sel':''}" onclick="S.aSel='${c.id}';renderAdmin()" style="min-width:160px"><strong>${c.name}</strong></div>`);
+    ch+='</div>';
+    if(S.aSel){
+      const cl=clients.find(c=>c.id===S.aSel);
+      if(cl){
+        const act=getActiveMod(cl.id);const sp=getSTProfile(cl.id);
+        ch+=`<div style="background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:24px"><h3>${cl.name}</h3>`;
+        ch+=`<div style="margin:16px 0"><label style="font-size:12px;color:var(--text3)">Aktiv modul (1-5)</label>
+          <div style="display:flex;gap:6px;margin-top:6px">${[1,2,3,4,5].map(n=>`<button class="scale-btn ${act>=n?'sel':''}" onclick="LS.s('st_active_'+'${cl.id}',${n});renderAdmin();showSaveFeedback('Aktiv: ${n}')">${n}</button>`).join('')}</div></div>`;
+        // Profiles
+        const ds=DOMAINS.map((_,i)=>sp['d'+i]||0);const ks=KILLERS.map((_,i)=>sp['k'+i]||0);
+        if(ds.some(s=>s>0)){ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">\ud83c\udfaf Dom\u00e6ner</h4>`;DOMAINS.forEach((d,i)=>{if(ds[i])ch+=`<div style="font-size:12px;padding:2px 0;color:${DCOLORS[i]}">${d}: <strong>${ds[i]}/10</strong></div>`});ch+=`</div>`}
+        if(ks.some(s=>s>0)){ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">\u2620 Dr\u00e6bere</h4>`;KILLERS.forEach((k,i)=>{if(ks[i])ch+=`<div style="font-size:12px;padding:2px 0;color:${KCOLORS[i]}">${k}: <strong>${ks[i]}/5</strong></div>`});ch+=`</div>`}
+        const decl=LS.g('st_decl_'+cl.id);
+        if(decl)ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px;border-left:3px solid var(--gold)"><div style="font-size:11px;color:var(--gold);margin-bottom:6px">ERKL\u00c6RING</div><div style="font-size:14px;font-style:italic;color:var(--text)">"${decl}"</div></div>`;
+        const chl=LS.g('st_challog_'+cl.id)||[];
+        if(chl.length)ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">\ud83d\udcaa Challenges (${chl.length})</h4>${chl.slice(0,5).map(c=>`<div style="font-size:12px;padding:3px 0">[${(c.level||'micro').toUpperCase()}] ${c.what.slice(0,100)}</div>`).join('')}</div>`;
+        MODS.forEach(m=>{
+          const d=LS.g('st_mod_'+cl.id+'_'+m.id);const a=countAns(d?.answers);
+          if(a>0){ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">Modul ${m.id}: ${m.title} (${a}/${m.qs.length})</h4>`;m.qs.forEach(q=>{const v=d?.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')ch+=`<div style="font-size:12px;margin-bottom:6px"><span style="color:var(--text3)">${q.l.replace(/<[^>]+>/g,'').slice(0,80)}...</span><br><span style="color:var(--text)">${typeof v==='string'?v.slice(0,200)+(v.length>200?'...':''):v}</span></div>`});ch+=`</div>`}
+        });
+        ch+=`<div class="ai-box"><h3>\ud83e\udd16 Selvtillids-DNA</h3>
+          <div class="fg"><label>Anthropic API-n\u00f8gle</label><input type="password" id="ai-key" placeholder="sk-ant-..." style="width:100%"></div>
+          <button class="btn btn-gold" onclick="runAI('${cl.id}')">K\u00f8r analyse</button>
+          <div id="ai-out" class="ai-result" style="margin-top:12px"></div></div>`;
+        ch+=`<div style="margin-top:16px"><button class="btn btn-ghost" onclick="adminExport('${cl.id}','${cl.name}')">\u2193 Eksport\u00e9r</button></div></div>`;
+      }
+    }
+    document.getElementById('asec-clients').innerHTML=ch;
+  }
+
+  document.getElementById('asec-import').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Import</h2>
+    <div class="refl-card"><h4>\ud83d\udce5 Import\u00e9r klient-JSON</h4>
+      <input type="file" id="imp-file" accept=".json" style="margin-bottom:10px">
+      <div class="fg"><label>Dekrypterings-adgangskode</label><input type="password" id="imp-pw"></div>
+      <button class="btn btn-primary" onclick="adminImport()">Import\u00e9r</button>
+      <div id="imp-msg" style="font-size:12px;margin-top:8px"></div>
+    </div>`;
+
+  document.getElementById('asec-gdpr').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">GDPR</h2>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">\ud83d\udd12</div><div><strong>Lokal lagring</strong><div style="font-size:12px;color:var(--text3)">Alle data i localStorage. Ingen server.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">\ud83d\udd11</div><div><strong>AES-256-GCM</strong><div style="font-size:12px;color:var(--text3)">PBKDF2 100.000 iterationer.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">\ud83d\uddd1</div><div><strong>Ret til sletning</strong><div style="font-size:12px;color:var(--text3)">\u00c9t klik. Definitiv.</div></div></div>
+    </div>`;
+}
+
+async function adminImport(){
+  const file=document.getElementById('imp-file').files[0];const pw=document.getElementById('imp-pw').value;const msg=document.getElementById('imp-msg');
+  if(!file){msg.textContent='V\u00e6lg fil';msg.style.color='var(--red)';return}
+  try{
+    const txt=await file.text();const blob=JSON.parse(txt);let data;
+    if(blob.v&&blob.ct){if(!pw){msg.textContent='Adgangskode kr\u00e6ves';msg.style.color='var(--red)';return}data=await decryptData(blob,pw)}else{data=blob}
+    const clients=LS.g('st_clients')||[];
+    if(!clients.find(c=>c.id===data.clientId)){clients.push({id:data.clientId,name:data.clientName,createdAt:data.exportedAt,imported:true});LS.s('st_clients',clients)}
+    if(data.modules)Object.entries(data.modules).forEach(([mid,d])=>LS.s('st_mod_'+data.clientId+'_'+mid,d));
+    if(data.journals)Object.entries(data.journals).forEach(([mid,d])=>{if(typeof d==='object')LS.s('st_sjentry_'+data.clientId+'_'+mid,d)});
+    if(data.profile)LS.s('st_profile_'+data.clientId,data.profile);
+    if(data.sjournal)LS.s('st_sjournal_'+data.clientId,data.sjournal);
+    if(data.challog)LS.s('st_challog_'+data.clientId,data.challog);
+    if(data.declaration)LS.s('st_decl_'+data.clientId,data.declaration);
+    msg.textContent='\u2713 '+data.clientName;msg.style.color='var(--green)';renderAdmin();
+  }catch(e){msg.textContent='Fejl: '+e.message;msg.style.color='var(--red)'}
+}
+function adminExport(cid,cname){
+  const data=gatherClientExport(cid,cname);
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=`ST_admin_${cname.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();URL.revokeObjectURL(url);
+}
+
+async function runAI(cid){
+  const key=document.getElementById('ai-key')?.value;
+  if(!key){showSaveFeedback('API-n\u00f8gle mangler');return}
+  const out=document.getElementById('ai-out');out.textContent='Analyserer...';out.style.opacity='.5';
+  const cl=(LS.g('st_clients')||[]).find(c=>c.id===cid);
+  const data=gatherClientExport(cid,cl?.name||'Klient');
+  let ctx='KLIENT: '+data.clientName+'\n\n';
+  const sp=data.profile;
+  const ds=DOMAINS.map((_,i)=>sp['d'+i]||0);const ks=KILLERS.map((_,i)=>sp['k'+i]||0);
+  if(ds.some(s=>s>0)){ctx+='DOM\u00c6NER:\n';DOMAINS.forEach((d,i)=>ctx+=d+': '+(ds[i]||'\u2013')+'/10\n');ctx+='\n'}
+  if(ks.some(s=>s>0)){ctx+='DR\u00c6BERE:\n';KILLERS.forEach((k,i)=>ctx+=k+': '+(ks[i]||'\u2013')+'/5\n');ctx+='\n'}
+  if(data.declaration)ctx+='ERKL\u00c6RING: "'+data.declaration+'"\n\n';
+  MODS.forEach(m=>{const md=data.modules[m.id];if(!md)return;ctx+='MODUL '+m.id+': '+m.title+'\n';m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v)ctx+=q.l.replace(/<[^>]+>/g,'')+'\n\u2192 '+v+'\n'});ctx+='\n'});
+  if(data.challog.length){ctx+='CHALLENGE-LOG ('+data.challog.length+'):\n';data.challog.forEach(c=>ctx+='['+c.level.toUpperCase()+'] '+c.what+' | Evidens: '+c.evidence+'\n')}
+
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,
+        system:`Du er Thomas Friisn\u00e6s\u2019 AI-assistent. Analys\u00e9r klientens selvtillids-forl\u00f8b.\n\n5 dom\u00e6ner: Faglig, Ledelse, Kommunikation, Relationer, Nye situationer.\n5 dr\u00e6bere: Undg\u00e5else, Overanalyse, Perfektionisme, Sammenligning, Komfortzonen.\n\nLev\u00e9r:\n1. SELVTILLIDS-DNA: Prim\u00e6r dr\u00e6ber, svageste dom\u00e6ne, handlingsm\u00f8nster\n2. UNDG\u00c5ELSES-PROFIL: Hvad undg\u00e5r klienten og hvorfor?\n3. HANDLING VS. T\u00d8VEN: Ratio mellem handling og prokrastinering\n4. KOMPETENCE-BEVIDSTHED: Kender klienten sine styrker?\n5. HANDLINGS-INDEKS: Samlet indikator for handlingskapacitet\n6. ANBEFALINGER: 3 konkrete n\u00e6ste skridt \u2014 handlingsorienterede\n7. COACHING-SP\u00d8RGSM\u00c5L: 3 varme men konfronterende sp\u00f8rgsm\u00e5l til n\u00e6ste session\n\nSkriv p\u00e5 dansk. V\u00e6r energisk og pr\u00e6cis. Dette er det mest handlingsorienterede forl\u00f8b.`,
+        messages:[{role:'user',content:ctx}]})
+    });
+    const result=await resp.json();out.style.opacity='1';
+    if(result.content&&result.content[0])out.textContent=result.content[0].text;
+    else out.textContent='Ingen respons. Tjek API-n\u00f8gle.';
+  }catch(e){out.style.opacity='1';out.textContent='Fejl: '+e.message}
+}
+</script>
+</body></html>

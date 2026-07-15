@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="2.0.0">
+<meta name="framework" content="Coaching 201 — Det næste niveau">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<title>Coaching 201 — Det næste niveau</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#111111;--navy-light:#1a1a1a;--navy-mid:#222222;--navy-border:#2b2b2b;
+  --gold:#c0392b;--gold-dark:#e74c3c;--gold-light:#e74c3c;--gold-dim:rgba(192,57,43,0.14);
+  --text:#e8e4de;--text-light:#a8a098;--text-muted:#6e6860;--white:#f5f0e8;
+  --success:#6b9e78;--warning:#d4a745;--error:#c45c5c;--info:#5c8dc4;
+  --m1:#c9a96e;--m2:#9b6eb5;--m3:#5c8dc4;--m4:#c45c5c;--m5:#5cac9e;
+  --m6:#d48a5c;--m7:#6b9e78;--m8:#d4a745;--m9:#e8d5a8;
+  --radius:12px;--shadow:0 2px 16px rgba(0,0,0,0.3);
+  --shadow-hover:0 4px 24px rgba(0,0,0,0.4);--transition:all 0.3s ease;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--navy);color:var(--text);line-height:1.7;min-height:100vh;}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:600;line-height:1.3;color:var(--white);}
+.progress-bar{position:sticky;top:0;z-index:1000;background:var(--navy-light);border-bottom:1px solid var(--navy-border);padding:10px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 8px rgba(0,0,0,0.3);}
+.progress-bar .logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);white-space:nowrap;cursor:pointer;}
+.progress-track{flex:1;height:6px;background:var(--navy-mid);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-dark));border-radius:3px;transition:width 0.5s ease;width:0%;}
+.progress-text{font-size:13px;color:var(--text-light);white-space:nowrap;}
+.screen{display:none;max-width:800px;margin:0 auto;padding:40px 20px 120px;}
+.screen.active{display:block;}
+.welcome-hero{text-align:center;padding:50px 20px 30px;}
+.welcome-hero h1{font-size:2.5em;color:var(--white);margin-bottom:6px;}
+.welcome-hero .tagline{font-size:14px;color:var(--gold);letter-spacing:1px;margin-bottom:12px;}
+.welcome-hero .subtitle{font-size:1.05em;color:var(--text-light);font-style:italic;margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto;}
+.gold-line{width:60px;height:3px;background:var(--gold);margin:0 auto 24px;border-radius:2px;}
+.card{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);margin-bottom:24px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text-light);}
+.form-group input,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--navy-border);border-radius:8px;font-family:inherit;font-size:15px;background:var(--navy-mid);color:var(--text);transition:var(--transition);}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,0.2);background:var(--navy);}
+.form-group textarea{min-height:90px;resize:vertical;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-muted);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border:none;border-radius:8px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:var(--transition);}
+.btn-primary{background:var(--gold);color:var(--navy);}
+.btn-primary:hover{background:var(--gold-dark);transform:translateY(-1px);}
+.btn-secondary{background:var(--navy-mid);color:var(--text);border:1px solid var(--navy-border);}
+.btn-secondary:hover{background:var(--navy-border);}
+.btn-full{width:100%;}.btn-small{padding:8px 16px;font-size:13px;}
+.consent-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:14px;margin:16px 0;font-size:13px;color:var(--text-light);}
+.consent-box label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;}
+.consent-box input[type="checkbox"]{margin-top:3px;accent-color:var(--gold);min-width:16px;}
+.journey-map{margin:30px 0;}
+.journey-step{display:flex;gap:20px;}
+.journey-line{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0;}
+.journey-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;z-index:1;transition:var(--transition);flex-shrink:0;}
+.journey-dot.locked{background:var(--navy-mid);color:var(--text-muted);border:2px solid var(--navy-border);}
+.journey-dot.active{background:var(--gold);color:var(--navy);border:2px solid var(--gold-dark);box-shadow:0 0 0 4px rgba(201,169,110,0.2);}
+.journey-dot.done{background:var(--success);color:var(--white);border:2px solid #5a8a67;}
+.journey-connector{width:2px;flex:1;min-height:16px;background:var(--navy-border);}
+.journey-connector.done{background:var(--success);}
+.journey-content{flex:1;background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow);margin-bottom:16px;transition:var(--transition);cursor:pointer;}
+.journey-content.locked{opacity:0.45;cursor:not-allowed;}
+.journey-content:not(.locked):hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:var(--gold-dark);}
+.journey-content h3{font-size:1.15em;margin-bottom:4px;}
+.journey-content p{font-size:14px;color:var(--text-light);margin-bottom:6px;}
+.journey-meta{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:8px;}
+.journey-meta .badge{display:inline-flex;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;}
+.depth-badge{padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;letter-spacing:0.5px;margin-left:6px;}
+.depth-surface{background:rgba(201,169,110,0.15);color:var(--gold);}
+.depth-core{background:rgba(155,110,181,0.15);color:var(--m2);}
+.depth-transform{background:rgba(92,172,158,0.15);color:var(--m5);}
+.module-header{padding:20px 0 16px;margin-bottom:20px;}
+.back-link{font-size:14px;color:var(--gold);cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;text-decoration:none;border:none;background:none;font-family:inherit;}
+.back-link:hover{color:var(--gold-light);}
+.module-header h2{font-size:1.9em;margin-bottom:6px;}
+.module-header .module-desc{color:var(--text-light);font-size:1.05em;font-style:italic;}
+.section-card{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:24px 28px;box-shadow:var(--shadow);margin-bottom:20px;}
+.section-card h3{font-size:1.2em;margin-bottom:4px;display:flex;align-items:center;gap:10px;}
+.section-card .subtitle{font-size:13px;color:var(--text-muted);margin-bottom:14px;font-style:italic;}
+.section-card p{font-size:15px;margin-bottom:10px;}
+.learn-block p{margin-bottom:12px;}
+.learn-block strong{color:var(--gold-light);}
+.quote-box{background:linear-gradient(135deg,var(--navy-mid),var(--navy));border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;margin:14px 0;font-style:italic;color:var(--text);}
+.quote-box .author{font-style:normal;font-size:13px;color:var(--text-muted);margin-top:6px;}
+.reflection-group{margin:14px 0;}
+.reflection-group label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.scale-row{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 16px;}
+.scale-btn{width:38px;height:38px;border:2px solid var(--navy-border);border-radius:50%;background:var(--navy-mid);color:var(--text);font-weight:600;cursor:pointer;transition:var(--transition);font-size:13px;display:flex;align-items:center;justify-content:center;}
+.scale-btn:hover{border-color:var(--gold);}
+.scale-btn.selected{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.activity-card{background:linear-gradient(135deg,rgba(107,158,120,0.08),rgba(107,158,120,0.02));border:1px solid rgba(107,158,120,0.3);border-radius:var(--radius);padding:24px;margin-bottom:20px;}
+.activity-card h3{color:var(--success);margin-bottom:4px;}
+.activity-card .activity-subtitle{font-size:13px;color:var(--text-muted);font-style:italic;margin-bottom:16px;}
+.activity-item{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:8px;padding:16px;margin-bottom:12px;border-left:3px solid var(--success);}
+.activity-item h4{font-size:1em;margin-bottom:4px;color:var(--white);font-family:'Outfit',sans-serif;font-weight:600;}
+.activity-item p{font-size:14px;color:var(--text-light);margin-bottom:6px;}
+.activity-item .activity-meta{font-size:12px;color:var(--text-muted);}
+.acknowledge-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:var(--radius);padding:20px;margin:24px 0;text-align:center;}
+.acknowledge-box label{display:flex;align-items:center;justify-content:center;gap:12px;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:16px;color:var(--text);}
+.acknowledge-box input[type="checkbox"]{width:20px;height:20px;accent-color:var(--gold);}
+.unlock-msg{background:var(--gold-dim);border:1px solid rgba(201,169,110,0.3);border-radius:8px;padding:16px;margin-top:12px;text-align:center;font-size:14px;color:var(--gold);font-weight:500;display:none;}
+.takeaway-box{background:var(--gold-dim);border:1px solid rgba(201,169,110,0.25);border-radius:var(--radius);padding:20px;margin:16px 0;}
+.takeaway-box h4{font-size:1.05em;color:var(--gold);margin-bottom:10px;}
+.takeaway-box li{font-size:14px;margin-bottom:5px;color:var(--text);}
+.source-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:14px 16px;margin:16px 0;font-size:12px;color:var(--text-muted);}
+.source-box h4{font-size:13px;margin-bottom:6px;}
+.source-box li{margin-bottom:3px;}
+.why-box{background:var(--navy-light);border:1px solid var(--gold-dark);border-radius:var(--radius);padding:18px 20px;margin:16px 0;}
+.why-box h4{color:var(--gold);margin-bottom:8px;font-size:1em;}
+.why-box p{color:var(--text);}
+.report-section{text-align:left;background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:16px 20px;margin:16px 0;}
+.report-section h4{margin-bottom:8px;color:var(--white);}
+.report-section p{font-size:14px;line-height:1.7;color:var(--text);}
+.coaching-box{background:linear-gradient(135deg,rgba(201,169,110,0.15),rgba(201,169,110,0.05));border:2px solid var(--gold);border-radius:var(--radius);padding:32px;text-align:center;margin:28px 0;}
+.coaching-box h3{color:var(--gold);margin-bottom:10px;font-size:1.4em;}
+.coaching-box p{font-size:15px;color:var(--text-light);margin-bottom:14px;}
+.save-indicator{position:fixed;bottom:20px;right:20px;background:var(--success);color:var(--white);padding:10px 18px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transition:opacity 0.3s;z-index:999;}
+.save-indicator.show{opacity:1;}
+@media(max-width:640px){.welcome-hero h1{font-size:2em;}.screen{padding:20px 14px 80px;}.section-card,.card{padding:18px;}.journey-step{gap:12px;}.progress-bar{padding:8px 12px;}}
+</style>
+</head>
+<body>
+<div class="progress-bar">
+  <div class="logo" onclick="goHome()">Coaching 201</div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="progress-text" id="progressText">0 / 9</span>
+</div>
+<div class="save-indicator" id="saveIndicator">✓ Gemt</div>
+
+<div class="screen active" id="screen-welcome">
+  <div class="welcome-hero">
+    <h1>Coaching 201</h1>
+    <p class="tagline">DET NÆSTE NIVEAU</p>
+    <div class="gold-line"></div>
+    <p class="subtitle">Du kender værktøjerne. Nu handler det om det, der ligger under: dine mønstre, din modstand, din ensomhed — og den transformation, du ikke kan gennemføre alene.</p>
+  </div>
+  <div class="card" style="max-width:500px;margin:0 auto;">
+    <p style="font-size:14px;color:var(--text-light);text-align:center;margin-bottom:20px;">Dette forløb bygger på Coaching 101. Det går dybere — ind i de steder, hvor det virkelig gælder. Regnede med 4-6 timer fordelt over flere sessioner. Vær forberedt på at det udfordrer dig.</p>
+    <div class="form-group"><label>Dit navn</label><input type="text" id="clientName" placeholder="Dit fulde navn"></div>
+    <div class="form-group"><label>Din rolle / titel</label><input type="text" id="clientRole" placeholder="F.eks. CEO, CFO, VP"></div>
+    <div class="form-group"><label>Virksomhed</label><input type="text" id="clientCompany" placeholder="Din organisation"></div>
+    <div class="consent-box"><label><input type="checkbox" id="gdprConsent"><span>Mine besvarelser gemmes kun lokalt i min browser. Ingen data deles.</span></label></div>
+    <button class="btn btn-primary btn-full" onclick="startJourney()">Jeg er klar til næste niveau →</button>
+  </div>
+</div>
+
+<div class="screen" id="screen-journey">
+  <div style="text-align:center;margin-bottom:20px;">
+    <h2 id="journeyGreeting">Dit forløb</h2>
+    <p style="color:var(--text-light);font-size:1em;" id="journeySubtext">Under overfladen. Ind til kernen. Mod transformation.</p>
+    <div style="display:flex;justify-content:center;gap:16px;margin-top:16px;flex-wrap:wrap;">
+      <span class="depth-badge depth-surface">① Under overfladen: 1-3</span>
+      <span class="depth-badge depth-core">② Ind til kernen: 4-6</span>
+      <span class="depth-badge depth-transform">③ Transformation: 7-9</span>
+    </div>
+  </div>
+  <div class="journey-map" id="journeyMap"></div>
+  <div style="text-align:center;margin-top:24px;">
+    <button class="btn btn-secondary btn-small" onclick="exportData()" style="margin:4px;">📤 Eksportér</button>
+    <button class="btn btn-secondary btn-small" onclick="document.getElementById('importFile').click()" style="margin:4px;">📥 Importér</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+  </div>
+</div>
+
+<div class="screen" id="screen-module">
+  <div class="module-header">
+    <button class="back-link" onclick="goHome()">← Tilbage til dit forløb</button>
+    <h2 id="moduleTitle"></h2>
+    <p class="module-desc" id="moduleDesc"></p>
+  </div>
+  <div id="moduleContent"></div>
+</div>
+
+<div class="screen" id="screen-report">
+  <div class="module-header">
+    <button class="back-link" onclick="goHome()">← Tilbage</button>
+    <h2>Din transformationsprofil</h2>
+    <p class="module-desc">Det dybeste du har lært om dig selv — og det næste skridt</p>
+  </div>
+  <div id="reportContent"></div>
+</div>
+<script>
+const MODULES = [
+{
+  id:'viden_visdom',num:1,title:'Fra viden til visdom',
+  subtitle:'Gabet mellem at vide og at være',
+  color:'var(--m1)',time:'20-25 min',depth:'surface',
+  about:'I Coaching 101 lærte du, hvad coaching er, og fik basale værktøjer. Det var det intellektuelle niveau. Nu starter det virkelige arbejde: at bevæge sig fra at vide til at leve det. Og det er her, de fleste executives sidder fast.',
+  learn:[
+    {type:'text',content:'Chris Argyris, Harvard-professor og en af organisationslæringens fædre, identificerede et fundamentalt paradoks: <strong>"The gap between what we say we believe and what we actually do."</strong> Han kaldte det forskellen mellem <em>espoused theory</em> (det vi siger) og <em>theory-in-use</em> (det vi faktisk gør). De fleste ledere har et markant gap.'},
+    {type:'text',content:'Du ved sandsynligvis, at du bør lytte mere. Stille flere spørgsmål. Give ærlig feedback. Sige nej oftere. <strong>Og du gør det ikke konsekvent.</strong> Ikke fordi du er svag eller doven — men fordi viden og adfærd er styret af forskellige systemer. Viden bor i neocortex. Adfærd bor i det limbiske system og i vaner. De to taler ikke altid sammen.'},
+    {type:'text',content:'Ron Heifetz (Harvard Kennedy School, <em>Leadership Without Easy Answers</em>, 1994) skelner mellem <strong>tekniske problemer</strong> (løses med eksisterende viden) og <strong>adaptive udfordringer</strong> (kræver forandring i personen selv). De fleste ledelsesudfordringer på C-level er adaptive — og de kan ikke løses med mere viden. De kræver transformation.'},
+    {type:'quote',text:'The test of a first-rate intelligence is the ability to hold two opposed ideas in mind at the same time and still retain the ability to function.',author:'F. Scott Fitzgerald'},
+    {type:'text',content:'<strong>Her er den ubehagelige sandhed:</strong> Coaching 101 gav dig viden. Coaching 201 vil konfrontere dig med gabet mellem din viden og din adfærd. Det er ubehageligt — fordi det afslører, at det du troede var et vidensproblem, faktisk er et personligt udviklingsproblem. Og det kræver en anden slags arbejde.'},
+    {type:'text',content:'Robert Kegan (Harvard) kalder denne type vækst <strong>"subject-object shift"</strong> (<em>In Over Our Heads</em>, 1994): at gøre det, der styrer dig ubevidst (<em>subject</em>), til noget du kan se og vælge aktivt (<em>object</em>). Det er essensen af personlig transformation — og det er det, dette forløb handler om.'}
+  ],
+  reflections:[
+    {id:'vv_1',type:'textarea',label:'Hvad ved du om god ledelse, som du ikke konsekvent praktiserer? Vær brutalt ærlig — skriv mindst 5 ting.',placeholder:'1. Jeg ved, at ... men jeg gør ikke ...\n2. ...\n3. ...\n4. ...\n5. ...'},
+    {id:'vv_2',type:'scale',label:'Hvor stort er gabet mellem det du ved og det du gør? (1 = næsten intet gap, 10 = massivt gap)',min:1,max:10},
+    {id:'vv_3',type:'textarea',label:'Hvad er din største adaptive udfordring lige nu — noget der kræver, at DU forandrer dig, ikke bare at du lærer noget nyt?',placeholder:'Beskriv det ærligt...'},
+    {id:'vv_4',type:'textarea',label:'Hvad holder dig fast i "viden" i stedet for "handling"? Er det frygt? Komfort? Vane? Noget andet?',placeholder:'Grav dybt her...'}
+  ],
+  takeaways:[
+    'Gabet mellem at vide og at gøre er den mest udbredte — og ignorerede — ledelsesudfordring.',
+    'De fleste C-level udfordringer er adaptive, ikke tekniske. De kræver personlig transformation, ikke mere viden.',
+    'Viden bor i hovedet. Adfærd bor i kroppen og vanerne. De to kræver forskelligt arbejde.',
+    'At gøre det ubevidste bevidst — subject-object shift — er essensen af dybere coaching.'
+  ],
+  whyItMatters:'Pfeffer & Sutton (Stanford, 2000) dokumenterede i "The Knowing-Doing Gap", at organisationers største problem ikke er mangel på viden — det er manglen på evne til at omsætte viden til handling. Det gælder i endnu højere grad for individer. Dit næste skridt er ikke at lære mere. Det er at blive den, der handler.',
+  sources:[
+    'Argyris, C. (1991). Teaching Smart People How to Learn. Harvard Business Review.',
+    'Heifetz, R. (1994). Leadership Without Easy Answers. Harvard University Press.',
+    'Kegan, R. (1994). In Over Our Heads. Harvard University Press.',
+    'Pfeffer, J. & Sutton, R. (2000). The Knowing-Doing Gap. Harvard Business School Press.'
+  ],
+  activities:[
+    {title:'Knowing-doing audit',desc:'Tag din liste med "ting jeg ved men ikke gør" og vælg den vigtigste. Svar: Hvad ville der ske, hvis jeg faktisk gjorde det? Hvad er jeg bange for? Hvad koster det at lade være?',time:'20 minutter',evidence:'Baseret på Pfeffer & Sutton (2000)'},
+    {title:'Én adaptive handling',desc:'Vælg én ting du VED du bør gøre — men konsekvent undlader. Gør den denne uge. Bare én gang. Observér, hvad der sker — i dig og omkring dig.',time:'1 handling',evidence:'Baseret på Heifetz (1994)'},
+    {title:'Spørg en du stoler på',desc:'"Hvad siger jeg, at jeg tror på som leder — men som mine handlinger ikke afspejler?" Denne ene samtale kan afsløre dit vigtigste vækstpotentiale.',time:'1 samtale',evidence:'Baseret på espoused theory vs. theory-in-use (Argyris, 1991)'}
+  ]
+},
+{
+  id:'moenstre',num:2,title:'Dine mønstre',
+  subtitle:'De ubevidste programmer der styrer din ledelse',
+  color:'var(--m2)',time:'25-30 min',depth:'surface',
+  about:'Du har mønstre. Vi har alle mønstre — automatiske reaktioner, forsvarsmekanismer, vaner i tænkning og adfærd, der blev indlært tidligt og nu kører på autopilot. I dette modul gør vi dem synlige.',
+  learn:[
+    {type:'text',content:'Daniel Kahneman (<em>Thinking, Fast and Slow</em>, 2011) dokumenterede, at mennesker har to tænkesystemer: <strong>System 1</strong> (hurtigt, automatisk, ubevidst) og <strong>System 2</strong> (langsomt, bevidst, anstrengende). De fleste af dine daglige beslutninger og reaktioner som leder — <strong>over 90%</strong> — styres af System 1. Dine mønstre.'},
+    {type:'text',content:'Carl Jung formulerede det skarpt: <strong>"Until you make the unconscious conscious, it will direct your life and you will call it fate."</strong> Dine mønstre er ikke skæbne. De er programmering — og programmering kan ændres. Men kun hvis du først kan se den.'},
+    {type:'text',content:'<strong>Typiske lederemønstre:</strong> "Control-mønsteret" (mikromanagement forklædt som kvalitetssikring). "People-pleaser-mønsteret" (undgår konflikter for at blive holdt af). "Perfektionisme-mønsteret" (udskyder handling til alt er perfekt). "Hero-mønsteret" (løser alle problemer selv). "Undvigelses-mønsteret" (ignorerer problemer i håb om, de forsvinder).'},
+    {type:'quote',text:'We don\'t see things as they are, we see them as we are.',author:'Anaïs Nin'},
+    {type:'text',content:'<strong>Triggers afslører mønstre.</strong> Når du reagerer disproportionalt stærkt — irritation, vrede, angst, tilbagetrækning — er det sjældent situationen, der er problemet. Det er et gammelt mønster, der aktiveres. I coaching kalder vi det <strong>"the presenting issue vs. the real issue."</strong> Det du reagerer på er sjældent det, der reelt foregår.'},
+    {type:'text',content:'<strong>Skyggesiden</strong> (Jung): Enhver styrke har en skyggeside. Din handlekraft kan blive utålmodighed. Din empati kan blive konfliktundvigelse. Din perfektionisme kan blive lammelse. En coach hjælper dig med at se <strong>både styrken og skyggen</strong> — og vælge bevidst i stedet for at reagere automatisk.'}
+  ],
+  reflections:[
+    {id:'mo_1',type:'textarea',label:'Hvilket af de typiske ledermønstre genkender du stærkest i dig selv? Beskriv, hvordan det viser sig i din hverdag.',placeholder:'Mønsteret: ...\nHvordan det viser sig: ...'},
+    {id:'mo_2',type:'textarea',label:'Hvad trigger dig? Hvornår reagerer du stærkere end situationen berettiger? Beskriv 2-3 situationer.',placeholder:'Trigger 1: ...\nTrigger 2: ...\nTrigger 3: ...'},
+    {id:'mo_3',type:'textarea',label:'Hvad er skyggesiden af din største styrke som leder? Hvornår bliver styrken en svaghed?',placeholder:'Min styrke: ...\nSkyggesiden: ...\nHvornår det sker: ...'},
+    {id:'mo_4',type:'scale',label:'Hvor bevidst er du om dine automatiske mønstre i daglige ledelsessituationer? (1 = kører på autopilot, 10 = ser dem tydeligt)',min:1,max:10}
+  ],
+  takeaways:[
+    'Over 90% af dine reaktioner kører på autopilot (System 1). Dine mønstre styrer mere, end du tror.',
+    'Triggers afslører mønstre: disproportionale reaktioner peger på dybere programmering.',
+    'Enhver styrke har en skygge. Handlekraft → utålmodighed. Empati → konfliktundvigelse.',
+    'At se dine mønstre er ikke nok. Du har brug for nogen udenfor dit eget system til at spejle dem.'
+  ],
+  whyItMatters:'Forskning i executive derailment (Hogan & Hogan, 2001) viser, at de fleste ledere der fejler, gør det ikke på grund af manglende kompetence — men på grund af ubevidste personlighedsmønstre, der bliver destruktive under pres. At kende dine mønstre er din vigtigste forsikring.',
+  sources:[
+    'Kahneman, D. (2011). Thinking, Fast and Slow. Farrar, Straus and Giroux.',
+    'Jung, C.G. (1959). The Archetypes and the Collective Unconscious. Routledge.',
+    'Hogan, R. & Hogan, J. (2001). Assessing Leadership: A View from the Dark Side. International Journal of Selection and Assessment.',
+    'Dotlich, D. & Cairo, P. (2003). Why CEOs Fail. Jossey-Bass.'
+  ],
+  activities:[
+    {title:'Mønster-dagbog: 5 dage',desc:'Notér hver gang du mærker en stærk reaktion: Hvad skete? Hvad følte jeg? Hvad var min automatiske reaktion? Hvad ville jeg have gjort, hvis jeg var bevidst? Se efter gentagne mønstre.',time:'5 dage',evidence:'Baseret på reflective practice (Schön, 1983)'},
+    {title:'Styrke-skygge-kortet',desc:'Skriv dine 3 største styrker. For hver: hvad er skyggesiden? Hvornår flipper styrken? Hvad trigger det? Hvem ser det? Dette kort er et af de mest værdifulde selvindsigtsværktøjer, du kan have.',time:'20 minutter',evidence:'Baseret på shadow work (Jung, 1959)'},
+    {title:'Bed om mønster-feedback',desc:'Spørg en du stoler på: "Hvad er mit mest gennemgående mønster som leder — den ting jeg gør igen og igen, som jeg måske ikke ser?" Lyt. Skriv ned. Reflektér.',time:'1 samtale',evidence:'Baseret på 360-feedback og Hogan derailment-forskning'}
+  ]
+},
+{
+  id:'eq_pres',num:3,title:'Emotionel intelligens under pres',
+  subtitle:'Når det virkelig gælder — EQ når indsatsen er højest',
+  color:'var(--m3)',time:'25-30 min',depth:'surface',
+  about:'De fleste ledere har rimelig EQ i hverdagssituationer. Men hvad sker der, når presset stiger? Når krisen rammer, konflikten eskalerer, eller beslutningen skal træffes uden nok information? Det er her, din emotionelle intelligens virkelig testes.',
+  learn:[
+    {type:'text',content:'Goleman (<em>Primal Leadership</em>, 2002) viste, at <strong>lederens emotionelle tilstand smitter direkte til teamet</strong>. Han kalder det "emotional contagion." Når du er rolig under pres, bliver dit team roligt. Når du panikker, panikker de. <strong>Din evne til at regulere dine egne emotioner under pres er din vigtigste ledelseskompetence.</strong>'},
+    {type:'text',content:'Under pres sker der noget fysiologisk: din amygdala (hjernens alarmsystem) overtager fra din præfrontale cortex (den rationelle hjerne). Goleman kalder det <strong>"amygdala hijack"</strong>. Du stopper med at tænke klart og begynder at reagere. Du bliver defensiv, aggressiv eller lukker ned. Og du træffer dårlige beslutninger.'},
+    {type:'text',content:'<strong>De fire EQ-domæner under pres</strong> (Goleman, 2002): (1) <strong>Selvbevidsthed:</strong> Kan du mærke, hvad der sker i dig, MENS det sker? (2) <strong>Selvregulering:</strong> Kan du vælge din reaktion i stedet for at lade den vælge dig? (3) <strong>Social bevidsthed:</strong> Kan du aflæse rummet, selv når du er presset? (4) <strong>Relationsstyring:</strong> Kan du lede andre effektivt, når du selv er under pres?'},
+    {type:'quote',text:'Between stimulus and response there is a space. In that space is our freedom and our power to choose our response.',author:'Viktor Frankl'},
+    {type:'text',content:'<strong>Det rum Frankl taler om — mellem stimulus og respons — er præcis det, coaching træner.</strong> Det er den halve sekund, hvor du mærker triggeren og vælger bevidst i stedet for at reagere automatisk. Det lyder simpelt. Det er utroligt svært. Og det kan trænes.'},
+    {type:'text',content:'Forskning af Richard Boyatzis (Case Western Reserve, 2005) viser, at EQ kan udvikles — men det kræver <strong>bevidst praksis over tid, med feedback fra en ekstern kilde</strong>. Selvvurdering alene er utilstrækkelig, fordi vi systematisk over- eller undervurderer vores egen EQ. En coach giver dig spejlet og strukturen.'}
+  ],
+  reflections:[
+    {id:'eq_1',type:'textarea',label:'Beskriv en situation, hvor du mistede kontrollen over dine emotioner som leder. Hvad skete? Hvad var konsekvensen?',placeholder:'Situationen: ...\nMin reaktion: ...\nKonsekvensen: ...'},
+    {id:'eq_2',type:'scale',label:'Hvor lang er din "Frankl-pause" — rummet mellem trigger og reaktion? (1 = reagerer øjeblikkeligt, 10 = vælger altid bevidst)',min:1,max:10},
+    {id:'eq_3',type:'textarea',label:'Under pres: lukker du ned, bliver du aggressiv, bliver du kontrollerende, eller noget andet? Hvad er dit stressmønster?',placeholder:'Mit typiske stressmønster: ...'},
+    {id:'eq_4',type:'textarea',label:'Hvordan påvirker din emotionelle tilstand dit team? Hvad ser de, når du er presset — og hvad gør det ved dem?',placeholder:'Hvad teamet ser: ...\nHvad det gør ved dem: ...'}
+  ],
+  takeaways:[
+    'Din emotionelle tilstand smitter direkte til dit team. Under pres er du termostaten, ikke termometeret.',
+    'Amygdala hijack: under pres overtager dit alarmsystem, og du stopper med at tænke klart.',
+    'Frankl-pausen — rummet mellem trigger og respons — er det vigtigste du kan træne som leder.',
+    'EQ kan udvikles, men det kræver ekstern feedback og bevidst praksis over tid.'
+  ],
+  whyItMatters:'TalentSmart analyserede over 1 million mennesker og fandt, at EQ forklarer 58% af job-performance variationen. For ledere er tallet endnu højere. Og EQ under pres — ikke EQ i fredstid — er den reelle differentiator.',
+  sources:[
+    'Goleman, D. (2002). Primal Leadership. Harvard Business School Press.',
+    'Boyatzis, R. (2005). Resonant Leadership. Harvard Business School Press.',
+    'Frankl, V. (1946). Man\'s Search for Meaning. Beacon Press.',
+    'TalentSmart (2019). Emotional Intelligence 2.0 Research.'
+  ],
+  activities:[
+    {title:'Frankl-pause træning',desc:'De næste 5 arbejdsdage: når du mærker en stærk reaktion, STOP. Træk vejret. Tæl til 5. Spørg: "Hvad er den bedste reaktion her?" Skriv ned, hvad du observerer.',time:'5 dage',evidence:'Baseret på emotional regulation (Gross, 2002)'},
+    {title:'Stressmønster-kort',desc:'Kortlæg dit stressmønster: Hvad er de tidlige signaler (fysisk, emotionelt)? Hvad er din typiske reaktion? Hvad er konsekvensen? Hvad ville en bevidst alternativ reaktion være?',time:'20 minutter',evidence:'Baseret på self-regulation (Goleman, 2002)'},
+    {title:'Check-in med dit team',desc:'Spørg dit team: "Hvordan oplever I mig, når presset stiger?" Vær modig. Svaret er måske ubehageligt — og det er guld værd.',time:'1 samtale',evidence:'Baseret på emotional contagion-forskning'}
+  ]
+}
+];
+MODULES.push(
+{
+  id:'modstand',num:4,title:'Modstand og forandring',
+  subtitle:'At arbejde med det der holder dig fast',
+  color:'var(--m4)',time:'25-30 min',depth:'core',
+  about:'Du ved, hvad du bør ændre. Og alligevel gør du det ikke. I dette modul udforsker vi den dybeste årsag: den skjulte modstand — de ubevidste forpligtelser, der holder dig fast, selvom du bevidst ønsker forandring.',
+  learn:[
+    {type:'text',content:'Robert Kegan & Lisa Lahey (<em>Immunity to Change</em>, 2009) opdagede noget revolutionerende: de fleste mennesker der ikke ændrer sig, gør det ikke af mangel på vilje — men fordi de har et <strong>"immunsystem mod forandring"</strong>. De har skjulte, modsatrettede forpligtelser, der aktivt modarbejder den bevidste intention.'},
+    {type:'text',content:'<strong>Eksempel:</strong> En CEO vil gerne delegere mere (bevidst intention). Men hun har en skjult forpligtelse til kontrol (ubevidst modstand). Under den skjulte forpligtelse ligger en <strong>big assumption</strong>: "Hvis jeg ikke kontrollerer alt, vil det gå galt, og det vil være min skyld." Denne antagelse — uudtalt, utestet — styrer hendes adfærd.'},
+    {type:'text',content:'Kegan & Lahey fandt, at <strong>85% af ledere der gennemgår immunity mapping gennemfører den ønskede forandring</strong> — mod under 10% der kun bruger vilje og teknik. Forskellen: at arbejde med modstanden i stedet for mod den.'},
+    {type:'quote',text:'We cannot solve our problems with the same thinking we used when we created them.',author:'Albert Einstein'},
+    {type:'text',content:'<strong>Modstand har mange ansigter:</strong> Prokrastinering ("Jeg gør det i morgen"). Rationalisering ("Det er faktisk ikke så vigtigt"). Projektion ("Problemet er de andre"). Intellektualisering ("Jeg forstår problemet, ergo har jeg løst det"). Busy-ness ("Jeg har ikke tid"). Alle er forsvarsmekanismer, der beskytter dig mod ubehaget ved forandring.'},
+    {type:'text',content:'<strong>Her er det vigtige:</strong> Din modstand er ikke din fjende. Den er et signal. Den fortæller dig, at noget vigtigt er i spil — en frygt, et behov, en overbevisning. En coach arbejder ikke IMOD din modstand. En coach arbejder MED den — fordi den indeholder nøglen til din transformation.'}
+  ],
+  reflections:[
+    {id:'mf_1',type:'textarea',label:'Vælg én forandring, du længe har ønsket men ikke gennemført. Skriv din immunity map:\n1. Hvad vil du ændre?\n2. Hvad gør du der modarbejder det?\n3. Hvad er din skjulte modsatrettede forpligtelse?\n4. Hvad er din big assumption?',placeholder:'1. Jeg vil: ...\n2. Men jeg gør: ...\n3. Min skjulte forpligtelse: ...\n4. Min big assumption: ...'},
+    {id:'mf_2',type:'textarea',label:'Hvilken form tager din modstand oftest? Prokrastinering, rationalisering, projektion, busy-ness, eller noget andet?',placeholder:'Min typiske modstandsform: ...'},
+    {id:'mf_3',type:'scale',label:'Hvor villig er du til at udforske din egen modstand — også det ubehagelige? (1 = helst ikke, 10 = bring it on)',min:1,max:10},
+    {id:'mf_4',type:'textarea',label:'Hvad er du mest bange for ville ske, hvis du gennemførte den forandring, du ønsker? Hvad er den dybeste frygt?',placeholder:'Min dybeste frygt: ...'}
+  ],
+  takeaways:[
+    'Dit "immunsystem mod forandring" modarbejder aktivt dine bevidste intentioner — ubevidst.',
+    'Under modstanden ligger skjulte forpligtelser og utestede antagelser, der styrer dig.',
+    '85% der mapper deres modstand gennemfører forandringen. Under 10% der kun bruger vilje.',
+    'Modstand er ikke fjenden. Den er signalet — og en coach arbejder med den, ikke mod den.'
+  ],
+  whyItMatters:'Kegan & Laheys forskning blev publiceret i Harvard Business Review som "The Real Reason People Won\'t Change" (2001) og blev en af årets mest læste artikler. Årsagen: det forklarede, hvorfor intelligent, motiveret mennesker — herunder ledere — konsekvent fejler i at ændre adfærd. Immunity mapping er det mest kraftfulde værktøj til at bryde igennem.',
+  sources:[
+    'Kegan, R. & Lahey, L. (2009). Immunity to Change. Harvard Business Review Press.',
+    'Kegan, R. & Lahey, L. (2001). The Real Reason People Won\'t Change. Harvard Business Review.',
+    'Prochaska, J.O. & DiClemente, C.C. (1983). Stages of Change. Journal of Consulting and Clinical Psychology.',
+    'Bridges, W. (2009). Managing Transitions. Da Capo Press.'
+  ],
+  activities:[
+    {title:'Fuld immunity map',desc:'Gennemfør en komplet immunity map for din vigtigste forandring. Brug Kegan & Laheys 4-kolonne model. Vær helt ærlig — særligt i kolonne 3 og 4. Deling med en fortrolig forstærker effekten markant.',time:'45 minutter',evidence:'Baseret på Immunity to Change (Kegan & Lahey, 2009)'},
+    {title:'Test din big assumption',desc:'Tag din "big assumption" og design ét lille eksperiment for at teste den. Hvis din antagelse er "Hvis jeg delegerer, vil det gå galt" — delegér én konkret opgave og observer: gik det galt?',time:'1 eksperiment denne uge',evidence:'Baseret på assumption testing (Kegan & Lahey, 2009)'},
+    {title:'Modstands-dialog',desc:'Skriv en dialog mellem din "forandringsside" og din "modstandsside". Lad begge tale frit. Hvad siger modstanden? Hvad er den bange for? Hvad har den brug for? Denne øvelse afdækker ofte overraskende indsigter.',time:'20 minutter',evidence:'Baseret på internal family systems (Schwartz, 1995)'}
+  ]
+},
+{
+  id:'ensomhed',num:5,title:'Ensomheden i toppen',
+  subtitle:'Det ingen taler om — ledelsens mest oversete pris',
+  color:'var(--m5)',time:'25-30 min',depth:'core',
+  about:'Jo højere du sidder, jo mere ensom er du. Det er ikke en cliché — det er forskning. I dette modul konfronterer vi den ensomhed, som de fleste executives bærer, men aldrig nævner.',
+  learn:[
+    {type:'text',content:'En undersøgelse fra Harvard Business Review (2012) viste, at <strong>over halvdelen af alle CEOs rapporterer ensomhed i deres rolle</strong> — og 61% af dem mener, det negativt påvirker deres performance. Og alligevel taler næsten ingen om det. Det er ledelsens mest oversete pris.'},
+    {type:'text',content:'<strong>Hvad driver ensomheden i toppen?</strong> (1) <strong>Informationsfiltrering:</strong> Folk fortæller dig, hvad du vil høre — ikke sandheden. (2) <strong>Beslutningsbyrden:</strong> De sværeste beslutninger er ensomme per definition. (3) <strong>Rolleisolation:</strong> Du kan ikke dele alt med nogen — ikke bestyrelsen, ikke teamet, ikke altid familien. (4) <strong>Mask-bæring:</strong> At altid virke sikker, selv når du ikke er det.'},
+    {type:'text',content:'Thomas Saporito (<em>Inside CEO Succession</em>) formulerer det skarpt: <strong>"The higher you go, the less honest people are with you."</strong> Din titel er et filter. Mennesker redigerer sig selv i dit nærvær — og du mister adgangen til ufiltreret sandhed.'},
+    {type:'quote',text:'It\'s lonely at the top. But it doesn\'t have to be.',author:'Sammenfatning af executive coaching-forskning'},
+    {type:'text',content:'<strong>Konsekvenserne af uadresseret ensomhed i toppen:</strong> Dårligere beslutninger (færre perspektiver, ekkokammer). Lavere emotionel regulering (ingen ventil). Øget risiko for burnout. Blind spots der vokser. Og en langsom erosion af den forbindelse til andre, der gør ledelse meningsfuld.'},
+    {type:'text',content:'<strong>En coaching-relation er det mest effektive modsvar til ensomheden i toppen.</strong> Ikke fordi en coach er din ven — men fordi en coach er det eneste menneske i dit professionelle liv, der (1) ikke har en skjult dagsorden, (2) tør være fuldstændig ærlig, (3) holder alt fortroligt, og (4) er der udelukkende for din udvikling.'}
+  ],
+  reflections:[
+    {id:'en_1',type:'scale',label:'Hvor ensom føler du dig i din lederrolle? (1 = slet ikke, 10 = dybt ensom)',min:1,max:10},
+    {id:'en_2',type:'textarea',label:'Hvem kan du tale fuldstændig åbent med om dine sværeste ledelsesudfordringer? Ingen filter, ingen rolle. Nævn dem.',placeholder:'Hvis listen er kort, er det en vigtig erkendelse...'},
+    {id:'en_3',type:'textarea',label:'Hvornår har du sidst følt dig alene med en stor beslutning? Beskriv situationen. Hvad manglede du?',placeholder:'Situationen: ...\nHvad jeg manglede: ...'},
+    {id:'en_4',type:'textarea',label:'Hvad koster ensomheden dig — som leder og som menneske? Vær ærlig.',placeholder:'Som leder koster det: ...\nSom menneske koster det: ...'}
+  ],
+  takeaways:[
+    'Over halvdelen af CEOs er ensomme i rollen — og 61% mener det skader deres performance.',
+    'Jo højere du sidder, jo mere filtreret bliver sandhederne omkring dig.',
+    'Uadresseret ensomhed fører til dårligere beslutninger, blindspots og burnout-risiko.',
+    'En coaching-relation er det mest effektive modsvar: ærlig, fortrolig, uden skjult dagsorden.'
+  ],
+  whyItMatters:'Forskning af Rokach (2014) viser, at ensomhed hos ledere korrelerer direkte med nedsat beslutningskvalitet, lavere engagement og højere turnover i deres teams. Det er ikke kun en personlig pris — det er en organisatorisk risiko. Og det er en risiko, der kan elimineres.',
+  sources:[
+    'Saporito, T. (2012). It\'s Time to Acknowledge CEO Loneliness. Harvard Business Review.',
+    'Rokach, A. (2014). Leadership and Loneliness. International Journal of Leadership and Change.',
+    'Gentry, W.A. et al. (2007). Derailment: What leaders can learn from it. Leadership in Action, 27(5).',
+    'Kets de Vries, M.F.R. (2006). The Leader on the Couch. Jossey-Bass.'
+  ],
+  activities:[
+    {title:'Ensomheds-audit',desc:'Score din ensomhed i 3 dimensioner: Professionelt (har du nogen at drøfte strategi med?), Emotionelt (har du nogen at være sårbar med?), Intellektuelt (har du nogen der udfordrer din tænkning?). Hvor er hullerne?',time:'15 minutter',evidence:'Baseret på ensomhedsforskning (Cacioppo, 2008)'},
+    {title:'Den ærlige samtale',desc:'Vælg én person — peer, ven, partner — og hav en samtale, hvor du er fuldstændig ærlig om, hvordan det reelt er at sidde, hvor du sidder. Ingen maske. Observér, hvad det gør ved dig.',time:'1 samtale',evidence:'Baseret på vulnerability research (Brown, 2012)'},
+    {title:'Peer-gruppe overvejelse',desc:'Overvej: er der en CEO peer-gruppe (f.eks. Vistage, YPO) eller en professionel coaching-relation, der ville give dig det rum, du mangler? Research mulighederne.',time:'30 minutter research',evidence:'Baseret på peer support for executives'}
+  ]
+},
+{
+  id:'beslutninger',num:6,title:'Beslutninger i usikkerhed',
+  subtitle:'At lede når du ikke ved nok — kompleksitet, intuition, mod',
+  color:'var(--m6)',time:'25-30 min',depth:'core',
+  about:'De vigtigste beslutninger du træffer som executive, er dem, du træffer med utilstrækkelig information, under tidspres, med store konsekvenser. I dette modul udforsker vi, hvad der adskiller exceptionelle beslutningstagere fra middelmådige — og det er ikke intelligens.',
+  learn:[
+    {type:'text',content:'Gary Klein (<em>Sources of Power</em>, 1998) studerede, hvordan eksperter træffer beslutninger under pres — brandmænd, piloter, militære ledere. Han fandt, at de IKKE bruger rationel cost-benefit-analyse. De bruger <strong>mønstergenkendelse og intuitiv vurdering</strong> baseret på akkumuleret erfaring. Han kalder det "Recognition-Primed Decision Making."'},
+    {type:'text',content:'<strong>Intuition er ikke magi. Det er komprimeret erfaring.</strong> Kahneman anerkender det i <em>Thinking, Fast and Slow</em>: System 1-intuition er pålidelig, når den er baseret på mange gentagelser i et reguleret miljø med feedback. For erfarne executives kan intuitionen være et kraftfuldt beslutningsværktøj — men kun hvis den er kalibreret af selvbevidsthed.'},
+    {type:'text',content:'<strong>The Cynefin Framework</strong> (Snowden & Boone, 2007, Harvard Business Review) skelner mellem: <strong>Simpelt</strong> (best practice), <strong>Kompliceret</strong> (ekspertanalyse), <strong>Komplekst</strong> (eksperimentér, sansér, respondér) og <strong>Kaotisk</strong> (handl først, sansér, stabilisér). De fleste C-level beslutninger befinder sig i det <strong>komplekse</strong> domæne — hvor årsag og virkning kun er tydelig i bakspejlet.'},
+    {type:'quote',text:'In the midst of chaos, there is also opportunity.',author:'Sun Tzu, The Art of War'},
+    {type:'text',content:'<strong>Hvad saboterer gode beslutninger?</strong> (1) <strong>Confirmation bias:</strong> Du søger information, der bekræfter det, du allerede tror. (2) <strong>Sunk cost fallacy:</strong> Du holder fast i en forkert kurs, fordi du har investeret i den. (3) <strong>Analysis paralysis:</strong> Du venter på perfekt information, der aldrig kommer. (4) <strong>Group think:</strong> Dit team er enige — fordi ingen tør sige imod.'},
+    {type:'text',content:'En coach hjælper dig med at <strong>kalibrere din beslutningsproces</strong>: udfordre dine biases, teste dine antagelser, give et eksternt perspektiv — og vigtigst af alt: skabe rummet til, at du tænker klart, før du handler. I en verden af kompleksitet er kvaliteten af din tænkning dit vigtigste konkurrenceparameter.'}
+  ],
+  reflections:[
+    {id:'be_1',type:'textarea',label:'Beskriv den sværeste beslutning, du har truffet som leder. Hvad var usikkerheden? Hvad vejede tungest? Hvad ville du gøre anderledes i dag?',placeholder:'Beslutningen: ...\nUsikkerheden: ...\nI dag ville jeg: ...'},
+    {id:'be_2',type:'scale',label:'Hvor komfortabel er du med at træffe beslutninger baseret på 60-70% information? (1 = har brug for 95%+, 10 = helt komfortabel)',min:1,max:10},
+    {id:'be_3',type:'textarea',label:'Hvilken beslutnings-bias genkender du stærkest hos dig selv? Confirmation bias, sunk cost, analysis paralysis, eller group think?',placeholder:'Min primære bias: ...\nHvordan den viser sig: ...'},
+    {id:'be_4',type:'textarea',label:'Hvem udfordrer din tænkning, når du står med en stor beslutning? Har du en "devil\'s advocate" — eller er du alene?',placeholder:'Reflektér ærligt...'}
+  ],
+  takeaways:[
+    'De bedste beslutningstagere bruger mønstergenkendelse og kalibreret intuition — ikke kun analyse.',
+    'De fleste C-level beslutninger er komplekse: årsag-virkning er kun tydelig i bakspejlet.',
+    'Biases (confirmation, sunk cost, analysis paralysis, groupthink) er dine farligste fjender.',
+    'En coach kalibrerer din beslutningsproces: udfordrer biases, tester antagelser, giver rum til klar tænkning.'
+  ],
+  whyItMatters:'McKinsey (2019) analyserede 1.048 virksomhedsbeslutninger og fandt, at beslutningsprocessen forklarer 6x mere af et positivt udfald end selve analysen. Det er ikke hvad du beslutter — det er HVORDAN du beslutter. Og det "hvordan" kan trænes.',
+  sources:[
+    'Klein, G. (1998). Sources of Power. MIT Press.',
+    'Snowden, D. & Boone, M. (2007). A Leader\'s Framework for Decision Making. Harvard Business Review.',
+    'Kahneman, D. (2011). Thinking, Fast and Slow. Farrar, Straus and Giroux.',
+    'McKinsey (2019). Decision Making in the Age of Urgency.'
+  ],
+  activities:[
+    {title:'Beslutnings-journal',desc:'De næste 2 uger: log dine vigtigste beslutninger. For hver: Hvad vidste jeg? Hvad vidste jeg ikke? Hvad var min mavefornemmelse? Hvad valgte jeg? Evaluér efter 2 uger.',time:'2 uger',evidence:'Baseret på decision journaling (Kahneman, 2011)'},
+    {title:'Pre-mortem',desc:'Tag en aktuel vigtig beslutning og kør en pre-mortem: Forestil dig, at det er 1 år fra nu, og beslutningen er gået galt. Hvad gik galt? Denne teknik afdækker risici, der ellers overses.',time:'20 minutter',evidence:'Baseret på prospective hindsight (Klein, 2007)'},
+    {title:'Devil\'s advocate',desc:'Ved din næste store beslutning, udpeg bevidst en "devil\'s advocate" — en der skal argumentere IMOD din foretrukne retning. Lyt reelt til argumenterne. Justér, hvis nødvendigt.',time:'1 beslutningsproces',evidence:'Baseret på debiasing techniques (Kahneman, 2011)'}
+  ]
+}
+);
+MODULES.push(
+{
+  id:'autentisk',num:7,title:'Autentisk ledelse',
+  subtitle:'Integritet når det koster — værdier under pres',
+  color:'var(--m7)',time:'25-30 min',depth:'transform',
+  about:'Autentisk ledelse er ikke at "være sig selv" — det er at være tro mod sine værdier, også når det koster. I dette modul udforsker vi, hvad der sker, når dine værdier testes af virkeligheden — og hvorfor de øjeblikke definerer din ledelse.',
+  learn:[
+    {type:'text',content:'Bill George (Harvard Business School, <em>Authentic Leadership</em>, 2003; <em>True North</em>, 2007) studerede 125 ledere og fandt, at <strong>de mest effektive og mest respekterede ikke var dem med den mest polerede facade — men dem med den stærkeste forbindelse til deres egne værdier</strong>. De kendte deres "True North" og fulgte det, også under pres.'},
+    {type:'text',content:'<strong>Crucible moments</strong> (Bennis & Thomas, 2002): De definerende øjeblikke i din ledelse er ikke succeserne — det er kriserne, dilemmaerne og de øjeblikke, hvor det lette og det rigtige ikke er det samme. Hvad du gør i disse øjeblikke, definerer din karakter som leder. Det er "smeltediglen" — og det er her, autentisk ledelse formes.'},
+    {type:'text',content:'<strong>Autentisk ledelse kræver sårbarhed.</strong> Brené Brown (<em>Dare to Lead</em>, 2018) viser, at ledere der tør vise sårbarhed — indrømme fejl, sige "jeg ved det ikke", bede om hjælp — opbygger stærkere tillid end dem der bærer rustningen. Paradokset: <strong>sårbarhed er ikke svaghed. Det er den stærkeste form for mod.</strong>'},
+    {type:'quote',text:'Vulnerability is not winning or losing. It\'s having the courage to show up when you can\'t control the outcome.',author:'Brené Brown, Dare to Lead (2018)'},
+    {type:'text',content:'<strong>De 4 tests af autentisk ledelse:</strong> (1) <strong>Sandhedstesten:</strong> Siger du sandheden, også når den er ubehagelig? (2) <strong>Pristesten:</strong> Holder du fast i dine værdier, også når det koster karriere, penge eller popularitet? (3) <strong>Sårbarhedstesten:</strong> Tør du indrømme fejl og usikkerhed? (4) <strong>Konsistenstesten:</strong> Er du den samme person i bestyrelseslokalet og i kantinen?'},
+    {type:'text',content:'<strong>En coach er din integritetspartner.</strong> Ikke som moralpolitiet — men som den, der spørger de spørgsmål, du ikke stiller dig selv: "Er det her i overensstemmelse med dine værdier?" "Hvad ville du gøre, hvis du fulgte dit kompas?" "Hvad er du villig til at betale for at gøre det rigtige?"'}
+  ],
+  reflections:[
+    {id:'au_1',type:'textarea',label:'Beskriv et "crucible moment" i din karriere — et øjeblik, der testede dine værdier. Hvad valgte du? Hvad lærte du?',placeholder:'Øjeblikket: ...\nMit valg: ...\nHvad jeg lærte: ...'},
+    {id:'au_2',type:'scale',label:'Hvor konsistent er du mellem den leder du siger du er, og den leder du faktisk er under pres? (1 = stor forskel, 10 = fuld konsistens)',min:1,max:10},
+    {id:'au_3',type:'textarea',label:'Hvornår har du sidst gået på kompromis med dine værdier for at undgå ubehag? Hvad var konsekvensen — indeni?',placeholder:'Kompromisset: ...\nKonsekvensen: ...'},
+    {id:'au_4',type:'textarea',label:'Hvad ville ændre sig i din ledelse, hvis du konsekvent fulgte dit "True North" — uden undtagelser?',placeholder:'Det der ville ændre sig: ...'}
+  ],
+  takeaways:[
+    'Autentisk ledelse er ikke at "være sig selv" — det er at være tro mod dine værdier, også når det koster.',
+    'Crucible moments — kriserne og dilemmaerne — definerer din karakter som leder.',
+    'Sårbarhed er ikke svaghed. Det er mod — og det opbygger stærkere tillid end nogen facade.',
+    'En coach er din integritetspartner: den der stiller de spørgsmål, du undgår.'
+  ],
+  whyItMatters:'Forskning af Walumbwa et al. (2008, Journal of Management) viser, at autentisk ledelse korrelerer direkte med medarbejdertilfredshed, organizational commitment, og work-related performance. Det er ikke blødt — det er bundlinje. Og det starter med, at du kender og lever dine værdier.',
+  sources:[
+    'George, B. (2007). True North. Jossey-Bass.',
+    'Bennis, W. & Thomas, R.J. (2002). Crucibles of Leadership. Harvard Business Review.',
+    'Brown, B. (2018). Dare to Lead. Random House.',
+    'Walumbwa, F.O. et al. (2008). Authentic Leadership. Journal of Management, 34(1), 89-126.'
+  ],
+  activities:[
+    {title:'True North-øvelsen',desc:'Skriv dit "True North" — den ene sætning, der opsummerer, hvad du står for som leder, uanset omstændighederne. Hæng den op. Læs den dagligt. Brug den som kompas i beslutninger.',time:'15 minutter',evidence:'Baseret på True North (George, 2007)'},
+    {title:'Sårbarhedsøvelse',desc:'I din næste samtale med dit team, indrøm ærligt noget, du ikke ved, har fejlet med, eller er usikker på. Observér reaktionen. Hvad sker der med tilliden?',time:'1 samtale',evidence:'Baseret på vulnerability research (Brown, 2018)'},
+    {title:'Værdi-dilemma',desc:'Identificér et aktuelt dilemma i dit arbejde, hvor det lette og det rigtige ikke er det samme. Skriv begge muligheder ned. Hvad siger dit kompas? Hvad holder dig fra at følge det?',time:'20 minutter',evidence:'Baseret på ethical leadership (Treviño & Brown, 2004)'}
+  ]
+},
+{
+  id:'arv',num:8,title:'Arv og formål',
+  subtitle:'Hvad vil du efterlade? Det der rækker ud over karrieren',
+  color:'var(--m8)',time:'25-30 min',depth:'transform',
+  about:'Du har opnået meget. Spørgsmålet er ikke længere "kan du?" — det er "vil det betyde noget?" I dette modul konfronterer vi det spørgsmål, de fleste executives udskyder: hvad vil du efterlade, og hvad er formålet med det hele?',
+  learn:[
+    {type:'text',content:'Erik Erikson, udviklingspsykolog, identificerede <strong>generativitet</strong> — ønsket om at skabe og vejlede noget, der rækker ud over én selv — som den centrale udviklingsopgave i livets midte (<em>Childhood and Society</em>, 1950). For ledere er generativitet spørgsmålet: <strong>Hvad bygger du, der overlever dig?</strong>'},
+    {type:'text',content:'Jim Collins (<em>Good to Great</em>, 2001) fandt, at Level 5-ledere — de mest effektive — var kendetegnet af en paradoksal kombination af <strong>personlig ydmyghed og vild ambition for sagen</strong>. De byggede ikke imperier for sig selv. De byggede organisationer, der kunne trives uden dem. <strong>Det ultimative mål for en leder er at gøre sig selv overflødig.</strong>'},
+    {type:'text',content:'Viktor Frankl (<em>Man\'s Search for Meaning</em>, 1946) viste, at mening — ikke lykke — er menneskets dybeste drivkraft. Og mening kommer fra at bidrage til noget større end én selv. For executives oversættes det til: <strong>Hvad er formålet med din ledelse? Hvad er den sag, der er større end din karriere?</strong>'},
+    {type:'quote',text:'The purpose of life is not to be happy. It is to be useful, to be honorable, to be compassionate, to have it make some difference that you have lived.',author:'Ralph Waldo Emerson'},
+    {type:'text',content:'<strong>Legacy planning er ikke noget, du gør til sidst.</strong> Det er noget, du gør nu. Fordi bevidstheden om, hvad du vil efterlade, ændrer de beslutninger, du træffer i dag. En leder der ved, at hendes arv er "jeg byggede et team der kunne tænke selv" træffer andre beslutninger end en, der bare vil "levere resultater."'},
+    {type:'text',content:'<strong>En coach stiller de spørgsmål, travlheden overdøver:</strong> Hvad vil du efterlade? Hvad vil mennesker sige om dig, når du ikke er i rummet? Hvad vil dine børn vide om dig? Og lever du allerede i overensstemmelse med de svar — eller er der et gap?'}
+  ],
+  reflections:[
+    {id:'ar_1',type:'textarea',label:'Forestil dig din pensionering. Hvad håber du, kollegaer og medarbejdere siger om dig? Skriv 3 sætninger, du gerne ville høre.',placeholder:'1. "Han/hun var en der..."\n2. "Det vi husker mest er..."\n3. "Han/hun efterlod..."'},
+    {id:'ar_2',type:'textarea',label:'Hvad bygger du lige nu, der vil overleve dig? Er det noget, eller har du været for fokuseret på kortsigtede resultater?',placeholder:'Reflektér ærligt...'},
+    {id:'ar_3',type:'scale',label:'Hvor meningsfuld føles din ledelse for dig lige nu? (1 = mest drift, 10 = dyb mening og formål)',min:1,max:10},
+    {id:'ar_4',type:'textarea',label:'Hvad er den sag, der er større end din karriere? Hvad ville du arbejde for, selvom ingen kiggede og ingen betalte?',placeholder:'Vær modig her...'}
+  ],
+  takeaways:[
+    'Generativitet — at bygge noget der rækker ud over dig selv — er den ultimative ledelsesambition.',
+    'Level 5-ledere bygger organisationer der kan trives uden dem. Det ultimative mål: gøre sig overflødig.',
+    'Mening, ikke lykke, er den dybeste drivkraft. Hvad er formålet med din ledelse?',
+    'Legacy planning er ikke for sidst — det ændrer de beslutninger, du træffer i dag.'
+  ],
+  whyItMatters:'Forskning af Steger et al. (2006) viser, at mennesker med en klar fornemmelse af formål har lavere stress, højere engagement, bedre helbred og større tilfredshed. For ledere gælder det dobbelt: formål smitter til hele organisationen. Din mening er dit teams mening.',
+  sources:[
+    'Erikson, E.H. (1950). Childhood and Society. W.W. Norton.',
+    'Collins, J. (2001). Good to Great. HarperBusiness.',
+    'Frankl, V. (1946). Man\'s Search for Meaning. Beacon Press.',
+    'Steger, M.F. et al. (2006). The Meaning in Life Questionnaire. Journal of Counseling Psychology.'
+  ],
+  activities:[
+    {title:'Eulogy-øvelsen',desc:'Skriv din egen mindetale — som leder, ikke som person. Hvad vil du have, der bliver sagt? Er du på vej derhen? Hvad mangler? Denne øvelse er ubehagelig — og den er en af de mest transformative, der findes.',time:'30 minutter',evidence:'Baseret på Covey\'s "Begin with the end in mind" (1989)'},
+    {title:'Succession-refleksion',desc:'Hvem ville overtage din rolle i morgen, hvis du forsvandt? Har du forberedt dem? Har du delegeret nok? Svaret afslører, om du bygger en arv — eller et personligt imperium.',time:'20 minutter',evidence:'Baseret på Level 5 Leadership (Collins, 2001)'},
+    {title:'Formåls-samtale',desc:'Hav en samtale med en du stoler på om dette: "Hvad tror du er mit egentlige formål? Ikke min titel eller mine mål — men mit dybere formål?" Lyt. Skriv ned. Reflektér.',time:'1 samtale',evidence:'Baseret på meaning-in-work research (Steger, 2006)'}
+  ]
+},
+{
+  id:'ikkeselv',num:9,title:'Det du ikke kan selv',
+  subtitle:'Hvorfor de bedste har en coach — den ultimative erkendelse',
+  color:'var(--m9)',time:'25-30 min',depth:'transform',
+  about:'Du har nu rejst gennem 8 moduler, der har konfronteret dig med dine mønstre, din modstand, din ensomhed, dine beslutninger, din integritet og dit formål. Spørgsmålet er ikke længere, om coaching er relevant. Spørgsmålet er: er du klar til at stoppe med at gøre det alene?',
+  learn:[
+    {type:'text',content:'Atul Gawande, kirurg og forfatter, skrev i <em>The New Yorker</em> (2011): <strong>"I am not asking whether people can get better on their own. I am asking whether they can get better faster with help."</strong> Han — en verdensklassekirurg — hyrede en coach for at forbedre sin kirurgiske teknik. Ikke fordi han var dårlig. Men fordi han ville være bedre.'},
+    {type:'text',content:'Gennem dette forløb har du opdaget: at du har mønstre, du ikke altid ser. At din modstand er mere kraftfuld end din vilje. At du er mere ensom, end du indrømmer. At dine beslutninger er påvirket af biases. At din integritet testes dagligt. Og at du har et formål, der rækker ud over din karriere. <strong>Alt dette er coaching-territorium. Og alt dette er svært at navigere alene.</strong>'},
+    {type:'text',content:'<strong>Hvad en professionel coaching-relation giver dig, som selvcoaching ikke kan:</strong> (1) <strong>Et professionelt spejl</strong> — nogen der ser, hvad du ikke kan se. (2) <strong>Provokation</strong> — nogen der udfordrer din tænkning, når du er komfortabel. (3) <strong>Accountability</strong> — nogen der holder dig fast. (4) <strong>Fortrolighed</strong> — et fuldstændig sikkert rum. (5) <strong>Acceleration</strong> — du udvikler dig hurtigere med en professionel.'},
+    {type:'quote',text:'The most expensive thing you can do is try to figure out everything on your own.',author:'Sammenfatning af executive coaching ROI-forskning'},
+    {type:'text',content:'<strong>Det er ikke svaghed at have en coach. Det er den mest strategiske investering, du kan gøre i dig selv.</strong> Bill Gates: "Everyone needs a coach." Eric Schmidt: "The best advice I ever got." Ray Dalio: "The people I find most successful are those who have found other people to challenge their thinking."'},
+    {type:'text',content:'Du har brugt timer i dette forløb på at reflektere, lære og øve. Det er beundringsværdigt. Og det er overfladen. <strong>Den virkelige transformation begynder, når du har en professionel ved din side</strong> — en der kender de dyb, du ikke selv kan nå, og som har gjort det tusindvis af gange før. Spørgsmålet er simpelt: <strong>Er du klar?</strong>'}
+  ],
+  reflections:[
+    {id:'is_1',type:'textarea',label:'Hvad har dette forløb vist dig, som du ikke vidste om dig selv, da du startede?',placeholder:'Den vigtigste opdagelse: ...'},
+    {id:'is_2',type:'textarea',label:'Hvad kan du IKKE selv? Vær ærlig: hvad er de ting i din udvikling, der kræver et perspektiv udefra?',placeholder:'Det jeg ikke kan alene: ...'},
+    {id:'is_3',type:'scale',label:'Hvor klar er du til at investere i en professionel coaching-relation? (1 = ikke nu, 10 = i morgen)',min:1,max:10},
+    {id:'is_4',type:'textarea',label:'Hvis du bookede en samtale med en professionel coach i morgen — hvad ville du sige? Hvad ville du bede om hjælp til?',placeholder:'Jeg ville sige: ...\nJeg ville bede om hjælp til: ...'},
+    {id:'is_5',type:'textarea',label:'Skriv et brev til dig selv: Hvad sker der om 1 år, hvis du handler nu? Og hvad sker der, hvis du ikke gør?',placeholder:'Hvis jeg handler: ...\nHvis jeg ikke gør: ...'}
+  ],
+  takeaways:[
+    'Selvcoaching er værdifuldt — men det kan ikke erstatte et professionelt perspektiv udefra.',
+    'Dine mønstre, din modstand og dine blinde vinkler kræver et spejl, du ikke selv kan holde.',
+    'De mest succesfulde ledere i verden har alle en coach. Det er ikke svaghed — det er strategi.',
+    'Den virkelige transformation begynder, når du stopper med at gøre det alene.'
+  ],
+  whyItMatters:'Meta-analyser af executive coaching (Jones et al., 2016; Theeboom et al., 2014) viser konsistente, signifikante effekter på performance, selvbevidsthed, well-being og målopnåelse. Effekten er størst, når coaching-relationen er langvarig, fortrolig og med en erfaren coach. Investeringen betaler sig — personligt og professionelt.',
+  sources:[
+    'Gawande, A. (2011). Personal Best. The New Yorker.',
+    'Jones, R.J. et al. (2016). The effectiveness of workplace coaching. Journal of Occupational and Organizational Psychology.',
+    'Theeboom, T. et al. (2014). Does coaching work? A meta-analysis. Journal of Positive Psychology.',
+    'de Haan, E. et al. (2013). Executive coaching outcome research. Journal of Consulting Psychology.'
+  ],
+  activities:[
+    {title:'Det ene spørgsmål',desc:'Stil dig selv dette ene spørgsmål — og svar ærligt: "Om 5 år, vil jeg ønske, at jeg havde taget dette skridt?" Skriv svaret ned.',time:'5 minutter',evidence:'Baseret på regret minimization (Bezos-frameworket)'},
+    {title:'Research en coach',desc:'Brug 30 minutter på at researche, hvad en professionel executive coaching-relation indebærer. Hvad leder du efter? Erfaring? Branchekendskab? Kemi? Udfordring? Skriv dine kriterier ned.',time:'30 minutter',evidence:'Baseret på coaching readiness-forskning'},
+    {title:'Book samtalen',desc:'Du har gennemført 18 moduler (101 + 201). Du har reflekteret dybere over din ledelse end de fleste executives nogensinde gør. Det næste skridt er ikke et modul mere. Det er en samtale med en professionel, der har gjort det tusindvis af gange.',time:'10 minutter',evidence:'Baseret på alt ovenstående'}
+  ]
+}
+);
+const STORE_KEY='friisnaes_coaching201_v2';
+let state={version:'2.0.0',client:{name:'',role:'',company:'',consent:false,consentTime:null},modules:{},acknowledged:{},completed:[],created:null,lastUpdated:null};
+
+function init(){loadState();if(state.client.name&&state.client.consent)goHome();else showScreen('welcome');}
+function loadState(){try{const s=localStorage.getItem(STORE_KEY);if(s)state={...state,...JSON.parse(s)};}catch(e){}}
+function saveState(){try{state.lastUpdated=new Date().toISOString();localStorage.setItem(STORE_KEY,JSON.stringify(state));const el=document.getElementById('saveIndicator');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1200);}catch(e){}}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const sc=document.getElementById('screen-'+id);if(sc)sc.classList.add('active');window.scrollTo(0,0);updateProgress();}
+function goHome(){renderJourney();showScreen('journey');}
+function updateProgress(){const done=(state.completed||[]).length;document.getElementById('progressFill').style.width=((done/MODULES.length)*100)+'%';document.getElementById('progressText').textContent=done+' / '+MODULES.length;}
+function getUnlockedModules(){const u=[MODULES[0].id];for(let i=0;i<MODULES.length-1;i++){if(state.acknowledged&&state.acknowledged[MODULES[i].id])u.push(MODULES[i+1].id);}return u;}
+function isUnlocked(id){return getUnlockedModules().includes(id);}
+function isAcknowledged(id){return state.acknowledged&&state.acknowledged[id];}
+
+function startJourney(){
+  const name=document.getElementById('clientName').value.trim();
+  const role=document.getElementById('clientRole').value.trim();
+  const company=document.getElementById('clientCompany').value.trim();
+  const consent=document.getElementById('gdprConsent').checked;
+  if(!name)return alert('Indtast venligst dit navn.');
+  if(!consent)return alert('Acceptér venligst betingelserne.');
+  state.client={name,role,company,consent:true,consentTime:new Date().toISOString()};
+  if(!state.created)state.created=new Date().toISOString();
+  saveState();goHome();
+}
+
+function renderJourney(){
+  const name=state.client.name?state.client.name.split(' ')[0]:'';
+  document.getElementById('journeyGreeting').textContent=name?name+', velkommen til næste niveau':'Dit forløb';
+  const allDone=MODULES.every(m=>isAcknowledged(m.id));
+  document.getElementById('journeySubtext').textContent=allDone?'Du har gennemført hele forløbet. Din transformationsprofil venter.':'Under overfladen. Ind til kernen. Mod transformation.';
+  const map=document.getElementById('journeyMap');map.innerHTML='';
+  MODULES.forEach((m,i)=>{
+    const unlocked=isUnlocked(m.id);const done=isAcknowledged(m.id);const isLast=i===MODULES.length-1;
+    const depthClass=m.depth==='surface'?'depth-surface':m.depth==='core'?'depth-core':'depth-transform';
+    const depthLabel=m.depth==='surface'?'Under overfladen':m.depth==='core'?'Kernen':'Transformation';
+    const step=document.createElement('div');step.className='journey-step';
+    step.innerHTML=`<div class="journey-line"><div class="journey-dot ${done?'done':unlocked?'active':'locked'}">${done?'✓':m.num}</div>${!isLast?`<div class="journey-connector ${done?'done':''}"></div>`:''}</div><div class="journey-content ${unlocked?'':'locked'}" onclick="${unlocked?`openModule('${m.id}')`:'void(0)'}"><h3>${m.title} <span class="depth-badge ${depthClass}">${depthLabel}</span></h3><p>${m.subtitle}</p><div class="journey-meta"><span class="badge" style="background:${done?'rgba(107,158,120,0.15);color:var(--success)':unlocked?'rgba(201,169,110,0.15);color:var(--gold)':'rgba(255,255,255,0.06);color:var(--text-muted)'}">${done?'✓ Gennemført':unlocked?'● Åben':'🔒 Låst'}</span><span style="color:var(--text-muted);">~${m.time}</span></div></div>`;
+    map.appendChild(step);
+  });
+  if(allDone){const rb=document.createElement('div');rb.style.cssText='text-align:center;margin-top:24px;';rb.innerHTML=`<button class="btn btn-primary" onclick="showReport()" style="padding:16px 36px;font-size:16px;">📄 Se din transformationsprofil →</button>`;map.appendChild(rb);}
+}
+
+function openModule(id){
+  const m=MODULES.find(mod=>mod.id===id);if(!m||!isUnlocked(id))return;
+  document.getElementById('moduleTitle').innerHTML=`<span style="color:${m.color}">Modul ${m.num}:</span> ${m.title}`;
+  document.getElementById('moduleDesc').textContent=m.subtitle;
+  const c=document.getElementById('moduleContent');c.innerHTML='';
+  c.innerHTML+=`<div class="section-card"><h3>📖 Det her handler modulet om</h3><p style="margin-top:8px;">${m.about}</p></div>`;
+  let lh='<div class="section-card"><h3>🧠 LEARN</h3><p class="subtitle">Dybere viden. Sværere spørgsmål.</p><div class="learn-block">';
+  m.learn.forEach(item=>{if(item.type==='text')lh+=`<p>${item.content}</p>`;if(item.type==='quote')lh+=`<div class="quote-box">"${item.text}"<div class="author">— ${item.author}</div></div>`;});
+  lh+='</div></div>';c.innerHTML+=lh;
+  let rh='<div class="section-card"><h3>💭 Refleksion</h3><p class="subtitle">Disse spørgsmål kræver ærlighed. Tag dig tid.</p>';
+  m.reflections.forEach(r=>{
+    const saved=(state.modules?.[m.id]?.[r.id])||'';
+    if(r.type==='textarea'){rh+=`<div class="reflection-group"><label>${r.label}</label><textarea id="ref_${r.id}" placeholder="${r.placeholder||''}" onchange="saveRef('${m.id}','${r.id}',this.value)">${saved}</textarea></div>`;}
+    else if(r.type==='scale'){let btns='';for(let i=r.min;i<=r.max;i++)btns+=`<button class="scale-btn ${parseInt(saved)===i?'selected':''}" onclick="pickScale('${m.id}','${r.id}',${i},this)">${i}</button>`;rh+=`<div class="reflection-group"><label>${r.label}</label><div class="scale-row">${btns}</div></div>`;}
+  });rh+='</div>';c.innerHTML+=rh;
+  let th='<div class="takeaway-box"><h4>✨ Vigtigste takeaways</h4><ul>';m.takeaways.forEach(t=>th+=`<li>${t}</li>`);th+='</ul></div>';c.innerHTML+=th;
+  c.innerHTML+=`<div class="why-box"><h4>🎯 Hvorfor dette giver mening</h4><p style="margin-top:6px;">${m.whyItMatters}</p></div>`;
+  let sh='<div class="source-box"><h4>📚 Kilder</h4><ul>';m.sources.forEach(s=>sh+=`<li>${s}</li>`);sh+='</ul></div>';c.innerHTML+=sh;
+  let ah=`<div class="activity-card"><h3>🚀 Handling</h3><p class="activity-subtitle">Dybere praksis kræver større mod. Vælg den der udfordrer dig mest.</p>`;
+  m.activities.forEach(a=>{ah+=`<div class="activity-item"><h4>${a.title}</h4><p>${a.desc}</p><div class="activity-meta">⏱ ${a.time} · 📖 ${a.evidence}</div></div>`;});
+  ah+='</div>';c.innerHTML+=ah;
+  const acked=isAcknowledged(m.id);const idx=MODULES.findIndex(mod=>mod.id===m.id);const nextMod=MODULES[idx+1];
+  const nextTitle=nextMod?`Modul ${nextMod.num}: ${nextMod.title}`:'din transformationsprofil';
+  c.innerHTML+=`<div class="acknowledge-box"><label><input type="checkbox" id="ack_${m.id}" ${acked?'checked disabled':''} onchange="ackModule('${m.id}')"><span>${acked?'Du har gennemført dette modul':'Jeg har gennemgået modulet og er klar til næste'}</span></label><div class="unlock-msg" id="unlockMsg_${m.id}" ${acked?'style="display:block;"':''}>${acked?`✅ Gennemført! ${nextMod?`<strong>${nextTitle}</strong> er nu låst op.`:'Du har gennemført hele forløbet!'}`:`Når du krydser af, låses <strong>${nextTitle}</strong> op.`}</div>${acked?`<button class="btn btn-primary" onclick="${nextMod?`openModule('${nextMod.id}')`:'showReport()'}" style="margin-top:12px;width:auto;">${nextMod?`Gå til ${nextTitle} →`:'📄 Se din transformationsprofil →'}</button>`:''}</div>`;
+  showScreen('module');
+}
+
+function saveRef(mid,rid,val){if(!state.modules)state.modules={};if(!state.modules[mid])state.modules[mid]={};state.modules[mid][rid]=val;saveState();}
+function pickScale(mid,rid,val,btn){btn.parentElement.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');saveRef(mid,rid,val.toString());}
+function ackModule(id){const cb=document.getElementById('ack_'+id);if(!cb.checked)return;cb.disabled=true;if(!state.acknowledged)state.acknowledged={};state.acknowledged[id]=new Date().toISOString();if(!state.completed)state.completed=[];if(!state.completed.includes(id))state.completed.push(id);saveState();openModule(id);}
+
+function showReport(){
+  const c=document.getElementById('reportContent');c.innerHTML='';
+  const n=state.client.name.split(' ')[0];
+  c.innerHTML+=`<div class="card" style="text-align:center;border:2px solid var(--gold);"><h2 style="color:var(--gold);">⚡ ${n}, din transformationsprofil</h2><div class="gold-line"></div><p>Du har gennemført begge niveauer — 18 moduler i alt. Du har reflekteret dybere over din ledelse, dine mønstre og dit formål end de fleste executives nogensinde gør.</p><p style="font-size:14px;color:var(--text-muted);margin-top:8px;">Genereret ${new Date().toLocaleDateString('da-DK')} · ${state.client.role||''} ${state.client.company?'· '+state.client.company:''}</p></div>`;
+
+  const phases=[{name:'Under overfladen',ids:['viden_visdom','moenstre','eq_pres'],badge:'depth-surface'},{name:'Ind til kernen',ids:['modstand','ensomhed','beslutninger'],badge:'depth-core'},{name:'Transformation',ids:['autentisk','arv','ikkeselv'],badge:'depth-transform'}];
+  phases.forEach(ph=>{
+    let ph_html=`<div class="section-card"><h3><span class="depth-badge ${ph.badge}">${ph.name}</span></h3>`;
+    ph.ids.forEach(mid=>{
+      const m=MODULES.find(mod=>mod.id===mid);const md=state.modules?.[mid]||{};
+      ph_html+=`<h4 style="color:${m.color};margin-top:16px;font-size:1em;">Modul ${m.num}: ${m.title}</h4>`;
+      if(Object.keys(md).length>0){m.reflections.forEach(r=>{const v=md[r.id];if(v){ph_html+=`<p style="font-size:12px;color:var(--text-muted);margin-top:6px;"><strong>${r.label}</strong></p><p style="font-size:14px;padding:8px 12px;background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:6px;margin-bottom:4px;">${v}</p>`;}});}else{ph_html+=`<p style="color:var(--text-muted);font-style:italic;font-size:13px;">Ingen besvarelser gemt.</p>`;}
+    });ph_html+='</div>';c.innerHTML+=ph_html;
+  });
+
+  // Transformation insights
+  const gap=state.modules?.['viden_visdom']?.['vv_2']||'?';
+  const loneliness=state.modules?.['ensomhed']?.['en_1']||'?';
+  const readiness=state.modules?.['ikkeselv']?.['is_3']||'?';
+  const cantAlone=state.modules?.['ikkeselv']?.['is_2']||'';
+  const legacy=state.modules?.['arv']?.['ar_1']||'';
+
+  c.innerHTML+=`<div class="section-card" style="border-color:var(--gold);"><h3 style="color:var(--gold);">🔍 Din transformationsprofil — samlet</h3>
+    <div class="report-section"><h4>Knowing-doing gap</h4><p>Du scorede <strong>${gap}/10</strong> på gabet mellem viden og handling. ${parseInt(gap)>=7?'Et markant gap — og en klar indikation af, at der er uudnyttet potentiale, som kræver andet end mere viden.':parseInt(gap)>=4?'Et moderat gap — nok til at det påvirker din effektivitet som leder.':'Et relativt lille gap — men selv små gap kan have store konsekvenser i C-level ledelse.'}</p></div>
+    <div class="report-section"><h4>Ensomhed i rollen</h4><p>Du scorede <strong>${loneliness}/10</strong> på ensomhed. ${parseInt(loneliness)>=7?'Det er et alarmerende niveau — og det påvirker din beslutningskraft og dit wellbeing.':parseInt(loneliness)>=4?'Det er et reelt niveau af isolation, der sandsynligvis påvirker din ledelse.':'Relativt lavt — men ensomheden i toppen er subtil og kan vokse.'}</p></div>
+    <div class="report-section"><h4>Coaching-readiness</h4><p>Du scorede <strong>${readiness}/10</strong> på parathed til en professionel coaching-relation. ${parseInt(readiness)>=7?'Du er klar. Spørgsmålet er ikke om — men hvornår og med hvem.':parseInt(readiness)>=4?'Du overvejer det. Det er et godt tegn — de bedste ledere handler på den overvejelse.':'Du er måske ikke klar endnu — og det er okay. Planten den tanke, og vend tilbage til den.'}</p></div>
+    ${cantAlone?`<div class="report-section"><h4>Det du ikke kan alene</h4><p>"${cantAlone}"</p></div>`:''}
+    ${legacy?`<div class="report-section"><h4>Den arv du vil efterlade</h4><p>"${legacy}"</p></div>`:''}
+  </div>`;
+
+  c.innerHTML+=`<div class="section-card" style="border-color:var(--gold);"><h3 style="color:var(--gold);">💡 Den ubehagelige sandhed</h3><p style="font-size:15px;line-height:1.8;margin-top:8px;">Du har nu investeret timer i to forløb, der har givet dig dybere selvindsigt end de fleste ledere opnår i et helt karriereliv. Og du har opdaget noget vigtigt: <strong>der er steder, du ikke kan nå alene.</strong></p><p style="font-size:15px;line-height:1.8;margin-top:12px;">Dine mønstre, dine blinde vinkler, din modstand, din ensomhed — alt det kræver et perspektiv udefra. Ikke en bog mere. Ikke et forløb mere. <strong>Et menneske, der ser dig, udfordrer dig og holder dig fast.</strong></p><p style="font-size:15px;line-height:1.8;margin-top:12px;">De mest exceptionelle ledere i verden forstår dette. Spørgsmålet er ikke, om du har brug for det. <strong>Spørgsmålet er, om du er modig nok til at handle på det.</strong></p></div>`;
+
+  const helpText=cantAlone?encodeURIComponent(cantAlone):'[udfyldes]';
+  c.innerHTML+=`<div class="coaching-box"><h3>💬 Det næste skridt er ikke et modul</h3><p style="font-size:16px;margin-bottom:8px;">Det er en samtale.</p><p>30 minutter. Uforpligtende. Fortroligt. Med en partner, der har gennemført over 15.000 coaching-sessioner med C-level executives og kender de dybder, du lige har udforsket — fra den anden side af bordet.</p><p style="margin-top:12px;font-size:14px;color:var(--text);">Ikke fordi du ikke kan selv. Men fordi du er den type leder, der investerer i at blive bedre — altid.</p><a href="mailto:thomas@friisnaes.dk?subject=Coaching%20201%20%E2%80%94%20klar%20til%20en%20samtale&body=Hej%20Thomas%2C%0A%0AJeg%20har%20gennemf%C3%B8rt%20b%C3%A5de%20Coaching%20101%20og%20201.%0A%0ADet%20jeg%20gerne%20vil%20arbejde%20med%3A%20${helpText}%0A%0AVenlig%20hilsen%2C%0A${encodeURIComponent(state.client.name)}%0A${encodeURIComponent(state.client.role||'')}%20${encodeURIComponent(state.client.company?'· '+state.client.company:'')}" class="btn btn-primary" style="width:auto;text-decoration:none;padding:18px 36px;font-size:17px;">📧 Book samtalen — 30 minutter, uforpligtende</a><p style="font-size:12px;color:var(--text-muted);margin-top:14px;">Thomas Friisnæs · Personal Excellence Partner<br>20+ års erfaring · 15.000+ sessions · C-level eksklusivt<br>friisnaes.dk</p></div>`;
+
+  c.innerHTML+=`<div style="text-align:center;margin-top:30px;"><button class="btn btn-primary" onclick="exportData()" style="width:auto;">📤 Download dine besvarelser</button></div><div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--navy-border);font-size:13px;color:var(--text-muted);"><p style="font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);font-weight:600;">Friisnæs — Karakter · Disciplin · Klarhed</p><p style="margin-top:4px;">Udviklet af Thomas Friisnæs · Personal Excellence Partner · friisnaes.dk</p></div>`;
+  showScreen('report');
+}
+
+function exportData(){const exp={framework:'Coaching 201 — Det næste niveau',version:state.version,exported:new Date().toISOString(),data:state};const blob=new Blob([JSON.stringify(exp,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`Coaching201_${state.client.name.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(url);}
+function importData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=(e)=>{try{const imp=JSON.parse(e.target.result);if(imp.data&&imp.framework.includes('Coaching 201')){state={...state,...imp.data};saveState();goHome();alert('Data importeret.');}else{alert('Ugyldig fil.');}}catch(err){alert('Fejl: '+err.message);}};reader.readAsText(file);event.target.value='';}
+
+init();
+</script>
+</body>
+</html>

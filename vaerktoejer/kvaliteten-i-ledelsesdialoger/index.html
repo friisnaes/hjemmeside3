@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kvaliteten i ledelsesdialoger — Friisnæs</title>
+<meta name="description" content="Destilleret praksis: En serie frameworks til organisationens vigtigste samtaler. 1:1, MUS, den svære samtale.">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#111111;--navy2:#1a1a1a;--navy3:#222222;
+  --gold:#c0392b;--gold-dim:rgba(192,57,43,.15);
+  --blue:#c0392b;--text:#E4EAF4;--text2:#8A9BB8;--text3:#4E6080;
+  --brd:rgba(255,255,255,.07);--brd2:rgba(255,255,255,.13);
+  --orange:#E5A048;--green:#4CAF82;--red:#E57373;
+  --ferrari:#c0392b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--navy);color:var(--text);line-height:1.7;min-height:100vh;overflow-x:hidden}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;line-height:1.3}
+
+/* === SHARED CONTENT RAIL === */
+.rail{max-width:880px;margin:0 auto;padding-left:32px;padding-right:32px}
+
+/* === SITE LINK === */
+.site-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--ferrari);text-decoration:none;padding:6px 14px;border:1px solid rgba(212,43,43,.3);border-radius:6px;transition:all .3s;letter-spacing:.04em}
+.site-link:hover{color:#FF2800;border-color:rgba(255,40,0,.5)}
+
+/* === HERO === */
+.hero{position:relative;padding:72px 0 52px;text-align:center;background:radial-gradient(ellipse at 30% 20%,rgba(42,82,152,.22) 0%,transparent 55%),radial-gradient(ellipse at 75% 80%,rgba(201,168,76,.08) 0%,transparent 50%),var(--navy)}
+.hero-top{position:absolute;top:20px;right:24px}
+.hero-label{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.hero h1{font-size:clamp(34px,5vw,50px);color:var(--text);letter-spacing:.02em;max-width:700px;margin:0 auto 0}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.gold-line{width:56px;height:2px;background:var(--gold);margin:20px auto 0;border-radius:1px}
+
+/* === INTRO === */
+.section-intro{padding-top:44px;padding-bottom:40px}
+.section-intro p{font-size:15.5px;color:var(--text2);line-height:1.9;margin-bottom:13px;max-width:640px}
+.section-intro .lead{font-family:'Playfair Display',serif;font-size:20px;color:var(--text);line-height:1.8}
+.section-intro .turn{font-family:'Playfair Display',serif;font-size:19px;color:var(--text);margin-top:20px;margin-bottom:20px}
+.section-intro .closing{font-size:15.5px;color:var(--gold);font-style:italic;margin-top:22px;margin-bottom:0}
+
+/* === FADED PREVIEW === */
+.preview-strip{padding-top:8px;padding-bottom:44px;position:relative}
+.preview-label{font-size:13px;color:var(--text3);margin-bottom:16px;font-style:italic}
+.preview-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.preview-row::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,var(--navy) 92%);pointer-events:none}
+.preview-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:16px 14px;opacity:.3;overflow:hidden;max-height:110px}
+.preview-card .pc-icon{font-size:18px;margin-bottom:8px;display:block}
+.preview-card .pc-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--text);line-height:1.3}
+.preview-card .pc-sub{font-size:11px;color:var(--text3);margin-top:4px;line-height:1.5}
+
+/* === DIVIDER === */
+.divider{height:1px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.15) 80%);margin-bottom:44px}
+
+/* === SECTION HEADINGS (H2) — all identical === */
+.section-h2{font-size:clamp(26px,3.5vw,34px);color:var(--text);margin-bottom:14px}
+
+/* === DIALOGER === */
+.section-dialoger{padding-bottom:44px}
+.section-dialoger p{font-size:15.5px;color:var(--text2);line-height:1.9;margin-bottom:13px;max-width:640px}
+.dialoger-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:28px 0 20px}
+.dialog-cards{display:flex;flex-direction:column;gap:16px}
+.dialog-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:22px 24px;display:flex;gap:18px;align-items:flex-start}
+.dialog-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--gold);line-height:1;min-width:28px;padding-top:2px}
+.dialog-card h3{font-size:17px;margin-bottom:4px;color:var(--text)}
+.dialog-card p{font-size:14px;color:var(--text2);line-height:1.7}
+.dialoger-close{font-size:15px;color:var(--text3);margin-top:28px;font-style:italic}
+
+/* === FRAMEWORKS === */
+.section-fw{padding-top:44px;padding-bottom:72px}
+.fw-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:20px}
+.fw-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:24px 22px;cursor:pointer;text-decoration:none;color:var(--text);transition:all .3s ease;position:relative;overflow:hidden}
+.fw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--gold));opacity:0;transition:opacity .3s}
+.fw-card:hover{border-color:var(--brd2);transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.3)}
+.fw-card:hover::before{opacity:1}
+.fw-icon{font-size:24px;margin-bottom:12px;display:block}
+.fw-card h3{font-size:20px;margin-bottom:6px;line-height:1.35}
+.fw-card .fw-sub{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:14px}
+.fw-card .fw-meta{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;display:flex;align-items:center;gap:8px}
+.fw-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;letter-spacing:.12em}
+.fw-arrow{position:absolute;right:18px;bottom:18px;font-size:16px;color:var(--text3);transition:all .3s}
+.fw-card:hover .fw-arrow{color:var(--gold);transform:translateX(4px)}
+
+/* === FOOTER === */
+.footer{text-align:center;padding:36px 32px 44px;border-top:1px solid var(--brd)}
+.footer .brand{font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);font-weight:600}
+.footer .tag{font-size:11px;color:var(--text3);letter-spacing:.18em;text-transform:uppercase;margin-top:6px}
+.footer .contact{font-size:13px;color:var(--text3);margin-top:10px}
+.footer .contact a{color:var(--text2);text-decoration:none;border-bottom:1px solid var(--brd)}
+.footer .contact a:hover{color:var(--gold);border-color:var(--gold)}
+.footer .footer-link{margin-top:14px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:680px){
+  .rail{padding-left:24px;padding-right:24px}
+  .hero{padding:56px 24px 40px}.hero-top{top:14px;right:16px}
+  .preview-row{grid-template-columns:1fr 1fr;gap:10px}
+  .dialog-card{flex-direction:column;gap:8px;padding:18px}
+  .fw-grid{grid-template-columns:1fr;gap:14px}
+  .fw-card{padding:20px 18px}
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-top"><a class="site-link" href="../../index.html" target="_blank">friisnaes.com →</a></div>
+  <div class="hero-label">Destilleret praksis</div>
+  <h1>Kvaliteten i <em>ledelsesdialoger</em></h1>
+  <div class="gold-line"></div>
+</div>
+
+<!-- INTRO -->
+<div class="rail section-intro">
+  <p class="lead">De fleste strategier lykkes eller fejler ikke i strategidokumenter.</p>
+  <p>De lykkes eller fejler i tusindvis af små samtaler i organisationen.</p>
+  <p>Samtaler mellem leder og medarbejder. Samtaler hvor forventninger afklares, feedback gives, og retning skabes.</p>
+  <p>Alligevel arbejder relativt få organisationer systematisk med kvaliteten af disse dialoger.</p>
+  <p>Mange 1:1-samtaler er uforberedte. Mange MUS bliver rutineøvelser. Og svære samtaler udsættes ofte længere end de burde.</p>
+  <p class="turn">Når kvaliteten af ledelsesdialoger er høj, sker der noget andet.</p>
+  <p>Prioriteter bliver tydelige. Problemer opdages tidligere. Medarbejdere udvikler sig hurtigere. Og organisationer eksekverer bedre.</p>
+  <p>Efter mange års arbejde i ledelsesrum – med direktioner, forretningsledelser og ledere på forskellige niveauer – har jeg forsøgt at destillere nogle af de refleksioner, der går igen i organisationens vigtigste samtaler.</p>
+  <p class="closing">Strategier skaber retning. Men det er i samtalerne, organisationer i praksis bevæger sig.</p>
+</div>
+
+<!-- FADED PREVIEW -->
+<div class="rail preview-strip">
+  <div class="preview-label">Fire refleksionsframeworks om organisationens vigtigste samtaler ↓</div>
+  <div class="preview-row">
+    <div class="preview-card">
+      <span class="pc-icon">💬</span>
+      <div class="pc-title">Den gode 1:1</div>
+      <div class="pc-sub">Kadence, struktur, feedback og udvikling</div>
+    </div>
+    <div class="preview-card">
+      <span class="pc-icon">⚡</span>
+      <div class="pc-title">Den svære samtale</div>
+      <div class="pc-sub">Forberedelse, gennemførelse og læring</div>
+    </div>
+    <div class="preview-card">
+      <span class="pc-icon">📋</span>
+      <div class="pc-title">MUS (leder)</div>
+      <div class="pc-sub">Forberedelse, samtaleteknik og opfølgning</div>
+    </div>
+    <div class="preview-card">
+      <span class="pc-icon">🎯</span>
+      <div class="pc-title">MUS (medarbejder)</div>
+      <div class="pc-sub">Selvrefleksion, feedback og udvikling</div>
+    </div>
+  </div>
+</div>
+
+<!-- DIVIDER -->
+<div class="rail"><div class="divider"></div></div>
+
+<!-- DIALOGER -->
+<div class="rail section-dialoger">
+  <h2 class="section-h2">Organisationer bevæger sig gennem samtaler</h2>
+  <p>Organisationer fungerer i praksis gennem nogle få typer ledelsesdialoger mellem leder og medarbejder.</p>
+  <p>Når kvaliteten af disse samtaler er høj, bliver forventninger tydelige, problemer opdages tidligere, og medarbejdere udvikler sig hurtigere. Når kvaliteten er lav, bliver samtalerne enten rutine eller noget, man udsætter.</p>
+  <p>De fleste organisationer arbejder meget med strategi og struktur – men langt mindre systematisk med kvaliteten af disse dialoger. I praksis går nogle få samtaler igen i næsten alle organisationer.</p>
+
+  <div class="dialoger-label">De tre centrale dialoger</div>
+
+  <div class="dialog-cards">
+    <div class="dialog-card">
+      <div class="dialog-num">1</div>
+      <div>
+        <h3>Den løbende dialog</h3>
+        <p>Den regelmæssige 1:1 mellem leder og medarbejder, hvor prioriteringer, feedback og fremdrift afklares.</p>
+      </div>
+    </div>
+    <div class="dialog-card">
+      <div class="dialog-num">2</div>
+      <div>
+        <h3>Udviklingsdialogen</h3>
+        <p>MUS, hvor man træder et skridt tilbage fra hverdagen og taler om udvikling, retning og ambitioner.</p>
+      </div>
+    </div>
+    <div class="dialog-card">
+      <div class="dialog-num">3</div>
+      <div>
+        <h3>Den korrigerende dialog</h3>
+        <p>Den svære samtale, hvor noget skal adresseres tydeligt – fx performance, samarbejde eller forventninger.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialoger-close">De følgende frameworks er refleksioner over netop disse dialoger.</div>
+</div>
+
+<!-- DIVIDER -->
+<div class="rail"><div class="divider"></div></div>
+
+<!-- FRAMEWORKS -->
+<div class="rail section-fw">
+  <h2 class="section-h2">Frameworks</h2>
+  <div class="fw-grid">
+
+    <a class="fw-card" target="_blank" href="../den-gode-1-on-1/" style="--card-accent:#c0392b">
+      <span class="fw-icon">💬</span>
+      <h3>Den gode 1:1</h3>
+      <div class="fw-sub">Den løbende samtale mellem leder og medarbejder. Refleksioner over kadence, struktur, feedback, udvikling og svære emner i 1:1.</div>
+      <div class="fw-meta">
+        <span class="fw-badge" style="background:rgba(192,57,43,.2);color:#e74c3c">Leder</span>
+        8 moduler · 48 refleksioner
+      </div>
+      <span class="fw-arrow">→</span>
+    </a>
+
+    <a class="fw-card" target="_blank" href="../den-svaere-samtale/" style="--card-accent:#c0392b">
+      <span class="fw-icon">⚡</span>
+      <h3>Den svære samtale</h3>
+      <div class="fw-sub">De samtaler der har størst konsekvens og som oftest udskydes. Refleksioner over forberedelse, gennemførelse og læring.</div>
+      <div class="fw-meta">
+        <span class="fw-badge" style="background:rgba(192,57,43,.2);color:#e74c3c">Leder</span>
+        8 moduler · 55 refleksioner
+      </div>
+      <span class="fw-arrow">→</span>
+    </a>
+
+    <a class="fw-card" target="_blank" href="../den-gode-mus-leder/" style="--card-accent:#c0392b">
+      <span class="fw-icon">📋</span>
+      <h3>Den gode MUS (leder)</h3>
+      <div class="fw-sub">Lederens forberedelse til MUS. Refleksioner over samtaleteknik, feedback, udvikling, trivsel og opfølgning.</div>
+      <div class="fw-meta">
+        <span class="fw-badge" style="background:rgba(192,57,43,.2);color:#e74c3c">Leder</span>
+        8 moduler · 48 refleksioner
+      </div>
+      <span class="fw-arrow">→</span>
+    </a>
+
+    <a class="fw-card" target="_blank" href="../den-gode-mus-medarbejder/" style="--card-accent:#c0392b">
+      <span class="fw-icon">🎯</span>
+      <h3>Den gode MUS (medarbejder)</h3>
+      <div class="fw-sub">Medarbejderens forberedelse til MUS. Refleksioner over selvrefleksion, feedbackmodtagelse, udvikling og karriereejerskab.</div>
+      <div class="fw-meta">
+        <span class="fw-badge" style="background:rgba(192,57,43,.2);color:#e74c3c">Medarbejder</span>
+        8 moduler · 48 refleksioner
+      </div>
+      <span class="fw-arrow">→</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="brand">Friisnæs</div>
+  <div class="tag">Karakter · Disciplin · Klarhed</div>
+  <div class="contact">Thomas Friisnæs — Personal Excellence Partner · <a href="mailto:friisnaes@gmail.com">friisnaes@gmail.com</a></div>
+  <div class="footer-link"><a class="site-link" href="../../index.html" target="_blank">friisnaes.com →</a></div>
+</div>
+
+</body>
+</html>

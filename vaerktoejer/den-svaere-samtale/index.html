@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="1.0.0">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<meta name="description" content="Den Svære Samtale — Lederkommunikation under pres. Karakter · Disciplin · Klarhed.">
+<title>Den Svære Samtale — Karakter · Disciplin · Klarhed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#111111;--navy2:#1a1a1a;--navy3:#222222;--navy4:#2b2b2b;
+  --blue:#c0392b;--blue2:#e74c3c;
+  --gold:#c0392b;--gold2:#e74c3c;--gdim:rgba(224,168,74,0.14);--gbrd:rgba(192,57,43,0.35);
+  --text:#E4EAF4;--text2:#8A9BB8;--text3:#4E6080;
+  --green:#4CAF82;--red:#E57373;
+  --brd:rgba(255,255,255,0.07);--brd2:rgba(255,255,255,0.13);
+  --r:10px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.65;min-height:100vh}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.2}
+button{font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;cursor:pointer;transition:all .18s}
+input,textarea,select{font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;background:var(--navy3);border:1.5px solid var(--brd2);color:var(--text);border-radius:8px;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--blue2)}textarea{resize:vertical}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:var(--navy2)}::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:2px}
+.hidden{display:none!important}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+.fade{animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* LOGIN */
+#sc-client-login,#sc-admin-login{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(42,82,152,.18) 0%,transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(201,168,76,.05) 0%,transparent 50%),var(--navy);padding:32px 24px}
+.login-logo{text-align:center;margin-bottom:52px}
+.login-logo h1{font-size:42px;letter-spacing:.02em;color:var(--text)}
+.login-logo .tag{font-family:'Outfit';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.login-logo .sub2{font-size:13px;color:var(--text3);margin-top:6px;font-style:italic}
+.login-card{width:100%;max-width:400px;background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:32px}
+.login-card.gold{border-color:var(--gbrd)}
+.login-card h2{font-size:26px;margin-bottom:8px}
+.login-card h2.gold-text{color:var(--gold)}
+.login-card .sub{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.65}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.fg input{width:100%;padding:12px 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border:none;border-radius:8px;font-size:13px;font-weight:500}
+.btn-row{display:flex;gap:10px;margin-top:18px}
+.btn-primary{background:var(--blue);color:#fff;flex:1}.btn-primary:hover{background:var(--blue2)}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:600;flex:1}.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;border:1.5px solid var(--brd2);color:var(--text2)}.btn-ghost:hover{background:var(--navy3);color:var(--text)}
+.err{color:var(--red);font-size:12px;margin-top:8px}
+.gdpr-strip{margin-top:20px;padding:12px 14px;background:rgba(76,175,130,.07);border:1px solid rgba(76,175,130,.2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.7}
+.gdpr-strip strong{color:var(--green)}
+.admin-link{margin-top:28px;text-align:center}
+.admin-link a{font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--brd2);padding-bottom:1px}
+
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:14px;padding:0 24px;height:56px;background:rgba(12,24,41,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);flex-shrink:0;flex-wrap:wrap}
+.tb-brand{flex:1}.tb-brand .nm{font-family:'Playfair Display',Georgia,serif;font-size:16px;color:var(--text);font-weight:600}
+.tb-brand .sb{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.15em}
+.tb-btn{padding:6px 12px;background:transparent;border:1px solid var(--brd);border-radius:6px;color:var(--text3);font-size:12px}
+.tb-btn:hover{border-color:var(--brd2);color:var(--text2)}.tb-btn.gold{color:var(--gold);border-color:var(--gbrd)}
+
+/* DASHBOARD */
+.c-main{padding:32px 24px;max-width:960px;margin:0 auto;width:100%}
+.prog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px}
+.prog-header h1{font-size:32px}.prog-header .stat{font-size:13px;color:var(--text3)}
+.ack-box{background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:28px;margin-bottom:28px;text-align:center}
+.ack-box .ack-icon{font-size:42px;margin-bottom:12px}.ack-box h2{font-size:22px;margin-bottom:10px}
+.ack-box p{color:var(--text2);font-size:14px;max-width:640px;margin:0 auto;line-height:1.8}
+.velocity-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:20px;margin-bottom:24px}
+.velocity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.vg-item{text-align:center;padding:10px;background:var(--navy3);border-radius:8px}
+.vg-item .vn{font-size:22px;font-weight:600}.vg-item .vl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.mod-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:22px;cursor:pointer;transition:all .2s}
+.mod-card:hover{border-color:var(--brd2);transform:translateY(-2px)}
+.mod-card.locked{opacity:.45;cursor:default;pointer-events:none}
+.mod-card .mc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mod-card .mc-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff}
+.mod-card .mc-title{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:600;flex:1}
+.mod-card .mc-sub{font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:14px}
+.mod-card .mc-prog{height:4px;background:var(--navy4);border-radius:2px;overflow:hidden}
+.mod-card .mc-prog-fill{height:100%;border-radius:2px;transition:width .4s ease}
+.mod-card .mc-status{font-size:11px;margin-top:8px}
+.mc-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+
+/* MODULE VIEW */
+.mod-header{padding:28px 24px;border-bottom:1px solid var(--brd)}
+.mod-header h1{font-size:30px;margin-bottom:4px}.mod-header .mh-sub{font-size:13px;color:var(--text3)}
+.mod-tabs{display:flex;gap:0;border-bottom:1px solid var(--brd);padding:0 24px}
+.mod-tab{padding:12px 20px;font-size:13px;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.mod-tab:hover{color:var(--text2)}.mod-tab.active{color:var(--text);border-bottom-color:var(--gold)}
+.mod-content{padding:32px 24px;max-width:820px;margin:0 auto}
+.sources-box{border-left:3px solid var(--blue);padding:16px 20px;background:var(--navy2);border-radius:0 10px 10px 0;margin-bottom:24px}
+.src-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.src-item{font-size:12px;color:var(--text2);padding:3px 0}
+.why-mod-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:18px 22px;margin-bottom:24px}
+.why-mod-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:10px}
+.why-mod-text{font-size:14px;color:var(--text2);line-height:1.8}
+.learn-body{color:var(--text2);line-height:1.9;font-size:14.5px}
+.learn-body h3{color:var(--text);font-size:20px;margin:28px 0 14px}
+.learn-body h4{color:var(--text);font-size:16px;margin:20px 0 10px;font-family:'Outfit',sans-serif;font-weight:600}
+.learn-body p{margin-bottom:14px}
+.learn-body blockquote{border-left:3px solid var(--gold);padding:12px 18px;margin:18px 0;color:var(--text);font-style:italic;background:rgba(201,168,76,.04);border-radius:0 8px 8px 0}
+.learn-body ul,.learn-body ol{margin:12px 0 12px 24px;color:var(--text2)}.learn-body li{margin-bottom:6px}
+.learn-cta{text-align:center;margin-top:32px}
+.takeaways-box{background:rgba(76,175,130,.06);border:1px solid rgba(76,175,130,.15);border-radius:10px;padding:22px 26px;margin-top:28px}
+.tk-title{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;font-weight:600}
+.tk-item{font-size:14px;color:var(--text2);line-height:1.8;padding:6px 0;border-bottom:1px solid rgba(76,175,130,.08)}.tk-item:last-child{border:none}
+
+/* QUESTIONS */
+.q-progress{position:sticky;top:56px;z-index:50;background:var(--navy2);border-bottom:1px solid var(--brd);padding:10px 24px;display:flex;align-items:center;gap:14px}
+.qp-bar{flex:1;height:6px;background:var(--navy4);border-radius:3px;overflow:hidden}
+.qp-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease}
+.qp-cnt{font-size:12px;color:var(--text3);min-width:50px;text-align:right}
+.q-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:18px}
+.q-card .qlabel{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.q-card .qtext{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.q-card textarea{width:100%;min-height:100px;padding:14px}
+.q-card .scale-row{display:flex;gap:6px;flex-wrap:wrap}
+.q-card .scale-btn{padding:8px 14px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text3);font-size:13px;min-width:40px;text-align:center}
+.q-card .scale-btn.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.q-card .cbtn{padding:8px 16px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text2);font-size:13px;margin:3px}
+.q-card .cbtn.sel{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
+.btn-save{display:block;width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;margin-top:12px}
+.btn-save:hover{background:var(--blue2)}
+
+/* JOURNAL */
+.refl-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:22px;margin-bottom:16px}
+.refl-card h4{font-size:16px;margin-bottom:12px}.refl-card label{font-size:12px;color:var(--text3);display:block;margin-bottom:4px;margin-top:10px}
+.refl-card textarea{width:100%;min-height:70px;padding:10px;margin-bottom:4px}
+.refl-card select{padding:8px 12px;margin-bottom:4px;width:100%}
+.refl-card .check-row{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:13px;color:var(--text2)}
+
+/* ADMIN */
+.admin-wrap{display:flex;min-height:100vh}
+.admin-side{width:260px;background:var(--navy2);border-right:1px solid var(--brd);padding:20px;flex-shrink:0;overflow-y:auto}
+.admin-main{flex:1;padding:28px;overflow-y:auto}
+.as-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin-bottom:20px}
+.as-nav{list-style:none}.as-nav li{padding:10px 14px;border-radius:8px;font-size:13px;color:var(--text3);cursor:pointer;margin-bottom:4px}
+.as-nav li:hover{background:var(--navy3);color:var(--text2)}
+.as-nav li.active{background:var(--navy3);color:var(--gold);border-left:3px solid var(--gold)}
+.aclient-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:16px;margin-bottom:10px;cursor:pointer}
+.aclient-card:hover{border-color:var(--brd2)}.aclient-card.sel{border-color:var(--gold)}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.astat{background:var(--navy3);border-radius:8px;padding:14px;text-align:center}
+.astat .av{font-size:24px;font-weight:600}.astat .al{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.ai-box{background:var(--navy3);border:1px solid var(--gbrd);border-radius:10px;padding:20px;margin-top:16px}
+.ai-box h3{color:var(--gold);font-size:18px;margin-bottom:12px}
+.ai-result{white-space:pre-wrap;font-size:13px;color:var(--text2);line-height:1.8;max-height:500px;overflow-y:auto}
+
+/* MODAL */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-box{background:var(--navy2);border:1px solid var(--brd2);border-radius:14px;padding:32px;max-width:540px;width:100%;max-height:80vh;overflow-y:auto}
+.modal-box h2{font-size:24px;margin-bottom:14px}.modal-box p{color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:12px}
+.save-feedback{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;z-index:600;animation:fadeIn .3s ease;pointer-events:none}
+
+/* INFO */
+.info-container{max-width:820px;margin:0 auto;padding:40px 24px}
+.info-section{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px;margin-bottom:20px}
+.info-section h2{font-size:22px;margin-bottom:14px;color:var(--gold)}
+.info-section p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:10px}
+
+/* RESPONSIVE */
+@media(max-width:900px){.topbar{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px}.tb-brand{width:100%}.prog-header{flex-direction:column}.mods-grid{grid-template-columns:1fr}.admin-side{width:200px}}
+@media(max-width:640px){.login-logo h1{font-size:30px}.astats{grid-template-columns:1fr 1fr}.velocity-grid{grid-template-columns:1fr 1fr}.mod-content{padding:24px 16px}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+<body>
+<!-- CLIENT LOGIN -->
+<div id="sc-client-login" class="screen active">
+  <div class="login-logo">
+    <h1>Den Svære Samtale</h1>
+    <div class="tag">Karakter · Disciplin · Klarhed</div>
+    <div class="sub2">Lederkommunikation under pres</div>
+  </div>
+  <div class="login-card">
+    <h2>Klientadgang</h2>
+    <div class="sub">Indtast dit navn for at starte eller fortsætte dit forløb.</div>
+    <div class="fg"><label>Dit fulde navn</label><input type="text" id="cl-name" placeholder="Fornavn Efternavn" onkeydown="if(event.key==='Enter')doClientLogin()"></div>
+    <div class="btn-row"><button class="btn btn-primary" onclick="doClientLogin()">Start forløb</button></div>
+    <div id="cl-err" class="err hidden"></div>
+    <div class="gdpr-strip">
+      <strong>🔒 GDPR:</strong> Alle besvarelser gemmes udelukkende lokalt på din enhed. Intet sendes til en server.
+      <div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+        <input type="checkbox" id="gdpr-consent" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">
+        <label for="gdpr-consent" style="font-size:12px;color:var(--text2);cursor:pointer;line-height:1.5">Jeg accepterer, at mine besvarelser gemmes lokalt på denne enhed.</label>
+      </div>
+    </div>
+  </div>
+  <div class="admin-link"><a href="?admin">Admin-adgang →</a></div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="sc-admin-login" class="screen">
+  <div class="login-logo"><h1>Den Svære Samtale</h1><div class="tag">Admin · Thomas Friisnæs</div></div>
+  <div class="login-card gold">
+    <h2 class="gold-text">Admin</h2>
+    <div class="sub">Adgang til klientdata, AI-analyse og modulaktivering.</div>
+    <div class="fg"><label>Adgangskode</label><input type="password" id="al-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+    <div class="btn-row"><button class="btn btn-gold" onclick="doAdminLogin()">Log ind</button></div>
+    <div id="al-err" class="err hidden"></div>
+  </div>
+</div>
+
+<!-- CLIENT DASHBOARD -->
+<div id="sc-client" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm">Den Svære Samtale</div><div class="sb" id="tb-name"></div></div>
+    <button class="tb-btn" onclick="showReadme()">📖 Guide</button>
+    <button class="tb-btn gold" onclick="exportClientJSON()">↓ JSON</button>
+    <button class="tb-btn" onclick="exportClientTXT()">↓ Tekst</button>
+    <button class="tb-btn" onclick="clientDeleteData()" style="color:var(--red)">🗑 Slet data</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="c-main" id="client-dash"></div>
+</div>
+
+<!-- MODULE VIEW -->
+<div id="sc-module" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm" id="mod-title-bar"></div><div class="sb" id="mod-sub-bar"></div></div>
+    <button class="tb-btn" onclick="renderDash();show('client')">← Dashboard</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="mod-header" id="mod-header"></div>
+  <div class="mod-tabs" id="mod-tabs"></div>
+  <div id="tc-learn" class="mod-content"></div>
+  <div id="tc-quest" class="mod-content" style="display:none"></div>
+  <div id="tc-takeaways" class="mod-content" style="display:none"></div>
+  <div id="tc-journal" class="mod-content" style="display:none"></div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="sc-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-side">
+      <div class="as-title">Admin Panel</div>
+      <ul class="as-nav">
+        <li class="active" onclick="setASection('ov')">📊 Oversigt</li>
+        <li onclick="setASection('clients')">👥 Klienter</li>
+        <li onclick="setASection('import')">📥 Import</li>
+        <li onclick="setASection('gdpr')">🔒 GDPR</li>
+      </ul>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--brd)">
+        <button class="tb-btn" style="width:100%;margin-bottom:8px" onclick="logout()">Log ud</button>
+      </div>
+    </div>
+    <div class="admin-main">
+      <div id="asec-ov"></div>
+      <div id="asec-clients" style="display:none"></div>
+      <div id="asec-import" style="display:none"></div>
+      <div id="asec-gdpr" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- README -->
+<div id="sc-readme" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Guide — Den Svære Samtale</div></div><button class="tb-btn" onclick="closeReadme()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Hvad er dette?</h2><p>Den Svære Samtale er en digital coaching-platform der systematisk udvikler din evne til at føre de samtaler der har størst konsekvens. 8 moduler kombinerer forskningsbaseret viden med struktureret refleksion.</p></div>
+    <div class="info-section"><h2>Hvordan bruges det?</h2><p>1. <strong>Læs</strong> — Hvert modul starter med fagligt indhold.<br>2. <strong>Reflektér</strong> — Besvar spørgsmålene ærligt.<br>3. <strong>Øv</strong> — Brug Samtale-Journal, Shadow Conversation og Mod-Dagbog.<br>4. <strong>Eksportér</strong> — Send besvarelser til din coach via JSON-eksport.</p></div>
+    <div class="info-section"><h2>Om platformen og din coach</h2><p><strong>Thomas Friisnæs</strong> — Personal Excellence Partner med 20+ års erfaring og 15.000+ coaching-sessioner. Arbejder med C-niveau ledere med fokus på karakter, disciplin og klarhed.</p><p><strong>Kontakt:</strong> friisnaes@gmail.com | <strong>Version:</strong> 1.0.0</p></div>
+  </div>
+</div>
+
+<div id="modal-container"></div>
+<div id="save-fb" class="save-feedback hidden"></div>
+<script>
+// ══════════════════════════════════════════════════════════════════
+// CONSTANTS & STATE
+// ══════════════════════════════════════════════════════════════════
+const PLATFORM_VERSION='1.0.0',COACH_EMAIL='friisnaes@gmail.com';
+const LS={g(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(e){return null}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},d(k){try{localStorage.removeItem(k)}catch(e){}}};
+let S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',prevScreen:null};
+
+const ARKETYPER=[
+  {id:'A',name:'Exit-samtalen',desc:'Opsigelse af nøgleleder'},
+  {id:'B',name:'Opad-konfrontationen',desc:'Bestyrelse, ejer, overordnet'},
+  {id:'C',name:'Feedback til underperformer',desc:'Nøgleleder der ikke leverer'},
+  {id:'D',name:'Den upopulære beslutning',desc:'Strategisk retningsændring'},
+  {id:'E',name:'Den personlige grænse',desc:'Private/professionelle grænser'}
+];
+const MODS=[{id:1,title:'Hvad er en svær samtale?',subtitle:'Definition · Undgåelse · Konsekvens · Mod',icon:'◆',color:'#2A5298',
+sources:['Stone, Patton & Heen — Difficult Conversations (Harvard, 1999/2010)','Patterson et al. — Crucial Conversations (2002/2012)','McKinsey — The art of the difficult conversation (2023)','Deloitte Human Capital Trends (2024)'],
+whyText:'<strong>McKinseys undersøgelse (2023)</strong> viser at 72% af ledere betragter svære samtaler som en af de tre vigtigste kompetencer — men kun 31% vurderer sig selv som kompetente.',
+learn:`<h3>Hvad gør en samtale "svær"?</h3>
+<p>En samtale er svær fordi konsekvensen af at føre den — eller undlade den — er betydelig. Stone, Patton & Heen identificerer tre elementer: <strong>Indsats × Konsekvens × Identitetstrussel</strong>.</p>
+<p>Det er identitetstrusselen der forklarer hvorfor kompetente ledere undgår "simple" samtaler. Du undgår ikke samtalen fordi den er svær — du undgår den fordi den truer dit selvbillede.</p>
+<h3>De fem arketyper</h3>
+<h4>A: Exit-samtalen</h4><p>Opsigelse af nøgleleder. Undgåelse: "Vi giver ham endnu en chance." Pris: Teamet ser at underperformance tolereres.</p>
+<h4>B: Opad-konfrontationen</h4><p>Konfrontation med bestyrelse/ejer. Undgåelse: "Det er ikke det rette tidspunkt." Pris: Du implementerer en strategi du ikke tror på.</p>
+<h4>C: Feedback til underperformer</h4><p>Ærlig feedback til nøgleleder. Undgåelse: "Han ved det godt selv." Pris: Han ved det ikke. Resten af teamet ved du ved det — og ikke handler.</p>
+<h4>D: Den upopulære beslutning</h4><p>Kommunikation af strategisk ændring. Undgåelse: "Vi skal have alle med først." Pris: Du får aldrig alle med.</p>
+<h4>E: Den personlige grænse</h4><p>Grænse der eroderes. Undgåelse: "Det går nok over." Pris: Det akkumulerer.</p>
+<h3>Conversation debt</h3>
+<p><strong>Conversation debt</strong> er den akkumulerede byrde af udskudte samtaler. Ligesom teknisk gæld akkumulerer den med renter — en samtale du udskyder i dag er sværere om en måned.</p>
+<blockquote>"En svær samtale er ikke defineret af indholdet, men af konsekvensen af at undlade den."</blockquote>`,
+qs:[
+{id:'q1_1',type:'ta',l:'Definér hvad der gør en samtale svær for dig. Er det indholdet, relationen, timingen, eller konsekvensen? <em>Hvad frygter du reelt?</em>'},
+{id:'q1_2',type:'ta',l:'Kortlæg de <strong>3 vigtigste samtaler du har udskudt de seneste 90 dage</strong>. For hver: Hvem, hvad, og hvad har udskydelsen kostet?'},
+{id:'q1_3',type:'scale',l:'Vurder din organisations "conversation debt" — byrden af udskudte samtaler.',mn:1,mx:10},
+{id:'q1_4',type:'choice',l:'Hvilken arketype er <strong>sværest</strong> for dig?',opts:['A: Exit-samtalen','B: Opad-konfrontation','C: Feedback til underperformer','D: Upopulær beslutning','E: Personlig grænse']},
+{id:'q1_5',type:'ta',l:'Beskriv en situation hvor en svær samtale — gennemført med mod — <strong>ændrede en dynamik positivt</strong>. Hvad muliggjorde det?'},
+{id:'q1_6',type:'ta',l:'Hvad er din vigtigste indsigt, og hvilken samtale vil du tage <strong>inden for 14 dage?</strong>'}],
+takeaways:['En svær samtale defineres af konsekvensen af at undlade den','Conversation debt akkumulerer med renter — udskydelse er aldrig gratis','Den mest udbredte undgåelsesstrategi er timing-rationalisering','Mod er valget om at handle trods frygten','De bedste ledere har et system til at forberede og gennemføre svære samtaler']},
+{id:2,title:'Samtalepsykologien',subtitle:'Kognition · Identitet · Emotion · Den tredje historie',icon:'◈',color:'#3A5F8A',
+sources:['Stone, Patton & Heen — Three Conversations-modellen (Harvard)','Goleman — Emotional Intelligence og amygdala-hijack','Rock — SCARF-modellen (2008)','Edmondson — The Fearless Organization','Kahneman — System 1/System 2 i konfrontation'],
+whyText:'<strong>Harvards Three Conversations-model</strong> dokumenterer at enhver svær samtale indeholder tre samtaler — de fleste ledere kun adresserer den ene.',
+learn:`<h3>Tre samtaler i én</h3>
+<p>Stone, Patton & Heen dokumenterer "The Three Conversations":</p>
+<h4>1. Sagsamtalen</h4><p>Det faktuelle: Hvad skete? Hvem har ret? De fleste ledere fokuserer kun her.</p>
+<h4>2. Følelsessamtalen</h4><p>Det emotionelle: Følelser der ikke adresseres eksplicit styrer samtalen implicit.</p>
+<h4>3. Identitetssamtalen</h4><p>Det eksistentielle: Hvad siger samtalen om mig? Er jeg kompetent? Fair? Det er her undgåelsen bor.</p>
+<h3>Amygdala-hijack</h3>
+<p>Din hjerne skelner ikke mellem fysisk trussel og identitetstrussel. Begge aktiverer fight, flight, freeze eller fawn. Når din identitet føler sig truet reagerer du i stedet for at navigere.</p>
+<h3>SCARF-modellen</h3>
+<p>David Rock identificerede fem domæner der trigger trussel-reaktioner: <strong>Status, Certainty, Autonomy, Relatedness, Fairness</strong>. At vide hvilket domæne der er i spil giver dig et operationelt værktøj.</p>
+<h3>"Den tredje historie"</h3>
+<p>Din version er den første historie. Modpartens den anden. Den tredje er hvad en neutral observatør ville fortælle. At starte derfra transformerer konfrontation til problemløsning.</p>
+<blockquote>"Identitetsbeskyttelse er den primære driver af samtaleundgåelse hos kompetente ledere."</blockquote>`,
+qs:[
+{id:'q2_1',type:'ta',l:'Tænk på den sværeste samtale du har haft. Identificér: <strong>sagsamtalen</strong>, den uudtalte <strong>følelsessamtale</strong>, og <strong>identitetssamtalen</strong>?'},
+{id:'q2_2',type:'scale',l:'Hvor godt registrerer du dine fysiologiske stress-signaler under en svær samtale — i realtid?',mn:1,mx:10},
+{id:'q2_3',type:'choice',l:'Hvilket SCARF-domæne trigges oftest hos dig?',opts:['Status','Certainty','Autonomy','Relatedness','Fairness']},
+{id:'q2_4',type:'ta',l:'Beskriv et eksempel hvor din <strong>identitetsbeskyttelse</strong> forhindrede dig i at sige det nødvendige.'},
+{id:'q2_5',type:'ta',l:'Hvad er "den tredje historie" i den mest udskudte samtale du har?'},
+{id:'q2_6',type:'ta',l:'Hvilken ny forståelse giver dette modul dig af dine samtalemønstre?'}],
+takeaways:['Enhver svær samtale indeholder tre samtaler — de fleste adresserer kun sagen','Din hjerne skelner ikke mellem fysisk og identitetstrussel','SCARF forklarer hvorfor små elementer trigger massiv modstand','Identitetsbeskyttelse er den mest oversete driver af undgåelse','"Den tredje historie" transformerer konfrontation til problemløsning']},
+{id:3,title:'Exit-samtalen og feedback-samtalen',subtitle:'Opsigelse · Underperformance · Fairness · Værdighed',icon:'▣',color:'#4A6E9A',
+sources:['Kim Scott — Radical Candor (2017/2019)','Lencioni — The Five Dysfunctions of a Team','BCG — How Leaders Deliver Difficult Messages (2023)','Gallup — Manager Role in Engagement and Exits (2024)','Arbinger Institute — Leadership and Self-Deception'],
+whyText:'<strong>Kim Scotts forskning</strong> viser at "Ruinous Empathy" — at undgå ærlig feedback af omsorg — er den mest destruktive lederfejl. BCG dokumenterer at 68% udskydes 6-9 måneder.',
+learn:`<h3>Radical Candor: De fire kvadranter</h3>
+<p>Kim Scotts model bygger på to akser: <strong>Care Personally</strong> × <strong>Challenge Directly</strong>:</p>
+<h4>Radical Candor</h4><p>Høj omsorg + direkte konfrontation. Du siger det svære fordi du bryder dig. Den eneste kvadrant der skaber varig udvikling.</p>
+<h4>Ruinous Empathy</h4><p>Høj omsorg + ingen konfrontation. Den mest udbredte og mest destruktive. Din tavshed er ikke venlig — den er uansvarlig.</p>
+<h4>Obnoxious Aggression</h4><p>Lav omsorg + direkte. "Brutal honesty" uden empati. Virker kort, ødelægger tillid.</p>
+<h4>Manipulative Insincerity</h4><p>Lav omsorg + ingen konfrontation. Organisatorisk gift.</p>
+<h3>Exit-samtalen: Tre publikummer</h3>
+<p><strong>Personen:</strong> Fortjener værdighed og klarhed. <strong>Teamet:</strong> Ser alt — sætter standarden. <strong>Dig selv:</strong> Hvem er du når du skal meddele en opsigelse?</p>
+<h3>SBI-modellen</h3>
+<p><strong>Situation</strong> → <strong>Behavior</strong> → <strong>Impact</strong>. Adresserer adfærd, ikke person. Gør feedback modtagelig.</p>
+<blockquote>"Ruinous Empathy — at undgå ærlig feedback af omsorg — er den mest destruktive lederfejl."</blockquote>`,
+qs:[
+{id:'q3_1',type:'choice',l:'Hvor falder din feedbackstil i Radical Candor?',opts:['Radical Candor','Obnoxious Aggression','Ruinous Empathy','Manipulative Insincerity']},
+{id:'q3_2',type:'ta',l:'Beskriv en situation hvor du <strong>undgik ærlig feedback</strong>. Hvad var konsekvensen?'},
+{id:'q3_3',type:'ta',l:'Den seneste opsigelsessamtale: <strong>Forberedte du systematisk</strong>, eller improviserede du?'},
+{id:'q3_4',type:'scale',l:'Hvor effektiv er din organisation til at adressere underperformance rettidigt?',mn:1,mx:10},
+{id:'q3_5',type:'ta',l:'Hvem har brug for en <strong>ærlig samtale fra dig lige nu</strong>? Hvad holder dig tilbage?'},
+{id:'q3_6',type:'ta',l:'Design et <strong>prep-sheet</strong> for din mest udskudte feedback-samtale: budskab, ønsket outcome, åbningssætning.'}],
+takeaways:['Ruinous Empathy er den mest udbredte og destruktive lederfejl','En opsigelsessamtale har tre publikummer: personen, teamet, dig selv','SBI transformerer konfrontation til udvikling','De bedste ledere gennemfører tidligt — af respekt, ikke hårdhed','Forberedelse er professionel respekt']},
+{id:4,title:'Konfrontation opad og den upopulære beslutning',subtitle:'Bestyrelse · Ejere · Strategisk kommunikation',icon:'▲',color:'#5A7EAA',
+sources:['Ury — Getting Past No (1991/2007)','Heifetz & Linsky — Leadership on the Line (Harvard)','McKinsey — Board-CEO dynamics (2024)','Ibarra — Act Like a Leader, Think Like a Leader','HBR — How to Push Back on Your Boss (2023)'],
+whyText:'<strong>McKinseys analyse (2024)</strong> viser at CEOs der systematisk undgår opad-konfrontation har 2,3x højere risiko for afsættelse inden 3 år.',
+learn:`<h3>Magtdynamik og politisk risiko</h3>
+<p>Opad-konfrontation er den mest frygtede samtaletype — den kan koste din position. McKinseys paradoks: CEOs der undgår opad-konfrontation har markant højere risiko for afsættelse. Bestyrelsen mister tillid til en CEO der ikke udfordrer.</p>
+<h3>"Getting to the balcony"</h3>
+<p>Heifetz' metafor: Hæv dig over situationen mens du er midt i den.</p>
+<ul><li><strong>Stop:</strong> Registrer din reaktion</li><li><strong>Zoom ud:</strong> Se det reelle problem</li><li><strong>Se mønstret:</strong> Reel eller politisk uenighed?</li><li><strong>Vælg respons:</strong> Baseret på mønstret, ikke reaktionen</li></ul>
+<h3>Kommunikationsarkitektur for upopulære beslutninger</h3>
+<p><strong>1. Personlig kommunikation.</strong> Det du har besluttet personligt, kommunikerer du personligt.</p>
+<p><strong>2. Sekvensering.</strong> Hvem hører det først? Din ledergruppe — fordi de skal bære budskabet videre.</p>
+<p><strong>3. Plads til reaktion.</strong> Mennesker der føler sig hørt accepterer hurtigere.</p>
+<blockquote>"Ledere der kun konfronterer nedad men aldrig opad mister respekt i begge retninger."</blockquote>`,
+qs:[
+{id:'q4_1',type:'ta',l:'Beskriv en situation hvor du vidste noget var galt — men <strong>undlod at konfrontere opad</strong>. Hvad kostede din tavshed?'},
+{id:'q4_2',type:'choice',l:'Din primære undgåelsesstrategi opad?',opts:['Timing-rationalisering','Data-venting','Delegation','Indpakning','Direkte undgåelse']},
+{id:'q4_3',type:'scale',l:'Hvor tryg er du ved fundamental uenighed med din bestyrelse?',mn:1,mx:10},
+{id:'q4_4',type:'ta',l:'En upopulær beslutning: <strong>Hvem hører den først? Sidst?</strong> Hvorfor?'},
+{id:'q4_5',type:'ta',l:'Dit <strong>"balcony view"</strong> på den vigtigste opad-konfrontation du står overfor?'},
+{id:'q4_6',type:'ta',l:'Formulér din <strong>åbningssætning</strong>. Ikke indpakket. Ikke aggressiv. Præcis.'}],
+takeaways:['Opad-konfrontation er mest frygtet — den truer position og relation','"Getting to the balcony" er operationel: Stop, zoom ud, se mønstret','Upopulære beslutninger kræver: personlig kommunikation, begrundelse, plads til reaktion','Sekvensering er strategi','Ledere der kun konfronterer nedad mister respekt i begge retninger']},
+{id:5,title:'Den personlige grænse',subtitle:'Privatliv · Overbelastning · Identitet · Stille erosion',icon:'◯',color:'#6A8EBA',
+sources:['Brown — Dare to Lead (sårbarhed som styrke)','Maslach & Leiter — Burnout og grænse-erosion (2016)','Friedman — Leading the Life You Want (Wharton)','Deloitte — C-Suite Wellbeing Gap (2024)','Petriglieri — Identitetsforskning (INSEAD)'],
+whyText:'<strong>Deloitte (2024)</strong> dokumenterer at 73% af C-niveau ledere rapporterer at jobbet kompromitterer personlige relationer — men kun 15% har ført en samtale om grænser.',
+learn:`<h3>Den stille erosion</h3>
+<p>Grænse-erosion sker som mikrovalg: ja til weekendmødet, ja til den sene mail, ja til at aflyse familiemiddagen. Maslach og Leiters forskning: Ledere der brænder ud har ikke for meget arbejde — de har for få grænser.</p>
+<h3>Sårbarhed som styrke</h3>
+<p>Brené Browns forskning: Sårbarhed er den mest præcise form for mod. At sige "dette er min grænse" kræver mere mod end at sige ja til alt. Den leder der sætter en klar grænse vinder mere respekt end den der altid er tilgængelig.</p>
+<h3>Four-way wins</h3>
+<p>Friedmans framework: Arbejde, familie, community, selv. Ikke balance — integration. Din grænse-sættende samtale er et designspørgsmål.</p>
+<h3>Tre samtaler</h3>
+<ul><li><strong>Med organisationen:</strong> "Her er hvad jeg kan og vil levere."</li>
+<li><strong>Med din partner:</strong> "Her er hvad jeg vil ændre."</li>
+<li><strong>Med dig selv:</strong> "Er dette den leder jeg vil være?"</li></ul>
+<blockquote>"De fleste ledere der brænder ud har ikke for meget arbejde — de har for få grænser."</blockquote>`,
+qs:[
+{id:'q5_1',type:'ta',l:'Hvad har dit lederskab <strong>kostet din partner/familie de seneste 2 år?</strong> Vær ærlig.'},
+{id:'q5_2',type:'scale',l:'Hvor tydelig er din grænse mellem "altid tilgængelig" og "min tid"?',mn:1,mx:10},
+{id:'q5_3',type:'ta',l:'En situation hvor du sagde <strong>ja professionelt = nej personligt</strong>. Hvad drev valget?'},
+{id:'q5_4',type:'choice',l:'Sværeste person at sætte grænse over for?',opts:['Bestyrelsen','Din partner','Dig selv','Dit team','En klient']},
+{id:'q5_5',type:'ta',l:'Den <strong>ene grænse</strong> du skal genetablere — og hvad kræver det?'},
+{id:'q5_6',type:'ta',l:'Formulér samtalen om den grænse. <strong>Skriv åbningssætningen.</strong>'}],
+takeaways:['Grænse-erosion er C-niveaus mest oversete sundhedsrisiko','Den grænse-sættende samtale er forudsætning for bæredygtig ledelse','De fleste der brænder ud har for få grænser, ikke for meget arbejde','Sårbarhed er den mest præcise form for mod','Den vigtigste samtale om grænser er med dig selv']},
+{id:6,title:'Forberedelsens arkitektur',subtitle:'Prep-system · Åbningssætning · Scenarier · Timing',icon:'⬡',color:'#7A9ECA',
+sources:['Fisher & Ury — Getting to Yes (Harvard)','Voss — Never Split the Difference','Patterson et al. — STATE-modellen','Watkins — The First 90 Days','Rock — Your Brain at Work'],
+whyText:'<strong>Chris Voss</strong> dokumenterer at de første 7-15 sekunder afgør 80% af samtalens retning. Dit prep-system er forskellen.',
+learn:`<h3>7-trins prep-arkitektur</h3>
+<ol><li><strong>Formål:</strong> Specifikt mål — ikke "tale om performance" men "klar aftale om forbedring inden 30 dage"</li>
+<li><strong>Fakta:</strong> Objektive fakta vs. fortolkning</li>
+<li><strong>Følelser:</strong> Dine og modpartens. Hvilke SCARF-domæner?</li>
+<li><strong>Identitet:</strong> Hvad trues ved dit og modpartens selvbillede?</li>
+<li><strong>Åbning:</strong> Præcis åbningssætning (skriv den ned, øv den)</li>
+<li><strong>Scenarier:</strong> Best/worst/likely — din respons på hver</li>
+<li><strong>Commitment:</strong> Konkret aftale + minimum acceptable outcome</li></ol>
+<h3>Åbningssætningen</h3>
+<p>Tre kendetegn: <strong>Præcis</strong> (siger hvad det handler om), <strong>Respektfuld</strong> (anerkender svær), <strong>Inviterende</strong> (åbner for dialog).</p>
+<h3>Taktisk empati</h3>
+<p>Voss: Label modpartens følelse før du præsenterer dit perspektiv. "Det lyder som om du er frustreret." Det afvæbner forsvar og åbner dialog.</p>
+<h3>Scenarieplanlægning</h3>
+<p>Din hjerne frygter det uforudsete mere end det svære. Forbered respons på best case, worst case og most likely.</p>
+<blockquote>"Forberedelse er respekt — for samtalen, for personen, og for dig selv."</blockquote>`,
+qs:[
+{id:'q6_1',type:'ta',l:'Din nuværende <strong>forberedelsesproces</strong>: Har du et system eller improviserer du?'},
+{id:'q6_2',type:'ta',l:'Gennemfør <strong>7-trins prep</strong> på din mest udskudte samtale: Formål, fakta, følelser, identitet, åbning, scenarier, commitment.'},
+{id:'q6_3',type:'scale',l:'Hvor god er du til en præcis åbningssætning — uden aggression eller indpakning?',mn:1,mx:10},
+{id:'q6_4',type:'ta',l:'Skriv <strong>3 åbningssætninger</strong> til samme samtale: for blød, for hård, præcis rigtigt. Hvad kendetegner den sidste?'},
+{id:'q6_5',type:'choice',l:'Din typiske timing-fejl?',opts:['For tidligt — impulsiv','For sent — undgåer','Dårlig kontekst','Ingen forberedelse']},
+{id:'q6_6',type:'ta',l:'Design dit <strong>prep-ritual</strong>: Hvad gør du 24 timer før? 1 time før? 5 minutter før?'}],
+takeaways:['Forberedelse er respekt for samtalen, personen og dig selv','Åbningssætningen er den vigtigste sætning — og den kan øves','Taktisk empati er ikke manipulation — det åbner for ægte dialog','Scenarieplanlægning reducerer amygdala-aktivering','Et prep-ritual er professionel praksis']},
+{id:7,title:'Gennemførelse og post-mortem',subtitle:'Tilstedeværelse · Lytning · Reparation · Læring',icon:'◇',color:'#4A8A6A',
+sources:['Rosenberg — Nonviolent Communication','Goulston — Just Listen (2009)','Argyris — Ladder of Inference (Harvard)','US Army — After Action Review','Dweck — Growth mindset og feedback'],
+whyText:'<strong>Argyris\' Ladder of Inference</strong> forklarer 80% af misforståelser: Vi springer fra observation til konklusion uden at tjekke trinene.',
+learn:`<h3>In-the-moment skills</h3>
+<p><strong>Aktiv lytning:</strong> Forsøg at forstå, ikke finde modargumenter.</p>
+<p><strong>Pauser:</strong> Tre sekunders stilhed giver dig tid til at vælge respons.</p>
+<p><strong>Gentagelse:</strong> "Hvis jeg forstår dig rigtigt..." signalerer lytning og kontrollerer forståelse.</p>
+<h3>NVC-modellen</h3>
+<p>Rosenberg: <strong>Observation → Følelse → Behov → Anmodning</strong>. Adresserer behov, ikke beskyldninger.</p>
+<h3>Ladder of Inference</h3>
+<p>Argyris: Observation → Tilføj mening → Antagelse → Konklusion → Handling. Hele processen tager under et sekund. Hver trin indeholder fejlkilder.</p>
+<h3>Reparation</h3>
+<p>Fire typiske mønstre: <strong>Fight</strong> (eskalerer), <strong>Flight</strong> (trækker sig), <strong>Freeze</strong> (passiv), <strong>Fawn</strong> (tilpasser). Reparation er et femte: "Lad os tage et skridt tilbage."</p>
+<h3>After Action Review</h3>
+<ol><li>Hvad var intentionen?</li><li>Hvad skete?</li><li>Hvad lærte vi?</li><li>Hvad ændrer vi?</li></ol>
+<blockquote>"Reparation er en styrke, ikke en indrømmelse."</blockquote>`,
+qs:[
+{id:'q7_1',type:'ta',l:'En samtale der gik galt: Hvad skete i de <strong>10 sekunder den tippede</strong>?'},
+{id:'q7_2',type:'scale',l:'Hvor god er du til at lytte under følelsesmæssigt pres?',mn:1,mx:10},
+{id:'q7_3',type:'ta',l:'En situation hvor du klatrede op ad <strong>Ladder of Inference</strong> uden at tjekke trinene?'},
+{id:'q7_4',type:'choice',l:'Dit mønster når samtalen eskalerer?',opts:['Fight — eskalerer','Flight — trækker mig','Freeze — passiv','Fawn — tilpasser']},
+{id:'q7_5',type:'ta',l:'<strong>After Action Review</strong> på seneste svære samtale: Intention, hvad skete, hvad lærte du, hvad ændrer du?'},
+{id:'q7_6',type:'ta',l:'Din vigtigste indsigt om din <strong>gennemførelsesevne</strong> — og vigtigste udviklingsområde?'}],
+takeaways:['De fleste samtaler sporer af i de samme 10 sekunder','Lytning under pres er en kompetence der kan trænes','Ladder of Inference forklarer 80% af misforståelser','Reparation er en styrke, ikke en indrømmelse','After Action Review er den mest undervurderede læringsmekanisme']},
+{id:8,title:'Mastery og samtalearkitektur',subtitle:'System · Integration · Kultur · Arv',icon:'★',color:'#C9A84C',
+sources:['Ericsson — Peak (deliberate practice)','Collins — Good to Great (Stockdale Paradox)','Senge — The Fifth Discipline','Lencioni — The Advantage','Friisnæs — Karakter, Disciplin, Klarhed'],
+whyText:'<strong>Ericssons forskning</strong> viser at 20 års erfaring uden systematisk refleksion ikke skaber bedre kompetence end 5 år med bevidst praksis.',
+learn:`<h3>Fra kompetence til mastery</h3>
+<p>Ericsson: Mastery kommer af <strong>deliberate practice</strong> — bevidst øvelse med feedback. De bedste har: et prep-system, en feedback-loop og en sparringspartner.</p>
+<h3>Din samtalearkitektur</h3>
+<p><strong>Principper:</strong> Dine ufravigelige regler. <strong>Rutiner:</strong> Prep-ritual, post-mortem, journal. <strong>Feedback-loops:</strong> Hvem giver dig ærlig feedback?</p>
+<h3>Samtalekultur som arv</h3>
+<p>Collins' Stockdale Paradox: Konfronter de brutale fakta OG bevar troen. Hvad du modellerer reproduceres i organisationen. Lencioni: "Productive conflict" performer markant bedre end kunstig harmoni.</p>
+<h3>Integration</h3>
+<p>Din samtalearkitektur hænger sammen med: beslutningsarkitektur, aktivitetsflow-profil, C-Level Blueprint og din ledelsesidentitet.</p>
+<h3>Den samtale du skylder dig selv</h3>
+<p>Den handler om dit lederskab, din karriere, dit liv — det du endnu ikke har sat ord på.</p>
+<blockquote>"Din samtalearkitektur er ikke et system du bruger — det er den leder du er."</blockquote>`,
+qs:[
+{id:'q8_1',type:'ta',l:'Beskriv din personlige <strong>samtalearkitektur</strong>: principper, rutiner og feedback-loops.'},
+{id:'q8_2',type:'scale',l:'Hvor systematisk har du arbejdet med samtaleevne vs. strategi/økonomi?',mn:1,mx:10},
+{id:'q8_3',type:'ta',l:'Din <strong>samtalekultur-arv</strong>: Hvad modellerer du for dit lederteam?'},
+{id:'q8_4',type:'ta',l:'Stockdale Paradox: De brutale fakta om din samtaleevne — og din tro på udvikling?'},
+{id:'q8_5',type:'ta',l:'<strong>Integration:</strong> Sammenhæng med beslutningsarkitektur, aktivitetsflow og ledelsesidentitet?'},
+{id:'q8_6',type:'ta',l:'<strong>Den sidste samtale:</strong> Hvad skylder du dig selv — om karriere, lederskab eller liv?'}],
+takeaways:['20 års erfaring uden bevidst praksis slår ikke 5 år med deliberate practice','Din samtalearkitektur er den leder du er','Samtalekultur arves — hvad du modellerer reproduceres','Mastery er at have et system der sikrer læring af hver samtale','Den vigtigste samtale er den du endnu ikke har haft med dig selv']}];
+
+// ══════════════════════════════════════════════════════════════════
+// BOOT
+// ══════════════════════════════════════════════════════════════════
+(function(){
+  try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch(e){document.body.innerHTML='<div style="padding:40px;text-align:center;color:#E57373"><h2>localStorage ikke tilgængelig</h2><p>Aktiver cookies/localStorage i din browser.</p></div>';return}
+  if(location.search.includes('admin')){document.getElementById('sc-client-login').classList.remove('active');document.getElementById('sc-admin-login').classList.add('active')}
+})();
+
+// ══════════════════════════════════════════════════════════════════
+// LOGIN / NAV
+// ══════════════════════════════════════════════════════════════════
+function doClientLogin(){
+  const name=document.getElementById('cl-name').value.trim();
+  if(!name){showErr('cl-err','Indtast venligst dit navn');return}
+  const consent=document.getElementById('gdpr-consent');
+  const clients=LS.g('dss_clients')||[];
+  let c=clients.find(x=>x.name.toLowerCase()===name.toLowerCase());
+  if(!c){
+    if(!consent.checked){showErr('cl-err','Acceptér GDPR-betingelserne for at fortsætte');return}
+    c={id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name,createdAt:new Date().toISOString(),gdprConsentAt:new Date().toISOString()};
+    LS.s('dss_clients',[...clients,c]);
+  }
+  S.role='client';S.cId=c.id;S.cName=c.name;
+  renderDash();show('client');
+}
+function doAdminLogin(){
+  if(document.getElementById('al-pw').value!=='karakter2024'){showErr('al-err','Forkert adgangskode');return}
+  S.role='admin';renderAdmin();show('admin');
+}
+function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden')}
+function logout(){
+  S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',prevScreen:null};
+  document.getElementById('cl-name').value='';document.getElementById('al-pw').value='';
+  ['cl-err','al-err'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  show(location.search.includes('admin')?'admin-login':'client-login');
+}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('sc-'+id).classList.add('active');window.scrollTo(0,0)}
+function showReadme(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('readme')}
+function closeReadme(){show(S.prevScreen||'client')}
+function showSaveFeedback(msg){const el=document.getElementById('save-fb');el.textContent=msg;el.classList.remove('hidden');setTimeout(()=>el.classList.add('hidden'),2200)}
+
+// ══════════════════════════════════════════════════════════════════
+// CLIENT DASHBOARD
+// ══════════════════════════════════════════════════════════════════
+function getActiveMod(cid){return LS.g('dss_active_'+cid)||1}
+function countAns(a){return Object.values(a||{}).filter(v=>v!==undefined&&v!==null&&v!=='').length}
+
+function renderDash(){
+  const el=document.getElementById('client-dash');
+  document.getElementById('tb-name').textContent=S.cName;
+  let totalAns=0,totalQ=0,completedMods=0;
+  const activeMod=getActiveMod(S.cId);
+  MODS.forEach(m=>{const d=LS.g('dss_mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);totalAns+=a;totalQ+=m.qs.length;if(a>=m.qs.length)completedMods++});
+  const pct=totalQ?Math.round(totalAns/totalQ*100):0;
+  const courageData=LS.g('dss_courage_'+S.cId)||[];
+  const modCount=courageData.filter(e=>e.choice==='mod').length;
+  const journalCount=MODS.reduce((a,m)=>{const j=LS.g('dss_journal_'+S.cId+'_'+m.id);return a+(j?.title?1:0)},0);
+
+  let ackTitle,ackIcon,ackBody;
+  if(completedMods>=8){ackIcon='🏆';ackTitle='Forløbet gennemført';ackBody='8 moduler. 48 refleksioner. Du har nu et fundament for systematisk samtalekompetence.<br><strong>Næste skridt:</strong> Eksportér dine besvarelser og send dem til din coach.'}
+  else if(totalAns>0){ackIcon='⚡';ackTitle='Du er godt i gang';ackBody='Fortsæt dit forløb. Kvaliteten af dine refleksioner afgør kvaliteten af din udvikling.'}
+  else{ackIcon='🎯';ackTitle='Velkommen til Den Svære Samtale';ackBody='8 moduler. 48 refleksioner. En systematisk rejse fra samtaleundgåelse til samtalearkitektur.'}
+
+  let h=`<div class="prog-header"><div><h1>Dit forløb</h1><div class="stat">${completedMods}/8 moduler · ${totalAns}/${totalQ} svar · ${pct}%</div></div></div>`;
+  h+=`<div class="ack-box fade"><div class="ack-icon">${ackIcon}</div><h2>${ackTitle}</h2><p>${ackBody}</p></div>`;
+
+  if(totalAns===0) h+=`<div style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:28px"><h3 style="font-size:18px;color:var(--gold);margin-bottom:12px">Hvorfor samtaleevne er afgørende</h3><p style="color:var(--text2);font-size:14px;line-height:1.85">McKinseys undersøgelse (2023) viser at 72% af ledere betragter svære samtaler som en af de tre vigtigste kompetencer — men kun 31% vurderer sig selv som kompetente. De bedste ledere har ikke færre svære samtaler. De har et system.</p></div>`;
+
+  h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:4px">Samtalekompetence-overblik</h3>
+    <div class="velocity-grid">
+      <div class="vg-item"><div class="vn">${completedMods}</div><div class="vl">Moduler</div></div>
+      <div class="vg-item"><div class="vn">${pct}%</div><div class="vl">Fremgang</div></div>
+      <div class="vg-item"><div class="vn">${journalCount}</div><div class="vl">Journal</div></div>
+      <div class="vg-item"><div class="vn">${modCount}/${courageData.length||0}</div><div class="vl">Mod-valg</div></div>
+    </div></div>`;
+
+  h+='<div class="mods-grid">';
+  MODS.forEach(m=>{
+    const d=LS.g('dss_mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);const tot=m.qs.length;const mpct=tot?Math.round(a/tot*100):0;
+    const isActive=m.id<=activeMod;const isDone=a>=tot;
+    let badge='';
+    if(!isActive)badge=`<span class="mc-badge" style="background:var(--navy4);color:var(--text3)">🔒 Låst</span>`;
+    else if(isDone)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">✓ Afsluttet</span>`;
+    else if(a>0)badge=`<span class="mc-badge" style="background:var(--gdim);color:var(--gold)">${a}/${tot}</span>`;
+    else badge=`<span class="mc-badge" style="background:rgba(42,82,152,.15);color:var(--blue2)">Klar</span>`;
+    h+=`<div class="mod-card fade ${isActive?'':'locked'}" ${isActive?`onclick="openMod(${m.id-1})"`:''}>
+      <div class="mc-top"><div class="mc-icon" style="background:${m.color}">${m.icon}</div><div class="mc-title">${m.title}</div></div>
+      <div class="mc-sub">${m.subtitle}</div>
+      <div class="mc-prog"><div class="mc-prog-fill" style="width:${mpct}%;background:${m.color}"></div></div>
+      <div class="mc-status">${badge}</div></div>`;
+  });
+  h+='</div>';
+  el.innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// MODULE VIEW
+// ══════════════════════════════════════════════════════════════════
+function openMod(idx){
+  S.modIdx=idx;S.modTab='learn';
+  const m=MODS[idx];
+  const d=LS.g('dss_mod_'+S.cId+'_'+m.id);
+  S.answers=d?.answers||{};
+  document.getElementById('mod-title-bar').textContent='Modul '+m.id+': '+m.title;
+  document.getElementById('mod-sub-bar').textContent=m.subtitle;
+  document.getElementById('mod-header').innerHTML=`<h1 style="color:${m.color}">Modul ${m.id}: ${m.title}</h1><div class="mh-sub">${m.subtitle}</div>`;
+  let tabs=`<div class="mod-tab active" id="tab-l" onclick="setTab('learn')">Indhold</div>`;
+  tabs+=`<div class="mod-tab" id="tab-q" onclick="setTab('questions')">Spørgsmål (${countAns(S.answers)}/${m.qs.length})</div>`;
+  tabs+=`<div class="mod-tab" id="tab-t" onclick="setTab('takeaways')">Takeaways</div>`;
+  tabs+=`<div class="mod-tab" id="tab-j" onclick="setTab('journal')">Øvelser</div>`;
+  document.getElementById('mod-tabs').innerHTML=tabs;
+  renderLearn(m);renderQuestions(m);renderTakeaways(m);renderJournal(m);
+  setTab('learn');show('module');
+}
+
+function setTab(t){
+  S.modTab=t;
+  document.querySelectorAll('.mod-tab').forEach(el=>el.classList.remove('active'));
+  ['learn','quest','takeaways','journal'].forEach(id=>document.getElementById('tc-'+id).style.display='none');
+  const map={learn:['tab-l','tc-learn'],questions:['tab-q','tc-quest'],takeaways:['tab-t','tc-takeaways'],journal:['tab-j','tc-journal']};
+  const m=map[t];if(m){document.getElementById(m[0])?.classList.add('active');document.getElementById(m[1]).style.display=''}
+}
+
+function renderLearn(m){
+  const src=m.sources.map(s=>`<div class="src-item">${s}</div>`).join('');
+  const whyHtml=m.whyText?`<div class="why-mod-box"><div class="why-mod-label">Hvorfor dette modul er vigtigt</div><div class="why-mod-text">${m.whyText}</div></div>`:'';
+  document.getElementById('tc-learn').innerHTML=`
+    <div class="sources-box" style="border-left-color:${m.color}"><div class="src-title">Forskningsgrundlag</div>${src}</div>
+    ${whyHtml}<div class="learn-body">${m.learn}</div>
+    <div class="learn-cta"><button class="btn btn-primary" style="padding:12px 28px" onclick="setTab('questions')">Gå til refleksion →</button></div>`;
+}
+
+function renderQuestions(m){
+  const ans=countAns(S.answers);const pct=Math.round(ans/m.qs.length*100);
+  let h=`<div class="q-progress"><div class="qp-bar"><div class="qp-fill" id="qp-fill" style="width:${pct}%"></div></div><div class="qp-cnt" id="qp-cnt">${ans}/${m.qs.length}</div></div>`;
+  m.qs.forEach((q,i)=>{
+    const val=S.answers[q.id]||'';
+    h+=`<div class="q-card fade" id="qc-${q.id}"><div class="qlabel">Spørgsmål ${i+1} af ${m.qs.length}</div><div class="qtext">${q.l}</div>`;
+    if(q.type==='ta')h+=`<textarea placeholder="Skriv din refleksion..." oninput="setA('${q.id}',this.value)">${val}</textarea>`;
+    else if(q.type==='scale'){h+='<div class="scale-row">';for(let n=q.mn;n<=q.mx;n++)h+=`<button class="scale-btn ${val==n?'sel':''}" onclick="setScale('${q.id}',${n},${q.mn},${q.mx})">${n}</button>`;h+='</div>'}
+    else if(q.type==='choice'){h+='<div style="display:flex;flex-wrap:wrap;gap:4px">';q.opts.forEach(o=>h+=`<button class="cbtn ${val===o?'sel':''}" onclick="setChoice('${q.id}',this)">${o}</button>`);h+='</div>'}
+    h+='</div>';
+  });
+  h+=`<div style="padding:12px 0"><button class="btn-save" id="save-btn" onclick="saveMod()">Gem svar ✓</button></div>`;
+  document.getElementById('tc-quest').innerHTML=h;
+}
+
+let _ast=null;
+function setA(id,v){S.answers[id]=v;updateQP();clearTimeout(_ast);_ast=setTimeout(()=>{doSave();showSaveFeedback('Auto-gemt ✓')},2000)}
+function setScale(id,v,mn,mx){
+  S.answers[id]=v;
+  document.querySelectorAll(`#qc-${id} .scale-btn`).forEach((b,i)=>b.className='scale-btn'+((mn+i)===v?' sel':''));
+  updateQP();doSave();
+}
+function setChoice(id,btn){
+  const raw=btn.textContent.replace(/^✓ /,'');S.answers[id]=raw;
+  document.querySelectorAll(`#qc-${id} .cbtn`).forEach(b=>{const sel=b.textContent.replace(/^✓ /,'')===raw;b.className='cbtn'+(sel?' sel':'');b.textContent=(sel?'✓ ':'')+b.textContent.replace(/^✓ /,'')});
+  updateQP();doSave();
+}
+function updateQP(){
+  const m=MODS[S.modIdx];const a=countAns(S.answers);const pct=Math.round(a/m.qs.length*100);
+  const f=document.getElementById('qp-fill');if(f)f.style.width=pct+'%';
+  const c=document.getElementById('qp-cnt');if(c)c.textContent=a+'/'+m.qs.length;
+  const tq=document.getElementById('tab-q');if(tq)tq.textContent='Spørgsmål ('+a+'/'+m.qs.length+')';
+}
+function doSave(){const m=MODS[S.modIdx];LS.s('dss_mod_'+S.cId+'_'+m.id,{answers:S.answers,savedAt:new Date().toISOString(),clientId:S.cId,clientName:S.cName})}
+function saveMod(){
+  doSave();const b=document.getElementById('save-btn');if(b){b.textContent='✓ Gemt!';b.style.background='var(--green)';
+  setTimeout(()=>{b.style.background='';b.textContent='Gem svar ✓'},2000)}
+}
+
+function renderTakeaways(m){
+  let h='<div class="takeaways-box"><div class="tk-title">Vigtigste takeaways</div>';
+  m.takeaways.forEach(t=>h+=`<div class="tk-item">→ ${t}</div>`);
+  h+='</div>';document.getElementById('tc-takeaways').innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// REFLECTIVE EXERCISES
+// ══════════════════════════════════════════════════════════════════
+function renderJournal(m){
+  const jData=LS.g('dss_journal_'+S.cId+'_'+m.id)||{};
+  const courageData=LS.g('dss_courage_'+S.cId)||[];
+  let h='<div style="margin-top:8px">';
+
+  // SAMTALE-JOURNAL
+  h+=`<div class="refl-card fade">
+    <h4>📝 Samtale-Journal</h4>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Dokumenter en reel eller planlagt svær samtale.</p>
+    <label>Samtalens titel / modpart</label>
+    <textarea id="jnl-title" placeholder="Fx: Feedback-samtale med CFO">${jData.title||''}</textarea>
+    <label>Arketype</label>
+    <select id="jnl-ark"><option value="">Vælg...</option>${ARKETYPER.map(a=>`<option value="${a.id}" ${jData.arketype===a.id?'selected':''}>${a.id}: ${a.name}</option>`).join('')}</select>
+    <label>Formål og frygt</label>
+    <textarea id="jnl-prep" placeholder="Hvad er målet? Hvad frygter du?">${jData.prep||''}</textarea>
+    <label>Åbningssætning (planlagt)</label>
+    <textarea id="jnl-open" placeholder="Din præcise åbningssætning" style="min-height:50px">${jData.opening||''}</textarea>
+    <label>Post-mortem (efter samtalen)</label>
+    <textarea id="jnl-result" placeholder="Hvad skete? Hvad lærte du?">${jData.result||''}</textarea>
+    <button class="btn btn-primary" style="margin-top:12px;padding:10px 20px" onclick="saveJournal(${m.id})">Gem journal</button>
+  </div>`;
+
+  // SHADOW CONVERSATION (mod 3+)
+  if(m.id>=3){
+    const sd=LS.g('dss_shadow_'+S.cId+'_'+m.id)||{};
+    h+=`<div class="refl-card fade">
+      <h4>👤 Shadow Conversation — 7-trins prep</h4>
+      <label>1. Formål</label><textarea id="shd-1" placeholder="Specifikt mål">${sd.purpose||''}</textarea>
+      <label>2. Fakta</label><textarea id="shd-2" placeholder="Objektive fakta">${sd.facts||''}</textarea>
+      <label>3. Følelser</label><textarea id="shd-3" placeholder="Dine og modpartens">${sd.feelings||''}</textarea>
+      <label>4. Identitet</label><textarea id="shd-4" placeholder="Hvad trues?" style="min-height:50px">${sd.identity||''}</textarea>
+      <label>5. Åbningssætning</label><textarea id="shd-5" placeholder="Præcis, respektfuld, inviterende" style="min-height:50px">${sd.opening||''}</textarea>
+      <label>6. Scenarier</label><textarea id="shd-6" placeholder="Best/worst/likely + din respons">${sd.scenarios||''}</textarea>
+      <label>7. Commitment</label><textarea id="shd-7" placeholder="Minimum acceptable outcome" style="min-height:50px">${sd.commit||''}</textarea>
+      <button class="btn btn-primary" style="margin-top:12px;padding:10px 20px" onclick="saveShadow(${m.id})">Gem Shadow Conversation</button>
+    </div>`;
+  }
+
+  // MOD-DAGBOG (mod 4+)
+  if(m.id>=4){
+    h+=`<div class="refl-card fade">
+      <h4>💪 Mod-Dagbog</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Track situationer: mod vs. undvigelse.</p>
+      <label>Situation</label><textarea id="crg-sit" placeholder="Hvad var på spil?"></textarea>
+      <label>Valg</label>
+      <div style="display:flex;gap:10px;margin:8px 0">
+        <button class="cbtn" id="crg-m" onclick="setCrg('mod')">💪 Mod</button>
+        <button class="cbtn" id="crg-u" onclick="setCrg('undvigelse')">😶 Undvigelse</button>
+      </div>
+      <label>Hvad drev valget?</label><textarea id="crg-drv" placeholder=""></textarea>
+      <label>Konsekvens</label><textarea id="crg-con" placeholder="" style="min-height:50px"></textarea>
+      <button class="btn btn-primary" style="margin-top:12px;padding:10px 20px" onclick="saveCourage()">Tilføj</button>
+      <div id="crg-list" style="margin-top:16px"></div>
+    </div>`;
+  }
+
+  h+='</div>';
+  document.getElementById('tc-journal').innerHTML=h;
+  renderCrgList();
+}
+
+let _crgChoice='';
+function setCrg(c){_crgChoice=c;const m=document.getElementById('crg-m'),u=document.getElementById('crg-u');if(m)m.className='cbtn'+(c==='mod'?' sel':'');if(u)u.className='cbtn'+(c==='undvigelse'?' sel':'')}
+
+function saveJournal(mid){
+  LS.s('dss_journal_'+S.cId+'_'+mid,{
+    title:document.getElementById('jnl-title')?.value||'',arketype:document.getElementById('jnl-ark')?.value||'',
+    prep:document.getElementById('jnl-prep')?.value||'',opening:document.getElementById('jnl-open')?.value||'',
+    result:document.getElementById('jnl-result')?.value||'',savedAt:new Date().toISOString()});
+  showSaveFeedback('Journal gemt ✓');
+}
+function saveShadow(mid){
+  LS.s('dss_shadow_'+S.cId+'_'+mid,{
+    purpose:document.getElementById('shd-1')?.value||'',facts:document.getElementById('shd-2')?.value||'',
+    feelings:document.getElementById('shd-3')?.value||'',identity:document.getElementById('shd-4')?.value||'',
+    opening:document.getElementById('shd-5')?.value||'',scenarios:document.getElementById('shd-6')?.value||'',
+    commit:document.getElementById('shd-7')?.value||'',savedAt:new Date().toISOString()});
+  showSaveFeedback('Shadow Conversation gemt ✓');
+}
+function saveCourage(){
+  if(!_crgChoice){showSaveFeedback('Vælg Mod eller Undvigelse');return}
+  const d=LS.g('dss_courage_'+S.cId)||[];
+  d.push({situation:document.getElementById('crg-sit')?.value||'',choice:_crgChoice,
+    driver:document.getElementById('crg-drv')?.value||'',consequence:document.getElementById('crg-con')?.value||'',date:new Date().toISOString()});
+  LS.s('dss_courage_'+S.cId,d);
+  ['crg-sit','crg-drv','crg-con'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});
+  _crgChoice='';const m=document.getElementById('crg-m'),u=document.getElementById('crg-u');if(m)m.className='cbtn';if(u)u.className='cbtn';
+  showSaveFeedback('Mod-dagbog opdateret ✓');renderCrgList();
+}
+function renderCrgList(){
+  const el=document.getElementById('crg-list');if(!el)return;
+  const d=LS.g('dss_courage_'+S.cId)||[];
+  if(!d.length){el.innerHTML='';return}
+  let h='<div style="border-top:1px solid var(--brd);padding-top:12px"><div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Tidligere poster ('+d.length+')</div>';
+  d.slice(-5).reverse().forEach(e=>{
+    const icon=e.choice==='mod'?'💪':'😶';const col=e.choice==='mod'?'var(--green)':'var(--red)';
+    h+=`<div style="padding:8px 12px;margin-bottom:6px;background:var(--navy3);border-radius:6px;border-left:3px solid ${col}">
+      <div style="font-size:12px;font-weight:600">${icon} ${e.choice==='mod'?'Mod':'Undvigelse'} <span style="color:var(--text3);font-weight:400;margin-left:8px">${new Date(e.date).toLocaleDateString('da-DK')}</span></div>
+      <div style="font-size:12px;color:var(--text2);margin-top:4px">${e.situation||'(ingen beskrivelse)'}</div></div>`;
+  });
+  h+='</div>';el.innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// EXPORT (JSON + TXT + Encryption)
+// ══════════════════════════════════════════════════════════════════
+async function deriveKey(pw,salt){const enc=new TextEncoder();const km=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function encryptData(data,pw){const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pw,salt);const enc=new TextEncoder();const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(JSON.stringify(data)));return{v:1,salt:Array.from(salt),iv:Array.from(iv),ct:Array.from(new Uint8Array(ct))}}
+async function decryptData(blob,pw){const salt=new Uint8Array(blob.salt);const iv=new Uint8Array(blob.iv);const ct=new Uint8Array(blob.ct);const key=await deriveKey(pw,salt);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);return JSON.parse(new TextDecoder().decode(pt))}
+
+function gatherClientExport(cid,cname){
+  const exp={platform:PLATFORM_NAME,version:PLATFORM_VERSION,exportedAt:new Date().toISOString(),clientId:cid,clientName:cname,modules:{},journals:{},shadows:{},courage:LS.g('dss_courage_'+cid)||[]};
+  MODS.forEach(m=>{
+    const d=LS.g('dss_mod_'+cid+'_'+m.id);if(d)exp.modules[m.id]={title:m.title,...d};
+    const j=LS.g('dss_journal_'+cid+'_'+m.id);if(j)exp.journals[m.id]=j;
+    const s=LS.g('dss_shadow_'+cid+'_'+m.id);if(s)exp.shadows[m.id]=s;
+  });
+  return exp;
+}
+
+async function exportClientJSON(){
+  const data=gatherClientExport(S.cId,S.cName);
+  const pw=prompt('Vælg en adgangskode til kryptering af dine data:');
+  if(!pw)return;
+  try{
+    const encrypted=await encryptData(data,pw);
+    const blob=new Blob([JSON.stringify(encrypted,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');
+    a.href=url;a.download=`DenSvaereSamtale_${S.cName.replace(/\\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();URL.revokeObjectURL(url);
+    showSaveFeedback('Krypteret JSON eksporteret ✓');
+    // Mail CTA
+    setTimeout(()=>{if(confirm('Vil du sende filen til din coach via e-mail?'))location.href=`mailto:${COACH_EMAIL}?subject=Den Svære Samtale — ${S.cName}&body=Krypteret JSON-eksport vedlagt.`},500);
+  }catch(e){alert('Krypteringsfejl: '+e.message)}
+}
+
+function exportClientTXT(){
+  const data=gatherClientExport(S.cId,S.cName);
+  let txt=`DEN SVÆRE SAMTALE — BESVARELSER\n${'═'.repeat(50)}\nKlient: ${data.clientName}\nDato: ${data.exportedAt}\nVersion: ${data.version}\n\n`;
+  MODS.forEach(m=>{
+    const md=data.modules[m.id];if(!md)return;
+    txt+=`${'─'.repeat(50)}\nMODUL ${m.id}: ${m.title.toUpperCase()}\n${'─'.repeat(50)}\n`;
+    m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')txt+=`\n${q.l.replace(/<[^>]+>/g,'')}\n→ ${v}\n`});
+    const j=data.journals[m.id];
+    if(j?.title)txt+=`\n📝 SAMTALE-JOURNAL:\nTitel: ${j.title}\nArketype: ${j.arketype||'–'}\nFormål: ${j.prep||'–'}\nÅbning: ${j.opening||'–'}\nResultat: ${j.result||'–'}\n`;
+    const s=data.shadows[m.id];
+    if(s?.purpose)txt+=`\n👤 SHADOW CONVERSATION:\n1. Formål: ${s.purpose}\n2. Fakta: ${s.facts||'–'}\n3. Følelser: ${s.feelings||'–'}\n4. Identitet: ${s.identity||'–'}\n5. Åbning: ${s.opening||'–'}\n6. Scenarier: ${s.scenarios||'–'}\n7. Commitment: ${s.commit||'–'}\n`;
+    txt+='\n';
+  });
+  if(data.courage.length){
+    txt+=`${'─'.repeat(50)}\n💪 MOD-DAGBOG (${data.courage.length} poster)\n${'─'.repeat(50)}\n`;
+    data.courage.forEach(e=>txt+=`${new Date(e.date).toLocaleDateString('da-DK')} | ${e.choice==='mod'?'MOD':'UNDVIGELSE'} | ${e.situation}\n`);
+  }
+  const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=`DenSvaereSamtale_${S.cName.replace(/\\s/g,'_')}_${new Date().toISOString().slice(0,10)}.txt`;
+  a.click();URL.revokeObjectURL(url);
+  showSaveFeedback('Tekst eksporteret ✓');
+}
+
+function clientDeleteData(){
+  if(!confirm('Er du sikker? Alle dine besvarelser, journal-poster og mod-dagbog slettes permanent.'))return;
+  if(!confirm('Denne handling kan IKKE fortrydes. Fortsæt?'))return;
+  MODS.forEach(m=>{LS.d('dss_mod_'+S.cId+'_'+m.id);LS.d('dss_journal_'+S.cId+'_'+m.id);LS.d('dss_shadow_'+S.cId+'_'+m.id)});
+  LS.d('dss_courage_'+S.cId);LS.d('dss_active_'+S.cId);
+  const clients=(LS.g('dss_clients')||[]).filter(c=>c.id!==S.cId);LS.s('dss_clients',clients);
+  showSaveFeedback('Alle data slettet');logout();
+}
+
+// ══════════════════════════════════════════════════════════════════
+// ADMIN PANEL
+// ══════════════════════════════════════════════════════════════════
+function setASection(sec){
+  S.aSection=sec;
+  document.querySelectorAll('.as-nav li').forEach(li=>li.classList.remove('active'));
+  document.querySelectorAll('.as-nav li').forEach(li=>{if(li.textContent.toLowerCase().includes(sec==='ov'?'oversigt':sec==='clients'?'klienter':sec==='import'?'import':'gdpr'))li.classList.add('active')});
+  ['ov','clients','import','gdpr'].forEach(s=>document.getElementById('asec-'+s).style.display=s===sec?'':'none');
+  renderAdmin();
+}
+
+function renderAdmin(){
+  const clients=LS.g('dss_clients')||[];
+  // Overview
+  let totalAns=0;
+  clients.forEach(c=>{MODS.forEach(m=>{const d=LS.g('dss_mod_'+c.id+'_'+m.id);totalAns+=countAns(d?.answers)})});
+  document.getElementById('asec-ov').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Oversigt</h2>
+    <div class="astats">
+      <div class="astat"><div class="av">${clients.length}</div><div class="al">Klienter</div></div>
+      <div class="astat"><div class="av">${totalAns}</div><div class="al">Samlede svar</div></div>
+      <div class="astat"><div class="av">${MODS.length}</div><div class="al">Moduler</div></div>
+    </div>
+    <h3 style="margin-top:24px;margin-bottom:12px">Klientoversigt</h3>
+    ${clients.map(c=>{
+      let ca=0,cm=0;MODS.forEach(m=>{const d=LS.g('dss_mod_'+c.id+'_'+m.id);const a=countAns(d?.answers);ca+=a;if(a>=m.qs.length)cm++});
+      const act=getActiveMod(c.id);
+      return`<div class="aclient-card" onclick="adminSelectClient('${c.id}')">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><strong>${c.name}</strong><div style="font-size:11px;color:var(--text3)">Oprettet: ${new Date(c.createdAt).toLocaleDateString('da-DK')}</div></div>
+          <div style="text-align:right"><div style="font-size:18px;font-weight:600">${cm}/8</div><div style="font-size:10px;color:var(--text3)">moduler · aktiv: ${act}</div></div>
+        </div></div>`}).join('')}`;
+
+  // Clients detail
+  const cEl=document.getElementById('asec-clients');
+  if(S.aSection==='clients'){
+    let ch='<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Klienter</h2>';
+    ch+='<div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px">';
+    clients.forEach(c=>ch+=`<div class="aclient-card ${S.aSel===c.id?'sel':''}" onclick="adminSelectClient('${c.id}')" style="min-width:200px"><strong>${c.name}</strong></div>`);
+    ch+='</div>';
+    if(S.aSel){
+      const cl=clients.find(c=>c.id===S.aSel);
+      if(cl){
+        const act=getActiveMod(cl.id);
+        ch+=`<div style="background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:16px">
+          <h3>${cl.name}</h3>
+          <div style="margin:16px 0">
+            <label style="font-size:12px;color:var(--text3)">Aktiv modul (1-8)</label>
+            <div style="display:flex;gap:8px;margin-top:6px">
+              ${[1,2,3,4,5,6,7,8].map(n=>`<button class="scale-btn ${act>=n?'sel':''}" onclick="setActiveMod('${cl.id}',${n})">${n}</button>`).join('')}
+            </div>
+          </div>`;
+        // Module answers overview
+        MODS.forEach(m=>{
+          const d=LS.g('dss_mod_'+cl.id+'_'+m.id);const a=countAns(d?.answers);
+          if(a>0){
+            ch+=`<div style="margin-top:16px;padding:16px;background:var(--navy3);border-radius:8px">
+              <h4 style="font-size:14px;margin-bottom:8px">Modul ${m.id}: ${m.title} (${a}/${m.qs.length})</h4>`;
+            m.qs.forEach(q=>{const v=d?.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')ch+=`<div style="font-size:12px;margin-bottom:8px"><span style="color:var(--text3)">${q.l.replace(/<[^>]+>/g,'').slice(0,80)}...</span><br><span style="color:var(--text)">${typeof v==='string'?v.slice(0,200)+(v.length>200?'...':''):v}</span></div>`});
+            ch+=`</div>`;
+          }
+        });
+        // AI Analysis button
+        ch+=`<div class="ai-box">
+          <h3>🤖 AI-analyse</h3>
+          <p style="font-size:12px;color:var(--text3);margin-bottom:12px">Generér mønsteranalyse baseret på klientens besvarelser. Kræver API-nøgle.</p>
+          <div class="fg"><label>Anthropic API-nøgle</label><input type="password" id="ai-key" placeholder="sk-ant-..." style="width:100%"></div>
+          <button class="btn btn-gold" onclick="runAIAnalysis('${cl.id}')">Kør analyse</button>
+          <div id="ai-out" class="ai-result" style="margin-top:12px"></div>
+        </div>`;
+        ch+=`<div style="margin-top:16px"><button class="btn btn-ghost" onclick="adminExportClient('${cl.id}','${cl.name}')">↓ Eksportér klient-JSON</button></div>`;
+        ch+=`</div>`;
+      }
+    }
+    cEl.innerHTML=ch;
+  }
+
+  // Import
+  document.getElementById('asec-import').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Import / Eksport</h2>
+    <div class="refl-card">
+      <h4>📥 Importér klient-JSON</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:12px">Importér en krypteret JSON-fil fra en klient.</p>
+      <input type="file" id="imp-file" accept=".json" style="margin-bottom:10px">
+      <div class="fg"><label>Dekrypterings-adgangskode</label><input type="password" id="imp-pw" placeholder="Klientens adgangskode"></div>
+      <button class="btn btn-primary" onclick="adminImport()">Importér</button>
+      <div id="imp-msg" style="font-size:12px;margin-top:8px"></div>
+    </div>
+    <div class="refl-card" style="margin-top:16px">
+      <h4>📤 Eksportér alle klientdata</h4>
+      <button class="btn btn-ghost" onclick="adminExportAll()">↓ Eksportér alt (ukrypteret)</button>
+    </div>`;
+
+  // GDPR
+  document.getElementById('asec-gdpr').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">GDPR & Datasikkerhed</h2>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px">
+        <div style="font-size:24px">🔒</div><div><div style="font-size:14px;font-weight:600;margin-bottom:4px">Lokal lagring</div><div style="font-size:12px;color:var(--text3);line-height:1.7">Alle data gemmes i browserens localStorage. Ingen data transmitteres til servere.</div></div>
+      </div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px">
+        <div style="font-size:24px">🔑</div><div><div style="font-size:14px;font-weight:600;margin-bottom:4px">AES-256-GCM kryptering</div><div style="font-size:12px;color:var(--text3);line-height:1.7">Eksporterede JSON-filer krypteres med AES-256-GCM via Web Crypto API. PBKDF2 med 100.000 iterationer.</div></div>
+      </div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px">
+        <div style="font-size:24px">🗑</div><div><div style="font-size:14px;font-weight:600;margin-bottom:4px">Ret til sletning</div><div style="font-size:12px;color:var(--text3);line-height:1.7">Klienter kan slette alle egne data med ét klik. Sletning er definitiv.</div></div>
+      </div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px">
+        <div style="font-size:24px">✉️</div><div><div style="font-size:14px;font-weight:600;margin-bottom:4px">Coach-kontakt</div><div style="font-size:12px;color:var(--text3);line-height:1.7">friisnaes@gmail.com — klienter kan kontakte coach direkte med spørgsmål om data.</div></div>
+      </div>
+    </div>`;
+}
+
+function adminSelectClient(cid){S.aSel=cid;S.aSection='clients';setASection('clients')}
+function setActiveMod(cid,n){LS.s('dss_active_'+cid,n);renderAdmin();showSaveFeedback('Aktiv modul sat til '+n)}
+
+async function adminImport(){
+  const file=document.getElementById('imp-file').files[0];
+  const pw=document.getElementById('imp-pw').value;
+  const msg=document.getElementById('imp-msg');
+  if(!file){msg.textContent='Vælg en fil';msg.style.color='var(--red)';return}
+  try{
+    const txt=await file.text();const blob=JSON.parse(txt);
+    let data;
+    if(blob.v&&blob.ct){
+      if(!pw){msg.textContent='Indtast dekrypterings-adgangskode';msg.style.color='var(--red)';return}
+      data=await decryptData(blob,pw);
+    }else{data=blob}
+    // Import into localStorage
+    const clients=LS.g('dss_clients')||[];
+    if(!clients.find(c=>c.id===data.clientId)){
+      clients.push({id:data.clientId,name:data.clientName,createdAt:data.exportedAt||new Date().toISOString(),imported:true});
+      LS.s('dss_clients',clients);
+    }
+    if(data.modules){Object.entries(data.modules).forEach(([mid,d])=>LS.s('dss_mod_'+data.clientId+'_'+mid,d))}
+    if(data.journals){Object.entries(data.journals).forEach(([mid,d])=>LS.s('dss_journal_'+data.clientId+'_'+mid,d))}
+    if(data.shadows){Object.entries(data.shadows).forEach(([mid,d])=>LS.s('dss_shadow_'+data.clientId+'_'+mid,d))}
+    if(data.courage)LS.s('dss_courage_'+data.clientId,data.courage);
+    msg.textContent='✓ Import gennemført: '+data.clientName;msg.style.color='var(--green)';
+    renderAdmin();
+  }catch(e){msg.textContent='Fejl: '+e.message;msg.style.color='var(--red)'}
+}
+
+function adminExportClient(cid,cname){
+  const data=gatherClientExport(cid,cname);
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=`DSS_admin_${cname.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();URL.revokeObjectURL(url);
+}
+function adminExportAll(){
+  const clients=LS.g('dss_clients')||[];
+  const all={platform:PLATFORM_NAME,version:PLATFORM_VERSION,exportedAt:new Date().toISOString(),clients:[]};
+  clients.forEach(c=>all.clients.push(gatherClientExport(c.id,c.name)));
+  const blob=new Blob([JSON.stringify(all,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=`DSS_all_clients_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();URL.revokeObjectURL(url);
+}
+
+// ══════════════════════════════════════════════════════════════════
+// AI ANALYSIS (Admin)
+// ══════════════════════════════════════════════════════════════════
+async function runAIAnalysis(cid){
+  const key=document.getElementById('ai-key')?.value;
+  if(!key){showSaveFeedback('Indtast API-nøgle');return}
+  const out=document.getElementById('ai-out');
+  out.textContent='Analyserer...';out.classList.add('pulsing');
+  const cl=(LS.g('dss_clients')||[]).find(c=>c.id===cid);
+  const data=gatherClientExport(cid,cl?.name||'Klient');
+  // Build analysis prompt
+  let ctx='KLIENT: '+data.clientName+'\n\n';
+  MODS.forEach(m=>{
+    const md=data.modules[m.id];if(!md)return;
+    ctx+='MODUL '+m.id+': '+m.title+'\n';
+    m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v)ctx+=q.l.replace(/<[^>]+>/g,'')+'\n→ '+v+'\n'});
+    ctx+='\n';
+  });
+  if(data.courage.length){ctx+='MOD-DAGBOG:\n';data.courage.forEach(e=>ctx+=`${e.choice}: ${e.situation}\n`)}
+
+  const sysPrompt=`Du er Thomas Friisnæs' AI-assistent til coaching-analyse. Analysér klientens besvarelser fra "Den Svære Samtale"-forløbet.
+
+Levér:
+1. OVERORDNET MØNSTER: Hvad kendetegner klientens samtaleprofil?
+2. STYRKER: 2-3 klare styrker i samtaleevne
+3. UDVIKLINGSOMRÅDER: 2-3 præcise udviklingsområder
+4. ARKETYPEANALYSE: Hvilke af de 5 arketyper er mest udfordrende og hvorfor?
+5. UNDGÅELSESMØNSTRE: Hvilke mønstre for samtaleundgåelse ses?
+6. ANBEFALEDE FOKUSOMRÅDER: 3 konkrete næste skridt for coaching
+7. OPFØLGNINGSSPØRGSMÅL: 3 spørgsmål til næste coaching-session
+
+Skriv på dansk. Vær præcis, direkte og handlingsorienteret.`;
+
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,system:sysPrompt,messages:[{role:'user',content:ctx}]})
+    });
+    const result=await resp.json();
+    out.classList.remove('pulsing');
+    if(result.content?.[0]?.text)out.textContent=result.content[0].text;
+    else out.textContent='Fejl: '+JSON.stringify(result.error||result);
+  }catch(e){out.classList.remove('pulsing');out.textContent='API-fejl: '+e.message}
+}
+</script>
+</body></html>

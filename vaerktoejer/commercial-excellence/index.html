@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="2.0.0">
+<meta name="framework" content="Bliv skarp på commercial excellence">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<title>Bliv skarp på commercial excellence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#111111;--navy-light:#1a1a1a;--navy-mid:#222222;--navy-border:#2b2b2b;
+  --gold:#c0392b;--gold-dark:#e74c3c;--gold-light:#e74c3c;--gold-dim:rgba(192,57,43,0.14);
+  --text:#e8e4de;--text-light:#a8a098;--text-muted:#6e6860;--white:#f5f0e8;
+  --success:#6b9e78;--warning:#d4a745;--error:#c45c5c;--info:#5c8dc4;
+  --m1:#c9a96e;--m2:#5c8dc4;--m3:#d48a5c;--m4:#9b6eb5;--m5:#5cac9e;
+  --m6:#c45c5c;--m7:#6b9e78;--m8:#d4a745;--m9:#e8d5a8;
+  --radius:12px;--shadow:0 2px 16px rgba(0,0,0,0.3);
+  --shadow-hover:0 4px 24px rgba(0,0,0,0.4);--transition:all 0.3s ease;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--navy);color:var(--text);line-height:1.7;min-height:100vh;}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:600;line-height:1.3;color:var(--white);}
+.progress-bar{position:sticky;top:0;z-index:1000;background:var(--navy-light);border-bottom:1px solid var(--navy-border);padding:10px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 8px rgba(0,0,0,0.3);}
+.progress-bar .logo{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold);white-space:nowrap;cursor:pointer;}
+.progress-track{flex:1;height:6px;background:var(--navy-mid);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-dark));border-radius:3px;transition:width 0.5s ease;width:0%;}
+.progress-text{font-size:13px;color:var(--text-light);white-space:nowrap;}
+.screen{display:none;max-width:800px;margin:0 auto;padding:40px 20px 120px;}
+.screen.active{display:block;}
+.welcome-hero{text-align:center;padding:50px 20px 30px;}
+.welcome-hero h1{font-size:2.4em;color:var(--white);margin-bottom:6px;}
+.welcome-hero .tagline{font-size:14px;color:var(--gold);letter-spacing:1px;margin-bottom:12px;}
+.welcome-hero .subtitle{font-size:1.05em;color:var(--text-light);font-style:italic;margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto;}
+.gold-line{width:60px;height:3px;background:var(--gold);margin:0 auto 24px;border-radius:2px;}
+.card{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);margin-bottom:24px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text-light);}
+.form-group input,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--navy-border);border-radius:8px;font-family:inherit;font-size:15px;background:var(--navy-mid);color:var(--text);transition:var(--transition);}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,0.2);background:var(--navy);}
+.form-group textarea{min-height:90px;resize:vertical;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-muted);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border:none;border-radius:8px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:var(--transition);}
+.btn-primary{background:var(--gold);color:var(--navy);}
+.btn-primary:hover{background:var(--gold-dark);transform:translateY(-1px);}
+.btn-secondary{background:var(--navy-mid);color:var(--text);border:1px solid var(--navy-border);}
+.btn-secondary:hover{background:var(--navy-border);}
+.btn-full{width:100%;}.btn-small{padding:8px 16px;font-size:13px;}
+.consent-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:14px;margin:16px 0;font-size:13px;color:var(--text-light);}
+.consent-box label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;}
+.consent-box input[type="checkbox"]{margin-top:3px;accent-color:var(--gold);min-width:16px;}
+.journey-map{margin:30px 0;}.journey-step{display:flex;gap:20px;}
+.journey-line{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0;}
+.journey-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;z-index:1;transition:var(--transition);flex-shrink:0;}
+.journey-dot.locked{background:var(--navy-mid);color:var(--text-muted);border:2px solid var(--navy-border);}
+.journey-dot.active{background:var(--gold);color:var(--navy);border:2px solid var(--gold-dark);box-shadow:0 0 0 4px rgba(201,169,110,0.2);}
+.journey-dot.done{background:var(--success);color:var(--white);border:2px solid #5a8a67;}
+.journey-connector{width:2px;flex:1;min-height:16px;background:var(--navy-border);}
+.journey-connector.done{background:var(--success);}
+.journey-content{flex:1;background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow);margin-bottom:16px;transition:var(--transition);cursor:pointer;}
+.journey-content.locked{opacity:0.45;cursor:not-allowed;}
+.journey-content:not(.locked):hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:var(--gold-dark);}
+.journey-content h3{font-size:1.15em;margin-bottom:4px;}
+.journey-content p{font-size:14px;color:var(--text-light);margin-bottom:6px;}
+.journey-meta{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:8px;}
+.journey-meta .badge{display:inline-flex;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;}
+.phase-badge{padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;letter-spacing:0.5px;margin-left:6px;}
+.phase-fund{background:rgba(201,169,110,0.15);color:var(--gold);}
+.phase-mask{background:rgba(92,141,196,0.15);color:var(--m2);}
+.phase-exec{background:rgba(107,158,120,0.15);color:var(--success);}
+.module-header{padding:20px 0 16px;margin-bottom:20px;}
+.back-link{font-size:14px;color:var(--gold);cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;text-decoration:none;border:none;background:none;font-family:inherit;}
+.back-link:hover{color:var(--gold-light);}
+.module-header h2{font-size:1.9em;margin-bottom:6px;}
+.module-header .module-desc{color:var(--text-light);font-size:1.05em;font-style:italic;}
+.section-card{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:24px 28px;box-shadow:var(--shadow);margin-bottom:20px;}
+.section-card h3{font-size:1.2em;margin-bottom:4px;display:flex;align-items:center;gap:10px;}
+.section-card .subtitle{font-size:13px;color:var(--text-muted);margin-bottom:14px;font-style:italic;}
+.section-card p{font-size:15px;margin-bottom:10px;}
+.learn-block p{margin-bottom:12px;}.learn-block strong{color:var(--gold-light);}
+.quote-box{background:linear-gradient(135deg,var(--navy-mid),var(--navy));border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;margin:14px 0;font-style:italic;color:var(--text);}
+.quote-box .author{font-style:normal;font-size:13px;color:var(--text-muted);margin-top:6px;}
+.reflection-group{margin:14px 0;}
+.reflection-group label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.scale-row{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 16px;}
+.scale-btn{width:38px;height:38px;border:2px solid var(--navy-border);border-radius:50%;background:var(--navy-mid);color:var(--text);font-weight:600;cursor:pointer;transition:var(--transition);font-size:13px;display:flex;align-items:center;justify-content:center;}
+.scale-btn:hover{border-color:var(--gold);}.scale-btn.selected{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.activity-card{background:linear-gradient(135deg,rgba(107,158,120,0.08),rgba(107,158,120,0.02));border:1px solid rgba(107,158,120,0.3);border-radius:var(--radius);padding:24px;margin-bottom:20px;}
+.activity-card h3{color:var(--success);margin-bottom:4px;}
+.activity-card .activity-subtitle{font-size:13px;color:var(--text-muted);font-style:italic;margin-bottom:16px;}
+.activity-item{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:8px;padding:16px;margin-bottom:12px;border-left:3px solid var(--success);}
+.activity-item h4{font-size:1em;margin-bottom:4px;color:var(--white);font-family:'Outfit',sans-serif;font-weight:600;}
+.activity-item p{font-size:14px;color:var(--text-light);margin-bottom:6px;}
+.activity-item .activity-meta{font-size:12px;color:var(--text-muted);}
+.acknowledge-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:var(--radius);padding:20px;margin:24px 0;text-align:center;}
+.acknowledge-box label{display:flex;align-items:center;justify-content:center;gap:12px;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:16px;color:var(--text);}
+.acknowledge-box input[type="checkbox"]{width:20px;height:20px;accent-color:var(--gold);}
+.unlock-msg{background:var(--gold-dim);border:1px solid rgba(201,169,110,0.3);border-radius:8px;padding:16px;margin-top:12px;text-align:center;font-size:14px;color:var(--gold);font-weight:500;display:none;}
+.takeaway-box{background:var(--gold-dim);border:1px solid rgba(201,169,110,0.25);border-radius:var(--radius);padding:20px;margin:16px 0;}
+.takeaway-box h4{font-size:1.05em;color:var(--gold);margin-bottom:10px;}.takeaway-box li{font-size:14px;margin-bottom:5px;color:var(--text);}
+.source-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:14px 16px;margin:16px 0;font-size:12px;color:var(--text-muted);}
+.source-box h4{font-size:13px;margin-bottom:6px;}.source-box li{margin-bottom:3px;}
+.why-box{background:var(--navy-light);border:1px solid var(--gold-dark);border-radius:var(--radius);padding:18px 20px;margin:16px 0;}
+.why-box h4{color:var(--gold);margin-bottom:8px;font-size:1em;}.why-box p{color:var(--text);}
+.report-section{text-align:left;background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:16px 20px;margin:16px 0;}
+.report-section h4{margin-bottom:8px;color:var(--white);}.report-section p{font-size:14px;line-height:1.7;color:var(--text);}
+.coaching-box{background:linear-gradient(135deg,rgba(201,169,110,0.15),rgba(201,169,110,0.05));border:2px solid var(--gold);border-radius:var(--radius);padding:32px;text-align:center;margin:28px 0;}
+.coaching-box h3{color:var(--gold);margin-bottom:10px;font-size:1.4em;}.coaching-box p{font-size:15px;color:var(--text-light);margin-bottom:14px;}
+.save-indicator{position:fixed;bottom:20px;right:20px;background:var(--success);color:var(--white);padding:10px 18px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transition:opacity 0.3s;z-index:999;}
+.save-indicator.show{opacity:1;}
+@media(max-width:640px){.welcome-hero h1{font-size:1.9em;}.screen{padding:20px 14px 80px;}.section-card,.card{padding:18px;}.journey-step{gap:12px;}.progress-bar{padding:8px 12px;}}
+</style>
+</head>
+<body>
+<div class="progress-bar">
+  <div class="logo" onclick="goHome()">Commercial Excellence</div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="progress-text" id="progressText">0 / 9</span>
+</div>
+<div class="save-indicator" id="saveIndicator">✓ Gemt</div>
+<div class="screen active" id="screen-welcome">
+  <div class="welcome-hero">
+    <h1>Bliv skarp på commercial excellence</h1>
+    <div class="gold-line"></div>
+    <p class="subtitle">Fra tilfældig vækst til systematisk kommerciel kraft. Et forskningsbaseret forløb for executives, der vil bygge en kommerciel maskine — ikke bare sælge mere.</p>
+  </div>
+  <div class="card" style="max-width:500px;margin:0 auto;">
+    <p style="font-size:14px;color:var(--text-light);text-align:center;margin-bottom:20px;">9 moduler. 4-6 timer fordelt over flere sessioner. Hvert modul giver dig forskningsbaseret viden, refleksion og konkrete handlinger.</p>
+    <div class="form-group"><label>Dit navn</label><input type="text" id="clientName" placeholder="Dit fulde navn"></div>
+    <div class="form-group"><label>Din rolle / titel</label><input type="text" id="clientRole" placeholder="F.eks. CEO, CCO, VP Sales"></div>
+    <div class="form-group"><label>Virksomhed</label><input type="text" id="clientCompany" placeholder="Din organisation"></div>
+    <div class="form-group"><label>Branche</label><input type="text" id="clientIndustry" placeholder="F.eks. Finans, Tech, Produktion"></div>
+    <div class="consent-box"><label><input type="checkbox" id="gdprConsent"><span>Mine besvarelser gemmes kun lokalt i min browser. Ingen data deles.</span></label></div>
+    <button class="btn btn-primary btn-full" onclick="startJourney()">Start mit forløb →</button>
+  </div>
+</div>
+<div class="screen" id="screen-journey">
+  <div style="text-align:center;margin-bottom:20px;">
+    <h2 id="journeyGreeting">Dit forløb</h2>
+    <p style="color:var(--text-light);font-size:1em;" id="journeySubtext">Fundament → Maskinrum → Execution</p>
+    <div style="display:flex;justify-content:center;gap:16px;margin-top:16px;flex-wrap:wrap;">
+      <span class="phase-badge phase-fund">① Fundament: 1-3</span>
+      <span class="phase-badge phase-mask">② Maskinrum: 4-6</span>
+      <span class="phase-badge phase-exec">③ Execution: 7-9</span>
+    </div>
+  </div>
+  <div class="journey-map" id="journeyMap"></div>
+  <div style="text-align:center;margin-top:24px;">
+    <button class="btn btn-secondary btn-small" onclick="exportData()" style="margin:4px;">📤 Eksportér</button>
+    <button class="btn btn-secondary btn-small" onclick="document.getElementById('importFile').click()" style="margin:4px;">📥 Importér</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+  </div>
+</div>
+<div class="screen" id="screen-module">
+  <div class="module-header">
+    <button class="back-link" onclick="goHome()">← Tilbage til dit forløb</button>
+    <h2 id="moduleTitle"></h2>
+    <p class="module-desc" id="moduleDesc"></p>
+  </div>
+  <div id="moduleContent"></div>
+</div>
+<div class="screen" id="screen-report">
+  <div class="module-header">
+    <button class="back-link" onclick="goHome()">← Tilbage</button>
+    <h2>Din Commercial Excellence-profil</h2>
+    <p class="module-desc">Hvor du står — og hvad der vil flytte mest</p>
+  </div>
+  <div id="reportContent"></div>
+</div>
+<script>
+const MODULES = [
+{
+  id:'hvad_ce',num:1,title:'Hvad er commercial excellence?',
+  subtitle:'Fra tilfældig vækst til systematisk kommerciel kraft',
+  color:'var(--m1)',time:'20-25 min',phase:'fund',
+  about:'De fleste virksomheder sælger. Nogle sælger godt. Meget få har ægte commercial excellence — en systematisk, datadrevet og strategisk tilgang til at skabe, levere og fastholde kunder. I dette modul definerer vi, hvad det er, og hvorfor det er en strategisk kapabilitet, ikke en afdeling.',
+  learn:[
+    {type:'text',content:'<strong>Commercial excellence er ikke "sælg mere."</strong> Det er den systematiske integration af kundeforståelse, værditilbud, go-to-market, prissætning, salgsledelse og data til en samlet kommerciel maskine. McKinsey definerer det som: <strong>"The ability to consistently win in the market through superior customer insight, value delivery, and commercial execution."</strong>'},
+    {type:'text',content:'Bain & Company (2023) estimerer, at virksomheder med struktureret commercial excellence vokser <strong>2-3x hurtigere</strong> end deres peers — og med højere profitabilitet. Forskellen er ikke flere sælgere eller større marketingbudgetter. Det er <strong>systemet bag</strong>: den måde, hele organisationen er orienteret mod at skabe kundeværdi og omsætte den til vækst.'},
+    {type:'text',content:'<strong>De 6 søjler i commercial excellence:</strong> (1) <strong>Kundeforståelse</strong> — dyb indsigt i kundernes behov, adfærd og beslutningsprocesser. (2) <strong>Værditilbud</strong> — en klar, differentieret og kommunikerbar værdiskabelse. (3) <strong>Go-to-market</strong> — den rigtige vej til de rigtige kunder. (4) <strong>Salgsledelse</strong> — fra individuelle sælgere til en skalerbar salgsorganisation. (5) <strong>Pricing</strong> — prissætning der afspejler værdi, ikke kun omkostninger. (6) <strong>Data & execution</strong> — KPIs, processer og kultur der driver handling.'},
+    {type:'quote',text:'Revenue is vanity, profit is sanity, but cash is reality. Commercial excellence connects all three.',author:'Sammenfatning af commercial excellence-princippet'},
+    {type:'text',content:'<strong>Modenhedsmodellen:</strong> De fleste organisationer befinder sig på et af fire niveauer: (1) <strong>Ad hoc</strong> — vækst er tilfældig, afhængig af individuelle sælgere. (2) <strong>Struktureret</strong> — der er processer, men de er ikke integreret. (3) <strong>Optimeret</strong> — data driver beslutninger, processer er koordineret. (4) <strong>Excellence</strong> — hele organisationen er en kommerciel maskine. De færreste når niveau 4.'},
+    {type:'text',content:'<strong>CEO-perspektivet:</strong> Commercial excellence er ikke en salgs-ting. Det er en CEO-ting. Fordi det kræver alignment på tværs af salg, marketing, produkt, finans og operations. Uden top-down commitment forbliver det en ambition. Med det bliver det en strategisk fordel, der er svær at kopiere.'}
+  ],
+  reflections:[
+    {id:'ce_1',type:'scale',label:'Hvor ville du placere din organisation på modenhedsmodellen? (1 = ad hoc, 4 = excellence)',min:1,max:4},
+    {id:'ce_2',type:'textarea',label:'Hvad driver jeres vækst lige nu — system eller individer? Hvad ville ske, hvis jeres bedste sælger forlod jer i morgen?',placeholder:'Vækstdrivere: ...\nHvis bedste sælger forsvandt: ...'},
+    {id:'ce_3',type:'textarea',label:'Hvilken af de 6 søjler er jeres stærkeste? Og hvilken er den svageste? Vær ærlig.',placeholder:'Stærkeste: ...\nSvageste: ...'},
+    {id:'ce_4',type:'textarea',label:'Hvad ville ændre sig i din forretning, hvis I gik ét niveau op på modenhedsmodellen?',placeholder:'Det der ville ændre sig: ...'}
+  ],
+  takeaways:[
+    'Commercial excellence er ikke "sælg mere" — det er en systematisk, integreret tilgang til at vinde i markedet.',
+    'Virksomheder med struktureret CE vokser 2-3x hurtigere med højere profitabilitet.',
+    '6 søjler: Kundeforståelse, Værditilbud, Go-to-market, Salgsledelse, Pricing, Data & execution.',
+    'CE er en CEO-ting, ikke en salgs-ting. Uden top-down commitment forbliver det en ambition.'
+  ],
+  whyItMatters:'Harvard Business Review (2017) viste, at kun 25% af virksomheder har en formaliseret commercial excellence-tilgang — men de outperformer konsekvent deres konkurrenter. I en verden med stigende konkurrence og faldende kundeloyalitet er systematisk kommerciel kraft den mest bæredygtige differentieringsfaktor.',
+  sources:[
+    'McKinsey & Company (2022). Building Commercial Capabilities for Growth.',
+    'Bain & Company (2023). Commercial Excellence: The Growth Engine.',
+    'Harvard Business Review (2017). The Elements of Value.',
+    'Homburg, C. et al. (2012). On the importance of complaint handling design. Journal of the Academy of Marketing Science.'
+  ],
+  activities:[
+    {title:'CE-modenhedsaudit',desc:'Score din organisation på hver af de 6 søjler (1-10). Kundeforståelse, Værditilbud, Go-to-market, Salgsledelse, Pricing, Data & execution. Gennemsnittet er din CE-modenhedsscore. Del den med dit ledelsesteam.',time:'20 minutter',evidence:'Baseret på commercial maturity models (McKinsey, 2022)'},
+    {title:'"Best sælger"-testen',desc:'Forestil dig, at jeres 3 bedste sælgere forlader jer i morgen. Hvad sker der med omsætningen? Hvis svaret er "den falder markant," er jeres vækst person-afhængig, ikke system-drevet.',time:'10 minutters refleksion',evidence:'Baseret på scalable sales organizations research'},
+    {title:'Konkurrent-benchmark',desc:'Vælg jeres 2 vigtigste konkurrenter. Vurdér dem på de 6 søjler. Hvor er I bedre? Hvor er de bedre? Hvad ville de sige om jer?',time:'20 minutter',evidence:'Baseret på competitive intelligence-praksis'}
+  ]
+},
+{
+  id:'kunden',num:2,title:'Kunden i centrum — på rigtigt',
+  subtitle:'Kundeforståelse som strategisk fundament',
+  color:'var(--m2)',time:'25-30 min',phase:'fund',
+  about:'Alle siger, de er kundecentrerede. Meget få er det reelt. I dette modul adskiller vi den ægte kundeforståelse fra sloganet — og giver dig værktøjerne til at bygge et fundament, der driver reel kommerciel kraft.',
+  learn:[
+    {type:'text',content:'Clayton Christensen (Harvard Business School) introducerede <strong>Jobs-to-be-Done</strong> teorien: Kunder køber ikke produkter. De "hyrer" produkter til at løse et job i deres liv. <strong>"People don\'t want a quarter-inch drill. They want a quarter-inch hole."</strong> (Theodore Levitt). Forstår du det job, din kunde forsøger at løse? Eller sælger du stadig bor?'},
+    {type:'text',content:'<strong>Kundesegmentering der virker.</strong> De fleste virksomheder segmenterer på demografi (størrelse, branche, geografi). Det er nødvendigt — men ikke tilstrækkeligt. Ægte segmentering er baseret på <strong>behov, adfærd og værdipotentiale</strong>. Hvem er dine mest profitable kunder? Hvad karakteriserer dem? Og hvordan finder du flere af dem?'},
+    {type:'text',content:'Bain & Company\'s NPS-forskning (Reichheld, 2003) viste, at <strong>en 5% stigning i kundefastholdelse kan øge profitten med 25-95%.</strong> Alligevel bruger de fleste virksomheder langt mere energi på at skaffe nye kunder end på at beholde eksisterende. Commercial excellence starter med at forstå og maksimere værdien af de kunder, du allerede har.'},
+    {type:'quote',text:'Your most unhappy customers are your greatest source of learning.',author:'Bill Gates'},
+    {type:'text',content:'<strong>Voice of Customer (VoC) som system:</strong> Ikke en årlig kundetilfredshedsundersøgelse — men en løbende, systematisk indsamling af kundeindsigter fra alle berøringspunkter: salg, support, produkt, NPS, churn-analyse, win/loss-analyse. De bedste organisationer har VoC som en fast del af ledelsesmøderne.'},
+    {type:'text',content:'<strong>Customer Lifetime Value (CLV)</strong> er den vigtigste metrik, de fleste virksomheder ikke måler ordentligt. Hvad er en kundes samlede værdi over hele relationen? Hvad koster det at skaffe dem (CAC)? Og hvad er CLV/CAC-ratio? Hvis du ikke kan svare præcist, mangler du det vigtigste fundament for kommercielle beslutninger.'}
+  ],
+  reflections:[
+    {id:'ku_1',type:'textarea',label:'Hvad er det "job", jeres kunder hyrer jer til at løse? Ikke hvad I sælger — men hvad de reelt køber.',placeholder:'Det job vi løser: ...'},
+    {id:'ku_2',type:'scale',label:'Hvor godt kender I reelt jeres kunders behov, adfærd og beslutningsprocesser? (1 = gætteri, 10 = dyb indsigt)',min:1,max:10},
+    {id:'ku_3',type:'textarea',label:'Kender I jeres CLV (Customer Lifetime Value) og CAC (Customer Acquisition Cost)? Hvad er tallene — eller hvorfor kender I dem ikke?',placeholder:'CLV: ...\nCAC: ...\nHvorfor vi ikke ved det: ...'},
+    {id:'ku_4',type:'textarea',label:'Hvornår har I sidst tabt en vigtig kunde? Hvad var den reelle årsag — og lærte I noget af det?',placeholder:'Tabte kunde: ...\nReelle årsag: ...\nHvad vi lærte: ...'}
+  ],
+  takeaways:[
+    'Kunder køber ikke produkter — de hyrer løsninger til et job. Forstår du jobbet?',
+    '5% bedre kundefastholdelse = 25-95% mere profit. Retention er kongen af commercial excellence.',
+    'CLV/CAC er det vigtigste ratio, de fleste virksomheder ikke måler. Det bør drive alle kommercielle beslutninger.',
+    'Voice of Customer er et system, ikke en årlig undersøgelse. De bedste har det på hvert ledelsesmøde.'
+  ],
+  whyItMatters:'Deloitte (2020) viste, at customer-centric virksomheder er 60% mere profitable end dem der ikke er. Men ægte kundecentrering kræver mere end et slogan — det kræver systemer, data og en kultur, der konsekvent prioriterer kundeindsigt over interne antagelser.',
+  sources:[
+    'Christensen, C. (2016). Competing Against Luck. HarperBusiness.',
+    'Reichheld, F. (2003). The One Number You Need to Grow. Harvard Business Review.',
+    'Deloitte (2020). The Customer-Centric Organization.',
+    'Levitt, T. (1960). Marketing Myopia. Harvard Business Review.'
+  ],
+  activities:[
+    {title:'Jobs-to-be-Done interview',desc:'Interview 3 kunder med ét spørgsmål: "Hvad forsøger du at opnå — og hvorfor valgte du os?" Lyt til jobbet, ikke produktet. Resultaterne vil overraske dig.',time:'3 samtaler',evidence:'Baseret på JTBD (Christensen, 2016)'},
+    {title:'Win/loss-analyse',desc:'Gennemgå de seneste 10 tabte og 10 vundne salgsmuligheder. Hvad er mønstret? Hvor vinder I? Hvor taber I? Og vigtigst: hvorfor?',time:'2-3 timer',evidence:'Baseret på win/loss analysis best practice'},
+    {title:'CLV-beregning',desc:'Beregn CLV for jeres top-segment. Hvad er den gennemsnitlige kunderelations længde × årlig omsætning × margin? Sammenlign med CAC. Er CLV/CAC > 3? Hvis ikke, er fundamentet ustabilt.',time:'1-2 timer med finans',evidence:'Baseret på CLV-forskning (Gupta & Lehmann, 2005)'}
+  ]
+},
+{
+  id:'vaerdi',num:3,title:'Værditilbuddet',
+  subtitle:'Hvorfor køber de hos jer — og ikke konkurrenten?',
+  color:'var(--m3)',time:'25-30 min',phase:'fund',
+  about:'De fleste virksomheder kan ikke præcist forklare, hvorfor kunder vælger dem. "God kvalitet" og "god service" er ikke differentiering — det er minimum. I dette modul skærper vi dit værditilbud, så det er krystalklart, differentieret og kommunikerbart.',
+  learn:[
+    {type:'text',content:'Alexander Osterwalder (<em>Value Proposition Design</em>, 2014) introducerede <strong>Value Proposition Canvas</strong>: en systematisk metode til at matche dit tilbud præcist med kundens behov. Den har to sider: <strong>Kundeprofilen</strong> (jobs, pains, gains) og <strong>Værdikortet</strong> (produkter/services, pain relievers, gain creators). Magien sker i overlapningen.'},
+    {type:'text',content:'<strong>Differentiering er ikke, hvad du siger. Det er, hvad kunden oplever.</strong> Michael Porter (Harvard) skelner mellem cost leadership (billigst), differentiation (bedst/unik) og focus (nichespecialist). De fleste virksomheder er "stuck in the middle" — hverken billigst, bedst eller mest specialiseret. Det er den farligste position.'},
+    {type:'text',content:'Bain & Company identificerede <strong>30 "Elements of Value"</strong> (Harvard Business Review, 2016) — de fundamentale byggesten i kundeværdi, fra funktionelle (sparer tid, reducerer risiko) til emotionelle (reducerer angst, giver håb) til livstransformerende (selvrealisering). De virksomheder der scorer højt på 4+ elementer har <strong>4x højere NPS og dobbelt så høj vækst</strong>.'},
+    {type:'quote',text:'If you can\'t state your position in eight words or less, you don\'t have a position.',author:'Seth Godin'},
+    {type:'text',content:'<strong>Testen:</strong> Kan enhver medarbejder i din organisation svare klart og konsistent på: "Hvorfor skal en kunde vælge jer frem for konkurrenten?" Hvis svaret varierer — eller er vagt — har I ikke et klart værditilbud. I har et produkt og et håb.'},
+    {type:'text',content:'<strong>Værditilbuddet skal testes, ikke vedtages.</strong> Det er ikke en PowerPoint-øvelse for ledelsesteamet. Det er en hypotese, der skal valideres med kunder. De bedste værditilbud er skabt i dialog med markedet — ikke i isolation fra det.'}
+  ],
+  reflections:[
+    {id:'va_1',type:'textarea',label:'I 8 ord eller færre: Hvorfor skal en kunde vælge jer? Prøv. Det er sværere end du tror.',placeholder:'Vores position i 8 ord: ...'},
+    {id:'va_2',type:'scale',label:'Hvis du spørger 5 medarbejdere "Hvorfor skal kunder vælge os?", ville de give det samme svar? (1 = helt forskellige svar, 10 = identiske)',min:1,max:10},
+    {id:'va_3',type:'textarea',label:'Hvad er jeres reelle differentiering? Ikke "god kvalitet" eller "god service" — men det der er svært at kopiere.',placeholder:'Vores reelle differentiering: ...'},
+    {id:'va_4',type:'textarea',label:'Hvilke "pains" fjerner I for kunden? Og hvilke "gains" skaber I, som konkurrenterne ikke kan?',placeholder:'Pains vi fjerner: ...\nGains vi skaber: ...'}
+  ],
+  takeaways:[
+    'De fleste virksomheder kan ikke klart forklare, hvorfor kunder vælger dem. Det er et strategisk problem.',
+    '"God kvalitet og service" er ikke differentiering — det er minimum. Hvad er jeres reelle position?',
+    'Virksomheder der scorer højt på 4+ værdielementer har 4x højere NPS og dobbelt vækst.',
+    'Et værditilbud er en hypotese, der skal testes med kunder — ikke en PowerPoint for ledelsen.'
+  ],
+  whyItMatters:'Simon Sinek siger "Start with Why" — men commercial excellence siger "Start with the customer\'s Why." Det er ikke dit formål, der sælger. Det er, om dit formål løser kundens problem bedre end alternativerne. Og det kræver et krystalklart, testet værditilbud.',
+  sources:[
+    'Osterwalder, A. et al. (2014). Value Proposition Design. Wiley.',
+    'Porter, M.E. (1985). Competitive Advantage. Free Press.',
+    'Almquist, E. et al. (2016). The Elements of Value. Harvard Business Review.',
+    'Godin, S. (2003). Purple Cow. Portfolio.'
+  ],
+  activities:[
+    {title:'8-ord-testen',desc:'Saml dit ledelsesteam. Bed alle skrive jeres værditilbud i max 8 ord — uafhængigt. Sammenlign. Varierer svarene? Det er den klareste diagnose af jeres position.',time:'15 minutter',evidence:'Baseret på positioning (Ries & Trout, 1981)'},
+    {title:'Value Proposition Canvas',desc:'Udfyld Osterwalders canvas for jeres vigtigste kundesegment: Hvad er deres jobs, pains, gains? Og hvordan matcher jeres tilbud? Hvor er gappet?',time:'1-2 timer med teamet',evidence:'Baseret på VPC (Osterwalder, 2014)'},
+    {title:'Differentierings-audit',desc:'List 3 ting, I siger, differentierer jer. For hver: kan konkurrenten sige det samme? Hvis ja, er det ikke differentiering. Hvad er tilbage?',time:'20 minutter',evidence:'Baseret på competitive positioning (Porter, 1985)'}
+  ]
+}
+];
+MODULES.push(
+{
+  id:'gtm',num:4,title:'Go-to-market',
+  subtitle:'Den rigtige vej til de rigtige kunder',
+  color:'var(--m4)',time:'25-30 min',phase:'mask',
+  about:'Du kan have det bedste produkt og det skarpeste værditilbud — hvis du ikke når de rigtige kunder ad den rigtige kanal med det rigtige budskab på det rigtige tidspunkt, er det ligegyldigt. Go-to-market er maskinen, der forbinder dit tilbud med markedet.',
+  learn:[
+    {type:'text',content:'<strong>Go-to-market (GTM) er ikke en lanceringsplan.</strong> Det er den samlede strategi for, hvordan du når, vinder og beholder kunder. Den integrerer kanalvalg, kundeafgrænsning, salgsmodel, marketing og customer journey til ét sammenhængende system. McKinsey kalder det <strong>"the commercial operating model."</strong>'},
+    {type:'text',content:'<strong>Customer Journey Mapping</strong> er fundamentet. Hvor opdager kunden jer? Hvad evaluerer de? Hvad afgør beslutningen? Hvad sker efter købet? De fleste virksomheder kender deres egen salgsproces. Langt færre kender <strong>kundens købsproces</strong>. Forskellen er afgørende.'},
+    {type:'text',content:'Forrester Research (2021) viser, at <strong>B2B-købere er 67-80% igennem deres købsproces, FØR de kontakter en sælger.</strong> Det betyder, at din digitale tilstedeværelse, dit content, dine cases og din synlighed er mindst lige så vigtige som din salgsstyrke. Go-to-market er ikke bare salg — det er det fulde økosystem.'},
+    {type:'quote',text:'If you build it, they will come is not a strategy. How you reach the customer is as important as what you offer.',author:'Sammenfatning af GTM-princippet'},
+    {type:'text',content:'<strong>Kanalstrategi:</strong> Direkte salg, partnere, digital, self-service, hybrid? Valget afhænger af: kompleksitet (kan kunden købe selv?), deal-størrelse (retfærdiggør den en sælger?), kundeadfærd (hvor søger de?) og skalerbarhed (kan vi nå nok kunder?). De fleste virksomheder bruger én kanal. De bedste orkestrerer flere.'},
+    {type:'text',content:'<strong>ICP (Ideal Customer Profile)</strong> er det vigtigste dokument, de fleste salgsteams ikke har. Hvem er din ideelle kunde — præcist? Branche, størrelse, behov, triggers, beslutningsproces, budget? Jo skarpere ICP, jo mere effektiv er hele din GTM-maskine. Alt andet er "spray and pray."'}
+  ],
+  reflections:[
+    {id:'gt_1',type:'textarea',label:'Beskriv jeres ideelle kunde (ICP) så præcist som muligt. Branche, størrelse, behov, triggers, beslutningstager.',placeholder:'Vores ICP: ...'},
+    {id:'gt_2',type:'scale',label:'Hvor godt kender I jeres kundes købsproces (ikke jeres salgsproces)? (1 = aner det ikke, 10 = kortlagt i detaljer)',min:1,max:10},
+    {id:'gt_3',type:'textarea',label:'Hvordan finder jeres kunder jer? Hvad er de 3 vigtigste kanaler — og hvor effektive er de?',placeholder:'Kanal 1: ...\nKanal 2: ...\nKanal 3: ...'},
+    {id:'gt_4',type:'textarea',label:'Hvad sker der mellem "kunden er interesseret" og "kunden har købt"? Er den proces optimal, eller taber I kunder undervejs?',placeholder:'Processen: ...\nHvor vi taber: ...'}
+  ],
+  takeaways:[
+    'GTM er ikke en lanceringsplan — det er den samlede kommercielle operating model.',
+    'B2B-købere er 67-80% igennem deres proces, FØR de taler med en sælger. Din synlighed er kritisk.',
+    'ICP (Ideal Customer Profile) er det vigtigste dokument, de fleste salgsteams ikke har.',
+    'Kend kundens købsproces — ikke kun din salgsproces. Forskellen er afgørende.'
+  ],
+  whyItMatters:'Gartner (2023) estimerer, at virksomheder med en formaliseret GTM-strategi opnår 30% bedre pipeline-konvertering og 20% kortere salgscyklusser. Det handler ikke om at arbejde hårdere — det handler om at arbejde i det rigtige system.',
+  sources:[
+    'McKinsey (2022). Go-to-Market Transformation.',
+    'Forrester Research (2021). B2B Buying Study.',
+    'Gartner (2023). The Future of Sales.',
+    'Weinberg, G. & Mares, J. (2015). Traction. Portfolio.'
+  ],
+  activities:[
+    {title:'Customer Journey Map',desc:'Tegn jeres kundes rejse fra "ubevidst om problemet" til "loyal kunde." For hvert stadie: Hvad gør de? Hvad tænker de? Hvor møder de jer? Hvor falder de fra?',time:'2 timer med salg + marketing',evidence:'Baseret på customer journey mapping (McKinsey)'},
+    {title:'ICP-workshop',desc:'Saml salg, marketing og ledelse. Definer jeres ICP i detaljer: Hvem? Hvor? Hvilke triggers? Hvem beslutter? Hvad er budget? Test ICP mod jeres 10 bedste kunder — passer den?',time:'2-3 timer',evidence:'Baseret på ideal customer profiling'},
+    {title:'Kanal-effektivitet',desc:'Mål konvertering for hver kanal: Hvor mange leads? Hvor mange bliver til pipeline? Hvor mange lukker? Hvad er cost per acquisition per kanal? Investér mere i det, der virker.',time:'Data-analyse, 1-2 timer',evidence:'Baseret på multi-channel attribution'}
+  ]
+},
+{
+  id:'salgsledelse',num:5,title:'Salgsledelse',
+  subtitle:'Fra individuelle sælgere til en skalerbar salgsorganisation',
+  color:'var(--m5)',time:'25-30 min',phase:'mask',
+  about:'De fleste salgsorganisationer er bygget omkring individuelle helte — stjerne-sælgere der leverer. Det er ikke skalerbart, og det er sårbart. I dette modul ser vi på, hvad der adskiller en salgsafdeling fra en salgsorganisation.',
+  learn:[
+    {type:'text',content:'Jason Lemkin (SaaStr) formulerer det skarpt: <strong>"If your best rep leaves and revenue drops 20%, you don\'t have a sales organization. You have a sales person."</strong> Commercial excellence kræver et system, der performer uanset individer. Det kræver pipeline-disciplin, coaching-kultur og skalerbare processer.'},
+    {type:'text',content:'<strong>Pipeline management</strong> er det kommercielle nervesystem. Det kræver: (1) En klar, fælles definition af hvert pipeline-stadie. (2) Konverteringsrater mellem stadier. (3) Pipeline-coverage ratio (typisk 3-4x target). (4) Velocity metrics: tid i hvert stadie. Uden denne disciplin er forecasting gætteri.'},
+    {type:'text',content:'<strong>Coaching vs. management.</strong> CEB/Gartner-forskning viser, at salgschefer der bruger >50% af deres tid på coaching (ikke pipeline reviews, ikke forecasting, ikke rapportering) har teams der performer <strong>19% bedre</strong>. Alligevel bruger de fleste salgschefer under 20% af deres tid på reel coaching.'},
+    {type:'quote',text:'A players hire A players. B players hire C players. Your sales team is a direct reflection of your sales leadership.',author:'Steve Jobs-princippet, anvendt på salg'},
+    {type:'text',content:'<strong>De 5 drivers af salgsperformance</strong> (Harvard Business Review, Zoltners et al.): (1) <strong>Talent</strong> — har du de rigtige mennesker? (2) <strong>Process</strong> — er salgsprocessen dokumenteret og fulgt? (3) <strong>Tools</strong> — understøtter CRM og tech sælgernes arbejde? (4) <strong>Incentives</strong> — belønner kompensationsmodellen den rigtige adfærd? (5) <strong>Coaching</strong> — udvikler salgslederne aktivt deres teams?'},
+    {type:'text',content:'<strong>Win rate</strong> er den mest oversete KPI. De fleste salgsteams måler pipeline-værdi og bookinger — men ikke win rate (% af muligheder der lukkes). En win rate på 20% vs. 30% er forskellen mellem en middelmådig og en exceptionel salgsorganisation — og den forbedres gennem coaching, kvalifikation og værditilbud, ikke flere leads.'}
+  ],
+  reflections:[
+    {id:'sl_1',type:'scale',label:'Hvor afhængig er jeres omsætning af 2-3 individuelle sælgere? (1 = slet ikke, 10 = ekstremt afhængig)',min:1,max:10},
+    {id:'sl_2',type:'textarea',label:'Hvad er jeres win rate? Pipeline coverage? Konvertering per stadie? Hvis du ikke kender tallene, hvad fortæller det så?',placeholder:'Win rate: ...\nPipeline coverage: ...\nHvis jeg ikke ved det: ...'},
+    {id:'sl_3',type:'textarea',label:'Hvor stor en andel af salgsledernes tid bruges på reel coaching vs. administration og pipeline reviews?',placeholder:'Coaching: ...%\nAdmin/reviews: ...%'},
+    {id:'sl_4',type:'textarea',label:'Hvad er den vigtigste ting, der ville forbedre jeres salgsteams performance — reelt?',placeholder:'Den ene ting: ...'}
+  ],
+  takeaways:[
+    'Hvis din omsætning er afhængig af individuelle sælgere, har du ikke en salgsorganisation.',
+    'Pipeline-disciplin er det kommercielle nervesystem. Uden det er forecasting gætteri.',
+    'Salgschefer der coacher >50% af tiden har teams der performer 19% bedre.',
+    'Win rate er den mest oversete KPI — og den forbedres gennem coaching, ikke flere leads.'
+  ],
+  whyItMatters:'CSO Insights (2019) viste, at salgsorganisationer med formaliseret coaching-kultur har 28% højere win rates og 32% bedre quota attainment end dem uden. Salgsledelse er ikke management — det er coaching. Og de bedste salgsledere er dem, der gør deres team bedre.',
+  sources:[
+    'Zoltners, A. et al. (2008). Sales Force Effectiveness. Harvard Business Review.',
+    'CEB/Gartner (2018). The Coaching Effect on Sales Performance.',
+    'CSO Insights (2019). Sales Enablement Optimization Study.',
+    'Rackham, N. (1988). SPIN Selling. McGraw-Hill.'
+  ],
+  activities:[
+    {title:'Pipeline-audit',desc:'Gennemgå jeres pipeline med salgsledelsen: Hvad er coverage ratio? Hvad er konvertering per stadie? Hvad er win rate? Hvad er average deal size? Og: er tallene troværdige, eller er CRM-hygiejnen for dårlig?',time:'2 timer',evidence:'Baseret på pipeline management best practice'},
+    {title:'Coaching-eksperiment',desc:'Bed jeres salgschefer bruge 50% af næste uge på reel coaching: ride-alongs, deal reviews, skill-building. Ingen admin, ingen rapportering. Mål: hvad sker der med teamets energi og resultater?',time:'1 uge',evidence:'Baseret på CEB coaching research'},
+    {title:'Win/loss deep dive',desc:'Analysér de seneste 5 tabte deals: Hvornår i processen tabte I? Til hvem? Hvorfor? Og var mønstret forudsigeligt? Denne analyse er guld — og de færreste laver den systematisk.',time:'2-3 timer',evidence:'Baseret på win/loss analysis methodology'}
+  ]
+},
+{
+  id:'pricing',num:6,title:'Pricing med mod',
+  subtitle:'Den mest oversete vækstmotor',
+  color:'var(--m6)',time:'25-30 min',phase:'mask',
+  about:'Pricing er den mest kraftfulde — og mest undervurderede — løftestang i commercial excellence. En 1% prisstigning påvirker bundlinjen 3-4x mere end en 1% stigning i volumen. Alligevel er pricing ofte en eftertanke. I dette modul giver vi den den plads, den fortjener.',
+  learn:[
+    {type:'text',content:'McKinsey (2003, "The Price Advantage") dokumenterede, at <strong>en 1% prisstigning forbedrer EBIT med 8-11%</strong> — langt mere end tilsvarende forbedringer i volumen eller omkostninger. Alligevel bruger de fleste virksomheder mere tid på at forhandle rabatter end på at optimere prissætning. Pricing er ikke en salgstaktik — det er en strategisk kapabilitet.'},
+    {type:'text',content:'<strong>Tre pricing-filosofier:</strong> (1) <strong>Cost-plus</strong> — du lægger en margin oven på dine omkostninger. Simpelt, men ignorerer kundeværdi. (2) <strong>Konkurrent-baseret</strong> — du prissætter relativt til markedet. Sikkert, men følgeri. (3) <strong>Værdibaseret</strong> — du prissætter efter den værdi, kunden oplever. Det sværeste — og det mest profitable.'},
+    {type:'text',content:'Hermann Simon (<em>Confessions of the Pricing Man</em>, 2015), verdens førende pricing-ekspert, siger: <strong>"Most companies know their costs precisely but have only a vague idea of the value they create for customers."</strong> Værdibaseret pricing kræver, at du forstår — og kan kvantificere — den værdi, du skaber. Det er et strategisk arbejde, ikke en Excel-øvelse.'},
+    {type:'quote',text:'Price is what you pay. Value is what you get.',author:'Warren Buffett'},
+    {type:'text',content:'<strong>Pricing-mod:</strong> De fleste virksomheder prissætter for lavt — drevet af frygt for at miste kunder. Men forskning viser, at kunderne sjældent er så prissensitive, som sælgerne tror. Price Intelligently (nu Paddle) fandt, at <strong>virksomheder der justerer pris op baseret på værdi, mister 1-3% af kunderne — men øger profitten med 12-25%.</strong> Nettoresultatet er næsten altid positivt.'},
+    {type:'text',content:'<strong>Rabat-disciplin</strong> er den lavthængende frugt. De fleste salgsorganisationer giver for mange rabatter, for hurtigt, uden strategisk begrundelse. Spørg: Hvad er jeres gennemsnitlige rabat? Hvem giver dem? Hvad er godkendelsesprocessen? Og hvad koster det jer på bundlinjen? En 3% reduktion i unødige rabatter kan være millioner.'}
+  ],
+  reflections:[
+    {id:'pr_1',type:'textarea',label:'Hvilken pricing-filosofi bruger I primært? Cost-plus, konkurrent-baseret eller værdibaseret? Og hvorfor?',placeholder:'Vores filosofi: ...\nHvorfor: ...'},
+    {id:'pr_2',type:'scale',label:'Hvor modige er I i jeres prissætning? (1 = prissætter for lavt af frygt, 10 = prissætter efter værdi med overbevisning)',min:1,max:10},
+    {id:'pr_3',type:'textarea',label:'Hvad er jeres gennemsnitlige rabat? Hvem giver dem? Og hvad er den reelle bundlinjeeffekt?',placeholder:'Gennemsnitsrabat: ...\nHvem giver dem: ...\nBundlinjeeffekt: ...'},
+    {id:'pr_4',type:'textarea',label:'Kan I kvantificere den værdi, I skaber for kunden? Hvad sparer/tjener kunden ved at vælge jer?',placeholder:'Kundens ROI: ...\nHvordan vi dokumenterer det: ...'}
+  ],
+  takeaways:[
+    '1% prisstigning = 8-11% EBIT-forbedring. Pricing er den mest kraftfulde løftestang.',
+    'De fleste virksomheder prissætter efter omkostninger, ikke værdi. Det efterlader penge på bordet.',
+    'Prisjustering op baseret på værdi mister 1-3% kunder men øger profit 12-25%. Netto positivt.',
+    'Rabat-disciplin er lavthængende frugt. 3% færre rabatter kan være millioner på bundlinjen.'
+  ],
+  whyItMatters:'Simon-Kucher & Partners analyserede 1.200 virksomheder og fandt, at 72% af alle produktlanceringer fejler — og i over halvdelen af tilfældene er forkert pricing en primær årsag. Pricing er ikke det sidste du gør. Det er noget af det første du bør tænke strategisk over.',
+  sources:[
+    'Marn, M.V. et al. (2003). The Price Advantage. McKinsey/Wiley.',
+    'Simon, H. (2015). Confessions of the Pricing Man. Springer.',
+    'Price Intelligently (2019). The State of SaaS Pricing.',
+    'Simon-Kucher & Partners (2018). Global Pricing Study.'
+  ],
+  activities:[
+    {title:'Pricing-audit',desc:'Beregn: Hvad ville 1% prisstigning betyde for jeres EBIT? Hvad er jeres gennemsnitlige rabat? Hvem giver rabatter og med hvilken godkendelsesproces? Resultaterne vil sandsynligvis chokere dig.',time:'2 timer med finans + salg',evidence:'Baseret på The Price Advantage (McKinsey, 2003)'},
+    {title:'Værdi-kvantificering',desc:'For jeres vigtigste produkt/service: kvantificér værdien for kunden. Hvad sparer de? Hvad tjener de? Hvad undgår de? Kan I sætte et tal på? Hvis ikke, er det jeres vigtigste næste skridt i pricing.',time:'Workshop, 2-3 timer',evidence:'Baseret på value-based pricing (Simon, 2015)'},
+    {title:'Rabat-policy',desc:'Implementér en simpel rabat-godkendelsesproces: rabatter >X% kræver godkendelse af salgschef. >Y% af VP. >Z% af CEO. Mål effekten over 3 måneder.',time:'Opsætning: 1 time',evidence:'Baseret på discount management best practice'}
+  ]
+}
+);
+MODULES.push(
+{
+  id:'data',num:7,title:'Data og beslutninger',
+  subtitle:'Commercial intelligence — KPIs der driver handling',
+  color:'var(--m7)',time:'25-30 min',phase:'exec',
+  about:'Data uden handling er støj. Handling uden data er gætteri. I dette modul bygger vi broen: de KPIs, dashboards og beslutningsprocesser, der gør jeres kommercielle maskine datadrevet — uden at drukne i rapporter.',
+  learn:[
+    {type:'text',content:'<strong>De fleste virksomheder har for mange KPIs og for lidt indsigt.</strong> Andrew Grove (Intel, "High Output Management", 1983) insisterede på: <strong>"For each metric, ask: If this number moves, will I do something different?"</strong> Hvis svaret er nej, er det ikke en KPI — det er baggrundsstøj.'},
+    {type:'text',content:'<strong>De 7 kritiske kommercielle KPIs:</strong> (1) <strong>Revenue growth rate</strong> — vokser I, og accelererer det? (2) <strong>Win rate</strong> — % af muligheder I lukker. (3) <strong>Pipeline coverage</strong> — pipeline vs. target (3-4x). (4) <strong>Customer acquisition cost (CAC)</strong> — hvad koster en ny kunde? (5) <strong>Customer lifetime value (CLV)</strong> — hvad er en kunde værd? (6) <strong>Net Revenue Retention (NRR)</strong> — vokser eksisterende kunder? (7) <strong>Sales cycle length</strong> — hvor lang tid fra lead til lukket deal?'},
+    {type:'text',content:'<strong>Leading vs. lagging indicators.</strong> Revenue er en lagging indicator — den fortæller dig, hvad der allerede er sket. Pipeline-aktivitet, møder booket, proposals sendt er leading indicators — de fortæller dig, hvad der kommer til at ske. De bedste kommercielle ledere styrer efter leading indicators og måler lagging.'},
+    {type:'quote',text:'What gets measured gets managed. But what gets measured wrong gets managed wrong.',author:'Tilpasset fra Peter Drucker'},
+    {type:'text',content:'<strong>Commercial dashboard:</strong> Ét sted, opdateret ugentligt, med de 5-7 KPIs der reelt driver handling. Ikke 40 slides med grafer — men én side, der svarer på: Er vi on track? Hvor er risikoen? Hvad skal vi gøre nu? De bedste CEO dashboards er under 5 minutter at gennemgå.'},
+    {type:'text',content:'<strong>Forecasting-disciplin:</strong> CEB/Gartner-forskning viser, at <strong>79% af salgsorganisationer misser deres forecast med >10%.</strong> Årsagen: pipeline-hygiejne er dårlig, stadiedefinitioner er vage, og sandsynligheder er subjektive. Præcis forecasting kræver: klare stagegates, datadrevet probability, og regelmæssig pipeline-scrubbing.'}
+  ],
+  reflections:[
+    {id:'da_1',type:'textarea',label:'Hvilke KPIs styrer I reelt efter i dag? Og er de leading eller lagging?',placeholder:'Vores KPIs: ...\nLeading/lagging: ...'},
+    {id:'da_2',type:'scale',label:'Hvor præcis er jeres forecasting? (1 = rent gætteri, 10 = konsekvent inden for 5%)',min:1,max:10},
+    {id:'da_3',type:'textarea',label:'Har I ét commercial dashboard, der svarer på "Er vi on track?" på under 5 minutter? Hvis ikke, hvad bruger I?',placeholder:'Vores dashboard: ...\nHvad vi mangler: ...'},
+    {id:'da_4',type:'textarea',label:'Hvilken KPI, I ikke måler i dag, ville give jer mest indsigt, hvis I begyndte?',placeholder:'Den manglende KPI: ...\nHvorfor den ville hjælpe: ...'}
+  ],
+  takeaways:[
+    'Hvis en KPI ikke ændrer din handling, er det ikke en KPI — det er støj.',
+    '7 kritiske KPIs: Revenue growth, Win rate, Pipeline coverage, CAC, CLV, NRR, Sales cycle.',
+    'Styr efter leading indicators (aktivitet). Mål lagging indicators (resultater).',
+    '79% misser deres forecast med >10%. Præcision kræver pipeline-disciplin, ikke bedre gætteri.'
+  ],
+  whyItMatters:'Forrester (2022) viser, at datadrevne salgsorganisationer har 15% højere win rates og 20% bedre forecast-præcision. Det handler ikke om mere data — det handler om de rigtige data, præsenteret rigtigt, koblet til handling.',
+  sources:[
+    'Grove, A. (1983). High Output Management. Vintage.',
+    'CEB/Gartner (2019). Sales Forecasting Benchmark Study.',
+    'Forrester Research (2022). Data-Driven Sales Organizations.',
+    'Kaplan, R. & Norton, D. (1996). The Balanced Scorecard. Harvard Business School Press.'
+  ],
+  activities:[
+    {title:'KPI-rensning',desc:'List alle KPIs I måler i dag. For hver: "Hvis dette tal ændrer sig, gør vi noget anderledes?" Fjern alt, hvor svaret er nej. Mål: max 7 kommercielle KPIs.',time:'1 time med ledelsesteam',evidence:'Baseret på Grove (1983)'},
+    {title:'Dashboard i denne uge',desc:'Byg et simpelt commercial dashboard (1 side, 5-7 KPIs) og gennemgå det ved næste ledelsesmøde. Brug maks 5 minutter. Hvad mangler? Hvad er overflødigt?',time:'2-3 timer opsætning',evidence:'Baseret på commercial reporting best practice'},
+    {title:'Forecast-audit',desc:'Sammenlign de seneste 4 kvartalers forecast med actuals. Hvor stor var afvigelsen? Hvad var årsagen? Er det konsistent? Denne analyse afslører jeres forecasting-modenhed.',time:'1-2 timer med finans',evidence:'Baseret på CEB forecasting research'}
+  ]
+},
+{
+  id:'kultur_exec',num:8,title:'Kultur og execution',
+  subtitle:'Fra strategi til hverdag — kommerciel kultur der leverer',
+  color:'var(--m8)',time:'25-30 min',phase:'exec',
+  about:'De fleste virksomheder har en rimelig strategi. Langt færre eksekverer den konsekvent. I dette modul ser vi på den mest undervurderede del af commercial excellence: den kommercielle kultur og den daglige execution, der gør strategien til virkelighed.',
+  learn:[
+    {type:'text',content:'Larry Bossidy & Ram Charan (<em>Execution: The Discipline of Getting Things Done</em>, 2002) formulerede det brutalt ærligt: <strong>"Execution is the great unaddressed issue in the business world today."</strong> De fleste organisationer fejler ikke på strategi — de fejler på execution. Gabet mellem "vi har besluttet" og "det er implementeret" er kolossalt.'},
+    {type:'text',content:'<strong>Kommerciel kultur er den usynlige styresystem.</strong> Det er den måde, mennesker opfører sig, når ingen kigger. Har I en kultur, hvor kunden er i centrum af beslutninger? Hvor kommercielle KPIs er alles ansvar — ikke kun salgs? Hvor cross-functional samarbejde (salg, marketing, produkt, customer success) er normen?'},
+    {type:'text',content:'<strong>Alignment er den sværeste del.</strong> Patrick Lencioni (<em>Silos, Politics, and Turf Wars</em>, 2006) viser, at de fleste organisationer lider under siloer: salg, marketing, produkt og finans har forskellige mål, forskellige sprog og forskellig data. Commercial excellence kræver <strong>én fælles sandhed</strong> — ét sæt tal, én pipeline, én kundedefinition.'},
+    {type:'quote',text:'Culture eats strategy for breakfast. But execution eats culture for lunch.',author:'Tilpasset fra Peter Drucker'},
+    {type:'text',content:'<strong>Cadence og rytme.</strong> De bedste kommercielle organisationer har en fast rytme: daglige standups i salg, ugentlige pipeline reviews, månedlige commercial reviews, kvartalsvise strategibriefer. Rytmen sikrer, at afvigelser fanges tidligt, at handlinger følges op, og at momentum fastholdes.'},
+    {type:'text',content:'<strong>Accountability uden mikromanagement.</strong> De bedste ledere sætter klare forventninger, giver autonomi i "hvordan," og følger op på resultater. Det er ikke kontrol — det er respekt. Forskning af Google (Project Aristotle, 2015) viser, at de bedst performende teams har to ting: <strong>psychological safety og klare forventninger.</strong> Begge dele. Ikke den ene uden den anden.'}
+  ],
+  reflections:[
+    {id:'ke_1',type:'scale',label:'Hvor stærk er jeres execution-kultur? (1 = vi planlægger meget og eksekverer lidt, 10 = vi leverer konsekvent)',min:1,max:10},
+    {id:'ke_2',type:'textarea',label:'Hvor er det største gap mellem jeres kommercielle strategi og jeres daglige virkelighed? Hvad beslutter I, der ikke bliver implementeret?',placeholder:'Det største execution gap: ...'},
+    {id:'ke_3',type:'textarea',label:'Har salg, marketing og produkt ét fælles sæt tal — eller lever de i siloer med forskellige versioner af virkeligheden?',placeholder:'Alignment-status: ...'},
+    {id:'ke_4',type:'textarea',label:'Hvad er jeres kommercielle cadence? Daglige, ugentlige, månedlige og kvartalsvise rytmer?',placeholder:'Dagligt: ...\nUgentligt: ...\nMånedligt: ...\nKvartalsvist: ...'}
+  ],
+  takeaways:[
+    'De fleste virksomheder fejler ikke på strategi — de fejler på execution. Gabet er kolossalt.',
+    'Kommerciel kultur er den usynlige styresystem. Det er, hvad der sker, når ingen kigger.',
+    'Alignment kræver én fælles sandhed: ét sæt tal, én pipeline, én kundedefinition på tværs af siloer.',
+    'Cadence og rytme: daglige standups → ugentlige reviews → månedlige commercial reviews → kvartalsvise strategibriefer.'
+  ],
+  whyItMatters:'Bossidy & Charan viste, at kun 10% af strategier eksekveres succesfuldt. De 90% der fejler, gør det ikke fordi strategien var forkert — men fordi organisationen ikke kunne omsætte den til daglig handling. Execution er ikke det kedelige efter strategien. Det ER strategien.',
+  sources:[
+    'Bossidy, L. & Charan, R. (2002). Execution. Crown Business.',
+    'Lencioni, P. (2006). Silos, Politics, and Turf Wars. Jossey-Bass.',
+    'Google (2015). Project Aristotle: What Makes Teams Effective.',
+    'McChesney, C. et al. (2012). The 4 Disciplines of Execution. Free Press.'
+  ],
+  activities:[
+    {title:'Execution-gap-analyse',desc:'Tag jeres top 5 kommercielle beslutninger fra sidste kvartal. For hver: Er den implementeret? Fuldt? Delvist? Slet ikke? Hvad blokerede? Dette er den ærligste diagnose af jeres execution-kultur.',time:'1 time med ledelsesteam',evidence:'Baseret på Execution (Bossidy & Charan, 2002)'},
+    {title:'Alignment-test',desc:'Bed salg, marketing og produkt svare uafhængigt: "Hvem er vores ideelle kunde? Hvad er vores win rate? Hvad er vores største kommercielle udfordring?" Sammenlign svar. Variationen afslører silo-problemet.',time:'30 min + sammenligning',evidence:'Baseret på organizational alignment (Lencioni, 2006)'},
+    {title:'Commercial cadence design',desc:'Design jeres ideelle kommercielle rytme: Hvad sker dagligt? Ugentligt? Månedligt? Kvartalsvist? Hvem deltager? Hvad er agendaen? Hvad besluttes? Implementér fra næste uge.',time:'1 time design + implementering',evidence:'Baseret på 4DX (McChesney et al., 2012)'}
+  ]
+},
+{
+  id:'handlingsplan',num:9,title:'Din kommercielle handlingsplan',
+  subtitle:'Fra indsigt til handling — hvad gør du nu?',
+  color:'var(--m9)',time:'25-30 min',phase:'exec',
+  about:'Du har nu rejst igennem 8 moduler, der har givet dig et komplet billede af commercial excellence — fra kundeforståelse til pricing, fra data til execution. Spørgsmålet er: hvad gør du med det? I dette afsluttende modul samler du trådene og bygger din handlingsplan.',
+  learn:[
+    {type:'text',content:'Du har nu vurderet din organisation på 8 dimensioner af commercial excellence. Du har identificeret styrker og svagheder, muligheder og huller. <strong>Men indsigt uden handling er underholdning.</strong> Det, der adskiller de bedste fra resten, er ikke hvad de ved — det er hvad de gør med det, de ved.'},
+    {type:'text',content:'<strong>Prioriterings-princippet:</strong> Du kan ikke fikse alt på én gang. McKinsey anbefaler <strong>"2+1-reglen"</strong>: Fokusér på 2 strategiske initiativer (der tager 6-12 måneder) og 1 quick win (der kan leveres inden for 30 dage). Quick win skaber momentum. Strategiske initiativer skaber varig forandring.'},
+    {type:'text',content:'<strong>De typiske quick wins i commercial excellence:</strong> Rabat-disciplin (implementér godkendelsesproces). Pipeline-hygiejne (rens CRM, opdater stadier). ICP-skærpelse (definér og kommunikér jeres ideelle kunde). Alle tre kan implementeres inden for 30 dage og har målbar effekt.'},
+    {type:'quote',text:'Vision without execution is hallucination.',author:'Thomas Edison'},
+    {type:'text',content:'<strong>Hvad en ekstern sparringspartner giver dig:</strong> Commercial excellence er et komplekst, tværgående projekt. Det involverer salg, marketing, produkt, finans og kultur. Det kræver: objektivt perspektiv (du er for tæt på), prioriteringsdisciplin (hvad er vigtigst?), accountability (hvem sikrer, at det sker?), og sparring (hvad gør andre?). Alt dette er coaching-territorium.'},
+    {type:'text',content:'<strong>De mest succesfulde kommercielle transformationer har én ting til fælles:</strong> en leder der er committed, et klart mål, og en ekstern sparringspartner der holder kursen. Ikke fordi lederen ikke kan selv — men fordi tempoet og kvaliteten accelereres markant med den rigtige person ved sin side.'}
+  ],
+  reflections:[
+    {id:'hp_1',type:'textarea',label:'Hvad er jeres 2 vigtigste strategiske kommercielle initiativer (6-12 måneder)?',placeholder:'Strategisk initiativ 1: ...\nStrategisk initiativ 2: ...'},
+    {id:'hp_2',type:'textarea',label:'Hvad er jeres 1 quick win — noget der kan implementeres inden 30 dage og have målbar effekt?',placeholder:'Quick win: ...\nForventet effekt: ...'},
+    {id:'hp_3',type:'scale',label:'Hvor sikker er du på, at I kan eksekvere denne plan uden ekstern støtte? (1 = usikker, 10 = helt sikker)',min:1,max:10},
+    {id:'hp_4',type:'textarea',label:'Hvad er den ene ting, der ville gøre den største forskel for jeres kommercielle performance de næste 12 måneder?',placeholder:'Den ene ting: ...'},
+    {id:'hp_5',type:'textarea',label:'Hvad ville ændre sig, hvis du havde en erfaren sparringspartner til at drive den kommercielle transformation?',placeholder:'Hvad der ville ændre sig: ...'}
+  ],
+  takeaways:[
+    'Indsigt uden handling er underholdning. Hvad gør du med det, du nu ved?',
+    '2+1-reglen: 2 strategiske initiativer + 1 quick win. Fokus slår ambition.',
+    'Quick wins skaber momentum. Strategiske initiativer skaber varig forandring.',
+    'De bedste kommercielle transformationer har en committed leder og en ekstern sparringspartner.'
+  ],
+  whyItMatters:'McKinsey\'s analyse af 200+ kommercielle transformationer viser, at de der lykkes, har tre fællestræk: (1) CEO-commitment, (2) fokus på 2-3 initiativer (ikke 10), og (3) ekstern sparring til at holde kursen. Du har nu indsigten. Spørgsmålet er execution.',
+  sources:[
+    'McKinsey (2022). Commercial Transformations That Work.',
+    'Bossidy, L. & Charan, R. (2002). Execution. Crown Business.',
+    'Kotter, J. (1996). Leading Change. Harvard Business School Press.',
+    'Heath, C. & Heath, D. (2010). Switch: How to Change When Change Is Hard. Crown.'
+  ],
+  activities:[
+    {title:'30-dages-planen',desc:'Skriv konkret: Hvad er jeres quick win? Hvem er ansvarlig? Hvad er deadline? Hvad er succeskriterierne? Kommunikér den til dit ledelsesteam i denne uge.',time:'30 minutter',evidence:'Baseret på implementation intentions (Gollwitzer, 1999)'},
+    {title:'CE-scorecard',desc:'Saml dine scores fra alle 9 moduler til ét CE-scorecard. Del det med dit ledelsesteam. Brug det som udgangspunkt for en strategisk dialog: Hvor investerer vi? Hvad prioriterer vi?',time:'1 time',evidence:'Baseret på Balanced Scorecard (Kaplan & Norton, 1996)'},
+    {title:'Book sparringen',desc:'Du har nu et komplet billede af jeres kommercielle modenhed. Du ved, hvor hullerne er. Det næste skridt er ikke endnu en analyse — det er en samtale med en, der har hjulpet topledere med præcis denne transformation.',time:'10 minutter',evidence:'Baseret på alt ovenstående'}
+  ]
+}
+);
+const STORE_KEY='friisnaes_comexcellence_v2';
+let state={version:'2.0.0',client:{name:'',role:'',company:'',industry:'',consent:false,consentTime:null},modules:{},acknowledged:{},completed:[],created:null,lastUpdated:null};
+
+function init(){loadState();if(state.client.name&&state.client.consent)goHome();else showScreen('welcome');}
+function loadState(){try{const s=localStorage.getItem(STORE_KEY);if(s)state={...state,...JSON.parse(s)};}catch(e){}}
+function saveState(){try{state.lastUpdated=new Date().toISOString();localStorage.setItem(STORE_KEY,JSON.stringify(state));const el=document.getElementById('saveIndicator');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1200);}catch(e){}}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const sc=document.getElementById('screen-'+id);if(sc)sc.classList.add('active');window.scrollTo(0,0);updateProgress();}
+function goHome(){renderJourney();showScreen('journey');}
+function updateProgress(){const done=(state.completed||[]).length;document.getElementById('progressFill').style.width=((done/MODULES.length)*100)+'%';document.getElementById('progressText').textContent=done+' / '+MODULES.length;}
+function getUnlockedModules(){const u=[MODULES[0].id];for(let i=0;i<MODULES.length-1;i++){if(state.acknowledged&&state.acknowledged[MODULES[i].id])u.push(MODULES[i+1].id);}return u;}
+function isUnlocked(id){return getUnlockedModules().includes(id);}
+function isAcknowledged(id){return state.acknowledged&&state.acknowledged[id];}
+
+function startJourney(){
+  const name=document.getElementById('clientName').value.trim();
+  const role=document.getElementById('clientRole').value.trim();
+  const company=document.getElementById('clientCompany').value.trim();
+  const industry=document.getElementById('clientIndustry').value.trim();
+  const consent=document.getElementById('gdprConsent').checked;
+  if(!name)return alert('Indtast venligst dit navn.');
+  if(!consent)return alert('Acceptér venligst betingelserne.');
+  state.client={name,role,company,industry,consent:true,consentTime:new Date().toISOString()};
+  if(!state.created)state.created=new Date().toISOString();
+  saveState();goHome();
+}
+
+function renderJourney(){
+  const name=state.client.name?state.client.name.split(' ')[0]:'';
+  document.getElementById('journeyGreeting').textContent=name?name+', din kommercielle rejse':'Dit forløb';
+  const allDone=MODULES.every(m=>isAcknowledged(m.id));
+  document.getElementById('journeySubtext').textContent=allDone?'Alle 9 moduler gennemført. Din CE-profil venter.':'Fundament → Maskinrum → Execution';
+  const map=document.getElementById('journeyMap');map.innerHTML='';
+  MODULES.forEach((m,i)=>{
+    const unlocked=isUnlocked(m.id);const done=isAcknowledged(m.id);const isLast=i===MODULES.length-1;
+    const phClass=m.phase==='fund'?'phase-fund':m.phase==='mask'?'phase-mask':'phase-exec';
+    const phLabel=m.phase==='fund'?'Fundament':m.phase==='mask'?'Maskinrum':'Execution';
+    const step=document.createElement('div');step.className='journey-step';
+    step.innerHTML=`<div class="journey-line"><div class="journey-dot ${done?'done':unlocked?'active':'locked'}">${done?'✓':m.num}</div>${!isLast?`<div class="journey-connector ${done?'done':''}"></div>`:''}</div><div class="journey-content ${unlocked?'':'locked'}" onclick="${unlocked?`openModule('${m.id}')`:'void(0)'}"><h3>${m.title} <span class="phase-badge ${phClass}">${phLabel}</span></h3><p>${m.subtitle}</p><div class="journey-meta"><span class="badge" style="background:${done?'rgba(107,158,120,0.15);color:var(--success)':unlocked?'rgba(201,169,110,0.15);color:var(--gold)':'rgba(255,255,255,0.06);color:var(--text-muted)'}">${done?'✓ Gennemført':unlocked?'● Åben':'🔒 Låst'}</span><span style="color:var(--text-muted);">~${m.time}</span></div></div>`;
+    map.appendChild(step);
+  });
+  if(allDone){const rb=document.createElement('div');rb.style.cssText='text-align:center;margin-top:24px;';rb.innerHTML=`<button class="btn btn-primary" onclick="showReport()" style="padding:16px 36px;font-size:16px;">📄 Se din CE-profil →</button>`;map.appendChild(rb);}
+}
+
+function openModule(id){
+  const m=MODULES.find(mod=>mod.id===id);if(!m||!isUnlocked(id))return;
+  document.getElementById('moduleTitle').innerHTML=`<span style="color:${m.color}">Modul ${m.num}:</span> ${m.title}`;
+  document.getElementById('moduleDesc').textContent=m.subtitle;
+  const c=document.getElementById('moduleContent');c.innerHTML='';
+  c.innerHTML+=`<div class="section-card"><h3>📖 Det her handler modulet om</h3><p style="margin-top:8px;">${m.about}</p></div>`;
+  let lh='<div class="section-card"><h3>🧠 LEARN</h3><p class="subtitle">Forskningsbaseret viden om kommerciel kraft</p><div class="learn-block">';
+  m.learn.forEach(item=>{if(item.type==='text')lh+=`<p>${item.content}</p>`;if(item.type==='quote')lh+=`<div class="quote-box">"${item.text}"<div class="author">— ${item.author}</div></div>`;});
+  lh+='</div></div>';c.innerHTML+=lh;
+  let rh='<div class="section-card"><h3>💭 Refleksion</h3><p class="subtitle">Ærlige svar giver de bedste indsigter</p>';
+  m.reflections.forEach(r=>{
+    const saved=(state.modules?.[m.id]?.[r.id])||'';
+    if(r.type==='textarea'){rh+=`<div class="reflection-group"><label>${r.label}</label><textarea id="ref_${r.id}" placeholder="${r.placeholder||''}" onchange="saveRef('${m.id}','${r.id}',this.value)">${saved}</textarea></div>`;}
+    else if(r.type==='scale'){let btns='';for(let i=r.min;i<=r.max;i++)btns+=`<button class="scale-btn ${parseInt(saved)===i?'selected':''}" onclick="pickScale('${m.id}','${r.id}',${i},this)">${i}</button>`;rh+=`<div class="reflection-group"><label>${r.label}</label><div class="scale-row">${btns}</div></div>`;}
+  });rh+='</div>';c.innerHTML+=rh;
+  let th='<div class="takeaway-box"><h4>✨ Vigtigste takeaways</h4><ul>';m.takeaways.forEach(t=>th+=`<li>${t}</li>`);th+='</ul></div>';c.innerHTML+=th;
+  c.innerHTML+=`<div class="why-box"><h4>🎯 Hvorfor dette giver mening</h4><p style="margin-top:6px;">${m.whyItMatters}</p></div>`;
+  let sh='<div class="source-box"><h4>📚 Kilder</h4><ul>';m.sources.forEach(s=>sh+=`<li>${s}</li>`);sh+='</ul></div>';c.innerHTML+=sh;
+  let ah=`<div class="activity-card"><h3>🚀 Handling</h3><p class="activity-subtitle">Commercial excellence er handling, ikke teori. Vælg mindst én.</p>`;
+  m.activities.forEach(a=>{ah+=`<div class="activity-item"><h4>${a.title}</h4><p>${a.desc}</p><div class="activity-meta">⏱ ${a.time} · 📖 ${a.evidence}</div></div>`;});
+  ah+='</div>';c.innerHTML+=ah;
+  const acked=isAcknowledged(m.id);const idx=MODULES.findIndex(mod=>mod.id===m.id);const nextMod=MODULES[idx+1];
+  const nextTitle=nextMod?`Modul ${nextMod.num}: ${nextMod.title}`:'din CE-profil';
+  c.innerHTML+=`<div class="acknowledge-box"><label><input type="checkbox" id="ack_${m.id}" ${acked?'checked disabled':''} onchange="ackModule('${m.id}')"><span>${acked?'Du har gennemført dette modul':'Jeg har gennemgået modulet og er klar til næste'}</span></label><div class="unlock-msg" id="unlockMsg_${m.id}" ${acked?'style="display:block;"':''}>${acked?`✅ Gennemført! ${nextMod?`<strong>${nextTitle}</strong> er nu låst op.`:'Du har gennemført hele forløbet!'}`:`Når du krydser af, låses <strong>${nextTitle}</strong> op.`}</div>${acked?`<button class="btn btn-primary" onclick="${nextMod?`openModule('${nextMod.id}')`:'showReport()'}" style="margin-top:12px;width:auto;">${nextMod?`Gå til ${nextTitle} →`:'📄 Se din CE-profil →'}</button>`:''}</div>`;
+  showScreen('module');
+}
+
+function saveRef(mid,rid,val){if(!state.modules)state.modules={};if(!state.modules[mid])state.modules[mid]={};state.modules[mid][rid]=val;saveState();}
+function pickScale(mid,rid,val,btn){btn.parentElement.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');saveRef(mid,rid,val.toString());}
+function ackModule(id){const cb=document.getElementById('ack_'+id);if(!cb.checked)return;cb.disabled=true;if(!state.acknowledged)state.acknowledged={};state.acknowledged[id]=new Date().toISOString();if(!state.completed)state.completed=[];if(!state.completed.includes(id))state.completed.push(id);saveState();openModule(id);}
+
+function showReport(){
+  const c=document.getElementById('reportContent');c.innerHTML='';
+  const n=state.client.name.split(' ')[0];
+
+  c.innerHTML+=`<div class="card" style="text-align:center;border:2px solid var(--gold);"><h2 style="color:var(--gold);">📊 ${n}, din Commercial Excellence-profil</h2><div class="gold-line"></div><p>Et samlet billede af jeres kommercielle modenhed — baseret på dine egne vurderinger.</p><p style="font-size:14px;color:var(--text-muted);margin-top:8px;">Genereret ${new Date().toLocaleDateString('da-DK')} · ${state.client.role||''} ${state.client.company?'· '+state.client.company:''} ${state.client.industry?'· '+state.client.industry:''}</p></div>`;
+
+  // CE Scorecard
+  const dims=[
+    {label:'CE-modenhed',id:'hvad_ce',key:'ce_1',max:4,fmt:v=>v+'/4'},
+    {label:'Kundeforståelse',id:'kunden',key:'ku_2',max:10,fmt:v=>v+'/10'},
+    {label:'Værditilbud-konsistens',id:'vaerdi',key:'va_2',max:10,fmt:v=>v+'/10'},
+    {label:'Kundekendskab (købsproces)',id:'gtm',key:'gt_2',max:10,fmt:v=>v+'/10'},
+    {label:'Sælger-afhængighed',id:'salgsledelse',key:'sl_1',max:10,fmt:v=>v+'/10 afhængighed'},
+    {label:'Pricing-mod',id:'pricing',key:'pr_2',max:10,fmt:v=>v+'/10'},
+    {label:'Forecast-præcision',id:'data',key:'da_2',max:10,fmt:v=>v+'/10'},
+    {label:'Execution-kultur',id:'kultur_exec',key:'ke_1',max:10,fmt:v=>v+'/10'}
+  ];
+
+  let scoreHtml=`<div class="section-card" style="border-color:var(--gold);"><h3 style="color:var(--gold);">🎯 Dit CE-scorecard</h3>`;
+  let totalScore=0;let scoreCount=0;
+  dims.forEach(d=>{
+    const v=state.modules?.[d.id]?.[d.key]||'?';
+    const numV=parseInt(v);
+    const pct=!isNaN(numV)?(numV/d.max*100):0;
+    if(!isNaN(numV)){totalScore+=pct;scoreCount++;}
+    const color=pct>=70?'var(--success)':pct>=40?'var(--warning)':'var(--error)';
+    scoreHtml+=`<div class="report-section"><h4>${d.label}</h4><div style="display:flex;align-items:center;gap:12px;"><div style="flex:1;height:8px;background:var(--navy);border-radius:4px;overflow:hidden;"><div style="width:${pct}%;height:100%;background:${color};border-radius:4px;transition:width 0.5s;"></div></div><span style="font-weight:700;color:${color};min-width:80px;text-align:right;">${d.fmt(v)}</span></div></div>`;
+  });
+  const avgScore=scoreCount>0?Math.round(totalScore/scoreCount):0;
+  scoreHtml+=`<div style="text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--navy-border);"><h4 style="color:var(--gold);font-size:1.3em;">Samlet CE-score: ${avgScore}%</h4><p style="font-size:13px;color:var(--text-muted);margin-top:4px;">${avgScore>=70?'Stærk kommerciel modenhed — fokusér på de svageste dimensioner.':avgScore>=40?'Moderat modenhed — der er betydeligt potentiale i systematisk commercial excellence.':'Tidlig fase — der er store muligheder for at bygge kommerciel kraft systematisk.'}</p></div></div>`;
+  c.innerHTML+=scoreHtml;
+
+  // Key answers
+  const oneThing=state.modules?.['handlingsplan']?.['hp_4']||'';
+  const strat1=state.modules?.['handlingsplan']?.['hp_1']||'';
+  const quickWin=state.modules?.['handlingsplan']?.['hp_2']||'';
+  const weakest=state.modules?.['hvad_ce']?.['ce_3']||'';
+
+  if(strat1||quickWin){c.innerHTML+=`<div class="section-card"><h3>📋 Din handlingsplan</h3>${strat1?`<div class="report-section"><h4>Strategiske initiativer (6-12 mdr)</h4><p>${strat1}</p></div>`:''}${quickWin?`<div class="report-section"><h4>Quick win (30 dage)</h4><p>${quickWin}</p></div>`:''}${oneThing?`<div class="report-section"><h4>Den ene ting der ville flytte mest</h4><p>"${oneThing}"</p></div>`:''}</div>`;}
+
+  // Reflections by phase
+  const phases=[{name:'Fundament',ids:['hvad_ce','kunden','vaerdi'],badge:'phase-fund'},{name:'Maskinrum',ids:['gtm','salgsledelse','pricing'],badge:'phase-mask'},{name:'Execution',ids:['data','kultur_exec','handlingsplan'],badge:'phase-exec'}];
+  phases.forEach(ph=>{
+    let ph_html=`<div class="section-card"><h3><span class="phase-badge ${ph.badge}">${ph.name}</span></h3>`;
+    ph.ids.forEach(mid=>{
+      const m=MODULES.find(mod=>mod.id===mid);const md=state.modules?.[mid]||{};
+      ph_html+=`<h4 style="color:${m.color};margin-top:16px;font-size:1em;">Modul ${m.num}: ${m.title}</h4>`;
+      if(Object.keys(md).length>0){m.reflections.forEach(r=>{const v=md[r.id];if(v){ph_html+=`<p style="font-size:12px;color:var(--text-muted);margin-top:6px;"><strong>${r.label}</strong></p><p style="font-size:14px;padding:8px 12px;background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:6px;margin-bottom:4px;">${v}</p>`;}});}else{ph_html+=`<p style="color:var(--text-muted);font-style:italic;font-size:13px;">Ingen besvarelser gemt.</p>`;}
+    });ph_html+='</div>';c.innerHTML+=ph_html;
+  });
+
+  // CTA
+  const execConfidence=state.modules?.['handlingsplan']?.['hp_3']||'?';
+  c.innerHTML+=`<div class="section-card" style="border-color:var(--gold);"><h3 style="color:var(--gold);">💡 Den ærlige vurdering</h3><p style="font-size:15px;line-height:1.8;margin-top:8px;">Du scorede <strong>${execConfidence}/10</strong> på sikkerhed for at kunne eksekvere uden ekstern støtte. ${parseInt(execConfidence)<=5?'Det er realistisk — de fleste kommercielle transformationer har behov for ekstern sparring.':parseInt(execConfidence)<=7?'En sund tvivl. De bedste ledere erkender, at ekstern sparring accelererer markant.':'Godt. Men selv de mest kapable ledere finder, at en sparringspartner forbedrer både tempo og kvalitet.'}</p><p style="font-size:15px;line-height:1.8;margin-top:12px;">Commercial excellence er en CEO-disciplin. Det kræver alignment på tværs af siloer, mod til at ændre prissætning, disciplin til at eksekvere, og et objektivt perspektiv på, hvad der reelt virker. <strong>En erfaren sparringspartner accelererer alt dette.</strong></p></div>`;
+
+  const bodyParts=['Hej%20Thomas%2C%0A%0AJeg%20har%20gennemf%C3%B8rt%20Commercial%20Excellence-forl%C3%B8bet.',oneThing?'%0A%0ADen%20ene%20ting%20der%20ville%20flytte%20mest%3A%20'+encodeURIComponent(oneThing):'','%0A%0AVenlig%20hilsen%2C%0A'+encodeURIComponent(state.client.name),'%0A'+encodeURIComponent((state.client.role||'')+' '+(state.client.company?'· '+state.client.company:''))];
+  c.innerHTML+=`<div class="coaching-box"><h3>💬 Fra indsigt til transformation</h3><p style="font-size:16px;margin-bottom:8px;">En samtale om jeres kommercielle potentiale.</p><p>30 minutter med en sparringspartner, der har hjulpet topledere med at bygge kommerciel kraft i over 20 år. Ikke en salgspitch — en ærlig dialog om, hvor I er, hvor I kan hen, og hvad der ville flytte mest.</p><a href="mailto:thomas@friisnaes.dk?subject=Commercial%20Excellence%20%E2%80%94%20interesse%20for%20sparring&body=${bodyParts.join('')}" class="btn btn-primary" style="width:auto;text-decoration:none;padding:18px 36px;font-size:17px;">📧 Book 30 minutters sparring</a><p style="font-size:12px;color:var(--text-muted);margin-top:14px;">Thomas Friisnæs · Personal Excellence Partner<br>20+ års erfaring · 15.000+ sessions · C-level eksklusivt<br>friisnaes.dk</p></div>`;
+
+  c.innerHTML+=`<div style="text-align:center;margin-top:30px;"><button class="btn btn-primary" onclick="exportData()" style="width:auto;">📤 Download dine besvarelser</button></div><div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--navy-border);font-size:13px;color:var(--text-muted);"><p style="font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);font-weight:600;">Friisnæs — Karakter · Disciplin · Klarhed</p><p style="margin-top:4px;">Udviklet af Thomas Friisnæs · Personal Excellence Partner · friisnaes.dk</p></div>`;
+  showScreen('report');
+}
+
+function exportData(){const exp={framework:'Bliv skarp på commercial excellence',version:state.version,exported:new Date().toISOString(),data:state};const blob=new Blob([JSON.stringify(exp,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`CommercialExcellence_${state.client.name.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(url);}
+function importData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=(e)=>{try{const imp=JSON.parse(e.target.result);if(imp.data&&imp.framework.includes('commercial')){state={...state,...imp.data};saveState();goHome();alert('Data importeret.');}else{alert('Ugyldig fil.');}}catch(err){alert('Fejl: '+err.message);}};reader.readAsText(file);event.target.value='';}
+
+init();
+</script>
+</body>
+</html>

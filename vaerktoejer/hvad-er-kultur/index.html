@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="1.0.0">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<meta name="description" content="Hvad er kultur? — Karakter · Disciplin · Klarhed">
+<title>Hvad er kultur? — Karakter · Disciplin · Klarhed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#111111;--navy2:#1a1a1a;--navy3:#222222;--navy4:#2b2b2b;
+  --blue:#c0392b;--blue2:#e74c3c;
+  --gold:#c0392b;--gold2:#e74c3c;--gdim:rgba(224,168,74,0.14);--gbrd:rgba(192,57,43,0.35);
+  --text:#E4EAF4;--text2:#8A9BB8;--text3:#4E6080;
+  --green:#4CAF82;--red:#E57373;--orange:#E5A048;
+  --brd:rgba(255,255,255,0.07);--brd2:rgba(255,255,255,0.13);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.65;min-height:100vh}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.2}
+button{font-family:'Outfit',sans-serif;cursor:pointer;transition:all .18s}
+input,textarea,select{font-family:'Outfit',sans-serif;font-size:14px;background:var(--navy3);border:1.5px solid var(--brd2);color:var(--text);border-radius:8px;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--blue2)}textarea{resize:vertical}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:var(--navy2)}::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:2px}
+.hidden{display:none!important}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+.fade{animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+#sc-client-login,#sc-admin-login{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(42,82,152,.18) 0%,transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(232,193,112,.06) 0%,transparent 50%),var(--navy);padding:32px 24px}
+.login-logo{text-align:center;margin-bottom:52px}
+.login-logo h1{font-size:38px;letter-spacing:.02em;color:var(--text)}
+.login-logo .tag{font-family:'Outfit';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.login-logo .sub2{font-size:13px;color:var(--text3);margin-top:6px;font-style:italic}
+.login-card{width:100%;max-width:400px;background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:32px}
+.login-card.gold{border-color:var(--gbrd)}
+.login-card h2{font-size:26px;margin-bottom:8px}
+.login-card h2.gold-text{color:var(--gold)}
+.login-card .sub{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.65}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.fg input{width:100%;padding:12px 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border:none;border-radius:8px;font-size:13px;font-weight:500}
+.btn-row{display:flex;gap:10px;margin-top:18px}
+.btn-primary{background:var(--blue);color:#fff;flex:1}.btn-primary:hover{background:var(--blue2)}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:600;flex:1}.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;border:1.5px solid var(--brd2);color:var(--text2)}.btn-ghost:hover{background:var(--navy3);color:var(--text)}
+.err{color:var(--red);font-size:12px;margin-top:8px}
+.gdpr-strip{margin-top:20px;padding:12px 14px;background:rgba(76,175,130,.07);border:1px solid rgba(76,175,130,.2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.7}
+.gdpr-strip strong{color:var(--green)}
+.admin-link{margin-top:28px;text-align:center}
+.admin-link a{font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--brd2);padding-bottom:1px}
+
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:14px;padding:0 24px;height:56px;background:rgba(12,24,41,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);flex-shrink:0;flex-wrap:wrap}
+.tb-brand{flex:1}.tb-brand .nm{font-family:'Playfair Display',Georgia,serif;font-size:16px;color:var(--text);font-weight:600}
+.tb-brand .sb{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.15em}
+.tb-btn{padding:6px 12px;background:transparent;border:1px solid var(--brd);border-radius:6px;color:var(--text3);font-size:12px}
+.tb-btn:hover{border-color:var(--brd2);color:var(--text2)}.tb-btn.gold{color:var(--gold);border-color:var(--gbrd)}
+
+.c-main{padding:32px 24px;max-width:960px;margin:0 auto;width:100%}
+.prog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px}
+.prog-header h1{font-size:32px}.prog-header .stat{font-size:13px;color:var(--text3)}
+.ack-box{background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:28px;margin-bottom:28px;text-align:center}
+.ack-box .ack-icon{font-size:42px;margin-bottom:12px}.ack-box h2{font-size:22px;margin-bottom:10px}
+.ack-box p{color:var(--text2);font-size:14px;max-width:640px;margin:0 auto;line-height:1.8}
+.velocity-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:20px;margin-bottom:24px}
+.velocity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.vg-item{text-align:center;padding:10px;background:var(--navy3);border-radius:8px}
+.vg-item .vn{font-size:22px;font-weight:600}.vg-item .vl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.mod-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:22px;cursor:pointer;transition:all .2s}
+.mod-card:hover:not(.locked){border-color:var(--brd2);transform:translateY(-2px)}
+.mod-card.locked{opacity:.4;cursor:default}
+.mod-card .mc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mod-card .mc-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff}
+.mod-card .mc-title{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:600;flex:1}
+.mod-card .mc-sub{font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:14px}
+.mod-card .mc-prog{height:4px;background:var(--navy4);border-radius:2px;overflow:hidden}
+.mod-card .mc-prog-fill{height:100%;border-radius:2px;transition:width .4s ease}
+.mod-card .mc-status{font-size:11px;margin-top:8px}
+.mc-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+
+.mod-header{padding:28px 24px;border-bottom:1px solid var(--brd)}
+.mod-header h1{font-size:30px;margin-bottom:4px}.mod-header .mh-sub{font-size:13px;color:var(--text3)}
+.mod-tabs{display:flex;gap:0;border-bottom:1px solid var(--brd);padding:0 24px}
+.mod-tab{padding:12px 20px;font-size:13px;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.mod-tab:hover{color:var(--text2)}.mod-tab.active{color:var(--text);border-bottom-color:var(--gold)}
+.mod-content{padding:32px 24px;max-width:820px;margin:0 auto}
+.sources-box{border-left:3px solid var(--blue);padding:16px 20px;background:var(--navy2);border-radius:0 10px 10px 0;margin-bottom:24px}
+.src-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.src-item{font-size:12px;color:var(--text2);padding:3px 0}
+.why-mod-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:18px 22px;margin-bottom:24px}
+.why-mod-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:10px}
+.why-mod-text{font-size:14px;color:var(--text2);line-height:1.8}
+.learn-body{color:var(--text2);line-height:1.9;font-size:14.5px}
+.learn-body h3{color:var(--text);font-size:20px;margin:28px 0 14px}
+.learn-body p{margin-bottom:14px}
+.learn-body blockquote{border-left:3px solid var(--gold);padding:12px 18px;margin:18px 0;color:var(--text);font-style:italic;background:rgba(201,168,76,.04);border-radius:0 8px 8px 0}
+.learn-body ul,.learn-body ol{margin:12px 0 12px 24px;color:var(--text2)}.learn-body li{margin-bottom:6px}
+.learn-cta{text-align:center;margin-top:32px}
+.takeaways-box{background:rgba(76,175,130,.06);border:1px solid rgba(76,175,130,.15);border-radius:10px;padding:22px 26px;margin-top:28px}
+.tk-title{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;font-weight:600}
+.tk-item{font-size:14px;color:var(--text2);line-height:1.8;padding:6px 0;border-bottom:1px solid rgba(76,175,130,.08)}.tk-item:last-child{border:none}
+
+.q-progress{position:sticky;top:56px;z-index:50;background:var(--navy2);border-bottom:1px solid var(--brd);padding:10px 24px;display:flex;align-items:center;gap:14px}
+.qp-bar{flex:1;height:6px;background:var(--navy4);border-radius:3px;overflow:hidden}
+.qp-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease}
+.qp-cnt{font-size:12px;color:var(--text3);min-width:50px;text-align:right}
+.q-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:18px}
+.q-card .qlabel{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.q-card .qtext{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.q-card textarea{width:100%;min-height:100px;padding:14px}
+.q-card .scale-row{display:flex;gap:6px;flex-wrap:wrap}
+.q-card .scale-btn{padding:8px 14px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text3);font-size:13px;min-width:40px;text-align:center}
+.q-card .scale-btn.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.q-card .cbtn{padding:8px 16px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text2);font-size:13px;margin:3px}
+.q-card .cbtn.sel{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
+.btn-save{display:block;width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;margin-top:12px}
+.btn-save:hover{background:var(--blue2)}
+.send-box{background:rgba(76,175,130,.08);border:1.5px solid rgba(76,175,130,.3);border-radius:12px;padding:24px;margin-top:20px;text-align:center}
+.send-box h3{color:var(--green);font-size:20px;margin-bottom:8px}
+.send-box p{color:var(--text2);font-size:13px;margin-bottom:16px;line-height:1.7}
+.btn-send{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+.btn-send:hover{background:#3d9b72}
+
+.refl-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:22px;margin-bottom:16px}
+.refl-card h4{font-size:16px;margin-bottom:12px}.refl-card label{font-size:12px;color:var(--text3);display:block;margin-bottom:4px;margin-top:10px}
+.refl-card textarea{width:100%;min-height:70px;padding:10px;margin-bottom:4px}
+
+.admin-wrap{display:flex;min-height:100vh}
+.admin-side{width:260px;background:var(--navy2);border-right:1px solid var(--brd);padding:20px;flex-shrink:0;overflow-y:auto}
+.admin-main{flex:1;padding:28px;overflow-y:auto}
+.as-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin-bottom:20px}
+.as-nav{list-style:none}.as-nav li{padding:10px 14px;border-radius:8px;font-size:13px;color:var(--text3);cursor:pointer;margin-bottom:4px}
+.as-nav li:hover{background:var(--navy3);color:var(--text2)}
+.as-nav li.active{background:var(--navy3);color:var(--gold);border-left:3px solid var(--gold)}
+.aclient-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:16px;margin-bottom:10px;cursor:pointer}
+.aclient-card:hover{border-color:var(--brd2)}.aclient-card.sel{border-color:var(--gold)}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.astat{background:var(--navy3);border-radius:8px;padding:14px;text-align:center}
+.astat .av{font-size:24px;font-weight:600}.astat .al{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.ai-box{background:var(--navy3);border:1px solid var(--gbrd);border-radius:10px;padding:20px;margin-top:16px}
+.ai-box h3{color:var(--gold);font-size:18px;margin-bottom:12px}
+.ai-result{white-space:pre-wrap;font-size:13px;color:var(--text2);line-height:1.8;max-height:500px;overflow-y:auto}
+.save-feedback{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;z-index:600;animation:fadeIn .3s ease;pointer-events:none}
+.info-container{max-width:820px;margin:0 auto;padding:40px 24px}
+.info-section{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px;margin-bottom:20px}
+.info-section h2{font-size:22px;margin-bottom:14px;color:var(--gold)}
+.info-section p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:10px}
+.unlock-row{display:flex;align-items:center;gap:12px;margin-top:12px;padding:10px 14px;background:var(--navy4);border-radius:8px}
+.unlock-row select{flex:1;padding:8px}
+
+@media(max-width:900px){.topbar{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px}.tb-brand{width:100%}.prog-header{flex-direction:column}.mods-grid{grid-template-columns:1fr}.admin-side{width:200px}}
+@media(max-width:640px){.login-logo h1{font-size:28px}.astats{grid-template-columns:1fr 1fr}.velocity-grid{grid-template-columns:1fr 1fr}.mod-content{padding:24px 16px}.admin-wrap{flex-direction:column}.admin-side{width:100%;border-right:none;border-bottom:1px solid var(--brd)}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+<body>
+<!-- CLIENT LOGIN -->
+<div id="sc-client-login" class="screen active">
+  <div class="login-logo">
+    <h1>Hvad er kultur?</h1>
+    <div class="tag">Karakter · Disciplin · Klarhed</div>
+    <div class="sub2">Kultur og strategi i din virksomhed — forstå, diagnosticér, forandr</div>
+  </div>
+  <div class="login-card">
+    <h2>Klientadgang</h2>
+    <div class="sub">8 moduler. 48 refleksioner. Fra kulturens DNA til strategisk alignment — alt det der afgør om din organisation lever sine værdier.</div>
+    <div class="fg"><label>Dit fulde navn</label><input type="text" id="cl-name" placeholder="Fornavn Efternavn" onkeydown="if(event.key==='Enter')doClientLogin()"></div>
+    <div class="btn-row"><button class="btn btn-primary" onclick="doClientLogin()">Start forløb</button></div>
+    <div id="cl-err" class="err hidden"></div>
+    <div class="gdpr-strip">
+      <strong>🔒 GDPR:</strong> Alle besvarelser gemmes udelukkende lokalt på din enhed. Ingen data sendes til servere. Eksport krypteres med AES-256-GCM.
+      <div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+        <input type="checkbox" id="gdpr-consent" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">
+        <label for="gdpr-consent" style="font-size:12px;color:var(--text2);cursor:pointer;line-height:1.5">Jeg accepterer, at mine besvarelser gemmes lokalt på denne enhed.</label>
+      </div>
+    </div>
+  </div>
+  <div class="admin-link"><a href="?admin">Admin-adgang →</a></div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="sc-admin-login" class="screen">
+  <div class="login-logo"><h1>Hvad er kultur?</h1><div class="tag">Admin · Thomas Friisnæs</div></div>
+  <div class="login-card gold">
+    <h2 class="gold-text">Admin</h2>
+    <div class="sub">Adgang til klientdata, modul-oplåsning, AI-analyse og eksport.</div>
+    <div class="fg"><label>Adgangskode</label><input type="password" id="al-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+    <div class="btn-row"><button class="btn btn-gold" onclick="doAdminLogin()">Log ind</button></div>
+    <div id="al-err" class="err hidden"></div>
+  </div>
+</div>
+
+<!-- CLIENT DASHBOARD -->
+<div id="sc-client" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm">Hvad er kultur?</div><div class="sb" id="tb-name"></div></div>
+    <button class="tb-btn" onclick="showReadme()">📖 Guide</button>
+    <button class="tb-btn" onclick="clientDeleteData()" style="color:var(--red)">🗑 Slet</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="c-main" id="client-dash"></div>
+</div>
+
+<!-- MODULE VIEW -->
+<div id="sc-module" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm" id="mod-title-bar"></div><div class="sb" id="mod-sub-bar"></div></div>
+    <button class="tb-btn" onclick="renderDash();show('client')">← Dashboard</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="mod-header" id="mod-header"></div>
+  <div class="mod-tabs" id="mod-tabs"></div>
+  <div id="tc-learn" class="mod-content"></div>
+  <div id="tc-quest" class="mod-content" style="display:none"></div>
+  <div id="tc-takeaways" class="mod-content" style="display:none"></div>
+  <div id="tc-journal" class="mod-content" style="display:none"></div>
+  <div id="tc-submit" class="mod-content" style="display:none"></div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="sc-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-side">
+      <div class="as-title">Admin panel</div>
+      <ul class="as-nav">
+        <li class="active" onclick="setASection('ov')">📊 Oversigt</li>
+        <li onclick="setASection('clients')">👥 Klienter</li>
+        <li onclick="setASection('import')">📥 Import</li>
+        <li onclick="setASection('gdpr')">🔒 GDPR</li>
+      </ul>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--brd)">
+        <button class="tb-btn" style="width:100%" onclick="logout()">Log ud</button>
+      </div>
+    </div>
+    <div class="admin-main">
+      <div id="asec-ov"></div>
+      <div id="asec-clients" style="display:none"></div>
+      <div id="asec-import" style="display:none"></div>
+      <div id="asec-gdpr" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- README -->
+<div id="sc-readme" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Guide — Hvad er kultur?</div></div><button class="tb-btn" onclick="closeReadme()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Hvad er dette?</h2><p>Et struktureret refleksions- og handlingsværktøj til dig, der vil forstå og forme din organisations kultur. 8 moduler dækker alt fra kulturens DNA og diagnose til værdier i praksis, kulturforandring og strategisk alignment. Baseret på forskning fra Schein, Kotter, Collins, Edmondson og 20+ års coaching-erfaring.</p></div>
+    <div class="info-section"><h2>Sådan virker det</h2><p>Modulerne åbnes ét ad gangen af din coach. Når du har besvaret alle spørgsmål og udfyldt din journal, kan du sende dine svar til Thomas via email. Derefter åbner Thomas det næste modul for dig. Denne struktur sikrer, at du arbejder fokuseret og i dybden med hvert emne.</p></div>
+    <div class="info-section"><h2>Om platformen</h2><p><strong>Thomas Friisnæs</strong> — Personal Excellence Partner. 20+ års erfaring. 15.000+ coaching-sessioner.</p><p><strong>Kontakt:</strong> friisnaes@gmail.com | <strong>Version:</strong> 1.0.0</p></div>
+  </div>
+</div>
+
+<div id="save-fb" class="save-feedback hidden"></div>
+<script>
+const PV='1.0.0',PN='Hvad er kultur?',CE='friisnaes@gmail.com',PFX='hek_';
+const LS={g(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch{return null}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}},d(k){try{localStorage.removeItem(k)}catch{}}};
+let S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+
+(function(){
+  try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch{document.body.innerHTML='<div style="padding:40px;text-align:center;color:#E57373"><h2>localStorage ikke tilgængelig</h2></div>';return}
+  if(location.search.includes('admin')){document.getElementById('sc-client-login').classList.remove('active');document.getElementById('sc-admin-login').classList.add('active')}
+})();
+
+function doClientLogin(){
+  const name=document.getElementById('cl-name').value.trim();
+  if(!name){showErr('cl-err','Indtast dit navn');return}
+  const consent=document.getElementById('gdpr-consent');
+  const clients=LS.g(PFX+'clients')||[];
+  let c=clients.find(x=>x.name.toLowerCase()===name.toLowerCase());
+  if(!c){
+    if(!consent.checked){showErr('cl-err','Acceptér GDPR-betingelserne');return}
+    c={id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name:name,createdAt:new Date().toISOString(),gdprConsentAt:new Date().toISOString()};
+    LS.s(PFX+'clients',[...clients,c]);
+    LS.s(PFX+'active_'+c.id,1);
+  }
+  S.role='client';S.cId=c.id;S.cName=c.name;renderDash();show('client');
+}
+function doAdminLogin(){
+  if(document.getElementById('al-pw').value!=='karakter2024'){showErr('al-err','Forkert adgangskode');return}
+  S.role='admin';renderAdmin();show('admin');
+}
+function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden')}
+function logout(){
+  S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+  document.getElementById('cl-name').value='';document.getElementById('al-pw').value='';
+  ['cl-err','al-err'].forEach(function(id){document.getElementById(id).classList.add('hidden')});
+  show(location.search.includes('admin')?'admin-login':'client-login');
+}
+function show(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});document.getElementById('sc-'+id).classList.add('active');window.scrollTo(0,0)}
+function showReadme(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('readme')}
+function closeReadme(){show(S.prevScreen||'client')}
+function showSaveFeedback(msg){var el=document.getElementById('save-fb');el.textContent=msg;el.classList.remove('hidden');setTimeout(function(){el.classList.add('hidden')},2200)}
+function countAns(a){return Object.values(a||{}).filter(function(v){return v!==undefined&&v!==null&&v!==''}).length}
+function getActiveMod(cid){return LS.g(PFX+'active_'+cid)||1}
+function isModComplete(cid,m){
+  var d=LS.g(PFX+'mod_'+cid+'_'+m.id);var a=countAns(d?.answers);
+  var j=LS.g(PFX+'journal_'+cid+'_'+m.id);
+  var jDone=j&&(j.insight||'').trim()&&(j.action||'').trim();
+  return a>=m.qs.length&&jDone;
+}
+function isModSent(cid,mid){return LS.g(PFX+'sent_'+cid+'_'+mid)||false}
+
+
+const MODS=[
+{
+id:1,
+title:'Hvad er kultur?',
+subtitle:'De usynlige regler der styrer alt i din organisation',
+icon:'🧬',
+color:'#E57373',
+sources:['Schein, E. — Organizational Culture and Leadership (2010)','Hofstede, G. — Cultures and Organizations: Software of the Mind (2010)','Deal, T. & Kennedy, A. — Corporate Cultures (1982)','Alvesson, M. — Understanding Organizational Culture (2013)','Hatch, M.J. — Organization Theory: Modern, Symbolic, and Postmodern Perspectives (2018)'],
+whyText:'Edgar Schein definerer kultur som <strong>de dybtliggende, ubevidste antagelser der styrer adfærd</strong> — ofte uden at nogen er klar over det. Kultur er ikke hvad du siger. Det er hvad der faktisk sker, når ingen kigger.',
+learn:`<h3>Det mest misforståede begreb i ledelse</h3>
+<p>Kultur er det mest omtalte og mindst forståede begreb i moderne ledelse. Alle taler om det. Ingen er enige om, hvad det er. Og de fleste forsøg på at "arbejde med kultur" fejler, fordi de hviler på en overfladisk forståelse af, hvad kultur faktisk er — og hvor den bor i en organisation.</p>
+<p>Edgar Schein, der har forsket i organisationskultur i over fire årtier, definerer kultur som et mønster af grundlæggende antagelser, som en given gruppe har opfundet, opdaget eller udviklet, mens den lærte at håndtere sine problemer med ekstern tilpasning og intern integration. Det lyder akademisk. Men oversæt det til praksis, og det bliver dybt konkret: Kultur er de usynlige regler, der styrer, hvordan mennesker opfører sig i din organisation, når ingen har fortalt dem, hvordan de skal opføre sig. Det er de uskrevne koder for, hvad der belønnes og straffes, hvad der er acceptabelt og uacceptabelt, hvad der tales om og hvad der forties. Det er det, nye medarbejdere lærer i deres første uge — ikke fra onboarding-manualen, men fra at observere, hvad der faktisk sker.</p>
+<p>Geert Hofstede, den hollandske kulturforsker, bruger metaforen "software of the mind" — kultur er det operativsystem, der kører i baggrunden og bestemmer, hvordan mennesker processerer information, træffer beslutninger og interagerer med hinanden. Du kan ikke se operativsystemet direkte. Men du kan se dets effekter overalt. Og lige som med et computer-operativsystem er det ekstremt svært at ændre, når det først er installeret.</p>
+
+<h3>Scheins tre niveauer</h3>
+<p>Scheins mest varige bidrag er hans model af kulturens tre niveauer — en model der forklarer, hvorfor kulturarbejde så ofte fejler, og hvad der skal til for at det lykkes.</p>
+<p>Det yderste niveau er <strong>artefakter</strong> — de synlige, fysiske manifestationer af kulturen. Kontorindretning: Er det åbent kontorlandskab eller lukkede kontorer? Dresscode: Jakkesæt eller t-shirts? Mødekultur: Starter møder til tiden? Hvem taler mest? Kommunikationsstil: Formel eller uformel? Direkte eller diplomatisk? Ritualer: Fredagsbar, townhalls, onboarding-processer. Artefakter er lette at observere men farlige at fortolke, fordi den samme artefakt kan betyde vidt forskellige ting i forskellige kulturer. Et åbent kontorlandskab kan signalere transparens og samarbejde — eller det kan signalere kontrol og overvågning. Konteksten bestemmer betydningen.</p>
+<p>Det mellemste niveau er <strong>erklærede værdier og normer</strong> — det organisationen siger, den tror på. Mission statements, værdigrundlag, ledelsesprincipper, strategiske narrativer. "Vi sætter kunden først." "Vi er innovative." "Vi er ét team." Problemet med dette niveau er, at erklærede værdier ofte er aspirationelle snarere end beskrivende. De beskriver, hvad organisationen gerne vil være — ikke hvad den faktisk er. Og kløften mellem de to er kilden til den kynisme, som gennemsyrer mange organisationer. Medarbejdere hører ledelsen tale om "åbenhed og tillid" — og ser samtidig, at den leder der bragte dårlige nyheder, blev marginaliseret. De hører om "innovation" — og oplever, at ethvert nyt initiativ kræver 14 underskrifter.</p>
+<p>Det inderste niveau er <strong>grundlæggende antagelser</strong> — de dybtliggende, ofte ubevidste overbevisninger om, hvordan verden fungerer. "Folk er fundamentalt dovne og skal kontrolleres" versus "folk er fundamentalt motiverede og skal frigøres." "Konflikter er farlige og skal undgås" versus "konflikter er produktive og skal faciliteres." "Fejl er tegn på inkompetence" versus "fejl er tegn på mod og læring." Disse antagelser er sjældent formuleret eksplicit — men de styrer adfærd langt mere end de erklærede værdier. De er vandtemperaturen, som fiskene ikke bemærker, fordi de altid har svømmet i den.</p>
+
+<h3>Hvorfor kultur er så modstandsdygtig</h3>
+<p>Mats Alvesson, den svenske organisationsforsker, tilføjer en vigtig nuance: Kultur er ikke blot et sæt af antagelser, der passivt styrer adfærd. Kultur er aktivt meningsskabende. Den giver mennesker en ramme til at forstå deres virkelighed, give mening til deres erfaringer og navigere kompleksitet. Når du forsøger at ændre en organisations kultur, forsøger du ikke bare at ændre adfærd — du forsøger at ændre den linse, mennesker ser verden igennem. Det er derfor, kulturforandring er så svær: Du beder folk om at opgive den meningsramme, der har givet dem tryghed og forudsigelighed, og erstatte den med noget nyt og ukendt.</p>
+<p>Deal og Kennedy beskrev allerede i 1982, at kultur opfylder en dyb menneskelig funktion i organisationer: Den reducerer usikkerhed. I en kompleks, ambiguøs verden giver kulturen svar på de spørgsmål, som den formelle organisation ikke adresserer: Hvem kan jeg stole på? Hvad forventes der egentlig af mig? Hvad sker der, hvis jeg fejler? Hvad skal jeg prioritere, når alt er vigtigt? Kulturens modstandsdygtighed er proportional med den usikkerhed, den reducerer. Jo mere usikker verden er, jo hårdere klamrer mennesker sig til de kulturelle antagelser, der giver dem en følelse af kontrol.</p>
+
+<h3>Kultur som konkurrencefordel — og som fængsel</h3>
+<p>Her er paradokset: Kultur kan være din organisations mest varige konkurrencefordel — eller dens mest uoverstigelige barriere. En stærk kultur, der er alignet med strategien, skaber en organisation, der bevæger sig med en koordination og en energi, som konkurrenter ikke kan kopiere. En stærk kultur, der er misalignet med strategien, skaber en organisation, der aktivt modarbejder sin egen succes — med stor overbevisning og dygtighed. Styrken i kulturen er neutral. Den kan bruges til at accelerere eller til at bremse. Og det er din opgave som leder at forstå, hvilken af de to din kultur gør lige nu.</p>
+<blockquote>Kultur er ikke en del af spillet. Kultur er spillet. Alt andet — strategi, struktur, systemer — opererer inden for de rammer, kulturen sætter.</blockquote>`,
+qs:[
+{id:'q1_1',type:'ta',l:'Beskriv din organisations kultur i <strong>3-5 sætninger</strong> — som du reelt oplever den, ikke som den præsenteres.'},
+{id:'q1_2',type:'ta',l:'Hvad er de <strong>uskrevne regler</strong> i din organisation? Hvad lærer nye medarbejdere i den første uge — uden at nogen siger det?'},
+{id:'q1_3',type:'ta',l:'Hvad er de <strong>grundlæggende antagelser</strong> i din organisation? Om mennesker, om fejl, om konflikter, om magt?'},
+{id:'q1_4',type:'scale',l:'Hvor stor er kløften mellem jeres erklærede værdier og den faktiske adfærd?',mn:1,mx:10},
+{id:'q1_5',type:'ta',l:'Er jeres kultur en <strong>konkurrencefordel</strong> eller en <strong>barriere</strong> lige nu? Hvorfor?'},
+{id:'q1_6',type:'ta',l:'Hvad ville en <strong>ny medarbejder</strong> sige om jeres kultur efter 2 uger? Hvad ville overraske dem?'},
+],
+takeaways:['Kultur er de usynlige regler der styrer adfærd, når ingen har fortalt folk hvad de skal gøre.','Scheins tre niveauer: Artefakter (synlige), erklærede værdier (hvad vi siger), grundlæggende antagelser (hvad vi reelt tror).','Kløften mellem erklærede værdier og faktisk adfærd genererer kynisme. Luk den — eller lev med konsekvenserne.','Kultur er modstandsdygtig, fordi den reducerer usikkerhed. Jo mere usikker verden, jo hårdere klamrer folk sig.','En stærk kultur kan accelerere eller bremse. Styrken er neutral — retningen er din opgave.']
+},
+{
+id:2,
+title:'Kultur versus strategi',
+subtitle:'Spiser kultur virkelig strategi til morgenmad?',
+icon:'⚔️',
+color:'#E5A048',
+sources:['Drucker, P. — The Effective Executive (1967)','Groysberg, B. et al. — The Leader\\\'s Guide to Corporate Culture (HBR, 2018)','Bossidy, L. & Charan, R. — Execution (2002)','Rumelt, R. — Good Strategy Bad Strategy (2011)','Kotter, J. & Heskett, J. — Corporate Culture and Performance (1992)','Christensen, C. — How Will You Measure Your Life? (2012)'],
+whyText:'Det berømte Drucker-citat er kun halvt sandt. Kultur spiser <strong>dårlig</strong> strategi til morgenmad. Men den bedste kultur i verden kan ikke kompensere for en fraværende strategi. <strong>Du har brug for begge — og du har brug for alignment mellem dem.</strong>',
+learn:`<h3>Det mest citerede — og mest misforståede — citat i ledelse</h3>
+<p>"Culture eats strategy for breakfast." Citatet tilskrives Peter Drucker, selvom der ikke er noget skriftligt bevis for, at han nogensinde har sagt det. Men uanset oprindelse er det blevet et mantra i moderne ledelse — og som de fleste mantraer er det overforenklet til det punkt, hvor det er misvisende.</p>
+<p>Citatet bruges typisk til at argumentere for, at kultur er vigtigere end strategi. At du kan have den bedste strategi i verden, men hvis kulturen ikke understøtter den, fejler den. Det er sandt — men det er kun halvdelen af historien. Den anden halvdel er, at den stærkeste kultur i verden ikke kan kompensere for en fraværende eller fejlagtig strategi. En organisation med en fantastisk kultur men ingen strategisk retning er et behageligt sted at arbejde — og et sted der langsomt mister sin relevans.</p>
+<p>John Kotter og James Heskett gennemførte et af de mest omfattende studier af forholdet mellem kultur og performance nogensinde. Deres konklusion var nuanceret: Kultur er en kraftfuld driver af performance — men kun når den er adaptiv. Stærke kulturer der er rigide, internt fokuserede og modstandsdygtige over for forandring, performer faktisk dårligere end svage kulturer over tid. Det er ikke styrken i kulturen, der afgør performance. Det er retningen.</p>
+
+<h3>Strategiens og kulturens indbyrdes afhængighed</h3>
+<p>Boris Groysberg og hans kolleger fra Harvard publicerede i 2018 et banebrydende studie i Harvard Business Review, der kortlagde forholdet mellem kultur og strategi på tværs af over 230 virksomheder. Deres konklusion er, at kultur og strategi ikke er modsætninger — de er gensidigt afhængige. Strategi giver retning: Hvad skal vi opnå, og hvordan? Kultur giver kapacitet: Har vi de adfærdsmønstre, normer og værdier, der gør det muligt at eksekvere strategien?</p>
+<p>Groysberg identificerer otte kulturelle arketyper — fra "caring" (varme, relationer, tillid) til "authority" (styrke, beslutningshed, kontrol) — og viser, at ingen af dem er universelt overlegne. Den "rigtige" kultur afhænger af strategien. En organisation der forfølger en innovations-strategi, har brug for en kultur præget af "learning" (åbenhed, eksperimentering, nysgerrighed) og "purpose" (idealisme, meningsfuldhed). En organisation der forfølger en effektivitets-strategi, har brug for en kultur præget af "order" (struktur, processer, forudsigelighed) og "results" (præstation, måling, accountability). Problemet opstår, når strategien peger i én retning og kulturen i en anden.</p>
+
+<h3>Når kultur og strategi kolliderer</h3>
+<p>Larry Bossidy og Ram Charan beskriver med ubehagelig præcision, hvad der sker, når kultur og strategi er misalignede: Strategien taber. Altid. Ikke fordi strategien er forkert, men fordi kulturen er stærkere. Kultur er det, folk gør automatisk, intuitivt, uden at tænke. Strategi er det, folk skal tænke sig til, beslutte og disciplinere sig til. I en konkurrence mellem automatik og disciplin vinder automatikken næsten altid — medmindre disciplinen er ekstraordinær og vedvarende.</p>
+<p>Rumelt tilføjer en skarphed til dette: De fleste strategiske fejl er ikke analytiske fejl. De er kulturelle fejl. Organisationen kan ikke se sine egne blinde vinkler, fordi de blinde vinkler er indlejret i kulturens grundlæggende antagelser. En organisation, der grundlæggende antager, at "vi er de bedste i branchen," vil systematisk undervurdere konkurrenter og overse trusler. Ikke fordi de mangler data — men fordi kulturen filtrerer data, så de bekræfter den eksisterende antagelse.</p>
+<p>Clayton Christensen dokumenterer dette med sine studier af disruption: De virksomheder, der bliver disrupted, har typisk adgang til de samme data, den samme teknologi og de samme talenter som disrupterne. Men deres kultur — deres grundlæggende antagelser om, hvad der er værdifuldt, hvad der er risikabelt, og hvad der fortjener investering — forhindrer dem i at handle på det, de kan se. Kulturen bliver et filter, der systematisk sorterer ubehagelig information fra. Og i en verden der ændrer sig hurtigt, er det filter dødsensfarligt.</p>
+
+<h3>Integration frem for prioritering</h3>
+<p>Den modne tilgang til forholdet mellem kultur og strategi er ikke at prioritere den ene over den anden. Det er at integrere dem. Enhver strategiproces bør inkludere en eksplicit kulturanalyse: Understøtter vores nuværende kultur den strategi, vi forfølger? Hvis ikke — hvad skal ændre sig? Og enhver kulturindsats bør være forankret i en strategisk kontekst: Hvilken kultur har vi brug for for at eksekvere vores strategi? Kultur for kulturens skyld er meningsløst. Kultur i service af strategi er kraftfuldt.</p>
+<p>Det kræver, at du som leder kan navigere begge verdener simultant. Du skal tænke strategisk — analytisk, data-drevet, fremadskuende. Og du skal tænke kulturelt — emotionelt, narrativt, historisk bevidst. De to tilgange kræver fundamentalt forskellige kompetencer. Og de fleste ledere er stærkere i den ene end den anden. At genkende din bias — og kompensere for den — er det første skridt mod ægte integration.</p>
+<blockquote>Kultur spiser dårlig strategi til morgenmad. Men god strategi og god kultur spiser morgenmad sammen — og det er den kombination, der skaber varige organisationer.</blockquote>`,
+qs:[
+{id:'q2_1',type:'ta',l:'<strong>Understøtter jeres kultur jeres strategi?</strong> Hvor er der alignment — og hvor er der kollision?'},
+{id:'q2_2',type:'choice',l:'Hvad er jeres dominerende kulturelle arketype?',opts:['Caring (relationer/tillid)','Learning (nysgerrighed/eksperiment)','Order (struktur/forudsigelighed)','Results (præstation/accountability)']},
+{id:'q2_3',type:'ta',l:'Hvad er jeres <strong>strategiske retning</strong> — og hvilken kultur kræver den? Vær specifik.'},
+{id:'q2_4',type:'ta',l:'Hvor har kulturen <strong>blokeret</strong> en strategisk beslutning? Giv et konkret eksempel.'},
+{id:'q2_5',type:'ta',l:'Hvad er jeres organisations <strong>kulturelle blinde vinkler</strong>? Hvad kan I ikke se, fordi kulturen filtrerer det fra?'},
+{id:'q2_6',type:'ta',l:'Er du stærkest i <strong>strategisk eller kulturel tænkning</strong>? Hvordan kompenserer du for din bias?'},
+],
+takeaways:['Kultur spiser dårlig strategi — men god kultur uden strategi er blot et behageligt sted at miste relevans.','Der er ingen universelt "rigtig" kultur. Den rigtige kultur afhænger af strategien.','Når kultur og strategi kolliderer, vinder kulturen. Altid. Fordi automatik slår disciplin.','Kulturelle blinde vinkler er den farligste form for strategisk risiko — fordi de er usynlige indefra.','Integration frem for prioritering: Kultur i service af strategi er kraftfuldt. Kultur for kulturens skyld er meningsløst.']
+},
+{
+id:3,
+title:'Din kultur nu',
+subtitle:'At diagnosticere den kultur du faktisk har — ikke den du tror du har',
+icon:'🔍',
+color:'#C9A84C',
+sources:['Cameron, K. & Quinn, R. — Diagnosing and Changing Organizational Culture (2011)','Sull, D. & Sull, C. — Toxic Culture Is Driving the Great Resignation (MIT Sloan, 2022)','Edmondson, A. — The Fearless Organization (2019)','Denison, D. — Corporate Culture and Organizational Effectiveness (1990)','Cooke, R. & Lafferty, J. — Organizational Culture Inventory (1987)'],
+whyText:'Cameron og Quinn viser, at <strong>over 80% af organisatoriske forandringsprojekter fejler</strong> — primært fordi de ikke starter med en ærlig diagnose af den eksisterende kultur. Du kan ikke ændre det, du ikke forstår.',
+learn:`<h3>Diagnosen de fleste springer over</h3>
+<p>Der er en grund til, at de fleste kulturtiltag fejler: De springer diagnosen over. De starter med løsningen — "vi skal være mere innovative," "vi skal samarbejde bedre," "vi skal have mere tillid" — uden først at forstå, præcis hvad der er galt, og præcis hvorfor det er galt. Det er som at ordinere medicin uden at stille en diagnose. Det kan virke. Men sandsynligheden er lav, og risikoen for bivirkninger er høj.</p>
+<p>Kim Cameron og Robert Quinn har udviklet et af de mest anvendte redskaber til kulturdiagnostik: Competing Values Framework (CVF). Modellen er bygget på to dimensioner, der tilsammen skaber fire kulturtyper. Den første dimension handler om fokus: Internt (medarbejdere, processer, stabilitet) versus eksternt (kunder, markeder, konkurrenter). Den anden handler om struktur: Fleksibilitet (innovation, adaptivitet, empowerment) versus kontrol (effektivitet, standardisering, forudsigelighed).</p>
+<p>De fire kulturtyper er: <strong>Klan-kulturen</strong> (intern + fleksibel) — præget af fællesskab, samarbejde, mentoring og loyalitet. "Vi er en familie." <strong>Adhocrati-kulturen</strong> (ekstern + fleksibel) — præget af innovation, eksperimentering, risikovillighed og iværksætteri. "Vi opfinder fremtiden." <strong>Markeds-kulturen</strong> (ekstern + kontrol) — præget af konkurrence, resultater, effektivitet og markedsdominans. "Vi vinder." <strong>Hierarki-kulturen</strong> (intern + kontrol) — præget af struktur, processer, stabilitet og forudsigelighed. "Vi gør det rigtigt."</p>
+<p>Ingen af de fire typer er universelt overlegen. Hver har sine styrker og svagheder, og de fleste organisationer er en blanding af alle fire med en eller to dominerende. Pointen er ikke at vælge den "rigtige" type — men at forstå, hvilken type I har, og om den matcher det, jeres strategi kræver.</p>
+
+<h3>Den ærlige diagnose</h3>
+<p>Daniel Denison har forsket i sammenhængen mellem kultur og organisatorisk effektivitet i over tre årtier. Hans model identificerer fire kulturelle dimensioner, der forudsiger performance: <strong>Mission</strong> (har vi en klar retning?), <strong>Consistency</strong> (er vi koordinerede og integrerede?), <strong>Involvement</strong> (er mennesker engagerede og empowered?) og <strong>Adaptability</strong> (kan vi tilpasse os forandring?). Denisons forskning viser, at organisationer der scorer højt på alle fire dimensioner, konsekvent outperformer dem der scorer lavt — og at balance mellem de fire er vigtigere end excellence i én enkelt.</p>
+<p>Men her er problemet med enhver kulturdiagnose: Den er filtreret af den kultur, den forsøger at diagnosticere. Ledere i en kultur præget af "vi er de bedste" vil diagnosticere kulturen som stærkere, end den er. Ledere i en kultur præget af konfliktskyhed vil undgå de ubehagelige fund. Og ledere i en kultur præget af topstyring vil spørge de forkerte mennesker — nemlig dem i toppen, der har mest investeret i at opretholde den nuværende kultur.</p>
+
+<h3>Den giftige kulturs anatomi</h3>
+<p>Donald Sull og Charles Sull fra MIT gennemførte i 2022 en af de mest omfattende empiriske analyser af giftig organisationskultur. Deres forskning, baseret på over 1,3 millioner Glassdoor-anmeldelser, identificerede fem elementer, der tilsammen definerer giftig kultur: <strong>Disrespekt</strong> — mennesker oplever at blive behandlet uden værdighed. <strong>Non-inklusivitet</strong> — visse grupper systematisk ekskluderes eller marginaliseres. <strong>Uetisk adfærd</strong> — regler bøjes, og integritet kompromitteres. <strong>Cutthroat-konkurrence</strong> — intern konkurrence overstiger eksternt fokus. <strong>Misbrug</strong> — ledere bruger deres magt til at intimidere, kontrollere eller straffe.</p>
+<p>Deres mest foruroligende fund var, at giftig kultur er 10,4 gange stærkere end kompensation som årsag til, at folk forlader organisationer. Og at giftige subkulturer kan eksistere — og trives — inden for ellers sunde organisationer, fordi ledelsen enten ikke ser dem, ikke vil se dem, eller tolererer dem fordi den giftige leder "leverer resultater."</p>
+
+<h3>Psykologisk tryghed som kulturindikator</h3>
+<p>Amy Edmondsons forskning i psykologisk tryghed giver den måske mest præcise enkeltindikator for kulturel sundhed: I hvilken grad føler mennesker i din organisation, at det er sikkert at tage interpersonelle risici? At stille spørgsmål, indrømme fejl, foreslå nye idéer og udfordre status quo — uden frygt for straf eller latterliggørelse? Edmondson viser, at psykologisk tryghed ikke bare korrelerer med teameffektivitet — den forudsiger den. Og den varierer dramatisk fra team til team inden for den samme organisation, fordi den primært formes af den nærmeste leder.</p>
+<p>At diagnosticere psykologisk tryghed i din organisation kræver ikke en stor undersøgelse. Det kræver, at du stiller tre spørgsmål og lytter ærligt til svarene: Hvornår har nogen sidst bragt en dårlig nyhed til et ledelsesmøde — og hvad skete der? Hvornår har nogen sidst indrømmet en fejl offentligt — og hvad var reaktionen? Hvornår har nogen sidst udfordret en beslutning fra ledelsen — og blev de hørt? Svarene på disse tre spørgsmål fortæller dig mere om din kultur end enhver medarbejderundersøgelse.</p>
+<blockquote>Du kan ikke ændre det, du ikke forstår. Og du kan ikke forstå din kultur, hvis du kun spørger dem, der har mest investeret i at opretholde den.</blockquote>`,
+qs:[
+{id:'q3_1',type:'choice',l:'Hvilken kulturtype dominerer i din organisation?',opts:['Klan (familie/samarbejde)','Adhocrati (innovation/risiko)','Marked (resultater/konkurrence)','Hierarki (struktur/proces)']},
+{id:'q3_2',type:'ta',l:'Hvornår bragte nogen sidst en <strong>dårlig nyhed</strong> til et ledelsesmøde — og hvad skete der?'},
+{id:'q3_3',type:'ta',l:'Har du <strong>giftige subkulturer</strong> i din organisation? Ledere der leverer resultater men ødelægger mennesker?'},
+{id:'q3_4',type:'scale',l:'Psykologisk tryghed i din organisation — tør folk tale ærligt?',mn:1,mx:10},
+{id:'q3_5',type:'ta',l:'Hvad ville dine <strong>medarbejdere</strong> sige om kulturen, hvis de vidste du ikke lyttede? Hvad ville overraske dig?'},
+{id:'q3_6',type:'ta',l:'Denisons fire dimensioner — Mission, Consistency, Involvement, Adaptability. <strong>Hvor er I stærkest og svagest?</strong>'},
+],
+takeaways:['De fleste kulturtiltag fejler, fordi de springer diagnosen over. Start med at forstå — ikke med at ændre.','Cameron og Quinns fire kulturtyper: Klan, Adhocrati, Marked, Hierarki. Kend din dominerende type.','Giftig kultur koster 10x mere end lav løn. Og giftige subkulturer kan trives i ellers sunde organisationer.','Psykologisk tryghed er den bedste enkeltindikator for kulturel sundhed. Test den med tre spørgsmål.','Din diagnose er filtreret af din kultur. Spørg de rigtige mennesker — ikke kun dem i toppen.']
+},
+{
+id:4,
+title:'Kulturens arkitekter',
+subtitle:'Ledere som kulturbærere — og kulturskabere',
+icon:'🏗',
+color:'#4CAF82',
+sources:['Schein, E. — Organizational Culture and Leadership (2010)','Coyle, D. — The Culture Code (2018)','Sinek, S. — Leaders Eat Last (2014)','Goffee, R. & Jones, G. — Why Should Anyone Be Led by You? (2006)','Bandura, A. — Social Learning Theory (1977)','Cialdini, R. — Influence (2006)'],
+whyText:'Schein: <strong>"The only thing of real importance that leaders do is to create and manage culture."</strong> Kultur skabes ikke af værdiplakater. Den skabes af lederes adfærd — minut for minut, beslutning for beslutning.',
+learn:`<h3>Lederen som kulturbærer</h3>
+<p>Edgar Schein formulerede det med en radikalitet, der stadig provokerer: "The only thing of real importance that leaders do is to create and manage culture. If you do not manage culture, it manages you." Det er en provokerende påstand — men den rummer en dyb sandhed. Alt hvad en leder gør — eller ikke gør — sender kulturelle signaler. Og de signaler er langt mere kraftfulde end enhver strategipræsentation, ethvert værdigrundlag eller enhver kultursatsning.</p>
+<p>Albert Banduras sociale læringsteori forklarer mekanismen: Mennesker lærer primært ved at observere andre — især dem med status, magt og succes. I en organisation er det lederne. Medarbejdere observerer ikke, hvad ledere siger. De observerer, hvad ledere gør. Og de observerer specifikt tre ting: Hvad ledere bruger deres tid på (hvad prioriteres reelt?), hvad ledere reagerer på (hvad belønnes og straffes?), og hvad ledere tolererer (hvad er den reelle nedre grænse for acceptabel adfærd?).</p>
+<p>Det betyder, at du som leder ikke har valget om at påvirke kulturen. Du påvirker den altid — spørgsmålet er bare, om du gør det bevidst eller ubevidst. Og ubevidst kulturpåvirkning er farlig, fordi den typisk reproducerer den kultur, du selv er vokset op i — uanset om den er hensigtsmæssig for den organisation, du leder nu.</p>
+
+<h3>De seks mekanismer</h3>
+<p>Schein identificerer seks primære mekanismer, gennem hvilke ledere skaber og former kultur. De er ikke valgfrie — de sker automatisk. Spørgsmålet er, om du bruger dem bevidst.</p>
+<p><strong>Hvad du giver opmærksomhed:</strong> De emner, du spørger ind til, de metrics du følger, de problemer du reagerer på — de signalerer, hvad der virkelig er vigtigt. Hvis du altid spørger om omsætning men aldrig om medarbejdertrivsel, har du fortalt organisationen, at trivsel er sekundært. Uanset hvad dit værdigrundlag siger.</p>
+<p><strong>Hvordan du reagerer på kriser:</strong> Kriser er kulturelle forbrændingspunkter. Under pres forsvinder den polerede overflade, og de reelle værdier træder frem. Fyrer du folk i panik, eller beskytter du dem? Leder du fra fronten, eller gemmer du dig bag processer? Indrømmer du fejl, eller finder du syndebukke? Organisationen husker dine kriseresponser længe efter, at krisen er overstået.</p>
+<p><strong>Hvordan du allokerer ressourcer:</strong> Budgetter lyver ikke. Hvor pengene går, går opmærksomheden. Og opmærksomheden signalerer prioriteterne. En organisation der taler om innovation men konsekvent skærer i R&D-budgettet, har kommunikeret sin reelle prioritet klart og tydeligt — bare ikke verbalt.</p>
+<p><strong>Hvem du ansætter, forfremmer og fyrer:</strong> Dette er den mest kraftfulde kulturelle mekanisme af alle. Mennesker ser, hvem der belønnes med ansvar, status og magt — og konkluderer, at det er den type adfærd, der værdsættes. Hver forfremmelse er en kulturel deklaration. Og hver gang du undlader at handle på en leder, der bryder med værdierne, har du deklareret, at værdierne er forhandlingsbare.</p>
+<p><strong>Bevidst rollemodellering:</strong> Daniel Coyle beskriver i The Culture Code, hvordan de mest succesfulde kulturer skabes gennem tusindvis af små signaler — "belonging cues" — der fortæller mennesker, at de er trygge, at de tilhører gruppen, og at der er et fælles formål. Disse signaler sendes primært af ledere, og de er langt mere kraftfulde end formelle budskaber.</p>
+<p><strong>Hvad du belønner og straffer:</strong> Robert Cialdinis forskning i social indflydelse viser, at mennesker er ekstremt følsomme over for sociale belønninger og sanktioner. Ikke bare formelle (bonusser, forfremmelser, fyringer) men uformelle (opmærksomhed, anerkendelse, inklusion, eksklusion). Et anerkendende nik i et møde. En offentlig ros. En invitation til et strategisk projekt. Disse uformelle signaler former adfærd langt mere end det formelle belønningssystem.</p>
+
+<h3>Konsistens er nøglen</h3>
+<p>Simon Sinek tilføjer en kritisk pointe med sit princip om "leaders eat last": De mest kulturskabende handlinger er de konsistente. Ikke de dramatiske, enkeltstående gestus — men den daglige, uspektakulære adfærd der signalerer, hvad du virkelig står for. At du konsekvent spørger ind til medarbejdernes trivsel. At du konsekvent holder det, du lover. At du konsekvent konfronterer adfærd, der bryder med værdierne. Kulturen skabes ikke i de store øjeblikke. Den skabes i de tusindvis af små, tilsyneladende ubetydelige øjeblikke, der tilsammen definerer, hvem du er som leder — og hvem din organisation er.</p>
+<p>Goffee og Jones stiller det provokerende spørgsmål: "Why should anyone be led by you?" Deres argument er, at autentisk ledelse kræver, at du viser dine styrker OG dine svagheder. At du er ærlig om, hvad du ikke ved. At du demonstrerer sårbarhed, når det er relevant. For kulturskabende ledelse er dette afgørende: En leder der altid er perfekt, signalerer, at perfektion er standarden — og at fejl er farlige. En leder der indrømmer fejl, signalerer, at ærlighed er standarden — og at læring er vigtigere end perfektion.</p>
+<blockquote>Du former ikke kulturen med det du siger på Town Hall. Du former den med det du gør kl. 8.37 på en tirsdag, når du tror ingen kigger. Men de kigger altid.</blockquote>`,
+qs:[
+{id:'q4_1',type:'ta',l:'Hvad <strong>giver du mest opmærksomhed</strong> i din dagligdag? Hvad spørger du om — og hvad spørger du aldrig om?'},
+{id:'q4_2',type:'ta',l:'Hvem har du sidst <strong>forfremmet</strong> — og hvad signalerede det om jeres kultur?'},
+{id:'q4_3',type:'ta',l:'Hvem <strong>tolererer du</strong>, selvom de bryder med jeres værdier? Hvad koster det?'},
+{id:'q4_4',type:'ta',l:'Hvordan reagerede du på den <strong>seneste krise</strong>? Hvad signalerede din reaktion om jeres kultur?'},
+{id:'q4_5',type:'ta',l:'Hvilke <strong>uformelle signaler</strong> sender du — bevidst og ubevidst? Spørg nogen du stoler på.'},
+{id:'q4_6',type:'scale',l:'Hvor konsistent er din adfærd med de værdier du prædiker?',mn:1,mx:10},
+],
+takeaways:['Du påvirker kulturen altid. Spørgsmålet er om du gør det bevidst eller ubevidst.','Hvem du forfremmer er den stærkeste kulturelle deklaration. Hver forfremmelse siger: "Dette belønner vi."','Hvad du tolererer definerer den reelle nedre grænse. Dine medarbejdere læser den med røntgenøjne.','Konsistens slår dramatik. Kulturen skabes i de tusindvis af små øjeblikke — ikke i de store taler.','Kriser er kulturelle forbrændingspunkter. Din reaktion under pres viser, hvem du virkelig er.']
+},
+{
+id:5,
+title:'Værdier i praksis',
+subtitle:'Fra væggen til virkeligheden — at leve jeres værdier',
+icon:'💎',
+color:'#7A9ECA',
+sources:['Lencioni, P. — Make Your Values Mean Something (HBR, 2002)','Collins, J. & Porras, J. — Built to Last (1994)','Katzenbach, J. et al. — The Critical Few (2019)','Barrett, R. — Building a Values-Driven Organization (2006)','O\\\'Reilly, C. & Chatman, J. — Culture as Social Control (Research in Organizational Behavior, 1996)'],
+whyText:'Patrick Lencioni: <strong>"Most values statements are bland, toothless, or just plain dishonest."</strong> Collins og Porras viser, at kun virksomheder med autentisk levede værdier overlever og trives over generationer.',
+learn:`<h3>Værdier der betyder noget — og værdier der er pynt</h3>
+<p>Patrick Lencioni åbner sin klassiske HBR-artikel med en provokation: De fleste organisationers værdigrundlag er værre end meningsløse — de er aktivt skadelige. Ikke fordi værdierne i sig selv er forkerte, men fordi de er generiske, aspirationelle og — mest kritisk — ulevede. Når en organisation erklærer "integritet" som en kerneværdi og samtidig tolererer uetisk adfærd fra en topleder, er skaden ikke bare, at værdierne er ulevede. Skaden er den kynisme, der genereres hos alle, der kan se kløften. Og alle kan se kløften.</p>
+<p>Lencioni skelner mellem fire typer værdier, som de fleste organisationer blander sammen. <strong>Kerneværdier</strong> er de dybtliggende, ufravigelige principper, som organisationen aldrig vil kompromittere — uanset prisen. De er ikke aspirationelle. De er beskrivende for det, organisationen allerede er på sit bedste. <strong>Aspirationelle værdier</strong> er det, organisationen gerne vil være, men endnu ikke er. De er legitime — men de skal præsenteres som aspirationer, ikke som fakta. <strong>Permission-to-play værdier</strong> er de minimumsforventninger, der gælder for enhver professionel organisation — integritet, respekt, kvalitet. De er nødvendige men ikke differentierende. Og <strong>tilfældige værdier</strong> er de træk, der er opstået organisk i kulturen uden bevidst design — de kan være positive eller negative.</p>
+
+<h3>Autentiske værdier: Built to Last</h3>
+<p>Jim Collins og Jerry Porras studerede i Built to Last de virksomheder, der havde overlevet og trivet over generationer — i nogle tilfælde over et århundrede. Deres mest konsistente fund var, at disse organisationer havde et sæt kerneværdier, der var autentisk levede, dybt forankrede og ufravigelige — uanset omstændighederne. Ikke fordi værdierne i sig selv var overlegne. Andre organisationer havde lignende erklærede værdier. Forskellen var, at de varige organisationer faktisk levede dem — i gode tider og i dårlige. Når det var bekvemt og når det var ubekvemt. Når det var profitabelt og når det kostede penge.</p>
+<p>Collins og Porras fandt, at disse organisationer typisk havde kun 3-5 kerneværdier — ikke 8 eller 12 eller 15. Færre værdier er stærkere, fordi de er lettere at huske, lettere at leve og lettere at holde hinanden op på. Og de fandt, at selektionsprocessen var mindst lige så vigtig som formuleringen: De bedste organisationer valgte bevidst at inkludere værdier, der var svære at leve — værdier der krævede ofre, valg og kompromiser. En værdi der aldrig koster dig noget, er ikke en værdi. Den er en banalitet.</p>
+
+<h3>De kritiske få adfærdsmønstre</h3>
+<p>Jon Katzenbach og hans kolleger tilbyder en pragmatisk tilgang med deres begreb "the critical few." I stedet for at forsøge at ændre hele kulturen på én gang — et projekt der næsten altid fejler — anbefaler de, at du identificerer de 3-5 konkrete, observerbare adfærdsmønstre, der ville have størst impact, hvis de ændrede sig. Ikke abstrakte værdier ("vi skal være mere innovative"), men konkrete adfærdsbeskrivelser ("vi tester nye idéer inden for 48 timer i stedet for at lave business cases i 3 måneder").</p>
+<p>Styrken i denne tilgang er dens specificitet. Det er let at erklære "vi værdsætter åbenhed." Det er langt sværere — og langt mere virkningsfuldt — at sige "vi starter hvert ledelsesmøde med at dele én ting, der ikke fungerer i vores ansvarsområde." Den første er en værdi. Den anden er en adfærd. Og adfærd er det, der faktisk ændrer kulturer.</p>
+
+<h3>Værdier som social kontrol</h3>
+<p>Charles O'Reilly og Jennifer Chatman fra Stanford tilføjer en vigtig analytisk dimension: Værdier fungerer som en form for social kontrol. Når værdier er stærkt internaliserede i en organisation, regulerer de adfærd uden behov for formel overvågning, regler eller sanktioner. Mennesker gør det rigtige, fordi de oprigtigt tror på det — ikke fordi nogen tjekker op. Det er den mest effektive — og mest skalerbare — form for organisatorisk kontrol. Og det er grunden til, at organisationer med stærkt levede værdier kan decentralisere beslutningskompetence uden at miste sammenhæng: Værdierne erstatter regler.</p>
+<p>Richard Barrett udvider dette perspektiv med sit begreb om "values-driven organizations" — organisationer, der bevidst bruger deres værdier som et styringsinstrument for alle kritiske beslutninger: Hvem ansætter vi? Hvem forfremmer vi? Hvordan allokerer vi ressourcer? Hvordan behandler vi kunder? Når værdierne gennemsyrer disse beslutninger konsistent, bliver de en levende del af organisationens DNA — ikke pynt på væggen.</p>
+<blockquote>En værdi der aldrig koster dig noget, er ikke en værdi. Det er en banalitet. Ægte værdier kræver ofre — og det er i ofrene, de beviser deres ægthed.</blockquote>`,
+qs:[
+{id:'q5_1',type:'ta',l:'Hvad er jeres <strong>kerneværdier</strong> — de 3-5 ufravigelige principper? Er de autentiske eller aspirationelle?'},
+{id:'q5_2',type:'ta',l:'Hvornår har jeres værdier sidst <strong>kostet jer noget</strong>? Penge, kunder, talent, tid?'},
+{id:'q5_3',type:'ta',l:'Hvad er de <strong>3-5 kritiske adfærdsmønstre</strong>, der ville flytte jeres kultur mest, hvis de ændrede sig?'},
+{id:'q5_4',type:'ta',l:'Hvordan bruger I jeres værdier i <strong>konkrete beslutninger</strong>? Ansættelse, forfremmelse, ressourceallokering, fyring?'},
+{id:'q5_5',type:'choice',l:'Jeres værdigrundlag er primært:',opts:['Autentisk levet','Delvist levet','Aspirationelt','Pynt på væggen']},
+{id:'q5_6',type:'ta',l:'Hvis du skulle <strong>reducere til 3 værdier</strong>, der virkelig beskriver jeres kultur på sit bedste — hvilke ville det være?'},
+],
+takeaways:['Generiske værdier skader mere end de hjælper. De genererer kynisme, når de ikke leves.','Færre værdier er stærkere. 3-5 kerneværdier slår 12 generiske deklarationer.','En værdi der aldrig koster dig noget, er en banalitet. Ægte værdier kræver ofre.','Fokusér på adfærd, ikke på abstrakte værdier. "Vi tester inden 48 timer" slår "vi er innovative."','Værdier erstatter regler, når de er dybt internaliserede. Det er den mest skalerbare form for kontrol.']
+},
+{
+id:6,
+title:'Kulturforandring',
+subtitle:'Hvordan du faktisk ændrer en kultur — uden at ødelægge den',
+icon:'🔧',
+color:'#E57373',
+sources:['Kotter, J. — Leading Change (1996)','Heifetz, R. & Linsky, M. — Leadership on the Line (2002)','Beer, M., Eisenstat, R. & Spector, B. — Why Change Programs Don\\\'t Produce Change (HBR, 1990)','Bridges, W. — Managing Transitions (2009)','Pascale, R. & Sternin, J. — Your Company\\\'s Secret Change Agents (HBR, 2005)','Heath, C. & Heath, D. — Switch: How to Change Things When Change Is Hard (2010)'],
+whyText:'<strong>Over 70% af forandringsinitiativer fejler</strong> (Kotter). Ikke fordi forandringen er forkert, men fordi tilgangen er forkert. Kulturforandring er ikke en kampagne — det er en transformation der tager år, ikke måneder.',
+learn:`<h3>Hvorfor de fleste forandringstiltag fejler</h3>
+<p>John Kotter har dokumenteret, at over 70% af organisatoriske forandringsinitiativer fejler. Ikke fejler delvist — fejler fundamentalt. De opnår ikke de ønskede resultater, de genererer kynisme og forandringsmæthed, og de efterlader organisationen i en dårligere position end før. Årsagen er næsten altid den samme: Forandringen er behandlet som et projekt med en start og en slutdato, i stedet for som en transformation der kræver vedvarende opmærksomhed, energi og ledelse over år.</p>
+<p>Michael Beer, Russell Eisenstat og Bert Spector publicerede allerede i 1990 en artikel med den afslørende titel "Why Change Programs Don't Produce Change." Deres pointe er, at selve begrebet "forandringsprogram" er en del af problemet. Programmer er tidsbegrænsede, centralt styrede og top-down initierede. Kulturforandring er det modsatte: Den er vedvarende, distribueret og kræver engagement fra hele organisationen. At sætte et "forandringsprogram" op for at ændre kulturen er som at sætte en diæt op for at ændre din livsstil. Det kan give kortsigtede resultater — men uden en fundamental ændring i de daglige vaner vender alt tilbage til udgangspunktet.</p>
+
+<h3>Kotters otte trin — og hvorfor de fleste stopper ved tre</h3>
+<p>Kotters otte-trins model for succesfuld forandring er en af de mest kendte rammer i forandringsledelse. <strong>Skab urgency:</strong> Få organisationen til at forstå, HVORFOR forandring er nødvendig — ikke som et intellektuelt argument, men som en følelse af nødvendighed. <strong>Byg en koalition:</strong> Saml de mennesker med tilstrækkelig magt, ekspertise og troværdighed til at drive forandringen. <strong>Formulér visionen:</strong> Skab et klart, motiverende billede af fremtiden. <strong>Kommunikér visionen:</strong> Sig det 10 gange mere end du tror er nødvendigt. <strong>Fjern barrierer:</strong> Identificér og eliminér de strukturelle, kulturelle og menneskelige hindringer. <strong>Skab kortsigtede wins:</strong> Generér synlige, tidlige succeser der bygger momentum. <strong>Konsolidér:</strong> Brug momentum til at tackle større, sværere forandringer. <strong>Forankr i kulturen:</strong> Sikr at forandringen bliver "den nye normal."</p>
+<p>Problemet er, at de fleste organisationer stopper ved trin tre eller fire. De skaber urgency, bygger en koalition og formulerer en vision — og tror så, at forandringen vil ske af sig selv. Det gør den ikke. De sidste fire trin — dem der handler om eksekvering, vedholdenhed og forankring — er de sværeste og de vigtigste. Og de kræver en tidshorisont, som de fleste ledere ikke har tålmodighed til.</p>
+
+<h3>Adaptiv forandring</h3>
+<p>Ronald Heifetz og Marty Linsky tilføjer en afgørende skelnen: Forskellen mellem tekniske og adaptive udfordringer. Tekniske udfordringer har kendte løsninger — du skal bare anvende den rigtige ekspertise. Adaptive udfordringer kræver, at mennesker ændrer deres værdier, overbevisninger og adfærd. Kulturforandring er per definition en adaptiv udfordring. Og adaptive udfordringer kan ikke løses fra toppen — de kræver, at de mennesker der er berørt af forandringen, aktivt deltager i at definere og implementere den.</p>
+<p>William Bridges tilføjer en yderligere dimension med sin skelnen mellem "change" og "transition." Change er den ydre begivenhed — reorganisering, ny strategi, nye processer. Transition er den indre proces, mennesker gennemgår: At give slip på det gamle, navigere usikkerheden, og omfavne det nye. De fleste forandringsinitiativer fokuserer på change og ignorerer transition. Resultatet er en organisation, der har ændret sine strukturer men ikke sine mennesker — og mennesker er det, kulturen er lavet af.</p>
+
+<h3>Positive afvigere</h3>
+<p>Richard Pascale og Jerry Sternin introducerer en tilgang, der er fundamentalt anderledes fra traditionel forandringsledelse: "Positive deviance." I stedet for at analysere problemet og designe en løsning oppefra, handler det om at finde de mennesker i organisationen, der allerede gør det rigtige — trods de samme begrænsninger som alle andre. De kalder dem "positive deviants." Idéen er enkel men kraftfuld: Hvis nogen i din organisation allerede demonstrerer den kultur, du ønsker, behøver du ikke opfinde noget nyt. Du behøver at forstå, hvad de gør anderledes, og skabe betingelserne for at deres tilgang spredes.</p>
+<p>Chip og Dan Heath destillerer forandringsledelse til tre principper i Switch: <strong>Retning for rytteren</strong> (den analytiske del af os har brug for et klart mål), <strong>motivation for elefanten</strong> (den emotionelle del har brug for at føle, at forandringen er meningsfuld), og <strong>form stien</strong> (gør det let at gøre det rigtige og svært at gøre det forkerte). Kulturforandring der kun adresserer én af de tre, fejler. Du skal have alle tre: Intellektuel klarhed, emotionel engagement og strukturel støtte.</p>
+<blockquote>Kulturforandring er ikke et projekt med en slutdato. Det er en daglig praksis — en samling af små, konsistente valg der akkumulerer over tid til en fundamental transformation.</blockquote>`,
+qs:[
+{id:'q6_1',type:'ta',l:'Hvilken <strong>kulturforandring</strong> har din organisation mest brug for lige nu? Vær specifik.'},
+{id:'q6_2',type:'ta',l:'Er der <strong>urgency</strong> for forandring i organisationen? Føler folk nødvendigheden — eller er det kun ledelsen?'},
+{id:'q6_3',type:'ta',l:'Hvem er dine <strong>"positive deviants"</strong>? Folk der allerede lever den kultur du ønsker — trods systemet?'},
+{id:'q6_4',type:'ta',l:'Hvad er de <strong>strukturelle barrierer</strong> for den kulturforandring du ønsker? Systemer, processer, incitamenter?'},
+{id:'q6_5',type:'scale',l:'Hvor tålmodig er du med kulturforandring — realistisk?',mn:1,mx:10},
+{id:'q6_6',type:'ta',l:'Hvad er dit <strong>første konkrete skridt</strong> — inden for de næste 2 uger — mod den kulturforandring du ønsker?'},
+],
+takeaways:['70% af forandringsinitiativer fejler. Ikke fordi forandringen er forkert — men fordi tilgangen er forkert.','Kulturforandring er adaptiv, ikke teknisk. Den kan ikke designes fra toppen og rulles ud.','Find dine positive deviants. Nogen gør det allerede rigtigt — forstå hvad, og spred det.','Retning (analytisk) + motivation (emotionel) + sti (strukturel). Du har brug for alle tre.','Tålmodighed er ikke passivitet. Det er disciplineret, vedvarende indsats over år — ikke måneder.']
+},
+{
+id:7,
+title:'Strategi og kultur i samspil',
+subtitle:'At designe alignment mellem det du vil opnå og det du faktisk kan',
+icon:'🔗',
+color:'#E5A048',
+sources:['Groysberg, B. et al. — The Leader\\\'s Guide to Corporate Culture (HBR, 2018)','Kaplan, R. & Norton, D. — The Balanced Scorecard (1996)','Nadler, D. & Tushman, M. — Competing by Design (1997)','Galbraith, J. — Designing Organizations (2002)','Mintzberg, H. — Structure in Fives (1983)'],
+whyText:'Nadler og Tushman: <strong>Organisatorisk performance er en funktion af "fit"</strong> — graden af alignment mellem strategi, kultur, struktur og mennesker. Misalignment på bare én dimension kan underminere hele systemet.',
+learn:`<h3>Alignment som designopgave</h3>
+<p>David Nadler og Michael Tushman formulerede et princip, der burde hænge på væggen i enhver leders kontor: Organisatorisk performance er ikke primært et resultat af strategiens kvalitet eller kulturens styrke. Det er et resultat af graden af "fit" — alignment — mellem organisationens strategi, kultur, struktur og mennesker. Du kan have en genial strategi, en stærk kultur, en effektiv struktur og fantastiske mennesker — og stadig underperforme, hvis de fire elementer ikke er alignede med hinanden.</p>
+<p>Denne indsigt ændrer fundamentalt, hvad det vil sige at lede en organisation. Din opgave er ikke at optimere hvert element isoleret. Din opgave er at designe helheden — at sikre, at strategi, kultur, struktur og mennesker tilsammen danner et kohærent, gensidigt forstærkende system. Og det kræver en systemisk tænkning, der overskrider de traditionelle funktionelle siloer i organisationen.</p>
+
+<h3>Strategisk kultur-audit</h3>
+<p>Groysberg og hans kolleger fra Harvard tilbyder en praktisk ramme for at vurdere alignment mellem strategi og kultur. Udgangspunktet er en enkel men kraftfuld øvelse: Stil to spørgsmål side om side. <strong>Spørgsmål 1:</strong> Hvad kræver vores strategi af os? Hvilke adfærdsmønstre, kompetencer og mindsets er nødvendige for at eksekvere strategien? <strong>Spørgsmål 2:</strong> Hvad leverer vores kultur? Hvilke adfærdsmønstre, kompetencer og mindsets producerer den nuværende kultur naturligt?</p>
+<p>Kløften mellem de to svar er dit kulturelle strategiske gap. Og det gap skal adresseres eksplicit — enten ved at ændre kulturen, ændre strategien, eller acceptere gappet og kompensere strukturelt. Ingen af de tre muligheder er let. Men at ignorere gappet er værst, fordi det betyder at forvente resultater, som organisationen kulturelt ikke er i stand til at levere.</p>
+
+<h3>Strukturen som bro</h3>
+<p>Jay Galbraith argumenterer for, at organisationsstrukturen er den primære bro mellem strategi og kultur. Strukturen — hierarki, processer, roller, incitamenter, informationsflow — er det formelle system, der enten forstærker eller modarbejder den kultur, du ønsker. Hvis du ønsker en kultur præget af samarbejde på tværs, men din struktur belønner individuel performance i siloer, har du skabt en strukturel modsætning, som ingen kultursatsning kan overkomme.</p>
+<p>Mintzberg tilføjer med sin klassiske organisationstypologi, at der er en naturlig sammenhæng mellem strategi, struktur og kultur. En innovationsstrategi kræver en adhocratisk struktur (flad, fleksibel, projektorienteret) og en innovationskultur. En effektivitetsstrategi kræver en maskinbureaukratisk struktur (hierarkisk, standardiseret, procesorienteret) og en disciplinkultur. At forsøge at innovere i en maskinbureaukratisk struktur — eller at skabe effektivitet i et adhocrati — er som at køre med håndbremsen trukket.</p>
+
+<h3>Den praktiske øvelse</h3>
+<p>Robert Kaplan og David Nortons Balanced Scorecard giver et konkret værktøj til at bygge broen mellem strategi og kultur. Deres fire perspektiver — finansielt, kunde, processer og læring/vækst — tvinger dig til at oversætte abstrakt strategi til konkrete mål og metrics på hvert niveau. Og læring/vækst-perspektivet er specifikt designet til at adressere de kulturelle og menneskelige forudsætninger for strategisk succes: Har vi de rigtige kompetencer? Den rigtige kultur? De rigtige informationssystemer? Den rigtige organisatoriske alignment?</p>
+<p>Den praktiske øvelse er at tage din strategiske plan og for hvert strategisk mål spørge: Understøtter vores kultur dette mål? Hvis ja — hvordan forstærker vi det? Hvis nej — hvad skal ændre sig? Denne øvelse lyder simpel. Den er det modsatte. Den kræver, at du er ærlig om, hvor din organisations reelle kapacitet ligger — og hvor den ikke gør. Og den kræver, at du tør handle på den ærlighed.</p>
+<blockquote>Alignment er ikke et tilstandsord. Det er et procesord. Det kræver konstant kalibrering — fordi både strategi og kultur er i bevægelse.</blockquote>`,
+qs:[
+{id:'q7_1',type:'ta',l:'Lav øvelsen: Hvad <strong>kræver jeres strategi</strong> af kulturen — og hvad <strong>leverer kulturen</strong> reelt? Hvad er gappet?'},
+{id:'q7_2',type:'ta',l:'Understøtter jeres <strong>struktur</strong> den kultur I ønsker? Eller modarbejder den den?'},
+{id:'q7_3',type:'ta',l:'Belønner jeres <strong>incitamenter</strong> den adfærd I siger I ønsker — eller noget andet?'},
+{id:'q7_4',type:'ta',l:'Hvad ville du ændre i <strong>strukturen</strong> for at understøtte den kultur du ønsker?'},
+{id:'q7_5',type:'scale',l:'Graden af alignment mellem jeres strategi, kultur, struktur og mennesker?',mn:1,mx:10},
+{id:'q7_6',type:'ta',l:'Hvilket <strong>ét strukturelt tiltag</strong> ville have størst positiv effekt på jeres kultur?'},
+],
+takeaways:['Performance er en funktion af alignment — ikke af strategi eller kultur isoleret.','Stil to spørgsmål: Hvad kræver strategien? Hvad leverer kulturen? Kløften er dit arbejde.','Strukturen er broen mellem strategi og kultur. Sørg for at den forstærker — ikke modarbejder.','Incitamenter der belønner det modsatte af jeres værdier, underminerer enhver kultursatsning.','Alignment er en proces, ikke en tilstand. Den kræver konstant kalibrering.']
+},
+{
+id:8,
+title:'Den bæredygtige kultur',
+subtitle:'At bygge en kultur der overlever dig — og trives',
+icon:'🌳',
+color:'#9575CD',
+sources:['Collins, J. — Good to Great (2001)','Collins, J. & Porras, J. — Built to Last (1994)','Senge, P. — The Fifth Discipline (1990)','Edmondson, A. — Right Kind of Wrong (2023)','Dweck, C. — Mindset: The New Psychology of Success (2006)','Frankl, V. — Man\\\'s Search for Meaning (1946)'],
+whyText:'Collins og Porras: De virksomheder der overlever generationer, har <strong>en kultur der er stærkere end enhver enkelt leder</strong>. Den bæredygtige kultur er ikke afhængig af dig — den er designet til at trives uden dig.',
+learn:`<h3>Kulturer der overlever generationer</h3>
+<p>Jim Collins og Jerry Porras stillede i Built to Last et simpelt men kraftfuldt spørgsmål: Hvad adskiller virksomheder, der overlever og trives over generationer, fra dem der glimter og forsvinder? Svaret var ikke strategi — strategier ændrer sig. Ikke teknologi — teknologier forældes. Ikke ledere — ledere kommer og går. Svaret var kultur. De varige virksomheder havde opbygget kulturer, der var stærkere end enhver enkelt leder, enhver enkelt strategi og enhver enkelt markedsforandring. Kulturen var den konstant, der gav organisationen identitet, retning og modstandskraft gennem dekader af forandring.</p>
+<p>Collins udvider dette i Good to Great med sit begreb om "Level 5 leadership" — ledere der bygger organisationer, der er stærkere end dem selv. De mest bemærkelsesværdige Level 5-ledere er dem, hvis organisationer performer endnu bedre efter deres afgang. Det er det ultimative bevis på en bæredygtig kultur: At den ikke er afhængig af en enkelt persons tilstedeværelse, energi eller vision.</p>
+
+<h3>Den lærende organisation</h3>
+<p>Peter Senge introducerede i The Fifth Discipline begrebet "den lærende organisation" — en organisation der kontinuerligt udvider sin kapacitet til at skabe de resultater, den ønsker. Senges pointe er, at den mest bæredygtige konkurrencefordel ikke er viden, teknologi eller markedsposition — men evnen til at lære hurtigere end konkurrenterne. Og evnen til at lære er en kulturel kapacitet, ikke en individuel.</p>
+<p>En lærende kultur har fire kendetegn: <strong>Systemisk tænkning</strong> — evnen til at se helheder og sammenhænge, ikke bare isolerede dele. <strong>Personlig mestring</strong> — en kultur der opmuntrer individuel udvikling og kontinuerlig forbedring. <strong>Mentale modeller</strong> — villighed til at udfordre de grundlæggende antagelser, der styrer beslutninger. <strong>Fælles vision</strong> — et delt billede af fremtiden, der genererer ægte engagement, ikke bare compliance.</p>
+<p>Carol Dweck tilføjer med sit begreb "growth mindset" en kritisk kulturel dimension: Organisationer med en growth-mindset-kultur — der tror, at evner og intelligens kan udvikles — outperformer systematisk organisationer med en fixed-mindset-kultur, der tror, at talent er medfødt og statisk. Growth-mindset-kulturer eksperimenterer mere, lærer hurtigere af fejl og tiltrækker talenter, der er motiverede af udvikling snarere end af at bevise, hvad de allerede kan.</p>
+
+<h3>Den rette slags fejl</h3>
+<p>Amy Edmondson tilbyder i sit seneste arbejde en nuancering, der er afgørende for bæredygtige kulturer: Alle fejl er ikke lige. Der er <strong>intelligente fejl</strong> — eksperimenter der ikke lykkedes, men som genererede vigtig læring. Der er <strong>komplekse fejl</strong> — fejl der opstår i uforudsigelige systemer, hvor mange faktorer interagerer. Og der er <strong>basale fejl</strong> — fejl der skyldes manglende opmærksomhed, sjusk eller ignorering af kendte procedurer. En bæredygtig kultur reagerer fundamentalt forskelligt på de tre typer. Intelligente fejl fejres — de er tegn på mod og eksperimentering. Komplekse fejl analyseres systemisk — de er kilder til dybere forståelse. Basale fejl konfronteres — de er tegn på manglende disciplin.</p>
+<p>De fleste organisationer reagerer ens på alle tre typer — typisk med straf eller bebrejdelse. Resultatet er en kultur, der er risikoavers, defensiv og læringshæmmet. En bæredygtig kultur er det modsatte: Den differentierer mellem fejltyper, fejrer modet til at eksperimentere og insisterer på disciplin i det kendte.</p>
+
+<h3>Formål som kulturel motor</h3>
+<p>Viktor Frankl viste, at mennesker kan udholde næsten hvad som helst, hvis de har et "hvorfor." Collins og Porras fandt det samme i organisationer: De mest varige virksomheder havde et formål, der rakte ud over profit — et "why" der inspirerede, motiverede og guidede beslutninger over generationer. Ikke som en markedsføringssætning, men som en dybt forankret overbevisning om, hvorfor organisationen eksisterer.</p>
+<p>For dig som leder er spørgsmålet: Hvad er din organisations formål ud over at tjene penge? Og er det formål autentisk nok til at overleve dig? En bæredygtig kultur er forankret i et formål, der er større end enhver enkelt leder, enhver enkelt strategi og enhver enkelt krise. Det formål er den nordstjerne, der giver organisationen retning, når alt andet er usikkert.</p>
+
+<h3>Karakter, disciplin, klarhed — som kulturelt fundament</h3>
+<p>Thomas Friisnæs' filosofi får sin fulde betydning som kulturelt designprincip. <strong>Karakter</strong> som kulturelt fundament betyder en organisation, der gør det rigtige, også når det er dyrt, upopulært og ubekvemt. <strong>Disciplin</strong> som kulturelt fundament betyder en organisation med konsistente standarder, rytmer og forpligtelser — ikke som kontrol, men som omsorgsfuld insisteren på excellence. <strong>Klarhed</strong> som kulturelt fundament betyder en organisation, der tør se sandheden i øjnene, kommunikere den ærligt og handle på den modigt. Tilsammen udgør de tre søjler fundamentet for den kultur, der ikke bare overlever — men trives.</p>
+<blockquote>Den bedste kultur du kan bygge, er den kultur der ikke har brug for dig. Det er din opgave — og din arv.</blockquote>`,
+qs:[
+{id:'q8_1',type:'ta',l:'Ville jeres kultur <strong>overleve dig</strong>? Hvad ville ændre sig, hvis du forlod organisationen i morgen?'},
+{id:'q8_2',type:'ta',l:'Er I en <strong>lærende organisation</strong>? Hvad er jeres seneste eksempel på, at I lærte af en fejl — reelt?'},
+{id:'q8_3',type:'choice',l:'Jeres organisations mindset:',opts:['Growth (evner kan udvikles)','Fixed (talent er medfødt)','Blanding','Ved ikke']},
+{id:'q8_4',type:'ta',l:'Hvad er jeres organisations <strong>formål</strong> ud over at tjene penge? Er det autentisk — og lever I det?'},
+{id:'q8_5',type:'ta',l:'Differentierer I mellem <strong>intelligente fejl</strong> (mod) og <strong>basale fejl</strong> (sjusk)? Eller behandler I alle fejl ens?'},
+{id:'q8_6',type:'ta',l:'Hvad er den <strong>kulturelle arv</strong>, du vil efterlade? Beskriv den organisation du drømmer om — og hvad der mangler.'},
+],
+takeaways:['Den bedste kultur er den der ikke har brug for dig. Byg noget der overlever dig.','Lærende organisationer outperformer. Evnen til at lære hurtigere end konkurrenterne er den varigste fordel.','Growth mindset som kultur: Fejr eksperimentering, belønning af udvikling, accept af usikkerhed.','Differentiér mellem fejltyper. Fejr intelligente fejl. Analysér komplekse fejl. Konfrontér basale fejl.','Formål ud over profit er den kulturelle motor der driver varige organisationer. Find jeres — og lev det.']
+}
+];
+
+function renderDash(){
+  const el=document.getElementById('client-dash');
+  document.getElementById('tb-name').textContent=S.cName;
+  let totalAns=0,totalQ=0,completedMods=0;
+  const activeMod=getActiveMod(S.cId);
+  MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);totalAns+=a;totalQ+=m.qs.length;if(isModComplete(S.cId,m))completedMods++});
+  const pct=totalQ?Math.round(totalAns/totalQ*100):0;
+
+  let ackIcon,ackTitle,ackBody;
+  if(completedMods>=8){ackIcon='🏆';ackTitle='Forløbet gennemført';ackBody='8 moduler. 48 refleksioner. Du har nu fundamentet for dit lederskab.<br><strong>Næste skridt:</strong> Book session med din coach.'}
+  else if(totalAns>0){ackIcon='⚡';ackTitle='Du er i gang';ackBody=`Modul ${activeMod} af 8 er åbent. Gennemfør spørgsmål og journal, og send til din coach for at åbne næste modul.`}
+  else{ackIcon='🚀';ackTitle='Velkommen til dit kulturforløb';ackBody='8 moduler. 48 refleksioner. Modulerne åbnes ét ad gangen — gennemfør og send til din coach for at komme videre.'}
+
+  let h=`<div class="prog-header"><div><h1>Dit kultur-forløb</h1><div class="stat">${completedMods}/8 moduler · ${totalAns}/${totalQ} svar · ${pct}%</div></div></div>`;
+  h+=`<div class="ack-box fade"><div class="ack-icon">${ackIcon}</div><h2>${ackTitle}</h2><p>${ackBody}</p></div>`;
+
+  h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:4px">Forløbs-overblik</h3>
+    <div class="velocity-grid">
+      <div class="vg-item"><div class="vn">${completedMods}</div><div class="vl">Gennemført</div></div>
+      <div class="vg-item"><div class="vn">${pct}%</div><div class="vl">Fremgang</div></div>
+      <div class="vg-item"><div class="vn">${totalAns}</div><div class="vl">Refleksioner</div></div>
+      <div class="vg-item"><div class="vn">${activeMod}/8</div><div class="vl">Åbne moduler</div></div>
+    </div></div>`;
+
+  h+='<div class="mods-grid">';
+  MODS.forEach(m=>{
+    const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);const tot=m.qs.length;const mpct=tot?Math.round(a/tot*100):0;
+    const isActive=m.id<=activeMod;
+    const isDone=isModComplete(S.cId,m);
+    const sent=isModSent(S.cId,m.id);
+    let badge='';
+    if(!isActive)badge=`<span class="mc-badge" style="background:var(--navy4);color:var(--text3)">🔒 Låst</span>`;
+    else if(sent)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">✓ Sendt</span>`;
+    else if(isDone)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">✓ Klar til afsendelse</span>`;
+    else if(a>0)badge=`<span class="mc-badge" style="background:var(--gdim);color:var(--gold)">${a}/${tot}</span>`;
+    else badge=`<span class="mc-badge" style="background:rgba(192,57,43,.15);color:var(--blue2)">Klar</span>`;
+    h+=`<div class="mod-card fade ${isActive?'':'locked'}" ${isActive?`onclick="openMod(${m.id-1})"`:''}>
+      <div class="mc-top"><div class="mc-icon" style="background:${m.color}">${m.icon}</div><div class="mc-title">${m.title}</div></div>
+      <div class="mc-sub">${m.subtitle}</div>
+      <div class="mc-prog"><div class="mc-prog-fill" style="width:${mpct}%;background:${m.color}"></div></div>
+      <div class="mc-status">${badge}</div></div>`;
+  });
+  h+='</div>';el.innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════
+// MODULE VIEW
+// ══════════════════════════════════════════════════════
+function openMod(idx){
+  S.modIdx=idx;S.modTab='learn';const m=MODS[idx];
+  const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);S.answers=d?.answers||{};
+  document.getElementById('mod-title-bar').textContent='Modul '+m.id+': '+m.title;
+  document.getElementById('mod-sub-bar').textContent=m.subtitle;
+  document.getElementById('mod-header').innerHTML=`<h1 style="color:${m.color}">Modul ${m.id}: ${m.title}</h1><div class="mh-sub">${m.subtitle}</div>`;
+  let tabs=`<div class="mod-tab active" id="tab-l" onclick="setTab('learn')">Indhold</div>`;
+  tabs+=`<div class="mod-tab" id="tab-q" onclick="setTab('questions')">Spørgsmål (${countAns(S.answers)}/${m.qs.length})</div>`;
+  tabs+=`<div class="mod-tab" id="tab-t" onclick="setTab('takeaways')">Takeaways</div>`;
+  tabs+=`<div class="mod-tab" id="tab-j" onclick="setTab('journal')">Journal</div>`;
+  tabs+=`<div class="mod-tab" id="tab-s" onclick="setTab('submit')">Afslut &amp; send</div>`;
+  document.getElementById('mod-tabs').innerHTML=tabs;
+  renderLearn(m);renderQuestions(m);renderTakeaways(m);renderJournal(m);renderSubmit(m);
+  setTab('learn');show('module');
+}
+function setTab(t){
+  S.modTab=t;document.querySelectorAll('.mod-tab').forEach(el=>el.classList.remove('active'));
+  ['learn','quest','takeaways','journal','submit'].forEach(id=>document.getElementById('tc-'+id).style.display='none');
+  const map={learn:['tab-l','tc-learn'],questions:['tab-q','tc-quest'],takeaways:['tab-t','tc-takeaways'],journal:['tab-j','tc-journal'],submit:['tab-s','tc-submit']};
+  const x=map[t];if(x){document.getElementById(x[0])?.classList.add('active');document.getElementById(x[1]).style.display=''}
+}
+function renderLearn(m){
+  const src=m.sources.map(s=>`<div class="src-item">${s}</div>`).join('');
+  document.getElementById('tc-learn').innerHTML=`
+    <div class="sources-box" style="border-left-color:${m.color}"><div class="src-title">Forskningsgrundlag</div>${src}</div>
+    ${m.whyText?`<div class="why-mod-box"><div class="why-mod-label">Hvorfor dette modul er vigtigt</div><div class="why-mod-text">${m.whyText}</div></div>`:''}
+    <div class="learn-body">${m.learn}</div>
+    <div class="learn-cta"><button class="btn btn-primary" style="padding:12px 28px" onclick="setTab('questions')">Gå til refleksion →</button></div>`;
+}
+function renderQuestions(m){
+  const ans=countAns(S.answers);const pct=Math.round(ans/m.qs.length*100);
+  let h=`<div class="q-progress"><div class="qp-bar"><div class="qp-fill" id="qp-fill" style="width:${pct}%"></div></div><div class="qp-cnt" id="qp-cnt">${ans}/${m.qs.length}</div></div>`;
+  m.qs.forEach((q,i)=>{
+    h+=`<div class="q-card fade"><div class="qlabel">Spørgsmål ${i+1} af ${m.qs.length}</div><div class="qtext">${q.l}</div>`;
+    if(q.type==='ta') h+=`<textarea data-qid="${q.id}" oninput="qInput(this)">${S.answers[q.id]||''}</textarea>`;
+    else if(q.type==='scale'){h+=`<div class="scale-row">`;for(let n=(q.mn||1);n<=(q.mx||10);n++) h+=`<button class="scale-btn${S.answers[q.id]==n?' sel':''}" onclick="qScale('${q.id}',${n},this)">${n}</button>`;h+=`</div>`}
+    else if(q.type==='choice'){h+=`<div style="display:flex;flex-wrap:wrap;gap:6px">`;(q.opts||[]).forEach(o=>h+=`<button class="cbtn${S.answers[q.id]===o?' sel':''}" onclick="qChoice('${q.id}',\`${o}\`,this)">${o}</button>`);h+=`</div>`}
+    h+=`</div>`;
+  });
+  h+=`<button class="btn-save" id="save-btn" onclick="saveMod()">Gem svar ✓</button>`;
+  // Send-box if module is complete
+  const complete=isModComplete(S.cId,m);
+  const sent=isModSent(S.cId,m.id);
+  if(complete&&!sent){
+    h+=`<div class="send-box"><h3>✅ Modul færdigt</h3><p>Alle spørgsmål og journal er udfyldt. Download din besvarelse og send den til Thomas for at åbne næste modul.</p><button class="btn-send" onclick="sendModuleToCoach(${m.id})">📧 Download og send til coach</button></div>`;
+  } else if(sent){
+    h+=`<div class="send-box" style="border-color:rgba(76,175,130,.2);background:rgba(76,175,130,.04)"><h3 style="color:var(--green)">📨 Sendt</h3><p>Dine svar er sendt til Thomas. Næste modul åbnes efter review.</p></div>`;
+  }
+  document.getElementById('tc-quest').innerHTML=h;
+}
+function qInput(el){S.answers[el.dataset.qid]=el.value;doSave()}
+function qScale(id,n,btn){S.answers[id]=n;btn.parentElement.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');doSave()}
+function qChoice(id,val,btn){S.answers[id]=val;btn.parentElement.querySelectorAll('.cbtn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');doSave()}
+function doSave(){
+  const m=MODS[S.modIdx];
+  LS.s(PFX+'mod_'+S.cId+'_'+m.id,{answers:S.answers,updatedAt:new Date().toISOString()});
+  const a=countAns(S.answers);const pct=Math.round(a/m.qs.length*100);
+  const fill=document.getElementById('qp-fill');if(fill)fill.style.width=pct+'%';
+  const cnt=document.getElementById('qp-cnt');if(cnt)cnt.textContent=a+'/'+m.qs.length;
+  const tabQ=document.querySelectorAll('#mod-tabs .mod-tab')[1];if(tabQ)tabQ.textContent='Spørgsmål ('+a+'/'+m.qs.length+')';
+}
+function saveMod(){doSave();const b=document.getElementById('save-btn');if(b){b.textContent='✓ Gemt!';b.style.background='var(--green)';setTimeout(()=>{b.style.background='';b.textContent='Gem svar ✓'},2000)};renderQuestions(MODS[S.modIdx])}
+function renderTakeaways(m){let h='<div class="takeaways-box"><div class="tk-title">Vigtigste takeaways</div>';m.takeaways.forEach(t=>h+=`<div class="tk-item">→ ${t}</div>`);h+='</div>';document.getElementById('tc-takeaways').innerHTML=h}
+
+// ══════════════════════════════════════════════════════
+// JOURNAL
+// ══════════════════════════════════════════════════════
+function renderJournal(m){
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+m.id)||{};
+  let h=`<div class="refl-card fade">
+    <h4>📝 Leder-journal</h4>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Dokumentér dine vigtigste indsigter, beslutninger og refleksioner fra dette modul.</p>
+    <label>Vigtigste indsigt fra dette modul *</label>
+    <textarea id="jn-insight" placeholder="Hvad ramte dig hårdest?" oninput="saveJournalAuto(${m.id})">${jData.insight||''}</textarea>
+    <label>Konkret handling du vil tage *</label>
+    <textarea id="jn-action" placeholder="Hvad gør du anderledes i morgen?" oninput="saveJournalAuto(${m.id})">${jData.action||''}</textarea>
+    <label>Hvad har du brug for hjælp til?</label>
+    <textarea id="jn-help" placeholder="Fra din coach, din chef, dit team..." style="min-height:50px" oninput="saveJournalAuto(${m.id})">${jData.help||''}</textarea>
+    <button class="btn btn-primary" style="margin-top:12px;padding:10px 20px" onclick="saveJournal(${m.id})">Gem journal ✓</button>
+  </div>`;
+  document.getElementById('tc-journal').innerHTML=h;
+}
+let _jTimer=null;
+function saveJournalAuto(mid){clearTimeout(_jTimer);_jTimer=setTimeout(()=>saveJournal(mid,true),1500)}
+function saveJournal(mid,silent){
+  LS.s(PFX+'journal_'+S.cId+'_'+mid,{
+    insight:document.getElementById('jn-insight')?.value||'',
+    action:document.getElementById('jn-action')?.value||'',
+    help:document.getElementById('jn-help')?.value||'',
+    savedAt:new Date().toISOString()});
+  if(!silent)showSaveFeedback('Journal gemt ✓');
+}
+
+// ══════════════════════════════════════════════════════
+// SUBMIT TAB
+// ══════════════════════════════════════════════════════
+function renderSubmit(m){
+  const ans=countAns(S.answers);const allQs=ans>=m.qs.length;
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+m.id)||{};
+  const hasJournal=!!(jData.insight||jData.action);
+  const sent=isModSent(S.cId,m.id);
+  var h='<div class="submit-card">';
+  h+='<h3>Afslut modul '+m.id+'</h3>';
+  h+='<p>Gennemarbejd modulet, besvar alle sp\u00f8rgsm\u00e5l og udfyld din journal. Derefter kan du eksportere og sende din besvarelse til din coach. N\u00e6ste modul \u00e5bnes n\u00e5r din coach har modtaget og gennemg\u00e5et dit svar.</p>';
+  h+='<div class="checklist">';
+  h+='<div class="cl-item"><div class="cl-dot '+(allQs?'cl-ok':'cl-no')+'">'+(allQs?'\u2713':'\u25CB')+'</div><span style="color:var('+(allQs?'--text':'--text3')+')">Alle '+m.qs.length+' sp\u00f8rgsm\u00e5l besvaret</span></div>';
+  h+='<div class="cl-item"><div class="cl-dot '+(hasJournal?'cl-ok':'cl-no')+'">'+(hasJournal?'\u2713':'\u25CB')+'</div><span style="color:var('+(hasJournal?'--text':'--text3')+')">Journal udfyldt</span></div>';
+  h+='<div class="cl-item"><div class="cl-dot '+(sent?'cl-ok':'cl-no')+'">'+(sent?'\u2713':'\u25CB')+'</div><span style="color:var('+(sent?'--text':'--text3')+')">Besvarelse sendt til coach</span></div>';
+  h+='</div>';
+  if(sent){
+    h+='<div style="padding:16px;background:rgba(76,175,130,.1);border-radius:10px;color:var(--green);font-size:14px">\u2713 Du har sendt dette modul. Din coach \u00e5bner n\u00e6ste modul, n\u00e5r du er klar.</div>';
+  }else if(allQs&&hasJournal){
+    h+='<button class="btn btn-gold" style="padding:14px 32px;font-size:15px" onclick="sendModuleToCoach('+m.id+')">\u2193 Download &amp; send til coach</button>';
+  }else{
+    h+='<p style="color:var(--text3);font-size:12px;margin-top:8px">Gennemf\u00f8r alle sp\u00f8rgsm\u00e5l og journal f\u00f8r du kan sende.</p>';
+  }
+  h+='</div>';
+  document.getElementById('tc-submit').innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════
+// SEND TO COACH
+// ══════════════════════════════════════════════════════
+async function sendModuleToCoach(mid){
+  const m=MODS.find(x=>x.id===mid);
+  const modData=LS.g(PFX+'mod_'+S.cId+'_'+mid);
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+mid)||{};
+  
+  const exportData={
+    version:PV,platform:PN,clientId:S.cId,clientName:S.cName,
+    moduleId:mid,moduleTitle:m.title,
+    exportedAt:new Date().toISOString(),
+    answers:modData?.answers||{},
+    journal:jData
+  };
+  
+  // Encrypt
+  const pw=S.cName.toLowerCase().replace(/\s/g,'')+'2024';
+  const encrypted=await encryptData(exportData,pw);
+  
+  // Download JSON
+  const fname=`HEK_${S.cName.replace(/\s/g,'_')}_modul${mid}_${new Date().toISOString().slice(0,10)}.json`;
+  const blob=new Blob([JSON.stringify(encrypted)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;a.click();URL.revokeObjectURL(a.href);
+  
+  // Mark as sent
+  LS.s(PFX+'sent_'+S.cId+'_'+mid,new Date().toISOString());
+  
+  // Open Gmail with pre-filled
+  const su=encodeURIComponent(`${PN} — ${S.cName} — Modul ${mid}: ${m.title}`);
+  const bo=encodeURIComponent(
+    `Hej Thomas,\n\nHer er min besvarelse af modul ${mid}: ${m.title}.\n\nVedhæftet: ${fname}\nDekrypterings-kode: ${pw}\n\nMvh\n${S.cName}`
+  );
+  
+  setTimeout(()=>{
+    window.open(`https://mail.google.com/mail/?view=cm&to=${CE}&su=${su}&body=${bo}`,'_blank');
+    showSaveFeedback('JSON downloadet — vedhæft filen i mailen');
+    renderSubmit(m);renderDash();
+  },500);
+}
+
+// ══════════════════════════════════════════════════════
+// CRYPTO
+// ══════════════════════════════════════════════════════
+const ENC=new TextEncoder(),DEC2=new TextDecoder();
+async function deriveKey(pw,salt){const k=await crypto.subtle.importKey('raw',ENC.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function encryptData(data,pw){const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pw,salt);const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,ENC.encode(JSON.stringify(data)));return{v:PV,ct:btoa(String.fromCharCode(...new Uint8Array(ct))),salt:btoa(String.fromCharCode(...salt)),iv:btoa(String.fromCharCode(...iv))}}
+async function decryptData(blob,pw){const salt=Uint8Array.from(atob(blob.salt),c=>c.charCodeAt(0));const iv=Uint8Array.from(atob(blob.iv),c=>c.charCodeAt(0));const ct=Uint8Array.from(atob(blob.ct),c=>c.charCodeAt(0));const key=await deriveKey(pw,salt);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);return JSON.parse(DEC2.decode(pt))}
+
+// ══════════════════════════════════════════════════════
+// CLIENT DELETE
+// ══════════════════════════════════════════════════════
+function clientDeleteData(){
+  if(!confirm('SLET alle dine data permanent?'))return;if(!confirm('Sidste chance — dette kan IKKE fortrydes.'))return;
+  MODS.forEach(m=>{LS.d(PFX+'mod_'+S.cId+'_'+m.id);LS.d(PFX+'journal_'+S.cId+'_'+m.id);LS.d(PFX+'sent_'+S.cId+'_'+m.id)});
+  LS.d(PFX+'active_'+S.cId);
+  const clients=(LS.g(PFX+'clients')||[]).filter(c=>c.id!==S.cId);LS.s(PFX+'clients',clients);
+  logout();showSaveFeedback('Data slettet');
+}
+
+// ══════════════════════════════════════════════════════
+// EXPORT HELPERS
+// ══════════════════════════════════════════════════════
+function gatherFullExport(cid,cname){
+  var modules={},journals={};
+  MODS.forEach(function(m){var d=LS.g(PFX+'mod_'+cid+'_'+m.id);if(d)modules[m.id]=d;var j=LS.g(PFX+'journal_'+cid+'_'+m.id);if(j)journals[m.id]=j});
+  return{version:PV,platform:PN,clientId:cid,clientName:cname,exportedAt:new Date().toISOString(),activeMod:getActiveMod(cid),modules:modules,journals:journals}
+}
+
+// ══════════════════════════════════════════════════════
+// ADMIN
+// ══════════════════════════════════════════════════════
+function setASection(sec){
+  S.aSection=sec;
+  document.querySelectorAll('.as-nav li').forEach((li,i)=>{li.classList.remove('active');const map=['ov','clients','import','gdpr'];if(map[i]===sec)li.classList.add('active')});
+  ['ov','clients','import','gdpr'].forEach(id=>document.getElementById('asec-'+id).style.display=id===sec?'':'none');
+  renderAdmin();
+}
+function renderAdmin(){
+  const clients=LS.g(PFX+'clients')||[];
+  let totalAns=0;
+  clients.forEach(cl=>{MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+cl.id+'_'+m.id);totalAns+=countAns(d?.answers)})});
+
+  document.getElementById('asec-ov').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Oversigt</h2>
+    <div class="astats">
+      <div class="astat"><div class="av">${clients.length}</div><div class="al">Klienter</div></div>
+      <div class="astat"><div class="av">${totalAns}</div><div class="al">Svar total</div></div>
+      <div class="astat"><div class="av">${MODS.length}</div><div class="al">Moduler</div></div>
+    </div>`;
+
+  let ch='<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Klienter</h2>';
+  if(!clients.length)ch+='<p style="color:var(--text3)">Ingen klienter endnu.</p>';
+  else{
+    clients.forEach(cl=>{
+      let ca=0,ct=0;MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+cl.id+'_'+m.id);ca+=countAns(d?.answers);ct+=m.qs.length});
+      const activeMod=getActiveMod(cl.id);
+      const isSel=S.aSel===cl.id;
+      ch+=`<div class="aclient-card ${isSel?'sel':''}" onclick="S.aSel=${isSel?'null':`'${cl.id}'`};renderAdmin()">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>${cl.name}</strong><span style="font-size:11px;color:var(--text3)">${ca}/${ct} svar · Modul ${activeMod} åben</span>
+        </div></div>`;
+      if(isSel){
+        ch+='<div style="padding:16px;background:var(--navy3);border-radius:10px;margin-bottom:16px">';
+        // Unlock control
+        ch+=`<div class="unlock-row"><span style="font-size:13px;color:var(--text2)">Åbn moduler til og med:</span>
+          <select id="unlock-sel" onchange="setActiveMod('${cl.id}',this.value)">`;
+        for(let i=1;i<=8;i++) ch+=`<option value="${i}" ${activeMod===i?'selected':''}>Modul ${i}: ${MODS[i-1].title}</option>`;
+        ch+=`</select></div>`;
+        
+        MODS.forEach(m=>{
+          const d=LS.g(PFX+'mod_'+cl.id+'_'+m.id);const a=countAns(d?.answers);
+          const sent=isModSent(cl.id,m.id);
+          const sentLabel=sent?` <span style="color:var(--green)">📨 Sendt</span>`:'';
+          if(a>0){
+            ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy2);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">Modul ${m.id}: ${m.title} (${a}/${m.qs.length})${sentLabel}</h4>`;
+            m.qs.forEach(q=>{const v=d?.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')ch+=`<div style="font-size:12px;margin-bottom:6px"><span style="color:var(--text3)">${q.l.replace(/<[^>]+>/g,'').slice(0,80)}...</span><br><span style="color:var(--text)">${typeof v==='string'?v.slice(0,200)+(v.length>200?'...':''):v}</span></div>`});
+            const j=LS.g(PFX+'journal_'+cl.id+'_'+m.id);
+            if(j){ch+=`<div style="margin-top:8px;padding:10px;background:var(--navy3);border-radius:6px;font-size:12px"><strong style="color:var(--gold)">Journal:</strong><br>`;if(j.insight)ch+=`<span style="color:var(--text3)">Indsigt:</span> ${j.insight}<br>`;if(j.action)ch+=`<span style="color:var(--text3)">Handling:</span> ${j.action}<br>`;if(j.help)ch+=`<span style="color:var(--text3)">Hjælp:</span> ${j.help}`;ch+=`</div>`}
+            ch+=`</div>`;
+          }
+        });
+        ch+=`<div class="ai-box"><h3>🤖 Leder-DNA analyse</h3>
+          <div class="fg"><label>Anthropic API-nøgle</label><input type="password" id="ai-key" placeholder="sk-ant-..." style="width:100%"></div>
+          <button class="btn btn-gold" onclick="runAI('${cl.id}')">Kør analyse</button>
+          <div id="ai-out" class="ai-result" style="margin-top:12px"></div></div>`;
+        ch+=`<div style="margin-top:16px;display:flex;gap:10px">
+          <button class="btn btn-ghost" onclick="adminExportAll('${cl.id}','${cl.name}')">↓ Eksportér alt (JSON)</button>
+          <button class="btn btn-ghost" onclick="adminExportTXT('${cl.id}','${cl.name}')">↓ Eksportér (TXT)</button>
+        </div></div>`;
+      }
+    });
+  }
+  document.getElementById('asec-clients').innerHTML=ch;
+
+  document.getElementById('asec-import').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Import</h2>
+    <div class="refl-card"><h4>📥 Importér klient-JSON</h4>
+      <input type="file" id="imp-file" accept=".json" style="margin-bottom:10px">
+      <div class="fg"><label>Dekrypterings-adgangskode</label><input type="password" id="imp-pw"></div>
+      <button class="btn btn-primary" onclick="adminImport()">Importér</button>
+      <div id="imp-msg" style="font-size:12px;margin-top:8px"></div>
+    </div>`;
+
+  document.getElementById('asec-gdpr').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">GDPR</h2>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🔒</div><div><strong>Lokal lagring</strong><div style="font-size:12px;color:var(--text3)">Alle data i localStorage. Ingen server.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🔑</div><div><strong>AES-256-GCM</strong><div style="font-size:12px;color:var(--text3)">PBKDF2 100.000 iterationer. Auto-krypteret eksport.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🗑</div><div><strong>Ret til sletning</strong><div style="font-size:12px;color:var(--text3)">Ét klik. Definitiv.</div></div></div>
+    </div>`;
+}
+
+function setActiveMod(cid,val){LS.s(PFX+'active_'+cid,parseInt(val));showSaveFeedback('Modul '+val+' åbnet');renderAdmin()}
+
+async function adminImport(){
+  const file=document.getElementById('imp-file').files[0];const pw=document.getElementById('imp-pw').value;const msg=document.getElementById('imp-msg');
+  if(!file){msg.textContent='Vælg fil';msg.style.color='var(--red)';return}
+  try{
+    const txt=await file.text();const blob=JSON.parse(txt);let data;
+    if(blob.v&&blob.ct){if(!pw){msg.textContent='Adgangskode kræves';msg.style.color='var(--red)';return}data=await decryptData(blob,pw)}else{data=blob}
+    const clients=LS.g(PFX+'clients')||[];
+    if(!clients.find(c=>c.id===data.clientId)){clients.push({id:data.clientId,name:data.clientName,createdAt:data.exportedAt,imported:true});LS.s(PFX+'clients',clients)}
+    if(data.moduleId){LS.s(PFX+'mod_'+data.clientId+'_'+data.moduleId,{answers:data.answers,updatedAt:data.exportedAt});if(data.journal)LS.s(PFX+'journal_'+data.clientId+'_'+data.moduleId,data.journal)}
+    if(data.modules)Object.entries(data.modules).forEach(([mid,d])=>LS.s(PFX+'mod_'+data.clientId+'_'+mid,d));
+    if(data.journals)Object.entries(data.journals).forEach(([mid,d])=>LS.s(PFX+'journal_'+data.clientId+'_'+mid,d));
+    msg.textContent='✓ '+data.clientName+(data.moduleTitle?' — '+data.moduleTitle:'');msg.style.color='var(--green)';renderAdmin();
+  }catch(e){msg.textContent='Fejl: '+e.message;msg.style.color='var(--red)'}
+}
+function adminExportAll(cid,cname){
+  const modules={},journals={};
+  MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+cid+'_'+m.id);if(d)modules[m.id]=d;const j=LS.g(PFX+'journal_'+cid+'_'+m.id);if(j)journals[m.id]=j});
+  const data={version:PV,platform:PN,clientId:cid,clientName:cname,exportedAt:new Date().toISOString(),modules,journals};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`HEK_admin_${cname.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);
+}
+function adminExportTXT(cid,cname){
+  let txt=PN+' — '+cname+'\nEksporteret: '+new Date().toISOString()+'\n\n';
+  MODS.forEach(m=>{
+    txt+='═══ MODUL '+m.id+': '+m.title.toUpperCase()+' ═══\n';
+    const md=LS.g(PFX+'mod_'+cid+'_'+m.id);if(!md){txt+='(Ikke besvaret)\n\n';return}
+    m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')txt+=q.l.replace(/<[^>]+>/g,'')+'\n→ '+v+'\n\n'});
+    const j=LS.g(PFX+'journal_'+cid+'_'+m.id);
+    if(j){if(j.insight)txt+='[Journal] Indsigt: '+j.insight+'\n';if(j.action)txt+='[Journal] Handling: '+j.action+'\n';if(j.help)txt+='[Journal] Hjælp: '+j.help+'\n'}
+    txt+='\n';
+  });
+  const blob=new Blob([txt],{type:'text/plain'});const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download=`HEK_${cname.replace(/\s/g,'_')}.txt`;a.click();URL.revokeObjectURL(a.href);
+}
+
+async function runAI(cid){
+  const key=document.getElementById('ai-key')?.value;
+  if(!key){showSaveFeedback('API-nøgle mangler');return}
+  const out=document.getElementById('ai-out');out.textContent='Analyserer...';out.style.opacity='.5';
+  const cl=(LS.g(PFX+'clients')||[]).find(c=>c.id===cid);
+  let ctx='KLIENT: '+(cl?.name||'Klient')+'\n\n';
+  MODS.forEach(m=>{const md=LS.g(PFX+'mod_'+cid+'_'+m.id);if(!md)return;ctx+='MODUL '+m.id+': '+m.title+'\n';m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v)ctx+=q.l.replace(/<[^>]+>/g,'')+'\n→ '+v+'\n'});
+    const j=LS.g(PFX+'journal_'+cid+'_'+m.id);if(j?.insight)ctx+='[Journal indsigt] '+j.insight+'\n';if(j?.action)ctx+='[Journal handling] '+j.action+'\n';ctx+='\n'});
+
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,
+        system:`Du er Thomas Friisnæs' AI-assistent. Analysér denne nye leders forløb.\n\n8 moduler: Mandat, 90 dage, Specialist→Leder, Team, Opad/udad, Svære samtaler, Eksekvering, Personlig robusthed.\n\nLevér:\n1. LEDERPROFIL: Hvem er denne leder? Situationstype, styrker, risici.\n2. MODENHEDSANALYSE: Hvor er de i leder-transitionen?\n3. BLINDE VINKLER: Hvad ser de ikke — hvad undgår de?\n4. RELATIONELT LANDSKAB: Team-dynamik, chef-relation, stakeholders.\n5. EKSEKVERINGS-VURDERING: Har de systemer — eller kører de på intuition?\n6. ANBEFALINGER: 3 konkrete næste skridt.\n7. COACHING-SPØRGSMÅL: 3 provokerende spørgsmål til næste session.\n\nSkriv på dansk. Vær præcis og direkte. Ingen floskler.`,
+        messages:[{role:'user',content:ctx}]})
+    });
+    const result=await resp.json();out.style.opacity='1';
+    if(result.content) out.textContent=result.content.map(b=>b.text||'').join('\n');
+    else out.textContent='Fejl: '+(result.error?.message||JSON.stringify(result));
+  }catch(e){out.style.opacity='1';out.textContent='Fejl: '+e.message}
+}
+
+
+</script>
+</body>
+</html>

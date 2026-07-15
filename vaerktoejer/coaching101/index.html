@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="2.0.0">
+<meta name="framework" content="Coaching 101 — Fordi kun de, der vokser, forbliver relevante">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<title>Coaching 101 — Fordi kun de, der vokser, forbliver relevante</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#111111;--navy-light:#1a1a1a;--navy-mid:#222222;--navy-border:#2b2b2b;
+  --gold:#c0392b;--gold-dark:#e74c3c;--gold-light:#e74c3c;--gold-dim:rgba(192,57,43,0.14);
+  --text:#e8e4de;--text-light:#a8a098;--text-muted:#6e6860;--white:#f5f0e8;
+  --success:#6b9e78;--warning:#d4a745;--error:#c45c5c;--info:#5c8dc4;
+  --m1:#c9a96e;--m2:#5c8dc4;--m3:#9b6eb5;--m4:#d48a5c;--m5:#5cac9e;
+  --m6:#c45c5c;--m7:#6b9e78;--m8:#d4a745;--m9:#e8d5a8;
+  --radius:12px;--shadow:0 2px 16px rgba(0,0,0,0.3);
+  --shadow-hover:0 4px 24px rgba(0,0,0,0.4);--transition:all 0.3s ease;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--navy);color:var(--text);line-height:1.7;min-height:100vh;}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:600;line-height:1.3;color:var(--white);}
+.progress-bar{position:sticky;top:0;z-index:1000;background:var(--navy-light);border-bottom:1px solid var(--navy-border);padding:10px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 8px rgba(0,0,0,0.3);}
+.progress-bar .logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);white-space:nowrap;cursor:pointer;}
+.progress-track{flex:1;height:6px;background:var(--navy-mid);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-dark));border-radius:3px;transition:width 0.5s ease;width:0%;}
+.progress-text{font-size:13px;color:var(--text-light);white-space:nowrap;}
+.screen{display:none;max-width:800px;margin:0 auto;padding:40px 20px 120px;}
+.screen.active{display:block;}
+.welcome-hero{text-align:center;padding:50px 20px 30px;}
+.welcome-hero h1{font-size:2.5em;color:var(--white);margin-bottom:6px;}
+.welcome-hero .tagline{font-size:14px;color:var(--gold);letter-spacing:1px;margin-bottom:12px;}
+.welcome-hero .subtitle{font-size:1.05em;color:var(--text-light);font-style:italic;margin-bottom:24px;max-width:600px;margin-left:auto;margin-right:auto;}
+.gold-line{width:60px;height:3px;background:var(--gold);margin:0 auto 24px;border-radius:2px;}
+.card{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);margin-bottom:24px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text-light);}
+.form-group input,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--navy-border);border-radius:8px;font-family:inherit;font-size:15px;background:var(--navy-mid);color:var(--text);transition:var(--transition);}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,0.2);background:var(--navy);}
+.form-group textarea{min-height:90px;resize:vertical;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-muted);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border:none;border-radius:8px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:var(--transition);}
+.btn-primary{background:var(--gold);color:var(--navy);}
+.btn-primary:hover{background:var(--gold-dark);transform:translateY(-1px);}
+.btn-secondary{background:var(--navy-mid);color:var(--text);border:1px solid var(--navy-border);}
+.btn-secondary:hover{background:var(--navy-border);}
+.btn-full{width:100%;}.btn-small{padding:8px 16px;font-size:13px;}
+.consent-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:14px;margin:16px 0;font-size:13px;color:var(--text-light);}
+.consent-box label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;}
+.consent-box input[type="checkbox"]{margin-top:3px;accent-color:var(--gold);min-width:16px;}
+.journey-map{margin:30px 0;}
+.journey-step{display:flex;gap:20px;}
+.journey-line{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0;}
+.journey-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;z-index:1;transition:var(--transition);flex-shrink:0;}
+.journey-dot.locked{background:var(--navy-mid);color:var(--text-muted);border:2px solid var(--navy-border);}
+.journey-dot.active{background:var(--gold);color:var(--navy);border:2px solid var(--gold-dark);box-shadow:0 0 0 4px rgba(201,169,110,0.2);}
+.journey-dot.done{background:var(--success);color:var(--white);border:2px solid #5a8a67;}
+.journey-connector{width:2px;flex:1;min-height:16px;background:var(--navy-border);}
+.journey-connector.done{background:var(--success);}
+.journey-content{flex:1;background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow);margin-bottom:16px;transition:var(--transition);cursor:pointer;}
+.journey-content.locked{opacity:0.45;cursor:not-allowed;}
+.journey-content:not(.locked):hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:var(--gold-dark);}
+.journey-content h3{font-size:1.15em;margin-bottom:4px;}
+.journey-content p{font-size:14px;color:var(--text-light);margin-bottom:6px;}
+.journey-meta{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:8px;}
+.journey-meta .badge{display:inline-flex;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;}
+.module-header{padding:20px 0 16px;margin-bottom:20px;}
+.back-link{font-size:14px;color:var(--gold);cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;text-decoration:none;border:none;background:none;font-family:inherit;}
+.back-link:hover{color:var(--gold-light);}
+.module-header h2{font-size:1.9em;margin-bottom:6px;}
+.module-header .module-desc{color:var(--text-light);font-size:1.05em;font-style:italic;}
+.section-card{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:24px 28px;box-shadow:var(--shadow);margin-bottom:20px;}
+.section-card h3{font-size:1.2em;margin-bottom:4px;display:flex;align-items:center;gap:10px;}
+.section-card .subtitle{font-size:13px;color:var(--text-muted);margin-bottom:14px;font-style:italic;}
+.section-card p{font-size:15px;margin-bottom:10px;}
+.learn-block p{margin-bottom:12px;}
+.learn-block strong{color:var(--gold-light);}
+.quote-box{background:linear-gradient(135deg,var(--navy-mid),var(--navy));border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;margin:14px 0;font-style:italic;color:var(--text);}
+.quote-box .author{font-style:normal;font-size:13px;color:var(--text-muted);margin-top:6px;}
+.reflection-group{margin:14px 0;}
+.reflection-group label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.scale-row{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 16px;}
+.scale-btn{width:38px;height:38px;border:2px solid var(--navy-border);border-radius:50%;background:var(--navy-mid);color:var(--text);font-weight:600;cursor:pointer;transition:var(--transition);font-size:13px;display:flex;align-items:center;justify-content:center;}
+.scale-btn:hover{border-color:var(--gold);}
+.scale-btn.selected{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.activity-card{background:linear-gradient(135deg,rgba(107,158,120,0.08),rgba(107,158,120,0.02));border:1px solid rgba(107,158,120,0.3);border-radius:var(--radius);padding:24px;margin-bottom:20px;}
+.activity-card h3{color:var(--success);margin-bottom:4px;}
+.activity-card .activity-subtitle{font-size:13px;color:var(--text-muted);font-style:italic;margin-bottom:16px;}
+.activity-item{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:8px;padding:16px;margin-bottom:12px;border-left:3px solid var(--success);}
+.activity-item h4{font-size:1em;margin-bottom:4px;color:var(--white);font-family:'Outfit',sans-serif;font-weight:600;}
+.activity-item p{font-size:14px;color:var(--text-light);margin-bottom:6px;}
+.activity-item .activity-meta{font-size:12px;color:var(--text-muted);}
+.acknowledge-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:var(--radius);padding:20px;margin:24px 0;text-align:center;}
+.acknowledge-box label{display:flex;align-items:center;justify-content:center;gap:12px;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:16px;color:var(--text);}
+.acknowledge-box input[type="checkbox"]{width:20px;height:20px;accent-color:var(--gold);}
+.unlock-msg{background:var(--gold-dim);border:1px solid rgba(201,169,110,0.3);border-radius:8px;padding:16px;margin-top:12px;text-align:center;font-size:14px;color:var(--gold);font-weight:500;display:none;}
+.takeaway-box{background:var(--gold-dim);border:1px solid rgba(201,169,110,0.25);border-radius:var(--radius);padding:20px;margin:16px 0;}
+.takeaway-box h4{font-size:1.05em;color:var(--gold);margin-bottom:10px;}
+.takeaway-box li{font-size:14px;margin-bottom:5px;color:var(--text);}
+.source-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:14px 16px;margin:16px 0;font-size:12px;color:var(--text-muted);}
+.source-box h4{font-size:13px;margin-bottom:6px;}
+.source-box li{margin-bottom:3px;}
+.why-box{background:var(--navy-light);border:1px solid var(--gold-dark);border-radius:var(--radius);padding:18px 20px;margin:16px 0;}
+.why-box h4{color:var(--gold);margin-bottom:8px;font-size:1em;}
+.why-box p{color:var(--text);}
+.report-section{text-align:left;background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:16px 20px;margin:16px 0;}
+.report-section h4{margin-bottom:8px;color:var(--white);}
+.report-section p{font-size:14px;line-height:1.7;color:var(--text);}
+.coaching-box{background:linear-gradient(135deg,rgba(201,169,110,0.15),rgba(201,169,110,0.05));border:2px solid var(--gold);border-radius:var(--radius);padding:32px;text-align:center;margin:28px 0;}
+.coaching-box h3{color:var(--gold);margin-bottom:10px;font-size:1.4em;}
+.coaching-box p{font-size:15px;color:var(--text-light);margin-bottom:14px;}
+.save-indicator{position:fixed;bottom:20px;right:20px;background:var(--success);color:var(--white);padding:10px 18px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transition:opacity 0.3s;z-index:999;}
+.save-indicator.show{opacity:1;}
+@media(max-width:640px){.welcome-hero h1{font-size:2em;}.screen{padding:20px 14px 80px;}.section-card,.card{padding:18px;}.journey-step{gap:12px;}.progress-bar{padding:8px 12px;}}
+</style>
+</head>
+<body>
+<div class="progress-bar">
+  <div class="logo" onclick="goHome()">Coaching 101</div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="progress-text" id="progressText">0 / 9</span>
+</div>
+<div class="save-indicator" id="saveIndicator">✓ Gemt</div>
+
+<div class="screen active" id="screen-welcome">
+  <div class="welcome-hero">
+    <h1>Coaching 101</h1>
+    <p class="tagline">FORDI KUN DE, DER VOKSER, FORBLIVER RELEVANTE</p>
+    <div class="gold-line"></div>
+    <p class="subtitle">En forskningsbaseret introduktion til coaching for executives — fordi de bedste ledere aldrig stopper med at udvikle sig.</p>
+  </div>
+  <div class="card" style="max-width:480px;margin:0 auto;">
+    <p style="font-size:14px;color:var(--text-light);text-align:center;margin-bottom:20px;">Dette forløb tager ca. 3-4 timer fordelt over flere sessioner. Det giver dig en solid forståelse af, hvad coaching er, hvad det kan — og om det er relevant for dig.</p>
+    <div class="form-group"><label>Dit navn</label><input type="text" id="clientName" placeholder="Dit fulde navn"></div>
+    <div class="form-group"><label>Din rolle / titel</label><input type="text" id="clientRole" placeholder="F.eks. CEO, CFO, VP"></div>
+    <div class="form-group"><label>Virksomhed</label><input type="text" id="clientCompany" placeholder="Din organisation"></div>
+    <div class="consent-box"><label><input type="checkbox" id="gdprConsent"><span>Mine besvarelser gemmes kun lokalt i min browser. Ingen data deles.</span></label></div>
+    <button class="btn btn-primary btn-full" onclick="startJourney()">Start mit forløb →</button>
+  </div>
+</div>
+
+<div class="screen" id="screen-journey">
+  <div style="text-align:center;margin-bottom:20px;">
+    <h2 id="journeyGreeting">Dit forløb</h2>
+    <p style="color:var(--text-light);font-size:1em;" id="journeySubtext">9 moduler. Forskningsbaseret. Direkte relevant for din ledelse.</p>
+  </div>
+  <div class="journey-map" id="journeyMap"></div>
+  <div style="text-align:center;margin-top:24px;">
+    <button class="btn btn-secondary btn-small" onclick="exportData()" style="margin:4px;">📤 Eksportér</button>
+    <button class="btn btn-secondary btn-small" onclick="document.getElementById('importFile').click()" style="margin:4px;">📥 Importér</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+  </div>
+</div>
+
+<div class="screen" id="screen-module">
+  <div class="module-header">
+    <button class="back-link" onclick="goHome()">← Tilbage til dit forløb</button>
+    <h2 id="moduleTitle"></h2>
+    <p class="module-desc" id="moduleDesc"></p>
+  </div>
+  <div id="moduleContent"></div>
+</div>
+
+<div class="screen" id="screen-report">
+  <div class="module-header">
+    <button class="back-link" onclick="goHome()">← Tilbage</button>
+    <h2>Din personlige coaching-profil</h2>
+    <p class="module-desc">Hvad du har lært om coaching — og om dig selv</p>
+  </div>
+  <div id="reportContent"></div>
+</div>
+<script>
+const MODULES = [
+{
+  id:'hvorfor',num:1,title:'Hvorfor coaching?',
+  subtitle:'Du er ikke kommet hertil ved at stå stille',
+  color:'var(--m1)',time:'20-25 min',
+  about:'Du sidder i toppen. Du har leveret resultater i årevis. Hvorfor skulle du have brug for coaching? Netop derfor. I dette modul ser vi på, hvad forskningen siger om de mest succesfulde ledere — og hvorfor de investerer i coaching, mens andre stopper med at udvikle sig.',
+  learn:[
+    {type:'text',content:'Marshall Goldsmith formulerer det præcist i titlen på sin bog: <strong>"What Got You Here Won\'t Get You There"</strong> (2007). De kompetencer, den drive og de vaner, der bragte dig til C-level, er ikke nødvendigvis dem, der holder dig relevant de næste 10 år. Verden ændrer sig. Kravene ændrer sig. Og de ledere, der ikke udvikler sig med, bliver overhalet.'},
+    {type:'text',content:'En undersøgelse fra Stanford/The Miles Group (2013) viste, at <strong>100% af de adspurgte CEOs mente, de ville have gavn af coaching — men kun 34% modtog det.</strong> Årsagen? En blanding af "jeg burde kunne klare det selv" og manglende forståelse af, hvad coaching faktisk er.'},
+    {type:'text',content:'Eric Schmidt, tidligere CEO for Google, sagde i et berømt interview: <strong>"Everyone needs a coach. Every famous athlete, every famous performer has somebody who is a coach."</strong> Han kaldte det "det bedste råd, han nogensinde fik" — og det kom fra en af Silicon Valleys mest succesfulde ledere.'},
+    {type:'quote',text:'The one thing people are never good at is seeing themselves as others see them. A coach really helps.',author:'Eric Schmidt, tidligere CEO, Google'},
+    {type:'text',content:'<strong>Hvorfor coaching virker for executives:</strong> Du er omgivet af mennesker, der har en interesse i at behage dig, undgå konflikt eller beskytte deres position. Jo højere du sidder, jo mindre ærlig feedback får du. En coach er den eneste person i dit professionelle liv, hvis eneste dagsorden er <strong>din udvikling</strong>.'},
+    {type:'text',content:'Forskning af de Haan et al. (2013, meta-analyse i Journal of Consulting Psychology) viser, at executive coaching har <strong>målbar positiv effekt på performance, selvbevidsthed, tilfredshed og stress-håndtering</strong>. ROI-studier fra Manchester Inc. viser, at virksomheder der investerer i coaching for executives ser et gennemsnitligt afkast på <strong>5.7x investeringen</strong>.'}
+  ],
+  reflections:[
+    {id:'hv_1',type:'scale',label:'Hvor åben er du — helt ærligt — over for tanken om professionel coaching? (1 = skeptisk, 10 = meget åben)',min:1,max:10},
+    {id:'hv_2',type:'textarea',label:'Hvad er din ærlige reaktion, når nogen foreslår, at du som leder kunne have gavn af en coach? Hvad tænker du?',placeholder:'Skriv din umiddelbare reaktion...'},
+    {id:'hv_3',type:'textarea',label:'Hvilke udfordringer har du lige nu som leder, som du ikke kan løse med de kompetencer, du allerede har?',placeholder:'Vær ærlig — ingen ser dette...'},
+    {id:'hv_4',type:'textarea',label:'Hvem giver dig ærlig feedback i dag? Reelt ærlig — uden filter?',placeholder:'Tænk efter...'}
+  ],
+  takeaways:[
+    'What got you here won\'t get you there. De kompetencer der bragte dig til toppen er ikke nok til at holde dig der.',
+    '100% af CEOs mener de ville have gavn af coaching — kun 34% får det. Gabet er enormt.',
+    'Jo højere du sidder, jo mindre ærlig feedback får du. En coach er dit ærlighedsspejl.',
+    'ROI på executive coaching: 5.7x investeringen i gennemsnit.'
+  ],
+  whyItMatters:'Forskning fra Center for Creative Leadership (2019) viser, at 40% af nye C-level executives fejler inden for 18 måneder — primært på grund af manglende tilpasningsevne og selvbevidsthed. Coaching er den mest effektive intervention mod netop dette.',
+  sources:[
+    'Goldsmith, M. (2007). What Got You Here Won\'t Get You There. Hyperion.',
+    'Stanford/The Miles Group (2013). CEO Coaching Survey.',
+    'de Haan, E. et al. (2013). Executive coaching outcome research. Journal of Consulting Psychology, 60(1), 78-88.',
+    'Manchester Inc. (2001). Executive Coaching Yields Return on Investment of Almost Six Times.'
+  ],
+  activities:[
+    {title:'Blind spot-øvelsen',desc:'Spørg 3 mennesker du stoler på (men som tør være ærlige): "Hvad tror du er min største blinde vinkel som leder?" Lyt uden at forsvare dig. Skriv svarene ned.',time:'3 samtaler denne uge',evidence:'Baseret på Johari Window (Luft & Ingham, 1955)'},
+    {title:'What Got You Here-listen',desc:'Skriv 5 styrker der bragte dig til din nuværende position. Vurdér derefter: er nogen af dem ved at blive svagheder? F.eks. "kontrol" der blev "mikromanagement".',time:'15 minutter',evidence:'Baseret på Goldsmith (2007)'},
+    {title:'Læs ét interview',desc:'Google "Eric Schmidt coach" og læs/se hans udtalelse om coaching. Læg mærke til: dette er en af verdens mest succesfulde tech-ledere. Hvad siger det om coaching?',time:'10 minutter',evidence:'Primærkilde: Schmidt, E. (2011)'}
+  ]
+},
+{
+  id:'hvadcoaching',num:2,title:'Hvad er coaching?',
+  subtitle:'Afgrænsning, roller og myter — det coaching IKKE er',
+  color:'var(--m2)',time:'20-25 min',
+  about:'De fleste executives har en uklar — og ofte forkert — forståelse af, hvad coaching er. I dette modul rydder vi op i myterne og giver dig en præcis forståelse af, hvad professionel coaching er, hvad det ikke er, og hvorfor forskellen er afgørende.',
+  learn:[
+    {type:'text',content:'<strong>Coaching er ikke terapi.</strong> Terapi fokuserer på at helbrede fortiden. Coaching fokuserer på at bygge fremtiden. Terapi spørger: "Hvorfor har du det svært?" Coaching spørger: "Hvad vil du opnå — og hvad holder dig tilbage?"'},
+    {type:'text',content:'<strong>Coaching er ikke rådgivning.</strong> En rådgiver (konsulent, mentor) giver dig svar baseret på deres ekspertise. En coach hjælper dig med at finde dine egne svar baseret på din kontekst. ICF (International Coaching Federation) definerer coaching som: <strong>"Partnering with clients in a thought-provoking and creative process that inspires them to maximize their personal and professional potential."</strong>'},
+    {type:'text',content:'<strong>Coaching er ikke mentoring.</strong> En mentor er typisk mere erfaren i dit felt og deler deres erfaringer. En coach behøver ikke at vide noget om din branche — fordi coachens ekspertise er <strong>processen</strong>, ikke indholdet. Det er en vigtig distinktion.'},
+    {type:'quote',text:'A coach is someone who tells you what you don\'t want to hear, who has you see what you don\'t want to see, so you can be who you have always known you could be.',author:'Tom Landry, Hall of Fame Football Coach'},
+    {type:'text',content:'<strong>De 4 kerneprincipper i professionel coaching:</strong> (1) <strong>Klienten er ekspert på sit eget liv.</strong> Coachen stiller spørgsmål — klienten finder svar. (2) <strong>Fokus er fremadrettet.</strong> Hvad vil du, og hvordan kommer du derhen? (3) <strong>Coachen er neutral.</strong> Ingen skjult dagsorden, ingen dom. (4) <strong>Ansvar ligger hos klienten.</strong> Coachen faciliterer — du handler.'},
+    {type:'text',content:'<strong>Myter der holder executives væk fra coaching:</strong> "Coaching er for folk der har problemer" (Nej — det er for folk der vil blive bedre). "Jeg burde kunne klare det selv" (Det kan du — coaching gør det hurtigere). "Det er blødt" (Nej — det er den hårdeste samtale du kan have, fordi den er fuldstændig ærlig).'}
+  ],
+  reflections:[
+    {id:'hc_1',type:'textarea',label:'Hvilken opfattelse af coaching havde du, før du læste dette modul? Er den ændret?',placeholder:'Før: ...\nNu: ...'},
+    {id:'hc_2',type:'textarea',label:'Hvad er forskellen på at få gode råd og at finde sine egne svar? Hvornår har du oplevet begge dele?',placeholder:'Reflektér over en konkret oplevelse...'},
+    {id:'hc_3',type:'scale',label:'Hvor meget af dit ledelsespotentiale tror du, du aktuelt udnytter? (1 = meget lidt, 10 = næsten alt)',min:1,max:10},
+    {id:'hc_4',type:'textarea',label:'Hvad ville du arbejde med, hvis du havde en professionel coach? Hvad ville du gerne blive bedre til?',placeholder:'Vær konkret...'}
+  ],
+  takeaways:[
+    'Coaching er ikke terapi, rådgivning eller mentoring. Det er en fremadrettet, spørgsmålsdrevet proces.',
+    'Coachen stiller spørgsmål — du finder svar. Du er ekspert på dit eget liv.',
+    'Coaching er for dem, der vil blive bedre — ikke for dem, der har problemer.',
+    '"Jeg burde klare det selv" er den farligste myte. De bedste bruger alle en coach.'
+  ],
+  whyItMatters:'ICF Global Coaching Study (2020) viser, at 86% af virksomheder der investerer i coaching rapporterer, at de fik deres investering tilbage eller mere. Den mest citerede effekt: forbedret selvbevidsthed og beslutningskraft hos lederne.',
+  sources:[
+    'International Coaching Federation (2020). ICF Global Coaching Study.',
+    'Whitmore, J. (2009). Coaching for Performance. Nicholas Brealey.',
+    'Goldsmith, M. (2007). What Got You Here Won\'t Get You There. Hyperion.',
+    'Grant, A.M. (2014). The efficacy of executive coaching. International Review of Industrial and Organizational Psychology, 29, 115-162.'
+  ],
+  activities:[
+    {title:'Afgrænsningsøvelse',desc:'Tænk på 3 udfordringer du har lige nu. Kategorisér hver: Er den bedst tjent med rådgivning (nogen der giver mig et svar), mentoring (nogen der har prøvet det), eller coaching (nogen der hjælper mig med at finde mit svar)?',time:'10 minutter',evidence:'Baseret på coaching vs. mentoring distinktion (Whitmore, 2009)'},
+    {title:'Spørg i stedet for at svare',desc:'Næste gang en medarbejder spørger dig om råd, prøv at stille 3 spørgsmål først, før du giver dit svar. "Hvad tænker du selv?" "Hvad har du allerede overvejet?" "Hvad ville du gøre, hvis du vidste det ikke kunne gå galt?"',time:'1 samtale',evidence:'Baseret på coachende ledelse (Whitmore, 2009)'},
+    {title:'Myte-test',desc:'Nævn begrebet "coaching" for 2-3 kolleger. Hvad er deres umiddelbare reaktion? Læg mærke til: matcher det myterne fra modulet?',time:'Uformel observation',evidence:'Baseret på coaching perception-forskning'}
+  ]
+},
+{
+  id:'selvbevidsthed',num:3,title:'Selvbevidsthed',
+  subtitle:'Det du ikke kan se, kan du ikke lede',
+  color:'var(--m3)',time:'25-30 min',
+  about:'Selvbevidsthed er udgangspunktet for al coaching — og for al god ledelse. I dette modul udforsker vi, hvad du ved om dig selv, hvad du ikke ved, og hvordan du systematisk kan øge din selvindsigt.',
+  learn:[
+    {type:'text',content:'Tasha Eurich, organisationspsykolog og forsker, viste i et studie med 5.000 deltagere, at <strong>95% af mennesker tror, de er selvbevidste — men kun 10-15% faktisk er det</strong> (<em>Insight</em>, 2018). Gabet er enormt. Og for executives er konsekvenserne alvorlige: beslutninger baseret på blinde vinkler, relationer der eroderer, og vækst der stagnerer.'},
+    {type:'text',content:'Eurich skelner mellem <strong>intern selvbevidsthed</strong> (kender du dine værdier, styrker, svagheder, mønstre?) og <strong>ekstern selvbevidsthed</strong> (ved du, hvordan andre opfatter dig?). Forskningen viser, at de to er <strong>uafhængige</strong> — du kan score højt på den ene og lavt på den anden. Begge er nødvendige.'},
+    {type:'text',content:'<strong>Johari Window</strong> (Luft & Ingham, 1955) er en af de mest anvendte modeller for selvbevidsthed. Den har fire felter: (1) <strong>Åben</strong> — det du og andre kender. (2) <strong>Blind</strong> — det andre ser, men du ikke ser. (3) <strong>Skjult</strong> — det du ved, men skjuler. (4) <strong>Ukendt</strong> — det hverken du eller andre kender endnu. Coaching arbejder primært med at reducere felt 2 og 4.'},
+    {type:'quote',text:'Until you make the unconscious conscious, it will direct your life and you will call it fate.',author:'Carl Jung'},
+    {type:'text',content:'<strong>Hvorfor selvbevidsthed er kritisk for executives:</strong> Korn Ferry (2018) analyserede 6.977 medarbejderes vurdering af 486 ledere og fandt, at ledere med høj selvbevidsthed havde teams med <strong>markant højere engagement, lavere turnover og bedre finansielle resultater</strong>. Manglende selvbevidsthed korrelerede direkte med dårlig ledelseseffektivitet.'},
+    {type:'text',content:'Selvbevidsthed er ikke selvkritik. Det er <strong>nysgerrig, ærlig observation</strong> — af dine mønstre, dine reaktioner, dine styrker og dine blinde vinkler. En professionel coach fungerer som et spejl: de hjælper dig med at se, hvad du ikke kan se selv.'}
+  ],
+  reflections:[
+    {id:'sb_1',type:'textarea',label:'Hvad er dine 3 største styrker som leder — ifølge dig selv? Og hvad tror du, dine medarbejdere ville sige?',placeholder:'Mine styrker (mit syn): ...\nMedarbejdernes syn (mit gæt): ...'},
+    {id:'sb_2',type:'textarea',label:'Hvad er din største blinde vinkel — det du ved, du ikke er god til at se? Eller det, du frygter, andre ser?',placeholder:'Vær modig her...'},
+    {id:'sb_3',type:'scale',label:'Hvor ofte beder du om ærlig, ufiltreret feedback? (1 = aldrig, 10 = regelmæssigt)',min:1,max:10},
+    {id:'sb_4',type:'textarea',label:'Beskriv et mønster i din ledelse, du genkender — noget du gør igen og igen, på godt eller ondt.',placeholder:'Mønstret: ...\nHvornår det hjælper: ...\nHvornår det skader: ...'}
+  ],
+  takeaways:[
+    '95% tror de er selvbevidste. 10-15% er det faktisk. Gabet er særligt farligt for executives.',
+    'Intern selvbevidsthed (kender du dig selv?) og ekstern (ved du, hvordan andre ser dig?) er uafhængige.',
+    'Dine blinde vinkler styrer dine beslutninger, indtil du gør dem synlige.',
+    'En coach er et professionelt spejl — den mest effektive vej til selvbevidsthed.'
+  ],
+  whyItMatters:'Eurich (2018) viser, at selvbevidste ledere er mere effektive, mere kreative og træffer bedre beslutninger. De er også bedre kommunikatorer, bygger stærkere relationer og har mere tilfredse teams. Selvbevidsthed er ikke et "nice to have" — det er en konkurrenceparameter.',
+  sources:[
+    'Eurich, T. (2018). Insight. Currency.',
+    'Luft, J. & Ingham, H. (1955). The Johari Window. UCLA.',
+    'Korn Ferry (2018). The Self-Aware Leader.',
+    'Goleman, D. (1995). Emotional Intelligence. Bantam.'
+  ],
+  activities:[
+    {title:'Johari-øvelsen',desc:'Vælg 5 adjektiver, der beskriver dig som leder. Bed 3 kollegaer om at vælge 5 adjektiver for dig. Sammenlign: Hvad overlapper? Hvad ser de, du ikke nævnte? Hvad nævnte du, de ikke ser?',time:'30 minutter + 3 samtaler',evidence:'Baseret på Johari Window (Luft & Ingham, 1955)'},
+    {title:'Reaktions-dagbog: 3 dage',desc:'Hver gang du mærker en stærk emotionel reaktion (irritation, glæde, frustration), stop og notér: Hvad skete? Hvad følte jeg? Hvorfor? Er det et mønster?',time:'3 dage',evidence:'Baseret på emotionel selvbevidsthed (Goleman, 1995)'},
+    {title:'Feedforward-øvelse',desc:'Goldsmith anbefaler "feedforward" i stedet for feedback: Spørg 3 mennesker: "Giv mig ét forslag til, hvad jeg kan gøre bedre fremover." Ingen diskussion, bare "tak."',time:'3 samtaler',evidence:'Baseret på Feedforward (Goldsmith, 2007)'}
+  ]
+}
+];
+MODULES.push(
+{
+  id:'spoerg',num:4,title:'Spørg bedre',
+  subtitle:'Den coachende samtale — spørgsmål der åbner tænkning',
+  color:'var(--m4)',time:'25-30 min',
+  about:'Det mest kraftfulde værktøj i coaching er ikke svar — det er spørgsmål. I dette modul lærer du den fundamentale coachende færdighed: at stille spørgsmål, der åbner tænkning i stedet for at lukke den. Det er også en af de stærkeste ledelseskompetencer, du kan mestre.',
+  learn:[
+    {type:'text',content:'Sir John Whitmore, grundlæggeren af moderne coaching-praksis, byggede sit system på én indsigt: <strong>"Coaching is unlocking people\'s potential to maximize their own performance. It is helping them to learn rather than teaching them"</strong> (<em>Coaching for Performance</em>, 2009). Nøglen? Spørgsmål.'},
+    {type:'text',content:'<strong>GROW-modellen</strong> er den mest anvendte coaching-struktur globalt. Den giver enhver samtale en klar bue: <strong>G</strong>oal (Hvad vil du opnå?), <strong>R</strong>eality (Hvad er situationen nu?), <strong>O</strong>ptions (Hvilke muligheder har du?), <strong>W</strong>ill (Hvad vil du gøre?). Simpelt, kraftfuldt, og direkte anvendeligt for ledere.'},
+    {type:'text',content:'<strong>Åbne vs. lukkede spørgsmål:</strong> Et lukket spørgsmål ("Har du talt med HR?") giver et ja/nej og lukker samtalen. Et åbent spørgsmål ("Hvad har du overvejet som næste skridt?") åbner tænkning. I coaching er 90%+ af spørgsmålene åbne. For ledere er dette en game-changer.'},
+    {type:'quote',text:'The most powerful question a leader can ask is: "What do you think?"',author:'Sammenfatning af coachende ledelse'},
+    {type:'text',content:'<strong>Kraftfulde coaching-spørgsmål:</strong> "Hvad vil du allerhelst opnå her?" / "Hvad holder dig tilbage?" / "Hvad har du allerede prøvet?" / "Hvad ville du gøre, hvis du ikke kunne fejle?" / "Hvad er den ene ting, der ville gøre den største forskel?" / "Hvad har du brug for fra mig?"'},
+    {type:'text',content:'<strong>Hvorfor dette er en ledelsesfærdighed:</strong> Michael Bungay Stanier (<em>The Coaching Habit</em>, 2016) viser, at ledere der stiller spørgsmål før de giver svar, opnår tre ting: (1) Bedre beslutninger (medarbejderen kender konteksten bedst). (2) Stærkere medarbejdere (de lærer at tænke selv). (3) Frigjort tid (du løser ikke alle problemer selv).'}
+  ],
+  reflections:[
+    {id:'sp_1',type:'scale',label:'Hvor ofte giver du svar vs. stiller spørgsmål, når nogen kommer med et problem? (1 = altid svar, 10 = altid spørgsmål først)',min:1,max:10},
+    {id:'sp_2',type:'textarea',label:'Skriv 5 spørgsmål, du typisk stiller dine medarbejdere. Vurdér: er de åbne eller lukkede?',placeholder:'1. ...\n2. ...\n3. ...\n4. ...\n5. ...'},
+    {id:'sp_3',type:'textarea',label:'Prøv at gennemgå GROW for en aktuel udfordring, du har: Goal — Reality — Options — Will. Hvad opdager du?',placeholder:'G (Hvad vil jeg opnå?): ...\nR (Hvad er situationen nu?): ...\nO (Hvilke muligheder har jeg?): ...\nW (Hvad vil jeg gøre?): ...'},
+    {id:'sp_4',type:'textarea',label:'Hvad sker der typisk, når du giver svar i stedet for at stille spørgsmål? Hvad er konsekvensen for den anden person?',placeholder:'Reflektér over effekten...'}
+  ],
+  takeaways:[
+    'Spørgsmål er coaching\'ens kerneværktøj. De åbner tænkning; svar lukker den.',
+    'GROW (Goal, Reality, Options, Will) er den simpleste og mest effektive coaching-struktur.',
+    'Ledere der stiller spørgsmål før svar, får bedre beslutninger og stærkere medarbejdere.',
+    '90% af coaching-spørgsmål er åbne. Øv dig i "hvad" og "hvordan" i stedet for "har du".'
+  ],
+  whyItMatters:'Google\'s Project Oxygen (2008, opdateret 2018) analyserede tusindvis af datapunkter og fandt, at den vigtigste adfærd hos Googles bedste ledere var: "Is a good coach." Ikke den mest teknisk dygtige. Ikke den mest strategiske. Den bedste coach. Og coaching starter med spørgsmål.',
+  sources:[
+    'Whitmore, J. (2009). Coaching for Performance. Nicholas Brealey.',
+    'Bungay Stanier, M. (2016). The Coaching Habit. Box of Crayons.',
+    'Google (2018). Project Oxygen: What Makes a Great Manager.',
+    'Grant, A.M. (2012). The efficacy of coaching. International Review of Industrial and Organizational Psychology.'
+  ],
+  activities:[
+    {title:'GROW en kollega',desc:'Vælg en medarbejder med en udfordring og brug GROW: "Hvad vil du opnå?" → "Hvad er situationen?" → "Hvilke muligheder ser du?" → "Hvad vil du gøre?" Hold dig til spørgsmål. Ingen råd.',time:'15-20 minutter',evidence:'Baseret på GROW (Whitmore, 2009)'},
+    {title:'Spørgsmål-først-dagen',desc:'Én hel dag: når nogen beder om dit input, stil mindst 2 spørgsmål, før du giver dit svar. "Hvad tænker du selv?" og "Hvad har du overvejet?" Observér hvad der sker.',time:'1 dag',evidence:'Baseret på The Coaching Habit (Bungay Stanier, 2016)'},
+    {title:'10 kraftfulde spørgsmål',desc:'Skriv en personlig liste med 10 åbne, kraftfulde spørgsmål, du vil bruge som leder. Hav dem ved hånden. Brug dem bevidst denne uge.',time:'10 minutter + praksis',evidence:'Baseret på coachende ledelse-forskning'}
+  ]
+},
+{
+  id:'lyt',num:5,title:'Lyt dybere',
+  subtitle:'Aktiv, empatisk og strategisk lytning',
+  color:'var(--m5)',time:'20-25 min',
+  about:'Spørgsmål er kun halvdelen. Den anden halvdel — og for mange den sværeste — er at lytte til svaret. I dette modul udforsker vi tre niveauer af lytning, og hvorfor de fleste executives kun mestrer det første.',
+  learn:[
+    {type:'text',content:'Stephen Covey identificerede det som <strong>vane 5: "Seek first to understand, then to be understood"</strong> (<em>The 7 Habits</em>, 1989). De fleste mennesker lytter ikke for at forstå. De lytter for at svare. For executives, der er vant til at have svar, er dette særligt svært — og særligt vigtigt.'},
+    {type:'text',content:'<strong>Tre niveauer af lytning</strong> (Co-Active Coaching, Whitworth et al., 2007): <strong>Niveau 1 — Intern lytning:</strong> Du hører ordene, men tænker på dit eget svar. ("Hvad skal jeg sige?") <strong>Niveau 2 — Fokuseret lytning:</strong> Du er fuldt til stede med den anden person. Du hører ordene OG det, der ligger bag dem. <strong>Niveau 3 — Global lytning:</strong> Du sanser energi, tonefald, pauser, kropsproget — det usagte.'},
+    {type:'text',content:'De fleste ledere opererer på <strong>niveau 1</strong> det meste af tiden. De venter på deres tur. De forbereder deres svar. De afbryder med løsninger. I coaching — og i god ledelse — er målet mindst <strong>niveau 2</strong>, ideelt niveau 3.'},
+    {type:'quote',text:'Most people do not listen with the intent to understand. They listen with the intent to reply.',author:'Stephen Covey, The 7 Habits (1989)'},
+    {type:'text',content:'<strong>Hvad dyb lytning gør:</strong> Forskning af Carl Rogers, grundlæggeren af klientcentreret terapi, viste at mennesker der oplever sig <strong>virkeligt lyttet til</strong> bliver mere kreative, mere ærlige og mere åbne for forandring. I en ledelseskontekst: dine medarbejdere giver dig bedre information, når de føler sig hørt.'},
+    {type:'text',content:'<strong>Praktisk lytning for executives:</strong> (1) <strong>Tæl til 3</strong> efter den anden er færdig med at tale, før du svarer. (2) <strong>Spejl</strong>: "Det jeg hører dig sige er..." (3) <strong>Stilhed er et værktøj.</strong> Pauser giver tænkerum. (4) <strong>Aflæs det usagte:</strong> tonefald, energi, det de IKKE siger.'}
+  ],
+  reflections:[
+    {id:'ly_1',type:'scale',label:'På hvilket niveau lytter du typisk i samtaler? (1 = niveau 1, altid i mit eget hoved, 10 = niveau 3, fanger alt)',min:1,max:10},
+    {id:'ly_2',type:'textarea',label:'Hvornår har du sidst oplevet at blive virkeligt lyttet til? Hvad gjorde det ved dig?',placeholder:'Beskriv situationen og følelsen...'},
+    {id:'ly_3',type:'textarea',label:'Hvornår afbryder du oftest? Hvad trigger det? Er det utålmodighed, at du allerede ved svaret, eller noget andet?',placeholder:'Vær ærlig med dine mønstre...'},
+    {id:'ly_4',type:'textarea',label:'Hvad kunne du opdage, hvis du lyttede mere og talte mindre i dine næste 3 samtaler?',placeholder:'Hvad tror du, du ville høre?'}
+  ],
+  takeaways:[
+    'De fleste ledere lytter på niveau 1 (intern) — og misser det vigtigste.',
+    'Niveau 2 (fokuseret) og 3 (global) kræver bevidst praksis — men det er her magien sker.',
+    'Mennesker der oplever sig virkeligt lyttet til, bliver mere kreative, ærlige og åbne.',
+    'Stilhed er et af de mest kraftfulde lytteværktøjer. Brug den bevidst.'
+  ],
+  whyItMatters:'Forskning af Zenger & Folkman (2016, Harvard Business Review) baseret på 3.492 ledere viste, at de bedste lyttere ikke bare var tavse — de stillede spørgsmål, der demonstrerede forståelse, og skabte tryghed. God lytning er ikke passivt. Det er den mest aktive ting, du kan gøre.',
+  sources:[
+    'Covey, S.R. (1989). The 7 Habits. Free Press.',
+    'Whitworth, L. et al. (2007). Co-Active Coaching. Davies-Black.',
+    'Rogers, C. (1961). On Becoming a Person. Houghton Mifflin.',
+    'Zenger, J. & Folkman, J. (2016). What Great Listeners Actually Do. Harvard Business Review.'
+  ],
+  activities:[
+    {title:'Tæl-til-3-reglen',desc:'I dine næste 5 samtaler: når den anden er færdig med at tale, tæl stille til 3 før du svarer. Observér: siger de mere? Siger de noget andet?',time:'5 samtaler',evidence:'Baseret på active listening (Rogers, 1961)'},
+    {title:'Spejlingsøvelse',desc:'I din næste samtale, spejl bevidst: "Det jeg hører dig sige er..." — og check om du forstod rigtigt. Læg mærke til: hvad sker der, når den anden føler sig hørt?',time:'1 samtale',evidence:'Baseret på reflective listening'},
+    {title:'Stilhedseksperiment',desc:'I din næste 1:1, prøv bevidst at være stille i 5-10 sekunder efter et vigtigt spørgsmål. Modstå trangen til at udfylde stilheden. Hvad sker der?',time:'1 samtale',evidence:'Baseret på coaching silence (Whitworth et al., 2007)'}
+  ]
+},
+{
+  id:'svaersamtale',num:6,title:'Den svære samtale',
+  subtitle:'Feedback og konfrontation med respekt og mod',
+  color:'var(--m6)',time:'25-30 min',
+  about:'De fleste executives er gode til den daglige drift og den strategiske dialog. Men den samtale, de fleste undviger, er den der virkelig tæller: ærlig feedback, konfrontation af underperformance, og de ubehagelige sandheder. Coaching ruster dig til dette.',
+  learn:[
+    {type:'text',content:'Kerry Patterson et al. (<em>Crucial Conversations</em>, 2012) fandt, at <strong>de mest effektive ledere er dem, der mestrer "crucial conversations"</strong> — samtaler hvor indsatsen er høj, meningerne er forskellige, og følelserne er stærke. De fandt også, at de fleste undgår dem.'},
+    {type:'text',content:'<strong>Hvorfor executives undgår svære samtaler:</strong> (1) Frygten for at ødelægge relationen. (2) Usikkerhed om, hvordan man griber den an. (3) Tanken "det løser sig nok af sig selv." (4) Den ubehagelige følelse af konflikt. Resultatet: problemer vokser, performance lider, og tilliden eroderer langsomt.'},
+    {type:'text',content:'Kim Scott (<em>Radical Candor</em>, 2017) giver rammen: <strong>Den bedste feedback kombinerer "caring personally" med "challenging directly."</strong> Hvis du kun carer, bliver det "ruinous empathy" — du er rar, men uærlig. Hvis du kun challenger, bliver det "obnoxious aggression." Begge dele sammen er "radical candor."'},
+    {type:'quote',text:'The single biggest problem in communication is the illusion that it has taken place.',author:'George Bernard Shaw'},
+    {type:'text',content:'<strong>SBI-modellen for feedback</strong> (Center for Creative Leadership): <strong>S</strong>ituation (hvornår og hvor?), <strong>B</strong>ehavior (hvad observerede du konkret?), <strong>I</strong>mpact (hvad var effekten?). "I mandagens møde (S), da du afbrød Peter tre gange (B), stoppede han med at bidrage (I)." Konkret, observerbart, uangribeligt.'},
+    {type:'text',content:'<strong>I coaching lærer du at give feedback, der lander.</strong> Ikke som kritik, men som en gave. Fordi den bedste feedback er den, der gives af nogen, der tydeligt vil den andens succes. Det er derfor en coach kan sige ting, ingen anden tør sige — fordi relationen bærer det.'}
+  ],
+  reflections:[
+    {id:'sv_1',type:'textarea',label:'Hvilken svær samtale udskyder du lige nu? Hvad er den? Og hvad er prisen for at udskyde den?',placeholder:'Samtalen: ...\nPrisen: ...'},
+    {id:'sv_2',type:'scale',label:'Hvor god er du til at give ærlig, direkte feedback med omsorg? (1 = undgår det, 10 = mestrer det)',min:1,max:10},
+    {id:'sv_3',type:'textarea',label:'Tænk på den bedste feedback, du nogensinde har modtaget. Hvad gjorde den god? Og den værste — hvad manglede?',placeholder:'Bedste: ...\nVærste: ...'},
+    {id:'sv_4',type:'textarea',label:'Skriv en SBI-feedback til nogen i dit team — baseret på en reel observation. (S: hvornår, B: hvad, I: hvad var effekten)',placeholder:'S: ...\nB: ...\nI: ...'}
+  ],
+  takeaways:[
+    'De mest effektive ledere mestrer svære samtaler. De fleste undgår dem — og betaler prisen.',
+    'Radical Candor: kombinér ægte omsorg med direkte udfordring. Begge dele er nødvendige.',
+    'SBI (Situation-Behavior-Impact) gør feedback konkret, observerbar og uangribelig.',
+    'En coach hjælper dig med at have de samtaler, ingen anden tør have med dig.'
+  ],
+  whyItMatters:'VitalSmarts-forskning (Patterson et al., 2012) viser, at organisationer hvor ledere mestrer svære samtaler har 50% lavere turnover, 40% bedre produktivitet og markant højere medarbejdertilfredshed. Evnen til ærlig dialog er direkte bundlinje.',
+  sources:[
+    'Patterson, K. et al. (2012). Crucial Conversations. McGraw-Hill.',
+    'Scott, K. (2017). Radical Candor. St. Martin\'s Press.',
+    'Center for Creative Leadership. The SBI Feedback Model.',
+    'Stone, D. & Heen, S. (2014). Thanks for the Feedback. Viking.'
+  ],
+  activities:[
+    {title:'Radical Candor i denne uge',desc:'Giv én person ærlig feedback denne uge — med ægte omsorg. Brug SBI: Situation, Behavior, Impact. Start med: "Jeg siger dette, fordi jeg vil din succes."',time:'1 samtale',evidence:'Baseret på Radical Candor (Scott, 2017)'},
+    {title:'Den udskudte samtale',desc:'Tag den samtale, du skrev om i refleksionen. Planlæg den. Skriv dine 3 hovedpunkter (SBI). Hav den inden ugens udgang.',time:'1 samtale',evidence:'Baseret på Crucial Conversations (Patterson, 2012)'},
+    {title:'Bed om feedback selv',desc:'Spørg 2 mennesker: "Er der noget, du gerne ville have sagt til mig, men ikke har gjort?" Giv dem plads. Modstå trangen til at forsvare dig.',time:'2 samtaler',evidence:'Baseret på feedforward (Goldsmith, 2007)'}
+  ]
+}
+);
+MODULES.push(
+{
+  id:'graenser',num:7,title:'Grænser og etik',
+  subtitle:'Hvornår er det coaching — og hvornår er det noget andet?',
+  color:'var(--m7)',time:'20-25 min',
+  about:'Coaching er kraftfuldt — men det er ikke alt. I dette modul lærer du at genkende, hvornår coaching er det rette svar, hvornår du har brug for noget andet, og hvorfor denne afgrænsning er tegn på professionalisme, ikke svaghed.',
+  learn:[
+    {type:'text',content:'ICF (International Coaching Federation) definerer klare etiske retningslinjer, herunder <strong>scope of practice</strong>: En coach arbejder med funktionelle mennesker, der ønsker at nå mål, forbedre performance eller skabe forandring. <strong>Coaching er IKKE behandling</strong> af psykisk sygdom, traumer, misbrug eller dybe personlighedsforstyrrelser.'},
+    {type:'text',content:'<strong>Hvornår er det coaching?</strong> Når en leder vil forbedre sin kommunikation, tage bedre beslutninger, navigere en karriereovergang, styrke sin ledelse, håndtere konflikter bedre, eller finde klarhed over retning og prioriteter. Alt dette er coaching-territorium.'},
+    {type:'text',content:'<strong>Hvornår er det IKKE coaching?</strong> Når lederen har klinisk depression, angst, burnout, misbrug eller traumer, der kræver behandling. Når problemer er organisatoriske (ikke personlige) og kræver konsulentbistand. Når lederen har brug for branchespecifik ekspertviden (mentoring/rådgivning).'},
+    {type:'quote',text:'Knowing when to refer is a sign of professional maturity, not weakness.',author:'ICF Code of Ethics'},
+    {type:'text',content:'<strong>Den coachende leder skal kende de samme grænser.</strong> Når du bruger coachende teknikker med dine medarbejdere, er der en vigtig grænse: du er deres leder, ikke deres terapeut. Hvis en medarbejder viser tegn på psykisk mistrivsel, er dit ansvar at <strong>anerkende, lytte, og henvise til professionel hjælp</strong> — ikke at forsøge at coache dem igennem det.'},
+    {type:'text',content:'<strong>Fortrolighed er fundamentet.</strong> I professionel coaching er det, der deles i rummet, fortroligt — medmindre det handler om fare for liv. For den coachende leder er det mere nuanceret: du kan ikke unhøre noget, din medarbejder fortæller dig. Vær transparent om det: "Det du deler med mig i denne samtale, holder jeg for mig selv — medmindre der er noget, der kræver handling."'}
+  ],
+  reflections:[
+    {id:'gr_1',type:'textarea',label:'Har du oplevet en situation, hvor du som leder forsøgte at "coache" nogen, men det egentlig krævede noget andet (terapi, rådgivning, HR)?',placeholder:'Beskriv situationen...'},
+    {id:'gr_2',type:'scale',label:'Hvor god er du til at genkende, hvornår en medarbejder har brug for professionel hjælp — ikke bare ledelse? (1 = svært, 10 = spotter det hurtigt)',min:1,max:10},
+    {id:'gr_3',type:'textarea',label:'Hvad er din holdning til fortrolighed i samtaler med medarbejdere? Har du en klar praksis?',placeholder:'Reflektér over din nuværende praksis...'},
+    {id:'gr_4',type:'textarea',label:'Hvad er den vigtigste grænse, du selv som executive bør sætte i relation til en coach?',placeholder:'Hvad vil du have ud af det — og hvad vil du IKKE?'}
+  ],
+  takeaways:[
+    'Coaching er for funktionelle mennesker med mål — ikke behandling af psykisk sygdom.',
+    'At kende grænsen mellem coaching og terapi/rådgivning er professionalisme, ikke svaghed.',
+    'Som coachende leder: anerkend, lyt, henvis — forsøg ikke at være terapeut.',
+    'Fortrolighed er fundamentet for enhver coaching-relation — vær tydelig om rammerne.'
+  ],
+  whyItMatters:'ICF\'s forskning viser, at de mest effektive coaching-relationer er dem med klare kontrakter, tydelige grænser og gensidig forståelse af scope. For executives gælder det samme: viden om, hvad coaching kan og ikke kan, gør dig til en bedre modtager af det.',
+  sources:[
+    'International Coaching Federation (2019). ICF Code of Ethics.',
+    'Bluckert, P. (2005). The foundations of a psychological approach to executive coaching. Industrial and Commercial Training, 37(4), 171-178.',
+    'Cavanagh, M. & Grant, A.M. (2014). The Solution-Focused Approach to Coaching. Routledge.',
+    'Hawkins, P. (2012). Creating a Coaching Culture. Open University Press.'
+  ],
+  activities:[
+    {title:'Grænse-tjek',desc:'Tænk på dine seneste 5 samtaler med medarbejdere. Kategorisér: Var det ledelse, coaching, rådgivning, eller noget der egentlig krævede professionel hjælp? Hvad opdager du?',time:'15 minutter',evidence:'Baseret på scope of practice (ICF, 2019)'},
+    {title:'Din fortrolighedspraksis',desc:'Formuler en klar sætning, du kan bruge, når du har en personlig samtale med en medarbejder: "Det vi taler om her, er mellem os — medmindre..." Skriv den ned. Brug den.',time:'10 minutter',evidence:'Baseret på ICF Code of Ethics'},
+    {title:'Kend dine ressourcer',desc:'Lav en liste over de professionelle ressourcer, du kan henvise til, når noget er uden for coaching-scope: HR, EAP (Employee Assistance Program), psykolog, læge, mentor. Hav listen klar.',time:'15 minutter',evidence:'Baseret på duty of care-forskning'}
+  ]
+},
+{
+  id:'kultur',num:8,title:'Coaching-kulturen',
+  subtitle:'At skabe et coachende miljø i din organisation',
+  color:'var(--m8)',time:'25-30 min',
+  about:'Coaching er ikke kun en 1:1-disciplin. Det kan blive en kultur — en måde at lede, kommunikere og udvikle mennesker på, der gennemsyrer hele organisationen. I dette modul ser vi på, hvad en coaching-kultur er, og hvordan du som C-level kan drive den.',
+  learn:[
+    {type:'text',content:'Peter Hawkins (<em>Creating a Coaching Culture</em>, 2012) definerer en coaching-kultur som en organisation, hvor <strong>"coaching is the predominant style of managing and working together"</strong>. Det er ikke et program. Det er ikke en workshop. Det er en fundamental ændring i, hvordan mennesker taler med hinanden.'},
+    {type:'text',content:'<strong>Hvad kendetegner en coaching-kultur?</strong> (1) Ledere stiller spørgsmål mere end de giver svar. (2) Feedback er hyppig, ærlig og todelt. (3) Fejl behandles som læringsmuligheder, ikke strafbare handlinger. (4) Medarbejdere tager ansvar for egen udvikling. (5) Konflikter adresseres tidligt og åbent.'},
+    {type:'text',content:'Bersin by Deloitte (2019) fandt, at organisationer med en stærk coaching-kultur har <strong>13% stærkere forretningsresultater, 39% stærkere medarbejderengagement og 32% lavere turnover</strong> end organisationer uden. Det er ikke bløde tal — det er hårde forretningsresultater.'},
+    {type:'quote',text:'Culture eats strategy for breakfast.',author:'Peter Drucker (tilskrevet)'},
+    {type:'text',content:'<strong>Din rolle som C-level er afgørende.</strong> Coaching-kulturen starter i toppen. Hvis du som CEO stiller spørgsmål i stedet for at diktere, giver ærlig feedback med omsorg, og viser sårbarhed om dine egne udviklingsområder — så giver du permission til hele organisationen at gøre det samme.'},
+    {type:'text',content:'<strong>De 4 trin til en coaching-kultur</strong> (Hawkins, 2012): (1) <strong>Model it</strong> — lev det selv. (2) <strong>Develop it</strong> — træn dine ledere i coachende samtaler. (3) <strong>Embed it</strong> — integrer det i processer (1:1, performance reviews, onboarding). (4) <strong>Measure it</strong> — mål effekten (engagement, turnover, performance).'}
+  ],
+  reflections:[
+    {id:'ku_1',type:'scale',label:'I hvor høj grad er din organisation i dag præget af en coaching-kultur? (1 = kommandokultur, 10 = ægte coaching-kultur)',min:1,max:10},
+    {id:'ku_2',type:'textarea',label:'Hvad er det dominerende samtalemønster i din organisation? Ordrer, spørgsmål, diskussion, eller noget andet?',placeholder:'Beskriv det ærligt...'},
+    {id:'ku_3',type:'textarea',label:'Hvis du skulle ændre én ting ved samtale-kulturen i din organisation — hvad ville det være?',placeholder:'Den ene ting: ...'},
+    {id:'ku_4',type:'textarea',label:'Hvem i dit ledelsesteam er allerede en naturlig "coach"? Hvad gør de? Og hvem ville have mest gavn af at udvikle den kompetence?',placeholder:'Naturlig coach: ...\nStørst potentiale: ...'}
+  ],
+  takeaways:[
+    'En coaching-kultur er ikke et program — det er en fundamental ændring i, hvordan mennesker taler sammen.',
+    'Organisationer med coaching-kultur har 13% bedre resultater, 39% højere engagement, 32% lavere turnover.',
+    'Kulturen starter i toppen. Hvis du lever det, giver du permission til hele organisationen.',
+    '4 trin: Model it → Develop it → Embed it → Measure it.'
+  ],
+  whyItMatters:'McKinsey (2020) identificerer "coaching capability" som en af de 4 mest kritiske ledelseskompetencer for organisationer, der skal navigere kompleksitet og forandring. Det er ikke en nice-to-have. Det er en strategisk kapabilitet.',
+  sources:[
+    'Hawkins, P. (2012). Creating a Coaching Culture. Open University Press.',
+    'Bersin by Deloitte (2019). High-Impact Leadership Development.',
+    'McKinsey & Company (2020). The Organization Blog: Building Coaching Capabilities.',
+    'Clutterbuck, D. & Megginson, D. (2005). Making Coaching Work. CIPD.'
+  ],
+  activities:[
+    {title:'Kultur-audit',desc:'Observer denne uge: Hvad sker der, når nogen laver en fejl i din organisation? Bliver det straffet, ignoreret, eller brugt som læring? Det er den mest ærlige indikator for din kultur.',time:'1 uge observation',evidence:'Baseret på psychological safety (Edmondson, 2019)'},
+    {title:'Spørgsmål i ledelsesteamet',desc:'Ved dit næste ledelsesteam-møde, stil ét coachende spørgsmål i stedet for at give en instruks. F.eks.: "Hvad tror I er den rigtige tilgang her?" Observér dynamikken.',time:'1 møde',evidence:'Baseret på coachende ledelse (Whitmore, 2009)'},
+    {title:'Coaching-buddy',desc:'Par to ledere i dit team og bed dem være "coaching-buddies" i 4 uger: 30 min om ugen, hvor de GROW\'er hinanden på en aktuel udfordring. Evaluer efter 4 uger.',time:'Opsætning: 30 min',evidence:'Baseret på peer coaching (Parker et al., 2008)'}
+  ]
+},
+{
+  id:'handling',num:9,title:'Fra selvindsigt til handling',
+  subtitle:'Hvad nu? Din vej videre',
+  color:'var(--m9)',time:'25-30 min',
+  about:'Du har nu en solid forståelse af, hvad coaching er, hvad det kan, og hvordan du kan bruge coachende principper i din ledelse. Spørgsmålet er: hvad gør du med det? I dette afsluttende modul samler du trådene og overvejer dit næste skridt.',
+  learn:[
+    {type:'text',content:'Du har i dette forløb lært det, de fleste executives aldrig lærer: grundprincipperne bag professionel coaching. Du har reflekteret over din selvbevidsthed, øvet spørgeteknik, udforsket lytning, og konfronteret svære samtaler. <strong>Men her er den vigtige sandhed: det du har lært er overfladen.</strong>'},
+    {type:'text',content:'Selvcoaching — det du har gjort i dette forløb — er værdifuldt og vigtigt. Det giver dig refleksionsevne, et sprog for udvikling og konkrete værktøjer. Men det har en <strong>fundamental begrænsning: du kan ikke se dine egne blinde vinkler.</strong> Det er som at forsøge at læse etiketten indefra flasken.'},
+    {type:'text',content:'<strong>Hvad en professionel coaching-relation giver dig, som selvcoaching ikke kan:</strong> (1) En der ser det, du ikke ser — og tør sige det. (2) Accountability — nogen der holder dig fast på dine forpligtelser. (3) Provokation — nogen der udfordrer din tænkning, når du er for komfortabel. (4) Tempo — du udvikler dig hurtigere med en professionel ved din side.'},
+    {type:'quote',text:'A coach is the person who sees your potential even when you can\'t see it yourself — and won\'t let you settle for less.',author:'Sammenfatning af coaching-filosofi'},
+    {type:'text',content:'<strong>De mest succesfulde executives i verden har en coach.</strong> Ikke fordi de er svage. Men fordi de forstår, at kontinuerlig vækst kræver et perspektiv udefra. Bill Gates, Eric Schmidt, Oprah Winfrey, Jeff Bezos — de har alle investeret i coaching. Spørgsmålet er ikke, om du har "brug for" det. Spørgsmålet er: <strong>vil du forblive relevant de næste 10 år?</strong>'},
+    {type:'text',content:'<strong>De tre niveauer af næste skridt:</strong> (1) <strong>Integrer det du har lært</strong> — brug GROW, spørg mere, lyt dybere, giv ærlig feedback. (2) <strong>Skab coaching-kultur</strong> — model det, og inspirer dit team til at gøre det samme. (3) <strong>Investér i en professionel coaching-relation</strong> — den mest effektive accelerator for din personlige og professionelle udvikling.'}
+  ],
+  reflections:[
+    {id:'ha_1',type:'textarea',label:'Hvad er dit vigtigste takeaway fra hele dette forløb? Hvad har overrasket dig mest?',placeholder:'Skriv det i dine egne ord...'},
+    {id:'ha_2',type:'textarea',label:'Hvad vil du konkret gøre anderledes fra i morgen — i din ledelse og i dine samtaler?',placeholder:'3 konkrete ting:\n1. ...\n2. ...\n3. ...'},
+    {id:'ha_3',type:'scale',label:'Hvor motiveret er du for at investere i en professionel coaching-relation? (1 = ikke relevant, 10 = klar)',min:1,max:10},
+    {id:'ha_4',type:'textarea',label:'Hvis du havde en professionel coach — hvad ville du arbejde med? Hvad er dit vigtigste udviklingspunkt som leder?',placeholder:'Vær ærlig og specifik...'},
+    {id:'ha_5',type:'textarea',label:'Skriv et brev til dig selv om 6 måneder: Hvad har du ændret? Hvad har du opnået? Hvem er du blevet?',placeholder:'Kære mig om 6 måneder...'}
+  ],
+  takeaways:[
+    'Selvcoaching er værdifuldt — men det kan ikke erstatte et professionelt perspektiv udefra.',
+    'Du kan ikke se dine egne blinde vinkler. En coach er dit professionelle spejl.',
+    'De mest succesfulde ledere i verden investerer i coaching. Det er ikke svaghed — det er strategi.',
+    'Tre niveauer: Integrer det du har lært → Skab coaching-kultur → Investér i en professionel relation.'
+  ],
+  whyItMatters:'Forskning fra Harvard Business Review (2009) viser, at de mest citerede årsager til at executives søger coaching er: at udvikle high potentials (48%), forbedre ledelseseffektivitet (36%), og facilitere overgange (32%). Fælles for alle: det er proaktive investeringer i vækst, ikke reaktive løsninger på problemer.',
+  sources:[
+    'Coutu, D. & Kauffman, C. (2009). What Can Coaches Do for You? Harvard Business Review.',
+    'Goldsmith, M. (2007). What Got You Here Won\'t Get You There. Hyperion.',
+    'de Haan, E. (2008). Relational Coaching. Wiley.',
+    'Grant, A.M. (2014). The Efficacy of Executive Coaching. International Review of Industrial and Organizational Psychology.'
+  ],
+  activities:[
+    {title:'30-dages praksis',desc:'Vælg 3 ting fra dette forløb og praktisér dem bevidst de næste 30 dage: F.eks. GROW i 1:1-samtaler, spørgsmål-først, eller tæl-til-3-lytning. Evaluér efter 30 dage.',time:'30 dage',evidence:'Baseret på habit formation (Lally et al., 2010)'},
+    {title:'Coaching-kultur kickstart',desc:'Del dine vigtigste indsigter fra dette forløb med dit ledelsesteam. Foreslå én ting I kan gøre som team: f.eks. starte alle møder med et spørgsmål i stedet for en status.',time:'1 møde',evidence:'Baseret på Creating a Coaching Culture (Hawkins, 2012)'},
+    {title:'Book en samtale',desc:'Hvis noget i dette forløb har resoneret — overvej at tage det næste skridt: en uforpligtende samtale med en professionel coach. Ikke fordi du skal. Men fordi du er den type leder, der aldrig stopper med at vokse.',time:'10 minutter at booke',evidence:'Baseret på executive coaching ROI-forskning'}
+  ]
+}
+);
+const STORE_KEY='friisnaes_coaching101_v2';
+let state={version:'2.0.0',client:{name:'',role:'',company:'',consent:false,consentTime:null},modules:{},acknowledged:{},completed:[],created:null,lastUpdated:null};
+
+function init(){loadState();if(state.client.name&&state.client.consent)goHome();else showScreen('welcome');}
+function loadState(){try{const s=localStorage.getItem(STORE_KEY);if(s)state={...state,...JSON.parse(s)};}catch(e){}}
+function saveState(){try{state.lastUpdated=new Date().toISOString();localStorage.setItem(STORE_KEY,JSON.stringify(state));const el=document.getElementById('saveIndicator');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1200);}catch(e){}}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const sc=document.getElementById('screen-'+id);if(sc)sc.classList.add('active');window.scrollTo(0,0);updateProgress();}
+function goHome(){renderJourney();showScreen('journey');}
+function updateProgress(){const done=(state.completed||[]).length;document.getElementById('progressFill').style.width=((done/MODULES.length)*100)+'%';document.getElementById('progressText').textContent=done+' / '+MODULES.length;}
+function getUnlockedModules(){const u=[MODULES[0].id];for(let i=0;i<MODULES.length-1;i++){if(state.acknowledged&&state.acknowledged[MODULES[i].id])u.push(MODULES[i+1].id);}return u;}
+function isUnlocked(id){return getUnlockedModules().includes(id);}
+function isAcknowledged(id){return state.acknowledged&&state.acknowledged[id];}
+
+function startJourney(){
+  const name=document.getElementById('clientName').value.trim();
+  const role=document.getElementById('clientRole').value.trim();
+  const company=document.getElementById('clientCompany').value.trim();
+  const consent=document.getElementById('gdprConsent').checked;
+  if(!name)return alert('Indtast venligst dit navn.');
+  if(!consent)return alert('Acceptér venligst betingelserne.');
+  state.client={name,role,company,consent:true,consentTime:new Date().toISOString()};
+  if(!state.created)state.created=new Date().toISOString();
+  saveState();goHome();
+}
+
+function renderJourney(){
+  const name=state.client.name?state.client.name.split(' ')[0]:'';
+  document.getElementById('journeyGreeting').textContent=name?'Hej, '+name:'Dit forløb';
+  const allDone=MODULES.every(m=>isAcknowledged(m.id));
+  document.getElementById('journeySubtext').textContent=allDone?'Du har gennemført hele forløbet. Din coaching-profil venter.':'9 moduler. Forskningsbaseret. Direkte relevant for din ledelse.';
+  const map=document.getElementById('journeyMap');map.innerHTML='';
+  MODULES.forEach((m,i)=>{
+    const unlocked=isUnlocked(m.id);const done=isAcknowledged(m.id);const isLast=i===MODULES.length-1;
+    const step=document.createElement('div');step.className='journey-step';
+    step.innerHTML=`<div class="journey-line"><div class="journey-dot ${done?'done':unlocked?'active':'locked'}">${done?'✓':m.num}</div>${!isLast?`<div class="journey-connector ${done?'done':''}"></div>`:''}</div><div class="journey-content ${unlocked?'':'locked'}" onclick="${unlocked?`openModule('${m.id}')`:'void(0)'}"><h3>${m.title}</h3><p>${m.subtitle}</p><div class="journey-meta"><span class="badge" style="background:${done?'rgba(107,158,120,0.15);color:var(--success)':unlocked?'rgba(201,169,110,0.15);color:var(--gold)':'rgba(255,255,255,0.06);color:var(--text-muted)'}">${done?'✓ Gennemført':unlocked?'● Åben':'🔒 Låst'}</span><span style="color:var(--text-muted);">~${m.time}</span></div></div>`;
+    map.appendChild(step);
+  });
+  if(allDone){const rb=document.createElement('div');rb.style.cssText='text-align:center;margin-top:24px;';rb.innerHTML=`<button class="btn btn-primary" onclick="showReport()" style="padding:16px 36px;font-size:16px;">📄 Se din coaching-profil →</button>`;map.appendChild(rb);}
+}
+
+function openModule(id){
+  const m=MODULES.find(mod=>mod.id===id);if(!m||!isUnlocked(id))return;
+  document.getElementById('moduleTitle').innerHTML=`<span style="color:${m.color}">Modul ${m.num}:</span> ${m.title}`;
+  document.getElementById('moduleDesc').textContent=m.subtitle;
+  const c=document.getElementById('moduleContent');c.innerHTML='';
+  c.innerHTML+=`<div class="section-card"><h3>📖 Det her handler modulet om</h3><p style="margin-top:8px;">${m.about}</p></div>`;
+  let lh='<div class="section-card"><h3>🧠 LEARN</h3><p class="subtitle">Viden baseret på dokumenteret forskning</p><div class="learn-block">';
+  m.learn.forEach(item=>{if(item.type==='text')lh+=`<p>${item.content}</p>`;if(item.type==='quote')lh+=`<div class="quote-box">"${item.text}"<div class="author">— ${item.author}</div></div>`;});
+  lh+='</div></div>';c.innerHTML+=lh;
+  let rh='<div class="section-card"><h3>💭 Refleksion</h3><p class="subtitle">Dine ærlige svar er kun for dig — og de er det vigtigste i forløbet</p>';
+  m.reflections.forEach(r=>{
+    const saved=(state.modules?.[m.id]?.[r.id])||'';
+    if(r.type==='textarea'){rh+=`<div class="reflection-group"><label>${r.label}</label><textarea id="ref_${r.id}" placeholder="${r.placeholder||''}" onchange="saveRef('${m.id}','${r.id}',this.value)">${saved}</textarea></div>`;}
+    else if(r.type==='scale'){let btns='';for(let i=r.min;i<=r.max;i++)btns+=`<button class="scale-btn ${parseInt(saved)===i?'selected':''}" onclick="pickScale('${m.id}','${r.id}',${i},this)">${i}</button>`;rh+=`<div class="reflection-group"><label>${r.label}</label><div class="scale-row">${btns}</div></div>`;}
+  });rh+='</div>';c.innerHTML+=rh;
+  let th='<div class="takeaway-box"><h4>✨ Vigtigste takeaways</h4><ul>';m.takeaways.forEach(t=>th+=`<li>${t}</li>`);th+='</ul></div>';c.innerHTML+=th;
+  c.innerHTML+=`<div class="why-box"><h4>🎯 Hvorfor dette giver mening</h4><p style="margin-top:6px;">${m.whyItMatters}</p></div>`;
+  let sh='<div class="source-box"><h4>📚 Kilder</h4><ul>';m.sources.forEach(s=>sh+=`<li>${s}</li>`);sh+='</ul></div>';c.innerHTML+=sh;
+  let ah=`<div class="activity-card"><h3>🚀 Handling</h3><p class="activity-subtitle">Coaching er en praksis. Vælg mindst én aktivitet og gør den denne uge.</p>`;
+  m.activities.forEach(a=>{ah+=`<div class="activity-item"><h4>${a.title}</h4><p>${a.desc}</p><div class="activity-meta">⏱ ${a.time} · 📖 ${a.evidence}</div></div>`;});
+  ah+='</div>';c.innerHTML+=ah;
+  const acked=isAcknowledged(m.id);const idx=MODULES.findIndex(mod=>mod.id===m.id);const nextMod=MODULES[idx+1];
+  const nextTitle=nextMod?`Modul ${nextMod.num}: ${nextMod.title}`:'din coaching-profil';
+  c.innerHTML+=`<div class="acknowledge-box"><label><input type="checkbox" id="ack_${m.id}" ${acked?'checked disabled':''} onchange="ackModule('${m.id}')"><span>${acked?'Du har gennemført dette modul':'Jeg har gennemgået modulet og er klar til næste'}</span></label><div class="unlock-msg" id="unlockMsg_${m.id}" ${acked?'style="display:block;"':''}>${acked?`✅ Gennemført! ${nextMod?`<strong>${nextTitle}</strong> er nu låst op.`:'Du har gennemført hele forløbet!'}`:`Når du krydser af, låses <strong>${nextTitle}</strong> op.`}</div>${acked?`<button class="btn btn-primary" onclick="${nextMod?`openModule('${nextMod.id}')`:'showReport()'}" style="margin-top:12px;width:auto;">${nextMod?`Gå til ${nextTitle} →`:'📄 Se din coaching-profil →'}</button>`:''}</div>`;
+  showScreen('module');
+}
+
+function saveRef(mid,rid,val){if(!state.modules)state.modules={};if(!state.modules[mid])state.modules[mid]={};state.modules[mid][rid]=val;saveState();}
+function pickScale(mid,rid,val,btn){btn.parentElement.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');saveRef(mid,rid,val.toString());}
+function ackModule(id){const cb=document.getElementById('ack_'+id);if(!cb.checked)return;cb.disabled=true;if(!state.acknowledged)state.acknowledged={};state.acknowledged[id]=new Date().toISOString();if(!state.completed)state.completed=[];if(!state.completed.includes(id))state.completed.push(id);saveState();openModule(id);}
+
+function showReport(){
+  const c=document.getElementById('reportContent');c.innerHTML='';
+  const n=state.client.name.split(' ')[0];
+  c.innerHTML+=`<div class="card" style="text-align:center;border:2px solid var(--gold);"><h2 style="color:var(--gold);">⚡ ${n}, din coaching-profil</h2><div class="gold-line"></div><p>Du har gennemført alle 9 moduler af Coaching 101. Du har nu en forståelse af coaching, som de fleste executives aldrig opnår.</p><p style="font-size:14px;color:var(--text-muted);margin-top:8px;">Genereret ${new Date().toLocaleDateString('da-DK')} · ${state.client.role||''} ${state.client.company?'· '+state.client.company:''}</p></div>`;
+
+  // Reflections by module
+  c.innerHTML+=`<div class="section-card"><h3>📋 Din rejse — vigtigste refleksioner</h3><p class="subtitle">Dine egne svar fra hvert modul</p></div>`;
+  MODULES.forEach(m=>{
+    let mh=`<div class="section-card"><h3 style="color:${m.color};">Modul ${m.num}: ${m.title}</h3>`;
+    const md=state.modules?.[m.id]||{};
+    if(Object.keys(md).length>0){
+      m.reflections.forEach(r=>{const v=md[r.id];if(v){mh+=`<p style="font-size:12px;color:var(--text-muted);margin-top:6px;"><strong>${r.label}</strong></p><p style="font-size:14px;padding:8px 12px;background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:6px;margin-bottom:4px;">${v}</p>`;}});
+    } else {mh+=`<p style="color:var(--text-muted);font-style:italic;font-size:13px;">Ingen besvarelser gemt.</p>`;}
+    mh+='</div>';c.innerHTML+=mh;
+  });
+
+  // Coaching readiness
+  const openness=state.modules?.['hvorfor']?.['hv_1']||'?';
+  const motivation=state.modules?.['handling']?.['ha_3']||'?';
+  const devpoint=state.modules?.['handling']?.['ha_4']||'';
+  c.innerHTML+=`<div class="section-card"><h3 style="color:var(--gold);">🎯 Din coaching-readiness</h3>
+    <div class="report-section"><h4>Åbenhed ved start</h4><p>Du scorede <strong>${openness}/10</strong> på åbenhed over for coaching i modul 1.</p></div>
+    <div class="report-section"><h4>Motivation ved afslutning</h4><p>Du scorede <strong>${motivation}/10</strong> på motivation for en professionel coaching-relation i modul 9.</p></div>
+    ${devpoint?`<div class="report-section"><h4>Dit vigtigste udviklingspunkt</h4><p>"${devpoint}"</p></div>`:''}
+  </div>`;
+
+  // What you learned
+  c.innerHTML+=`<div class="section-card"><h3>🧰 Dit coaching-toolkit</h3><p class="subtitle">De værktøjer og indsigter du tager med dig</p>
+    <div class="report-section"><h4>Spørgeteknik</h4><p>GROW-modellen (Goal → Reality → Options → Will). Åbne spørgsmål der åbner tænkning. Spørg før du svarer.</p></div>
+    <div class="report-section"><h4>Lytning</h4><p>Tre niveauer: intern → fokuseret → global. Tæl-til-3-reglen. Spejling. Strategisk stilhed.</p></div>
+    <div class="report-section"><h4>Feedback</h4><p>SBI-modellen (Situation → Behavior → Impact). Radical Candor: omsorg + direkte udfordring. Den svære samtale som ledelsesinvestering.</p></div>
+    <div class="report-section"><h4>Selvbevidsthed</h4><p>Johari Window. Intern vs. ekstern selvbevidsthed. Feedforward. Blinde vinkler som lederens største risiko.</p></div>
+    <div class="report-section"><h4>Coaching-kultur</h4><p>Model it → Develop it → Embed it → Measure it. Spørgsmål som ledelsesstil. Fejl som læring.</p></div>
+  </div>`;
+
+  // The truth
+  c.innerHTML+=`<div class="section-card" style="border-color:var(--gold);"><h3 style="color:var(--gold);">💡 Den vigtige sandhed</h3><p style="font-size:15px;line-height:1.8;margin-top:8px;">Det du har lært i dette forløb er værdifuldt — og det er overfladen. Selvcoaching kan give dig refleksion, sprog og værktøjer. Men det kan ikke give dig det, en professionel coaching-relation kan: <strong>et spejl der ser dine blinde vinkler, en stemme der udfordrer din komfortzone, og en partner der holder dig fast på dine forpligtelser.</strong></p><p style="font-size:15px;line-height:1.8;margin-top:12px;">De mest succesfulde ledere i verden har alle én ting til fælles: <strong>de stoppede aldrig med at vokse.</strong> Og de forstod, at vækst accelereres med den rigtige person ved sin side.</p></div>`;
+
+  // Coaching CTA
+  c.innerHTML+=`<div class="coaching-box"><h3>💬 Er du klar til næste skridt?</h3><p style="font-size:16px;margin-bottom:8px;">En uforpligtende samtale. 30 minutter. Ingen salgstale.</p><p>Bare en ærlig dialog om, hvor du er, hvor du vil hen — og om coaching er det rigtige næste skridt for dig. Med en partner, der har gennemført over 15.000 coaching-sessioner med C-level executives.</p><a href="mailto:thomas@friisnaes.dk?subject=Coaching%20101%20%E2%80%94%20interesse%20for%20en%20samtale&body=Hej%20Thomas%2C%0A%0AJeg%20har%20gennemf%C3%B8rt%20Coaching%20101-forl%C3%B8bet%20og%20er%20interesseret%20i%20en%20uforpligtende%20samtale%20om%20coaching.%0A%0AMit%20vigtigste%20udviklingspunkt%3A%20${encodeURIComponent(devpoint||'[udfyldes]')}%0A%0AVenlig%20hilsen%2C%0A${encodeURIComponent(state.client.name)}%0A${encodeURIComponent(state.client.role||'')}%20${encodeURIComponent(state.client.company?'· '+state.client.company:'')}" class="btn btn-primary" style="width:auto;text-decoration:none;padding:16px 32px;font-size:16px;">📧 Book 30 minutters uforpligtende samtale</a><p style="font-size:12px;color:var(--text-muted);margin-top:12px;">Thomas Friisnæs · Personal Excellence Partner · 20+ års erfaring · 15.000+ sessions<br>friisnaes.dk</p></div>`;
+
+  c.innerHTML+=`<div style="text-align:center;margin-top:30px;"><button class="btn btn-primary" onclick="exportData()" style="width:auto;">📤 Download dine besvarelser</button></div><div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--navy-border);font-size:13px;color:var(--text-muted);"><p style="font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);font-weight:600;">Friisnæs — Karakter · Disciplin · Klarhed</p><p style="margin-top:4px;">Udviklet af Thomas Friisnæs · Personal Excellence Partner · friisnaes.dk</p></div>`;
+  showScreen('report');
+}
+
+function exportData(){const exp={framework:'Coaching 101',version:state.version,exported:new Date().toISOString(),data:state};const blob=new Blob([JSON.stringify(exp,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`Coaching101_${state.client.name.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(url);}
+function importData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=(e)=>{try{const imp=JSON.parse(e.target.result);if(imp.data&&imp.framework==='Coaching 101'){state={...state,...imp.data};saveState();goHome();alert('Data importeret.');}else{alert('Ugyldig fil.');}}catch(err){alert('Fejl: '+err.message);}};reader.readAsText(file);event.target.value='';}
+
+init();
+</script>
+</body>
+</html>

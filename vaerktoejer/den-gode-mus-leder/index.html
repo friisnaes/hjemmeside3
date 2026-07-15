@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="2.0.0">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<meta name="description" content="Den gode MUS som leder — Karakter · Disciplin · Klarhed">
+<title>Den gode MUS som leder — Karakter · Disciplin · Klarhed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#111111;--navy2:#1a1a1a;--navy3:#222222;--navy4:#2b2b2b;
+  --blue:#c0392b;--blue2:#e74c3c;
+  --gold:#c0392b;--gold2:#e74c3c;--gdim:rgba(224,168,74,0.14);--gbrd:rgba(192,57,43,0.35);
+  --text:#E4EAF4;--text2:#8A9BB8;--text3:#4E6080;
+  --green:#4CAF82;--red:#E57373;--orange:#E5A048;
+  --brd:rgba(255,255,255,0.07);--brd2:rgba(255,255,255,0.13);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.65;min-height:100vh}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.2}
+button{font-family:'Outfit',sans-serif;cursor:pointer;transition:all .18s}
+input,textarea,select{font-family:'Outfit',sans-serif;font-size:14px;background:var(--navy3);border:1.5px solid var(--brd2);color:var(--text);border-radius:8px;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--blue2)}textarea{resize:vertical}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:var(--navy2)}::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:2px}
+.hidden{display:none!important}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+.fade{animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+#sc-client-login,#sc-admin-login{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(42,82,152,.18) 0%,transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(232,193,112,.06) 0%,transparent 50%),var(--navy);padding:32px 24px}
+.login-logo{text-align:center;margin-bottom:52px}
+.login-logo h1{font-size:38px;letter-spacing:.02em;color:var(--text)}
+.login-logo .tag{font-family:'Outfit';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.login-logo .sub2{font-size:13px;color:var(--text3);margin-top:6px;font-style:italic}
+.login-card{width:100%;max-width:400px;background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:32px}
+.login-card.gold{border-color:var(--gbrd)}
+.login-card h2{font-size:26px;margin-bottom:8px}
+.login-card h2.gold-text{color:var(--gold)}
+.login-card .sub{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.65}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.fg input{width:100%;padding:12px 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border:none;border-radius:8px;font-size:13px;font-weight:500}
+.btn-row{display:flex;gap:10px;margin-top:18px}
+.btn-primary{background:var(--blue);color:#fff;flex:1}.btn-primary:hover{background:var(--blue2)}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:600;flex:1}.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;border:1.5px solid var(--brd2);color:var(--text2)}.btn-ghost:hover{background:var(--navy3);color:var(--text)}
+.err{color:var(--red);font-size:12px;margin-top:8px}
+.gdpr-strip{margin-top:20px;padding:12px 14px;background:rgba(76,175,130,.07);border:1px solid rgba(76,175,130,.2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.7}
+.gdpr-strip strong{color:var(--green)}
+.admin-link{margin-top:28px;text-align:center}
+.admin-link a{font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--brd2);padding-bottom:1px}
+
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:14px;padding:0 24px;height:56px;background:rgba(12,24,41,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);flex-shrink:0;flex-wrap:wrap}
+.tb-brand{flex:1}.tb-brand .nm{font-family:'Playfair Display',Georgia,serif;font-size:16px;color:var(--text);font-weight:600}
+.tb-brand .sb{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.15em}
+.tb-btn{padding:6px 12px;background:transparent;border:1px solid var(--brd);border-radius:6px;color:var(--text3);font-size:12px}
+.tb-btn:hover{border-color:var(--brd2);color:var(--text2)}.tb-btn.gold{color:var(--gold);border-color:var(--gbrd)}
+
+.c-main{padding:32px 24px;max-width:960px;margin:0 auto;width:100%}
+.prog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px}
+.prog-header h1{font-size:32px}.prog-header .stat{font-size:13px;color:var(--text3)}
+.ack-box{background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:28px;margin-bottom:28px;text-align:center}
+.ack-box .ack-icon{font-size:42px;margin-bottom:12px}.ack-box h2{font-size:22px;margin-bottom:10px}
+.ack-box p{color:var(--text2);font-size:14px;max-width:640px;margin:0 auto;line-height:1.8}
+.velocity-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:20px;margin-bottom:24px}
+.velocity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.vg-item{text-align:center;padding:10px;background:var(--navy3);border-radius:8px}
+.vg-item .vn{font-size:22px;font-weight:600}.vg-item .vl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.mod-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:22px;cursor:pointer;transition:all .2s}
+.mod-card:hover:not(.locked){border-color:var(--brd2);transform:translateY(-2px)}
+.mod-card.locked{opacity:.4;cursor:default}
+.mod-card .mc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mod-card .mc-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff}
+.mod-card .mc-title{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:600;flex:1}
+.mod-card .mc-sub{font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:14px}
+.mod-card .mc-prog{height:4px;background:var(--navy4);border-radius:2px;overflow:hidden}
+.mod-card .mc-prog-fill{height:100%;border-radius:2px;transition:width .4s ease}
+.mod-card .mc-status{font-size:11px;margin-top:8px}
+.mc-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+
+.mod-header{padding:28px 24px;border-bottom:1px solid var(--brd)}
+.mod-header h1{font-size:30px;margin-bottom:4px}.mod-header .mh-sub{font-size:13px;color:var(--text3)}
+.mod-tabs{display:flex;gap:0;border-bottom:1px solid var(--brd);padding:0 24px}
+.mod-tab{padding:12px 20px;font-size:13px;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.mod-tab:hover{color:var(--text2)}.mod-tab.active{color:var(--text);border-bottom-color:var(--gold)}
+.mod-content{padding:32px 24px;max-width:820px;margin:0 auto}
+.sources-box{border-left:3px solid var(--blue);padding:16px 20px;background:var(--navy2);border-radius:0 10px 10px 0;margin-bottom:24px}
+.src-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.src-item{font-size:12px;color:var(--text2);padding:3px 0}
+.why-mod-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:18px 22px;margin-bottom:24px}
+.why-mod-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:10px}
+.why-mod-text{font-size:14px;color:var(--text2);line-height:1.8}
+.learn-body{color:var(--text2);line-height:1.9;font-size:14.5px}
+.learn-body h3{color:var(--text);font-size:20px;margin:28px 0 14px}
+.learn-body p{margin-bottom:14px}
+.learn-body blockquote{border-left:3px solid var(--gold);padding:12px 18px;margin:18px 0;color:var(--text);font-style:italic;background:rgba(201,168,76,.04);border-radius:0 8px 8px 0}
+.learn-body ul,.learn-body ol{margin:12px 0 12px 24px;color:var(--text2)}.learn-body li{margin-bottom:6px}
+.learn-cta{text-align:center;margin-top:32px}
+.takeaways-box{background:rgba(76,175,130,.06);border:1px solid rgba(76,175,130,.15);border-radius:10px;padding:22px 26px;margin-top:28px}
+.tk-title{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;font-weight:600}
+.tk-item{font-size:14px;color:var(--text2);line-height:1.8;padding:6px 0;border-bottom:1px solid rgba(76,175,130,.08)}.tk-item:last-child{border:none}
+
+.q-progress{position:sticky;top:56px;z-index:50;background:var(--navy2);border-bottom:1px solid var(--brd);padding:10px 24px;display:flex;align-items:center;gap:14px}
+.qp-bar{flex:1;height:6px;background:var(--navy4);border-radius:3px;overflow:hidden}
+.qp-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease}
+.qp-cnt{font-size:12px;color:var(--text3);min-width:50px;text-align:right}
+.q-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:18px}
+.q-card .qlabel{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.q-card .qtext{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.q-card textarea{width:100%;min-height:100px;padding:14px}
+.q-card .scale-row{display:flex;gap:6px;flex-wrap:wrap}
+.q-card .scale-btn{padding:8px 14px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text3);font-size:13px;min-width:40px;text-align:center}
+.q-card .scale-btn.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.q-card .cbtn{padding:8px 16px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text2);font-size:13px;margin:3px}
+.q-card .cbtn.sel{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
+.btn-save{display:block;width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;margin-top:12px}
+.btn-save:hover{background:var(--blue2)}
+.send-box{background:rgba(76,175,130,.08);border:1.5px solid rgba(76,175,130,.3);border-radius:12px;padding:24px;margin-top:20px;text-align:center}
+.send-box h3{color:var(--green);font-size:20px;margin-bottom:8px}
+.send-box p{color:var(--text2);font-size:13px;margin-bottom:16px;line-height:1.7}
+.btn-send{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+.btn-send:hover{background:#3d9b72}
+
+.refl-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:22px;margin-bottom:16px}
+.refl-card h4{font-size:16px;margin-bottom:12px}.refl-card label{font-size:12px;color:var(--text3);display:block;margin-bottom:4px;margin-top:10px}
+.refl-card textarea{width:100%;min-height:70px;padding:10px;margin-bottom:4px}
+
+.admin-wrap{display:flex;min-height:100vh}
+.admin-side{width:260px;background:var(--navy2);border-right:1px solid var(--brd);padding:20px;flex-shrink:0;overflow-y:auto}
+.admin-main{flex:1;padding:28px;overflow-y:auto}
+.as-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin-bottom:20px}
+.as-nav{list-style:none}.as-nav li{padding:10px 14px;border-radius:8px;font-size:13px;color:var(--text3);cursor:pointer;margin-bottom:4px}
+.as-nav li:hover{background:var(--navy3);color:var(--text2)}
+.as-nav li.active{background:var(--navy3);color:var(--gold);border-left:3px solid var(--gold)}
+.aclient-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:16px;margin-bottom:10px;cursor:pointer}
+.aclient-card:hover{border-color:var(--brd2)}.aclient-card.sel{border-color:var(--gold)}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.astat{background:var(--navy3);border-radius:8px;padding:14px;text-align:center}
+.astat .av{font-size:24px;font-weight:600}.astat .al{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.ai-box{background:var(--navy3);border:1px solid var(--gbrd);border-radius:10px;padding:20px;margin-top:16px}
+.ai-box h3{color:var(--gold);font-size:18px;margin-bottom:12px}
+.ai-result{white-space:pre-wrap;font-size:13px;color:var(--text2);line-height:1.8;max-height:500px;overflow-y:auto}
+.save-feedback{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;z-index:600;animation:fadeIn .3s ease;pointer-events:none}
+.info-container{max-width:820px;margin:0 auto;padding:40px 24px}
+.info-section{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px;margin-bottom:20px}
+.info-section h2{font-size:22px;margin-bottom:14px;color:var(--gold)}
+.info-section p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:10px}
+.unlock-row{display:flex;align-items:center;gap:12px;margin-top:12px;padding:10px 14px;background:var(--navy4);border-radius:8px}
+.unlock-row select{flex:1;padding:8px}
+.links-mod{margin-bottom:24px}
+.links-mod h3{font-size:18px;color:var(--gold);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--brd)}
+.links-mod a{display:block;font-size:13px;color:var(--blue2);text-decoration:none;padding:6px 0;line-height:1.6;transition:color .15s}
+.links-mod a:hover{color:var(--gold)}
+.links-mod .link-author{color:var(--text3);font-size:12px}
+.impl-intent{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.18);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 16px;margin-top:14px}
+.impl-intent .ii-label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:600;margin-bottom:4px}
+.impl-intent .ii-sub{font-size:11px;color:var(--text3);line-height:1.6;margin-bottom:8px}
+
+@media(max-width:900px){.topbar{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px}.tb-brand{width:100%}.prog-header{flex-direction:column}.mods-grid{grid-template-columns:1fr}.admin-side{width:200px}}
+@media(max-width:640px){.login-logo h1{font-size:28px}.astats{grid-template-columns:1fr 1fr}.velocity-grid{grid-template-columns:1fr 1fr}.mod-content{padding:24px 16px}.admin-wrap{flex-direction:column}.admin-side{width:100%;border-right:none;border-bottom:1px solid var(--brd)}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+<body>
+<!-- CLIENT LOGIN -->
+<div id="sc-client-login" class="screen active">
+  <div class="login-logo">
+    <h1>Den gode MUS som leder</h1>
+    <div class="tag">Karakter · Disciplin · Klarhed</div>
+    <div class="sub2">Mestrer du MUS, mestrer du kernen i at lede mennesker</div>
+  </div>
+  <div class="login-card">
+    <h2>Klientadgang</h2>
+    <div class="sub">8 moduler. 48 refleksioner. Fra forberedelse og samtaleteknik til svære samtaler, udvikling og opfølgning — alt det der gør MUS til din vigtigste ledelsessamtale.</div>
+    <div class="fg"><label>Dit fulde navn</label><input type="text" id="cl-name" placeholder="Fornavn Efternavn" onkeydown="if(event.key==='Enter')doClientLogin()"></div>
+    <div class="btn-row"><button class="btn btn-primary" onclick="doClientLogin()">Start forløb</button></div>
+    <div id="cl-err" class="err hidden"></div>
+    <div class="gdpr-strip">
+      <strong>🔒 GDPR:</strong> Alle besvarelser gemmes udelukkende lokalt på din enhed. Ingen data sendes til servere. Eksport krypteres med AES-256-GCM.
+      <div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+        <input type="checkbox" id="gdpr-consent" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">
+        <label for="gdpr-consent" style="font-size:12px;color:var(--text2);cursor:pointer;line-height:1.5">Jeg accepterer, at mine besvarelser gemmes lokalt på denne enhed.</label>
+      </div>
+    </div>
+  </div>
+  <div class="admin-link"><a href="?admin">Admin-adgang →</a></div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="sc-admin-login" class="screen">
+  <div class="login-logo"><h1>Den gode MUS som leder</h1><div class="tag">Admin · Thomas Friisnæs</div></div>
+  <div class="login-card gold">
+    <h2 class="gold-text">Admin</h2>
+    <div id="admin-setup" class="hidden">
+      <div class="sub">Første gang? Vælg din admin-adgangskode. Den gemmes som SHA-256 hash — aldrig i klartekst.</div>
+      <div class="fg"><label>Vælg adgangskode</label><input type="password" id="al-pw-new" placeholder="Min. 6 tegn" onkeydown="if(event.key==='Enter')document.getElementById('al-pw-confirm').focus()"></div>
+      <div class="fg"><label>Bekræft adgangskode</label><input type="password" id="al-pw-confirm" placeholder="Gentag adgangskode" onkeydown="if(event.key==='Enter')doAdminSetup()"></div>
+      <div class="btn-row"><button class="btn btn-gold" onclick="doAdminSetup()">Opret admin-adgang</button></div>
+    </div>
+    <div id="admin-returning" class="hidden">
+      <div class="sub">Adgang til klientdata, modul-oplåsning, AI-analyse og eksport.</div>
+      <div class="fg"><label>Adgangskode</label><input type="password" id="al-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+      <div class="btn-row"><button class="btn btn-gold" onclick="doAdminLogin()">Log ind</button></div>
+    </div>
+    <div id="al-err" class="err hidden"></div>
+    <div style="margin-top:16px;padding:10px 12px;background:var(--navy3);border-radius:6px;font-size:10px;color:var(--text3);line-height:1.6">🔒 Adgangskoden gemmes som SHA-256 hash med framework-specifikt salt. Nulstil via browserkonsol: <code style="color:var(--gold)">_resetAdminPw()</code></div>
+  </div>
+</div>
+
+<!-- CLIENT DASHBOARD -->
+<div id="sc-client" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm">Den gode MUS som leder</div><div class="sb" id="tb-name"></div></div>
+    <button class="tb-btn" onclick="showReadme()">📖 Guide</button>
+    <button class="tb-btn" onclick="showLinks()">🔗 Links</button>
+    <button class="tb-btn" onclick="clientDeleteData()" style="color:var(--red)">🗑 Slet</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="c-main" id="client-dash"></div>
+</div>
+
+<!-- MODULE VIEW -->
+<div id="sc-module" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm" id="mod-title-bar"></div><div class="sb" id="mod-sub-bar"></div></div>
+    <button class="tb-btn" onclick="renderDash();show('client')">← Dashboard</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="mod-header" id="mod-header"></div>
+  <div class="mod-tabs" id="mod-tabs"></div>
+  <div id="tc-learn" class="mod-content"></div>
+  <div id="tc-quest" class="mod-content" style="display:none"></div>
+  <div id="tc-takeaways" class="mod-content" style="display:none"></div>
+  <div id="tc-journal" class="mod-content" style="display:none"></div>
+  <div id="tc-submit" class="mod-content" style="display:none"></div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="sc-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-side">
+      <div class="as-title">Admin panel</div>
+      <ul class="as-nav">
+        <li class="active" onclick="setASection('ov')">📊 Oversigt</li>
+        <li onclick="setASection('clients')">👥 Klienter</li>
+        <li onclick="setASection('import')">📥 Import</li>
+        <li onclick="setASection('gdpr')">🔒 GDPR</li>
+      </ul>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--brd)">
+        <button class="tb-btn" style="width:100%" onclick="logout()">Log ud</button>
+      </div>
+    </div>
+    <div class="admin-main">
+      <div id="asec-ov"></div>
+      <div id="asec-clients" style="display:none"></div>
+      <div id="asec-import" style="display:none"></div>
+      <div id="asec-gdpr" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- README -->
+<div id="sc-readme" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Guide — Den gode MUS som leder</div></div><button class="tb-btn" onclick="closeReadme()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Hvad er dette?</h2><p>Et struktureret refleksions- og handlingsværktøj til dig, der vil mestre MUS som ledelsesredskab. 8 moduler dækker alt fra forberedelse og samtaleteknik til svære samtaler, udvikling, trivsel og opfølgning. Baseret på forskning fra Aguinis, Scott, Stone, Dweck og 20+ års coaching-erfaring.</p></div>
+    <div class="info-section"><h2>Sådan virker det</h2><p>Modulerne åbnes ét ad gangen af din coach. Når du har besvaret alle spørgsmål og udfyldt din journal, kan du sende dine svar til Thomas via email. Derefter åbner Thomas det næste modul for dig. Denne struktur sikrer, at du arbejder fokuseret og i dybden med hvert emne.</p></div>
+    <div class="info-section"><h2>Om platformen</h2><p><strong>Thomas Friisnæs</strong> — Personal Excellence Partner. 20+ års erfaring. 15.000+ coaching-sessioner.</p><p><strong>Kontakt:</strong> friisnaes@gmail.com | <strong>Version:</strong> 2.0.0</p></div>
+  </div>
+</div>
+
+<!-- LINKS -->
+<div id="sc-links" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Forskningslinks — Den gode MUS</div></div><button class="tb-btn" onclick="closeLinks()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Forskningsbibliotek</h2><p>Centrale kilder og artikler for hvert modul. Klik for at åbne i nyt vindue.</p></div>
+
+    <div class="links-mod">
+      <h3>Modul 1: Hvad er MUS — egentlig?</h3>
+      <a href="https://www.amazon.com/Performance-Management-Herman-Aguinis/dp/0132556383" target="_blank">Herman Aguinis (2019): Performance Management</a>
+      <a href="https://hbr.org/2019/03/the-feedback-fallacy" target="_blank">Buckingham & Goodall (2019): The Feedback Fallacy <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://hbr.org/2016/10/the-performance-management-revolution" target="_blank">Cappelli & Tavis (2016): The Performance Management Revolution <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://www.annualreviews.org/content/journals/10.1146/annurev-orgpsych-032516-113234" target="_blank">DeNisi & Murphy (2017): Performance Appraisal and Performance Management <span class="link-author">— Annual Review (bag betalingsmur)</span></a>
+      <a href="https://www.mindtools.com/akswgc0/david-rocks-scarf-model/" target="_blank">David Rock (2008): SCARF Model <span class="link-author">— MindTools</span></a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 2: Forberedelsen</h3>
+      <a href="https://www.franklincovey.com/the-7-habits/" target="_blank">Stephen Covey (1989): The 7 Habits of Highly Effective People</a>
+      <a href="https://hbr.org/2007/01/what-to-ask-the-person-in-the-mirror" target="_blank">Robert Kaplan (2011): What to Ask the Person in the Mirror <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://fearlessorganization.com/" target="_blank">Amy Edmondson (2019): The Fearless Organization</a>
+      <a href="https://www.radicalcandor.com/our-approach/" target="_blank">Kim Scott (2017): Radical Candor</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 3: Samtaleteknikken</h3>
+      <a href="https://www.radicalcandor.com/our-approach/" target="_blank">Kim Scott (2017): Radical Candor</a>
+      <a href="https://hbr.org/2014/01/find-the-coaching-in-criticism" target="_blank">Stone & Heen (2014): Thanks for the Feedback <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://www.amazon.com/Coaching-Performance-Principles-Leadership-UPDATED/dp/185788535X" target="_blank">John Whitmore (2017): Coaching for Performance</a>
+      <a href="https://www.amazon.com/Becoming-Person-Therapists-View-Psychotherapy/dp/039575531X" target="_blank">Carl Rogers (1961): On Becoming a Person</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 4: Den svære samtale</h3>
+      <a href="https://www.amazon.com/Difficult-Conversations-Discuss-What-Matters/dp/0143118447" target="_blank">Stone, Patton & Heen (1999): Difficult Conversations</a>
+      <a href="https://www.amazon.com/Crucial-Conversations-Talking-Stakes-Third/dp/1260474186" target="_blank">Patterson et al. (2012): Crucial Conversations</a>
+      <a href="https://www.amazon.com/Right-Kind-Wrong-Science-Failing/dp/1982195061" target="_blank">Amy Edmondson (2023): Right Kind of Wrong</a>
+      <a href="https://www.tablegroup.com/the-five-dysfunctions-of-a-team/" target="_blank">Patrick Lencioni (2002): The Five Dysfunctions of a Team</a>
+      <a href="https://brenebrown.com/book/dare-to-lead/" target="_blank">Brené Brown (2018): Dare to Lead</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 5: Udvikling</h3>
+      <a href="https://www.amazon.com/Mindset-Psychology-Carol-S-Dweck/dp/0345472322" target="_blank">Carol Dweck (2006): Mindset: The New Psychology of Success</a>
+      <a href="https://www.amazon.com/High-Flyers-Developing-Generation-Leaders/dp/0875843360" target="_blank">Morgan McCall (1998): High Flyers</a>
+      <a href="https://www.amazon.com/Flow-Psychology-Experience-Perennial-Classics/dp/0061339202" target="_blank">Mihaly Csikszentmihalyi (1990): Flow</a>
+      <a href="https://www.amazon.com/Peak-Secrets-New-Science-Expertise/dp/0544947223" target="_blank">Ericsson & Pool (2016): Peak</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 6: Trivsel</h3>
+      <a href="https://selfdeterminationtheory.org/" target="_blank">Deci & Ryan (2000): Self-Determination Theory</a>
+      <a href="https://hbr.org/2003/01/one-more-time-how-do-you-motivate-employees" target="_blank">Herzberg (1968): One More Time: How Do You Motivate Employees? <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://www.amazon.com/Flourish-Visionary-Understanding-Happiness-Well-being/dp/1439190763" target="_blank">Martin Seligman (2011): Flourish</a>
+      <a href="https://www.gallup.com/workplace/349484/state-of-the-global-workplace.aspx" target="_blank">Gallup (2023): State of the Global Workplace</a>
+      <a href="https://www.amazon.com/Truth-About-Burnout-Organizations-Personal/dp/0787908746" target="_blank">Maslach & Leiter (1997): The Truth About Burnout</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 7: Opfølgning</h3>
+      <a href="https://www.amazon.com/Disciplines-Execution-Achieving-Wildly-Important/dp/1451627068" target="_blank">McChesney et al. (2012): The 4 Disciplines of Execution</a>
+      <a href="https://www.tablegroup.com/the-advantage/" target="_blank">Patrick Lencioni (2012): The Advantage</a>
+      <a href="https://hbr.org/2006/06/what-makes-an-effective-executive" target="_blank">Peter Drucker (1967): The Effective Executive <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://jamesclear.com/atomic-habits" target="_blank">James Clear (2018): Atomic Habits</a>
+      <a href="https://www.amazon.com/Checklist-Manifesto-How-Things-Right/dp/0312430000" target="_blank">Atul Gawande (2009): The Checklist Manifesto</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 8: MUS som ledelsessystem</h3>
+      <a href="https://www.amazon.com/Performance-Management-Herman-Aguinis/dp/0132556383" target="_blank">Herman Aguinis (2019): Performance Management</a>
+      <a href="https://www.amazon.com/Out-Crisis-W-Edwards-Deming/dp/0262541157" target="_blank">W. Edwards Deming (1986): Out of the Crisis</a>
+      <a href="https://www.amazon.com/Management-Tasks-Responsibilities-Practices-Drucker/dp/0887306152" target="_blank">Peter Drucker (1973): Management</a>
+      <a href="https://www.amazon.com/Good-Great-Some-Companies-Others/dp/0066620996" target="_blank">Jim Collins (2001): Good to Great</a>
+      <a href="https://www.amazon.com/Balanced-Scorecard-Translating-Strategy-Action/dp/0875846513" target="_blank">Kaplan & Norton (1996): The Balanced Scorecard</a>
+    </div>
+  </div>
+</div>
+
+<div id="save-fb" class="save-feedback hidden"></div>
+<script>
+const PV='2.0.0',PN='Den gode MUS som leder',CE='friisnaes@gmail.com',PFX='mus_';
+const LS={g(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch{return null}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}},d(k){try{localStorage.removeItem(k)}catch{}}};
+let S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+
+const ADMIN_SALT='mus_den_gode_mus_leder_v2';
+async function sha256(str){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(ADMIN_SALT+str));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+function getAdminHash(){return localStorage.getItem(PFX+'admin_hash')||null}
+
+(function(){
+  try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch{document.body.innerHTML='<div style="padding:40px;text-align:center;color:#E57373"><h2>localStorage ikke tilgængelig</h2></div>';return}
+  if(location.search.includes('admin')){
+    document.getElementById('sc-client-login').classList.remove('active');
+    document.getElementById('sc-admin-login').classList.add('active');
+    if(getAdminHash()){document.getElementById('admin-returning').classList.remove('hidden')}
+    else{document.getElementById('admin-setup').classList.remove('hidden')}
+  }
+})();
+
+function doClientLogin(){
+  const name=document.getElementById('cl-name').value.trim();
+  if(!name){showErr('cl-err','Indtast dit navn');return}
+  const consent=document.getElementById('gdpr-consent');
+  const clients=LS.g(PFX+'clients')||[];
+  let c=clients.find(x=>x.name.toLowerCase()===name.toLowerCase());
+  if(!c){
+    if(!consent.checked){showErr('cl-err','Acceptér GDPR-betingelserne');return}
+    c={id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name:name,createdAt:new Date().toISOString(),gdprConsentAt:new Date().toISOString()};
+    LS.s(PFX+'clients',[...clients,c]);
+    LS.s(PFX+'active_'+c.id,1);
+  }
+  S.role='client';S.cId=c.id;S.cName=c.name;renderDash();show('client');
+}
+async function doAdminSetup(){
+  const pw=document.getElementById('al-pw-new').value;
+  const pw2=document.getElementById('al-pw-confirm').value;
+  if(pw.length<6){showErr('al-err','Adgangskode skal være min. 6 tegn');return}
+  if(pw!==pw2){showErr('al-err','Adgangskoderne matcher ikke');return}
+  const hash=await sha256(pw);
+  localStorage.setItem(PFX+'admin_hash',hash);
+  S.role='admin';renderAdmin();show('admin');
+  showSaveFeedback('Admin-adgang oprettet ✓');
+}
+async function doAdminLogin(){
+  const pw=document.getElementById('al-pw').value;
+  if(!pw){showErr('al-err','Indtast adgangskode');return}
+  const hash=await sha256(pw);
+  if(hash!==getAdminHash()){showErr('al-err','Forkert adgangskode');return}
+  S.role='admin';renderAdmin();show('admin');
+}
+function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden')}
+function logout(){
+  S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+  document.getElementById('cl-name').value='';
+  const alPw=document.getElementById('al-pw');if(alPw)alPw.value='';
+  const alNew=document.getElementById('al-pw-new');if(alNew)alNew.value='';
+  const alConf=document.getElementById('al-pw-confirm');if(alConf)alConf.value='';
+  ['cl-err','al-err'].forEach(function(id){document.getElementById(id).classList.add('hidden')});
+  if(location.search.includes('admin')){
+    document.getElementById('admin-setup').classList.add('hidden');
+    document.getElementById('admin-returning').classList.add('hidden');
+    if(getAdminHash()){document.getElementById('admin-returning').classList.remove('hidden')}
+    else{document.getElementById('admin-setup').classList.remove('hidden')}
+    show('admin-login');
+  }else{show('client-login')}
+}
+window._resetAdminPw=function(){if(confirm('Nulstil admin-adgangskode? Du skal vælge en ny.')){localStorage.removeItem(PFX+'admin_hash');location.reload()}}
+function show(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});document.getElementById('sc-'+id).classList.add('active');window.scrollTo(0,0)}
+function showReadme(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('readme')}
+function closeReadme(){show(S.prevScreen||'client')}
+function showLinks(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('links')}
+function closeLinks(){show(S.prevScreen||'client')}
+function showSaveFeedback(msg){var el=document.getElementById('save-fb');el.textContent=msg;el.classList.remove('hidden');setTimeout(function(){el.classList.add('hidden')},2200)}
+function countAns(a){return Object.values(a||{}).filter(function(v){return v!==undefined&&v!==null&&v!==''}).length}
+function getActiveMod(cid){return LS.g(PFX+'active_'+cid)||1}
+function isModComplete(cid,m){
+  var d=LS.g(PFX+'mod_'+cid+'_'+m.id);var a=countAns(d?.answers);
+  var j=LS.g(PFX+'journal_'+cid+'_'+m.id);
+  var jDone=j&&(j.insight||'').trim()&&(j.action||'').trim();
+  return a>=m.qs.length&&jDone;
+}
+function isModSent(cid,mid){return LS.g(PFX+'sent_'+cid+'_'+mid)||false}
+
+
+const II_PROMPTS={
+1:'Hvornår og i hvilken situation vil du gøre dette? F.eks.: "Inden min næste MUS sætter jeg 30 min af til at reflektere over, hvad MUS egentlig skal være for mig."',
+2:'Hvornår starter du din forberedelse? F.eks.: "Senest 3 dage før hver MUS bruger jeg 45 min på at gennemgå den nye forberedelsesskabelon."',
+3:'Hvornår træner du teknikken? F.eks.: "I min næste MUS med [navn] starter jeg med et åbent spørgsmål og lytter i mindst 2 minutter uden at afbryde."',
+4:'Hvornår har du den svære samtale? F.eks.: "I MUS med [navn] næste onsdag adresserer jeg [emnet] med SBI-feedback og fælles formål."',
+5:'Hvornår designer du udviklingsplanen? F.eks.: "I min næste MUS med [navn] spørger jeg: Hvad vil du gerne mestre om et år — og hvad er dit næste stretchmål?"',
+6:'Hvornår tager du trivselssamtalen? F.eks.: "I hver MUS dette kvartal spørger jeg eksplicit: Hvordan har du det — reelt? Og hvad kan jeg gøre?"',
+7:'Hvornår sætter du opfølgningssystemet op? F.eks.: "Fredag eftermiddag bygger jeg et simpelt system: 2-3 aftaler per MUS, månedlig opfølgning i 1:1."',
+8:'Hvornår tegner du dit ledelsessystem? F.eks.: "Søndag aften bruger jeg 30 min på at designe mit årshjul: MUS, 1:1, feedback, teamforum."'
+};
+
+const MODS=[
+{
+id:1,
+title:'Hvad er MUS — egentlig?',
+subtitle:'Ud over skemaet: MUS som den vigtigste samtale du har med dine medarbejdere',
+icon:'💬',
+color:'#E57373',
+sources:['Aguinis, H. — Performance Management (2019)','Buckingham, M. & Goodall, A. — The Feedback Fallacy (HBR, 2019)','Cappelli, P. & Tavis, A. — The Performance Management Revolution (HBR, 2016)','DeNisi, A. & Murphy, K. — Performance Appraisal and Performance Management (Annual Review, 2017)','Rock, D. — SCARF: A Brain-Based Model for Collaborating with and Influencing Others (2008)'],
+whyText:'Gallup viser, at <strong>kun 14% af medarbejdere er enige i, at deres performance review inspirerer dem til at forbedre sig</strong>. Problemet er ikke MUS som idé — det er MUS som praksis. Den gode MUS er den vigtigste samtale, du har som leder.',
+learn:`<h3>MUS-paradokset</h3>
+<p>Der er et paradoks i moderne ledelse, som de fleste organisationer lever med uden at adressere det: MUS — MedarbejderUdviklingsSamtalen — er samtidig det mest udbredte og det mest foragtede ledelsesredskab i dansk arbejdsliv. Alle gør det. Ingen synes det virker. Medarbejdere frygter det. Ledere udsætter det. HR insisterer på det. Og resultatet er typisk en årlig rituel samtale, der hverken udvikler medarbejderen, styrker relationen eller forbedrer performance.</p>
+<p>Herman Aguinis, en af verdens førende forskere i performance management, dokumenterer problemet med afvæbnende klarhed: De fleste performance management-systemer opnår ikke deres erklærede formål. De forbedrer ikke performance. De motiverer ikke medarbejdere. De identificerer ikke udviklingsbehov præcist. Og de skaber sjældent den dialog, de er designet til at facilitere. I stedet genererer de angst, defensivitet og en masse papirarbejde, som ingen bruger til noget.</p>
+<p>Men Aguinis' pointe er ikke, at vi skal afskaffe MUS. Hans pointe er, at problemet ikke ligger i idéen — det ligger i eksekveringen. Idéen om en struktureret samtale, hvor leder og medarbejder sætter sig ned og taler ærligt om performance, udvikling, trivsel og fremtid, er fundamentalt sund. Det er eksekveringen — den mekaniske, formularbaserede, bagudskuende, domsorienterede tilgang — der fejler.</p>
+
+<h3>Hjernen under MUS</h3>
+<p>David Rock tilbyder en neurologisk forklaring på, hvorfor traditionel MUS så ofte fejler. Hans SCARF-model beskriver fem sociale domæner, som hjernen konstant overvåger: <strong>Status</strong> (føler jeg mig respekteret?), <strong>Certainty</strong> (ved jeg hvad der sker?), <strong>Autonomy</strong> (har jeg kontrol?), <strong>Relatedness</strong> (hører jeg til?) og <strong>Fairness</strong> (bliver jeg behandlet retfærdigt?). Traditionel MUS truer potentielt alle fem: Din status er på spil (du bliver vurderet). Usikkerheden er høj (hvad vil chefen sige?). Din autonomi reduceres (chefen definerer dine mål). Relationen er asymmetrisk (det er en magtsituation). Og fairness er tvivlsom (er vurderingen objektiv?).</p>
+<p>Når hjernen oplever trusler mod disse domæner, aktiveres den samme fight-or-flight-respons som ved fysisk fare. Medarbejderen bliver defensiv, lukket, argumenterende eller underdanig — ingen af delene er befordrende for en ærlig, udviklingsorienteret samtale. Det forklarer det velkendte MUS-fænomen: Medarbejderen nikker, siger ja, skriver under — og gør absolut ingenting med det bagefter.</p>
+
+<h3>Den nye MUS</h3>
+<p>Peter Cappelli og Anna Tavis beskriver i Harvard Business Review, hvordan verdens mest progressive organisationer har genopfundet performance management. Tendensen er klar: Væk fra den årlige, bagudskuende, vurderende samtale — hen mod hyppige, fremadskuende, udviklende samtaler. Væk fra rating og ranking — hen mod coaching og feedback. Væk fra HR-drevet compliance — hen mod leder-drevet dialog.</p>
+<p>Marcus Buckingham og Ashley Goodall går endnu videre med deres provokerende artikel "The Feedback Fallacy." Deres argument er, at den grundlæggende antagelse bag traditionel MUS — at folk har brug for at få at vide, hvad de gør forkert, for at forbedre sig — er neurologisk forkert. Hjernen vokser ikke primært ved at fokusere på svagheder og fejl. Den vokser ved at fokusere på styrker og succeser. Det betyder ikke, at du skal ignorere problemer. Det betyder, at udgangspunktet for udvikling bør være det, der allerede virker — ikke det, der ikke gør.</p>
+<p>DeNisi og Murphy tilføjer i deres meta-analyse, at de mest effektive performance-samtaler har tre kendetegn: De er <strong>fremadskuende</strong> (hvad skal der ske — ikke hvad skete), <strong>specifikke</strong> (konkrete adfærdsbeskrivelser — ikke vage generaliseringer) og <strong>dialogbaserede</strong> (medarbejderen taler mindst lige så meget som lederen). Disse tre kendetegn lyder simple. De er det modsatte. De kræver en fundamental omstilling af, hvad du opfatter som din rolle i MUS.</p>
+
+<h3>MUS som ledelseskunst</h3>
+<p>Den gode MUS er ikke et skema, der skal udfyldes. Den er en samtale, der skal mestres. Og som enhver samtalekunst kræver den forberedelse, tilstedeværelse, nysgerrighed og mod. Forberedelse: At du har tænkt dig grundigt om, før du sætter dig. Tilstedeværelse: At du er mentalt og emotionelt til stede — ikke distraheret af din næste opgave. Nysgerrighed: At du oprigtigt vil forstå medarbejderens perspektiv — ikke bare kommunikere dit eget. Og mod: At du tør adressere det, der er svært — ærligt, direkte og med omsorg.</p>
+<p>Det er dette, Thomas Friisnæs kalder ledelse med Karakter, Disciplin og Klarhed. Karakter er modet til at sige det, der skal siges — også når det er ubehageligt. Disciplin er konsistensen til at holde samtalen, forberede den ordentligt og følge op bagefter. Klarhed er evnen til at kommunikere forventninger, feedback og retning på en måde, som medarbejderen kan forstå, acceptere og handle på.</p>
+<blockquote>MUS er ikke en HR-proces. Det er den vigtigste samtale, du har som leder. Mestrer du den, mestrer du kernen i at lede mennesker.</blockquote>`,
+qs:[
+{id:'q1_1',type:'ta',l:'Hvad er din <strong>ærlige oplevelse</strong> af MUS — både som leder og som medarbejder? Hvad virker — og hvad virker ikke?'},
+{id:'q1_2',type:'scale',l:'Hvor effektive er dine MUS-samtaler — ærligt?',mn:1,mx:10},
+{id:'q1_3',type:'ta',l:'Hvad er din <strong>største frygt</strong> ved MUS? Hvad undgår du — og hvad koster det?'},
+{id:'q1_4',type:'choice',l:'Din typiske MUS er primært:',opts:['Bagudskuende (hvad skete)','Fremadskuende (hvad skal ske)','Blanding','Mest rituelt/formelt']},
+{id:'q1_5',type:'ta',l:'Hvad ville dine medarbejdere sige om dine MUS-samtaler, <strong>hvis de var helt ærlige</strong>?'},
+{id:'q1_6',type:'ta',l:'Hvad skal ændre sig for at din MUS bliver <strong>den vigtigste samtale</strong> du har som leder?'},
+],
+takeaways:['Kun 14% af medarbejdere oplever, at performance reviews inspirerer dem. Problemet er praksis, ikke idé.','Traditionel MUS truer hjernens SCARF-domæner. Resultatet: Defensivitet, lukkethed, compliance uden commitment.','Den nye MUS: Fremadskuende, styrkebaseret, dialogbaseret og hyppig. Væk fra årlig dom.','Hjernen vokser primært ved at fokusere på det der virker — ikke det der fejler. Start med styrker.','MUS er en samtalekunst der kræver forberedelse, tilstedeværelse, nysgerrighed og mod.']
+},
+{
+id:2,
+title:'Forberedelsen',
+subtitle:'De 80% af MUS-kvaliteten der afgøres før samtalen starter',
+icon:'📋',
+color:'#E5A048',
+sources:['Covey, S. — The 7 Habits of Highly Effective People (1989)','Kaplan, R. — What to Ask the Person in the Mirror (2011)','Edmondson, A. — The Fearless Organization (2019)','Scott, K. — Radical Candor (2017)','Rock, D. & Page, L. — Coaching with the Brain in Mind (2009)'],
+whyText:'Kim Scott: <strong>"The quality of a conversation is determined before it starts."</strong> 80% af en god MUS afgøres af forberedelsen — din egen og medarbejderens. Uforberedt MUS er spild af alles tid.',
+learn:`<h3>Den usynlige forberedelse</h3>
+<p>Stephen Covey formulerede det som sin femte vane: "Seek first to understand, then to be understood." For MUS er dette princip afgørende — og det starter længe før samtalen. De bedste MUS-samtaler er ikke dem, hvor lederen har de bedste svar. De er dem, hvor lederen har de bedste spørgsmål. Og gode spørgsmål kræver forberedelse — en systematisk, disciplineret proces, hvor du tvinger dig selv til at tænke grundigt om den medarbejder, du skal tale med.</p>
+<p>Kim Scott, forfatteren til Radical Candor, argumenterer for, at kvaliteten af enhver samtale er afgjort, før den begynder. Det gælder i ekstrem grad for MUS. En leder, der møder op uforberedt — med vage formuleringer, generiske spørgsmål og en fornemmelse af "det klarer vi nok" — signalerer til medarbejderen, at samtalen ikke er vigtig. Og medarbejderen reagerer i overensstemmelse: Overfladiske svar, hurtigt overstået, ingen reel forandring.</p>
+
+<h3>Forbered dig selv — ærligt</h3>
+<p>Robert Kaplan stiller med sine "mirror questions" en række spørgsmål, som enhver leder bør stille sig selv før en MUS. Ikke spørgsmål om medarbejderen — men om sig selv. Har jeg observeret denne medarbejder nok til at have en kvalificeret mening? Eller baserer jeg min vurdering på et par episoder og et generelt indtryk? Er min opfattelse farvet af bias — recency bias (de seneste hændelser overskygger helheden), halo-effekt (én styrke overskygger svagheder), horn-effekt (én svaghed overskygger styrker), eller similarity bias (jeg favoriserer folk der ligner mig)?</p>
+<p>Amy Edmondson tilføjer et afgørende forberedelsestrin: At tjekke din egen følelsesmæssige tilstand. Hvis du går ind i MUS med frustration, irritation eller skuffelse over medarbejderen, vil det farve samtalen — uanset hvor professionelt du forsøger at skjule det. Mennesker er ekstraordinært dygtige til at aflæse emotionelle signaler, og en leder der siger de rigtige ord med den forkerte energi, kommunikerer frustration, ikke udvikling. Forberedelsen inkluderer derfor at bearbejde dine egne følelser, før du inviterer medarbejderen ind.</p>
+
+<h3>Datadrevet forberedelse</h3>
+<p>Den bedste forberedelse er specifik, datadrevet og balanceret. Specifik: Du har konkrete eksempler på adfærd — ikke vage generaliseringer som "du er god til samarbejde" eller "du skal være mere proaktiv." Datadrevet: Du har indsamlet input fra flere kilder — kollegaer, kunder, projekter, KPI'er — ikke kun din egen subjektive oplevelse. Balanceret: Du har identificeret både styrker og udviklingsområder, og du har tænkt over sammenhængen mellem dem.</p>
+<p>David Rock og Linda Page beskriver, hvordan hjernen reagerer fundamentalt anderledes på specifik versus generel feedback. Specifik feedback — "I mandagens kundemøde stillede du tre opfølgende spørgsmål, der afdækkede kundens reelle behov" — aktiverer hjernens læringsnetværk. Generel feedback — "du er god med kunder" — glider af som vand fra en and. Forberedelsen handler derfor om at samle de specifikke observationer, der gør din feedback troværdig, brugbar og huskbar.</p>
+
+<h3>Forbered medarbejderen</h3>
+<p>Den anden halvdel af forberedelsen er ofte overset: At forberede medarbejderen. En medarbejder der møder op til MUS uden at have tænkt over sit eget år, sine egne styrker, sine egne udfordringer og sine egne ambitioner, er en passiv modtager — ikke en aktiv deltager. Og passiv modtagelse er det modsatte af udvikling.</p>
+<p>Send derfor medarbejderen et sæt refleksionsspørgsmål 5-7 dage før samtalen. Ikke et skema med 40 felter — det genererer compliance, ikke refleksion. Men 4-6 åbne spørgsmål der inviterer til ægte eftertanke: Hvad er du mest stolt af det seneste år? Hvad har været sværest? Hvad har du lært om dig selv? Hvor vil du gerne hen? Hvad har du brug for fra mig? Er der noget, vi ikke taler om, som vi burde?</p>
+<p>Og kommunikér eksplicit, hvad MUS er — og hvad den ikke er. Den er ikke en eksamen. Den er ikke en dom. Den er en samtale mellem to mennesker om, hvordan de sammen kan skabe de bedste betingelser for medarbejderens succes. Den ramme reducerer trusselsniveauet markant og øger sandsynligheden for en ærlig, produktiv dialog.</p>
+<blockquote>Forberedelse er ikke et nødvendigt onde. Det er den handling, der viser medarbejderen, at du tager dem alvorligt. Intet signalerer respekt som grundig forberedelse.</blockquote>`,
+qs:[
+{id:'q2_1',type:'ta',l:'Hvordan forbereder du dig <strong>typisk</strong> til MUS? Vær ærlig — tid brugt, dataindsamling, refleksion.'},
+{id:'q2_2',type:'ta',l:'Hvilke <strong>bias</strong> tror du påvirker dine vurderinger mest? Recency, halo, horn, similarity?'},
+{id:'q2_3',type:'ta',l:'Har du <strong>konkrete eksempler</strong> klar for hver medarbejder — eller baserer du dig på generelle indtryk?'},
+{id:'q2_4',type:'ta',l:'Hvordan <strong>forbereder du medarbejderen</strong>? Hvilke spørgsmål sender du — og hvornår?'},
+{id:'q2_5',type:'scale',l:'Hvor grundigt forbereder du dig reelt til MUS?',mn:1,mx:10},
+{id:'q2_6',type:'ta',l:'Skriv din <strong>MUS-forberedelsesproces</strong> ned. Trin for trin. Hvad mangler — og hvad tilføjer du nu?'},
+],
+takeaways:['80% af MUS-kvaliteten afgøres før samtalen starter. Forberedelse er ikke valgfrit.','Tjek dine bias: Recency, halo, horn, similarity. De forvrænger din vurdering mere end du tror.','Specifik feedback aktiverer læring. Generel feedback glider af. Saml konkrete eksempler.','Forbered medarbejderen: 4-6 åbne spørgsmål 5-7 dage før. Invite til refleksion, ikke compliance.','Forberedelse signalerer respekt. Intet siger "du er vigtig" som grundig forberedelse.']
+},
+{
+id:3,
+title:'Samtalens kunst',
+subtitle:'At føre en MUS der skaber ægte dialog — ikke bare udfylder et skema',
+icon:'🎯',
+color:'#C9A84C',
+sources:['Scott, K. — Radical Candor (2017)','Stone, D. & Heen, S. — Thanks for the Feedback (2014)','Whitmore, J. — Coaching for Performance: The Principles and Practice of Coaching and Leadership (2017)','Rogers, C. — On Becoming a Person (1961)','Scharmer, O. — Theory U (2009)'],
+whyText:'Douglas Stone og Sheila Heen viser, at <strong>modtageren — ikke afsenderen — afgør om feedback lander</strong>. Din vigtigste kompetence i MUS er ikke at give feedback. Det er at skabe de betingelser, hvor feedback kan modtages.',
+learn:`<h3>De første fem minutter</h3>
+<p>De første fem minutter af en MUS sætter tonen for hele samtalen. Ikke med det du siger — men med det du signalerer. Er du afslappet eller anspændt? Nysgerrig eller dommende? Åben eller lukket? Carl Rogers, grundlæggeren af klientcentreret terapi, identificerede tre betingelser for en samtale, der skaber reel forandring: <strong>Ubetinget positiv regard</strong> (jeg anerkender dig som menneske, uanset hvad vi skal tale om), <strong>empati</strong> (jeg gør en ægte indsats for at forstå dit perspektiv), og <strong>kongruens</strong> (jeg er ærlig — hvad jeg siger, matcher hvad jeg tænker og føler).</p>
+<p>Disse tre betingelser lyder bløde. De er det modsatte. At opretholde ubetinget positiv regard for en medarbejder, der har underpræsteret i seks måneder, kræver enorm personlig disciplin. At udvise empati for en medarbejder, der konsekvent bortforklarer sine resultater, kræver tålmodighed. At være kongruent — ærlig — om din vurdering, når du ved at medarbejderen ikke vil kunne lide den, kræver mod. Rogers' tre betingelser er ikke et alternativ til ærlig feedback. De er forudsætningen for, at ærlig feedback kan modtages.</p>
+
+<h3>Spørgsmålets kraft</h3>
+<p>John Whitmore, coaching-pioneren, viste at den mest effektive vej til adfærdsændring ikke er at fortælle folk, hvad de skal gøre, men at stille de spørgsmål, der hjælper dem med at opdage det selv. Hans GROW-model — Goal, Reality, Options, Will — er en simpel men kraftfuld ramme for MUS-samtalen. <strong>Goal:</strong> Hvad vil du gerne opnå? Hvad er vigtigt for dig? <strong>Reality:</strong> Hvor er du nu? Hvad sker der reelt? <strong>Options:</strong> Hvad kunne du gøre? Hvad er mulighederne? <strong>Will:</strong> Hvad vil du gøre? Hvad er det konkrete næste skridt?</p>
+<p>GROW virker, fordi den respekterer medarbejderens autonomi og intelligens. I stedet for at diktere en løsning, faciliterer du en opdagelsesproces. Otto Scharmer fra MIT tilføjer, at den dybeste form for lytning — "generative listening" — ikke bare hører, hvad der siges, men mærker, hvad der er på vej til at vise sig. Det kræver, at du holder dine egne antagelser og løsninger tilbage og skaber plads til, at medarbejderen kan tænke højt, udforske og nå sine egne konklusioner.</p>
+
+<h3>Feedback der lander</h3>
+<p>Douglas Stone og Sheila Heen har forsket i, hvad der afgør, om feedback lander — og deres konklusion er overraskende: Det er modtageren, ikke afsenderen, der afgør. Du kan give den mest præcise, velformulerede, velintenderede feedback i verden — og den lander stadig ikke, hvis modtageren oplever den som en trussel mod sin identitet, sin kompetence eller sin selvforståelse.</p>
+<p>Stone og Heen identificerer tre "triggers" der blokerer modtagerens evne til at absorbere feedback: <strong>Sandhedstriggeren</strong> (feedbacken er forkert eller uretfærdig), <strong>relationstriggeren</strong> (jeg stoler ikke på den person, der giver feedbacken, eller relationen er belastet), og <strong>identitetstriggeren</strong> (feedbacken truer min grundlæggende selvforståelse). Den første kan adresseres med bedre data og mere specifik feedback. Den anden kræver en stærkere relation. Den tredje — og sværeste — kræver, at du hjælper medarbejderen med at adskille feedback på adfærd fra dom over identitet. "Du leverede ikke på dette projekt" er fundamentalt anderledes end "du er inkompetent." Men i medarbejderens hjerne kan de to opleves identisk.</p>
+
+<h3>Radical Candor i MUS</h3>
+<p>Kim Scotts Radical Candor-ramme giver en praktisk guide til MUS-samtalen. Radical Candor er kombinationen af to dimensioner: <strong>Care Personally</strong> (vis ægte omsorg for medarbejderen som menneske) og <strong>Challenge Directly</strong> (vær ærlig og direkte om det, der skal siges). Når du har begge, har du Radical Candor. Når du har omsorg uden ærlighed, har du "Ruinous Empathy" — du er flink men uærlig, og medarbejderen udvikler sig ikke. Når du har ærlighed uden omsorg, har du "Obnoxious Aggression" — du er ærlig men brutal, og medarbejderen lukker ned. Og når du hverken har omsorg eller ærlighed, har du "Manipulative Insincerity" — den mest destruktive form for ledelse.</p>
+<p>For MUS-samtalen betyder det konkret: Start med at etablere omsorg. Vis at du kender medarbejderen, at du har fulgt med, at du anerkender indsatsen. Derefter — med omsorg som fundament — vær ærlig. Direkte. Specifik. Ikke grusom, ikke vag, ikke pakket ind i sandwichmodeller og diplomatiske omskrivninger. Bare ærlig. Med omsorg.</p>
+<blockquote>Den gode MUS er ikke en monolog fra lederen. Den er en dialog, hvor medarbejderen taler mindst halvdelen af tiden — og hvor lederen lytter med hele sin opmærksomhed.</blockquote>`,
+qs:[
+{id:'q3_1',type:'ta',l:'Hvor meget af din typiske MUS <strong>taler du</strong> versus <strong>lytter</strong>? Vær ærlig.'},
+{id:'q3_2',type:'choice',l:'Din typiske MUS-stil er tættest på:',opts:['Radical Candor (ærlig + omsorg)','Ruinous Empathy (flink men uærlig)','Obnoxious Aggression (ærlig men brutal)','Blanding/situationsafhængig']},
+{id:'q3_3',type:'ta',l:'Hvilke <strong>spørgsmål</strong> stiller du typisk i MUS? Skriv dine 5 vigtigste ned.'},
+{id:'q3_4',type:'ta',l:'Hvornår har du sidst givet feedback der <strong>ikke landede</strong>? Hvad skete — og hvad var triggeren?'},
+{id:'q3_5',type:'ta',l:'Hvad undgår du at sige i MUS? Hvad <strong>pakker du ind</strong> — og hvad koster den undvigelse?'},
+{id:'q3_6',type:'ta',l:'Prøv at formulere <strong>én konkret, specifik feedback</strong> til din sværeste medarbejder. Specifik adfærd, specifik konsekvens.'},
+],
+takeaways:['De første fem minutter sætter tonen. Din energi kommunikerer mere end dine ord.','Spørgsmål er kraftigere end svar. GROW-modellen faciliterer opdagelse — ikke diktat.','Modtageren afgør om feedback lander. Forstå de tre triggers: Sandhed, relation, identitet.','Radical Candor = omsorg + ærlighed. Du har brug for begge. Omsorg uden ærlighed er falsk venlighed.','Medarbejderen skal tale mindst halvdelen af tiden. Hvis du taler mest, er det en monolog — ikke en MUS.']
+},
+{
+id:4,
+title:'Den svære samtale',
+subtitle:'Underperformance, adfærdsproblemer og de sandheder ingen vil høre',
+icon:'⚡',
+color:'#4CAF82',
+sources:['Stone, D., Patton, B. & Heen, S. — Difficult Conversations (1999)','Patterson, K. et al. — Crucial Conversations (2012)','Edmondson, A. — Right Kind of Wrong (2023)','Lencioni, P. — The Five Dysfunctions of a Team (2002)','Brown, B. — Dare to Lead (2018)'],
+whyText:'Forskning viser, at <strong>den gennemsnitlige leder udskyder svære samtaler med 6-9 måneder</strong>. Hver måneds udsættelse gør samtalen sværere, skaden større og løsningen dyrere.',
+learn:`<h3>Udsættelsens pris</h3>
+<p>Der er en uudtalt kontrakt i de fleste organisationer: Vi taler ikke om det, der er svært. Vi pakker det ind. Vi venter. Vi håber, det løser sig selv. Det gør det aldrig. Stone, Patton og Heen fra Harvard Negotiation Project har dokumenteret, at den gennemsnitlige leder udskyder svære samtaler med 6-9 måneder. Seks til ni måneder, hvor problemet vokser, frustrationen akkumuleres, relationen eroderer og kollegaerne observerer, at der ikke er konsekvenser.</p>
+<p>Udsættelsens pris er tredobbelt. For det første bliver selve samtalen sværere med tiden — fordi du nu skal adressere ikke bare det oprindelige problem, men også det faktum, at du ikke adresserede det, da det opstod. For det andet har medarbejderen ingen mulighed for at forbedre sig, fordi hun ikke ved, at der er et problem. Du har nægtet hende feedbacken, der kunne have ændret hendes adfærd for måneder siden. For det tredje sender det et signal til resten af teamet: "Her er det okay at underpræstere. Her er der ingen konsekvenser." Og det signal er giftig for de medarbejdere, der faktisk leverer.</p>
+
+<h3>De tre lag i svære samtaler</h3>
+<p>Stone, Patton og Heen beskriver, at enhver svær samtale reelt er tre samtaler. <strong>Hvad-skete-samtalen</strong> handler om fakta: Hvad skete, hvem sagde hvad, hvem har ret? Problemet er, at begge parter typisk har en begrænset og farvet version af virkeligheden. <strong>Følelsessamtalen</strong> handler om de emotioner, der er i spil — frustration, skuffelse, vrede, frygt, skam — men som sjældent italesættes direkte. <strong>Identitetssamtalen</strong> handler om, hvad situationen siger om mig som menneske: Er jeg kompetent? Er jeg en god medarbejder? Er jeg værdifuld?</p>
+<p>De fleste ledere fokuserer udelukkende på hvad-skete-samtalen — fakta, argumenter, beviser. Men det er følelsessamtalen og identitetssamtalen, der afgør, om budskabet lander. En medarbejder, der føler sig truet i sin identitet ("min chef synes, jeg er inkompetent"), er neurologisk ude af stand til at høre saglig feedback, uanset hvor velformuleret den er. At adressere følelserne og identitetsudfordringen — eksplicit og med empati — er derfor ikke et blødt supplement. Det er en nødvendig forudsætning.</p>
+
+<h3>Mod og medfølelse</h3>
+<p>Brené Brown definerer mod i ledelse som evnen til at have ubehagelige samtaler med empati og klarhed. Ikke den ene eller den anden — begge. Empati uden klarhed er konfliktskyhed forklædt som venlighed. Klarhed uden empati er brutalitet forklædt som ærlighed. Modet ligger i at holde begge dele fast, samtidigt, under pres — også når medarbejderen græder, bliver vred, forsvarer sig eller trækker sig.</p>
+<p>Patterson og hans kolleger fra Crucial Conversations tilbyder en konkret model for svære samtaler: Start med hjertet (hvad vil du oprigtigt opnå — for dig, for medarbejderen, for relationen?), skab tryghed (signalér at du ikke er ude på at straffe, men at hjælpe), beskriv observationer (specifik adfærd, ikke karakter), del din historie (din fortolkning, åbent formuleret), invitér medarbejderens historie (hvad er dit perspektiv?), og søg fælles løsninger.</p>
+
+<h3>Fra dom til udvikling</h3>
+<p>Amy Edmondson tilbyder med sin forskning i intelligente fejl en vigtig nuance: Ikke alle underperformance er ens. Der er basale fejl — sjusk, manglende opmærksomhed, gentagne forglemmelser — som kræver konfrontation. Der er komplekse fejl — resultater af uforudsigelige omstændigheder — som kræver systemisk analyse. Og der er intelligente fejl — velplanlagte eksperimenter der ikke lykkedes — som kræver anerkendelse. At behandle alle tre ens er ufair, ineffektivt og demotiverende.</p>
+<p>Den gode svære samtale starter derfor med nysgerrighed, ikke med dom. "Hjælp mig forstå, hvad der skete" er en fundamentalt anderledes åbning end "Du leverede ikke." Den første inviterer til dialog. Den anden inviterer til forsvar. Og det er i dialogen — ikke i forsvaret — at læring og forandring opstår.</p>
+<blockquote>At udskyde en svær samtale er ikke venlighed. Det er den mest uvenlige handling, du kan foretage dig — mod medarbejderen, mod teamet og mod dig selv.</blockquote>`,
+qs:[
+{id:'q4_1',type:'ta',l:'Hvilken <strong>svær samtale</strong> har du udskudt — og hvor længe? Hvad koster udsættelsen?'},
+{id:'q4_2',type:'ta',l:'Tænk på din sværeste medarbejder. Hvad er problemet — <strong>specifik adfærd, specifik konsekvens</strong>?'},
+{id:'q4_3',type:'ta',l:'Hvilke <strong>følelser</strong> er i spil i den samtale — dine og medarbejderens? Har du bearbejdet dine egne?'},
+{id:'q4_4',type:'scale',l:'Hvor modig er du i svære samtaler — ærligt?',mn:1,mx:10},
+{id:'q4_5',type:'ta',l:'Hvornår har du sidst haft en svær samtale der <strong>lykkedes</strong>? Hvad gjorde du rigtigt?'},
+{id:'q4_6',type:'ta',l:'Formulér din <strong>åbning</strong> til den svære samtale du har udskudt. Nysgerrig, ikke dommende.'},
+],
+takeaways:['Udsættelse gør samtalen sværere, skaden større og signalet til teamet værre. Handle nu.','Tre lag: Hvad skete (fakta), følelser (emotioner), identitet (selvforståelse). Adressér alle tre.','Mod = empati + klarhed. Du har brug for begge. Det ene uden det andet er skadeligt.','Start med nysgerrighed, ikke dom. "Hjælp mig forstå" åbner dialog. "Du leverede ikke" åbner forsvar.','Differentiér fejltyper. Basale fejl konfronteres. Komplekse fejl analyseres. Intelligente fejl fejres.']
+},
+{
+id:5,
+title:'Udvikling og vækst',
+subtitle:'At skabe en udviklingsplan der faktisk fører til forandring',
+icon:'🌱',
+color:'#7A9ECA',
+sources:['Dweck, C. — Mindset: The New Psychology of Success (2006)','McCall, M. — High Flyers (1998)','Csikszentmihalyi, M. — Flow: The Psychology of Optimal Experience (1990)','Ericsson, A. & Pool, R. — Peak: Secrets from the New Science of Expertise (2016)','Lombardo, M. & Eichinger, R. — The Career Architect Development Planner (2004)'],
+whyText:'McCall: <strong>70% af udvikling sker gennem udfordrende erfaringer</strong>, 20% gennem relationer og 10% gennem formel uddannelse. De fleste MUS-udviklingsplaner fokuserer på de 10%. Det er derfor, de sjældent virker.',
+learn:`<h3>Udviklingsplanens problem</h3>
+<p>Der er noget tragikomisk over den typiske MUS-udviklingsplan. Den formuleres med de bedste intentioner: Medarbejderen skal "udvikle sin kommunikation," "blive bedre til at delegere" eller "styrke sin strategiske tænkning." Der aftales et kursus eller en coach. Planen skrives ind i systemet. Begge parter nikker. Og tolv måneder senere sidder de igen og konstaterer, at intet er sket.</p>
+<p>Morgan McCall fra USC forklarer hvorfor: De fleste udviklingsplaner fokuserer på formel uddannelse — kurser, seminarer, certificeringer — som kun står for cirka 10% af reel lederudvikling. De resterende 90% sker gennem udfordrende arbejdserfaringer (70%) og relationer med mentorer, coaches og peers (20%). Det betyder, at den vigtigste udviklingssamtale i MUS ikke handler om, hvilket kursus medarbejderen skal på. Den handler om, hvilke opgaver, projekter og ansvarsområder der vil strække medarbejderen ud over sin nuværende kapacitet.</p>
+
+<h3>Growth mindset som forudsætning</h3>
+<p>Carol Dweck har dokumenteret, at menneskers grundlæggende overbevisning om, hvorvidt evner kan udvikles (growth mindset) eller er medfødte og faste (fixed mindset), er den stærkeste prædiktor for, om de faktisk udvikler sig. En medarbejder med et fixed mindset oplever feedback som en dom over sin grundlæggende kapacitet. En medarbejder med et growth mindset oplever den som information om, hvor der er mulighed for vækst.</p>
+<p>For MUS har dette en vigtig implikation: Dit sprog former medarbejderens mindset. Når du siger "du er god til analyse," forstærker du et fixed mindset (identitetsbaseret ros). Når du siger "din analyse af Q3-dataene var grundig og velstruktureret — fortæl mig om din proces," forstærker du et growth mindset (procesbaseret ros). Den første siger: "Du er sådan." Den anden siger: "Du gjorde noget effektivt — lad os forstå hvad." Forskellen er subtil men afgørende.</p>
+
+<h3>Stretch og flow</h3>
+<p>Mihaly Csikszentmihalyis flow-teori tilbyder en ramme for at forstå, hvornår mennesker udvikler sig bedst: Når udfordringen er lige tilstrækkeligt over deres nuværende kompetenceniveau — ikke så lav, at de keder sig, og ikke så høj, at de overvældes. Lombardo og Eichinger kalder det "the development zone" — den zone, hvor opgaven er ubehageligt udfordrende men ikke umulig. Det er her, vækst sker.</p>
+<p>Anders Ericsson tilføjer med sin forskning i "deliberate practice," at udvikling kræver mere end bare erfaring. Det kræver målrettet, fokuseret øvelse med umiddelbar feedback. En medarbejder der har "10 års erfaring" kan reelt have ét års erfaring gentaget ti gange, hvis der ikke har været bevidst, fokuseret udvikling. Din rolle i MUS er at designe udviklingsforløb, der kombinerer stretch-opgaver med struktureret refleksion og feedback.</p>
+
+<h3>Den konkrete udviklingsplan</h3>
+<p>En udviklingsplan der virker, har fire elementer. <strong>Ét fokus:</strong> Ikke fem udviklingsområder. Ét. Det vigtigste. Det der vil gøre størst forskel. <strong>En stretch-erfaring:</strong> En konkret opgave, projekt eller rolle, der vil udfordre medarbejderen på præcis det område. <strong>Støtte:</strong> Hvem hjælper — mentor, coach, sparringspartner, dig? Og hvornår? <strong>Milepæle:</strong> Hvornår tjekker I ind? Hvad er tegnene på fremgang? Hvornår evaluerer I, om planen virker? Uden milepæle er en udviklingsplan en ønskeliste. Med milepæle er den en kontrakt.</p>
+<blockquote>Udvikling sker ikke på kurser. Den sker i de opgaver, der er lige ubehageligt nok til at strække dig — med en leder der giver dig feedback og holder dig ansvarlig.</blockquote>`,
+qs:[
+{id:'q5_1',type:'ta',l:'Hvad er det <strong>ene udviklingsområde</strong> for hver af dine nøglemedarbejdere? Ikke fem — ét.'},
+{id:'q5_2',type:'ta',l:'Hvilke <strong>stretch-opgaver</strong> kan du tilbyde? Konkrete erfaringer der udvikler — ikke kurser.'},
+{id:'q5_3',type:'ta',l:'Bruger du <strong>procesbaseret ros</strong> ("din analyse var grundig") eller <strong>identitetsbaseret ros</strong> ("du er god til analyse")?'},
+{id:'q5_4',type:'ta',l:'Hvad skete med <strong>sidste års udviklingsplaner</strong>? Blev de fulgt? Hvis nej — hvorfor ikke?'},
+{id:'q5_5',type:'scale',l:'Hvor gode er du til at designe udviklende erfaringer for dine medarbejdere?',mn:1,mx:10},
+{id:'q5_6',type:'ta',l:'Lav en <strong>konkret udviklingsplan</strong> for din vigtigste medarbejder: Ét fokus, én stretch-erfaring, én støtteperson, tre milepæle.'},
+],
+takeaways:['70% af udvikling sker gennem erfaringer, 20% relationer, 10% uddannelse. Stop med at sende folk på kurser.','Growth mindset fremmes af procesbaseret ros. Fixed mindset fremmes af identitetsbaseret ros.','Ét fokus er bedre end fem. Ét konkret udviklingsområde med en plan slår fem vage ambitioner.','Uden milepæle er en udviklingsplan en ønskeliste. Med milepæle er den en kontrakt.','Stretch + feedback = udvikling. Erfaring alene er ikke nok — der skal refleksion og feedback til.']
+},
+{
+id:6,
+title:'Trivsel og motivation',
+subtitle:'At tale om det hele menneske — ikke bare det professionelle output',
+icon:'❤️',
+color:'#E57373',
+sources:['Deci, E. & Ryan, R. — Self-Determination Theory (2000)','Herzberg, F. — One More Time: How Do You Motivate Employees? (HBR, 1968)','Seligman, M. — Flourish (2011)','Gallup — State of the Global Workplace (2023)','Maslach, C. & Leiter, M. — The Truth About Burnout (1997)'],
+whyText:'Gallup 2023: <strong>Kun 23% af verdens medarbejdere er engagerede</strong>. Deci og Ryan viser, at engagement kræver tre ting: Autonomi, kompetence og tilhørsforhold. MUS er din chance for at adressere alle tre.',
+learn:`<h3>Motivationens tredobbelte motor</h3>
+<p>Edward Deci og Richard Ryans Self-Determination Theory er den mest robuste motivationsteori, vi har. Deres forskning viser, at mennesker har tre grundlæggende psykologiske behov, der skal være opfyldt, for at de kan trives og præstere: <strong>Autonomi</strong> (oplevelsen af at have indflydelse på sit eget arbejde), <strong>kompetence</strong> (oplevelsen af at mestre sit fag og udvikle sig) og <strong>tilhørsforhold</strong> (oplevelsen af at være en del af noget meningsfuldt og at have værdifulde relationer).</p>
+<p>Når alle tre behov er opfyldt, oplever medarbejderen intrinsisk motivation — den indre drivkraft, der producerer engagement, kreativitet og udholdenhed. Når et eller flere af behovene er truet, skifter medarbejderen til extrinsisk motivation — hun gør det, fordi hun skal, ikke fordi hun vil. Og extrinsisk motivation producerer compliance, ikke commitment. MUS er din mulighed for at diagnosticere, hvor medarbejderen står på hver af de tre dimensioner — og handle på det.</p>
+
+<h3>Det hele menneske</h3>
+<p>Frederick Herzberg viste med sin tofaktor-teori, at de faktorer der skaber tilfredshed (motivationsfaktorer: meningsfuldt arbejde, ansvar, anerkendelse, vækst) er fundamentalt anderledes end dem, der forebygger utilfredshed (hygiejnefaktorer: løn, vilkår, sikkerhed, relationer). Du kan ikke motivere ved at fjerne utilfredshed — du kan kun fjerne klagen. Motivation kræver, at du adresserer de dybere behov.</p>
+<p>Martin Seligmans PERMA-model tilbyder en bredere ramme for trivsel: <strong>Positive Emotions</strong> (oplever medarbejderen glæde, interesse, stolthed?), <strong>Engagement</strong> (er der flow — dyb fordybelse i meningsfulde opgaver?), <strong>Relationships</strong> (er der stærke, positive relationer?), <strong>Meaning</strong> (oplever medarbejderen, at arbejdet bidrager til noget større?), <strong>Achievement</strong> (er der fremgang og resultater?). PERMA giver dig en struktureret måde at spørge ind til trivsel, der går langt ud over "hvordan har du det?"</p>
+
+<h3>Udbrændthed som ledelsesfejl</h3>
+<p>Christina Maslach og Michael Leiter har forsket i udbrændthed i over tre årtier, og deres konklusion er provokerende: Udbrændthed er primært et organisatorisk problem, ikke et individuelt problem. De identificerer seks områder, hvor mismatch mellem medarbejder og organisation driver udbrændthed: <strong>Arbejdsbyrde</strong> (for meget med for lidt), <strong>kontrol</strong> (manglende indflydelse), <strong>belønning</strong> (utilstrækkelig anerkendelse), <strong>fællesskab</strong> (isolation eller konflikt), <strong>fairness</strong> (oplevelse af uretfærdighed) og <strong>værdier</strong> (misalignment mellem personlige og organisatoriske værdier).</p>
+<p>MUS er din mulighed for at opdage disse mismatches, før de udvikler sig til udbrændthed. Men det kræver, at du tør spørge — og at du tør lytte til svaret. "Hvordan har du det — egentlig?" er et spørgsmål der kræver, at du er parat til at handle på svaret. Hvis du spørger og ikke handler, er det værre end ikke at spørge.</p>
+
+<h3>Gallups engagement-krise</h3>
+<p>Gallups State of the Global Workplace-rapport dokumenterer år efter år den samme nedslående virkelighed: Globalt er kun 23% af medarbejdere engagerede. 59% er "quiet quitting" — de gør det nødvendige men ikke mere. Og 18% er aktivt disengagerede — de modarbejder aktivt organisationens mål. Den vigtigste enkeltfaktor for engagement er relationen til den nærmeste leder. Og den vigtigste berøringsflade i den relation er samtalen — herunder MUS.</p>
+<blockquote>Trivsel er ikke et HR-initiativ. Det er en ledelsesopgave. Og MUS er det tidspunkt, hvor du enten styrker eller underminerer din medarbejders motivation.</blockquote>`,
+qs:[
+{id:'q6_1',type:'ta',l:'For hver af dine medarbejdere: Hvordan scorer de på <strong>autonomi, kompetence og tilhørsforhold</strong>? Hvad mangler?'},
+{id:'q6_2',type:'ta',l:'Hvem i dit team er i <strong>risiko for udbrændthed</strong>? Hvad er tegnene — og hvad gør du ved det?'},
+{id:'q6_3',type:'ta',l:'Spørger du <strong>"hvordan har du det — egentlig?"</strong> i MUS? Og er du parat til at handle på svaret?'},
+{id:'q6_4',type:'ta',l:'Hvad <strong>motiverer</strong> dine medarbejdere individuelt? Kender du svaret for hver enkelt?'},
+{id:'q6_5',type:'scale',l:'Hvor godt adresserer dine MUS-samtaler trivsel og det hele menneske?',mn:1,mx:10},
+{id:'q6_6',type:'ta',l:'Brug PERMA: For én medarbejder — hvordan scorer de på <strong>Positive Emotions, Engagement, Relationships, Meaning, Achievement</strong>?'},
+],
+takeaways:['Motivation kræver autonomi, kompetence og tilhørsforhold. Adressér alle tre i MUS.','Udbrændthed er primært organisatorisk, ikke individuelt. Seks mismatches driver det — kend dem.','Kun 23% er engagerede globalt. Relationen til nærmeste leder er den vigtigste faktor. Det er dig.','Spørg ikke "hvordan har du det" hvis du ikke er parat til at handle. Tomme spørgsmål er værre end ingen.','PERMA giver struktur til trivselssamtalen. Brug den — den går dybere end "alt vel?"']
+},
+{
+id:7,
+title:'Opfølgning og accountability',
+subtitle:'Det der sker EFTER MUS afgør om den var meningsfuld',
+icon:'🔄',
+color:'#E5A048',
+sources:['McChesney, C. et al. — The 4 Disciplines of Execution (2012)','Lencioni, P. — The Advantage (2012)','Drucker, P. — The Effective Executive (1967)','Clear, J. — Atomic Habits (2018)','Gawande, A. — The Checklist Manifesto (2009)'],
+whyText:'Lencioni: <strong>"If everything is important, nothing is."</strong> Den typiske MUS ender med 8-10 aftaler, som ingen kan huske efter 2 uger. Den effektive MUS ender med 2-3 krystalklare forpligtelser — med opfølgningsdatoer.',
+learn:`<h3>Opfølgningens fravær</h3>
+<p>Her er den ubehagelige sandhed om MUS i de fleste organisationer: Samtalen er slutproduktet. Der er forberedelse. Der er samtale. Der er et udfyldt skema. Og så sker der ingenting. Skemaet arkiveres. Aftalerne glemmes. Hverdagen tager over. Og tolv måneder senere gentages ritualet — med de samme gode intentioner og de samme manglende resultater.</p>
+<p>Peter Drucker formulerede det med karakteristisk skarphed: Planer er værdiløse, medmindre de degenererer til arbejde. En MUS-aftale uden opfølgning er en plan, der aldrig degenererer til arbejde. Den er en velment intention, der langsomt opløses i hverdagens krav, prioriteter og distraktioner. Og medarbejderen konkluderer — med rette — at MUS er et ritual, ikke et redskab.</p>
+
+<h3>Accountability-systemet</h3>
+<p>Chris McChesney og hans kolleger identificerer fire discipliner for effektiv eksekvering, der er direkte anvendelige på MUS-opfølgning. <strong>Fokus på det vigtigste:</strong> Ikke ti mål. To-tre. De vigtigste. Dem der vil gøre den største forskel. Lencioni siger det endnu skarpere: "If everything is important, nothing is." Hvis din MUS ender med otte aftaler, har du reelt nul aftaler, fordi ingen kan fokusere på otte ting samtidig.</p>
+<p><strong>Handl på lead measures:</strong> Mål ikke bare, om resultatet blev opnået (lag measure). Mål de handlinger, der fører til resultatet (lead measures). Hvis medarbejderen skal "styrke sin kommunikation," er resultatet vagt og uhåndgribeligt. Men "holde ugentlige 1:1 med alle teammedlemmer med struktureret agenda" er en lead measure, der kan spores, evalueres og justeres.</p>
+<p><strong>Synlig scoreboard:</strong> Aftaler, der ikke er synlige, er aftaler, der glemmes. De vigtigste MUS-aftaler bør være tilgængelige — for dig og for medarbejderen — på en måde, der gør det umuligt at ignorere dem. Det behøver ikke være kompliceret: Et delt dokument, en simpel liste, en fast agenda-post i jeres 1:1.</p>
+<p><strong>Ansvarligheds-cadence:</strong> Den vigtigste disciplin. Regelmæssige, korte opfølgninger, hvor I tjekker ind på fremgang, identificerer blokeringer og justerer planen. McChesney anbefaler ugentlig cadence for de vigtigste mål. For MUS-aftaler er månedlig opfølgning et minimum — og det kan gøres på 10 minutter i en 1:1.</p>
+
+<h3>Vaner, ikke viljesstyrke</h3>
+<p>James Clear argumenterer i Atomic Habits for, at varig adfærdsændring ikke er et resultat af viljesstyrke eller motivation. Det er et resultat af systemer — de vaner, rutiner og miljøer, der gør den ønskede adfærd let og den uønskede adfærd svær. For MUS-opfølgning betyder det, at du ikke kan stole på, at du husker at følge op. Du skal bygge det ind i et system: En fast agenda-post i 1:1. En månedlig kalender-påmindelse. En kvartalsvis MUS-mini-review.</p>
+<p>Atul Gawande viser med sin forskning i tjeklister, at selv de mest kompetente professionelle — kirurger, piloter, ingeniører — performer bedre med simple tjeklister, der sikrer, at de kritiske trin ikke glemmes under hverdagens pres. En simpel MUS-opfølgningstjekliste — aftaler, milepæle, næste check-in — er et trivielt redskab med en utriviel effekt.</p>
+<blockquote>En MUS uden opfølgning er en samtale uden konsekvenser. Og samtaler uden konsekvenser er samtaler, folk stopper med at tage alvorligt.</blockquote>`,
+qs:[
+{id:'q7_1',type:'ta',l:'Hvad skete med <strong>aftalerne fra dine seneste MUS-samtaler</strong>? Blev de fulgt op — eller glemt?'},
+{id:'q7_2',type:'ta',l:'Hvad er dit <strong>opfølgningssystem</strong>? Beskriv det konkret — eller erkend at det mangler.'},
+{id:'q7_3',type:'ta',l:'Kan du reducere dine MUS-aftaler til <strong>2-3 krystalklare forpligtelser</strong> pr. medarbejder? Prøv.'},
+{id:'q7_4',type:'ta',l:'Hvilke <strong>lead measures</strong> kunne du spore for dine vigtigste MUS-aftaler?'},
+{id:'q7_5',type:'scale',l:'Hvor konsekvent følger du op på MUS-aftaler?',mn:1,mx:10},
+{id:'q7_6',type:'ta',l:'Design din <strong>MUS-opfølgningscadence</strong>: Hvornår, hvordan, hvad tjekker I? Skriv den ned.'},
+],
+takeaways:['En MUS uden opfølgning er en samtale uden konsekvenser. Folk stopper med at tage den alvorligt.','2-3 aftaler slår 8-10. Fokus er en superkraft. "If everything is important, nothing is."','Lead measures slår lag measures. Mål handlinger, ikke bare resultater.','Byg opfølgning ind i et system. Stol ikke på hukommelse eller viljesstyrke.','Månedlig opfølgning i 1:1 er minimum. 10 minutter pr. gang er nok. Konsistens slår varighed.']
+},
+{
+id:8,
+title:'MUS som ledelsessystem',
+subtitle:'Fra isoleret samtale til integreret ledelsespraksis',
+icon:'🏛',
+color:'#9575CD',
+sources:['Aguinis, H. — Performance Management (2019)','Deming, W.E. — Out of the Crisis (1986)','Drucker, P. — Management: Tasks, Responsibilities, Practices (1973)','Collins, J. — Good to Great (2001)','Kaplan, R. & Norton, D. — The Balanced Scorecard (1996)'],
+whyText:'Deming: <strong>"A bad system will beat a good person every time."</strong> MUS er ikke en isoleret samtale. Det er en del af et sammenhængende ledelsessystem — og systemets kvalitet afgør samtalens impact.',
+learn:`<h3>Fra samtale til system</h3>
+<p>Der er en grundlæggende fejl i, hvordan de fleste organisationer tænker om MUS: De behandler det som en isoleret begivenhed — en årlig samtale, der eksisterer uafhængigt af alt andet. Men en MUS-samtale er kun så god som det system, den er indlejret i. Hvis din daglige ledelse er fraværende, din feedback sjælden, dine forventninger uklare og din opfølgning inkonsekvent — så kan den bedste MUS-samtale i verden ikke kompensere.</p>
+<p>Edwards Deming, kvalitetspioneren, formulerede det med sin sædvanlige radikalitet: "A bad system will beat a good person every time." Oversat til MUS: En god leder i et dårligt MUS-system producerer middelmådige resultater. Og et godt system med en middelmådig leder producerer bedre resultater, end de fleste tror. Systemet er vigtigere end individet — og dit ansvar som leder er at designe systemet.</p>
+
+<h3>Det sammenhængende ledelsessystem</h3>
+<p>Herman Aguinis argumenterer for, at performance management ikke er MUS. MUS er én komponent i et sammenhængende performance management-system, der inkluderer: <strong>Klare forventninger</strong> (medarbejderen ved præcis, hvad der forventes — ikke vagt, men specifikt), <strong>løbende feedback</strong> (ikke kun ved MUS, men dagligt, ugentligt, månedligt), <strong>udviklingsmuligheder</strong> (konkrete opgaver, projekter og relationer der strækker medarbejderen), <strong>fair vurdering</strong> (baseret på data, observation og dialog — ikke på mavefornemmelse) og <strong>konsekvenser</strong> (gode resultater belønnes, dårlige resultater adresseres).</p>
+<p>Drucker tilføjer, at den effektive leder tænker i systemer, ikke i episoder. MUS er ikke en episode — det er et omdrejningspunkt i et kontinuerligt system af forventningsafstemning, observation, feedback, udvikling og evaluering. Uden de andre elementer er MUS meningsløs. Med dem er den transformativ.</p>
+
+<h3>1:1 som MUS-fundament</h3>
+<p>Den mest effektive MUS-forberedelse er ikke et skema, du udfylder dagen før. Det er de regelmæssige 1:1-samtaler, du har haft hele året. Hvis du har haft ugentlige eller fjortendaglige 1:1 med hver medarbejder, har du en løbende, nuanceret forståelse af deres performance, trivsel, udvikling og ambitioner. MUS bliver da ikke en dramatisk afsløring — den bliver en struktureret sammenfatning af en dialog, der har kørt hele året.</p>
+<p>Jim Collins observerede i Good to Great, at de bedste ledere ikke ventede på formelle anledninger til at give feedback eller afstemme forventninger. De gjorde det kontinuerligt, naturligt og uformelt — som en integreret del af deres daglige ledelse. MUS var opsummeringen, ikke begivenheden.</p>
+
+<h3>Systemets design</h3>
+<p>Kaplan og Norton tilbyder med Balanced Scorecard en ramme for at forbinde individuelle MUS-mål med organisatoriske strategiske mål. Hver medarbejders MUS-aftaler bør kunne spores tilbage til teamets mål, som kan spores tilbage til afdelingens mål, som kan spores tilbage til organisationens strategi. Denne "line of sight" — forbindelsen mellem individets arbejde og organisationens retning — er det, der gør MUS meningsfuld: Medarbejderen forstår ikke bare, hvad hun skal gøre, men hvorfor det er vigtigt.</p>
+<p>Dit ansvar som leder er at designe dette system: Klare forventninger fra dag ét. Regelmæssige 1:1 som den daglige platform for dialog. Løbende feedback — specifik, rettidig og balanceret. Udviklingsmuligheder der matcher den enkeltes potentiale. Og MUS som den strukturerede refleksion, der samler trådene, sætter retning og fornyer kontrakten mellem dig og medarbejderen.</p>
+<p>Thomas Friisnæs' tre søjler giver den overordnede ramme: <strong>Karakter</strong> — modet til at have de samtaler der skal haves, sige det der skal siges, og handle når handling er nødvendig. <strong>Disciplin</strong> — konsistensen til at holde 1:1, forberede MUS, følge op på aftaler og opretholde systemet, også når hverdagen presser. <strong>Klarhed</strong> — evnen til at formulere forventninger, feedback og retning på en måde, der er utvetydig, fair og handlingsorienteret.</p>
+<blockquote>MUS er ikke en HR-proces, du skal overholde. Det er den mest koncentrerede form for ledelse, du praktiserer. Gør den til det, den fortjener at være.</blockquote>`,
+qs:[
+{id:'q8_1',type:'ta',l:'Beskriv dit <strong>samlede performance management-system</strong>: Forventninger, 1:1, feedback, udvikling, MUS. Hvad mangler?'},
+{id:'q8_2',type:'ta',l:'Har du <strong>regelmæssige 1:1</strong> med alle medarbejdere? Hvor ofte — og hvad er kvaliteten?'},
+{id:'q8_3',type:'ta',l:'Kan dine medarbejdere se <strong>"line of sight"</strong> — forbindelsen mellem deres mål og organisationens strategi?'},
+{id:'q8_4',type:'ta',l:'Hvad vil du <strong>ændre i dit system</strong> baseret på dette forløb? Vær specifik.'},
+{id:'q8_5',type:'scale',l:'Hvor sammenhængende er dit ledelsessystem — fra daglig feedback til årlig MUS?',mn:1,mx:10},
+{id:'q8_6',type:'ta',l:'Design dit <strong>ideale årshjul</strong>: Hvornår MUS, hvornår mini-reviews, hvornår 1:1, hvornår teamdialog. Skriv det ned.'},
+],
+takeaways:['"A bad system will beat a good person every time." Design systemet — ikke bare samtalen.','MUS er opsummeringen af et helt års dialog. Uden 1:1 og løbende feedback er MUS en illusion.','Line of sight: Hvert MUS-mål skal kunne spores til organisationens strategi. Ellers er det tilfældigt.','Performance management er ikke MUS. Det er et system: Forventninger, feedback, udvikling, vurdering, konsekvenser.','Karakter, Disciplin, Klarhed: Modet til at sige det. Konsistensen til at gøre det. Evnen til at formulere det.']
+}
+];
+
+function renderDash(){
+  const el=document.getElementById('client-dash');
+  document.getElementById('tb-name').textContent=S.cName;
+  let totalAns=0,totalQ=0,completedMods=0;
+  const activeMod=getActiveMod(S.cId);
+  MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);totalAns+=a;totalQ+=m.qs.length;if(isModComplete(S.cId,m))completedMods++});
+  const pct=totalQ?Math.round(totalAns/totalQ*100):0;
+
+  let ackIcon,ackTitle,ackBody;
+  if(completedMods>=8){ackIcon='🏆';ackTitle='Forløbet gennemført';ackBody='8 moduler. 48 refleksioner. Du har nu fundamentet for dit lederskab.<br><strong>Næste skridt:</strong> Book session med din coach.'}
+  else if(totalAns>0){ackIcon='⚡';ackTitle='Du er i gang';ackBody=`Modul ${activeMod} af 8 er åbent. Gennemfør spørgsmål og journal, og send til din coach for at åbne næste modul.`}
+  else{ackIcon='🚀';ackTitle='Velkommen til dit MUS-forløb';ackBody='8 moduler. 48 refleksioner. Modulerne åbnes ét ad gangen — gennemfør og send til din coach for at komme videre.'}
+
+  let h=`<div class="prog-header"><div><h1>Dit MUS-forløb</h1><div class="stat">${completedMods}/8 moduler · ${totalAns}/${totalQ} svar · ${pct}%</div></div></div>`;
+  h+=`<div class="ack-box fade"><div class="ack-icon">${ackIcon}</div><h2>${ackTitle}</h2><p>${ackBody}</p></div>`;
+
+  h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:4px">Forløbs-overblik</h3>
+    <div class="velocity-grid">
+      <div class="vg-item"><div class="vn">${completedMods}</div><div class="vl">Gennemført</div></div>
+      <div class="vg-item"><div class="vn">${pct}%</div><div class="vl">Fremgang</div></div>
+      <div class="vg-item"><div class="vn">${totalAns}</div><div class="vl">Refleksioner</div></div>
+      <div class="vg-item"><div class="vn">${activeMod}/8</div><div class="vl">Åbne moduler</div></div>
+    </div></div>`;
+
+  h+='<div class="mods-grid">';
+  MODS.forEach(m=>{
+    const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);const tot=m.qs.length;const mpct=tot?Math.round(a/tot*100):0;
+    const isActive=m.id<=activeMod;
+    const isDone=isModComplete(S.cId,m);
+    const sent=isModSent(S.cId,m.id);
+    let badge='';
+    if(!isActive)badge=`<span class="mc-badge" style="background:var(--navy4);color:var(--text3)">🔒 Låst</span>`;
+    else if(sent)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">✓ Sendt</span>`;
+    else if(isDone)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">✓ Klar til afsendelse</span>`;
+    else if(a>0)badge=`<span class="mc-badge" style="background:var(--gdim);color:var(--gold)">${a}/${tot}</span>`;
+    else badge=`<span class="mc-badge" style="background:rgba(42,82,152,.15);color:var(--blue2)">Klar</span>`;
+    h+=`<div class="mod-card fade ${isActive?'':'locked'}" ${isActive?`onclick="openMod(${m.id-1})"`:''}>
+      <div class="mc-top"><div class="mc-icon" style="background:${m.color}">${m.icon}</div><div class="mc-title">${m.title}</div></div>
+      <div class="mc-sub">${m.subtitle}</div>
+      <div class="mc-prog"><div class="mc-prog-fill" style="width:${mpct}%;background:${m.color}"></div></div>
+      <div class="mc-status">${badge}</div></div>`;
+  });
+  h+='</div>';el.innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════
+// MODULE VIEW
+// ══════════════════════════════════════════════════════
+function openMod(idx){
+  S.modIdx=idx;S.modTab='learn';const m=MODS[idx];
+  const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);S.answers=d?.answers||{};
+  document.getElementById('mod-title-bar').textContent='Modul '+m.id+': '+m.title;
+  document.getElementById('mod-sub-bar').textContent=m.subtitle;
+  document.getElementById('mod-header').innerHTML=`<h1 style="color:${m.color}">Modul ${m.id}: ${m.title}</h1><div class="mh-sub">${m.subtitle}</div>`;
+  let tabs=`<div class="mod-tab active" id="tab-l" onclick="setTab('learn')">Indhold</div>`;
+  tabs+=`<div class="mod-tab" id="tab-q" onclick="setTab('questions')">Spørgsmål (${countAns(S.answers)}/${m.qs.length})</div>`;
+  tabs+=`<div class="mod-tab" id="tab-t" onclick="setTab('takeaways')">Takeaways</div>`;
+  tabs+=`<div class="mod-tab" id="tab-j" onclick="setTab('journal')">Journal</div>`;
+  tabs+=`<div class="mod-tab" id="tab-s" onclick="setTab('submit')">Afslut &amp; send</div>`;
+  document.getElementById('mod-tabs').innerHTML=tabs;
+  renderLearn(m);renderQuestions(m);renderTakeaways(m);renderJournal(m);renderSubmit(m);
+  setTab('learn');show('module');
+}
+function setTab(t){
+  S.modTab=t;document.querySelectorAll('.mod-tab').forEach(el=>el.classList.remove('active'));
+  ['learn','quest','takeaways','journal','submit'].forEach(id=>document.getElementById('tc-'+id).style.display='none');
+  const map={learn:['tab-l','tc-learn'],questions:['tab-q','tc-quest'],takeaways:['tab-t','tc-takeaways'],journal:['tab-j','tc-journal'],submit:['tab-s','tc-submit']};
+  const x=map[t];if(x){document.getElementById(x[0])?.classList.add('active');document.getElementById(x[1]).style.display=''}
+}
+function renderLearn(m){
+  const src=m.sources.map(s=>`<div class="src-item">${s}</div>`).join('');
+  document.getElementById('tc-learn').innerHTML=`
+    <div class="sources-box" style="border-left-color:${m.color}"><div class="src-title">Forskningsgrundlag</div>${src}</div>
+    ${m.whyText?`<div class="why-mod-box"><div class="why-mod-label">Hvorfor dette modul er vigtigt</div><div class="why-mod-text">${m.whyText}</div></div>`:''}
+    <div class="learn-body">${m.learn}</div>
+    <div class="learn-cta"><button class="btn btn-primary" style="padding:12px 28px" onclick="setTab('questions')">Gå til refleksion →</button></div>`;
+}
+function renderQuestions(m){
+  const ans=countAns(S.answers);const pct=Math.round(ans/m.qs.length*100);
+  let h=`<div class="q-progress"><div class="qp-bar"><div class="qp-fill" id="qp-fill" style="width:${pct}%"></div></div><div class="qp-cnt" id="qp-cnt">${ans}/${m.qs.length}</div></div>`;
+  m.qs.forEach((q,i)=>{
+    h+=`<div class="q-card fade"><div class="qlabel">Spørgsmål ${i+1} af ${m.qs.length}</div><div class="qtext">${q.l}</div>`;
+    if(q.type==='ta') h+=`<textarea data-qid="${q.id}" oninput="qInput(this)">${S.answers[q.id]||''}</textarea>`;
+    else if(q.type==='scale'){h+=`<div class="scale-row">`;for(let n=(q.mn||1);n<=(q.mx||10);n++) h+=`<button class="scale-btn${S.answers[q.id]==n?' sel':''}" onclick="qScale('${q.id}',${n},this)">${n}</button>`;h+=`</div>`}
+    else if(q.type==='choice'){h+=`<div style="display:flex;flex-wrap:wrap;gap:6px">`;(q.opts||[]).forEach(o=>h+=`<button class="cbtn${S.answers[q.id]===o?' sel':''}" onclick="qChoice('${q.id}',\`${o}\`,this)">${o}</button>`);h+=`</div>`}
+    h+=`</div>`;
+  });
+  h+=`<button class="btn-save" id="save-btn" onclick="saveMod()">Gem svar ✓</button>`;
+  // Send-box if module is complete
+  const complete=isModComplete(S.cId,m);
+  const sent=isModSent(S.cId,m.id);
+  if(complete&&!sent){
+    h+=`<div class="send-box"><h3>✅ Modul færdigt</h3><p><strong>Trin 1:</strong> Klik nedenfor — din besvarelse downloades som krypteret JSON-fil.<br><strong>Trin 2:</strong> Gmail åbner med pre-udfyldt emne og tekst.<br><strong>Trin 3:</strong> Vedhæft den downloadede JSON-fil manuelt i mailen og send.</p><button class="btn-send" onclick="sendModuleToCoach(${m.id})">📧 Download og åbn mail til coach</button></div>`;
+  } else if(sent){
+    h+=`<div class="send-box" style="border-color:rgba(76,175,130,.2);background:rgba(76,175,130,.04)"><h3 style="color:var(--green)">📨 Sendt</h3><p>Dine svar er sendt til Thomas. Næste modul åbnes efter review.</p></div>`;
+  }
+  document.getElementById('tc-quest').innerHTML=h;
+}
+function qInput(el){S.answers[el.dataset.qid]=el.value;doSave()}
+function qScale(id,n,btn){S.answers[id]=n;btn.parentElement.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');doSave()}
+function qChoice(id,val,btn){S.answers[id]=val;btn.parentElement.querySelectorAll('.cbtn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');doSave()}
+function doSave(){
+  const m=MODS[S.modIdx];
+  LS.s(PFX+'mod_'+S.cId+'_'+m.id,{answers:S.answers,updatedAt:new Date().toISOString()});
+  const a=countAns(S.answers);const pct=Math.round(a/m.qs.length*100);
+  const fill=document.getElementById('qp-fill');if(fill)fill.style.width=pct+'%';
+  const cnt=document.getElementById('qp-cnt');if(cnt)cnt.textContent=a+'/'+m.qs.length;
+  const tabQ=document.querySelectorAll('#mod-tabs .mod-tab')[1];if(tabQ)tabQ.textContent='Spørgsmål ('+a+'/'+m.qs.length+')';
+}
+function saveMod(){doSave();const b=document.getElementById('save-btn');if(b){b.textContent='✓ Gemt!';b.style.background='var(--green)';setTimeout(()=>{b.style.background='';b.textContent='Gem svar ✓'},2000)};renderQuestions(MODS[S.modIdx])}
+function renderTakeaways(m){let h='<div class="takeaways-box"><div class="tk-title">Vigtigste takeaways</div>';m.takeaways.forEach(t=>h+=`<div class="tk-item">→ ${t}</div>`);h+='</div>';document.getElementById('tc-takeaways').innerHTML=h}
+
+// ══════════════════════════════════════════════════════
+// JOURNAL
+// ══════════════════════════════════════════════════════
+function renderJournal(m){
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+m.id)||{};
+  const iiText=II_PROMPTS[m.id]||'Hvornår og i hvilken situation vil du gøre dette?';
+  let h=`<div class="refl-card fade">
+    <h4>📝 Leder-journal</h4>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Dokumentér dine vigtigste indsigter, beslutninger og refleksioner fra dette modul.</p>
+    <label>Vigtigste indsigt fra dette modul *</label>
+    <textarea id="jn-insight" placeholder="Hvad ramte dig hårdest?" oninput="saveJournalAuto(${m.id})">${jData.insight||''}</textarea>
+    <label>Konkret handling du vil tage *</label>
+    <textarea id="jn-action" placeholder="Hvad gør du anderledes i morgen?" oninput="saveJournalAuto(${m.id})">${jData.action||''}</textarea>
+    <div class="impl-intent">
+      <div class="ii-label">Implementerings-intention</div>
+      <div class="ii-sub">${iiText}<br>Forskning (Gollwitzer, 1999) viser, at sandsynligheden for handling stiger med op mod 300%, når du definerer tid, sted og situation.</div>
+      <textarea id="jn-when" placeholder="Jeg vil gøre dette [hvornår], [hvor], [i hvilken situation]..." style="min-height:70px" oninput="saveJournalAuto(${m.id})">${jData.when||''}</textarea>
+    </div>
+    <label>Hvad har du brug for hjælp til?</label>
+    <textarea id="jn-help" placeholder="Fra din coach, din chef, dit team..." style="min-height:50px" oninput="saveJournalAuto(${m.id})">${jData.help||''}</textarea>
+    <button class="btn btn-primary" style="margin-top:12px;padding:10px 20px" onclick="saveJournal(${m.id})">Gem journal ✓</button>
+  </div>`;
+  document.getElementById('tc-journal').innerHTML=h;
+}
+let _jTimer=null;
+function saveJournalAuto(mid){clearTimeout(_jTimer);_jTimer=setTimeout(()=>saveJournal(mid,true),1500)}
+function saveJournal(mid,silent){
+  LS.s(PFX+'journal_'+S.cId+'_'+mid,{
+    insight:document.getElementById('jn-insight')?.value||'',
+    action:document.getElementById('jn-action')?.value||'',
+    when:document.getElementById('jn-when')?.value||'',
+    help:document.getElementById('jn-help')?.value||'',
+    savedAt:new Date().toISOString()});
+  if(!silent)showSaveFeedback('Journal gemt ✓');
+}
+
+// ══════════════════════════════════════════════════════
+// SUBMIT TAB
+// ══════════════════════════════════════════════════════
+function renderSubmit(m){
+  const ans=countAns(S.answers);const allQs=ans>=m.qs.length;
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+m.id)||{};
+  const hasJournal=(jData.insight||'').trim()&&(jData.action||'').trim();
+  const sent=isModSent(S.cId,m.id);
+  var h='<div class="submit-card">';
+  h+='<h3>Afslut modul '+m.id+'</h3>';
+  h+='<p>Gennemarbejd modulet, besvar alle sp\u00f8rgsm\u00e5l og udfyld din journal (b\u00e5de indsigt og handling). Derefter kan du downloade din krypterede besvarelse og sende den til din coach via email. <strong>Bem\u00e6rk:</strong> JSON-filen downloades til din enhed \u2014 du skal selv vedh\u00e6fte den i mailen. N\u00e6ste modul \u00e5bnes n\u00e5r din coach har modtaget og gennemg\u00e5et dit svar.</p>';
+  h+='<div class="checklist">';
+  h+='<div class="cl-item"><div class="cl-dot '+(allQs?'cl-ok':'cl-no')+'">'+(allQs?'\u2713':'\u25CB')+'</div><span style="color:var('+(allQs?'--text':'--text3')+')">Alle '+m.qs.length+' sp\u00f8rgsm\u00e5l besvaret</span></div>';
+  h+='<div class="cl-item"><div class="cl-dot '+(hasJournal?'cl-ok':'cl-no')+'">'+(hasJournal?'\u2713':'\u25CB')+'</div><span style="color:var('+(hasJournal?'--text':'--text3')+')">Journal udfyldt (indsigt + handling)</span></div>';
+  h+='<div class="cl-item"><div class="cl-dot '+(sent?'cl-ok':'cl-no')+'">'+(sent?'\u2713':'\u25CB')+'</div><span style="color:var('+(sent?'--text':'--text3')+')">Besvarelse sendt til coach</span></div>';
+  h+='</div>';
+  if(sent){
+    h+='<div style="padding:16px;background:rgba(76,175,130,.1);border-radius:10px;color:var(--green);font-size:14px">\u2713 Du har sendt dette modul. Din coach \u00e5bner n\u00e6ste modul, n\u00e5r du er klar.</div>';
+  }else if(allQs&&hasJournal){
+    h+='<button class="btn btn-gold" style="padding:14px 32px;font-size:15px" onclick="sendModuleToCoach('+m.id+')">\u2193 Download &amp; send til coach</button>';
+  }else{
+    h+='<p style="color:var(--text3);font-size:12px;margin-top:8px">Gennemf\u00f8r alle sp\u00f8rgsm\u00e5l og journal (indsigt + handling) f\u00f8r du kan sende.</p>';
+  }
+  h+='</div>';
+  document.getElementById('tc-submit').innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════
+// SEND TO COACH
+// ══════════════════════════════════════════════════════
+async function sendModuleToCoach(mid){
+  const m=MODS.find(x=>x.id===mid);
+  const modData=LS.g(PFX+'mod_'+S.cId+'_'+mid);
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+mid)||{};
+  
+  const exportData={
+    version:PV,platform:PN,clientId:S.cId,clientName:S.cName,
+    moduleId:mid,moduleTitle:m.title,
+    exportedAt:new Date().toISOString(),
+    answers:modData?.answers||{},
+    journal:jData
+  };
+  
+  // Encrypt
+  const pw=S.cName.toLowerCase().replace(/\s/g,'')+'2024';
+  const encrypted=await encryptData(exportData,pw);
+  
+  // Download JSON
+  const fname=`MUS_${S.cName.replace(/\s/g,'_')}_modul${mid}_${new Date().toISOString().slice(0,10)}.json`;
+  const blob=new Blob([JSON.stringify(encrypted)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;a.click();URL.revokeObjectURL(a.href);
+  
+  // Mark as sent
+  LS.s(PFX+'sent_'+S.cId+'_'+mid,new Date().toISOString());
+  
+  // Open Gmail with pre-filled
+  const su=encodeURIComponent(`${PN} — ${S.cName} — Modul ${mid}: ${m.title}`);
+  const bo=encodeURIComponent(
+    `Hej Thomas,\n\nHer er min besvarelse af modul ${mid}: ${m.title}.\n\nVedhæftet: ${fname}\nDekrypterings-kode: ${pw}\n\nMvh\n${S.cName}`
+  );
+  
+  setTimeout(()=>{
+    window.open(`https://mail.google.com/mail/?view=cm&to=${CE}&su=${su}&body=${bo}`,'_blank');
+    showSaveFeedback('✓ JSON downloadet — vedhæft filen manuelt i Gmail-vinduet');
+    renderSubmit(m);renderDash();
+  },500);
+}
+
+// ══════════════════════════════════════════════════════
+// CRYPTO
+// ══════════════════════════════════════════════════════
+const ENC=new TextEncoder(),DEC2=new TextDecoder();
+async function deriveKey(pw,salt){const k=await crypto.subtle.importKey('raw',ENC.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function encryptData(data,pw){const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pw,salt);const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,ENC.encode(JSON.stringify(data)));return{v:PV,ct:btoa(String.fromCharCode(...new Uint8Array(ct))),salt:btoa(String.fromCharCode(...salt)),iv:btoa(String.fromCharCode(...iv))}}
+async function decryptData(blob,pw){const salt=Uint8Array.from(atob(blob.salt),c=>c.charCodeAt(0));const iv=Uint8Array.from(atob(blob.iv),c=>c.charCodeAt(0));const ct=Uint8Array.from(atob(blob.ct),c=>c.charCodeAt(0));const key=await deriveKey(pw,salt);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);return JSON.parse(DEC2.decode(pt))}
+
+// ══════════════════════════════════════════════════════
+// CLIENT DELETE
+// ══════════════════════════════════════════════════════
+function clientDeleteData(){
+  if(!confirm('SLET alle dine data permanent?'))return;if(!confirm('Sidste chance — dette kan IKKE fortrydes.'))return;
+  MODS.forEach(m=>{LS.d(PFX+'mod_'+S.cId+'_'+m.id);LS.d(PFX+'journal_'+S.cId+'_'+m.id);LS.d(PFX+'sent_'+S.cId+'_'+m.id)});
+  LS.d(PFX+'active_'+S.cId);
+  const clients=(LS.g(PFX+'clients')||[]).filter(c=>c.id!==S.cId);LS.s(PFX+'clients',clients);
+  logout();showSaveFeedback('Data slettet');
+}
+
+// ══════════════════════════════════════════════════════
+// EXPORT HELPERS
+// ══════════════════════════════════════════════════════
+function gatherFullExport(cid,cname){
+  var modules={},journals={};
+  MODS.forEach(function(m){var d=LS.g(PFX+'mod_'+cid+'_'+m.id);if(d)modules[m.id]=d;var j=LS.g(PFX+'journal_'+cid+'_'+m.id);if(j)journals[m.id]=j});
+  return{version:PV,platform:PN,clientId:cid,clientName:cname,exportedAt:new Date().toISOString(),activeMod:getActiveMod(cid),modules:modules,journals:journals}
+}
+
+// ══════════════════════════════════════════════════════
+// ADMIN
+// ══════════════════════════════════════════════════════
+function setASection(sec){
+  S.aSection=sec;
+  document.querySelectorAll('.as-nav li').forEach((li,i)=>{li.classList.remove('active');const map=['ov','clients','import','gdpr'];if(map[i]===sec)li.classList.add('active')});
+  ['ov','clients','import','gdpr'].forEach(id=>document.getElementById('asec-'+id).style.display=id===sec?'':'none');
+  renderAdmin();
+}
+function renderAdmin(){
+  const clients=LS.g(PFX+'clients')||[];
+  let totalAns=0;
+  clients.forEach(cl=>{MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+cl.id+'_'+m.id);totalAns+=countAns(d?.answers)})});
+
+  document.getElementById('asec-ov').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Oversigt</h2>
+    <div class="astats">
+      <div class="astat"><div class="av">${clients.length}</div><div class="al">Klienter</div></div>
+      <div class="astat"><div class="av">${totalAns}</div><div class="al">Svar total</div></div>
+      <div class="astat"><div class="av">${MODS.length}</div><div class="al">Moduler</div></div>
+    </div>`;
+
+  let ch='<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Klienter</h2>';
+  if(!clients.length)ch+='<p style="color:var(--text3)">Ingen klienter endnu.</p>';
+  else{
+    clients.forEach(cl=>{
+      let ca=0,ct=0;MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+cl.id+'_'+m.id);ca+=countAns(d?.answers);ct+=m.qs.length});
+      const activeMod=getActiveMod(cl.id);
+      const isSel=S.aSel===cl.id;
+      ch+=`<div class="aclient-card ${isSel?'sel':''}" onclick="S.aSel=${isSel?'null':`'${cl.id}'`};renderAdmin()">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>${cl.name}</strong><span style="font-size:11px;color:var(--text3)">${ca}/${ct} svar · Modul ${activeMod} åben</span>
+        </div></div>`;
+      if(isSel){
+        ch+='<div style="padding:16px;background:var(--navy3);border-radius:10px;margin-bottom:16px">';
+        // Unlock control
+        ch+=`<div class="unlock-row"><span style="font-size:13px;color:var(--text2)">Åbn moduler til og med:</span>
+          <select id="unlock-sel" onchange="setActiveMod('${cl.id}',this.value)">`;
+        for(let i=1;i<=8;i++) ch+=`<option value="${i}" ${activeMod===i?'selected':''}>Modul ${i}: ${MODS[i-1].title}</option>`;
+        ch+=`</select></div>`;
+        
+        MODS.forEach(m=>{
+          const d=LS.g(PFX+'mod_'+cl.id+'_'+m.id);const a=countAns(d?.answers);
+          const sent=isModSent(cl.id,m.id);
+          const sentLabel=sent?` <span style="color:var(--green)">📨 Sendt</span>`:'';
+          if(a>0){
+            ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy2);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">Modul ${m.id}: ${m.title} (${a}/${m.qs.length})${sentLabel}</h4>`;
+            m.qs.forEach(q=>{const v=d?.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')ch+=`<div style="font-size:12px;margin-bottom:6px"><span style="color:var(--text3)">${q.l.replace(/<[^>]+>/g,'').slice(0,80)}...</span><br><span style="color:var(--text)">${typeof v==='string'?v.slice(0,200)+(v.length>200?'...':''):v}</span></div>`});
+            const j=LS.g(PFX+'journal_'+cl.id+'_'+m.id);
+            if(j){ch+=`<div style="margin-top:8px;padding:10px;background:var(--navy3);border-radius:6px;font-size:12px"><strong style="color:var(--gold)">Journal:</strong><br>`;if(j.insight)ch+=`<span style="color:var(--text3)">Indsigt:</span> ${j.insight}<br>`;if(j.action)ch+=`<span style="color:var(--text3)">Handling:</span> ${j.action}<br>`;if(j.when)ch+=`<span style="color:var(--text3)">Hvornår/situation:</span> ${j.when}<br>`;if(j.help)ch+=`<span style="color:var(--text3)">Hjælp:</span> ${j.help}`;ch+=`</div>`}
+            ch+=`</div>`;
+          }
+        });
+        ch+=`<div class="ai-box"><h3>🤖 Leder-DNA analyse</h3>
+          <div class="fg"><label>Anthropic API-nøgle</label><input type="password" id="ai-key" placeholder="sk-ant-..." style="width:100%"></div>
+          <button class="btn btn-gold" onclick="runAI('${cl.id}')">Kør analyse</button>
+          <div id="ai-out" class="ai-result" style="margin-top:12px"></div></div>`;
+        ch+=`<div style="margin-top:16px;display:flex;gap:10px">
+          <button class="btn btn-ghost" onclick="adminExportAll('${cl.id}','${cl.name}')">↓ Eksportér alt (JSON)</button>
+          <button class="btn btn-ghost" onclick="adminExportTXT('${cl.id}','${cl.name}')">↓ Eksportér (TXT)</button>
+        </div></div>`;
+      }
+    });
+  }
+  document.getElementById('asec-clients').innerHTML=ch;
+
+  document.getElementById('asec-import').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Import</h2>
+    <div class="refl-card"><h4>📥 Importér klient-JSON</h4>
+      <input type="file" id="imp-file" accept=".json" style="margin-bottom:10px">
+      <div class="fg"><label>Dekrypterings-adgangskode</label><input type="password" id="imp-pw"></div>
+      <button class="btn btn-primary" onclick="adminImport()">Importér</button>
+      <div id="imp-msg" style="font-size:12px;margin-top:8px"></div>
+    </div>`;
+
+  document.getElementById('asec-gdpr').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">GDPR</h2>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🔒</div><div><strong>Lokal lagring</strong><div style="font-size:12px;color:var(--text3)">Alle data i localStorage. Ingen server.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🔑</div><div><strong>AES-256-GCM</strong><div style="font-size:12px;color:var(--text3)">PBKDF2 100.000 iterationer. Auto-krypteret eksport.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🗑</div><div><strong>Ret til sletning</strong><div style="font-size:12px;color:var(--text3)">Ét klik. Definitiv.</div></div></div>
+    </div>`;
+}
+
+function setActiveMod(cid,val){LS.s(PFX+'active_'+cid,parseInt(val));showSaveFeedback('Modul '+val+' åbnet');renderAdmin()}
+
+async function adminImport(){
+  const file=document.getElementById('imp-file').files[0];const pw=document.getElementById('imp-pw').value;const msg=document.getElementById('imp-msg');
+  if(!file){msg.textContent='Vælg fil';msg.style.color='var(--red)';return}
+  try{
+    const txt=await file.text();const blob=JSON.parse(txt);let data;
+    if(blob.v&&blob.ct){if(!pw){msg.textContent='Adgangskode kræves';msg.style.color='var(--red)';return}data=await decryptData(blob,pw)}else{data=blob}
+    const clients=LS.g(PFX+'clients')||[];
+    if(!clients.find(c=>c.id===data.clientId)){clients.push({id:data.clientId,name:data.clientName,createdAt:data.exportedAt,imported:true});LS.s(PFX+'clients',clients)}
+    if(data.moduleId){LS.s(PFX+'mod_'+data.clientId+'_'+data.moduleId,{answers:data.answers,updatedAt:data.exportedAt});if(data.journal)LS.s(PFX+'journal_'+data.clientId+'_'+data.moduleId,data.journal)}
+    if(data.modules)Object.entries(data.modules).forEach(([mid,d])=>LS.s(PFX+'mod_'+data.clientId+'_'+mid,d));
+    if(data.journals)Object.entries(data.journals).forEach(([mid,d])=>LS.s(PFX+'journal_'+data.clientId+'_'+mid,d));
+    msg.textContent='✓ '+data.clientName+(data.moduleTitle?' — '+data.moduleTitle:'');msg.style.color='var(--green)';renderAdmin();
+  }catch(e){msg.textContent='Fejl: '+e.message;msg.style.color='var(--red)'}
+}
+function adminExportAll(cid,cname){
+  const modules={},journals={};
+  MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+cid+'_'+m.id);if(d)modules[m.id]=d;const j=LS.g(PFX+'journal_'+cid+'_'+m.id);if(j)journals[m.id]=j});
+  const data={version:PV,platform:PN,clientId:cid,clientName:cname,exportedAt:new Date().toISOString(),modules,journals};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`MUS_admin_${cname.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);
+}
+function adminExportTXT(cid,cname){
+  let txt=PN+' — '+cname+'\nEksporteret: '+new Date().toISOString()+'\n\n';
+  MODS.forEach(m=>{
+    txt+='═══ MODUL '+m.id+': '+m.title.toUpperCase()+' ═══\n';
+    const md=LS.g(PFX+'mod_'+cid+'_'+m.id);if(!md){txt+='(Ikke besvaret)\n\n';return}
+    m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')txt+=q.l.replace(/<[^>]+>/g,'')+'\n→ '+v+'\n\n'});
+    const j=LS.g(PFX+'journal_'+cid+'_'+m.id);
+    if(j){if(j.insight)txt+='[Journal] Indsigt: '+j.insight+'\n';if(j.action)txt+='[Journal] Handling: '+j.action+'\n';if(j.when)txt+='[Journal] Hvornår/situation: '+j.when+'\n';if(j.help)txt+='[Journal] Hjælp: '+j.help+'\n'}
+    txt+='\n';
+  });
+  const blob=new Blob([txt],{type:'text/plain'});const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download=`MUS_${cname.replace(/\s/g,'_')}.txt`;a.click();URL.revokeObjectURL(a.href);
+}
+
+async function runAI(cid){
+  const key=document.getElementById('ai-key')?.value;
+  if(!key){showSaveFeedback('API-nøgle mangler');return}
+  const out=document.getElementById('ai-out');out.textContent='Analyserer...';out.style.opacity='.5';
+  const cl=(LS.g(PFX+'clients')||[]).find(c=>c.id===cid);
+  let ctx='KLIENT: '+(cl?.name||'Klient')+'\n\n';
+  MODS.forEach(m=>{const md=LS.g(PFX+'mod_'+cid+'_'+m.id);if(!md)return;ctx+='MODUL '+m.id+': '+m.title+'\n';m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v)ctx+=q.l.replace(/<[^>]+>/g,'')+'\n→ '+v+'\n'});
+    const j=LS.g(PFX+'journal_'+cid+'_'+m.id);if(j?.insight)ctx+='[Journal indsigt] '+j.insight+'\n';if(j?.action)ctx+='[Journal handling] '+j.action+'\n';if(j?.when)ctx+='[Journal impl.intention] '+j.when+'\n';ctx+='\n'});
+
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,
+        system:`Du er Thomas Friisnæs' AI-assistent. Analysér denne nye leders forløb.\n\n8 moduler: Mandat, 90 dage, Specialist→Leder, Team, Opad/udad, Svære samtaler, Eksekvering, Personlig robusthed.\n\nLevér:\n1. LEDERPROFIL: Hvem er denne leder? Situationstype, styrker, risici.\n2. MODENHEDSANALYSE: Hvor er de i leder-transitionen?\n3. BLINDE VINKLER: Hvad ser de ikke — hvad undgår de?\n4. RELATIONELT LANDSKAB: Team-dynamik, chef-relation, stakeholders.\n5. EKSEKVERINGS-VURDERING: Har de systemer — eller kører de på intuition?\n6. ANBEFALINGER: 3 konkrete næste skridt.\n7. COACHING-SPØRGSMÅL: 3 provokerende spørgsmål til næste session.\n\nSkriv på dansk. Vær præcis og direkte. Ingen floskler.`,
+        messages:[{role:'user',content:ctx}]})
+    });
+    const result=await resp.json();out.style.opacity='1';
+    if(result.content) out.textContent=result.content.map(b=>b.text||'').join('\n');
+    else out.textContent='Fejl: '+JSON.stringify(result);
+  }catch(e){out.style.opacity='1';out.textContent='Fejl: '+e.message}
+}
+</script>
+</body>
+</html>

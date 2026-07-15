@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="2.0.0">
+<meta name="framework" content="Selvledelse — dit vigtigste ledelsesværktøj">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<title>Selvledelse — dit vigtigste ledelsesværktøj</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:#111111;--navy-light:#1a1a1a;--navy-mid:#222222;--navy-border:#2b2b2b;
+  --gold:#c0392b;--gold-dark:#e74c3c;--gold-light:#e74c3c;--gold-dim:rgba(192,57,43,0.14);
+  --text:#e8e4de;--text-light:#a8a098;--text-muted:#6e6860;--white:#f5f0e8;
+  --success:#6b9e78;--warning:#d4a745;--error:#c45c5c;--info:#5c8dc4;
+  --m1:#c9a96e;--m2:#6b9e78;--m3:#5c8dc4;--m4:#d48a5c;--m5:#5cac9e;
+  --m6:#9b6eb5;--m7:#d4a745;--m8:#c45c5c;--m9:#e8d5a8;
+  --radius:12px;--shadow:0 2px 16px rgba(0,0,0,0.3);
+  --shadow-hover:0 4px 24px rgba(0,0,0,0.4);--transition:all 0.3s ease;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--navy);color:var(--text);line-height:1.7;min-height:100vh;}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:600;line-height:1.3;color:var(--white);}
+.progress-bar{position:sticky;top:0;z-index:1000;background:var(--navy-light);border-bottom:1px solid var(--navy-border);padding:10px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 8px rgba(0,0,0,0.3);}
+.progress-bar .logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--gold);white-space:nowrap;cursor:pointer;}
+.progress-track{flex:1;height:6px;background:var(--navy-mid);border-radius:3px;overflow:hidden;}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-dark));border-radius:3px;transition:width 0.5s ease;width:0%;}
+.progress-text{font-size:13px;color:var(--text-light);white-space:nowrap;}
+.screen{display:none;max-width:800px;margin:0 auto;padding:40px 20px 120px;}
+.screen.active{display:block;}
+.welcome-hero{text-align:center;padding:50px 20px 30px;}
+.welcome-hero h1{font-size:2.5em;color:var(--white);margin-bottom:10px;}
+.welcome-hero .subtitle{font-size:1.1em;color:var(--text-light);font-style:italic;margin-bottom:24px;max-width:580px;margin-left:auto;margin-right:auto;}
+.gold-line{width:60px;height:3px;background:var(--gold);margin:0 auto 24px;border-radius:2px;}
+.card{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);margin-bottom:24px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text-light);}
+.form-group input,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--navy-border);border-radius:8px;font-family:inherit;font-size:15px;background:var(--navy-mid);color:var(--text);transition:var(--transition);}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,0.2);background:var(--navy);}
+.form-group textarea{min-height:90px;resize:vertical;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-muted);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border:none;border-radius:8px;font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:var(--transition);}
+.btn-primary{background:var(--gold);color:var(--navy);}
+.btn-primary:hover{background:var(--gold-dark);transform:translateY(-1px);}
+.btn-secondary{background:var(--navy-mid);color:var(--text);border:1px solid var(--navy-border);}
+.btn-secondary:hover{background:var(--navy-border);}
+.btn-full{width:100%;}
+.btn-small{padding:8px 16px;font-size:13px;}
+.consent-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:14px;margin:16px 0;font-size:13px;color:var(--text-light);}
+.consent-box label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;}
+.consent-box input[type="checkbox"]{margin-top:3px;accent-color:var(--gold);min-width:16px;}
+.journey-map{margin:30px 0;}
+.journey-step{display:flex;gap:20px;}
+.journey-line{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0;}
+.journey-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;z-index:1;transition:var(--transition);flex-shrink:0;}
+.journey-dot.locked{background:var(--navy-mid);color:var(--text-muted);border:2px solid var(--navy-border);}
+.journey-dot.active{background:var(--gold);color:var(--navy);border:2px solid var(--gold-dark);box-shadow:0 0 0 4px rgba(201,169,110,0.2);}
+.journey-dot.done{background:var(--success);color:var(--white);border:2px solid #5a8a67;}
+.journey-connector{width:2px;flex:1;min-height:16px;background:var(--navy-border);}
+.journey-connector.done{background:var(--success);}
+.journey-content{flex:1;background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow);margin-bottom:16px;transition:var(--transition);cursor:pointer;}
+.journey-content.locked{opacity:0.45;cursor:not-allowed;}
+.journey-content.locked:hover{transform:none;}
+.journey-content:not(.locked):hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:var(--gold-dark);}
+.journey-content h3{font-size:1.15em;margin-bottom:4px;}
+.journey-content p{font-size:14px;color:var(--text-light);margin-bottom:6px;}
+.journey-meta{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:8px;}
+.journey-meta .badge{display:inline-flex;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;}
+.phase-badge{padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-left:6px;}
+.phase-karakter{background:rgba(201,169,110,0.15);color:var(--gold);}
+.phase-disciplin{background:rgba(92,172,158,0.15);color:var(--m5);}
+.phase-klarhed{background:rgba(155,110,181,0.15);color:var(--m6);}
+.module-header{padding:20px 0 16px;margin-bottom:20px;}
+.back-link{font-size:14px;color:var(--gold);cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;text-decoration:none;border:none;background:none;font-family:inherit;}
+.back-link:hover{color:var(--gold-light);}
+.module-header h2{font-size:1.9em;margin-bottom:6px;}
+.module-header .module-desc{color:var(--text-light);font-size:1.05em;font-style:italic;}
+.section-card{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:var(--radius);padding:24px 28px;box-shadow:var(--shadow);margin-bottom:20px;}
+.section-card h3{font-size:1.2em;margin-bottom:4px;display:flex;align-items:center;gap:10px;}
+.section-card .subtitle{font-size:13px;color:var(--text-muted);margin-bottom:14px;font-style:italic;}
+.section-card p{font-size:15px;margin-bottom:10px;}
+.learn-block p{margin-bottom:12px;}
+.learn-block strong{color:var(--gold-light);}
+.quote-box{background:linear-gradient(135deg,var(--navy-mid),var(--navy));border-left:3px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:16px 20px;margin:14px 0;font-style:italic;color:var(--text);}
+.quote-box .author{font-style:normal;font-size:13px;color:var(--text-muted);margin-top:6px;}
+.reflection-group{margin:14px 0;}
+.reflection-group label{display:block;font-size:14px;font-weight:500;margin-bottom:6px;color:var(--text);}
+.scale-row{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 16px;}
+.scale-btn{width:38px;height:38px;border:2px solid var(--navy-border);border-radius:50%;background:var(--navy-mid);color:var(--text);font-weight:600;cursor:pointer;transition:var(--transition);font-size:13px;display:flex;align-items:center;justify-content:center;}
+.scale-btn:hover{border-color:var(--gold);}
+.scale-btn.selected{background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.activity-card{background:linear-gradient(135deg,rgba(107,158,120,0.08),rgba(107,158,120,0.02));border:1px solid rgba(107,158,120,0.3);border-radius:var(--radius);padding:24px;margin-bottom:20px;}
+.activity-card h3{color:var(--success);margin-bottom:4px;}
+.activity-card .activity-subtitle{font-size:13px;color:var(--text-muted);font-style:italic;margin-bottom:16px;}
+.activity-item{background:var(--navy-light);border:1px solid var(--navy-border);border-radius:8px;padding:16px;margin-bottom:12px;border-left:3px solid var(--success);}
+.activity-item h4{font-size:1em;margin-bottom:4px;color:var(--white);font-family:'Outfit',sans-serif;font-weight:600;}
+.activity-item p{font-size:14px;color:var(--text-light);margin-bottom:6px;}
+.activity-item .activity-meta{font-size:12px;color:var(--text-muted);}
+.acknowledge-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:var(--radius);padding:20px;margin:24px 0;text-align:center;}
+.acknowledge-box label{display:flex;align-items:center;justify-content:center;gap:12px;font-size:15px;font-weight:500;cursor:pointer;margin-bottom:16px;color:var(--text);}
+.acknowledge-box input[type="checkbox"]{width:20px;height:20px;accent-color:var(--gold);}
+.unlock-msg{background:var(--gold-dim);border:1px solid rgba(201,169,110,0.3);border-radius:8px;padding:16px;margin-top:12px;text-align:center;font-size:14px;color:var(--gold);font-weight:500;display:none;}
+.takeaway-box{background:var(--gold-dim);border:1px solid rgba(201,169,110,0.25);border-radius:var(--radius);padding:20px;margin:16px 0;}
+.takeaway-box h4{font-size:1.05em;color:var(--gold);margin-bottom:10px;}
+.takeaway-box li{font-size:14px;margin-bottom:5px;color:var(--text);}
+.source-box{background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:14px 16px;margin:16px 0;font-size:12px;color:var(--text-muted);}
+.source-box h4{font-size:13px;margin-bottom:6px;color:var(--text-muted);}
+.source-box li{margin-bottom:3px;}
+.why-box{background:var(--navy-light);border:1px solid var(--gold-dark);border-radius:var(--radius);padding:18px 20px;margin:16px 0;}
+.why-box h4{color:var(--gold);margin-bottom:8px;font-size:1em;}
+.why-box p{color:var(--text);}
+.report-section{text-align:left;background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;padding:16px 20px;margin:16px 0;}
+.report-section h4{margin-bottom:8px;color:var(--white);}
+.report-section p,.report-section li{font-size:14px;line-height:1.7;color:var(--text);}
+.coaching-box{background:linear-gradient(135deg,rgba(201,169,110,0.12),rgba(201,169,110,0.04));border:2px solid var(--gold);border-radius:var(--radius);padding:28px;text-align:center;margin:24px 0;}
+.coaching-box h3{color:var(--gold);margin-bottom:8px;}
+.coaching-box p{font-size:14px;color:var(--text-light);margin-bottom:12px;}
+.save-indicator{position:fixed;bottom:20px;right:20px;background:var(--success);color:var(--white);padding:10px 18px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transition:opacity 0.3s;z-index:999;}
+.save-indicator.show{opacity:1;}
+@media(max-width:640px){.welcome-hero h1{font-size:2em;}.screen{padding:20px 14px 80px;}.section-card,.card{padding:18px;}.journey-step{gap:12px;}.progress-bar{padding:8px 12px;}}
+@media print{.progress-bar,.save-indicator,.btn,.back-link{display:none!important;}.screen{max-width:100%;padding:0;}}
+</style>
+</head>
+<body>
+<div class="progress-bar">
+  <div class="logo" onclick="goHome()">Selvledelse</div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="progress-text" id="progressText">0 / 9</span>
+</div>
+<div class="save-indicator" id="saveIndicator">✓ Gemt</div>
+
+<div class="screen active" id="screen-welcome">
+  <div class="welcome-hero">
+    <h1>Selvledelse</h1>
+    <p style="font-size:14px;color:var(--gold);letter-spacing:1px;margin-bottom:4px;">DIT VIGTIGSTE LEDELSESVÆRKTØJ</p>
+    <div class="gold-line"></div>
+    <p class="subtitle">Et forskningsbaseret udviklingsforløb for ledere, der ved, at evnen til at lede andre starter med evnen til at lede sig selv.</p>
+  </div>
+  <div class="card" style="max-width:480px;margin:0 auto;">
+    <h3 style="text-align:center;margin-bottom:16px;">Start dit forløb</h3>
+    <div class="form-group"><label>Dit navn</label><input type="text" id="clientName" placeholder="Dit fulde navn"></div>
+    <div class="form-group"><label>Din rolle / titel</label><input type="text" id="clientRole" placeholder="F.eks. CEO, VP, Direktør"></div>
+    <div class="form-group"><label>Virksomhed</label><input type="text" id="clientCompany" placeholder="Din organisation"></div>
+    <div class="consent-box"><label><input type="checkbox" id="gdprConsent"><span>Mine besvarelser gemmes kun lokalt i min browser. Ingen data deles med nogen.</span></label></div>
+    <button class="btn btn-primary btn-full" onclick="startJourney()">Start mit forløb →</button>
+  </div>
+</div>
+
+<div class="screen" id="screen-journey">
+  <div style="text-align:center;margin-bottom:20px;">
+    <h2 id="journeyGreeting">Dit forløb</h2>
+    <p style="color:var(--text-light);font-size:1em;" id="journeySubtext">Karakter · Disciplin · Klarhed</p>
+    <div style="display:flex;justify-content:center;gap:16px;margin-top:16px;flex-wrap:wrap;">
+      <span class="phase-badge phase-karakter">① Karakter: Modul 1-3</span>
+      <span class="phase-badge phase-disciplin">② Disciplin: Modul 4-6</span>
+      <span class="phase-badge phase-klarhed">③ Klarhed: Modul 7-9</span>
+    </div>
+  </div>
+  <div class="journey-map" id="journeyMap"></div>
+  <div style="text-align:center;margin-top:24px;">
+    <button class="btn btn-secondary btn-small" onclick="exportData()" style="margin:4px;">📤 Eksportér</button>
+    <button class="btn btn-secondary btn-small" onclick="document.getElementById('importFile').click()" style="margin:4px;">📥 Importér</button>
+    <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+  </div>
+</div>
+
+<div class="screen" id="screen-module">
+  <div class="module-header">
+    <button class="back-link" onclick="goHome()">← Tilbage til dit forløb</button>
+    <h2 id="moduleTitle"></h2>
+    <p class="module-desc" id="moduleDesc"></p>
+  </div>
+  <div id="moduleContent"></div>
+</div>
+
+<div class="screen" id="screen-report">
+  <div class="module-header">
+    <button class="back-link" onclick="goHome()">← Tilbage</button>
+    <h2>Din Leadership Operating System</h2>
+    <p class="module-desc">En samlet oversigt over dit fundament, din praksis og din vej videre</p>
+  </div>
+  <div id="reportContent"></div>
+</div>
+<script>
+const MODULES = [
+{
+  id:'fundament',num:1,title:'Fundamentet',
+  subtitle:'Hvorfor selvledelse er ledelsesfundamentet',
+  color:'var(--m1)',time:'20-25 min',phase:'karakter',
+  about:'Alt ledelse begynder med selvledelse. I dette modul udforsker vi, hvorfor de mest effektive ledere er dem, der har gjort et bevidst arbejde med sig selv — og hvorfor din evne til at lede andre aldrig overstiger din evne til at lede dig selv.',
+  learn:[
+    {type:'text',content:'Peter Drucker, managementteoriens fader, formulerede det præcist: <strong>"Du kan ikke lede andre, medmindre du først kan lede dig selv."</strong> Det er ikke en blød observation — det er den hårdeste sandhed i ledelse. Din troværdighed, din beslutningskraft og din udholdenhed som leder hviler på fundamentet af din egen selvledelse.'},
+    {type:'text',content:'Forskning af Daniel Goleman (<em>Emotional Intelligence</em>, 1995; <em>Primal Leadership</em>, 2002) viser, at <strong>emotionel selvregulering</strong> — evnen til at styre dine egne reaktioner, impulser og energi — er den stærkeste prædiktor for ledelseseffektivitet. Stærkere end IQ. Stærkere end erfaring. Stærkere end teknisk viden.'},
+    {type:'text',content:'Jim Collins (<em>Good to Great</em>, 2001) fandt i sit berømte studie af virksomheder, der gik fra gode til fremragende, at "Level 5 Leaders" — de mest effektive — var kendetegnet af en paradoksal kombination: <strong>personlig ydmyghed og professionel viljestyrke</strong>. Begge er produkter af selvledelse.'},
+    {type:'quote',text:'Mastering others is strength. Mastering yourself is true power.',author:'Lao Tzu, Tao Te Ching'},
+    {type:'text',content:'<strong>Selvledelse er ikke selvoptimering.</strong> Det handler ikke om at blive en perfekt maskine. Det handler om at kende dig selv godt nok til at træffe bevidste valg: om dine prioriteter, dine reaktioner, din energi og din retning. Det handler om at gå fra <strong>autopilot til bevidst navigation</strong>.'},
+    {type:'text',content:'Stephen Covey kaldte det "Private Victory before Public Victory" (<em>The 7 Habits</em>, 1989). De tre første vaner — vær proaktiv, begynd med slutningen for øje, og gør det vigtigste først — handler alle om selvledelse. De fire næste handler om at lede andre. Rækkefølgen er ikke tilfældig.'}
+  ],
+  reflections:[
+    {id:'fu_1',type:'scale',label:'Hvor bevidst leder du dig selv i dag? (1 = primært autopilot, 10 = fuldt bevidst)',min:1,max:10},
+    {id:'fu_2',type:'textarea',label:'Hvad er de 3 vigtigste ting, du gerne ville ændre ved din egen selvledelse — hvis du er ærlig?',placeholder:'1. ...\n2. ...\n3. ...'},
+    {id:'fu_3',type:'textarea',label:'Tænk på den bedste leder, du har oplevet. Hvad var det ved deres selvledelse, der gjorde dem stærke?',placeholder:'Beskriv konkret, hvad de gjorde...'},
+    {id:'fu_4',type:'textarea',label:'Hvad koster det dig — som leder og som menneske — når din selvledelse svigter?',placeholder:'Vær ærlig om konsekvenserne...'}
+  ],
+  takeaways:[
+    'Selvledelse er fundamentet for al ledelse. Din troværdighed hviler på det.',
+    'Emotionel selvregulering er den stærkeste prædiktor for ledelseseffektivitet — stærkere end IQ.',
+    'De bedste ledere kombinerer personlig ydmyghed med professionel viljestyrke — begge kræver selvledelse.',
+    'Selvledelse er ikke selvoptimering. Det er at gå fra autopilot til bevidst navigation.'
+  ],
+  whyItMatters:'En meta-analyse af Harms & Credé (2010) viser, at ledere med høj selvbevidsthed og selvregulering har markant bedre team-performance, lavere medarbejderomsætning og højere engagement. Investering i din selvledelse er den investering, der giver størst afkast — for dig og for dem, du leder.',
+  sources:[
+    'Drucker, P.F. (1999). Managing Oneself. Harvard Business Review.',
+    'Goleman, D. (2002). Primal Leadership. Harvard Business School Press.',
+    'Collins, J. (2001). Good to Great. HarperBusiness.',
+    'Covey, S.R. (1989). The 7 Habits of Highly Effective People. Free Press.'
+  ],
+  activities:[
+    {title:'Selvledelsesaudit',desc:'Tag 20 minutter og vurder dig selv på 5 dimensioner: værdier (kender jeg mine?), vaner (har jeg gode?), energi (har jeg nok?), tid (bruger jeg den rigtigt?), relationer (sætter jeg grænser?). Scor 1-10 for hver.',time:'20 minutter',evidence:'Baseret på self-awareness research (Eurich, 2018)'},
+    {title:'360-graders spejl',desc:'Spørg 3 mennesker du stoler på: "Hvad er min største styrke som leder — og hvad holder mig tilbage?" Lyt. Skriv ned. Reagér ikke. Reflektér.',time:'3 samtaler denne uge',evidence:'Baseret på 360-feedback forskning (Atwater & Brett, 2005)'},
+    {title:'Morgenrutine-eksperiment',desc:'De næste 5 dage, brug de første 15 minutter af din dag bevidst: ingen telefon, ingen mail. Bare kaffe, stilhed og spørgsmålet: "Hvad er det vigtigste i dag?" Observér, hvad det gør ved din dag.',time:'15 min/dag i 5 dage',evidence:'Baseret på morning routine research (Hal Elrod / Covey)'}
+  ]
+},
+{
+  id:'vaerdier',num:2,title:'Værdier',
+  subtitle:'Hvem er du, når ingen kigger?',
+  color:'var(--m2)',time:'25-30 min',phase:'karakter',
+  about:'Dine værdier er dit kompas. De bestemmer, hvad du siger ja til, hvad du siger nej til, og hvordan du handler under pres. I dette modul identificerer du dine kerneværdier — ikke dem du gerne vil have, men dem du faktisk lever efter.',
+  learn:[
+    {type:'text',content:'De fleste mennesker kan ikke nævne deres kerneværrdier. Det er et problem — fordi værdier, du ikke kender, styrer dig ubevidst. Russ Harris (<em>The Happiness Trap</em>, 2008), baseret på Acceptance and Commitment Therapy (ACT), viser at <strong>klar værdibervidsthed er den stærkeste prædiktor for psykologisk fleksibilitet og vedholdende handling.</strong>'},
+    {type:'text',content:'<strong>Værdier er ikke mål.</strong> Mål kan opnås. Værdier er retninger — de er kompasser, ikke destinationer. "Integritet" er ikke noget, du opnår. Det er noget, du praktiserer — igen og igen, hver dag. Patrick Lencioni (<em>The Advantage</em>, 2012) skelner mellem "aspirational values" (dem vi gerne vil have) og "core values" (dem vi faktisk lever efter, også under pres).'},
+    {type:'text',content:'<strong>Testen for dine ægte værdier er enkel: Hvad gør du, når det koster noget?</strong> Alle har "integritet" på papiret. Men hvad gør du, når ærligheden koster en kunde? Når modet koster en forfremmelse? Når disciplinen koster weekendens dovenskab? Dine reelle værdier afsløres i dine handlinger, ikke dine ord.'},
+    {type:'quote',text:'It\'s not hard to make decisions when you know what your values are.',author:'Roy E. Disney'},
+    {type:'text',content:'Brené Brown har vist, at mennesker der kan identificere og leve efter max <strong>2-3 kerneværdier</strong> træffer beslutninger hurtigere, oplever mindre stress og har stærkere relationer (<em>Dare to Lead</em>, 2018). Flere end 3 er ikke værdier — det er ønsker.'},
+    {type:'text',content:'<strong>Karakter er det, der er tilbage, når kompetencen ikke er nok.</strong> I din karriere som leder vil du møde situationer, hvor din faglighed ikke rækker. Det er i de øjeblikke, dine værdier bærer dig — eller svigter dig. At kende dem er at ruste dig.'}
+  ],
+  reflections:[
+    {id:'va_1',type:'textarea',label:'Skriv 10 værdier ned, der er vigtige for dig. Vælg derefter de 3 vigtigste — dem du ville kæmpe for. Hvad valgte du fra?',placeholder:'10 værdier: ...\n\nMine 3 kerneværdier:\n1. ...\n2. ...\n3. ...'},
+    {id:'va_2',type:'textarea',label:'Beskriv en situation, hvor du handlede i overensstemmelse med dine værdier, selvom det kostede noget. Hvad skete der?',placeholder:'Beskriv situationen...'},
+    {id:'va_3',type:'textarea',label:'Beskriv en situation, hvor du gik på kompromis med dine værdier. Hvad var konsekvensen — indeni og udadtil?',placeholder:'Vær ærlig...'},
+    {id:'va_4',type:'scale',label:'I hvor høj grad lever du i dag i overensstemmelse med dine kerneværdier? (1 = stort gap, 10 = fuld alignment)',min:1,max:10}
+  ],
+  takeaways:[
+    'Dine reelle værdier afsløres i dine handlinger — ikke i dine ord. Særligt under pres.',
+    'Max 2-3 kerneværdier. Flere end det er ønsker, ikke kompasser.',
+    'Værdier er retninger, ikke destinationer. Du opnår dem ikke — du praktiserer dem.',
+    'Karakter er det, der er tilbage, når kompetencen ikke rækker.'
+  ],
+  whyItMatters:'Forskning i values-based leadership (Kraemer, 2011) viser, at ledere med klar værdibevidsthed træffer 40% hurtigere beslutninger i komplekse situationer og har markant højere tillid fra deres teams. Dine værdier er din beslutningsmotor.',
+  sources:[
+    'Harris, R. (2008). The Happiness Trap. Trumpeter.',
+    'Lencioni, P. (2012). The Advantage. Jossey-Bass.',
+    'Brown, B. (2018). Dare to Lead. Random House.',
+    'Kraemer, H.M.J. (2011). From Values to Action. Jossey-Bass.'
+  ],
+  activities:[
+    {title:'Værdi-obduktion',desc:'Tag dine 3 kerneværdier og stil dig selv 3 spørgsmål for hver: (1) Hvornår levede jeg sidst fuldt efter denne? (2) Hvornår gik jeg sidst på kompromis? (3) Hvad ville ændre sig, hvis jeg altid levede den?',time:'20 minutter',evidence:'Baseret på ACT values clarification (Harris, 2008)'},
+    {title:'Skriv dit personlige credo',desc:'Formuler en sætning på max 2 linjer, der sammenfatter, hvem du vil være som leder og menneske. Hæng den et sted, du ser den dagligt.',time:'15 minutter',evidence:'Baseret på personal mission statement (Covey, 1989)'},
+    {title:'Værdi-test i denne uge',desc:'Vælg én af dine kerneværdier og gør den til dit fokus denne uge. Hver aften: "Levede jeg efter [værdi] i dag? Hvornår ja? Hvornår nej?" Skriv det ned.',time:'5 min/dag i 7 dage',evidence:'Baseret på values-congruent behavior tracking'}
+  ]
+},
+{
+  id:'retning',num:3,title:'Retning',
+  subtitle:'Fra værdier til vision og mål',
+  color:'var(--m3)',time:'25-30 min',phase:'karakter',
+  about:'Værdier giver dig et kompas. Men uden en retning er et kompas bare en smuk genstand. I dette modul oversætter du dine værdier til en konkret vision for dit liv og din ledelse — og bryder den ned i mål, der kan handles på.',
+  learn:[
+    {type:'text',content:'<strong>Klarhed er superkraften.</strong> Forskning af Locke & Latham (2002), baseret på over 1.000 studier af goal-setting, viser at <strong>specifikke, udfordrende mål øger performance med 20-25%</strong> sammenlignet med vage mål ("gør dit bedste"). Klarhed er ikke en luksus — det er en multiplicator.'},
+    {type:'text',content:'Men mål uden vision er bare to-do-lister. Viktor Frankl viste, at mennesker med et tydeligt "hvorfor" kan udholde næsten ethvert "hvordan". Dit "hvorfor" — din vision — er den dybere grund til, at målene betyder noget. Hvad er det for et liv, du bygger? Hvad er det for en leder, du vil være om 5 år?'},
+    {type:'text',content:'Jim Collins\' koncept <strong>BHAG — Big Hairy Audacious Goal</strong> (Collins & Porras, 1994) viser, at visionære organisationer drives af mål, der er store nok til at inspirere og skræmme på samme tid. Det gælder også for individer: <strong>Dit mål skal være stort nok til, at det kræver, du vokser for at nå det.</strong>'},
+    {type:'quote',text:'The only thing worse than being blind is having sight but no vision.',author:'Helen Keller'},
+    {type:'text',content:'<strong>Strategisk selvledelse</strong> handler om at skelne mellem: (1) <strong>Vision</strong> — hvem vil du være og hvad vil du skabe? (2) <strong>Mål</strong> — hvad skal du opnå de næste 12 måneder? (3) <strong>Prioriteter</strong> — hvad er de 3 vigtigste ting denne måned? (4) <strong>Handlinger</strong> — hvad gør du i dag?'},
+    {type:'text',content:'En vigtig indsigt fra Oettingens forskning i "mental contrasting" (WOOP-modellen, 2014): <strong>Positiv visualisering alene virker ikke.</strong> Den skal kombineres med en ærlig erkendelse af de forhindringer, der står i vejen. Drøm + realisme = handling. Drøm alene = passivitet.'}
+  ],
+  reflections:[
+    {id:'re_1',type:'textarea',label:'Beskriv dit liv om 5 år — professionelt og personligt — hvis du lykkes med alt. Hvad ser du? Vær konkret.',placeholder:'Professionelt: ...\nPersonligt: ...\nHvad føler du: ...'},
+    {id:'re_2',type:'textarea',label:'Hvad er dine 3 vigtigste mål de næste 12 måneder? Formuler dem specifikt og målbart.',placeholder:'1. ...\n2. ...\n3. ...'},
+    {id:'re_3',type:'textarea',label:'For hvert mål: hvad er den største forhindring? Og hvad er din plan for at håndtere den?',placeholder:'Mål 1 — Forhindring: ... Plan: ...\nMål 2 — Forhindring: ... Plan: ...\nMål 3 — Forhindring: ... Plan: ...'},
+    {id:'re_4',type:'scale',label:'Hvor klart er dit "hvorfor" — den dybere grund til dine mål? (1 = uklart, 10 = krystalklart)',min:1,max:10}
+  ],
+  takeaways:[
+    'Specifikke, udfordrende mål øger performance med 20-25%. Klarhed er en multiplicator.',
+    'Vision uden mål er dagdrømmeri. Mål uden vision er to-do-lister. Du behøver begge.',
+    'Positiv visualisering alene virker ikke. Drøm + realistisk forhindringshåndtering = handling.',
+    'Dit mål skal være stort nok til, at det kræver, du vokser for at nå det.'
+  ],
+  whyItMatters:'Forskning af Matthews (2015) viser, at mennesker der skriver deres mål ned, har 42% højere sandsynlighed for at nå dem. Og dem der deler dem med en accountability partner, har endnu højere. Klarhed, skrevet ned, er det stærkeste strategiske værktøj du har.',
+  sources:[
+    'Locke, E.A. & Latham, G.P. (2002). Building a Practically Useful Theory of Goal Setting. American Psychologist, 57(9), 705-717.',
+    'Collins, J. & Porras, J. (1994). Built to Last. HarperBusiness.',
+    'Oettingen, G. (2014). Rethinking Positive Thinking. Current.',
+    'Matthews, G. (2015). Goals Research Summary. Dominican University.'
+  ],
+  activities:[
+    {title:'5-årsvisionen',desc:'Brug 20 minutter på at skrive din 5-årsvision i detalje. Hvor bor du, hvad leder du, hvad har du opnået, hvordan ser din dag ud? Gem den. Læs den hver måned.',time:'20 minutter',evidence:'Baseret på visionary goal-setting (Collins, 1994)'},
+    {title:'WOOP dine mål',desc:'For hvert af dine 3 mål, brug WOOP: Wish (ønske) → Outcome (bedste udfald) → Obstacle (forhindring) → Plan (hvis-så plan). Skriv det ned.',time:'15 minutter',evidence:'Baseret på mental contrasting (Oettingen, 2014)'},
+    {title:'Denne uges 3 prioriteter',desc:'Skriv max 3 prioriteter for denne uge, der bringer dig tættere på dine 12-månedsmål. Kun 3. Ikke 7. Ikke 12. Tre.',time:'5 minutter søndag aften',evidence:'Baseret på essentialism (McKeown, 2014)'}
+  ]
+}
+];
+MODULES.push(
+{
+  id:'vaner',num:4,title:'Vaner',
+  subtitle:'Disciplinens arkitektur — systemer der bærer dig',
+  color:'var(--m4)',time:'25-30 min',phase:'disciplin',
+  about:'Discipline is a bridge between goals and accomplishment. I dette modul bygger du den bro. Ikke med viljestyrke — men med systemer, vaner og strukturer, der gør det rigtige til det lette.',
+  learn:[
+    {type:'text',content:'James Clear (<em>Atomic Habits</em>, 2018) leverer den vigtigste indsigt om vaner: <strong>"You do not rise to the level of your goals. You fall to the level of your systems."</strong> De mest disciplinerede mennesker er ikke dem med mest viljestyrke — det er dem med de bedste systemer.'},
+    {type:'text',content:'Forskning af Lally et al. (2010, European Journal of Social Psychology) viser, at det i gennemsnit tager <strong>66 dage</strong> at automatisere en ny vane — ikke 21, som myten siger. Og variationen er enorm: fra 18 til 254 dage. Det betyder: <strong>tålmodighed og system er vigtigere end motivation.</strong>'},
+    {type:'text',content:'BJ Fogg (Stanford) har dokumenteret, at de mest holdbare vaner er <strong>bittesmå og forankrede</strong> (<em>Tiny Habits</em>, 2020). "Når jeg hælder min morgenkaffe, skriver jeg dagens 3 prioriteter" er mere effektivt end "jeg vil være bedre til at planlægge." Formlen: <strong>Når [eksisterende handling], vil jeg [ny mini-handling].</strong>'},
+    {type:'quote',text:'We are what we repeatedly do. Excellence, then, is not an act, but a habit.',author:'Aristoteles (via Will Durant)'},
+    {type:'text',content:'<strong>De 4 love for vaneændring</strong> (Clear, 2018): (1) <strong>Gør det synligt</strong> — design dit miljø. (2) <strong>Gør det attraktivt</strong> — kobl vanen til noget du nyder. (3) <strong>Gør det let</strong> — reducer friktion. (4) <strong>Gør det tilfredsstillende</strong> — fejr den lille sejr.'},
+    {type:'text',content:'For ledere er nøglevaner (Duhigg kalder dem "keystone habits") særligt vigtige: de vaner, der skaber kaskadeeffekter. <strong>Motion, morgenprioritering og ugentlig refleksion</strong> er tre velunderbyggede keystone habits for ledere — de påvirker alt andet positivt.'}
+  ],
+  reflections:[
+    {id:'van_1',type:'textarea',label:'Beskriv dine nuværende morgen- og aftenrutiner ærligt. Hvad fungerer? Hvad gør det ikke?',placeholder:'Morgen: ...\nAften: ...'},
+    {id:'van_2',type:'textarea',label:'Hvilke 3 vaner ville have den største positive effekt på din ledelse og dit liv, hvis du automatiserede dem?',placeholder:'1. ...\n2. ...\n3. ...'},
+    {id:'van_3',type:'scale',label:'Hvor afhængig er du af motivation vs. systemer? (1 = ren motivation, 10 = solide systemer)',min:1,max:10},
+    {id:'van_4',type:'textarea',label:'Formuler én tiny habit efter Foggs formel: "Når jeg [eksisterende handling], vil jeg [ny mini-handling]."',placeholder:'Når jeg ... vil jeg ...'}
+  ],
+  takeaways:[
+    'Du falder ikke til niveauet af dine mål — du falder til niveauet af dine systemer.',
+    'Det tager i gennemsnit 66 dage at automatisere en vane. Tålmodighed og system slår motivation.',
+    'Tiny habits virker: gør det bittesmåt, forankr det i noget eksisterende, fejr den lille sejr.',
+    'Keystone habits (motion, morgenprioritering, refleksion) skaber positive kaskadeeffekter.'
+  ],
+  whyItMatters:'Duhigg (2012) dokumenterer, at organisationer ledet af mennesker med stærke personlige vanesystemer performer markant bedre. Din personlige disciplin smitter — den sætter standarden for alt og alle omkring dig.',
+  sources:[
+    'Clear, J. (2018). Atomic Habits. Avery.',
+    'Fogg, B.J. (2020). Tiny Habits. Houghton Mifflin.',
+    'Lally, P. et al. (2010). How are habits formed. European Journal of Social Psychology, 40(6), 998-1009.',
+    'Duhigg, C. (2012). The Power of Habit. Random House.'
+  ],
+  activities:[
+    {title:'Habit stacking: 3 vaner',desc:'Vælg 3 vaner du vil bygge og "stack" dem: Morgen: Kaffe → skriv 3 prioriteter → 5 min refleksion. Start med den mindste. Tilføj den næste efter 2 uger.',time:'Starter i morgen',evidence:'Baseret på habit stacking (Clear, 2018)'},
+    {title:'Miljø-design',desc:'Gennemgå dit fysiske og digitale miljø: Ligger det rigtige fremme? Er distraktioner fjernet? Læg din træningsudstyr klar om aftenen. Luk unødvendige apps. Gør det let at gøre det rigtige.',time:'30 minutter',evidence:'Baseret på choice architecture (Thaler & Sunstein, 2008)'},
+    {title:'Vane-tracking: 30 dage',desc:'Lav en simpel tracker (papir eller app) med dine 3 nøglevaner. Markér med ✓ hver dag du gennemfører dem. Reglen: bryd aldrig kæden to dage i træk.',time:'1 min/dag i 30 dage',evidence:'Baseret på dont-break-the-chain (Seinfeld-metoden)'}
+  ]
+},
+{
+  id:'energi',num:5,title:'Energi',
+  subtitle:'Dit vigtigste ledelsesværktøj — krop, søvn, restitution',
+  color:'var(--m5)',time:'20-25 min',phase:'disciplin',
+  about:'Du kan have de bedste værdier, den klareste vision og de stærkeste vaner — men uden energi er det ligegyldigt. I dette modul handler det om den fysiske dimension af selvledelse: at behandle din krop som det præcisionsinstrument, den er.',
+  learn:[
+    {type:'text',content:'Jim Loehr & Tony Schwartz (<em>The Power of Full Engagement</em>, 2003) ændrede spillets regler med én indsigt: <strong>Det handler ikke om tidsstyring. Det handler om energistyring.</strong> Tid er en fast størrelse — 168 timer om ugen. Energi er variabel. Og den kan styres.'},
+    {type:'text',content:'De identificerer fire energidimensioner: <strong>Fysisk</strong> (krop, søvn, motion, ernæring), <strong>Emotionel</strong> (humør, relationer, selvtillid), <strong>Mental</strong> (fokus, kreativitet, beslutningskraft), og <strong>Åndelig</strong> (mening, formål, engagement). De fire hænger sammen — og den fysiske er fundamentet.'},
+    {type:'text',content:'<strong>Søvn er ikke forhandlingsbar.</strong> Matthew Walker (<em>Why We Sleep</em>, 2017) dokumenterer, at ledere der konsekvent sover under 7 timer har <strong>markant dårligere beslutningskraft, lavere emotionel regulering og højere risiko for fejlvurderinger</strong>. "Jeg kan klare mig med 5 timer" er den farligste selvbedrag en leder kan have.'},
+    {type:'quote',text:'Manage your energy, not your time.',author:'Jim Loehr & Tony Schwartz, The Power of Full Engagement (2003)'},
+    {type:'text',content:'<strong>Restitution er ikke dovenskab.</strong> Elite-performere — atleter, musikere, ledere — hviler strategisk. Forskning af Ericsson (1993) i deliberate practice viste, at top-violinister ikke øvede mest — de restituerede bedst. De bedste sov mere, tog flere pauser og havde strengere grænsesætning.'},
+    {type:'text',content:'<strong>Praktisk energistyring for ledere:</strong> (1) Beskyt dine første 2-3 timer til deep work — de er dine mest energirige. (2) Byg pauser ind: 90 minutters arbejdsblokke, 15 min pause (ultradian rhythm). (3) Bevæg dig dagligt — selv 20 min har målbar effekt. (4) Behandl søvn som en strategisk prioritet.'}
+  ],
+  reflections:[
+    {id:'en_1',type:'scale',label:'Hvad er dit gennemsnitlige energiniveau kl. 15? (1 = udmattet, 10 = fuld energi)',min:1,max:10},
+    {id:'en_2',type:'textarea',label:'Kortlæg din energi over en typisk dag: Hvornår har du mest? Hvornår mindst? Matcher det, hvornår du gør dit vigtigste arbejde?',placeholder:'Morgen: ...\nFormiddag: ...\nEftermiddag: ...\nAften: ...'},
+    {id:'en_3',type:'scale',label:'Hvor mange timer sover du typisk? (4=fire, 10=ti)',min:4,max:10},
+    {id:'en_4',type:'textarea',label:'Hvad dræner din energi mest? Og hvad giver dig mest energi? Skriv 3 af hver.',placeholder:'Dræner: 1. ... 2. ... 3. ...\nGiver: 1. ... 2. ... 3. ...'}
+  ],
+  takeaways:[
+    'Energistyring slår tidsstyring. Tid er fast — energi er variabel og kan styres.',
+    'Søvn under 7 timer ødelægger beslutningskraft og emotionel regulering. Det er ikke en luksus.',
+    'Top-performere restituerer bedst, ikke arbejder mest. Pauser er strategiske.',
+    'Dine første 2-3 timer er guld. Beskyt dem til dit vigtigste arbejde.'
+  ],
+  whyItMatters:'Harvard Business Review (2007) publicerede Loehr & Schwartz\' forskning med titlen "Manage Your Energy, Not Your Time" — det blev en af de mest læste artikler i HBR\'s historie. Årsagen: det er den mest praktiske og samtidig mest negligerede dimension af ledelseseffektivitet.',
+  sources:[
+    'Loehr, J. & Schwartz, T. (2003). The Power of Full Engagement. Free Press.',
+    'Walker, M. (2017). Why We Sleep. Scribner.',
+    'Ericsson, K.A. et al. (1993). The Role of Deliberate Practice. Psychological Review, 100(3), 363-406.',
+    'Schwartz, T. (2007). Manage Your Energy, Not Your Time. Harvard Business Review.'
+  ],
+  activities:[
+    {title:'Energilog: 5 dage',desc:'Hver 2. time, scor din energi 1-10 og noter hvad du lavede. Efter 5 dage: hvornår har du mest energi? Matcher det dine vigtigste opgaver? Justér din kalender derefter.',time:'5 dage',evidence:'Baseret på energy management (Loehr & Schwartz, 2003)'},
+    {title:'90/15-reglen',desc:'Denne uge: arbejd i blokke af max 90 minutter, efterfulgt af 15 min pause (gå, stræk, ingen skærm). Det matcher din krops naturlige ultradian rhythm.',time:'Hele ugen',evidence:'Baseret på ultradian rhythm (Rossi, 1991)'},
+    {title:'Søvn +30 minutter',desc:'Gå i seng 30 minutter tidligere de næste 7 dage. Ingen forhandling. Mål effekten på din energi, dit humør og din beslutningskraft.',time:'7 dage',evidence:'Baseret på Walker (2017)'}
+  ]
+},
+{
+  id:'tid',num:6,title:'Tid',
+  subtitle:'Fra travlhed til prioritering — kalender, nej-sigen, deep work',
+  color:'var(--m6)',time:'25-30 min',phase:'disciplin',
+  about:'Travlhed er ikke produktivitet. Mange ledere forveksler de to. I dette modul adresserer vi den mest udbredte selvledelsesfejl hos executives: at lade kalenderen styre sig i stedet for at styre kalenderen.',
+  learn:[
+    {type:'text',content:'Greg McKeown (<em>Essentialism</em>, 2014) stiller det skarpt: <strong>"If you don\'t prioritize your life, someone else will."</strong> De fleste lederes kalendere er fyldt af andres prioriteter. Meetings, mails, "har du lige 5 minutter?" — og pludselig er ugen gået uden, at du lavede noget vigtigt.'},
+    {type:'text',content:'Cal Newport (<em>Deep Work</em>, 2016) dokumenterer, at den mest værdiskabende aktivitet — <strong>dyb, fokuseret tænkning</strong> — kræver uafbrudte blokke af minimum 90 minutter. Og at de fleste ledere har nul sådanne blokke i deres kalender. Resultatet: alt bliver reaktivt, intet bliver proaktivt.'},
+    {type:'text',content:'<strong>Eisenhower-matrixen</strong> (inspireret af Dwight D. Eisenhower) er stadig det mest brugbare prioriteringsværktøj: (1) <strong>Vigtigt + Hastende</strong> = Gør det nu. (2) <strong>Vigtigt + Ikke hastende</strong> = Planlæg det (dette er din strategiske zone). (3) <strong>Ikke vigtigt + Hastende</strong> = Delegér det. (4) <strong>Ikke vigtigt + Ikke hastende</strong> = Eliminér det.'},
+    {type:'quote',text:'What is important is seldom urgent and what is urgent is seldom important.',author:'Dwight D. Eisenhower'},
+    {type:'text',content:'<strong>Kunsten at sige nej</strong> er den mest undervurderede ledelseskompetence. Warren Buffett: "The difference between successful people and very successful people is that very successful people say no to almost everything." Hvert ja til noget uvæsentligt er et nej til noget vigtigt.'},
+    {type:'text',content:'<strong>Praktisk kalenderarkitektur:</strong> (1) Blokér 2-3 timer daily til deep work — før noget andet. (2) Batch-procesér mail og Slack: 2-3 gange dagligt, ikke konstant. (3) Hav max 3 prioriteter per dag. (4) Sæt "office hours" for tilgængelighed. (5) Giv enhver meeting et formål — og aflys dem der ingen har.'}
+  ],
+  reflections:[
+    {id:'ti_1',type:'textarea',label:'Kig på din kalender for den seneste uge. Hvor mange timer brugte du på dit vigtigste strategiske arbejde vs. reaktivt arbejde?',placeholder:'Strategisk: ca. ... timer\nReaktivt: ca. ... timer'},
+    {id:'ti_2',type:'scale',label:'Hvor god er du til at sige nej? (1 = siger ja til alt, 10 = kun ja til det vigtige)',min:1,max:10},
+    {id:'ti_3',type:'textarea',label:'Hvad er de 3 ting, du bruger mest tid på, som du burde delegere eller eliminere?',placeholder:'1. ...\n2. ...\n3. ...'},
+    {id:'ti_4',type:'textarea',label:'Hvordan ville din ideelle uge se ud, hvis du designede den fra bunden? Beskriv den time for time.',placeholder:'Mandag: ...\nTirsdag: ...\n...'}
+  ],
+  takeaways:[
+    'Travlhed er ikke produktivitet. De fleste ledere bruger mere tid på andres prioriteter end deres egne.',
+    'Deep work kræver uafbrudte 90-minuttersblokke. Uden dem er alt reaktivt.',
+    'Hvert ja til noget uvæsentligt er et nej til noget vigtigt. Øv dig i at sige nej.',
+    'Din kalender er dit styringssystem. Designér den — eller andres prioriteter fylder den.'
+  ],
+  whyItMatters:'McKinsey (2018) fandt, at top-ledere der aktivt designer deres kalender bruger 20% mere tid på strategisk arbejde og har 30% højere tilfredshed med deres ledelseseffektivitet. Din kalender er det mest ærlige spejl af dine prioriteter.',
+  sources:[
+    'McKeown, G. (2014). Essentialism. Crown Business.',
+    'Newport, C. (2016). Deep Work. Grand Central Publishing.',
+    'Covey, S.R. (1989). The 7 Habits. Free Press.',
+    'McKinsey & Company (2018). The CEO\'s Guide to Time Management.'
+  ],
+  activities:[
+    {title:'Kalender-audit',desc:'Gennemgå din seneste uge time for time. Kategorisér alt: Deep work / Meetings / Admin / Reaktivt / Pause. Hvad ser du? Hvad overrasker dig?',time:'30 minutter',evidence:'Baseret på time tracking research (Drucker, 1966)'},
+    {title:'Deep work-blok: 5 dage',desc:'Blokér 2 timer i din kalender i morgen tidlig — markér den "Strategisk arbejde — ikke tilgængelig". Gør det i 5 dage. Observér, hvad der sker med din produktivitet og din ro.',time:'2 timer/dag i 5 dage',evidence:'Baseret på Deep Work (Newport, 2016)'},
+    {title:'Nej-øvelsen',desc:'Sig nej til mindst 2 ting denne uge, du normalt ville sige ja til. Ikke uhøfligt — bare klart: "Tak, men det passer ikke ind lige nu." Observér: hvad frigør det tid til?',time:'Denne uge',evidence:'Baseret på Essentialism (McKeown, 2014)'}
+  ]
+}
+);
+MODULES.push(
+{
+  id:'relationer',num:7,title:'Relationer & grænser',
+  subtitle:'At lede dig selv i samspil med andre',
+  color:'var(--m7)',time:'25-30 min',phase:'klarhed',
+  about:'Selvledelse sker ikke i et vakuum. Du er omgivet af mennesker — medarbejdere, bestyrelse, partnere, familie — der alle trækker i dig. I dette modul handler det om at lede dig selv i relationer: at sætte grænser, give og modtage feedback, og beskytte din integritet under pres.',
+  learn:[
+    {type:'text',content:'Henry Cloud (<em>Boundaries for Leaders</em>, 2013) har dokumenteret, at <strong>de mest effektive ledere er dem, der sætter de klareste grænser</strong> — ikke dem der er mest tilgængelige. Grænser er ikke egoisme. De er forudsætningen for at give andre det bedste af dig, i stedet for resten af dig.'},
+    {type:'text',content:'Adam Grant (<em>Give and Take</em>, 2013) fandt et overraskende mønster: de mest succesfulde mennesker er "givere" — men kun en bestemt type. <strong>"Otherish givers"</strong> giver strategisk: de hjælper andre, men beskytter deres egen tid og energi. "Selfless givers" — dem der siger ja til alt — brænder ud og performer dårligst.'},
+    {type:'text',content:'<strong>Feedback er selvledelsens spejl.</strong> Forskning af Sheila Heen og Douglas Stone (<em>Thanks for the Feedback</em>, 2014) viser, at evnen til at modtage feedback — ikke bare give den — er en af de stærkeste prædiktorer for personlig og professionel vækst. De bedste ledere søger aktivt feedback og bruger den.'},
+    {type:'quote',text:'Daring to set boundaries is about having the courage to love ourselves even when we risk disappointing others.',author:'Brené Brown, Dare to Lead (2018)'},
+    {type:'text',content:'<strong>De 5 grænser, enhver leder bør sætte:</strong> (1) <strong>Tidsgrænser</strong> — hvornår er du tilgængelig, og hvornår er du ikke? (2) <strong>Energigrænser</strong> — hvilke mennesker og opgaver dræner dig? (3) <strong>Ansvarsgrænser</strong> — hvad er dit, og hvad er andres? (4) <strong>Emotionelle grænser</strong> — hvornår bærer du andres følelser? (5) <strong>Værdigrænser</strong> — hvornår kompromitterer du dig selv?'},
+    {type:'text',content:'<strong>Det svære ved grænser:</strong> Mange ledere frygter, at grænser skaber distance eller svaghed. Forskningen viser det modsatte. Cloud (2013): "People who feel safe around you — who know what to expect — will trust you more, not less." Grænser skaber tryghed — for dig og for andre.'}
+  ],
+  reflections:[
+    {id:'rel_1',type:'textarea',label:'Hvilke grænser mangler du i dag? Hvor siger du ja, når du burde sige nej? Hvem eller hvad dræner dig?',placeholder:'Beskriv ærligt...'},
+    {id:'rel_2',type:'scale',label:'Hvor god er du til at modtage kritisk feedback uden at gå i forsvar? (1 = svært, 10 = modtager det åbent)',min:1,max:10},
+    {id:'rel_3',type:'textarea',label:'Beskriv en situation, hvor du gik på kompromis med en vigtig grænse. Hvad var konsekvensen?',placeholder:'Situationen: ...\nKonsekvensen: ...'},
+    {id:'rel_4',type:'textarea',label:'Hvem er de 3-5 vigtigste relationer for din succes som leder? Investerer du nok i dem?',placeholder:'1. ...\n2. ...\n3. ...\n4. ...\n5. ...'}
+  ],
+  takeaways:[
+    'Grænser er ikke egoisme. De er forudsætningen for at give andre det bedste af dig.',
+    'Strategisk giving ("otherish") slår selfless giving. Beskyt din tid og energi.',
+    'Evnen til at modtage feedback er en stærkere prædiktor for vækst end evnen til at give den.',
+    'Klare grænser skaber tryghed og tillid — ikke distance.'
+  ],
+  whyItMatters:'Forskning i leader-member exchange (LMX) theory (Graen & Uhl-Bien, 1995) viser, at ledere med stærke, autentiske relationer til deres team — baseret på gensidig respekt og klare forventninger — har markant bedre resultater. Grænser og relationer er ikke modsætninger. De er forudsætninger for hinanden.',
+  sources:[
+    'Cloud, H. (2013). Boundaries for Leaders. HarperBusiness.',
+    'Grant, A. (2013). Give and Take. Viking.',
+    'Heen, S. & Stone, D. (2014). Thanks for the Feedback. Viking.',
+    'Brown, B. (2018). Dare to Lead. Random House.'
+  ],
+  activities:[
+    {title:'Grænse-audit',desc:'For hver af de 5 grænsetyper (tid, energi, ansvar, emotionel, værdi): vurder 1-10 hvor stærk din grænse er. Vælg den svageste og formuler én konkret handling for at styrke den denne uge.',time:'20 minutter',evidence:'Baseret på Boundaries for Leaders (Cloud, 2013)'},
+    {title:'Feedback-samtale',desc:'Bed denne uge én medarbejder og én peer om ærlig feedback: "Hvad bør jeg gøre mere af? Mindre af? Anderledes?" Lyt. Skriv ned. Reagér ikke i samtalen — reflektér bagefter.',time:'2 samtaler',evidence:'Baseret på Thanks for the Feedback (Heen & Stone, 2014)'},
+    {title:'Giver-tjek',desc:'Gennemgå din seneste uge: Hvor sagde du ja af pligt, ikke af værdi? Hvor bar du andres ansvar? Identificér 2 situationer og formuler, hvad du ville gøre anderledes.',time:'15 minutter',evidence:'Baseret på Give and Take (Grant, 2013)'}
+  ]
+},
+{
+  id:'modstand',num:8,title:'Modstand',
+  subtitle:'Når disciplinen svigter — selvbedrag, prokrastinering, tilbagefald',
+  color:'var(--m8)',time:'25-30 min',phase:'klarhed',
+  about:'Enhver leder kender øjeblikket: du ved, hvad du bør gøre — men du gør det ikke. I dette modul konfronterer vi disciplinens fjender: prokrastinering, selvbedrag, perfektionisme og tilbagefald. Ikke for at dømme dig — men for at ruste dig.',
+  learn:[
+    {type:'text',content:'Steven Pressfield kalder det <strong>"Resistance"</strong> (<em>The War of Art</em>, 2002): den usynlige kraft, der står mellem dig og det vigtige arbejde. Den optræder som prokrastinering, distraktioner, rationalisering og frygt. Og den er <strong>proportional med vigtigheden af det, du undgår</strong>. Jo vigtigere opgaven, jo stærkere modstand.'},
+    {type:'text',content:'Forskning i prokrastinering (Steel, 2007, meta-analyse af 691 studier) viser, at <strong>prokrastinering ikke er et tidsstyringsproblem. Det er et emotionsreguleringsproblem.</strong> Vi udskyder ikke, fordi vi ikke har tid — vi udskyder, fordi opgaven vækker ubehag (usikkerhed, kedsomhed, frygt for at fejle).'},
+    {type:'text',content:'<strong>Selvbedrag</strong> er lederens skjulte fjende. Robert Kegan & Lisa Lahey (<em>Immunity to Change</em>, 2009) dokumenterer, at de fleste mennesker har <strong>skjulte modsatrettede forpligtelser</strong>: du vil gerne delegere mere, men din skjulte forpligtelse er kontrol. Du vil gerne sige nej, men din skjulte forpligtelse er at blive set som hjælpsom.'},
+    {type:'quote',text:'The more important a call or action is to our soul\'s evolution, the more Resistance we will feel toward pursuing it.',author:'Steven Pressfield, The War of Art (2002)'},
+    {type:'text',content:'<strong>Perfektionisme er prokrastineringens fætter.</strong> Brené Brown: "Perfectionism is not the same thing as striving to be your best. It\'s a shield." Forskning viser, at perfektionister har <strong>lavere</strong> produktivitet og højere stress — fordi frygten for at fejle lammer handling.'},
+    {type:'text',content:'<strong>Tilbagefald er normalt — ikke en fiasko.</strong> Forskning i adfærdsændring (Prochaska & DiClemente, 1983) viser, at tilbagefald er en naturlig del af forandringsprocessen. Nøglen: <strong>hvad gør du dagen efter tilbagefaldet?</strong> De mest succesfulde genoptager kursen med det samme — uden selvpisk, med selvmedfølelse.'}
+  ],
+  reflections:[
+    {id:'mo_1',type:'textarea',label:'Hvad prokrastinerer du på lige nu? Og hvad er den følelse, du undgår ved at udskyde det?',placeholder:'Jeg udskyder: ...\nDen underliggende følelse: ...'},
+    {id:'mo_2',type:'textarea',label:'Hvad er dit mest gennemgående selvbedrag som leder? Hvad fortæller du dig selv, som du godt ved ikke er sandt?',placeholder:'Vær brutalt ærlig...'},
+    {id:'mo_3',type:'scale',label:'Hvor hurtigt genoptager du kursen efter et tilbagefald? (1 = det tager uger, 10 = næste dag)',min:1,max:10},
+    {id:'mo_4',type:'textarea',label:'Identificer en "skjult modsatrettet forpligtelse": Hvad siger du, du vil? Og hvad gør du, der modarbejder det? Hvad er den bagvedliggende frygt?',placeholder:'Jeg vil: ...\nMen jeg gør: ...\nFordi jeg frygter: ...'}
+  ],
+  takeaways:[
+    'Modstanden er proportional med vigtigheden af det, du undgår. Mærk du den? Godt — det er et kompas.',
+    'Prokrastinering er et emotionsproblem, ikke et tidsproblem. Håndtér følelsen, ikke kalenderen.',
+    'Perfektionisme er en bremse, ikke en kvalitet. Den bedste plan udført er bedre end den perfekte plan udskudt.',
+    'Tilbagefald er normalt. Det der tæller, er hvad du gør dagen efter.'
+  ],
+  whyItMatters:'Kegan & Laheys forskning viser, at 85% af ledere der identificerer deres skjulte modsatrettede forpligtelser gennemfører den ønskede forandring — mod under 10% der kun fokuserer på vilje og teknik. At forstå din modstand er det mest effektive forandringsværktøj.',
+  sources:[
+    'Pressfield, S. (2002). The War of Art. Black Irish Entertainment.',
+    'Steel, P. (2007). The Nature of Procrastination: A Meta-Analytic Review. Psychological Bulletin, 133(1), 65-94.',
+    'Kegan, R. & Lahey, L. (2009). Immunity to Change. Harvard Business Review Press.',
+    'Brown, B. (2010). The Gifts of Imperfection. Hazelden.'
+  ],
+  activities:[
+    {title:'Modstandslog',desc:'De næste 5 dage, notér hver gang du mærker modstand: Hvad undgik du? Hvad følte du? Hvad gjorde du i stedet? Bare observér — at se mønstret er det første skridt.',time:'5 dage',evidence:'Baseret på metacognition research (Flavell, 1979)'},
+    {title:'5-minutters reglen',desc:'Næste gang du mærker prokrastinering, sig til dig selv: "Jeg gør det i 5 minutter. Bare 5." Start. Ofte forsvinder modstanden, når du først er i gang. Forskning bekræfter: startfriktionen er den største barriere.',time:'Løbende',evidence:'Baseret på behavioral activation (Steel, 2007)'},
+    {title:'Immunity map',desc:'Brug Kegan & Laheys model: (1) Hvad vil du ændre? (2) Hvad gør du, der modarbejder det? (3) Hvilke skjulte forpligtelser har du? (4) Hvad er den dybere frygt? Skriv det ned som et kort.',time:'30 minutter',evidence:'Baseret på Immunity to Change (Kegan & Lahey, 2009)'}
+  ]
+},
+{
+  id:'praksis',num:9,title:'Praksis',
+  subtitle:'Din personlige Leadership Operating System',
+  color:'var(--m9)',time:'25-35 min',phase:'klarhed',
+  about:'I dette afsluttende modul samler du trådene. Du designer dit personlige Leadership Operating System — den daglige, ugentlige og månedlige praksis, der holder din selvledelse i drift. Ikke som et ideal, men som et system, du faktisk kan leve med.',
+  learn:[
+    {type:'text',content:'Ray Dalio (<em>Principles</em>, 2017), grundlægger af verdens største hedgefond, bygger hele sit ledelsessystem på ét fundament: <strong>principper — gennemtænkte, nedskrevne regler for, hvordan du handler i tilbagevendende situationer.</strong> "Without principles, you would be forced to react to circumstances that come at you without considering what you value most."'},
+    {type:'text',content:'<strong>Et Leadership Operating System har fire lag:</strong> (1) <strong>Daglig praksis</strong> — morgenrutine, prioritering, deep work, refleksion. (2) <strong>Ugentlig review</strong> — hvad gik godt, hvad gik skidt, hvad justerer jeg? (3) <strong>Månedlig audit</strong> — lever jeg efter mine værdier, er jeg på kurs mod mine mål? (4) <strong>Kvartalsvis strategisk refleksion</strong> — er retningen stadig rigtig?'},
+    {type:'text',content:'David Allen (<em>Getting Things Done</em>, 2001) formulerer det præcist: <strong>"Your mind is for having ideas, not holding them."</strong> Dit system skal fange alt — opgaver, ideer, forpligtelser — så din hjerne er fri til at tænke, beslutte og lede. Uden et system bruger du mental energi på at huske i stedet for at handle.'},
+    {type:'quote',text:'Principles are ways of successfully dealing with reality to get what you want out of life.',author:'Ray Dalio, Principles (2017)'},
+    {type:'text',content:'<strong>Den ugentlige review er dit vigtigste selvledelsesritual.</strong> Forskning i self-regulation (Baumeister & Vohs, 2007) viser, at mennesker der regelmæssigt reflekterer over deres adfærd har markant bedre målprogression. 30 minutter om ugen — fast tid, fast sted — med 3 spørgsmål: Hvad gik godt? Hvad gik skidt? Hvad justerer jeg?'},
+    {type:'text',content:'<strong>Dit system er personligt.</strong> Der er ikke ét rigtigt system. Det rigtige system er det, du faktisk bruger. Nogle ledere bruger en simpel notesbog. Andre bruger digitale værktøjer. Nogle mediterer, andre løber. Det vigtige er: har du et system — og kører du det konsekvent?'}
+  ],
+  reflections:[
+    {id:'pr_1',type:'textarea',label:'Design din ideelle morgenrutine (max 30-45 min). Hvad gør du fra du vågner til du starter arbejdet?',placeholder:'1. ...\n2. ...\n3. ...\n4. ...'},
+    {id:'pr_2',type:'textarea',label:'Design din ugentlige review: Hvornår gør du den? Hvad gennemgår du? Skriv 3-5 faste spørgsmål.',placeholder:'Tidspunkt: ...\nSpørgsmål:\n1. ...\n2. ...\n3. ...'},
+    {id:'pr_3',type:'textarea',label:'Skriv 3-5 personlige principper — regler du lever efter som leder. Formuler dem som klare sætninger.',placeholder:'1. ...\n2. ...\n3. ...\n4. ...\n5. ...'},
+    {id:'pr_4',type:'textarea',label:'Hvad er dit vigtigste takeaway fra hele dette forløb? Skriv det i én sætning, du kan huske.',placeholder:'Den ene sætning...'}
+  ],
+  takeaways:[
+    'Et Leadership Operating System har 4 lag: dagligt, ugentligt, månedligt og kvartalsvist.',
+    'Den ugentlige review er dit vigtigste selvledelsesritual. 30 min med 3 spørgsmål.',
+    'Din hjerne er til at tænke, ikke til at huske. Brug et system der fanger alt.',
+    'Det rigtige system er det, du faktisk bruger. Konsistens slår kompleksitet.'
+  ],
+  whyItMatters:'Forskning i self-regulation (Carver & Scheier, 1998) viser, at mennesker med systematisk selvevaluering opnår deres mål 2-3x oftere. Dit system er ikke et nice-to-have — det er den infrastruktur, der bærer din selvledelse, din ledelse og dit liv.',
+  sources:[
+    'Dalio, R. (2017). Principles. Simon & Schuster.',
+    'Allen, D. (2001). Getting Things Done. Penguin.',
+    'Baumeister, R.F. & Vohs, K.D. (2007). Self-Regulation, Ego Depletion, and Motivation. Social and Personality Psychology Compass, 1(1), 115-128.',
+    'Carver, C.S. & Scheier, M.F. (1998). On the Self-Regulation of Behavior. Cambridge University Press.'
+  ],
+  activities:[
+    {title:'Byg dit OS — nu',desc:'Skriv dit komplette Leadership Operating System på én A4-side: morgenrutine, daglige prioriteter, ugentlig review, månedlig audit. Hæng den op ved dit skrivebord. Følg den fra i morgen.',time:'30 minutter',evidence:'Baseret på Principles (Dalio, 2017) og GTD (Allen, 2001)'},
+    {title:'Book din ugentlige review',desc:'Sæt en fast, tilbagevendende aftale i din kalender: "Ugentlig review — 30 min." Fredageftermiddag eller søndag aften virker for de fleste. Gør den ukrænkelig.',time:'5 minutter at booke',evidence:'Baseret på self-regulation (Baumeister, 2007)'},
+    {title:'Overvej en sparringspartner',desc:'De mest effektive ledere har en coach, en mentor eller en peer-group, der holder dem ærlige. Overvej, om du har brug for nogen i din hjørne — en professionel, der ser det, du ikke selv kan se.',time:'Én overvejelse',evidence:'Baseret på executive coaching-forskning (de Haan et al., 2013)'}
+  ]
+}
+);
+const STORE_KEY='friisnaes_selvledelse_v2';
+let state={version:'2.0.0',client:{name:'',role:'',company:'',consent:false,consentTime:null},modules:{},acknowledged:{},completed:[],created:null,lastUpdated:null};
+
+function init(){loadState();if(state.client.name&&state.client.consent)goHome();else showScreen('welcome');}
+function loadState(){try{const s=localStorage.getItem(STORE_KEY);if(s)state={...state,...JSON.parse(s)};}catch(e){}}
+function saveState(){try{state.lastUpdated=new Date().toISOString();localStorage.setItem(STORE_KEY,JSON.stringify(state));const el=document.getElementById('saveIndicator');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1200);}catch(e){}}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const sc=document.getElementById('screen-'+id);if(sc)sc.classList.add('active');window.scrollTo(0,0);updateProgress();}
+function goHome(){renderJourney();showScreen('journey');}
+function updateProgress(){const done=(state.completed||[]).length;document.getElementById('progressFill').style.width=((done/MODULES.length)*100)+'%';document.getElementById('progressText').textContent=done+' / '+MODULES.length;}
+function getUnlockedModules(){const u=[MODULES[0].id];for(let i=0;i<MODULES.length-1;i++){if(state.acknowledged&&state.acknowledged[MODULES[i].id])u.push(MODULES[i+1].id);}return u;}
+function isUnlocked(id){return getUnlockedModules().includes(id);}
+function isAcknowledged(id){return state.acknowledged&&state.acknowledged[id];}
+
+function startJourney(){
+  const name=document.getElementById('clientName').value.trim();
+  const role=document.getElementById('clientRole').value.trim();
+  const company=document.getElementById('clientCompany').value.trim();
+  const consent=document.getElementById('gdprConsent').checked;
+  if(!name)return alert('Indtast venligst dit navn.');
+  if(!consent)return alert('Acceptér venligst betingelserne.');
+  state.client={name,role,company,consent:true,consentTime:new Date().toISOString()};
+  if(!state.created)state.created=new Date().toISOString();
+  saveState();goHome();
+}
+
+function renderJourney(){
+  const name=state.client.name?state.client.name.split(' ')[0]:'';
+  document.getElementById('journeyGreeting').textContent=name?'Hej, '+name:'Dit forløb';
+  const allDone=MODULES.every(m=>isAcknowledged(m.id));
+  document.getElementById('journeySubtext').textContent=allDone?'Du har gennemført hele forløbet. Dit Leadership OS venter.':'Karakter · Disciplin · Klarhed';
+  const map=document.getElementById('journeyMap');map.innerHTML='';
+  MODULES.forEach((m,i)=>{
+    const unlocked=isUnlocked(m.id);const done=isAcknowledged(m.id);const isLast=i===MODULES.length-1;
+    const phaseClass=m.phase==='karakter'?'phase-karakter':m.phase==='disciplin'?'phase-disciplin':'phase-klarhed';
+    const phaseLabel=m.phase.charAt(0).toUpperCase()+m.phase.slice(1);
+    const step=document.createElement('div');step.className='journey-step';
+    step.innerHTML=`<div class="journey-line"><div class="journey-dot ${done?'done':unlocked?'active':'locked'}">${done?'✓':m.num}</div>${!isLast?`<div class="journey-connector ${done?'done':''}"></div>`:''}</div><div class="journey-content ${unlocked?'':'locked'}" onclick="${unlocked?`openModule('${m.id}')`:'void(0)'}"><h3>${m.title} <span class="phase-badge ${phaseClass}">${phaseLabel}</span></h3><p>${m.subtitle}</p><div class="journey-meta"><span class="badge" style="background:${done?'rgba(107,158,120,0.15);color:var(--success)':unlocked?'rgba(201,169,110,0.15);color:var(--gold)':'rgba(255,255,255,0.06);color:var(--text-muted)'}">${done?'✓ Gennemført':unlocked?'● Åben':'🔒 Låst'}</span><span style="color:var(--text-muted);">~${m.time}</span></div></div>`;
+    map.appendChild(step);
+  });
+  if(allDone){const rb=document.createElement('div');rb.style.cssText='text-align:center;margin-top:24px;';rb.innerHTML=`<button class="btn btn-primary" onclick="showReport()" style="padding:16px 36px;font-size:16px;">📄 Se dit Leadership Operating System →</button>`;map.appendChild(rb);}
+}
+
+function openModule(id){
+  const m=MODULES.find(mod=>mod.id===id);if(!m||!isUnlocked(id))return;
+  document.getElementById('moduleTitle').innerHTML=`<span style="color:${m.color}">Modul ${m.num}:</span> ${m.title}`;
+  document.getElementById('moduleDesc').textContent=m.subtitle;
+  const c=document.getElementById('moduleContent');c.innerHTML='';
+  c.innerHTML+=`<div class="section-card"><h3>📖 Det her handler modulet om</h3><p style="margin-top:8px;">${m.about}</p></div>`;
+  let lh='<div class="section-card"><h3>🧠 LEARN</h3><p class="subtitle">Viden baseret på dokumenteret forskning</p><div class="learn-block">';
+  m.learn.forEach(item=>{if(item.type==='text')lh+=`<p>${item.content}</p>`;if(item.type==='quote')lh+=`<div class="quote-box">"${item.text}"<div class="author">— ${item.author}</div></div>`;});
+  lh+='</div></div>';c.innerHTML+=lh;
+  let rh='<div class="section-card"><h3>💭 Refleksion</h3><p class="subtitle">Dine ærlige svar styrker din selvindsigt</p>';
+  m.reflections.forEach(r=>{
+    const saved=(state.modules?.[m.id]?.[r.id])||'';
+    if(r.type==='textarea'){rh+=`<div class="reflection-group"><label>${r.label}</label><textarea id="ref_${r.id}" placeholder="${r.placeholder||''}" onchange="saveRef('${m.id}','${r.id}',this.value)">${saved}</textarea></div>`;}
+    else if(r.type==='scale'){let btns='';for(let i=r.min;i<=r.max;i++)btns+=`<button class="scale-btn ${parseInt(saved)===i?'selected':''}" onclick="pickScale('${m.id}','${r.id}',${i},this)">${i}</button>`;rh+=`<div class="reflection-group"><label>${r.label}</label><div class="scale-row">${btns}</div></div>`;}
+  });rh+='</div>';c.innerHTML+=rh;
+  let th='<div class="takeaway-box"><h4>✨ Vigtigste takeaways</h4><ul>';m.takeaways.forEach(t=>th+=`<li>${t}</li>`);th+='</ul></div>';c.innerHTML+=th;
+  c.innerHTML+=`<div class="why-box"><h4>🎯 Hvorfor dette giver mening</h4><p style="margin-top:6px;">${m.whyItMatters}</p></div>`;
+  let sh='<div class="source-box"><h4>📚 Kilder</h4><ul>';m.sources.forEach(s=>sh+=`<li>${s}</li>`);sh+='</ul></div>';c.innerHTML+=sh;
+  let ah=`<div class="activity-card"><h3>🚀 Handling</h3><p class="activity-subtitle">Selvledelse er en praksis, ikke en teori. Vælg mindst én aktivitet.</p>`;
+  m.activities.forEach(a=>{ah+=`<div class="activity-item"><h4>${a.title}</h4><p>${a.desc}</p><div class="activity-meta">⏱ ${a.time} · 📖 ${a.evidence}</div></div>`;});
+  ah+='</div>';c.innerHTML+=ah;
+  const acked=isAcknowledged(m.id);const idx=MODULES.findIndex(mod=>mod.id===m.id);const nextMod=MODULES[idx+1];
+  const nextTitle=nextMod?`Modul ${nextMod.num}: ${nextMod.title}`:'dit Leadership Operating System';
+  c.innerHTML+=`<div class="acknowledge-box"><label><input type="checkbox" id="ack_${m.id}" ${acked?'checked disabled':''} onchange="ackModule('${m.id}')"><span>${acked?'Du har gennemført dette modul':'Jeg har gennemgået modulet og er klar til næste'}</span></label><div class="unlock-msg" id="unlockMsg_${m.id}" ${acked?'style="display:block;"':''}>${acked?`✅ Gennemført! ${nextMod?`<strong>${nextTitle}</strong> er nu låst op.`:'Du har gennemført hele forløbet!'}`:`Når du krydser af, låses <strong>${nextTitle}</strong> op.`}</div>${acked?`<button class="btn btn-primary" onclick="${nextMod?`openModule('${nextMod.id}')`:'showReport()'}" style="margin-top:12px;width:auto;">${nextMod?`Gå til ${nextTitle} →`:'📄 Se dit Leadership OS →'}</button>`:''}</div>`;
+  showScreen('module');
+}
+
+function saveRef(mid,rid,val){if(!state.modules)state.modules={};if(!state.modules[mid])state.modules[mid]={};state.modules[mid][rid]=val;saveState();}
+function pickScale(mid,rid,val,btn){btn.parentElement.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');saveRef(mid,rid,val.toString());}
+function ackModule(id){const cb=document.getElementById('ack_'+id);if(!cb.checked)return;cb.disabled=true;if(!state.acknowledged)state.acknowledged={};state.acknowledged[id]=new Date().toISOString();if(!state.completed)state.completed=[];if(!state.completed.includes(id))state.completed.push(id);saveState();openModule(id);}
+
+function showReport(){
+  const c=document.getElementById('reportContent');c.innerHTML='';
+  const n=state.client.name.split(' ')[0];
+  c.innerHTML+=`<div class="card" style="text-align:center;border:2px solid var(--gold);"><h2 style="color:var(--gold);">⚡ ${n}, dit Leadership Operating System</h2><div class="gold-line"></div><p>Du har gennemført alle 9 moduler. Det er en investering i det vigtigste ledelsesværktøj, du har: dig selv.</p><p style="font-size:14px;color:var(--text-muted);margin-top:8px;">Genereret ${new Date().toLocaleDateString('da-DK')} · ${state.client.role||''} ${state.client.company?'· '+state.client.company:''}</p></div>`;
+
+  // Phase summaries
+  const phases=[{name:'Karakter',sub:'Hvem er du?',ids:['fundament','vaerdier','retning'],badge:'phase-karakter'},{name:'Disciplin',sub:'Hvad gør du?',ids:['vaner','energi','tid'],badge:'phase-disciplin'},{name:'Klarhed',sub:'Hvordan holder du kursen?',ids:['relationer','modstand','praksis'],badge:'phase-klarhed'}];
+  phases.forEach(ph=>{
+    let ph_html=`<div class="section-card"><h3><span class="phase-badge ${ph.badge}">${ph.name}</span> ${ph.sub}</h3>`;
+    ph.ids.forEach(mid=>{
+      const m=MODULES.find(mod=>mod.id===mid);const md=state.modules?.[mid]||{};
+      ph_html+=`<h4 style="color:${m.color};margin-top:16px;font-size:1em;">Modul ${m.num}: ${m.title}</h4>`;
+      if(Object.keys(md).length>0){
+        m.reflections.forEach(r=>{const v=md[r.id];if(v){ph_html+=`<p style="font-size:12px;color:var(--text-muted);margin-top:6px;"><strong>${r.label}</strong></p><p style="font-size:14px;padding:8px 12px;background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:6px;margin-bottom:4px;">${v}</p>`;}});
+      } else {ph_html+=`<p style="color:var(--text-muted);font-style:italic;font-size:13px;">Ingen besvarelser gemt.</p>`;}
+    });
+    ph_html+='</div>';c.innerHTML+=ph_html;
+  });
+
+  // Leadership OS blueprint
+  c.innerHTML+=`<div class="section-card"><h3 style="color:var(--gold);">🔧 Dit Leadership Operating System</h3><p class="subtitle">Din personlige infrastruktur for selvledelse</p>
+    <div class="report-section"><h4>🌅 Daglig praksis</h4><p><strong>Morgen (15-30 min):</strong> Ingen skærm de første 15 min. Kaffe + skriv dagens 3 prioriteter. 5 min refleksion: "Hvad er det vigtigste i dag?"<br><strong>Arbejdsdag:</strong> Deep work-blok (2-3 timer, uafbrudt) om formiddagen. 90/15-rytme. Mail/Slack i batches.<br><strong>Aften (5 min):</strong> Dagens review: Hvad gik godt? Hvad justerer jeg i morgen?</p></div>
+    <div class="report-section"><h4>📋 Ugentlig review (30 min)</h4><p>Fast tidspunkt (fredag eller søndag). 5 spørgsmål: (1) Levede jeg efter mine værdier? (2) Arbejdede jeg mod mine mål? (3) Hvad gik godt? (4) Hvad gik skidt? (5) Hvad justerer jeg næste uge? Plus: Næste uges 3 prioriteter.</p></div>
+    <div class="report-section"><h4>📊 Månedlig audit (1 time)</h4><p>Gennemgå: Mål-progression (er jeg på kurs?). Energi-niveau (har jeg nok?). Grænser (holder de?). Vaner (kører systemet?). Kalender (matcher den mine prioriteter?).</p></div>
+    <div class="report-section"><h4>🔭 Kvartalsvis strategisk refleksion (halv dag)</h4><p>Er min retning stadig rigtig? Skal mine mål justeres? Hvad har jeg lært om mig selv? Hvad er min største vækstmulighed de næste 90 dage?</p></div>
+  </div>`;
+
+  // Key principles
+  const prData=state.modules?.['praksis']?.['pr_3'];
+  if(prData){c.innerHTML+=`<div class="section-card"><h3>📜 Dine personlige principper</h3><p style="padding:12px 16px;background:var(--navy-mid);border:1px solid var(--navy-border);border-radius:8px;white-space:pre-line;">${prData}</p></div>`;}
+
+  // The one sentence
+  const oneData=state.modules?.['praksis']?.['pr_4'];
+  if(oneData){c.innerHTML+=`<div style="text-align:center;margin:24px 0;padding:24px;border:1px solid var(--gold);border-radius:var(--radius);"><p style="font-family:'Playfair Display',serif;font-size:1.4em;font-style:italic;color:var(--gold-light);">"${oneData}"</p><p style="font-size:13px;color:var(--text-muted);margin-top:8px;">— ${state.client.name}, ${new Date().toLocaleDateString('da-DK')}</p></div>`;}
+
+  // Coaching
+  c.innerHTML+=`<div class="coaching-box"><h3>💬 Klar til næste niveau?</h3><p>De mest effektive ledere har en sparringspartner — en der ser det, de ikke selv kan se, og holder dem ærlige. Hvis du er klar til at tage din selvledelse fra viden til varig praksis, kan en professionel coaching-relation gøre forskellen.</p><a href="mailto:thomas@friisnaes.dk?subject=Selvledelse%20%E2%80%94%20interesse%20for%20coaching&body=Hej%20Thomas%2C%0A%0AJeg%20har%20gennemf%C3%B8rt%20forl%C3%B8bet%20%22Selvledelse%20%E2%80%94%20dit%20vigtigste%20ledelsesv%C3%A6rkt%C3%B8j%22%20og%20er%20interesseret%20i%20at%20h%C3%B8re%20mere%20om%20en%20coaching-relation.%0A%0AVenlig%20hilsen%2C%0A${encodeURIComponent(state.client.name)}" class="btn btn-primary" style="width:auto;text-decoration:none;">📧 Book en uforpligtende samtale</a><p style="font-size:12px;color:var(--text-muted);margin-top:8px;">Thomas Friisnæs · Personal Excellence Partner · friisnaes.dk</p></div>`;
+
+  c.innerHTML+=`<div style="text-align:center;margin-top:30px;"><button class="btn btn-primary" onclick="exportData()" style="width:auto;">📤 Download dine besvarelser (JSON)</button></div><div style="text-align:center;margin-top:30px;padding-top:20px;border-top:1px solid var(--navy-border);font-size:13px;color:var(--text-muted);"><p style="font-family:'Playfair Display',serif;font-size:16px;color:var(--gold);font-weight:600;">Friisnæs — Karakter · Disciplin · Klarhed</p><p style="margin-top:4px;">Udviklet af Thomas Friisnæs · Personal Excellence Partner · friisnaes.dk</p></div>`;
+  showScreen('report');
+}
+
+function exportData(){const exp={framework:'Selvledelse — dit vigtigste ledelsesværktøj',version:state.version,exported:new Date().toISOString(),data:state};const blob=new Blob([JSON.stringify(exp,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`Selvledelse_${state.client.name.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(url);}
+function importData(event){const file=event.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=(e)=>{try{const imp=JSON.parse(e.target.result);if(imp.data&&imp.framework.includes('Selvledelse')){state={...state,...imp.data};saveState();goHome();alert('Data importeret.');}else{alert('Ugyldig fil.');}}catch(err){alert('Fejl: '+err.message);}};reader.readAsText(file);event.target.value='';}
+
+init();
+</script>
+</body>
+</html>

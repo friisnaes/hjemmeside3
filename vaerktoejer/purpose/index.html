@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="1.0.0">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<meta name="description" content="Find dit purpose — Karakter · Disciplin · Klarhed">
+<title>Purpose — Karakter · Disciplin · Klarhed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#111111;--navy2:#1a1a1a;--navy3:#222222;--navy4:#2b2b2b;
+  --blue:#c0392b;--blue2:#e74c3c;
+  --gold:#c0392b;--gold2:#e74c3c;--gdim:rgba(224,168,74,0.14);--gbrd:rgba(192,57,43,0.35);
+  --text:#E4EAF4;--text2:#8A9BB8;--text3:#4E6080;
+  --green:#4CAF82;--red:#E57373;--orange:#E5A048;--accent:#6C5CE7;
+  --brd:rgba(255,255,255,0.07);--brd2:rgba(255,255,255,0.13);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.65;min-height:100vh}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.2}
+button{font-family:'Outfit',sans-serif;cursor:pointer;transition:all .18s}
+input,textarea,select{font-family:'Outfit',sans-serif;font-size:14px;background:var(--navy3);border:1.5px solid var(--brd2);color:var(--text);border-radius:8px;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--blue2)}textarea{resize:vertical}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:var(--navy2)}::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:2px}
+.hidden{display:none!important}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+.fade{animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+#sc-client-login,#sc-admin-login{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(108,92,231,.10) 0%,transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(201,168,76,.05) 0%,transparent 50%),var(--navy);padding:32px 24px}
+.login-logo{text-align:center;margin-bottom:52px}
+.login-logo h1{font-size:38px;letter-spacing:.02em;color:var(--text)}
+.login-logo .tag{font-family:'Outfit';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.login-logo .sub2{font-size:13px;color:var(--text3);margin-top:6px;font-style:italic}
+.login-card{width:100%;max-width:400px;background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:32px}
+.login-card.gold{border-color:var(--gbrd)}
+.login-card h2{font-size:26px;margin-bottom:8px}
+.login-card h2.gold-text{color:var(--gold)}
+.login-card .sub{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.65}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.fg input{width:100%;padding:12px 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border:none;border-radius:8px;font-size:13px;font-weight:500}
+.btn-row{display:flex;gap:10px;margin-top:18px}
+.btn-primary{background:var(--blue);color:#fff;flex:1}.btn-primary:hover{background:var(--blue2)}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:600;flex:1}.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;border:1.5px solid var(--brd2);color:var(--text2)}.btn-ghost:hover{background:var(--navy3);color:var(--text)}
+.err{color:var(--red);font-size:12px;margin-top:8px}
+.gdpr-strip{margin-top:20px;padding:12px 14px;background:rgba(76,175,130,.07);border:1px solid rgba(76,175,130,.2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.7}
+.gdpr-strip strong{color:var(--green)}
+.admin-link{margin-top:28px;text-align:center}
+.admin-link a{font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--brd2);padding-bottom:1px}
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:14px;padding:0 24px;height:56px;background:rgba(12,24,41,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);flex-shrink:0;flex-wrap:wrap}
+.tb-brand{flex:1}.tb-brand .nm{font-family:'Playfair Display',Georgia,serif;font-size:16px;color:var(--text);font-weight:600}
+.tb-brand .sb{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.15em}
+.tb-btn{padding:6px 12px;background:transparent;border:1px solid var(--brd);border-radius:6px;color:var(--text3);font-size:12px}
+.tb-btn:hover{border-color:var(--brd2);color:var(--text2)}.tb-btn.gold{color:var(--gold);border-color:var(--gbrd)}
+.c-main{padding:32px 24px;max-width:960px;margin:0 auto;width:100%}
+.prog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px}
+.prog-header h1{font-size:32px}.prog-header .stat{font-size:13px;color:var(--text3)}
+.ack-box{background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:28px;margin-bottom:28px;text-align:center}
+.ack-box .ack-icon{font-size:42px;margin-bottom:12px}.ack-box h2{font-size:22px;margin-bottom:10px}
+.ack-box p{color:var(--text2);font-size:14px;max-width:640px;margin:0 auto;line-height:1.8}
+.velocity-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:20px;margin-bottom:24px}
+.velocity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.vg-item{text-align:center;padding:10px;background:var(--navy3);border-radius:8px}
+.vg-item .vn{font-size:22px;font-weight:600}.vg-item .vl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.mod-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:22px;cursor:pointer;transition:all .2s}
+.mod-card:hover{border-color:var(--brd2);transform:translateY(-2px)}
+.mod-card.locked{opacity:.45;cursor:default;pointer-events:none}
+.mod-card .mc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mod-card .mc-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff}
+.mod-card .mc-title{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:600;flex:1}
+.mod-card .mc-sub{font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:14px}
+.mod-card .mc-prog{height:4px;background:var(--navy4);border-radius:2px;overflow:hidden}
+.mod-card .mc-prog-fill{height:100%;border-radius:2px;transition:width .4s ease}
+.mod-card .mc-status{font-size:11px;margin-top:8px}
+.mc-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.mod-header{padding:28px 24px;border-bottom:1px solid var(--brd)}
+.mod-header h1{font-size:30px;margin-bottom:4px}.mod-header .mh-sub{font-size:13px;color:var(--text3)}
+.mod-tabs{display:flex;gap:0;border-bottom:1px solid var(--brd);padding:0 24px}
+.mod-tab{padding:12px 20px;font-size:13px;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.mod-tab:hover{color:var(--text2)}.mod-tab.active{color:var(--text);border-bottom-color:var(--gold)}
+.mod-content{padding:32px 24px;max-width:820px;margin:0 auto}
+.sources-box{border-left:3px solid var(--blue);padding:16px 20px;background:var(--navy2);border-radius:0 10px 10px 0;margin-bottom:24px}
+.src-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.src-item{font-size:12px;color:var(--text2);padding:3px 0}
+.why-mod-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:18px 22px;margin-bottom:24px}
+.why-mod-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:10px}
+.why-mod-text{font-size:14px;color:var(--text2);line-height:1.8}
+.learn-body{color:var(--text2);line-height:1.9;font-size:14.5px}
+.learn-body h3{color:var(--text);font-size:20px;margin:28px 0 14px}
+.learn-body p{margin-bottom:14px}
+.learn-body blockquote{border-left:3px solid var(--gold);padding:12px 18px;margin:18px 0;color:var(--text);font-style:italic;background:rgba(201,168,76,.04);border-radius:0 8px 8px 0}
+.learn-body ul,.learn-body ol{margin:12px 0 12px 24px;color:var(--text2)}.learn-body li{margin-bottom:6px}
+.learn-cta{text-align:center;margin-top:32px}
+.takeaways-box{background:rgba(76,175,130,.06);border:1px solid rgba(76,175,130,.15);border-radius:10px;padding:22px 26px;margin-top:28px}
+.tk-title{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;font-weight:600}
+.tk-item{font-size:14px;color:var(--text2);line-height:1.8;padding:6px 0;border-bottom:1px solid rgba(76,175,130,.08)}.tk-item:last-child{border:none}
+.q-progress{position:sticky;top:56px;z-index:50;background:var(--navy2);border-bottom:1px solid var(--brd);padding:10px 24px;display:flex;align-items:center;gap:14px}
+.qp-bar{flex:1;height:6px;background:var(--navy4);border-radius:3px;overflow:hidden}
+.qp-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease}
+.qp-cnt{font-size:12px;color:var(--text3);min-width:50px;text-align:right}
+.q-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:18px}
+.q-card .qlabel{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.q-card .qtext{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.q-card textarea{width:100%;min-height:100px;padding:14px}
+.q-card .scale-row{display:flex;gap:6px;flex-wrap:wrap}
+.q-card .scale-btn{padding:8px 14px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text3);font-size:13px;min-width:40px;text-align:center}
+.q-card .scale-btn.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.q-card .cbtn{padding:8px 16px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text2);font-size:13px;margin:3px}
+.q-card .cbtn.sel{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
+.btn-save{display:block;width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;margin-top:12px}
+.btn-save:hover{background:var(--blue2)}
+.refl-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:22px;margin-bottom:16px}
+.refl-card h4{font-size:16px;margin-bottom:12px}.refl-card label{font-size:12px;color:var(--text3);display:block;margin-bottom:4px;margin-top:10px}
+.refl-card textarea{width:100%;min-height:70px;padding:10px;margin-bottom:4px}
+.refl-card select{padding:8px 12px;margin-bottom:4px;width:100%}
+.radar-wrap{display:flex;justify-content:center;margin:16px 0}
+.radar-wrap svg{max-width:340px}
+.admin-wrap{display:flex;min-height:100vh}
+.admin-side{width:260px;background:var(--navy2);border-right:1px solid var(--brd);padding:20px;flex-shrink:0;overflow-y:auto}
+.admin-main{flex:1;padding:28px;overflow-y:auto}
+.as-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin-bottom:20px}
+.as-nav{list-style:none}.as-nav li{padding:10px 14px;border-radius:8px;font-size:13px;color:var(--text3);cursor:pointer;margin-bottom:4px}
+.as-nav li:hover{background:var(--navy3);color:var(--text2)}
+.as-nav li.active{background:var(--navy3);color:var(--gold);border-left:3px solid var(--gold)}
+.aclient-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:16px;margin-bottom:10px;cursor:pointer}
+.aclient-card:hover{border-color:var(--brd2)}.aclient-card.sel{border-color:var(--gold)}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.astat{background:var(--navy3);border-radius:8px;padding:14px;text-align:center}
+.astat .av{font-size:24px;font-weight:600}.astat .al{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.ai-box{background:var(--navy3);border:1px solid var(--gbrd);border-radius:10px;padding:20px;margin-top:16px}
+.ai-box h3{color:var(--gold);font-size:18px;margin-bottom:12px}
+.ai-result{white-space:pre-wrap;font-size:13px;color:var(--text2);line-height:1.8;max-height:500px;overflow-y:auto}
+.save-feedback{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;z-index:600;animation:fadeIn .3s ease;pointer-events:none}
+.info-container{max-width:820px;margin:0 auto;padding:40px 24px}
+.info-section{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px;margin-bottom:20px}
+.info-section h2{font-size:22px;margin-bottom:14px;color:var(--gold)}
+.info-section p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:10px}
+@media(max-width:900px){.topbar{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px}.tb-brand{width:100%}.prog-header{flex-direction:column}.mods-grid{grid-template-columns:1fr}.admin-side{width:200px}}
+@media(max-width:640px){.login-logo h1{font-size:26px}.astats{grid-template-columns:1fr 1fr}.velocity-grid{grid-template-columns:1fr 1fr}.mod-content{padding:24px 16px}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+<body>
+<!-- CLIENT LOGIN -->
+<div id="sc-client-login" class="screen active">
+  <div class="login-logo">
+    <h1>Find dit purpose</h1>
+    <div class="tag">Karakter · Disciplin · Klarhed</div>
+    <div class="sub2">Hvad ville du gøre — hvis ingen kiggede?</div>
+  </div>
+  <div class="login-card">
+    <h2>Klientadgang</h2>
+    <div class="sub">5 moduler. 30 refleksioner. Fra drift til retning — find ud af hvad der giver mening for dig, uafhængigt af forventninger, status og belønning.</div>
+    <div class="fg"><label>Dit fulde navn</label><input type="text" id="cl-name" placeholder="Fornavn Efternavn" onkeydown="if(event.key==='Enter')doClientLogin()"></div>
+    <div class="btn-row"><button class="btn btn-primary" onclick="doClientLogin()">Start forløb</button></div>
+    <div id="cl-err" class="err hidden"></div>
+    <div class="gdpr-strip">
+      <strong>🔒 GDPR:</strong> Alle besvarelser gemmes udelukkende lokalt på din enhed.
+      <div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+        <input type="checkbox" id="gdpr-consent" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">
+        <label for="gdpr-consent" style="font-size:12px;color:var(--text2);cursor:pointer;line-height:1.5">Jeg accepterer, at mine besvarelser gemmes lokalt.</label>
+      </div>
+    </div>
+  </div>
+  <div class="admin-link"><a href="?admin">Admin-adgang →</a></div>
+</div>
+<!-- ADMIN LOGIN -->
+<div id="sc-admin-login" class="screen">
+  <div class="login-logo"><h1>Purpose</h1><div class="tag">Admin · Thomas Friisnæs</div></div>
+  <div class="login-card gold">
+    <h2 class="gold-text">Admin</h2>
+    <div class="sub">Klientdata, AI-analyse og modulaktivering.</div>
+    <div class="fg"><label>Adgangskode</label><input type="password" id="al-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+    <div class="btn-row"><button class="btn btn-gold" onclick="doAdminLogin()">Log ind</button></div>
+    <div id="al-err" class="err hidden"></div>
+  </div>
+</div>
+<!-- CLIENT DASHBOARD -->
+<div id="sc-client" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm">Purpose</div><div class="sb" id="tb-name"></div></div>
+    <button class="tb-btn" onclick="showReadme()">📖 Guide</button>
+    <button class="tb-btn gold" onclick="exportClientJSON()">↓ JSON</button>
+    <button class="tb-btn" onclick="exportClientTXT()">↓ Tekst</button>
+    <button class="tb-btn" onclick="clientDeleteData()" style="color:var(--red)">🗑 Slet</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="c-main" id="client-dash"></div>
+</div>
+<!-- MODULE VIEW -->
+<div id="sc-module" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm" id="mod-title-bar"></div><div class="sb" id="mod-sub-bar"></div></div>
+    <button class="tb-btn" onclick="renderDash();show('client')">← Dashboard</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="mod-header" id="mod-header"></div>
+  <div class="mod-tabs" id="mod-tabs"></div>
+  <div id="tc-learn" class="mod-content"></div>
+  <div id="tc-quest" class="mod-content" style="display:none"></div>
+  <div id="tc-takeaways" class="mod-content" style="display:none"></div>
+  <div id="tc-journal" class="mod-content" style="display:none"></div>
+</div>
+<!-- ADMIN PANEL -->
+<div id="sc-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-side">
+      <div class="as-title">Admin Panel</div>
+      <ul class="as-nav">
+        <li class="active" onclick="setASection('ov')">📊 Oversigt</li>
+        <li onclick="setASection('clients')">👥 Klienter</li>
+        <li onclick="setASection('import')">📥 Import</li>
+        <li onclick="setASection('gdpr')">🔒 GDPR</li>
+      </ul>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--brd)"><button class="tb-btn" style="width:100%" onclick="logout()">Log ud</button></div>
+    </div>
+    <div class="admin-main">
+      <div id="asec-ov"></div>
+      <div id="asec-clients" style="display:none"></div>
+      <div id="asec-import" style="display:none"></div>
+      <div id="asec-gdpr" style="display:none"></div>
+    </div>
+  </div>
+</div>
+<!-- README -->
+<div id="sc-readme" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Guide — Purpose</div></div><button class="tb-btn" onclick="closeReadme()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Hvad er dette?</h2><p>Det mest eksistentielle forløb i porteføljen. 5 moduler der hjælper dig med at finde dit purpose — hvad der giver dyb mening for dig, uafhængigt af forventninger, status og belønning. Baseret på Frankl, Deci & Ryan, Sinek, Christensen og 20+ års coaching.</p></div>
+    <div class="info-section"><h2>Purpose i porteføljen</h2><p><strong>Selvværd</strong> = hvem du er → fundamentet<br><strong>Selvtillid</strong> = hvad du kan → bygningen<br><strong>Purpose</strong> = hvorfor du gør det → kompasset<br><br>Selvværd giver dig retten til at have et purpose der er dit eget. Selvtillid giver dig evnen til at handle på det. Purpose giver retningen.</p></div>
+    <div class="info-section"><h2>Om platformen</h2><p><strong>Thomas Friisnæs</strong> — Personal Excellence Partner. 20+ års erfaring. 15.000+ coaching-sessioner.</p><p><strong>Kontakt:</strong> friisnaes@gmail.com | <strong>Version:</strong> 1.0.0</p></div>
+  </div>
+</div>
+<div id="save-fb" class="save-feedback hidden"></div>
+<script>
+const PLATFORM_VERSION='1.0.0',PLATFORM_NAME='Purpose',COACH_EMAIL='friisnaes@gmail.com';
+const BLOCKERS=['Andres forventninger','Gyldent bur','Identitetsl\u00e5s','Meningsforskydning'];
+const BCOLORS=['#E57373','#E5A048','#9B7ACC','#3A6BC2'];
+const ALIGNMENTS=['Tid','Energi','Relationer','Bidrag'];
+const ACOLORS=['#6C5CE7','#4CAF82','#C9A84C','#D4856A'];
+const LS={g(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(e){return null}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},d(k){try{localStorage.removeItem(k)}catch(e){}}};
+let S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+
+(function(){
+  try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch(e){document.body.innerHTML='<div style="padding:40px;text-align:center;color:#E57373"><h2>localStorage ikke tilg\u00e6ngelig</h2></div>';return}
+  if(location.search.includes('admin')){document.getElementById('sc-client-login').classList.remove('active');document.getElementById('sc-admin-login').classList.add('active')}
+})();
+
+function doClientLogin(){
+  const name=document.getElementById('cl-name').value.trim();
+  if(!name){showErr('cl-err','Indtast dit navn');return}
+  const consent=document.getElementById('gdpr-consent');
+  const clients=LS.g('pu_clients')||[];
+  let c=clients.find(x=>x.name.toLowerCase()===name.toLowerCase());
+  if(!c){
+    if(!consent.checked){showErr('cl-err','Accept\u00e9r GDPR-betingelserne');return}
+    c={id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name,createdAt:new Date().toISOString(),gdprConsentAt:new Date().toISOString()};
+    LS.s('pu_clients',[...clients,c]);
+  }
+  S.role='client';S.cId=c.id;S.cName=c.name;renderDash();show('client');
+}
+function doAdminLogin(){
+  if(document.getElementById('al-pw').value!=='karakter2024'){showErr('al-err','Forkert adgangskode');return}
+  S.role='admin';renderAdmin();show('admin');
+}
+function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden')}
+function logout(){
+  S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+  document.getElementById('cl-name').value='';document.getElementById('al-pw').value='';
+  ['cl-err','al-err'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  show(location.search.includes('admin')?'admin-login':'client-login');
+}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('sc-'+id).classList.add('active');window.scrollTo(0,0)}
+function showReadme(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('readme')}
+function closeReadme(){show(S.prevScreen||'client')}
+function showSaveFeedback(msg){const el=document.getElementById('save-fb');el.textContent=msg;el.classList.remove('hidden');setTimeout(()=>el.classList.add('hidden'),2200)}
+function getActiveMod(cid){return LS.g('pu_active_'+cid)||1}
+function countAns(a){return Object.values(a||{}).filter(v=>v!==undefined&&v!==null&&v!=='').length}
+function getPUProfile(cid){return LS.g('pu_profile_'+cid)||{}}
+
+// ══════════════════════════════════════════════════════════════════
+// SVG RADAR (square for 4 dimensions)
+// ══════════════════════════════════════════════════════════════════
+function renderRadar(labels,scores,colors,size,maxVal){
+  size=size||320;maxVal=maxVal||10;const cx=size/2,cy=size/2,r=size/2-42,n=labels.length;
+  const angle=i=>((Math.PI*2*i)/n)-(Math.PI/2);
+  const pt=(i,v)=>{const a=angle(i);const d=r*(v/maxVal);return[cx+d*Math.cos(a),cy+d*Math.sin(a)]};
+  let svg=`<svg viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">`;
+  const rings=maxVal<=5?5:5;
+  for(let lv=1;lv<=rings;lv++){let pts=[];const val=maxVal*(lv/rings);for(let i=0;i<n;i++){const[x,y]=pt(i,val);pts.push(`${x},${y}`)}svg+=`<polygon points="${pts.join(' ')}" fill="none" stroke="rgba(255,255,255,${lv===rings?.12:.06})" stroke-width="1"/>`}
+  for(let i=0;i<n;i++){const[x,y]=pt(i,maxVal);svg+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,.06)" stroke-width="1"/>`}
+  if(scores.some(s=>s>0)){let pts=[];for(let i=0;i<n;i++){const[x,y]=pt(i,scores[i]||0);pts.push(`${x},${y}`)}svg+=`<polygon points="${pts.join(' ')}" fill="rgba(108,92,231,.15)" stroke="#6C5CE7" stroke-width="2"/>`;for(let i=0;i<n;i++){const[x,y]=pt(i,scores[i]||0);if(scores[i])svg+=`<circle cx="${x}" cy="${y}" r="4" fill="${colors[i]}" stroke="#111111" stroke-width="2"/>`}}
+  for(let i=0;i<n;i++){const a=angle(i);const lx=cx+(r+30)*Math.cos(a);const ly=cy+(r+30)*Math.sin(a);const anchor=Math.abs(Math.cos(a))<.15?'middle':Math.cos(a)>0?'start':'end';svg+=`<text x="${lx}" y="${ly}" text-anchor="${anchor}" dominant-baseline="middle" fill="${colors[i]}" font-size="9" font-family="Outfit,sans-serif">${labels[i]}</text>`}
+  svg+='</svg>';return svg;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// DASHBOARD
+// ══════════════════════════════════════════════════════════════════
+function renderDash(){
+  const el=document.getElementById('client-dash');
+  document.getElementById('tb-name').textContent=S.cName;
+  let totalAns=0,totalQ=0,completedMods=0;
+  const activeMod=getActiveMod(S.cId);
+  MODS.forEach(m=>{const d=LS.g('pu_mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);totalAns+=a;totalQ+=m.qs.length;if(a>=m.qs.length)completedMods++});
+  const pct=totalQ?Math.round(totalAns/totalQ*100):0;
+  const sp=getPUProfile(S.cId);
+  const aScores=ALIGNMENTS.map((_,i)=>sp['a'+i]||0);const hasAlign=aScores.some(s=>s>0);
+  const bScores=BLOCKERS.map((_,i)=>sp['b'+i]||0);const hasBlock=bScores.some(s=>s>0);
+  const purposeLog=(LS.g('pu_purposelog_'+S.cId)||[]).length;
+
+  let ackIcon,ackTitle,ackBody;
+  if(completedMods>=5){ackIcon='\ud83e\udded';ackTitle='Forl\u00f8bet gennemf\u00f8rt';ackBody='5 moduler. 30 refleksioner. Du har nu dit kompas \u2014 en retning forankret i mening, ikke i forventninger.<br><strong>N\u00e6ste skridt:</strong> Lev det. Book session med din coach.'}
+  else if(totalAns>0){ackIcon='\ud83d\udd2e';ackTitle='Du er i gang';ackBody='Hver refleksion bringer dig t\u00e6ttere p\u00e5 det der virkelig giver mening.'}
+  else{ackIcon='\ud83c\udf1f';ackTitle='Velkommen';ackBody='Purpose er dit kompas \u2014 hvad der giver dyb mening for dig, uafh\u00e6ngigt af forventninger, status og bel\u00f8nning. Det er ikke hvad du g\u00f8r. Det er hvorfor du g\u00f8r det.'}
+
+  let h=`<div class="prog-header"><div><h1>Find dit purpose</h1><div class="stat">${completedMods}/5 moduler \u00b7 ${totalAns}/${totalQ} svar \u00b7 ${pct}%</div></div></div>`;
+  h+=`<div class="ack-box fade"><div class="ack-icon">${ackIcon}</div><h2>${ackTitle}</h2><p>${ackBody}</p></div>`;
+
+  if(totalAns===0)h+=`<div style="background:rgba(108,92,231,.06);border:1px solid rgba(108,92,231,.15);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:28px"><h3 style="font-size:18px;color:var(--accent);margin-bottom:12px">Grundtesen</h3><p style="color:var(--text2);font-size:14px;line-height:1.85">De fleste ledere har succes uden mening. De leverer, pr\u00e6sterer og avancerer \u2014 men kan ikke svare p\u00e5 <em>hvorfor</em>. <strong>Purpose er ikke en luksus. Det er det operativsystem der afg\u00f8r om din succes f\u00f8les som opfyldelse eller tomhed.</strong></p></div>`;
+
+  if(hasAlign){
+    h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:8px">Purpose-alignment</h3><div class="radar-wrap">${renderRadar(ALIGNMENTS,aScores,ACOLORS,320,10)}</div>`;
+    const maxI=aScores.indexOf(Math.max(...aScores));const minNz=aScores.filter(s=>s>0);const minI=minNz.length?aScores.indexOf(Math.min(...minNz)):-1;
+    if(aScores[maxI])h+=`<div style="text-align:center;font-size:13px;margin-top:8px"><span style="color:${ACOLORS[maxI]}">St\u00e6rkest: <strong>${ALIGNMENTS[maxI]}</strong> (${aScores[maxI]})</span>${minI>=0&&minI!==maxI?` \u00b7 <span style="color:var(--text3)">Svagest: ${ALIGNMENTS[minI]} (${aScores[minI]})</span>`:''}</div>`;
+    h+=`</div>`;
+  }
+
+  if(hasBlock){
+    h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:8px">Purpose-blokkeringer</h3><div class="radar-wrap">${renderRadar(BLOCKERS,bScores,BCOLORS,280,5)}</div>`;
+    const maxB=bScores.indexOf(Math.max(...bScores));
+    if(bScores[maxB])h+=`<div style="text-align:center;font-size:13px;margin-top:8px;color:${BCOLORS[maxB]}">Prim\u00e6r blokering: <strong>${BLOCKERS[maxB]}</strong> (${bScores[maxB]}/5)</div>`;
+    h+=`</div>`;
+  }
+
+  h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:4px">Overblik</h3>
+    <div class="velocity-grid">
+      <div class="vg-item"><div class="vn">${completedMods}</div><div class="vl">Moduler</div></div>
+      <div class="vg-item"><div class="vn">${pct}%</div><div class="vl">Fremgang</div></div>
+      <div class="vg-item"><div class="vn">${purposeLog}</div><div class="vl">Purpose-log</div></div>
+      <div class="vg-item"><div class="vn">${hasAlign?Math.round(aScores.reduce((a,b)=>a+b,0)/4*10)+'%':'\u2013'}</div><div class="vl">Alignment</div></div>
+    </div></div>`;
+
+  h+='<div class="mods-grid">';
+  MODS.forEach(m=>{
+    const d=LS.g('pu_mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);const tot=m.qs.length;const mpct=tot?Math.round(a/tot*100):0;
+    const isActive=m.id<=activeMod;const isDone=a>=tot;
+    let badge='';
+    if(!isActive)badge=`<span class="mc-badge" style="background:var(--navy4);color:var(--text3)">\ud83d\udd12 L\u00e5st</span>`;
+    else if(isDone)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">\u2713 Afsluttet</span>`;
+    else if(a>0)badge=`<span class="mc-badge" style="background:var(--gdim);color:var(--gold)">${a}/${tot}</span>`;
+    else badge=`<span class="mc-badge" style="background:rgba(192,57,43,.15);color:var(--blue2)">Klar</span>`;
+    h+=`<div class="mod-card fade ${isActive?'':'locked'}" ${isActive?`onclick="openMod(${m.id-1})"`:''}>
+      <div class="mc-top"><div class="mc-icon" style="background:${m.color}">${m.icon}</div><div class="mc-title">${m.title}</div></div>
+      <div class="mc-sub">${m.subtitle}</div>
+      <div class="mc-prog"><div class="mc-prog-fill" style="width:${mpct}%;background:${m.color}"></div></div>
+      <div class="mc-status">${badge}</div></div>`;
+  });
+  h+='</div>';el.innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// MODULE VIEW
+// ══════════════════════════════════════════════════════════════════
+function openMod(idx){
+  S.modIdx=idx;S.modTab='learn';const m=MODS[idx];
+  const d=LS.g('pu_mod_'+S.cId+'_'+m.id);S.answers=d?.answers||{};
+  document.getElementById('mod-title-bar').textContent='Modul '+m.id+': '+m.title;
+  document.getElementById('mod-sub-bar').textContent=m.subtitle;
+  document.getElementById('mod-header').innerHTML=`<h1 style="color:${m.color}">Modul ${m.id}: ${m.title}</h1><div class="mh-sub">${m.subtitle}</div>`;
+  let tabs=`<div class="mod-tab active" id="tab-l" onclick="setTab('learn')">Indhold</div>`;
+  tabs+=`<div class="mod-tab" id="tab-q" onclick="setTab('questions')">Sp\u00f8rgsm\u00e5l (${countAns(S.answers)}/${m.qs.length})</div>`;
+  tabs+=`<div class="mod-tab" id="tab-t" onclick="setTab('takeaways')">Takeaways</div>`;
+  tabs+=`<div class="mod-tab" id="tab-j" onclick="setTab('journal')">\u00d8velser</div>`;
+  document.getElementById('mod-tabs').innerHTML=tabs;
+  renderLearn(m);renderQuestions(m);renderTakeaways(m);renderExercises(m);
+  setTab('learn');show('module');
+}
+function setTab(t){
+  S.modTab=t;document.querySelectorAll('.mod-tab').forEach(el=>el.classList.remove('active'));
+  ['learn','quest','takeaways','journal'].forEach(id=>document.getElementById('tc-'+id).style.display='none');
+  const map={learn:['tab-l','tc-learn'],questions:['tab-q','tc-quest'],takeaways:['tab-t','tc-takeaways'],journal:['tab-j','tc-journal']};
+  const m=map[t];if(m){document.getElementById(m[0])?.classList.add('active');document.getElementById(m[1]).style.display=''}
+}
+function renderLearn(m){
+  const src=m.sources.map(s=>`<div class="src-item">${s}</div>`).join('');
+  document.getElementById('tc-learn').innerHTML=`
+    <div class="sources-box" style="border-left-color:${m.color}"><div class="src-title">Forskningsgrundlag</div>${src}</div>
+    ${m.whyText?`<div class="why-mod-box"><div class="why-mod-label">Hvorfor dette modul er vigtigt</div><div class="why-mod-text">${m.whyText}</div></div>`:''}
+    <div class="learn-body">${m.learn}</div>
+    <div class="learn-cta"><button class="btn btn-primary" style="padding:12px 28px" onclick="setTab('questions')">G\u00e5 til refleksion \u2192</button></div>`;
+}
+function renderQuestions(m){
+  const ans=countAns(S.answers);const pct=Math.round(ans/m.qs.length*100);
+  let h=`<div class="q-progress"><div class="qp-bar"><div class="qp-fill" id="qp-fill" style="width:${pct}%"></div></div><div class="qp-cnt" id="qp-cnt">${ans}/${m.qs.length}</div></div>`;
+  m.qs.forEach((q,i)=>{
+    const val=S.answers[q.id]||'';
+    h+=`<div class="q-card fade" id="qc-${q.id}"><div class="qlabel">Sp\u00f8rgsm\u00e5l ${i+1} af ${m.qs.length}</div><div class="qtext">${q.l}</div>`;
+    if(q.type==='ta')h+=`<textarea placeholder="Skriv din refleksion..." oninput="setA('${q.id}',this.value)">${val}</textarea>`;
+    else if(q.type==='scale'){h+='<div class="scale-row">';for(let n=q.mn;n<=q.mx;n++)h+=`<button class="scale-btn ${val==n?'sel':''}" onclick="setScale('${q.id}',${n},${q.mn},${q.mx})">${n}</button>`;h+='</div>'}
+    else if(q.type==='choice'){h+='<div style="display:flex;flex-wrap:wrap;gap:4px">';q.opts.forEach(o=>h+=`<button class="cbtn ${val===o?'sel':''}" onclick="setChoice('${q.id}',this)">${o}</button>`);h+='</div>'}
+    h+='</div>';
+  });
+  h+=`<div style="padding:12px 0"><button class="btn-save" id="save-btn" onclick="saveMod()">Gem svar \u2713</button></div>`;
+  document.getElementById('tc-quest').innerHTML=h;
+}
+let _ast=null;
+function setA(id,v){S.answers[id]=v;updateQP();clearTimeout(_ast);_ast=setTimeout(()=>{doSave();showSaveFeedback('Auto-gemt \u2713')},2000)}
+function setScale(id,v,mn,mx){S.answers[id]=v;document.querySelectorAll(`#qc-${id} .scale-btn`).forEach((b,i)=>b.className='scale-btn'+((mn+i)===v?' sel':''));updateQP();doSave()}
+function setChoice(id,btn){const raw=btn.textContent.replace(/^\u2713 /,'');S.answers[id]=raw;document.querySelectorAll(`#qc-${id} .cbtn`).forEach(b=>{const sel=b.textContent.replace(/^\u2713 /,'')===raw;b.className='cbtn'+(sel?' sel':'');b.textContent=(sel?'\u2713 ':'')+b.textContent.replace(/^\u2713 /,'')});updateQP();doSave()}
+function updateQP(){const m=MODS[S.modIdx];const a=countAns(S.answers);const pct=Math.round(a/m.qs.length*100);const f=document.getElementById('qp-fill');if(f)f.style.width=pct+'%';const c=document.getElementById('qp-cnt');if(c)c.textContent=a+'/'+m.qs.length;const tq=document.getElementById('tab-q');if(tq)tq.textContent='Sp\u00f8rgsm\u00e5l ('+a+'/'+m.qs.length+')'}
+function doSave(){const m=MODS[S.modIdx];LS.s('pu_mod_'+S.cId+'_'+m.id,{answers:S.answers,savedAt:new Date().toISOString(),clientId:S.cId,clientName:S.cName})}
+function saveMod(){doSave();const b=document.getElementById('save-btn');if(b){b.textContent='\u2713 Gemt!';b.style.background='var(--green)';setTimeout(()=>{b.style.background='';b.textContent='Gem svar \u2713'},2000)}}
+function renderTakeaways(m){let h='<div class="takeaways-box"><div class="tk-title">Vigtigste takeaways</div>';m.takeaways.forEach(t=>h+=`<div class="tk-item">\u2192 ${t}</div>`);h+='</div>';document.getElementById('tc-takeaways').innerHTML=h}
+
+// ══════════════════════════════════════════════════════════════════
+// REFLECTIVE EXERCISES
+// ══════════════════════════════════════════════════════════════════
+function renderExercises(m){
+  let h='<div style="margin-top:8px">';
+  const sp=getPUProfile(S.cId);
+
+  // PURPOSE-JOURNAL (all modules)
+  const sj=LS.g('pu_sjentry_'+S.cId+'_'+m.id)||{};
+  h+=`<div class="refl-card fade">
+    <h4>\ud83d\udcdd Purpose-Journal</h4>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Hvad gav dig mening i dag?</p>
+    <label>Hvad gav dig oplevelse af mening i dag?</label>
+    <textarea id="sj-meaning" placeholder="En handling, en samtale, en oplevelse...">${sj.meaning||''}</textarea>
+    <label>Hvad dr\u00e6bede din mening?</label>
+    <textarea id="sj-drain" placeholder="Meningsl\u00f8se m\u00f8der, forventninger, rutine...">${sj.drain||''}</textarea>
+    <label>Purpose-alignment i dag</label>
+    <div class="scale-row" id="sj-score-row" style="margin-bottom:8px">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button class="scale-btn ${sj.score==n?'sel':''}" onclick="setSJScore(${n})">${n}</button>`).join('')}</div>
+    <button class="btn btn-primary" style="margin-top:8px;padding:10px 20px" onclick="saveSJ(${m.id})">Gem journal</button>
+  </div>`;
+
+  // PURPOSE-PROFIL: 4 Blockers (mod 2+)
+  if(m.id>=2){
+    h+=`<div class="refl-card fade">
+      <h4>\ud83d\udeab Purpose-blokkeringer</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Score 1-5: Hvor aktiv er denne blokering i dit liv?</p>`;
+    BLOCKERS.forEach((b,i)=>{
+      const val=sp['b'+i]||0;
+      h+=`<label style="color:${BCOLORS[i]};font-weight:600">${i+1}. ${b}</label>
+        <div class="scale-row" id="bl-${i}" style="margin-bottom:10px">${[1,2,3,4,5].map(n=>`<button class="scale-btn ${val==n?'sel':''}" onclick="setBL(${i},${n})">${n}</button>`).join('')}</div>`;
+    });
+    h+=`<button class="btn btn-primary" style="margin-top:8px;padding:10px 20px" onclick="showSaveFeedback('Blokeringer gemt \u2713')">Gem profil</button>
+      <div id="bl-radar" style="margin-top:16px"></div></div>`;
+  }
+
+  // ALIGNMENT SCORES (mod 3+)
+  if(m.id>=3){
+    h+=`<div class="refl-card fade">
+      <h4>\ud83e\udded Alignment-dimensioner</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Score 1-10: Hvor aligned er dit liv med dit purpose?</p>`;
+    ALIGNMENTS.forEach((a,i)=>{
+      const val=sp['a'+i]||0;
+      h+=`<label style="color:${ACOLORS[i]};font-weight:600">${a}</label>
+        <div class="scale-row" id="al-${i}" style="margin-bottom:10px">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button class="scale-btn ${val==n?'sel':''}" onclick="setAL(${i},${n})">${n}</button>`).join('')}</div>`;
+    });
+    h+=`<button class="btn btn-primary" style="margin-top:8px;padding:10px 20px" onclick="showSaveFeedback('Alignment gemt \u2713')">Gem alignment</button>
+      <div id="al-radar" style="margin-top:16px"></div></div>`;
+  }
+
+  // PURPOSE-TRACKER (mod 5+)
+  if(m.id>=5){
+    const pl=LS.g('pu_purposelog_'+S.cId)||[];
+    h+=`<div class="refl-card fade">
+      <h4>\ud83e\udded Purpose-Tracker</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Ugentlig log: Purpose-aligned handling og fravalg.</p>
+      <label>Purpose-aligned handling denne uge</label>
+      <textarea id="pl-action" placeholder="Hvad gjorde du der var i alignment?" style="min-height:50px"></textarea>
+      <label>Hvad sagde du nej til?</label>
+      <textarea id="pl-no" placeholder="Fravalg i purpose\u2019 tjeneste" style="min-height:40px"></textarea>
+      <label>Evidens: Hvad bekr\u00e6ftede det?</label>
+      <textarea id="pl-evidence" placeholder="Hvad m\u00e6rkede du?" style="min-height:40px"></textarea>
+      <button class="btn btn-primary" style="margin-top:10px;padding:8px 16px" onclick="addPL()">+ Tilf\u00f8j uge</button>
+      <div id="pl-list" style="margin-top:12px"></div>
+    </div>`;
+    // Purpose-erklæring
+    const decl=LS.g('pu_decl_'+S.cId)||'';
+    h+=`<div class="refl-card fade">
+      <h4>\ud83c\udf1f Purpose-erkl\u00e6ring</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">\u00c9n s\u00e6tning: Hvem er du, hvad er du her for, og hvad handler du p\u00e5?</p>
+      <textarea id="pu-decl" placeholder="Skriv din erkl\u00e6ring..." style="min-height:60px;font-size:15px;font-style:italic">${decl}</textarea>
+      <button class="btn btn-primary" style="margin-top:8px;padding:8px 16px" onclick="saveDecl()">Gem erkl\u00e6ring</button>
+    </div>`;
+  }
+
+  h+='</div>';document.getElementById('tc-journal').innerHTML=h;
+  updateBLRadar();updateALRadar();renderPLList();
+}
+
+let _sjScore=0;
+function setSJScore(n){_sjScore=n;document.querySelectorAll('#sj-score-row .scale-btn').forEach((b,i)=>b.className='scale-btn'+((i+1)===n?' sel':''))}
+function saveSJ(mid){
+  const entry={meaning:document.getElementById('sj-meaning')?.value||'',drain:document.getElementById('sj-drain')?.value||'',score:_sjScore||0,date:new Date().toISOString()};
+  LS.s('pu_sjentry_'+S.cId+'_'+mid,entry);
+  const all=LS.g('pu_sjournal_'+S.cId)||[];all.push(entry);LS.s('pu_sjournal_'+S.cId,all);
+  showSaveFeedback('Journal gemt \u2713');
+}
+
+function setBL(idx,val){const sp=getPUProfile(S.cId);sp['b'+idx]=val;LS.s('pu_profile_'+S.cId,sp);document.querySelectorAll(`#bl-${idx} .scale-btn`).forEach((b,i)=>b.className='scale-btn'+((i+1)===val?' sel':''));updateBLRadar()}
+function setAL(idx,val){const sp=getPUProfile(S.cId);sp['a'+idx]=val;LS.s('pu_profile_'+S.cId,sp);document.querySelectorAll(`#al-${idx} .scale-btn`).forEach((b,i)=>b.className='scale-btn'+((i+1)===val?' sel':''));updateALRadar()}
+
+function updateBLRadar(){const el=document.getElementById('bl-radar');if(!el)return;const sp=getPUProfile(S.cId);const s=BLOCKERS.map((_,i)=>sp['b'+i]||0);if(!s.some(v=>v>0)){el.innerHTML='';return}el.innerHTML=`<div class="radar-wrap">${renderRadar(BLOCKERS,s,BCOLORS,260,5)}</div>`}
+function updateALRadar(){const el=document.getElementById('al-radar');if(!el)return;const sp=getPUProfile(S.cId);const s=ALIGNMENTS.map((_,i)=>sp['a'+i]||0);if(!s.some(v=>v>0)){el.innerHTML='';return}el.innerHTML=`<div class="radar-wrap">${renderRadar(ALIGNMENTS,s,ACOLORS,320,10)}</div>`}
+
+function addPL(){
+  const action=document.getElementById('pl-action')?.value?.trim();
+  if(!action){showSaveFeedback('Beskriv din handling');return}
+  const pl=LS.g('pu_purposelog_'+S.cId)||[];
+  pl.push({action,no:document.getElementById('pl-no')?.value||'',evidence:document.getElementById('pl-evidence')?.value||'',date:new Date().toISOString()});
+  LS.s('pu_purposelog_'+S.cId,pl);
+  ['pl-action','pl-no','pl-evidence'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});
+  showSaveFeedback('Uge logget \u2713');renderPLList();
+}
+function delPL(idx){const pl=LS.g('pu_purposelog_'+S.cId)||[];pl.splice(idx,1);LS.s('pu_purposelog_'+S.cId,pl);renderPLList()}
+function renderPLList(){
+  const el=document.getElementById('pl-list');if(!el)return;
+  const pl=LS.g('pu_purposelog_'+S.cId)||[];
+  if(!pl.length){el.innerHTML='';return}
+  let h='<div style="border-top:1px solid var(--brd);padding-top:12px"><div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Purpose-log ('+pl.length+')</div>';
+  pl.forEach((p,i)=>{
+    h+=`<div style="padding:10px 12px;background:var(--navy3);border-radius:8px;margin-bottom:6px;border-left:3px solid var(--accent)">
+      <div style="display:flex;justify-content:space-between"><div style="font-size:12px;color:var(--text)">${p.action.slice(0,120)}</div><button onclick="delPL(${i})" style="background:none;border:none;color:var(--red);font-size:12px;cursor:pointer">\u00d7</button></div>
+      ${p.no?`<div style="font-size:11px;color:var(--text3);margin-top:3px">\ud83d\udeab ${p.no.slice(0,100)}</div>`:''}
+      ${p.evidence?`<div style="font-size:11px;color:var(--green);margin-top:2px">\u2192 ${p.evidence.slice(0,100)}</div>`:''}
+    </div>`;
+  });
+  h+='</div>';el.innerHTML=h;
+}
+function saveDecl(){const v=document.getElementById('pu-decl')?.value||'';LS.s('pu_decl_'+S.cId,v);showSaveFeedback('Erkl\u00e6ring gemt \u2713')}
+const MODS=[{id:1,title:'Meningens anatomi',subtitle:'Frankl \u00b7 Mening vs. lykke \u00b7 Tre meningskilder \u00b7 Eksistentielt vakuum',icon:'\u25C6',color:'#6C5CE7',
+sources:['Frankl, V. \u2014 Man\u2019s Search for Meaning','Baumeister, R. \u2014 Some Key Differences Between a Happy Life and a Meaningful Life','Seligman, M. \u2014 Flourish (PERMA-model)','Steger, M. \u2014 Meaning in Life Questionnaire','Damon, W. \u2014 The Path to Purpose'],
+whyText:'Lykke er en bivirkning af mening \u2014 ikke omvendt. De fleste ledere jagter lykke direkte og undrer sig over tomheden. At forst\u00e5 <strong>meningens anatomi</strong> er foruds\u00e6tningen for at finde dit purpose.',
+learn:`<h3>Frankls tre meningskilder</h3>
+<p>Viktor Frankl identificerede tre fundamentale kilder til mening: (1) <strong>Skabende v\u00e6rdier</strong> \u2014 hvad du bidrager med til verden. (2) <strong>Oplevelsesv\u00e6rdier</strong> \u2014 hvad du modtager fra verden: k\u00e6rlighed, natur, kunst, forbindelse. (3) <strong>Holdningsv\u00e6rdier</strong> \u2014 den holdning du tager til uundg\u00e5elig lidelse. Alle tre er aktive \u2014 mening er aldrig passiv. Og den tredje kilde er den mest radikale: Selv i lidelse kan du finde mening.</p>
+<h3>Mening vs. lykke</h3>
+<p>Baumeister et al.: Lykke er kortsigtet, behagelig, modtagende. Mening er langsigtet, kan v\u00e6re smertefuld, givende. De overlapper \u2014 men de er ikke det samme. Mange ledere har lykke uden mening: Komfort, status, anerkendelse \u2014 men en underliggende fornemmelse af at noget fundamentalt mangler.</p>
+<h3>Det eksistentielle vakuum</h3>
+<p>Frankl: N\u00e5r mening mangler, fyldes tomrummet med magt, penge, nydelse og travlhed. Det moderne C-suite er fuldt af eksistentielt vakuum forkl\u00e6dt som ambition. Travlhed er den mest socialt acceptable form for meningsl\u00f8shed.</p>
+<h3>Sunday night test</h3>
+<p>Ikke "gl\u00e6der du dig til mandag?" men: "Ville du g\u00f8re det du g\u00f8r, hvis ingen vidste det, ingen betalte dig for det, og ingen anerkendte det?" Svaret afsl\u00f8rer om din motivation er purpose eller validering.</p>
+<h3>Meningens niveauer</h3>
+<p>Daglig mening (denne opgave), rolle-mening (dette arbejde), eksistentiel mening (dette liv). De fleste ledere har daglig mening men mangler eksistentiel. De kan forklare hvad de laver \u2014 men ikke hvorfor det betyder noget.</p>
+<blockquote>"Han som har et hvorfor at leve for, kan b\u00e6re n\u00e6sten ethvert hvordan." \u2014 Nietzsche (citeret af Frankl)</blockquote>`,
+qs:[
+{id:'q1_1',type:'ta',l:'Hvad giver dig oplevelse af <strong>mening</strong> \u2014 ikke lykke, ikke succes, men dyb mening? Hvorn\u00e5r m\u00e6rker du det?'},
+{id:'q1_2',type:'scale',l:'Dit eksistentielle vakuum: 1 = "Dyb mening i alt jeg g\u00f8r" og 10 = "Jeg fungerer, men noget fundamentalt mangler."',mn:1,mx:10},
+{id:'q1_3',type:'ta',l:'Sunday night test: Ville du g\u00f8re det du g\u00f8r, hvis <strong>ingen vidste det, ingen betalte dig, og ingen anerkendte det</strong>? Hvad ville du g\u00f8re i stedet?'},
+{id:'q1_4',type:'ta',l:'Frankls tre kilder: Hvad <strong>skaber</strong> du, hvad <strong>oplever</strong> du, og hvilken <strong>holdning</strong> tager du til det sv\u00e6re? Hvor er kilden til din mening?'},
+{id:'q1_5',type:'ta',l:'Hvorn\u00e5r har du f\u00f8lt dig mest <strong>levende</strong> \u2014 ikke mest succesfuld, men mest tilstede og meningsfuldt engageret?'},
+{id:'q1_6',type:'choice',l:'Hvilket meningsniveau mangler mest?',opts:['Daglig mening','Rolle-mening','Eksistentiel mening']}],
+takeaways:['Lykke er en bivirkning af mening \u2014 jagt mening, og lykke f\u00f8lger','Frankls tre kilder er alle aktive \u2014 mening er aldrig passiv','Det eksistentielle vakuum forkl\u00e6der sig som ambition og travlhed','Sunday night test afsl\u00f8rer om din motivation er purpose eller validering','De fleste ledere har daglig mening men mangler eksistentiel retning']},
+{id:2,title:'De fire purpose-blokkeringer',subtitle:'Forventninger \u00b7 Gyldent bur \u00b7 Identitetsl\u00e5s \u00b7 Meningsforskydning',icon:'\u25C8',color:'#E57373',
+sources:['Ibarra, H. \u2014 Working Identity: Unconventional Strategies for Reinventing Your Career','Christensen, C. \u2014 How Will You Measure Your Life?','Deci & Ryan \u2014 Self-Determination Theory','Bridges, W. \u2014 Transitions: Making Sense of Life\u2019s Changes','Kierkegaard, S. \u2014 Begrebet Angest / Sygdommen til D\u00f8den'],
+whyText:'De fleste mangler ikke purpose \u2014 de har begravet det under fire lag af blokkeringer der alle f\u00f8les <strong>rationelle, ansvarlige og voksne</strong>. Blokkeringerne er overlevelsesstrategier der skjuler det vigtigste.',
+learn:`<h3>Andres forventninger</h3>
+<p>Du lever muligvis et purpose der ikke er dit. For\u00e6ldres dr\u00f8mme, organisationens krav, branchens normer, partnerens forventninger. Efter lang nok tid f\u00f8les andres forventninger som dine egne. Sp\u00f8rgsm\u00e5let: "Hvem valgte dette liv \u2014 dig eller dine omgivelser?"</p>
+<h3>Det gyldne bur</h3>
+<p>Kompensation, status og komfort der g\u00f8r det irrationelt at sp\u00f8rge "er det her rigtigt?" Jo mere du tjener, jo sv\u00e6rere er det at stille sp\u00f8rgsm\u00e5let. Det gyldne bur er ikke en f\u00e6lde andre har sat \u2014 det er en f\u00e6lde du vedligeholder. Og n\u00f8glen h\u00e6nger p\u00e5 indersiden.</p>
+<h3>Identitetsl\u00e5sen</h3>
+<p>"Jeg er CEO." "Jeg er finansmand." "Jeg er den der leverer." N\u00e5r din identitet er bundet til en rolle, f\u00f8les det livsfarligt at sp\u00f8rge om rollen er rigtig. Identitetsl\u00e5sen forveksler hvad du g\u00f8r med hvem du er \u2014 og g\u00f8r kurskorrigering til en eksistentiel trussel.</p>
+<h3>Meningsforskydning</h3>
+<p>Du har forskudt din meningsoplevelse fra indhold til bel\u00f8nning. Det er ikke arbejdet der giver mening \u2014 det er bonussen, forfremmelses, anerkendelsen. Meningen er flyttet fra selve handlingen til konsekvensen. Og konsekvenser er ustabile.</p>
+<h3>Diagnostik</h3>
+<p>Hvilken blokering er prim\u00e6r? Svaret afsl\u00f8rer om dit purpose-problem er eksternt (forventninger, bur) eller internt (identitet, forskydning). Eksternt kr\u00e6ver gr\u00e6nser. Internt kr\u00e6ver selvindsigt.</p>
+<blockquote>"Det gyldne bur er ikke en f\u00e6lde andre har sat \u2014 det er en f\u00e6lde du vedligeholder."</blockquote>`,
+qs:[
+{id:'q2_1',type:'ta',l:'Hvem <strong>valgte</strong> det liv du lever? Dig \u2014 eller dine omgivelser? V\u00e6r \u00e6rlig: Hvilke dele er autentisk dine?'},
+{id:'q2_2',type:'scale',l:'Dit gyldne bur: 1 = "Jeg kan frit \u00e6ndre kurs" og 10 = "Kompensation og status g\u00f8r \u00e6ndring ut\u00e6nkelig."',mn:1,mx:10},
+{id:'q2_3',type:'ta',l:'<strong>Identitetsl\u00e5sen</strong>: Hvem er du uden din titel? Skriv 5 s\u00e6tninger om dig selv der ikke n\u00e6vner din rolle, virksomhed eller branche.'},
+{id:'q2_4',type:'ta',l:'<strong>Meningsforskydning</strong>: Hvorn\u00e5r skiftede meningen fra selve arbejdet til bel\u00f8nningen? Kan du pinpointe det \u00f8jeblik?'},
+{id:'q2_5',type:'ta',l:'Hvilken blokering <strong>beskytter</strong> dig mest \u2014 og mod hvad? Hvad ville ske hvis du fjernede den?'},
+{id:'q2_6',type:'choice',l:'Din prim\u00e6re purpose-blokering?',opts:['Andres forventninger','Det gyldne bur','Identitetsl\u00e5sen','Meningsforskydning']}],
+takeaways:['De fleste mangler ikke purpose \u2014 de har begravet det under rationelle blokkeringer','Andres forventninger f\u00f8les som dine egne efter lang nok tid','Det gyldne bur er selvvedligeholdt \u2014 n\u00f8glen h\u00e6nger p\u00e5 indersiden','Identitetsl\u00e5sen forveksler hvad du g\u00f8r med hvem du er','Meningsforskydning flytter meningen fra handling til bel\u00f8nning \u2014 og bel\u00f8nning er ustabil']},
+{id:3,title:'Purpose-ark\u00e6ologi',subtitle:'Livslinje \u00b7 Peak-oplevelser \u00b7 R\u00f8de tr\u00e5de \u00b7 Kaldelse vs. karriere',icon:'\u25B2',color:'#4CAF82',
+sources:['Maslow, A. \u2014 Toward a Psychology of Being (peak experiences)','Wrzesniewski, A. \u2014 Job, Career, Calling distinktion','Csikszentmihalyi, M. \u2014 Flow: The Psychology of Optimal Experience','Buechner, F. \u2014 Wishful Thinking: A Theological ABC','Brooks, D. \u2014 The Second Mountain'],
+whyText:'Dit purpose er ikke noget du opfinder \u2014 det er noget du <strong>afd\u00e6kker</strong>. Det har altid v\u00e6ret der, i m\u00f8nstrene fra din barndom, dine peak-oplevelser og de \u00f8jeblikke hvor du glemte tid og sted.',
+learn:`<h3>Livslinjen</h3>
+<p>Kortl\u00e6g dit livs afg\u00f8rende \u00f8jeblikke: Ikke karrieresucceser, men \u00f8jeblikke af dyb mening, engagement og vitalitet. M\u00f8nstret er der allerede \u2014 du har bare ikke set det. \u00d8velsen er arkeologisk: Grav ned, find sporene, f\u00f8lg tr\u00e5den.</p>
+<h3>Peak-oplevelser</h3>
+<p>Maslow: Peak experiences er \u00f8jeblikke af transcendens, dyb mening og total tilstedev\u00e6relse. De er ikke tilf\u00e6ldige \u2014 de peger mod dit purpose. Hvad var du i gang med? Hvem var du sammen med? Hvad bidrog du med? Svarene danner et m\u00f8nster.</p>
+<h3>De r\u00f8de tr\u00e5de</h3>
+<p>Hvad gennemsyrer dine bedste \u00f8jeblikke? Det er sj\u00e6ldent et emne (finans, IT, ledelse) \u2014 det er en <em>funktion</em>: bygge, l\u00e6re, forbinde, beskytte, udvikle, skabe, forenkle. Funktionen er din tr\u00e5d. Emnet er bare den aktuelle forkl\u00e6dning.</p>
+<h3>Kaldelse vs. karriere vs. job</h3>
+<p>Wrzesniewski: <strong>Job</strong> = betaling. <strong>Karriere</strong> = avancement. <strong>Kaldelse</strong> = mening. Du kan ud\u00f8ve alle tre i den samme stilling \u2014 forskellen er orientering, ikke indhold. Sp\u00f8rgsm\u00e5let er ikke "hvad laver du?" men "hvorfor laver du det?"</p>
+<h3>Hvad ville du g\u00f8re gratis?</h3>
+<p>Ikke naivt \u2014 men diagnostisk: Hvilke elementer af dit arbejde ville du g\u00f8re uanset betaling? De elementer er spor. Buechner: "Stedet hvor din dybe gl\u00e6de m\u00f8der verdens dybe behov" \u2014 det er purpose.</p>
+<blockquote>"Purpose er ikke noget du opfinder \u2014 det er noget du afd\u00e6kker ved at fjerne det der skjuler det."</blockquote>`,
+qs:[
+{id:'q3_1',type:'ta',l:'<strong>Livslinjen</strong>: Beskriv 3-5 \u00f8jeblikke i dit liv med dyb mening og engagement. Ikke succeser \u2014 men \u00f8jeblikke hvor du f\u00f8lte dig <strong>helt tilstede</strong>.'},
+{id:'q3_2',type:'scale',l:'Hvor t\u00e6t er dit nuv\u00e6rende arbejde p\u00e5 en kaldelse? 1 = "Det er et job" og 10 = "Det er min kaldelse."',mn:1,mx:10},
+{id:'q3_3',type:'ta',l:'<strong>De r\u00f8de tr\u00e5de</strong>: Hvad forbinder dine bedste \u00f8jeblikke? Hvilken <strong>funktion</strong> udfyldte du? (bygge, l\u00e6re, forbinde, beskytte, udvikle, skabe, forenkle...)'},
+{id:'q3_4',type:'ta',l:'<strong>Hvad ville du g\u00f8re gratis?</strong> Ikke hele dit job \u2014 men hvilke specifikke elementer ville du udf\u00f8re uden betaling?'},
+{id:'q3_5',type:'ta',l:'Buechner: "Hvor din dybe gl\u00e6de m\u00f8der verdens dybe behov." Hvad er <strong>din</strong> dybe gl\u00e6de \u2014 og hvilket behov i verden passer den til?'},
+{id:'q3_6',type:'choice',l:'Din nuv\u00e6rende orientering?',opts:['Job (betaling)','Karriere (avancement)','Kaldelse (mening)','Blanding']}],
+takeaways:['Purpose afd\u00e6kkes, ikke opfindes \u2014 m\u00f8nstret har altid v\u00e6ret der','Peak-oplevelser er ikke tilf\u00e6ldige \u2014 de peger mod dit purpose','De r\u00f8de tr\u00e5de er funktioner, ikke emner: bygge, forbinde, udvikle, skabe','Kaldelse er ikke et job \u2014 det er en orientering du kan have i ethvert job','Det du ville g\u00f8re gratis er diagnostik for dit purpose']},
+{id:4,title:'Purpose-formulering',subtitle:'Purpose statement \u00b7 Alignment-audit \u00b7 Prototyping \u00b7 Mod',icon:'\u25EF',color:'#E5A048',
+sources:['Sinek, S. \u2014 Start With Why / Find Your Why','Ibarra, H. \u2014 Working Identity','Frankl, V. \u2014 Man\u2019s Search for Meaning','Collins, J. \u2014 Good to Great (Hedgehog Concept)','Christensen, C. \u2014 How Will You Measure Your Life?'],
+whyText:'Purpose der forbliver abstrakt er ubrugeligt. Dette modul overs\u00e6tter ark\u00e6ologiens fund til en <strong>konkret formulering</strong> \u2014 og tester den mod virkeligheden.',
+learn:`<h3>Purpose statement</h3>
+<p>\u00c9n s\u00e6tning: "Jeg eksisterer for at [funktion] i [kontekst] fordi [det der driver mig]." Ikke grandiost. Ikke corporate. Personligt, pr\u00e6cist, testbart. Det skal kunne bruges som beslutningsfilter: "Er denne mulighed i alignment med mit purpose?"</p>
+<h3>Alignment-audit</h3>
+<p>Scor dit nuv\u00e6rende liv p\u00e5 fire dimensioner: (1) <strong>Tid</strong> \u2014 hvor stor del bruges p\u00e5 purpose-aligned aktiviteter? (2) <strong>Energi</strong> \u2014 giver eller tager dit arbejde energi? (3) <strong>Relationer</strong> \u2014 er du omgivet af mennesker der forst\u00e6rker dit purpose? (4) <strong>Bidrag</strong> \u2014 bidrager du med det du er her for?</p>
+<h3>Purpose-prototyping</h3>
+<p>Ibarra: Du tester ikke purpose ved at t\u00e6nke \u2014 du tester det ved at pr\u00f8ve. Micro-eksperimenter: Sig ja til noget purpose-aligned. Sig nej til noget der ikke er. Observer forskellen. Purpose er en hypotese \u2014 og hypoteser testes.</p>
+<h3>Mod til purpose</h3>
+<p>At leve sit purpose kr\u00e6ver mod. Mod til at skuffe dem der forventer noget andet. Mod til at acceptere at purpose ikke altid er profitabelt. Mod til at v\u00e6lge mening over status. Kierkegaard: Det sv\u00e6reste i livet er at v\u00e6lge sig selv.</p>
+<h3>Anti-purpose</h3>
+<p>Lige s\u00e5 vigtigt som at vide hvad dit purpose er: Hvad er det <em>ikke</em>? Hvad har du gjort i \u00e5revis der aldrig har givet mening \u2014 men som du fortsatte fordi det var forventet, bekvemt eller l\u00f8nsomt?</p>
+<blockquote>"Et purpose du ikke handler p\u00e5 er bare en p\u00e6n s\u00e6tning p\u00e5 v\u00e6ggen."</blockquote>`,
+qs:[
+{id:'q4_1',type:'ta',l:'Dit <strong>purpose statement</strong>: "Jeg eksisterer for at [funktion] i [kontekst] fordi [det der driver mig]." Skriv det. F\u00f8rste udkast er godt nok.'},
+{id:'q4_2',type:'scale',l:'Alignment: Hvor stor del af dit nuv\u00e6rende liv er i <strong>overensstemmelse</strong> med dit purpose?',mn:1,mx:10},
+{id:'q4_3',type:'ta',l:'<strong>Alignment-audit</strong>: Score dit liv 1-10 p\u00e5 fire dimensioner \u2014 Tid, Energi, Relationer, Bidrag. Hvor er det st\u00f8rste gap?'},
+{id:'q4_4',type:'ta',l:'<strong>Purpose-prototyping</strong>: \u00c9t micro-eksperiment du kan lave inden 14 dage for at teste dit purpose. Hvad vil du sige ja til \u2014 og nej til?'},
+{id:'q4_5',type:'ta',l:'<strong>Anti-purpose</strong>: Hvad har du gjort i \u00e5revis der <strong>aldrig</strong> har givet mening? Hvorfor forts\u00e6tter du?'},
+{id:'q4_6',type:'choice',l:'Hvad kr\u00e6ver mest mod?',opts:['At skuffe andres forventninger','At acceptere lavere indkomst','At \u00e6ndre retning','At indr\u00f8mme at jeg har levet forkert']}],
+takeaways:['Et purpose statement er et beslutningsfilter \u2014 ikke en inspirationsplakat','Alignment-audit afsl\u00f8rer gabet mellem purpose og virkelighed p\u00e5 fire dimensioner','Purpose testes ved handling, ikke t\u00e6nkning \u2014 micro-eksperimenter er vejen','Mod til purpose er mod til at skuffe dem der forventer noget andet','Anti-purpose \u2014 at vide hvad der ikke giver mening \u2014 er lige s\u00e5 vigtigt']},
+{id:5,title:'Purpose som operativsystem',subtitle:'Daglig praksis \u00b7 Decision filter \u00b7 Legacy \u00b7 Integration',icon:'\u2605',color:'#C9A84C',
+sources:['Frankl, V. \u2014 Man\u2019s Search for Meaning','Christensen, C. \u2014 How Will You Measure Your Life?','Sinek, S. \u2014 Start With Why','Brooks, D. \u2014 The Second Mountain','Friisn\u00e6s, T. \u2014 Personlig arkitektur og integration'],
+whyText:'Purpose er ikke en engangs\u00f8velse \u2014 det er et <strong>operativsystem</strong> der styrer daglige beslutninger, prioriteringer og energiallokering. At finde dit purpose er starten. At leve det er disciplinen.',
+learn:`<h3>Purpose som decision filter</h3>
+<p>Hver beslutning filtreres: "Er dette i alignment med mit purpose?" Ja \u2192 ja. Nej \u2192 nej. M\u00e5ske \u2192 unders\u00f8g. Simpelt. Radikalt. Befriende. Purpose eliminerer 80% af dine dilemmaer \u2014 fordi de fleste dilemmaer opst\u00e5r i frav\u00e6r af retning.</p>
+<h3>Den daglige praksis</h3>
+<p>Tre sp\u00f8rgsm\u00e5l. <strong>Morgen:</strong> (1) "Hvad kan jeg g\u00f8re i dag der er i alignment med mit purpose?" (2) "Hvad vil jeg sige nej til?" <strong>Aften:</strong> (3) "Hvad gjorde jeg der var meningsfuldt?" 5 minutter. Kalibrering fra drift til retning.</p>
+<h3>Energi-allokering</h3>
+<p>Dit purpose fort\u00e6ller dig ikke kun hvad du skal g\u00f8re \u2014 men hvad du skal stoppe. Hver time brugt p\u00e5 noget meningsl\u00f8st er en time stj\u00e5let fra dit purpose. Not-to-do-listen er purpose-drevet fravalg.</p>
+<h3>Legacy-sp\u00f8rgsm\u00e5let</h3>
+<p>Christensen: "Hvordan vil du m\u00e5le dit liv?" Ikke ved karrierens slutning \u2014 men nu. Hvad vil du have st\u00e5et p\u00e5 din gravsten? Og lever du i overensstemmelse med det? Gabet mellem legacy og daglig handling er purpose-gabet.</p>
+<h3>Purpose i krise</h3>
+<p>Frankl: Purpose er mest kraftfuldt under pres. N\u00e5r alt andet falder, er mening det der holder dig oppe. Et purpose der kun virker i medvind er ikke et purpose \u2014 det er en hobby. Det rigtige sp\u00f8rgsm\u00e5l er: "Hvad ville jeg k\u00e6mpe for, selv n\u00e5r det g\u00f8r ondt?"</p>
+<h3>Integration</h3>
+<p>Purpose er portef\u00f8ljens kompas: Selvv\u00e6rd giver dig retten til at have et purpose. Selvtillid giver dig modet til at handle p\u00e5 det. Karakter er fundamentet det hviler p\u00e5. Den sv\u00e6re samtale er dialogen om det. Arbejdsgl\u00e6den er symptom p\u00e5 alignment. <strong>Alt peger herhen.</strong></p>
+<blockquote>"Purpose er ikke hvad du g\u00f8r \u2014 det er hvorfor du g\u00f8r det. Og hvorfor overtrumfer altid hvad."</blockquote>`,
+qs:[
+{id:'q5_1',type:'ta',l:'Design dit <strong>purpose-operativsystem</strong>: Daglig praksis, beslutningsfilter, energi-allokering, ugentlig kalibrering. V\u00e6r pr\u00e6cis.'},
+{id:'q5_2',type:'scale',l:'Hvor sandsynligt er det at du faktisk <strong>lever</strong> dit purpose dagligt det n\u00e6ste \u00e5r?',mn:1,mx:10},
+{id:'q5_3',type:'ta',l:'<strong>Legacy</strong>: Hvad vil du have st\u00e5et p\u00e5 din gravsten? Og lever du i overensstemmelse med det lige nu? Hvad skal \u00e6ndres?'},
+{id:'q5_4',type:'ta',l:'<strong>Purpose under pres</strong>: Hvorn\u00e5r har dit purpose holdt dig oppe i en krise? Hvad ville du k\u00e6mpe for, selv n\u00e5r det g\u00f8r ondt?'},
+{id:'q5_5',type:'ta',l:'Din <strong>purpose-erkl\u00e6ring</strong> \u2014 revideret og endelig: Hvem er du, hvad er du her for, og hvad handler du p\u00e5?'},
+{id:'q5_6',type:'ta',l:'Hvad ville \u00e6ndre sig i dit liv, hvis du levede med <strong>fuldt alignment</strong> mellem dit purpose og dine daglige handlinger?'}],
+takeaways:['Purpose er et operativsystem \u2014 ikke en engangs\u00f8velse','Som beslutningsfilter eliminerer purpose 80% af dine dilemmaer','Legacy-sp\u00f8rgsm\u00e5let er ikke for karrierens slutning \u2014 det er for nu','Purpose er mest kraftfuldt under pres \u2014 det er det der holder dig oppe','Alt i portef\u00f8ljen peger herhen: Purpose er kompasset']}];
+async function deriveKey(pw,salt){const enc=new TextEncoder();const km=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function encryptData(data,pw){const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pw,salt);const enc=new TextEncoder();const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(JSON.stringify(data)));return{v:1,salt:Array.from(salt),iv:Array.from(iv),ct:Array.from(new Uint8Array(ct))}}
+async function decryptData(blob,pw){const salt=new Uint8Array(blob.salt);const iv=new Uint8Array(blob.iv);const ct=new Uint8Array(blob.ct);const key=await deriveKey(pw,salt);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);return JSON.parse(new TextDecoder().decode(pt))}
+
+function gatherClientExport(cid,cname){
+  const exp={platform:PLATFORM_NAME,version:PLATFORM_VERSION,exportedAt:new Date().toISOString(),clientId:cid,clientName:cname,modules:{},journals:{},sjournal:LS.g('pu_sjournal_'+cid)||[],profile:getPUProfile(cid),purposelog:LS.g('pu_purposelog_'+cid)||[],declaration:LS.g('pu_decl_'+cid)||''};
+  MODS.forEach(m=>{const d=LS.g('pu_mod_'+cid+'_'+m.id);if(d)exp.modules[m.id]={title:m.title,...d};const j=LS.g('pu_sjentry_'+cid+'_'+m.id);if(j)exp.journals[m.id]=j});
+  return exp;
+}
+
+async function exportClientJSON(){
+  const data=gatherClientExport(S.cId,S.cName);
+  const pw=prompt('Adgangskode til kryptering:');if(!pw)return;
+  try{
+    const encrypted=await encryptData(data,pw);
+    const blob=new Blob([JSON.stringify(encrypted,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');
+    a.href=url;a.download=`Purpose_${S.cName.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();URL.revokeObjectURL(url);showSaveFeedback('Krypteret JSON eksporteret \u2713');
+    setTimeout(()=>{if(confirm('Send til din coach?'))location.href=`mailto:${COACH_EMAIL}?subject=Purpose \u2014 ${S.cName}&body=Krypteret JSON vedlagt.`},500);
+  }catch(e){alert('Fejl: '+e.message)}
+}
+
+function exportClientTXT(){
+  const data=gatherClientExport(S.cId,S.cName);
+  let txt=`FIND DIT PURPOSE \u2014 BESVARELSER\n${'='.repeat(50)}\nKlient: ${data.clientName}\nDato: ${data.exportedAt}\n\n`;
+  const sp=data.profile;
+  const as=ALIGNMENTS.map((_,i)=>sp['a'+i]||0);const bs=BLOCKERS.map((_,i)=>sp['b'+i]||0);
+  if(as.some(s=>s>0)){txt+='ALIGNMENT:\n';ALIGNMENTS.forEach((a,i)=>txt+=`  ${a}: ${as[i]||'\u2013'}/10\n`);txt+='\n'}
+  if(bs.some(s=>s>0)){txt+='BLOKKERINGER:\n';BLOCKERS.forEach((b,i)=>txt+=`  ${b}: ${bs[i]||'\u2013'}/5\n`);txt+='\n'}
+  if(data.declaration)txt+=`ERKL\u00c6RING: "${data.declaration}"\n\n`;
+  MODS.forEach(m=>{
+    const md=data.modules[m.id];if(!md)return;
+    txt+=`${'-'.repeat(50)}\nMODUL ${m.id}: ${m.title.toUpperCase()}\n${'-'.repeat(50)}\n`;
+    m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')txt+=`\n${q.l.replace(/<[^>]+>/g,'')}\n\u2192 ${v}\n`});txt+='\n';
+  });
+  if(data.purposelog.length){txt+=`${'-'.repeat(50)}\nPURPOSE-LOG (${data.purposelog.length})\n${'-'.repeat(50)}\n`;data.purposelog.forEach(p=>txt+=`Handling: ${p.action} | Nej: ${p.no} | Evidens: ${p.evidence}\n`)}
+  const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=`Purpose_${S.cName.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.txt`;
+  a.click();URL.revokeObjectURL(url);showSaveFeedback('Tekst eksporteret \u2713');
+}
+
+function clientDeleteData(){
+  if(!confirm('Slet alle dine data permanent?'))return;
+  if(!confirm('Kan IKKE fortrydes.'))return;
+  MODS.forEach(m=>{LS.d('pu_mod_'+S.cId+'_'+m.id);LS.d('pu_sjentry_'+S.cId+'_'+m.id)});
+  LS.d('pu_profile_'+S.cId);LS.d('pu_sjournal_'+S.cId);LS.d('pu_purposelog_'+S.cId);LS.d('pu_active_'+S.cId);LS.d('pu_decl_'+S.cId);
+  const clients=(LS.g('pu_clients')||[]).filter(c=>c.id!==S.cId);LS.s('pu_clients',clients);
+  showSaveFeedback('Slettet');logout();
+}
+
+function setASection(sec){
+  S.aSection=sec;
+  document.querySelectorAll('.as-nav li').forEach((li,i)=>{li.classList.remove('active');const map=['ov','clients','import','gdpr'];if(map[i]===sec)li.classList.add('active')});
+  ['ov','clients','import','gdpr'].forEach(s=>document.getElementById('asec-'+s).style.display=s===sec?'':'none');
+  renderAdmin();
+}
+function renderAdmin(){
+  const clients=LS.g('pu_clients')||[];
+  let totalAns=0;clients.forEach(c=>{MODS.forEach(m=>{const d=LS.g('pu_mod_'+c.id+'_'+m.id);totalAns+=countAns(d?.answers)})});
+
+  document.getElementById('asec-ov').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Oversigt</h2>
+    <div class="astats">
+      <div class="astat"><div class="av">${clients.length}</div><div class="al">Klienter</div></div>
+      <div class="astat"><div class="av">${totalAns}</div><div class="al">Svar</div></div>
+      <div class="astat"><div class="av">${MODS.length}</div><div class="al">Moduler</div></div>
+    </div>
+    ${clients.map(c=>{
+      let ca=0,cm=0;MODS.forEach(m=>{const d=LS.g('pu_mod_'+c.id+'_'+m.id);const a=countAns(d?.answers);ca+=a;if(a>=m.qs.length)cm++});
+      return`<div class="aclient-card" onclick="S.aSel='${c.id}';setASection('clients')">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><strong>${c.name}</strong><div style="font-size:11px;color:var(--text3)">${new Date(c.createdAt).toLocaleDateString('da-DK')}</div></div>
+          <div style="text-align:right"><div style="font-size:18px;font-weight:600">${cm}/5</div></div>
+        </div></div>`}).join('')}`;
+
+  if(S.aSection==='clients'){
+    let ch='<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Klienter</h2>';
+    ch+='<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">';
+    clients.forEach(c=>ch+=`<div class="aclient-card ${S.aSel===c.id?'sel':''}" onclick="S.aSel='${c.id}';renderAdmin()" style="min-width:160px"><strong>${c.name}</strong></div>`);
+    ch+='</div>';
+    if(S.aSel){
+      const cl=clients.find(c=>c.id===S.aSel);
+      if(cl){
+        const act=getActiveMod(cl.id);const sp=getPUProfile(cl.id);
+        ch+=`<div style="background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:24px"><h3>${cl.name}</h3>`;
+        ch+=`<div style="margin:16px 0"><label style="font-size:12px;color:var(--text3)">Aktiv modul (1-5)</label>
+          <div style="display:flex;gap:6px;margin-top:6px">${[1,2,3,4,5].map(n=>`<button class="scale-btn ${act>=n?'sel':''}" onclick="LS.s('pu_active_'+'${cl.id}',${n});renderAdmin();showSaveFeedback('Aktiv: ${n}')">${n}</button>`).join('')}</div></div>`;
+        const as=ALIGNMENTS.map((_,i)=>sp['a'+i]||0);const bs=BLOCKERS.map((_,i)=>sp['b'+i]||0);
+        if(as.some(s=>s>0)){ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">\ud83e\udded Alignment</h4>`;ALIGNMENTS.forEach((a,i)=>{if(as[i])ch+=`<div style="font-size:12px;padding:2px 0;color:${ACOLORS[i]}">${a}: <strong>${as[i]}/10</strong></div>`});ch+=`</div>`}
+        if(bs.some(s=>s>0)){ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">\ud83d\udeab Blokkeringer</h4>`;BLOCKERS.forEach((b,i)=>{if(bs[i])ch+=`<div style="font-size:12px;padding:2px 0;color:${BCOLORS[i]}">${b}: <strong>${bs[i]}/5</strong></div>`});ch+=`</div>`}
+        const decl=LS.g('pu_decl_'+cl.id);
+        if(decl)ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px;border-left:3px solid var(--gold)"><div style="font-size:11px;color:var(--gold);margin-bottom:6px">ERKL\u00c6RING</div><div style="font-size:14px;font-style:italic;color:var(--text)">"${decl}"</div></div>`;
+        const plog=LS.g('pu_purposelog_'+cl.id)||[];
+        if(plog.length)ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">\ud83e\udded Purpose-log (${plog.length})</h4>${plog.slice(0,5).map(p=>`<div style="font-size:12px;padding:3px 0">${p.action.slice(0,100)}</div>`).join('')}</div>`;
+        MODS.forEach(m=>{
+          const d=LS.g('pu_mod_'+cl.id+'_'+m.id);const a=countAns(d?.answers);
+          if(a>0){ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">Modul ${m.id}: ${m.title} (${a}/${m.qs.length})</h4>`;m.qs.forEach(q=>{const v=d?.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')ch+=`<div style="font-size:12px;margin-bottom:6px"><span style="color:var(--text3)">${q.l.replace(/<[^>]+>/g,'').slice(0,80)}...</span><br><span style="color:var(--text)">${typeof v==='string'?v.slice(0,200)+(v.length>200?'...':''):v}</span></div>`});ch+=`</div>`}
+        });
+        ch+=`<div class="ai-box"><h3>\ud83e\udd16 Purpose-DNA</h3>
+          <div class="fg"><label>Anthropic API-n\u00f8gle</label><input type="password" id="ai-key" placeholder="sk-ant-..." style="width:100%"></div>
+          <button class="btn btn-gold" onclick="runAI('${cl.id}')">K\u00f8r analyse</button>
+          <div id="ai-out" class="ai-result" style="margin-top:12px"></div></div>`;
+        ch+=`<div style="margin-top:16px"><button class="btn btn-ghost" onclick="adminExport('${cl.id}','${cl.name}')">\u2193 Eksport\u00e9r</button></div></div>`;
+      }
+    }
+    document.getElementById('asec-clients').innerHTML=ch;
+  }
+
+  document.getElementById('asec-import').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Import</h2>
+    <div class="refl-card"><h4>\ud83d\udce5 Import\u00e9r klient-JSON</h4>
+      <input type="file" id="imp-file" accept=".json" style="margin-bottom:10px">
+      <div class="fg"><label>Dekrypterings-adgangskode</label><input type="password" id="imp-pw"></div>
+      <button class="btn btn-primary" onclick="adminImport()">Import\u00e9r</button>
+      <div id="imp-msg" style="font-size:12px;margin-top:8px"></div>
+    </div>`;
+
+  document.getElementById('asec-gdpr').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">GDPR</h2>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">\ud83d\udd12</div><div><strong>Lokal lagring</strong><div style="font-size:12px;color:var(--text3)">Alle data i localStorage. Ingen server.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">\ud83d\udd11</div><div><strong>AES-256-GCM</strong><div style="font-size:12px;color:var(--text3)">PBKDF2 100.000 iterationer.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">\ud83d\uddd1</div><div><strong>Ret til sletning</strong><div style="font-size:12px;color:var(--text3)">\u00c9t klik. Definitiv.</div></div></div>
+    </div>`;
+}
+
+async function adminImport(){
+  const file=document.getElementById('imp-file').files[0];const pw=document.getElementById('imp-pw').value;const msg=document.getElementById('imp-msg');
+  if(!file){msg.textContent='V\u00e6lg fil';msg.style.color='var(--red)';return}
+  try{
+    const txt=await file.text();const blob=JSON.parse(txt);let data;
+    if(blob.v&&blob.ct){if(!pw){msg.textContent='Adgangskode kr\u00e6ves';msg.style.color='var(--red)';return}data=await decryptData(blob,pw)}else{data=blob}
+    const clients=LS.g('pu_clients')||[];
+    if(!clients.find(c=>c.id===data.clientId)){clients.push({id:data.clientId,name:data.clientName,createdAt:data.exportedAt,imported:true});LS.s('pu_clients',clients)}
+    if(data.modules)Object.entries(data.modules).forEach(([mid,d])=>LS.s('pu_mod_'+data.clientId+'_'+mid,d));
+    if(data.journals)Object.entries(data.journals).forEach(([mid,d])=>{if(typeof d==='object')LS.s('pu_sjentry_'+data.clientId+'_'+mid,d)});
+    if(data.profile)LS.s('pu_profile_'+data.clientId,data.profile);
+    if(data.sjournal)LS.s('pu_sjournal_'+data.clientId,data.sjournal);
+    if(data.purposelog)LS.s('pu_purposelog_'+data.clientId,data.purposelog);
+    if(data.declaration)LS.s('pu_decl_'+data.clientId,data.declaration);
+    msg.textContent='\u2713 '+data.clientName;msg.style.color='var(--green)';renderAdmin();
+  }catch(e){msg.textContent='Fejl: '+e.message;msg.style.color='var(--red)'}
+}
+function adminExport(cid,cname){
+  const data=gatherClientExport(cid,cname);
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=`PU_admin_${cname.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();URL.revokeObjectURL(url);
+}
+
+async function runAI(cid){
+  const key=document.getElementById('ai-key')?.value;
+  if(!key){showSaveFeedback('API-n\u00f8gle mangler');return}
+  const out=document.getElementById('ai-out');out.textContent='Analyserer...';out.style.opacity='.5';
+  const cl=(LS.g('pu_clients')||[]).find(c=>c.id===cid);
+  const data=gatherClientExport(cid,cl?.name||'Klient');
+  let ctx='KLIENT: '+data.clientName+'\n\n';
+  const sp=data.profile;
+  const as=ALIGNMENTS.map((_,i)=>sp['a'+i]||0);const bs=BLOCKERS.map((_,i)=>sp['b'+i]||0);
+  if(as.some(s=>s>0)){ctx+='ALIGNMENT:\n';ALIGNMENTS.forEach((a,i)=>ctx+=a+': '+(as[i]||'\u2013')+'/10\n');ctx+='\n'}
+  if(bs.some(s=>s>0)){ctx+='BLOKKERINGER:\n';BLOCKERS.forEach((b,i)=>ctx+=b+': '+(bs[i]||'\u2013')+'/5\n');ctx+='\n'}
+  if(data.declaration)ctx+='ERKL\u00c6RING: "'+data.declaration+'"\n\n';
+  MODS.forEach(m=>{const md=data.modules[m.id];if(!md)return;ctx+='MODUL '+m.id+': '+m.title+'\n';m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v)ctx+=q.l.replace(/<[^>]+>/g,'')+'\n\u2192 '+v+'\n'});ctx+='\n'});
+  if(data.purposelog.length){ctx+='PURPOSE-LOG ('+data.purposelog.length+'):\n';data.purposelog.forEach(p=>ctx+='Handling: '+p.action+' | Nej: '+p.no+' | Evidens: '+p.evidence+'\n')}
+
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,
+        system:`Du er Thomas Friisn\u00e6s\u2019 AI-assistent. Analys\u00e9r klientens purpose-forl\u00f8b.\n\n4 alignment-dimensioner: Tid, Energi, Relationer, Bidrag.\n4 blokkeringer: Andres forventninger, Gyldent bur, Identitetsl\u00e5s, Meningsforskydning.\n\nLev\u00e9r:\n1. PURPOSE-DNA: Prim\u00e6r blokering, svageste alignment-dimension, meningsprofil\n2. ORIENTERING: Job, karriere eller kaldelse \u2014 baseret p\u00e5 besvarelser\n3. ALIGNMENT-GAP: Hvor er den st\u00f8rste afstand mellem purpose og virkelighed?\n4. BLOKERINGS-ANALYSE: Hvilken blokering er mest aktiv og hvorfor?\n5. ALIGNMENT-INDEKS: Samlet indikator for overensstemmelse\n6. ANBEFALINGER: 3 konkrete n\u00e6ste skridt\n7. COACHING-SP\u00d8RGSM\u00c5L: 3 eksistentielle men varme sp\u00f8rgsm\u00e5l til n\u00e6ste session\n\nSkriv p\u00e5 dansk. V\u00e6r dyb og pr\u00e6cis. Dette er det mest eksistentielle forl\u00f8b.`,
+        messages:[{role:'user',content:ctx}]})
+    });
+    const result=await resp.json();out.style.opacity='1';
+    if(result.content&&result.content[0])out.textContent=result.content[0].text;
+    else out.textContent='Ingen respons. Tjek API-n\u00f8gle.';
+  }catch(e){out.style.opacity='1';out.textContent='Fejl: '+e.message}
+}
+</script>
+</body></html>

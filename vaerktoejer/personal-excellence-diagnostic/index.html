@@ -1,0 +1,1926 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="3.0.0">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<meta name="description" content="The Personal Excellence Diagnostic™ — Karakter · Disciplin · Klarhed">
+<title>The Personal Excellence Diagnostic™</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js" defer></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#111111;--navy2:#1a1a1a;--navy3:#222222;--navy4:#2b2b2b;
+  --blue:#c0392b;--blue2:#e74c3c;
+  --gold:#c0392b;--gold2:#e74c3c;--gdim:rgba(224,168,74,0.14);--gbrd:rgba(192,57,43,0.35);
+  --text:#E4EAF4;--text2:#8A9BB8;--text3:#4E6080;
+  --green:#4CAF82;--red:#E57373;--orange:#E5A048;
+  --brd:rgba(255,255,255,0.07);--brd2:rgba(255,255,255,0.13);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.65;min-height:100vh}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.2}
+button{font-family:'Outfit',sans-serif;cursor:pointer;transition:all .18s}
+input,textarea,select{font-family:'Outfit',sans-serif;font-size:14px;background:var(--navy3);border:1.5px solid var(--brd2);color:var(--text);border-radius:8px;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--blue2)}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--navy2)}::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:2px}
+.hidden{display:none!important}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+.fade{animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border:none;border-radius:8px;font-size:13px;font-weight:500}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:600}.btn-gold:hover{background:var(--gold2)}
+.btn-primary{background:var(--blue);color:#fff}.btn-primary:hover{background:var(--blue2)}
+.btn-ghost{background:transparent;border:1.5px solid var(--brd2);color:var(--text2);padding:8px 16px}.btn-ghost:hover{background:var(--navy3);color:var(--text)}
+.btn-full{width:100%;padding:14px}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.fg input{width:100%;padding:12px 14px}
+.err{color:var(--red);font-size:12px;margin-top:8px}
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:14px;padding:0 24px;height:56px;background:rgba(12,24,41,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);flex-shrink:0;flex-wrap:wrap}
+.tb-brand{flex:1}.tb-brand .nm{font-family:'Playfair Display',Georgia,serif;font-size:16px;font-weight:600}.tb-brand .sb{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.15em}
+.tb-btn{padding:6px 12px;background:transparent;border:1px solid var(--brd);border-radius:6px;color:var(--text3);font-size:12px}.tb-btn:hover{border-color:var(--brd2);color:var(--text2)}
+.save-feedback{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;z-index:600;animation:fadeIn .3s ease;pointer-events:none}
+
+/* LANDING */
+#sc-landing{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(201,168,76,.08) 0%,transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(42,82,152,.06) 0%,transparent 50%),var(--navy);padding:32px 24px}
+.landing-wrap{max-width:620px;width:100%}
+.landing-logo{text-align:center;margin-bottom:44px}
+.landing-logo h1{font-size:34px;letter-spacing:.01em;color:var(--text);line-height:1.15}
+.landing-logo .tm{font-size:13px;color:var(--gold);font-family:'Outfit';font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-top:10px}
+.landing-logo .sub{font-size:14px;color:var(--text3);margin-top:10px;font-style:italic}
+.l-section{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:16px}
+.l-section h3{font-size:18px;color:var(--gold);margin-bottom:10px}
+.l-section p,.l-section li{font-size:13px;color:var(--text2);line-height:1.8}
+.l-section ul{list-style:none;padding:0}.l-section li{padding:4px 0}.l-section li::before{content:'\2192 ';color:var(--gold)}
+.l-toggle{cursor:pointer;display:flex;align-items:center;justify-content:space-between}
+.l-toggle-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.l-toggle-body.open{max-height:800px}
+.l-dims{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.ld-item{padding:10px 14px;background:var(--navy3);border:1px solid var(--brd);border-radius:8px;font-size:12px}
+.ld-item .ld-n{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+.ld-item .ld-t{color:var(--text2);margin-top:2px}
+.landing-card{background:var(--navy2);border:1.5px solid var(--gbrd);border-radius:14px;padding:32px;margin-top:20px}
+.landing-card h2{font-size:24px;margin-bottom:8px}
+.landing-card .sub{font-size:13px;color:var(--text3);margin-bottom:20px}
+.gdpr-strip{margin-top:20px;padding:12px 14px;background:rgba(76,175,130,.07);border:1px solid rgba(76,175,130,.2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.7}
+.gdpr-strip strong{color:var(--green)}
+.admin-link{margin-top:28px;text-align:center}.admin-link a{font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--brd2);padding-bottom:1px}
+.demo-link{text-align:center;margin-top:16px}.demo-link a{font-size:12px;color:var(--gold);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.disclaimer-box{background:rgba(229,115,115,.06);border:1px solid rgba(229,115,115,.15);border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:16px 20px;margin-top:16px}
+.disclaimer-box .disc-title{font-size:10px;color:var(--red);text-transform:uppercase;letter-spacing:.12em;font-weight:600;margin-bottom:8px}
+.disclaimer-box p{font-size:11px;color:var(--text3);line-height:1.8}
+
+/* TEST */
+#sc-test{background:var(--navy);position:relative}
+.test-top{position:sticky;top:0;z-index:50;background:rgba(12,24,41,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);padding:14px 24px}
+.tt-dim{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.15em;font-weight:600;margin-bottom:6px}
+.tt-prog{display:flex;align-items:center;gap:12px}
+.tt-bar{flex:1;height:5px;background:var(--navy4);border-radius:3px;overflow:hidden}
+.tt-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:3px;transition:width .4s ease}
+.tt-cnt{font-size:12px;color:var(--text3);min-width:55px;text-align:right}
+.test-body{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 24px;min-height:calc(100vh - 80px)}
+.q-wrap{max-width:640px;width:100%;text-align:center}
+.q-num{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px}
+.q-statement{font-family:'Playfair Display',Georgia,serif;font-size:24px;color:var(--text);line-height:1.45;margin-bottom:40px;font-weight:400}
+.q-scale{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+.q-scale-btn{width:56px;height:56px;border-radius:12px;background:var(--navy2);border:1.5px solid var(--brd2);color:var(--text2);font-size:18px;font-weight:600;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.q-scale-btn:hover{border-color:var(--gold);color:var(--gold);transform:scale(1.05)}
+.q-scale-btn.sel{background:var(--gold);border-color:var(--gold);color:var(--navy);transform:scale(1.1)}
+.q-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);max-width:380px;margin:0 auto}
+.q-layer{font-size:11px;color:var(--navy4);margin-top:24px;font-style:italic}
+
+/* PROCESSING */
+#sc-processing{align-items:center;justify-content:center;background:var(--navy);text-align:center}
+.proc-icon{font-size:48px;margin-bottom:20px;animation:pulse 1.5s ease infinite}
+.proc-text{font-size:16px;color:var(--text2)}
+
+/* RESULTS SHARED */
+.res-body{max-width:900px;margin:0 auto;padding:32px 24px}
+.radar-wrap{display:flex;justify-content:center;margin:20px 0}
+.radar-wrap svg{max-width:600px;width:100%}
+.dim-bar-wrap{margin-bottom:14px}
+.dim-bar-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.dim-bar-label .dbl-name{color:var(--text2)}.dim-bar-label .dbl-score{color:var(--text);font-weight:600}
+.dim-bar{height:8px;background:var(--navy4);border-radius:4px;overflow:hidden}
+.dim-bar-fill{height:100%;border-radius:4px;transition:width .6s ease}
+.mastery-badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.mb-mastered{background:rgba(76,175,130,.15);color:var(--green)}
+.mb-established{background:rgba(42,82,152,.15);color:var(--blue2)}
+.mb-developing{background:rgba(229,160,72,.12);color:var(--orange)}
+.mb-potential{background:rgba(201,168,76,.12);color:var(--gold)}
+.mb-blind{background:rgba(229,115,115,.12);color:var(--red)}
+.archetype-box{background:var(--navy2);border:1.5px solid var(--gbrd);border-radius:14px;padding:28px;text-align:center;margin-bottom:28px}
+.archetype-box .at-icon{font-size:48px;margin-bottom:12px}
+.archetype-box .at-name{font-family:'Playfair Display',Georgia,serif;font-size:28px;color:var(--gold);margin-bottom:8px}
+.archetype-box .at-desc{font-size:14px;color:var(--text2);line-height:1.8;max-width:560px;margin:0 auto}
+.invest-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:20px;margin-bottom:14px;border-left:3px solid var(--gold)}
+.invest-card .ic-rank{font-size:28px;font-weight:700;color:var(--gold);font-family:'Playfair Display',serif}
+.invest-card .ic-name{font-size:16px;font-weight:600;margin-bottom:4px}
+.invest-card .ic-platform{font-size:12px;color:var(--gold);margin-bottom:6px}
+.invest-card .ic-reason{font-size:13px;color:var(--text2);line-height:1.7}
+.seq-card{display:flex;gap:16px;background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:20px;margin-bottom:12px}
+.seq-num{width:40px;height:40px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex-shrink:0}
+.seq-body .seq-title{font-size:15px;font-weight:600;margin-bottom:4px}
+.seq-body .seq-reason{font-size:13px;color:var(--text2);line-height:1.7}
+.blur-overlay{filter:blur(6px);pointer-events:none;user-select:none;position:relative}
+.blur-overlay::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 0%,var(--navy) 90%)}
+.gate-cta{background:linear-gradient(135deg,rgba(201,168,76,.10),rgba(42,82,152,.08));border:1.5px solid var(--gbrd);border-radius:14px;padding:32px;text-align:center;margin-top:24px}
+.gate-cta h3{font-size:22px;color:var(--gold);margin-bottom:10px}
+.gate-cta p{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.8}
+.gate-form{max-width:440px;margin:0 auto;text-align:left}
+.res-tabs{display:flex;gap:0;border-bottom:1px solid var(--brd);padding:0 24px;background:var(--navy2)}
+.res-tab{padding:12px 18px;font-size:12px;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.res-tab:hover{color:var(--text2)}.res-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.res-section{display:none}.res-section.active{display:block}
+.demo-banner{background:rgba(229,160,72,.10);border:1px solid rgba(229,160,72,.25);border-radius:8px;padding:12px 16px;margin-bottom:20px;text-align:center;font-size:12px;color:var(--orange)}
+
+/* GATE */
+#sc-gate{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(201,168,76,.08) 0%,transparent 55%),var(--navy);padding:32px 24px}
+.gate-card{max-width:480px;width:100%;background:var(--navy2);border:1.5px solid var(--gbrd);border-radius:14px;padding:32px}
+.gate-card h2{font-size:26px;color:var(--gold);margin-bottom:8px}
+.gate-card .sub{font-size:13px;color:var(--text2);margin-bottom:24px;line-height:1.8}
+.gate-card .gate-includes{background:var(--navy3);border-radius:8px;padding:16px;margin-bottom:20px}
+.gate-card .gate-includes h4{font-size:13px;color:var(--gold);margin-bottom:8px}
+.gate-card .gate-includes li{font-size:12px;color:var(--text2);padding:3px 0;list-style:none}.gate-card .gate-includes li::before{content:'\2713 ';color:var(--green)}
+
+/* ADMIN */
+#sc-admin-login{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(201,168,76,.08) 0%,transparent 55%),var(--navy);padding:32px 24px}
+.login-card{width:100%;max-width:400px;background:var(--navy2);border:1.5px solid var(--gbrd);border-radius:14px;padding:32px}
+.login-card h2{font-size:26px;margin-bottom:8px;color:var(--gold)}
+.login-card .sub{font-size:13px;color:var(--text3);margin-bottom:24px}
+.admin-wrap{display:flex;min-height:100vh}
+.admin-side{width:260px;background:var(--navy2);border-right:1px solid var(--brd);padding:20px;flex-shrink:0;overflow-y:auto}
+.admin-main{flex:1;padding:28px;overflow-y:auto}
+.as-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin-bottom:20px}
+.as-nav{list-style:none}.as-nav li{padding:10px 14px;border-radius:8px;font-size:13px;color:var(--text3);cursor:pointer;margin-bottom:4px}
+.as-nav li:hover{background:var(--navy3);color:var(--text2)}.as-nav li.active{background:var(--navy3);color:var(--gold);border-left:3px solid var(--gold)}
+.aclient-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:16px;margin-bottom:10px;cursor:pointer}
+.aclient-card:hover{border-color:var(--brd2)}.aclient-card.sel{border-color:var(--gold)}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.astat{background:var(--navy3);border-radius:8px;padding:14px;text-align:center}
+.astat .av{font-size:24px;font-weight:600}.astat .al{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.ai-box{background:var(--navy3);border:1px solid var(--gbrd);border-radius:10px;padding:20px;margin-top:16px}
+.ai-box h3{color:var(--gold);font-size:18px;margin-bottom:12px}
+.ai-result{white-space:pre-wrap;font-size:13px;color:var(--text2);line-height:1.8;max-height:500px;overflow-y:auto}
+.info-container{max-width:820px;margin:0 auto;padding:40px 24px}
+.info-section{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px;margin-bottom:20px}
+.info-section h2{font-size:22px;margin-bottom:14px;color:var(--gold)}
+.info-section p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:10px}
+@media(max-width:640px){.landing-logo h1{font-size:24px}.q-statement{font-size:20px}.q-scale-btn{width:46px;height:46px;font-size:16px}.l-dims{grid-template-columns:1fr}.res-body{padding:24px 16px}.astats{grid-template-columns:1fr 1fr}.admin-side{width:200px}.admin-wrap{flex-direction:column}.admin-side{width:100%;border-right:none;border-bottom:1px solid var(--brd)}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+<body>
+<!-- LANDING -->
+<div id="sc-landing" class="screen active">
+  <div class="landing-wrap">
+    <div class="landing-logo">
+      <h1>The Personal Excellence<br>Diagnostic™</h1>
+      <div class="tm">Karakter · Disciplin · Klarhed</div>
+      <div class="sub">20 minutter der afslører din næste udviklingsprioritet</div>
+    </div>
+
+    <!-- README -->
+    <div class="l-section">
+      <div class="l-toggle" onclick="toggleSection(this)">
+        <h3>📖 Hvad er dette?</h3><span style="color:var(--text3);font-size:18px">+</span>
+      </div>
+      <div class="l-toggle-body">
+        <div style="padding-top:12px">
+          <p>The Personal Excellence Diagnostic™ er en systematisk kortlægning af <strong style="color:var(--text)">5 dimensioner</strong> og <strong style="color:var(--text)">16 underdimensioner</strong> af personlig og ledelsesmæssig excellence. Den er udviklet af Thomas Friisnæs på baggrund af 20+ års erfaring som Personal Excellence Partner og 15.000+ coaching-sessioner med C-level executives.</p>
+          <p style="margin-top:10px">Diagnostikken producerer tre outputs:</p>
+          <ul><li><strong style="color:var(--text)">Dit Mestrings-kort</strong> — hvor du allerede er stærk</li>
+          <li><strong style="color:var(--text)">Dit Investerings-kort</strong> — dine top 5 anbefalede frameworks fra 31 tilgængelige</li>
+          <li><strong style="color:var(--text)">Din personlige rækkefølge</strong> — hvad du skal arbejde med, i hvilken orden, og hvorfor</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHY 20 MIN -->
+    <div class="l-section">
+      <div class="l-toggle" onclick="toggleSection(this)">
+        <h3>⏱ Hvorfor bruge 20 minutter på dette?</h3><span style="color:var(--text3);font-size:18px">+</span>
+      </div>
+      <div class="l-toggle-body">
+        <div style="padding-top:12px">
+          <p>De fleste ledere investerer i udvikling baseret på hvad der er <em>trendy</em>, hvad HR anbefaler, eller hvad der føles <em>akut</em>. Næsten ingen investerer baseret på en systematisk diagnostik af hvor de faktisk står — og hvor den største asymmetriske gevinst ligger.</p>
+          <p style="margin-top:10px"><strong style="color:var(--text)">Denne test giver dig:</strong></p>
+          <ul><li>Klarhed over hvilke dimensioner du allerede mestrer</li>
+          <li>Præcis identifikation af hvor den største udviklings-gevinst ligger</li>
+          <li>En rækkefølge baseret på afhængigheder — ikke gætterier</li>
+          <li>En profiltype der afspejler dit unikke leder-DNA</li></ul>
+          <p style="margin-top:10px">Det er <strong style="color:var(--text)">20 minutter der kan spare dig for måneder</strong> med fejlrettet udviklingsinvestering.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIMENSIONS -->
+    <div class="l-section">
+      <div class="l-toggle" onclick="toggleSection(this)">
+        <h3>◆ De fem dimensioner</h3><span style="color:var(--text3);font-size:18px">+</span>
+      </div>
+      <div class="l-toggle-body">
+        <div style="padding-top:12px">
+          <div class="l-dims">
+            <div class="ld-item"><div class="ld-n">Dimension 1</div><div class="ld-t">Eksistentielt fundament</div></div>
+            <div class="ld-item"><div class="ld-n">Dimension 2</div><div class="ld-t">Karakter & selvindsigt</div></div>
+            <div class="ld-item"><div class="ld-n">Dimension 3</div><div class="ld-t">Lederskab & strategi</div></div>
+            <div class="ld-item"><div class="ld-n">Dimension 4</div><div class="ld-t">Operationel effektivitet</div></div>
+            <div class="ld-item" style="grid-column:1/-1"><div class="ld-n">Dimension 5</div><div class="ld-t">Vision & integration</div></div>
+          </div>
+          <p>48 statements fordelt på 16 underdimensioner. Hvert statement scores på en 6-punkt skala — ingen neutral midte.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="l-section">
+      <div class="l-toggle" onclick="toggleSection(this)">
+        <h3>⚖ Hvad dette er — og ikke er</h3><span style="color:var(--text3);font-size:18px">+</span>
+      </div>
+      <div class="l-toggle-body">
+        <div style="padding-top:12px">
+          <p><strong style="color:var(--green)">Hvad dette er:</strong> Et evidens-informeret diagnostisk værktøj der identificerer mønstre, styrker og udviklings-potentiale baseret på din selvrapporterede oplevelse. Det er designet som et udgangspunkt for refleksion og dialog — ikke som en endegyldig sandhed.</p>
+          <p style="margin-top:10px"><strong style="color:var(--red)">Hvad dette ikke er:</strong> En psykologisk test, en klinisk diagnose, eller en videnskabeligt valideret psykometrisk skala. Diagnostikken erstatter ikke professionel rådgivning fra psykologer, terapeuter eller andre sundhedsfaglige. Resultaterne er baseret på selvrapportering og kan påvirkes af øjeblikkets stemning, selvindsigt og kontekst.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- START CARD -->
+    <div class="landing-card">
+      <h2>Start din diagnostik</h2>
+      <div class="sub">48 statements. 6-punkt skala. Ingen rigtige svar — kun ærlige.</div>
+      <div class="fg"><label>Dit fulde navn</label><input type="text" id="cl-name" placeholder="Fornavn Efternavn" onkeydown="if(event.key==='Enter')startTest()"></div>
+      <button class="btn btn-gold btn-full" onclick="startTest()">Start diagnostik →</button>
+      <div id="cl-err" class="err hidden"></div>
+      <div class="gdpr-strip">
+        <strong>🔒 GDPR:</strong> Alle besvarelser gemmes udelukkende lokalt på din enhed. Ingen data sendes til servere.
+        <div style="margin-top:10px;display:flex;align-items:center;gap:10px">
+          <input type="checkbox" id="gdpr-consent" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">
+          <label for="gdpr-consent" style="font-size:12px;color:var(--text2);cursor:pointer;line-height:1.5">Jeg accepterer, at mine besvarelser gemmes lokalt.</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- LIABILITY -->
+    <div class="disclaimer-box">
+      <div class="disc-title">Ansvarsfraskrivelse</div>
+      <p>The Personal Excellence Diagnostic™ er et refleksionsværktøj udviklet af Thomas Friisnæs. Resultaterne udgør ikke professionel rådgivning og bør ikke erstatte konsultation med kvalificerede fagpersoner. Thomas Friisnæs og tilknyttede partnere påtager sig intet ansvar for beslutninger truffet på baggrund af testens resultater. Ved at tage testen accepterer du, at resultaterne udelukkende tjener som udgangspunkt for personlig refleksion og eventuel coaching-dialog.</p>
+    </div>
+
+    <div class="demo-link" style="margin-bottom:8px"><a onclick="showDemo('lite',0)">Se eksempel: Hvordan ser resultatet ud? →</a></div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+      <a onclick="showDemo('full',0)" style="font-size:11px;color:var(--gold);cursor:pointer;padding:4px 10px;background:var(--navy3);border-radius:6px;transition:all .2s" onmouseenter="this.style.background='var(--navy4)'" onmouseleave="this.style.background='var(--navy3)'">\u2694\ufe0f Lars, CFO</a>
+      <a onclick="showDemo('full',1)" style="font-size:11px;color:var(--gold);cursor:pointer;padding:4px 10px;background:var(--navy3);border-radius:6px;transition:all .2s" onmouseenter="this.style.background='var(--navy4)'" onmouseleave="this.style.background='var(--navy3)'">\ud83c\udfaf Sofie, CHRO</a>
+      <a onclick="showDemo('full',2)" style="font-size:11px;color:var(--gold);cursor:pointer;padding:4px 10px;background:var(--navy3);border-radius:6px;transition:all .2s" onmouseenter="this.style.background='var(--navy4)'" onmouseleave="this.style.background='var(--navy3)'">\ud83d\ude80 Mads, CEO</a>
+    </div>
+    <div class="admin-link"><a href="?admin">Admin-adgang →</a></div>
+  </div>
+</div>
+
+<!-- TEST FLOW -->
+<div id="sc-test" class="screen">
+  <div class="test-top">
+    <div class="tt-dim" id="tt-dim"></div>
+    <div class="tt-prog"><div class="tt-bar"><div class="tt-fill" id="tt-fill"></div></div><div class="tt-cnt" id="tt-cnt"></div></div>
+  </div>
+  <div class="test-body">
+    <div class="q-wrap fade" id="q-wrap">
+      <div class="q-num" id="q-num"></div>
+      <div class="q-statement" id="q-statement"></div>
+      <div class="q-scale" id="q-scale"></div>
+      <div class="q-labels"><span>Slet ikke mig</span><span>Helt mig</span></div>
+      <div class="q-layer" id="q-layer"></div>
+      <div id="q-back" style="margin-top:24px"><button class="btn btn-ghost" onclick="goBack()" style="font-size:12px;padding:8px 18px">← Forrige spørgsmål</button></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESSING -->
+<div id="sc-processing" class="screen">
+  <div class="proc-icon">◆</div>
+  <div class="proc-text">Analyserer dit profil...</div>
+</div>
+
+<!-- LITE RESULTS (on-screen only) -->
+<div id="sc-lite" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm">Dit overblik</div><div class="sb" id="lite-name"></div></div>
+    <button class="tb-btn" onclick="showReadme()">📖 Guide</button>
+    <button class="tb-btn" onclick="retakeTest()">↻ Tag igen</button>
+    <button class="tb-btn" onclick="backToLanding()">Log ud</button>
+  </div>
+  <div class="res-body" id="lite-body"></div>
+</div>
+
+<!-- CONTACT GATE -->
+<div id="sc-gate" class="screen">
+  <div class="gate-card">
+    <h2>Lås din fulde analyse op</h2>
+    <div class="sub">Du har set dit overblik. Den fulde analyse går i dybden med alle 16 underdimensioner, lag-analyse, afhængigheds-logik og personlig rækkefølge med begrundelser.</div>
+    <div class="gate-includes">
+      <h4>Den fulde analyse indeholder:</h4>
+      <ul style="list-style:none;padding:0">
+        <li>Alle 16 underdimensioner med mestringsniveau</li>
+        <li>Lag-analyse: Bevidsthed vs. Handling vs. Integration</li>
+        <li>Investerings-kort med top 5 framework-anbefalinger fra 31 frameworks</li>
+        <li>Personlig rækkefølge med begrundelser og direkte links</li>
+        <li>Profiltype med uddybet narrativ</li>
+        <li>Downloadbar rapport</li>
+      </ul>
+    </div>
+    <div class="gate-form">
+      <div class="fg"><label>Navn</label><input type="text" id="gate-name" readonly></div>
+      <div class="fg"><label>Email</label><input type="email" id="gate-email" placeholder="din@email.dk"></div>
+      <div class="fg"><label>Telefon</label><input type="tel" id="gate-phone" placeholder="+45 00 00 00 00"></div>
+      <div class="fg"><label>Virksomhed</label><input type="text" id="gate-company" placeholder="Virksomhedsnavn"></div>
+      <div class="fg"><label>Rolle/titel</label><input type="text" id="gate-role" placeholder="CEO, CFO, VP..."></div>
+      <div style="margin-top:10px;display:flex;align-items:flex-start;gap:10px">
+        <input type="checkbox" id="gate-consent" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0;margin-top:2px">
+        <label for="gate-consent" style="font-size:12px;color:var(--text2);cursor:pointer;line-height:1.6">Jeg accepterer at Thomas Friisnæs må kontakte mig vedrørende mine resultater og relevante udviklingsforløb. Mine kontaktoplysninger behandles fortroligt og deles ikke med tredjepart.</label>
+      </div>
+      <div id="gate-err" class="err hidden"></div>
+      <button class="btn btn-gold btn-full" style="margin-top:18px" onclick="submitGate()">Lås analysen op →</button>
+      <div style="text-align:center;margin-top:12px"><a style="font-size:11px;color:var(--text3);cursor:pointer" onclick="show('lite')">← Tilbage til overblik</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- FULL RESULTS -->
+<div id="sc-full" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm">Din fulde analyse</div><div class="sb" id="full-name"></div></div>
+    <button class="tb-btn" onclick="showReadme()">📖 Guide</button>
+    <button class="tb-btn" onclick="retakeTest()">↻ Tag igen</button>
+    <button class="tb-btn" onclick="backToLanding()">Log ud</button>
+  </div>
+  <div class="res-tabs" id="full-tabs">
+    <div class="res-tab active" onclick="setFullTab(0)">Overblik</div>
+    <div class="res-tab" onclick="setFullTab(1)">Mestring</div>
+    <div class="res-tab" onclick="setFullTab(2)">Top 5 Frameworks</div>
+    <div class="res-tab" onclick="setFullTab(3)">Rækkefølge</div>
+  </div>
+  <div class="res-body">
+    <div id="fs-overview" class="res-section active"></div>
+    <div id="fs-mastery" class="res-section"></div>
+    <div id="fs-invest" class="res-section"></div>
+    <div id="fs-sequence" class="res-section"></div>
+  </div>
+</div>
+
+<!-- DEMO -->
+<div id="sc-demo" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm" id="demo-title">Demo: Overblik</div><div class="sb">Eksempel-klient</div></div>
+    <button class="tb-btn" onclick="backToLanding()">← Tilbage</button>
+  </div>
+  <div class="res-body" id="demo-body"></div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="sc-admin-login" class="screen">
+  <div style="text-align:center;margin-bottom:40px"><h1 style="font-size:32px">PED™ Admin</h1><div style="font-size:11px;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-top:8px">Thomas Friisnæs</div></div>
+  <div class="login-card">
+    <h2>Admin</h2><div class="sub">Klientdata, leads, AI-analyse og eksport.</div>
+    <div class="fg"><label>Adgangskode</label><input type="password" id="al-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+    <div style="margin-top:18px"><button class="btn btn-gold btn-full" onclick="doAdminLogin()">Log ind</button></div>
+    <div id="al-err" class="err hidden"></div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="sc-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-side">
+      <div class="as-title">PED™ Admin</div>
+      <ul class="as-nav">
+        <li class="active" onclick="setASection('ov')">📊 Oversigt</li>
+        <li onclick="setASection('leads')">📧 Leads</li>
+        <li onclick="setASection('clients')">👥 Klienter</li>
+        <li onclick="setASection('settings')">⚙ Indstillinger</li>
+        <li onclick="setASection('import')">📥 Import</li>
+        <li onclick="setASection('gdpr')">🔒 GDPR</li>
+      </ul>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--brd)"><button class="tb-btn" style="width:100%" onclick="backToLanding()">Log ud</button></div>
+    </div>
+    <div class="admin-main" id="admin-main">
+      <div id="asec-ov"></div>
+      <div id="asec-leads" style="display:none"></div>
+      <div id="asec-clients" style="display:none"></div>
+      <div id="asec-settings" style="display:none"></div>
+      <div id="asec-import" style="display:none"></div>
+      <div id="asec-gdpr" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- README -->
+<div id="sc-readme" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Guide</div></div><button class="tb-btn" onclick="closeReadme()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>The Personal Excellence Diagnostic™</h2><p>En systematisk diagnostik af 5 dimensioner og 16 underdimensioner af personlig excellence. Baseret på 20+ års coaching af C-level executives og 15.000+ sessioner.</p><p>Diagnostikken kortlægger ikke hvem du er — den kortlægger hvor du står, og hvor din næste investering giver størst udbytte.</p></div>
+
+    <div class="info-section"><h2>De fem dimensioner</h2>
+      <div style="margin-bottom:14px;padding:14px;background:var(--navy3);border-radius:10px;border-left:3px solid #6C5CE7">
+        <h4 style="color:#6C5CE7;font-size:15px;margin-bottom:6px">1. Eksistentielt fundament</h4>
+        <p style="color:var(--text2);font-size:13px;line-height:1.7">Hvem er du — og hvorfor er du her? Denne dimension måler dit forhold til din historie, dit selvværd, din selvtillid og dit purpose. Det er fundamentet alt andet bygges på. Uden et stabilt eksistentielt fundament bliver selv den mest effektive præstation tom.</p>
+        <p style="color:var(--text3);font-size:11px;margin-top:6px">Underdimensioner: Oprindelsesbevidsthed · Selvværd · Selvtillid · Purpose</p>
+      </div>
+      <div style="margin-bottom:14px;padding:14px;background:var(--navy3);border-radius:10px;border-left:3px solid #E5A048">
+        <h4 style="color:#E5A048;font-size:15px;margin-bottom:6px">2. Karakter & selvindsigt</h4>
+        <p style="color:var(--text2);font-size:13px;line-height:1.7">Hvad står du for — og hvad kan du ikke se? Denne dimension måler dit værdifundament, din evne til at se dig selv klart, og din indre kritikers magt over dig. Karakter er det, der holder, når alt andet vakler.</p>
+        <p style="color:var(--text3);font-size:11px;margin-top:6px">Underdimensioner: Værdifundament · Selvindsigt · Indre kritiker</p>
+      </div>
+      <div style="margin-bottom:14px;padding:14px;background:var(--navy3);border-radius:10px;border-left:3px solid #3A6BC2">
+        <h4 style="color:#3A6BC2;font-size:15px;margin-bottom:6px">3. Lederskab & strategi</h4>
+        <p style="color:var(--text2);font-size:13px;line-height:1.7">Hvordan leder du — og leverer du det der tæller? Her kortlægges din bevidste ledelsesarkitektur, dit kommunikationsmod i svære samtaler, og din evne til at omsætte strategi til resultater. Stærke ledere har systemer — ikke bare instinkter.</p>
+        <p style="color:var(--text3);font-size:11px;margin-top:6px">Underdimensioner: Ledelsesarkitektur · Kommunikationsmod · Eksekvering</p>
+      </div>
+      <div style="margin-bottom:14px;padding:14px;background:var(--navy3);border-radius:10px;border-left:3px solid #4CAF82">
+        <h4 style="color:#4CAF82;font-size:15px;margin-bottom:6px">4. Operationel effektivitet</h4>
+        <p style="color:var(--text2);font-size:13px;line-height:1.7">Hvordan arbejder du — og bruger du din tid rigtigt? Denne dimension afslører om du er travl eller produktiv, om du fravælger intelligent, om din dag er bevidst designet, og om du investerer i de kompetencer der tæller mest. Tid er din mest knappe ressource.</p>
+        <p style="color:var(--text3);font-size:11px;margin-top:6px">Underdimensioner: Tidsbevidsthed · Fravalg · Daglig effektivitet · Kompetenceudvikling</p>
+      </div>
+      <div style="margin-bottom:0;padding:14px;background:var(--navy3);border-radius:10px;border-left:3px solid #C9A84C">
+        <h4 style="color:#C9A84C;font-size:15px;margin-bottom:6px">5. Vision & integration</h4>
+        <p style="color:var(--text2);font-size:13px;line-height:1.7">Virker det hele — og hvor er du på vej hen? Her måles din arbejdsglæde som grundtone og din livsvision som kompas. Denne dimension afslører om din daglige praksis hænger sammen med det liv du faktisk ønsker at leve.</p>
+        <p style="color:var(--text3);font-size:11px;margin-top:6px">Underdimensioner: Arbejdsglæde · Livsvision</p>
+      </div>
+    </div>
+
+    <div class="info-section"><h2>De seks profiltyper</h2>
+      <p style="color:var(--text2);font-size:13px;line-height:1.7;margin-bottom:16px">Baseret på forholdet mellem dine fem dimensioner tildeles du en profiltype. Den er ikke en boks — den er et spejl der viser dit aktuelle mønster.</p>
+      <div style="margin-bottom:12px;padding:12px 14px;background:var(--navy3);border-radius:8px;display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:24px;flex-shrink:0">⚡</span>
+        <div><strong style="color:var(--text)">Resultatskaberen</strong><p style="color:var(--text2);font-size:12px;line-height:1.6;margin-top:2px">Exceptionelt effektiv med høj operationel disciplin, men kan mangle forbindelse til det eksistentielle fundament. Risikoen er præstation uden mening — spørgsmålet er: Effektiv i forhold til hvad?</p></div>
+      </div>
+      <div style="margin-bottom:12px;padding:12px 14px;background:var(--navy3);border-radius:8px;display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:24px;flex-shrink:0">🔮</span>
+        <div><strong style="color:var(--text)">Tænkeren</strong><p style="color:var(--text2);font-size:12px;line-height:1.6;margin-top:2px">Dyb selvindsigt og klart defineret purpose, men kan have svært ved at omsætte indsigt til daglig handling og operationel effektivitet. Viden uden handling er blot filosofi.</p></div>
+      </div>
+      <div style="margin-bottom:12px;padding:12px 14px;background:var(--navy3);border-radius:8px;display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:24px;flex-shrink:0">🚀</span>
+        <div><strong style="color:var(--text)">Frontløberen</strong><p style="color:var(--text2);font-size:12px;line-height:1.6;margin-top:2px">Leder med mod, handlekraft og strategisk eksekvering, men kan have blinde vinkler i karakter og selvindsigt. Ved at tilføje dybere selvindsigt bliver lederskabet ikke bare kraftfuldt — det bliver klogt.</p></div>
+      </div>
+      <div style="margin-bottom:12px;padding:12px 14px;background:var(--navy3);border-radius:8px;display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:24px;flex-shrink:0">🎯</span>
+        <div><strong style="color:var(--text)">Den principfaste</strong><p style="color:var(--text2);font-size:12px;line-height:1.6;margin-top:2px">Stærkt værdifundament og dyb karakter, men kan mangle gennemslagskraft i lederskab og strategi. Ved hvad der er rigtigt — næste skridt er at lede med den overbevisning.</p></div>
+      </div>
+      <div style="margin-bottom:12px;padding:12px 14px;background:var(--navy3);border-radius:8px;display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:24px;flex-shrink:0">🧭</span>
+        <div><strong style="color:var(--text)">Opdageren</strong><p style="color:var(--text2);font-size:12px;line-height:1.6;margin-top:2px">På en ægte udviklingsrejse med potentiale på tværs af alle dimensioner. Et privilegeret udgangspunkt — nøglen er at starte med fundamentet: Hvem er du, og hvorfor gør du det du gør?</p></div>
+      </div>
+      <div style="margin-bottom:0;padding:12px 14px;background:var(--navy3);border-radius:8px;display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:24px;flex-shrink:0">✨</span>
+        <div><strong style="color:var(--text)">Mesteren</strong><p style="color:var(--text2);font-size:12px;line-height:1.6;margin-top:2px">Stærkt fundament på tværs af alle fem dimensioner. Sjældent — og resultatet af års bevidst arbejde. Herfra handler det om finjustering, integration og at drømme større end nogensinde.</p></div>
+      </div>
+    </div>
+
+    <div class="info-section"><h2>Sådan læser du resultatet</h2><p><strong style="color:var(--green)">Mestret (5.0-6.0)</strong> — En del af din styrke. Du lever det.<br><strong style="color:var(--blue2)">Etableret (4.0-4.9)</strong> — Solid fundament. Finjustering mulig.<br><strong style="color:var(--orange)">Under udvikling (3.0-3.9)</strong> — Bevidsthed er der, handling halter.<br><strong style="color:var(--gold)">Uopdaget potentiale (2.0-2.9)</strong> — Her ligger din asymmetriske gevinst.<br><strong style="color:var(--red)">Blindt felt (1.0-1.9)</strong> — Du ved ikke hvad du ikke ved.</p></div>
+    <div class="info-section"><h2>Tre lag per underdimension</h2><p>Hvert område scores på tre lag: <strong>Bevidsthed</strong> (ved du det?), <strong>Handling</strong> (gør du noget ved det?), og <strong>Integration</strong> (er det en del af hvem du er?). Gabet mellem lagene afslører om du har indsigt uden handling — eller handling uden forståelse.</p></div>
+    <div class="info-section"><h2>Kontakt</h2><p><strong>Thomas Friisnæs</strong> — Personal Excellence Partner<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0e687c67677d606f6b7d4e69636f6762206d6163">[email&#160;protected]</a> | Version 3.0.0</p></div>
+  </div>
+</div>
+
+<div id="save-fb" class="save-feedback hidden"></div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+const DIMS=[
+{id:0,name:'Eksistentielt fundament',short:'Fundament',q:'Hvem er du \u2014 og hvorfor er du her?',color:'#6C5CE7'},
+{id:1,name:'Karakter & selvindsigt',short:'Karakter',q:'Hvad st\u00e5r du for \u2014 og hvad kan du ikke se?',color:'#E5A048'},
+{id:2,name:'Lederskab & strategi',short:'Lederskab',q:'Hvordan leder du \u2014 og leverer du det der t\u00e6ller?',color:'#3A6BC2'},
+{id:3,name:'Operationel effektivitet',short:'Operation',q:'Hvordan arbejder du \u2014 og bruger du din tid rigtigt?',color:'#4CAF82'},
+{id:4,name:'Vision & integration',short:'Vision',q:'Virker det hele \u2014 og hvor er du p\u00e5 vej hen?',color:'#C9A84C'}
+];
+const DIM_TIPS=[
+'EKSISTENTIELT FUNDAMENT\nHvem er du \u2014 og hvorfor er du her?\nM\u00e5ler dit forhold til din historie, dit selvv\u00e6rd, din selvtillid og dit purpose. Det er fundamentet alt andet bygges p\u00e5.\n\u2192 Underdimensioner: Oprindelsesbevidsthed \u00b7 Selvv\u00e6rd \u00b7 Selvtillid \u00b7 Purpose',
+'KARAKTER & SELVINDSIGT\nHvad st\u00e5r du for \u2014 og hvad kan du ikke se?\nM\u00e5ler dit v\u00e6rdifundament, din evne til at se dig selv klart, og din indre kritikers magt over dig.\n\u2192 Underdimensioner: V\u00e6rdifundament \u00b7 Selvindsigt \u00b7 Indre kritiker',
+'LEDERSKAB & STRATEGI\nHvordan leder du \u2014 og leverer du det der t\u00e6ller?\nKortl\u00e6gger din ledelsesarkitektur, dit kommunikationsmod og din evne til at eksekvere strategi.\n\u2192 Underdimensioner: Ledelsesarkitektur \u00b7 Kommunikationsmod \u00b7 Eksekvering',
+'OPERATIONEL EFFEKTIVITET\nBruger du din tid rigtigt \u2014 eller er du bare travl?\nAfsl\u00f8rer om du frav\u00e6lger intelligent, om din dag er bevidst designet og om du investerer i de rigtige kompetencer.\n\u2192 Underdimensioner: Tidsbevidsthed \u00b7 Fravalg \u00b7 Daglig effektivitet \u00b7 Kompetenceudvikling',
+'VISION & INTEGRATION\nVirker det hele \u2014 og hvor er du p\u00e5 vej hen?\nM\u00e5ler din arbejdsgl\u00e6de som grundtone og din livsvision som kompas.\n\u2192 Underdimensioner: Arbejdsgl\u00e6de \u00b7 Livsvision'
+];
+
+const SUBDIMS=[
+{id:'GF',dim:0,name:'Oprindelsesbevidsthed',platform:'Generationsfort\u00e6llingen',platformShort:'Generationsfort\u00e6llingen'},
+{id:'SV',dim:0,name:'Selvv\u00e6rd',platform:'F\u00e5 mere selvv\u00e6rd',platformShort:'Selvv\u00e6rd'},
+{id:'ST',dim:0,name:'Selvtillid',platform:'F\u00e5 mere selvtillid',platformShort:'Selvtillid'},
+{id:'PU',dim:0,name:'Purpose',platform:'Find dit purpose',platformShort:'Purpose'},
+{id:'KK',dim:1,name:'V\u00e6rdifundament',platform:'Karakterkompasset',platformShort:'Karakterkompasset'},
+{id:'BV',dim:1,name:'Selvindsigt',platform:'Dine blinde vinkler',platformShort:'Blinde vinkler'},
+{id:'IS',dim:1,name:'Indre kritiker',platform:'Dit impostor syndrom',platformShort:'Impostor syndrom'},
+{id:'BP',dim:2,name:'Ledelsesarkitektur',platform:'C-Level Leadership Blueprint',platformShort:'Leadership Blueprint'},
+{id:'DSS',dim:2,name:'Kommunikationsmod',platform:'Den sv\u00e6re samtale',platformShort:'Den sv\u00e6re samtale'},
+{id:'SEG',dim:2,name:'Eksekvering',platform:'Strategy Execution Governance',platformShort:'Execution Governance'},
+{id:'AF',dim:3,name:'Tidsbevidsthed',platform:'Aktivitetsflow assessment',platformShort:'Aktivitetsflow'},
+{id:'NTD',dim:3,name:'Fravalg',platform:'Not-to-do',platformShort:'Not-to-do'},
+{id:'DEA',dim:3,name:'Daglig effektivitet',platform:'Den effektive arbejdsdag',platformShort:'Effektiv arbejdsdag'},
+{id:'KR',dim:3,name:'Kompetenceudvikling',platform:'Kompetencerejsen',platformShort:'Kompetencerejsen'},
+{id:'AG',dim:4,name:'Arbejdsgl\u00e6de',platform:'S\u00e5dan finder du arbejdsgl\u00e6den',platformShort:'Arbejdsgl\u00e6den'},
+{id:'DB',dim:4,name:'Livsvision',platform:'Dreamboard',platformShort:'Dreamboard'}
+];
+
+const QS=[
+// D1: Eksistentielt fundament
+// 1A GF - Oprindelsesbevidsthed
+{sd:'GF',layer:'Bevidsthed',s:'Jeg kan tydeligt se hvilke m\u00f8nstre, v\u00e6rdier og forventninger jeg har arvet fra min familie og opv\u00e6kst.'},
+{sd:'GF',layer:'Handling',s:'Jeg har aktivt gjort op med de arvede m\u00f8nstre der ikke tjener mig \u2014 og bevidst valgt hvilke jeg vil f\u00f8re videre.'},
+{sd:'GF',layer:'Integration',s:'Min livshistorie er en integreret del af min selvforst\u00e5else \u2014 ikke noget jeg fortr\u00e6nger eller romantiserer.'},
+// 1B SV - Selvv\u00e6rd
+{sd:'SV',layer:'Bevidsthed',s:'Jeg er bevidst om forskellen mellem min pr\u00e6station og min grundl\u00e6ggende v\u00e6rdi som menneske.'},
+{sd:'SV',layer:'Handling',s:'Jeg kan fastholde min selvf\u00f8lelse efter en fiasko uden at det ryster min oplevelse af eget v\u00e6rd.'},
+{sd:'SV',layer:'Integration',s:'Mit selvv\u00e6rd er stabilt og uafh\u00e6ngigt af resultater, andres anerkendelse og ydre succes.'},
+// 1C ST - Selvtillid
+{sd:'ST',layer:'Bevidsthed',s:'Jeg ved pr\u00e6cis i hvilke situationer min selvtillid er st\u00e6rk \u2014 og hvor den svigter mig.'},
+{sd:'ST',layer:'Handling',s:'Jeg ops\u00f8ger bevidst situationer der udfordrer min komfortzone for at bygge min kapacitet.'},
+{sd:'ST',layer:'Integration',s:'Jeg stoler grundl\u00e6ggende p\u00e5 min evne til at h\u00e5ndtere nye og ukendte situationer.'},
+// 1D PU - Purpose
+{sd:'PU',layer:'Bevidsthed',s:'Jeg kan i \u00e9n klar s\u00e6tning forklare hvad der giver mit liv og arbejde dyb mening.'},
+{sd:'PU',layer:'Handling',s:'Mine daglige beslutninger og prioriteringer er bevidst styret af mit purpose.'},
+{sd:'PU',layer:'Integration',s:'Der er h\u00f8j overensstemmelse mellem mit purpose og den m\u00e5de jeg faktisk lever.'},
+
+// D2: Karakter & selvindsigt
+// 2A KK - V\u00e6rdifundament
+{sd:'KK',layer:'Bevidsthed',s:'Jeg har klart artikulerede v\u00e6rdier der styrer mine beslutninger \u2014 ogs\u00e5 under pres.'},
+{sd:'KK',layer:'Handling',s:'Jeg har inden for det seneste \u00e5r sagt nej til noget attraktivt fordi det var i strid med mine v\u00e6rdier.'},
+{sd:'KK',layer:'Integration',s:'Mine v\u00e6rdier er testede principper jeg lever efter \u2014 ogs\u00e5 n\u00e5r det koster.'},
+// 2B BV - Selvindsigt
+{sd:'BV',layer:'Bevidsthed',s:'Jeg kender mine typiske reaktionsm\u00f8nstre under pres og ved hvordan andre oplever mig.'},
+{sd:'BV',layer:'Handling',s:'Jeg ops\u00f8ger aktivt \u00e6rlig feedback og handler konsekvent p\u00e5 den.'},
+{sd:'BV',layer:'Integration',s:'Der er h\u00f8j overensstemmelse mellem min selvopfattelse og andres oplevelse af mig.'},
+// 2C IS - Indre kritiker
+{sd:'IS',layer:'Bevidsthed',s:'Jeg kan genkende n\u00e5r min indre kritiker taler \u2014 og skelne den fra realistisk selvvurdering.'},
+{sd:'IS',layer:'Handling',s:'Jeg lader ikke impostor-f\u00f8lelser holde mig tilbage fra at tage plads og ansvar.'},
+{sd:'IS',layer:'Integration',s:'Jeg f\u00f8ler mig grundl\u00e6ggende kompetent og berettiget i min rolle \u2014 uden behov for konstant bekr\u00e6ftelse.'},
+
+// D3: Lederskab & strategi
+// 3A BP - Ledelsesarkitektur
+{sd:'BP',layer:'Bevidsthed',s:'Jeg har en bevidst og artikuleret strategi for mit eget lederskab.'},
+{sd:'BP',layer:'Handling',s:'Jeg justerer systematisk min ledelsesstil baseret p\u00e5 situationen og organisationens behov.'},
+{sd:'BP',layer:'Integration',s:'Mit lederskab er proaktivt og systemisk \u2014 ikke reaktivt og situationelt.'},
+// 3B DSS - Kommunikationsmod
+{sd:'DSS',layer:'Bevidsthed',s:'Jeg ved pr\u00e6cis hvilke samtaler jeg udskyder \u2014 og jeg forst\u00e5r hvorfor.'},
+{sd:'DSS',layer:'Handling',s:'Jeg tager de sv\u00e6re samtaler rettidigt, ogs\u00e5 n\u00e5r det er ubehageligt.'},
+{sd:'DSS',layer:'Integration',s:'Sv\u00e6re samtaler er en naturlig del af mit lederskab \u2014 de kr\u00e6ver ikke s\u00e6rlig mobilisering.'},
+// 3C SEG - Eksekvering
+{sd:'SEG',layer:'Bevidsthed',s:'Jeg kan klart identificere hvor strategiske beslutninger taber momentum i min organisation.'},
+{sd:'SEG',layer:'Handling',s:'Jeg har konkrete systemer der sikrer at beslutninger bliver til handling inden for en uge.'},
+{sd:'SEG',layer:'Integration',s:'Der er h\u00f8j overensstemmelse mellem vores strategi og vores faktiske resultater.'},
+
+// D4: Operationel effektivitet
+// 4A AF - Tidsbevidsthed
+{sd:'AF',layer:'Bevidsthed',s:'Jeg ved pr\u00e6cis hvor min tid faktisk g\u00e5r hen \u2014 ikke bare hvor jeg tror den g\u00e5r.'},
+{sd:'AF',layer:'Handling',s:'Jeg har inden for den seneste m\u00e5ned \u00e6ndret min tidsallokering baseret p\u00e5 data, ikke fornemmelse.'},
+{sd:'AF',layer:'Integration',s:'Der er h\u00f8j overensstemmelse mellem mine strategiske prioriteter og mit faktiske tidsforbrug.'},
+// 4B NTD - Fravalg
+{sd:'NTD',layer:'Bevidsthed',s:'Jeg kan klart identificere aktiviteter i mit liv der tager tid uden at skabe reel v\u00e6rdi.'},
+{sd:'NTD',layer:'Handling',s:'Jeg har inden for de seneste tre m\u00e5neder aktivt stoppet mindst \u00e9n meningsl\u00f8s aktivitet.'},
+{sd:'NTD',layer:'Integration',s:'Fravalg er lige s\u00e5 naturligt for mig som tilvalg \u2014 jeg siger nej uden skyldf\u00f8lelse.'},
+// 4C DEA - Daglig effektivitet
+{sd:'DEA',layer:'Bevidsthed',s:'Jeg kan tydeligt skelne mellem at v\u00e6re travl og at v\u00e6re produktiv.'},
+{sd:'DEA',layer:'Handling',s:'Min dag er bevidst designet med ritualer og struktur der beskytter mit fokus.'},
+{sd:'DEA',layer:'Integration',s:'Jeg afslutter de fleste dage med en oplevelse af at have investeret min tid rigtigt.'},
+// 4D KR - Kompetenceudvikling
+{sd:'KR',layer:'Bevidsthed',s:'Jeg kender pr\u00e6cis gabet mellem mine nuv\u00e6rende kompetencer og det min rolle kr\u00e6ver.'},
+{sd:'KR',layer:'Handling',s:'Jeg investerer systematisk tid og energi i at udvikle de kompetencer der betyder mest.'},
+{sd:'KR',layer:'Integration',s:'Min kompetenceudvikling er strategisk og m\u00e5lrettet \u2014 ikke tilf\u00e6ldig eller reaktiv.'},
+
+// D5: Vision & integration
+// 5A AG - Arbejdsgl\u00e6de
+{sd:'AG',layer:'Bevidsthed',s:'Jeg kan klart m\u00e6rke forskel p\u00e5 dage med dyb mening og dage med tom travlhed.'},
+{sd:'AG',layer:'Handling',s:'Jeg prioriterer aktivt aktiviteter der giver mig energi og mening i min hverdag.'},
+{sd:'AG',layer:'Integration',s:'Jeg oplever stabil arbejdsgl\u00e6de som en grundtone \u2014 ikke som kortvarige peaks.'},
+// 5B DB - Livsvision
+{sd:'DB',layer:'Bevidsthed',s:'Jeg har en klar vision for mit liv der r\u00e6kker ud over karrieren.'},
+{sd:'DB',layer:'Handling',s:'Jeg tager konkrete skridt mod min vision \u2014 den er ikke bare en dr\u00f8m.'},
+{sd:'DB',layer:'Integration',s:'Min livsvision er forankret i mit purpose og mine v\u00e6rdier \u2014 den er autentisk min egen.'}
+];
+
+const DEPS=[
+{from:'SV',to:'PU',type:'prereq',r:'Selvv\u00e6rd er foruds\u00e6tning for Purpose \u2014 uden selvv\u00e6rd finder du andres purpose'},
+{from:'SV',to:'IS',type:'prereq',r:'Impostor er symptom \u2014 selvv\u00e6rd er \u00e5rsagen'},
+{from:'PU',to:'NTD',type:'prereq',r:'Du kan kun frav\u00e6lge n\u00e5r du ved hvad du v\u00e6lger til'},
+{from:'PU',to:'AG',type:'prereq',r:'Uden purpose er arbejdsgl\u00e6de tilf\u00e6ldig'},
+{from:'KK',to:'DSS',type:'prereq',r:'V\u00e6rdier f\u00f8r konfrontation \u2014 ellers bliver samtalen taktisk'},
+{from:'AF',to:'DEA',type:'prereq',r:'Diagnose f\u00f8r behandling \u2014 du m\u00e5 vide hvor tiden g\u00e5r f\u00f8r du redesigner'},
+{from:'BP',to:'SEG',type:'prereq',r:'Ledelsesarkitektur f\u00f8r eksekverings\u00adsystem'},
+{from:'GF',to:'SV',type:'boost',r:'At forst\u00e5 dine m\u00f8nstre styrker dit selvv\u00e6rd'},
+{from:'BV',to:'KK',type:'boost',r:'Selvindsigt sk\u00e6rper v\u00e6rdier'},
+{from:'ST',to:'KR',type:'boost',r:'Psykologisk selvtillid forst\u00e6rker praktisk kompetenceudvikling'}
+];
+
+const ARCHETYPES=[
+{id:'resultatskaberen',name:'Resultatskaberen',icon:'\u26a1',
+ desc:'Du er exceptionelt effektiv. Din kalender er optimeret, dine leverancer er p\u00e5lidelige, og din operationelle disciplin er im\u00e5\u0301ponerende. Nu er sp\u00f8rgsm\u00e5let: Effektiv i forhold til hvad? N\u00e5r du forbinder dine resultater med det der virkelig giver mening, bliver din pr\u00e6station ikke bare effektiv \u2014 den bliver meningsfuld.',
+ trigger:{high:[3],low:[0]},
+ start:['SV','PU','AG']},
+{id:'taenkeren',name:'T\u00e6nkeren',icon:'\ud83d\udd2e',
+ desc:'Du kender dig selv dybt. Din selvindsigt, dine v\u00e6rdier og dit purpose er klart defineret. Det er en sj\u00e6lden styrke. N\u00e6ste skridt er at oms\u00e6tte den indsigt til daglig handling \u2014 s\u00e5 dit indre kompas ogs\u00e5 styrer din kalender, dine fravalg og din effektivitet.',
+ trigger:{high:[0],low:[3]},
+ start:['AF','NTD','DEA','ST']},
+{id:'frontloeberen',name:'Frontl\u00f8beren',icon:'\ud83d\ude80',
+ desc:'Du leder med mod og handlekraft. Du tager de sv\u00e6re beslutninger, du eksekverer, og du g\u00e5r forrest. Det er en imponerende lederprofil. Ved at tilf\u00f8je dybere selvindsigt og et sk\u00e6rpet v\u00e6rdifundament bliver dit lederskab ikke bare kraftfuldt \u2014 det bliver klogt.',
+ trigger:{high:[2],low:[1]},
+ start:['BV','KK','GF']},
+{id:'principfaste',name:'Den principfaste',icon:'\ud83c\udfaf',
+ desc:'Du har et st\u00e6rkt v\u00e6rdifundament og dyb selvindsigt. Du ved hvad der er rigtigt \u2014 og du handler derefter. N\u00e6ste skridt er at bruge den styrke til at lede med st\u00f8rre gennemslagskraft: Tage de sv\u00e6re samtaler, bygge din ledelsesarkitektur og sikre eksekvering p\u00e5 h\u00f8jeste niveau.',
+ trigger:{high:[1],low:[2]},
+ start:['IS','ST','DSS','BP']},
+{id:'opdageren',name:'Opdageren',icon:'\ud83e\udded',
+ desc:'Du er p\u00e5 en \u00e6gte udviklings\u00adrejse med potentiale p\u00e5 tв\u00e6rs af alle dimensioner. Det er et privilegeret udgangspunkt \u2014 fordi du kan v\u00e6lge. N\u00f8glen er at starte med fundamentet: Hvem er du, hvad st\u00e5r du for, og hvorfor g\u00f8r du det du g\u00f8r? Resten bygges ovenp\u00e5.',
+ trigger:{high:[],low:[]},
+ start:['GF','SV','PU','KK']},
+{id:'mesteren',name:'Mesteren',icon:'\u2728',
+ desc:'Du har bygget et st\u00e6rkt fundament p\u00e5 tv\u00e6rs af alle fem dimensioner. Det er sj\u00e6ldent \u2014 og det er resultatet af \u00e5rs bevidst arbejde. Herfra handler det om finjustering, integration og at hj\u00e6lpe andre med at n\u00e5 derhen. Eller: At dr\u00f8mme st\u00f8rre end nogensinde.',
+ trigger:{high:[0,1,2,3,4],low:[]},
+ start:['DB','AG']}
+];
+
+// ═══════════════════════════════════════════════════════
+// FRAMEWORK CATALOG — alle 31 frameworks med relevans-map
+// sdMap: {subdimension_id: weight} — styrer anbefalingslogikken
+// ═══════════════════════════════════════════════════════
+const FRAMEWORKS=[
+// 01-Diagnostik
+{id:'blueprint_liv',name:'Blueprint \u2014 Livsplan',short:'Blueprint',cat:'Diagnostik',icon:'\ud83d\uddfa\ufe0f',
+ path:'01-Diagnostik/blueprint_v1.html',modules:5,type:'unified',
+ sdMap:{PU:.35,DB:.30,AG:.20,KK:.15},
+ desc:'5 modulers livsplan med personlig strategi, relationer, livsstil og visioner.',
+ trig:'Du mangler sammenh\u00e6ng mellem purpose, vision og daglig praksis \u2014 Blueprint bygger den bro.'},
+{id:'motivationskompasset',name:'Motivationskompasset',short:'Motivation',cat:'Diagnostik',icon:'\ud83e\udded',
+ path:'01-Diagnostik/motivationskompasset_v1.html',modules:5,type:'unified',
+ sdMap:{AG:.30,DEA:.25,NTD:.20,AF:.15,PU:.10},
+ desc:'8-dimensionelt motivationsprofil med morgendisciplin, vedholdenhed og prioritering.',
+ trig:'Din motivation og arbejdsgl\u00e6de er ustabil \u2014 Motivationskompasset kortl\u00e6gger hvad der driver dig.'},
+{id:'strategi_selv',name:'Strategi for dig selv',short:'Personlig strategi',cat:'Diagnostik',icon:'\ud83c\udfaf',
+ path:'01-Diagnostik/strategi-for-dig-selv_v1.html',modules:5,type:'unified',
+ sdMap:{PU:.30,KK:.25,DB:.25,GF:.20},
+ desc:'Fra selvindsigt til livsdesign og handlingsplan i 5 moduler.',
+ trig:'Du har brug for en samlet personlig strategi der forbinder v\u00e6rdier, purpose og vision.'},
+
+// 02-Lederskab
+{id:'blueprint_led',name:'C-Level Lederskab Blueprint',short:'Leadership Blueprint',cat:'Lederskab',icon:'\ud83c\udfaf',
+ path:'02-Lederskab/c-level-blueprint-klient.html',modules:null,type:'assessment',
+ sdMap:{BP:.70,SEG:.20,DSS:.10},
+ desc:'Komplet lederskabs-DNA med 12 dimensioner, Executive Snapshot og 90-dages plan.',
+ trig:'Din ledelsesarkitektur scorer lavt \u2014 du har brug for en bevidst ledelsesstrategi.'},
+{id:'kompetencerejsen',name:'Kompetencerejsen',short:'Kompetencer',cat:'Lederskab',icon:'\ud83d\udcda',
+ path:'02-Lederskab/kompetencerejsen.html',modules:null,type:'assessment',
+ sdMap:{KR:.70,BP:.15,DEA:.15},
+ desc:'Dybtg\u00e5ende kompetenceudviklingsassessment med faglige moduler.',
+ trig:'Du investerer ikke systematisk i kompetenceudvikling \u2014 dit gap vokser.'},
+{id:'leders_leder',name:'Leders Leder',short:'Seniorledelse',cat:'Lederskab',icon:'\ud83d\udc54',
+ path:'02-Lederskab/leders-leder_v1.html',modules:5,type:'unified',
+ sdMap:{BP:.35,SEG:.30,DSS:.20,KR:.15},
+ desc:'Til den erfarne seniorleder \u2014 fra ledelse af ledere til strategisk gennemslagskraft.',
+ trig:'Du leder andre ledere og har brug for at styrke din strategiske gennemslagskraft.'},
+{id:'ny_leder',name:'Jeg er blevet leder',short:'Ny leder',cat:'Lederskab',icon:'\ud83c\udf31',
+ path:'02-Lederskab/jeg-er-blevet-leder_v1.html',modules:5,type:'unified',
+ sdMap:{BP:.25,DSS:.25,IS:.25,ST:.25},
+ desc:'Til den nyudn\u00e6vnte leder \u2014 fra kollega til chef, de f\u00f8rste 100 dage.',
+ trig:'Du er ny i lederrollen \u2014 du har brug for fundamentet: identitet, kommunikation og mod.'},
+{id:'kultur',name:'Hvad er kultur?',short:'Kulturledelse',cat:'Lederskab',icon:'\ud83c\udfdb\ufe0f',
+ path:'02-Lederskab/hvad-er-kultur_v1.html',modules:5,type:'unified',
+ sdMap:{BP:.30,DSS:.25,KK:.25,SEG:.20},
+ desc:'Kulturforst\u00e5else og kulturledelse \u2014 fra v\u00e6rdier til adf\u00e6rd i organisationen.',
+ trig:'Dine v\u00e6rdier forplanter sig ikke \u2014 du mangler bevidst kulturledelse.'},
+
+// 03-Karakter
+{id:'dreamboard',name:'Dreamboard 2026',short:'Dreamboard',cat:'Karakter',icon:'\u2728',
+ path:'03-Karakter/dreamboard-klient-v2.html',modules:null,type:'klient',
+ sdMap:{DB:.60,AG:.20,PU:.20},
+ desc:'3\u00d73 Ohtani-struktur med vision, Kaizen check-in og definerende \u00f8jeblikke.',
+ trig:'Du mangler en klar livsvision \u2014 dine daglige handlinger mangler retning.'},
+{id:'karakterkompasset',name:'Karakterkompasset',short:'Karakter',cat:'Karakter',icon:'\ud83e\udded',
+ path:'03-Karakter/karakterkompasset_v1.html',modules:null,type:'tool',
+ sdMap:{KK:.80,BV:.20},
+ desc:'Kortl\u00e6g dine kernev\u00e6rdier \u2014 hvem er du under pres?',
+ trig:'Dit v\u00e6rdifundament er uklart \u2014 du har brug for artikulerede, testede principper.'},
+{id:'purpose',name:'Purpose',short:'Purpose',cat:'Karakter',icon:'\ud83d\udd25',
+ path:'03-Karakter/purpose_v1.html',modules:null,type:'tool',
+ sdMap:{PU:.80,AG:.10,DB:.10},
+ desc:'Find og formul\u00e9r dit personlige form\u00e5l \u2014 hvad driver dig?',
+ trig:'Dit purpose er ubesvaret \u2014 det vigtigste sp\u00f8rgsm\u00e5l mangler et svar.'},
+{id:'selvvaerd',name:'Selvv\u00e6rd',short:'Selvv\u00e6rd',cat:'Karakter',icon:'\ud83d\udcaa',
+ path:'03-Karakter/selvvaerd_v1.html',modules:null,type:'tool',
+ sdMap:{SV:.80,IS:.10,GF:.10},
+ desc:'Styrk dit forhold til egen v\u00e6rdi og betydning.',
+ trig:'Dit selvv\u00e6rd er bundet til pr\u00e6station \u2014 du har brug for et stabilt fundament.'},
+{id:'selvtillid',name:'Selvtillid',short:'Selvtillid',cat:'Karakter',icon:'\ud83e\udd81',
+ path:'03-Karakter/selvtillid_v1.html',modules:null,type:'tool',
+ sdMap:{ST:.80,IS:.10,KR:.10},
+ desc:'Arbejd med tilliden til dine egne evner og handlinger.',
+ trig:'Du undg\u00e5r udfordringer \u2014 din selvtillid begr\u00e6nser din r\u00e6kkevidde.'},
+{id:'impostor',name:'Impostor Syndrom',short:'Impostor',cat:'Karakter',icon:'\ud83c\udfad',
+ path:'03-Karakter/impostor_syndrom_v1.html',modules:null,type:'tool',
+ sdMap:{IS:.70,SV:.20,ST:.10},
+ desc:'Identific\u00e9r og arbejd med impostor-m\u00f8nstre i din ledelse.',
+ trig:'Din indre kritiker dominerer \u2014 du f\u00f8ler dig ikke berettiget trods kompetence.'},
+{id:'blinde_vinkler',name:'Blinde Vinkler',short:'Blinde vinkler',cat:'Karakter',icon:'\ud83d\udd0d',
+ path:'03-Karakter/blinde_vinkler_v1.html',modules:null,type:'tool',
+ sdMap:{BV:.80,KK:.10,IS:.10},
+ desc:'Afd\u00e6k det du ikke ved, du ikke ved.',
+ trig:'Du ops\u00f8ger ikke feedback \u2014 gabet mellem selvbillede og andres oplevelse er for stort.'},
+{id:'den_svaere_samtale',name:'Den Sv\u00e6re Samtale',short:'Sv\u00e6r samtale',cat:'Karakter',icon:'\ud83d\udcac',
+ path:'03-Karakter/den_svaere_samtale_v1.html',modules:null,type:'tool',
+ sdMap:{DSS:.70,KK:.15,ST:.15},
+ desc:'Forbered og gennemf\u00f8r de samtaler du udskyder.',
+ trig:'Du udskyder konfrontationer \u2014 de sv\u00e6re samtaler koster dig mere end du tror.'},
+{id:'not_to_do',name:'Not-to-Do',short:'Not-to-Do',cat:'Karakter',icon:'\ud83d\udeab',
+ path:'03-Karakter/not_to_do_v1.html',modules:null,type:'tool',
+ sdMap:{NTD:.70,PU:.20,AF:.10},
+ desc:'Defin\u00e9r hvad du ALDRIG siger ja til \u2014 disciplin er fravalg.',
+ trig:'Du siger ja til for meget \u2014 du mangler et purpose-baseret filter for fravalg.'},
+{id:'det_vigtigste',name:'Det vigtigste du ikke kan k\u00f8be',short:'Karakter som aktiv',cat:'Karakter',icon:'\ud83d\udc8e',
+ path:'03-Karakter/det-vigtigste-du-ikke-kan-kobe_v1.html',modules:5,type:'unified',
+ sdMap:{KK:.40,BV:.30,IS:.30},
+ desc:'Karakter som ledelsesaktiv \u2014 integritet, autenticitet og det der ikke kan k\u00f8bes.',
+ trig:'Du har brug for at styrke din karakter som strategisk aktiv i dit lederskab.'},
+
+// 04-Produktivitet
+{id:'effektiv_arbejdsdag',name:'Den Effektive Arbejdsdag',short:'Effektiv dag',cat:'Produktivitet',icon:'\u23f0',
+ path:'04-Produktivitet/den-effektive-arbejdsdag.html',modules:null,type:'tool',
+ sdMap:{DEA:.70,AF:.20,NTD:.10},
+ desc:'Daglig planl\u00e6gning og refleksion \u2014 design din optimale arbejdsdag.',
+ trig:'Du er travl men ikke produktiv \u2014 din dag mangler bevidst design.'},
+{id:'aktivitetsflow',name:'Aktivitetsflow Assessment',short:'Aktivitetsflow',cat:'Produktivitet',icon:'\ud83c\udf0a',
+ path:'04-Produktivitet/aktivitetsflow-assessment.html',modules:null,type:'assessment',
+ sdMap:{AF:.70,DEA:.15,AG:.15},
+ desc:'Kortl\u00e6g din energi og flow-tilstand \u2014 fra passiv til generativ ledelse.',
+ trig:'Du ved ikke hvor din tid faktisk g\u00e5r \u2014 diagnose f\u00f8r behandling.'},
+{id:'arbejdsglaeden',name:'Arbejdsgl\u00e6den',short:'Arbejdsgl\u00e6de',cat:'Produktivitet',icon:'\ud83d\ude0a',
+ path:'04-Produktivitet/arbejdsglaeden_v1.html',modules:null,type:'tool',
+ sdMap:{AG:.80,PU:.10,DB:.10},
+ desc:'Unders\u00f8g hvad der skaber \u00e6gte arbejdsgl\u00e6de for dig.',
+ trig:'Din arbejdsgl\u00e6de er ustabil \u2014 du mangler en grundtone af mening.'},
+{id:'beslutningsplatformen',name:'Beslutningsplatformen',short:'Beslutninger',cat:'Produktivitet',icon:'\ud83e\udde0',
+ path:'04-Produktivitet/beslutningsplatform_v4%20(1).html',modules:null,type:'tool',
+ sdMap:{SEG:.40,BP:.30,NTD:.30},
+ desc:'Struktureret beslutningskompetence \u2014 fra analyse til handling.',
+ trig:'Du tr\u00e6ffer for mange beslutninger reaktivt \u2014 du har brug for et system.'},
+{id:'tidsrespekt',name:'Tidsrespekt',short:'Tidsrespekt',cat:'Produktivitet',icon:'\u23f1\ufe0f',
+ path:'04-Produktivitet/tidsrespekt_v1.html',modules:5,type:'unified',
+ sdMap:{AF:.35,DEA:.30,NTD:.20,AG:.15},
+ desc:'Tid som ledelsesv\u00e6rkt\u00f8j \u2014 fra tidsblindhed til tidsrespekt.',
+ trig:'Du mangler respekt for tid \u2014 b\u00e5de din egen og andres.'},
+
+// 05-Fort\u00e6lling
+{id:'generationsfortaelling',name:'Generationsfort\u00e6lling',short:'Generationsfort\u00e6lling',cat:'Fort\u00e6lling',icon:'\ud83d\udcd6',
+ path:'05-Fortaelling/generationsfortaelling%20(3).html',modules:null,type:'tool',
+ sdMap:{GF:.90,SV:.10},
+ desc:'75 sp\u00f8rgsm\u00e5l \u2014 bevar historien for fremtidige generationer.',
+ trig:'Du har ikke gjort op med dine arvede m\u00f8nstre \u2014 din historie mangler bevidst integration.'},
+{id:'poetisk_selvudvikling',name:'Poetisk selvudvikling \u2014 Digte101',short:'Poetisk udvikling',cat:'Fort\u00e6lling',icon:'\u270d\ufe0f',
+ path:'05-Fortaelling/poetisk-selvudvikling-digte101_v1.html',modules:5,type:'unified',
+ sdMap:{GF:.25,PU:.30,SV:.25,AG:.20},
+ desc:'Kreativ selvudvikling gennem poesi og refleksion.',
+ trig:'Du har brug for en kreativ kanal til selvrefleksion og meningsskabelse.'},
+
+// 06-Execution
+{id:'execution',name:'Strategy Execution Governance',short:'Execution',cat:'Execution',icon:'\ud83d\udcca',
+ path:'06-Execution/Management.html',modules:null,type:'tool',
+ sdMap:{SEG:.80,BP:.20},
+ desc:'Strategisk eksekverings-rapporter med KPI-tracking og governance.',
+ trig:'Gabet mellem strategi og resultater er for stort \u2014 du mangler et execution-system.'},
+{id:'eksekveringsgab',name:'Kunsten at undg\u00e5 strategi-eksekveringsgabet',short:'Eksekveringsgab',cat:'Execution',icon:'\ud83c\udfaf',
+ path:'06-Execution/kunsten-at-undgaa-strategi-eksekveringsgab_v1.html',modules:5,type:'unified',
+ sdMap:{SEG:.50,BP:.30,DSS:.20},
+ desc:'Fra strategi til handling \u2014 luk gabet mellem plan og eksekvering.',
+ trig:'Du planl\u00e6gger godt men eksekverer for langsomt \u2014 gabet koster dig momentum.'},
+{id:'virksomhedsstrategi',name:'Hvad er en virksomhedsstrategi?',short:'Strategifundament',cat:'Execution',icon:'\ud83c\udfd7\ufe0f',
+ path:'06-Execution/hvad-er-en-virksomhedsstrategi_v1.html',modules:5,type:'unified',
+ sdMap:{SEG:.40,BP:.35,KR:.25},
+ desc:'Strategifundament \u2014 hvad er strategi, og hvordan bygger du en der virker?',
+ trig:'Du mangler et solidt strategifundament \u2014 du eksekverer uden klar retning.'},
+
+// 08-ADHD
+{id:'adhd_kompasset',name:'ADHD-Kompasset',short:'ADHD-Kompas',cat:'ADHD',icon:'\ud83e\udde0',
+ path:'08-ADHD/adhd_kompasset_v1.html',modules:5,type:'unified',conditional:true,
+ sdMap:{AF:.30,DEA:.30,NTD:.20,AG:.20},
+ desc:'ADHD-framework til voksne med struktur, systemer og selvledelse.',
+ trig:'Dine operationelle scores tyder p\u00e5 ADHD-lignende m\u00f8nstre \u2014 dette framework adresserer det.'},
+{id:'ferrarimotor',name:'Ferrarimotor\u2122',short:'Ferrarimotor',cat:'ADHD',icon:'\ud83c\udfc8\ufe0f',
+ path:'08-ADHD/ferrarimotor_v1.html',modules:5,type:'unified',conditional:true,
+ sdMap:{AF:.30,DEA:.30,NTD:.20,AG:.20},
+ desc:'Thomas\u2019 personlige ADHD-framework baseret p\u00e5 bogen \u00abFerrarimotor med cykelbremser\u00bb.',
+ trig:'Dine scores indikerer et ADHD-m\u00f8nster \u2014 Ferrarimotor\u2122 adresserer det personligt.'},
+
+// 09-HR
+{id:'mus_leder',name:'Den gode MUS \u2014 leder',short:'MUS (leder)',cat:'HR',icon:'\ud83e\udd1d',
+ path:'09-HR/den-gode-mus_v1.html',modules:5,type:'unified',
+ sdMap:{DSS:.40,BP:.30,KR:.30},
+ desc:'MUS-forberedelse og gennemf\u00f8relse for ledere.',
+ trig:'Du undg\u00e5r strukturerede medarbejdersamtaler \u2014 MUS er din mulighed.'},
+{id:'mus_medarbejder',name:'Den gode MUS \u2014 medarbejder',short:'MUS (medarbejder)',cat:'HR',icon:'\ud83e\udd1d',
+ path:'09-HR/den-gode-mus-medarbejder_v1.html',modules:5,type:'unified',
+ sdMap:{DSS:.30,KR:.40,AG:.30},
+ desc:'MUS set fra medarbejderens perspektiv \u2014 forberedelse og handlingsplan.',
+ trig:'Du f\u00e5r ikke nok ud af dine MUS-samtaler \u2014 dette framework hj\u00e6lper dig forberede dig.'}
+];
+const FW_BASE='file:///Users/thomasfriisnaes/Documents/Frameworks/';
+
+const PV='3.0.0',PN='The Personal Excellence Diagnostic\u2122',CE='friisnaes@gmail.com';
+const LS={g(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(e){return null}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},d(k){try{localStorage.removeItem(k)}catch(e){}}};
+let S={cId:null,cName:null,qi:0,answers:[],role:null,aSection:'ov',aSel:null,prevScreen:null};
+const DEMO_PERSONAS=[
+{id:0,name:'Lars M\u00f8ller',title:'CFO',age:52,company:'Dansk pensionskoncern',icon:'\u2694\ufe0f',
+ answers:[5,4,4,3,2,2,4,5,4,2,2,1,5,4,5,3,2,3,4,3,2,4,5,5,3,4,2,5,4,4,4,5,4,3,4,2,5,5,4,3,4,3,3,3,2,3,2,2],
+ banner:'CFO i en dansk pensionskoncern. 18 \u00e5rs erfaring i finanssektoren.',
+ narrative:[
+  'Lars M\u00f8ller er en exceptionelt effektiv leder. Hans operationelle disciplin, ledelsesarkitektur og daglige effektivitet placerer ham i den \u00f8verste kvartil af de ledere vi arbejder med. Han leverer, han eksekverer, og hans organisation stoler p\u00e5 ham.',
+  'Men under overfladen af pr\u00e6station og p\u00e5lidelighed ligger et m\u00f8nster vi ser hos mange C-level executives i midtkarrieren: <strong style="color:var(--gold)">Et fundament der ikke matcher bygningen ovenp\u00e5.</strong> Lars\u2019 purpose-score er den laveste i hele profilen \u2014 og det er ikke tilf\u00e6ldigt at hans arbejdsgl\u00e6de og livsvision ogs\u00e5 er lave. N\u00e5r du ikke ved <em>hvorfor</em> du g\u00f8r det du g\u00f8r, bliver selv den mest effektive hverdag tom.',
+  'Forskningen er entydig: Purpose-drevet ledere har 64% lavere burnout-risiko, 50% h\u00f8jere engagement og signifikant bedre beslutningskvalitet under pres (McKinsey, 2023). Lars har motoren \u2014 han mangler kompasset.'
+ ],
+ strengths:[
+  {title:'V\u00e6rdifundament \u2192 Karakterkompasset',text:'Lars har klart artikulerede v\u00e6rdier der styrer hans beslutninger \u2014 ogs\u00e5 under pres. Hans v\u00e6rdier er ikke ord p\u00e5 papir \u2014 de er levede principper. Karakterst\u00e6rke ledere opbygger 23% h\u00f8jere organisatorisk tillid (Zenger & Folkman, 2022).'},
+  {title:'Ledelsesarkitektur \u2192 C-Level Blueprint',text:'Lars leder proaktivt og systemisk. Han har en bevidst ledelsesstrategi og justerer den baseret p\u00e5 situationen. Hans lag-analyse viser handling og integration over bevidsthed \u2014 et m\u00f8nster hos erfarne ledere der har internaliseret deres ledelsesstil.'},
+  {title:'Daglig effektivitet \u2192 Den effektive arbejdsdag',text:'Lars skelner tydeligt mellem travlhed og produktivitet, har bevidst designede rutiner og afslutter de fleste dage med en oplevelse af at have investeret sin tid rigtigt.'}
+ ],
+ patterns:[
+  {type:'warn',title:'Bevidsthed uden integration',text:'Lars\u2019 mest markante m\u00f8nster er h\u00f8j bevidsthed med lav integration i de svageste omr\u00e5der. Han <em>ved</em> at han mangler purpose og at hans selvv\u00e6rd er skr\u00f8beligt \u2014 men han har ikke integreret indsigten i sin daglige praksis. Selvindsigten er der, men overgangen til handling er blokeret.'},
+  {type:'ok',title:'Fuld integration i operationelle omr\u00e5der',text:'I de operationelle og ledelsesm\u00e6ssige dimensioner er Lars fuldt integreret. Ledelsesarkitektur, daglig effektivitet og v\u00e6rdifundament viser h\u00f8je lag-scores p\u00e5 tv\u00e6rs. Han lever sine styrker \u2014 de kr\u00e6ver ikke bevidst mobilisering.'},
+  {type:'danger',title:'Blindt felt: Purpose og livsvision',text:'Purpose og Livsvision er Lars\u2019 blinde felter. Integration-scoren for purpose er den laveste i profilen. Sp\u00f8rgsm\u00e5let \u201dhvorfor g\u00f8r jeg det jeg g\u00f8r?\u201d er slet ikke en del af hans operativsystem. Det er ikke fordi Lars er ubevidst \u2014 det er fordi han aldrig har haft tid til at stille sp\u00f8rgsm\u00e5let.'}
+ ]
+},
+{id:1,name:'Sofie Andersen',title:'CHRO',age:46,company:'Dansk industrigruppe',icon:'\ud83c\udfaf',
+ answers:[5,5,4,5,4,5,4,3,4,5,5,4,5,5,5,5,4,5,4,3,3,3,3,2,4,3,2,2,3,2,3,2,2,2,2,1,3,3,2,4,3,3,4,4,3,5,4,4],
+ banner:'CHRO i en dansk industrigruppe. 22 \u00e5rs erfaring p\u00e5 tv\u00e6rs af HR og organisationsudvikling.',
+ narrative:[
+  'Sofie Andersen er en sj\u00e6lden profil. Hendes eksistentielle fundament og karakterdimensioner h\u00f8rer til de st\u00e6rkeste vi m\u00e5ler: Dyb selvindsigt, klart defineret purpose, autentisk v\u00e6rdifundament og en afklaret identitet. Hun ved hvem hun er og hvorfor hun er her.',
+  'Men Sofie har en fundamental ubalance: <strong style="color:var(--gold)">Hendes indsigt overstiger hendes eksekvering.</strong> Fravalg (1.7), eksekvering (2.3) og daglig effektivitet (2.7) tr\u00e6kker hendes operationelle dimension markant ned. Hun siger ja for ofte, k\u00e6mper med at prioritere, og hendes kalender styrer hende \u2014 ikke omvendt.',
+  'Forskningen bekr\u00e6fter m\u00f8nsteret: Ledere med h\u00f8j selvindsigt men lav operationel disciplin risikerer at blive \u201dkloge men uproduktive\u201d \u2014 og mister over tid gennemslagskraft, fordi indsigt uden handling ikke skaber v\u00e6rdi (Eurich, 2018; Drucker, 1967).'
+ ],
+ strengths:[
+  {title:'Selvindsigt \u2192 Lederselvbillede-platformen',text:'Sofie har en ekstraordin\u00e6r evne til at se sig selv klart \u2014 b\u00e5de styrker, blinde vinkler og ubevidste m\u00f8nstre. Hendes lag-analyse viser fuld integration (B=5, H=5, I=4). Selvindsigt er den st\u00e6rkeste pr\u00e6diktor for ledereffektivitet (Eurich, 2018).'},
+  {title:'Purpose \u2192 Livs-Purpose Platformen',text:'Sofie har et klart artikuleret purpose der forbinder hendes daglige arbejde med noget st\u00f8rre. Purpose-drevet ledere har h\u00f8jere resiliens og bedre beslutningskvalitet under pres (Steger & Dik, 2010).'},
+  {title:'V\u00e6rdifundament \u2192 Karakterkompasset',text:'Sofies v\u00e6rdier er integrerede i hendes beslutninger, relationer og prioriteter. Hun lever dem \u2014 de er ikke noget hun t\u00e6nker over, men noget hun <em>er</em>. Fuld integration p\u00e5 tv\u00e6rs af alle tre lag.'}
+ ],
+ patterns:[
+  {type:'warn',title:'Indsigt uden eksekvering',text:'Sofies mest markante m\u00f8nster er gabet mellem karakter/fundament (4.5+) og operation (2.5). Hun ved pr\u00e6cis hvad hun burde g\u00f8re \u2014 men kalender, overcommitment og manglende fravalg blokerer konsekvent hendes mulighed for at handle p\u00e5 indsigten. Det er frustrerende for hende, fordi hun kan se l\u00f8sningen men ikke n\u00e5 den.'},
+  {type:'ok',title:'Eksistentiel afklaring som fundament',text:'I de eksistentielle og karakterm\u00e6ssige omr\u00e5der er Sofie fuldt integreret. Oprindelse, selvv\u00e6rd, purpose og v\u00e6rdier viser h\u00f8je lag-scores p\u00e5 tv\u00e6rs. Dette fundament er sj\u00e6ldent st\u00e6rkt \u2014 og det er det fundament hele hendes n\u00e6ste udvikling bygges p\u00e5.'},
+  {type:'danger',title:'Blindt felt: Fravalg og operationel kontrol',text:'Fravalg (1.7) er Sofies laveste score \u2014 og den forklarer mange af de andre operationelle udfordringer. N\u00e5r du ikke kan sige nej, kan du ikke prioritere. N\u00e5r du ikke kan prioritere, kan du ikke eksekvere. Og n\u00e5r du ikke kan eksekvere, g\u00e5r din indsigt til spilde.'}
+ ]
+},
+{id:2,name:'Mads Eriksen',title:'CEO',age:38,company:'Tech-startup (Series B)',icon:'\ud83d\ude80',
+ answers:[3,2,2,2,2,1,5,5,4,4,3,3,3,2,2,2,1,1,5,5,4,5,4,5,5,5,5,5,4,4,4,4,3,4,4,3,5,5,4,4,3,4,3,3,2,2,2,1],
+ banner:'CEO i en dansk tech-startup (Series B). 12 \u00e5rs erfaring fra tech og venture.',
+ narrative:[
+  'Mads Eriksen er en kraftfuld og handlekraftig leder. Hans ledelsesarkitektur, kommunikationsmod og eksekvering er exceptionelle \u2014 og hans operationelle effektivitet matcher. Han tager sv\u00e6re beslutninger hurtigt, kommunikerer med klarhed, og leverer resultater.',
+  'Men Mads\u2019 profil afsl\u00f8rer et klassisk startup-CEO-m\u00f8nster: <strong style="color:var(--gold)">Handlekraft uden selvindsigt.</strong> Hans selvv\u00e6rd (1.7), selvindsigt (1.7) og indre kritiker (1.3) er kritisk lave \u2014 og hans livsvision (1.7) viser at han k\u00f8rer p\u00e5 momentum, ikke p\u00e5 retning. Han bygger noget stort, men risikerer at g\u00f8re det p\u00e5 bekostning af sig selv.',
+  'Forskningen advarer: Ledere med h\u00f8j handlekraft og lav selvindsigt har 5x h\u00f8jere risiko for de-railment i kritiske karrieretransitioner (Hogan & Kaiser, 2005). Mads har raketten \u2014 han mangler spejlet.'
+ ],
+ strengths:[
+  {title:'Eksekvering \u2192 Execution Framework',text:'Mads eksekverer p\u00e5 h\u00f8jeste niveau: Strategi overs\u00e6ttes konsekvent til resultater. Fuld integration p\u00e5 tv\u00e6rs af alle lag (B=5, H=5, I=5). Han er den sj\u00e6ldne leder der ikke bare t\u00e6nker stort men ogs\u00e5 leverer.'},
+  {title:'Kommunikationsmod \u2192 Den sv\u00e6re samtale',text:'Mads tager de sv\u00e6re samtaler. Han undg\u00e5r ikke konfrontation, opsiger n\u00f8dvendige samarbejder og giver direkte feedback. Ledere med h\u00f8jt kommunikationsmod skaber 34% h\u00f8jere psykologisk tryghed i teams (Edmondson, 2019).'},
+  {title:'Ledelsesarkitektur \u2192 C-Level Blueprint',text:'Mads har en bevidst og systematisk tilgang til ledelse. Han leder ikke p\u00e5 instinkt \u2014 han har systemer, rytmer og processer der sikrer at organisationen bevæger sig fremad, selv n\u00e5r han ikke er i rummet.'}
+ ],
+ patterns:[
+  {type:'warn',title:'Handlekraft uden selvindsigt',text:'Mads\u2019 mest markante m\u00f8nster er gabet mellem lederskab/operation (4.5+) og karakter/selvindsigt (1.5). Han tr\u00e6ffer hurtige, kraftfulde beslutninger \u2014 men uden det refleksive lag der sikrer at beslutningerne ogs\u00e5 er <em>kloge</em>. Under pres risikerer han at handle for hurtigt og miste nuancen.'},
+  {type:'ok',title:'Operationel og strategisk excellens',text:'Mads\u2019 operationelle dimension er st\u00e6rk p\u00e5 tv\u00e6rs: Tidsbevidsthed, fravalg, effektivitet og kompetenceudvikling viser alle god til h\u00f8j integration. Han har bygget systemer der b\u00e6rer ham \u2014 og det er en styrke der ikke skal undervurderes.'},
+  {type:'danger',title:'Blindt felt: Indre kritiker og selvv\u00e6rd',text:'Indre kritiker (1.3) og selvv\u00e6rd (1.7) er Mads\u2019 blinde felter. Han ved bogstavelig talt ikke hvad han ikke ved om sig selv. Den indre kritiker kan v\u00e6re en af to ting: enten er den overdominerende og saboterer ubevidst \u2014 eller ogs\u00e5 har han aldrig stillet sig sp\u00f8rgsm\u00e5let. Begge dele er farlige for en CEO i v\u00e6kst.'}
+ ]
+}
+];
+
+function gmailCompose(to,subject,body){return'https://mail.google.com/mail/?view=cm&to='+encodeURIComponent(to)+'&su='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body)}
+
+(function(){
+  try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch(e){document.body.innerHTML='<div style="padding:40px;text-align:center;color:#E57373"><h2>localStorage ikke tilg\u00e6ngelig</h2></div>';return}
+  if(location.search.includes('admin'))show('admin-login');
+})();
+
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const el=document.getElementById('sc-'+id);if(el)el.classList.add('active');window.scrollTo(0,0)}
+function showErr(id,msg){const e=document.getElementById(id);if(e){e.textContent=msg;e.classList.remove('hidden')}}
+function showFB(msg){const el=document.getElementById('save-fb');el.textContent=msg;el.classList.remove('hidden');setTimeout(()=>el.classList.add('hidden'),2200)}
+function toggleSection(el){const body=el.nextElementSibling;const icon=el.querySelector('span');body.classList.toggle('open');icon.textContent=body.classList.contains('open')?'\u2212':'+'}
+function showReadme(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('readme')}
+function closeReadme(){show(S.prevScreen||'landing')}
+function backToLanding(){S={cId:null,cName:null,qi:0,answers:[],role:null,aSection:'ov',aSel:null,prevScreen:null};document.getElementById('cl-name').value='';document.getElementById('cl-err')?.classList.add('hidden');show('landing')}
+function ensureAnswers(){if(S.answers&&S.answers.length===QS.length&&S.answers.some(v=>v>0))return true;if(S.cId){const saved=LS.g('ped_answers_'+S.cId);if(saved&&saved.length===QS.length){S.answers=saved;return true}}return false}
+
+function startTest(){
+  const name=document.getElementById('cl-name').value.trim();
+  if(!name){showErr('cl-err','Indtast dit navn');return}
+  if(!document.getElementById('gdpr-consent').checked){showErr('cl-err','Accept\u00e9r GDPR-betingelserne');return}
+  const clients=LS.g('ped_clients')||[];
+  let c=clients.find(x=>x.name.toLowerCase()===name.toLowerCase());
+  if(!c){c={id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name,createdAt:new Date().toISOString()};LS.s('ped_clients',[...clients,c])}
+  S.cId=c.id;S.cName=c.name;S.qi=0;S.answers=new Array(QS.length).fill(0);
+  const prev=LS.g('ped_answers_'+c.id);
+  if(prev&&prev.length===QS.length&&prev.every(v=>v>0)){
+    S.answers=prev;
+    const lead=LS.g('ped_lead_'+c.id);
+    if(lead){showFullResults();return}
+    showLiteResults();return;
+  }
+  showQ();show('test');
+}
+function retakeTest(){S.qi=0;S.answers=new Array(QS.length).fill(0);LS.d('ped_answers_'+S.cId);LS.d('ped_results_'+S.cId);LS.d('ped_lead_'+S.cId);showQ();show('test')}
+function doAdminLogin(){if(document.getElementById('al-pw').value!=='karakter2024'){showErr('al-err','Forkert adgangskode');return}S.role='admin';renderAdmin();show('admin')}
+
+// QUESTION FLOW
+function showQ(){
+  if(S.qi>=QS.length){finishTest();return}
+  const q=QS[S.qi];const sd=SUBDIMS.find(s=>s.id===q.sd);const dim=DIMS[sd.dim];
+  const pct=Math.round(S.qi/QS.length*100);
+  document.getElementById('tt-dim').textContent='Dimension '+(sd.dim+1)+' af 5: '+dim.name;
+  document.getElementById('tt-fill').style.width=pct+'%';
+  document.getElementById('tt-cnt').textContent=(S.qi+1)+'/'+QS.length;
+  const wrap=document.getElementById('q-wrap');wrap.classList.remove('fade');void wrap.offsetWidth;wrap.classList.add('fade');
+  document.getElementById('q-num').textContent='Sp\u00f8rgsm\u00e5l '+(S.qi+1)+' af '+QS.length;
+  document.getElementById('q-statement').textContent=q.s;
+  document.getElementById('q-layer').textContent=q.layer==='Bevidsthed'?'\u25cb Bevidsthed: Ved du det?':q.layer==='Handling'?'\u25d4 Handling: G\u00f8r du noget ved det?':'\u25cf Integration: Er det en del af hvem du er?';
+  let btns='';for(let n=1;n<=6;n++)btns+=`<button class="q-scale-btn${S.answers[S.qi]===n?' sel':''}" onclick="answerQ(${n})">${n}</button>`;
+  document.getElementById('q-scale').innerHTML=btns;
+  document.getElementById('q-back').style.display=S.qi>0?'':'none';
+}
+function answerQ(val){S.answers[S.qi]=val;document.querySelectorAll('.q-scale-btn').forEach((b,i)=>{b.classList.toggle('sel',(i+1)===val);b.style.pointerEvents='none'});setTimeout(()=>{S.qi++;showQ()},350)}
+function goBack(){if(S.qi>0){S.qi--;showQ()}}
+function finishTest(){show('processing');LS.s('ped_answers_'+S.cId,S.answers);setTimeout(()=>showLiteResults(),1500)}
+
+// SCORING
+function computeScores(answers){
+  answers=answers||S.answers;const sdScores={};const sdLayers={};
+  SUBDIMS.forEach(sd=>{sdScores[sd.id]=0;sdLayers[sd.id]={b:0,h:0,i:0}});
+  QS.forEach((q,i)=>{const val=answers[i]||0;sdScores[q.sd]=(sdScores[q.sd]||0)+val;if(q.layer==='Bevidsthed')sdLayers[q.sd].b=val;else if(q.layer==='Handling')sdLayers[q.sd].h=val;else sdLayers[q.sd].i=val});
+  Object.keys(sdScores).forEach(k=>sdScores[k]=Math.round(sdScores[k]/3*10)/10);
+  const dimScores=DIMS.map(d=>{const sds=SUBDIMS.filter(s=>s.dim===d.id);return Math.round(sds.reduce((a,s)=>a+sdScores[s.id],0)/sds.length*10)/10});
+  return{sdScores,sdLayers,dimScores};
+}
+function getMasteryLevel(score){
+  if(score>=5.0)return{level:'Mestret',cls:'mb-mastered',color:'#4CAF82'};
+  if(score>=4.0)return{level:'Etableret',cls:'mb-established',color:'#3A6BC2'};
+  if(score>=3.0)return{level:'Under udvikling',cls:'mb-developing',color:'#E5A048'};
+  if(score>=2.0)return{level:'Uopdaget potentiale',cls:'mb-potential',color:'#C9A84C'};
+  return{level:'Blindt felt',cls:'mb-blind',color:'#E57373'};
+}
+function detectArchetype(dimScores){
+  if(dimScores.every(d=>d>=4.5))return ARCHETYPES.find(a=>a.id==='mesteren');
+  const avg=dimScores.reduce((a,b)=>a+b,0)/5;const high=dimScores.map((d,i)=>d>=avg+0.6?i:-1).filter(i=>i>=0);const low=dimScores.map((d,i)=>d<=avg-0.6?i:-1).filter(i=>i>=0);
+  if((high.includes(3)||high.includes(2))&&low.includes(0))return ARCHETYPES.find(a=>a.id==='resultatskaberen');
+  if(high.includes(0)&&(low.includes(3)||low.includes(2)))return ARCHETYPES.find(a=>a.id==='taenkeren');
+  if(high.includes(2)&&low.includes(1))return ARCHETYPES.find(a=>a.id==='frontloeberen');
+  if(high.includes(1)&&low.includes(2))return ARCHETYPES.find(a=>a.id==='principfaste');
+  return ARCHETYPES.find(a=>a.id==='opdageren');
+}
+function computeSequence(sdScores){
+  const sorted=SUBDIMS.map(sd=>({...sd,score:sdScores[sd.id]})).sort((a,b)=>a.score-b.score);
+  const needs=sorted.filter(s=>s.score<4.0);
+  if(!needs.length)return sorted.slice(0,2).map(s=>({sd:s,reason:'Finjustering \u2014 dit laveste omr\u00e5de.'}));
+  const seq=[];const added=new Set();
+  function addWithDeps(sdId,depth){if(added.has(sdId)||depth>5)return;DEPS.filter(d=>d.to===sdId&&d.type==='prereq').forEach(dep=>{if((sdScores[dep.from]||6)<4.0&&!added.has(dep.from)){addWithDeps(dep.from,depth+1);if(!added.has(dep.from)){seq.push({sd:SUBDIMS.find(s=>s.id===dep.from),score:sdScores[dep.from],reason:dep.r});added.add(dep.from)}}});
+    if(!added.has(sdId)){seq.push({sd:SUBDIMS.find(s=>s.id===sdId),score:sdScores[sdId],reason:'Score: '+sdScores[sdId].toFixed(1)+'/6 \u2014 st\u00f8rste gevinst.'});added.add(sdId)}}
+  needs.slice(0,6).forEach(n=>addWithDeps(n.id,0));return seq.slice(0,5);
+}
+
+// ═══════════════════════════════════════════════════════
+// FRAMEWORK RECOMMENDATION ENGINE
+// Scorer alle 31 frameworks mod klientens subdimension-scores
+// Returnerer top N prioriterede anbefalinger med begrundelser
+// ═══════════════════════════════════════════════════════
+function computeFrameworkRecs(sdScores,sdLayers,topN){
+  topN=topN||5;
+  const recs=FRAMEWORKS.map(fw=>{
+    // Beregn gap-score: vægtet gennemsnit af (6 - score) for matchede subdimensioner
+    let gapScore=0,totalW=0;
+    Object.entries(fw.sdMap).forEach(([sdId,w])=>{
+      const sc=sdScores[sdId]||3;
+      gapScore+=(6-sc)*w;totalW+=w;
+    });
+    if(totalW>0)gapScore/=totalW;
+
+    // Find primær subdimension (højeste vægt)
+    const primaryEntry=Object.entries(fw.sdMap).sort((a,b)=>b[1]-a[1])[0];
+    const primarySd=primaryEntry?primaryEntry[0]:null;
+    const primaryScore=primarySd?sdScores[primarySd]||3:3;
+
+    // Boost for meget lave primær-scores (< 2.5 = blindt felt)
+    if(primaryScore<2.5)gapScore*=1.25;
+
+    // Lag-gap bonus: høj bevidsthed men lav handling/integration = framework er særligt relevant
+    if(sdLayers&&primarySd){
+      const l=sdLayers[primarySd];
+      if(l&&l.b>l.h+1)gapScore*=1.15; // Ved det men gør det ikke
+      if(l&&l.b>l.i+1)gapScore*=1.10; // Ved det men lever det ikke
+    }
+
+    // ADHD-frameworks: kun hvis mønstret er tydeligt
+    if(fw.conditional){
+      const adhdPattern=(sdScores.AF||4)<3&&(sdScores.DEA||4)<3&&(sdScores.NTD||4)<3.5;
+      if(!adhdPattern)gapScore*=0.15;
+    }
+
+    // MUS-medarbejder: reducer kraftigt (sjældent relevant i C-level coaching)
+    if(fw.id==='mus_medarbejder')gapScore*=0.4;
+
+    // Byg personlig begrundelse
+    let reason=fw.trig;
+    if(primarySd){
+      const sdObj=SUBDIMS.find(s=>s.id===primarySd);
+      const ml=getMasteryLevel(primaryScore);
+      reason=sdObj?sdObj.name+' scorer '+primaryScore.toFixed(1)+'/6 ('+ml.level+'). '+fw.trig:fw.trig;
+    }
+
+    return{fw,gapScore,primarySd,primaryScore,reason};
+  });
+
+  // Sortér efter gap-score (højest = mest brug for)
+  recs.sort((a,b)=>b.gapScore-a.gapScore);
+
+  // Diversitets-filter: max 2 fra samme kategori i top 5
+  const catCount={};const filtered=[];
+  for(const rec of recs){
+    const cc=catCount[rec.fw.cat]||0;
+    if(cc<2){filtered.push(rec);catCount[rec.fw.cat]=cc+1}
+    if(filtered.length>=topN)break;
+  }
+  return filtered;
+}
+function renderFrameworkCard(rec,idx){
+  const fw=rec.fw;const ml=getMasteryLevel(rec.primaryScore);
+  const modBadge=fw.modules?`<span style="font-size:10px;background:rgba(192,57,43,.22);color:#e8837a;padding:2px 8px;border-radius:10px;margin-left:6px">${fw.modules} moduler</span>`:'';
+  return`<div style="display:flex;gap:16px;padding:20px;background:var(--navy3);border-radius:12px;margin-bottom:12px;border-left:4px solid var(--gold);transition:all .2s" onmouseenter="this.style.background='var(--navy4)'" onmouseleave="this.style.background='var(--navy3)'">
+    <div style="width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex-shrink:0">${idx+1}</div>
+    <div style="flex:1">
+      <div style="display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:4px">
+        <span style="font-size:18px">${fw.icon}</span>
+        <h4 style="font-size:16px;margin:0">${fw.name}</h4>
+        ${modBadge}
+        <span style="font-size:10px;background:var(--navy);color:var(--text3);padding:2px 8px;border-radius:10px">${fw.cat}</span>
+      </div>
+      <div style="font-size:12px;color:var(--gold);margin-bottom:8px">${fw.desc}</div>
+      <p style="font-size:13px;color:var(--text2);line-height:1.7">${rec.reason}</p>
+      <a href="${FW_BASE}${fw.path}" target="_blank" style="display:inline-block;margin-top:10px;padding:8px 18px;background:var(--navy4);color:var(--gold);border-radius:6px;text-decoration:none;font-size:12px;font-weight:500;transition:all .2s" onmouseenter="this.style.background='var(--gold)';this.style.color='var(--navy)'" onmouseleave="this.style.background='var(--navy4)';this.style.color='var(--gold)'">\u00c5bn framework \u2192</a>
+    </div>
+  </div>`;
+}
+
+// RADAR
+function renderRadar(labels,scores,colors,size,maxVal,tooltips){
+  size=size||440;maxVal=maxVal||6;const pad=64,hPad=80,cx=size/2+hPad,cy=size/2,r=size/2-pad,n=labels.length,w=size+hPad*2,ht=size;
+  const angle=i=>((Math.PI*2*i)/n)-(Math.PI/2);const pt=(i,v)=>{const a=angle(i);const d=r*(v/maxVal);return[cx+d*Math.cos(a),cy+d*Math.sin(a)]};
+  let svg=`<svg viewBox="0 0 ${w} ${ht}" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">`;
+  for(let lv=1;lv<=6;lv++){let pts=[];for(let i=0;i<n;i++){const[x,y]=pt(i,lv);pts.push(`${x},${y}`)}svg+=`<polygon points="${pts.join(' ')}" fill="none" stroke="rgba(255,255,255,${lv===6?.12:.05})" stroke-width="1"/>`}
+  for(let i=0;i<n;i++){const[x,y]=pt(i,maxVal);svg+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,.05)" stroke-width="1"/>`}
+  let mpts=[];for(let i=0;i<n;i++){const[x,y]=pt(i,4.5);mpts.push(`${x},${y}`)}svg+=`<polygon points="${mpts.join(' ')}" fill="rgba(76,175,130,.04)" stroke="rgba(76,175,130,.15)" stroke-width="1" stroke-dasharray="4,4"/>`;
+  if(scores.some(s=>s>0)){let dpts=[];for(let i=0;i<n;i++){const[x,y]=pt(i,scores[i]||0);dpts.push(`${x},${y}`)}svg+=`<polygon points="${dpts.join(' ')}" fill="rgba(192,57,43,.12)" stroke="#c0392b" stroke-width="2.5"/>`;for(let i=0;i<n;i++){const[x,y]=pt(i,scores[i]||0);svg+=`<circle cx="${x}" cy="${y}" r="5" fill="${colors[i]}" stroke="#111111" stroke-width="2"/>`}}
+  for(let i=0;i<n;i++){const a=angle(i);const lx=cx+(r+44)*Math.cos(a);const ly=cy+(r+44)*Math.sin(a);const anchor=Math.abs(Math.cos(a))<.15?'middle':Math.cos(a)>0?'start':'end';const tt=tooltips&&tooltips[i]?`<title>${tooltips[i]}</title>`:'';svg+=`<g style="cursor:pointer">${tt}<text x="${lx}" y="${ly}" text-anchor="${anchor}" dominant-baseline="middle" fill="${colors[i]}" font-size="13" font-weight="600" font-family="Outfit,sans-serif">${labels[i]}</text><text x="${lx}" y="${ly+16}" text-anchor="${anchor}" dominant-baseline="middle" fill="rgba(255,255,255,.45)" font-size="11" font-family="Outfit,sans-serif">${(scores[i]||0).toFixed(1)}</text></g>`}
+  svg+='</svg>';return svg;
+}
+
+// LITE RESULTS (on-screen only, no download)
+function showLiteResults(answers,name,isDemo){
+  const ans=answers||(ensureAnswers()?S.answers:null);if(!ans){showFB('Ingen besvarelser');return}
+  const nm=name||S.cName;
+  const{sdScores,sdLayers,dimScores}=computeScores(ans);const archetype=detectArchetype(dimScores);const sequence=computeSequence(sdScores);
+  if(!isDemo){LS.s('ped_results_'+S.cId,{sdScores,sdLayers,dimScores,archetype:archetype.id,sequence:sequence.map(s=>s.sd.id),computedAt:new Date().toISOString()})}
+  const target=isDemo?'demo-body':'lite-body';if(!isDemo)document.getElementById('lite-name').textContent=nm;
+  const radar=renderRadar(DIMS.map(d=>d.short),dimScores,DIMS.map(d=>d.color),440,6,DIM_TIPS);
+  let h='';
+  if(isDemo)h+=`<div class="demo-banner">\ud83d\udd0d DEMO: Eksempel-profil for en typisk C-level leder. <a style="color:var(--gold);cursor:pointer" onclick="backToLanding()">Tag din egen test \u2192</a></div>`;
+  h+=`<div class="archetype-box fade"><div class="at-icon">${archetype.icon}</div><div class="at-name">${archetype.name}</div><div class="at-desc">${archetype.desc}</div></div>`;
+  h+=`<div class="radar-wrap">${radar}</div>`;
+  DIMS.forEach((d,i)=>{const ml=getMasteryLevel(dimScores[i]);h+=`<div class="dim-bar-wrap" title="${DIM_TIPS[i]}" style="cursor:help"><div class="dim-bar-label"><span class="dbl-name" style="color:${d.color}">${d.name}</span><span class="dbl-score">${dimScores[i].toFixed(1)} <span class="mastery-badge ${ml.cls}">${ml.level}</span></span></div><div class="dim-bar"><div class="dim-bar-fill" style="width:${(dimScores[i]/6*100).toFixed(0)}%;background:${d.color}"></div></div></div>`});
+  h+=`<div style="margin-top:28px;padding:24px;background:var(--navy2);border:1px solid var(--gbrd);border-radius:12px"><h3 style="font-size:18px;color:var(--gold);margin-bottom:4px">Dine top 5 anbefalede frameworks</h3><p style="font-size:12px;color:var(--text3);margin-bottom:16px">Prioriteret baseret p\u00e5 din profil, afh\u00e6ngigheder og lag-analyse \u2014 fra ${FRAMEWORKS.length} tilg\u00e6ngelige frameworks.</p>`;
+  const fwRecs=computeFrameworkRecs(sdScores,sdLayers,10);
+  fwRecs.slice(0,5).forEach((rec,i)=>{
+    const ml=getMasteryLevel(rec.primaryScore);
+    h+=`<div style="display:flex;gap:14px;padding:14px 0;${i<4?'border-bottom:1px solid var(--brd)':''}">
+      <div style="width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">${i+1}</div>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <span style="font-size:16px">${rec.fw.icon}</span>
+          <span style="font-size:14px;font-weight:600">${rec.fw.name}</span>
+          <span class="mastery-badge ${ml.cls}" style="margin-left:auto">${rec.primaryScore.toFixed(1)}</span>
+        </div>
+        <div style="font-size:11px;color:var(--gold);margin-bottom:4px">${rec.fw.cat}${rec.fw.modules?' \u00b7 '+rec.fw.modules+' moduler':''}</div>
+        <p style="font-size:12px;color:var(--text2);line-height:1.6;margin:0">${rec.fw.desc}</p>
+      </div>
+    </div>`;
+  });
+  // Next 5 blurred
+  if(fwRecs.length>5){
+    h+=`<div class="blur-overlay" style="margin-top:14px;padding:14px;border-radius:8px">`;
+    fwRecs.slice(5,10).forEach((rec,i)=>{
+      h+=`<div style="display:flex;gap:14px;padding:10px 0;${i<4?'border-bottom:1px solid var(--brd)':''}">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--navy4);color:var(--text3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0">${i+6}</div>
+        <div style="flex:1">
+          <div style="font-size:14px;font-weight:600;margin-bottom:2px">${rec.fw.icon} ${rec.fw.name}</div>
+          <div style="font-size:11px;color:var(--text3)">${rec.fw.cat}</div>
+          <p style="font-size:12px;color:var(--text3);line-height:1.5;margin:4px 0 0">${rec.fw.desc}</p>
+        </div>
+      </div>`;
+    });
+    h+=`</div>`;
+  }
+  h+=`</div>`;
+  if(isDemo){
+    h+=`<div class="gate-cta"><h3>Klar til at se dit eget resultat?</h3><p>Tag testen \u2014 20 minutter \u2014 og f\u00e5 din personlige diagnostik med prioriterede framework-anbefalinger.</p><button class="btn btn-gold" onclick="backToLanding()">Tag testen \u2192</button></div>`;
+    h+=`<div style="margin-top:16px;padding:20px;background:var(--navy2);border:1px solid var(--brd);border-radius:12px;text-align:center">
+      <p style="font-size:13px;color:var(--text3);margin-bottom:14px">Se ogs\u00e5 de andre eksempel-profiler med fuld analyse:</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">`;
+    DEMO_PERSONAS.forEach(dp=>{h+=`<button onclick="showDemo('full',${dp.id})" style="padding:10px 16px;background:var(--navy3);border:1px solid var(--brd);border-radius:8px;cursor:pointer;transition:all .2s;font-size:12px;color:var(--text2)" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseleave="this.style.borderColor='var(--brd)';this.style.color='var(--text2)'">${dp.icon} ${dp.name}, ${dp.title}</button>`});
+    h+=`</div></div>`;
+  } else {
+    h+=`<div class="gate-cta">
+      <h3 style="margin-bottom:16px">Se den fulde analyse og f\u00e5 din personlige rapport</h3>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:20px">Vil du se hvad den fulde analyse indeholder? Klik p\u00e5 en eksempelprofil:</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">`;
+    DEMO_PERSONAS.forEach(dp=>{
+      h+=`<button onclick="showDemo('full',${dp.id})" style="flex:1;min-width:140px;max-width:200px;padding:16px 12px;background:var(--navy3);border:1.5px solid var(--brd);border-radius:12px;cursor:pointer;transition:all .25s;text-align:center" onmouseenter="this.style.borderColor='var(--gold)';this.style.background='var(--navy4)'" onmouseleave="this.style.borderColor='var(--brd)';this.style.background='var(--navy3)'">
+        <div style="font-size:28px;margin-bottom:6px">${dp.icon}</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text)">${dp.name}</div>
+        <div style="font-size:11px;color:var(--gold);margin-top:2px">${dp.title}, ${dp.age} \u00e5r</div>
+        <div style="font-size:10px;color:var(--text3);margin-top:4px">${dp.company}</div>
+      </button>`;
+    });
+    h+=`</div>
+      <div style="border-top:1px solid var(--brd);padding-top:20px;margin-top:4px">
+        <p style="font-size:14px;color:var(--text2);margin-bottom:14px">Klar til din egen? Den fulde analyse inkluderer:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;text-align:left;max-width:420px;margin-left:auto;margin-right:auto">
+          <div style="font-size:12px;color:var(--text2);padding:6px 10px;background:var(--navy3);border-radius:6px">\u2713 Profil-narrativ med styrker</div>
+          <div style="font-size:12px;color:var(--text2);padding:6px 10px;background:var(--navy3);border-radius:6px">\u2713 Lag-analyse (B/H/I)</div>
+          <div style="font-size:12px;color:var(--text2);padding:6px 10px;background:var(--navy3);border-radius:6px">\u2713 Top 5 framework-anbefalinger</div>
+          <div style="font-size:12px;color:var(--text2);padding:6px 10px;background:var(--navy3);border-radius:6px">\u2713 Alle 16 underdimensioner</div>
+          <div style="font-size:12px;color:var(--text2);padding:6px 10px;background:var(--navy3);border-radius:6px">\u2713 Personlig r\u00e6kkef\u00f8lge</div>
+          <div style="font-size:12px;color:var(--text2);padding:6px 10px;background:var(--navy3);border-radius:6px">\u2713 PDF-rapport fra Thomas</div>
+        </div>
+        <button class="btn btn-gold" onclick="openGate()" style="font-size:15px;padding:14px 32px">L\u00e5s op din fulde analyse \u2192</button>
+      </div>
+    </div>`;
+  }
+  document.getElementById(target).innerHTML=h;if(!isDemo)show('lite');
+}
+
+// GATE
+function openGate(){document.getElementById('gate-name').value=S.cName;show('gate')}
+function submitGate(){
+  const email=document.getElementById('gate-email').value.trim();const phone=document.getElementById('gate-phone').value.trim();
+  const company=document.getElementById('gate-company').value.trim();const role=document.getElementById('gate-role').value.trim();
+  if(!email||!email.includes('@')){showErr('gate-err','Indtast en gyldig email');return}
+  if(!phone){showErr('gate-err','Indtast telefonnummer');return}
+  if(!company){showErr('gate-err','Indtast virksomhed');return}
+  if(!role){showErr('gate-err','Indtast din rolle');return}
+  if(!document.getElementById('gate-consent').checked){showErr('gate-err','Accept\u00e9r kontakt-betingelserne');return}
+  const lead={clientId:S.cId,name:S.cName,email,phone,company,role,submittedAt:new Date().toISOString(),status:'ny'};
+  LS.s('ped_lead_'+S.cId,lead);const leads=LS.g('ped_leads')||[];leads.push(lead);LS.s('ped_leads',leads);
+  ensureAnswers();showFullResults();
+}
+
+// FULL RESULTS (on-screen, no PDF download for client)
+function showFullResults(answers,name,isDemo){
+  const ans=answers||(ensureAnswers()?S.answers:null);if(!ans||!ans.some(v=>v>0)){showFB('Ingen besvarelser');show('lite');return}
+  const nm=name||S.cName;const{sdScores,sdLayers,dimScores}=computeScores(ans);const archetype=detectArchetype(dimScores);const sequence=computeSequence(sdScores);
+  const totalAvg=(dimScores.reduce((a,b)=>a+b,0)/5).toFixed(1);const mastered=SUBDIMS.filter(sd=>sdScores[sd.id]>=5.0).length;const investCount=SUBDIMS.filter(sd=>sdScores[sd.id]<3.0).length;
+  if(isDemo){document.getElementById('demo-body').innerHTML=renderDemoFullAnalysis(dimScores,sdScores,sdLayers,archetype,sequence);return}
+  document.getElementById('full-name').textContent=nm;
+  document.getElementById('fs-overview').innerHTML=renderFullOverview(archetype,dimScores,totalAvg,mastered,investCount,sdScores,sdLayers,sequence);
+  // Mastery tab
+  let ms='<h2 style="font-size:26px;margin-bottom:8px;color:var(--gold)">Dit Mestrings-kort</h2><p style="color:var(--text3);font-size:13px;margin-bottom:24px">Alle 16 underdimensioner med mestringsniveau og lag-analyse.</p>';
+  [...SUBDIMS].sort((a,b)=>sdScores[b.id]-sdScores[a.id]).forEach(sd=>{
+    const sc=sdScores[sd.id];const ml=getMasteryLevel(sc);const layers=sdLayers[sd.id];
+    let ln='';if(sc>=2.5&&layers.b>layers.h+1)ln='<div style="font-size:11px;color:var(--orange);margin-top:4px">\u26a0 H\u00f8j bevidsthed, lav handling</div>';
+    else if(sc>=2.5&&layers.h>layers.i+1)ln='<div style="font-size:11px;color:var(--blue2);margin-top:4px">\u2139 God handling, mangler integration</div>';
+    ms+=`<div class="dim-bar-wrap" style="padding:12px 16px;background:var(--navy2);border-radius:10px;margin-bottom:8px;border-left:3px solid ${ml.color}"><div class="dim-bar-label"><span class="dbl-name"><strong>${sd.name}</strong> <span style="font-size:11px;color:var(--text3)">\u2192 ${sd.platformShort}</span></span><span class="dbl-score">${sc.toFixed(1)} <span class="mastery-badge ${ml.cls}">${ml.level}</span></span></div><div class="dim-bar" style="margin-top:6px"><div class="dim-bar-fill" style="width:${(sc/6*100).toFixed(0)}%;background:${ml.color}"></div></div><div style="display:flex;gap:12px;margin-top:6px;font-size:10px;color:var(--text3)"><span>Bevidsthed: ${layers.b}</span><span>Handling: ${layers.h}</span><span>Integration: ${layers.i}</span></div>${ln}</div>`;
+  });
+  document.getElementById('fs-mastery').innerHTML=ms;
+  // Investment tab — now uses framework recommendation engine
+  const fwRecs=computeFrameworkRecs(sdScores,sdLayers,5);
+  let inv='<h2 style="font-size:26px;margin-bottom:8px;color:var(--gold)">Dine top 5 anbefalede frameworks</h2><p style="color:var(--text3);font-size:13px;margin-bottom:24px">Prioriteret baseret p\u00e5 din profil, lag-analyse og afh\u00e6ngigheder \u2014 fra '+FRAMEWORKS.length+' tilg\u00e6ngelige frameworks.</p>';
+  fwRecs.forEach((rec,i)=>inv+=renderFrameworkCard(rec,i));
+  inv+=`<div style="margin-top:20px;padding:16px;background:var(--navy3);border-radius:10px;border-left:3px solid var(--text3)"><h4 style="font-size:13px;color:var(--text3);margin-bottom:8px">\ud83d\udcca S\u00e5dan l\u00e6ses anbefalingerne</h4><p style="font-size:12px;color:var(--text3);line-height:1.8">Hvert framework er scoret mod dine ${SUBDIMS.length} underdimensioner. R\u00e6kkef\u00f8lgen afspejler hvor den st\u00f8rste asymmetriske gevinst ligger \u2014 baseret p\u00e5 gap-score, lag-analyse og afh\u00e6ngigheds-logik. Start fra toppen.</p></div>`;
+  document.getElementById('fs-invest').innerHTML=inv;
+  // Sequence tab — shows the old subdimension sequence for transparency
+  let sq='<h2 style="font-size:26px;margin-bottom:8px;color:var(--gold)">Din personlige r\u00e6kkef\u00f8lge</h2><p style="color:var(--text3);font-size:13px;margin-bottom:24px">Underdimension-sekvens baseret p\u00e5 dit profil og afh\u00e6ngigheder.</p>';
+  sequence.forEach((item,i)=>{sq+=`<div class="seq-card fade"><div class="seq-num">${i+1}</div><div class="seq-body"><div class="seq-title">${item.sd.platform}</div><div class="seq-reason">${item.reason}</div></div></div>`});
+  sq+=`<div class="gate-cta"><h3>Din rapport er p\u00e5 vej</h3><p>Thomas gennemg\u00e5r dine resultater personligt og sender dig en eksklusiv PDF-rapport inden for 24 timer. Har du sp\u00f8rgsm\u00e5l? Book en uforpligtende samtale.</p><a href="${gmailCompose(CE,'PED \u2014 Sp\u00f8rgsm\u00e5l','\u2014')}" target="_blank" class="btn btn-gold" style="text-decoration:none">Kontakt Thomas \u2192</a></div>`;
+  document.getElementById('fs-sequence').innerHTML=sq;
+  show('full');setFullTab(0);
+}
+function renderFullOverview(arch,dimScores,totalAvg,mastered,investCount){
+  const radar=renderRadar(DIMS.map(d=>d.short),dimScores,DIMS.map(d=>d.color),440,6,DIM_TIPS);
+  let h=`<div class="archetype-box fade"><div class="at-icon">${arch.icon}</div><div class="at-name">${arch.name}</div><div class="at-desc">${arch.desc}</div></div>`;
+  h+=`<div class="radar-wrap">${radar}</div>`;
+  h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0"><div style="text-align:center;padding:16px;background:var(--navy2);border-radius:10px"><div style="font-size:28px;font-weight:700;color:var(--gold)">${totalAvg}</div><div style="font-size:10px;color:var(--text3);text-transform:uppercase;margin-top:4px">Samlet score</div></div><div style="text-align:center;padding:16px;background:var(--navy2);border-radius:10px"><div style="font-size:28px;font-weight:700;color:var(--green)">${mastered}</div><div style="font-size:10px;color:var(--text3);text-transform:uppercase;margin-top:4px">Mestrede</div></div><div style="text-align:center;padding:16px;background:var(--navy2);border-radius:10px"><div style="font-size:28px;font-weight:700;color:var(--orange)">${investCount}</div><div style="font-size:10px;color:var(--text3);text-transform:uppercase;margin-top:4px">Investerings-zoner</div></div></div>`;
+  DIMS.forEach((d,i)=>{const ml=getMasteryLevel(dimScores[i]);h+=`<div class="dim-bar-wrap" title="${DIM_TIPS[i]}" style="cursor:help"><div class="dim-bar-label"><span class="dbl-name" style="color:${d.color}">${d.name}</span><span class="dbl-score">${dimScores[i].toFixed(1)} <span class="mastery-badge ${ml.cls}">${ml.level}</span></span></div><div class="dim-bar"><div class="dim-bar-fill" style="width:${(dimScores[i]/6*100).toFixed(0)}%;background:${d.color}"></div></div></div>`});
+  return h;
+}
+function setFullTab(idx){document.querySelectorAll('#full-tabs .res-tab').forEach((t,i)=>t.classList.toggle('active',i===idx));['fs-overview','fs-mastery','fs-invest','fs-sequence'].forEach((id,i)=>{const el=document.getElementById(id);if(el)el.classList.toggle('active',i===idx)})}
+
+// DEMO
+function showDemo(type,pIdx){
+  const p=DEMO_PERSONAS[pIdx||0];
+  if(type==='lite'){document.getElementById('demo-title').textContent='Demo: '+p.name;showLiteResults(p.answers,p.name+' (demo)',true)}
+  else{document.getElementById('demo-title').textContent=p.name+' \u2014 Fuld analyse';const{sdScores,sdLayers,dimScores}=computeScores(p.answers);const archetype=detectArchetype(dimScores);const sequence=computeSequence(sdScores);document.getElementById('demo-body').innerHTML=renderDemoFullAnalysis(dimScores,sdScores,sdLayers,archetype,sequence,p)}
+  show('demo');
+}
+
+// ENCRYPT (admin JSON export only)
+async function deriveKey(pw,salt){const enc=new TextEncoder();const km=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function encryptData(data,pw){const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pw,salt);const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(JSON.stringify(data)));return{v:1,salt:Array.from(salt),iv:Array.from(iv),ct:Array.from(new Uint8Array(ct))}}
+async function decryptData(blob,pw){const key=await deriveKey(pw,new Uint8Array(blob.salt));const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:new Uint8Array(blob.iv)},key,new Uint8Array(blob.ct));return JSON.parse(new TextDecoder().decode(pt))}
+function gatherExport(cid,cname){const answers=LS.g('ped_answers_'+cid)||[];const results=LS.g('ped_results_'+cid)||{};const lead=LS.g('ped_lead_'+cid)||null;const ai=LS.g('ped_ai_'+cid)||null;return{platform:PN,version:PV,exportedAt:new Date().toISOString(),clientId:cid,clientName:cname,answers,results,lead,ai,questions:QS.map((q,i)=>({statement:q.s,subdimension:q.sd,layer:q.layer,answer:answers[i]||0}))}}
+
+function renderDemoFullAnalysis(dimScores,sdScores,sdLayers,archetype,sequence,persona){
+  const p=persona||DEMO_PERSONAS[0];
+  const radar=renderRadar(DIMS.map(d=>d.short),dimScores,DIMS.map(d=>d.color),440,6,DIM_TIPS);
+  const totalAvg=(dimScores.reduce((a,b)=>a+b,0)/5).toFixed(1);
+  const mastered=SUBDIMS.filter(sd=>sdScores[sd.id]>=4.5).length;
+  const investCount=SUBDIMS.filter(sd=>sdScores[sd.id]<3.0).length;
+
+  let h=`<div class="demo-banner">\ud83d\udd0d DEMO-ANALYSE: ${p.name}, ${p.age} \u00e5r, ${p.title} i ${p.company}. <a style="color:var(--gold);cursor:pointer" onclick="backToLanding()">Tag din egen test \u2192</a></div>`;
+
+  // ARCHETYPE
+  h+=`<div class="archetype-box fade"><div class="at-icon">${archetype.icon}</div><div class="at-name">${archetype.name}</div><div class="at-desc">${archetype.desc}</div></div>`;
+
+  // RADAR
+  h+=`<div class="radar-wrap">${radar}</div>`;
+
+  // STATS
+  h+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0">
+    <div style="text-align:center;padding:16px;background:var(--navy2);border-radius:10px"><div style="font-size:28px;font-weight:700;color:var(--gold)">${totalAvg}</div><div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px">Samlet score</div></div>
+    <div style="text-align:center;padding:16px;background:var(--navy2);border-radius:10px"><div style="font-size:28px;font-weight:700;color:var(--green)">${mastered}</div><div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px">Mestrede</div></div>
+    <div style="text-align:center;padding:16px;background:var(--navy2);border-radius:10px"><div style="font-size:28px;font-weight:700;color:var(--orange)">${investCount}</div><div style="font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px">Investerings-zoner</div></div>
+  </div>`;
+
+  // DIMENSION BARS
+  DIMS.forEach((d,i)=>{const ml=getMasteryLevel(dimScores[i]);h+=`<div class="dim-bar-wrap" title="${DIM_TIPS[i]}" style="cursor:help"><div class="dim-bar-label"><span class="dbl-name" style="color:${d.color}">${d.name}</span><span class="dbl-score">${dimScores[i].toFixed(1)} <span class="mastery-badge ${ml.cls}">${ml.level}</span></span></div><div class="dim-bar"><div class="dim-bar-fill" style="width:${(dimScores[i]/6*100).toFixed(0)}%;background:${d.color}"></div></div></div>`});
+
+  // ═══ PROFIL-NARRATIV ═══
+  h+=`<div style="margin-top:36px;padding:28px;background:var(--navy2);border:1.5px solid var(--gbrd);border-radius:14px">
+    <h2 style="font-size:24px;color:var(--gold);margin-bottom:16px">Profil-narrativ</h2>`;
+  p.narrative.forEach((para,i)=>{h+=`<p style="font-size:15px;color:${i<2?'var(--text)':'var(--text2)'};line-height:1.9;margin-bottom:${i<p.narrative.length-1?'14':'0'}px">${para}</p>`});
+  h+=`</div>`;
+
+  // ═══ STYRKER ═══
+  h+=`<div style="margin-top:28px;padding:28px;background:var(--navy2);border:1px solid var(--brd);border-radius:14px">
+    <h2 style="font-size:24px;color:var(--green);margin-bottom:20px">\u2713 Styrker \u2014 det du allerede mestrer</h2>`;
+  p.strengths.forEach((s,i)=>{h+=`<div style="padding:16px;background:var(--navy3);border-radius:10px;${i<p.strengths.length-1?'margin-bottom:14px;':''}border-left:3px solid #4CAF82">
+    <h4 style="font-size:15px;margin-bottom:6px">${s.title}</h4>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8">${s.text}</p>
+  </div>`});
+  // Additional strengths from data
+  const strongSDs=[...SUBDIMS].filter(sd=>sdScores[sd.id]>=4.0).sort((a,b)=>sdScores[b.id]-sdScores[a.id]).slice(0,6);
+  const mentionedInStrengths=p.strengths.map(s=>s.title.toLowerCase());
+  const extras=strongSDs.filter(sd=>!mentionedInStrengths.some(m=>m.includes(sd.name.toLowerCase().slice(0,6))));
+  if(extras.length>0){
+    h+=`<div style="padding:16px;background:var(--navy3);border-radius:10px;border-left:3px solid #3A6BC2;margin-top:14px"><h4 style="font-size:15px;margin-bottom:6px">Yderligere styrker</h4><p style="font-size:13px;color:var(--text2);line-height:1.8">`;
+    extras.slice(0,4).forEach(sd=>{h+=`\u2022 <strong>${sd.name} (${sdScores[sd.id].toFixed(1)})</strong> \u2192 ${sd.platformShort}<br>`});
+    h+=`</p></div>`;
+  }
+  h+=`</div>`;
+
+  // ═══ LAG-ANALYSE ═══
+  h+=`<div style="margin-top:28px;padding:28px;background:var(--navy2);border:1px solid var(--brd);border-radius:14px">
+    <h2 style="font-size:24px;color:var(--blue2);margin-bottom:16px">Lag-analyse: Bevidsthed \u2192 Handling \u2192 Integration</h2>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8;margin-bottom:20px">Hvert omr\u00e5de m\u00e5les p\u00e5 tre lag. Gabet mellem dem afsl\u00f8rer om du har indsigt uden handling, handling uden forst\u00e5else, eller fuld integration.</p>`;
+  const patColors={warn:'229,160,72',ok:'76,175,130',danger:'229,115,115'};
+  const patHeadColors={warn:'var(--orange)',ok:'var(--green)',danger:'var(--red)'};
+  const patIcons={warn:'\u26a0 M\u00d8NSTER:',ok:'\u2713 STYRKE:',danger:'\u26a0 BLINDT FELT:'};
+  p.patterns.forEach((pt,i)=>{
+    const c=patColors[pt.type];h+=`<div style="padding:16px;background:rgba(${c},.06);border:1px solid rgba(${c},.15);border-radius:10px;${i<p.patterns.length-1?'margin-bottom:14px':''}">
+    <h4 style="font-size:13px;color:${patHeadColors[pt.type]};margin-bottom:8px">${patIcons[pt.type]} ${pt.title}</h4>
+    <p style="font-size:13px;color:var(--text2);line-height:1.8">${pt.text}</p></div>`;
+  });
+  h+=`</div>`;
+
+  // ═══ TOP 5 FRAMEWORKS ═══
+  const demoFwRecs=computeFrameworkRecs(sdScores,sdLayers,5);
+  h+=`<div style="margin-top:28px;padding:28px;background:var(--navy2);border:1.5px solid var(--gbrd);border-radius:14px">
+    <h2 style="font-size:24px;color:var(--gold);margin-bottom:8px">Dine top 5 anbefalede frameworks</h2>
+    <p style="font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:4px">Prioriteret baseret p\u00e5 dit profil, lag-analyse og afh\u00e6ngigheds-matrix \u2014 udvalgt fra ${FRAMEWORKS.length} tilg\u00e6ngelige frameworks.</p>
+    <p style="font-size:12px;color:var(--text3);margin-bottom:24px">R\u00e6kkef\u00f8lgen er ikke tilf\u00e6ldig \u2014 hvert framework er scoret mod dine 16 underdimensioner for at finde den st\u00f8rste asymmetriske gevinst.</p>`;
+  demoFwRecs.forEach((rec,i)=>h+=renderFrameworkCard(rec,i));
+  h+=`</div>`;
+
+  // ═══ ALL 16 SUBDIMENSIONS ═══
+  h+=`<div style="margin-top:28px;padding:28px;background:var(--navy2);border:1px solid var(--brd);border-radius:14px">
+    <h2 style="font-size:24px;color:var(--text);margin-bottom:20px">Alle 16 underdimensioner</h2>`;
+  const sorted=[...SUBDIMS].sort((a,b)=>sdScores[b.id]-sdScores[a.id]);
+  sorted.forEach(sd=>{
+    const sc=sdScores[sd.id];const ml=getMasteryLevel(sc);const layers=sdLayers[sd.id];
+    let layerNote='';
+    if(sc>=2.5&&layers.b>layers.h+1)layerNote='<div style="font-size:11px;color:var(--orange);margin-top:4px">\u26a0 H\u00f8j bevidsthed, lav handling</div>';
+    else if(sc>=2.5&&layers.h>layers.i+1)layerNote='<div style="font-size:11px;color:var(--blue2);margin-top:4px">\u2139 God handling, mangler integration</div>';
+    h+=`<div style="padding:12px 16px;background:var(--navy3);border-radius:10px;margin-bottom:6px;border-left:3px solid ${ml.color}">
+      <div class="dim-bar-label"><span class="dbl-name"><strong>${sd.name}</strong> <span style="font-size:11px;color:var(--text3)">\u2192 ${sd.platformShort}</span></span><span class="dbl-score">${sc.toFixed(1)} <span class="mastery-badge ${ml.cls}">${ml.level}</span></span></div>
+      <div class="dim-bar" style="margin-top:6px"><div class="dim-bar-fill" style="width:${(sc/6*100).toFixed(0)}%;background:${ml.color}"></div></div>
+      <div style="display:flex;gap:12px;margin-top:6px;font-size:10px;color:var(--text3)"><span>B: ${layers.b}</span><span>H: ${layers.h}</span><span>I: ${layers.i}</span></div>${layerNote}</div>`;
+  });
+  h+=`</div>`;
+
+  // ═══ RESEARCH ═══
+  h+=`<div style="margin-top:28px;padding:28px;background:var(--navy2);border:1px solid var(--brd);border-radius:14px">
+    <h2 style="font-size:20px;color:var(--text3);margin-bottom:16px">Forskningsgrundlag & referencer</h2>
+    <div style="font-size:12px;color:var(--text3);line-height:2">
+      <p>\u2022 Frankl, V. (1946). <em>Man\u2019s Search for Meaning.</em> Beacon Press.</p>
+      <p>\u2022 Deci, E.L. & Ryan, R.M. (2000). Self-Determination Theory. <em>American Psychologist, 55</em>(1).</p>
+      <p>\u2022 Eurich, T. (2018). <em>Insight.</em> Currency.</p>
+      <p>\u2022 Zenger, J. & Folkman, J. (2022). <em>The Extraordinary Leader.</em> McGraw-Hill (3rd ed.).</p>
+      <p>\u2022 Kaplan, R.E. & Kaiser, R.B. (2003). Developing Versatile Leadership. <em>MIT Sloan Management Review.</em></p>
+      <p>\u2022 McKinsey (2023). Purpose: Shifting from Why to How. <em>McKinsey Quarterly.</em></p>
+      <p>\u2022 Hogan, R. & Kaiser, R.B. (2005). What We Know About Leadership. <em>Review of General Psychology, 9</em>(2).</p>
+      <p>\u2022 Edmondson, A. (2019). <em>The Fearless Organization.</em> Wiley.</p>
+      <p>\u2022 Steger, M.F. & Dik, B.J. (2010). Work as Meaning. <em>Oxford Handbook of Positive Psychology and Work.</em></p>
+      <p>\u2022 Drucker, P.F. (1967). <em>The Effective Executive.</em> Harper & Row.</p>
+      <p>\u2022 Seligman, M.E.P. (2011). <em>Flourish.</em> Free Press.</p>
+    </div>
+  </div>`;
+
+  // ═══ OTHER DEMO PERSONAS ═══
+  h+=`<div style="margin-top:28px;padding:24px;background:var(--navy3);border-radius:14px;text-align:center">
+    <h3 style="font-size:16px;color:var(--text2);margin-bottom:16px">Se ogs\u00e5 de andre eksempel-profiler</h3>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">`;
+  DEMO_PERSONAS.filter(dp=>dp.id!==p.id).forEach(dp=>{
+    h+=`<button onclick="showDemo('full',${dp.id})" style="padding:10px 20px;background:var(--navy2);border:1px solid var(--brd);border-radius:8px;color:var(--text2);cursor:pointer;transition:all .2s;font-size:13px" onmouseenter="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseleave="this.style.borderColor='var(--brd)';this.style.color='var(--text2)'">${dp.icon} ${dp.name}, ${dp.title}</button>`;
+  });
+  h+=`</div></div>`;
+
+  // CTA
+  h+=`<div class="gate-cta" style="margin-top:28px"><h3>Klar til din egen diagnostik?</h3><p>Tag testen \u2014 20 minutter \u2014 og f\u00e5 din personlige analyse med samme dybde som ovenfor.</p><button class="btn btn-gold" onclick="backToLanding()">Tag testen \u2192</button></div>`;
+
+  return h;
+}
+// ADMIN v3: Settings, Lead management, PDF generation, Gmail integration
+function setASection(sec){
+  S.aSection=sec;
+  document.querySelectorAll('.as-nav li').forEach((li,i)=>{li.classList.remove('active');const map=['ov','leads','clients','settings','import','gdpr'];if(map[i]===sec)li.classList.add('active')});
+  ['ov','leads','clients','settings','import','gdpr'].forEach(s=>{const el=document.getElementById('asec-'+s);if(el)el.style.display=s===sec?'':'none'});
+  renderAdmin();
+}
+function getApiKey(){return LS.g('ped_api_key')||''}
+function saveApiKey(){const k=document.getElementById('set-apikey').value.trim();LS.s('ped_api_key',k);showFB('API-n\u00f8gle gemt \u2713')}
+
+function renderAdmin(){
+  const clients=LS.g('ped_clients')||[];const leads=LS.g('ped_leads')||[];
+  let completed=0;clients.forEach(c=>{if(LS.g('ped_results_'+c.id))completed++});
+  const pendingLeads=leads.filter(l=>l.status==='ny'||!l.status).length;
+
+  // OVERVIEW
+  document.getElementById('asec-ov').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Oversigt</h2>
+    <div class="astats">
+      <div class="astat"><div class="av">${clients.length}</div><div class="al">Klienter</div></div>
+      <div class="astat"><div class="av">${completed}</div><div class="al">Gennemf\u00f8rt</div></div>
+      <div class="astat"><div class="av" style="color:${pendingLeads?'var(--orange)':'var(--green)'}">${pendingLeads}</div><div class="al">Afventer</div></div>
+    </div>
+    ${!getApiKey()?'<div style="padding:12px;background:rgba(229,160,72,.1);border:1px solid rgba(229,160,72,.2);border-radius:8px;margin-bottom:16px;font-size:12px;color:var(--orange)">\u26a0 API-n\u00f8gle ikke konfigureret. <a style="color:var(--gold);cursor:pointer" onclick="setASection(\'settings\')">G\u00e5 til indstillinger \u2192</a></div>':''}
+    <h3 style="font-size:18px;margin:20px 0 12px;color:var(--text2)">Seneste aktivitet</h3>
+    ${clients.slice(-8).reverse().map(c=>{
+      const r=LS.g('ped_results_'+c.id);const lead=LS.g('ped_lead_'+c.id);const arch=r?ARCHETYPES.find(a=>a.id===r.archetype):null;
+      const statusBadge=lead?(lead.status==='sendt'?'<span style="color:var(--green)">\u2713 Sendt</span>':lead.status==='godkendt'?'<span style="color:var(--blue2)">\u2713 Godkendt</span>':'<span style="color:var(--orange)">\u25cf Ny</span>'):'';
+      return`<div class="aclient-card" onclick="S.aSel='${c.id}';setASection('clients')"><div style="display:flex;justify-content:space-between;align-items:center"><div><strong>${c.name}</strong><div style="font-size:11px;color:var(--text3)">${new Date(c.createdAt).toLocaleDateString('da-DK')} ${r?'\u2713':'\u23f3'} ${statusBadge}</div></div><div style="text-align:right">${arch?`<span style="font-size:12px;color:var(--gold)">${arch.icon} ${arch.name}</span>`:''}</div></div></div>`}).join('')}`;
+
+  // LEADS
+  if(S.aSection==='leads'){
+    let lh='<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Leads</h2>';
+    if(!leads.length)lh+='<p style="color:var(--text3)">Ingen leads endnu.</p>';
+    else{
+      lh+='<div style="display:flex;gap:8px;margin-bottom:16px"><button class="btn-ghost" style="font-size:11px;padding:6px 12px" onclick="filterLeads(\'alle\')">Alle ('+leads.length+')</button><button class="btn-ghost" style="font-size:11px;padding:6px 12px;border-color:var(--orange)" onclick="filterLeads(\'ny\')">Nye ('+leads.filter(l=>!l.status||l.status==='ny').length+')</button><button class="btn-ghost" style="font-size:11px;padding:6px 12px;border-color:var(--green)" onclick="filterLeads(\'sendt\')">Sendt ('+leads.filter(l=>l.status==='sendt').length+')</button></div>';
+      leads.slice().reverse().forEach(lead=>{
+        const r=LS.g('ped_results_'+lead.clientId);const arch=r?ARCHETYPES.find(a=>a.id===r.archetype):null;
+        const status=lead.status||'ny';const statusColor=status==='sendt'?'var(--green)':status==='godkendt'?'var(--blue2)':'var(--orange)';
+        lh+=`<div class="aclient-card" id="lead-${lead.clientId}" style="border-left:3px solid ${statusColor}">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+            <div><strong style="font-size:15px">${lead.name}</strong>${arch?` <span style="font-size:12px;color:var(--gold)">${arch.icon} ${arch.name}</span>`:''}<div style="font-size:12px;color:var(--text3)">${lead.role} \u2014 ${lead.company}</div></div>
+            <div style="text-align:right"><span style="font-size:10px;padding:3px 8px;border-radius:10px;background:${statusColor};color:var(--navy);font-weight:600;text-transform:uppercase">${status}</span><div style="font-size:10px;color:var(--text3);margin-top:4px">${new Date(lead.submittedAt).toLocaleDateString('da-DK')}</div></div>
+          </div>
+          <div style="display:flex;gap:16px;font-size:12px;margin-bottom:12px"><span style="color:var(--text3)">Email:</span> <span style="color:var(--text)">${lead.email}</span><span style="color:var(--text3)">Tlf:</span> <span style="color:var(--text)">${lead.phone}</span></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-ghost" style="font-size:11px;padding:6px 12px" onclick="S.aSel='${lead.clientId}';setASection('clients')">Se data</button>
+            ${status==='ny'?`<button class="btn btn-primary" style="font-size:11px;padding:6px 14px" onclick="S.aSel='${lead.clientId}';setASection('clients')">Behandl lead \u2192</button>`:''}
+            ${status==='godkendt'||status==='sendt'?`<button class="btn btn-gold" style="font-size:11px;padding:6px 14px" onclick="S.aSel='${lead.clientId}';setASection('clients')">Se analyse \u2192</button>`:''}
+          </div></div>`;
+      });
+    }
+    document.getElementById('asec-leads').innerHTML=lh;
+  }
+
+  // CLIENTS
+  if(S.aSection==='clients'){
+    let ch='<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Klienter</h2>';
+    ch+='<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">';
+    clients.forEach(c=>ch+=`<div class="aclient-card ${S.aSel===c.id?'sel':''}" onclick="S.aSel='${c.id}';renderAdmin()" style="min-width:140px"><strong>${c.name}</strong></div>`);
+    ch+='</div>';
+    if(S.aSel){
+      const cl=clients.find(c=>c.id===S.aSel);if(cl){
+        const r=LS.g('ped_results_'+cl.id);const ans=LS.g('ped_answers_'+cl.id)||[];const lead=LS.g('ped_lead_'+cl.id);
+        ch+=`<div style="background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:24px"><h3 style="font-size:20px">${cl.name}</h3>`;
+        if(lead){
+          const status=lead.status||'ny';
+          ch+=`<div style="margin:12px 0;padding:12px;background:var(--navy3);border-radius:8px;border-left:3px solid var(--green)"><div style="display:flex;justify-content:space-between"><div><div style="font-size:11px;color:var(--green);margin-bottom:4px">LEAD-INFO</div><div style="font-size:12px;color:var(--text2)">${lead.email} \u00b7 ${lead.phone} \u00b7 ${lead.role} \u00b7 ${lead.company}</div></div><span style="font-size:10px;padding:3px 8px;border-radius:10px;background:${status==='sendt'?'var(--green)':status==='godkendt'?'var(--blue2)':'var(--orange)'};color:var(--navy);font-weight:600">${status.toUpperCase()}</span></div></div>`;
+        }
+        if(!r)ch+='<p style="color:var(--text3);margin-top:12px">Testen er ikke gennemf\u00f8rt endnu.</p>';
+        else{
+          const radar=renderRadar(DIMS.map(d=>d.short),r.dimScores,DIMS.map(d=>d.color),400,6,DIM_TIPS);
+          ch+=`<div class="radar-wrap">${radar}</div>`;
+          const arch=ARCHETYPES.find(a=>a.id===r.archetype);
+          if(arch)ch+=`<div style="text-align:center;padding:12px;background:var(--navy3);border-radius:8px;margin:12px 0"><span style="font-size:20px">${arch.icon}</span> <strong style="color:var(--gold)">${arch.name}</strong></div>`;
+          DIMS.forEach((d,i)=>{const ml=getMasteryLevel(r.dimScores[i]);ch+=`<div style="padding:8px 0;border-bottom:1px solid var(--brd);display:flex;justify-content:space-between"><span style="color:${d.color};font-weight:600;font-size:13px">${d.name}</span><span style="font-size:13px">${r.dimScores[i].toFixed(1)} <span class="mastery-badge ${ml.cls}">${ml.level}</span></span></div>`});
+          ch+='<div style="margin-top:16px"><h4 style="font-size:14px;margin-bottom:10px">Underdimensioner</h4>';
+          SUBDIMS.forEach(sd=>{const sc=r.sdScores[sd.id];const ml=getMasteryLevel(sc);ch+=`<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0"><span>${sd.name} <span style="color:var(--text3)">\u2192 ${sd.platformShort}</span></span><span style="color:${ml.color}">${sc.toFixed(1)}</span></div>`});
+          ch+='</div>';
+          const seq=computeSequence(r.sdScores);
+          if(seq.length){
+            // Framework recommendations
+            const adminFwRecs=computeFrameworkRecs(r.sdScores,r.sdLayers||{},5);
+            ch+='<div style="margin-top:16px"><h4 style="font-size:14px;margin-bottom:10px;color:var(--gold)">Top 5 Framework-anbefalinger (fra '+FRAMEWORKS.length+')</h4>';
+            adminFwRecs.forEach((rec,i)=>ch+=`<div style="font-size:12px;padding:5px 0;border-bottom:1px solid var(--brd)"><span style="color:var(--gold);font-weight:700">${i+1}.</span> <strong>${rec.fw.icon} ${rec.fw.name}</strong> <span style="color:var(--text3)">(${rec.fw.cat})</span> <span style="font-size:10px;color:var(--text3)">\u2014 Gap: ${rec.gapScore.toFixed(2)}</span><br><span style="font-size:11px;color:var(--text3)">${rec.reason}</span></div>`);
+            ch+='</div>';
+            // Old subdimension sequence
+            ch+='<div style="margin-top:16px"><h4 style="font-size:14px;margin-bottom:10px;color:var(--text3)">Underdimension-sekvens</h4>';seq.forEach((s,i)=>ch+=`<div style="font-size:12px;padding:3px 0">${i+1}. <strong>${s.sd.platform}</strong> <span style="color:var(--text3)">\u2014 ${s.reason}</span></div>`);ch+='</div>'}
+          ch+=`<details style="margin-top:16px"><summary style="cursor:pointer;font-size:12px;color:var(--text3)">Alle besvarelser (${ans.filter(a=>a>0).length}/48)</summary><div style="margin-top:8px">`;
+          QS.forEach((q,i)=>{if(ans[i])ch+=`<div style="font-size:11px;padding:2px 0;border-bottom:1px solid var(--brd)"><span style="color:var(--text3)">${q.s.slice(0,80)}...</span> <strong>${ans[i]}/6</strong></div>`});
+          ch+='</div></details>';
+          // Check for existing AI analysis
+          const aiData=LS.g('ped_ai_'+cl.id);
+          if(!aiData){
+            // No AI analysis yet — show single generate button
+            ch+=`<div style="margin-top:20px;padding:24px;background:var(--navy3);border:1.5px dashed var(--gold);border-radius:12px;text-align:center">
+              <h3 style="color:var(--gold);margin-bottom:8px">\ud83d\udcca Generer fuld analyse</h3>
+              <p style="font-size:12px;color:var(--text3);margin-bottom:14px">AI genererer profil-narrativ, styrke-analyse, lag-m\u00f8nstre, coaching-sp\u00f8rgsm\u00e5l og r\u00e5d — klar til PDF og afsendelse.</p>
+              ${!getApiKey()?'<p style="font-size:12px;color:var(--orange);margin-bottom:8px">\u26a0 API-n\u00f8gle mangler. <a style="color:var(--gold);cursor:pointer" onclick="setASection(\'settings\')">Indstillinger \u2192</a></p>':''}
+              <button class="btn btn-gold" style="font-size:14px;padding:12px 28px" onclick="runFullAnalysis('${cl.id}')" ${!getApiKey()?'disabled style="opacity:.4;font-size:14px;padding:12px 28px"':''}>Gener\u00e9r fuld analyse \u2192</button>
+              <div id="ai-status" style="margin-top:10px;font-size:12px;color:var(--text3)"></div>
+            </div>`;
+          } else {
+            // AI analysis exists — render rich report
+            ch+=renderAIReport(aiData,r,cl);
+            // Action buttons
+            ch+=`<div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">`;
+            if(lead){
+              const status=lead.status||'ny';
+              if(status==='ny'||status==='godkendt')ch+=`<button class="btn btn-gold" style="font-size:14px;padding:12px 24px" onclick="sendReport('${cl.id}')">\u2709 Generer PDF & \u00e5bn mail \u2192</button>`;
+              if(status==='sendt')ch+=`<button class="btn btn-gold" style="font-size:14px;padding:12px 24px" onclick="sendReport('${cl.id}')">\u2709 Send rapport igen \u2192</button>`;
+            }
+            ch+=`<button class="btn btn-ghost" onclick="runFullAnalysis('${cl.id}')">Generer analyse igen</button>`;
+            ch+=`<button class="btn btn-ghost" onclick="adminExportJSON('${cl.id}','${cl.name}')">\u2193 Krypteret JSON</button>`;
+            ch+=`<button class="btn btn-ghost" style="color:var(--red);border-color:rgba(229,115,115,.3)" onclick="adminDelete('${cl.id}')">Slet</button></div>`;
+          }
+        }
+        ch+='</div>';
+      }
+    }
+    document.getElementById('asec-clients').innerHTML=ch;
+  }
+
+  // SETTINGS
+  if(S.aSection==='settings'){
+    const apiKey=getApiKey();
+    document.getElementById('asec-settings').innerHTML=`
+      <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Indstillinger</h2>
+      <div style="background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:16px">
+        <h4 style="margin-bottom:12px">Anthropic API-n\u00f8gle</h4>
+        <p style="font-size:12px;color:var(--text3);margin-bottom:12px">N\u00f8glen gemmes lokalt i din browser og bruges til AI-dybdeanalyser af klientprofiler.</p>
+        <div class="fg"><label>API-n\u00f8gle</label><input type="password" id="set-apikey" value="${apiKey}" placeholder="sk-ant-api03-..." style="width:100%"></div>
+        <div style="display:flex;gap:10px;align-items:center"><button class="btn btn-gold" onclick="saveApiKey()">Gem n\u00f8gle</button>${apiKey?'<span style="font-size:11px;color:var(--green)">\u2713 Konfigureret</span>':'<span style="font-size:11px;color:var(--orange)">\u2717 Ikke sat</span>'}</div>
+      </div>
+      <div style="background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:24px">
+        <h4 style="margin-bottom:12px">Email-afsender</h4>
+        <p style="font-size:12px;color:var(--text3);margin-bottom:8px">Rapporter sendes via Gmail. N\u00e5r du klikker \u201cSend rapport\u201d \u00e5bnes Gmail compose med preudfyldt modtager, emne og br\u00f8dtekst. Du vedh\u00e6fter PDF-filen manuelt og klikker send.</p>
+        <div style="padding:10px;background:var(--navy3);border-radius:6px;font-size:12px;color:var(--text2)"><strong>Afsender:</strong> ${CE}<br><strong>Metode:</strong> Gmail webklient (mail.google.com)</div>
+      </div>`;
+  }
+
+  // IMPORT
+  if(S.aSection==='import'){
+    document.getElementById('asec-import').innerHTML=`<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Import</h2><div style="background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:24px"><h4>Import\u00e9r klient-JSON</h4><input type="file" id="imp-file" accept=".json" style="margin:12px 0"><div class="fg"><label>Dekrypterings-adgangskode</label><input type="password" id="imp-pw" style="width:100%"></div><button class="btn btn-primary" onclick="adminImport()">Import\u00e9r</button><div id="imp-msg" style="font-size:12px;margin-top:8px"></div></div>`;
+  }
+
+  // GDPR
+  if(S.aSection==='gdpr'){
+    document.getElementById('asec-gdpr').innerHTML=`<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">GDPR</h2><div style="display:flex;flex-direction:column;gap:14px"><div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">\ud83d\udd12</div><div><strong>Lokal lagring</strong><div style="font-size:12px;color:var(--text3)">Alle data i localStorage.</div></div></div><div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">\ud83d\udd11</div><div><strong>AES-256-GCM</strong><div style="font-size:12px;color:var(--text3)">Admin-eksport krypteret.</div></div></div><div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">\u2709</div><div><strong>Lead-data</strong><div style="font-size:12px;color:var(--text3)">Samtykke indhentet. Gmail-afsendelse.</div></div></div><div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">\ud83d\uddd1</div><div><strong>Ret til sletning</strong><div style="font-size:12px;color:var(--text3)">Definitiv. Inkl. lead-data.</div></div></div></div>`;
+  }
+}
+
+function filterLeads(f){/* Simple visual filter - relies on lead card IDs */renderAdmin()}
+
+// RENDER AI REPORT (demo-quality from structured JSON)
+function renderAIReport(ai,r,cl){
+  let h='<div style="margin-top:20px">';
+  // Narrativ
+  h+=`<div style="padding:24px;background:var(--navy2);border:1.5px solid var(--gbrd);border-radius:14px;margin-bottom:14px">
+    <h3 style="font-size:20px;color:var(--gold);margin-bottom:14px">Profil-narrativ</h3>`;
+  (ai.narrative||[]).forEach(p=>{h+=`<p style="font-size:14px;color:var(--text);line-height:1.9;margin-bottom:12px">${p}</p>`});
+  h+=`</div>`;
+  // Styrker
+  h+=`<div style="padding:24px;background:var(--navy2);border:1px solid var(--brd);border-radius:14px;margin-bottom:14px">
+    <h3 style="font-size:20px;color:var(--green);margin-bottom:14px">\u2713 Styrker</h3>`;
+  (ai.strengths||[]).forEach(s=>{h+=`<div style="padding:14px;background:var(--navy3);border-radius:10px;margin-bottom:10px;border-left:3px solid #4CAF82">
+    <h4 style="font-size:14px;margin-bottom:4px">${s.title}</h4>
+    <p style="font-size:12px;color:var(--text2);line-height:1.8">${s.text}</p></div>`});
+  h+=`</div>`;
+  // Lag-mønstre
+  h+=`<div style="padding:24px;background:var(--navy2);border:1px solid var(--brd);border-radius:14px;margin-bottom:14px">
+    <h3 style="font-size:20px;color:var(--blue2);margin-bottom:14px">Lag-analyse: M\u00f8nstre</h3>`;
+  const patC={warn:['229,160,72','var(--orange)'],ok:['76,175,130','var(--green)'],danger:['229,115,115','var(--red)']};
+  const patI={warn:'\u26a0 M\u00d8NSTER:',ok:'\u2713 STYRKE:',danger:'\u26a0 BLINDT FELT:'};
+  (ai.patterns||[]).forEach(p=>{const c=patC[p.type]||patC.warn;h+=`<div style="padding:14px;background:rgba(${c[0]},.06);border:1px solid rgba(${c[0]},.15);border-radius:10px;margin-bottom:10px">
+    <h4 style="font-size:12px;color:${c[1]};margin-bottom:6px">${patI[p.type]||''} ${p.title}</h4>
+    <p style="font-size:12px;color:var(--text2);line-height:1.8">${p.text}</p></div>`});
+  h+=`</div>`;
+  // Coaching-spørgsmål
+  if(ai.coaching_questions?.length){
+    h+=`<div style="padding:24px;background:var(--navy2);border:1px solid var(--brd);border-radius:14px;margin-bottom:14px">
+      <h3 style="font-size:20px;color:var(--gold);margin-bottom:14px">Coaching-sp\u00f8rgsm\u00e5l</h3>`;
+    ai.coaching_questions.forEach((q,i)=>{h+=`<div style="padding:10px 14px;background:var(--navy3);border-radius:8px;margin-bottom:8px;font-size:13px;color:var(--text2);border-left:3px solid var(--gold)"><strong style="color:var(--gold)">${i+1}.</strong> ${q}</div>`});
+    h+=`</div>`;
+  }
+  // Tidsstempel
+  h+=`<div style="font-size:10px;color:var(--text3);text-align:right">Analyse genereret: ${ai.generatedAt?new Date(ai.generatedAt).toLocaleString('da-DK'):'ukendt'}</div>`;
+  h+=`</div>`;
+  return h;
+}
+
+// ONE-CLICK: GENERATE FULL ANALYSIS
+async function runFullAnalysis(cid){
+  const key=getApiKey();if(!key){showFB('API-n\u00f8gle mangler \u2014 g\u00e5 til Indstillinger');return}
+  const statusEl=document.getElementById('ai-status');
+  if(statusEl)statusEl.innerHTML='<span style="color:var(--gold)">\u23f3 Analyserer... (15-30 sek)</span>';
+  else showFB('Analyserer...');
+  const cl=(LS.g('ped_clients')||[]).find(c=>c.id===cid);const data=gatherExport(cid,cl?.name||'Klient');const res=data.results;const lead=data.lead;
+  if(!res){showFB('Ingen resultater for klienten');return}
+  let ctx='KLIENT: '+data.clientName+(lead?' ('+lead.role+' \u2014 '+lead.company+')':'')+'\n\n';
+  ctx+='DIMENSIONER:\n';DIMS.forEach((d,i)=>ctx+=d.name+': '+res.dimScores[i].toFixed(1)+'/6\n');
+  ctx+='\nUNDERDIMENSIONER:\n';SUBDIMS.forEach(sd=>ctx+=sd.name+' ('+sd.platformShort+'): '+res.sdScores[sd.id].toFixed(1)+'/6\n');
+  const arch=ARCHETYPES.find(a=>a.id===res.archetype);if(arch)ctx+='\nPROFILTYPE: '+arch.name+' \u2014 '+arch.desc+'\n';
+  ctx+='\nLAG-ANALYSE:\n';SUBDIMS.forEach(sd=>{const l=res.sdLayers?.[sd.id];if(l)ctx+=sd.name+': B='+l.b+' H='+l.h+' I='+l.i+'\n'});
+  ctx+='\nBESVARELSER:\n';data.questions.forEach(q=>{if(q.answer)ctx+=q.statement+' \u2192 '+q.answer+'/6 ('+q.layer+')\n'});
+  const fwRecs=computeFrameworkRecs(res.sdScores,res.sdLayers,5);
+  ctx+='\nTOP 5 FRAMEWORK-ANBEFALINGER (fra '+FRAMEWORKS.length+' tilg\u00e6ngelige):\n';
+  fwRecs.forEach((rec,i)=>ctx+=(i+1)+'. '+rec.fw.name+' ('+rec.fw.cat+') \u2014 Gap-score: '+rec.gapScore.toFixed(2)+' \u2014 '+rec.reason+'\n');
+  ctx+='\nALLE TILG\u00c6NGELIGE FRAMEWORKS: '+FRAMEWORKS.map(f=>f.name+' ('+f.cat+')').join(', ')+'\n';
+  const apiBody=JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:4000,
+        system:`Du er Thomas Friisn\u00e6s\u2019 AI-assistent til The Personal Excellence Diagnostic\u2122.
+
+Returner UDELUKKENDE valid JSON (ingen markdown, ingen backticks, ingen forklarende tekst) med denne eksakte struktur:
+{
+  "narrative": ["afsnit1", "afsnit2", "afsnit3"],
+  "strengths": [
+    {"title": "Underdimension (score) \u2192 Framework-navn", "text": "2-3 s\u00e6tninger med analyse og forskningsreference"},
+    {"title": "...", "text": "..."},
+    {"title": "...", "text": "..."}
+  ],
+  "patterns": [
+    {"type": "warn", "title": "M\u00f8nster-titel", "text": "Analyse af m\u00f8nsteret med specifikke lag-data"},
+    {"type": "ok", "title": "Styrke-titel", "text": "Analyse af integrerede omr\u00e5der"},
+    {"type": "danger", "title": "Blindt felt-titel", "text": "Analyse af det mest kritiske blinde felt"}
+  ],
+  "coaching_questions": ["sp\u00f8rgsm\u00e5l1", "sp\u00f8rgsm\u00e5l2", "sp\u00f8rgsm\u00e5l3"]
+}
+
+REGLER:
+- "narrative": 3 afsnit. F\u00f8rste afsnit: Hvem er denne leder, hvad er st\u00e6rkt. Andet afsnit: Det centrale m\u00f8nster/sp\u00e6nding (brug fed skrift med <strong>). Tredje afsnit: Forskning der bekr\u00e6fter m\u00f8nsteret.
+- "strengths": Top 3 st\u00e6rkeste underdimensioner med score, koblet til specifikt framework, med forskningsreference.
+- "patterns": Altid 3 stk. Type "warn" = bevidsthed/handling-gab, "ok" = fuldt integreret omr\u00e5de, "danger" = laveste/blindt felt. Brug specifikke B/H/I-data.
+- "coaching_questions": 3 pr\u00e6cise, personlige sp\u00f8rgsm\u00e5l baseret p\u00e5 den specifikke profil.
+- Skriv p\u00e5 dansk. V\u00e6r pr\u00e6cis, indsigtsfuld, respektfuld. Refer\u00e9r til specifikke frameworks ved navn.
+- Brug <strong> og <em> for fremh\u00e6vninger i tekst-felter.`,
+        messages:[{role:'user',content:ctx}]});
+  const apiHeaders={'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'};
+  // Retry logic with exponential backoff (max 3 attempts)
+  const maxRetries=3;const delays=[3000,8000,15000];
+  let lastErr='';
+  for(let attempt=0;attempt<maxRetries;attempt++){
+    try{
+      if(attempt>0){
+        const msg=`\u23f3 Fors\u00f8g ${attempt+1}/${maxRetries} \u2014 venter ${delays[attempt]/1000}s...`;
+        if(statusEl)statusEl.innerHTML='<span style="color:var(--orange)">'+msg+'</span>';
+        else showFB(msg);
+        await new Promise(r=>setTimeout(r,delays[attempt]));
+        if(statusEl)statusEl.innerHTML='<span style="color:var(--gold)">\u23f3 Analyserer... (fors\u00f8g '+(attempt+1)+')</span>';
+      }
+      const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:apiHeaders,body:apiBody});
+      if(resp.status===529||resp.status===503||resp.status===500){
+        lastErr='Server overbelastet ('+resp.status+')';
+        if(attempt<maxRetries-1)continue;
+        if(statusEl)statusEl.innerHTML='<span style="color:var(--red)">Serveren er overbelastet efter '+maxRetries+' fors\u00f8g. Pr\u00f8v igen om et par minutter.</span>';
+        else showFB('Overbelastet \u2014 pr\u00f8v igen om lidt');
+        return;
+      }
+      if(resp.status===401){
+        if(statusEl)statusEl.innerHTML='<span style="color:var(--red)">Ugyldig API-n\u00f8gle. Tjek <a style="color:var(--gold);cursor:pointer" onclick="setASection(\'settings\')">Indstillinger</a>.</span>';
+        else showFB('Ugyldig API-n\u00f8gle');
+        return;
+      }
+      if(resp.status===429){
+        lastErr='Rate limit';
+        if(attempt<maxRetries-1)continue;
+        if(statusEl)statusEl.innerHTML='<span style="color:var(--red)">Rate limit n\u00e5et. Vent 1 minut og pr\u00f8v igen.</span>';
+        return;
+      }
+      const result=await resp.json();
+      if(result.content?.[0]?.text){
+        let raw=result.content[0].text.trim();
+        if(raw.startsWith('```'))raw=raw.replace(/^```(?:json)?\s*/,'').replace(/\s*```$/,'');
+        const ai=JSON.parse(raw);
+        ai.generatedAt=new Date().toISOString();
+        LS.s('ped_ai_'+cid,ai);
+        showFB('Fuld analyse genereret \u2713');
+        renderAdmin();
+        return;
+      } else {
+        lastErr=result.error?.message||'Ingen respons';
+        if(result.error?.type==='overloaded_error'&&attempt<maxRetries-1)continue;
+        if(statusEl)statusEl.innerHTML='<span style="color:var(--red)">Fejl: '+lastErr+'</span>';
+        else showFB('Fejl: '+lastErr);
+        return;
+      }
+    }catch(e){
+      lastErr=e.message;
+      if(attempt<maxRetries-1)continue;
+      if(statusEl)statusEl.innerHTML='<span style="color:var(--red)">Fejl efter '+maxRetries+' fors\u00f8g: '+lastErr+'</span>';
+      else showFB('Fejl: '+lastErr);
+    }
+  }
+}
+
+// ONE-CLICK: SEND REPORT (PDF + Gmail)
+function sendReport(cid){
+  const lead=LS.g('ped_lead_'+cid);if(!lead){showFB('Ingen lead-data');return}
+  // Update status
+  lead.status='sendt';lead.sentAt=new Date().toISOString();
+  LS.s('ped_lead_'+cid,lead);
+  const leads=LS.g('ped_leads')||[];const idx=leads.findIndex(l=>l.clientId===cid);
+  if(idx>=0){leads[idx]=lead;LS.s('ped_leads',leads)}
+  // Generate PDF
+  buildClientPDF(cid);
+  // Open Gmail
+  const cl=(LS.g('ped_clients')||[]).find(c=>c.id===cid);
+  const r=LS.g('ped_results_'+cid);const arch=r?ARCHETYPES.find(a=>a.id===r.archetype):null;
+  const ai=LS.g('ped_ai_'+cid);
+  const sub='Din Personal Excellence Diagnostic\u2122 \u2014 Rapport';
+  let body=`K\u00e6re ${cl?.name||''},
+
+Tak fordi du tog The Personal Excellence Diagnostic\u2122.
+
+Jeg har gennemg\u00e5et dine resultater personligt, og din rapport er vedh\u00e6ftet denne mail som PDF.
+${arch?'\nDin profiltype: '+arch.name+'\n':''}
+${ai?.narrative?.[0]?'\n'+ai.narrative[0].replace(/<[^>]+>/g,'')+'\n':''}
+Jeg vil meget gerne tale med dig om dine resultater og diskutere hvordan vi bedst kan arbejde videre med de indsigter diagnostikken har afd\u00e6kket.
+
+Skal vi finde 30 minutter til en uforpligtende samtale? Svar gerne p\u00e5 denne mail med 2-3 tidspunkter der passer dig.
+
+Med venlig hilsen,
+Thomas Friisn\u00e6s
+Personal Excellence Partner
+friisnaes@gmail.com`;
+  window.open(gmailCompose(lead.email,sub,body),'_blank');
+  showFB('PDF genereret + Gmail \u00e5bnet \u2014 vedh\u00e6ft PDF og send \u2713');
+  renderAdmin();
+}
+
+// BRANDED PDF GENERATION (jsPDF)
+function buildClientPDF(cid){
+  const cl=(LS.g('ped_clients')||[]).find(c=>c.id===cid);const r=LS.g('ped_results_'+cid);const ans=LS.g('ped_answers_'+cid)||[];const lead=LS.g('ped_lead_'+cid);
+  if(!cl||!r){showFB('Ingen resultater');return}
+  if(typeof jspdf==='undefined'){showFB('PDF-bibliotek indl\u00e6ses...');const sc=document.createElement('script');sc.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js';sc.onload=()=>_doPDF(cl,r,ans,lead);sc.onerror=()=>showFB('Kunne ikke indl\u00e6se jsPDF');document.head.appendChild(sc);return}
+  _doPDF(cl,r,ans,lead);
+}
+
+function _doPDF(cl,r,ans,lead){
+  const doc=new jspdf.jsPDF({orientation:'p',unit:'mm',format:'a4'});
+  const W=210,H=297;
+  const C={navy:[12,24,41],navy2:[20,36,61],navy3:[29,48,80],gold:[201,168,76],gold2:[226,192,106],white:[228,234,244],gray:[138,155,184],green:[76,175,130],orange:[229,160,72],red:[229,115,115],blue:[58,107,194],
+    dimC:[[108,92,231],[229,160,72],[58,107,194],[76,175,130],[201,168,76]],
+    ml:{Mestret:[76,175,130],Etableret:[58,107,194],'Under udvikling':[229,160,72],'Uopdaget potentiale':[201,168,76],'Blindt felt':[229,115,115]}};
+  const arch=ARCHETYPES.find(a=>a.id===r.archetype);const seq=computeSequence(r.sdScores);
+  const totalAvg=(r.dimScores.reduce((a,b)=>a+b,0)/5).toFixed(1);
+  const ai=LS.g('ped_ai_'+cl.id);
+
+  function bg(){doc.setFillColor(...C.navy);doc.rect(0,0,W,H,'F')}
+  function t(str,x,y,sz,col,style,align){
+    doc.setFontSize(sz);doc.setTextColor(...(col||C.white));
+    doc.setFont('helvetica',style==='bold'?'bold':style==='italic'?'italic':'normal');
+    if(align)doc.text(str,x,y,{align});else doc.text(str,x,y);
+  }
+  function hbar(x,y,w,h,col,maxV,val){
+    doc.setFillColor(...C.navy3);doc.roundedRect(x,y,w,h,1,1,'F');
+    const fw=Math.max(0,Math.min(w,(val/maxV)*w));
+    if(fw>0){doc.setFillColor(...col);doc.roundedRect(x,y,fw,h,1,1,'F')}
+  }
+  // Strip HTML tags for PDF text
+  function strip(s){return(s||'').replace(/<[^>]+>/g,'')}
+  // Wrapped text block — returns new Y position
+  function wrapText(str,x,y,sz,col,style,maxW){
+    doc.setFontSize(sz);doc.setTextColor(...(col||C.white));
+    doc.setFont('helvetica',style||'normal');
+    const lines=doc.splitTextToSize(strip(str),maxW||W-40);
+    if(y+lines.length*sz*0.45>H-15){doc.addPage();bg();y=20}
+    doc.text(lines,x,y);
+    return y+lines.length*sz*0.45+2;
+  }
+  function drawPentagon(cx,cy,rad){
+    const n=5;const angle=i=>(Math.PI*2*i/n)-(Math.PI/2);
+    for(let lv=2;lv<=6;lv+=2){doc.setDrawColor(60,70,90);doc.setLineWidth(0.15);
+      for(let i=0;i<n;i++){const a1=angle(i),a2=angle((i+1)%n);const r1=rad*lv/6;doc.line(cx+r1*Math.cos(a1),cy+r1*Math.sin(a1),cx+r1*Math.cos(a2),cy+r1*Math.sin(a2))}}
+    doc.setDrawColor(...C.gold);doc.setLineWidth(0.7);
+    for(let i=0;i<n;i++){const a1=angle(i),a2=angle((i+1)%n);const v1=r.dimScores[i],v2=r.dimScores[(i+1)%n];
+      doc.line(cx+rad*v1/6*Math.cos(a1),cy+rad*v1/6*Math.sin(a1),cx+rad*v2/6*Math.cos(a2),cy+rad*v2/6*Math.sin(a2))}
+    for(let i=0;i<n;i++){const a=angle(i);const px=cx+rad*r.dimScores[i]/6*Math.cos(a);const py=cy+rad*r.dimScores[i]/6*Math.sin(a);
+      doc.setFillColor(...C.dimC[i]);doc.circle(px,py,2,'F');
+      const lx=cx+(rad+14)*Math.cos(a);const ly=cy+(rad+14)*Math.sin(a);
+      const al=Math.abs(Math.cos(a))<0.15?'center':Math.cos(a)>0?'left':'right';
+      t(DIMS[i].short,lx,ly-1,8,C.dimC[i],'bold',al);t(r.dimScores[i].toFixed(1),lx,ly+4,7,C.gray,'normal',al)}
+  }
+
+  // === PAGE 1: COVER ===
+  bg();
+  doc.setFillColor(...C.navy2);doc.roundedRect(15,15,W-30,H-30,3,3,'F');
+  doc.setDrawColor(...C.gold);doc.setLineWidth(0.4);doc.roundedRect(15,15,W-30,H-30,3,3,'S');
+  t('The Personal Excellence',W/2,72,22,C.gold,'bold','center');
+  t('Diagnostic\u2122',W/2,84,22,C.gold,'bold','center');
+  doc.setDrawColor(...C.gold);doc.setLineWidth(0.3);doc.line(65,92,145,92);
+  t('KARAKTER \u00b7 DISCIPLIN \u00b7 KLARHED',W/2,100,8,C.gold,'normal','center');
+  t(cl.name,W/2,128,18,C.white,'bold','center');
+  if(lead)t(lead.role+' \u2014 '+lead.company,W/2,137,10,C.gray,'normal','center');
+  t(new Date().toLocaleDateString('da-DK',{year:'numeric',month:'long',day:'numeric'}),W/2,148,9,C.gray,'normal','center');
+  if(arch){
+    doc.setDrawColor(...C.gold);doc.setLineWidth(0.2);doc.line(55,160,155,160);
+    t('DIN PROFILTYPE',W/2,172,7,C.gold,'bold','center');
+    t(arch.name,W/2,184,20,C.gold,'bold','center');
+    const dLines=doc.splitTextToSize(arch.desc,140);
+    doc.setFontSize(8);doc.setTextColor(...C.gray);doc.setFont('helvetica','normal');doc.text(dLines,W/2,196,{align:'center'});
+  }
+  [{l:'Samlet',v:totalAvg},{l:'Mestrede',v:String(SUBDIMS.filter(sd=>r.sdScores[sd.id]>=5).length)},{l:'Investering',v:String(SUBDIMS.filter(sd=>r.sdScores[sd.id]<3).length)}].forEach((s,i)=>{
+    const sx=38+i*48;doc.setFillColor(...C.navy3);doc.roundedRect(sx,242,38,22,2,2,'F');
+    t(s.v,sx+19,253,13,C.gold,'bold','center');t(s.l,sx+19,260,6,C.gray,'normal','center')});
+  t('Thomas Friisn\u00e6s \u2014 Personal Excellence Partner',W/2,280,7,C.gray,'normal','center');
+
+  // === PAGE 2: RADAR + DIMENSIONS ===
+  doc.addPage();bg();
+  t('DIT DIAGNOSTIK-OVERBLIK',20,20,13,C.gold,'bold');
+  drawPentagon(W/2,68,38);
+  let dy=115;
+  DIMS.forEach((d,i)=>{
+    const ml=getMasteryLevel(r.dimScores[i]);
+    t(d.name,20,dy,9,C.dimC[i],'bold');
+    t(r.dimScores[i].toFixed(1)+'/6 \u2014 '+ml.level,W-20,dy,8,C.ml[ml.level]||C.gray,'normal','right');
+    hbar(20,dy+3,W-40,3,C.dimC[i],6,r.dimScores[i]);dy+=14;
+  });
+  dy+=6;t('ALLE 16 UNDERDIMENSIONER',20,dy,10,C.gold,'bold');dy+=10;
+  [...SUBDIMS].sort((a,b)=>r.sdScores[b.id]-r.sdScores[a.id]).forEach(sd=>{
+    if(dy>278){doc.addPage();bg();dy=20}
+    const sc=r.sdScores[sd.id];const ml=getMasteryLevel(sc);const layers=r.sdLayers?.[sd.id]||{b:0,h:0,i:0};
+    t(sd.name,20,dy,8,C.white,'bold');t('\u2192 '+sd.platformShort,78,dy,6.5,C.gray,'italic');
+    t(sc.toFixed(1),160,dy,8,C.ml[ml.level]||C.gray,'bold');
+    t('B:'+layers.b+' H:'+layers.h+' I:'+layers.i,W-20,dy,6,C.gray,'normal','right');
+    hbar(20,dy+2.5,W-40,2.5,C.ml[ml.level]||C.gray,6,sc);dy+=10;
+  });
+
+  // === PAGE: AI PROFIL-NARRATIV ===
+  if(ai){
+    doc.addPage();bg();
+    t('DIN PERSONLIGE ANALYSE',20,20,13,C.gold,'bold');
+    doc.setDrawColor(...C.gold);doc.setLineWidth(0.3);doc.line(20,26,W-20,26);
+    dy=34;
+    // Narrative paragraphs
+    if(ai.narrative?.length){
+      t('PROFIL-NARRATIV',20,dy,9,C.gold,'bold');dy+=8;
+      ai.narrative.forEach(p=>{
+        dy=wrapText(p,20,dy,8.5,C.white,'normal',W-40);dy+=4;
+      });
+    }
+    // Strengths
+    if(ai.strengths?.length){
+      dy+=6;if(dy>240){doc.addPage();bg();dy=20}
+      t('STYRKER',20,dy,9,C.green,'bold');dy+=8;
+      ai.strengths.forEach(s=>{
+        if(dy>250){doc.addPage();bg();dy=20}
+        doc.setFillColor(...C.navy2);doc.roundedRect(18,dy-4,W-36,2,1,1,'F');
+        doc.setFillColor(76,175,130);doc.rect(18,dy-4,2,2,'F');
+        t(strip(s.title),22,dy,8,C.green,'bold');dy+=6;
+        dy=wrapText(s.text,22,dy,7.5,C.gray,'normal',W-46);dy+=4;
+      });
+    }
+    // Patterns
+    if(ai.patterns?.length){
+      dy+=6;if(dy>240){doc.addPage();bg();dy=20}
+      t('LAG-ANALYSE: M\u00d8NSTRE',20,dy,9,C.blue,'bold');dy+=8;
+      const patColors={warn:C.orange,ok:C.green,danger:C.red};
+      const patLabels={warn:'M\u00d8NSTER',ok:'STYRKE',danger:'BLINDT FELT'};
+      ai.patterns.forEach(p=>{
+        if(dy>250){doc.addPage();bg();dy=20}
+        const pc=patColors[p.type]||C.orange;
+        doc.setFillColor(...pc);doc.rect(18,dy-3,2,2,'F');
+        t((patLabels[p.type]||'')+': '+strip(p.title),22,dy,7.5,pc,'bold');dy+=6;
+        dy=wrapText(p.text,22,dy,7,C.gray,'normal',W-46);dy+=5;
+      });
+    }
+    // Coaching questions
+    if(ai.coaching_questions?.length){
+      dy+=6;if(dy>250){doc.addPage();bg();dy=20}
+      t('COACHING-SP\u00d8RGSM\u00c5L',20,dy,9,C.gold,'bold');dy+=8;
+      ai.coaching_questions.forEach((q,i)=>{
+        if(dy>270){doc.addPage();bg();dy=20}
+        t((i+1)+'. '+strip(q),22,dy,8,C.white,'normal');dy+=7;
+      });
+    }
+  }
+
+  // === PAGE: TOP 5 FRAMEWORK-ANBEFALINGER ===
+  doc.addPage();bg();
+  t('DINE TOP 5 ANBEFALEDE FRAMEWORKS',20,20,13,C.gold,'bold');
+  t('Prioriteret baseret p\u00e5 din profil, lag-analyse og afh\u00e6ngigheder \u2014 fra '+FRAMEWORKS.length+' frameworks.',20,30,7,C.gray);
+  dy=42;
+  const pdfFwRecs=computeFrameworkRecs(r.sdScores,r.sdLayers||{},5);
+  pdfFwRecs.forEach((rec,i)=>{
+    if(dy>250){doc.addPage();bg();dy=20}
+    doc.setFillColor(...C.navy2);doc.roundedRect(18,dy-4,W-36,40,2,2,'F');
+    doc.setFillColor(...C.gold);doc.circle(28,dy+8,5,'F');
+    t(String(i+1),28,dy+10,11,C.navy,'bold','center');
+    t(rec.fw.name,38,dy+2,10,C.white,'bold');
+    t(rec.fw.cat+(rec.fw.modules?' \u00b7 '+rec.fw.modules+' moduler':''),38,dy+9,7,C.gold);
+    t(rec.fw.desc,38,dy+15,6.5,C.gray);
+    const rl=doc.splitTextToSize(rec.reason,W-60);
+    doc.setFontSize(6.5);doc.setTextColor(...C.gray);doc.setFont('helvetica','italic');doc.text(rl,38,dy+22);
+    dy+=46;
+  });
+
+  // === PAGE: SUBDIMENSION-SEKVENS ===
+  doc.addPage();bg();
+  t('DIN PERSONLIGE R\u00c6KKEF\u00d8LGE',20,20,13,C.gold,'bold');
+  t('Underdimension-sekvens baseret p\u00e5 dit profil og afh\u00e6ngigheder.',20,30,8,C.gray);
+  dy=42;
+  seq.forEach((item,i)=>{
+    if(dy>260){doc.addPage();bg();dy=20}
+    doc.setFillColor(...C.navy2);doc.roundedRect(18,dy-4,W-36,26,2,2,'F');
+    doc.setFillColor(...C.gold);doc.circle(28,dy+6,5,'F');
+    t(String(i+1),28,dy+8,11,C.navy,'bold','center');
+    t(item.sd.platform,38,dy+2,10,C.white,'bold');
+    t('Score: '+(r.sdScores[item.sd.id]||item.score).toFixed(1)+'/6',38,dy+9,7,C.gray);
+    const rl=doc.splitTextToSize(item.reason,W-60);
+    doc.setFontSize(7);doc.setTextColor(...C.gray);doc.setFont('helvetica','normal');doc.text(rl,38,dy+15);
+    dy+=32;
+  });
+
+  // Footer
+  dy+=8;if(dy>250){doc.addPage();bg();dy=20}
+  doc.setDrawColor(...C.gold);doc.setLineWidth(0.2);doc.line(20,dy,W-20,dy);dy+=8;
+  t('KONTAKT',20,dy,8,C.gold,'bold');dy+=7;
+  t('Thomas Friisn\u00e6s \u2014 Personal Excellence Partner',20,dy,8,C.white);dy+=5;
+  t('friisnaes@gmail.com',20,dy,8,C.gray);dy+=10;
+  t('ANSVARSFRASKRIVELSE',20,dy,6,C.gray,'bold');dy+=5;
+  const disc=doc.splitTextToSize('The Personal Excellence Diagnostic\u2122 er et refleksionsv\u00e6rkt\u00f8j udviklet af Thomas Friisn\u00e6s. Resultaterne udg\u00f8r ikke professionel r\u00e5dgivning og b\u00f8r ikke erstatte konsultation med kvalificerede fagpersoner.',W-40);
+  doc.setFontSize(6);doc.setTextColor(...C.gray);doc.text(disc,20,dy);
+
+  const fname=`PED_${cl.name.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.pdf`;
+  doc.save(fname);
+  showFB('PDF genereret: '+fname+' \u2713');
+}
+
+function adminDelete(cid){if(!confirm('Slet alle data?'))return;if(!confirm('Kan IKKE fortrydes.'))return;
+  LS.d('ped_answers_'+cid);LS.d('ped_results_'+cid);LS.d('ped_lead_'+cid);LS.d('ped_ai_'+cid);
+  LS.s('ped_clients',(LS.g('ped_clients')||[]).filter(c=>c.id!==cid));
+  LS.s('ped_leads',(LS.g('ped_leads')||[]).filter(l=>l.clientId!==cid));
+  S.aSel=null;renderAdmin();showFB('Slettet')}
+async function adminExportJSON(cid,cname){
+  const data=gatherExport(cid,cname);const pw=prompt('Adgangskode til kryptering:');if(!pw)return;
+  try{const enc=await encryptData(data,pw);const blob=new Blob([JSON.stringify(enc,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`PED_${cname.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(url);showFB('Krypteret JSON \u2713')}catch(e){alert('Fejl: '+e.message)}}
+async function adminImport(){
+  const file=document.getElementById('imp-file')?.files[0];const pw=document.getElementById('imp-pw')?.value;const msg=document.getElementById('imp-msg');
+  if(!file){if(msg){msg.textContent='V\u00e6lg fil';msg.style.color='var(--red)'}return}
+  try{const txt=await file.text();const blob=JSON.parse(txt);let data;
+    if(blob.v&&blob.ct){if(!pw){msg.textContent='Adgangskode kr\u00e6ves';msg.style.color='var(--red)';return}data=await decryptData(blob,pw)}else data=blob;
+    const clients=LS.g('ped_clients')||[];if(!clients.find(c=>c.id===data.clientId)){clients.push({id:data.clientId,name:data.clientName,createdAt:data.exportedAt||new Date().toISOString()});LS.s('ped_clients',clients)}
+    if(data.answers)LS.s('ped_answers_'+data.clientId,data.answers);if(data.results)LS.s('ped_results_'+data.clientId,data.results);if(data.lead)LS.s('ped_lead_'+data.clientId,data.lead);if(data.ai)LS.s('ped_ai_'+data.clientId,data.ai);
+    if(msg){msg.textContent='Import gennemf\u00f8rt \u2713';msg.style.color='var(--green)'}
+    renderAdmin();showFB('Importeret \u2713');
+  }catch(e){if(msg){msg.textContent='Fejl: '+e.message;msg.style.color='var(--red)'}}
+}
+function filterLeads(filter){
+  const leads=LS.g('ped_leads')||[];
+  document.querySelectorAll('#asec-leads .aclient-card').forEach(card=>{
+    const cid=card.id.replace('lead-','');const lead=leads.find(l=>l.clientId===cid);
+    if(filter==='alle')card.style.display='';
+    else if(filter==='ny')card.style.display=(!lead?.status||lead.status==='ny')?'':'none';
+    else card.style.display=(lead?.status===filter)?'':'none';
+  });
+}
+function gatherExport(cid,cname){
+  const answers=LS.g('ped_answers_'+cid)||[];const results=LS.g('ped_results_'+cid);const lead=LS.g('ped_lead_'+cid);const ai=LS.g('ped_ai_'+cid);
+  const questions=QS.map((q,i)=>({statement:q.s,subdimension:q.sd,layer:q.layer,answer:answers[i]||0}));
+  return{clientId:cid,clientName:cname,answers,results,lead,ai,questions,exportedAt:new Date().toISOString(),version:PV};
+}
+async function encryptData(data,password){
+  const enc=new TextEncoder();const keyMaterial=await crypto.subtle.importKey('raw',enc.encode(password),{name:'PBKDF2'},false,['deriveKey']);
+  const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));
+  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},keyMaterial,{name:'AES-GCM',length:256},false,['encrypt']);
+  const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(JSON.stringify(data)));
+  return{v:1,salt:Array.from(salt),iv:Array.from(iv),ct:Array.from(new Uint8Array(ct))};
+}
+async function decryptData(blob,password){
+  const enc=new TextEncoder();const keyMaterial=await crypto.subtle.importKey('raw',enc.encode(password),{name:'PBKDF2'},false,['deriveKey']);
+  const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:new Uint8Array(blob.salt),iterations:100000,hash:'SHA-256'},keyMaterial,{name:'AES-GCM',length:256},false,['decrypt']);
+  const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:new Uint8Array(blob.iv)},key,new Uint8Array(blob.ct));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+</script>
+</body>
+</html>

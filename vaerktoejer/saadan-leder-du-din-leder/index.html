@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="2.2.0">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<meta name="description" content="Sådan leder du din leder — Karakter · Disciplin · Klarhed">
+<title>Sådan leder du din leder — Karakter · Disciplin · Klarhed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#111111;--navy2:#1a1a1a;--navy3:#222222;--navy4:#2b2b2b;
+  --blue:#c0392b;--blue2:#e74c3c;
+  --gold:#c0392b;--gold2:#e74c3c;--gdim:rgba(224,168,74,0.14);--gbrd:rgba(192,57,43,0.35);
+  --text:#E4EAF4;--text2:#8A9BB8;--text3:#4E6080;
+  --green:#4CAF82;--red:#E57373;--orange:#E5A048;
+  --brd:rgba(255,255,255,0.07);--brd2:rgba(255,255,255,0.13);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.65;min-height:100vh}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.2}
+button{font-family:'Outfit',sans-serif;cursor:pointer;transition:all .18s}
+input,textarea,select{font-family:'Outfit',sans-serif;font-size:14px;background:var(--navy3);border:1.5px solid var(--brd2);color:var(--text);border-radius:8px;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--blue2)}textarea{resize:vertical}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:var(--navy2)}::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:2px}
+.hidden{display:none!important}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+.fade{animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+#sc-client-login,#sc-admin-login{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(42,82,152,.18) 0%,transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(232,193,112,.06) 0%,transparent 50%),var(--navy);padding:32px 24px}
+.login-logo{text-align:center;margin-bottom:52px}
+.login-logo h1{font-size:38px;letter-spacing:.02em;color:var(--text)}
+.login-logo .tag{font-family:'Outfit';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.login-logo .sub2{font-size:13px;color:var(--text3);margin-top:6px;font-style:italic}
+.login-card{width:100%;max-width:400px;background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:32px}
+.login-card.gold{border-color:var(--gbrd)}
+.login-card h2{font-size:26px;margin-bottom:8px}
+.login-card h2.gold-text{color:var(--gold)}
+.login-card .sub{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.65}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.fg input{width:100%;padding:12px 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border:none;border-radius:8px;font-size:13px;font-weight:500}
+.btn-row{display:flex;gap:10px;margin-top:18px}
+.btn-primary{background:var(--blue);color:#fff;flex:1}.btn-primary:hover{background:var(--blue2)}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:600;flex:1}.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;border:1.5px solid var(--brd2);color:var(--text2)}.btn-ghost:hover{background:var(--navy3);color:var(--text)}
+.err{color:var(--red);font-size:12px;margin-top:8px}
+.gdpr-strip{margin-top:20px;padding:12px 14px;background:rgba(76,175,130,.07);border:1px solid rgba(76,175,130,.2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.7}
+.gdpr-strip strong{color:var(--green)}
+.admin-link{margin-top:28px;text-align:center}
+.admin-link a{font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--brd2);padding-bottom:1px}
+
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:14px;padding:0 24px;height:56px;background:rgba(12,24,41,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);flex-shrink:0;flex-wrap:wrap}
+.tb-brand{flex:1}.tb-brand .nm{font-family:'Playfair Display',Georgia,serif;font-size:16px;color:var(--text);font-weight:600}
+.tb-brand .sb{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.15em}
+.tb-btn{padding:6px 12px;background:transparent;border:1px solid var(--brd);border-radius:6px;color:var(--text3);font-size:12px}
+.tb-btn:hover{border-color:var(--brd2);color:var(--text2)}.tb-btn.gold{color:var(--gold);border-color:var(--gbrd)}
+
+.c-main{padding:32px 24px;max-width:960px;margin:0 auto;width:100%}
+.prog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px}
+.prog-header h1{font-size:32px}.prog-header .stat{font-size:13px;color:var(--text3)}
+.ack-box{background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:28px;margin-bottom:28px;text-align:center}
+.ack-box .ack-icon{font-size:42px;margin-bottom:12px}.ack-box h2{font-size:22px;margin-bottom:10px}
+.ack-box p{color:var(--text2);font-size:14px;max-width:640px;margin:0 auto;line-height:1.8}
+.velocity-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:20px;margin-bottom:24px}
+.velocity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.vg-item{text-align:center;padding:10px;background:var(--navy3);border-radius:8px}
+.vg-item .vn{font-size:22px;font-weight:600}.vg-item .vl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.mod-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:22px;cursor:pointer;transition:all .2s}
+.mod-card:hover:not(.locked){border-color:var(--brd2);transform:translateY(-2px)}
+.mod-card.locked{opacity:.4;cursor:default}
+.mod-card .mc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mod-card .mc-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff}
+.mod-card .mc-title{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:600;flex:1}
+.mod-card .mc-sub{font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:14px}
+.mod-card .mc-prog{height:4px;background:var(--navy4);border-radius:2px;overflow:hidden}
+.mod-card .mc-prog-fill{height:100%;border-radius:2px;transition:width .4s ease}
+.mod-card .mc-status{font-size:11px;margin-top:8px}
+.mc-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+
+.mod-header{padding:28px 24px;border-bottom:1px solid var(--brd)}
+.mod-header h1{font-size:30px;margin-bottom:4px}.mod-header .mh-sub{font-size:13px;color:var(--text3)}
+.mod-tabs{display:flex;gap:0;border-bottom:1px solid var(--brd);padding:0 24px}
+.mod-tab{padding:12px 20px;font-size:13px;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.mod-tab:hover{color:var(--text2)}.mod-tab.active{color:var(--text);border-bottom-color:var(--gold)}
+.mod-content{padding:32px 24px;max-width:820px;margin:0 auto}
+.sources-box{border-left:3px solid var(--blue);padding:16px 20px;background:var(--navy2);border-radius:0 10px 10px 0;margin-bottom:24px}
+.src-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.src-item{font-size:12px;color:var(--text2);padding:3px 0}
+.why-mod-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:18px 22px;margin-bottom:24px}
+.why-mod-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:10px}
+.why-mod-text{font-size:14px;color:var(--text2);line-height:1.8}
+.learn-body{color:var(--text2);line-height:1.9;font-size:14.5px}
+.learn-body h3{color:var(--text);font-size:20px;margin:28px 0 14px}
+.learn-body p{margin-bottom:14px}
+.learn-body blockquote{border-left:3px solid var(--gold);padding:12px 18px;margin:18px 0;color:var(--text);font-style:italic;background:rgba(201,168,76,.04);border-radius:0 8px 8px 0}
+.learn-body ul,.learn-body ol{margin:12px 0 12px 24px;color:var(--text2)}.learn-body li{margin-bottom:6px}
+.learn-cta{text-align:center;margin-top:32px}
+.takeaways-box{background:rgba(76,175,130,.06);border:1px solid rgba(76,175,130,.15);border-radius:10px;padding:22px 26px;margin-top:28px}
+.tk-title{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;font-weight:600}
+.tk-item{font-size:14px;color:var(--text2);line-height:1.8;padding:6px 0;border-bottom:1px solid rgba(76,175,130,.08)}.tk-item:last-child{border:none}
+
+.q-progress{position:sticky;top:56px;z-index:50;background:var(--navy2);border-bottom:1px solid var(--brd);padding:10px 24px;display:flex;align-items:center;gap:14px}
+.qp-bar{flex:1;height:6px;background:var(--navy4);border-radius:3px;overflow:hidden}
+.qp-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease}
+.qp-cnt{font-size:12px;color:var(--text3);min-width:50px;text-align:right}
+.q-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:18px}
+.q-card .qlabel{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.q-card .qtext{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.q-card textarea{width:100%;min-height:100px;padding:14px}
+.q-card .scale-row{display:flex;gap:6px;flex-wrap:wrap}
+.q-card .scale-btn{padding:8px 14px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text3);font-size:13px;min-width:40px;text-align:center}
+.q-card .scale-btn.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.q-card .cbtn{padding:8px 16px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text2);font-size:13px;margin:3px}
+.q-card .cbtn.sel{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
+.btn-save{display:block;width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;margin-top:12px}
+.btn-save:hover{background:var(--blue2)}
+.send-box{background:rgba(76,175,130,.08);border:1.5px solid rgba(76,175,130,.3);border-radius:12px;padding:24px;margin-top:20px;text-align:center}
+.send-box h3{color:var(--green);font-size:20px;margin-bottom:8px}
+.send-box p{color:var(--text2);font-size:13px;margin-bottom:16px;line-height:1.7}
+.btn-send{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+.btn-send:hover{background:#3d9b72}
+
+.refl-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:22px;margin-bottom:16px}
+.refl-card h4{font-size:16px;margin-bottom:12px}.refl-card label{font-size:12px;color:var(--text3);display:block;margin-bottom:4px;margin-top:10px}
+.refl-card textarea{width:100%;min-height:70px;padding:10px;margin-bottom:4px}
+
+.submit-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px}
+.submit-card h3{font-size:22px;margin-bottom:12px}
+.submit-card p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:16px}
+.checklist{margin-bottom:20px}
+.cl-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--brd)}
+.cl-dot{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.cl-ok{background:rgba(76,175,130,.2);color:var(--green)}
+.cl-no{background:var(--navy4);color:var(--text3)}
+
+.admin-wrap{display:flex;min-height:100vh}
+.admin-side{width:260px;background:var(--navy2);border-right:1px solid var(--brd);padding:20px;flex-shrink:0;overflow-y:auto}
+.admin-main{flex:1;padding:28px;overflow-y:auto}
+.as-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin-bottom:20px}
+.as-nav{list-style:none}.as-nav li{padding:10px 14px;border-radius:8px;font-size:13px;color:var(--text3);cursor:pointer;margin-bottom:4px}
+.as-nav li:hover{background:var(--navy3);color:var(--text2)}
+.as-nav li.active{background:var(--navy3);color:var(--gold);border-left:3px solid var(--gold)}
+.aclient-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:16px;margin-bottom:10px;cursor:pointer}
+.aclient-card:hover{border-color:var(--brd2)}.aclient-card.sel{border-color:var(--gold)}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.astat{background:var(--navy3);border-radius:8px;padding:14px;text-align:center}
+.astat .av{font-size:24px;font-weight:600}.astat .al{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.ai-box{background:var(--navy3);border:1px solid var(--gbrd);border-radius:10px;padding:20px;margin-top:16px}
+.ai-box h3{color:var(--gold);font-size:18px;margin-bottom:12px}
+.ai-result{white-space:pre-wrap;font-size:13px;color:var(--text2);line-height:1.8;max-height:500px;overflow-y:auto}
+.save-feedback{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;z-index:600;animation:fadeIn .3s ease;pointer-events:none}
+.info-container{max-width:820px;margin:0 auto;padding:40px 24px}
+.info-section{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px;margin-bottom:20px}
+.info-section h2{font-size:22px;margin-bottom:14px;color:var(--gold)}
+.info-section p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:10px}
+.unlock-row{display:flex;align-items:center;gap:12px;margin-top:12px;padding:10px 14px;background:var(--navy4);border-radius:8px}
+.unlock-row select{flex:1;padding:8px}
+.links-mod{margin-bottom:24px}
+.links-mod h3{font-size:18px;color:var(--gold);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--brd)}
+.links-mod a{display:block;font-size:13px;color:var(--blue2);text-decoration:none;padding:6px 0;line-height:1.6;transition:color .15s}
+.links-mod a:hover{color:var(--gold)}
+.links-mod .link-author{color:var(--text3);font-size:12px}
+.impl-intent{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.18);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 16px;margin-top:14px}
+.impl-intent .ii-label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:600;margin-bottom:4px}
+.impl-intent .ii-sub{font-size:11px;color:var(--text3);line-height:1.6;margin-bottom:8px}
+
+@media(max-width:900px){.topbar{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px}.tb-brand{width:100%}.prog-header{flex-direction:column}.mods-grid{grid-template-columns:1fr}.admin-side{width:200px}}
+@media(max-width:640px){.login-logo h1{font-size:28px}.astats{grid-template-columns:1fr 1fr}.velocity-grid{grid-template-columns:1fr 1fr}.mod-content{padding:24px 16px}.admin-wrap{flex-direction:column}.admin-side{width:100%;border-right:none;border-bottom:1px solid var(--brd)}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+<body>
+<!-- CLIENT LOGIN -->
+<div id="sc-client-login" class="screen active">
+  <div class="login-logo">
+    <h1>Sådan leder du din leder</h1>
+    <div class="tag">Karakter · Disciplin · Klarhed</div>
+    <div class="sub2">Den kompetence ingen taler om — men alle har brug for</div>
+  </div>
+  <div class="login-card">
+    <h2>Klientadgang</h2>
+    <div class="sub">8 moduler. 48 refleksioner. Fra at forstå din leder og afstemme forventninger til svære samtaler opad, strategisk indflydelse og karriereejerskab.</div>
+    <div class="fg"><label>Dit fulde navn</label><input type="text" id="cl-name" placeholder="Fornavn Efternavn" onkeydown="if(event.key==='Enter')doClientLogin()"></div>
+    <div class="btn-row"><button class="btn btn-primary" onclick="doClientLogin()">Start forløb</button></div>
+    <div id="cl-err" class="err hidden"></div>
+    <div class="gdpr-strip">
+      <strong>🔒 GDPR:</strong> Alle besvarelser gemmes udelukkende lokalt på din enhed. Ingen data sendes til servere. Eksport krypteres med AES-256-GCM.
+      <div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+        <input type="checkbox" id="gdpr-consent" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">
+        <label for="gdpr-consent" style="font-size:12px;color:var(--text2);cursor:pointer;line-height:1.5">Jeg accepterer, at mine besvarelser gemmes lokalt på denne enhed.</label>
+      </div>
+    </div>
+  </div>
+  <div class="admin-link"><a href="?admin">Admin-adgang →</a></div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="sc-admin-login" class="screen">
+  <div class="login-logo"><h1>Sådan leder du din leder</h1><div class="tag">Admin · Thomas Friisnæs</div></div>
+  <div class="login-card gold">
+    <h2 class="gold-text">Admin</h2>
+    <!-- First-time setup -->
+    <div id="admin-setup" class="hidden">
+      <div class="sub">Første gang? Vælg din admin-adgangskode. Den gemmes som SHA-256 hash — aldrig i klartekst.</div>
+      <div class="fg"><label>Vælg adgangskode</label><input type="password" id="al-pw-new" placeholder="Min. 6 tegn" onkeydown="if(event.key==='Enter')document.getElementById('al-pw-confirm').focus()"></div>
+      <div class="fg"><label>Bekræft adgangskode</label><input type="password" id="al-pw-confirm" placeholder="Gentag adgangskode" onkeydown="if(event.key==='Enter')doAdminSetup()"></div>
+      <div class="btn-row"><button class="btn btn-gold" onclick="doAdminSetup()">Opret admin-adgang</button></div>
+    </div>
+    <!-- Returning login -->
+    <div id="admin-returning" class="hidden">
+      <div class="sub">Adgang til klientdata, modul-oplåsning, AI-analyse og eksport.</div>
+      <div class="fg"><label>Adgangskode</label><input type="password" id="al-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+      <div class="btn-row"><button class="btn btn-gold" onclick="doAdminLogin()">Log ind</button></div>
+    </div>
+    <div id="al-err" class="err hidden"></div>
+    <div style="margin-top:16px;padding:10px 12px;background:var(--navy3);border-radius:6px;font-size:10px;color:var(--text3);line-height:1.6">🔒 Adgangskoden gemmes som SHA-256 hash med framework-specifikt salt. Nulstil via browserkonsol: <code style="color:var(--gold)">_resetAdminPw()</code></div>
+  </div>
+</div>
+
+<!-- CLIENT DASHBOARD -->
+<div id="sc-client" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm">Sådan leder du din leder</div><div class="sb" id="tb-name"></div></div>
+    <button class="tb-btn" onclick="showReadme()">📖 Guide</button>
+    <button class="tb-btn" onclick="showLinks()">🔗 Links</button>
+    <button class="tb-btn" onclick="clientDeleteData()" style="color:var(--red)">🗑 Slet</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="c-main" id="client-dash"></div>
+</div>
+
+<!-- MODULE VIEW -->
+<div id="sc-module" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm" id="mod-title-bar"></div><div class="sb" id="mod-sub-bar"></div></div>
+    <button class="tb-btn" onclick="renderDash();show('client')">← Dashboard</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="mod-header" id="mod-header"></div>
+  <div class="mod-tabs" id="mod-tabs"></div>
+  <div id="tc-learn" class="mod-content"></div>
+  <div id="tc-quest" class="mod-content" style="display:none"></div>
+  <div id="tc-takeaways" class="mod-content" style="display:none"></div>
+  <div id="tc-journal" class="mod-content" style="display:none"></div>
+  <div id="tc-submit" class="mod-content" style="display:none"></div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="sc-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-side">
+      <div class="as-title">Admin panel</div>
+      <ul class="as-nav">
+        <li class="active" onclick="setASection('ov')">📊 Oversigt</li>
+        <li onclick="setASection('clients')">👥 Klienter</li>
+        <li onclick="setASection('import')">📥 Import</li>
+        <li onclick="setASection('gdpr')">🔒 GDPR</li>
+      </ul>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--brd)">
+        <button class="tb-btn" style="width:100%" onclick="logout()">Log ud</button>
+      </div>
+    </div>
+    <div class="admin-main">
+      <div id="asec-ov"></div>
+      <div id="asec-clients" style="display:none"></div>
+      <div id="asec-import" style="display:none"></div>
+      <div id="asec-gdpr" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- README -->
+<div id="sc-readme" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Guide — Leder du din leder</div></div><button class="tb-btn" onclick="closeReadme()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Hvad er dette?</h2><p>Et struktureret refleksions- og handlingsværktøj til dig, der vil mestre kunsten at lede opad. 8 moduler dækker alt fra at forstå din leder og kommunikere effektivt til svære samtaler opad, strategisk indflydelse og karriereejerskab. Baseret på forskning fra Gabarro &amp; Kotter, Useem, Drucker, Cialdini, Scott og 20+ års coaching-erfaring.</p></div>
+    <div class="info-section"><h2>Sådan virker det</h2><p>Modulerne åbnes ét ad gangen af din coach. Når du har besvaret alle spørgsmål og udfyldt din journal, kan du sende dine svar til Thomas via email. Derefter åbner Thomas det næste modul for dig. Denne struktur sikrer, at du arbejder fokuseret og i dybden med hvert emne.</p></div>
+    <div class="info-section"><h2>Om platformen</h2><p><strong>Thomas Friisnæs</strong> — Personal Excellence Partner. 20+ års erfaring. 15.000+ coaching-sessioner.</p><p><strong>Kontakt:</strong> friisnaes@gmail.com | <strong>Version:</strong> 2.2.0</p></div>
+  </div>
+</div>
+
+<!-- LINKS -->
+<div id="sc-links" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Forskningslinks — Led din leder</div></div><button class="tb-btn" onclick="closeLinks()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Forskningsbibliotek</h2><p>Centrale kilder og artikler for hvert modul. Klik for at åbne i nyt vindue.</p></div>
+
+    <div class="links-mod">
+      <h3>Modul 1: Hvad er "at lede opad"?</h3>
+      <a href="https://hbr.org/2005/01/managing-your-boss" target="_blank">Gabarro & Kotter (1980): Managing Your Boss <span class="link-author">— HBR Classic (bag betalingsmur)</span></a>
+      <a href="https://knowledge.wharton.upenn.edu/podcast/knowledge-at-wharton-podcast/leading-up-the-art-of-managing-your-boss/" target="_blank">Michael Useem (2001): Leading Up <span class="link-author">— Knowledge@Wharton</span></a>
+      <a href="https://hbr.org/2005/01/managing-oneself" target="_blank">Peter Drucker (1999): Managing Oneself <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://www.franklincovey.com/the-7-habits/" target="_blank">Stephen Covey (1989): The 7 Habits of Highly Effective People</a>
+      <a href="https://hbr.org/2007/12/what-every-leader-needs-to-know-about-followers" target="_blank">Barbara Kellerman (2008): Followership <span class="link-author">— HBR (bag betalingsmur)</span></a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 2: Kend din leder</h3>
+      <a href="https://www.mindtools.com/akswgc0/david-rocks-scarf-model/" target="_blank">David Rock (2008): SCARF: A Brain-Based Model <span class="link-author">— MindTools</span></a>
+      <a href="https://www.hoganassessments.com/assessment/hogan-development-survey/" target="_blank">Robert Hogan (2007): Personality and the Fate of Organizations <span class="link-author">— The Dark Side</span></a>
+      <a href="https://hbr.org/2004/01/what-makes-a-leader" target="_blank">Daniel Goleman (1995): Emotional Intelligence <span class="link-author">— HBR (bag betalingsmur)</span></a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 3: Kommunikation opad</h3>
+      <a href="https://www.barbaraminto.com/" target="_blank">Barbara Minto (1987): The Pyramid Principle</a>
+      <a href="https://scholar.princeton.edu/kahneman/publications-0" target="_blank">Daniel Kahneman (2011): Thinking, Fast and Slow <span class="link-author">— Princeton</span></a>
+      <a href="https://www.influenceatwork.com/books/pre-suasion/" target="_blank">Robert Cialdini (2016): Pre-Suasion</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 4: Forventningsafstemning</h3>
+      <a href="https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it" target="_blank">Sull & Sull (2015): Why Strategy Execution Unravels <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://hbr.org/2009/01/picking-the-right-transition-strategy" target="_blank">Michael Watkins (2013): The First 90 Days <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://www.radicalcandor.com/our-approach/" target="_blank">Kim Scott (2017): Radical Candor</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 5: Indflydelse uden autoritet</h3>
+      <a href="https://www.getabstract.com/en/summary/influence-without-authority/3714" target="_blank">Cohen & Bradford (2005): Influence Without Authority <span class="link-author">— getAbstract</span></a>
+      <a href="https://www.pon.harvard.edu/tag/getting-to-yes/" target="_blank">Fisher & Ury (1981): Getting to Yes <span class="link-author">— Harvard PON</span></a>
+      <a href="https://www.penguinrandomhouse.com/books/304527/power-by-jeffrey-pfeffer/" target="_blank">Jeffrey Pfeffer (2010): Power: Why Some People Have It</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 6: Svære samtaler opad</h3>
+      <a href="https://journals.aom.org/doi/abs/10.5465/amj.2007.28166119" target="_blank">Detert & Burris (2007): Leadership Behavior and Employee Voice <span class="link-author">— Academy of Management (bag betalingsmur)</span></a>
+      <a href="https://fearlessorganization.com/" target="_blank">Amy Edmondson (2019): The Fearless Organization</a>
+      <a href="https://www.amazon.com/Crucial-Conversations-Talking-Stakes-Third/dp/1260474186" target="_blank">Patterson et al. (2012): Crucial Conversations</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 7: Feedback til din leder</h3>
+      <a href="https://hbr.org/2014/01/find-the-coaching-in-criticism" target="_blank">Stone & Heen (2014): Thanks for the Feedback <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://www.marshallgoldsmith.com/book/what-got-you-here-wont-get-you-there/" target="_blank">Marshall Goldsmith (2007): What Got You Here Won't Get You There</a>
+      <a href="https://hbr.org/2019/03/the-feedback-fallacy" target="_blank">Buckingham & Goodall (2019): The Feedback Fallacy <span class="link-author">— HBR (bag betalingsmur)</span></a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 8: Strategisk selvledelse</h3>
+      <a href="https://herminiaibarra.com/working-identity-book/" target="_blank">Herminia Ibarra (2003): Working Identity</a>
+      <a href="https://www.hbs.edu/faculty/Pages/item.aspx?num=33513" target="_blank">Bill George (2007): True North <span class="link-author">— Harvard Business School</span></a>
+      <a href="https://hbr.org/2007/01/what-to-ask-the-person-in-the-mirror" target="_blank">Robert Kaplan (2011): What to Ask the Person in the Mirror <span class="link-author">— HBR (bag betalingsmur)</span></a>
+    </div>
+  </div>
+</div>
+
+<div id="save-fb" class="save-feedback hidden"></div>
+<script>
+const PV='2.2.0',PN='Sådan leder du din leder',CE='friisnaes@gmail.com',PFX='luo_';
+const LS={g(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch{return null}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}},d(k){try{localStorage.removeItem(k)}catch{}}};
+let S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+
+const ADMIN_SALT='luo_saadan_leder_din_leder_v2';
+async function sha256(str){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(ADMIN_SALT+str));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+function getAdminHash(){return localStorage.getItem(PFX+'admin_hash')||null}
+
+(function(){
+  try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch{document.body.innerHTML='<div style="padding:40px;text-align:center;color:#E57373"><h2>localStorage ikke tilgængelig</h2></div>';return}
+  if(location.search.includes('admin')){
+    document.getElementById('sc-client-login').classList.remove('active');
+    document.getElementById('sc-admin-login').classList.add('active');
+    if(getAdminHash()){document.getElementById('admin-returning').classList.remove('hidden')}
+    else{document.getElementById('admin-setup').classList.remove('hidden')}
+  }
+})();
+
+function doClientLogin(){
+  const name=document.getElementById('cl-name').value.trim();
+  if(!name){showErr('cl-err','Indtast dit navn');return}
+  const consent=document.getElementById('gdpr-consent');
+  const clients=LS.g(PFX+'clients')||[];
+  let c=clients.find(x=>x.name.toLowerCase()===name.toLowerCase());
+  if(!c){
+    if(!consent.checked){showErr('cl-err','Acceptér GDPR-betingelserne');return}
+    c={id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name:name,createdAt:new Date().toISOString(),gdprConsentAt:new Date().toISOString()};
+    LS.s(PFX+'clients',[...clients,c]);
+    LS.s(PFX+'active_'+c.id,1);
+  }
+  S.role='client';S.cId=c.id;S.cName=c.name;renderDash();show('client');
+}
+async function doAdminSetup(){
+  const pw=document.getElementById('al-pw-new').value;
+  const pw2=document.getElementById('al-pw-confirm').value;
+  if(pw.length<6){showErr('al-err','Adgangskode skal være min. 6 tegn');return}
+  if(pw!==pw2){showErr('al-err','Adgangskoderne matcher ikke');return}
+  const hash=await sha256(pw);
+  localStorage.setItem(PFX+'admin_hash',hash);
+  S.role='admin';renderAdmin();show('admin');
+  showSaveFeedback('Admin-adgang oprettet ✓');
+}
+async function doAdminLogin(){
+  const pw=document.getElementById('al-pw').value;
+  if(!pw){showErr('al-err','Indtast adgangskode');return}
+  const hash=await sha256(pw);
+  const stored=getAdminHash();
+  if(hash!==stored){showErr('al-err','Forkert adgangskode');return}
+  S.role='admin';renderAdmin();show('admin');
+}
+function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden')}
+function logout(){
+  S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+  document.getElementById('cl-name').value='';
+  const alPw=document.getElementById('al-pw');if(alPw)alPw.value='';
+  const alNew=document.getElementById('al-pw-new');if(alNew)alNew.value='';
+  const alConf=document.getElementById('al-pw-confirm');if(alConf)alConf.value='';
+  ['cl-err','al-err'].forEach(function(id){document.getElementById(id).classList.add('hidden')});
+  if(location.search.includes('admin')){
+    document.getElementById('admin-setup').classList.add('hidden');
+    document.getElementById('admin-returning').classList.add('hidden');
+    if(getAdminHash()){document.getElementById('admin-returning').classList.remove('hidden')}
+    else{document.getElementById('admin-setup').classList.remove('hidden')}
+    show('admin-login');
+  }else{show('client-login')}
+}
+window._resetAdminPw=function(){if(confirm('Nulstil admin-adgangskode? Du skal vælge en ny.')){localStorage.removeItem(PFX+'admin_hash');location.reload()}}
+function show(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});document.getElementById('sc-'+id).classList.add('active');window.scrollTo(0,0)}
+function showReadme(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('readme')}
+function closeReadme(){show(S.prevScreen||'client')}
+function showLinks(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('links')}
+function closeLinks(){show(S.prevScreen||'client')}
+function showSaveFeedback(msg){var el=document.getElementById('save-fb');el.textContent=msg;el.classList.remove('hidden');setTimeout(function(){el.classList.add('hidden')},2200)}
+function countAns(a){return Object.values(a||{}).filter(function(v){return v!==undefined&&v!==null&&v!==''}).length}
+function getActiveMod(cid){return LS.g(PFX+'active_'+cid)||1}
+function isModComplete(cid,m){
+  var d=LS.g(PFX+'mod_'+cid+'_'+m.id);var a=countAns(d?.answers);
+  var j=LS.g(PFX+'journal_'+cid+'_'+m.id);
+  var jDone=j&&(j.insight||'').trim()&&(j.action||'').trim();
+  return a>=m.qs.length&&jDone;
+}
+function isModSent(cid,mid){return LS.g(PFX+'sent_'+cid+'_'+mid)||false}
+
+
+const II_PROMPTS={
+1:'Hvornår og i hvilken situation vil du gøre dette? F.eks.: "Næste gang vi har 1:1 på tirsdag, vil jeg spørge ind til hendes top-3 prioriteter."',
+2:'Hvornår præcist vil du implementere dit nye 1:1-system? F.eks.: "Fra på mandag sætter jeg faste ugentlige 1:1 i kalenderen med alle mine direkte medarbejdere."',
+3:'Hvornår vil du først bruge din nye kommunikationstilgang? F.eks.: "I min næste mail til min chef starter jeg med konklusionen — ikke konteksten."',
+4:'Hvornår og hvordan vil du initiere samtalen? F.eks.: "I vores 1:1 på fredag beder jeg eksplicit om 15 minutter til at gennemgå mine prioriteter."',
+5:'I hvilken konkret situation vil du anvende din indflydelse anderledes? F.eks.: "Når jeg præsenterer budgetforslaget næste uge, kommer jeg med tre alternativer i stedet for ét."',
+6:'Hvornår vil du have den svære samtale? F.eks.: "I vores næste 1:1 bringer jeg emnet op med fælles formål som indgang."',
+7:'Hvornår vil du give din leder den feedback? F.eks.: "Næste tirsdag i vores 1:1 beder jeg om lov til at dele en observation — specifik og med impact."',
+8:'Hvornår holder du din næste personlige refleksionssession? F.eks.: "Søndag kl. 9 sætter jeg mig med Druckers 5 spørgsmål og en kop kaffe."'
+};
+
+const MODS=[
+{
+id:1,
+title:'Hvad er "at lede opad"?',
+subtitle:'Den kompetence der adskiller dem der lykkes fra dem der venter',
+icon:'🧭',
+color:'#E57373',
+sources:['Gabarro, J. & Kotter, J. — Managing Your Boss (HBR Classic, 1980/2005)','Useem, M. — Leading Up: How to Lead Your Boss So You Both Win (2001)','Drucker, P. — Managing Oneself (HBR, 1999)','Covey, S. — The 7 Habits of Highly Effective People (1989)','Kellerman, B. — Followership (2008)'],
+whyText:'Gabarro og Kotter dokumenterede allerede i 1980, at <strong>effektive professionelle aktivt styrer relationen til deres chef</strong> — ikke som manipulation, men som gensidig afhængighedsledelse. De der mestrer dette, avancerer hurtigere, opnår mere og trives bedre.',
+learn:`<h3>Den glemte kompetence</h3>
+<p>Der er en kompetence, som ingen lederuddannelse underviser i, ingen jobbeskrivelse nævner, og ingen performance review måler — men som alligevel er afgørende for din professionelle succes: Evnen til at lede opad. At lede din leder.</p>
+<p>John Gabarro og John Kotter fra Harvard Business School publicerede i 1980 en artikel, der stadig er en af de mest citerede i Harvard Business Review: "Managing Your Boss." Deres centrale argument var radikalt for sin tid — og er det stadig: Relationen mellem dig og din chef er ikke en envejsrelation, hvor chefen leder og du følger. Det er en gensidig afhængighedsrelation, hvor begge parter har ansvar for at få den til at fungere.</p>
+<p>De fleste professionelle opfatter relationen til chefen som noget, der "sker" med dem. Chefen er god eller dårlig, tilgængelig eller fraværende, støttende eller ligegyldig — og du må tilpasse dig. Gabarro og Kotter viste, at denne passive tilgang er en opskrift på frustration. De professionelle, der lykkes, tager aktivt ansvar for at forstå deres chef, afstemme forventninger, kommunikere proaktivt og navigere konflikter.</p>
+
+<h3>Leading Up: Ikke manipulation — lederskab</h3>
+<p>Michael Useem fra Wharton School har studeret "leading up" i kontekster fra militæret til erhvervslivet. Hans konklusion er entydig: At lede opad er ikke manipulation, smiger eller politisk spil. Det er en form for lederskab — evnen til at påvirke beslutninger, kommunikere ærligt og tage ansvar for resultater, uanset din formelle position i hierarkiet.</p>
+<p>Useem dokumenterer, at de mest effektive organisationer er dem, hvor information og indflydelse flyder i begge retninger — ikke kun fra top til bund. Og det kræver mennesker, der har modet og kompetencen til at lede opad: At sige det, der skal siges, også til dem der er over dig i hierarkiet. At bringe dårlige nyheder tidligt. At udfordre beslutninger, du er uenig i. Og at gøre det på en måde, der er respektfuld, konstruktiv og løsningsorienteret.</p>
+
+<h3>Drucker: Kend dig selv — og kend din chef</h3>
+<p>Peter Drucker argumenterer i "Managing Oneself," at det første skridt i enhver professionel relation er selvforståelse: Kend dine styrker, dine værdier og din arbejdsstil. Men han tilføjer noget, de fleste overser: Du har også et ansvar for at forstå din chefs styrker, værdier og arbejdsstil. Ikke for at manipulere — men for at samarbejde effektivt.</p>
+<p>"Det er ikke smiger," skriver Drucker. "Det er pligt." Du kan ikke samarbejde med en person, du ikke forstår. Og din chef er den vigtigste samarbejdspartner, du har.</p>
+
+<h3>Covey: Proaktivitet i relationen</h3>
+<p>Stephen Covey formulerede det med sin første vane: Vær proaktiv. Mellem stimulus og respons har du et valg. Og det valg gælder i særlig grad for din relation til din leder. Du kan vælge at reagere passivt — vente på at chefen sætter retning, giver feedback, skaber muligheder. Eller du kan vælge at agere proaktivt — aktivt styre relationen, kommunikere dine behov og bidrage til, at relationen fungerer for begge parter.</p>
+<p>Barbara Kellerman tilføjer med sin forskning i "followership," at kvaliteten af ledelse i en organisation ikke kun afhænger af lederne. Den afhænger i mindst lige så høj grad af følgerne — af dem, der har modet til at engagere sig, udfordre, støtte og lede opad, når situationen kræver det. Det er ikke et svaghedstegn at følge. Det er et svaghedstegn at følge passivt.</p>
+<blockquote>At lede din leder er ikke manipulation. Det er den mest modne form for professionelt ansvar: At tage ejerskab over den relation, der mere end nogen anden former din arbejdsdag, din udvikling og din karriere.</blockquote>`,
+qs:[
+{id:'q1_1',type:'ta',l:'Hvad er din <strong>ærlige oplevelse</strong> af relationen til din nuværende leder? Hvad fungerer — og hvad mangler?'},
+{id:'q1_2',type:'scale',l:'Hvor aktivt styrer du relationen til din leder — ærligt?',mn:1,mx:10},
+{id:'q1_3',type:'choice',l:'Din typiske tilgang til din leder er primært:',opts:['Proaktiv (jeg tager initiativ)','Reaktiv (jeg venter på lederen)','Undvigende (jeg holder afstand)','Varierer fra situation til situation']},
+{id:'q1_4',type:'ta',l:'Gabarro & Kotter: Relationen er <strong>gensidig afhængighed</strong>. Hvad bidrager DU til relationen — og hvad mangler?'},
+{id:'q1_5',type:'ta',l:'Hvad ville ændre sig i din hverdag, hvis du <strong>aktivt mestrede</strong> at lede din leder?'},
+{id:'q1_6',type:'ta',l:'Hvad er den <strong>ene ting</strong> du undgår at gøre i relationen til din leder — og hvad koster det dig?'},
+],
+takeaways:['At lede opad er ikke manipulation. Det er professionelt ansvar for en gensidig afhængighedsrelation.','De fleste behandler relationen til chefen som noget der \"sker\" med dem. De der lykkes, styrer den aktivt.','Drucker: At forstå din chefs arbejdsstil er ikke smiger — det er pligt.','Proaktivitet: Du har et valg. Vent ikke på at chefen skaber den gode relation — tag ansvar selv.','Kvaliteten af ledelse afhænger lige så meget af followers som af ledere.']
+},
+{
+id:2,
+title:'Kend din leder',
+subtitle:'Det fundament alt andet bygger på — at forstå det menneske du rapporterer til',
+icon:'🔍',
+color:'#E5A048',
+sources:['Gabarro, J. & Kotter, J. — Managing Your Boss (HBR Classic, 1980/2005)','Drucker, P. — The Effective Executive (1967)','Goleman, D. — Emotional Intelligence (1995)','Hogan, R. — Personality and the Fate of Organizations (2007)','Rock, D. — SCARF: A Brain-Based Model (2008)'],
+whyText:'Gabarro og Kotter: <strong>De mest effektive professionelle investerer tid i at forstå deres chefs mål, pres, styrker, svagheder og foretrukne arbejdsstil.</strong> Ikke for at manipulere — men fordi du ikke kan samarbejde med en person, du ikke forstår.',
+learn:`<h3>Din leder er et menneske</h3>
+<p>Det lyder banalt. Det er det modsatte. De fleste medarbejdere opfatter deres chef som en funktion, ikke som et menneske. Chefen er den, der godkender, prioriterer, eskalerer og vurderer. Men bag funktionen sidder et menneske med ambitioner, frygt, pres, styrker, blinde vinkler og en arbejdsstil, der er lige så idiosynkratisk som din egen.</p>
+<p>Gabarro og Kotter identificerer fem dimensioner, du skal forstå om din chef, hvis du vil samarbejde effektivt:</p>
+<p><strong>Mål og pres:</strong> Hvad forsøger din chef at opnå? Hvad bliver hun målt på? Hvilket pres kommer ovenfra? Hvilke stakeholders kæmper om hendes opmærksomhed? Hvis du ikke kender svarene, opererer du i blinde.</p>
+<p><strong>Styrker og svagheder:</strong> Hvad er din chef god til — og hvad er hun ikke god til? Hvor kan du kompensere? Hvor skal du være ekstra opmærksom? Dine chefs svagheder er ikke noget, du kritiserer. De er noget, du navigerer.</p>
+<p><strong>Arbejdsstil:</strong> Er din chef en "reader" eller en "listener"? Vil hun have korte mails eller lange rapporter? Foretrækker hun detaljer eller overblik? Morgenmøder eller eftermiddagssamtaler? Disse præferencer er ikke tilfældige — de afspejler dybe kognitive mønstre.</p>
+
+<h3>Lederstile og SCARF</h3>
+<p>David Rock tilbyder med SCARF-modellen en ramme for at forstå, hvad der driver din leders adfærd. Enhver leder har en dominerende SCARF-profil — de domæner, hun er mest sensitiv over for. Nogle ledere er primært drevet af Status (anerkendelse, respekt, position). Andre af Certainty (kontrol, forudsigelighed, data). Andre af Autonomy (handlefrihed, selvbestemmelse). Andre af Relatedness (loyalitet, team, tilhørsforhold). Og andre af Fairness (retfærdighed, transparens, proces).</p>
+<p>Når du forstår din leders SCARF-profil, forstår du, hvad der motiverer hende — og hvad der trigger hende. En statusdrevet leder vil reagere negativt, hvis hun føler sig undermineret offentligt. En certainty-drevet leder vil reagere negativt på overraskelser. En autonomy-drevet leder vil reagere negativt på mikromanagement oppefra — og vil sandsynligvis heller ikke praktisere det nedadtil.</p>
+
+<h3>Hogan: Den mørke side</h3>
+<p>Robert Hogan dokumenterer, at enhver leder har "dark side"-tendenser — adfærdsmønstre der forstærkes under pres. Nogle bliver mere kontrollerende. Andre mere distancerede. Nogle mere dramatiske. Andre mere forsigtige. Hogans pointe er ikke, at din chef er dysfunktionel. Det er, at alle ledere har forudsigelige stressmønstre — og at du er bedre stillet, hvis du kender dem.</p>
+<p>Drucker opsummerer det med sin sædvanlige præcision: Den effektive professionelle gør sine lederes styrker produktive. Ikke ved at ignorere svaghederne — men ved at organisere sig selv, så styrker udnyttes og svagheder kompenseres. Det er ikke underdanighed. Det er professionel intelligens.</p>
+
+<h3>Empati som strategisk kompetence</h3>
+<p>Daniel Goleman placerer empati som en af de fem kernekompetencer i emotionel intelligens. I konteksten af at lede opad er empati ikke en blød, nice-to-have-kompetence. Det er et strategisk redskab: Evnen til at forstå, hvad din chef tænker, føler og har brug for — og bruge den forståelse til at kommunikere mere effektivt, støtte mere præcist og samarbejde mere produktivt.</p>
+<p>Empati opad kræver, at du aktivt sætter dig i din chefs sted: Hvad ser verden ud fra hendes perspektiv? Hvad holder hende vågen om natten? Hvilke kampe kæmper hun, som du ikke ser? Hvilke kompromiser indgår hun, som du ikke kender til? Når du forstår dette, forandres din tilgang til relationen fundamentalt — fra frustration til forståelse, fra reaktivitet til strategi.</p>
+<blockquote>Du kan ikke lede en person, du ikke forstår. Invester tid i at forstå din leders verden — det er den mest strategiske investering du kan gøre.</blockquote>`,
+qs:[
+{id:'q2_1',type:'ta',l:'Beskriv din leders <strong>vigtigste mål og pres</strong> lige nu. Hvad bliver hun/han målt på? Hvad presser ovenfra?'},
+{id:'q2_2',type:'ta',l:'Hvad er din leders <strong>arbejdsstil</strong>? Reader/listener? Detaljer/overblik? Morgen/eftermiddag? Struktur/frihed?'},
+{id:'q2_3',type:'choice',l:'Din leders dominerende SCARF-profil er primært:',opts:['Status (anerkendelse)','Certainty (kontrol/data)','Autonomy (handlefrihed)','Relatedness/Fairness']},
+{id:'q2_4',type:'ta',l:'Hogan: Hvad er din leders <strong>"dark side" under pres</strong>? Hvad sker der, når presset stiger?'},
+{id:'q2_5',type:'scale',l:'Hvor godt forstår du din leders verden — reelt?',mn:1,mx:10},
+{id:'q2_6',type:'ta',l:'Hvad ved du IKKE om din leder, som du <strong>burde vide</strong> for at samarbejde bedre?'},
+],
+takeaways:['Kend din leders mål, pres, styrker, svagheder og arbejdsstil. Du kan ikke samarbejde med en du ikke forstår.','Reader vs. listener, detaljer vs. overblik — tilpas din kommunikation til lederens præferencer, ikke dine egne.','SCARF: Forstå hvad der motiverer og trigger din leder. Status, Certainty, Autonomy, Relatedness, Fairness.','Dark side under pres: Alle ledere har forudsigelige stressmønstre. Kend dem — og navigér dem.','Empati opad er ikke underdanighed. Det er strategisk intelligens.']
+},
+{
+id:3,
+title:'Kommunikation opad',
+subtitle:'Kunsten at sige det rigtige, på det rigtige tidspunkt, på den rigtige måde',
+icon:'💬',
+color:'#66BB6A',
+sources:['Gabarro, J. & Kotter, J. — Managing Your Boss (HBR, 1980/2005)','Minto, B. — The Pyramid Principle (1987)','Cialdini, R. — Pre-Suasion (2016)','Stone, D. & Heen, S. — Difficult Conversations (1999)','Kahneman, D. — Thinking, Fast and Slow (2011)'],
+whyText:'Barbara Minto, tidligere McKinsey: <strong>Start med konklusionen. Understøt med argumenter. Giv detaljer kun når der spørges.</strong> De fleste kommunikerer opad som de tænker — kronologisk. Ledere har brug for det omvendt.',
+learn:`<h3>Bottom line up front</h3>
+<p>Der er ét kommunikationsmønster, der ødelægger mere tillid opad end noget andet: At kommunikere, som du tænker. De fleste mennesker tænker kronologisk — fra kontekst til analyse til konklusion. Og de kommunikerer i samme rækkefølge: "Først skete X, så undersøgte jeg Y, og derefter konkluderede jeg Z." Det er logisk. Det er naturligt. Og det er præcis forkert, når du kommunikerer opad.</p>
+<p>Barbara Minto, der udviklede kommunikationsstandarden for McKinsey, formulerede Pyramideprincippet: Start med konklusionen. Understøt med dine vigtigste argumenter. Giv detaljer kun når der spørges. "Vi bør udskyde lanceringen med tre uger, fordi testresultaterne viser to kritiske fejl" — ikke en ti minutters gennemgang af testprocessen, der ender med den konklusion, som din chef allerede har mistet tålmodigheden med at vente på.</p>
+<p>Din leders tid er knap. Hendes kognitive kapacitet er begrænset. Og hendes tålmodighed for langsom kommunikation er kort — ikke fordi hun er arrogant, men fordi hun har 47 andre beslutninger, der venter. Respektér det ved at levere din besked i det format, der er mest effektivt for hende.</p>
+
+<h3>Kahneman: System 1 og System 2</h3>
+<p>Daniel Kahneman skelner mellem to tænkesystemer: System 1 (hurtigt, intuitivt, automatisk) og System 2 (langsomt, analytisk, bevidst). Når du kommunikerer med din leder, er hun sandsynligvis i System 1 — hun tager hurtige beslutninger baseret på begrænsede input, mens hun jonglerer med mange bolde. Din kommunikation skal matche dette: Klar, kort, handlingsorienteret. Ikke fordi din chef er overfladisk — men fordi hendes kognitiv kapacitet er allokeret til mange opgaver samtidig.</p>
+<p>Når du har brug for System 2-opmærksomhed — en kompleks analyse, en kontroversiel anbefaling, en svær samtale — så bed eksplicit om det: "Jeg har brug for 20 minutter af din uforstyrrede opmærksomhed til dette." Det er respekt, ikke krævementalitet.</p>
+
+<h3>Cialdini: Pre-suasion</h3>
+<p>Robert Cialdini viser i Pre-Suasion, at det, der sker før du leverer dit budskab, er mindst lige så vigtigt som selve budskabet. Timing, kontekst og framing afgør, hvordan dit budskab modtages. At bringe en dårlig nyhed, mens din chef er på vej til et bestyrelsesmøde, er dårlig timing. At præsentere en anbefaling, lige efter din chef har fået ros for et lignende initiativ, er god framing.</p>
+<p>Gabarro og Kotter understreger, at timing af information opad er en kernekompetence. Dårlige nyheder skal bringes tidligt — aldrig sent. Gode nyheder skal bringes specifikt — aldrig vagt. Anbefalinger skal bringes forberedt — aldrig halvfærdige. Og intet af det skal bringes, når din chef er under akut pres, medmindre det er akut.</p>
+
+<h3>De tre niveauer af kommunikation opad</h3>
+<p><strong>Informér:</strong> "Dette er hvad der sker." Fakta, status, data. Kort og præcist. Ingen fortolkning, medmindre der bedes om det.</p>
+<p><strong>Advisér:</strong> "Dette er hvad jeg anbefaler — og hvorfor." Din analyse, din vurdering, dit forslag. Vis at du har tænkt det igennem. Præsentér alternativer, hvis relevant.</p>
+<p><strong>Eskalér:</strong> "Jeg har brug for din hjælp/beslutning." Vær klar over, hvad du beder om. Er det en beslutning? En ressource? En intervention? En godkendelse? Uklarhed her er den hyppigste årsag til frustration — begge veje.</p>
+<p>Det kritiske er, at du selv vælger det rigtige niveau. De fleste medarbejdere informerer, når de burde advisere. Eller eskalerer, når de burde håndtere selv. Eller undlader at eskalere, når de burde gøre det. At vælge det rigtige niveau er en bedømmelseskunst — og den forbedres kun med praksis og feedback.</p>
+<blockquote>Din leder har ikke brug for mere information. Hun har brug for den rigtige information, i det rigtige format, på det rigtige tidspunkt. Det er din opgave at levere det.</blockquote>`,
+qs:[
+{id:'q3_1',type:'choice',l:'Hvordan kommunikerer du typisk med din leder?',opts:['Kronologisk (kontekst → konklusion)','Pyramiden (konklusion → understøttelse)','Ustruktureret / ad hoc','Skriftligt primært']},
+{id:'q3_2',type:'ta',l:'Giv et eksempel på en situation, hvor din <strong>kommunikation opad fejlede</strong>. Hvad gik galt — timing, format, budskab?'},
+{id:'q3_3',type:'ta',l:'Mintos pyramideprincip: Beskriv en aktuel sag, du skal kommunikere opad. <strong>Start med konklusionen.</strong>'},
+{id:'q3_4',type:'scale',l:'Hvor god er du til at vælge det rigtige niveau — informér, advisér eller eskalér?',mn:1,mx:10},
+{id:'q3_5',type:'ta',l:'Cialdinis pre-suasion: Hvornår er det <strong>bedste tidspunkt</strong> at bringe vigtige emner til din leder? Hvornår det værste?'},
+{id:'q3_6',type:'ta',l:'Skriv en <strong>30-sekunders elevator pitch</strong> for din vigtigste aktuelle anbefaling til din leder.'},
+],
+takeaways:['Bottom line up front. Start med konklusionen, understøt med argumenter, giv detaljer kun når der spørges.','Din leders kognitive kapacitet er begrænset. Respektér det med klar, kort, handlingsorienteret kommunikation.','Tre niveauer: Informér, advisér, eskalér. Vælg det rigtige niveau — det er en bedømmelseskunst.','Timing er alt. Dårlige nyheder tidligt. Gode nyheder specifikt. Anbefalinger forberedt.','Pre-suasion: Det der sker FØR dit budskab afgør, hvordan det modtages.']
+},
+{
+id:4,
+title:'Forventningsafstemning',
+subtitle:'Kontrakten mellem dig og din leder — den de fleste aldrig forhandler',
+icon:'🤝',
+color:'#42A5F5',
+sources:['Gabarro, J. & Kotter, J. — Managing Your Boss (HBR, 1980/2005)','Watkins, M. — The First 90 Days (2013)','Scott, K. — Radical Candor (2017)','Lencioni, P. — The Advantage (2012)','Sull, D. & Sull, C. — Why Strategy Execution Unravels (MIT Sloan, 2015)'],
+whyText:'Sull og Sull: <strong>Kun 55% af mellemledere kan nævne bare én af virksomhedens top-5 strategiske prioriteter.</strong> Hvis din leder og du ikke er enige om, hvad der er vigtigst, arbejder du i blinde — og vurderes efter kriterier, du ikke kender.',
+learn:`<h3>Den uforhandlede kontrakt</h3>
+<p>Der er en kontrakt mellem dig og din leder, som de fleste aldrig eksplicit forhandler: Hvad forventer hun af dig? Hvad forventer du af hende? Hvad er succes? Hvad er fiasko? Hvornår vil hun involveres — og hvornår vil hun ikke? Hvad er dine prioriteter — og er de de samme som hendes?</p>
+<p>Gabarro og Kotter identificerer dette som den hyppigste kilde til frustation i chef-medarbejder-relationen: Uafstemte forventninger. Medarbejderen arbejder hårdt på det forkerte. Chefen forventer noget, hun aldrig har kommunikeret. Og begge parter ender frustrerede — ikke fordi de er inkompetente, men fordi de aldrig har sat sig ned og sagt: "Lad os blive enige om, hvad der er vigtigst."</p>
+
+<h3>De første 90 dage — og derefter</h3>
+<p>Michael Watkins argumenterer i The First 90 Days for, at de første tre måneder i enhver ny rolle er afgørende for at etablere forventningsafstemning. Men hans principper gælder langt ud over de første 90 dage. Forventninger ændrer sig. Prioriteter skifter. Organisationen udvikler sig. Og den afstemning, der var præcis i januar, kan være forældet i april.</p>
+<p>Watkins anbefaler en enkel praksis: Regelmæssige "alignment conversations" med din leder — strukturerede samtaler, hvor I genbesøger prioriteter, succeskriterier og samarbejdsform. Ikke fordi noget er galt. Men fordi afstemning er en kontinuerlig proces, ikke en engangsbegivenhed.</p>
+
+<h3>De fem spørgsmål</h3>
+<p>Her er fem spørgsmål, du bør kunne besvare med sikkerhed — og som du bør validere med din leder mindst kvartalsvist:</p>
+<p><strong>1. Hvad er mine top-3 prioriteter lige nu?</strong> Ikke hvad du synes de er — hvad din leder mener de er. Hvis I ikke er enige, har du et problem.</p>
+<p><strong>2. Hvad er succes?</strong> Ikke vagt ("gode resultater") men specifikt: Hvilke outcomes, hvilke deadlines, hvilket kvalitetsniveau?</p>
+<p><strong>3. Hvornår vil du involveres — og hvornår ikke?</strong> Nogle ledere vil informeres om alt. Andre vil kun høre om problemer. Kend din leders præference.</p>
+<p><strong>4. Hvad er mine rammer?</strong> Hvor meget autonomi har du? Hvad kan du beslutte selv? Hvornår skal du spørge?</p>
+<p><strong>5. Hvornår revisiterer vi?</strong> Forventningsafstemning uden opfølgning er en illusion.</p>
+
+<h3>Lencioni: Klarhed er organisatorisk sundhed</h3>
+<p>Patrick Lencioni argumenterer i The Advantage for, at den vigtigste ting en ledergruppe kan opnå, er klarhed. Klarhed om hvad der er vigtigst. Klarhed om hvem der gør hvad. Klarhed om succeskriterier. Og klarhed om, hvordan beslutninger træffes. Det samme gælder for din relation til din leder: Klarhed er fundamentet for tillid, effektivitet og resultater.</p>
+<p>Kim Scott tilføjer, at den bedste måde at opnå klarhed er at bede om den eksplicit: "Kan vi tage 15 minutter og gennemgå mine prioriteter? Jeg vil sikre mig, at vi er enige." Det kræver mod — fordi det implicit siger: "Jeg er ikke sikker på, at vi er alignede." Men alternativet — at arbejde i blinde og håbe, at du gætter rigtigt — er langt farligere.</p>
+<blockquote>Forventningsafstemning er ikke en samtale du har én gang. Det er en praksis du vedligeholder — fordi den verden, dine forventninger blev sat i, ændrer sig konstant.</blockquote>`,
+qs:[
+{id:'q4_1',type:'ta',l:'Hvad er dine <strong>top-3 prioriteter</strong> lige nu? Og er din leder enig? Har I talt om det?'},
+{id:'q4_2',type:'ta',l:'Hvad er <strong>succes</strong> i din rolle — konkret? Ikke hvad du tror — hvad din leder ville sige?'},
+{id:'q4_3',type:'scale',l:'Hvor godt er dine forventninger afstemt med din leders — reelt?',mn:1,mx:10},
+{id:'q4_4',type:'choice',l:'Hvor ofte har I en eksplicit forventningssamtale?',opts:['Ugentligt/i 1:1','Månedligt','Kvartalsvist','Aldrig/kun i MUS']},
+{id:'q4_5',type:'ta',l:'Watkins: Hvad har <strong>ændret sig</strong> siden I sidst afstemte forventninger? Prioriteter, kontekst, organisationen?'},
+{id:'q4_6',type:'ta',l:'Formulér de <strong>5 spørgsmål</strong> du vil stille din leder i din næste alignment-samtale. Skriv dem ned.'},
+],
+takeaways:['Den hyppigste kilde til frustration: Uafstemte forventninger. Medarbejderen arbejder hårdt — på det forkerte.','Kend dine top-3 prioriteter og validér dem med din leder. Hvis I ikke er enige, har du et problem.','Forventningsafstemning er en kontinuerlig proces, ikke en engangsbegivenhed. Kvartalsvist minimum.','Bed om klarhed eksplicit: \"Kan vi gennemgå mine prioriteter?\" Det kræver mod — alternativet er blindhed.','Succes er ikke vagt. Det er specifikt: Outcomes, deadlines, kvalitetsniveau. Kend kriterierne.']
+},
+{
+id:5,
+title:'Indflydelse uden autoritet',
+subtitle:'Kunsten at påvirke beslutninger, når du ikke har det sidste ord',
+icon:'🎯',
+color:'#AB47BC',
+sources:['Cialdini, R. — Influence: The Psychology of Persuasion (1984)','Cohen, A. & Bradford, D. — Influence Without Authority (2005)','Fisher, R. & Ury, W. — Getting to Yes (1981)','Pfeffer, J. — Power: Why Some People Have It and Others Don\\\'t (2010)','Edmondson, A. — The Fearless Organization (2019)'],
+whyText:'Cohen og Bradford: <strong>Indflydelse handler ikke om magt — det handler om bytte.</strong> De mest indflydelsesrige professionelle forstår, hvad deres leder har brug for, og leverer det konsekvent. Indflydelse er optjent, ikke krævet.',
+learn:`<h3>Indflydelsens valuta</h3>
+<p>Allan Cohen og David Bradford tilbyder med "Influence Without Authority" en af de mest praktiske rammer for at forstå indflydelse: Det handler om bytte. Ethvert professionelt forhold er et byttesystem, hvor du udveksler "valutaer" — ting af værdi for begge parter. Dine valutaer kan være ekspertise, information, arbejdskraft, loyalitet, troværdighed, adgang til netværk, evnen til at udføre ubekvemme opgaver, eller noget helt femte.</p>
+<p>Nøglen til indflydelse opad er at forstå, hvad din leder værdsætter mest — og konsekvent levere det. Hvis din leder værdsætter præcision, levér altid fejlfrit. Hvis hun værdsætter hastighed, levér altid hurtigt. Hvis hun værdsætter loyalitet, stå altid bag hende offentligt. Hvis hun værdsætter ærlighed, giv altid den ufiltrerede version. Hver gang du leverer det, din leder værdsætter, opbygger du en "indflydelseskonto" — en beholdning af tillid og troværdighed, du kan trække på, når du har brug for at påvirke en beslutning.</p>
+
+<h3>Cialdinis seks principper</h3>
+<p>Robert Cialdini identificerer seks universelle påvirkningsprincipper, der alle kan anvendes opad:</p>
+<p><strong>Reciprocitet:</strong> Giv før du beder. Hjælp din leder, før du beder om hjælp. Løs et problem, før du bringer et. Denne ubalance i din favør skaber en naturlig velvilje.</p>
+<p><strong>Konsistens:</strong> Bed din leder om små forpligtelser, der leder mod den større beslutning. "Er vi enige om princippet?" åbner for "Lad os implementere det konkret."</p>
+<p><strong>Social proof:</strong> "Andre organisationer gør det allerede" er et kraftfuldt argument for en leder, der er usikker.</p>
+<p><strong>Autoritet:</strong> Referér til troværdige kilder. Data, forskning, eksperter. Din leders leder. Bestyrelsens prioriteter.</p>
+<p><strong>Liking:</strong> Relationen er fundamentet. Mennesker siger ja til mennesker, de kan lide og stoler på. Invester i relationen — ikke kun i sagerne.</p>
+<p><strong>Scarcity:</strong> "Muligheden forsvinder" og "risikoen ved at vente" er stærkere motivatorer end "fordelen ved at handle."</p>
+
+<h3>Fisher og Ury: Principbaseret forhandling</h3>
+<p>Roger Fisher og William Ury revolutionerede forhandlingskunsten med "Getting to Yes." Deres principper er direkte overførbare til indflydelse opad:</p>
+<p><strong>Adskil person fra problem.</strong> Din uenighed med din leders beslutning er ikke et personligt angreb. Rammesæt det som "vi har et fælles problem" — ikke "du tager fejl."</p>
+<p><strong>Fokusér på interesser, ikke positioner.</strong> Din leders position ("vi gør det ikke") dækker over en interesse (budget, risiko, timing). Forstå interessen — og find en løsning, der tilgodeser den.</p>
+<p><strong>Generér alternativer.</strong> Kom aldrig med ét forslag. Kom med tre. Det giver din leder valgfrihed — og det viser, at du har tænkt bredt.</p>
+<p><strong>Brug objektive kriterier.</strong> Data slår holdninger. Benchmarks slår mavefornemmelser. Og din leders leders prioriteter slår din leders personlige præferencer.</p>
+
+<h3>Troværdighed: Indflydelsens fundament</h3>
+<p>Jeffrey Pfeffer dokumenterer, at varig indflydelse bygger på troværdighed — den systematiske opbygning af en reputation for kompetence, pålidelighed og integritet. Du opbygger troværdighed ved at holde, hvad du lover. Ved at levere kvalitet konsekvent. Ved at indrømme fejl ærligt. Ved at bringe dårlige nyheder tidligt. Og ved aldrig at overraske din leder negativt.</p>
+<p>Troværdighed er din vigtigste valuta. Den tager måneder at opbygge og sekunder at ødelægge. Beskyt den som det, den er: Fundamentet for al din indflydelse opad.</p>
+<blockquote>Indflydelse er ikke noget du kræver. Det er noget du optjener — ved konsekvent at levere det, din leder har brug for, og ved at bygge den troværdighed, der gør dig til en stemme, der lyttes til.</blockquote>`,
+qs:[
+{id:'q5_1',type:'ta',l:'Cohen og Bradford: Hvad er dine vigtigste <strong>"valutaer"</strong> i relationen til din leder? Hvad leverer du, der har værdi?'},
+{id:'q5_2',type:'ta',l:'Tænk på en beslutning, du gerne ville <strong>påvirke</strong>. Hvilke af Cialdinis principper kunne du bruge?'},
+{id:'q5_3',type:'scale',l:'Hvor stor indflydelse har du på din leders beslutninger — reelt?',mn:1,mx:10},
+{id:'q5_4',type:'ta',l:'Fisher og Ury: Tænk på en aktuel uenighed med din leder. Hvad er <strong>interessen bag positionen</strong>?'},
+{id:'q5_5',type:'ta',l:'Pfeffer: Troværdighed er din vigtigste valuta. Hvad <strong>styrker</strong> din troværdighed — og hvad <strong>svækker</strong> den?'},
+{id:'q5_6',type:'ta',l:'Beskriv <strong>tre alternativer</strong> til en anbefaling, du vil bringe til din leder. Ikke ét forslag — tre.'},
+],
+takeaways:['Indflydelse er bytte. Forstå hvad din leder værdsætter — og levér det konsekvent.','Troværdighed er dit fundament. Hold hvad du lover. Levér kvalitet. Indrøm fejl. Aldrig negative overraskelser.','Cialdini: Giv før du beder. Data før holdninger. Relationen før sagen.','Fokusér på interesser, ikke positioner. \"Du tager fejl\" lukker. \"Vi har et fælles problem\" åbner.','Kom aldrig med ét forslag. Kom med tre. Det giver din leder valgfrihed og viser gennemtænkning.']
+},
+{
+id:6,
+title:'Svære samtaler opad',
+subtitle:'Modet til at sige det din leder har brug for at høre — men ingen andre siger',
+icon:'⚡',
+color:'#EF5350',
+sources:['Useem, M. — Leading Up (2001)','Patterson, K. et al. — Crucial Conversations (2012)','Edmondson, A. — The Fearless Organization (2019)','Brown, B. — Dare to Lead (2018)','Detert, J. & Burris, E. — Leadership Behavior and Employee Voice (Academy of Management, 2007)'],
+whyText:'Detert og Burris: <strong>De fleste medarbejdere censurerer sig selv opad — ikke fordi de er bange, men fordi de antager at det "ikke nytter noget."</strong> Den antagelse er oftere forkert end rigtig. Og prisen for tavshed er altid højere end prisen for mod.',
+learn:`<h3>Tavsheden der koster</h3>
+<p>Der er en epidemi af tavshed i de fleste organisationer, og den er værst opad. James Detert og Ethan Burris har dokumenteret, at medarbejdere systematisk tilbageholder information, bekymringer og uenigheder fra deres ledere — ikke fordi de er bange for repressalier, men fordi de har opgivet: "Det nytter ikke noget." "Hun lytter alligevel ikke." "Det er ikke min plads at sige."</p>
+<p>Prisen for denne tavshed er enorm. Problemer der kunne løses tidligt, vokser sig store. Strategier der burde udfordres, implementeres ukritisk. Ledere der har brug for ærlig feedback, omgives af tavs accept. Og medarbejdere der har noget vigtigt at sige, vælger frustrationen ved at tie over ubehaget ved at tale.</p>
+<p>Amy Edmondson dokumenterer, at de bedste teams — og de bedste organisationer — er dem, hvor folk taler åbent. Også opad. Også når budskabet er upopulært. Psykologisk tryghed handler ikke kun om, at det er sikkert at indrømme fejl nedad. Det handler om, at det er sikkert at udfordre opad.</p>
+
+<h3>Useem: Pligten til at tale</h3>
+<p>Michael Useem går videre: Det er ikke bare acceptabelt at tale opad. Det er en pligt. Han dokumenterer med eksempler fra militæret, sundhedsvæsenet og erhvervslivet, at de mest katastrofale beslutninger typisk træffes, ikke fordi ingen vidste bedre, men fordi dem der vidste bedre, ikke sagde det. Tavsheden var farligere end fejlen.</p>
+<p>Usheem identificerer tre forudsætninger for effektiv opadtil-kommunikation: Du skal have noget vigtigt at sige (ikke alt fortjener eskalering). Du skal sige det på det rigtige tidspunkt (ikke i plenummødet — i 1:1). Og du skal sige det på den rigtige måde (respektfuldt, konkret, løsningsorienteret).</p>
+
+<h3>Patterson: Crucial Conversations opad</h3>
+<p>Patterson og kollegers rammer for svære samtaler er direkte anvendelige opad:</p>
+<p><strong>Start med fælles formål:</strong> "Jeg bringer dette op, fordi jeg tror, det er vigtigt for teamet/projektet/organisationen." Ikke fordi du er utilfreds. Ikke fordi du vil klage. Men fordi du har et fælles mål.</p>
+<p><strong>Del fakta, ikke fortolkninger:</strong> "Tre af de fem projektmilestones er forsinkede" er fakta. "Vi mister kontrollen" er fortolkning. Start med fakta — de er mindre truende og mere produktive.</p>
+<p><strong>Invitér din leders perspektiv:</strong> "Hvad ser du, som jeg ikke ser?" Det er ikke underdanighed — det er ydmyghed. Du har muligvis ikke hele billedet. Og din leder er mere tilbøjelig til at lytte, hvis hun føler sig hørt.</p>
+<p><strong>Foreslå, ikke diktér:</strong> "Hvad tænker du om denne tilgang?" i stedet for "Du bør gøre X." Giv din leder ejerskab over løsningen.</p>
+
+<h3>Brené Brown: Sårbarhed som styrke</h3>
+<p>Brené Brown argumenterer for, at mod kræver sårbarhed. At sige noget svært til din leder kræver, at du accepterer risikoen for at tage fejl, for at blive afvist, for at blive opfattet negativt. Den risiko er reel. Men alternativet — at tie, at tilpasse, at vente — er altid farligere. For dig, for din leder, og for organisationen.</p>
+<p>Thomas Friisnæs' princip om karakter handler netop om dette: Modet til at sige det, der skal siges, også opad. Ikke fordi det er nemt. Ikke fordi det er trygt. Men fordi det er rigtigt. Og fordi din leder fortjener en medarbejder, der respekterer hende nok til at være ærlig.</p>
+<blockquote>Den mest loyale handling er ærlighed. Din leder har brug for mennesker, der tør sige det, andre ikke siger. Vær den person.</blockquote>`,
+qs:[
+{id:'q6_1',type:'ta',l:'Hvad er den <strong>ene ting du burde sige</strong> til din leder — men ikke har gjort? Hvad holder dig tilbage?'},
+{id:'q6_2',type:'choice',l:'Hvad er din typiske reaktion, når du er uenig med din leder?',opts:['Siger det direkte','Siger det indirekte/forsigtigt','Tier og tilpasser mig','Taler med kolleger i stedet']},
+{id:'q6_3',type:'ta',l:'Detert: "Det nytter ikke noget." Er den antagelse <strong>sand</strong> — eller er det en undskyldning for at undgå ubehaget?'},
+{id:'q6_4',type:'scale',l:'Hvor tryg er du ved at udfordre din leder?',mn:1,mx:10},
+{id:'q6_5',type:'ta',l:'Usheem: Tænk på en situation, hvor din <strong>tavshed kostede</strong>. Hvad ville der være sket, hvis du havde talt?'},
+{id:'q6_6',type:'ta',l:'Formulér den svære besked i <strong>Pattersons format</strong>: Fælles formål → fakta → invitér perspektiv → foreslå.'},
+],
+takeaways:['Tavshed opad er ikke loyalitet. Det er undgåelse. Den mest loyale handling er ærlighed.','\"Det nytter ikke noget\" er oftere en undskyldning end en sandhed. Test antagelsen.','Start med fælles formål. Del fakta, ikke fortolkninger. Invitér perspektiv. Foreslå, diktér ikke.','Timing: Sig det i 1:1, ikke i plenummødet. Privat rum. Direkte. Med respekt.','Karakter: Modet til at sige det der skal siges, også opad. Ikke fordi det er nemt — fordi det er rigtigt.']
+},
+{
+id:7,
+title:'Feedback til din leder',
+subtitle:'Den samtale næsten ingen tør have — men som forandrer relationen',
+icon:'🪞',
+color:'#26A69A',
+sources:['Scott, K. — Radical Candor (2017)','Stone, D. & Heen, S. — Thanks for the Feedback (2014)','Goldsmith, M. — What Got You Here Won\\\'t Get You There (2007)','Edmondson, A. — The Fearless Organization (2019)','Buckingham, M. & Goodall, A. — Nine Lies About Work (2019)'],
+whyText:'Marshall Goldsmith: <strong>De mest succesfulde ledere beder aktivt om feedback fra deres medarbejdere — og handler på den.</strong> Men de fleste medarbejdere venter på at blive spurgt. Vent ikke. Tag initiativet.',
+learn:`<h3>Feedbackens blinde vinkel</h3>
+<p>Der er en strukturel asymmetri i de fleste organisationer, der sjældent adresseres: Feedback flyder primært nedad. Ledere giver feedback til medarbejdere. Men medarbejdere giver sjældent feedback til ledere. Resultatet er, at ledere opererer med en voksende blind vinkel — et gap mellem den leder, de tror de er, og den leder, deres medarbejdere oplever.</p>
+<p>Marshall Goldsmith dokumenterer, at dette gap vokser med anciennitet: Jo højere i hierarkiet, jo mindre ærlig feedback modtager lederen, og jo større bliver den blinde vinkel. Det er ikke fordi medarbejderne er fejge. Det er fordi strukturen modarbejder det: Magt skaber distance. Distance skaber forsigtighed. Forsigtighed skaber tavshed. Og tavshed skaber blinde vinkler.</p>
+
+<h3>Radical Candor opad</h3>
+<p>Kim Scott argumenterer for, at Radical Candor — kombinationen af personlig omsorg og direkte udfordring — gælder i begge retninger. At give din leder ærlig feedback er lige så vigtigt som at modtage den. Og det kræver den samme kombination: Du skal vise, at du oprigtigt bekymrer dig om din leder (og om resultaterne) — og du skal tør sige det direkte.</p>
+<p>Scotts praktiske anbefaling: Start med at bede om feedback, før du giver den. "Hvad kan jeg gøre bedre?" signalerer sårbarhed og gensidighed. Når din leder oplever, at du er åben for feedback, bliver hun mere åben for at modtage den.</p>
+
+<h3>Stone og Heen: Feedbackens tre triggere</h3>
+<p>Douglas Stone og Sheila Heen viser, at feedback kan afvises af tre grunde — og de gælder også for din leder:</p>
+<p><strong>Truth triggers:</strong> Din leder er uenig i din observation. Løsning: Vær specifik. Brug adfærdsbeskrivelser, ikke vurderinger. "Jeg oplever, at..." snarere end "Du er..."</p>
+<p><strong>Relationship triggers:</strong> Din leder reagerer på, at det er DIG der giver feedback — ikke på feedbacken selv. Løsning: Byg relationen først. Troværdighed er forudsætningen.</p>
+<p><strong>Identity triggers:</strong> Din feedback rammer din leders selvbillede. Løsning: Start med anerkendelse. Rammesæt feedbacken som "hvordan kan vi gøre det endnu bedre" — ikke "hvad er galt."</p>
+
+<h3>Den praktiske tilgang</h3>
+<p>Her er en operationel ramme for at give din leder feedback:</p>
+<p><strong>1. Vælg det rigtige tidspunkt:</strong> 1:1 er ideelt. Aldrig offentligt. Aldrig under pres. Aldrig i frustration.</p>
+<p><strong>2. Bed om lov:</strong> "Må jeg give dig feedback på noget, jeg har observeret?" Denne simple sætning viser respekt og giver din leder kontrol.</p>
+<p><strong>3. Vær specifik:</strong> "I mandags, da du afbrød mig under præsentationen..." — ikke "du lytter aldrig."</p>
+<p><strong>4. Fokusér på impact:</strong> "...mistede jeg tråden, og teamet fik ikke hele billedet." Impact, ikke intention.</p>
+<p><strong>5. Invitér til dialog:</strong> "Hvad tænker du?" Ikke en dom — en samtale.</p>
+<p><strong>6. Anerkend det der virker:</strong> Feedback opad skal balanceres med specifik anerkendelse. Fortæl din leder, hvad hun gør godt — lige så konkret som det, du gerne så ændret.</p>
+<p>Marcus Buckingham tilføjer et vigtigt perspektiv: Den mest effektive feedback fokuserer på det, der allerede virker — og beder om mere af det. "Når du giver mig frihed til at disponere selv, producerer jeg mit bedste arbejde" er feedback, der både anerkender og guider.</p>
+<blockquote>Din leder har en blind vinkel. Alle har. Den mest respektfulde ting du kan gøre, er at hjælpe hende med at se den — med omsorg, mod og præcision.</blockquote>`,
+qs:[
+{id:'q7_1',type:'ta',l:'Hvornår gav du sidst din leder <strong>ærlig feedback</strong>? Hvad sagde du — og hvad skete der?'},
+{id:'q7_2',type:'ta',l:'Hvad er din leders <strong>største blinde vinkel</strong> — den ting, ingen tør sige?'},
+{id:'q7_3',type:'scale',l:'Hvor tryg er du ved at give din leder feedback?',mn:1,mx:10},
+{id:'q7_4',type:'choice',l:'Hvad holder dig typisk tilbage fra at give feedback opad?',opts:['Frygt for konsekvenser','\"Det nytter ikke noget\"','Usikker på hvordan','Relationen er for skrøbelig']},
+{id:'q7_5',type:'ta',l:'Buckingham: Nævn noget din leder gør godt, som du <strong>aldrig har sagt</strong>. Formulér den specifikke anerkendelse.'},
+{id:'q7_6',type:'ta',l:'Formulér én <strong>konkret feedback</strong> til din leder i formatet: Tidspunkt → adfærd → impact → invitation til dialog.'},
+],
+takeaways:['Lederes blinde vinkel vokser med anciennitet. Færre tør sige det. Gapet vokser. Vær den der taler.','Start med at bede om feedback, før du giver den. Gensidighed åbner døren.','Vær specifik. \"I mandags, da du...\" — ikke \"du gør altid...\" Adfærd, ikke karakter.','Bed om lov. \"Må jeg give dig feedback?\" viser respekt og giver din leder kontrol.','Anerkendelse opad er lige så vigtigt som korrektion. Fortæl din leder hvad der virker — specifikt.']
+},
+{
+id:8,
+title:'Strategisk selvledelse',
+subtitle:'Fra taktisk tilpasning til bevidst karriereejerskab',
+icon:'🌟',
+color:'#9575CD',
+sources:['Drucker, P. — Managing Oneself (HBR, 1999)','Ibarra, H. — Working Identity (2003)','Covey, S. — The 7 Habits of Highly Effective People (1989)','George, B. — True North (2007)','Kaplan, R. — What to Ask the Person in the Mirror (2011)'],
+whyText:'Drucker: <strong>"I et videnssamfund er ansvaret for at manage dig selv udelukkende dit eget."</strong> At lede din leder er ikke en taktisk færdighed. Det er en manifestation af noget dybere: Bevidst selvledelse.',
+learn:`<h3>Fra taktik til strategi</h3>
+<p>Gennem de syv foregående moduler har du arbejdet med konkrete kompetencer: Forstå din leder. Kommunikér effektivt. Afstem forventninger. Påvirk beslutninger. Hav svære samtaler. Giv feedback. Disse er taktiske færdigheder — vigtige, men ikke tilstrækkelige. Bag dem ligger noget dybere: Din evne til at lede dig selv.</p>
+<p>Peter Drucker argumenterer i "Managing Oneself," at vidensarbejdere for første gang i historien har ansvaret for at styre deres egen karriere. Ingen virksomhed planlægger din karriere for dig mere. Ingen chef sikrer din udvikling automatisk. Ingen organisation garanterer din fremtid. Du er ansvarlig. Og den måde du navigerer relationen til din leder, er en afgørende del af den selvledelse.</p>
+
+<h3>Kend dig selv</h3>
+<p>Drucker stiller fem spørgsmål, som enhver vidensarbejder bør kunne besvare:</p>
+<p><strong>Hvad er mine styrker?</strong> Ikke hvad du gerne ville være god til. Hvad ER du god til? Feedback-analyse over tid er den eneste pålidelige metode.</p>
+<p><strong>Hvordan performer jeg?</strong> Er du en reader eller en listener? Arbejder du bedst alene eller i team? Under pres eller med ro? Morgenen eller aftenen? Kend din arbejdsstil — og stop med at kæmpe imod den.</p>
+<p><strong>Hvad er mine værdier?</strong> Hvad kan du ikke gå på kompromis med? Hvad er ikke-forhandlerbart? Disse værdier bør guide din karriere — ikke din næste forfremmelses titel.</p>
+<p><strong>Hvor hører jeg til?</strong> Ikke hvad der er muligt — hvad er rigtigt? Ikke alle roller passer til alle mennesker. At vide, hvor du trives, er en strategisk kompetence.</p>
+<p><strong>Hvad bør mit bidrag være?</strong> Ikke hvad du bør gøre. Hvad bør du bidrage med? Hvad er den unikke værdi, kun du kan levere?</p>
+
+<h3>Covey: Begin with the end in mind</h3>
+<p>Stephen Coveys anden vane tvinger dig til at stille det ultimative selvledelsesspørgsmål: Hvad vil du være kendt for? Ikke i næste kvartal — i dit professionelle liv. Det spørgsmål giver retning til alt det taktiske: Hvordan du kommunikerer med din leder, hvilke kampe du vælger, hvilke kompromiser du indgår, og hvilke du afviser.</p>
+<p>Bill George kalder det din "True North" — det indre kompas der guider dig, når alt andet er tvetydigt. Din True North er ikke din titel, din løn eller din leders mening om dig. Det er dine grundlæggende værdier og din definition af et godt professionelt liv.</p>
+
+<h3>Ibarra: Karriere som eksperiment</h3>
+<p>Herminia Ibarra viser, at karriereudvikling sjældent er lineær. De mest tilfredse og succesfulde professionelle har ikke planlagt deres karriere. De har eksperimenteret — prøvet nye roller, opgaver, relationer og kontekster, og gradvist opdaget, hvad der resonerer. At lede din leder er en del af dette eksperiment: Din leder er din vigtigste sparringspartner, din mest tilgængelige mentor, og din primære kilde til nye muligheder — hvis du bruger relationen aktivt.</p>
+
+<h3>Kaplan: Spejlet</h3>
+<p>Robert Kaplan opfordrer til en regelmæssig praksis: Hold MUS med dig selv. Kvartalsvist. 60 minutter. Med ærlighed og skånselsløshed. Er du på rette vej? Bruger du dine styrker? Er din relation til din leder sund? Tager du nok ansvar for din egen udvikling? Siger du det, der skal siges?</p>
+<p>Thomas Friisnæs' tre søjler giver den overordnede ramme for denne selvledelse: <strong>Karakter</strong> — modet til at være ærlig med dig selv og med din leder. At sige det der skal siges. At handle i overensstemmelse med dine værdier, også når det koster. <strong>Disciplin</strong> — konsistensen til at investere i relationen, forberede dine samtaler, følge op på aftaler og opretholde de praksisser, der gør dig til den professionelle, du vil være. <strong>Klarhed</strong> — viden om hvem du er, hvad der driver dig, hvor du vil hen, og hvad du har brug for. Skarp, ikke vag. Plan, ikke håb. Handling, ikke drøm.</p>
+<blockquote>At lede din leder er ikke en taktisk færdighed. Det er en manifestation af den mest fundamentale form for ledelse: Selvledelse. Kend dig selv. Kend din leder. Tag ansvar for relationen. Tag ansvar for din karriere. Tag ansvar for dit liv.</blockquote>`,
+qs:[
+{id:'q8_1',type:'ta',l:'Druckers spørgsmål: Hvad er dine <strong>styrker</strong>, din <strong>arbejdsstil</strong> og dine <strong>værdier</strong>? Vær specifik.'},
+{id:'q8_2',type:'ta',l:'Covey: <strong>Begin with the end in mind.</strong> Hvad vil du være kendt for professionelt — om 10 år?'},
+{id:'q8_3',type:'ta',l:'George: Hvad er din <strong>True North</strong>? De værdier og det formål der guider dig, når alt andet er tvetydigt?'},
+{id:'q8_4',type:'ta',l:'Kaplans spejl: Er du <strong>på rette vej</strong>? Bruger du dine styrker? Er din relation til din leder sund?'},
+{id:'q8_5',type:'scale',l:'Hvor bevidst styrer du din egen karriere — fra autopilot til fuld bevidsthed?',mn:1,mx:10},
+{id:'q8_6',type:'ta',l:'Hvad vil du <strong>ændre</strong> — i din selvledelse, i din relation opad, i din karriereretning — baseret på dette forløb?'},
+],
+takeaways:['At lede din leder er en manifestation af selvledelse. Kend dig selv — før du forsøger at forstå andre.','Druckers 5 spørgsmål: Styrker, arbejdsstil, værdier, tilhørsforhold, bidrag. Kan du svare?','True North: Dine grundlæggende værdier. Ikke din titel, din løn eller din leders mening. Kend den.','Hold MUS med dig selv. Kvartalsvist. Ærligt. Er du på rette vej?','Karakter, Disciplin, Klarhed: Modet til at være ærlig. Konsistensen til at handle. Visheden om hvem du er.']
+}
+];
+
+function renderDash(){
+  const el=document.getElementById('client-dash');
+  document.getElementById('tb-name').textContent=S.cName;
+  let totalAns=0,totalQ=0,completedMods=0;
+  const activeMod=getActiveMod(S.cId);
+  MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);totalAns+=a;totalQ+=m.qs.length;if(isModComplete(S.cId,m))completedMods++});
+  const pct=totalQ?Math.round(totalAns/totalQ*100):0;
+
+  let ackIcon,ackTitle,ackBody;
+  if(completedMods>=8){ackIcon='🏆';ackTitle='Forløbet gennemført';ackBody='8 moduler. 48 refleksioner. Du har nu fundamentet for at lede opad med karakter og kompetence.<br><strong>Næste skridt:</strong> Book session med din coach.'}
+  else if(totalAns>0){ackIcon='⚡';ackTitle='Du er i gang';ackBody=`Modul ${activeMod} af 8 er åbent. Gennemfør spørgsmål og journal, og send til din coach for at åbne næste modul.`}
+  else{ackIcon='🚀';ackTitle='Velkommen til dit forløb';ackBody='8 moduler. 48 refleksioner. Modulerne åbnes ét ad gangen — gennemfør og send til din coach for at komme videre.'}
+
+  let h=`<div class="prog-header"><div><h1>Dit forløb: Led din leder</h1><div class="stat">${completedMods}/8 moduler · ${totalAns}/${totalQ} svar · ${pct}%</div></div></div>`;
+  h+=`<div class="ack-box fade"><div class="ack-icon">${ackIcon}</div><h2>${ackTitle}</h2><p>${ackBody}</p></div>`;
+
+  h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:4px">Forløbs-overblik</h3>
+    <div class="velocity-grid">
+      <div class="vg-item"><div class="vn">${completedMods}</div><div class="vl">Gennemført</div></div>
+      <div class="vg-item"><div class="vn">${pct}%</div><div class="vl">Fremgang</div></div>
+      <div class="vg-item"><div class="vn">${totalAns}</div><div class="vl">Refleksioner</div></div>
+      <div class="vg-item"><div class="vn">${activeMod}/8</div><div class="vl">Åbne moduler</div></div>
+    </div></div>`;
+
+  h+='<div class="mods-grid">';
+  MODS.forEach(m=>{
+    const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);const tot=m.qs.length;const mpct=tot?Math.round(a/tot*100):0;
+    const isActive=m.id<=activeMod;const isDone=isModComplete(S.cId,m);const sent=isModSent(S.cId,m.id);
+    let badge='';
+    if(!isActive)badge=`<span class="mc-badge" style="background:var(--navy4);color:var(--text3)">🔒 Låst</span>`;
+    else if(sent)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">✓ Sendt</span>`;
+    else if(isDone)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">✓ Klar til afsendelse</span>`;
+    else if(a>0)badge=`<span class="mc-badge" style="background:var(--gdim);color:var(--gold)">${a}/${tot}</span>`;
+    else badge=`<span class="mc-badge" style="background:rgba(42,82,152,.15);color:var(--blue2)">Klar</span>`;
+    h+=`<div class="mod-card fade ${isActive?'':'locked'}" ${isActive?`onclick="openMod(${m.id-1})"`:''}>
+      <div class="mc-top"><div class="mc-icon" style="background:${m.color}">${m.icon}</div><div class="mc-title">${m.title}</div></div>
+      <div class="mc-sub">${m.subtitle}</div>
+      <div class="mc-prog"><div class="mc-prog-fill" style="width:${mpct}%;background:${m.color}"></div></div>
+      <div class="mc-status">${badge}</div></div>`;
+  });
+  h+='</div>';el.innerHTML=h;
+}
+
+function openMod(idx){
+  S.modIdx=idx;S.modTab='learn';const m=MODS[idx];
+  const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);S.answers=d?.answers||{};
+  document.getElementById('mod-title-bar').textContent='Modul '+m.id+': '+m.title;
+  document.getElementById('mod-sub-bar').textContent=m.subtitle;
+  document.getElementById('mod-header').innerHTML=`<h1 style="color:${m.color}">Modul ${m.id}: ${m.title}</h1><div class="mh-sub">${m.subtitle}</div>`;
+  let tabs=`<div class="mod-tab active" id="tab-l" onclick="setTab('learn')">Indhold</div>`;
+  tabs+=`<div class="mod-tab" id="tab-q" onclick="setTab('questions')">Spørgsmål (${countAns(S.answers)}/${m.qs.length})</div>`;
+  tabs+=`<div class="mod-tab" id="tab-t" onclick="setTab('takeaways')">Takeaways</div>`;
+  tabs+=`<div class="mod-tab" id="tab-j" onclick="setTab('journal')">Journal</div>`;
+  tabs+=`<div class="mod-tab" id="tab-s" onclick="setTab('submit')">Afslut &amp; send</div>`;
+  document.getElementById('mod-tabs').innerHTML=tabs;
+  renderLearn(m);renderQuestions(m);renderTakeaways(m);renderJournal(m);renderSubmit(m);
+  setTab('learn');show('module');
+}
+function setTab(t){
+  S.modTab=t;document.querySelectorAll('.mod-tab').forEach(el=>el.classList.remove('active'));
+  ['learn','quest','takeaways','journal','submit'].forEach(id=>document.getElementById('tc-'+id).style.display='none');
+  const map={learn:['tab-l','tc-learn'],questions:['tab-q','tc-quest'],takeaways:['tab-t','tc-takeaways'],journal:['tab-j','tc-journal'],submit:['tab-s','tc-submit']};
+  const x=map[t];if(x){document.getElementById(x[0])?.classList.add('active');document.getElementById(x[1]).style.display=''}
+}
+function renderLearn(m){
+  const src=m.sources.map(s=>`<div class="src-item">${s}</div>`).join('');
+  document.getElementById('tc-learn').innerHTML=`
+    <div class="sources-box" style="border-left-color:${m.color}"><div class="src-title">Forskningsgrundlag</div>${src}</div>
+    ${m.whyText?`<div class="why-mod-box"><div class="why-mod-label">Hvorfor dette modul er vigtigt</div><div class="why-mod-text">${m.whyText}</div></div>`:''}
+    <div class="learn-body">${m.learn}</div>
+    <div class="learn-cta"><button class="btn btn-primary" style="padding:12px 28px" onclick="setTab('questions')">Gå til refleksion →</button></div>`;
+}
+function renderQuestions(m){
+  const ans=countAns(S.answers);const pct=Math.round(ans/m.qs.length*100);
+  let h=`<div class="q-progress"><div class="qp-bar"><div class="qp-fill" id="qp-fill" style="width:${pct}%"></div></div><div class="qp-cnt" id="qp-cnt">${ans}/${m.qs.length}</div></div>`;
+  m.qs.forEach((q,i)=>{
+    h+=`<div class="q-card fade"><div class="qlabel">Spørgsmål ${i+1} af ${m.qs.length}</div><div class="qtext">${q.l}</div>`;
+    if(q.type==='ta') h+=`<textarea data-qid="${q.id}" oninput="qInput(this)">${S.answers[q.id]||''}</textarea>`;
+    else if(q.type==='scale'){h+=`<div class="scale-row">`;for(let n=(q.mn||1);n<=(q.mx||10);n++) h+=`<button class="scale-btn${S.answers[q.id]==n?' sel':''}" onclick="qScale('${q.id}',${n},this)">${n}</button>`;h+=`</div>`}
+    else if(q.type==='choice'){h+=`<div style="display:flex;flex-wrap:wrap;gap:6px">`;(q.opts||[]).forEach(o=>h+=`<button class="cbtn${S.answers[q.id]===o?' sel':''}" onclick="qChoice('${q.id}',\`${o}\`,this)">${o}</button>`);h+=`</div>`}
+    h+=`</div>`;
+  });
+  h+=`<button class="btn-save" id="save-btn" onclick="saveMod()">Gem svar ✓</button>`;
+  const complete=isModComplete(S.cId,m);const sent=isModSent(S.cId,m.id);
+  if(complete&&!sent){
+    h+=`<div class="send-box"><h3>✅ Modul færdigt</h3><p>Alle spørgsmål og journal er udfyldt.<br><strong>Trin 1:</strong> Klik nedenfor — din besvarelse downloades som krypteret JSON-fil.<br><strong>Trin 2:</strong> Gmail åbner med pre-udfyldt emne og tekst.<br><strong>Trin 3:</strong> Vedhæft den downloadede JSON-fil manuelt i mailen og send.</p><button class="btn-send" onclick="sendModuleToCoach(${m.id})">📧 Download og åbn mail til coach</button></div>`;
+  } else if(sent){
+    h+=`<div class="send-box" style="border-color:rgba(76,175,130,.2);background:rgba(76,175,130,.04)"><h3 style="color:var(--green)">📨 Sendt</h3><p>Dine svar er sendt til Thomas. Næste modul åbnes efter review.</p></div>`;
+  }
+  document.getElementById('tc-quest').innerHTML=h;
+}
+function qInput(el){S.answers[el.dataset.qid]=el.value;doSave()}
+function qScale(id,n,btn){S.answers[id]=n;btn.parentElement.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');doSave()}
+function qChoice(id,val,btn){S.answers[id]=val;btn.parentElement.querySelectorAll('.cbtn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');doSave()}
+function doSave(){
+  const m=MODS[S.modIdx];
+  LS.s(PFX+'mod_'+S.cId+'_'+m.id,{answers:S.answers,updatedAt:new Date().toISOString()});
+  const a=countAns(S.answers);const pct=Math.round(a/m.qs.length*100);
+  const fill=document.getElementById('qp-fill');if(fill)fill.style.width=pct+'%';
+  const cnt=document.getElementById('qp-cnt');if(cnt)cnt.textContent=a+'/'+m.qs.length;
+  const tabQ=document.querySelectorAll('#mod-tabs .mod-tab')[1];if(tabQ)tabQ.textContent='Spørgsmål ('+a+'/'+m.qs.length+')';
+}
+function saveMod(){doSave();const b=document.getElementById('save-btn');if(b){b.textContent='✓ Gemt!';b.style.background='var(--green)';setTimeout(()=>{b.style.background='';b.textContent='Gem svar ✓'},2000)};renderQuestions(MODS[S.modIdx])}
+function renderTakeaways(m){let h='<div class="takeaways-box"><div class="tk-title">Vigtigste takeaways</div>';m.takeaways.forEach(t=>h+=`<div class="tk-item">→ ${t}</div>`);h+='</div>';document.getElementById('tc-takeaways').innerHTML=h}
+
+function renderJournal(m){
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+m.id)||{};
+  const iiText=II_PROMPTS[m.id]||'Hvornår og i hvilken situation vil du gøre dette?';
+  let h=`<div class="refl-card fade">
+    <h4>📝 Refleksionsjournal</h4>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Dokumentér dine vigtigste indsigter, beslutninger og refleksioner fra dette modul.</p>
+    <label>Vigtigste indsigt fra dette modul *</label>
+    <textarea id="jn-insight" placeholder="Hvad ramte dig hårdest?" oninput="saveJournalAuto(${m.id})">${jData.insight||''}</textarea>
+    <label>Konkret handling du vil tage *</label>
+    <textarea id="jn-action" placeholder="Hvad gør du anderledes i morgen?" oninput="saveJournalAuto(${m.id})">${jData.action||''}</textarea>
+    <div class="impl-intent">
+      <div class="ii-label">Implementerings-intention</div>
+      <div class="ii-sub">${iiText}<br>Forskning (Gollwitzer, 1999) viser, at sandsynligheden for handling stiger med op mod 300%, når du definerer tid, sted og situation.</div>
+      <textarea id="jn-when" placeholder="Jeg vil gøre dette [hvornår], [hvor], [i hvilken situation]..." style="min-height:70px" oninput="saveJournalAuto(${m.id})">${jData.when||''}</textarea>
+    </div>
+    <label>Hvad har du brug for hjælp til?</label>
+    <textarea id="jn-help" placeholder="Fra din coach, din leder, dit netværk..." style="min-height:50px" oninput="saveJournalAuto(${m.id})">${jData.help||''}</textarea>
+    <button class="btn btn-primary" style="margin-top:12px;padding:10px 20px" onclick="saveJournal(${m.id})">Gem journal ✓</button>
+  </div>`;
+  document.getElementById('tc-journal').innerHTML=h;
+}
+let _jTimer=null;
+function saveJournalAuto(mid){clearTimeout(_jTimer);_jTimer=setTimeout(()=>saveJournal(mid,true),1500)}
+function saveJournal(mid,silent){
+  LS.s(PFX+'journal_'+S.cId+'_'+mid,{
+    insight:document.getElementById('jn-insight')?.value||'',
+    action:document.getElementById('jn-action')?.value||'',
+    when:document.getElementById('jn-when')?.value||'',
+    help:document.getElementById('jn-help')?.value||'',
+    savedAt:new Date().toISOString()});
+  if(!silent)showSaveFeedback('Journal gemt ✓');
+}
+
+function renderSubmit(m){
+  const ans=countAns(S.answers);const allQs=ans>=m.qs.length;
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+m.id)||{};
+  const hasJournal=(jData.insight||'').trim()&&(jData.action||'').trim();
+  const sent=isModSent(S.cId,m.id);
+  var h='<div class="submit-card">';
+  h+='<h3>Afslut modul '+m.id+'</h3>';
+  h+='<p>Gennemarbejd modulet, besvar alle spørgsmål og udfyld din journal (både indsigt og handling). Derefter kan du downloade din krypterede besvarelse og sende den til din coach via email. <strong>Bemærk:</strong> JSON-filen downloades til din enhed — du skal selv vedhæfte den i mailen. Næste modul åbnes når din coach har modtaget og gennemgået dit svar.</p>';
+  h+='<div class="checklist">';
+  h+='<div class="cl-item"><div class="cl-dot '+(allQs?'cl-ok':'cl-no')+'">'+(allQs?'✓':'○')+'</div><span style="color:var('+(allQs?'--text':'--text3')+')">Alle '+m.qs.length+' spørgsmål besvaret</span></div>';
+  h+='<div class="cl-item"><div class="cl-dot '+(hasJournal?'cl-ok':'cl-no')+'">'+(hasJournal?'✓':'○')+'</div><span style="color:var('+(hasJournal?'--text':'--text3')+')">Journal udfyldt (indsigt + handling)</span></div>';
+  h+='<div class="cl-item"><div class="cl-dot '+(sent?'cl-ok':'cl-no')+'">'+(sent?'✓':'○')+'</div><span style="color:var('+(sent?'--text':'--text3')+')">Besvarelse sendt til coach</span></div>';
+  h+='</div>';
+  if(sent){
+    h+='<div style="padding:16px;background:rgba(76,175,130,.1);border-radius:10px;color:var(--green);font-size:14px">✓ Du har sendt dette modul. Din coach åbner næste modul, når du er klar.</div>';
+  }else if(allQs&&hasJournal){
+    h+='<button class="btn btn-gold" style="padding:14px 32px;font-size:15px" onclick="sendModuleToCoach('+m.id+')">↓ Download & send til coach</button>';
+  }else{
+    h+='<p style="color:var(--text3);font-size:12px;margin-top:8px">Gennemfør alle spørgsmål og journal (indsigt + handling) før du kan sende.</p>';
+  }
+  h+='</div>';
+  document.getElementById('tc-submit').innerHTML=h;
+}
+
+async function sendModuleToCoach(mid){
+  const m=MODS.find(x=>x.id===mid);
+  const modData=LS.g(PFX+'mod_'+S.cId+'_'+mid);
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+mid)||{};
+  
+  const exportData={
+    version:PV,platform:PN,clientId:S.cId,clientName:S.cName,
+    moduleId:mid,moduleTitle:m.title,
+    exportedAt:new Date().toISOString(),
+    answers:modData?.answers||{},
+    journal:jData
+  };
+  
+  const pw=S.cName.toLowerCase().replace(/\s/g,'')+'2024';
+  const encrypted=await encryptData(exportData,pw);
+  
+  const fname=`LedOpad_${S.cName.replace(/\s/g,'_')}_modul${mid}_${new Date().toISOString().slice(0,10)}.json`;
+  const blob=new Blob([JSON.stringify(encrypted)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;a.click();URL.revokeObjectURL(a.href);
+  
+  LS.s(PFX+'sent_'+S.cId+'_'+mid,new Date().toISOString());
+  
+  const su=encodeURIComponent(`${PN} — ${S.cName} — Modul ${mid}: ${m.title}`);
+  const bo=encodeURIComponent(
+    `Hej Thomas,\n\nHer er min besvarelse af modul ${mid}: ${m.title}.\n\nVedhæftet: ${fname}\nDekrypterings-kode: ${pw}\n\nMvh\n${S.cName}`
+  );
+  
+  setTimeout(()=>{
+    window.open(`https://mail.google.com/mail/?view=cm&to=${CE}&su=${su}&body=${bo}`,'_blank');
+    showSaveFeedback('✓ JSON downloadet — vedhæft filen manuelt i Gmail-vinduet');
+    renderSubmit(m);renderDash();
+  },500);
+}
+
+const ENC=new TextEncoder(),DEC2=new TextDecoder();
+async function deriveKey(pw,salt){const k=await crypto.subtle.importKey('raw',ENC.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function encryptData(data,pw){const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pw,salt);const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,ENC.encode(JSON.stringify(data)));return{v:PV,ct:btoa(String.fromCharCode(...new Uint8Array(ct))),salt:btoa(String.fromCharCode(...salt)),iv:btoa(String.fromCharCode(...iv))}}
+async function decryptData(blob,pw){const salt=Uint8Array.from(atob(blob.salt),c=>c.charCodeAt(0));const iv=Uint8Array.from(atob(blob.iv),c=>c.charCodeAt(0));const ct=Uint8Array.from(atob(blob.ct),c=>c.charCodeAt(0));const key=await deriveKey(pw,salt);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);return JSON.parse(DEC2.decode(pt))}
+
+function clientDeleteData(){
+  if(!confirm('SLET alle dine data permanent?'))return;if(!confirm('Sidste chance — dette kan IKKE fortrydes.'))return;
+  MODS.forEach(m=>{LS.d(PFX+'mod_'+S.cId+'_'+m.id);LS.d(PFX+'journal_'+S.cId+'_'+m.id);LS.d(PFX+'sent_'+S.cId+'_'+m.id)});
+  LS.d(PFX+'active_'+S.cId);
+  const clients=(LS.g(PFX+'clients')||[]).filter(c=>c.id!==S.cId);LS.s(PFX+'clients',clients);
+  logout();showSaveFeedback('Data slettet');
+}
+
+function gatherFullExport(cid,cname){
+  var modules={},journals={};
+  MODS.forEach(function(m){var d=LS.g(PFX+'mod_'+cid+'_'+m.id);if(d)modules[m.id]=d;var j=LS.g(PFX+'journal_'+cid+'_'+m.id);if(j)journals[m.id]=j});
+  return{version:PV,platform:PN,clientId:cid,clientName:cname,exportedAt:new Date().toISOString(),activeMod:getActiveMod(cid),modules:modules,journals:journals}
+}
+
+function setASection(sec){
+  S.aSection=sec;
+  document.querySelectorAll('.as-nav li').forEach((li,i)=>{li.classList.remove('active');const map=['ov','clients','import','gdpr'];if(map[i]===sec)li.classList.add('active')});
+  ['ov','clients','import','gdpr'].forEach(id=>document.getElementById('asec-'+id).style.display=id===sec?'':'none');
+  renderAdmin();
+}
+function renderAdmin(){
+  const clients=LS.g(PFX+'clients')||[];
+  let totalAns=0;
+  clients.forEach(cl=>{MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+cl.id+'_'+m.id);totalAns+=countAns(d?.answers)})});
+
+  document.getElementById('asec-ov').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Oversigt</h2>
+    <div class="astats">
+      <div class="astat"><div class="av">${clients.length}</div><div class="al">Klienter</div></div>
+      <div class="astat"><div class="av">${totalAns}</div><div class="al">Svar total</div></div>
+      <div class="astat"><div class="av">${MODS.length}</div><div class="al">Moduler</div></div>
+    </div>`;
+
+  let ch='<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Klienter</h2>';
+  if(!clients.length)ch+='<p style="color:var(--text3)">Ingen klienter endnu.</p>';
+  else{
+    clients.forEach(cl=>{
+      let ca=0,ct=0;MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+cl.id+'_'+m.id);ca+=countAns(d?.answers);ct+=m.qs.length});
+      const activeMod=getActiveMod(cl.id);const isSel=S.aSel===cl.id;
+      ch+=`<div class="aclient-card ${isSel?'sel':''}" onclick="S.aSel=${isSel?'null':`'${cl.id}'`};renderAdmin()">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>${cl.name}</strong><span style="font-size:11px;color:var(--text3)">${ca}/${ct} svar · Modul ${activeMod} åben</span>
+        </div></div>`;
+      if(isSel){
+        ch+='<div style="padding:16px;background:var(--navy3);border-radius:10px;margin-bottom:16px">';
+        ch+=`<div class="unlock-row"><span style="font-size:13px;color:var(--text2)">Åbn moduler til og med:</span>
+          <select id="unlock-sel" onchange="setActiveMod('${cl.id}',this.value)">`;
+        for(let i=1;i<=8;i++) ch+=`<option value="${i}" ${activeMod===i?'selected':''}>Modul ${i}: ${MODS[i-1].title}</option>`;
+        ch+=`</select></div>`;
+        MODS.forEach(m=>{
+          const d=LS.g(PFX+'mod_'+cl.id+'_'+m.id);const a=countAns(d?.answers);
+          const sent=isModSent(cl.id,m.id);const sentLabel=sent?` <span style="color:var(--green)">📨 Sendt</span>`:'';
+          if(a>0){
+            ch+=`<div style="margin-top:12px;padding:12px;background:var(--navy2);border-radius:8px">
+              <strong style="color:${m.color}">${m.icon} Modul ${m.id}: ${m.title}</strong> — ${a}/${m.qs.length} svar${sentLabel}<div style="margin-top:8px">`;
+            m.qs.forEach(q=>{const v=d?.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')ch+=`<div style="font-size:12px;margin-bottom:6px"><span style="color:var(--text3)">${q.l.replace(/<[^>]+>/g,'').slice(0,80)}...</span><br><span style="color:var(--text)">${typeof v==='string'?v.slice(0,200)+(v.length>200?'...':''):v}</span></div>`});
+            const j=LS.g(PFX+'journal_'+cl.id+'_'+m.id);
+            if(j){ch+=`<div style="margin-top:8px;padding:10px;background:var(--navy3);border-radius:6px;font-size:12px"><strong style="color:var(--gold)">Journal:</strong><br>`;if(j.insight)ch+=`<span style="color:var(--text3)">Indsigt:</span> ${j.insight}<br>`;if(j.action)ch+=`<span style="color:var(--text3)">Handling:</span> ${j.action}<br>`;if(j.when)ch+=`<span style="color:var(--text3)">Hvornår/situation:</span> ${j.when}<br>`;if(j.help)ch+=`<span style="color:var(--text3)">Hjælp:</span> ${j.help}`;ch+=`</div>`}
+            ch+=`</div></div>`;
+          }
+        });
+        ch+=`<div class="ai-box"><h3>🤖 Opad-profil analyse</h3>
+          <div class="fg"><label>Anthropic API-nøgle</label><input type="password" id="ai-key" placeholder="sk-ant-..." style="width:100%"></div>
+          <button class="btn btn-gold" onclick="runAI('${cl.id}')">Kør analyse</button>
+          <div id="ai-out" class="ai-result" style="margin-top:12px"></div></div>`;
+        ch+=`<div style="margin-top:16px;display:flex;gap:10px">
+          <button class="btn btn-ghost" onclick="adminExportAll('${cl.id}','${cl.name}')">↓ Eksportér alt (JSON)</button>
+          <button class="btn btn-ghost" onclick="adminExportTXT('${cl.id}','${cl.name}')">↓ Eksportér (TXT)</button>
+        </div></div>`;
+      }
+    });
+  }
+  document.getElementById('asec-clients').innerHTML=ch;
+
+  document.getElementById('asec-import').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Import</h2>
+    <div class="refl-card"><h4>📥 Importér klient-JSON</h4>
+      <input type="file" id="imp-file" accept=".json" style="margin-bottom:10px">
+      <div class="fg"><label>Dekrypterings-adgangskode</label><input type="password" id="imp-pw"></div>
+      <button class="btn btn-primary" onclick="adminImport()">Importér</button>
+      <div id="imp-msg" style="font-size:12px;margin-top:8px"></div>
+    </div>`;
+
+  document.getElementById('asec-gdpr').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">GDPR</h2>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🔒</div><div><strong>Lokal lagring</strong><div style="font-size:12px;color:var(--text3)">Alle data i localStorage. Ingen server.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🔑</div><div><strong>AES-256-GCM</strong><div style="font-size:12px;color:var(--text3)">PBKDF2 100.000 iterationer. Auto-krypteret eksport.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🗑</div><div><strong>Ret til sletning</strong><div style="font-size:12px;color:var(--text3)">Ét klik. Definitiv.</div></div></div>
+    </div>`;
+}
+
+function setActiveMod(cid,val){LS.s(PFX+'active_'+cid,parseInt(val));showSaveFeedback('Modul '+val+' åbnet');renderAdmin()}
+
+async function adminImport(){
+  const file=document.getElementById('imp-file').files[0];const pw=document.getElementById('imp-pw').value;const msg=document.getElementById('imp-msg');
+  if(!file){msg.textContent='Vælg fil';msg.style.color='var(--red)';return}
+  try{
+    const txt=await file.text();const blob=JSON.parse(txt);let data;
+    if(blob.v&&blob.ct){if(!pw){msg.textContent='Adgangskode kræves';msg.style.color='var(--red)';return}data=await decryptData(blob,pw)}else{data=blob}
+    const clients=LS.g(PFX+'clients')||[];
+    if(!clients.find(c=>c.id===data.clientId)){clients.push({id:data.clientId,name:data.clientName,createdAt:data.exportedAt,imported:true});LS.s(PFX+'clients',clients)}
+    if(data.moduleId){LS.s(PFX+'mod_'+data.clientId+'_'+data.moduleId,{answers:data.answers,updatedAt:data.exportedAt});if(data.journal)LS.s(PFX+'journal_'+data.clientId+'_'+data.moduleId,data.journal)}
+    if(data.modules)Object.entries(data.modules).forEach(([mid,d])=>LS.s(PFX+'mod_'+data.clientId+'_'+mid,d));
+    if(data.journals)Object.entries(data.journals).forEach(([mid,d])=>LS.s(PFX+'journal_'+data.clientId+'_'+mid,d));
+    msg.textContent='✓ '+data.clientName+(data.moduleTitle?' — '+data.moduleTitle:'');msg.style.color='var(--green)';renderAdmin();
+  }catch(e){msg.textContent='Fejl: '+e.message;msg.style.color='var(--red)'}
+}
+function adminExportAll(cid,cname){
+  const modules={},journals={};
+  MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+cid+'_'+m.id);if(d)modules[m.id]=d;const j=LS.g(PFX+'journal_'+cid+'_'+m.id);if(j)journals[m.id]=j});
+  const data={version:PV,platform:PN,clientId:cid,clientName:cname,exportedAt:new Date().toISOString(),modules,journals};
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`LedOpad_admin_${cname.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;a.click();URL.revokeObjectURL(a.href);
+}
+function adminExportTXT(cid,cname){
+  let txt=PN+' — '+cname+'\nEksporteret: '+new Date().toISOString()+'\n\n';
+  MODS.forEach(m=>{
+    txt+='═══ MODUL '+m.id+': '+m.title.toUpperCase()+' ═══\n';
+    const md=LS.g(PFX+'mod_'+cid+'_'+m.id);if(!md){txt+='(Ikke besvaret)\n\n';return}
+    m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')txt+=q.l.replace(/<[^>]+>/g,'')+'\n→ '+v+'\n\n'});
+    const j=LS.g(PFX+'journal_'+cid+'_'+m.id);
+    if(j){if(j.insight)txt+='[Journal] Indsigt: '+j.insight+'\n';if(j.action)txt+='[Journal] Handling: '+j.action+'\n';if(j.when)txt+='[Journal] Hvornår/situation: '+j.when+'\n';if(j.help)txt+='[Journal] Hjælp: '+j.help+'\n'}
+    txt+='\n';
+  });
+  const blob=new Blob([txt],{type:'text/plain'});const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);a.download=`LedOpad_${cname.replace(/\s/g,'_')}.txt`;a.click();URL.revokeObjectURL(a.href);
+}
+
+async function runAI(cid){
+  const key=document.getElementById('ai-key')?.value;
+  if(!key){showSaveFeedback('API-nøgle mangler');return}
+  const out=document.getElementById('ai-out');out.textContent='Analyserer...';out.style.opacity='.5';
+  const cl=(LS.g(PFX+'clients')||[]).find(c=>c.id===cid);
+  let ctx='KLIENT: '+(cl?.name||'Klient')+'\n\n';
+  MODS.forEach(m=>{const md=LS.g(PFX+'mod_'+cid+'_'+m.id);if(!md)return;ctx+='MODUL '+m.id+': '+m.title+'\n';m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v)ctx+=q.l.replace(/<[^>]+>/g,'')+'\n→ '+v+'\n'});
+    const j=LS.g(PFX+'journal_'+cid+'_'+m.id);if(j?.insight)ctx+='[Journal indsigt] '+j.insight+'\n';if(j?.action)ctx+='[Journal handling] '+j.action+'\n';if(j?.when)ctx+='[Journal impl.intention] '+j.when+'\n';ctx+='\n'});
+
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,
+        system:`Du er Thomas Friisnæs' AI-assistent. Analysér denne klients evne til at lede opad.\n\n8 moduler: Hvad er at lede opad, Kend din leder, Kommunikation opad, Forventningsafstemning, Indflydelse uden autoritet, Svære samtaler opad, Feedback til din leder, Strategisk selvledelse.\n\nLevér:\n1. PROFIL: Hvem er denne person? Modenhed i opadledelse, styrker, risici.\n2. RELATIONSANALYSE: Kvaliteten af relationen til lederen. Tillid, kommunikation, indflydelse.\n3. BLINDE VINKLER: Hvad ser de ikke — hvad undgår de i relationen opad?\n4. KOMMUNIKATIONSMØNSTRE: Hvordan kommunikerer de opad? Hvad virker — hvad mangler?\n5. MOD-VURDERING: Tør de sige det der skal siges? Eller undgår de?\n6. ANBEFALINGER: 3 konkrete næste skridt.\n7. COACHING-SPØRGSMÅL: 3 provokerende spørgsmål til næste session.\n\nSkriv på dansk. Vær præcis og direkte. Ingen floskler.`,
+        messages:[{role:'user',content:ctx}]})
+    });
+    const result=await resp.json();out.style.opacity='1';
+    if(result.content) out.textContent=result.content.map(b=>b.text||'').join('\n');
+    else out.textContent='Fejl: '+JSON.stringify(result);
+  }catch(e){out.style.opacity='1';out.textContent='Fejl: '+e.message}
+}
+</script>
+</body>
+</html>

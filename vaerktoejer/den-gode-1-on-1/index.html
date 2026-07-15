@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="2.0.0">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<meta name="description" content="Den gode 1:1 med dine medarbejdere — Karakter · Disciplin · Klarhed">
+<title>Den gode 1:1 med dine medarbejdere — Karakter · Disciplin · Klarhed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#111111;--navy2:#1a1a1a;--navy3:#222222;--navy4:#2b2b2b;
+  --blue:#c0392b;--blue2:#e74c3c;
+  --gold:#c0392b;--gold2:#e74c3c;--gdim:rgba(224,168,74,0.14);--gbrd:rgba(192,57,43,0.35);
+  --text:#E4EAF4;--text2:#8A9BB8;--text3:#4E6080;
+  --green:#4CAF82;--red:#E57373;--orange:#E5A048;
+  --brd:rgba(255,255,255,0.07);--brd2:rgba(255,255,255,0.13);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.65;min-height:100vh}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.2}
+button{font-family:'Outfit',sans-serif;cursor:pointer;transition:all .18s}
+input,textarea,select{font-family:'Outfit',sans-serif;font-size:14px;background:var(--navy3);border:1.5px solid var(--brd2);color:var(--text);border-radius:8px;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--blue2)}textarea{resize:vertical}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:var(--navy2)}::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:2px}
+.hidden{display:none!important}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+.fade{animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+#sc-client-login,#sc-admin-login{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(42,82,152,.18) 0%,transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(232,193,112,.06) 0%,transparent 50%),var(--navy);padding:32px 24px}
+.login-logo{text-align:center;margin-bottom:52px}
+.login-logo h1{font-size:38px;letter-spacing:.02em;color:var(--text)}
+.login-logo .tag{font-family:'Outfit';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.login-logo .sub2{font-size:13px;color:var(--text3);margin-top:6px;font-style:italic}
+.login-card{width:100%;max-width:400px;background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:32px}
+.login-card.gold{border-color:var(--gbrd)}
+.login-card h2{font-size:26px;margin-bottom:8px}
+.login-card h2.gold-text{color:var(--gold)}
+.login-card .sub{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.65}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.fg input{width:100%;padding:12px 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border:none;border-radius:8px;font-size:13px;font-weight:500}
+.btn-row{display:flex;gap:10px;margin-top:18px}
+.btn-primary{background:var(--blue);color:#fff;flex:1}.btn-primary:hover{background:var(--blue2)}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:600;flex:1}.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;border:1.5px solid var(--brd2);color:var(--text2)}.btn-ghost:hover{background:var(--navy3);color:var(--text)}
+.err{color:var(--red);font-size:12px;margin-top:8px}
+.gdpr-strip{margin-top:20px;padding:12px 14px;background:rgba(76,175,130,.07);border:1px solid rgba(76,175,130,.2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.7}
+.gdpr-strip strong{color:var(--green)}
+.admin-link{margin-top:28px;text-align:center}
+.admin-link a{font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--brd2);padding-bottom:1px}
+
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:14px;padding:0 24px;height:56px;background:rgba(12,24,41,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);flex-shrink:0;flex-wrap:wrap}
+.tb-brand{flex:1}.tb-brand .nm{font-family:'Playfair Display',Georgia,serif;font-size:16px;color:var(--text);font-weight:600}
+.tb-brand .sb{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.15em}
+.tb-btn{padding:6px 12px;background:transparent;border:1px solid var(--brd);border-radius:6px;color:var(--text3);font-size:12px}
+.tb-btn:hover{border-color:var(--brd2);color:var(--text2)}.tb-btn.gold{color:var(--gold);border-color:var(--gbrd)}
+
+.c-main{padding:32px 24px;max-width:960px;margin:0 auto;width:100%}
+.prog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px}
+.prog-header h1{font-size:32px}.prog-header .stat{font-size:13px;color:var(--text3)}
+.ack-box{background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:28px;margin-bottom:28px;text-align:center}
+.ack-box .ack-icon{font-size:42px;margin-bottom:12px}.ack-box h2{font-size:22px;margin-bottom:10px}
+.ack-box p{color:var(--text2);font-size:14px;max-width:640px;margin:0 auto;line-height:1.8}
+.velocity-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:20px;margin-bottom:24px}
+.velocity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.vg-item{text-align:center;padding:10px;background:var(--navy3);border-radius:8px}
+.vg-item .vn{font-size:22px;font-weight:600}.vg-item .vl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.mod-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:22px;cursor:pointer;transition:all .2s}
+.mod-card:hover:not(.locked){border-color:var(--brd2);transform:translateY(-2px)}
+.mod-card.locked{opacity:.4;cursor:default}
+.mod-card .mc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mod-card .mc-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff}
+.mod-card .mc-title{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:600;flex:1}
+.mod-card .mc-sub{font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:14px}
+.mod-card .mc-prog{height:4px;background:var(--navy4);border-radius:2px;overflow:hidden}
+.mod-card .mc-prog-fill{height:100%;border-radius:2px;transition:width .4s ease}
+.mod-card .mc-status{font-size:11px;margin-top:8px}
+.mc-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+
+.mod-header{padding:28px 24px;border-bottom:1px solid var(--brd)}
+.mod-header h1{font-size:30px;margin-bottom:4px}.mod-header .mh-sub{font-size:13px;color:var(--text3)}
+.mod-tabs{display:flex;gap:0;border-bottom:1px solid var(--brd);padding:0 24px}
+.mod-tab{padding:12px 20px;font-size:13px;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.mod-tab:hover{color:var(--text2)}.mod-tab.active{color:var(--text);border-bottom-color:var(--gold)}
+.mod-content{padding:32px 24px;max-width:820px;margin:0 auto}
+.sources-box{border-left:3px solid var(--blue);padding:16px 20px;background:var(--navy2);border-radius:0 10px 10px 0;margin-bottom:24px}
+.src-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.src-item{font-size:12px;color:var(--text2);padding:3px 0}
+.why-mod-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:18px 22px;margin-bottom:24px}
+.why-mod-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:10px}
+.why-mod-text{font-size:14px;color:var(--text2);line-height:1.8}
+.learn-body{color:var(--text2);line-height:1.9;font-size:14.5px}
+.learn-body h3{color:var(--text);font-size:20px;margin:28px 0 14px}
+.learn-body p{margin-bottom:14px}
+.learn-body blockquote{border-left:3px solid var(--gold);padding:12px 18px;margin:18px 0;color:var(--text);font-style:italic;background:rgba(201,168,76,.04);border-radius:0 8px 8px 0}
+.learn-body ul,.learn-body ol{margin:12px 0 12px 24px;color:var(--text2)}.learn-body li{margin-bottom:6px}
+.learn-cta{text-align:center;margin-top:32px}
+.takeaways-box{background:rgba(76,175,130,.06);border:1px solid rgba(76,175,130,.15);border-radius:10px;padding:22px 26px;margin-top:28px}
+.tk-title{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;font-weight:600}
+.tk-item{font-size:14px;color:var(--text2);line-height:1.8;padding:6px 0;border-bottom:1px solid rgba(76,175,130,.08)}.tk-item:last-child{border:none}
+
+.q-progress{position:sticky;top:56px;z-index:50;background:var(--navy2);border-bottom:1px solid var(--brd);padding:10px 24px;display:flex;align-items:center;gap:14px}
+.qp-bar{flex:1;height:6px;background:var(--navy4);border-radius:3px;overflow:hidden}
+.qp-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease}
+.qp-cnt{font-size:12px;color:var(--text3);min-width:50px;text-align:right}
+.q-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:18px}
+.q-card .qlabel{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.q-card .qtext{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.q-card textarea{width:100%;min-height:100px;padding:14px}
+.q-card .scale-row{display:flex;gap:6px;flex-wrap:wrap}
+.q-card .scale-btn{padding:8px 14px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text3);font-size:13px;min-width:40px;text-align:center}
+.q-card .scale-btn.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.q-card .cbtn{padding:8px 16px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text2);font-size:13px;margin:3px}
+.q-card .cbtn.sel{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
+.btn-save{display:block;width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;margin-top:12px}
+.btn-save:hover{background:var(--blue2)}
+.send-box{background:rgba(76,175,130,.08);border:1.5px solid rgba(76,175,130,.3);border-radius:12px;padding:24px;margin-top:20px;text-align:center}
+.send-box h3{color:var(--green);font-size:20px;margin-bottom:8px}
+.send-box p{color:var(--text2);font-size:13px;margin-bottom:16px;line-height:1.7}
+.btn-send{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--green);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}
+.btn-send:hover{background:#3d9b72}
+
+.refl-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:22px;margin-bottom:16px}
+.refl-card h4{font-size:16px;margin-bottom:12px}.refl-card label{font-size:12px;color:var(--text3);display:block;margin-bottom:4px;margin-top:10px}
+.refl-card textarea{width:100%;min-height:70px;padding:10px;margin-bottom:4px}
+
+.submit-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px}
+.submit-card h3{font-size:22px;margin-bottom:12px}
+.submit-card p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:16px}
+.checklist{margin-bottom:20px}
+.cl-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--brd)}
+.cl-dot{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600}
+.cl-ok{background:rgba(76,175,130,.2);color:var(--green)}
+.cl-no{background:var(--navy4);color:var(--text3)}
+
+.admin-wrap{display:flex;min-height:100vh}
+.admin-side{width:260px;background:var(--navy2);border-right:1px solid var(--brd);padding:20px;flex-shrink:0;overflow-y:auto}
+.admin-main{flex:1;padding:28px;overflow-y:auto}
+.as-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin-bottom:20px}
+.as-nav{list-style:none}.as-nav li{padding:10px 14px;border-radius:8px;font-size:13px;color:var(--text3);cursor:pointer;margin-bottom:4px}
+.as-nav li:hover{background:var(--navy3);color:var(--text2)}
+.as-nav li.active{background:var(--navy3);color:var(--gold);border-left:3px solid var(--gold)}
+.aclient-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:16px;margin-bottom:10px;cursor:pointer}
+.aclient-card:hover{border-color:var(--brd2)}.aclient-card.sel{border-color:var(--gold)}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.astat{background:var(--navy3);border-radius:8px;padding:14px;text-align:center}
+.astat .av{font-size:24px;font-weight:600}.astat .al{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.ai-box{background:var(--navy3);border:1px solid var(--gbrd);border-radius:10px;padding:20px;margin-top:16px}
+.ai-box h3{color:var(--gold);font-size:18px;margin-bottom:12px}
+.ai-result{white-space:pre-wrap;font-size:13px;color:var(--text2);line-height:1.8;max-height:500px;overflow-y:auto}
+.save-feedback{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;z-index:600;animation:fadeIn .3s ease;pointer-events:none}
+.info-container{max-width:820px;margin:0 auto;padding:40px 24px}
+.info-section{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px;margin-bottom:20px}
+.info-section h2{font-size:22px;margin-bottom:14px;color:var(--gold)}
+.info-section p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:10px}
+.unlock-row{display:flex;align-items:center;gap:12px;margin-top:12px;padding:10px 14px;background:var(--navy4);border-radius:8px}
+.unlock-row select{flex:1;padding:8px}
+.links-mod{margin-bottom:24px}
+.links-mod h3{font-size:18px;color:var(--gold);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--brd)}
+.links-mod a{display:block;font-size:13px;color:var(--blue2);text-decoration:none;padding:6px 0;line-height:1.6;transition:color .15s}
+.links-mod a:hover{color:var(--gold)}
+.links-mod .link-author{color:var(--text3);font-size:12px}
+.impl-intent{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.18);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 16px;margin-top:14px}
+.impl-intent .ii-label{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-weight:600;margin-bottom:4px}
+.impl-intent .ii-sub{font-size:11px;color:var(--text3);line-height:1.6;margin-bottom:8px}
+
+@media(max-width:900px){.topbar{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px}.tb-brand{width:100%}.prog-header{flex-direction:column}.mods-grid{grid-template-columns:1fr}.admin-side{width:200px}}
+@media(max-width:640px){.login-logo h1{font-size:28px}.astats{grid-template-columns:1fr 1fr}.velocity-grid{grid-template-columns:1fr 1fr}.mod-content{padding:24px 16px}.admin-wrap{flex-direction:column}.admin-side{width:100%;border-right:none;border-bottom:1px solid var(--brd)}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+.tester-badge{position:fixed;top:64px;right:16px;z-index:200;background:linear-gradient(135deg,#E5A048,#E57373);color:#fff;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;box-shadow:0 2px 12px rgba(229,115,115,.4);animation:pulse-t 2s ease infinite}
+@keyframes pulse-t{0%,100%{opacity:1}50%{opacity:.7}}
+</style>
+</head>
+<body>
+<div class="tester-badge">⚡ Tester</div>
+<!-- CLIENT LOGIN -->
+<div id="sc-client-login" class="screen active">
+  <div class="login-logo">
+    <h1>Den gode 1:1 med dine medarbejdere</h1>
+    <div class="tag">Karakter · Disciplin · Klarhed</div>
+  </div>
+  <div style="max-width:520px;text-align:left;margin-bottom:36px">
+    <p style="font-family:'Playfair Display',serif;font-size:20px;color:var(--text);line-height:1.8">De fleste strategier lykkes eller fejler i tusindvis af små samtaler i organisationen.<br>Den vigtigste af dem er lederens 1:1 med medarbejderen.</p>
+    <p style="font-size:15px;color:var(--text2);line-height:1.9;margin-top:16px">Alligevel er de fleste 1:1-samtaler:<br><span style="color:var(--text3)">– uforberedte &nbsp;– ustrukturerede &nbsp;– og uden klar retning.</span></p>
+    <p style="font-size:15px;color:var(--gold);margin-top:16px;font-style:italic">Dette framework er et forsøg på at destillere, hvad der kendetegner en virkelig god 1:1.</p>
+  </div>
+  <div class="login-card">
+    <h2>Testadgang</h2>
+    <div class="sub" style="color:var(--orange)">⚡ TESTER — alle 8 moduler er åbne. Evaluer dette som potentielt lederudviklingsredskab.</div>
+    <div class="fg"><label>Dit fulde navn</label><input type="text" id="cl-name" placeholder="Fornavn Efternavn" onkeydown="if(event.key==='Enter')doClientLogin()"></div>
+    <div class="btn-row"><button class="btn btn-primary" onclick="doClientLogin()">Start forløb</button></div>
+    <div id="cl-err" class="err hidden"></div>
+    <div class="gdpr-strip">
+      <strong>🔒 GDPR:</strong> Alle besvarelser gemmes udelukkende lokalt på din enhed. Ingen data sendes til servere. Eksport krypteres med AES-256-GCM.
+      <div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+        <input type="checkbox" id="gdpr-consent" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">
+        <label for="gdpr-consent" style="font-size:12px;color:var(--text2);cursor:pointer;line-height:1.5">Jeg accepterer, at mine besvarelser gemmes lokalt på denne enhed.</label>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="sc-admin-login" class="screen">
+  <div class="login-logo"><h1>Den gode 1:1 med dine medarbejdere</h1><div class="tag">Admin · Thomas Friisnæs</div></div>
+  <div class="login-card gold">
+    <h2 class="gold-text">Admin</h2>
+    <div id="admin-setup" class="hidden">
+      <div class="sub">Første gang? Vælg din admin-adgangskode. Den gemmes som SHA-256 hash — aldrig i klartekst.</div>
+      <div class="fg"><label>Vælg adgangskode</label><input type="password" id="al-pw-new" placeholder="Min. 6 tegn" onkeydown="if(event.key==='Enter')document.getElementById('al-pw-confirm').focus()"></div>
+      <div class="fg"><label>Bekræft adgangskode</label><input type="password" id="al-pw-confirm" placeholder="Gentag adgangskode" onkeydown="if(event.key==='Enter')doAdminSetup()"></div>
+      <div class="btn-row"><button class="btn btn-gold" onclick="doAdminSetup()">Opret admin-adgang</button></div>
+    </div>
+    <div id="admin-returning" class="hidden">
+      <div class="sub">Adgang til klientdata, modul-oplåsning, AI-analyse og eksport.</div>
+      <div class="fg"><label>Adgangskode</label><input type="password" id="al-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+      <div class="btn-row"><button class="btn btn-gold" onclick="doAdminLogin()">Log ind</button></div>
+    </div>
+    <div id="al-err" class="err hidden"></div>
+    <div style="margin-top:16px;padding:10px 12px;background:var(--navy3);border-radius:6px;font-size:10px;color:var(--text3);line-height:1.6">🔒 Adgangskoden gemmes som SHA-256 hash med framework-specifikt salt. Nulstil via browserkonsol: <code style="color:var(--gold)">_resetAdminPw()</code></div>
+  </div>
+</div>
+
+<!-- CLIENT DASHBOARD -->
+<div id="sc-client" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm">Den gode 1:1 <span style="color:var(--orange);font-size:12px;font-family:Outfit,sans-serif;font-weight:600;letter-spacing:.1em">TESTER</span></div><div class="sb" id="tb-name"></div></div>
+    <button class="tb-btn" onclick="showReadme()">📖 Guide</button>
+    <button class="tb-btn" onclick="showLinks()">🔗 Links</button>
+    <button class="tb-btn" onclick="clientDeleteData()" style="color:var(--red)">🗑 Slet</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="c-main" id="client-dash"></div>
+</div>
+
+<!-- MODULE VIEW -->
+<div id="sc-module" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm" id="mod-title-bar"></div><div class="sb" id="mod-sub-bar"></div></div>
+    <button class="tb-btn" onclick="renderDash();show('client')">← Dashboard</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="mod-header" id="mod-header"></div>
+  <div class="mod-tabs" id="mod-tabs"></div>
+  <div id="tc-learn" class="mod-content"></div>
+  <div id="tc-quest" class="mod-content" style="display:none"></div>
+  <div id="tc-takeaways" class="mod-content" style="display:none"></div>
+  <div id="tc-journal" class="mod-content" style="display:none"></div>
+  <div id="tc-submit" class="mod-content" style="display:none"></div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="sc-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-side">
+      <div class="as-title">Admin panel</div>
+      <ul class="as-nav">
+        <li class="active" onclick="setASection('ov')">📊 Oversigt</li>
+        <li onclick="setASection('clients')">👥 Klienter</li>
+        <li onclick="setASection('import')">📥 Import</li>
+        <li onclick="setASection('gdpr')">🔒 GDPR</li>
+      </ul>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--brd)">
+        <button class="tb-btn" style="width:100%" onclick="logout()">Log ud</button>
+      </div>
+    </div>
+    <div class="admin-main">
+      <div id="asec-ov"></div>
+      <div id="asec-clients" style="display:none"></div>
+      <div id="asec-import" style="display:none"></div>
+      <div id="asec-gdpr" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- README -->
+<div id="sc-readme" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Guide — Den gode 1:1</div></div><button class="tb-btn" onclick="closeReadme()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Hvad er dette?</h2><p>Et struktureret refleksions- og handlingsværktøj til dig, der vil mestre 1:1-samtalen som ledelsesredskab. 8 moduler dækker alt fra kadence og forberedelse til feedback, udvikling, svære samtaler og systemisk ledelse. Baseret på forskning fra Grove, Scott, Buckingham, Rock, Edmondson og 20+ års coaching-erfaring.</p></div>
+    <div class="info-section"><h2>Sådan virker det</h2><p>Modulerne åbnes ét ad gangen af din coach. Når du har besvaret alle spørgsmål og udfyldt din journal, kan du sende dine svar til Thomas via email. Derefter åbner Thomas det næste modul for dig. Denne struktur sikrer, at du arbejder fokuseret og i dybden med hvert emne.</p></div>
+    <div class="info-section"><h2>Om platformen</h2><p><strong>Thomas Friisnæs</strong> — Personal Excellence Partner. 20+ års erfaring. 15.000+ coaching-sessioner.</p><p><strong>Kontakt:</strong> friisnaes@gmail.com | <strong>Version:</strong> 2.0.0</p></div>
+  </div>
+</div>
+
+<!-- LINKS -->
+<div id="sc-links" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Forskningslinks — Den gode 1:1</div></div><button class="tb-btn" onclick="closeLinks()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Forskningsbibliotek</h2><p>Centrale kilder og artikler for hvert modul. Klik for at åbne i nyt vindue.</p></div>
+
+    <div class="links-mod">
+      <h3>Modul 1: Hvad er den gode 1:1?</h3>
+      <a href="https://a16z.com/high-output-management/" target="_blank">Andy Grove (1983): High Output Management <span class="link-author">— a16z summary</span></a>
+      <a href="https://www.radicalcandor.com/our-approach/" target="_blank">Kim Scott (2017): Radical Candor</a>
+      <a href="https://hbr.org/2019/03/the-feedback-fallacy" target="_blank">Buckingham & Goodall (2019): Nine Lies About Work <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://www.gallup.com/workplace/349484/state-of-the-global-workplace.aspx" target="_blank">Gallup (2023): State of the Global Workplace</a>
+      <a href="https://www.mindtools.com/akswgc0/david-rocks-scarf-model/" target="_blank">David Rock (2008): SCARF Model <span class="link-author">— MindTools</span></a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 2: Kadencen</h3>
+      <a href="https://a16z.com/high-output-management/" target="_blank">Andy Grove (1983): High Output Management <span class="link-author">— a16z summary</span></a>
+      <a href="https://hbr.org/2015/03/why-strategy-execution-unravelsand-what-to-do-about-it" target="_blank">Sull & Sull (2015): Why Strategy Execution Unravels <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://charlesduhigg.com/the-power-of-habit/" target="_blank">Charles Duhigg (2012): The Power of Habit <span class="link-author">— forfatterens site</span></a>
+      <a href="https://jamesclear.com/atomic-habits" target="_blank">James Clear (2018): Atomic Habits</a>
+      <a href="https://www.gallup.com/press/241065/manager.aspx" target="_blank">Gallup (2019): It's the Manager</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 3: Forberedelse og struktur</h3>
+      <a href="https://www.radicalcandor.com/our-approach/" target="_blank">Kim Scott (2017): Radical Candor</a>
+      <a href="https://lg.substack.com/" target="_blank">Julie Zhuo (2019): The Making of a Manager <span class="link-author">— forfatterens Substack</span></a>
+      <a href="https://www.franklincovey.com/the-7-habits/" target="_blank">Stephen Covey (1989): The 7 Habits of Highly Effective People</a>
+      <a href="https://hbr.org/2006/06/what-makes-an-effective-executive" target="_blank">Peter Drucker (1967): The Effective Executive <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://hbr.org/2019/03/why-your-meetings-stink-and-what-to-do-about-it" target="_blank">Rogelberg (2019): Why Your Meetings Stink <span class="link-author">— HBR (bag betalingsmur)</span></a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 4: Spørgsmålskunsten</h3>
+      <a href="https://boxofcrayons.com/the-coaching-habit/" target="_blank">Michael Bungay Stanier (2016): The Coaching Habit</a>
+      <a href="https://wial.org/action-learning/what-is-action-learning/" target="_blank">Marquardt: Leading with Questions / Action Learning <span class="link-author">— WIAL</span></a>
+      <a href="https://hbr.org/2014/01/find-the-coaching-in-criticism" target="_blank">Stone & Heen (2014): Thanks for the Feedback <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://fearlessorganization.com/" target="_blank">Amy Edmondson (2019): The Fearless Organization</a>
+      <a href="https://hbr.org/2014/05/the-art-of-humble-inquiry" target="_blank">Edgar Schein (2013): Humble Inquiry <span class="link-author">— HBR (bag betalingsmur)</span></a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 5: Feedback i 1:1</h3>
+      <a href="https://www.radicalcandor.com/our-approach/" target="_blank">Kim Scott (2017): Radical Candor</a>
+      <a href="https://hbr.org/2014/01/find-the-coaching-in-criticism" target="_blank">Stone & Heen (2014): Thanks for the Feedback <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://hbr.org/2019/03/the-feedback-fallacy" target="_blank">Buckingham & Goodall (2019): The Feedback Fallacy <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://psycnet.apa.org/record/1996-02773-003" target="_blank">Kluger & DeNisi (1996): The Effects of Feedback Interventions <span class="link-author">— APA (bag betalingsmur)</span></a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 6: Udvikling og karriere</h3>
+      <a href="https://herminiaibarra.com/working-identity-book/" target="_blank">Herminia Ibarra (2003): Working Identity</a>
+      <a href="https://hbr.org/2016/01/what-having-a-growth-mindset-actually-means" target="_blank">Dweck (2016): What Having a Growth Mindset Actually Means <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://www.ccl.org/articles/leading-effectively-articles/the-70-20-10-rule/" target="_blank">McCall: 70-20-10 Leadership Development Model <span class="link-author">— CCL</span></a>
+      <a href="https://positivepsychology.com/mihaly-csikszentmihalyi-father-of-flow/" target="_blank">Csikszentmihalyi: Flow — Psychology of Optimal Experience <span class="link-author">— Positive Psychology</span></a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 7: Svære samtaler i 1:1</h3>
+      <a href="https://www.radicalcandor.com/our-approach/" target="_blank">Kim Scott (2017): Radical Candor</a>
+      <a href="https://cruciallearning.com/crucial-conversations-book/" target="_blank">Patterson et al.: Crucial Conversations <span class="link-author">— Crucial Learning</span></a>
+      <a href="https://www.tablegroup.com/the-five-dysfunctions-of-a-team/" target="_blank">Patrick Lencioni (2002): The Five Dysfunctions of a Team</a>
+      <a href="https://brenebrown.com/book/dare-to-lead/" target="_blank">Brené Brown (2018): Dare to Lead</a>
+      <a href="https://fearlessorganization.com/" target="_blank">Amy Edmondson (2019): The Fearless Organization</a>
+    </div>
+
+    <div class="links-mod">
+      <h3>Modul 8: 1:1 som ledelsessystem</h3>
+      <a href="https://a16z.com/high-output-management/" target="_blank">Andy Grove (1983): High Output Management <span class="link-author">— a16z summary</span></a>
+      <a href="https://hbr.org/2006/06/what-makes-an-effective-executive" target="_blank">Peter Drucker (1967): The Effective Executive <span class="link-author">— HBR (bag betalingsmur)</span></a>
+      <a href="https://thesystemsthinker.com/introduction-to-systems-thinking/" target="_blank">Senge: The Fifth Discipline / Systems Thinking <span class="link-author">— Systems Thinker</span></a>
+      <a href="https://www.jimcollins.com/concepts/good-to-great.html" target="_blank">Jim Collins (2001): Good to Great <span class="link-author">— forfatterens site</span></a>
+      <a href="https://deming.org/explore/fourteen-points/" target="_blank">Deming: 14 Points for Management <span class="link-author">— Deming Institute</span></a>
+    </div>
+  </div>
+</div>
+
+<div id="save-fb" class="save-feedback hidden"></div>
+<script>
+const PV='2.0.0-TESTER',PN='Den gode 1:1 (TESTER)',CE='friisnaes@gmail.com',PFX='oto_test_';
+const LS={g(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch{return null}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}},d(k){try{localStorage.removeItem(k)}catch{}}};
+let S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+
+const ADMIN_SALT='oto_den_gode_1til1_v2';
+async function sha256(str){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(ADMIN_SALT+str));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+function getAdminHash(){return localStorage.getItem(PFX+'admin_hash')||null}
+
+(function(){
+  try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch{document.body.innerHTML='<div style="padding:40px;text-align:center;color:#E57373"><h2>localStorage ikke tilgængelig</h2></div>';return}
+  if(false){
+    document.getElementById('sc-client-login').classList.remove('active');
+    document.getElementById('sc-admin-login').classList.add('active');
+    if(getAdminHash()){document.getElementById('admin-returning').classList.remove('hidden')}
+    else{document.getElementById('admin-setup').classList.remove('hidden')}
+  }
+})();
+
+function doClientLogin(){
+  const name=document.getElementById('cl-name').value.trim();
+  if(!name){showErr('cl-err','Indtast dit navn');return}
+  const consent=document.getElementById('gdpr-consent');
+  const clients=LS.g(PFX+'clients')||[];
+  let c=clients.find(x=>x.name.toLowerCase()===name.toLowerCase());
+  if(!c){
+    if(!consent.checked){showErr('cl-err','Acceptér GDPR-betingelserne');return}
+    c={id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name:name,createdAt:new Date().toISOString(),gdprConsentAt:new Date().toISOString()};
+    LS.s(PFX+'clients',[...clients,c]);
+    LS.s(PFX+'active_'+c.id,1);
+  }
+  S.role='client';S.cId=c.id;S.cName=c.name;renderDash();show('client');
+}
+async function doAdminSetup(){
+  const pw=document.getElementById('al-pw-new').value;
+  const pw2=document.getElementById('al-pw-confirm').value;
+  if(pw.length<6){showErr('al-err','Adgangskode skal være min. 6 tegn');return}
+  if(pw!==pw2){showErr('al-err','Adgangskoderne matcher ikke');return}
+  const hash=await sha256(pw);
+  localStorage.setItem(PFX+'admin_hash',hash);
+  S.role='admin';renderAdmin();show('admin');
+  showSaveFeedback('Admin-adgang oprettet ✓');
+}
+async function doAdminLogin(){
+  const pw=document.getElementById('al-pw').value;
+  if(!pw){showErr('al-err','Indtast adgangskode');return}
+  const hash=await sha256(pw);
+  if(hash!==getAdminHash()){showErr('al-err','Forkert adgangskode');return}
+  S.role='admin';renderAdmin();show('admin');
+}
+function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden')}
+function logout(){
+  S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+  document.getElementById('cl-name').value='';
+  const alPw=document.getElementById('al-pw');if(alPw)alPw.value='';
+  const alNew=document.getElementById('al-pw-new');if(alNew)alNew.value='';
+  const alConf=document.getElementById('al-pw-confirm');if(alConf)alConf.value='';
+  ['cl-err','al-err'].forEach(function(id){document.getElementById(id).classList.add('hidden')});
+  if(false){
+    document.getElementById('admin-setup').classList.add('hidden');
+    document.getElementById('admin-returning').classList.add('hidden');
+    if(getAdminHash()){document.getElementById('admin-returning').classList.remove('hidden')}
+    else{document.getElementById('admin-setup').classList.remove('hidden')}
+    show('admin-login');
+  }else{show('client-login')}
+}
+window._resetAdminPw=function(){if(confirm('Nulstil admin-adgangskode? Du skal vælge en ny.')){localStorage.removeItem(PFX+'admin_hash');location.reload()}}
+function show(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active')});document.getElementById('sc-'+id).classList.add('active');window.scrollTo(0,0)}
+function showReadme(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('readme')}
+function closeReadme(){show(S.prevScreen||'client')}
+function showLinks(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('links')}
+function closeLinks(){show(S.prevScreen||'client')}
+function showSaveFeedback(msg){var el=document.getElementById('save-fb');el.textContent=msg;el.classList.remove('hidden');setTimeout(function(){el.classList.add('hidden')},2200)}
+function countAns(a){return Object.values(a||{}).filter(function(v){return v!==undefined&&v!==null&&v!==''}).length}
+function getActiveMod(cid){return 8}
+function isModComplete(cid,m){
+  var d=LS.g(PFX+'mod_'+cid+'_'+m.id);var a=countAns(d?.answers);
+  var j=LS.g(PFX+'journal_'+cid+'_'+m.id);
+  var jDone=j&&(j.insight||'').trim()&&(j.action||'').trim();
+  return a>=m.qs.length&&jDone;
+}
+function isModSent(cid,mid){return LS.g(PFX+'sent_'+cid+'_'+mid)||false}
+
+
+const II_PROMPTS={
+1:'Hvornår og i hvilken situation vil du gøre dette? F.eks.: "I min næste 1:1 på tirsdag spørger jeg medarbejderen: Hvad optager dig — reelt?"',
+2:'Hvornår sætter du dit nye kadence-system i gang? F.eks.: "Fra på mandag sætter jeg faste ugentlige 1:1 i kalenderen med alle mine direkte medarbejdere."',
+3:'Hvornår bruger du din nye forberedelsesrutine? F.eks.: "5 minutter før hver 1:1 gennemgår jeg noter fra sidst og beslutter min ene vigtigste ting."',
+4:'I hvilken konkret 1:1 vil du bruge disse spørgsmål? F.eks.: "I min 1:1 med [navn] på torsdag starter jeg med: Hvad optager dig? Og hvad mere?"',
+5:'Hvornår giver du den specifikke feedback? F.eks.: "I min næste 1:1 med [navn] giver jeg SBI-feedback på den situation fra mandagsmødet."',
+6:'Hvornår tager du karrieresamtalen? F.eks.: "I min 1:1 med [navn] næste uge spørger jeg: Hvad drømmer du om — og hvad er dit næste udviklingsskridt?"',
+7:'Hvornår har du den svære samtale? F.eks.: "I min 1:1 på fredag adresserer jeg [emnet] med fælles formål som indgang."',
+8:'Hvornår designer du dit system? F.eks.: "Søndag aften bruger jeg 30 minutter på at tegne mit ledelsesårshjul: 1:1, feedback, MUS, teamforum."'
+};
+
+const MODS=[
+{
+id:1,
+title:'Hvad er den gode 1:1?',
+subtitle:'Ud over statusmødet: 1:1 som den samtale der bygger tillid og driver performance',
+icon:'🤝',
+color:'#E57373',
+sources:['Grove, A. — High Output Management (1983)','Scott, K. — Radical Candor (2017)','Buckingham, M. & Goodall, A. — Nine Lies About Work (2019)','Gallup — State of the Global Workplace (2023)','Rock, D. — SCARF: A Brain-Based Model for Collaborating with and Influencing Others (2008)'],
+whyText:'Gallup viser, at <strong>medarbejdere der har ugentlige 1:1 med deres leder er 3x mere engagerede</strong> end dem der ikke har. Alligevel er de fleste 1:1-samtaler enten rene statusmøder, aflyst pga. travlhed, eller ustrukturerede samtaler uden retning. Problemet er ikke 1:1 som idé — det er 1:1 som praksis.',
+learn:`<h3>Lederens vigtigste samtale</h3>
+<p>Andy Grove, legendarisk CEO for Intel og forfatter til High Output Management, formulerede det med sin sædvanlige klarhed: En leders output er outputtet af de organisatoriske enheder under hans eller hendes tilsyn og indflydelse. Med andre ord: Du som leder producerer intet alene. Alt hvad du opnår, opnår du gennem dine medarbejdere. Og den mest direkte vej til at påvirke dine medarbejderes output er den regelmæssige, personlige samtale — 1:1.</p>
+<p>Grove betragtede 1:1 som det vigtigste redskab i en leders værktøjskasse. Ikke det mest glamourøse. Ikke det mest synlige. Men det mest effektive. Hans argument var simpelt og radikalt: En 90-minutters 1:1 kan påvirke kvaliteten af en medarbejders arbejde i to uger. Investeringsafkastet er enormt — hvis samtalen er god. Og katastrofalt lavt, hvis den er dårlig eller slet ikke finder sted.</p>
+
+<h3>1:1-paradokset</h3>
+<p>Der er et paradoks i moderne ledelse, der sjældent adresseres: De fleste ledere ved, at 1:1 er vigtig. De færreste praktiserer det konsekvent. Og endnu færre gør det godt. Gallups forskning er ubarmhjertig: Kun 15% af verdens medarbejdere er engagerede i deres arbejde. Og den vigtigste enkeltfaktor for engagement er kvaliteten af relationen til den nærmeste leder. Ikke løn. Ikke kontormiljø. Ikke strategi. Relationen. Og relationer bygges i samtaler — primært i 1:1.</p>
+<p>Alligevel er virkeligheden i de fleste organisationer, at 1:1 enten ikke finder sted, reduceres til statusopdateringer, eller aflyses ved den mindste kalenderpres. Medarbejderen sidder tilbage med en oplevelse af, at hun ikke er vigtig nok til at fortjene sin leders uforstyrrede opmærksomhed. Det er ikke en besked, nogen leder sender bevidst. Men det er den besked, der modtages.</p>
+
+<h3>Hjernen i 1:1</h3>
+<p>David Rock tilbyder en neurologisk forklaring på, hvorfor 1:1 er så vigtig — og hvorfor den kan gå så galt. Hans SCARF-model beskriver fem sociale domæner, som hjernen konstant overvåger: <strong>Status</strong> (føler jeg mig respekteret?), <strong>Certainty</strong> (ved jeg hvad der sker?), <strong>Autonomy</strong> (har jeg kontrol?), <strong>Relatedness</strong> (hører jeg til?) og <strong>Fairness</strong> (bliver jeg behandlet retfærdigt?).</p>
+<p>En god 1:1 styrker alle fem domæner: Medarbejderen føler sig set og respekteret (Status). Hun ved, hvad der forventes og hvad der sker (Certainty). Hun har indflydelse på samtalen og sine opgaver (Autonomy). Hun oplever en personlig forbindelse til sin leder (Relatedness). Og hun oplever, at hun behandles individuelt og fair (Fairness). En dårlig 1:1 — eller en aflyst 1:1 — truer dem alle.</p>
+
+<h3>Radical Candor: Omsorg plus ærlighed</h3>
+<p>Kim Scott tilbyder med Radical Candor en ramme for, hvad der gør 1:1 god: Kombinationen af personlig omsorg og direkte udfordring. Det handler om at vise, at du oprigtigt bekymrer dig om medarbejderen som menneske — og samtidig tør sige det, der skal siges, ærligt og direkte. Uden omsorg bliver ærligheden brutal. Uden ærlighed bliver omsorgen falsk. Kun kombinationen skaber den tillid, der gør 1:1 til et transformativt redskab.</p>
+<p>Marcus Buckingham og Ashley Goodall tilføjer i Nine Lies About Work en provokerende indsigt: Den vigtigste ting en leder kan gøre, er at give hyppig opmærksomhed. Ikke årlig feedback. Ikke kvartalsvise reviews. Men ugentlig, personlig, koncentreret opmærksomhed på den enkelte medarbejder. 1:1 er det naturlige format for denne opmærksomhed — hvis du bruger den rigtigt.</p>
+
+<h3>1:1 er ikke et statusmøde</h3>
+<p>Den mest udbredte fejl i 1:1 er at forveksle den med et statusmøde. Statusmødet handler om opgaver: Hvad er status på projekt X? Hvor langt er du med leverance Y? Hvornår er Z klar? Disse spørgsmål har deres plads — men det er ikke 1:1. 1:1 handler om medarbejderen: Hvad optager dig? Hvad har du brug for? Hvad blokerer dig? Hvad vil du gerne udvikle? Hvordan har du det — reelt?</p>
+<p>Forskellen virker subtil, men den er fundamental. Statusmødet positionerer lederen som kontrollant og medarbejderen som rapportør. 1:1 positionerer lederen som coach og medarbejderen som hovedperson. I det ene format er lederen den vigtigste person i rummet. I det andet er det medarbejderen. Og det er i det andet format, at tillid, engagement og performance blomstrer.</p>
+<blockquote>1:1 er ikke et statusmøde du holder med dine medarbejdere. Det er den samtale, der bygger den tillid, som alt andet afhænger af.</blockquote>`,
+qs:[
+{id:'q1_1',type:'ta',l:'Hvad er din <strong>ærlige oplevelse</strong> af 1:1 — både som leder og som medarbejder? Hvad virker — og hvad virker ikke?'},
+{id:'q1_2',type:'scale',l:'Hvor effektive er dine 1:1-samtaler — ærligt?',mn:1,mx:10},
+{id:'q1_3',type:'choice',l:'Din typiske 1:1 er primært:',opts:['Statusopdatering (opgaver og deadlines)','Coaching-samtale (medarbejderens udvikling)','Blanding','Findes ikke / aflyses ofte']},
+{id:'q1_4',type:'ta',l:'Hvad ville dine medarbejdere sige om dine 1:1-samtaler, <strong>hvis de var helt ærlige</strong>?'},
+{id:'q1_5',type:'ta',l:'Hvad er din <strong>største udfordring</strong> med 1:1? Tid? Struktur? Mod? Relevans?'},
+{id:'q1_6',type:'ta',l:'Hvad skal ændre sig for at din 1:1 bliver <strong>den vigtigste samtale</strong> du har som leder?'},
+],
+takeaways:['Medarbejdere med ugentlige 1:1 er 3x mere engagerede. Investering: 30-60 min/uge. Afkast: Enormt.','1:1 er IKKE et statusmøde. Status handler om opgaver. 1:1 handler om medarbejderen.','En aflyst 1:1 sender en klar besked: Du er ikke vigtig nok til min tid. Aflys aldrig.','SCARF-modellen: God 1:1 styrker Status, Certainty, Autonomy, Relatedness og Fairness.','Radical Candor: Personlig omsorg + direkte udfordring. Kun kombinationen bygger tillid.']
+},
+{
+id:2,
+title:'Kadencen',
+subtitle:'Disciplinen der adskiller gode ledere fra middelmådige',
+icon:'🔄',
+color:'#E5A048',
+sources:['Grove, A. — High Output Management (1983)','Sull, D. & Sull, C. — Why Strategy Execution Unravels (MIT Sloan, 2015)','Duhigg, C. — The Power of Habit (2012)','Clear, J. — Atomic Habits (2018)','Gallup — It\\\'s the Manager (2019)'],
+whyText:'Andy Grove: <strong>"A 90-minute 1:1 can affect the quality of your subordinate\\\'s work for two weeks."</strong> Men kun hvis den faktisk finder sted. Konsistens slår intensitet. Den ugentlige 1:1 der aldrig aflyses, er mere værd end den månedlige der er perfekt forberedt.',
+learn:`<h3>Konsistens slår kvalitet</h3>
+<p>James Clear formulerer det med en sætning, der udfordrer alt det, de fleste ledere tror: "You do not rise to the level of your goals. You fall to the level of your systems." Oversat til 1:1: Det er ikke din intention om at holde gode 1:1-samtaler, der afgør din effektivitet. Det er det system, du har bygget for at sikre, at de faktisk finder sted — konsekvent, forudsigeligt og urørligt.</p>
+<p>De fleste ledere starter med gode intentioner. De beslutter at holde ugentlige 1:1. De sætter dem i kalenderen. Og så begynder virkeligheden at presse: Et vigtigt møde kolliderer. En deadline nærmer sig. En krise kræver opmærksomhed. Og 1:1 aflyses — "bare denne ene gang." Men det er aldrig bare denne ene gang. Charles Duhigg dokumenterer i The Power of Habit, at vaner kun holder, når de beskyttes mod undtagelser. Hver gang du aflyser en 1:1, svækker du vanen. Hver gang du holder den trods pres, styrker du den.</p>
+
+<h3>Groves lov: 1:1 er lederens basale leverance</h3>
+<p>Andy Groves perspektiv er radikalt i sin enkelhed. For Grove var 1:1 ikke noget, en leder "også" gør, når tiden tillader det. Det var selve kernen i lederens leverance. Ligesom en kirurg opererer, og en programmør koder, holder en leder 1:1. Det er jobbet. At aflyse en 1:1 er som at aflyse en operation — det er en forsømmelse af den grundlæggende opgave.</p>
+<p>Grove anbefalede ugentlige 1:1 med en varighed af minimum 30 minutter, ideelt 60-90 minutter. Hans argument for den længere varighed var praktisk: De første 15-20 minutter går typisk med at komme i gang. De næste 15-20 med statusopdatering. Og det er først derefter, at de reelle emner — de svære, de vigtige, de sårbare — begynder at komme frem. Hvis du kun har 30 minutter, når du aldrig dertil.</p>
+
+<h3>Kadence er kommunikation</h3>
+<p>Sull og Sull viser i deres forskning om strategieksekvering, at den vigtigste årsag til, at strategier fejler, ikke er dårlig strategi — det er dårlig kommunikation. Informationen flyder ikke. Forventninger er uklare. Problemer opdages for sent. Og medarbejderne mangler den kontekst, de behøver for at træffe gode beslutninger.</p>
+<p>Den regelmæssige 1:1 løser alle fire problemer: Den sikrer informationsflow (du hører, hvad der virkelig sker). Den skaber forventningsklarhed (du kan afstemme løbende). Den opdager problemer tidligt (medarbejderen fortæller dig ting i 1:1, som hun aldrig ville sige i et gruppemøde). Og den giver kontekst (du kan dele det strategiske billede, der hjælper medarbejderen med at forstå "hvorfor").</p>
+
+<h3>Byg kadencen som et urørligt system</h3>
+<p>Gallups forskning er entydig: De mest effektive ledere har en fast kadence af 1:1, som de beskytter mod alle forstyrrelser. De flytter dem om nødvendigt. De aflyser dem aldrig. De kommunikerer implicit — og eksplicit — at denne tid er hellig: "Du er vigtig nok til, at jeg beskytter denne tid for dig."</p>
+<p>Praktisk betyder det: Sæt 1:1 som et tilbagevendende kalenderpunkt. Gør det til et fast tidspunkt, som begge parter kan forudse og forberede sig på. Kommunikér til din medarbejder, at dette er deres tid — ikke din. Og når presset kommer — og det kommer — vælg at holde 1:1 alligevel. Selv en kort 1:1 er uendeligt mere værd end en aflyst en.</p>
+<p>Thomas Friisnæs' princip om disciplin handler netop om dette: Konsistensen til at gøre det rigtige, også når det er svært. Også når kalenderen presser. Også når du ikke har lyst. Disciplin er ikke at gøre det perfekt. Det er at gøre det altid.</p>
+<blockquote>Den bedste 1:1 er den der finder sted. Hver uge. Uden undtagelse. Konsistens slår kvalitet — fordi konsistens ER kvalitet.</blockquote>`,
+qs:[
+{id:'q2_1',type:'choice',l:'Hvor ofte holder du 1:1 med dine direkte medarbejdere?',opts:['Ugentligt','Hver 14. dag','Månedligt','Sjældnere/uregelmæssigt']},
+{id:'q2_2',type:'ta',l:'Hvad er den <strong>hyppigste årsag</strong> til at dine 1:1 aflyses? Vær ærlig — hvem aflyser?'},
+{id:'q2_3',type:'scale',l:'Hvor konsekvent holder du dine 1:1 — også under pres?',mn:1,mx:10},
+{id:'q2_4',type:'ta',l:'Hvad tror du dine medarbejdere <strong>oplever</strong>, når du aflyser en 1:1? Hvad signalerer det?'},
+{id:'q2_5',type:'ta',l:'Beskriv dit <strong>ideale 1:1-system</strong>: Frekvens, varighed, fast tidspunkt, forberedelse. Skriv det ned.'},
+{id:'q2_6',type:'ta',l:'Hvad skal der til for at din 1:1-kadence bliver <strong>urørlig</strong> — et system der holder, uanset pres?'},
+],
+takeaways:['Konsistens slår kvalitet. Den ugentlige 1:1 der aldrig aflyses er mere værd end den perfekte der finder sted sporadisk.','Grove: En 90-minutters 1:1 påvirker kvaliteten af en medarbejders arbejde i to uger. Afkastet er enormt.','Hver aflyst 1:1 svækker vanen og signalerer: "Du er ikke vigtig nok til min tid."','De reelle emner — de svære, de vigtige, de sårbare — kommer først frem efter 15-20 minutter.','Sæt 1:1 i kalenderen. Gør det urørligt. Flyt om nødvendigt, men aflys aldrig.']
+},
+{
+id:3,
+title:'Forberedelse og struktur',
+subtitle:'Rammerne der skaber frihed til at tale om det der virkelig betyder noget',
+icon:'📋',
+color:'#66BB6A',
+sources:['Scott, K. — Radical Candor (2017)','Zhuo, J. — The Making of a Manager (2019)','Covey, S. — The 7 Habits of Highly Effective People (1989)','Drucker, P. — The Effective Executive (1967)','Rogelberg, S. — The Surprising Science of Meetings (2019)'],
+whyText:'Julie Zhuo, VP Design hos Facebook: <strong>"The purpose of a 1:1 is to understand your direct report\\\'s perspective, unblock them, and help them grow."</strong> Det kræver forberedelse. De vigtigste samtaler fortjener de bedste rammer.',
+learn:`<h3>Struktur er frihed</h3>
+<p>Der er et misforstået forhold mellem struktur og autenticitet i de fleste lederes hoveder. Mange tror, at en god 1:1 skal være "spontan" og "naturlig" — at struktur dræber den ægte samtale. Det modsatte er tilfældet. Struktur skaber det sikre rum, der tillader den ægte samtale at finde sted. Uden struktur flyder 1:1 mod det trygge: Status, praktik, overflade. Med struktur kan du sikre, at samtalen når det, der virkelig betyder noget.</p>
+<p>Steven Rogelberg, professor i organisationspsykologi og verdens førende møderforsker, dokumenterer, at møder med en klar struktur og forberedt agenda er markant mere produktive — og opleves som mere meningsfulde — end ustrukturerede møder. Det gælder i særlig grad for 1:1, hvor fraværet af struktur oftest resulterer i, at lederen taler for meget og medarbejderen siger for lidt.</p>
+
+<h3>Medarbejderens agenda</h3>
+<p>Kim Scott fremhæver et princip, der forandrer de fleste 1:1 radikalt: Det er medarbejderens møde. Ikke lederens. Det betyder, at agendaen primært sættes af medarbejderen. Lederen faciliterer, lytter, udfordrer og støtter — men det er medarbejderens behov, perspektiver og spørgsmål, der driver samtalen.</p>
+<p>Julie Zhuo operationaliserer dette i sin praksis: Hun beder sine medarbejdere forberede 3-5 punkter, de vil drøfte, og sende dem senest 24 timer før 1:1. Hendes erfaring er, at denne simple handling fundamentalt ændrer samtalens kvalitet: Medarbejderen tager ejerskab. Samtalen bliver fokuseret. Og de vigtige emner — de svære, de sårbare, de ambitiøse — kommer på bordet, fordi medarbejderen har haft tid til at formulere dem.</p>
+
+<h3>Lederens forberedelse</h3>
+<p>Coveys princip om at "seek first to understand, then to be understood" kræver, at du møder op med nysgerrighed, ikke med svar. Din forberedelse til 1:1 handler ikke om at planlægge, hvad du vil fortælle medarbejderen. Det handler om at forberede dig på at lytte.</p>
+<p>Drucker tilføjer, at den effektive leder tænker over, hvad hun vil opnå, før hun starter en samtale. Ikke i detaljer — men i retning. Hvad er det vigtigste, jeg vil forstå i dag? Hvad er den ene ting, jeg vil sikre mig, at medarbejderen har klarhed over? Er der noget svært, der skal adresseres? Er der noget godt, der skal anerkendes?</p>
+<p>Praktisk anbefaler vi en simpel forberedelsesrutine: 5 minutter, lige før 1:1. Gennemgå noter fra sidste gang. Tjek: Er der noget fra den seneste uge, der skal adresseres? Beslut: Hvad er den ene ting, du vil sikre kommer på bordet? Og stil dig selv det vigtigste spørgsmål: Hvordan har denne medarbejder det — reelt?</p>
+
+<h3>En brugbar ramme</h3>
+<p>Her er en struktur, der har vist sig effektiv i tusindvis af 1:1-samtaler. Den er en ramme, ikke en spændetrøje — tilpas den til din kontekst:</p>
+<p><strong>Åbning (5 min):</strong> Tjek ind. Ikke "hvad er status på projekt X?" men "Hvordan har du det? Hvad fylder lige nu?" Start personligt, ikke professionelt.</p>
+<p><strong>Medarbejderens agenda (15-20 min):</strong> Hvad vil du gerne drøfte? Hvad har du brug for? Hvad blokerer dig? Lad medarbejderen sætte retningen.</p>
+<p><strong>Lederens input (10-15 min):</strong> Feedback, kontekst, perspektiv. Det du som leder ser, som medarbejderen ikke ser. Anerkendelse af det, der fungerer.</p>
+<p><strong>Udvikling og retning (5-10 min):</strong> Hvad vil du gerne lære? Hvad er dit næste skridt? Hvordan kan jeg hjælpe?</p>
+<p><strong>Afslutning (5 min):</strong> Hvad aftalte vi? Hvem gør hvad? Hvornår følger vi op?</p>
+<blockquote>Den bedste 1:1 er forberedt, men ikke scripted. Struktureret, men ikke rigid. Planlagt, men åben for det uventede.</blockquote>`,
+qs:[
+{id:'q3_1',type:'choice',l:'Hvem sætter typisk agendaen for din 1:1?',opts:['Jeg (lederen)','Medarbejderen','Begge / skiftende','Ingen — det er ustruktureret']},
+{id:'q3_2',type:'ta',l:'Beskriv din <strong>nuværende forberedelse</strong> til 1:1: Hvad gør du — reelt? Hvor lang tid bruger du?'},
+{id:'q3_3',type:'ta',l:'Hvad er dit typiske <strong>åbningsspørgsmål</strong> i 1:1? Er det om opgaver — eller om mennesket?'},
+{id:'q3_4',type:'scale',l:'Hvor meget taler du vs. lytter i dine 1:1? (1=du taler mest, 10=du lytter mest)',mn:1,mx:10},
+{id:'q3_5',type:'ta',l:'Beskriv den <strong>bedste 1:1</strong> du nogensinde har haft — som leder eller som medarbejder. Hvad gjorde den god?'},
+{id:'q3_6',type:'ta',l:'Design din <strong>ideale 1:1-struktur</strong>: Åbning, agenda, feedback, udvikling, afslutning. Skriv den ned.'},
+],
+takeaways:['1:1 er medarbejderens møde, ikke lederens. Lad medarbejderen sætte agendaen.','Struktur skaber frihed. Uden struktur flyder samtalen mod det trygge og overfladiske.','5 minutters forberedelse: Noter fra sidst. Hvad skal adresseres? Hvordan har medarbejderen det?','Start personligt, ikke professionelt. "Hvordan har du det?" før "Hvad er status?"','Dokumentér aftaler. En 1:1 uden noter er en samtale uden konsekvenser.']
+},
+{
+id:4,
+title:'Spørgsmålskunsten',
+subtitle:'De spørgsmål der åbner samtalen — og dem der lukker den',
+icon:'❓',
+color:'#42A5F5',
+sources:['Stanier, M.B. — The Coaching Habit (2016)','Marquardt, M. — Leading with Questions (2014)','Stone, D. & Heen, S. — Thanks for the Feedback (2014)','Edmondson, A. — The Fearless Organization (2019)','Schein, E. — Humble Inquiry (2013)'],
+whyText:'Michael Bungay Stanier: <strong>"Stay curious a little longer. Rush to action a little slower."</strong> De bedste ledere stiller bedre spørgsmål. Ikke flere — bedre. Spørgsmål der åbner, ikke lukker. Der udforsker, ikke kontrollerer.',
+learn:`<h3>Problemet med gode råd</h3>
+<p>Michael Bungay Stanier beskriver et mønster, der definerer de fleste ledere: Du hører et problem, og du løser det. Medarbejderen siger "Jeg er usikker på…" og du svarer "Det, du skal gøre, er…" Det føles effektivt. Det føles lederagtigt. Og det er en af de mest skadelige vaner, du kan have.</p>
+<p>Problemet med at give råd for hurtigt er tredobbelt: For det første løser du ofte det forkerte problem — det problem, medarbejderen nævner først, er sjældent det reelle problem. For det andet fratager du medarbejderen muligheden for at tænke selv, lære og vokse. Og for det tredje skaber du en afhængighed, hvor medarbejderen stopper med at tænke og i stedet venter på dine svar. Du bliver flaskehalsen.</p>
+
+<h3>Humble Inquiry</h3>
+<p>Edgar Schein, en af organisationspsykologiens mest indflydelsesrige tænkere, introducerede begrebet "Humble Inquiry" — kunsten at stille spørgsmål, du oprigtigt ikke kender svaret på. Ikke retoriske spørgsmål. Ikke ledende spørgsmål. Ikke spørgsmål der demonstrerer din viden. Men spørgsmål drevet af ægte nysgerrighed — en oprigtig interesse i at forstå, hvad den anden person tænker, føler og oplever.</p>
+<p>Det lyder simpelt. Det er enormt svært. Fordi det kræver, at du parkerer din ekspertise, din erfaring, din autoritet og din trang til at hjælpe — og i stedet siger: "Fortæl mig mere." "Hvad mener du?" "Hvad tænker du selv?" Schein argumenterer for, at denne form for ydmyg nysgerrighed er fundamentet for tillid, læring og samarbejde.</p>
+
+<h3>De syv essentielle spørgsmål</h3>
+<p>Stanier destillerer coaching-samtalens kunst til syv spørgsmål, der tilsammen dækker alt, hvad en god 1:1 skal rumme:</p>
+<p><strong>"Hvad optager dig?"</strong> — Åbningsspørgsmålet der giver medarbejderen ejerskab over samtalen. Det inviterer til det, der virkelig er vigtigt — ikke det, der er mest trygt at tale om.</p>
+<p><strong>"Og hvad mere?"</strong> — Det mest kraftfulde opfølgningsspørgsmål der findes. Det forhindrer dig i at løse det første problem og presser samtalen dybere.</p>
+<p><strong>"Hvad er den egentlige udfordring her for dig?"</strong> — Det spørgsmål der trænger forbi symptomet til det reelle problem. "For dig" er de afgørende ord — det gør det personligt, ikke abstrakt.</p>
+<p><strong>"Hvad vil du?"</strong> — Det direkte spørgsmål de fleste ledere aldrig stiller. Det tvinger medarbejderen til at tage stilling — og giver dig mulighed for at forstå, hvad der virkelig motiverer.</p>
+<p><strong>"Hvordan kan jeg hjælpe?"</strong> — Bemærk: Ikke "lad mig hjælpe dig" men "hvordan kan JEG hjælpe?" Det ene er at overtage. Det andet er at støtte.</p>
+<p><strong>"Hvad siger du nej til, hvis du siger ja til dette?"</strong> — Det strategiske spørgsmål der tvinger prioritering. Alt har en omkostning. Hvad er den?</p>
+<p><strong>"Hvad var mest nyttigt for dig?"</strong> — Afslutningsspørgsmålet der skaber læring og forankring. Det tvinger medarbejderen til at reflektere over samtalens værdi.</p>
+
+<h3>Psykologisk tryghed som fundament</h3>
+<p>Amy Edmondson dokumenterer i The Fearless Organization, at psykologisk tryghed — oplevelsen af, at det er sikkert at tale åbent, stille spørgsmål og indrømme fejl — er den vigtigste forudsætning for teamperformance. Og psykologisk tryghed skabes primært i 1:1, gennem den måde du stiller spørgsmål og reagerer på svar.</p>
+<p>Hvis du stiller et spørgsmål og derefter kritiserer svaret, har du netop ødelagt den tryghed, der krævedes for at svare ærligt. Hvis du stiller et spørgsmål og derefter virkelig lytter — med nysgerrighed, empati og respekt — har du styrket den. Hver 1:1 er en mulighed for at bygge eller nedbryde psykologisk tryghed. Og det er dine spørgsmål — og din reaktion på svarene — der afgør hvilken.</p>
+<blockquote>De bedste ledere har ikke de bedste svar. De har de bedste spørgsmål. Og vigtigst af alt: De har modet til at lytte til svarene.</blockquote>`,
+qs:[
+{id:'q4_1',type:'ta',l:'Hvad er dit <strong>go-to åbningsspørgsmål</strong> i 1:1? Er det et spørgsmål der åbner — eller lukker?'},
+{id:'q4_2',type:'scale',l:'Hvor hurtigt giver du typisk råd, når en medarbejder bringer et problem? (1=med det samme, 10=jeg udforsker først)',mn:1,mx:10},
+{id:'q4_3',type:'ta',l:'Prøv Staniers spørgsmål: <strong>"Og hvad mere?"</strong> Beskriv en situation, hvor det ville have ændret samtalen.'},
+{id:'q4_4',type:'ta',l:'Scheins Humble Inquiry: Hvornår stiller du sidst et spørgsmål, du <strong>oprigtigt ikke kendte svaret på</strong>?'},
+{id:'q4_5',type:'ta',l:'Hvad sker der i dine 1:1, når medarbejderen siger noget, du <strong>ikke var forberedt på</strong>? Hvordan reagerer du?'},
+{id:'q4_6',type:'ta',l:'Skriv <strong>5 spørgsmål</strong> du vil bruge i din næste 1:1. Spørgsmål der åbner, ikke lukker.'},
+],
+takeaways:['Du løser ofte det forkerte problem. Det første problem medarbejderen nævner er sjældent det reelle.','\"Og hvad mere?\" er det mest kraftfulde opfølgningsspørgsmål. Det presser samtalen dybere.','Humble Inquiry: Stil spørgsmål du oprigtigt ikke kender svaret på. Ægte nysgerrighed bygger tillid.','Psykologisk tryghed skabes i 1:1 — gennem din reaktion på ærlige svar. Lyt uden at dømme.','De bedste ledere har ikke de bedste svar. De har de bedste spørgsmål.']
+},
+{
+id:5,
+title:'Feedback i 1:1',
+subtitle:'Anerkendelse, korrektion og den svære balance mellem de to',
+icon:'🎯',
+color:'#AB47BC',
+sources:['Scott, K. — Radical Candor (2017)','Stone, D. & Heen, S. — Thanks for the Feedback (2014)','Buckingham, M. & Goodall, A. — The Feedback Fallacy (HBR, 2019)','Kluger, A. & DeNisi, A. — The Effects of Feedback Interventions on Performance (1996)','Losada, M. & Heaphy, E. — The Role of Positivity (American Behavioral Scientist, 2004)'],
+whyText:'Kluger og DeNisi analyserede 607 studier af feedback og fandt, at <strong>feedback forværrer performance i 38% af tilfældene</strong>. Ikke fordi feedback er en dårlig idé — men fordi den oftest gives forkert. 1:1 er stedet, hvor du lærer at give den rigtigt.',
+learn:`<h3>Feedback-paradokset</h3>
+<p>Der er en ubehagelig sandhed om feedback, som de fleste lederkurser forbigår: Feedback virker ikke altid. Kluger og DeNisi gennemgik over 600 studier og fandt, at feedback kun forbedrer performance i omkring to tredjedele af tilfældene. I den resterende tredjedel forværrer den performance — oftest fordi den truer modtagerens selvbillede og udløser en defensiv reaktion, der blokerer for læring.</p>
+<p>Det betyder ikke, at du skal stoppe med at give feedback. Det betyder, at du skal give den bedre. Og 1:1 er det naturlige forum, fordi den har tre egenskaber, som ingen anden kontekst tilbyder: Den er privat (ingen offentlig ydmygelse). Den er regelmæssig (feedback kan gives tæt på begivenheden). Og den er relationel (du har bygget den tillid, der gør feedback modtagelig).</p>
+
+<h3>Anerkendelsens kraft</h3>
+<p>Marcus Buckingham og Ashley Goodall udfordrer den konventionelle visdom om, at ledere skal give "balanceret" feedback — noget godt og noget dårligt. Deres forskning viser noget andet: Hjernen vokser primært der, hvor den allerede er stærkest. Mennesker udvikler sig mest, når de fokuserer på det, der virker — ikke det, der ikke gør. Det betyder, at den vigtigste form for feedback i 1:1 ikke er korrektion — det er anerkendelse af det, der fungerer.</p>
+<p>Men ikke enhver anerkendelse er lige god. "Godt arbejde" er meningsløst. Det, der virker, er specifik anerkendelse: "Den måde du håndterede kundens indvending i præsentationen — den ro og den præcision — det var exceptionelt. Fortæl mig, hvad du tænkte." Specifik anerkendelse gør tre ting: Den fortæller medarbejderen, hvad der virker (så hun kan gøre mere af det). Den viser, at du ser hende (du lagde mærke til noget specifikt). Og den inviterer til refleksion (hvad tænkte du — hvordan kan vi forstærke det?).</p>
+
+<h3>Når korrektion er nødvendig</h3>
+<p>Kim Scotts Radical Candor giver en klar ramme for korrektion i 1:1: Udfordr direkte, mens du viser personlig omsorg. Det praktiske vejledning er SBI-modellen: <strong>Situation</strong> (hvornår skete det), <strong>Behavior</strong> (hvad observerede du — specifik adfærd, ikke fortolkning) og <strong>Impact</strong> (hvad var konsekvensen).</p>
+<p>"I tirsdagens teammøde [situation], da du afbrød Marie tre gange under hendes præsentation [adfærd], kunne jeg se, at hun blev usikker og stoppede med at dele sine idéer resten af mødet [impact]." Det er specifikt. Det er observerbart. Og det er frit for moralsk dom. Du fortæller ikke medarbejderen, at hun er respektløs eller dominerende. Du beskriver, hvad du så, og hvad konsekvensen var. Resten er en samtale.</p>
+
+<h3>Stone og Heens tre feedback-triggere</h3>
+<p>Douglas Stone og Sheila Heen identificerer i Thanks for the Feedback tre grunde til, at vi afviser feedback — selv når den er korrekt: <strong>Truth triggers</strong> (vi er uenige i indholdet), <strong>relationship triggers</strong> (vi har et problem med afsenderen, ikke budskabet) og <strong>identity triggers</strong> (feedbacken truer vores selvbillede).</p>
+<p>Som leder i 1:1 er det afgørende at forstå, hvilken trigger du aktiverer. Hvis medarbejderen afviser din feedback, er svaret sjældent at gentage den højere. Svaret er at forstå, hvad der blokerer: Er hun uenig i din observation? Har I en uløst konflikt, der forurener samtalen? Eller rammer feedbacken noget dybt i hendes identitet — en frygt for ikke at være god nok, en angst for at fejle, en usikkerhed hun ikke vil vise?</p>
+<blockquote>Feedback er ikke noget du giver. Det er noget I skaber sammen — i det trygge, private rum som den gode 1:1 tilbyder.</blockquote>`,
+qs:[
+{id:'q5_1',type:'choice',l:'Din feedback i 1:1 er primært:',opts:['Mest anerkendende','Mest korrigerende','Balanceret','Sjælden/undgår feedback']},
+{id:'q5_2',type:'ta',l:'Giv et eksempel på <strong>specifik anerkendelse</strong> du har givet i en 1:1. Hvad sagde du — præcis?'},
+{id:'q5_3',type:'ta',l:'Tænk på en situation, hvor din feedback <strong>ikke virkede</strong>. Hvad skete der? Hvilken trigger ramte du?'},
+{id:'q5_4',type:'scale',l:'Hvor komfortabel er du med at give korrigerende feedback i 1:1?',mn:1,mx:10},
+{id:'q5_5',type:'ta',l:'Buckingham: Hjernen vokser primært ved styrker. Hvor meget af din feedback <strong>fokuserer på det der virker</strong>?'},
+{id:'q5_6',type:'ta',l:'Formulér en <strong>SBI-feedback</strong> (Situation-Behavior-Impact) du skylder en medarbejder. Skriv den ned.'},
+],
+takeaways:['Feedback forværrer performance i 38% af tilfældene. Problemet er ikke feedback — det er feedbackens kvalitet.','Specifik anerkendelse slår generel ros. "Godt arbejde" er meningsløst. Beskriv hvad du så, og hvorfor det virkede.','SBI-modellen: Situation, Behavior, Impact. Specifikt, observerbart, frit for moralsk dom.','Stone og Heens tre triggere: Truth, Relationship, Identity. Forstå hvad der blokerer — gentag ikke bare højere.','1:1 er det ideelle feedback-forum: Privat, regelmæssigt, relationelt. Brug det.']
+},
+{
+id:6,
+title:'Udvikling og karriere',
+subtitle:'Fra opgavediskussion til den samtale der former menneskers fremtid',
+icon:'🌱',
+color:'#26A69A',
+sources:['Ibarra, H. — Working Identity (2003)','Dweck, C. — Mindset: The New Psychology of Success (2006)','McCall, M. — High Flyers: Developing the Next Generation of Leaders (1998)','Csikszentmihalyi, M. — Flow (1990)','Lombardo, M. & Eichinger, R. — The Career Architect Development Planner (2010)'],
+whyText:'McCall viser, at <strong>70% af lederes udvikling sker gennem udfordrende opgaver, 20% gennem relationer og kun 10% gennem formel træning</strong>. Din 1:1 er der, hvor du designer de 70% + 20% — de opgaver og relationer der former medarbejderens fremtid.',
+learn:`<h3>Udvikling sker ikke i klasselokalet</h3>
+<p>Morgan McCall og hans kollegers forskning fra Center for Creative Leadership vendte op og ned på, hvad de fleste organisationer troede om lederudvikling: De ledere, der udviklede sig mest, lærte det ikke på kurser. De lærte det gennem erfaringer — specifikt gennem udfordrende opgaver, der tvang dem ud af deres komfortzone. Den berømte 70-20-10-model viser fordelingen: 70% fra udfordrende opgaver, 20% fra udviklende relationer (mentorer, rollemodeller, feedback fra kolleger), og kun 10% fra formel uddannelse.</p>
+<p>Implikationen for din 1:1 er enorm: Den vigtigste udviklingssamtale er ikke den, hvor du sender medarbejderen på kursus. Det er den, hvor du sammen identificerer den næste udfordrende opgave — det projekt, den rolle, den ansvarsudvidelse, der strækker medarbejderen præcis nok til at skabe vækst, uden at knække hende.</p>
+
+<h3>Flow-zonen i udvikling</h3>
+<p>Mihaly Csikszentmihalyi beskrev flow-tilstanden som den optimale zone mellem kedsomhed og angst: Opgaven er udfordrende nok til at kræve fuld opmærksomhed, men ikke så svær, at den udløser panik. Den mest effektive udvikling sker i denne zone — og din opgave i 1:1 er at hjælpe medarbejderen med at finde og blive i den.</p>
+<p>Det kræver, at du kender medarbejderen godt nok til at vurdere: Hvad kan hun allerede? Hvad er hendes næste udviklingszone? Hvilken opgave ville placere hende i flow — strakt, men ikke knækket? Denne vurdering kan du kun lave, hvis du har regelmæssige, dybe samtaler. Endnu et argument for den ugentlige 1:1.</p>
+
+<h3>Karrieresamtalen</h3>
+<p>Herminia Ibarra viser i Working Identity, at karriereudvikling sjældent er lineær. De fleste mennesker udvikler deres professionelle identitet gennem eksperimentering — ved at prøve nye roller, opgaver og kontekster og observere, hvad der resonerer. Din rolle i 1:1 er ikke at planlægge medarbejderens karriere for hende. Det er at skabe rum for hende til at udforske, reflektere og eksperimentere.</p>
+<p>Det kræver, at du stiller de spørgsmål, som de fleste ledere undgår: Hvad drømmer du om? Hvor ser du dig selv om tre år? Hvad ville du lave, hvis du vidste, du ikke kunne fejle? Hvad savner du i din nuværende rolle? Mange ledere undgår disse spørgsmål af frygt for, at svarene fører medarbejderen ud af teamet. Men paradokset er, at de ledere, der aktivt støtter deres medarbejderes karriereambitioner — også når ambitionerne peger udad — beholder dem længere og får mere ud af dem.</p>
+
+<h3>Growth Mindset i praksis</h3>
+<p>Carol Dweck tilbyder med sit growth mindset-begreb et fundamentalt princip for udviklingssamtalen: Potentiale er ikke fast. Det udvikles. Din opgave som leder er ikke at vurdere, hvem der har "talent" og hvem der ikke har. Din opgave er at skabe de betingelser — opgaver, feedback, støtte, udfordringer — der tillader potentiale at udfolde sig.</p>
+<p>I 1:1 betyder det: Tal om udvikling med alle medarbejdere, ikke kun de "high potentials." Fokusér på indsats og strategi, ikke på medfødt evne. Og normalisér fejl som en del af læreprocessen: "Hvad lærte du af det?" er et mere udviklende spørgsmål end "Hvorfor gik det galt?"</p>
+<blockquote>Udvikling er ikke en samtale du har én gang om året. Det er et perspektiv du bringer til hver eneste 1:1 — fordi hver uge er en mulighed for at forme et menneskes fremtid.</blockquote>`,
+qs:[
+{id:'q6_1',type:'ta',l:'Hvornår talte du sidst om <strong>karriere og udvikling</strong> i en 1:1? Ikke opgaver — karriere.'},
+{id:'q6_2',type:'ta',l:'Nævn en medarbejder, du har <strong>strakt med en udfordrende opgave</strong>. Hvad skete der?'},
+{id:'q6_3',type:'ta',l:'Ibarras spørgsmål: Kender du dine medarbejderes <strong>drømme og ambitioner</strong>? Alle? Virkelig?'},
+{id:'q6_4',type:'scale',l:'Hvor meget af dine 1:1-samtaler handler om udvikling vs. status/opgaver?',mn:1,mx:10},
+{id:'q6_5',type:'ta',l:'Dwecks growth mindset: Hvordan reagerer du, når en medarbejder <strong>fejler</strong>? Hvad siger du — helt ærligt?'},
+{id:'q6_6',type:'ta',l:'Design en <strong>udviklingsplan</strong> for én medarbejder: Udfordrende opgave, relation/mentor, færdighed. Skriv den ned.'},
+],
+takeaways:['70% af udvikling sker gennem udfordrende opgaver, 20% relationer, 10% kurser. Design opgaverne i 1:1.','Flow-zonen: Strakt men ikke knækket. Kend medarbejderen godt nok til at finde den balance.','Spørg om drømme og ambitioner. De ledere der støtter karriereambitioner — også udad — beholder folk længere.','Growth mindset: Tal om udvikling med alle, ikke kun \"high potentials\". Potentiale er ikke fast.','\"Hvad lærte du af det?\" er mere udviklende end \"Hvorfor gik det galt?\"']
+},
+{
+id:7,
+title:'Svære samtaler i 1:1',
+subtitle:'Modet til at sige det der skal siges — direkte, ærligt og med omsorg',
+icon:'⚡',
+color:'#EF5350',
+sources:['Scott, K. — Radical Candor (2017)','Patterson, K. et al. — Crucial Conversations (2012)','Lencioni, P. — The Five Dysfunctions of a Team (2002)','Brown, B. — Dare to Lead (2018)','Edmondson, A. — The Fearless Organization (2019)'],
+whyText:'Kim Scott: <strong>"It\\\'s not mean, it\\\'s clear."</strong> De fleste ledere udskyder svære samtaler, fordi de forveksler omsorg med undgåelse. Men den mest omsorgsfulde ting du kan gøre, er at fortælle sandheden — hurtigt, direkte og med respekt.',
+learn:`<h3>Prisen for undgåelse</h3>
+<p>Patrick Lencioni identificerer frygt for konflikt som en af de fem dysfunktioner, der ødelægger teams. Og den begynder i 1:1. Når du undgår at adressere et problem i 1:1 — en medarbejder der underperformer, en adfærd der skader teamet, en holdning der blokerer samarbejde — betaler du en pris. Og prisen stiger for hver uge, der går.</p>
+<p>Den umiddelbare pris er, at problemet fortsætter. Den mellemlange pris er, at resten af teamet ser, at du ikke handler — og mister respekt. Den langsigtede pris er, at du skaber en kultur, hvor middelmådighed tolereres, feedback undgås, og de bedste medarbejdere forlader teamet, fordi de ikke vil arbejde et sted, hvor dårlig performance ikke adresseres.</p>
+
+<h3>Radical Candor i praksis</h3>
+<p>Kim Scott beskriver fire kvadranter af feedback baseret på to akser — personlig omsorg og direkte udfordring. Kun én kombination virker:</p>
+<p><strong>Radical Candor:</strong> Høj omsorg + høj udfordring. Du bryder dig om medarbejderen OG du siger det, der skal siges. "Jeg siger dette, fordi jeg tror på dit potentiale, og denne adfærd holder dig tilbage."</p>
+<p><strong>Obnoxious Aggression:</strong> Lav omsorg + høj udfordring. Brutal ærlighed uden empati. Korrekt budskab, forkert leverance. Medarbejderen hører kritikken, ikke intentionen.</p>
+<p><strong>Ruinous Empathy:</strong> Høj omsorg + lav udfordring. Den mest udbredte fejl. Du bryder dig om medarbejderen, men undgår det svære. Resultatet: Problemet vokser, og medarbejderen fratages muligheden for at udvikle sig.</p>
+<p><strong>Manipulative Insincerity:</strong> Lav omsorg + lav udfordring. Du er ligeglad og siger ingenting. Det værste scenarie.</p>
+
+<h3>Crucial Conversations: Værktøjerne</h3>
+<p>Patterson og kolleger tilbyder en praktisk ramme for svære samtaler, der direkte kan bruges i 1:1:</p>
+<p><strong>Start med hjertet:</strong> Vær klar over din intention. Vil du vinde — eller vil du løse problemet? Din intention afgør samtalens tone.</p>
+<p><strong>Master my stories:</strong> Adskil fakta fra fortolkning. "Du mødte for sent tre gange i denne uge" er fakta. "Du er uansvarlig" er fortolkning. Hold dig til fakta i 1:1.</p>
+<p><strong>STATE din vej:</strong> Share facts, Tell your story, Ask for their path, Talk tentatively, Encourage testing. Del hvad du har observeret, fortæl hvad du tænker, og invitér medarbejderens perspektiv.</p>
+<p><strong>Gør det trygt:</strong> Når medarbejderen lukker ned, er det ikke et tegn på, at du skal presse hårdere. Det er et tegn på, at trygheden er brudt. Genopbyg den, før du fortsætter.</p>
+
+<h3>Brené Browns mod-princip</h3>
+<p>Brené Brown formulerer det med karakteristisk klarhed: "Clear is kind. Unclear is unkind." At undlade at fortælle en medarbejder, at hun underperformer, er ikke omsorg — det er undgåelse forklædt som venlighed. Den mest omsorgsfulde handling er klarhed: At fortælle sandheden tidligt, direkte og med respekt. At give medarbejderen mulighed for at ændre kurs, mens det stadig er muligt.</p>
+<p>Thomas Friisnæs' princip om karakter handler netop om dette: Modet til at sige det, der skal siges, også når det er ubehageligt. Karakter er ikke at være hård. Det er at være ærlig — med omsorg, med respekt, men uden omsvøb.</p>
+<blockquote>Den svære samtale du udskyder, bliver sværere for hver dag der går. Det eneste tidspunkt der er sværere end nu, er om en måned.</blockquote>`,
+qs:[
+{id:'q7_1',type:'ta',l:'Beskriv en <strong>svær samtale du har udskudt</strong> i en 1:1. Hvad holder dig tilbage?'},
+{id:'q7_2',type:'choice',l:'Hvad er din typiske reaktion på konflikter i 1:1?',opts:['Adresserer dem direkte','Udskyder dem','Undgår dem helt','Varierer fra person til person']},
+{id:'q7_3',type:'ta',l:'Scotts fire kvadranter: Hvor befinder du dig oftest? <strong>Radical Candor, Ruinous Empathy, Obnoxious Aggression?</strong>'},
+{id:'q7_4',type:'scale',l:'Hvor komfortabel er du med at have svære samtaler i 1:1?',mn:1,mx:10},
+{id:'q7_5',type:'ta',l:'Tænk på en <strong>konkret medarbejder</strong> du skylder en ærlig samtale. Hvad skal du sige — i klart, direkte sprog?'},
+{id:'q7_6',type:'ta',l:'Browns princip: "Clear is kind." Hvad er den <strong>mest omsorgsfulde ting</strong> du kan sige til denne medarbejder?'},
+],
+takeaways:['Prisen for undgåelse stiger for hver uge. Problemet fortsætter, teamet ser det, de bedste forlader.','Ruinous Empathy er den mest udbredte fejl: Omsorg uden ærlighed. Problemet vokser. Medarbejderen fratages muligheden for at vokse.','\"Clear is kind. Unclear is unkind.\" Klarhed er omsorg. Undgåelse er det modsatte.','Adskil fakta fra fortolkning. \"Du mødte for sent tre gange\" er fakta. \"Du er uansvarlig\" er fortolkning.','Karakter: Modet til at sige det der skal siges. Ikke at være hård — at være ærlig med omsorg.']
+},
+{
+id:8,
+title:'1:1 som ledelsessystem',
+subtitle:'Fra isoleret samtale til integreret ledelsespraksis',
+icon:'🏛',
+color:'#9575CD',
+sources:['Grove, A. — High Output Management (1983)','Drucker, P. — The Effective Executive (1967)','Senge, P. — The Fifth Discipline (1990)','Collins, J. — Good to Great (2001)','Deming, W.E. — Out of the Crisis (1986)'],
+whyText:'Deming: <strong>"A bad system will beat a good person every time."</strong> 1:1 er ikke en isoleret samtale. Det er det operationelle fundament i dit ledelsessystem — og systemets kvalitet afgør din ledelseskvalitet.',
+learn:`<h3>Fra samtale til system</h3>
+<p>Der er en grundlæggende fejl i, hvordan de fleste ledere tænker om 1:1: De behandler det som en isoleret begivenhed. En samtale man holder, når tiden tillader det. Et punkt på en to-do-liste, der kan flyttes. Men 1:1 er ikke en begivenhed. Det er et system. Og ligesom ethvert system er det kun så godt som dets svageste led.</p>
+<p>Edwards Deming formulerede det med sin sædvanlige radikalitet: Et dårligt system slår en god person hver gang. Oversat til din ledelse: Hvis du er en god leder med et dårligt 1:1-system — uregelmæssigt, uforberedt, uden opfølgning — producerer du middelmådige resultater. Og et godt system — konsekvent, forberedt, med opfølgning — producerer bedre resultater, end de fleste ledere tror, uanset hvem der sidder i stolen.</p>
+
+<h3>Andy Groves operative system</h3>
+<p>Grove designede Intels ledelsessystem omkring tre kerneaktiviteter: Informationsindsamling (at forstå hvad der virkelig sker), beslutningstagning (at vælge den rigtige kurs) og nudging (at påvirke adfærd i den rigtige retning). 1:1 er det primære redskab for alle tre.</p>
+<p>I 1:1 indsamler du information, som du aldrig får i gruppemøder — den ærlige vurdering, den personlige bekymring, det problem der ikke tåler offentlighed. I 1:1 forbereder du beslutninger — ikke ved at diktere, men ved at teste idéer, høre perspektiver og forstå konsekvenser. Og i 1:1 nudger du adfærd — ikke ved at beordre, men ved at coache, udfordre og støtte.</p>
+
+<h3>Det sammenhængende ledelsessystem</h3>
+<p>Drucker argumenterer for, at den effektive leder tænker i systemer, ikke i episoder. Din 1:1 er ikke en episode. Den er et omdrejningspunkt i et sammenhængende system af ledelsespraksisser:</p>
+<p><strong>1:1 → Teamforum → Strategisk alignment.</strong> Det du lærer i 1:1 informerer, hvad du bringer til teamforum. Det I beslutter i teamforum informerer, hvad du kommunikerer i 1:1. Og begge dele skal forbinde til organisationens strategi — den "line of sight" der giver mening til den enkeltes arbejde.</p>
+<p><strong>1:1 → MUS → Udvikling.</strong> Hvis du har ugentlige 1:1 hele året, bliver MUS ikke en dramatisk afsløring — den bliver en struktureret sammenfatning af en dialog, der har kørt kontinuerligt. MUS-aftaler forankres i 1:1. Udviklingsplaner realiseres i 1:1. Performance-problemer adresseres i 1:1. MUS opsummerer — 1:1 eksekverer.</p>
+
+<h3>Systemets design</h3>
+<p>Peter Senge beskriver i The Fifth Discipline, at de mest effektive organisationer er "lærende organisationer" — organisationer der kontinuerligt forbedrer sig gennem refleksion, feedback og tilpasning. Din 1:1-kadence er det mikroskopiske udtryk for denne ambition: Hver uge reflekterer du og medarbejderen over, hvad der virker, hvad der ikke virker, og hvad der skal ændres. Over tid skaber denne cyklus en spiral af kontinuerlig forbedring.</p>
+<p>Jim Collins observerede i Good to Great, at de bedste ledere ikke ventede på formelle anledninger. De førte en kontinuerlig dialog med deres medarbejdere — uformel, ærlig og fremadskuende. 1:1 var ikke et møde de holdt. Det var den måde, de ledte på.</p>
+<p>Thomas Friisnæs' tre søjler giver den overordnede ramme: <strong>Karakter</strong> — modet til at have samtalerne, sige det der skal siges, handle når handling er nødvendig. <strong>Disciplin</strong> — konsistensen til at holde 1:1 hver uge, forberede dem ordentligt, følge op på aftaler og opretholde systemet også under pres. <strong>Klarhed</strong> — evnen til at formulere forventninger, feedback og retning på en måde, der er utvetydig, fair og handlingsorienteret.</p>
+<blockquote>1:1 er ikke et møde du holder. Det er den måde du leder på. Byg systemet — og systemet bygger dig.</blockquote>`,
+qs:[
+{id:'q8_1',type:'ta',l:'Beskriv dit <strong>samlede ledelsessystem</strong>: 1:1, teamforum, feedback, MUS, opfølgning. Hvad mangler?'},
+{id:'q8_2',type:'ta',l:'Hvordan <strong>forbinder din 1:1 til din MUS</strong>? Er de del af et system — eller isolerede begivenheder?'},
+{id:'q8_3',type:'ta',l:'Collins: De bedste ledere fører en <strong>kontinuerlig dialog</strong>. Gør du det — eller kører du på episoder?'},
+{id:'q8_4',type:'ta',l:'Hvad vil du <strong>ændre i dit 1:1-system</strong> baseret på dette forløb? Vær specifik — ikke intentioner, men handlinger.'},
+{id:'q8_5',type:'scale',l:'Hvor sammenhængende er dit ledelsessystem — fra ugentlig 1:1 til årlig MUS?',mn:1,mx:10},
+{id:'q8_6',type:'ta',l:'Design dit <strong>ideale ledelsesårshjul</strong>: Ugentlig 1:1, månedlig opfølgning, kvartalsvis review, årlig MUS. Skriv det ned.'},
+],
+takeaways:['"A bad system will beat a good person every time." Design systemet — ikke bare samtalen.','1:1 er det operative fundament. MUS opsummerer — 1:1 eksekverer. Uden 1:1 er MUS en illusion.','Information, beslutninger, nudging — alle tre kerneledelsesfunktioner sker i 1:1.','Lærende organisationer reflekterer ugentligt. Din 1:1-kadence er det praktiske udtryk.','Karakter, Disciplin, Klarhed: Modet til at sige det. Konsistensen til at gøre det. Evnen til at formulere det.']
+}
+];
+
+function renderDash(){
+  const el=document.getElementById('client-dash');
+  document.getElementById('tb-name').textContent=S.cName;
+  let totalAns=0,totalQ=0,completedMods=0;
+  const activeMod=getActiveMod(S.cId);
+  MODS.forEach(m=>{const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);totalAns+=a;totalQ+=m.qs.length;if(isModComplete(S.cId,m))completedMods++});
+  const pct=totalQ?Math.round(totalAns/totalQ*100):0;
+
+  let ackIcon,ackTitle,ackBody;
+  if(completedMods>=8){ackIcon='🏆';ackTitle='Forløbet gennemført';ackBody='Send din feedback til friisnaes@gmail.com'}
+  else if(totalAns>0){ackIcon='⚡';ackTitle='Du er i gang';ackBody='Alle 8 moduler er åbne. Kig frit rundt.'}
+  else{ackIcon='⚡';ackTitle='Velkommen, tester';ackBody='Alle 8 moduler er åbne. Kig frit rundt — se evalueringsspørgsmål nedenfor.'}
+
+  let h=`<div class="prog-header"><div><h1>Dit 1:1-forløb</h1><div class="stat">${completedMods}/8 moduler · ${totalAns}/${totalQ} svar · ${pct}%</div></div></div>`;
+  h+=`<div class="ack-box fade"><div class="ack-icon">${ackIcon}</div><h2>${ackTitle}</h2><p>${ackBody}</p></div>`;
+
+  h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:4px">Forløbs-overblik</h3>
+    <div class="velocity-grid">
+      <div class="vg-item"><div class="vn">${completedMods}</div><div class="vl">Gennemført</div></div>
+      <div class="vg-item"><div class="vn">${pct}%</div><div class="vl">Fremgang</div></div>
+      <div class="vg-item"><div class="vn">${totalAns}</div><div class="vl">Refleksioner</div></div>
+      <div class="vg-item"><div class="vn">${activeMod}/8</div><div class="vl">Åbne moduler</div></div>
+    </div></div>`;
+
+  h+='<div class="mods-grid">';
+  MODS.forEach(m=>{
+    const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);const tot=m.qs.length;const mpct=tot?Math.round(a/tot*100):0;
+    const isActive=m.id<=activeMod;
+    const isDone=isModComplete(S.cId,m);
+    const sent=isModSent(S.cId,m.id);
+    let badge='';
+    if(!isActive)badge=`<span class="mc-badge" style="background:var(--navy4);color:var(--text3)">🔒 Låst</span>`;
+    else if(sent)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">✓ Sendt</span>`;
+    else if(isDone)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">✓ Klar til afsendelse</span>`;
+    else if(a>0)badge=`<span class="mc-badge" style="background:var(--gdim);color:var(--gold)">${a}/${tot}</span>`;
+    else badge=`<span class="mc-badge" style="background:rgba(192,57,43,.15);color:var(--blue2)">Klar</span>`;
+    h+=`<div class="mod-card fade ${isActive?'':'locked'}" ${isActive?`onclick="openMod(${m.id-1})"`:''}>
+      <div class="mc-top"><div class="mc-icon" style="background:${m.color}">${m.icon}</div><div class="mc-title">${m.title}</div></div>
+      <div class="mc-sub">${m.subtitle}</div>
+      <div class="mc-prog"><div class="mc-prog-fill" style="width:${mpct}%;background:${m.color}"></div></div>
+      <div class="mc-status">${badge}</div></div>`;
+  });
+  h+='</div>';
+  h+='<div style="background:linear-gradient(135deg,rgba(229,160,72,.1),rgba(229,115,115,.1));border:1.5px solid rgba(229,160,72,.3);border-radius:12px;padding:22px;margin-bottom:24px">';
+  h+='<h3 style="color:var(--orange);font-size:18px;margin-bottom:10px">⚡ Til dig som tester</h3>';
+  h+='<p style="color:var(--text2);font-size:13px;line-height:1.8;margin-bottom:6px">Tak fordi du tager dig tid. Alle 8 moduler er åbne. Fokusér på struktur, indhold og flow.</p>';
+  h+='<div style="color:var(--text);font-size:14px;padding:8px 0;border-bottom:1px solid rgba(229,160,72,.12)"><strong>1.</strong> Giver det intuitivt mening som lederværktøj?</div>';
+  h+='<div style="color:var(--text);font-size:14px;padding:8px 0;border-bottom:1px solid rgba(229,160,72,.12)"><strong>2.</strong> Er det realistisk, at ledere ville bruge det?</div>';
+  h+='<div style="color:var(--text);font-size:14px;padding:8px 0;border-bottom:1px solid rgba(229,160,72,.12)"><strong>3.</strong> Mangler der noget helt centralt?</div>';
+  h+='<div style="color:var(--text);font-size:14px;padding:8px 0"><strong>4.</strong> Er dette noget I burde træne jeres ledere i?</div>';
+  h+='<p style="margin-top:12px;color:var(--gold);font-size:13px">Send feedback til <strong>friisnaes@gmail.com</strong></p>';
+  h+='</div>';
+  el.innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════
+// MODULE VIEW
+// ══════════════════════════════════════════════════════
+function openMod(idx){
+  S.modIdx=idx;S.modTab='learn';const m=MODS[idx];
+  const d=LS.g(PFX+'mod_'+S.cId+'_'+m.id);S.answers=d?.answers||{};
+  document.getElementById('mod-title-bar').textContent='Modul '+m.id+': '+m.title;
+  document.getElementById('mod-sub-bar').textContent=m.subtitle;
+  document.getElementById('mod-header').innerHTML=`<h1 style="color:${m.color}">Modul ${m.id}: ${m.title}</h1><div class="mh-sub">${m.subtitle}</div>`;
+  let tabs=`<div class="mod-tab active" id="tab-l" onclick="setTab('learn')">Indhold</div>`;
+  tabs+=`<div class="mod-tab" id="tab-q" onclick="setTab('questions')">Spørgsmål (${countAns(S.answers)}/${m.qs.length})</div>`;
+  tabs+=`<div class="mod-tab" id="tab-t" onclick="setTab('takeaways')">Takeaways</div>`;
+  tabs+=`<div class="mod-tab" id="tab-j" onclick="setTab('journal')">Journal</div>`;
+  tabs+=`<div class="mod-tab" id="tab-s" onclick="setTab('submit')">Afslut &amp; send</div>`;
+  document.getElementById('mod-tabs').innerHTML=tabs;
+  renderLearn(m);renderQuestions(m);renderTakeaways(m);renderJournal(m);renderSubmit(m);
+  setTab('learn');show('module');
+}
+function setTab(t){
+  S.modTab=t;document.querySelectorAll('.mod-tab').forEach(el=>el.classList.remove('active'));
+  ['learn','quest','takeaways','journal','submit'].forEach(id=>document.getElementById('tc-'+id).style.display='none');
+  const map={learn:['tab-l','tc-learn'],questions:['tab-q','tc-quest'],takeaways:['tab-t','tc-takeaways'],journal:['tab-j','tc-journal'],submit:['tab-s','tc-submit']};
+  const x=map[t];if(x){document.getElementById(x[0])?.classList.add('active');document.getElementById(x[1]).style.display=''}
+}
+function renderLearn(m){
+  const src=m.sources.map(s=>`<div class="src-item">${s}</div>`).join('');
+  document.getElementById('tc-learn').innerHTML=`
+    <div class="sources-box" style="border-left-color:${m.color}"><div class="src-title">Forskningsgrundlag</div>${src}</div>
+    ${m.whyText?`<div class="why-mod-box"><div class="why-mod-label">Hvorfor dette modul er vigtigt</div><div class="why-mod-text">${m.whyText}</div></div>`:''}
+    <div class="learn-body">${m.learn}</div>
+    <div class="learn-cta"><button class="btn btn-primary" style="padding:12px 28px" onclick="setTab('questions')">Gå til refleksion →</button></div>`;
+}
+function renderQuestions(m){
+  const ans=countAns(S.answers);const pct=Math.round(ans/m.qs.length*100);
+  let h=`<div class="q-progress"><div class="qp-bar"><div class="qp-fill" id="qp-fill" style="width:${pct}%"></div></div><div class="qp-cnt" id="qp-cnt">${ans}/${m.qs.length}</div></div>`;
+  m.qs.forEach((q,i)=>{
+    h+=`<div class="q-card fade"><div class="qlabel">Spørgsmål ${i+1} af ${m.qs.length}</div><div class="qtext">${q.l}</div>`;
+    if(q.type==='ta') h+=`<textarea data-qid="${q.id}" oninput="qInput(this)">${S.answers[q.id]||''}</textarea>`;
+    else if(q.type==='scale'){h+=`<div class="scale-row">`;for(let n=(q.mn||1);n<=(q.mx||10);n++) h+=`<button class="scale-btn${S.answers[q.id]==n?' sel':''}" onclick="qScale('${q.id}',${n},this)">${n}</button>`;h+=`</div>`}
+    else if(q.type==='choice'){h+=`<div style="display:flex;flex-wrap:wrap;gap:6px">`;(q.opts||[]).forEach(o=>h+=`<button class="cbtn${S.answers[q.id]===o?' sel':''}" onclick="qChoice('${q.id}',\`${o}\`,this)">${o}</button>`);h+=`</div>`}
+    h+=`</div>`;
+  });
+  h+=`<button class="btn-save" id="save-btn" onclick="saveMod()">Gem svar ✓</button>`;
+  const complete=isModComplete(S.cId,m);
+  const sent=isModSent(S.cId,m.id);
+  if(complete&&!sent){
+    h+=`<div class="send-box"><h3>✅ Modul færdigt</h3><p><strong>Trin 1:</strong> Klik nedenfor — din besvarelse downloades som krypteret JSON-fil.<br><strong>Trin 2:</strong> Gmail åbner med pre-udfyldt emne og tekst.<br><strong>Trin 3:</strong> Vedhæft den downloadede JSON-fil manuelt i mailen og send.</p><button class="btn-send" onclick="sendModuleToCoach(${m.id})">📧 Download og åbn mail til coach</button></div>`;
+  } else if(sent){
+    h+=`<div class="send-box" style="border-color:rgba(76,175,130,.2);background:rgba(76,175,130,.04)"><h3 style="color:var(--green)">📨 Sendt</h3><p>Dine svar er sendt til Thomas. Næste modul åbnes efter review.</p></div>`;
+  }
+  document.getElementById('tc-quest').innerHTML=h;
+}
+function qInput(el){S.answers[el.dataset.qid]=el.value;doSave()}
+function qScale(id,n,btn){S.answers[id]=n;btn.parentElement.querySelectorAll('.scale-btn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');doSave()}
+function qChoice(id,val,btn){S.answers[id]=val;btn.parentElement.querySelectorAll('.cbtn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');doSave()}
+function doSave(){
+  const m=MODS[S.modIdx];
+  LS.s(PFX+'mod_'+S.cId+'_'+m.id,{answers:S.answers,updatedAt:new Date().toISOString()});
+  const a=countAns(S.answers);const pct=Math.round(a/m.qs.length*100);
+  const fill=document.getElementById('qp-fill');if(fill)fill.style.width=pct+'%';
+  const cnt=document.getElementById('qp-cnt');if(cnt)cnt.textContent=a+'/'+m.qs.length;
+  const tabQ=document.querySelectorAll('#mod-tabs .mod-tab')[1];if(tabQ)tabQ.textContent='Spørgsmål ('+a+'/'+m.qs.length+')';
+}
+function saveMod(){doSave();const b=document.getElementById('save-btn');if(b){b.textContent='✓ Gemt!';b.style.background='var(--green)';setTimeout(()=>{b.style.background='';b.textContent='Gem svar ✓'},2000)};renderQuestions(MODS[S.modIdx])}
+function renderTakeaways(m){let h='<div class="takeaways-box"><div class="tk-title">Vigtigste takeaways</div>';m.takeaways.forEach(t=>h+=`<div class="tk-item">→ ${t}</div>`);h+='</div>';document.getElementById('tc-takeaways').innerHTML=h}
+
+// ══════════════════════════════════════════════════════
+// JOURNAL
+// ══════════════════════════════════════════════════════
+function renderJournal(m){
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+m.id)||{};
+  const iiText=II_PROMPTS[m.id]||'Hvornår og i hvilken situation vil du gøre dette?';
+  let h=`<div class="refl-card fade">
+    <h4>📝 Leder-journal</h4>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Dokumentér dine vigtigste indsigter, beslutninger og refleksioner fra dette modul.</p>
+    <label>Vigtigste indsigt fra dette modul *</label>
+    <textarea id="jn-insight" placeholder="Hvad ramte dig hårdest?" oninput="saveJournalAuto(${m.id})">${jData.insight||''}</textarea>
+    <label>Konkret handling du vil tage *</label>
+    <textarea id="jn-action" placeholder="Hvad gør du anderledes i morgen?" oninput="saveJournalAuto(${m.id})">${jData.action||''}</textarea>
+    <div class="impl-intent">
+      <div class="ii-label">Implementerings-intention</div>
+      <div class="ii-sub">${iiText}<br>Forskning (Gollwitzer, 1999) viser, at sandsynligheden for handling stiger med op mod 300%, når du definerer tid, sted og situation.</div>
+      <textarea id="jn-when" placeholder="Jeg vil gøre dette [hvornår], [hvor], [i hvilken situation]..." style="min-height:70px" oninput="saveJournalAuto(${m.id})">${jData.when||''}</textarea>
+    </div>
+    <label>Hvad har du brug for hjælp til?</label>
+    <textarea id="jn-help" placeholder="Fra din coach, din chef, dit team..." style="min-height:50px" oninput="saveJournalAuto(${m.id})">${jData.help||''}</textarea>
+    <button class="btn btn-primary" style="margin-top:12px;padding:10px 20px" onclick="saveJournal(${m.id})">Gem journal ✓</button>
+  </div>`;
+  document.getElementById('tc-journal').innerHTML=h;
+}
+let _jTimer=null;
+function saveJournalAuto(mid){clearTimeout(_jTimer);_jTimer=setTimeout(()=>saveJournal(mid,true),1500)}
+function saveJournal(mid,silent){
+  LS.s(PFX+'journal_'+S.cId+'_'+mid,{
+    insight:document.getElementById('jn-insight')?.value||'',
+    action:document.getElementById('jn-action')?.value||'',
+    when:document.getElementById('jn-when')?.value||'',
+    help:document.getElementById('jn-help')?.value||'',
+    savedAt:new Date().toISOString()});
+  if(!silent)showSaveFeedback('Journal gemt ✓');
+}
+
+// ══════════════════════════════════════════════════════
+// SUBMIT TAB
+// ══════════════════════════════════════════════════════
+function renderSubmit(m){
+  const ans=countAns(S.answers);const allQs=ans>=m.qs.length;
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+m.id)||{};
+  const hasJournal=(jData.insight||'').trim()&&(jData.action||'').trim();
+  const sent=isModSent(S.cId,m.id);
+  var h='<div class="submit-card">';
+  h+='<h3>Afslut modul '+m.id+'</h3>';
+  h+='<p>Gennemarbejd modulet, besvar alle spørgsmål og udfyld din journal (både indsigt og handling). Derefter kan du downloade din krypterede besvarelse og sende den til din coach via email. <strong>Bemærk:</strong> JSON-filen downloades til din enhed — du skal selv vedhæfte den i mailen. Næste modul åbnes når din coach har modtaget og gennemgået dit svar.</p>';
+  h+='<div class="checklist">';
+  h+='<div class="cl-item"><div class="cl-dot '+(allQs?'cl-ok':'cl-no')+'">'+(allQs?'✓':'○')+'</div><span style="color:var('+(allQs?'--text':'--text3')+')">Alle '+m.qs.length+' spørgsmål besvaret</span></div>';
+  h+='<div class="cl-item"><div class="cl-dot '+(hasJournal?'cl-ok':'cl-no')+'">'+(hasJournal?'✓':'○')+'</div><span style="color:var('+(hasJournal?'--text':'--text3')+')">Journal udfyldt (indsigt + handling)</span></div>';
+  h+='<div class="cl-item"><div class="cl-dot '+(sent?'cl-ok':'cl-no')+'">'+(sent?'✓':'○')+'</div><span style="color:var('+(sent?'--text':'--text3')+')">Besvarelse sendt til coach</span></div>';
+  h+='</div>';
+  if(sent){
+    h+='<div style="padding:16px;background:rgba(76,175,130,.1);border-radius:10px;color:var(--green);font-size:14px">✓ Du har sendt dette modul. Din coach åbner næste modul, når du er klar.</div>';
+  }else if(allQs&&hasJournal){
+    h+='<button class="btn btn-gold" style="padding:14px 32px;font-size:15px" onclick="sendModuleToCoach('+m.id+')">↓ Download & send til coach</button>';
+  }else{
+    h+='<p style="color:var(--text3);font-size:12px;margin-top:8px">Gennemfør alle spørgsmål og journal (indsigt + handling) før du kan sende.</p>';
+  }
+  h+='</div>';
+  document.getElementById('tc-submit').innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════
+// SEND TO COACH
+// ══════════════════════════════════════════════════════
+async function sendModuleToCoach(mid){
+  const m=MODS.find(x=>x.id===mid);
+  const modData=LS.g(PFX+'mod_'+S.cId+'_'+mid);
+  const jData=LS.g(PFX+'journal_'+S.cId+'_'+mid)||{};
+  
+  const exportData={
+    version:PV,platform:PN,clientId:S.cId,clientName:S.cName,
+    moduleId:mid,moduleTitle:m.title,
+    exportedAt:new Date().toISOString(),
+    answers:modData?.answers||{},
+    journal:jData
+  };
+  
+  const pw=S.cName.toLowerCase().replace(/\s/g,'')+'2024';
+  const encrypted=await encryptData(exportData,pw);
+  
+  const fname=`1til1_${S.cName.replace(/\s/g,'_')}_modul${mid}_${new Date().toISOString().slice(0,10)}.json`;
+  const blob=new Blob([JSON.stringify(encrypted)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;a.click();URL.revokeObjectURL(a.href);
+  
+  LS.s(PFX+'sent_'+S.cId+'_'+mid,new Date().toISOString());
+  
+  const su=encodeURIComponent(`${PN} — ${S.cName} — Modul ${mid}: ${m.title}`);
+  const bo=encodeURIComponent(
+    `Hej Thomas,\n\nHer er min besvarelse af modul ${mid}: ${m.title}.\n\nVedhæftet: ${fname}\nDekrypterings-kode: ${pw}\n\nMvh\n${S.cName}`
+  );
+  
+  setTimeout(()=>{
+    window.open(`https://mail.google.com/mail/?view=cm&to=${CE}&su=${su}&body=${bo}`,'_blank');
+    showSaveFeedback('✓ JSON downloadet — vedhæft filen manuelt i Gmail-vinduet');
+    renderSubmit(m);renderDash();
+  },500);
+}
+
+// ══════════════════════════════════════════════════════
+// CRYPTO
+// ══════════════════════════════════════════════════════
+const ENC=new TextEncoder(),DEC2=new TextDecoder();
+async function deriveKey(pw,salt){const k=await crypto.subtle.importKey('raw',ENC.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},k,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function encryptData(data,pw){const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pw,salt);const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,ENC.encode(JSON.stringify(data)));return{v:PV,ct:btoa(String.fromCharCode(...new Uint8Array(ct))),salt:btoa(String.fromCharCode(...salt)),iv:btoa(String.fromCharCode(...iv))}}
+async function decryptData(blob,pw){const salt=Uint8Array.from(atob(blob.salt),c=>c.charCodeAt(0));const iv=Uint8Array.from(atob(blob.iv),c=>c.charCodeAt(0));const ct=Uint8Array.from(atob(blob.ct),c=>c.charCodeAt(0));const key=await deriveKey(pw,salt);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);return JSON.parse(DEC2.decode(pt))}
+
+// ══════════════════════════════════════════════════════
+// CLIENT DELETE
+// ══════════════════════════════════════════════════════
+function clientDeleteData(){
+  if(!confirm('SLET alle dine data permanent?'))return;if(!confirm('Sidste chance — dette kan IKKE fortrydes.'))return;
+  MODS.forEach(m=>{LS.d(PFX+'mod_'+S.cId+'_'+m.id);LS.d(PFX+'journal_'+S.cId+'_'+m.id);LS.d(PFX+'sent_'+S.cId+'_'+m.id)});
+  LS.d(PFX+'active_'+S.cId);
+  const clients=(LS.g(PFX+'clients')||[]).filter(c=>c.id!==S.cId);LS.s(PFX+'clients',clients);
+  logout();showSaveFeedback('Data slettet');
+}
+
+// ══════════════════════════════════════════════════════
+// EXPORT HELPERS
+// ══════════════════════════════════════════════════════
+function gatherFullExport(cid,cname){
+  var modules={},journals={};
+  MODS.forEach(function(m){var d=LS.g(PFX+'mod_'+cid+'_'+m.id);if(d)modules[m.id]=d;var j=LS.g(PFX+'journal_'+cid+'_'+m.id);if(j)journals[m.id]=j});
+  return{version:PV,platform:PN,clientId:cid,clientName:cname,exportedAt:new Date().toISOString(),activeMod:getActiveMod(cid),modules:modules,journals:journals}
+}
+
+// ══════════════════════════════════════════════════════
+// ADMIN
+// ══════════════════════════════════════════════════════
+function setASection(sec){
+  S.aSection=sec;
+  document.querySelectorAll('.as-nav li').forEach((li,i)=>{li.classList.remove('active');const map=['ov','clients','import','gdpr'];if(map[i]===sec)li.classList.add('active')});
+  ['ov','clients','import','gdpr'].forEach(id=>document.getElementById('asec-'+id).style.display=id===sec?'':'none');
+  renderAdmin();
+}
+function renderAdmin(){}
+function setActiveMod(){}
+async function adminImport(){}
+function adminExportAll(){}
+function adminExportTXT(){}
+async function runAI(){}
+</script>
+</body>
+</html>

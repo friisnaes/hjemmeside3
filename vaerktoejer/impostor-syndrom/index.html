@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="1.0.0">
+<meta name="author" content="Thomas Friisnæs — Personal Excellence Partner">
+<meta name="description" content="Dit impostor syndrom — Karakter · Disciplin · Klarhed">
+<title>Impostor Syndrom — Karakter · Disciplin · Klarhed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#111111;--navy2:#1a1a1a;--navy3:#222222;--navy4:#2b2b2b;
+  --blue:#c0392b;--blue2:#e74c3c;
+  --gold:#c0392b;--gold2:#e74c3c;--gdim:rgba(224,168,74,0.14);--gbrd:rgba(192,57,43,0.35);
+  --text:#E4EAF4;--text2:#8A9BB8;--text3:#4E6080;
+  --green:#4CAF82;--red:#E57373;--orange:#E5A048;--teal:#5BA8A0;
+  --brd:rgba(255,255,255,0.07);--brd2:rgba(255,255,255,0.13);
+}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--text);font-family:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;line-height:1.65;min-height:100vh}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.2}
+button{font-family:'Outfit',sans-serif;cursor:pointer;transition:all .18s}
+input,textarea,select{font-family:'Outfit',sans-serif;font-size:14px;background:var(--navy3);border:1.5px solid var(--brd2);color:var(--text);border-radius:8px;outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--blue2)}textarea{resize:vertical}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:var(--navy2)}::-webkit-scrollbar-thumb{background:var(--navy4);border-radius:2px}
+.hidden{display:none!important}
+.screen{display:none;min-height:100vh;flex-direction:column}
+.screen.active{display:flex}
+.fade{animation:fadeIn .35s ease both}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+#sc-client-login,#sc-admin-login{align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 20%,rgba(91,168,160,.12) 0%,transparent 55%),radial-gradient(ellipse at 80% 85%,rgba(201,168,76,.05) 0%,transparent 50%),var(--navy);padding:32px 24px}
+.login-logo{text-align:center;margin-bottom:52px}
+.login-logo h1{font-size:38px;letter-spacing:.02em;color:var(--text)}
+.login-logo .tag{font-family:'Outfit';font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.login-logo .sub2{font-size:13px;color:var(--text3);margin-top:6px;font-style:italic}
+.login-card{width:100%;max-width:400px;background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:32px}
+.login-card.gold{border-color:var(--gbrd)}
+.login-card h2{font-size:26px;margin-bottom:8px}
+.login-card h2.gold-text{color:var(--gold)}
+.login-card .sub{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.65}
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:11px;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+.fg input{width:100%;padding:12px 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border:none;border-radius:8px;font-size:13px;font-weight:500}
+.btn-row{display:flex;gap:10px;margin-top:18px}
+.btn-primary{background:var(--blue);color:#fff;flex:1}.btn-primary:hover{background:var(--blue2)}
+.btn-gold{background:var(--gold);color:var(--navy);font-weight:600;flex:1}.btn-gold:hover{background:var(--gold2)}
+.btn-ghost{background:transparent;border:1.5px solid var(--brd2);color:var(--text2)}.btn-ghost:hover{background:var(--navy3);color:var(--text)}
+.err{color:var(--red);font-size:12px;margin-top:8px}
+.gdpr-strip{margin-top:20px;padding:12px 14px;background:rgba(76,175,130,.07);border:1px solid rgba(76,175,130,.2);border-radius:8px;font-size:11px;color:var(--text3);line-height:1.7}
+.gdpr-strip strong{color:var(--green)}
+.admin-link{margin-top:28px;text-align:center}
+.admin-link a{font-size:11px;color:var(--text3);text-decoration:none;border-bottom:1px solid var(--brd2);padding-bottom:1px}
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:14px;padding:0 24px;height:56px;background:rgba(12,24,41,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--brd);flex-shrink:0;flex-wrap:wrap}
+.tb-brand{flex:1}.tb-brand .nm{font-family:'Playfair Display',Georgia,serif;font-size:16px;color:var(--text);font-weight:600}
+.tb-brand .sb{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.15em}
+.tb-btn{padding:6px 12px;background:transparent;border:1px solid var(--brd);border-radius:6px;color:var(--text3);font-size:12px}
+.tb-btn:hover{border-color:var(--brd2);color:var(--text2)}.tb-btn.gold{color:var(--gold);border-color:var(--gbrd)}
+.c-main{padding:32px 24px;max-width:960px;margin:0 auto;width:100%}
+.prog-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px}
+.prog-header h1{font-size:32px}.prog-header .stat{font-size:13px;color:var(--text3)}
+.ack-box{background:var(--navy2);border:1.5px solid var(--brd2);border-radius:14px;padding:28px;margin-bottom:28px;text-align:center}
+.ack-box .ack-icon{font-size:42px;margin-bottom:12px}.ack-box h2{font-size:22px;margin-bottom:10px}
+.ack-box p{color:var(--text2);font-size:14px;max-width:640px;margin:0 auto;line-height:1.8}
+.velocity-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:20px;margin-bottom:24px}
+.velocity-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.vg-item{text-align:center;padding:10px;background:var(--navy3);border-radius:8px}
+.vg-item .vn{font-size:22px;font-weight:600}.vg-item .vl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.mods-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:32px}
+.mod-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:22px;cursor:pointer;transition:all .2s}
+.mod-card:hover{border-color:var(--brd2);transform:translateY(-2px)}
+.mod-card.locked{opacity:.45;cursor:default;pointer-events:none}
+.mod-card .mc-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mod-card .mc-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:#fff}
+.mod-card .mc-title{font-family:'Playfair Display',Georgia,serif;font-size:18px;font-weight:600;flex:1}
+.mod-card .mc-sub{font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:14px}
+.mod-card .mc-prog{height:4px;background:var(--navy4);border-radius:2px;overflow:hidden}
+.mod-card .mc-prog-fill{height:100%;border-radius:2px;transition:width .4s ease}
+.mod-card .mc-status{font-size:11px;margin-top:8px}
+.mc-badge{display:inline-block;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.mod-header{padding:28px 24px;border-bottom:1px solid var(--brd)}
+.mod-header h1{font-size:30px;margin-bottom:4px}.mod-header .mh-sub{font-size:13px;color:var(--text3)}
+.mod-tabs{display:flex;gap:0;border-bottom:1px solid var(--brd);padding:0 24px}
+.mod-tab{padding:12px 20px;font-size:13px;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.mod-tab:hover{color:var(--text2)}.mod-tab.active{color:var(--text);border-bottom-color:var(--gold)}
+.mod-content{padding:32px 24px;max-width:820px;margin:0 auto}
+.sources-box{border-left:3px solid var(--blue);padding:16px 20px;background:var(--navy2);border-radius:0 10px 10px 0;margin-bottom:24px}
+.src-title{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+.src-item{font-size:12px;color:var(--text2);padding:3px 0}
+.why-mod-box{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:18px 22px;margin-bottom:24px}
+.why-mod-label{font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:600;margin-bottom:10px}
+.why-mod-text{font-size:14px;color:var(--text2);line-height:1.8}
+.learn-body{color:var(--text2);line-height:1.9;font-size:14.5px}
+.learn-body h3{color:var(--text);font-size:20px;margin:28px 0 14px}
+.learn-body p{margin-bottom:14px}
+.learn-body blockquote{border-left:3px solid var(--gold);padding:12px 18px;margin:18px 0;color:var(--text);font-style:italic;background:rgba(201,168,76,.04);border-radius:0 8px 8px 0}
+.learn-body ul,.learn-body ol{margin:12px 0 12px 24px;color:var(--text2)}.learn-body li{margin-bottom:6px}
+.learn-cta{text-align:center;margin-top:32px}
+.takeaways-box{background:rgba(76,175,130,.06);border:1px solid rgba(76,175,130,.15);border-radius:10px;padding:22px 26px;margin-top:28px}
+.tk-title{font-size:11px;color:var(--green);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;font-weight:600}
+.tk-item{font-size:14px;color:var(--text2);line-height:1.8;padding:6px 0;border-bottom:1px solid rgba(76,175,130,.08)}.tk-item:last-child{border:none}
+.q-progress{position:sticky;top:56px;z-index:50;background:var(--navy2);border-bottom:1px solid var(--brd);padding:10px 24px;display:flex;align-items:center;gap:14px}
+.qp-bar{flex:1;height:6px;background:var(--navy4);border-radius:3px;overflow:hidden}
+.qp-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .4s ease}
+.qp-cnt{font-size:12px;color:var(--text3);min-width:50px;text-align:right}
+.q-card{background:var(--navy2);border:1.5px solid var(--brd);border-radius:12px;padding:24px;margin-bottom:18px}
+.q-card .qlabel{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.q-card .qtext{font-size:15px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.q-card textarea{width:100%;min-height:100px;padding:14px}
+.q-card .scale-row{display:flex;gap:6px;flex-wrap:wrap}
+.q-card .scale-btn{padding:8px 14px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text3);font-size:13px;min-width:40px;text-align:center}
+.q-card .scale-btn.sel{background:var(--blue);border-color:var(--blue);color:#fff}
+.q-card .cbtn{padding:8px 16px;background:var(--navy3);border:1px solid var(--brd2);border-radius:6px;color:var(--text2);font-size:13px;margin:3px}
+.q-card .cbtn.sel{background:var(--gdim);border-color:var(--gold);color:var(--gold)}
+.btn-save{display:block;width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;margin-top:12px}
+.btn-save:hover{background:var(--blue2)}
+.refl-card{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:22px;margin-bottom:16px}
+.refl-card h4{font-size:16px;margin-bottom:12px}.refl-card label{font-size:12px;color:var(--text3);display:block;margin-bottom:4px;margin-top:10px}
+.refl-card textarea{width:100%;min-height:70px;padding:10px;margin-bottom:4px}
+.refl-card select{padding:8px 12px;margin-bottom:4px;width:100%}
+.radar-wrap{display:flex;justify-content:center;margin:16px 0}
+.radar-wrap svg{max-width:320px}
+.admin-wrap{display:flex;min-height:100vh}
+.admin-side{width:260px;background:var(--navy2);border-right:1px solid var(--brd);padding:20px;flex-shrink:0;overflow-y:auto}
+.admin-main{flex:1;padding:28px;overflow-y:auto}
+.as-title{font-family:'Playfair Display',Georgia,serif;font-size:20px;margin-bottom:20px}
+.as-nav{list-style:none}.as-nav li{padding:10px 14px;border-radius:8px;font-size:13px;color:var(--text3);cursor:pointer;margin-bottom:4px}
+.as-nav li:hover{background:var(--navy3);color:var(--text2)}
+.as-nav li.active{background:var(--navy3);color:var(--gold);border-left:3px solid var(--gold)}
+.aclient-card{background:var(--navy2);border:1px solid var(--brd);border-radius:10px;padding:16px;margin-bottom:10px;cursor:pointer}
+.aclient-card:hover{border-color:var(--brd2)}.aclient-card.sel{border-color:var(--gold)}
+.astats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.astat{background:var(--navy3);border-radius:8px;padding:14px;text-align:center}
+.astat .av{font-size:24px;font-weight:600}.astat .al{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+.ai-box{background:var(--navy3);border:1px solid var(--gbrd);border-radius:10px;padding:20px;margin-top:16px}
+.ai-box h3{color:var(--gold);font-size:18px;margin-bottom:12px}
+.ai-result{white-space:pre-wrap;font-size:13px;color:var(--text2);line-height:1.8;max-height:500px;overflow-y:auto}
+.save-feedback{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:10px 24px;border-radius:8px;font-size:13px;z-index:600;animation:fadeIn .3s ease;pointer-events:none}
+.info-container{max-width:820px;margin:0 auto;padding:40px 24px}
+.info-section{background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:28px;margin-bottom:20px}
+.info-section h2{font-size:22px;margin-bottom:14px;color:var(--gold)}
+.info-section p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:10px}
+@media(max-width:900px){.topbar{flex-wrap:wrap;height:auto;padding:10px 14px;gap:8px}.tb-brand{width:100%}.prog-header{flex-direction:column}.mods-grid{grid-template-columns:1fr}.admin-side{width:200px}}
+@media(max-width:640px){.login-logo h1{font-size:26px}.astats{grid-template-columns:1fr 1fr}.velocity-grid{grid-template-columns:1fr 1fr}.mod-content{padding:24px 16px}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation-duration:0.01ms!important;transition-duration:0.01ms!important}}
+</style>
+</head>
+<body>
+<!-- CLIENT LOGIN -->
+<div id="sc-client-login" class="screen active">
+  <div class="login-logo">
+    <h1>Dit impostor syndrom</h1>
+    <div class="tag">Karakter · Disciplin · Klarhed</div>
+    <div class="sub2">Du er ikke en svindler. Men du føler dig som en.</div>
+  </div>
+  <div class="login-card">
+    <h2>Klientadgang</h2>
+    <div class="sub">5 moduler. 30 refleksioner. Forstå mønstret, afkobl det fra din adfærd, og led med tillid til din kompetence.</div>
+    <div class="fg"><label>Dit fulde navn</label><input type="text" id="cl-name" placeholder="Fornavn Efternavn" onkeydown="if(event.key==='Enter')doClientLogin()"></div>
+    <div class="btn-row"><button class="btn btn-primary" onclick="doClientLogin()">Start forløb</button></div>
+    <div id="cl-err" class="err hidden"></div>
+    <div class="gdpr-strip">
+      <strong>🔒 GDPR:</strong> Alle besvarelser gemmes udelukkende lokalt på din enhed.
+      <div style="margin-top:12px;display:flex;align-items:center;gap:10px">
+        <input type="checkbox" id="gdpr-consent" style="width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0">
+        <label for="gdpr-consent" style="font-size:12px;color:var(--text2);cursor:pointer;line-height:1.5">Jeg accepterer, at mine besvarelser gemmes lokalt.</label>
+      </div>
+    </div>
+  </div>
+  <div class="admin-link"><a href="?admin">Admin-adgang →</a></div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="sc-admin-login" class="screen">
+  <div class="login-logo"><h1>Impostor Syndrom</h1><div class="tag">Admin · Thomas Friisnæs</div></div>
+  <div class="login-card gold">
+    <h2 class="gold-text">Admin</h2>
+    <div class="sub">Klientdata, AI-analyse og modulaktivering.</div>
+    <div class="fg"><label>Adgangskode</label><input type="password" id="al-pw" placeholder="••••••••" onkeydown="if(event.key==='Enter')doAdminLogin()"></div>
+    <div class="btn-row"><button class="btn btn-gold" onclick="doAdminLogin()">Log ind</button></div>
+    <div id="al-err" class="err hidden"></div>
+  </div>
+</div>
+
+<!-- CLIENT DASHBOARD -->
+<div id="sc-client" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm">Impostor Syndrom</div><div class="sb" id="tb-name"></div></div>
+    <button class="tb-btn" onclick="showReadme()">📖 Guide</button>
+    <button class="tb-btn gold" onclick="exportClientJSON()">↓ JSON</button>
+    <button class="tb-btn" onclick="exportClientTXT()">↓ Tekst</button>
+    <button class="tb-btn" onclick="clientDeleteData()" style="color:var(--red)">🗑 Slet</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="c-main" id="client-dash"></div>
+</div>
+
+<!-- MODULE VIEW -->
+<div id="sc-module" class="screen">
+  <div class="topbar">
+    <div class="tb-brand"><div class="nm" id="mod-title-bar"></div><div class="sb" id="mod-sub-bar"></div></div>
+    <button class="tb-btn" onclick="renderDash();show('client')">← Dashboard</button>
+    <button class="tb-btn" onclick="logout()">Log ud</button>
+  </div>
+  <div class="mod-header" id="mod-header"></div>
+  <div class="mod-tabs" id="mod-tabs"></div>
+  <div id="tc-learn" class="mod-content"></div>
+  <div id="tc-quest" class="mod-content" style="display:none"></div>
+  <div id="tc-takeaways" class="mod-content" style="display:none"></div>
+  <div id="tc-journal" class="mod-content" style="display:none"></div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="sc-admin" class="screen">
+  <div class="admin-wrap">
+    <div class="admin-side">
+      <div class="as-title">Admin Panel</div>
+      <ul class="as-nav">
+        <li class="active" onclick="setASection('ov')">📊 Oversigt</li>
+        <li onclick="setASection('clients')">👥 Klienter</li>
+        <li onclick="setASection('import')">📥 Import</li>
+        <li onclick="setASection('gdpr')">🔒 GDPR</li>
+      </ul>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--brd)"><button class="tb-btn" style="width:100%" onclick="logout()">Log ud</button></div>
+    </div>
+    <div class="admin-main">
+      <div id="asec-ov"></div>
+      <div id="asec-clients" style="display:none"></div>
+      <div id="asec-import" style="display:none"></div>
+      <div id="asec-gdpr" style="display:none"></div>
+    </div>
+  </div>
+</div>
+
+<!-- README -->
+<div id="sc-readme" class="screen">
+  <div class="topbar"><div class="tb-brand"><div class="nm">Guide — Impostor Syndrom</div></div><button class="tb-btn" onclick="closeReadme()">← Tilbage</button></div>
+  <div class="info-container">
+    <div class="info-section"><h2>Hvad er dette?</h2><p>Et koncentreret forløb i 5 moduler der hjælper dig med at forstå, afkoble og navigere impostor syndrom. Baseret på forskning fra Clance & Imes, Young, Neff, Hayes og 20+ års coaching-erfaring med C-level ledere.</p></div>
+    <div class="info-section"><h2>De fem impostor-typer</h2><p>1. <strong>Perfektionisten</strong> — 99% er fiasko<br>2. <strong>Supermennesket</strong> — skal mestre alle roller<br>3. <strong>Det naturlige geni</strong> — anstrengelse = inkompetence<br>4. <strong>Solisten</strong> — at bede om hjælp er svaghed<br>5. <strong>Eksperten</strong> — ved aldrig nok</p></div>
+    <div class="info-section"><h2>Om platformen</h2><p><strong>Thomas Friisnæs</strong> — Personal Excellence Partner. 20+ års erfaring. 15.000+ coaching-sessioner.</p><p><strong>Kontakt:</strong> friisnaes@gmail.com | <strong>Version:</strong> 1.0.0</p></div>
+  </div>
+</div>
+
+<div id="save-fb" class="save-feedback hidden"></div>
+<script>
+const PLATFORM_VERSION='1.0.0',PLATFORM_NAME='Impostor Syndrom',COACH_EMAIL='friisnaes@gmail.com';
+const ITYPES=['Perfektionisten','Supermennesket','Det naturlige geni','Solisten','Eksperten'];
+const ICOLORS=['#E57373','#E5A048','#5BA8A0','#3A6BC2','#C9A84C'];
+const LS={g(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(e){return null}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},d(k){try{localStorage.removeItem(k)}catch(e){}}};
+let S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+
+(function(){
+  try{localStorage.setItem('_t','1');localStorage.removeItem('_t')}catch(e){document.body.innerHTML='<div style="padding:40px;text-align:center;color:#E57373"><h2>localStorage ikke tilgængelig</h2></div>';return}
+  if(location.search.includes('admin')){document.getElementById('sc-client-login').classList.remove('active');document.getElementById('sc-admin-login').classList.add('active')}
+})();
+
+function doClientLogin(){
+  const name=document.getElementById('cl-name').value.trim();
+  if(!name){showErr('cl-err','Indtast dit navn');return}
+  const consent=document.getElementById('gdpr-consent');
+  const clients=LS.g('is_clients')||[];
+  let c=clients.find(x=>x.name.toLowerCase()===name.toLowerCase());
+  if(!c){
+    if(!consent.checked){showErr('cl-err','Acceptér GDPR-betingelserne');return}
+    c={id:'c_'+Date.now()+'_'+Math.random().toString(36).slice(2,6),name,createdAt:new Date().toISOString(),gdprConsentAt:new Date().toISOString()};
+    LS.s('is_clients',[...clients,c]);
+  }
+  S.role='client';S.cId=c.id;S.cName=c.name;renderDash();show('client');
+}
+function doAdminLogin(){
+  if(document.getElementById('al-pw').value!=='karakter2024'){showErr('al-err','Forkert adgangskode');return}
+  S.role='admin';renderAdmin();show('admin');
+}
+function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden')}
+function logout(){
+  S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',aSel:null,prevScreen:null};
+  document.getElementById('cl-name').value='';document.getElementById('al-pw').value='';
+  ['cl-err','al-err'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+  show(location.search.includes('admin')?'admin-login':'client-login');
+}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('sc-'+id).classList.add('active');window.scrollTo(0,0)}
+function showReadme(){S.prevScreen=document.querySelector('.screen.active')?.id?.replace('sc-','');show('readme')}
+function closeReadme(){show(S.prevScreen||'client')}
+function showSaveFeedback(msg){const el=document.getElementById('save-fb');el.textContent=msg;el.classList.remove('hidden');setTimeout(()=>el.classList.add('hidden'),2200)}
+function getActiveMod(cid){return LS.g('is_active_'+cid)||1}
+function countAns(a){return Object.values(a||{}).filter(v=>v!==undefined&&v!==null&&v!=='').length}
+function getIProfile(cid){return LS.g('is_profile_'+cid)||{}}
+
+// ══════════════════════════════════════════════════════════════════
+// SVG RADAR (pentagon)
+// ══════════════════════════════════════════════════════════════════
+function renderRadar(scores,size){
+  size=size||300;const cx=size/2,cy=size/2,r=size/2-40,n=5;
+  const angle=i=>((Math.PI*2*i)/n)-(Math.PI/2);
+  const pt=(i,v)=>{const a=angle(i);const d=r*(v/5);return[cx+d*Math.cos(a),cy+d*Math.sin(a)]};
+  let svg=`<svg viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">`;
+  for(let lv=1;lv<=5;lv++){let pts=[];for(let i=0;i<n;i++){const[x,y]=pt(i,lv);pts.push(`${x},${y}`)}svg+=`<polygon points="${pts.join(' ')}" fill="none" stroke="rgba(255,255,255,${lv===5?.12:.06})" stroke-width="1"/>`}
+  for(let i=0;i<n;i++){const[x,y]=pt(i,5);svg+=`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(255,255,255,.06)" stroke-width="1"/>`}
+  if(scores.some(s=>s>0)){let pts=[];for(let i=0;i<n;i++){const[x,y]=pt(i,scores[i]||0);pts.push(`${x},${y}`)}svg+=`<polygon points="${pts.join(' ')}" fill="rgba(91,168,160,.15)" stroke="#5BA8A0" stroke-width="2"/>`;for(let i=0;i<n;i++){const[x,y]=pt(i,scores[i]||0);if(scores[i])svg+=`<circle cx="${x}" cy="${y}" r="4" fill="${ICOLORS[i]}" stroke="#111111" stroke-width="2"/>`}}
+  for(let i=0;i<n;i++){const a=angle(i);const lx=cx+(r+30)*Math.cos(a);const ly=cy+(r+30)*Math.sin(a);const anchor=Math.abs(Math.cos(a))<.1?'middle':Math.cos(a)>0?'start':'end';svg+=`<text x="${lx}" y="${ly}" text-anchor="${anchor}" dominant-baseline="middle" fill="${ICOLORS[i]}" font-size="10" font-family="Outfit,sans-serif">${ITYPES[i]}</text>`}
+  svg+='</svg>';return svg;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// DASHBOARD
+// ══════════════════════════════════════════════════════════════════
+function renderDash(){
+  const el=document.getElementById('client-dash');
+  document.getElementById('tb-name').textContent=S.cName;
+  let totalAns=0,totalQ=0,completedMods=0;
+  const activeMod=getActiveMod(S.cId);
+  MODS.forEach(m=>{const d=LS.g('is_mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);totalAns+=a;totalQ+=m.qs.length;if(a>=m.qs.length)completedMods++});
+  const pct=totalQ?Math.round(totalAns/totalQ*100):0;
+  const ip=getIProfile(S.cId);const scores=ITYPES.map((_,i)=>ip['t'+i]||0);
+  const hasProfile=scores.some(s=>s>0);
+  const kompLog=(LS.g('is_komplog_'+S.cId)||[]).length;
+
+  let ackIcon,ackTitle,ackBody;
+  if(completedMods>=5){ackIcon='🌟';ackTitle='Forløbet gennemført';ackBody='5 moduler. 30 refleksioner. Du har nu mønstret kortlagt, evidens indsamlet og et system til at navigere tvivlen.<br><strong>Næste skridt:</strong> Lev din nye fortælling og book session med din coach.'}
+  else if(totalAns>0){ackIcon='💎';ackTitle='Du er i gang';ackBody='Hver refleksion bringer mere klarhed om mønstret — og mere afstand til det.'}
+  else{ackIcon='🪞';ackTitle='Velkommen';ackBody='Du er ikke en svindler. Men du føler dig som en. Og jo mere succes du opnår, jo stærkere bliver følelsen. Dette forløb giver dig mønstret, evidensen og systemet til at afkoble tvivlen fra din handling.'}
+
+  let h=`<div class="prog-header"><div><h1>Dit impostor syndrom</h1><div class="stat">${completedMods}/5 moduler · ${totalAns}/${totalQ} svar · ${pct}%</div></div></div>`;
+  h+=`<div class="ack-box fade"><div class="ack-icon">${ackIcon}</div><h2>${ackTitle}</h2><p>${ackBody}</p></div>`;
+
+  if(totalAns===0)h+=`<div style="background:rgba(91,168,160,.06);border:1px solid rgba(91,168,160,.15);border-left:3px solid var(--teal);border-radius:0 12px 12px 0;padding:24px 28px;margin-bottom:28px"><h3 style="font-size:18px;color:var(--teal);margin-bottom:12px">Grundtesen</h3><p style="color:var(--text2);font-size:14px;line-height:1.85">Fejlattribution, ikke fejlvurdering. Kompetence og tvivl vokser parallelt. Performance trods, ikke takket være. <strong>Impostor syndrom er et mønster — og mønstre kan ændres.</strong></p></div>`;
+
+  if(hasProfile){
+    h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:8px">Impostor-Profil</h3><div class="radar-wrap">${renderRadar(scores,300)}</div>`;
+    const maxI=scores.indexOf(Math.max(...scores));
+    if(scores[maxI])h+=`<div style="text-align:center;font-size:13px;margin-top:8px"><span style="color:${ICOLORS[maxI]}">Primær type: <strong>${ITYPES[maxI]}</strong> (${scores[maxI]}/5)</span></div>`;
+    h+=`</div>`;
+  }
+
+  h+=`<div class="velocity-card fade"><h3 style="font-size:16px;margin-bottom:4px">Overblik</h3>
+    <div class="velocity-grid">
+      <div class="vg-item"><div class="vn">${completedMods}</div><div class="vl">Moduler</div></div>
+      <div class="vg-item"><div class="vn">${pct}%</div><div class="vl">Fremgang</div></div>
+      <div class="vg-item"><div class="vn">${kompLog}</div><div class="vl">Evidens</div></div>
+      <div class="vg-item"><div class="vn">${hasProfile?Math.max(...scores)+'/5':'–'}</div><div class="vl">Intensitet</div></div>
+    </div></div>`;
+
+  h+='<div class="mods-grid">';
+  MODS.forEach(m=>{
+    const d=LS.g('is_mod_'+S.cId+'_'+m.id);const a=countAns(d?.answers);const tot=m.qs.length;const mpct=tot?Math.round(a/tot*100):0;
+    const isActive=m.id<=activeMod;const isDone=a>=tot;
+    let badge='';
+    if(!isActive)badge=`<span class="mc-badge" style="background:var(--navy4);color:var(--text3)">🔒 Låst</span>`;
+    else if(isDone)badge=`<span class="mc-badge" style="background:rgba(76,175,130,.15);color:var(--green)">✓ Afsluttet</span>`;
+    else if(a>0)badge=`<span class="mc-badge" style="background:var(--gdim);color:var(--gold)">${a}/${tot}</span>`;
+    else badge=`<span class="mc-badge" style="background:rgba(192,57,43,.15);color:var(--blue2)">Klar</span>`;
+    h+=`<div class="mod-card fade ${isActive?'':'locked'}" ${isActive?`onclick="openMod(${m.id-1})"`:''}>
+      <div class="mc-top"><div class="mc-icon" style="background:${m.color}">${m.icon}</div><div class="mc-title">${m.title}</div></div>
+      <div class="mc-sub">${m.subtitle}</div>
+      <div class="mc-prog"><div class="mc-prog-fill" style="width:${mpct}%;background:${m.color}"></div></div>
+      <div class="mc-status">${badge}</div></div>`;
+  });
+  h+='</div>';el.innerHTML=h;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// MODULE VIEW
+// ══════════════════════════════════════════════════════════════════
+function openMod(idx){
+  S.modIdx=idx;S.modTab='learn';const m=MODS[idx];
+  const d=LS.g('is_mod_'+S.cId+'_'+m.id);S.answers=d?.answers||{};
+  document.getElementById('mod-title-bar').textContent='Modul '+m.id+': '+m.title;
+  document.getElementById('mod-sub-bar').textContent=m.subtitle;
+  document.getElementById('mod-header').innerHTML=`<h1 style="color:${m.color}">Modul ${m.id}: ${m.title}</h1><div class="mh-sub">${m.subtitle}</div>`;
+  let tabs=`<div class="mod-tab active" id="tab-l" onclick="setTab('learn')">Indhold</div>`;
+  tabs+=`<div class="mod-tab" id="tab-q" onclick="setTab('questions')">Spørgsmål (${countAns(S.answers)}/${m.qs.length})</div>`;
+  tabs+=`<div class="mod-tab" id="tab-t" onclick="setTab('takeaways')">Takeaways</div>`;
+  tabs+=`<div class="mod-tab" id="tab-j" onclick="setTab('journal')">Øvelser</div>`;
+  document.getElementById('mod-tabs').innerHTML=tabs;
+  renderLearn(m);renderQuestions(m);renderTakeaways(m);renderExercises(m);
+  setTab('learn');show('module');
+}
+function setTab(t){
+  S.modTab=t;document.querySelectorAll('.mod-tab').forEach(el=>el.classList.remove('active'));
+  ['learn','quest','takeaways','journal'].forEach(id=>document.getElementById('tc-'+id).style.display='none');
+  const map={learn:['tab-l','tc-learn'],questions:['tab-q','tc-quest'],takeaways:['tab-t','tc-takeaways'],journal:['tab-j','tc-journal']};
+  const m=map[t];if(m){document.getElementById(m[0])?.classList.add('active');document.getElementById(m[1]).style.display=''}
+}
+function renderLearn(m){
+  const src=m.sources.map(s=>`<div class="src-item">${s}</div>`).join('');
+  document.getElementById('tc-learn').innerHTML=`
+    <div class="sources-box" style="border-left-color:${m.color}"><div class="src-title">Forskningsgrundlag</div>${src}</div>
+    ${m.whyText?`<div class="why-mod-box"><div class="why-mod-label">Hvorfor dette modul er vigtigt</div><div class="why-mod-text">${m.whyText}</div></div>`:''}
+    <div class="learn-body">${m.learn}</div>
+    <div class="learn-cta"><button class="btn btn-primary" style="padding:12px 28px" onclick="setTab('questions')">Gå til refleksion →</button></div>`;
+}
+function renderQuestions(m){
+  const ans=countAns(S.answers);const pct=Math.round(ans/m.qs.length*100);
+  let h=`<div class="q-progress"><div class="qp-bar"><div class="qp-fill" id="qp-fill" style="width:${pct}%"></div></div><div class="qp-cnt" id="qp-cnt">${ans}/${m.qs.length}</div></div>`;
+  m.qs.forEach((q,i)=>{
+    const val=S.answers[q.id]||'';
+    h+=`<div class="q-card fade" id="qc-${q.id}"><div class="qlabel">Spørgsmål ${i+1} af ${m.qs.length}</div><div class="qtext">${q.l}</div>`;
+    if(q.type==='ta')h+=`<textarea placeholder="Skriv din refleksion..." oninput="setA('${q.id}',this.value)">${val}</textarea>`;
+    else if(q.type==='scale'){h+='<div class="scale-row">';for(let n=q.mn;n<=q.mx;n++)h+=`<button class="scale-btn ${val==n?'sel':''}" onclick="setScale('${q.id}',${n},${q.mn},${q.mx})">${n}</button>`;h+='</div>'}
+    else if(q.type==='choice'){h+='<div style="display:flex;flex-wrap:wrap;gap:4px">';q.opts.forEach(o=>h+=`<button class="cbtn ${val===o?'sel':''}" onclick="setChoice('${q.id}',this)">${o}</button>`);h+='</div>'}
+    h+='</div>';
+  });
+  h+=`<div style="padding:12px 0"><button class="btn-save" id="save-btn" onclick="saveMod()">Gem svar ✓</button></div>`;
+  document.getElementById('tc-quest').innerHTML=h;
+}
+let _ast=null;
+function setA(id,v){S.answers[id]=v;updateQP();clearTimeout(_ast);_ast=setTimeout(()=>{doSave();showSaveFeedback('Auto-gemt ✓')},2000)}
+function setScale(id,v,mn,mx){S.answers[id]=v;document.querySelectorAll(`#qc-${id} .scale-btn`).forEach((b,i)=>b.className='scale-btn'+((mn+i)===v?' sel':''));updateQP();doSave()}
+function setChoice(id,btn){const raw=btn.textContent.replace(/^✓ /,'');S.answers[id]=raw;document.querySelectorAll(`#qc-${id} .cbtn`).forEach(b=>{const sel=b.textContent.replace(/^✓ /,'')===raw;b.className='cbtn'+(sel?' sel':'');b.textContent=(sel?'✓ ':'')+b.textContent.replace(/^✓ /,'')});updateQP();doSave()}
+function updateQP(){const m=MODS[S.modIdx];const a=countAns(S.answers);const pct=Math.round(a/m.qs.length*100);const f=document.getElementById('qp-fill');if(f)f.style.width=pct+'%';const c=document.getElementById('qp-cnt');if(c)c.textContent=a+'/'+m.qs.length;const tq=document.getElementById('tab-q');if(tq)tq.textContent='Spørgsmål ('+a+'/'+m.qs.length+')'}
+function doSave(){const m=MODS[S.modIdx];LS.s('is_mod_'+S.cId+'_'+m.id,{answers:S.answers,savedAt:new Date().toISOString(),clientId:S.cId,clientName:S.cName})}
+function saveMod(){doSave();const b=document.getElementById('save-btn');if(b){b.textContent='✓ Gemt!';b.style.background='var(--green)';setTimeout(()=>{b.style.background='';b.textContent='Gem svar ✓'},2000)}}
+function renderTakeaways(m){let h='<div class="takeaways-box"><div class="tk-title">Vigtigste takeaways</div>';m.takeaways.forEach(t=>h+=`<div class="tk-item">→ ${t}</div>`);h+='</div>';document.getElementById('tc-takeaways').innerHTML=h}
+
+// ══════════════════════════════════════════════════════════════════
+// REFLECTIVE EXERCISES
+// ══════════════════════════════════════════════════════════════════
+function renderExercises(m){
+  let h='<div style="margin-top:8px">';
+
+  // IMPOSTOR-JOURNAL (all modules)
+  const ij=LS.g('is_ijentry_'+S.cId+'_'+m.id)||{};
+  h+=`<div class="refl-card fade">
+    <h4>🪞 Impostor-Journal</h4>
+    <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Hvornår talte stemmen i dag? Hvad sagde den? Hvad var den faktiske situation?</p>
+    <label>Hvornår talte impostor-stemmen?</label>
+    <textarea id="ij-when" placeholder="Beskriv situationen">${ij.when||''}</textarea>
+    <label>Hvad sagde den — ordret?</label>
+    <textarea id="ij-said" placeholder="Den indre stemmes præcise ord">${ij.said||''}</textarea>
+    <label>Hvad var den faktiske situation — objektivt?</label>
+    <textarea id="ij-reality" placeholder="Fakta, ikke følelser" style="min-height:50px">${ij.reality||''}</textarea>
+    <label>Impostor-intensitet i dag</label>
+    <div class="scale-row" id="ij-score-row" style="margin-bottom:8px">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<button class="scale-btn ${ij.score==n?'sel':''}" onclick="setIJScore(${n})">${n}</button>`).join('')}</div>
+    <button class="btn btn-primary" style="margin-top:8px;padding:10px 20px" onclick="saveIJ(${m.id})">Gem journal</button>
+  </div>`;
+
+  // IMPOSTOR-PROFIL (mod 1+)
+  if(m.id>=1){
+    const ip=getIProfile(S.cId);
+    h+=`<div class="refl-card fade">
+      <h4>📊 Impostor-Profil</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Score hver impostor-type 1-5: Hvor meget genkender du mønstret?</p>`;
+    ITYPES.forEach((t,i)=>{
+      const val=ip['t'+i]||0;
+      h+=`<label style="color:${ICOLORS[i]};font-weight:600">${i+1}. ${t}</label>
+        <div class="scale-row" id="ip-${i}" style="margin-bottom:10px">${[1,2,3,4,5].map(n=>`<button class="scale-btn ${val==n?'sel':''}" onclick="setIP(${i},${n})">${n}</button>`).join('')}</div>`;
+    });
+    h+=`<button class="btn btn-primary" style="margin-top:8px;padding:10px 20px" onclick="showSaveFeedback('Profil gemt ✓')">Gem profil</button>
+      <div id="ip-radar" style="margin-top:16px"></div>
+    </div>`;
+  }
+
+  // KOMPETENCE-INVENTAR (mod 4+)
+  if(m.id>=4){
+    const kl=LS.g('is_komplog_'+S.cId)||[];
+    h+=`<div class="refl-card fade">
+      <h4>💎 Kompetence-Inventar</h4>
+      <p style="font-size:13px;color:var(--text3);margin-bottom:8px">Ugentlige bidrag + kompetence-ankre + ignoreret feedback.</p>
+      <label>Hvad bidrog du med denne uge? (3 ting)</label>
+      <textarea id="ki-contrib" placeholder="1. ...\n2. ...\n3. ..."></textarea>
+      <label>Kompetence-anker (ubestrideligt bevis)</label>
+      <textarea id="ki-anchor" placeholder="En præstation der er reel, ubestridelig og signifikant" style="min-height:50px"></textarea>
+      <label>Ignoreret feedback (positiv feedback du filtrerede fra)</label>
+      <textarea id="ki-feedback" placeholder="Hvem sagde hvad? Og hvad sagde din impostor?" style="min-height:50px"></textarea>
+      <label>Attribution-korrektion: Din rolle vs. impostor-forklaringen</label>
+      <textarea id="ki-attrib" placeholder="Min faktiske rolle: ... / Min impostor sagde: ..." style="min-height:50px"></textarea>
+      <button class="btn btn-primary" style="margin-top:10px;padding:8px 16px" onclick="addKI()">+ Tilføj evidens</button>
+      <div id="ki-list" style="margin-top:12px"></div>
+    </div>`;
+  }
+
+  h+='</div>';document.getElementById('tc-journal').innerHTML=h;
+  updateIPRadar();renderKIList();
+}
+
+let _ijScore=0;
+function setIJScore(n){_ijScore=n;document.querySelectorAll('#ij-score-row .scale-btn').forEach((b,i)=>b.className='scale-btn'+((i+1)===n?' sel':''))}
+function saveIJ(mid){
+  const entry={when:document.getElementById('ij-when')?.value||'',said:document.getElementById('ij-said')?.value||'',reality:document.getElementById('ij-reality')?.value||'',score:_ijScore||0,date:new Date().toISOString()};
+  LS.s('is_ijentry_'+S.cId+'_'+mid,entry);
+  const all=LS.g('is_ijournal_'+S.cId)||[];all.push(entry);LS.s('is_ijournal_'+S.cId,all);
+  showSaveFeedback('Journal gemt ✓');
+}
+
+function setIP(idx,val){
+  const ip=getIProfile(S.cId);ip['t'+idx]=val;LS.s('is_profile_'+S.cId,ip);
+  document.querySelectorAll(`#ip-${idx} .scale-btn`).forEach((b,i)=>b.className='scale-btn'+((i+1)===val?' sel':''));
+  updateIPRadar();
+}
+function updateIPRadar(){
+  const el=document.getElementById('ip-radar');if(!el)return;
+  const ip=getIProfile(S.cId);const scores=ITYPES.map((_,i)=>ip['t'+i]||0);
+  if(!scores.some(s=>s>0)){el.innerHTML='';return}
+  let h=`<div class="radar-wrap">${renderRadar(scores,280)}</div>`;
+  const maxI=scores.indexOf(Math.max(...scores));
+  if(scores[maxI])h+=`<div style="text-align:center;font-size:13px;margin-top:4px;color:${ICOLORS[maxI]}">Primær: <strong>${ITYPES[maxI]}</strong> (${scores[maxI]}/5)</div>`;
+  el.innerHTML=h;
+}
+
+function addKI(){
+  const contrib=document.getElementById('ki-contrib')?.value?.trim();
+  if(!contrib){showSaveFeedback('Udfyld bidrag');return}
+  const kl=LS.g('is_komplog_'+S.cId)||[];
+  kl.push({contrib,anchor:document.getElementById('ki-anchor')?.value||'',feedback:document.getElementById('ki-feedback')?.value||'',attrib:document.getElementById('ki-attrib')?.value||'',date:new Date().toISOString()});
+  LS.s('is_komplog_'+S.cId,kl);
+  ['ki-contrib','ki-anchor','ki-feedback','ki-attrib'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=''});
+  showSaveFeedback('Evidens tilføjet ✓');renderKIList();
+}
+function delKI(idx){const kl=LS.g('is_komplog_'+S.cId)||[];kl.splice(idx,1);LS.s('is_komplog_'+S.cId,kl);renderKIList()}
+function renderKIList(){
+  const el=document.getElementById('ki-list');if(!el)return;
+  const kl=LS.g('is_komplog_'+S.cId)||[];
+  if(!kl.length){el.innerHTML='';return}
+  let h='<div style="border-top:1px solid var(--brd);padding-top:12px"><div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px">Kompetence-log ('+kl.length+' evidenser)</div>';
+  kl.forEach((k,i)=>{
+    h+=`<div style="padding:10px 12px;background:var(--navy3);border-radius:8px;margin-bottom:6px;border-left:3px solid var(--teal)">
+      <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:12px;color:var(--text)">${k.contrib.slice(0,120)}${k.contrib.length>120?'...':''}</div><button onclick="delKI(${i})" style="background:none;border:none;color:var(--red);font-size:12px;cursor:pointer">×</button></div>
+      ${k.anchor?`<div style="font-size:11px;color:var(--gold);margin-top:4px">⚓ ${k.anchor.slice(0,100)}</div>`:''}
+      ${k.feedback?`<div style="font-size:11px;color:var(--green);margin-top:2px">📬 ${k.feedback.slice(0,100)}</div>`:''}
+    </div>`;
+  });
+  h+='</div>';el.innerHTML=h;
+}
+const MODS=[{id:1,title:'Svindleren i rummet',subtitle:'Hvad impostor syndrom er \u2014 og hvad det ikke er',icon:'\u25C6',color:'#5BA8A0',
+sources:['Clance & Imes \u2014 The Impostor Phenomenon (1978)','Sakulku & Alexander \u2014 The Impostor Phenomenon (2011)','Young, V. \u2014 The Secret Thoughts of Successful Women','Weiner, B. \u2014 Attribution Theory','Langford & Clance \u2014 The Impostor Phenomenon (1993)'],
+whyText:'Du har en indre stemme der fort\u00e6ller dig at du ikke h\u00f8rer til. At du snart bliver afsl\u00f8ret. Den stemme er ikke din fjende \u2014 den er en <strong>fejlkalibreret beskyttelsesmekanisme</strong>. Og den rammer de dygtigste h\u00e5rdest.',
+learn:`<h3>Clance & Imes\u2019 opdagelse</h3>
+<p>1978 dokumenterede Pauline Clance og Suzanne Imes for f\u00f8rste gang m\u00f8nstret hos h\u00f8jt pr\u00e6sterende kvinder. Senere forskning viste at det rammer alle k\u00f8n og op til 70% af befolkningen. Det er ikke en diagnose \u2014 det er et m\u00f8nster. Og det er overalt.</p>
+<h3>De fem impostor-typer</h3>
+<p>Valerie Young identificerede fem typer: (1) <strong>Perfektionisten</strong> \u2014 99% er fiasko. (2) <strong>Supermennesket</strong> \u2014 du skal mestre alle roller simultant. (3) <strong>Det naturlige geni</strong> \u2014 hvis det kr\u00e6ver anstrengelse, er du ikke god nok. (4) <strong>Solisten</strong> \u2014 at bede om hj\u00e6lp er bevis p\u00e5 inkompetence. (5) <strong>Eksperten</strong> \u2014 du ved aldrig nok til at udtale dig.</p>
+<h3>Attributionsfejlen</h3>
+<p>Du har en asymmetrisk model: Succes \u2192 "Jeg var heldig / de andre var blinde / god timing." Fiasko \u2192 "Der kan man se. Det er den virkelige mig." Modellen er selvforst\u00e6rkende: Hver succes forklares bort. Hver fejl bekr\u00e6fter narrativet.</p>
+<h3>Paradokset</h3>
+<p>De mest kompetente tvivler mest. Dunning-Kruger inverteret. Du ser alt det du ikke ved \u2014 og konkluderer at du er utilstr\u00e6kkelig. Mens personen ved siden af dig, der ved langt mindre, er overbevist om sin egen kompetence.</p>
+<h3>Prisen</h3>
+<p>Impostor syndrom koster: Overarbejde som kompensation. Prokrastinering som undg\u00e5else. Underspil af egne bidrag. Manglende forhandling af l\u00f8n, roller, muligheder. Isolation \u2014 og en konstant baggrundsproces af selvoverv\u00e5gning der aldrig stopper.</p>
+<blockquote>"70% af alle mennesker oplever impostor-f\u00f8lelser. Du er ikke alene. Og du er ikke unormal."</blockquote>`,
+qs:[
+{id:'q1_1',type:'ta',l:'Beskriv en situation inden for det sidste \u00e5r hvor du f\u00f8lte dig som en impostor \u2014 p\u00e5 trods af objektiv succes. Hvad sagde din indre stemme?'},
+{id:'q1_2',type:'scale',l:'Hvor ofte har du f\u00f8lelsen af at du snart bliver "afsl\u00f8ret"? 1 = aldrig, 10 = konstant.',mn:1,mx:10},
+{id:'q1_3',type:'ta',l:'De fem typer: Perfektionisten, Supermennesket, Det naturlige geni, Solisten, Eksperten. <strong>Hvilke genkender du mest?</strong>'},
+{id:'q1_4',type:'ta',l:'T\u00e6nk p\u00e5 din seneste succes. Hvem eller hvad tilskrev du den \u2014 <strong>dig selv eller andre faktorer?</strong> V\u00e6r \u00e6rlig.'},
+{id:'q1_5',type:'ta',l:'Hvad <strong>koster</strong> impostor-f\u00f8lelsen dig konkret? Tid, energi, muligheder, relationer?'},
+{id:'q1_6',type:'choice',l:'Din prim\u00e6re impostor-type?',opts:['Perfektionisten','Supermennesket','Det naturlige geni','Solisten','Eksperten']}],
+takeaways:['70% oplever impostor-f\u00f8lelser \u2014 du er ikke alene og du er ikke unormal','Det rammer de dygtigste h\u00e5rdest \u2014 fordi deres standarder er h\u00f8jest','Det er en fejlattribution, ikke en fejlvurdering af din kompetence','Du attribuerer succes til held og fiasko til dig selv \u2014 asymmetrisk og selvforst\u00e6rkende','Prisen er reel: overarbejde, prokrastinering, underspil og isolation']},
+{id:2,title:'Anatomien bag f\u00f8lelsen',subtitle:'Perfektionisme \u00b7 Sammenligning \u00b7 Overgange \u00b7 Tilh\u00f8rsforhold',icon:'\u25C8',color:'#E5A048',
+sources:['Hewitt & Flett \u2014 Perfectionism and Impostor Phenomenon','Festinger, L. \u2014 Social Comparison Theory','Bridges, W. \u2014 Managing Transitions','Cokley et al. \u2014 Impostor Feelings and Minority Status','Clance, P. \u2014 The Impostor Phenomenon (1985)'],
+whyText:'Impostor-f\u00f8lelser opst\u00e5r ikke i et vakuum. De har <strong>triggere</strong> \u2014 og triggerne er forudsigelige. N\u00e5r du forst\u00e5r mekanismen, kan du genkende m\u00f8nstret i det \u00f8jeblik det aktiveres.',
+learn:`<h3>Perfektionisme som br\u00e6ndstof</h3>
+<p>Hewitt & Flett: Perfektionisme og impostor syndrom er symbiotiske. Perfektionisme s\u00e6tter standarden umuligt h\u00f8jt \u2192 alt under 100% er fiasko \u2192 du konkluderer at du er utilstr\u00e6kkelig \u2192 du arbejder h\u00e5rdere \u2192 standarden stiger. Det er ikke ambition. Det er angst forkl\u00e6dt som ambition.</p>
+<h3>Sammenligning som gift</h3>
+<p>Festinger: Social sammenligning. Men impostor-ramte sammenligner asymmetrisk: Din indre usikkerhed vs. andres ydre selvtillid. Du ser din tvivl og deres facade \u2014 og konkluderer at du er den eneste der tvivler. Det er du ikke.</p>
+<h3>Overgange som trigger</h3>
+<p>Bridges: Alle overgange aktiverer m\u00f8nstret. Ny rolle, ny organisation, nyt ansvarsniveau. Du mangler den kompetence-historie der normalt d\u00e6mper tvivlen. F\u00f8rste 90 dage i enhver ny rolle er den mest s\u00e5rbare periode.</p>
+<h3>Tilh\u00f8rsforhold og otherness</h3>
+<p>Cokley et al.: Impostor syndrom forst\u00e6rkes hos mennesker der oplever "otherness" \u2014 at skille sig ud. Den f\u00f8rste kvindelige CEO. Den unge partner. N\u00e5r du er synligt anderledes, tolkes enhver usikkerhed som bevis p\u00e5 at du "ikke h\u00f8rer til."</p>
+<h3>Familiem\u00f8nstre</h3>
+<p>Clance: Mange impostor-m\u00f8nstre har r\u00f8dder i barndom \u2014 enten som "det kloge barn" (alt skal v\u00e6re let) eller "det andet barn" (aldrig helt nok). M\u00f8nstret er ikke sk\u00e6bne \u2014 men at forst\u00e5 det giver afstand.</p>
+<blockquote>"Perfektionisme er ikke ambition. Det er angst forkl\u00e6dt som ambition."</blockquote>`,
+qs:[
+{id:'q2_1',type:'ta',l:'Perfektionisme-audit: Hvad er din standard for "godt nok"? Hvorn\u00e5r var du sidst <strong>virkelig tilfreds</strong> med din egen pr\u00e6station?'},
+{id:'q2_2',type:'scale',l:'Din perfektionisme-tendens: 1 = fleksibel og pragmatisk, 10 = alt under 100% er utilstr\u00e6kkeligt.',mn:1,mx:10},
+{id:'q2_3',type:'ta',l:'Hvem sammenligner du dig med professionelt? Er sammenligningen baseret p\u00e5 <strong>hvad du ved</strong> om dem \u2014 eller hvad du antager?'},
+{id:'q2_4',type:'ta',l:'Din seneste store overgang (ny rolle, nyt ansvar). Hvordan reagerede din <strong>impostor-stemme?</strong>'},
+{id:'q2_5',type:'ta',l:'Har du nogensinde f\u00f8lt at du "ikke h\u00f8rer til" i et rum \u2014 p\u00e5 trods af at du var inviteret, kvalificeret og kompetent?'},
+{id:'q2_6',type:'choice',l:'Den prim\u00e6re trigger for dine impostor-f\u00f8lelser?',opts:['Perfektionisme','Sammenligning','Overgange','Otherness','Familiem\u00f8nstre','Eksponering']}],
+takeaways:['Perfektionisme og impostor syndrom er symbiotiske','Du sammenligner din indre usikkerhed med andres ydre selvtillid','Overgange er den mest forudsigelige trigger \u2014 f\u00f8rste 90 dage er mest s\u00e5rbare','"Otherness" forst\u00e6rker m\u00f8nstret markant','At forst\u00e5 triggerne giver dig afstand til m\u00f8nstret']},
+{id:3,title:'Den indre stemme',subtitle:'Hvad den siger \u00b7 Hvorn\u00e5r den taler \u00b7 Hvordan du svarer',icon:'\u25B2',color:'#E57373',
+sources:['Beck & Burns \u2014 Cognitive Distortions','Feldman Barrett \u2014 How Emotions Are Made','Hayes, S. \u2014 ACT (Acceptance and Commitment Therapy)','Neff, K. \u2014 Self-Compassion (2011)','Kross, E. \u2014 Chatter (indre dialog)'],
+whyText:'Du har en indre dialog der k\u00f8rer uafbrudt. Hos impostor-ramte er den <strong>asymmetrisk</strong>: Den registrerer fejl i HD og succeser i lavoppl\u00f8sning. Den er ikke objektiv. Den er ikke dig \u2014 den er et m\u00f8nster.',
+learn:`<h3>Kognitive forvrængninger</h3>
+<p>Beck & Burns: Den indre stemme bruger systematiske forvrængninger. <strong>Diskvalificering af det positive</strong> \u2014 "Det t\u00e6ller ikke." <strong>Mind reading</strong> \u2014 "De t\u00e6nker sikkert at jeg er inkompetent." <strong>Katastrofet\u00e6nkning</strong> \u2014 "Denne ene fejl afsl\u00f8rer alt." <strong>Should-udsagn</strong> \u2014 "Jeg burde kunne dette uden hj\u00e6lp." Ingen af dem er sande. Alle f\u00f8les sande.</p>
+<h3>Impostor vs. reality</h3>
+<p>Skriv hvad din impostor-stemme siger. Skriv derefter hvad en velmenende, \u00e6rlig kollega ville sige om den samme situation. Gabet mellem de to er st\u00f8rrelsen af din forvr\u00e6ngning. De fleste opdager at gabet er enormt.</p>
+<h3>Emotionel granularitet</h3>
+<p>Feldman Barrett: Jo mere pr\u00e6cist du navngiver din f\u00f8lelse, jo bedre kan du regulere den. "Jeg f\u00f8ler mig som en svindler" er upr\u00e6cist. "Jeg f\u00f8ler frygt for evaluering fordi min standard for mig selv er h\u00f8jere end min standard for andre" er pr\u00e6cist \u2014 og allerede halvvejs til en l\u00f8sning.</p>
+<h3>Defusion</h3>
+<p>ACT-baseret (Hayes): "Jeg er en svindler" er fusion \u2014 du ER tanken. "Jeg har en tanke om at jeg er en svindler" er defusion \u2014 du OBSERVERER tanken. Den f\u00f8rste fanger dig. Den anden giver dig afstand og valg.</p>
+<h3>Selvmedf\u00f8lelse vs. selvkritik</h3>
+<p>Neff: Selvmedf\u00f8lelse er at give dig selv den forst\u00e5else du ville give en god ven. Forskning viser at selvmedf\u00f8lelse \u00f8ger resiliens og forbedrer performance. Selvkritik g\u00f8r det modsatte.</p>
+<blockquote>"Jeg HAR en tanke om at jeg er en svindler. Det er ikke det samme som at jeg ER en svindler."</blockquote>`,
+qs:[
+{id:'q3_1',type:'ta',l:'Skriv de tre mest gentagende s\u00e6tninger din impostor-stemme siger. <strong>Ordret</strong> \u2014 som du h\u00f8rer dem indeni.'},
+{id:'q3_2',type:'ta',l:'Tag den v\u00e6rste. Skriv nu hvad en velmenende, \u00e6rlig kollega ville sige om den samme situation. <strong>Hvad er gabet?</strong>'},
+{id:'q3_3',type:'scale',l:'Hvor ofte bestemmer din indre kritiker dine handlinger \u2014 hvad du g\u00f8r, ikke g\u00f8r, siger, holder tilbage?',mn:1,mx:10},
+{id:'q3_4',type:'ta',l:'Defusion: Omformul\u00e9r "Jeg er en svindler" til "Jeg har en tanke om at..." \u2014 skriv tre variationer. M\u00e6rk forskellen.'},
+{id:'q3_5',type:'ta',l:'Hvorn\u00e5r gav du sidst dig selv den forst\u00e5else du ville give en god ven i samme situation? <strong>Hvad holdt dig tilbage?</strong>'},
+{id:'q3_6',type:'choice',l:'Din prim\u00e6re kognitive forvr\u00e6ngning?',opts:['Diskvalificering af det positive','Mind reading','Katastrofet\u00e6nkning','Should-udsagn','Alt-eller-intet t\u00e6nkning']}],
+takeaways:['Din indre stemme registrerer fejl i HD og succeser i lavoppl\u00f8sning','Gabet mellem impostor-stemmen og en kollegas vurdering er din forvr\u00e6ngning','"Jeg har en tanke om..." giver afstand og valg','Selvmedf\u00f8lelse \u00f8ger resiliens og performance \u2014 selvkritik g\u00f8r det modsatte','Pr\u00e6cis navngivning af f\u00f8lelser er halvvejs til regulering']},
+{id:4,title:'Bevismaterialet',subtitle:'Kompetence-inventar \u00b7 Succeser du ejer \u00b7 Feedback du har ignoreret',icon:'\u25EF',color:'#3A6BC2',
+sources:['Clance, P. \u2014 Impostor Phenomenon Treatment','Bandura, A. \u2014 Self-Efficacy','Seligman, M. \u2014 Learned Optimism','Dweck, C. \u2014 Mindset','Friisn\u00e6s, T. \u2014 Evidensbaseret selvtillid'],
+whyText:'Du har beviser. Mange beviser. For din kompetence, din v\u00e6rdi og dit bidrag. Men din impostor-mekanisme har <strong>systematisk filtreret dem fra</strong>. Her graver vi dem frem.',
+learn:`<h3>Kompetence-inventaret</h3>
+<p>Du har aldrig lavet en systematisk opg\u00f8relse over hvad du faktisk kan, ved og har opn\u00e5et. Det er ikke tilf\u00e6ldigt \u2014 impostor-m\u00f8nstret forhindrer dig i at dv\u00e6le ved succes. List dine 20 mest betydningsfulde professionelle pr\u00e6stationer. Ikke CV-versionen \u2014 den \u00e6rlige version.</p>
+<h3>Attribution-korrektionen</h3>
+<p>For hver pr\u00e6station: Hvad var din rolle? Hvad ville ikke v\u00e6re sket uden dig? Impostor-stemmen siger "det var teamet." Men hvad var <em>din</em> specifikke rolle? Hvad ville manglet uden dig? Det er sp\u00f8rgsm\u00e5let din impostor aldrig stiller.</p>
+<h3>Feedback du har ignoreret</h3>
+<p>Du har modtaget positiv feedback. Og du har systematisk filtreret den fra: "De er bare h\u00f8flige." "De kender mig ikke godt nok." G\u00e5 tilbage og find den feedback. Skriv den ned. Behandl den som data \u2014 ikke som h\u00f8flighed.</p>
+<h3>Kompetence-anker</h3>
+<p>V\u00e6lg tre pr\u00e6stationer der er reelle, ubestridelige og signifikante. Ikke fordi du f\u00f8ler det \u2014 men fordi fakta bekr\u00e6fter det. N\u00e5r impostor-stemmen taler, har du konkret modbevis. Ikke affirmationer \u2014 evidens.</p>
+<h3>Pr\u00e6stations-journal</h3>
+<p>Ugentlig praksis: Skriv tre ting du bidrog med denne uge. Over 12 uger har du 36 dokumenterede beviser for din kompetence. Det er sv\u00e6rt at argumentere med 36 datapunkter.</p>
+<blockquote>"Hvad ville ikke v\u00e6re sket uden dig? Det er sp\u00f8rgsm\u00e5let din impostor aldrig stiller."</blockquote>`,
+qs:[
+{id:'q4_1',type:'ta',l:'List dine <strong>10 mest betydningsfulde</strong> professionelle pr\u00e6stationer. Ikke CV-versionen \u2014 den \u00e6rlige version.'},
+{id:'q4_2',type:'ta',l:'V\u00e6lg den pr\u00e6station din impostor-stemme mest bortforklarer. <strong>Hvad ville ikke v\u00e6re sket uden dig?</strong> V\u00e6r specifik.'},
+{id:'q4_3',type:'scale',l:'Hvor godt er du til at modtage positiv feedback <strong>uden at bortforklare</strong> den?',mn:1,mx:10},
+{id:'q4_4',type:'ta',l:'Find tre stykker positiv feedback du har f\u00e5et \u2014 og <strong>filtreret fra</strong>. Skriv dem ned. Ordret hvis muligt.'},
+{id:'q4_5',type:'ta',l:'Dine tre <strong>kompetence-ankre</strong>: Pr\u00e6stationer der er reelle, ubestridelige og signifikante. Fakta, ikke f\u00f8lelser.'},
+{id:'q4_6',type:'ta',l:'Hvad ville du sige til en kollega med pr\u00e6cis din track record, der sagde <strong>"Jeg er ikke god nok"?</strong>'}],
+takeaways:['Du har aldrig systematisk opgjort din kompetence \u2014 det er ikke tilf\u00e6ldigt','"Hvad ville ikke v\u00e6re sket uden dig?" er det sp\u00f8rgsm\u00e5l din impostor aldrig stiller','Positiv feedback du har filtreret fra er data, ikke h\u00f8flighed','Tre kompetence-ankre giver konkret modbevis \u2014 evidens, ikke affirmationer','36 ugentlige datapunkter er sv\u00e6re at argumentere med']},
+{id:5,title:'At lede med tvivlen',subtitle:'Integration \u00b7 System \u00b7 Relationer \u00b7 Den nye fort\u00e6lling',icon:'\u2605',color:'#C9A84C',
+sources:['Brown, B. \u2014 Daring Greatly','Csikszentmihalyi, M. \u2014 Flow','Cuddy, A. \u2014 Presence','Ibarra, H. \u2014 Act Like a Leader, Think Like a Leader','Friisn\u00e6s, T. \u2014 Integration og personlig arkitektur'],
+whyText:'M\u00e5let er ikke at eliminere usikkerhed. M\u00e5let er at <strong>afkoble usikkerhed fra handling</strong>. Du kan tvivle og handle. Du kan v\u00e6re usikker og lede. De bedste ledere navigerer begge.',
+learn:`<h3>Tvivl som data, ikke sandhed</h3>
+<p>Din tvivl er ikke evidens for inkompetence. Den er et signal om at du opererer i din v\u00e6kstzone. Csikszentmihalyis flow: Usikkerhed er en del af zonen hvor udfordring matcher kompetence. Hvis du aldrig tvivler, er du i gentagelseszonen \u2014 ikke i v\u00e6kst.</p>
+<h3>Strategisk s\u00e5rbarhed</h3>
+<p>Brown: S\u00e5rbarhed er ikke svaghed \u2014 det er mod. Men strategisk: Del tvivl med de rigtige mennesker p\u00e5 det rigtige tidspunkt. Ikke hele organisationen \u2014 men din indre cirkel. At bryde isolationen er det mest effektive middel mod impostor-m\u00f8nstret.</p>
+<h3>Impostor-buddy</h3>
+<p>Find \u00e9n person du stoler p\u00e5: N\u00e5r m\u00f8nstret aktiveres, ringer du. Ikke for tr\u00f8st \u2014 men for reality-test. "Er dette reelt eller er det impostor?" En ekstern stemme der kalibrerer din interne er uvurderlig.</p>
+<h3>Den nye fort\u00e6lling</h3>
+<p>Du har en fort\u00e6lling om dig selv skrevet af din impostor. Den er konsistent, velargumenteret og forkert. Skriv en ny \u2014 retf\u00e6rdig og evidensbaseret, der inkluderer kompetencer, bidrag og tvivl som styrke.</p>
+<h3>System og rytme</h3>
+<p>(1) <strong>Dagligt</strong> \u2014 n\u00e5r stemmen taler: \u00e9t kompetence-anker som modv\u00e6gt. (2) <strong>Ugentligt</strong> \u2014 tre bidrag i pr\u00e6stations-journal. (3) <strong>M\u00e5nedligt</strong> \u2014 impostor-score: st\u00e6rkere eller svagere? (4) <strong>Ved overgange</strong> \u2014 proaktiv aktivering: daglig journal, ugentlig buddy, m\u00e5nedlig coaching.</p>
+<h3>Integration</h3>
+<p>Impostor syndrom h\u00e6nger sammen med alt: Blinde vinkler (blind for egen kompetence), karakterprofil (autenticitet som modgift), fravalg (sige nej uden at det bekr\u00e6fter narrativet), arbejdsgl\u00e6de (du kan ikke nyde succes du ikke tror du fortjener), den sv\u00e6re samtale (at tale om tvivl kr\u00e6ver det st\u00f8rste mod).</p>
+<blockquote>"Du kan tvivle og handle. Du kan v\u00e6re usikker og lede. De to er parallelle oplevelser \u2014 ikke mods\u00e6tninger."</blockquote>`,
+qs:[
+{id:'q5_1',type:'ta',l:'Design dit personlige <strong>impostor-system</strong>: Daglig praksis, ugentlig journal, m\u00e5nedligt tjek, overgangs-protokol. V\u00e6r pr\u00e6cis.'},
+{id:'q5_2',type:'scale',l:'Hvor sandsynligt er det at du faktisk <strong>vedligeholder</strong> dette system?',mn:1,mx:10},
+{id:'q5_3',type:'ta',l:'Hvem er din <strong>impostor-buddy?</strong> Nogen du stoler p\u00e5 nok til at sige "Min impostor taler \u2014 hj\u00e6lp mig reality-teste."'},
+{id:'q5_4',type:'ta',l:'Skriv din <strong>nye fort\u00e6lling</strong> \u2014 den retf\u00e6rdige, evidensbaserede version af hvem du er professionelt. Inkludér tvivl som styrke.'},
+{id:'q5_5',type:'ta',l:'Den \u00e9ne beslutning du har <strong>undladt at tage</strong> fordi din impostor sagde du ikke var klar. Hvad ville du g\u00f8re hvis du handlede p\u00e5 kompetence i stedet for tvivl?'},
+{id:'q5_6',type:'ta',l:'Afslut forl\u00f8bet med \u00e9n s\u00e6tning: <strong>Hvad ville du sige til dig selv om 12 m\u00e5neder</strong> \u2014 med m\u00f8nstret forst\u00e5et og afkoblet?'}],
+takeaways:['Du kan tvivle og handle \u2014 de er parallelle oplevelser','Tvivl i v\u00e6kstzone er et sundhedstegn, ikke et faresignal','Strategisk s\u00e5rbarhed bryder isolationen \u2014 alle tvivler','En impostor-buddy er kalibrering, ikke tr\u00f8st','Den nye fort\u00e6lling er retf\u00e6rdig og evidensbaseret']}];
+// ══════════════════════════════════════════════════════════════════
+// EXPORT + ENCRYPTION
+// ══════════════════════════════════════════════════════════════════
+async function deriveKey(pw,salt){const enc=new TextEncoder();const km=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function encryptData(data,pw){const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pw,salt);const enc=new TextEncoder();const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(JSON.stringify(data)));return{v:1,salt:Array.from(salt),iv:Array.from(iv),ct:Array.from(new Uint8Array(ct))}}
+async function decryptData(blob,pw){const salt=new Uint8Array(blob.salt);const iv=new Uint8Array(blob.iv);const ct=new Uint8Array(blob.ct);const key=await deriveKey(pw,salt);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);return JSON.parse(new TextDecoder().decode(pt))}
+
+function gatherClientExport(cid,cname){
+  const exp={platform:PLATFORM_NAME,version:PLATFORM_VERSION,exportedAt:new Date().toISOString(),clientId:cid,clientName:cname,modules:{},journals:{},ijournal:LS.g('is_ijournal_'+cid)||[],profile:getIProfile(cid),komplog:LS.g('is_komplog_'+cid)||[]};
+  MODS.forEach(m=>{const d=LS.g('is_mod_'+cid+'_'+m.id);if(d)exp.modules[m.id]={title:m.title,...d};const j=LS.g('is_ijentry_'+cid+'_'+m.id);if(j)exp.journals[m.id]=j});
+  return exp;
+}
+
+async function exportClientJSON(){
+  const data=gatherClientExport(S.cId,S.cName);
+  const pw=prompt('Adgangskode til kryptering:');if(!pw)return;
+  try{
+    const encrypted=await encryptData(data,pw);
+    const blob=new Blob([JSON.stringify(encrypted,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');
+    a.href=url;a.download=`ImpostorSyndrom_${S.cName.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();URL.revokeObjectURL(url);showSaveFeedback('Krypteret JSON eksporteret ✓');
+    setTimeout(()=>{if(confirm('Send til din coach?'))location.href=`mailto:${COACH_EMAIL}?subject=Impostor Syndrom — ${S.cName}&body=Krypteret JSON vedlagt.`},500);
+  }catch(e){alert('Fejl: '+e.message)}
+}
+
+function exportClientTXT(){
+  const data=gatherClientExport(S.cId,S.cName);
+  let txt=`DIT IMPOSTOR SYNDROM — BESVARELSER\n${'═'.repeat(50)}\nKlient: ${data.clientName}\nDato: ${data.exportedAt}\n\n`;
+  const scores=ITYPES.map((_,i)=>data.profile['t'+i]||0);
+  if(scores.some(s=>s>0)){txt+='IMPOSTOR-PROFIL:\n';ITYPES.forEach((t,i)=>txt+=`  ${t}: ${scores[i]||'–'}/5\n`);txt+='\n'}
+  MODS.forEach(m=>{
+    const md=data.modules[m.id];if(!md)return;
+    txt+=`${'─'.repeat(50)}\nMODUL ${m.id}: ${m.title.toUpperCase()}\n${'─'.repeat(50)}\n`;
+    m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')txt+=`\n${q.l.replace(/<[^>]+>/g,'')}\n→ ${v}\n`});
+    const j=data.journals?.[m.id];if(j?.when)txt+=`\n🪞 JOURNAL: Situation: ${j.when} | Stemmen: ${j.said} | Score: ${j.score}/10\n`;
+    txt+='\n';
+  });
+  if(data.komplog.length){
+    txt+=`${'─'.repeat(50)}\n💎 KOMPETENCE-INVENTAR (${data.komplog.length})\n${'─'.repeat(50)}\n`;
+    data.komplog.forEach(k=>txt+=`Bidrag: ${k.contrib}\n${k.anchor?'Anker: '+k.anchor+'\n':''}${k.feedback?'Feedback: '+k.feedback+'\n':''}---\n`);
+  }
+  const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=`ImpostorSyndrom_${S.cName.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.txt`;
+  a.click();URL.revokeObjectURL(url);showSaveFeedback('Tekst eksporteret ✓');
+}
+
+function clientDeleteData(){
+  if(!confirm('Slet alle dine data permanent?'))return;
+  if(!confirm('Kan IKKE fortrydes.'))return;
+  MODS.forEach(m=>{LS.d('is_mod_'+S.cId+'_'+m.id);LS.d('is_ijentry_'+S.cId+'_'+m.id)});
+  LS.d('is_profile_'+S.cId);LS.d('is_ijournal_'+S.cId);LS.d('is_komplog_'+S.cId);LS.d('is_active_'+S.cId);
+  const clients=(LS.g('is_clients')||[]).filter(c=>c.id!==S.cId);LS.s('is_clients',clients);
+  showSaveFeedback('Slettet');logout();
+}
+
+// ══════════════════════════════════════════════════════════════════
+// ADMIN
+// ══════════════════════════════════════════════════════════════════
+function setASection(sec){
+  S.aSection=sec;
+  document.querySelectorAll('.as-nav li').forEach((li,i)=>{li.classList.remove('active');const map=['ov','clients','import','gdpr'];if(map[i]===sec)li.classList.add('active')});
+  ['ov','clients','import','gdpr'].forEach(s=>document.getElementById('asec-'+s).style.display=s===sec?'':'none');
+  renderAdmin();
+}
+function renderAdmin(){
+  const clients=LS.g('is_clients')||[];
+  let totalAns=0;clients.forEach(c=>{MODS.forEach(m=>{const d=LS.g('is_mod_'+c.id+'_'+m.id);totalAns+=countAns(d?.answers)})});
+
+  document.getElementById('asec-ov').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Oversigt</h2>
+    <div class="astats">
+      <div class="astat"><div class="av">${clients.length}</div><div class="al">Klienter</div></div>
+      <div class="astat"><div class="av">${totalAns}</div><div class="al">Svar</div></div>
+      <div class="astat"><div class="av">${MODS.length}</div><div class="al">Moduler</div></div>
+    </div>
+    ${clients.map(c=>{
+      let ca=0,cm=0;MODS.forEach(m=>{const d=LS.g('is_mod_'+c.id+'_'+m.id);const a=countAns(d?.answers);ca+=a;if(a>=m.qs.length)cm++});
+      const ip=getIProfile(c.id);const hasP=ITYPES.some((_,i)=>ip['t'+i]);
+      return`<div class="aclient-card" onclick="S.aSel='${c.id}';setASection('clients')">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div><strong>${c.name}</strong><div style="font-size:11px;color:var(--text3)">${new Date(c.createdAt).toLocaleDateString('da-DK')}</div></div>
+          <div style="text-align:right"><div style="font-size:18px;font-weight:600">${cm}/5</div><div style="font-size:10px;color:var(--text3)">${hasP?'Profil ✓':'–'}</div></div>
+        </div></div>`}).join('')}`;
+
+  if(S.aSection==='clients'){
+    let ch='<h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Klienter</h2>';
+    ch+='<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">';
+    clients.forEach(c=>ch+=`<div class="aclient-card ${S.aSel===c.id?'sel':''}" onclick="S.aSel='${c.id}';renderAdmin()" style="min-width:160px"><strong>${c.name}</strong></div>`);
+    ch+='</div>';
+    if(S.aSel){
+      const cl=clients.find(c=>c.id===S.aSel);
+      if(cl){
+        const act=getActiveMod(cl.id);const ip=getIProfile(cl.id);const scores=ITYPES.map((_,i)=>ip['t'+i]||0);
+        ch+=`<div style="background:var(--navy2);border:1px solid var(--brd);border-radius:12px;padding:24px"><h3>${cl.name}</h3>`;
+        ch+=`<div style="margin:16px 0"><label style="font-size:12px;color:var(--text3)">Aktiv modul (1-5)</label>
+          <div style="display:flex;gap:6px;margin-top:6px">${[1,2,3,4,5].map(n=>`<button class="scale-btn ${act>=n?'sel':''}" onclick="LS.s('is_active_'+'${cl.id}',${n});renderAdmin();showSaveFeedback('Aktiv: ${n}')">${n}</button>`).join('')}</div></div>`;
+        if(scores.some(s=>s>0)){
+          ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">📊 Impostor-Profil</h4>`;
+          ITYPES.forEach((t,i)=>{if(scores[i])ch+=`<div style="font-size:12px;padding:2px 0;color:${ICOLORS[i]}">${t}: <strong>${scores[i]}/5</strong></div>`});
+          ch+=`</div>`;
+        }
+        const kl=LS.g('is_komplog_'+cl.id)||[];
+        if(kl.length){
+          ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">💎 Kompetence-log (${kl.length})</h4>`;
+          kl.slice(0,5).forEach(k=>ch+=`<div style="font-size:12px;padding:3px 0">${k.contrib.slice(0,100)}${k.anchor?' ⚓':''}</div>`);
+          ch+=`</div>`;
+        }
+        MODS.forEach(m=>{
+          const d=LS.g('is_mod_'+cl.id+'_'+m.id);const a=countAns(d?.answers);
+          if(a>0){
+            ch+=`<div style="margin-top:12px;padding:16px;background:var(--navy3);border-radius:8px"><h4 style="font-size:14px;margin-bottom:8px">Modul ${m.id}: ${m.title} (${a}/${m.qs.length})</h4>`;
+            m.qs.forEach(q=>{const v=d?.answers?.[q.id];if(v!==undefined&&v!==null&&v!=='')ch+=`<div style="font-size:12px;margin-bottom:6px"><span style="color:var(--text3)">${q.l.replace(/<[^>]+>/g,'').slice(0,80)}...</span><br><span style="color:var(--text)">${typeof v==='string'?v.slice(0,200)+(v.length>200?'...':''):v}</span></div>`});
+            ch+=`</div>`;
+          }
+        });
+        ch+=`<div class="ai-box"><h3>🤖 Impostor-DNA</h3>
+          <div class="fg"><label>Anthropic API-nøgle</label><input type="password" id="ai-key" placeholder="sk-ant-..." style="width:100%"></div>
+          <button class="btn btn-gold" onclick="runAI('${cl.id}')">Kør analyse</button>
+          <div id="ai-out" class="ai-result" style="margin-top:12px"></div></div>`;
+        ch+=`<div style="margin-top:16px"><button class="btn btn-ghost" onclick="adminExport('${cl.id}','${cl.name}')">↓ Eksportér</button></div></div>`;
+      }
+    }
+    document.getElementById('asec-clients').innerHTML=ch;
+  }
+
+  document.getElementById('asec-import').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">Import</h2>
+    <div class="refl-card"><h4>📥 Importér klient-JSON</h4>
+      <input type="file" id="imp-file" accept=".json" style="margin-bottom:10px">
+      <div class="fg"><label>Dekrypterings-adgangskode</label><input type="password" id="imp-pw"></div>
+      <button class="btn btn-primary" onclick="adminImport()">Importér</button>
+      <div id="imp-msg" style="font-size:12px;margin-top:8px"></div>
+    </div>`;
+
+  document.getElementById('asec-gdpr').innerHTML=`
+    <h2 style="font-size:28px;margin-bottom:20px;color:var(--gold)">GDPR</h2>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🔒</div><div><strong>Lokal lagring</strong><div style="font-size:12px;color:var(--text3)">Alle data i localStorage. Ingen server.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🔑</div><div><strong>AES-256-GCM</strong><div style="font-size:12px;color:var(--text3)">PBKDF2 100.000 iterationer.</div></div></div>
+      <div style="display:flex;gap:14px;background:var(--navy3);border-radius:10px;padding:16px"><div style="font-size:24px">🗑</div><div><strong>Ret til sletning</strong><div style="font-size:12px;color:var(--text3)">Ét klik. Definitiv.</div></div></div>
+    </div>`;
+}
+
+async function adminImport(){
+  const file=document.getElementById('imp-file').files[0];const pw=document.getElementById('imp-pw').value;const msg=document.getElementById('imp-msg');
+  if(!file){msg.textContent='Vælg fil';msg.style.color='var(--red)';return}
+  try{
+    const txt=await file.text();const blob=JSON.parse(txt);let data;
+    if(blob.v&&blob.ct){if(!pw){msg.textContent='Adgangskode kræves';msg.style.color='var(--red)';return}data=await decryptData(blob,pw)}else{data=blob}
+    const clients=LS.g('is_clients')||[];
+    if(!clients.find(c=>c.id===data.clientId)){clients.push({id:data.clientId,name:data.clientName,createdAt:data.exportedAt,imported:true});LS.s('is_clients',clients)}
+    if(data.modules)Object.entries(data.modules).forEach(([mid,d])=>LS.s('is_mod_'+data.clientId+'_'+mid,d));
+    if(data.journals)Object.entries(data.journals).forEach(([mid,d])=>{if(typeof d==='object')LS.s('is_ijentry_'+data.clientId+'_'+mid,d)});
+    if(data.profile)LS.s('is_profile_'+data.clientId,data.profile);
+    if(data.ijournal)LS.s('is_ijournal_'+data.clientId,data.ijournal);
+    if(data.komplog)LS.s('is_komplog_'+data.clientId,data.komplog);
+    msg.textContent='✓ '+data.clientName;msg.style.color='var(--green)';renderAdmin();
+  }catch(e){msg.textContent='Fejl: '+e.message;msg.style.color='var(--red)'}
+}
+function adminExport(cid,cname){
+  const data=gatherClientExport(cid,cname);
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');
+  a.href=url;a.download=`IS_admin_${cname.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.json`;
+  a.click();URL.revokeObjectURL(url);
+}
+
+async function runAI(cid){
+  const key=document.getElementById('ai-key')?.value;
+  if(!key){showSaveFeedback('API-nøgle mangler');return}
+  const out=document.getElementById('ai-out');out.textContent='Analyserer...';out.style.opacity='.5';
+  const cl=(LS.g('is_clients')||[]).find(c=>c.id===cid);
+  const data=gatherClientExport(cid,cl?.name||'Klient');
+  let ctx='KLIENT: '+data.clientName+'\n\n';
+  const scores=ITYPES.map((_,i)=>data.profile['t'+i]||0);
+  if(scores.some(s=>s>0)){ctx+='IMPOSTOR-PROFIL:\n';ITYPES.forEach((t,i)=>ctx+=t+': '+(scores[i]||'–')+'/5\n');ctx+='\n'}
+  MODS.forEach(m=>{const md=data.modules[m.id];if(!md)return;ctx+='MODUL '+m.id+': '+m.title+'\n';m.qs.forEach(q=>{const v=md.answers?.[q.id];if(v)ctx+=q.l.replace(/<[^>]+>/g,'')+'\n→ '+v+'\n'});ctx+='\n'});
+  if(data.komplog.length){ctx+='KOMPETENCE-INVENTAR ('+data.komplog.length+'):\n';data.komplog.forEach(k=>ctx+='Bidrag: '+k.contrib+(k.anchor?' | Anker: '+k.anchor:'')+(k.feedback?' | Feedback: '+k.feedback:'')+'\n')}
+
+  try{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,
+        system:`Du er Thomas Friisnæs' AI-assistent. Analysér klientens impostor syndrom-forløb.\n\nDe 5 impostor-typer: Perfektionisten, Supermennesket, Det naturlige geni, Solisten, Eksperten.\nKognitive forvrængninger: Diskvalificering, Mind reading, Katastrofetænkning, Should-udsagn.\n\nLevér:\n1. IMPOSTOR-DNA: Primær type, dominerende forvrængning, trigger-mønstre\n2. ATTRIBUTIONSFEJL: Hvordan klienten systematisk bortforklarer succes\n3. EVIDENS-STYRKE: Kompetence-inventar vs. impostor-narrativ\n4. RESILIENS-INDEKS: Hvor effektivt modstår klienten mønstret?\n5. SKJULTE MØNSTRE: Hvad besvarelserne afslører som klienten ikke selv ser\n6. ANBEFALINGER: 3 konkrete næste skridt\n7. COACHING-SPØRGSMÅL: 3 spørgsmål til næste session — varme men konfronterende\n\nSkriv på dansk. Vær varm og præcis. Balancér omsorg med konfrontation.`,
+        messages:[{role:'user',content:ctx}]})
+    });
+    const result=await resp.json();out.style.opacity='1';
+    if(result.content?.[0]?.text)out.textContent=result.content[0].text;
+    else out.textContent='Fejl: '+JSON.stringify(result.error||result);
+  }catch(e){out.style.opacity='1';out.textContent='API-fejl: '+e.message}
+}
+</script>
+</body></html>
