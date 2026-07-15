@@ -499,10 +499,17 @@ function doClientLogin(){
   S.role='client';S.cId=c.id;S.cName=c.name;
   renderDash();show('client');
 }
-function doAdminLogin(){
-  if(document.getElementById('al-pw').value!=='karakter2024'){showErr('al-err','Forkert adgangskode');return}
+async function _pwHash(pw){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('dss_salt_v1:'+pw));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}
+async function doAdminLogin(){
+  const pw=document.getElementById('al-pw').value;
+  if(!pw){showErr('al-err','Indtast adgangskode');return}
+  const stored=LS.g('dss_admin_hash');
+  const h=await _pwHash(pw);
+  if(!stored){LS.s('dss_admin_hash',h);S.role='admin';renderAdmin();show('admin');return}
+  if(h!==stored){showErr('al-err','Forkert adgangskode');return}
   S.role='admin';renderAdmin();show('admin');
 }
+window._resetAdminPw=function(){if(confirm('Nulstil admin-adgangskode?')){LS.d('dss_admin_hash');location.reload();}};
 function showErr(id,msg){const e=document.getElementById(id);e.textContent=msg;e.classList.remove('hidden')}
 function logout(){
   S={role:null,cId:null,cName:null,modIdx:null,modTab:'learn',answers:{},aSection:'ov',prevScreen:null};

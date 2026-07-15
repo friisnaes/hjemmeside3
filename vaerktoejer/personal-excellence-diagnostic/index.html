@@ -922,7 +922,7 @@ function startTest(){
   showQ();show('test');
 }
 function retakeTest(){S.qi=0;S.answers=new Array(QS.length).fill(0);LS.d('ped_answers_'+S.cId);LS.d('ped_results_'+S.cId);LS.d('ped_lead_'+S.cId);showQ();show('test')}
-function doAdminLogin(){if(document.getElementById('al-pw').value!=='karakter2024'){showErr('al-err','Forkert adgangskode');return}S.role='admin';renderAdmin();show('admin')}
+async function _pwHash(pw){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('ped_salt_v1:'+pw));return Array.from(new Uint8Array(b)).map(x=>x.toString(16).padStart(2,'0')).join('');}async function doAdminLogin(){const pw=document.getElementById('al-pw').value;if(!pw){showErr('al-err','Indtast adgangskode');return}const stored=LS.g('ped_admin_hash');const h=await _pwHash(pw);if(!stored){LS.s('ped_admin_hash',h);S.role='admin';renderAdmin();show('admin');return}if(h!==stored){showErr('al-err','Forkert adgangskode');return}S.role='admin';renderAdmin();show('admin')}window._resetAdminPw=function(){if(confirm('Nulstil admin-adgangskode?')){LS.d('ped_admin_hash');location.reload();}};
 
 // QUESTION FLOW
 function showQ(){
