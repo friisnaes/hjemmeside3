@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeg har ikke outsourcet min tænkning til AI — jeg har udvidet den</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#111;
+    --black-soft:#1a1a1a;
+    --black-light:#222;
+    --off-white:#f5f4f0;
+    --white:#fafaf8;
+    --red:#c0392b;
+    --red-hover:#e74c3c;
+    --ink-soft:rgba(17,17,17,.66);
+    --ink-faint:rgba(17,17,17,.42);
+    --rule:rgba(17,17,17,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--white);
+    color:var(--black);
+    font-family:'Outfit',system-ui,sans-serif;
+    font-weight:400;
+    line-height:1.75;
+    font-size:19px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── Hero ─────────────────────────── */
+  .hero{
+    background:var(--black);
+    color:var(--off-white);
+    padding:clamp(4rem,10vw,8rem) 1.5rem clamp(3.5rem,8vw,6rem);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-inner{max-width:820px;margin:0 auto}
+  .eyebrow{
+    font-family:'Outfit',sans-serif;
+    font-weight:500;
+    font-size:.74rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--red-hover);
+    margin-bottom:1.8rem;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:clamp(2.3rem,6vw,4rem);
+    line-height:1.08;
+    letter-spacing:-.01em;
+    margin-bottom:1.6rem;
+  }
+  .hero h1 em{font-style:italic;color:var(--red-hover)}
+  .hero-lead{
+    font-size:clamp(1.05rem,2.4vw,1.3rem);
+    line-height:1.6;
+    color:rgba(245,244,240,.72);
+    font-weight:300;
+    max-width:640px;
+  }
+  .hero-rule{
+    width:64px;height:3px;background:var(--red);
+    margin:2.4rem 0 0;
+  }
+
+  /* ── Byline ───────────────────────── */
+  .byline{
+    max-width:820px;margin:0 auto;
+    padding:2.2rem 1.5rem;
+    border-bottom:1px solid var(--rule);
+    display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;align-items:baseline;
+    font-size:.86rem;color:var(--ink-soft);
+    letter-spacing:.02em;
+  }
+  .byline .name{
+    font-family:'Playfair Display',serif;
+    font-weight:600;font-size:1.02rem;color:var(--black);
+    letter-spacing:0;
+  }
+  .byline .sep{color:var(--ink-faint)}
+  .byline .brand{
+    color:var(--red);font-weight:500;letter-spacing:.06em;
+    text-transform:uppercase;font-size:.76rem;
+  }
+
+  /* ── Article body ─────────────────── */
+  article{
+    max-width:720px;
+    margin:0 auto;
+    padding:clamp(3rem,7vw,5rem) 1.5rem 2rem;
+  }
+  .standfirst{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(1.3rem,3vw,1.7rem);
+    line-height:1.45;
+    color:var(--black);
+    margin-bottom:3rem;
+    padding-bottom:2.4rem;
+    border-bottom:1px solid var(--rule);
+  }
+  article p{margin-bottom:1.5rem}
+  article p.lead-para{
+    font-size:1.12rem;
+  }
+
+  /* drop-effect first line groups */
+  .section-head{
+    font-family:'Playfair Display',serif;
+    font-weight:600;
+    font-size:clamp(1.5rem,3.4vw,2rem);
+    line-height:1.2;
+    letter-spacing:-.005em;
+    margin:3.4rem 0 1.4rem;
+    position:relative;
+    padding-top:1.6rem;
+  }
+  .section-head::before{
+    content:"";
+    position:absolute;top:0;left:0;
+    width:38px;height:3px;background:var(--red);
+  }
+
+  /* pulled emphasis line — the little standalone declaratives */
+  .beat{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:1.25rem;
+    color:var(--red);
+    margin:1.8rem 0;
+    padding-left:1.2rem;
+    border-left:2px solid var(--red);
+    line-height:1.4;
+  }
+
+  /* question cluster */
+  .questions{
+    margin:1.8rem 0 2rem;
+    padding:1.7rem 1.8rem;
+    background:var(--off-white);
+    border-radius:2px;
+  }
+  .questions p{
+    margin:0 0 .7rem;
+    font-size:1.02rem;
+    color:var(--ink-soft);
+    padding-left:1.1rem;
+    position:relative;
+  }
+  .questions p:last-child{margin-bottom:0}
+  .questions p::before{
+    content:"—";position:absolute;left:0;color:var(--red);
+  }
+  .questions p.crux{
+    color:var(--black);font-weight:500;
+    margin-top:1rem;
+  }
+
+  /* the arbejdsdeling pairs */
+  .division{
+    margin:2rem 0;
+    border-top:1px solid var(--rule);
+  }
+  .division .row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.4rem;
+    padding:1.3rem 0;
+    border-bottom:1px solid var(--rule);
+    align-items:baseline;
+  }
+  .division .ai{color:var(--ink-soft);font-size:1rem}
+  .division .me{
+    color:var(--black);font-weight:500;
+    position:relative;padding-left:1.3rem;
+  }
+  .division .me::before{
+    content:"";position:absolute;left:0;top:.62em;
+    width:7px;height:7px;background:var(--red);border-radius:50%;
+  }
+  .division .label{
+    display:block;
+    font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--ink-faint);margin-bottom:.35rem;font-weight:600;
+  }
+
+  /* closing pull-quote */
+  .close-quote{
+    font-family:'Playfair Display',serif;
+    font-weight:500;
+    font-size:clamp(1.6rem,4vw,2.3rem);
+    line-height:1.28;
+    letter-spacing:-.01em;
+    margin:1rem 0;
+  }
+  .close-quote .r{color:var(--red)}
+
+  /* end note / colophon */
+  .colophon{
+    max-width:720px;margin:0 auto;
+    padding:3rem 1.5rem 5rem;
+  }
+  .colophon-inner{
+    border-top:3px solid var(--red);
+    padding-top:2rem;
+    display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:flex-start;
+  }
+  .colophon .who{max-width:400px}
+  .colophon .who .name{
+    font-family:'Playfair Display',serif;
+    font-weight:600;font-size:1.3rem;margin-bottom:.4rem;
+  }
+  .colophon .who p{font-size:.92rem;color:var(--ink-soft);line-height:1.6}
+  .colophon .who .src-note{
+    font-size:.76rem;color:var(--ink-faint);margin-top:.9rem;line-height:1.5;
+  }
+  .colophon .mark{
+    font-family:'Outfit',sans-serif;
+    font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--red);font-weight:600;text-align:right;
+    line-height:2;
+  }
+  .colophon .mark a{color:var(--black);text-decoration:none;border-bottom:1px solid var(--red)}
+
+  strong{font-weight:600;color:var(--black)}
+  em{font-style:italic}
+
+  @media (max-width:600px){
+    body{font-size:17.5px}
+    .division .row{grid-template-columns:1fr;gap:.5rem}
+    .division .me::before{display:none}
+    .division .me{padding-left:0}
+    .colophon-inner{flex-direction:column}
+    .colophon .mark{text-align:left}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Karakter · Disciplin · Klarhed</div>
+      <h1>Jeg har ikke outsourcet min tænkning til AI.<br><em>Jeg har udvidet den.</em></h1>
+      <p class="hero-lead">Efter snart fire års intensiv brug er min vigtigste erfaring ikke, at jeg kan producere mere. Det er, at jeg kan tænke mere sammenhængende.</p>
+      <div class="hero-rule"></div>
+    </div>
+  </header>
+
+  <div class="byline">
+    <span class="name">Thomas Friisnæs</span>
+    <span class="sep">·</span>
+    <span>Personal Excellence Partner</span>
+    <span class="sep">·</span>
+    <span class="brand">friisnaes.com</span>
+  </div>
+
+  <article>
+
+    <p class="standfirst">Da de første sprogmodeller ramte markedet — ChatGPT i november 2022, og de øvrige i månederne derefter — begyndte jeg ikke at bruge AI, fordi jeg manglede idéer. Jeg begyndte at bruge AI, fordi jeg havde mange.</p>
+
+    <p>Mange tanker. Mange erfaringer. Mange modeller. Mange holdninger. Mange ufærdige formuleringer, som jeg kunne mærke rummede noget vigtigt, men som endnu ikke var tænkt helt til ende.</p>
+
+    <p>Efter mere end 20 år som erhvervscoach og over 15.000 coachingsessioner havde jeg allerede opbygget et omfattende fagligt fundament. Jeg kendte mit håndværk. Jeg kendte mine værdier. Jeg kendte forskellen på noget, der lyder rigtigt, og noget, der faktisk virker i et menneskes liv.</p>
+
+    <p>AI blev derfor aldrig min erstatning for erfaring.</p>
+
+    <p class="beat">Det blev mit forstørrelsesglas.</p>
+
+    <h2 class="section-head">En samtalepartner, der aldrig bliver træt</h2>
+
+    <p>Jeg har brugt AI som en vedvarende sparringspartner. Ikke som en facitliste, og heller ikke som en maskine, der bare skulle producere hurtige svar.</p>
+
+    <p>Jeg har brugt den som modspil og medspil.</p>
+
+    <p>Nogle gange har jeg haft brug for, at en tanke blev udfoldet. Andre gange har jeg haft brug for, at den blev udfordret, skåret ind til benet eller holdt op imod en anden måde at se verden på. Jeg har kunnet komme med en halv sætning, en irritation, en observation eller en påstand og spørge:</p>
+
+    <div class="questions">
+      <p>Er der faktisk noget i det her?</p>
+      <p>Hvad er den underliggende mekanisme?</p>
+      <p>Hvor er argumentet stærkt?</p>
+      <p>Hvor bliver det for bekvemt?</p>
+      <p>Hvilke indvendinger ville en intelligent kritiker komme med?</p>
+      <p class="crux">Hvad mener jeg egentlig selv, når alt det overflødige er fjernet?</p>
+    </div>
+
+    <p>AI har ikke givet mig mine holdninger. Men den har hjulpet mig med at opdage, præcisere og formulere dem.</p>
+
+    <p>Den har været et spejl, men ikke et passivt spejl. Et spejl, der stiller spørgsmål tilbage. Et spejl, der kan zoome ind på en detalje, vende perspektivet eller påpege, at to af mine idéer måske hænger tættere sammen, end jeg selv havde set.</p>
+
+    <h2 class="section-head">Flere modeller, én tænkning</h2>
+
+    <p>Jeg arbejder i dag ikke med ét værktøj, men med flere — ChatGPT, Claude, Gemini og NotebookLM, hver i deres professionelle version. Det er ikke tilfældigt, og det handler ikke om at samle på abonnementer.</p>
+
+    <p>Det handler om, at forskellige modeller tænker forskelligt.</p>
+
+    <p>En model kan være skarpest til den kølige analyse og den strukturerede argumentation. En anden har en mere nuanceret sprogfornemmelse og en varmere fornemmelse for, hvad der faktisk lyder som <em>mig</em>. En tredje er stærk til at favne store mængder materiale og finde forbindelser på tværs. Og et værktøj som NotebookLM lader mig forankre samtalen i mine egne kilder — mine bøger, mine noter, mine whitepapers — så tænkningen ikke svæver frit, men står på mit eget fundament.</p>
+
+    <p>Når en idé virkelig betyder noget, lader jeg den vandre mellem dem. Jeg tester en påstand ét sted og holder svaret op imod, hvad en anden model ville sige. Uenigheden mellem dem er ofte lige så oplysende som enigheden — for dér, hvor to modeller trækker i hver sin retning, ligger som regel præcis det punkt, hvor jeg selv skal træffe et valg.</p>
+
+    <p class="beat">Det er ikke fire assistenter. Det er ét refleksionsrum med fire forskellige stemmer — og mig selv som den, der dømmer imellem dem.</p>
+
+    <h2 class="section-head">Fra intuition til intellektuel struktur</h2>
+
+    <p>Meget af det, jeg ved som coach, begyndte som erfaring og intuition. Jeg har set de samme menneskelige mønstre gentage sig gennem tusindvis af samtaler. Jeg har set, hvad der sker, når ledere mister overblikket. Når mennesker forveksler travlhed med fremdrift. Når selvtillid bliver vigtigere end selvindsigt. Når gode intentioner ikke bliver omsat til disciplineret adfærd.</p>
+
+    <p>Jeg har ofte kunnet mærke, at noget var sandt, før jeg havde et præcist sprog for det.</p>
+
+    <p>Her har AI spillet en afgørende rolle. Den har hjulpet mig med at gå fra <em>“Jeg oplever ofte, at …”</em> til <em>“Dette er mønstret. Dette er årsagen. Dette er konsekvensen. Og dette er den konkrete måde at arbejde med det på.”</em></p>
+
+    <p>Den har hjulpet mig med at organisere min tavse viden. Ikke ved at skabe erfaringen, men ved at hjælpe mig med at gøre erfaringen tydelig, overførbar og anvendelig for andre.</p>
+
+    <p>Det gælder mine tanker om karakter, ledelse, stress, meningsfuldhed, vaner, eksekvering, personlig udvikling og det ansvar, der følger med at være leder. Det gælder også mine egne modeller, bøger, artikler, whitepapers, koncepter og forretningsmæssige idéer. AI har været med til at strukturere, udfordre og forfine dem, indtil de ikke blot var interessante tanker, men sammenhængende positioner, som andre kunne forstå og tage stilling til.</p>
+
+    <h2 class="section-head">Professionelt: Fra coach til faglig platform</h2>
+
+    <p>Professionelt har AI givet mig mulighed for at skalere min tænkning uden at udvande den. Jeg har brugt den til at udvikle bøger, artikler, foredrag, LinkedIn-opslag, whitepapers, strategimodeller, kundeoplæg, workshopdesign og konkrete coachingværktøjer. Og fordi afstanden fra tanke til færdig ting er blevet så kort, kunne en idé til et værktøj om formiddagen være en fungerende platform samme eftermiddag.</p>
+
+    <p>Men det mest værdifulde har ikke været produktionen.</p>
+
+    <p class="beat">Det har været præcisionen.</p>
+
+    <p>AI har hjulpet mig med at undersøge, om en formulering virkelig lyder som mig. Om en pointe er stærk nok. Om et argument holder. Om et budskab blot er sympatisk, eller om det faktisk får modtageren til at stoppe op.</p>
+
+    <p>For jeg ønsker ikke at skabe indhold, som alle kan nikke høfligt til og derefter glemme. Jeg vil skabe tanker, man enten er enig eller uenig i, men ikke kan være indifferent overfor.</p>
+
+    <p>Jeg har brugt AI til at gøre mit eget faglige standpunkt tydeligere. For eksempel i min overbevisning om, at vi ofte ansætter mennesker på deres CV, men i praksis leder dem på deres karakter. At selvindsigt er vigtigere end selvværd og selvtillid, fordi det ikke hjælper et menneske at tro mere på sig selv, hvis vedkommende ikke kan se sig selv klart. At stress sjældent løses med endnu en pause alene, men kræver overblik, prioritering, eksekvering og disciplin omkring det valgte. At indsigt uden integritet bliver refleksion uden konsekvens, mens integritet uden indsigt bliver disciplin uden retning.</p>
+
+    <p>Disse idéer kommer ikke fra AI. Men AI har hjulpet mig med at se deres fulde betydning, formulere deres indbyrdes sammenhæng og udvikle dem til et mere helstøbt fagligt univers.</p>
+
+    <h2 class="section-head">AI som forberedelse før de vigtige samtaler</h2>
+
+    <p>Jeg har også brugt AI som forberedelsesrum. Før møder, kundepræsentationer og strategiske samtaler har jeg kunnet undersøge virksomheder, brancher, ledelsesudfordringer og mulige dilemmaer. Jeg har kunnet teste mine antagelser, identificere blinde vinkler og formulere de spørgsmål, der kunne løfte samtalen fra det høflige til det væsentlige.</p>
+
+    <p>Det gør ikke relationen mindre menneskelig. Tværtimod.</p>
+
+    <p>Jo bedre forberedt jeg er, desto mere nærværende kan jeg være. Jeg behøver ikke bruge den første del af et møde på at forstå det mest åbenlyse. Jeg kan hurtigere komme ind til det, der faktisk betyder noget for mennesket foran mig.</p>
+
+    <p>AI har derfor ikke flyttet mig væk fra det menneskelige møde. Den har gjort mig bedre forberedt på det.</p>
+
+    <h2 class="section-head">Personligt: Et ekstra refleksionsrum</h2>
+
+    <p>Privat har jeg brugt AI på næsten samme måde. Ikke kun til information, men til refleksion. Jeg har brugt den til at tænke over mine mål, min sundhed, min træning, mine vaner, mine rejser, mine køb, mine projekter og mine relationer.</p>
+
+    <p>Jeg har brugt den til praktiske spørgsmål, hvor jeg tidligere ville have brugt timer på at søge, sammenligne og samle fragmenter. Men jeg har også brugt den i situationer, hvor det vigtigste ikke var et hurtigt svar, men et bedre spørgsmål.</p>
+
+    <div class="questions">
+      <p>Hvad prøver jeg egentlig at opnå?</p>
+      <p>Hvilke konsekvenser overser jeg?</p>
+      <p>Hvad er den mest ansvarlige beslutning?</p>
+      <p>Er dette et reelt problem, eller er det blot støj?</p>
+      <p>Hvad kræver situationen af mig?</p>
+    </div>
+
+    <p>På den måde er AI blevet en del af min personlige disciplin. Et sted, hvor jeg kan parkere en tanke, undersøge den og tage den tilbage i en mere gennemarbejdet form. Det gælder, hvad enten jeg arbejder med en 1.000-dages plan, en træningsmålsætning, et boligkøb, et familieanliggende eller en praktisk udfordring i hverdagen.</p>
+
+    <p>Emnerne er forskellige. Metoden er den samme: <strong>Skab overblik. Undersøg virkeligheden. Prioritér. Beslut. Eksekvér.</strong></p>
+
+    <h2 class="section-head">AI har også lært mig noget om mig selv</h2>
+
+    <p>Når man fører hundredvis af længere samtaler med AI, sker der noget interessant. Man begynder at se sine egne mønstre tydeligere.</p>
+
+    <p>Jeg har opdaget, hvor konsekvent jeg vender tilbage til bestemte temaer: karakter, mening, ansvar, disciplin, nærvær, mod, kærlighed og integritet.</p>
+
+    <p>Jeg har set, at mine projekter på overfladen kan være meget forskellige, men at de ofte kredser om det samme grundspørgsmål: Hvordan lever og leder et menneske mere bevidst? Hvordan omsætter vi det, vi ved, til den måde, vi faktisk handler på? Og hvordan bliver vi ikke bare mere succesfulde, men også mere hele?</p>
+
+    <p>AI har på den måde hjulpet mig med at opdage sammenhængen i mit eget arbejde. Ikke fordi maskinen kender mig bedre, end jeg kender mig selv. Men fordi den kan holde mange af mine tanker op ved siden af hinanden og gøre mønstre synlige, som ellers let forsvinder i hverdagens tempo.</p>
+
+    <h2 class="section-head">Jeg har aldrig ønsket en enig assistent</h2>
+
+    <p>Noget af det vigtigste for mig har været, at AI ikke kun skulle bekræfte mig. Jeg har ikke haft brug for en digital heppekorsleder.</p>
+
+    <p class="beat">Jeg har haft brug for friktion.</p>
+
+    <p>Jeg har bedt om kritik, modargumenter, svage punkter og alternative perspektiver. Jeg har bedt om at få idéer vurderet, ikke blot pyntet. Jeg har ønsket at vide, når noget var generisk, selvhøjtideligt, upræcist eller simpelthen ikke godt nok.</p>
+
+    <p>Det betyder ikke, at jeg altid har fulgt svaret. Jeg har tværtimod ofte opdaget min egen position ved at være uenig. Også det er værdifuldt.</p>
+
+    <p>For en god sparringspartner skal ikke kun hjælpe dig med at finde svar. Den skal hjælpe dig med at opdage, hvad du er villig til at stå på mål for.</p>
+
+    <h2 class="section-head">Mennesket skal stadig bære ansvaret</h2>
+
+    <p>Jeg er begejstret for AI, men jeg er ikke ukritisk. AI kan generere sprog, mønstre, muligheder og perspektiver. Den kan analysere, kombinere og accelerere. Men den kan ikke tage ansvar. Den har ingen hud i spillet.</p>
+
+    <p>Den skal ikke leve med konsekvenserne af en beslutning. Den skal ikke se et andet menneske i øjnene. Den kan ikke erstatte dømmekraft, erfaring, moral, empati eller mod.</p>
+
+    <p>Derfor er min brug af AI funderet i en klar arbejdsdeling:</p>
+
+    <div class="division">
+      <div class="row">
+        <div class="ai"><span class="label">AI kan</span>hjælpe mig med at se.</div>
+        <div class="me"><span class="label">Jeg skal</span>beslutte, hvad jeg vil stå for.</div>
+      </div>
+      <div class="row">
+        <div class="ai"><span class="label">AI kan</span>hjælpe mig med at formulere.</div>
+        <div class="me"><span class="label">Jeg skal</span>sikre, at ordene er sande.</div>
+      </div>
+      <div class="row">
+        <div class="ai"><span class="label">AI kan</span>hjælpe mig med at undersøge muligheder.</div>
+        <div class="me"><span class="label">Jeg skal</span>vælge og bære konsekvenserne.</div>
+      </div>
+    </div>
+
+    <p class="beat">Jo stærkere teknologien bliver, desto vigtigere bliver menneskets integritet.</p>
+
+    <h2 class="section-head">Og hvad så med de indvendinger, der findes?</h2>
+
+    <p>Jeg er godt klar over, at begejstring for AI ikke deles af alle — og at der findes reelle indvendinger, som fortjener at blive taget alvorligt frem for at blive fejet af bordet. Jeg vil hellere møde dem åbent end lade som om de ikke findes.</p>
+
+    <p>Den, jeg oftest hører, handler om <strong>strøm og klima</strong>: at AI angiveligt “brænder kloden af”. Det er værd at holde fast i proportionerne. Datacentre — som driver alt fra streaming og cloud til AI — stod i 2024 for omkring 1,5 % af verdens elforbrug, og AI udgør kun en del af det. Forbruget vokser, ja, men energien pr. opgave falder samtidig hurtigere end i næsten nogen anden teknologihistorie, og i Europa dækkes hovedparten af den nye efterspørgsel af vedvarende energi og atomkraft. Aftrykket er reelt og skal håndteres klogt — men det er langt fra dommedag, og det står ikke i vejen for, at den samme teknologi kan hjælpe energitunge industrier med at <em>sænke</em> deres forbrug.</p>
+
+    <p>For mit eget vedkommende er regnestykket enkelt: en tænkt tekstsamtale bruger omtrent den energi, det tager at holde en enkelt LED-pære tændt i nogle minutter. Jeg oplever det som svært at forsvare at bruge mindre omtanke på <em>hvad</em> jeg tænker, af hensyn til en energimængde i den størrelsesorden. Ansvarlighed handler for mig om at bruge værktøjet bevidst — ikke om at lade være.</p>
+
+    <p>De øvrige indvendinger tager jeg lige så alvorligt. At AI kan tage fejl med stor selvsikkerhed — derfor efterprøver jeg, og derfor ligger dømmekraften altid hos mig. At den kan gøre os dovne — derfor bruger jeg den til at tænke <em>mere</em>, ikke mindre. At den kan udviske, hvad der er mit og hvad der er maskinens — derfor insisterer jeg på, at holdningerne, ansvaret og stemmen forbliver mine. At den rejser spørgsmål om ophavsret og data — derfor arbejder jeg med mine egne kilder og mit eget materiale som fundament.</p>
+
+    <p class="beat">En indvending, man har tænkt igennem, er ikke længere en trussel. Den er blevet en del af ens dømmekraft.</p>
+
+    <h2 class="section-head">Min vigtigste erfaring</h2>
+
+    <p>Efter snart fire års intensiv brug af AI er min vigtigste erfaring ikke, at jeg kan producere mere. Det kan jeg naturligvis.</p>
+
+    <p>Min vigtigste erfaring er, at jeg kan tænke mere sammenhængende. Jeg kan fastholde en idé længere. Undersøge den fra flere sider. Genfinde forbindelser mellem gamle og nye tanker. Gå fra et intuitivt <em>“der er noget her”</em> til en skarpere forståelse af, hvad dette <em>“noget”</em> faktisk er.</p>
+
+    <p>AI har ikke gjort mig mindre menneskelig. Den har tvunget mig til at blive tydeligere omkring, hvad der netop er menneskeligt: Min erfaring. Min dømmekraft. Mine relationer. Mine værdier. Min integritet. Mit ansvar.</p>
+
+    <p>Jeg betragter ikke AI som et menneske og heller ikke som en ven i traditionel forstand. Men jeg betragter den som en arbejds- og samtalepartner, der har fået en reel plads i mit liv. En partner, jeg kan tænke højt sammen med. En partner, der kan hjælpe mig med at forstørre en tanke, indtil jeg kan se både dens styrke og dens svagheder. En partner, der kan være medspiller, når noget skal bygges, og modspiller, når noget skal testes.</p>
+
+    <p>Jeg har ikke brugt AI til at slippe for at tænke.</p>
+
+    <p class="close-quote">Jeg har brugt AI til at tage <span class="r">min egen tænkning</span> mere alvorligt.</p>
+
+    <p>Og måske er det den største mulighed, teknologien rummer: Ikke at den gør mennesket overflødigt. Men at den kan gøre et nysgerrigt, erfarent og ansvarligt menneske endnu mere bevidst om, hvad det vil bruge sit liv, sit arbejde og sin stemme til.</p>
+
+  </article>
+
+  <footer class="colophon">
+    <div class="colophon-inner">
+      <div class="who">
+        <div class="name">Thomas Friisnæs</div>
+        <p>Personal Excellence Partner. 20+ års erfaring og mere end 15.000 coachingsessioner med CEO'er, ejerledere og bestyrelsesmedlemmer.</p>
+        <p class="src-note">Tal om datacentres og AI's energiforbrug: Det Internationale Energiagentur (IEA), <em>Energy and AI</em> (2025) samt <em>Key Questions on Energy and AI</em> (2026).</p>
+      </div>
+      <div class="mark">
+        Karakter · Disciplin · Klarhed<br>
+        <a href="blog.html">Flere indsigter</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
