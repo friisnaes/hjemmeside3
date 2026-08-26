@@ -281,10 +281,36 @@
   .sources a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule)}
   .sources a:hover{color:var(--red);border-color:var(--red)}
 
+
+  /* signup */
+  .signup{
+    max-width:720px;margin:0 auto;
+    padding:0 1.5rem;
+  }
+  .signup-inner{
+    background:var(--black);color:var(--off-white);
+    padding:2.4rem 2.2rem;
+    display:flex;flex-wrap:wrap;gap:1.4rem 2rem;align-items:center;justify-content:space-between;
+  }
+  .signup h3{
+    font-family:'Playfair Display',serif;font-weight:600;
+    font-size:1.35rem;line-height:1.25;margin-bottom:.4rem;
+  }
+  .signup h3 em{font-style:italic;color:var(--red-hover)}
+  .signup p{font-size:.95rem;color:rgba(245,244,240,.7);margin:0;max-width:440px;line-height:1.55}
+  .signup a{
+    display:inline-block;background:var(--red);color:#fff;
+    font-family:'Outfit',sans-serif;font-weight:600;font-size:.78rem;
+    letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
+    padding:.95rem 1.6rem;white-space:nowrap;transition:background .25s;
+  }
+  .signup a:hover{background:var(--red-hover)}
+  @media (max-width:600px){.signup-inner{padding:2rem 1.5rem}.signup a{width:100%;text-align:center}}
+
   /* end note / colophon */
   .colophon{
     max-width:720px;margin:0 auto;
-    padding:3rem 1.5rem 5rem;
+    padding:2.5rem 1.5rem 5rem;
   }
   .colophon-inner{
     border-top:3px solid var(--red);
@@ -495,6 +521,16 @@
     </div>
 
   </article>
+
+  <section class="signup" aria-label="Tilmeld briefen">
+    <div class="signup-inner">
+      <div>
+        <h3>Få briefen <em>hver mandag.</em></h3>
+        <p>Seks signaler med konsekvens for topledere – i din indbakke. Otte minutter. Afmeld med ét klik.</p>
+      </div>
+      <a href="https://brief.subscribepage.io" target="_blank" rel="noopener">Tilmeld dig</a>
+    </div>
+  </section>
 
   <footer class="colophon">
     <div class="colophon-inner">
