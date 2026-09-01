@@ -359,6 +359,48 @@
   }
 
 
+
+/* site nav (ported) */
+
+
+  
+
+  /* ============================================================
+     ECONO / PRINTVENLIG MODE — flatten dark boxes to save ink
+     Activated by body.print-econo just before print
+     ============================================================ */
+  
+
+
+
+.pnav-bar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(17,17,17,.97);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:14px 0;}
+.pnav-in{max-width:1100px;margin:0 auto;padding:0 clamp(24px,6vw,64px);display:flex;align-items:center;justify-content:space-between;}
+.pnav-logo{font-family:'Playfair Display',Georgia,serif;font-size:1.22rem;font-weight:600;color:#fafaf8;text-decoration:none;}
+.pnav-logo em{color:#c0392b;font-style:normal;}
+.pnav{display:flex;align-items:center;gap:14px;list-style:none;margin:0;padding:0;}
+.pnav a{font-family:'Outfit',sans-serif;font-size:.73rem;font-weight:500;color:rgba(255,255,255,.6);letter-spacing:.04em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:color .3s;}
+.pnav a:hover{color:#fafaf8;}
+.pnav-cta{color:#fff !important;background:#c0392b;padding:9px 15px;font-weight:600;}
+.pnav-cta:hover{background:#e74c3c;}
+.pnd{position:relative;}
+.pnd-t{display:inline-flex;align-items:center;gap:4px;}
+.pnd-c{font-size:.6rem;opacity:.6;transition:transform .3s;display:inline-block;}
+.pnd:hover .pnd-c{transform:rotate(180deg);}
+.pnd-m{list-style:none;position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:190px;background:rgba(17,17,17,.98);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);padding:8px 0;margin:0;opacity:0;visibility:hidden;transition:all .3s;z-index:200;}
+.pnd:hover .pnd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(4px);}
+.pnd-m li a{display:block;padding:10px 20px;font-size:.72rem !important;}
+.pnd-m li a:hover{background:rgba(255,255,255,.04);}
+.pnav-burger{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;}
+@media(max-width:820px){
+  .pnav{display:none;position:absolute;top:52px;left:0;right:0;background:rgba(17,17,17,.98);flex-direction:column;gap:0;padding:8px 0;align-items:flex-start;}
+  .pnav.open{display:flex;}.pnav li{width:100%;}
+  .pnav a{padding:12px 32px;display:block;width:100%;}
+  .pnav-burger{display:block;}
+  .pnd-m{position:static;transform:none;opacity:1;visibility:visible;background:none;border:none;padding:0 0 0 16px;min-width:0;}
+  .pnd:hover .pnd-m{transform:none;}.pnd-c{display:none;}
+}
+body { padding: 56px 0 80px; }
+@media print{.pnav-bar{display:none}}
 </style>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:url" content="https://www.friisnaes.com/fra-manager-til-leder.html">
@@ -505,6 +547,30 @@
 </script>
 </head>
 <body>
+<nav class="pnav-bar">
+  <div class="pnav-in">
+    <a href="/" class="pnav-logo">Fr<em>ii</em>snæs</a>
+    <button class="pnav-burger" onclick="document.getElementById('pnavL').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="pnav" id="pnavL">
+      <li><a href="/#situationer">Situationer</a></li>
+      <li><a href="/#format">Format</a></li>
+      <li><a href="/#om">Om</a></li>
+      <li><a href="/testimonials.html">Klienter</a></li>
+      <li class="pnd">
+        <a href="/blog.html" class="pnd-t" style="color:#fff">Indsigter <span class="pnd-c">&#9662;</span></a>
+        <ul class="pnd-m">
+          <li><a href="/blog.html">Blogindlæg</a></li>
+          <li><a href="/library.html">Executive Library</a></li>
+          <li><a href="/library.html#brief">C-Level Brief</a></li>
+          <li><a href="/vaerktoejer.html">Værktøjer</a></li>
+        <li><a href="soeg.html">Søg</a></li>
+        </ul>
+      </li>
+      <li><a href="/boeger.html">Bøger</a></li>
+      <li><a href="/#kontakt" class="pnav-cta">Book en 20-minutters samtale</a></li>
+    </ul>
+  </div>
+</nav>
 
 <div class="progress-bar" id="progressBar"></div>
 
