@@ -92,7 +92,118 @@
             .article-card { padding: 32px 24px; }
             footer .fi3 { flex-direction: column; gap: 10px; text-align: center; }
         }
+    
+        /* Dropdown: Indsigter (site standard) */
+        .nd { position: relative; }
+        .nd-t .nd-c { font-size: .6rem; margin-left: 3px; opacity: .6; transition: transform .3s var(--ease, ease); display: inline-block; }
+        .nd:hover .nd-t .nd-c, .nd:focus-within .nd-t .nd-c { transform: rotate(180deg); }
+        .nd-m { list-style: none; margin: 0; padding: 8px 0; position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 190px; background: rgba(17,17,17,.98); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.08); opacity: 0; visibility: hidden; transition: all .3s var(--ease, ease); z-index: 50; }
+        .nd:hover .nd-m, .nd:focus-within .nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); }
+        .nd-m li a { display: block; padding: 10px 20px; font-size: .72rem !important; color: rgba(255,255,255,.6); white-space: nowrap; letter-spacing: .04em; text-transform: uppercase; }
+        .nd-m li a:hover { color: var(--white, #fafaf8); background: rgba(255,255,255,.04); }
+        @media (max-width: 600px) {
+            .nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; backdrop-filter: none; padding: 8px 0 0; min-width: 0; text-align: center; }
+            .nd:hover .nd-m, .nd:focus-within .nd-m { transform: none; }
+            .nd-m li a { padding: 8px 0; font-size: .85rem !important; color: rgba(255,255,255,.45); }
+            .nd-t .nd-c { display: none; }
+        }
+    
+        /* nl-scrollfix: mobilmenu må scrolle når den er højere end skærmen */
+        @media (max-width: 600px) {
+            .nl.open { justify-content: flex-start; padding: 88px 24px 48px; overflow-y: auto; gap: 18px; height: 100vh; height: 100dvh; width: 100vw; }
+        }
     </style>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Indsigter">
+<meta name="twitter:description" content="Artikler, videoer og refleksioner om lederskab, karakter og eksekvering fra Thomas Friisnæs – Executive Coach for C-level ledere.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "CollectionPage",
+ "name": "Indsigter",
+ "description": "Artikler, videoer og refleksioner om lederskab, karakter og eksekvering fra Thomas Friisnæs – Executive Coach for C-level ledere.",
+ "url": "https://www.friisnaes.com/blog.html",
+ "inLanguage": "da",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "hasPart": [
+  {
+   "@type": "Article",
+   "name": "Kom. Til. Tiden. — eller bliv væk",
+   "url": "https://www.friisnaes.com/punktlighed.html"
+  },
+  {
+   "@type": "Article",
+   "name": "Vil du se mine 17 cm?",
+   "url": "https://www.friisnaes.com/17cm.html"
+  },
+  {
+   "@type": "Article",
+   "name": "Alkoholen ude af mit liv – mental klarhed er et valg",
+   "url": "https://www.friisnaes.com/alkohol.html"
+  },
+  {
+   "@type": "Article",
+   "name": "\"Lortekaldet\" – tag det sværeste først",
+   "url": "https://www.friisnaes.com/lortekaldet.html"
+  },
+  {
+   "@type": "Article",
+   "name": "41 års partnerskab – læringer til lederskab",
+   "url": "https://www.friisnaes.com/partnerskab.html"
+  },
+  {
+   "@type": "Article",
+   "name": "Arbejdslivets 3. akt – at spille fri foran mål",
+   "url": "https://www.friisnaes.com/tredje-akt.html"
+  },
+  {
+   "@type": "Article",
+   "name": "Jeg har ikke outsourcet min tænkning til AI — jeg har udvidet den",
+   "url": "https://www.friisnaes.com/ai-udvidet-taenkning.html"
+  },
+  {
+   "@type": "Article",
+   "name": "58 år og ny-diagnosticeret med ADHD – det forklarer en hel del",
+   "url": "https://www.friisnaes.com/adhd-1.html"
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Forside",
+   "item": "https://www.friisnaes.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Indsigter",
+   "item": "https://www.friisnaes.com/blog.html"
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <nav role="navigation" aria-label="Hovednavigation">
@@ -103,7 +214,15 @@
             <li><a href="/#format">Format</a></li>
             <li><a href="/#om">Om</a></li>
             <li><a href="testimonials.html">Klienter</a></li>
-            <li><a href="blog.html" style="color:#fff">Indsigter</a></li>
+            <li class="nd">
+                <a href="blog.html" class="nd-t" aria-haspopup="true" aria-expanded="false">Indsigter <span class="nd-c" aria-hidden="true">&#9662;</span></a>
+                <ul class="nd-m">
+                    <li><a href="blog.html">Blogindlæg</a></li>
+                    <li><a href="library.html">Executive Library</a></li>
+                    <li><a href="library.html#brief">C-Level Brief</a></li>
+                    <li><a href="vaerktoejer.html">Værktøjer</a></li>
+                </ul>
+            </li>
             <li><a href="/#kontakt" class="cta-n">Book en 20-minutters samtale</a></li>
         </ul>
         <button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -133,7 +252,7 @@
                     <a href="c-level-serien.html" class="card-link">Læs serien her</a>
                 </div>
                 <div style="overflow:hidden;min-height:320px;">
-                    <img src="c-level-thomas.jpg" alt="Thomas Friisnæs – C-Level Serien" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;" loading="lazy">
+                    <img decoding="async" width="900" height="900" src="c-level-thomas.jpg" alt="Thomas Friisnæs – C-Level Serien" style="width:100%;height:100%;object-fit:cover;object-position:center 25%;" loading="lazy">
                 </div>
             </article>
 
@@ -149,7 +268,7 @@
                     <a href="adhd-1.html" class="card-link">Start serien her</a>
                 </div>
                 <div style="overflow:hidden;min-height:320px;">
-                    <img src="adhd.jpg" alt="Thomas Friisnæs – ADHD som Superpower" style="width:100%;height:100%;object-fit:cover;object-position:top;" loading="lazy">
+                    <img decoding="async" width="1200" height="633" src="adhd.jpg" alt="Thomas Friisnæs – ADHD som Superpower" style="width:100%;height:100%;object-fit:cover;object-position:top;" loading="lazy">
                 </div>
             </article>
 
