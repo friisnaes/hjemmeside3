@@ -96,7 +96,82 @@
             .val .vg{grid-template-columns:1fr}.val .vi{border-right:none;border-bottom:1px solid var(--cream-dark)}.val .vi:last-child{border-bottom:none}
             .foo .fi3{flex-direction:column;gap:12px;text-align:center}
         }
+    
+        /* Dropdown: Indsigter (site standard) */
+        .nd { position: relative; }
+        .nd-t .nd-c { font-size: .6rem; margin-left: 3px; opacity: .6; transition: transform .3s var(--ease, ease); display: inline-block; }
+        .nd:hover .nd-t .nd-c, .nd:focus-within .nd-t .nd-c { transform: rotate(180deg); }
+        .nd-m { list-style: none; margin: 0; padding: 8px 0; position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 190px; background: rgba(17,17,17,.98); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.08); opacity: 0; visibility: hidden; transition: all .3s var(--ease, ease); z-index: 50; }
+        .nd:hover .nd-m, .nd:focus-within .nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); }
+        .nd-m li a { display: block; padding: 10px 20px; font-size: .72rem !important; color: rgba(255,255,255,.6); white-space: nowrap; letter-spacing: .04em; text-transform: uppercase; }
+        .nd-m li a:hover { color: var(--white, #fafaf8); background: rgba(255,255,255,.04); }
+        @media (max-width: 600px) {
+            .nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; backdrop-filter: none; padding: 8px 0 0; min-width: 0; text-align: center; }
+            .nd:hover .nd-m, .nd:focus-within .nd-m { transform: none; }
+            .nd-m li a { padding: 8px 0; font-size: .85rem !important; color: rgba(255,255,255,.45); }
+            .nd-t .nd-c { display: none; }
+        }
+    
+        /* nl-scrollfix: mobilmenu må scrolle når den er højere end skærmen */
+        @media (max-width: 600px) {
+            .nl.open { justify-content: flex-start; padding: 88px 24px 48px; overflow-y: auto; gap: 18px; height: 100vh; height: 100dvh; width: 100vw; }
+        }
     </style>
+<meta name="author" content="Thomas Friisnæs">
+<meta property="og:url" content="https://www.friisnaes.com/seg.html">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Strategy Execution Governance">
+<meta name="twitter:description" content="Strategy Execution Governance (SEG) og Strategisk Sundheds Index (SSI). Luk eksekveringsgabet med datadrevet governance for ledelsesteams. Thomas Friisnæs, Holte.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Service",
+ "name": "Strategy Execution Governance (SEG)",
+ "serviceType": "Ledergruppeudvikling og strategieksekvering",
+ "description": "Strategy Execution Governance (SEG) og Strategisk Sundheds Index (SSI). Luk eksekveringsgabet med datadrevet governance for ledelsesteams. Thomas Friisnæs, Holte.",
+ "url": "https://www.friisnaes.com/seg.html",
+ "provider": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "areaServed": {
+  "@type": "Country",
+  "name": "Denmark"
+ },
+ "inLanguage": "da"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Forside",
+   "item": "https://www.friisnaes.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Strategy Execution Governance",
+   "item": "https://www.friisnaes.com/seg.html"
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <nav class="nav"><div class="ni">
@@ -104,8 +179,16 @@
     <ul class="nl" id="nm">
         <li><a href="index.html" data-da="Forside" data-en="Home">Forside</a></li>
         <li><a href="testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
-        <li><a href="blog.html" data-da="Indsigter" data-en="Insights">Indsigter</a></li>
-        <li><a href="index.html#kontakt" class="cta-l" data-da="Book 20 min." data-en="Book 20 min.">Book 20 min.</a></li>
+        <li class="nd">
+                <a href="blog.html" class="nd-t" aria-haspopup="true" aria-expanded="false">Indsigter <span class="nd-c" aria-hidden="true">&#9662;</span></a>
+                <ul class="nd-m">
+                    <li><a href="blog.html">Blogindlæg</a></li>
+                    <li><a href="library.html">Executive Library</a></li>
+                    <li><a href="library.html#brief">C-Level Brief</a></li>
+                    <li><a href="vaerktoejer.html">Værktøjer</a></li>
+                </ul>
+            </li>
+            <li><a href="index.html#kontakt" class="cta-l" data-da="Book 20 min." data-en="Book 20 min.">Book 20 min.</a></li>
         <li class="ls"><button onclick="setLang('da')" class="on">DA</button><span>/</span><button onclick="setLang('en')">EN</button></li>
     </ul>
     <button class="nt" id="nt" aria-label="Menu"><span></span><span></span><span></span></button>
