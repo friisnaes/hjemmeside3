@@ -8,9 +8,6 @@
     <meta name="author" content="Thomas Friisnæs">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="https://www.friisnaes.com/">
-    <link rel="alternate" hreflang="da" href="https://www.friisnaes.com/" />
-    <link rel="alternate" hreflang="en" href="https://www.friisnaes.com/?lang=en" />
-    <link rel="alternate" hreflang="x-default" href="https://www.friisnaes.com/" />
     <link rel="icon" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
     <link rel="apple-touch-icon" href="/favicon-apple.png">
@@ -252,7 +249,15 @@
             .hero-img { width: 80%; }
             section { padding: clamp(80px, 14vw, 160px) 0; }
         }
+    
+        /* nl-scrollfix: mobilmenu må scrolle når den er højere end skærmen */
+        @media (max-width: 600px) {
+            .nl.open { justify-content: flex-start; padding: 88px 24px 48px; overflow-y: auto; gap: 18px; height: 100vh; height: 100dvh; width: 100vw; }
+        }
     </style>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
 </head>
 <body>
 <nav role="navigation" aria-label="Hovednavigation">
@@ -292,7 +297,7 @@
             </div>
             <p class="hm" data-da="20 minutter. Ét problem. Én plan. Ingen salgsteater." data-en="20 minutes. One problem. One plan. No sales theater.">20 minutter. Ét problem. Én plan. Ingen salgsteater.</p>
         </div>
-        <img src="hero.jpg" alt="Thomas Friisnæs – Executive Coach, Holte og København" class="hero-img" width="340" height="500" loading="eager">
+        <img decoding="async" src="hero.jpg" alt="Thomas Friisnæs – Executive Coach, Holte og København" class="hero-img" width="340" height="500" loading="eager">
         <div class="hs" aria-label="Nøgletal">
             <div class="si"><div class="sn">15.000+</div><div class="sl" data-da="Sessioner" data-en="Sessions">Sessioner</div></div>
             <div class="si"><div class="sn">22+</div><div class="sl" data-da="Års erfaring" data-en="Years experience">Års erfaring</div></div>
@@ -419,7 +424,7 @@
     <div class="c">
         <p class="se" data-da="Om Thomas Friisnæs" data-en="About Thomas Friisnæs">Om Thomas Friisnæs</p>
         <div class="about-grid">
-            <img src="method.jpg" alt="Thomas Friisnæs – Executive Coach og strategisk sparringspartner, Holte" class="about-img" width="200" height="280" loading="lazy">
+            <img decoding="async" src="method.jpg" alt="Thomas Friisnæs – Executive Coach og strategisk sparringspartner, Holte" class="about-img" width="200" height="280" loading="lazy">
             <div>
                 <h2 id="about-heading" style="font-size:clamp(1.4rem,2.5vw,1.9rem);margin-bottom:16px" data-da="Executive Coach med <em>22+ års erfaring</em>" data-en="Executive Coach with <em>22+ years experience</em>">Executive Coach med <em>22+ års erfaring</em></h2>
                 <p data-da="<strong>22+ års erfaring. 15.000+ sessioner.</strong> Jeg har arbejdet med topledere, ejerledere og direktionsmedlemmer i mere end to årtier. Fuld energi, nul udenomssnak og fokus på det der reelt flytter noget." data-en="<strong>22+ years experience. 15,000+ sessions.</strong> I have worked with senior executives, owner-managers, and board members for more than two decades. Full energy, zero fluff, and focus on what actually moves the needle."><strong>22+ års erfaring. 15.000+ sessioner.</strong> Jeg har arbejdet med topledere, ejerledere og direktionsmedlemmer i mere end to årtier. Fuld energi, nul udenomssnak og fokus på det der reelt flytter noget.</p>
