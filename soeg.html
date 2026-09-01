@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Søg | Thomas Friisnæs</title>
+  <meta name="description" content="Søg på tværs af artikler, white papers, C-Level Briefs og bøger på friisnaes.com.">
+  <meta name="author" content="Thomas Friisnæs">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://www.friisnaes.com/soeg.html">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/favicon-apple.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.friisnaes.com/soeg.html">
+  <meta property="og:title" content="Søg | Thomas Friisnæs">
+  <meta property="og:description" content="Søg på tværs af artikler, white papers, C-Level Briefs og bøger på friisnaes.com.">
+  <meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+  <meta property="og:locale" content="da_DK">
+  <meta property="og:site_name" content="Friisnæs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Søg | Thomas Friisnæs">
+  <meta name="twitter:description" content="Søg på tværs af artikler, white papers, C-Level Briefs og bøger på friisnaes.com.">
+  <meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <style>
+  :root {
+    --black: #111; --black-soft: #1a1a1a; --black-light: #222;
+    --gray-dark: #444; --gray: #777; --gray-light: #bbb;
+    --off-white: #f5f4f0; --white: #fafaf8;
+    --red: #c0392b; --red-hover: #e74c3c; --red-muted: rgba(192,57,43,.06);
+    --display: 'Playfair Display', Georgia, serif;
+    --body: 'Outfit', -apple-system, sans-serif;
+    --max: 760px; --wide: 1100px;
+    --pad: clamp(24px, 6vw, 64px); --gap: clamp(100px, 12vw, 160px);
+    --ease: cubic-bezier(.16, 1, .3, 1);
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body { font-family: var(--body); color: var(--black); background: var(--white); line-height: 1.75; }
+  a { text-decoration: none; color: inherit; transition: color .3s var(--ease); }
+  .c { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+  .cw { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); }
+  .rv { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .rv.vis { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; } }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; transition: all .4s var(--ease); }
+  nav.sc { background: rgba(17,17,17,.97); backdrop-filter: blur(12px); padding: 14px 0; }
+  nav .ni { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; }
+  nav .lo { font-family: var(--display); font-size: 1.22rem; font-weight: 600; color: var(--white); letter-spacing: .02em; margin-right: 24px; flex-shrink: 0; white-space: nowrap; }
+  nav .lo em { color: var(--red); font-style: normal; }
+  .nl { display: flex; align-items: center; gap: 14px; list-style: none; flex-wrap: nowrap; }
+  .nl a { font-family: var(--body); font-size: .73rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+  .nl a:hover { color: var(--white); }
+  .nl a.here { color: var(--red); }
+  .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 15px; font-weight: 600; white-space: nowrap; }
+  .nl .cta-n:hover { background: var(--red-hover); }
+  .ls { display: flex; gap: 3px; margin-left: 4px; }
+  .ls button { background: none; border: 1px solid transparent; color: rgba(255,255,255,.35); font-family: var(--body); font-size: .65rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 3px 6px; cursor: pointer; transition: all .3s; border-radius: 2px; }
+  .ls button.on { color: var(--red); border-color: var(--red); }
+  .ls span { color: rgba(255,255,255,.2); font-size: .6rem; }
+  .nt { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+  .nt span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all .3s; }
+  .nt.act span:nth-child(1) { transform: rotate(45deg) translate(4px,5px); }
+  .nt.act span:nth-child(2) { opacity: 0; }
+  .nt.act span:nth-child(3) { transform: rotate(-45deg) translate(4px,-5px); }
+
+  .hero { background: var(--black); position: relative; overflow: hidden; padding: 180px 0 100px; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 70% 40%, rgba(192,57,43,.05), transparent 70%); pointer-events: none; }
+  .hero .hc { position: relative; z-index: 2; max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); }
+  .hero .hl { font-family: var(--body); font-size: .68rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 28px; opacity: 0; animation: fu .7s var(--ease) .2s forwards; }
+  .hero h1 { font-family: var(--display); font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 400; color: var(--white); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 24px; max-width: 900px; opacity: 0; animation: fu .7s var(--ease) .4s forwards; }
+  .hero h1 em { font-style: italic; color: var(--red); }
+  .hero .hp { font-family: var(--body); font-size: 1.02rem; color: rgba(255,255,255,.55); line-height: 1.8; max-width: 600px; margin-bottom: 18px; opacity: 0; animation: fu .7s var(--ease) .6s forwards; }
+  .hero .hp2 { font-family: var(--body); font-size: .88rem; color: rgba(255,255,255,.4); line-height: 1.75; max-width: 560px; opacity: 0; animation: fu .7s var(--ease) .7s forwards; }
+  .hero .hs { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,.08); margin-top: 52px; opacity: 0; animation: fu .7s var(--ease) .9s forwards; }
+  .hero .si { flex: 1; padding: 28px 0; border-right: 1px solid rgba(255,255,255,.08); text-align: center; }
+  .hero .si:last-child { border-right: none; }
+  .hero .sn { font-family: var(--display); font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 400; color: var(--red); line-height: 1; margin-bottom: 4px; }
+  .hero .sl { font-family: var(--body); font-size: .65rem; font-weight: 500; color: rgba(255,255,255,.3); letter-spacing: .12em; text-transform: uppercase; }
+  @keyframes fu { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  section { padding: var(--gap) 0; }
+  .se { font-family: var(--body); font-size: .65rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 14px; }
+  h2 { font-family: var(--display); font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 400; color: var(--black); line-height: 1.15; letter-spacing: -.01em; margin-bottom: 24px; }
+  h2 em { font-style: italic; color: var(--red); }
+
+  .intro { background: var(--white); border-bottom: 1px solid rgba(0,0,0,.06); }
+  .intro p { font-family: var(--body); font-size: .98rem; color: var(--gray-dark); line-height: 1.85; margin-bottom: 16px; max-width: 640px; }
+
+  .series { background: var(--off-white); border-bottom: 1px solid rgba(0,0,0,.06); }
+  .series-card { scroll-margin-top: 90px; background: var(--white); border: 1px solid rgba(0,0,0,.08); margin-top: 40px; }
+  .series-card:first-of-type { margin-top: 44px; }
+  .sc-head { background: var(--black); padding: 44px 44px 38px; position: relative; overflow: hidden; }
+  .sc-head::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 85% 30%, rgba(192,57,43,.07), transparent 70%); pointer-events: none; }
+  .sc-head-inner { position: relative; z-index: 1; }
+  .sc-eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+  .sc-serienum { font-family: var(--body); font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--white); background: var(--red); padding: 5px 12px; }
+  .sc-count-top { font-family: var(--body); font-size: .65rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+  .sc-title { font-family: var(--display); font-size: clamp(1.9rem, 3.6vw, 2.7rem); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 12px; letter-spacing: -.01em; }
+  .sc-title em { font-style: italic; color: var(--red); }
+  .sc-tagline { font-family: var(--display); font-size: 1.15rem; font-style: italic; color: rgba(255,255,255,.55); line-height: 1.4; }
+  .sc-body { padding: 36px 44px 40px; }
+  .sc-desc { font-family: var(--body); font-size: .95rem; color: var(--gray-dark); line-height: 1.85; margin-bottom: 26px; max-width: 640px; }
+  .sc-desc strong { color: var(--black); font-weight: 600; }
+  .sc-parts { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; }
+  .sc-part-tag { font-family: var(--body); font-size: .74rem; color: var(--gray-dark); background: var(--off-white); border: 1px solid rgba(0,0,0,.08); padding: 7px 14px; letter-spacing: .02em; }
+  .sc-part-tag b { color: var(--red); font-weight: 600; }
+  .sc-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--body); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 14px 28px; cursor: pointer; border: none; transition: all .4s var(--ease); }
+  .bp { background: var(--red); color: var(--white); }
+  .bp:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(192,57,43,.25); }
+  .bo { background: transparent; color: var(--gray-dark); border: 1px solid rgba(0,0,0,.15); padding: 13px 27px; }
+  .bo:hover { border-color: var(--red); color: var(--red); }
+  .btn svg { width: 15px; height: 15px; }
+
+  .sc-papers { margin-top: 30px; border-top: 1px solid rgba(0,0,0,.08); padding-top: 6px; display: none; }
+  .sc-papers.open { display: block; }
+  .sc-partgroup { padding: 22px 0 8px; border-bottom: 1px solid rgba(0,0,0,.06); }
+  .sc-partgroup:last-child { border-bottom: none; }
+  .sc-part-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
+  .sc-part-num { font-family: var(--body); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--red); font-weight: 600; }
+  .sc-part-name { font-family: var(--display); font-size: 1.1rem; color: var(--black); font-weight: 600; }
+  .sc-paper-list { list-style: none; counter-reset: p; }
+  .sc-paper-list li { counter-increment: p; display: flex; gap: 16px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid rgba(0,0,0,.04); }
+  .sc-paper-list li:last-child { border-bottom: none; }
+  .sc-paper-list li::before { content: counter(p, decimal-leading-zero); font-family: var(--display); font-size: .72rem; color: var(--red); font-weight: 600; min-width: 22px; padding-top: 2px; }
+  .sc-paper-list a { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+  .sc-paper-list .pl-t { font-family: var(--body); font-size: .92rem; color: var(--black); font-weight: 500; transition: color .3s; }
+  .sc-paper-list .pl-s { font-family: var(--body); font-size: .8rem; color: var(--gray); line-height: 1.5; }
+  .sc-paper-list a:hover .pl-t { color: var(--red); }
+
+  .usenote { background: var(--white); border-bottom: 1px solid rgba(0,0,0,.06); }
+  .usenote p { font-family: var(--body); font-size: .95rem; color: var(--gray-dark); line-height: 1.85; max-width: 640px; }
+  .usenote strong { color: var(--black); font-weight: 600; }
+
+  .cta { background: var(--black); }
+  .cta h2 { color: var(--white); }
+  .cta .intro-p { font-family: var(--body); font-size: .92rem; color: rgba(255,255,255,.45); line-height: 1.8; margin-bottom: 36px; max-width: 560px; }
+  .cta .ha { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  .bg { background: transparent; color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.15); padding: 13px 27px; }
+  .bg:hover { border-color: rgba(255,255,255,.4); color: var(--white); }
+
+  footer { background: var(--black); padding: 36px 0 24px; border-top: 1px solid rgba(255,255,255,.04); }
+  footer .fi3 { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  footer .fb { font-family: var(--display); font-size: .95rem; font-weight: 600; color: var(--white); }
+  footer .fb em { color: var(--red); font-style: normal; }
+  footer .fnav { display: flex; gap: 20px; flex-wrap: wrap; }
+  footer .fnav a { font-family: var(--body); font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+  footer .fnav a:hover { color: var(--red); }
+  footer .fc { font-family: var(--body); font-size: .68rem; color: rgba(255,255,255,.2); }
+  .footer-copy { max-width: var(--wide); margin: 22px auto 0; padding: 18px var(--pad) 0; border-top: 1px solid rgba(255,255,255,.05); }
+
+  @media (max-width: 1240px) and (min-width: 601px) {
+    .nl { gap: 11px; }
+    .nl a { font-size: .68rem; letter-spacing: .03em; }
+    nav .lo { margin-right: 18px; font-size: 1.12rem; }
+    .nl .cta-n { padding: 8px 12px; }
+  }
+  @media (max-width: 1080px) and (min-width: 601px) {
+    .nl { gap: 9px; }
+    .nl a { font-size: .63rem; letter-spacing: .02em; }
+    nav .lo { margin-right: 14px; font-size: 1.05rem; }
+    .nl .cta-n { padding: 7px 10px; }
+    .ls { margin-left: 2px; }
+  }
+  @media (max-width: 900px) {
+    .hero .hs { flex-direction: column; }
+    .hero .si { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 20px 0; text-align: left; }
+    .hero .si:last-child { border-bottom: none; }
+  }
+  @media (max-width: 600px) {
+    .nl { display: none; position: fixed; inset: 0; background: rgba(17,17,17,.98); backdrop-filter: blur(16px); flex-direction: column; justify-content: center; align-items: center; gap: 24px; z-index: 99; }
+    .nl.open { display: flex; }
+    .nl a { font-size: 1rem; }
+    .nt { display: flex; z-index: 101; }
+    .hero { padding: 130px 0 80px; }
+    .sc-head, .sc-body { padding-left: 26px; padding-right: 26px; }
+    .sc-actions .btn { justify-content: center; width: 100%; }
+    section { padding: clamp(80px, 14vw, 160px) 0; }
+    footer .fi3 { flex-direction: column; gap: 14px; text-align: center; }
+  }
+
+        /* Dropdown: Indsigter */
+        .nd { position: relative; }
+        .nd-t .nd-c { font-size: .6rem; margin-left: 3px; opacity: .6; transition: transform .3s ease; display: inline-block; }
+        .nd:hover .nd-t .nd-c, .nd:focus-within .nd-t .nd-c { transform: rotate(180deg); }
+        .nd-m { list-style: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 190px; background: rgba(17,17,17,.98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.08); padding: 8px 0; opacity: 0; visibility: hidden; transition: all .3s ease; z-index: 200; }
+        .nd:hover .nd-m, .nd:focus-within .nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); }
+        .nd-m li a { display: block; padding: 10px 20px; font-size: .72rem !important; color: rgba(255,255,255,.6); white-space: nowrap; letter-spacing: .04em; text-transform: uppercase; }
+        .nd-m li a:hover { color: #fff; background: rgba(255,255,255,.04); }
+        @media (max-width: 600px) {
+            .nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 8px 0 0; min-width: 0; text-align: center; }
+            .nd:hover .nd-m, .nd:focus-within .nd-m { transform: none; }
+            .nd-m li a { padding: 8px 0; font-size: .85rem !important; color: rgba(255,255,255,.45); }
+            .nd-t .nd-c { display: none; }
+        }
+  .sc-signup { margin-top: 18px; font-family: var(--body); font-size: .86rem; color: var(--gray-dark); }
+  .sc-signup a { color: var(--red); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--red); padding-bottom: 1px; transition: opacity .3s; }
+  .sc-signup a:hover { opacity: .75; }
+
+        /* nl-scrollfix: mobilmenu må scrolle når den er højere end skærmen */
+        @media (max-width: 600px) {
+            .nl.open { justify-content: flex-start; padding: 88px 24px 48px; overflow-y: auto; gap: 18px; height: 100vh; height: 100dvh; width: 100vw; }
+        }
+    
+  /* Søgning */
+  .search-hero { background: var(--black); color: var(--white); padding: 140px var(--pad) 56px; }
+  .search-hero .c { max-width: var(--max); margin: 0 auto; }
+  .search-hero h1 { font-family: var(--display); font-weight: 400; font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.1; letter-spacing: -.01em; margin: 0 0 14px; }
+  .search-hero h1 em { font-style: italic; color: var(--red); }
+  .search-hero p { font-family: var(--body); font-weight: 300; font-size: 1rem; color: rgba(255,255,255,.65); max-width: 560px; line-height: 1.7; margin: 0; }
+  .search-wrap { background: var(--white); padding: 40px var(--pad) 96px; min-height: 60vh; }
+  .search-wrap .c { max-width: var(--max); margin: 0 auto; }
+  .pagefind-ui { --pagefind-ui-scale: .95; --pagefind-ui-primary: var(--red); --pagefind-ui-text: var(--black); --pagefind-ui-background: var(--white); --pagefind-ui-border: rgba(0,0,0,.15); --pagefind-ui-tag: var(--off-white); --pagefind-ui-border-width: 1px; --pagefind-ui-border-radius: 0; --pagefind-ui-image-border-radius: 0; --pagefind-ui-font: var(--body); }
+  .pagefind-ui .pagefind-ui__search-input { font-family: var(--body); font-weight: 400; background: var(--off-white); }
+  .pagefind-ui .pagefind-ui__result-title { font-family: var(--display); font-weight: 500; }
+  .pagefind-ui .pagefind-ui__result-link { color: var(--black); }
+  .pagefind-ui .pagefind-ui__result-link:hover { color: var(--red); }
+  .pagefind-ui .pagefind-ui__button { font-family: var(--body); text-transform: uppercase; letter-spacing: .08em; font-size: .75rem; border-radius: 0; }
+  .pagefind-ui mark { background: rgba(192,57,43,.14); color: inherit; }
+  </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebSite",
+ "@id": "https://www.friisnaes.com/#website",
+ "url": "https://www.friisnaes.com/",
+ "name": "Friisnæs",
+ "potentialAction": {
+  "@type": "SearchAction",
+  "target": {
+   "@type": "EntryPoint",
+   "urlTemplate": "https://www.friisnaes.com/soeg.html?q={search_term_string}"
+  },
+  "query-input": "required name=search_term_string"
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Forside",
+   "item": "https://www.friisnaes.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Søg",
+   "item": "https://www.friisnaes.com/soeg.html"
+  }
+ ]
+}
+</script>
+</head>
+<body data-pagefind-ignore>
+<nav role="navigation" aria-label="Hovednavigation">
+  <div class="ni">
+    <a href="/" class="lo" aria-label="Friisnæs – Executive Coach, forside">Fr<em>ii</em>snæs</a>
+      <ul class="nl" id="nm" aria-label="Primær navigation">
+          <li><a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a></li>
+          <li><a href="/#format" data-da="Format" data-en="Format">Format</a></li>
+          <li><a href="/#om" data-da="Om" data-en="About">Om</a></li>
+          <li><a href="/testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
+          <li class="nd">
+              <a href="/blog.html" class="nd-t" style="color:#fff" data-da="Indsigter" data-en="Insights" aria-haspopup="true" aria-expanded="false">Indsigter <span class="nd-c" aria-hidden="true">&#9662;</span></a>
+              <ul class="nd-m">
+                  <li><a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a></li>
+                  <li><a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
+                  <li><a href="/library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a></li>
+                  <li><a href="/vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a></li>
+              <li><a href="soeg.html">Søg</a></li>
+              </ul>
+          </li>
+          <li><a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
+          <li><a href="/#kontakt" class="cta-n" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation">Book en 20-minutters samtale</a></li>
+          <li class="ls"><button onclick="setLang('da')" class="on" aria-label="Skift til dansk">DA</button><span aria-hidden="true">/</span><button onclick="setLang('en')" aria-label="Switch to English">EN</button></li>
+      </ul>
+    <button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<header class="search-hero">
+  <div class="c">
+    <h1>Søg i <em>indsigterne</em></h1>
+    <p>Artikler, white papers, C-Level Briefs og bøger. Skriv et ord eller en sætning, fx <em>prioritering</em>, <em>bestyrelse</em> eller <em>ensomhed</em>.</p>
+  </div>
+</header>
+<main class="search-wrap">
+  <div class="c">
+    <div id="search"></div>
+    <noscript><p>Søgningen kræver JavaScript. Se i stedet <a href="/library.html">Executive Library</a> og <a href="/blog.html">Indsigter</a>.</p></noscript>
+  </div>
+</main>
+<footer role="contentinfo">
+  <div class="fi3">
+    <div class="fb">Fr<em>ii</em>snæs</div>
+    <div class="fnav">
+      <a href="/" data-da="Forside" data-en="Home">Forside</a>
+      <a href="/blog.html" data-da="Indsigter" data-en="Insights">Indsigter</a>
+      <a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a>
+      <a href="/library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a>
+      <a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a>
+      <a href="/#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
+    </div>
+  </div>
+  <div class="footer-copy"><span class="fc">&copy; 2026 Friisnæs. Alle rettigheder forbeholdes.</span></div>
+</footer>
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function () {
+  var ui = new PagefindUI({
+    element: "#search",
+    showSubResults: true,
+    showImages: false,
+    excerptLength: 30,
+    resetStyles: false,
+    translations: {
+      placeholder: "Søg på friisnaes.com",
+      clear_search: "Ryd",
+      load_more: "Vis flere resultater",
+      search_label: "Søg på dette website",
+      filters_label: "Filtre",
+      zero_results: "Ingen resultater for [SEARCH_TERM]",
+      many_results: "[COUNT] resultater for [SEARCH_TERM]",
+      one_result: "[COUNT] resultat for [SEARCH_TERM]",
+      alt_search: "Ingen resultater for [SEARCH_TERM]. Viser resultater for [DIFFERENT_TERM] i stedet",
+      search_suggestion: "Ingen resultater for [SEARCH_TERM]. Prøv en af følgende søgninger:",
+      searching: "Søger efter [SEARCH_TERM]..."
+    }
+  });
+  var q = new URLSearchParams(location.search).get('q');
+  if (q) ui.triggerSearch(q);
+});
+</script>
+<script><script>
+(function(){
+  window.setLang=function(l){
+    document.documentElement.lang=l;
+    document.querySelectorAll('[data-da][data-en]').forEach(function(e){
+      if(e.tagName!=='INPUT'&&e.tagName!=='TEXTAREA'&&e.tagName!=='SELECT'){
+        if(e.classList.contains('bo')){
+          var sb=e.closest('.sc-body'); var pl=sb&&sb.querySelector('.sc-papers');
+          if(pl&&pl.classList.contains('open')){ e.textContent=e.getAttribute('data-hide-'+l)||(l==='da'?'Skjul papers':'Hide papers'); return; }
+        }
+        e.innerHTML=e.getAttribute('data-'+l);
+      }
+    });
+    document.querySelectorAll('.ls button').forEach(function(b){
+      b.classList.toggle('on',b.textContent===l.toUpperCase());
+    });
+    var u=new URL(location);
+    l==='da'?u.searchParams.delete('lang'):u.searchParams.set('lang',l);
+    history.replaceState(null,'',u);
+  };
+  if(new URLSearchParams(location.search).get('lang')==='en') setLang('en');
+
+  var nv=document.querySelector('nav');
+  window.addEventListener('scroll',function(){nv.classList.toggle('sc',scrollY>50);},{passive:true});
+  nv.classList.toggle('sc',scrollY>50);
+
+  var tg=document.getElementById('nt'),mn=document.getElementById('nm');
+  tg.addEventListener('click',function(){
+    var o=mn.classList.toggle('open');
+    tg.classList.toggle('act');
+    tg.setAttribute('aria-expanded',o);
+    document.body.style.overflow=o?'hidden':'';
+  });
+  mn.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      mn.classList.remove('open');tg.classList.remove('act');
+      tg.setAttribute('aria-expanded','false');document.body.style.overflow='';
+    });
+  });
+
+  if('IntersectionObserver' in window){
+    var ob=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){e.target.classList.add('vis');ob.unobserve(e.target);} });
+    },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rv').forEach(function(e){ob.observe(e);});
+  } else { document.querySelectorAll('.rv').forEach(function(e){e.classList.add('vis');}); }
+
+  window.togglePapers=function(id, btn){
+    var el=document.getElementById(id);
+    var open=el.classList.toggle('open');
+    var lang=document.documentElement.lang==='en'?'en':'da';
+    btn.textContent = open ? (btn.getAttribute('data-hide-'+lang)||(lang==='da'?'Skjul papers':'Hide papers')) : btn.getAttribute('data-'+lang);
+  };
+})();
+</script></script>
+</body>
+</html>
