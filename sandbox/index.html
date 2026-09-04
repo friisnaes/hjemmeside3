@@ -254,6 +254,17 @@ select { cursor: pointer; background-image: linear-gradient(45deg, transparent 5
 .add-btn { background: none; border: 1px dashed rgba(0,0,0,.2); color: var(--gray-dark); font-family: var(--body); font-size: .78rem; font-weight: 500; letter-spacing: .06em; padding: 13px 20px; width: 100%; cursor: pointer; transition: all .3s; }
 .add-btn:hover { border-color: var(--red); color: var(--red); }
 
+.paths { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+.path { text-align: left; background: var(--white); border: 1px solid rgba(0,0,0,.12); padding: 28px 26px 24px; cursor: pointer; font-family: var(--body); transition: all .3s var(--ease); display: block; }
+.path:hover { border-color: var(--black); transform: translateY(-2px); }
+.path.sel { border-color: var(--red); box-shadow: inset 0 0 0 1px var(--red); background: var(--red-muted); }
+.path .path-t { font-family: var(--display); font-size: 1.5rem; font-weight: 500; color: var(--black); margin-bottom: 4px; }
+.path .path-time { font-size: .68rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--red); margin-bottom: 16px; }
+.path p { font-size: .89rem; color: var(--gray-dark); line-height: 1.75; margin-bottom: 16px; }
+.path ul { list-style: none; }
+.path li { font-size: .82rem; color: var(--gray); line-height: 1.6; padding: 7px 0; border-top: 1px solid rgba(0,0,0,.05); display: flex; gap: 9px; }
+.path li::before { content: '—'; color: var(--red); flex-shrink: 0; }
+@media (max-width: 700px) { .paths { grid-template-columns: 1fr; } }
 .nav-steps { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 34px 0 0; border-top: 1px solid rgba(0,0,0,.08); margin-top: 20px; flex-wrap: wrap; }
 .nav-steps .left { display: flex; gap: 10px; }
 
@@ -357,9 +368,9 @@ select { cursor: pointer; background-image: linear-gradient(45deg, transparent 5
       <button class="btn bp" id="startBtn" type="button">Start din afklaring</button>
       <a href="#saadan" class="btn bg">Sådan fungerer det</a>
     </div>
-    <p class="hm">Adgang kræver personlig invitation · kan gemmes og genoptages</p>
+    <p class="hm">Adgang kræver personlig invitation · du vælger selv omfang · kan gemmes og genoptages</p>
     <div class="hs">
-      <div class="si"><div class="sn">45–75</div><div class="sl">Minutter</div></div>
+      <div class="si"><div class="sn">To</div><div class="sl">Veje: fokuseret eller grundig</div></div>
       <div class="si"><div class="sn">18</div><div class="sl">Moduler, tilpasset din situation</div></div>
       <div class="si"><div class="sn">100 %</div><div class="sl">Krypteret i din egen browser</div></div>
       <div class="si"><div class="sn">0</div><div class="sl">Automatiske konklusioner</div></div>
@@ -469,7 +480,7 @@ select { cursor: pointer; background-image: linear-gradient(45deg, transparent 5
       <p>Sæt tid af, hvor du ikke bliver forstyrret. Du kan holde pause og vende tilbage — alt gemmes
       undervejs på din egen enhed.</p>
       <ul class="fmt-details">
-        <li>Forventet tidsforbrug: cirka 45–75 minutter, afhængigt af din situation</li>
+        <li>Du vælger selv omfang, når dine første svar har vist, hvad der er relevant for dig</li>
         <li>Besvarelsen kan gemmes og genoptages, også på en anden enhed</li>
         <li>Ikke alle spørgsmål er relevante for alle — du kan markere “ikke relevant”</li>
         <li>Du kan altid markere “det ved jeg ikke endnu”. Det er et svar i sig selv</li>
@@ -537,9 +548,10 @@ select { cursor: pointer; background-image: linear-gradient(45deg, transparent 5
   <button class="toc-close" type="button" id="tocClose">Luk</button>
   <div class="toc-inner">
     <h3>Oversigt</h3>
-    <p style="color:rgba(255,255,255,.4);font-size:.86rem;margin-bottom:24px">Du kan springe frem og
+    <p style="color:rgba(255,255,255,.4);font-size:.86rem;margin-bottom:18px">Du kan springe frem og
     tilbage mellem de moduler, du har åbnet. Betingede moduler aktiveres af dine svar i
     situationsafklaringen.</p>
+    <div id="tocMode" style="color:rgba(255,255,255,.45);font-size:.84rem;padding:16px 0;margin-bottom:14px;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;flex-wrap:wrap;gap:8px"></div>
     <ul class="toc-list" id="tocList"></ul>
   </div>
 </div>
@@ -570,12 +582,12 @@ select { cursor: pointer; background-image: linear-gradient(45deg, transparent 5
 /* ---- KONFIGURATION (udskiftes af admin.html ved opsætning) ---- */
 var CONFIG = {
   /* Offentlig RSA-OAEP-nøgle (SPKI, base64). Klienten krypterer til denne. */
-  encPubKey: "__ENC_PUB_KEY__",
+  encPubKey: "MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA08sZHtcol9KzxXp+YmviNWfX62DwTHkKT+8yZNXrbKI75pLjY0mHNNaI8qwrcby1af8i6bE3n+2JOqTeG70Qjmq79Nlab/CpwAZBqD0PWCnRTBU9KaaaVOYomvTcbOwbYgD7q2TAM1OJSNZA6tizDg/E2LkOSpMZ0KowPOsiLvyYcofElV6Fa8/nOu8BMbZu7Mhlu/DissMGx1ClEldT46wK5aJT9OnXxIW7Xg6fL2z7n6QtVjvVpBn6ApLF9GTO/tVxIQASc9Fll4Q/Y2OQYgNuJZ8F5zgUKfnLbHfpsajYm6WIOzGOx/JHqWQibtCoWkNrjL1En/f5Ip+XGYMWpixi4MmAWdDpJqeG72v9JGebJqRW5EWF5hB2Gl0wIq5aaEAk7nFi55st9loyQCF5++opMI1xSKKjYfVPa3BLuUIAfMiMG91sAXXy5XoI1ERbp9L0dQwnxQtC+RA/GFBfK7y4Hk+fE5Dc7Hej/QO1EMt9fD/kVHSodPo9IlyAJByRAgMBAAE=",
   /* Offentlig ECDSA P-256-nøgle (SPKI, base64). Verificerer invitationer. */
-  sigPubKey: "__SIG_PUB_KEY__",
+  sigPubKey: "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgwUM+SyoQLPjP/hmeWvGJwjqfsKCHAYSSvVI0X8RMzvf37pwUVUUtro0sacta7/qJWz38X012sPv81KDoRReoA==",
   /* Valgfrit notifikationsendpoint (fx Formspree). Modtager ALDRIG svar —
      kun klient-id, tidsstempel og et fingeraftryk af den låste besvarelse. */
-  notifyEndpoint: "__NOTIFY_ENDPOINT__",
+  notifyEndpoint: "",
   /* Kladden slettes automatisk fra enheden efter dette antal dage. */
   draftRetentionDays: 90,
   /* Automatisk sessionsudløb i minutter uden aktivitet. */
@@ -601,28 +613,28 @@ var MODULES = [
   desc: 'Elleve spørgsmål, der afgør hvilke moduler du bliver ledt igennem. Der er ingen rigtige svar — kun præcise.',
   core: true,
   qs: [
-    { i:'R0_sit', t:'single', r:1, q:'Hvad er din nuværende arbejdssituation?',
+    { i:'R0_sit', k:1, t:'single', r:1, q:'Hvad er din nuværende arbejdssituation?',
       o:['Fastansat i en lederrolle','Ejerleder eller medejer','Interim eller konsulent','Mellem roller','På vej ind i en ny rolle','Primært bestyrelsesarbejde'] },
-    { i:'R0_tenure', t:'single', r:1, q:'Hvor længe har du været i din nuværende rolle?',
+    { i:'R0_tenure', k:1, t:'single', r:1, q:'Hvor længe har du været i din nuværende rolle?',
       o:['Under 6 måneder','6–18 måneder','18 måneder – 3 år','3–6 år','Over 6 år','Ikke i en rolle lige nu'] },
-    { i:'R0_ansvar', t:'text', r:1, q:'Hvilket ansvar har du aktuelt?',
+    { i:'R0_ansvar', k:1, t:'text', r:1, q:'Hvilket ansvar har du aktuelt?',
       h:'Titel, rapporteringslinje, omfang — kort og konkret.' },
-    { i:'R0_hvorfor', t:'long', r:1, q:'Hvad fik dig til at gennemføre denne refleksion netop nu?',
+    { i:'R0_hvorfor', k:1, t:'long', r:1, q:'Hvad fik dig til at gennemføre denne refleksion netop nu?',
       h:'Vær ærlig om anledningen. Den siger ofte mere end selve spørgsmålet.',
       w:{ t:'Karriereforskningen har længe overbetonet individets planlægning og underspillet de uforudsete begivenheder — en ny chef, en opkøbt virksomhed, et opkald — der reelt former forløb. Anledningen er derfor data, ikke småsnak.',
           c:'Akkermans, Seibert & Mol (2018), SA Journal of Industrial Psychology' } },
-    { i:'R0_focus', t:'single', r:1, q:'Er du primært optaget af at blive, forme rollen, søge videre — eller af at få afklaret netop det?',
+    { i:'R0_focus', k:1, t:'single', r:1, q:'Er du primært optaget af at blive, forme rollen, søge videre — eller af at få afklaret netop det?',
       o:['Blive','Forme rollen','Søge videre','Afklare hvad der er rigtigt'] },
-    { i:'R0_dialog', t:'single', r:1, q:'Er du allerede i dialog om en konkret mulighed?', o:['Ja','Nej'] },
-    { i:'R0_tilbud', t:'single', r:1, q:'Har du modtaget et konkret tilbud?', o:['Ja','Nej','Forventer et snart'] },
-    { i:'R0_ny', t:'single', r:1, q:'Er du på vej ind i en ny rolle eller netop tiltrådt?',
+    { i:'R0_dialog', k:1, t:'single', r:1, q:'Er du allerede i dialog om en konkret mulighed?', o:['Ja','Nej'] },
+    { i:'R0_tilbud', k:1, t:'single', r:1, q:'Har du modtaget et konkret tilbud?', o:['Ja','Nej','Forventer et snart'] },
+    { i:'R0_ny', k:1, t:'single', r:1, q:'Er du på vej ind i en ny rolle eller netop tiltrådt?',
       o:['Ja, jeg er på vej ind','Ja, jeg er tiltrådt inden for de seneste 6 måneder','Nej'] },
-    { i:'R0_mellem', t:'single', r:1, q:'Er du mellem roller?', o:['Ja','Nej'] },
-    { i:'R0_best', t:'single', r:1, q:'Er bestyrelsesarbejde en del af din ønskede retning?',
+    { i:'R0_mellem', k:1, t:'single', r:1, q:'Er du mellem roller?', o:['Ja','Nej'] },
+    { i:'R0_best', k:1, t:'single', r:1, q:'Er bestyrelsesarbejde en del af din ønskede retning?',
       o:['Ja, aktivt','Ja, på længere sigt','Nej'] },
-    { i:'R0_90', t:'single', r:1, q:'Er der en bestemt beslutning, du skal træffe inden for de næste 90 dage?',
+    { i:'R0_90', k:1, t:'single', r:1, q:'Er der en bestemt beslutning, du skal træffe inden for de næste 90 dage?',
       o:['Ja','Nej','Måske'] },
-    { i:'R0_90hvad', t:'text', q:'Hvilken beslutning?', when:{q:'R0_90', in:['Ja','Måske']} }
+    { i:'R0_90hvad', k:1, t:'text', q:'Hvilken beslutning?', when:{q:'R0_90', in:['Ja','Måske']} }
   ]
 },
 
@@ -634,27 +646,27 @@ var MODULES = [
   qs: [
     { i:'A_intro', t:'info', q:'Om de næste ni vurderinger',
       h:'Svar med den første fornemmelse frem for den rigtige. Hvis du giver en meget høj eller meget lav vurdering, bliver du bedt om at sige, hvad du bygger den på. Det er dér, arbejdet ligger.' },
-    { i:'A1', t:'scale', d:'mening_energi', c:1, q:'Hvor tilfreds er du samlet set i din nuværende rolle?', ends:['Slet ikke','I meget høj grad'] },
+    { i:'A1', k:1, t:'scale', d:'mening_energi', c:1, q:'Hvor tilfreds er du samlet set i din nuværende rolle?', ends:['Slet ikke','I meget høj grad'] },
     { i:'A2', t:'scale', d:'mening_energi', q:'Hvor meget energi giver arbejdet dig?', ends:['Dræner','Giver energi'],
       w:{ t:'Spørgsmålet handler om rollen, ikke om dit helbred. Balancen mellem det rollen kræver og de ressourcer den stiller til rådighed er et arbejdsforhold — ikke en tilstand hos dig. Værktøjet stiller aldrig diagnoser og indsamler ikke helbredsoplysninger.',
           c:'Bakker & Demerouti (2017), Journal of Occupational Health Psychology · WHO (2019) om burn-out som arbejdspladsfænomen' } },
     { i:'A3', t:'scale', d:'mening_energi', q:'Hvor meget lærer du fortsat?', ends:['Ingenting','Hele tiden'] },
-    { i:'A4', t:'scale', d:'mening_energi', c:1, q:'Hvor meningsfuldt oplever du arbejdet?', ends:['Slet ikke','I meget høj grad'] },
-    { i:'A5', t:'scale', d:'selvindsigt', q:'Hvor tydeligt er dit mandat?', ends:['Meget uklart','Helt tydeligt'],
+    { i:'A4', k:1, t:'scale', d:'mening_energi', c:1, q:'Hvor meningsfuldt oplever du arbejdet?', ends:['Slet ikke','I meget høj grad'] },
+    { i:'A5', k:1, t:'scale', d:'selvindsigt', q:'Hvor tydeligt er dit mandat?', ends:['Meget uklart','Helt tydeligt'],
       w:{ t:'Rolleklarhed er den stærkeste enkeltfaktor bag psykologisk tryghed i metaanalysen — stærkere end lederrelationen. Et uklart mandat er sjældent kun et kommunikationsproblem.',
           c:'Frazier m.fl. (2017), Personnel Psychology (136 stikprøver). Bemærk: rolleklarhed hviler på få studier og er statistisk usikker.' } },
     { i:'A6', t:'scale', d:'relationel_kapital', q:'Hvor stærk er relationen til din nærmeste chef?', ends:['Meget svag','Meget stærk'] },
     { i:'A7', t:'scale', d:'relationel_kapital', q:'Hvor stor tillid oplever du fra bestyrelse, ejere eller øverste ledelse?', ends:['Meget lidt','Meget stor'] },
     { i:'A8', t:'scale', d:'mening_energi', c:1, q:'Hvor godt passer organisationens reelle kultur til dine værdier?',
       h:'Den reelle kultur — ikke den, der står på væggen.', ends:['Meget dårligt','Meget godt'] },
-    { i:'A9', t:'scale', d:'mening_energi', q:'Hvor bæredygtig er rollen for dit liv uden for arbejdet?', ends:['Slet ikke','Fuldt ud'] },
+    { i:'A9', k:1, t:'scale', d:'mening_energi', q:'Hvor bæredygtig er rollen for dit liv uden for arbejdet?', ends:['Slet ikke','Fuldt ud'] },
     { i:'A10', t:'long', q:'Hvilke dele af rollen giver dig mest energi?' },
-    { i:'A11', t:'long', q:'Hvilke dele dræner dig?' },
+    { i:'A11', k:1, t:'long', q:'Hvilke dele dræner dig?' },
     { i:'A12', t:'long', q:'Hvad har ændret sig de seneste 12 måneder?' },
     { i:'A13', t:'long', d:'selvindsigt', q:'Hvad tolererer du i øjeblikket, som du ikke bør tolerere på længere sigt?' },
-    { i:'A14', t:'long', d:'selvindsigt', q:'Hvilken vigtig samtale udskyder du?',
+    { i:'A14', k:1, t:'long', d:'selvindsigt', q:'Hvilken vigtig samtale udskyder du?',
       h:'Med hvem, om hvad — og hvad koster udskydelsen dig allerede nu?' },
-    { i:'A15', t:'long', d:'beslutningskvalitet', q:'Hvis intet ændrer sig de næste to år, hvad vil det så koste dig?',
+    { i:'A15', k:1, t:'long', d:'beslutningskvalitet', q:'Hvis intet ændrer sig de næste to år, hvad vil det så koste dig?',
       w:{ t:'Vi overvurderer systematisk, hvor stærkt og hvor længe fremtidige begivenheder vil påvirke os — og undervurderer alt det andet, der også kommer til at fylde. Spørgsmålet er stillet for at trække opmærksomheden væk fra det ene forestillede skift og hen på den samlede hverdag.',
           c:'Wilson & Gilbert (2005), Current Directions in Psychological Science' } },
     { i:'A16', t:'long', q:'Hvad fungerer bedre, end du normalt anerkender?',
@@ -668,15 +680,15 @@ var MODULES = [
   desc: 'Det egentlige valg er sjældent “bliv eller gå”. Det er som regel “hvad kan reelt ændres her, og hvad kan ikke”.',
   core: true,
   qs: [
-    { i:'B1', t:'single', r:1, q:'Hvis du ikke var i rollen i dag, ville du så aktivt søge den?',
+    { i:'B1', k:1, t:'single', r:1, q:'Hvis du ikke var i rollen i dag, ville du så aktivt søge den?',
       o:['Ja, uden tøven','Ja, formentlig','Jeg er i tvivl','Nej, formentlig ikke','Nej'], d:'retningsklarhed' },
-    { i:'B2', t:'single', r:1, q:'Bevæger du dig mod noget eller primært væk fra noget?',
+    { i:'B2', k:1, t:'single', r:1, q:'Bevæger du dig mod noget eller primært væk fra noget?',
       o:['Klart mod noget','Mest mod noget','Lige dele','Mest væk fra noget','Klart væk fra noget'], d:'retningsklarhed', rev:1,
       w:{ t:'Skellet er ikke moralsk — det er praktisk. Bevægelser væk fra noget har en tendens til at gentage sig, fordi kriterierne for det næste aldrig blev formuleret. Spørgsmålet stilles igen i modul L.',
           c:'Boyatzis (2006), Journal of Management Development — forandring båret af et ønsket fremtidsbillede frem for af pres' } },
     { i:'B3', t:'long', q:'Hvilke problemer kan reelt løses i den nuværende rolle?' },
     { i:'B4', t:'long', q:'Hvilke problemer er strukturelle — og altså ikke til at løse herfra?' },
-    { i:'B5', t:'long', d:'selvindsigt', r:1, q:'Hvad har du selv bidraget til i den situation, du ønsker ændret?',
+    { i:'B5', k:1, t:'long', d:'selvindsigt', r:1, q:'Hvad har du selv bidraget til i den situation, du ønsker ændret?',
       h:'Ikke som selvkritik. Som information om, hvad du tager med dig videre.',
       w:{ t:'Klassisk eskaleringsforskning viser, at personligt ansvar for et negativt udfald i sig selv får os til at investere mere i den fejlslagne kurs — ikke fordi ny information taler for det, men fordi vi retfærdiggør det tidligere valg. Spørgsmålet er stillet for at gøre den mekanisme synlig.',
           c:'Staw (1976), Organizational Behavior and Human Performance. Bemærk: laboratorieeksperiment, ikke et estimat af hvor ofte ledere eskalerer.' } },
@@ -685,8 +697,8 @@ var MODULES = [
     { i:'B8', t:'long', q:'Hvilken ændring i mandat, chef, team, governance eller ressourcer ville gøre rollen attraktiv igen?',
       w:{ t:'At omforme sit job — opgaver, relationer og den måde man forstår arbejdet på — hænger sammen med højere engagement. Men interventionsstudierne viser små effekter, og job crafting korrelerer så stærkt med proaktiv personlighed, at det er uklart, hvor meget der er adfærd og hvor meget der er disposition. Behandl det som en mulighed, ikke som en løsning.',
           c:'Wrzesniewski & Dutton (2001), AMR · Oprea m.fl. (2019), EJWOP: samlet effekt g = 0,26' } },
-    { i:'B9', t:'long', r:1, q:'Hvad skulle være sandt, før du valgte at blive?' },
-    { i:'B10', t:'long', r:1, q:'Hvad skulle være sandt, før du valgte at gå?' },
+    { i:'B9', k:1, t:'long', r:1, q:'Hvad skulle være sandt, før du valgte at blive?' },
+    { i:'B10', k:1, t:'long', r:1, q:'Hvad skulle være sandt, før du valgte at gå?' },
     { i:'B11', t:'long', q:'Hvad frygter du ved at blive?' },
     { i:'B12', t:'long', q:'Hvad frygter du ved at forlade?',
       w:{ t:'Når vi ikke ændrer noget trods oprigtig vilje, skyldes det sjældent motivation. Det skyldes typisk en konkurrerende forpligtelse — noget andet vi også holder fast i — beskyttet af en antagelse, vi ikke har testet. De to frygtspørgsmål er stillet for at få begge sider frem.',
@@ -694,7 +706,7 @@ var MODULES = [
     { i:'B13', t:'long', d:'beslutningskvalitet', q:'Hvilken beslutning ville du træffe, hvis titel og omdømme ikke talte med?' },
     { i:'B14', t:'long', d:'beslutningskvalitet', q:'Hvilken beslutning ville du anbefale en leder, du respekterer, i præcis samme situation?',
       h:'Skriv anbefalingen, som du ville sige den til vedkommende.' },
-    { i:'B15', t:'alloc', r:1, q:'Din foreløbige fordeling lige nu',
+    { i:'B15', k:1, t:'alloc', r:1, q:'Din foreløbige fordeling lige nu',
       h:'Fordel 100 point. Det er et øjebliksbillede, ikke en beslutning.',
       items:['Bliv','Form rollen','Søg videre'], sum:100, d:'retningsklarhed' }
   ]
@@ -706,7 +718,7 @@ var MODULES = [
   desc: 'Hvad du vil mere af, hvad du vil mindre af — og hvad du er villig til at betale for det.',
   core: true,
   qs: [
-    { i:'C1', t:'long', r:1, d:'retningsklarhed', c:1, q:'Hvilken professionel virkelighed ønsker du om tre år?',
+    { i:'C1', k:1, t:'long', r:1, d:'retningsklarhed', c:1, q:'Hvilken professionel virkelighed ønsker du om tre år?',
       h:'Beskriv en almindelig arbejdsuge, ikke en titel.' },
     { i:'C2', t:'long', d:'retningsklarhed', q:'Hvilke problemer vil du gerne være kendt for at kunne løse?' },
     { i:'C3', t:'long', q:'Hvilken type organisatorisk situation gør dig bedst?',
@@ -719,11 +731,11 @@ var MODULES = [
     { i:'C7', t:'text', q:'Hvilke opgaver vil du med glæde aldrig udføre igen?' },
     { i:'C8', t:'long', q:'Hvilken indflydelse vil du gerne have — og over hvad?' },
     { i:'C9', t:'text', q:'Hvem vil du gerne skabe værdi for?' },
-    { i:'C10', t:'rank', r:1, d:'retningsklarhed', q:'Rangér efter hvor vigtigt det er for dig nu',
+    { i:'C10', k:1, t:'rank', r:1, d:'retningsklarhed', q:'Rangér efter hvor vigtigt det er for dig nu',
       h:'Flyt punkterne, til rækkefølgen er ubehageligt præcis. Det er de nederste tre, der er informative.',
       items:['Titel og formel position','Mandat og beslutningsrettigheder','Økonomi','Indflydelse','Autonomi','Læring og udvikling','Formål og mening','Livsbalance'] },
-    { i:'C11', t:'long', r:1, q:'Hvilken pris er du villig til at betale for næste skridt?' },
-    { i:'C12', t:'long', r:1, q:'Hvilken pris er du ikke villig til at betale?' },
+    { i:'C11', k:1, t:'long', r:1, q:'Hvilken pris er du villig til at betale for næste skridt?' },
+    { i:'C12', k:1, t:'long', r:1, q:'Hvilken pris er du ikke villig til at betale?' },
     { i:'C13', t:'long', d:'selvindsigt', q:'Hvad er vigtigt for dig, men endnu ikke synligt i dine faktiske karrierevalg?',
       h:'Forskellen mellem det, du siger er vigtigt, og det, din kalender viser.' },
     { i:'C14', t:'long', q:'Hvad ville gøre den næste rolle meningsfuld — også efter den første begejstring har lagt sig?',
@@ -749,8 +761,8 @@ var MODULES = [
       h:'Både det, der gentager sig til din fordel, og det, der ikke gør.' },
     { i:'D5', t:'long', q:'Hvilke valg har givet dig muligheder?' },
     { i:'D6', t:'long', q:'Hvilke valg har reduceret din optionalitet?' },
-    { i:'D7', t:'long', r:1, d:'erfaringsparathed', q:'Hvilke erfaringer skal næste rolle tilføre, hvis den skal styrke din langsigtede retning?' },
-    { i:'D8', t:'long', d:'erfaringsparathed', q:'Hvilke erfaringer mangler mellem din nuværende position og din ønskede position om tre år?' },
+    { i:'D7', k:1, t:'long', r:1, d:'erfaringsparathed', q:'Hvilke erfaringer skal næste rolle tilføre, hvis den skal styrke din langsigtede retning?' },
+    { i:'D8', k:1, t:'long', d:'erfaringsparathed', q:'Hvilke erfaringer mangler mellem din nuværende position og din ønskede position om tre år?' },
     { i:'D9', t:'text', q:'Hvilke roller kunne være værdifulde mellemstationer?',
       h:'Roller du ikke nødvendigvis drømmer om, men som ville lukke et hul.',
       w:{ t:'Vejen ind i topstillinger går sjældent direkte. I 2025 kom 48 % af nye S&P 1500-CEO’er fra en COO- eller president-rolle og 30 % fra en divisionsledelse — mellemstationer, ikke spring. 84 % var førstegangs-CEO’er.',
@@ -768,8 +780,8 @@ var MODULES = [
   desc: 'Her skal du være mere konkret, end du plejer at være. Det er den del af arbejdet, de fleste springer over — og den, en bestyrelse eller search-konsulent går direkte til.',
   core: true,
   qs: [
-    { i:'E1', t:'long', r:1, d:'dokumenteret_vaerdi', q:'Hvilke komplekse problemer bliver du typisk bedt om at løse?' },
-    { i:'E_res', t:'repeat', r:1, d:'dokumenteret_vaerdi', q:'Registrér dine væsentligste resultater',
+    { i:'E1', k:1, t:'long', r:1, d:'dokumenteret_vaerdi', q:'Hvilke komplekse problemer bliver du typisk bedt om at løse?' },
+    { i:'E_res', k:1, t:'repeat', r:1, d:'dokumenteret_vaerdi', q:'Registrér dine væsentligste resultater',
       h:'Tag to til fire. Hellere færre og præcise end mange og løse. Du kan tilføje flere senere.',
       addLabel:'Tilføj resultat', itemLabel:'Resultat',
       fields:[
@@ -791,12 +803,12 @@ var MODULES = [
       h:'Navngiv gerne. Hvor er de i dag?' },
     { i:'E5', t:'long', q:'Hvordan har du påvirket bestyrelse, ejere eller centrale stakeholders?' },
     { i:'E6', t:'long', r:1, d:'selvindsigt', q:'Hvad gør du bedre end de fleste på dit niveau?' },
-    { i:'E7', t:'long', r:1, d:'selvindsigt', q:'Hvad tror du, du er god til, men har begrænset evidens for?',
+    { i:'E7', k:1, t:'long', r:1, d:'selvindsigt', q:'Hvad tror du, du er god til, men har begrænset evidens for?',
       w:{ t:'Overvurdering findes i mindst tre former: af egen præstation, af egen placering i forhold til andre, og af hvor sikker man er på sine egne vurderinger. De hænger ikke sammen på den måde, man skulle tro. Derfor spørger værktøjet konsekvent om, hvad du bygger en vurdering på — ikke om, hvor sikker du er i almindelighed.',
           c:'Moore & Healy (2008), Psychological Review. Laboratoriestudier; overførsel til lederes selvvurdering er en ekstrapolation.' } },
     { i:'E8', t:'long', q:'Hvor bliver din værdi undervurderet?' },
     { i:'E9', t:'long', d:'selvindsigt', q:'Hvor bliver din værdi muligvis overvurderet?' },
-    { i:'E10', t:'long', r:1, q:'Hvad vil tidligere chefer, peers og medarbejdere nævne som din tydeligste værdi?',
+    { i:'E10', k:1, t:'long', r:1, q:'Hvad vil tidligere chefer, peers og medarbejdere nævne som din tydeligste værdi?',
       h:'Tre grupper, tre svar. De er sjældent ens.',
       w:{ t:'Topledere vurderer systematisk deres egen organisations tilstand mere positivt end niveauerne under dem. Det samme mønster findes med forskellige metoder hos McKinsey, BCG, Mercer og Deloitte — det er et af de mest robuste fund i hele grundlaget. Der er ingen grund til at tro, at selvvurdering af egen værdi skulle være undtaget.',
           c:'Konvergent fund; se metode- og kildesiden' } },
@@ -812,7 +824,7 @@ var MODULES = [
   qs: [
     { i:'F_intro', t:'info', q:'Sådan udfylder du matrixen',
       h:'Vælg først de områder, der er relevante for din ønskede retning — typisk fem til otte. Vurdér derefter niveau nu og krævet niveau. Du behøver ikke udfylde alle felter. Der er ingen norm og ingen sammenligning med andre; tallene er kun til jeres samtale.' },
-    { i:'F_mx', t:'matrix', r:1, d:'erfaringsparathed', q:'Parathedsmatrix',
+    { i:'F_mx', k:1, t:'matrix', r:1, d:'erfaringsparathed', q:'Parathedsmatrix',
       rows:['Strategi','Kommerciel ledelse','Driftsledelse','Finansiel forståelse','Transformation','Digitalisering og teknologi','AI-relateret ledelse','International erfaring','Regulering og governance','Bestyrelsesarbejde','Investor- og ejerrelationer','People leadership','Succession og talentudvikling','Krisestyring','Kommunikation og offentlig eksponering','Tværfunktionel ledelse','At lede gennem andre'],
       cols:[
         {k:'rel', l:'Relevant', t:'check'},
@@ -831,7 +843,7 @@ var MODULES = [
       w:{ t:'På topniveau er den begrænsende faktor sjældent manglende kompetence, men adfærd der engang var en styrke. Succes gør problemet usynligt for personen selv — og feedbacken bliver knappere, jo højere man kommer.',
           c:'Goldsmith & Reiter (2007). Praktikerramme; adfærdskataloget er erfaringsbaseret, ikke empirisk udledt.' } },
     { i:'F5', t:'text', q:'Hvilket hul kan lukkes gennem din næste rolle?' },
-    { i:'F6', t:'text', r:1, q:'Hvilket hul kræver, at du handler inden næste rolle?' }
+    { i:'F6', k:1, t:'text', r:1, q:'Hvilket hul kræver, at du handler inden næste rolle?' }
   ]
 },
 
@@ -842,13 +854,13 @@ var MODULES = [
   core: true,
   qs: [
     { i:'G1', t:'long', r:1, d:'markedsparathed', q:'Hvem er du professionelt?' },
-    { i:'G2', t:'long', r:1, q:'Hvad er den røde tråd i din karriere?' },
+    { i:'G2', k:1, t:'long', r:1, q:'Hvad er den røde tråd i din karriere?' },
     { i:'G3', t:'text', q:'Hvilke resultater dokumenterer din værdi?', h:'Henvis gerne til resultaterne fra modul E.' },
     { i:'G4', t:'long', r:1, q:'Hvad har dine vigtigste fejl lært dig?' },
     { i:'G5', t:'long', q:'Hvorfor giver din ønskede retning mening?' },
-    { i:'G6', t:'long', r:1, q:'Hvorfor netop nu?' },
+    { i:'G6', k:1, t:'long', r:1, q:'Hvorfor netop nu?' },
     { i:'G7', t:'text', r:1, q:'Hvilket mandat søger du?' },
-    { i:'G8', t:'long', r:1, q:'Hvad skal en beslutningstager huske om dig dagen efter en samtale?',
+    { i:'G8', k:1, t:'long', r:1, q:'Hvad skal en beslutningstager huske om dig dagen efter en samtale?',
       h:'Én ting. Ikke tre.' },
     { i:'G_v1', t:'long', d:'markedsparathed', q:'Version 1 — 30 sekunders introduktion',
       h:'Skriv den, som du ville sige den. Læs den højt bagefter.' },
@@ -893,7 +905,7 @@ var MODULES = [
       ],
       w:{ t:'Ledere, hvis netværk bygger bro mellem ellers adskilte grupper, klarer sig målbart bedre på løn, vurdering og forfremmelse end dem med tætte, lukkede netværk. Derfor spørger værktøjet ikke om, hvor mange du kender, men om hvor spredt dit netværk er.',
           c:'Burt (2004), American Journal of Sociology. Ét firma, én funktion, tværsnit — kausalretningen er ikke fastslået.' } },
-    { i:'H1', t:'long', r:1, q:'Hvem vil aktivt tale din sag, når du ikke er i rummet?',
+    { i:'H1', k:1, t:'long', r:1, q:'Hvem vil aktivt tale din sag, når du ikke er i rummet?',
       h:'Ikke hvem der kan lide dig. Hvem der vil bruge sin egen kapital på dig.' },
     { i:'H2', t:'text', q:'Hvem kender kvaliteten af dit arbejde på førstehånd?' },
     { i:'H3', t:'text', q:'Hvem kender dine ambitioner?' },
@@ -907,7 +919,7 @@ var MODULES = [
       w:{ t:'Netværk er ikke én ting. Det operationelle får det daglige til at fungere, det personlige giver læring udefra, og det strategiske giver adgang til muligheder. Overgangen til topledelse kræver et skift i tyngdepunkt mod det strategiske — og det skift sker sjældent af sig selv.',
           c:'Ibarra & Hunter (2007), Harvard Business Review. Baseret på ca. 30 ledere; ingen kvantitativ validering.' } },
     { i:'H9', t:'text', q:'Hvem ville du ringe til for at forstå en ny rolle eller virksomhed indefra?' },
-    { i:'H10', t:'long', r:1, q:'Hvem burde kende dig om 12 måneder — og hvad gør du ved det?' }
+    { i:'H10', k:1, t:'long', r:1, q:'Hvem burde kende dig om 12 måneder — og hvad gør du ved det?' }
   ]
 },
 
@@ -935,9 +947,9 @@ var MODULES = [
       w:{ t:'Der findes ingen peer-reviewet evidens for, at uformelle baglandsreferencer forudsiger noget som helst. Selv formelle referencetjek indgår ikke i den nyeste opgørelse over udvælgelsesmetoders validitet. Vi behandler det derfor som praksis, ikke som forudsigelse — men praksis er det, og det er værd at være forberedt på.',
           c:'Sackett m.fl. (2023), Industrial and Organizational Psychology' } },
     { i:'I2', t:'long', q:'Er der tidligere relationer, som skal repareres eller i det mindste forstås?' },
-    { i:'I3', t:'long', r:1, q:'Hvad tror du, andre siger om dig, når du ikke er til stede?' },
-    { i:'I4', t:'long', r:1, q:'Hvad ønsker du, at de skal kunne sige?' },
-    { i:'I5', t:'scale', d:'selvindsigt', rev:1, c:1, q:'Hvor stor er forskellen mellem de to?',
+    { i:'I3', k:1, t:'long', r:1, q:'Hvad tror du, andre siger om dig, når du ikke er til stede?' },
+    { i:'I4', k:1, t:'long', r:1, q:'Hvad ønsker du, at de skal kunne sige?' },
+    { i:'I5', k:1, t:'scale', d:'selvindsigt', rev:1, c:1, q:'Hvor stor er forskellen mellem de to?',
       ends:['Ingen forskel','Meget stor forskel'] },
     { i:'I6', t:'long', d:'markedsparathed', q:'Hvilket omdømme har du i markedet?' },
     { i:'I7', t:'long', r:1, d:'selvindsigt', q:'Hvilke tegn bygger du den vurdering på?',
@@ -953,20 +965,20 @@ var MODULES = [
                  {q:'R0_ny', in:['Ja, jeg er på vej ind']},
                  {q:'R0_sit', in:['På vej ind i en ny rolle']} ] },
   qs: [
-    { i:'J_navn', t:'text', r:1, q:'Hvilken mulighed handler dette om?', h:'Rolle og organisation — eller et kaldenavn, hvis du foretrækker det.' },
+    { i:'J_navn', k:1, t:'text', r:1, q:'Hvilken mulighed handler dette om?', h:'Rolle og organisation — eller et kaldenavn, hvis du foretrækker det.' },
     { i:'J_intro', t:'info', q:'Om denne del',
       h:'Nogle af spørgsmålene kan du ikke svare på endnu. Det er selve pointen — de ubesvarede bliver samlet til sidst som din undersøgelsesliste.' },
-    { i:'J1', t:'long', r:1, d:'rolle_dd', q:'Hvorfor eksisterer rollen?' },
-    { i:'J2', t:'long', r:1, d:'rolle_dd', q:'Hvilket problem skal reelt løses?' },
+    { i:'J1', k:1, t:'long', r:1, d:'rolle_dd', q:'Hvorfor eksisterer rollen?' },
+    { i:'J2', k:1, t:'long', r:1, d:'rolle_dd', q:'Hvilket problem skal reelt løses?' },
     { i:'J3', t:'text', d:'rolle_dd', q:'Hvad skete der med forgængeren?' },
-    { i:'J4', t:'long', r:1, d:'rolle_dd', q:'Hvad betyder succes efter 6, 12 og 24 måneder?',
+    { i:'J4', k:1, t:'long', r:1, d:'rolle_dd', q:'Hvad betyder succes efter 6, 12 og 24 måneder?',
       h:'Deres definition — ikke din.' },
-    { i:'J5', t:'long', r:1, d:'rolle_dd', q:'Hvad er mandatet?' },
+    { i:'J5', k:1, t:'long', r:1, d:'rolle_dd', q:'Hvad er mandatet?' },
     { i:'J6', t:'long', d:'rolle_dd', q:'Hvilke beslutningsrettigheder følger reelt med?' },
     { i:'J7', t:'text', d:'rolle_dd', q:'Hvilke ressourcer følger med?' },
     { i:'J8', t:'text', d:'rolle_dd', q:'Hvad er ikke til forhandling?' },
     { i:'J9', t:'long', d:'rolle_dd', q:'Hvad bliver underspillet i stillingsbeskrivelsen?' },
-    { i:'J10', t:'long', d:'rolle_dd', q:'Chefen: hvad forventer vedkommende — og hvordan træffer vedkommende beslutninger?' },
+    { i:'J10', k:1, t:'long', d:'rolle_dd', q:'Chefen: hvad forventer vedkommende — og hvordan træffer vedkommende beslutninger?' },
     { i:'J11', t:'text', d:'rolle_dd', q:'Hvordan håndterer chefen uenighed?' },
     { i:'J12', t:'text', d:'rolle_dd', q:'Hvad har tidligere direkte rapporterende oplevet?' },
     { i:'J13', t:'single', d:'rolle_dd', q:'Vil chefen reelt give plads?', o:['Ja','Formentlig','Tvivlsomt','Nej','Ved ikke endnu'] },
@@ -974,22 +986,22 @@ var MODULES = [
     { i:'J15', t:'long', d:'rolle_dd', q:'Teamet: hvem overtager du, hvem er stærke, og hvor er de væsentligste huller?' },
     { i:'J16', t:'text', d:'rolle_dd', q:'Hvilke personer er politisk eller kulturelt svære at ændre?' },
     { i:'J17', t:'single', d:'rolle_dd', q:'Er der frihed til at sammensætte holdet?', o:['Fuld frihed','Nogen frihed','Meget lidt','Ingen','Ved ikke endnu'] },
-    { i:'J18', t:'long', r:1, d:'rolle_dd', q:'Kulturen: hvordan træffes beslutninger i praksis?' },
+    { i:'J18', k:1, t:'long', r:1, d:'rolle_dd', q:'Kulturen: hvordan træffes beslutninger i praksis?' },
     { i:'J19', t:'text', d:'rolle_dd', q:'Hvilken adfærd belønnes — og hvilken tolereres?' },
     { i:'J20', t:'text', d:'rolle_dd', q:'Hvor ligger den uformelle magt?' },
     { i:'J21', t:'text', d:'rolle_dd', q:'Hvordan håndteres dårlige nyheder?' },
     { i:'J22', t:'text', d:'rolle_dd', q:'Hvad må man ikke sige højt?' },
     { i:'J23', t:'long', d:'rolle_dd', q:'Hvad fortæller personaleomsætning, succession og tidligere lederskift?' },
-    { i:'J24', t:'long', r:1, d:'rolle_dd', q:'Ejere og bestyrelse: hvem har reel indflydelse?' },
+    { i:'J24', k:1, t:'long', r:1, d:'rolle_dd', q:'Ejere og bestyrelse: hvem har reel indflydelse?' },
     { i:'J25', t:'single', d:'rolle_dd', q:'Er ejerkredsen enig om retningen?', o:['Ja','Overvejende','Uenig','Ved ikke endnu'] },
     { i:'J26', t:'text', d:'rolle_dd', q:'Hvilket tidsperspektiv og hvilken risikovillighed arbejder ejerne med?' },
     { i:'J27', t:'text', d:'rolle_dd', q:'Hvordan ser bestyrelsen på rollen?' },
     { i:'J28', t:'long', d:'rolle_dd', q:'Hvad sker der ved manglende performance eller strategisk uenighed?' },
-    { i:'J29', t:'long', r:1, q:'Privat bæredygtighed: hvad kræver rollen af tid, rejser og tilgængelighed?' },
+    { i:'J29', k:1, t:'long', r:1, q:'Privat bæredygtighed: hvad kræver rollen af tid, rejser og tilgængelighed?' },
     { i:'J30', t:'long', r:1, q:'Hvilken betydning får det for familie og øvrigt liv?' },
-    { i:'J31', t:'long', r:1, d:'beslutningskvalitet', q:'Hvilke antagelser har du endnu ikke afstemt hjemme?' },
-    { i:'J32', t:'single', r:1, q:'Er den samlede pris bæredygtig?', o:['Ja','Formentlig','Tvivlsomt','Nej','Ved ikke endnu'] },
-    { i:'J_score', t:'matrix', r:1, d:'rolle_dd', q:'Executive Role Scorecard',
+    { i:'J31', k:1, t:'long', r:1, d:'beslutningskvalitet', q:'Hvilke antagelser har du endnu ikke afstemt hjemme?' },
+    { i:'J32', k:1, t:'single', r:1, q:'Er den samlede pris bæredygtig?', o:['Ja','Formentlig','Tvivlsomt','Nej','Ved ikke endnu'] },
+    { i:'J_score', k:1, t:'matrix', r:1, d:'rolle_dd', q:'Executive Role Scorecard',
       h:'Vægt hvert kriterium efter hvor meget det betyder for dig (1–5), og vurdér hvordan denne mulighed står (1–10). Markér disqualifier, hvis et forhold alene ville få dig til at sige nej.',
       rows:['Mandat og beslutningsrettigheder','Problemet der skal løses','Chefen og partnerskabet','Ejerkredsens enighed','Bestyrelsens forventninger','Teamet du overtager','Kulturens virkemåde','Ressourcer og budget','Læring og udvikling','Økonomi og vilkår','Privat bæredygtighed','Omdømme og risiko'],
       cols:[
@@ -1000,7 +1012,7 @@ var MODULES = [
       ],
       w:{ t:'Logikken er hentet fra, hvordan bestyrelser bør vælge en CEO: match mod virksomhedens konkrete værdidrivere frem for mod en generisk lederprofil. Her er den vendt om, så du bruger den på rollen. Bemærk samtidig, at oplevet fit i forskningen forudsiger trivsel og fastholdelse — ikke præstation. En høj score betyder ikke, at du vil lykkes.',
           c:'Larcker m.fl. (2024), Stanford GSB · Kristof-Brown m.fl. (2005), Personnel Psychology: P-O-fit korrelerer .07 med jobpræstation' } },
-    { i:'J33', t:'long', r:1, q:'Hvad skal undersøges, før du kan sige ja?',
+    { i:'J33', k:1, t:'long', r:1, q:'Hvad skal undersøges, før du kan sige ja?',
       h:'Skriv det som en liste med navne på, hvem der kan svare.' }
   ]
 },
@@ -1014,10 +1026,10 @@ var MODULES = [
   qs: [
     { i:'K_ev', t:'info', q:'Hvad forskningen faktisk siger om udvælgelse',
       h:'De validitetstal, der cirkulerer i HR og på LinkedIn, stammer fra et arbejdspapir, som aldrig blev publiceret eller fagfællebedømt. I den opdaterede opgørelse rangerer strukturerede interviews højest (.42), foran jobkendskabstests (.40) og arbejdsprøver (.33) — mens kognitive evnetests ligger på .31 og ustrukturerede interviews på .19. Praktisk konsekvens: jo mere struktureret samtalen er, jo mere tæller det, du faktisk kan dokumentere. Kilde: Sackett m.fl. (2023), Industrial and Organizational Psychology.' },
-    { i:'K1', t:'scale', d:'markedsparathed', c:1, q:'Kan du forklare din værdi præcist på under to minutter?', ends:['Nej','Ja, ubesværet'] },
+    { i:'K1', k:1, t:'scale', d:'markedsparathed', c:1, q:'Kan du forklare din værdi præcist på under to minutter?', ends:['Nej','Ja, ubesværet'] },
     { i:'K2', t:'scale', d:'dokumenteret_vaerdi', q:'Kan dine resultater dokumenteres?', ends:['Næppe','Fuldt ud'] },
     { i:'K3', t:'scale', d:'markedsparathed', q:'Er dine historier relevante for netop den rolle, du søger?', ends:['Slet ikke','Meget'] },
-    { i:'K4', t:'long', r:1, q:'Kan du forklare dine karriereskift uden at forsvare dem?',
+    { i:'K4', k:1, t:'long', r:1, q:'Kan du forklare dine karriereskift uden at forsvare dem?',
       h:'Skriv forklaringen på det skift, der er sværest at forklare.' },
     { i:'K5', t:'long', q:'Hvordan behandler du dine svagheder og fejl, når du bliver spurgt?',
       h:'Skriv det svar, du faktisk ville give.' },
@@ -1028,11 +1040,11 @@ var MODULES = [
     { i:'K10', t:'long', q:'Hvordan reagerer du på kritik eller åben tvivl i en samtale?' },
     { i:'K11', t:'single', d:'selvindsigt', q:'Er din nysgerrighed troværdig — eller er den en teknik?',
       o:['Ægte og tydelig','Ægte, men træder i baggrunden','Mest teknik','Ved ikke'] },
-    { i:'K12', t:'long', r:1, d:'rolle_dd', q:'Proces: hvem er de egentlige beslutningstagere?' },
-    { i:'K13', t:'long', r:1, q:'Hvilke spørgsmål mangler stadig svar?' },
+    { i:'K12', k:1, t:'long', r:1, d:'rolle_dd', q:'Proces: hvem er de egentlige beslutningstagere?' },
+    { i:'K13', k:1, t:'long', r:1, q:'Hvilke spørgsmål mangler stadig svar?' },
     { i:'K14', t:'long', q:'Hvilke budskaber skal stå klart efter hver samtale?' },
     { i:'K15', t:'text', q:'Hvilke referencer kan blive aktiveret — og hvornår?' },
-    { i:'K16', t:'text', r:1, q:'Hvad er næste skridt, og hvem har bolden?' },
+    { i:'K16', k:1, t:'text', r:1, q:'Hvad er næste skridt, og hvem har bolden?' },
     { i:'K_q', t:'repeat', q:'Dine spørgsmål til de enkelte interessenter',
       h:'Forbered to til tre skarpe spørgsmål til hver. Det er her, du selv laver due diligence.',
       addLabel:'Tilføj interessent', itemLabel:'Interessent',
@@ -1051,11 +1063,11 @@ var MODULES = [
   desc: 'Det farligste tidspunkt i en proces er, når du er begyndt at ville have den. Her forsøger vi at trække beslutningen tilbage til det, du faktisk ved.',
   when: { any: [ {q:'R0_tilbud', in:['Ja','Forventer et snart']}, {q:'R0_dialog', in:['Ja']} ] },
   qs: [
-    { i:'L1', t:'long', r:1, d:'beslutningskvalitet', q:'Hvilke reelle alternativer findes?',
+    { i:'L1', k:1, t:'long', r:1, d:'beslutningskvalitet', q:'Hvilke reelle alternativer findes?',
       h:'Husk at tage “bliv, hvor du er” med som et alternativ på lige fod.' },
     { i:'L2', t:'single', r:1, d:'beslutningskvalitet', rev:1, q:'Er du ved at forelske dig i én mulighed for tidligt?',
       o:['Nej','Måske','Formentlig','Ja, det er jeg'] },
-    { i:'L3', t:'long', r:1, d:'beslutningskvalitet', q:'Hvad ved du, og hvad antager du?',
+    { i:'L3', k:1, t:'long', r:1, d:'beslutningskvalitet', q:'Hvad ved du, og hvad antager du?',
       h:'Skriv to lister. Vær hård ved den første.',
       w:{ t:'Vi vurderer typisk en sag ud fra dens egne detaljer og glemmer at spørge, hvordan det plejer at gå i sammenlignelige tilfælde. Det er den enkeltstående mest robuste korrektion i beslutningslitteraturen — og den er ubehagelig, fordi den gør din situation mindre særlig.',
           c:'Kahneman & Lovallo (1993), Management Science' } },
@@ -1063,14 +1075,14 @@ var MODULES = [
     { i:'L5', t:'text', q:'Hvilken giver størst langsigtet optionalitet?' },
     { i:'L6', t:'text', q:'Hvilken giver mest mening?' },
     { i:'L7', t:'text', d:'selvindsigt', q:'Hvilken er primært attraktiv på grund af titel eller løn?' },
-    { i:'L8', t:'long', r:1, d:'beslutningskvalitet', q:'Hvad er worst case for hver mulighed?' },
+    { i:'L8', k:1, t:'long', r:1, d:'beslutningskvalitet', q:'Hvad er worst case for hver mulighed?' },
     { i:'L9', t:'single', d:'beslutningskvalitet', q:'Hvilken beslutning er mest reversibel?',
       o:['Den nuværende situation','Mulighed A','Mulighed B','Ingen af dem er reversible','Ved ikke'] },
     { i:'L10', t:'long', q:'Hvilke muligheder forsvinder ved et ja?' },
     { i:'L11', t:'long', d:'beslutningskvalitet', q:'Hvad ville få dig til at fortryde?' },
-    { i:'L12', t:'long', r:1, d:'beslutningskvalitet', q:'Hvilken information kan stadig ændre beslutningen?',
+    { i:'L12', k:1, t:'long', r:1, d:'beslutningskvalitet', q:'Hvilken information kan stadig ændre beslutningen?',
       h:'Hvis svaret er “ingen”, er beslutningen allerede truffet. Så er spørgsmålet et andet.' },
-    { i:'L_pm', t:'long', r:1, d:'beslutningskvalitet', q:'Præmortem',
+    { i:'L_pm', k:1, t:'long', r:1, d:'beslutningskvalitet', q:'Præmortem',
       h:'Forestil dig, at du om 18 måneder konkluderer, at valget var en fejl. Skriv i datid, hvad der viste sig at være galt. Vær konkret — navne, mekanismer, tidspunkter.',
       w:{ t:'Teknikken er testet: den sænker planlægningskonfidensen markant mere end almindelige pro-et-contra-øvelser. Bemærk dog ærligt, at det målte udfald er lavere selvtillid — ikke dokumenteret bedre beslutninger. Værdien ligger i, at man får øje på fejlkilder, man ellers ikke ville nævne.',
           c:'Veinott, Klein & Wiggins (2010), ISCRAM. Konferencebidrag, studenterstikprøve.' } },
@@ -1086,20 +1098,20 @@ var MODULES = [
   qs: [
     { i:'M_note', t:'info', q:'Om denne del',
       h:'Værktøjet beder dig ikke om beløb. Det beder dig klassificere, hvad der reelt betyder noget — og hvorfor. Der findes ingen aktuel forskning om forhandling af executive-pakker; dette modul står på Thomas’ metode og erfaring.' },
-    { i:'M_mx', t:'matrix', r:1, d:'forhandlingsklarhed', q:'Klassificér hvert punkt',
+    { i:'M_mx', k:1, t:'matrix', r:1, d:'forhandlingsklarhed', q:'Klassificér hvert punkt',
       h:'Nødvendigt betyder: uden dette kan jeg ikke lykkes. Ego-drevet er ikke en anklage — det er en kategori, det er værd at kende hos sig selv.',
       rows:['Fast løn','Bonus','Equity eller langsigtede incitamenter','Pension','Fratrædelsesbeskyttelse','Mandat','Beslutningsrettigheder','Team','Budget','Rapporteringslinje','Geografi og rejser','Fleksibilitet','Starttidspunkt','Eksterne bestyrelsesposter','Succeskriterier for de første 6–12 måneder','Støtte til onboarding eller coaching'],
       cols:[
         {k:'kat', l:'Kategori', t:'sel', o:['','Nødvendigt','Ønskeligt','Ego-drevet','Ikke vigtigt']},
         {k:'note', l:'Hvorfor', t:'text'}
       ] },
-    { i:'M1', t:'long', r:1, d:'forhandlingsklarhed', q:'Hvad skal være på plads, før du kan lykkes?',
+    { i:'M1', k:1, t:'long', r:1, d:'forhandlingsklarhed', q:'Hvad skal være på plads, før du kan lykkes?',
       h:'Kun det, der reelt er en forudsætning.' },
     { i:'M2', t:'long', q:'Hvad vil du ønske, du havde fået afklaret?',
       h:'Tænk tilbage på sidste gang du tiltrådte.' },
     { i:'M3', t:'long', r:1, d:'beslutningskvalitet', q:'Hvor risikerer du at bytte reel handlekraft for symbolsk status?' },
     { i:'M4', t:'text', q:'Hvilke indrømmelser er acceptable?' },
-    { i:'M5', t:'long', r:1, d:'forhandlingsklarhed', q:'Hvad er din klare walk-away-position?',
+    { i:'M5', k:1, t:'long', r:1, d:'forhandlingsklarhed', q:'Hvad er din klare walk-away-position?',
       h:'Formulér den, som du ville sige den højt. Hvis du ikke kan, har du ikke én.' }
   ]
 },
@@ -1110,17 +1122,17 @@ var MODULES = [
   desc: 'Hvordan du går, huskes længere end hvorfor. Og et modtilbud er sjældent et svar på det, der fik dig til at overveje at gå.',
   when: { any: [ {q:'R0_focus', in:['Søge videre']}, {q:'R0_tilbud', in:['Ja']} ] },
   qs: [
-    { i:'N1', t:'text', r:1, q:'Hvem skal høre beslutningen først?' },
+    { i:'N1', k:1, t:'text', r:1, q:'Hvem skal høre beslutningen først?' },
     { i:'N2', t:'long', r:1, q:'Hvilken rækkefølge er nødvendig?' },
-    { i:'N3', t:'long', r:1, q:'Hvordan vil du forklare beslutningen?',
+    { i:'N3', k:1, t:'long', r:1, q:'Hvordan vil du forklare beslutningen?',
       h:'Én forklaring, som du kan give alle. Den holder ikke, hvis den kun holder over for nogle.' },
     { i:'N4', t:'long', q:'Hvad vil du gerne efterlade?' },
     { i:'N5', t:'text', q:'Hvilke relationer skal beskyttes?' },
     { i:'N6', t:'long', q:'Hvad kan skabe unødvendig skade?' },
     { i:'N7', t:'text', q:'Hvordan håndterer du fortrolighed undervejs?' },
     { i:'N8', t:'text', q:'Hvilken overgang er rimelig?' },
-    { i:'N9', t:'long', r:1, d:'beslutningskvalitet', q:'Hvad vil et modtilbud forsøge at løse?' },
-    { i:'N10', t:'single', r:1, d:'beslutningskvalitet', q:'Løser modtilbuddet den oprindelige årsag?',
+    { i:'N9', k:1, t:'long', r:1, d:'beslutningskvalitet', q:'Hvad vil et modtilbud forsøge at løse?' },
+    { i:'N10', k:1, t:'single', r:1, d:'beslutningskvalitet', q:'Løser modtilbuddet den oprindelige årsag?',
       o:['Ja','Delvist','Nej','Der er ikke kommet et modtilbud'] },
     { i:'N11', t:'long', d:'selvindsigt', q:'Hvad vil få dig til at tvivle?' },
     { i:'N12', t:'long', q:'Hvad vil du om to år være stolt af ved din exit?' }
@@ -1133,11 +1145,11 @@ var MODULES = [
   desc: 'Perioden mellem to roller er hverken ferie eller arbejdsløshed. Den har sin egen disciplin — og sine egne fælder.',
   when: { any: [ {q:'R0_mellem', in:['Ja']}, {q:'R0_sit', in:['Mellem roller']} ] },
   qs: [
-    { i:'O1', t:'long', r:1, q:'Hvad skal du restituere fra?' },
-    { i:'O2', t:'long', r:1, d:'selvindsigt', q:'Hvad sker der med din identitet, når titlen midlertidigt forsvinder?',
+    { i:'O1', k:1, t:'long', r:1, q:'Hvad skal du restituere fra?' },
+    { i:'O2', k:1, t:'long', r:1, d:'selvindsigt', q:'Hvad sker der med din identitet, når titlen midlertidigt forsvinder?',
       w:{ t:'Tab af en arbejdsidentitet behandles i litteraturen som noget andet end jobtab eller stress — det har sine egne genopretningsveje. Vær opmærksom på, at der ikke findes evidens for, at det forløber i forudsigelige faser eller tager en bestemt tid. Spørgsmålet er stillet for at gøre erfaringen italesættelig, ikke for at normalisere den.',
           c:'Conroy & O’Leary-Kelly (2014), Academy of Management Review. Konceptuel model, ikke empirisk valideret.' } },
-    { i:'O3', t:'text', r:1, q:'Hvor lang tid har du reelt — økonomisk og mentalt?',
+    { i:'O3', k:1, t:'text', r:1, q:'Hvor lang tid har du reelt — økonomisk og mentalt?',
       h:'Et tidsrum, ikke et beløb.' },
     { i:'O4', t:'long', r:1, q:'Hvad er en hensigtsmæssig ugerytme for dig i denne periode?' },
     { i:'O5', t:'text', q:'Hvilke relationer vil du prioritere?' },
@@ -1147,7 +1159,7 @@ var MODULES = [
     { i:'O8', t:'long', d:'selvindsigt', q:'Hvornår bliver pausen passiv?',
       h:'Beskriv de tegn, du selv skal holde øje med.' },
     { i:'O9', t:'long', d:'selvindsigt', q:'Hvornår bliver aktiviteten et forsøg på at undgå refleksion?' },
-    { i:'O10', t:'long', r:1, d:'retningsklarhed', q:'Hvad skal være anderledes i næste rolle?' }
+    { i:'O10', k:1, t:'long', r:1, d:'retningsklarhed', q:'Hvad skal være anderledes i næste rolle?' }
   ]
 },
 
@@ -1160,14 +1172,14 @@ var MODULES = [
   qs: [
     { i:'P_intro', t:'info', q:'Om modulet',
       h:'Første del udfylder du før eller lige efter start. Checkpoint-delen kommer du tilbage til ved 30, 60, 100 og 180 dage — værktøjet kan genåbnes, og besvarelserne kan sammenlignes over tid.' },
-    { i:'P1', t:'long', r:1, d:'onboardingdisciplin', q:'Hvad er du blevet ansat til at gøre?',
+    { i:'P1', k:1, t:'long', r:1, d:'onboardingdisciplin', q:'Hvad er du blevet ansat til at gøre?',
       h:'Deres formulering — ikke din.' },
-    { i:'P2', t:'long', r:1, d:'onboardingdisciplin', q:'Hvilke forventninger er stadig uklare?' },
+    { i:'P2', k:1, t:'long', r:1, d:'onboardingdisciplin', q:'Hvilke forventninger er stadig uklare?' },
     { i:'P3', t:'long', d:'beslutningskvalitet', q:'Hvilke antagelser gør du om organisationen?',
       w:{ t:'Blandt de mest almindelige fælder tidligt i en ny rolle er medbragte, forudbestemte konklusioner og for mange samtidige initiativer. Der findes ingen tal for, hvor ofte det sker — det er destilleret praksiserfaring, ikke forskning. Men det er værd at skrive antagelserne ned, mens de stadig er antagelser.',
           c:'Watkins (2025), IMD — Transition traps. Ingen empirisk stikprøve.' } },
-    { i:'P4', t:'text', r:1, d:'onboardingdisciplin', q:'Hvem skal du forstå tidligt?' },
-    { i:'P5', t:'text', r:1, d:'onboardingdisciplin', q:'Hvad skal du undlade at love endnu?' },
+    { i:'P4', k:1, t:'text', r:1, d:'onboardingdisciplin', q:'Hvem skal du forstå tidligt?' },
+    { i:'P5', k:1, t:'text', r:1, d:'onboardingdisciplin', q:'Hvad skal du undlade at love endnu?' },
     { i:'P_ff', t:'matrix', d:'onboardingdisciplin', q:'Første fredag — dine allerførste observationer',
       h:'Udfyld den første fredag efter din start. Skriv kort. Værdien ligger i, at det er skrevet før du har vænnet dig til det.',
       rows:['Kvaliteten af møder','Beslutningshastighed','Konflikter','Informationsflow','Uformel magt','Ledelsesteamets dynamik','Forholdet mellem det sagte og det gjorte','Kunde- og markedsorientering','Energi og psykologisk tryghed','Overraskelser'],
@@ -1199,9 +1211,9 @@ var MODULES = [
   desc: 'Bestyrelsesarbejde er ikke en forlængelse af en operationel karriere. Det er en anden rolle med et andet ansvar.',
   when: { any: [ {q:'R0_best', in:['Ja, aktivt','Ja, på længere sigt']} ] },
   qs: [
-    { i:'Q1', t:'long', r:1, d:'retningsklarhed', q:'Hvorfor ønsker du en bestyrelsesrolle?',
+    { i:'Q1', k:1, t:'long', r:1, d:'retningsklarhed', q:'Hvorfor ønsker du en bestyrelsesrolle?',
       h:'Det ærlige svar, ikke det præsentable.' },
-    { i:'Q2', t:'long', r:1, d:'erfaringsparathed', q:'Hvad kan du bidrage med ud over din operationelle erfaring?' },
+    { i:'Q2', k:1, t:'long', r:1, d:'erfaringsparathed', q:'Hvad kan du bidrage med ud over din operationelle erfaring?' },
     { i:'Q3', t:'text', q:'Hvilke virksomhedssituationer er du relevant for?' },
     { i:'Q4', t:'text', q:'Hvilke ejerformer forstår du reelt?',
       h:'Familieejet, kapitalfond, børsnoteret, fondsejet, andelsejet.' },
@@ -1209,13 +1221,13 @@ var MODULES = [
     { i:'Q6', t:'single', r:1, d:'selvindsigt', q:'Kan du udfordre uden at overtage ledelsens rolle?',
       o:['Ja, det har jeg trænet','Formentlig','Det bliver min største udfordring','Ved ikke'] },
     { i:'Q7', t:'text', q:'Hvilke risici er du kvalificeret til at føre tilsyn med?' },
-    { i:'Q8', t:'long', r:1, d:'markedsparathed', q:'Hvad skal dokumentere din bestyrelsesparathed?',
+    { i:'Q8', k:1, t:'long', r:1, d:'markedsparathed', q:'Hvad skal dokumentere din bestyrelsesparathed?',
       w:{ t:'Bestyrelser køber i praksis “day-one”-parathed: 74 % af nye direktører i Fortune 500 i 2025 havde forudgående erfaring fra en børsnoteret bestyrelse. Samtidig havde 31 % af årgangen i S&P 500 aldrig siddet i en før — de to opgørelser bruger forskellige definitioner, så tallene skal ikke sammenlignes direkte. Bemærk desuden, at datagrundlaget er amerikansk enstrenget governance, ikke dansk.',
           c:'Heidrick & Struggles (2026), Board Monitor US · Spencer Stuart (2025), New Director Snapshot' } },
     { i:'Q9', t:'text', q:'Hvilke interessekonflikter kan opstå?' },
     { i:'Q10', t:'text', r:1, q:'Hvor meget tid og omdømmerisiko er du villig til at påtage dig?' },
     { i:'Q11', t:'text', r:1, d:'relationel_kapital', q:'Hvilke relationer kan legitimere dig som bestyrelseskandidat?' },
-    { i:'Q12', t:'long', r:1, d:'erfaringsparathed', q:'Hvilke erfaringer mangler du endnu?' }
+    { i:'Q12', k:1, t:'long', r:1, d:'erfaringsparathed', q:'Hvilke erfaringer mangler du endnu?' }
   ]
 },
 
@@ -1225,22 +1237,22 @@ var MODULES = [
   desc: 'Elleve spørgsmål, du kun kan svare på, fordi du har svaret på de andre.',
   core: true,
   qs: [
-    { i:'R1', t:'long', r:1, d:'selvindsigt', q:'Hvad står tydeligere nu?' },
+    { i:'R1', k:1, t:'long', r:1, d:'selvindsigt', q:'Hvad står tydeligere nu?' },
     { i:'R2', t:'long', r:1, q:'Hvad overraskede dig?' },
     { i:'R3', t:'long', r:1, d:'selvindsigt', q:'Hvor modsiger dine svar hinanden?',
       h:'Du får en oversigt over dine svar i næste trin, hvis du vil læse igennem først.' },
     { i:'R4', t:'text', q:'Hvilket spørgsmål var sværest?' },
-    { i:'R5', t:'long', r:1, d:'selvindsigt', q:'Hvad forsøger du muligvis stadig at undgå?' },
-    { i:'R6', t:'long', r:1, d:'beslutningskvalitet', q:'Hvilke tre forhold kræver yderligere undersøgelse?' },
-    { i:'R7', t:'long', r:1, d:'retningsklarhed', q:'Hvilken beslutning er du tættere på?' },
+    { i:'R5', k:1, t:'long', r:1, d:'selvindsigt', q:'Hvad forsøger du muligvis stadig at undgå?' },
+    { i:'R6', k:1, t:'long', r:1, d:'beslutningskvalitet', q:'Hvilke tre forhold kræver yderligere undersøgelse?' },
+    { i:'R7', k:1, t:'long', r:1, d:'retningsklarhed', q:'Hvilken beslutning er du tættere på?' },
     { i:'R8', t:'long', r:1, d:'beslutningskvalitet', q:'Hvad skal du ikke beslutte endnu?',
       h:'Det er lige så vigtigt som det foregående spørgsmål.' },
-    { i:'R9', t:'text', r:1, d:'overgangsparathed', q:'Hvilken konkret handling tager du inden for syv dage?',
+    { i:'R9', k:1, t:'text', r:1, d:'overgangsparathed', q:'Hvilken konkret handling tager du inden for syv dage?',
       h:'Én handling. Med en dato.',
       w:{ t:'Det stærkeste enkeltfund i lederudviklingslitteraturen handler ikke om metoden, men om opfølgningen: ledere, der løbende drøftede deres prioriteter med andre og fulgte op, forbedrede sig målbart — de øvrige knap nok. Designet er svagt (ingen kontrolgruppe, perceptionsbaserede mål), men fundet er konsistent med beslægtet forskning.',
           c:'Goldsmith & Morgan (2004), strategy+business (11.480 ledere)' } },
-    { i:'R10', t:'long', r:1, q:'Hvad ønsker du især, at Thomas udfordrer dig på?' },
-    { i:'R11', t:'long', r:1, q:'Hvad må analysen ikke overse?' },
+    { i:'R10', k:1, t:'long', r:1, q:'Hvad ønsker du især, at Thomas udfordrer dig på?' },
+    { i:'R11', k:1, t:'long', r:1, q:'Hvad må analysen ikke overse?' },
     { i:'R12', t:'long', q:'Er der noget, du ikke har skrevet, som er vigtigt?',
       h:'Sidste chance for at få det med.' }
   ]
@@ -1282,7 +1294,7 @@ function unb64url(str){ str = str.replace(/-/g,'+').replace(/_/g,'/'); while (st
 function newState(id, label){
   return { v:1, clientId:id||'', label:label||'', qVersion:CONFIG.questionnaireVersion,
     started:nowISO(), updated:nowISO(), answers:{}, flags:{}, conf:{}, notes:{},
-    consent:{}, submitted:null, step:0 };
+    consent:{}, depth:null, expanded:{}, submitted:null, step:0 };
 }
 
 function save(){
@@ -1306,6 +1318,8 @@ function load(){
     var age = (Date.now() - new Date(d.updated).getTime()) / 86400000;
     if (age > CONFIG.draftRetentionDays) { localStorage.removeItem(LS_KEY); return null; }
     if (d.qVersion !== CONFIG.questionnaireVersion) d.qVersionOld = d.qVersion;
+    if (!d.expanded) d.expanded = {};
+    if (d.depth === undefined) d.depth = 'grundig';
     return d;
   } catch(e){ return null; }
 }
@@ -1369,7 +1383,41 @@ function condOK(c){
   return true;
 }
 function activeModules(){ return MODULES.filter(function(m){ return m.core || condOK(m.when); }); }
-function activeQs(m){ return m.qs.filter(function(q){ return condOK(q.when); }); }
+function activeQs(m){
+  var qs = m.qs.filter(function(q){ return condOK(q.when); });
+  if (S.depth !== 'fokus' || S.expanded[m.id]) return qs;
+  return qs.filter(function(q){ return q.t === 'info' || q.k; });
+}
+/* Ærligt tidsestimat: et spørgsmål tager et sted mellem et halvt og
+   halvandet minut, når man svarer ordentligt. Rundes til nærmeste fem. */
+function estimate(n){
+  function r5(x){ return Math.max(5, Math.round(x / 5) * 5); }
+  var lo = r5(n * 0.55), hi = r5(n * 0.85);
+  if (hi <= lo) hi = lo + 10;
+  if (hi >= 100) {
+    var t = function(m){ return (Math.round(m / 30) / 2).toString().replace('.5', '½').replace(/^0½$/, '½'); };
+    return t(lo) + '–' + t(hi) + ' timer';
+  }
+  return lo + '–' + hi + ' minutter';
+}
+function countAt(depth){
+  var before = S.depth, beforeEx = S.expanded;
+  S.depth = depth; S.expanded = {};
+  var n = totalActive();
+  S.depth = before; S.expanded = beforeEx;
+  return n;
+}
+
+/* Hvor mange spørgsmål der ligger bag "uddyb" i et modul */
+function hiddenCount(m){
+  if (S.depth !== 'fokus' || S.expanded[m.id]) return 0;
+  return m.qs.filter(function(q){ return condOK(q.when) && q.t !== 'info' && !q.k; }).length;
+}
+function totalActive(){
+  var n = 0;
+  activeModules().forEach(function(m){ activeQs(m).forEach(function(q){ if (q.t !== 'info') n++; }); });
+  return n;
+}
 
 /* ============================================================
    ORIENTERENDE DIMENSIONSSCORER
@@ -1577,16 +1625,19 @@ function questionHTML(q){
    TRIN
    ============================================================ */
 function buildSteps(){
-  var s = [{k:'welcome'}, {k:'consent'}];
-  activeModules().forEach(function(m){ s.push({k:'mod', id:m.id}); });
+  var s = [{k:'welcome'}, {k:'consent'}, {k:'mod', id:'R0'}, {k:'depth'}];
+  if (S.depth) activeModules().forEach(function(m){
+    if (m.id !== 'R0') s.push({k:'mod', id:m.id});
+  });
   s.push({k:'missing'}, {k:'review'}, {k:'submit'});
   if (S.submitted) s.push({k:'receipt'});
   steps = s;
 }
 function stepTitle(st){
   if (st.k === 'mod') { var m = MODULES.filter(function(x){return x.id===st.id;})[0]; return 'Modul ' + m.letter + ' · ' + m.title; }
-  return {welcome:'Velkomst og fortrolighed', consent:'Samtykke', missing:'Manglende svar',
-          review:'Gennemse din besvarelse', submit:'Send til analyse', receipt:'Kvittering'}[st.k];
+  return {welcome:'Velkomst og fortrolighed', consent:'Samtykke', depth:'Omfang',
+          missing:'Manglende svar', review:'Gennemse din besvarelse',
+          submit:'Send til analyse', receipt:'Kvittering'}[st.k];
 }
 function missingRequired(){
   var out = [];
@@ -1655,7 +1706,7 @@ function renderStep(keepPosition){
       '<div class="note"><p><strong>Du bestemmer, hvornår det sendes.</strong> Alt, hvad du skriver, bliver liggende på din egen enhed som kladde, indtil du aktivt trykker “Send fortroligt til analyse”. Kladder er aldrig synlige for andre.</p></div>' +
       '<div class="note"><p><strong>Det er ikke en test, og det er ikke en garanti.</strong> Værktøjet lover ikke et bedre karriereudfald. Det er et redskab til selvindsigt, selvforståelse og selvledelse — og et arbejdsgrundlag for jeres næste samtale. Nogle spørgsmål er ubehagelige at svare på. Det er med vilje, og du kan altid markere “det ved jeg ikke endnu”.</p></div>' +
       (UNCONFIGURED ? '<div class="note" style="border-left-color:#e67e22"><p><strong>Bemærk:</strong> værktøjet kører i opsætningstilstand. Der er endnu ikke installeret krypteringsnøgler, så en besvarelse kan ikke krypteres. Brug det kun til gennemsyn.</p></div>' : '') +
-      '<p class="muted" style="margin-top:26px">Forventet tidsforbrug er 45–75 minutter. Du kan holde pause og vende tilbage — også på en anden enhed.</p>';
+      '<p class="muted" style="margin-top:26px">Du starter med elleve korte spørgsmål om din situation. Derefter vælger du selv, hvor grundigt resten skal være. Du kan holde pause og vende tilbage undervejs — også på en anden enhed.</p>';
   }
 
   else if (st.k === 'consent') {
@@ -1678,14 +1729,51 @@ function renderStep(keepPosition){
       '<p class="muted" style="margin-top:22px">De juridiske tekster gennemgås af en GDPR-rådgiver inden endelig lancering.</p>';
   }
 
+  else if (st.k === 'depth') {
+    var nFokus = countAt('fokus'), nAlt = countAt('grundig');
+    var mods = activeModules().filter(function(m){ return m.id !== 'R0'; });
+    var betingede = mods.filter(function(m){ return !m.core; });
+    h = '<div class="step-head"><div class="se">Trin 3</div><h2>Hvor grundigt vil du gøre det?</h2>' +
+      '<p class="desc">Dine svar har aktiveret ' + mods.length + ' moduler' +
+      (betingede.length ? ', heraf ' + betingede.length + ' der er valgt til på grund af din situation' : '') +
+      '. Begge veje giver Thomas et brugbart grundlag. Forskellen er, hvor meget du selv får ud af skrivearbejdet undervejs.</p></div>' +
+      '<div class="paths">' +
+      '<button type="button" class="path' + (S.depth === 'fokus' ? ' sel' : '') + '" data-depth="fokus">' +
+      '<div class="path-t">Fokuseret</div><div class="path-time">' + nFokus + ' spørgsmål · ' + estimate(nFokus) + '</div>' +
+      '<p>De spørgsmål, der bærer mest. Du kommer hele vejen rundt om din situation, din retning, din værdiskabelse og dine åbne spørgsmål — uden de uddybende led.</p>' +
+      '<ul><li>Alle moduler, færre spørgsmål i hvert</li>' +
+      '<li>Du kan uddybe et enkelt modul undervejs, hvis det er dét, der optager dig</li>' +
+      '<li>Vælg denne, hvis du har en konkret beslutning foran dig</li></ul></button>' +
+      '<button type="button" class="path' + (S.depth === 'grundig' ? ' sel' : '') + '" data-depth="grundig">' +
+      '<div class="path-t">Grundig</div><div class="path-time">' + nAlt + ' spørgsmål · ' + estimate(nAlt) + '</div>' +
+      '<p>Hele forløbet. Også proof stories, relationskortlægning, referenceportefølje og de spørgsmål, der først giver mening, når man har svaret på de foregående.</p>' +
+      '<ul><li>Alt materiale, i to sessioner hvis du vil</li>' +
+      '<li>Det stærkeste grundlag for analysen</li>' +
+      '<li>Vælg denne, hvis du er i en længere afklaring</li></ul></button></div>' +
+      '<div class="note" style="margin-top:30px"><p><strong>Du kan skifte undervejs.</strong> Under “Oversigt” kan du folde det hele ud, og nederst i hvert modul kan du uddybe netop det modul. Dine svar følger med — intet går tabt ved at skifte.</p></div>' +
+      '<p class="muted" style="margin-top:20px">Tallene er dine egne — de er regnet ud fra de moduler, dine svar har aktiveret. Tidsangivelserne forudsætter, at du svarer ordentligt. Klikker du dig igennem, går det hurtigere, men så er der heller ikke meget at analysere.</p>';
+  }
+
   else if (st.k === 'mod') {
     var m = MODULES.filter(function(x){return x.id===st.id;})[0];
     var qs = activeQs(m);
     var done = qs.filter(function(q){ return q.t==='info' || answered(q.i); }).length;
-    h = '<div class="step-head"><div class="se">Modul ' + esc(m.letter) + '</div><h2>' + esc(m.title) + '</h2>' +
+    var hidden = hiddenCount(m);
+    h = '<div class="step-head"><div class="se">Modul ' + esc(m.letter) +
+      (S.depth === 'fokus' && !S.expanded[m.id] ? ' · fokuseret' : '') + '</div><h2>' + esc(m.title) + '</h2>' +
       '<p class="desc">' + esc(m.desc) + '</p>' +
       '<div class="step-meta">' + done + ' af ' + qs.length + ' besvaret' + (m.core ? '' : ' · aktiveret af dine svar i situationsafklaringen') + '</div></div>';
     qs.forEach(function(q){ h += questionHTML(q); });
+    if (hidden) {
+      h += '<div style="padding:28px 0 4px;border-top:1px solid rgba(0,0,0,.06);margin-top:8px">' +
+        '<button type="button" class="add-btn" data-expand="' + esc(m.id) + '">' +
+        'Uddyb dette modul — ' + hidden + ' spørgsmål mere</button>' +
+        '<p class="muted" style="margin-top:12px;font-size:.82rem">De uddybende spørgsmål går tættere på. Tag dem, hvis netop dette modul er dér, hvor din tvivl ligger.</p></div>';
+    }
+    if (S.depth === 'fokus' && S.expanded[m.id]) {
+      h += '<div style="padding:22px 0 4px;border-top:1px solid rgba(0,0,0,.06);margin-top:8px">' +
+        '<button type="button" class="flag" data-collapse="' + esc(m.id) + '">Fold tilbage til de bærende spørgsmål</button></div>';
+    }
   }
 
   else if (st.k === 'missing') {
@@ -1762,6 +1850,7 @@ function renderStep(keepPosition){
       '<li>Spørgeskemaversion: ' + esc(sub.qVersion) + '</li>' +
       '<li>Antal besvarede spørgsmål: ' + sub.answeredCount + ' af ' + sub.totalCount + '</li>' +
       '<li>Aktive moduler: ' + esc(sub.modules.join(', ')) + '</li>' +
+      '<li>Omfang: ' + (S.depth === 'fokus' ? 'fokuseret gennemgang' : 'grundig gennemgang') + '</li>' +
       '<li>AI-behandling: ' + (S.consent.ai ? 'accepteret' : 'fravalgt — analysen laves manuelt') + '</li>' +
       '</ul>' +
       '<div style="margin-top:20px"><div class="conf-l" style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px">Fingeraftryk af den låste besvarelse</div>' +
@@ -1780,7 +1869,8 @@ function renderStep(keepPosition){
   var atFirst = stepIndex === 0, atLast = stepIndex === steps.length - 1;
   h += '<div class="nav-steps">' +
     '<div class="left">' + (atFirst ? '' : '<button class="btn bd" data-nav="-1">Tilbage</button>') + '</div>' +
-    (atLast ? '' : '<button class="btn bp" data-nav="1">' + (st.k==='consent' ? 'Jeg giver samtykke' : (st.k==='review' ? 'Videre til indsendelse' : 'Videre')) + '</button>') +
+    (atLast ? '' : '<button class="btn bp" data-nav="1"' + (st.k==='depth' && !S.depth ? ' disabled' : '') + '>' +
+      (st.k==='consent' ? 'Jeg giver samtykke' : (st.k==='depth' ? 'Begynd' : (st.k==='review' ? 'Videre til indsendelse' : 'Videre'))) + '</button>') +
     '</div>';
 
   root.innerHTML = h;
@@ -1830,6 +1920,16 @@ root.addEventListener('click', function(e){
   var t = e.target.closest('button'); if (!t) return;
 
   if (t.dataset.nav) { go(stepIndex + Number(t.dataset.nav)); return; }
+
+  if (t.dataset.depth) {
+    S.depth = t.dataset.depth; save(); buildSteps(); rerender(); return;
+  }
+  if (t.dataset.expand) {
+    S.expanded[t.dataset.expand] = true; save(); rerender(); return;
+  }
+  if (t.dataset.collapse) {
+    delete S.expanded[t.dataset.collapse]; save(); rerender(); return;
+  }
 
   if (t.dataset.scale) {
     var id = t.dataset.scale, v = Number(t.dataset.v);
@@ -1978,6 +2078,26 @@ el('tocBtn').addEventListener('click', function(){
       '<span>' + esc(label) + '</span><span class="st' + (status==='Færdig'?' done':'') + '">' + esc(status) + '</span></button></li>';
   });
   el('tocList').innerHTML = h;
+  var mode = el('tocMode');
+  if (S.depth === 'fokus') {
+    var rest = 0;
+    activeModules().forEach(function(m){ rest += hiddenCount(m); });
+    mode.innerHTML = '<strong style="color:#fff;font-weight:500">Fokuseret gennemgang</strong> · ' +
+      totalActive() + ' spørgsmål aktive' + (rest ? ' · ' + rest + ' uddybende spørgsmål ligger klar' : '') +
+      '<button type="button" class="nav-btn" id="tocSwitch" style="margin-left:14px">Skift til grundig</button>';
+  } else {
+    mode.innerHTML = '<strong style="color:#fff;font-weight:500">Grundig gennemgang</strong> · ' +
+      totalActive() + ' spørgsmål' +
+      '<button type="button" class="nav-btn" id="tocSwitch" style="margin-left:14px">Skift til fokuseret</button>';
+  }
+  el('tocSwitch').addEventListener('click', function(){
+    S.depth = (S.depth === 'fokus') ? 'grundig' : 'fokus';
+    if (S.depth === 'grundig') S.expanded = {};
+    save(); buildSteps();
+    stepIndex = Math.min(stepIndex, steps.length - 1);
+    el('toc').classList.remove('on');
+    renderStep();
+  });
   el('toc').classList.add('on');
 });
 el('tocClose').addEventListener('click', function(){ el('toc').classList.remove('on'); });
@@ -2026,6 +2146,8 @@ async function doSubmit(btn){
       meta: { clientId:S.clientId, label:S.label, started:S.started, submitted:nowISO(),
               qVersion:CONFIG.questionnaireVersion, toolVersion:CONFIG.version,
               modules:mods.map(function(m){ return m.id; }),
+              depth: S.depth || 'grundig',
+              expandedModules: Object.keys(S.expanded || {}),
               answeredCount:ans, totalCount:total,
               consent:S.consent, aiAllowed: !!S.consent.ai },
       /* Spørgeskemaet som klienten faktisk så det — så en gammel besvarelse

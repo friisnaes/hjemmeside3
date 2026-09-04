@@ -599,8 +599,15 @@ function tabOverblik(){
     '<div><h3 style="font-size:1.6rem">' + esc(m.label || m.clientId) + '</h3>' +
     '<div style="font-size:.8rem;color:var(--gray);margin-top:4px">Indsendt ' + esc(dk(m.submitted)) +
     ' · påbegyndt ' + esc(dkd(m.started)) + ' · version ' + esc(m.qVersion) + '</div></div>' +
-    '<div><span class="pill ' + (rec.analysis ? 'on' : 'red') + '">' + esc(statusOf(rec)) + '</span></div></div>';
+    '<div><span class="pill ' + (rec.analysis ? 'on' : 'red') + '">' + esc(statusOf(rec)) + '</span>' +
+    '<span class="pill">' + (m.depth === 'fokus' ? 'Fokuseret' : 'Grundig') + '</span></div></div>';
 
+  if (m.depth === 'fokus') {
+    h += '<div class="note"><strong>Fokuseret gennemgang.</strong> Klienten har valgt den korte vej. ' +
+      'De uddybende spørgsmål er ikke stillet' +
+      ((m.expandedModules && m.expandedModules.length) ? ', bortset fra modul ' + esc(m.expandedModules.join(', ')) + ', som klienten selv valgte at uddybe' : '') +
+      '. Tyndere materiale er derfor et designvalg, ikke undvigelse — og datakompletheden nedenfor er beregnet i forhold til det, der faktisk blev spurgt om.</div>';
+  }
   h += '<div class="note"><strong>Situationsprofil.</strong> ' +
     esc([p.answers.R0_sit, p.answers.R0_tenure, p.answers.R0_ansvar].filter(Boolean).join(' · ')) +
     '<br>Fokus: <strong>' + esc(p.answers.R0_focus || '—') + '</strong>' +
@@ -717,6 +724,7 @@ function payloadAsText(){
   out.push('KLIENT: ' + (p.meta.label || p.meta.clientId));
   out.push('INDSENDT: ' + p.meta.submitted + ' · SKEMAVERSION: ' + p.meta.qVersion);
   out.push('AKTIVE MODULER: ' + p.meta.modules.join(', '));
+  out.push('OMFANG: ' + (p.meta.depth === 'fokus' ? 'FOKUSERET gennemgang — kun de bærende spørgsmål blev stillet' + ((p.meta.expandedModules && p.meta.expandedModules.length) ? ' (klienten uddybede dog modul ' + p.meta.expandedModules.join(', ') + ')' : '') : 'GRUNDIG gennemgang — alle spørgsmål blev stillet'));
   out.push('BESVAREDE: ' + p.meta.answeredCount + ' af ' + p.meta.totalCount);
   out.push('');
   out.push('=== ORIENTERENDE DIMENSIONER (systemets beregning) ===');
@@ -769,6 +777,7 @@ function buildPrompt(){
 '- Lov ikke karriereudfald. Der findes ingen dokumentation for, at et refleksionsforløb forbedrer karriereudfald.',
 '- Husk: oplevet fit forudsiger trivsel og fastholdelse, ikke præstation. Skriv aldrig, at god fit betyder, at klienten vil lykkes i rollen.',
 '- Opfind ikke oplysninger. Hvis noget mangler, så skriv, at det mangler.',
+'- Se feltet OMFANG. Ved en FOKUSERET gennemgang er en række uddybende spørgsmål aldrig blevet stillet. Behandl dem som ikke-spurgt, ikke som noget klienten har undgået at svare på, og skriv ikke om huller, der skyldes valget af omfang.',
 '',
 'STRUKTUR — brug præcis disse 22 afsnit med disse overskrifter',
 '1. Executive summary',
