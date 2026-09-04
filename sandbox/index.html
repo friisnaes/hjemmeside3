@@ -570,12 +570,12 @@ select { cursor: pointer; background-image: linear-gradient(45deg, transparent 5
 /* ---- KONFIGURATION (udskiftes af admin.html ved opsætning) ---- */
 var CONFIG = {
   /* Offentlig RSA-OAEP-nøgle (SPKI, base64). Klienten krypterer til denne. */
-  encPubKey: "MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA08sZHtcol9KzxXp+YmviNWfX62DwTHkKT+8yZNXrbKI75pLjY0mHNNaI8qwrcby1af8i6bE3n+2JOqTeG70Qjmq79Nlab/CpwAZBqD0PWCnRTBU9KaaaVOYomvTcbOwbYgD7q2TAM1OJSNZA6tizDg/E2LkOSpMZ0KowPOsiLvyYcofElV6Fa8/nOu8BMbZu7Mhlu/DissMGx1ClEldT46wK5aJT9OnXxIW7Xg6fL2z7n6QtVjvVpBn6ApLF9GTO/tVxIQASc9Fll4Q/Y2OQYgNuJZ8F5zgUKfnLbHfpsajYm6WIOzGOx/JHqWQibtCoWkNrjL1En/f5Ip+XGYMWpixi4MmAWdDpJqeG72v9JGebJqRW5EWF5hB2Gl0wIq5aaEAk7nFi55st9loyQCF5++opMI1xSKKjYfVPa3BLuUIAfMiMG91sAXXy5XoI1ERbp9L0dQwnxQtC+RA/GFBfK7y4Hk+fE5Dc7Hej/QO1EMt9fD/kVHSodPo9IlyAJByRAgMBAAE=",
+  encPubKey: "__ENC_PUB_KEY__",
   /* Offentlig ECDSA P-256-nøgle (SPKI, base64). Verificerer invitationer. */
-  sigPubKey: "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgwUM+SyoQLPjP/hmeWvGJwjqfsKCHAYSSvVI0X8RMzvf37pwUVUUtro0sacta7/qJWz38X012sPv81KDoRReoA==",
+  sigPubKey: "__SIG_PUB_KEY__",
   /* Valgfrit notifikationsendpoint (fx Formspree). Modtager ALDRIG svar —
      kun klient-id, tidsstempel og et fingeraftryk af den låste besvarelse. */
-  notifyEndpoint: "",
+  notifyEndpoint: "__NOTIFY_ENDPOINT__",
   /* Kladden slettes automatisk fra enheden efter dette antal dage. */
   draftRetentionDays: 90,
   /* Automatisk sessionsudløb i minutter uden aktivitet. */
@@ -1440,7 +1440,7 @@ function confHTML(q){
 }
 function whyHTML(q){
   if (!q.w) return '';
-  return '<details class="why"><summary>Hvorfor spørger vi om dette?</summary>' +
+  return '<details class="why" data-why="' + q.i + '"><summary>Hvorfor spørger vi om dette?</summary>' +
     '<div class="why-body">' + esc(q.w.t) + '<cite>' + esc(q.w.c) + '</cite></div></details>';
 }
 function basisHTML(q){
@@ -1608,7 +1608,40 @@ function markedList(){
   return out;
 }
 
-function renderStep(){
+/* Gentegner det aktuelle trin uden at flytte klienten.
+   Holder scrollposition, fokus og åbne "Hvorfor spørger vi"-paneler. */
+function rerender(){
+  var y = window.pageYOffset || document.documentElement.scrollTop;
+  var open = [];
+  document.querySelectorAll('details.why[open]').forEach(function(d){ open.push(d.dataset.why); });
+  var ae = document.activeElement, sel = null;
+  if (ae && ae.dataset) {
+    if (ae.dataset.scale) sel = '[data-scale="' + ae.dataset.scale + '"][data-v="' + ae.dataset.v + '"]';
+    else if (ae.dataset.conf) sel = '[data-conf="' + ae.dataset.conf + '"][data-v="' + ae.dataset.v + '"]';
+    else if (ae.dataset.flag) sel = '[data-flag="' + ae.dataset.flag + '"][data-q="' + ae.dataset.q + '"]';
+    else if (ae.dataset.single) sel = '[data-single="' + ae.dataset.single + '"]:checked';
+    else if (ae.dataset.rank) sel = '[data-rank="' + ae.dataset.rank + '"][data-idx="' + ae.dataset.idx + '"][data-dir="' + ae.dataset.dir + '"]';
+  }
+  renderStep(true);
+  open.forEach(function(id){
+    var d = document.querySelector('details.why[data-why="' + id + '"]');
+    if (d) d.open = true;
+  });
+  jumpTo(y);
+  if (sel) { var n = document.querySelector(sel); if (n && n.focus) n.focus({preventScroll:true}); }
+}
+
+/* Øjeblikkelig scroll — går uden om den bløde scroll i stylesheetet,
+   så gentegning ikke sender klienten på en rejse op gennem siden. */
+function jumpTo(y){
+  var r = document.documentElement, prev = r.style.scrollBehavior;
+  r.style.scrollBehavior = 'auto';
+  try { window.scrollTo({top:y, left:0, behavior:'instant'}); }
+  catch(e){ window.scrollTo(0, y); }
+  requestAnimationFrame(function(){ r.style.scrollBehavior = prev; });
+}
+
+function renderStep(keepPosition){
   var st = steps[stepIndex], root = el('stepRoot'), h = '';
   var total = steps.length;
   el('pbar').style.width = Math.round(stepIndex / (total-1) * 100) + '%';
@@ -1751,8 +1784,10 @@ function renderStep(){
     '</div>';
 
   root.innerHTML = h;
-  root.focus();
-  window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+  if (!keepPosition) {
+    root.focus({preventScroll:true});
+    jumpTo(0);
+  }
   if (st.k === 'consent') syncConsentNav();
 }
 function syncConsentNav(){
@@ -1799,13 +1834,13 @@ root.addEventListener('click', function(e){
   if (t.dataset.scale) {
     var id = t.dataset.scale, v = Number(t.dataset.v);
     S.answers[id] = (S.answers[id] === v) ? null : v;
-    queueSave(); renderStep(); return;
+    queueSave(); rerender(); return;
   }
   if (t.dataset.conf) {
     var cid = t.dataset.conf, cv = Number(t.dataset.v);
     S.conf[cid] = (S.conf[cid] === cv) ? null : cv;
     if (S.conf[cid] == null) delete S.conf[cid];
-    queueSave(); renderStep(); return;
+    queueSave(); rerender(); return;
   }
   if (t.dataset.flag) {
     var fid = t.dataset.q, kind = t.dataset.flag;
@@ -1813,24 +1848,24 @@ root.addEventListener('click', function(e){
     S.flags[fid][kind] = !S.flags[fid][kind];
     if (kind === 'nr' && S.flags[fid].nr) S.flags[fid].idk = false;
     if (kind === 'idk' && S.flags[fid].idk) S.flags[fid].nr = false;
-    queueSave(); renderStep(); return;
+    queueSave(); rerender(); return;
   }
   if (t.dataset.rank) {
     var q = findQ(t.dataset.rank), idx = Number(t.dataset.idx), dir = Number(t.dataset.dir);
     var arr = Array.isArray(S.answers[q.i]) && S.answers[q.i].length === q.items.length ? S.answers[q.i].slice() : q.items.slice();
     var j = idx + dir;
     if (j >= 0 && j < arr.length) { var tmp = arr[idx]; arr[idx] = arr[j]; arr[j] = tmp; }
-    S.answers[q.i] = arr; queueSave(); renderStep(); return;
+    S.answers[q.i] = arr; queueSave(); rerender(); return;
   }
   if (t.dataset.add) {
     var qa = findQ(t.dataset.add);
     var list = Array.isArray(S.answers[qa.i]) ? S.answers[qa.i].slice() : [];
-    list.push({}); S.answers[qa.i] = list; queueSave(); renderStep(); return;
+    list.push({}); S.answers[qa.i] = list; queueSave(); rerender(); return;
   }
   if (t.dataset.del) {
     var qd = findQ(t.dataset.del), di = Number(t.dataset.idx);
     var ld = (S.answers[qd.i] || []).slice(); ld.splice(di, 1); S.answers[qd.i] = ld;
-    queueSave(); renderStep(); return;
+    queueSave(); rerender(); return;
   }
   if (t.dataset.goto) {
     var modId = t.dataset.goto, qid = t.dataset.qid;
@@ -1884,12 +1919,12 @@ root.addEventListener('input', function(e){
 
 root.addEventListener('change', function(e){
   var t = e.target;
-  if (t.dataset.single != null) { S.answers[t.dataset.single] = t.value; queueSave(); renderStep(); }
+  if (t.dataset.single != null) { S.answers[t.dataset.single] = t.value; queueSave(); rerender(); }
   else if (t.dataset.multi != null) {
     var id = t.dataset.multi, arr = Array.isArray(S.answers[id]) ? S.answers[id].slice() : [];
     var k = arr.indexOf(t.value);
     if (t.checked && k === -1) arr.push(t.value); else if (!t.checked && k !== -1) arr.splice(k, 1);
-    S.answers[id] = arr; queueSave(); renderStep();
+    S.answers[id] = arr; queueSave(); rerender();
   }
   else if (t.dataset.mx != null) { setMatrix(t); }
   else if (t.dataset.rep != null) {
@@ -1901,7 +1936,7 @@ root.addEventListener('change', function(e){
   else if (t.dataset.consent != null) {
     S.consent[t.dataset.consent] = t.checked; queueSave();
     if (steps[stepIndex].k === 'consent') syncConsentNav();
-    if (steps[stepIndex].k === 'submit') renderStep();
+    if (steps[stepIndex].k === 'submit') rerender();
   }
 });
 
