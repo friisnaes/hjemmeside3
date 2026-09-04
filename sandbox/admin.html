@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECA · Administration — Friisnæs</title>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#111; --black-soft:#1a1a1a; --black-light:#222; --gray-dark:#444; --gray:#777;
+  --gray-light:#bbb; --off-white:#f5f4f0; --white:#fafaf8; --red:#c0392b; --red-hover:#e74c3c;
+  --red-muted:rgba(192,57,43,.06); --display:'Playfair Display',Georgia,serif;
+  --body:'Outfit',-apple-system,sans-serif; --pad:clamp(20px,4vw,44px); --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{font-family:var(--body);color:var(--black);background:var(--white);line-height:1.7;font-size:15px}
+a{color:var(--red);text-decoration:none;border-bottom:1px solid rgba(192,57,43,.3)}
+a:hover{color:var(--red-hover)}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--display);font-weight:500;line-height:1.2}
+.se{font-size:.63rem;font-weight:600;color:var(--red);letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px}
+
+/* topbar */
+.top{position:sticky;top:0;z-index:50;background:rgba(17,17,17,.98);backdrop-filter:blur(12px);padding:14px 0}
+.top .in{max-width:1560px;margin:0 auto;padding:0 var(--pad);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.top .lo{font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--white)}
+.top .lo em{color:var(--red);font-style:normal}
+.top .lo span{font-family:var(--body);font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-left:14px}
+.top .acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tb{background:none;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.55);font-family:var(--body);font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 13px;cursor:pointer;transition:all .3s}
+.tb:hover{border-color:rgba(255,255,255,.45);color:#fff}
+.tb.on{background:var(--red);border-color:var(--red);color:#fff}
+
+.wrap{max-width:1560px;margin:0 auto;padding:34px var(--pad) 90px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--body);font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:12px 24px;cursor:pointer;border:none;transition:all .35s var(--ease)}
+.bp{background:var(--red);color:#fff}
+.bp:hover:not(:disabled){background:var(--red-hover)}
+.bd{background:transparent;color:var(--gray-dark);border:1px solid rgba(0,0,0,.15)}
+.bd:hover{border-color:var(--black);color:var(--black)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.bsm{font-size:.65rem;padding:8px 14px}
+
+input,textarea,select{width:100%;font-family:var(--body);font-size:.92rem;color:var(--black);background:#fff;border:1px solid rgba(0,0,0,.14);padding:11px 13px;outline:none;border-radius:0;-webkit-appearance:none;appearance:none;line-height:1.55}
+input:focus,textarea:focus,select:focus{border-color:var(--red)}
+textarea{min-height:100px;resize:vertical}
+label.fl{display:block;font-size:.63rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:6px}
+.field{margin-bottom:18px}
+
+.card{background:#fff;border:1px solid rgba(0,0,0,.08);padding:30px 32px;margin-bottom:20px}
+.card h3{font-size:1.25rem;margin-bottom:8px}
+.card .sub{font-size:.86rem;color:var(--gray);margin-bottom:22px;max-width:70ch;line-height:1.7}
+.note{background:var(--off-white);border-left:2px solid var(--red);padding:18px 22px;margin:18px 0;font-size:.87rem;color:var(--gray-dark);line-height:1.7}
+.note.warn{border-left-color:#e67e22}
+.note strong{color:var(--black);font-weight:500}
+
+/* login */
+.lock{min-height:100vh;background:var(--black);display:flex;align-items:center;justify-content:center;padding:60px var(--pad)}
+.lock .box{width:100%;max-width:440px}
+.lock h2{color:#fff;font-size:2rem;margin-bottom:14px}
+.lock p{color:rgba(255,255,255,.45);font-size:.88rem;margin-bottom:24px;line-height:1.8}
+.lock input{background:var(--black-light);border-color:rgba(255,255,255,.1);color:#fff}
+.lock .err{color:var(--red-hover);font-size:.85rem;min-height:1.3em;margin-top:12px}
+.drop{border:1px dashed rgba(255,255,255,.2);padding:24px;text-align:center;color:rgba(255,255,255,.4);font-size:.85rem;cursor:pointer;transition:all .3s}
+.drop:hover,.drop.over{border-color:var(--red);color:#fff}
+
+/* layout */
+.split{display:grid;grid-template-columns:330px 1fr;gap:26px;align-items:start}
+.pane{background:#fff;border:1px solid rgba(0,0,0,.08)}
+.pane-h{padding:18px 20px;border-bottom:1px solid rgba(0,0,0,.08);display:flex;justify-content:space-between;align-items:center;gap:10px}
+.pane-h h3{font-size:1rem}
+.pane-h .n{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray)}
+.clist{list-style:none;max-height:70vh;overflow-y:auto}
+.clist li{border-bottom:1px solid rgba(0,0,0,.05)}
+.clist button{width:100%;text-align:left;background:none;border:none;font-family:var(--body);padding:14px 20px;cursor:pointer;transition:background .25s}
+.clist button:hover{background:var(--off-white)}
+.clist button.sel{background:var(--red-muted);box-shadow:inset 2px 0 0 var(--red)}
+.clist .nm{font-size:.95rem;color:var(--black);font-weight:500}
+.clist .mt{font-size:.72rem;color:var(--gray);margin-top:3px}
+.pill{display:inline-block;font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border:1px solid rgba(0,0,0,.14);color:var(--gray);margin-right:5px}
+.pill.red{border-color:rgba(192,57,43,.4);color:var(--red)}
+.pill.on{background:var(--black);border-color:var(--black);color:#fff}
+
+.tabs{display:flex;gap:0;border-bottom:1px solid rgba(0,0,0,.08);flex-wrap:wrap}
+.tabs button{background:none;border:none;border-bottom:2px solid transparent;font-family:var(--body);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);padding:15px 18px;cursor:pointer;transition:all .3s}
+.tabs button:hover{color:var(--black)}
+.tabs button.on{color:var(--black);border-bottom-color:var(--red)}
+.tabpane{padding:26px 28px}
+
+.dim{display:grid;grid-template-columns:200px 1fr 74px;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.dim .dn{font-size:.87rem;color:var(--gray-dark)}
+.bar{height:6px;background:var(--off-white);position:relative}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--black)}
+.bar i.thin{background:repeating-linear-gradient(90deg,var(--gray-light) 0 3px,transparent 3px 6px)}
+.dim .dv{font-family:var(--display);font-size:.95rem;text-align:right}
+.dim .dv small{display:block;font-family:var(--body);font-size:.62rem;letter-spacing:.06em;color:var(--gray);text-transform:uppercase}
+
+.qa{padding:14px 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.qa .qq{font-size:.8rem;color:var(--gray);line-height:1.5;margin-bottom:4px}
+.qa .aa{font-size:.94rem;white-space:pre-wrap;line-height:1.65}
+.qa .aa.em{color:var(--gray-light);font-style:italic}
+.qa .mx{font-size:.74rem;color:var(--gray-dark);margin-top:5px}
+.modblock{margin-bottom:30px}
+.modblock h4{font-size:1.05rem;margin-bottom:4px;padding-bottom:8px;border-bottom:1px solid rgba(0,0,0,.1)}
+.modblock .md{font-size:.76rem;color:var(--gray);margin-bottom:6px}
+
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tg{font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border:1px solid rgba(0,0,0,.14);color:var(--gray)}
+.tg.r{border-color:rgba(192,57,43,.4);color:var(--red)}
+
+.src-tag{display:inline-block;font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;margin-right:8px;vertical-align:2px}
+.src-klient{background:var(--black);color:#fff}
+.src-system{background:var(--gray-light);color:#fff}
+.src-ai{background:var(--red);color:#fff}
+.src-coach{background:#2c6e49;color:#fff}
+
+table.tb2{width:100%;border-collapse:collapse;font-size:.86rem}
+table.tb2 th{text-align:left;font-size:.61rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);padding:0 10px 9px 0;border-bottom:1px solid rgba(0,0,0,.1)}
+table.tb2 td{padding:9px 10px 9px 0;border-bottom:1px solid rgba(0,0,0,.05);vertical-align:top}
+.scroll{overflow-x:auto}
+
+.empty{padding:70px 30px;text-align:center;color:var(--gray-light)}
+.empty h3{font-size:1.2rem;color:var(--gray);margin-bottom:8px}
+.hidden{display:none!important}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.mono{font-family:'Courier New',monospace;font-size:.78rem;word-break:break-all;background:var(--off-white);padding:12px 14px;border-left:2px solid var(--red)}
+.log{font-size:.78rem;color:var(--gray-dark);padding:7px 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.log b{font-weight:500;color:var(--black)}
+@media(max-width:1000px){ .split{grid-template-columns:1fr} .clist{max-height:340px} }
+@media print{
+  .top,.tabs,.btn,.tb,#pane-left{display:none!important}
+  .wrap{padding:0}
+  .card,.pane{border:none;padding:0}
+  .noprint{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LÅS ============ -->
+<div class="lock" id="lock">
+  <div class="box">
+    <div class="se">Executive Career Architecture</div>
+    <h2 id="lockTitle">Administration</h2>
+    <p id="lockText">Adgang kræver både din nøglefil og din adgangskode. Ingen af delene ligger på serveren — de findes kun her på din egen enhed.</p>
+    <div id="lockForm">
+      <div class="field"><label class="fl" for="pw">Adgangskode</label>
+        <input type="password" id="pw" autocomplete="current-password"></div>
+      <div class="row" style="margin-top:6px">
+        <button class="btn bp" id="unlockBtn">Lås op</button>
+        <button class="btn bd" id="setupBtn" style="color:rgba(255,255,255,.5);border-color:rgba(255,255,255,.15)">Første opsætning</button>
+      </div>
+      <div class="err" id="lockErr" role="alert"></div>
+      <div style="margin-top:26px">
+        <div class="drop" id="keyDrop">Ingen nøgler på denne enhed? Træk din nøglefil hertil, eller klik for at vælge den.</div>
+        <input type="file" id="keyFile" accept=".ecakey,application/json" class="hidden">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app" class="hidden">
+<header class="top">
+  <div class="in">
+    <div class="lo">Fr<em>ii</em>snæs <span>Career Architecture · Admin</span></div>
+    <div class="acts">
+      <button class="tb on" data-view="clients">Klienter</button>
+      <button class="tb" data-view="invite">Invitationer</button>
+      <button class="tb" data-view="settings">Indstillinger</button>
+      <button class="tb" data-view="audit">Audit-log</button>
+      <button class="tb" id="lockNow">Lås</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div id="view-clients">
+    <div class="split">
+      <div class="pane" id="pane-left">
+        <div class="pane-h"><h3>Klienter</h3><span class="n" id="cCount">0</span></div>
+        <div style="padding:14px 20px;border-bottom:1px solid rgba(0,0,0,.06)">
+          <button class="btn bp bsm" id="importBtn" style="width:100%">Indlæs besvarelse</button>
+          <input type="file" id="ecaFile" accept=".eca,application/json" class="hidden">
+        </div>
+        <ul class="clist" id="clientList"></ul>
+      </div>
+      <div class="pane" id="pane-right">
+        <div class="empty" id="noSel"><h3>Ingen besvarelse valgt</h3>
+          <p>Indlæs en <span class="mono" style="display:inline;padding:2px 6px;border:none">.eca</span>-fil fra en klient, eller vælg en fra listen.</p></div>
+        <div id="detail" class="hidden"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-invite" class="hidden"></div>
+  <div id="view-settings" class="hidden"></div>
+  <div id="view-audit" class="hidden"></div>
+</div>
+</div>
+
+<script>
+"use strict";
+/* ============================================================
+   ECA Administration
+   Alt ligger lokalt på denne enhed. Klientbesvarelser opbevares
+   krypteret; de dekrypteres kun i hukommelsen, mens du ser dem.
+   ============================================================ */
+
+var STORE_KEY = 'eca_admin_v1';
+var A = null;          /* dekrypteret adminstore i hukommelsen */
+var KEYS = null;       /* {encPriv, encPub, sigPriv, sigPub} base64 */
+var PASS = null;
+var current = null;    /* {id, meta, payload} dekrypteret besvarelse */
+
+function el(id){ return document.getElementById(id); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+function b64(buf){ var b=new Uint8Array(buf),s=''; for(var i=0;i<b.length;i++) s+=String.fromCharCode(b[i]); return btoa(s); }
+function unb64(str){ var s=atob(str),b=new Uint8Array(s.length); for(var i=0;i<s.length;i++) b[i]=s.charCodeAt(i); return b; }
+function b64url(s){ return s.replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
+function nowISO(){ return new Date().toISOString(); }
+function dk(d){ return new Date(d).toLocaleString('da-DK',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}); }
+function dkd(d){ return new Date(d).toLocaleDateString('da-DK',{day:'2-digit',month:'short',year:'numeric'}); }
+function dl(name, text, type){
+  var b=new Blob([text],{type:type||'application/json'}), u=URL.createObjectURL(b), a=document.createElement('a');
+  a.href=u; a.download=name; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(u);},1500);
+}
+
+/* ---------- kryptering af selve adminstoren ---------- */
+async function deriveKey(pass, salt){
+  var base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2', salt:salt, iterations:250000, hash:'SHA-256'},
+    base, {name:'AES-GCM', length:256}, false, ['encrypt','decrypt']);
+}
+async function sealStore(){
+  if (!A || !PASS) return;
+  var salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
+  var key = await deriveKey(PASS, salt);
+  var blob = JSON.stringify({keys:KEYS, store:A});
+  var ct = await crypto.subtle.encrypt({name:'AES-GCM', iv:iv}, key, new TextEncoder().encode(blob));
+  localStorage.setItem(STORE_KEY, JSON.stringify({v:1, salt:b64(salt), iv:b64(iv), ct:b64(ct)}));
+}
+async function openStore(pass){
+  var raw = localStorage.getItem(STORE_KEY);
+  if (!raw) throw new Error('ingen');
+  var d = JSON.parse(raw);
+  var key = await deriveKey(pass, unb64(d.salt));
+  var pt = await crypto.subtle.decrypt({name:'AES-GCM', iv:unb64(d.iv)}, key, unb64(d.ct));
+  var obj = JSON.parse(new TextDecoder().decode(pt));
+  KEYS = obj.keys; A = obj.store; PASS = pass;
+}
+function blankStore(){
+  return { created:nowISO(), submissions:[], invites:[], audit:[],
+    settings:{ retentionMonths:24, notifyEndpoint:'', coachName:'Thomas Friisnæs' } };
+}
+function audit(action, detail){
+  if (!A) return;
+  A.audit.unshift({ ts:nowISO(), action:action, detail:detail||'' });
+  if (A.audit.length > 600) A.audit.length = 600;
+  sealStore();
+}
+
+/* ---------- nøgler ---------- */
+async function genKeys(){
+  var enc = await crypto.subtle.generateKey({name:'RSA-OAEP', modulusLength:3072,
+    publicExponent:new Uint8Array([1,0,1]), hash:'SHA-256'}, true, ['encrypt','decrypt']);
+  var sig = await crypto.subtle.generateKey({name:'ECDSA', namedCurve:'P-256'}, true, ['sign','verify']);
+  return {
+    encPub:  b64(await crypto.subtle.exportKey('spki', enc.publicKey)),
+    encPriv: b64(await crypto.subtle.exportKey('pkcs8', enc.privateKey)),
+    sigPub:  b64(await crypto.subtle.exportKey('spki', sig.publicKey)),
+    sigPriv: b64(await crypto.subtle.exportKey('pkcs8', sig.privateKey)),
+    created: nowISO()
+  };
+}
+async function decryptEnvelope(env){
+  var priv = await crypto.subtle.importKey('pkcs8', unb64(KEYS.encPriv), {name:'RSA-OAEP', hash:'SHA-256'}, false, ['decrypt']);
+  var rawAes = await crypto.subtle.decrypt({name:'RSA-OAEP'}, priv, unb64(env.ek));
+  var aes = await crypto.subtle.importKey('raw', rawAes, {name:'AES-GCM'}, false, ['decrypt']);
+  var pt = await crypto.subtle.decrypt({name:'AES-GCM', iv:unb64(env.iv)}, aes, unb64(env.ct));
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+async function signInvite(payloadObj){
+  var priv = await crypto.subtle.importKey('pkcs8', unb64(KEYS.sigPriv), {name:'ECDSA', namedCurve:'P-256'}, false, ['sign']);
+  var payload = JSON.stringify(payloadObj);
+  var sig = await crypto.subtle.sign({name:'ECDSA', hash:'SHA-256'}, priv, new TextEncoder().encode(payload));
+  return b64url(btoa(unescape(encodeURIComponent(payload)))) + '.' + b64url(b64(sig));
+}
+async function sha256hex(str){
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
+}
+
+/* ============================================================
+   LÅS OP / OPSÆTNING
+   ============================================================ */
+var pendingKeyFile = null;
+
+el('unlockBtn').addEventListener('click', doUnlock);
+el('pw').addEventListener('keydown', function(e){ if (e.key === 'Enter') doUnlock(); });
+
+async function doUnlock(){
+  var pw = el('pw').value, err = el('lockErr');
+  err.textContent = '';
+  if (!pw) { err.textContent = 'Indtast din adgangskode.'; return; }
+  if (pendingKeyFile) {
+    try {
+      var kf = JSON.parse(await pendingKeyFile.text());
+      if (kf.format !== 'ECA-KEYS') throw new Error('Ikke en nøglefil');
+      KEYS = kf.keys; A = blankStore(); PASS = pw;
+      if (kf.store) A = kf.store;
+      await sealStore();
+      pendingKeyFile = null;
+      audit('Nøglefil indlæst på denne enhed');
+      enter();
+    } catch(e){ err.textContent = 'Nøglefilen kunne ikke læses: ' + e.message; }
+    return;
+  }
+  if (!localStorage.getItem(STORE_KEY)) {
+    err.textContent = 'Der er ingen nøgler på denne enhed. Vælg “Første opsætning”, eller indlæs din nøglefil nedenfor.';
+    return;
+  }
+  try { await openStore(pw); audit('Låst op'); enter(); }
+  catch(e){ err.textContent = 'Forkert adgangskode.'; }
+}
+
+el('keyDrop').addEventListener('click', function(){ el('keyFile').click(); });
+['dragover','dragenter'].forEach(function(ev){ el('keyDrop').addEventListener(ev, function(e){ e.preventDefault(); el('keyDrop').classList.add('over'); }); });
+['dragleave','drop'].forEach(function(ev){ el('keyDrop').addEventListener(ev, function(e){ e.preventDefault(); el('keyDrop').classList.remove('over'); }); });
+el('keyDrop').addEventListener('drop', function(e){ if (e.dataTransfer.files[0]) setKeyFile(e.dataTransfer.files[0]); });
+el('keyFile').addEventListener('change', function(e){ if (e.target.files[0]) setKeyFile(e.target.files[0]); });
+function setKeyFile(f){
+  pendingKeyFile = f;
+  el('keyDrop').textContent = 'Nøglefil valgt: ' + f.name + ' — indtast adgangskoden og lås op.';
+  el('keyDrop').style.borderColor = 'var(--red)';
+}
+
+el('setupBtn').addEventListener('click', function(){
+  el('lockTitle').textContent = 'Første opsætning';
+  el('lockText').innerHTML = 'Der oprettes to nøglepar på denne enhed. Det ene bruges til at kryptere klienternes besvarelser, det andet til at signere personlige invitationer. De private nøgler forlader aldrig din maskine.<br><br><strong style="color:#fff">Du får en nøglefil, du skal gemme et sikkert sted.</strong> Mister du både den og denne enhed, kan indsendte besvarelser ikke låses op igen. Det er prisen for, at ingen andre kan læse dem.';
+  el('lockForm').innerHTML =
+    '<div class="field"><label class="fl" for="np">Vælg adgangskode (mindst 12 tegn)</label><input type="password" id="np" style="background:var(--black-light);border-color:rgba(255,255,255,.1);color:#fff"></div>' +
+    '<div class="field"><label class="fl" for="np2">Gentag adgangskoden</label><input type="password" id="np2" style="background:var(--black-light);border-color:rgba(255,255,255,.1);color:#fff"></div>' +
+    '<button class="btn bp" id="doSetup">Opret nøgler</button><div class="err" id="setupErr"></div>';
+  el('doSetup').addEventListener('click', runSetup);
+});
+
+async function runSetup(){
+  var p1 = el('np').value, p2 = el('np2').value, err = el('setupErr');
+  if (p1.length < 12) { err.textContent = 'Adgangskoden skal være mindst 12 tegn.'; return; }
+  if (p1 !== p2) { err.textContent = 'De to koder er ikke ens.'; return; }
+  err.textContent = 'Genererer nøgler …';
+  KEYS = await genKeys(); A = blankStore(); PASS = p1;
+  await sealStore();
+  audit('Nøglepar oprettet');
+  dl('friisnaes-eca-noegler.ecakey', JSON.stringify({
+    format:'ECA-KEYS', created:nowISO(),
+    advarsel:'Denne fil indeholder de private nøgler til Executive Career Architecture. Opbevares sikkert og adskilt. Uden den kan indsendte besvarelser ikke låses op.',
+    keys:KEYS }, null, 2));
+  enter();
+  setView('settings');
+}
+
+function enter(){
+  el('lock').classList.add('hidden');
+  el('app').classList.remove('hidden');
+  renderAll();
+}
+el('lockNow').addEventListener('click', function(){
+  A = null; KEYS = null; PASS = null; current = null;
+  el('app').classList.add('hidden'); el('lock').classList.remove('hidden');
+  el('pw').value = ''; el('lockErr').textContent = 'Låst.';
+});
+
+/* ============================================================
+   VISNINGER
+   ============================================================ */
+document.querySelectorAll('.tb[data-view]').forEach(function(b){
+  b.addEventListener('click', function(){ setView(b.dataset.view); });
+});
+function setView(v){
+  ['clients','invite','settings','audit'].forEach(function(k){
+    el('view-'+k).classList.toggle('hidden', k !== v);
+  });
+  document.querySelectorAll('.tb[data-view]').forEach(function(b){ b.classList.toggle('on', b.dataset.view === v); });
+  if (v === 'invite') renderInvite();
+  if (v === 'settings') renderSettings();
+  if (v === 'audit') renderAudit();
+}
+function renderAll(){ renderClients(); }
+
+/* ---------- klientliste ---------- */
+function statusOf(s){
+  if (s.deleted) return 'Slettet';
+  if (s.reportDone) return 'Rapport klar';
+  if (s.analysis) return 'Analyse påbegyndt';
+  return 'Klar til analyse';
+}
+function renderClients(){
+  var l = el('clientList'), h = '';
+  var subs = (A.submissions || []).slice().sort(function(a,b){ return new Date(b.received) - new Date(a.received); });
+  el('cCount').textContent = subs.length + (subs.length === 1 ? ' besvarelse' : ' besvarelser');
+  if (!subs.length) h = '<li><div style="padding:26px 20px;color:var(--gray-light);font-size:.86rem">Ingen besvarelser indlæst endnu.</div></li>';
+  subs.forEach(function(s){
+    var older = A.submissions.filter(function(x){ return x.clientId === s.clientId; }).length;
+    h += '<li><button data-sub="' + esc(s.id) + '" class="' + (current && current.id === s.id ? 'sel' : '') + '">' +
+      '<div class="nm">' + esc(s.label || s.clientId) + '</div>' +
+      '<div class="mt">' + esc(dkd(s.received)) + ' · ' + esc(statusOf(s)) +
+      (older > 1 ? ' · ' + older + ' målinger' : '') + '</div></button></li>';
+  });
+  l.innerHTML = h;
+  l.querySelectorAll('button[data-sub]').forEach(function(b){
+    b.addEventListener('click', function(){ openSubmission(b.dataset.sub); });
+  });
+}
+
+el('importBtn').addEventListener('click', function(){ el('ecaFile').click(); });
+el('ecaFile').addEventListener('change', async function(e){
+  var f = e.target.files[0]; if (!f) return;
+  try {
+    var env = JSON.parse(await f.text());
+    if (env.format !== 'ECA-ENVELOPE') throw new Error('Filen er ikke en ECA-besvarelse.');
+    var payload = await decryptEnvelope(env);
+    var fp = (await sha256hex(env.ct)).slice(0,32).replace(/(.{4})/g,'$1 ').trim().toUpperCase();
+    if (A.submissions.some(function(s){ return s.fp === fp; })) { alert('Denne besvarelse er allerede indlæst.'); return; }
+    var rec = {
+      id: 'S' + Date.now().toString(36).toUpperCase(),
+      clientId: payload.meta.clientId, label: payload.meta.label,
+      received: nowISO(), submitted: payload.meta.submitted, fp: fp,
+      qVersion: payload.meta.qVersion, aiAllowed: !!payload.meta.aiAllowed,
+      envelope: env, notes:'', hypotheses:'', followups:'', analysis:'', analysisMeta:null,
+      reportDone:false, reopened:false
+    };
+    A.submissions.push(rec);
+    audit('Besvarelse indlæst', (payload.meta.label || payload.meta.clientId) + ' · ' + fp.slice(0,9));
+    await sealStore();
+    renderClients(); openSubmission(rec.id);
+  } catch(err){ alert('Kunne ikke læse besvarelsen: ' + err.message); }
+  e.target.value = '';
+});
+
+async function openSubmission(id){
+  var rec = A.submissions.filter(function(s){ return s.id === id; })[0];
+  if (!rec) return;
+  var payload = await decryptEnvelope(rec.envelope);
+  current = { id:id, rec:rec, payload:payload };
+  audit('Besvarelse åbnet', rec.label || rec.clientId);
+  el('noSel').classList.add('hidden');
+  el('detail').classList.remove('hidden');
+  renderClients();
+  renderDetail('overblik');
+}
+
+/* ============================================================
+   SIGNALER — systemets egne beregninger, ikke fortolkninger
+   ============================================================ */
+function signals(){
+  var p = current.payload, a = p.answers, out = [];
+  function A_(id){ return a[id]; }
+  function flagged(id){ var f = p.flags[id]; return f && (f.nr || f.idk); }
+  function add(kind, text, basis){ out.push({kind:kind, text:text, basis:basis}); }
+
+  /* 1. Modsætning: tilfredshed vs. fordeling */
+  var alloc = A_('B15');
+  if (alloc && typeof alloc === 'object') {
+    var videre = Number(alloc['Søg videre']) || 0, bliv = Number(alloc['Bliv']) || 0;
+    if (typeof A_('A1') === 'number' && A_('A1') >= 7 && videre >= 50)
+      add('Modsætning', 'Høj samlet tilfredshed (' + A_('A1') + '/10), men ' + videre + ' % vægt på “søg videre”.', 'A1 og B15');
+    if (typeof A_('A1') === 'number' && A_('A1') <= 4 && bliv >= 50)
+      add('Modsætning', 'Lav samlet tilfredshed (' + A_('A1') + '/10), men ' + bliv + ' % vægt på “bliv”.', 'A1 og B15');
+    var sum = videre + bliv + (Number(alloc['Form rollen']) || 0);
+    if (sum && sum !== 100) add('Datafejl', 'Fordelingen i B15 summer til ' + sum + ', ikke 100.', 'B15');
+  }
+  /* 2. Væk fra frem for mod */
+  if (['Mest væk fra noget','Klart væk fra noget'].indexOf(A_('B2')) !== -1)
+    add('Opmærksomhed', 'Bevægelsen er beskrevet som primært væk fra noget. Kriterierne for det næste er sjældent formuleret i den situation.', 'B2');
+  /* 3. Beslutningen er reelt truffet */
+  if (A_('L2') === 'Ja, det er jeg')
+    add('Opmærksomhed', 'Klienten angiver selv at være ved at forelske sig i én mulighed for tidligt.', 'L2');
+  if (typeof A_('L12') === 'string' && /^(ingen|intet|ved ikke|nej)/i.test(A_('L12').trim()))
+    add('Opmærksomhed', 'Ingen information kan angiveligt ændre beslutningen — beslutningen er formentlig allerede truffet.', 'L12');
+  /* 4. Bæredygtighed */
+  if (typeof A_('A9') === 'number' && A_('A9') <= 4 && ['Ja','Formentlig'].indexOf(A_('J32')) !== -1)
+    add('Modsætning', 'Nuværende rolle vurderes som lidt bæredygtig (' + A_('A9') + '/10), men den nye mulighed vurderes som bæredygtig.', 'A9 og J32');
+  if (typeof A_('J31') === 'string' && A_('J31').trim().length > 3)
+    add('Opmærksomhed', 'Der er antagelser om den nye rolle, som endnu ikke er afstemt hjemme.', 'J31');
+  /* 5. Forhandling */
+  if (A_('R0_tilbud') === 'Ja' && !A_('M5'))
+    add('Mangler', 'Der foreligger et tilbud, men ingen formuleret walk-away-position.', 'R0_tilbud og M5');
+  var mmx = A_('M_mx');
+  if (mmx && typeof mmx === 'object') {
+    var ego = Object.keys(mmx).filter(function(k){ return mmx[k].kat === 'Ego-drevet'; });
+    var noed = Object.keys(mmx).filter(function(k){ return mmx[k].kat === 'Nødvendigt'; });
+    if (noed.length > 8) add('Opmærksomhed', noed.length + ' punkter er klassificeret som nødvendige. Så mange forudsætninger er sjældent alle sammen forudsætninger.', 'M_mx');
+    if (ego.length) add('Note', 'Selverkendt ego-drevet: ' + ego.join(', ') + '.', 'M_mx');
+  }
+  /* 6. Omdømme */
+  if (typeof A_('I5') === 'number' && A_('I5') >= 7)
+    add('Opmærksomhed', 'Stor selvvurderet forskel (' + A_('I5') + '/10) mellem det, andre siger, og det, klienten ønsker de skulle sige.', 'I5');
+  /* 7. Evidens for påståede styrker */
+  if (typeof A_('E7') === 'string' && A_('E7').trim().length > 3)
+    add('Note', 'Klienten har selv udpeget styrker med begrænset evidens — se E7 og hold dem op mod E_res.', 'E7');
+  /* 8. Rolle-due-diligence: mange ubesvarede */
+  var jUnknown = 0, jTotal = 0;
+  (p.schema || []).forEach(function(m){
+    if (m.id !== 'J') return;
+    m.qs.forEach(function(q){ jTotal++; if (!a[q.i] || flagged(q.i)) jUnknown++; });
+  });
+  if (jTotal && jUnknown / jTotal > .4)
+    add('Mangler', Math.round(jUnknown / jTotal * 100) + ' % af due diligence på muligheden er ubesvaret eller markeret. Beslutningsgrundlaget er tyndt.', 'Modul J');
+  /* 9. Lav sikkerhed i egne svar */
+  Object.keys(p.confidence || {}).forEach(function(k){
+    if (p.confidence[k] != null && p.confidence[k] <= 3) {
+      var qq = findQ(k);
+      add('Lav sikkerhed', 'Sikkerhed ' + p.confidence[k] + '/10 på: ' + (qq ? qq.q : k), k);
+    }
+  });
+  /* 10. Score på tyndt grundlag */
+  Object.keys(p.scores || {}).forEach(function(k){
+    var s = p.scores[k];
+    if (s.score != null && s.completeness < 40)
+      add('Forbehold', s.label + ': score hviler på ' + s.completeness + ' % datakomplethed — brug den ikke som andet end en samtaleåbner.', 'Dimension');
+  });
+  return out;
+}
+function findQ(id){
+  var p = current.payload, r = null;
+  (p.schema || []).forEach(function(m){ m.qs.forEach(function(q){ if (q.i === id) r = q; }); });
+  return r;
+}
+function moduleOf(id){
+  var p = current.payload, r = null;
+  (p.schema || []).forEach(function(m){ m.qs.forEach(function(q){ if (q.i === id) r = m; }); });
+  return r;
+}
+function answerText(q){
+  var p = current.payload, a = p.answers[q.i], f = p.flags[q.i] || {};
+  if (f.nr) return '— ikke relevant';
+  if (f.idk) return '— det ved jeg ikke endnu';
+  if (a == null || a === '') return '— ikke besvaret';
+  if (q.t === 'scale') return a + ' / 10';
+  if (q.t === 'multi') return Array.isArray(a) ? a.join(', ') : String(a);
+  if (q.t === 'rank') return Array.isArray(a) ? a.map(function(x,n){ return (n+1) + '. ' + x; }).join('\n') : String(a);
+  if (q.t === 'alloc') return (a && typeof a === 'object') ? Object.keys(a).map(function(k){ return k + ': ' + a[k]; }).join(' · ') : String(a);
+  if (q.t === 'matrix' && a && typeof a === 'object') {
+    return Object.keys(a).map(function(r){
+      var row = a[r];
+      var parts = Object.keys(row).filter(function(k){ return row[k] !== '' && row[k] !== false; })
+        .map(function(k){ var c = (q.cols||[]).filter(function(c){return c.k===k;})[0];
+          return (c ? c.l : k) + ': ' + (row[k] === true ? 'ja' : row[k]); });
+      return parts.length ? '· ' + r + ' — ' + parts.join(' | ') : null;
+    }).filter(Boolean).join('\n') || '— ikke besvaret';
+  }
+  if (q.t === 'repeat' && Array.isArray(a)) {
+    return a.map(function(e, n){
+      var parts = (q.fields||[]).filter(function(f){ return e && e[f.k]; }).map(function(f){ return '  ' + f.l + ': ' + e[f.k]; });
+      return '[' + (n+1) + ']\n' + parts.join('\n');
+    }).join('\n\n') || '— ikke besvaret';
+  }
+  if (a && typeof a === 'object') { try { return JSON.stringify(a); } catch(e){ return '—'; } }
+  return String(a);
+}
+
+/* ============================================================
+   KLIENTVISNING
+   ============================================================ */
+var detailTab = 'overblik';
+function renderDetail(tab){
+  detailTab = tab || detailTab;
+  var rec = current.rec, p = current.payload, h = '';
+  h = '<div class="tabs">' +
+    [['overblik','Overblik'],['svar','Besvarelse'],['signaler','Signaler'],['noter','Coachens noter'],
+     ['analyse','Analyse'],['rapport','Rapport'],['data','Data og sletning']]
+    .map(function(t){ return '<button data-tab="' + t[0] + '" class="' + (detailTab===t[0]?'on':'') + '">' + t[1] + '</button>'; }).join('') +
+    '</div><div class="tabpane" id="tabpane"></div>';
+  el('detail').innerHTML = h;
+  el('detail').querySelectorAll('[data-tab]').forEach(function(b){
+    b.addEventListener('click', function(){ renderDetail(b.dataset.tab); });
+  });
+  var pane = el('tabpane');
+  if (detailTab === 'overblik') pane.innerHTML = tabOverblik();
+  if (detailTab === 'svar') pane.innerHTML = tabSvar();
+  if (detailTab === 'signaler') pane.innerHTML = tabSignaler();
+  if (detailTab === 'noter') { pane.innerHTML = tabNoter(); bindNoter(); }
+  if (detailTab === 'analyse') { pane.innerHTML = tabAnalyse(); bindAnalyse(); }
+  if (detailTab === 'rapport') { pane.innerHTML = tabRapport(); bindRapport(); }
+  if (detailTab === 'data') { pane.innerHTML = tabData(); bindData(); }
+}
+
+function tabOverblik(){
+  var rec = current.rec, p = current.payload, m = p.meta;
+  var h = '<div class="row" style="justify-content:space-between;align-items:flex-start;margin-bottom:24px">' +
+    '<div><h3 style="font-size:1.6rem">' + esc(m.label || m.clientId) + '</h3>' +
+    '<div style="font-size:.8rem;color:var(--gray);margin-top:4px">Indsendt ' + esc(dk(m.submitted)) +
+    ' · påbegyndt ' + esc(dkd(m.started)) + ' · version ' + esc(m.qVersion) + '</div></div>' +
+    '<div><span class="pill ' + (rec.analysis ? 'on' : 'red') + '">' + esc(statusOf(rec)) + '</span></div></div>';
+
+  h += '<div class="note"><strong>Situationsprofil.</strong> ' +
+    esc([p.answers.R0_sit, p.answers.R0_tenure, p.answers.R0_ansvar].filter(Boolean).join(' · ')) +
+    '<br>Fokus: <strong>' + esc(p.answers.R0_focus || '—') + '</strong>' +
+    (p.answers.R0_dialog === 'Ja' ? ' · i dialog om en mulighed' : '') +
+    (p.answers.R0_tilbud === 'Ja' ? ' · har modtaget tilbud' : '') +
+    (p.answers.R0_90 === 'Ja' ? ' · beslutning inden for 90 dage' : '') +
+    '<br><br><em>Anledning:</em> ' + esc(p.answers.R0_hvorfor || '—') + '</div>';
+
+  h += '<div class="row" style="gap:16px;margin:22px 0 8px">' +
+    '<div><span class="src-tag src-klient">Klientens svar</span></div>' +
+    '<div><span class="src-tag src-system">Systemets beregning</span></div>' +
+    '<div><span class="src-tag src-ai">AI-hypotese</span></div>' +
+    '<div><span class="src-tag src-coach">Coachens vurdering</span></div></div>';
+
+  h += '<h4 style="margin:26px 0 6px">Orienterende dimensioner</h4>' +
+    '<p style="font-size:.83rem;color:var(--gray);margin-bottom:16px;max-width:74ch">Ikke valideret psykometri. Scoren er en sammenvejning af klientens egne vurderinger på 0–100 og siger intet om, hvad klienten bør gøre. Datakomplethed og sikkerhed er lige så vigtige som selve tallet — og der beregnes bevidst ingen samlet karakter.</p>';
+  var sc = p.scores || {};
+  Object.keys(sc).forEach(function(k){
+    var s = sc[k];
+    h += '<div class="dim"><div class="dn">' + esc(s.label) + '</div>' +
+      '<div><div class="bar">' + (s.score != null ? '<i style="width:' + s.score + '%"></i>' : '<i class="thin" style="width:100%"></i>') + '</div>' +
+      '<div style="font-size:.68rem;color:var(--gray);margin-top:5px">Datakomplethed ' + s.completeness + ' % · ' + s.answered + '/' + s.questions + ' besvaret' +
+      (s.flagged ? ' · ' + s.flagged + ' markeret' : '') +
+      (s.confidence != null ? ' · sikkerhed ' + s.confidence + '/10' : '') + '</div></div>' +
+      '<div class="dv">' + (s.score != null ? s.score : '–') + '<small>' + (s.basedOn ? s.basedOn + ' vurd.' : 'kvalitativ') + '</small></div></div>';
+  });
+
+  var sig = signals();
+  h += '<h4 style="margin:34px 0 10px">Signaler <span class="src-tag src-system">Systemets beregning</span></h4>';
+  if (!sig.length) h += '<p style="color:var(--gray);font-size:.88rem">Ingen regelbaserede signaler udløst.</p>';
+  else { h += '<ul style="list-style:none">'; sig.slice(0,6).forEach(function(s){
+    h += '<li style="padding:9px 0;border-bottom:1px solid rgba(0,0,0,.05);font-size:.89rem">' +
+      '<span class="tg r">' + esc(s.kind) + '</span> ' + esc(s.text) + '</li>'; });
+    h += '</ul>';
+    if (sig.length > 6) h += '<p style="font-size:.82rem;color:var(--gray);margin-top:10px">' + (sig.length-6) + ' flere under fanen Signaler.</p>';
+  }
+
+  var others = A.submissions.filter(function(s){ return s.clientId === rec.clientId; });
+  if (others.length > 1) {
+    h += '<h4 style="margin:34px 0 10px">Udvikling over tid</h4>' +
+      '<p style="font-size:.83rem;color:var(--gray);margin-bottom:12px">' + others.length + ' målinger for denne klient. Sammenlign under fanen Data.</p>';
+  }
+  h += '<div class="note warn" style="margin-top:30px"><strong>Husk.</strong> Værktøjet lover ikke bedre karriereudfald, og der findes ingen dokumentation for, at et refleksionsforløb i sig selv forbedrer dem. Det, materialet kan bære, er bedre spørgsmål — ikke konklusioner.</div>';
+  return h;
+}
+
+function tabSvar(){
+  var p = current.payload, h = '';
+  h = '<div class="row" style="justify-content:space-between;margin-bottom:20px">' +
+    '<p style="font-size:.85rem;color:var(--gray);max-width:60ch">Besvarelsen som klienten så den — spørgsmålene stammer fra den version, klienten faktisk udfyldte (' + esc(p.meta.qVersion) + ').</p>' +
+    '<button class="btn bd bsm" onclick="window.print()">Udskriv</button></div>';
+  (p.schema || []).forEach(function(m){
+    h += '<div class="modblock"><h4>Modul ' + esc(m.letter) + ' · ' + esc(m.title) + '</h4>' +
+      '<div class="md">' + (m.core ? 'Kernemodul' : 'Betinget modul — aktiveret af klientens situation') + '</div>';
+    m.qs.forEach(function(q){
+      if (q.t === 'info') return;
+      var f = p.flags[q.i] || {};
+      var txt = answerText(q);
+      var isEmpty = /^—/.test(txt);
+      h += '<div class="qa"><div class="qq">' + esc(q.q) + (q.r ? ' *' : '') + '</div>' +
+        '<div class="aa' + (isEmpty ? ' em' : '') + '">' + esc(txt) + '</div>';
+      if (p.notes[q.i]) h += '<div class="mx"><strong>Klientens note:</strong> ' + esc(p.notes[q.i]) + '</div>';
+      if (p.notes[q.i + '_basis']) h += '<div class="mx"><strong>Grundlag for vurderingen:</strong> ' + esc(p.notes[q.i + '_basis']) + '</div>';
+      if (p.confidence[q.i] != null) h += '<div class="mx"><strong>Sikkerhed i eget svar:</strong> ' + p.confidence[q.i] + '/10</div>';
+      h += '</div>';
+    });
+    h += '</div>';
+  });
+  return h;
+}
+
+function tabSignaler(){
+  var sig = signals(), h = '';
+  h = '<p style="font-size:.86rem;color:var(--gray);max-width:74ch;margin-bottom:22px">' +
+    '<span class="src-tag src-system">Systemets beregning</span> Regelbaserede observationer udledt direkte af klientens svar. De er ikke fortolkninger og ikke AI-genererede — hver enkelt kan spores til de spørgsmål, den bygger på.</p>';
+  if (!sig.length) return h + '<p style="color:var(--gray)">Ingen signaler udløst.</p>';
+  h += '<div class="scroll"><table class="tb2"><thead><tr><th style="width:120px">Type</th><th>Observation</th><th style="width:130px">Grundlag</th></tr></thead><tbody>';
+  sig.forEach(function(s){
+    h += '<tr><td><span class="tg r">' + esc(s.kind) + '</span></td><td>' + esc(s.text) + '</td><td style="color:var(--gray);font-size:.78rem">' + esc(s.basis) + '</td></tr>';
+  });
+  h += '</tbody></table></div>';
+  var p = current.payload;
+  if ((p.marked || []).length) {
+    h += '<h4 style="margin:34px 0 10px">Markeret af klienten</h4><div class="scroll"><table class="tb2"><thead><tr><th style="width:180px">Markering</th><th>Spørgsmål</th></tr></thead><tbody>';
+    p.marked.forEach(function(m){ h += '<tr><td>' + esc(m.kind) + '</td><td>' + esc(m.text) + '</td></tr>'; });
+    h += '</tbody></table></div>';
+  }
+  return h;
+}
+
+function tabNoter(){
+  var r = current.rec;
+  return '<p style="font-size:.86rem;color:var(--gray);max-width:74ch;margin-bottom:22px">' +
+    '<span class="src-tag src-coach">Coachens vurdering</span> Dine egne noter. De opbevares krypteret på denne enhed sammen med besvarelsen og indgår aldrig i det, klienten ser, medmindre du selv tager dem med i rapporten.</p>' +
+    '<div class="field"><label class="fl" for="nNotes">Interne noter</label><textarea id="nNotes" style="min-height:160px">' + esc(r.notes) + '</textarea></div>' +
+    '<div class="field"><label class="fl" for="nHyp">Coachens hypoteser</label><textarea id="nHyp" style="min-height:140px" placeholder="Hvad tror du, der reelt er på spil? Hvad vil du teste i samtalen?">' + esc(r.hypotheses) + '</textarea></div>' +
+    '<div class="field"><label class="fl" for="nFup">Opfølgningspunkter</label><textarea id="nFup" style="min-height:120px" placeholder="Hvad skal med til næste gang? Hvad skal genbesøges om 30, 60, 90 dage?">' + esc(r.followups) + '</textarea></div>' +
+    '<button class="btn bp" id="saveNotes">Gem noter</button><span id="noteSaved" style="margin-left:14px;font-size:.82rem;color:var(--gray)"></span>';
+}
+function bindNoter(){
+  el('saveNotes').addEventListener('click', async function(){
+    current.rec.notes = el('nNotes').value;
+    current.rec.hypotheses = el('nHyp').value;
+    current.rec.followups = el('nFup').value;
+    audit('Noter gemt', current.rec.label || current.rec.clientId);
+    await sealStore();
+    el('noteSaved').textContent = 'Gemt ' + new Date().toLocaleTimeString('da-DK',{hour:'2-digit',minute:'2-digit'});
+  });
+}
+
+/* ---------- AI-masterprompt ---------- */
+function payloadAsText(){
+  var p = current.payload, out = [];
+  out.push('KLIENT: ' + (p.meta.label || p.meta.clientId));
+  out.push('INDSENDT: ' + p.meta.submitted + ' · SKEMAVERSION: ' + p.meta.qVersion);
+  out.push('AKTIVE MODULER: ' + p.meta.modules.join(', '));
+  out.push('BESVAREDE: ' + p.meta.answeredCount + ' af ' + p.meta.totalCount);
+  out.push('');
+  out.push('=== ORIENTERENDE DIMENSIONER (systemets beregning) ===');
+  Object.keys(p.scores || {}).forEach(function(k){
+    var s = p.scores[k];
+    out.push(s.label + ': score ' + (s.score != null ? s.score : 'ikke beregnet') +
+      ' · datakomplethed ' + s.completeness + '% · besvaret ' + s.answered + '/' + s.questions +
+      (s.flagged ? ' · markeret ' + s.flagged : '') +
+      (s.confidence != null ? ' · klientens sikkerhed ' + s.confidence + '/10' : ''));
+  });
+  out.push('');
+  out.push('=== SIGNALER (regelbaseret, systemets beregning) ===');
+  signals().forEach(function(s){ out.push('[' + s.kind + '] ' + s.text + ' (grundlag: ' + s.basis + ')'); });
+  out.push('');
+  (p.schema || []).forEach(function(m){
+    out.push('=== MODUL ' + m.letter + ' · ' + m.title.toUpperCase() + ' ===');
+    m.qs.forEach(function(q){
+      if (q.t === 'info') return;
+      var t = answerText(q);
+      out.push('SP: ' + q.q);
+      out.push('SVAR: ' + t);
+      if (p.notes[q.i]) out.push('KLIENTENS NOTE: ' + p.notes[q.i]);
+      if (p.notes[q.i + '_basis']) out.push('GRUNDLAG FOR VURDERING: ' + p.notes[q.i + '_basis']);
+      if (p.confidence[q.i] != null) out.push('SIKKERHED I EGET SVAR: ' + p.confidence[q.i] + '/10');
+      out.push('');
+    });
+  });
+  if (current.rec.notes) { out.push('=== COACHENS EGNE NOTER (må ikke behandles som klientens udsagn) ==='); out.push(current.rec.notes); out.push(''); }
+  if (current.rec.hypotheses) { out.push('=== COACHENS HYPOTESER ==='); out.push(current.rec.hypotheses); }
+  return out.join('\n');
+}
+function buildPrompt(){
+  var p = current.payload;
+  return [
+'Du er erfaren executive coach-assistent for Thomas Friisnæs. Du udarbejder et UDKAST til dybdeanalyse af en klients besvarelse af værktøjet Executive Career Architecture. Udkastet læses kun af Thomas. Det sendes aldrig til klienten, og det skal kunne redigeres frit.',
+'',
+'SPROG OG TONE',
+'- Skriv på dansk. Direkte og respektfuldt. Roligt, reflekteret og præcist.',
+'- Ingen HR-klichéer, intet konsulentsprog uden konkret betydning, ingen kunstig begejstring.',
+'- Undgå gentagne trepunktsformuleringer som sproglig automatpilot.',
+'- Brug "klienten", ikke "du".',
+'',
+'EPISTEMISKE KRAV — det vigtigste i denne opgave',
+'- Skeln konsekvent og eksplicit mellem fire ting: (1) hvad klienten direkte har oplyst, (2) systemets beregninger, (3) dine egne hypoteser, (4) coachens noter. Markér hver påstand med [KLIENT], [SYSTEM], [HYPOTESE] eller [COACH].',
+'- Brug forsigtigt sprog. Skriv "hænger sammen med", ikke "fører til". Angiv usikkerhed, hvor den findes.',
+'- Konkludér aldrig mere sikkert, end datagrundlaget tillader. Hvis datakompletheden for en dimension er under 40 %, så sig det og lad være med at bygge en konklusion på den.',
+'- Søg aktivt alternative forklaringer på hvert mønster, du mener at se. Præsentér mindst én modfortolkning for hver væsentlig hypotese.',
+'- Fremhæv data, der taler MOD dine egne hypoteser.',
+'- Stil ingen diagnoser. Vurder ikke helbred, stress, udbrændthed eller psykiske forhold. Hvis materialet peger på mistrivsel, så nævn det neutralt som noget, Thomas bør være opmærksom på i samtalen — og henvis til, at det ligger uden for værktøjets formål.',
+'- Lov ikke karriereudfald. Der findes ingen dokumentation for, at et refleksionsforløb forbedrer karriereudfald.',
+'- Husk: oplevet fit forudsiger trivsel og fastholdelse, ikke præstation. Skriv aldrig, at god fit betyder, at klienten vil lykkes i rollen.',
+'- Opfind ikke oplysninger. Hvis noget mangler, så skriv, at det mangler.',
+'',
+'STRUKTUR — brug præcis disse 22 afsnit med disse overskrifter',
+'1. Executive summary',
+'2. Klientens nuværende situation',
+'3. Centrale ambitioner',
+'4. Energi- og meningsmønstre',
+'5. Dokumenterede styrker',
+'6. Påståede styrker med begrænset evidens',
+'7. Erfarings- og kompetencegab',
+'8. Relationelle styrker og huller',
+'9. Mulige blinde vinkler',
+'10. Modsætninger mellem svar',
+'11. Mulige undvigelser eller rationaliseringer',
+'12. Hypotese om bliv, form eller forlad',
+'13. Krav til næste rolle',
+'14. Disqualifiers',
+'15. Risici ved nuværende retning',
+'16. Alternative fortolkninger',
+'17. Spørgsmål Thomas bør stille',
+'18. Samtaler klienten muligvis bør tage',
+'19. Anbefalede eksperimenter eller undersøgelser',
+'20. Forslag til 30-dages handlinger',
+'21. Forhold, der kræver yderligere evidens',
+'22. Opfølgningsmålinger',
+'',
+'KRAV TIL ENKELTE AFSNIT',
+'- Afsnit 1: højst 200 ord. Skriv det, Thomas skal vide, hvis han kun læser ét afsnit.',
+'- Afsnit 5 og 6: skeln skarpt. Et resultat er kun dokumenteret, hvis klienten har angivet både kontekst, handling, resultat og dokumentation — og har forholdt sig til, hvilken del der kan tilskrives vedkommende.',
+'- Afsnit 11: vær nænsom, men ærlig. Formulér det som noget, der kan undersøges, ikke som en anklage.',
+'- Afsnit 17: 8–12 spørgsmål. Skarpe, konkrete, ubehagelige nok til at rykke noget. Ingen generiske coachingspørgsmål.',
+'- Afsnit 20: højst 5 handlinger, hver med en tydelig færdigdefinition.',
+'',
+'DATAGRUNDLAG FØLGER HERUNDER.',
+'',
+'---',
+'',
+payloadAsText()
+].join('\n');
+}
+
+function tabAnalyse(){
+  var r = current.rec, p = current.payload;
+  var h = '<p style="font-size:.86rem;color:var(--gray);max-width:76ch;margin-bottom:20px">' +
+    'AI-analysen er et <strong>udkast til dig</strong>. Den genereres ikke automatisk, sendes aldrig til klienten, og kan redigeres frit. Prompten er bygget med eksplicitte krav om forsigtigt sprog, kildeskel og aktiv søgning efter modfortolkninger.</p>';
+  if (!p.meta.aiAllowed) {
+    h += '<div class="note warn"><strong>Klienten har fravalgt AI-behandling.</strong> Analysen skal laves manuelt. Knappen nedenfor er deaktiveret med vilje — det er klientens samtykke, ikke en teknisk begrænsning.</div>';
+  }
+  h += '<div class="row" style="margin-bottom:22px">' +
+    '<button class="btn bp" id="copyPrompt"' + (p.meta.aiAllowed ? '' : ' disabled') + '>Kopiér masterprompt</button>' +
+    '<button class="btn bd" id="dlPrompt"' + (p.meta.aiAllowed ? '' : ' disabled') + '>Hent som fil</button>' +
+    '<button class="btn bd" id="showPrompt">Vis prompten</button>' +
+    '<span id="promptMsg" style="font-size:.82rem;color:var(--gray)"></span></div>' +
+    '<div id="promptBox" class="hidden"><div class="mono" style="max-height:300px;overflow:auto;white-space:pre-wrap" id="promptText"></div></div>' +
+    '<div class="note" style="margin-top:22px"><strong>Arbejdsgang.</strong> Kopiér prompten, indsæt den i din AI-assistent, og indsæt svaret nedenfor. Registrér modelnavn, så udkastet kan spores. API-nøgler ligger ingen steder i denne løsning — der er ingen server, og intet sendes automatisk.</div>' +
+    '<div class="row" style="margin:22px 0 8px">' +
+    '<div style="flex:1;min-width:200px"><label class="fl" for="aiModel">Model</label><input type="text" id="aiModel" placeholder="fx Claude Opus 4.6" value="' + esc(r.analysisMeta ? r.analysisMeta.model : '') + '"></div>' +
+    '<div style="flex:1;min-width:200px"><label class="fl" for="aiPv">Promptversion</label><input type="text" id="aiPv" value="' + esc(r.analysisMeta ? r.analysisMeta.promptVersion : 'ECA-PROMPT-1.0') + '"></div></div>' +
+    '<div class="field"><label class="fl" for="aiOut">Analyseudkast <span class="src-tag src-ai" style="margin-left:8px">AI-hypotese</span> — redigér frit</label>' +
+    '<textarea id="aiOut" style="min-height:340px">' + esc(r.analysis) + '</textarea></div>' +
+    '<button class="btn bp" id="saveAnalysis">Gem analyseudkast</button>' +
+    '<span id="anSaved" style="margin-left:14px;font-size:.82rem;color:var(--gray)">' +
+    (r.analysisMeta ? 'Sidst gemt ' + esc(dk(r.analysisMeta.ts)) + ' · ' + esc(r.analysisMeta.model || 'model ikke angivet') + ' · dataversion ' + esc(r.analysisMeta.dataVersion || p.meta.qVersion) : '') + '</span>';
+  return h;
+}
+function bindAnalyse(){
+  var p = current.payload;
+  el('showPrompt').addEventListener('click', function(){
+    el('promptText').textContent = buildPrompt();
+    el('promptBox').classList.toggle('hidden');
+  });
+  if (el('copyPrompt') && !el('copyPrompt').disabled) {
+    el('copyPrompt').addEventListener('click', function(){
+      navigator.clipboard.writeText(buildPrompt()).then(function(){
+        el('promptMsg').textContent = 'Kopieret — prompten indeholder hele besvarelsen.';
+        audit('AI-prompt kopieret', current.rec.label || current.rec.clientId);
+      });
+    });
+    el('dlPrompt').addEventListener('click', function(){
+      dl('ECA-prompt-' + (current.rec.label || current.rec.clientId).replace(/\W+/g,'-') + '.txt', buildPrompt(), 'text/plain');
+      audit('AI-prompt hentet', current.rec.label || current.rec.clientId);
+    });
+  }
+  el('saveAnalysis').addEventListener('click', async function(){
+    current.rec.analysis = el('aiOut').value;
+    current.rec.analysisMeta = { ts:nowISO(), model:el('aiModel').value,
+      promptVersion:el('aiPv').value, dataVersion:p.meta.qVersion };
+    audit('Analyseudkast gemt', (current.rec.label || current.rec.clientId) + ' · ' + (el('aiModel').value || 'model ikke angivet'));
+    await sealStore(); renderClients();
+    el('anSaved').textContent = 'Gemt ' + new Date().toLocaleTimeString('da-DK',{hour:'2-digit',minute:'2-digit'});
+  });
+}
+
+/* ---------- rapport ---------- */
+var reportOpts = { summary:true, situation:true, findings:true, tensions:true, strengths:true,
+  dev:true, criteria:true, risks:true, notyet:true, questions:true, actions:true, followup:true, method:true, machine:true };
+function tabRapport(){
+  var r = current.rec;
+  var opts = [['summary','Samlet situationsbillede'],['findings','Vigtigste fund'],['tensions','Centrale spændinger'],
+    ['strengths','Dokumenterede styrker'],['dev','Udviklingsområder'],['criteria','Rolle- og kulturkriterier'],
+    ['risks','Risici og blinde vinkler'],['notyet','Beslutninger, som ikke bør træffes endnu'],
+    ['questions','Spørgsmål til coachesamtalen'],['actions','Prioriterede handlinger'],
+    ['followup','30-, 60- og 90-dages opfølgning'],['method','Metode og kildegrundlag']];
+  var h = '<p style="font-size:.86rem;color:var(--gray);max-width:74ch;margin-bottom:20px">Rapporten til coachesamtalen. Du kan fravælge alle maskingenererede dele og skrive din egen vurdering i stedet — intet i rapporten er obligatorisk.</p>' +
+    '<div class="card" style="padding:22px 24px;margin-bottom:22px"><h3 style="font-size:1rem;margin-bottom:14px">Afsnit</h3><div class="row">';
+  opts.forEach(function(o){
+    h += '<label style="display:flex;gap:7px;align-items:center;font-size:.84rem;margin:0 16px 8px 0"><input type="checkbox" data-opt="' + o[0] + '" style="width:auto"' + (reportOpts[o[0]] ? ' checked' : '') + '>' + o[1] + '</label>';
+  });
+  h += '</div><div style="margin-top:12px;padding-top:14px;border-top:1px solid rgba(0,0,0,.07)">' +
+    '<label style="display:flex;gap:7px;align-items:center;font-size:.84rem"><input type="checkbox" data-opt="machine" style="width:auto"' + (reportOpts.machine ? ' checked' : '') + '><strong>Medtag maskingenererede dele</strong> — fravælg for en rent manuel rapport</label></div></div>';
+  h += '<div class="field"><label class="fl" for="repOwn">Din egen vurdering <span class="src-tag src-coach" style="margin-left:8px">Coachens vurdering</span></label>' +
+    '<textarea id="repOwn" style="min-height:220px" placeholder="Det, du selv vil sige. Dette afsnit står øverst i rapporten.">' + esc(r.ownAssessment || '') + '</textarea></div>' +
+    '<div class="row"><button class="btn bp" id="buildReport">Byg rapport</button>' +
+    '<button class="btn bd" id="markDone">Markér rapport som klar</button></div>' +
+    '<div id="reportOut" style="margin-top:34px"></div>';
+  return h;
+}
+function bindRapport(){
+  document.querySelectorAll('[data-opt]').forEach(function(c){
+    c.addEventListener('change', function(){ reportOpts[c.dataset.opt] = c.checked; });
+  });
+  el('buildReport').addEventListener('click', async function(){
+    current.rec.ownAssessment = el('repOwn').value;
+    await sealStore();
+    el('reportOut').innerHTML = renderReport();
+    audit('Rapport bygget', current.rec.label || current.rec.clientId);
+  });
+  el('markDone').addEventListener('click', async function(){
+    current.rec.reportDone = true; audit('Rapport markeret klar', current.rec.label || current.rec.clientId);
+    await sealStore(); renderClients(); renderDetail('rapport');
+  });
+}
+function renderReport(){
+  var r = current.rec, p = current.payload, h = '';
+  h += '<div style="border-top:2px solid var(--black);padding-top:26px">' +
+    '<div class="se">Fortroligt · kun til brug i coachesamtalen</div>' +
+    '<h2 style="font-size:2rem;margin-bottom:6px">Executive Career Architecture</h2>' +
+    '<p style="font-size:1rem;color:var(--gray-dark)">' + esc(p.meta.label || p.meta.clientId) + ' · besvarelse indsendt ' + esc(dkd(p.meta.submitted)) + '</p>' +
+    '<div class="note" style="margin-top:24px"><strong>Formål og fortrolighed.</strong> Denne rapport er et arbejdsgrundlag for en coachingsamtale mellem klienten og Thomas Friisnæs. Den er ikke en vurdering af klientens egnethed, ikke en test og ikke en anbefaling om at blive eller skifte. Den bygger på klientens egne svar. Rapporten deles ikke med tredjepart.</div>';
+  if (r.ownAssessment) h += '<h3 style="margin:32px 0 8px">Coachens vurdering</h3><p style="white-space:pre-wrap">' + esc(r.ownAssessment) + '</p>';
+  if (reportOpts.summary) {
+    h += '<h3 style="margin:32px 0 8px">Samlet situationsbillede <span class="src-tag src-klient">Klientens svar</span></h3>' +
+      '<p>' + esc([p.answers.R0_sit, p.answers.R0_tenure, p.answers.R0_ansvar].filter(Boolean).join(' · ')) + '. Fokus: ' + esc(p.answers.R0_focus || '—') + '.</p>' +
+      '<p style="margin-top:10px"><em>Anledning:</em> ' + esc(p.answers.R0_hvorfor || '—') + '</p>';
+    if (reportOpts.machine) {
+      h += '<h4 style="margin:22px 0 8px;font-size:1rem">Orienterende dimensioner <span class="src-tag src-system">Systemets beregning</span></h4>';
+      Object.keys(p.scores || {}).forEach(function(k){
+        var s = p.scores[k];
+        h += '<div class="dim"><div class="dn">' + esc(s.label) + '</div><div><div class="bar">' +
+          (s.score != null ? '<i style="width:' + s.score + '%"></i>' : '<i class="thin" style="width:100%"></i>') +
+          '</div></div><div class="dv">' + (s.score != null ? s.score : '–') + '<small>' + s.completeness + ' % data</small></div></div>';
+      });
+    }
+  }
+  if (reportOpts.tensions && reportOpts.machine) {
+    var sig = signals().filter(function(s){ return s.kind === 'Modsætning' || s.kind === 'Opmærksomhed'; });
+    h += '<h3 style="margin:32px 0 8px">Centrale spændinger <span class="src-tag src-system">Systemets beregning</span></h3>';
+    h += sig.length ? '<ul style="padding-left:20px">' + sig.map(function(s){ return '<li style="margin-bottom:7px">' + esc(s.text) + '</li>'; }).join('') + '</ul>'
+      : '<p style="color:var(--gray)">Ingen regelbaserede spændinger udløst.</p>';
+  }
+  if (reportOpts.strengths) {
+    h += '<h3 style="margin:32px 0 8px">Dokumenterede styrker <span class="src-tag src-klient">Klientens svar</span></h3>' +
+      '<p style="white-space:pre-wrap">' + esc(p.answers.E6 || '—') + '</p>';
+    var res = p.answers.E_res;
+    if (Array.isArray(res) && res.length) {
+      h += '<div class="scroll" style="margin-top:14px"><table class="tb2"><thead><tr><th>Kontekst</th><th>Handling</th><th>Resultat</th><th>Dokumentation</th><th>Egen andel</th></tr></thead><tbody>';
+      res.forEach(function(e){ h += '<tr><td>' + esc(e.kontekst||'') + '</td><td>' + esc(e.handling||'') + '</td><td>' + esc(e.resultat||'') + '</td><td>' + esc(e.dok||'') + '</td><td>' + esc(e.andel||'') + '</td></tr>'; });
+      h += '</tbody></table></div>';
+    }
+  }
+  if (reportOpts.dev) {
+    h += '<h3 style="margin:32px 0 8px">Udviklingsområder <span class="src-tag src-klient">Klientens svar</span></h3>';
+    var mx = p.answers.F_mx, gaps = [];
+    if (mx) Object.keys(mx).forEach(function(r2){
+      var row = mx[r2];
+      if (row.rel && row.nu && row.krav && Number(row.krav) - Number(row.nu) > 0)
+        gaps.push({ omr:r2, nu:row.nu, krav:row.krav, gab:Number(row.krav)-Number(row.nu), ev:row.evidens||'', arena:row.arena||'', tid:row.tid||'' });
+    });
+    gaps.sort(function(a,b){ return b.gab - a.gab; });
+    if (gaps.length) {
+      h += '<div class="scroll"><table class="tb2"><thead><tr><th>Område</th><th>Nu</th><th>Krævet</th><th>Gab</th><th>Læringsarena</th><th>Horisont</th></tr></thead><tbody>';
+      gaps.forEach(function(g){ h += '<tr><td>' + esc(g.omr) + '</td><td>' + esc(g.nu) + '</td><td>' + esc(g.krav) + '</td><td><strong>' + g.gab + '</strong></td><td>' + esc(g.arena) + '</td><td>' + esc(g.tid) + '</td></tr>'; });
+      h += '</tbody></table></div>';
+    } else h += '<p style="color:var(--gray)">Parathedsmatrixen er ikke udfyldt tilstrækkeligt til at beregne gab.</p>';
+  }
+  if (reportOpts.criteria) {
+    h += '<h3 style="margin:32px 0 8px">Rolle- og kulturkriterier <span class="src-tag src-klient">Klientens svar</span></h3>' +
+      '<p><strong>Villig til at betale:</strong> ' + esc(p.answers.C11 || '—') + '</p>' +
+      '<p style="margin-top:8px"><strong>Ikke villig til at betale:</strong> ' + esc(p.answers.C12 || '—') + '</p>';
+    var sc2 = p.answers.J_score;
+    if (sc2) {
+      var dq = Object.keys(sc2).filter(function(k){ return sc2[k].dq; });
+      if (dq.length) h += '<p style="margin-top:12px"><strong>Disqualifiers:</strong> ' + esc(dq.join(', ')) + '</p>';
+    }
+  }
+  if (reportOpts.risks) {
+    h += '<h3 style="margin:32px 0 8px">Risici og blinde vinkler</h3>' +
+      '<p><span class="src-tag src-klient">Klientens svar</span> Undgået udviklingsområde: ' + esc(p.answers.F4 || '—') + '</p>' +
+      '<p style="margin-top:8px">Værdi der muligvis overvurderes: ' + esc(p.answers.E9 || '—') + '</p>' +
+      (p.answers.L_pm ? '<p style="margin-top:8px"><strong>Præmortem:</strong> ' + esc(p.answers.L_pm) + '</p>' : '');
+  }
+  if (reportOpts.notyet) {
+    h += '<h3 style="margin:32px 0 8px">Beslutninger, som ikke bør træffes endnu <span class="src-tag src-klient">Klientens svar</span></h3>' +
+      '<p style="white-space:pre-wrap">' + esc(p.answers.R8 || '—') + '</p>';
+  }
+  if (reportOpts.questions) {
+    h += '<h3 style="margin:32px 0 8px">Spørgsmål til coachesamtalen</h3>' +
+      '<p><span class="src-tag src-klient">Klientens svar</span> Klienten ønsker særligt at blive udfordret på: ' + esc(p.answers.R10 || '—') + '</p>' +
+      '<p style="margin-top:8px">Analysen må ikke overse: ' + esc(p.answers.R11 || '—') + '</p>';
+    if (r.hypotheses) h += '<p style="margin-top:12px;white-space:pre-wrap"><span class="src-tag src-coach">Coachens vurdering</span>' + esc(r.hypotheses) + '</p>';
+  }
+  if (reportOpts.actions) {
+    h += '<h3 style="margin:32px 0 8px">Prioriterede handlinger <span class="src-tag src-klient">Klientens svar</span></h3>' +
+      '<p>Handling inden for syv dage: ' + esc(p.answers.R9 || '—') + '</p>' +
+      '<p style="margin-top:8px">Kræver yderligere undersøgelse: ' + esc(p.answers.R6 || '—') + '</p>';
+  }
+  if (reportOpts.followup) {
+    h += '<h3 style="margin:32px 0 8px">Opfølgning</h3>' +
+      '<p style="white-space:pre-wrap">' + esc(r.followups || 'Aftales i samtalen.') + '</p>';
+  }
+  if (reportOpts.machine && r.analysis) {
+    h += '<h3 style="margin:32px 0 8px">Analyseudkast <span class="src-tag src-ai">AI-hypotese</span></h3>' +
+      '<p style="font-size:.8rem;color:var(--gray)">Model: ' + esc(r.analysisMeta ? (r.analysisMeta.model || 'ikke angivet') : 'ikke angivet') +
+      ' · promptversion ' + esc(r.analysisMeta ? r.analysisMeta.promptVersion : '—') +
+      ' · dataversion ' + esc(r.analysisMeta ? r.analysisMeta.dataVersion : p.meta.qVersion) +
+      ' · genereret ' + esc(r.analysisMeta ? dk(r.analysisMeta.ts) : '—') + '</p>' +
+      '<p style="white-space:pre-wrap;margin-top:10px">' + esc(r.analysis) + '</p>';
+  }
+  if (reportOpts.method) {
+    h += '<h3 style="margin:32px 0 8px">Metode og kildegrundlag</h3>' +
+      '<p>Rapporten bygger på klientens egne svar i Executive Career Architecture, version ' + esc(p.meta.qVersion) + ', indsendt ' + esc(dk(p.meta.submitted)) + '. ' +
+      'Dimensionsscorerne er orienterende sammenvejninger af klientens egne vurderinger. De er ikke valideret psykometri, ikke normeret og ikke sammenlignelige med andre personer. Der beregnes bevidst ingen samlet karakter.</p>' +
+      '<p style="margin-top:10px">Spørgsmålene bygger på forskning i lederovergange, beslutningskvalitet, person-organisation-fit, netværk og udvælgelse — samt på Thomas Friisnæs’ egen praksis. For flere moduler findes der ingen aktuel forskning; det fremgår af metode- og kildegrundlaget. ' +
+      'Værktøjet er ikke en garanti for et bedre karriereudfald, og der findes ingen dokumentation for, at et refleksionsforløb i sig selv forbedrer karriereudfald. Det er et redskab til selvindsigt, selvforståelse og selvledelse.</p>' +
+      '<p style="margin-top:10px">Værktøjet er ikke en psykologisk eller helbredsmæssig vurdering og stiller ingen diagnose.</p>';
+  }
+  h += '<div class="row noprint" style="margin-top:34px"><button class="btn bd" onclick="window.print()">Udskriv eller gem som PDF</button></div></div>';
+  return h;
+}
+
+/* ---------- data, sammenligning og sletning ---------- */
+function csvOf(){
+  var p = current.payload, rows = [['modul','modultitel','spoergsmaal_id','spoergsmaal','type','dimension','svar','markering','klientens_note','grundlag','sikkerhed']];
+  (p.schema || []).forEach(function(m){
+    m.qs.forEach(function(q){
+      if (q.t === 'info') return;
+      var f = p.flags[q.i] || {};
+      rows.push([m.letter, m.title, q.i, q.q, q.t, q.d || '', answerText(q),
+        f.nr ? 'ikke relevant' : (f.idk ? 'ved ikke endnu' : ''),
+        p.notes[q.i] || '', p.notes[q.i + '_basis'] || '',
+        p.confidence[q.i] != null ? p.confidence[q.i] : '']);
+    });
+  });
+  return rows.map(function(r){ return r.map(function(c){ return '"' + String(c).replace(/"/g,'""') + '"'; }).join(';'); }).join('\r\n');
+}
+function tabData(){
+  var r = current.rec, p = current.payload;
+  var others = A.submissions.filter(function(s){ return s.clientId === r.clientId; })
+    .sort(function(a,b){ return new Date(a.submitted) - new Date(b.submitted); });
+  var retMonths = A.settings.retentionMonths;
+  var due = new Date(new Date(r.received).getTime() + retMonths * 30.44 * 86400000);
+  var h = '<h4 style="margin-bottom:8px">Eksport</h4>' +
+    '<p style="font-size:.85rem;color:var(--gray);margin-bottom:16px;max-width:70ch">Eksporterede filer er ikke krypterede. Behandl dem derfor som fortroligt materiale, og slet dem, når de ikke længere er nødvendige.</p>' +
+    '<div class="row" style="margin-bottom:30px">' +
+    '<button class="btn bd bsm" id="expJson">Rådata som JSON</button>' +
+    '<button class="btn bd bsm" id="expCsv">Rådata som CSV</button>' +
+    '<button class="btn bd bsm" id="expEnv">Krypteret original (.eca)</button></div>';
+
+  if (others.length > 1) {
+    h += '<h4 style="margin:6px 0 8px">Sammenlign målinger</h4>' +
+      '<p style="font-size:.85rem;color:var(--gray);margin-bottom:14px">' + others.length + ' besvarelser for samme klient. Ændringer er forskelle i klientens egne vurderinger — ikke målt udvikling.</p>' +
+      '<div class="scroll"><table class="tb2"><thead><tr><th>Dimension</th>' +
+      others.map(function(o){ return '<th>' + esc(dkd(o.submitted)) + '</th>'; }).join('') + '<th>Ændring</th></tr></thead><tbody id="cmpBody"><tr><td colspan="' + (others.length+2) + '" style="color:var(--gray)">Indlæser …</td></tr></tbody></table></div>';
+  }
+
+  h += '<h4 style="margin:32px 0 8px">Genåbning</h4>' +
+    '<p style="font-size:.85rem;color:var(--gray);margin-bottom:14px;max-width:70ch">Den indsendte version er låst. Vil du lade klienten rette, sender du en ny invitation — den tidligere besvarelse bevares som selvstændig måling, så I kan se udviklingen.</p>' +
+    '<button class="btn bd bsm" id="reopenBtn">Markér som genåbnet</button>' +
+    (r.reopened ? '<span style="margin-left:12px;font-size:.82rem;color:var(--red)">Markeret genåbnet</span>' : '');
+
+  h += '<h4 style="margin:34px 0 8px">Opbevaring og sletning</h4>' +
+    '<p style="font-size:.85rem;color:var(--gray);max-width:70ch">Retention er sat til <strong>' + retMonths + ' måneder</strong>. Denne besvarelse er planlagt til sletning <strong>' + esc(dkd(due)) + '</strong>' +
+    (Date.now() > due.getTime() ? ' — <span style="color:var(--red)">fristen er overskredet</span>' : '') + '. Sletning sker ikke automatisk; du skal bekræfte den.</p>' +
+    '<div class="note warn" style="margin-top:14px"><strong>Sletning kan ikke fortrydes.</strong> Besvarelsen, dine noter, analyseudkastet og den krypterede original fjernes fra denne enhed. Handlingen registreres i audit-loggen.</div>' +
+    '<button class="btn bp" id="delBtn" style="background:var(--black)">Slet denne besvarelse permanent</button>';
+  return h;
+}
+function bindData(){
+  var r = current.rec, p = current.payload;
+  var base = (p.meta.label || p.meta.clientId).replace(/\W+/g,'-');
+  el('expJson').addEventListener('click', function(){
+    dl('ECA-' + base + '-' + p.meta.submitted.slice(0,10) + '.json', JSON.stringify(p, null, 2));
+    audit('Rådata eksporteret (JSON)', r.label || r.clientId);
+  });
+  el('expCsv').addEventListener('click', function(){
+    dl('ECA-' + base + '-' + p.meta.submitted.slice(0,10) + '.csv', '﻿' + csvOf(), 'text/csv');
+    audit('Rådata eksporteret (CSV)', r.label || r.clientId);
+  });
+  el('expEnv').addEventListener('click', function(){
+    dl('ECA-' + base + '-' + p.meta.submitted.slice(0,10) + '.eca', JSON.stringify(r.envelope, null, 2));
+  });
+  el('reopenBtn').addEventListener('click', async function(){
+    r.reopened = true; audit('Besvarelse markeret genåbnet', r.label || r.clientId);
+    await sealStore(); renderDetail('data');
+  });
+  el('delBtn').addEventListener('click', async function(){
+    var name = r.label || r.clientId;
+    if (prompt('Skriv klientens navn for at bekræfte permanent sletning:\n\n' + name) !== name) return;
+    A.submissions = A.submissions.filter(function(s){ return s.id !== r.id; });
+    audit('Besvarelse slettet permanent', name + ' · ' + r.fp.slice(0,9));
+    await sealStore();
+    current = null;
+    el('detail').classList.add('hidden'); el('noSel').classList.remove('hidden');
+    renderClients();
+  });
+  var body = el('cmpBody');
+  if (body) {
+    (async function(){
+      var others = A.submissions.filter(function(s){ return s.clientId === r.clientId; })
+        .sort(function(a,b){ return new Date(a.submitted) - new Date(b.submitted); });
+      var loaded = [];
+      for (var i=0;i<others.length;i++) loaded.push(await decryptEnvelope(others[i].envelope));
+      var keys = {};
+      loaded.forEach(function(x){ Object.keys(x.scores || {}).forEach(function(k){ keys[k] = x.scores[k].label; }); });
+      var rows = Object.keys(keys).map(function(k){
+        var vals = loaded.map(function(x){ return x.scores[k] ? x.scores[k].score : null; });
+        var first = vals.filter(function(v){ return v != null; })[0];
+        var last = vals.slice().reverse().filter(function(v){ return v != null; })[0];
+        var d = (first != null && last != null) ? last - first : null;
+        return '<tr><td>' + esc(keys[k]) + '</td>' + vals.map(function(v){ return '<td>' + (v == null ? '–' : v) + '</td>'; }).join('') +
+          '<td><strong style="color:' + (d > 0 ? '#2c6e49' : (d < 0 ? 'var(--red)' : 'var(--gray)')) + '">' + (d == null ? '–' : (d > 0 ? '+' + d : d)) + '</strong></td></tr>';
+      });
+      body.innerHTML = rows.join('');
+    })();
+  }
+}
+
+/* ============================================================
+   INVITATIONER
+   ============================================================ */
+var lastInvite = null;
+function renderInvite(){
+  var base = location.href.replace(/admin\.html.*$/, '');
+  var h = '<div class="card"><h3>Ny invitation</h3>' +
+    '<p class="sub">Invitationen er et personligt, signeret link med udløb. Det verificeres kryptografisk i klientens browser — der er ingen adgangsliste at vedligeholde og ingen fil at redigere.</p>' +
+    '<div class="row" style="align-items:flex-end">' +
+    '<div style="flex:2;min-width:220px"><label class="fl" for="invName">Klientens navn</label><input type="text" id="invName" placeholder="Fx Mette Sørensen"></div>' +
+    '<div style="flex:1;min-width:150px"><label class="fl" for="invId">Klient-id</label><input type="text" id="invId" placeholder="Genereres automatisk"></div>' +
+    '<div style="flex:1;min-width:130px"><label class="fl" for="invDays">Gyldig i (dage)</label><input type="number" id="invDays" value="30" min="1" max="365"></div>' +
+    '<button class="btn bp" id="mkInv">Opret link</button></div>' +
+    '<div id="invOut" style="margin-top:22px">' +
+    (lastInvite ? '<div class="note"><strong>Personligt link til ' + esc(lastInvite.name) + '</strong><br>' +
+      '<div class="mono" style="margin-top:10px">' + esc(lastInvite.link) + '</div>' +
+      '<div class="row" style="margin-top:12px"><button class="btn bp bsm" data-copy="' + esc(lastInvite.link) + '">Kopiér link</button>' +
+      '<button class="btn bd bsm" id="mailInv">Åbn e-mail med linket</button></div>' +
+      '<p style="margin-top:12px;font-size:.82rem;color:var(--gray)">Gyldigt til ' + esc(dkd(new Date(lastInvite.exp*1000))) +
+      '. Send det ad en kanal, du har tillid til — den, der har linket, kan åbne skemaet.</p></div>' : '') +
+    '</div></div>';
+
+  h += '<div class="card"><h3>Udstedte invitationer</h3>' +
+    '<p class="sub">Registeret ligger kun på denne enhed. Et link kan ikke trækkes tilbage enkeltvis — det udløber af sig selv. Skal alle links spærres med det samme, skiftes signeringsnøglen under Indstillinger, og en ny index.html lægges i repoet.</p>';
+  var inv = (A.invites || []).slice().reverse();
+  if (!inv.length) h += '<p style="color:var(--gray);font-size:.88rem">Ingen invitationer udstedt endnu.</p>';
+  else {
+    h += '<div class="scroll"><table class="tb2"><thead><tr><th>Klient</th><th>Id</th><th>Udstedt</th><th>Udløber</th><th>Status</th><th></th></tr></thead><tbody>';
+    inv.forEach(function(v, n){
+      var exp = new Date(v.exp * 1000), gone = Date.now() > v.exp * 1000;
+      var used = A.submissions.some(function(s){ return s.clientId === v.id; });
+      h += '<tr><td>' + esc(v.name) + '</td><td style="font-size:.78rem;color:var(--gray)">' + esc(v.id) + '</td><td>' + esc(dkd(v.issued)) + '</td><td>' + esc(dkd(exp)) + '</td>' +
+        '<td>' + (used ? '<span class="pill on">Besvaret</span>' : (gone ? '<span class="pill">Udløbet</span>' : '<span class="pill red">Aktiv</span>')) + '</td>' +
+        '<td><button class="btn bd bsm" data-copy="' + esc(v.link) + '">Kopiér link</button></td></tr>';
+    });
+    h += '</tbody></table></div>';
+  }
+  h += '</div>';
+  el('view-invite').innerHTML = h;
+
+  el('mkInv').addEventListener('click', async function(){
+    var name = el('invName').value.trim();
+    if (!name) { alert('Skriv klientens navn.'); return; }
+    var id = el('invId').value.trim() || ('C-' + Date.now().toString(36).toUpperCase());
+    var days = Math.max(1, Number(el('invDays').value) || 30);
+    var exp = Math.floor(Date.now()/1000) + days * 86400;
+    var token = await signInvite({ id:id, name:name, exp:exp, iat:Math.floor(Date.now()/1000) });
+    var link = base + '#i=' + token;
+    A.invites.push({ id:id, name:name, issued:nowISO(), exp:exp, link:link });
+    audit('Invitation oprettet', name + ' · udløber ' + dkd(new Date(exp*1000)));
+    await sealStore();
+    lastInvite = { name:name, link:link, exp:exp };
+    renderInvite();
+    el('mailInv').addEventListener('click', function(){
+      var b = 'Kære ' + name + '%0D%0A%0D%0AHer er dit personlige link til Executive Career Architecture:%0D%0A%0D%0A' +
+        encodeURIComponent(link) + '%0D%0A%0D%0ALinket er personligt og gyldigt til og med ' + encodeURIComponent(dkd(new Date(exp*1000))) +
+        '. Sæt 45-75 minutter af, hvor du ikke bliver forstyrret. Du kan holde pause undervejs.%0D%0A%0D%0ADine svar krypteres i din egen browser og kan kun laeses af mig.%0D%0A%0D%0AVenlig hilsen%0D%0AThomas';
+      location.href = 'mailto:?subject=' + encodeURIComponent('Executive Career Architecture - dit personlige link') + '&body=' + b;
+    });
+  });
+  el('view-invite').querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click', function(){
+      navigator.clipboard.writeText(b.dataset.copy).then(function(){ var t = b.textContent; b.textContent = 'Kopieret'; setTimeout(function(){ b.textContent = t; }, 1600); });
+    });
+  });
+}
+
+/* ============================================================
+   INDSTILLINGER
+   ============================================================ */
+function renderSettings(){
+  var s = A.settings;
+  var h = '<div class="card"><h3>Opsætning af klientsiden</h3>' +
+    '<p class="sub">Klientsiden skal indeholde dine to offentlige nøgler. Knappen nedenfor henter den nuværende index.html fra samme mappe, indsætter nøglerne og giver dig en <strong>komplet fil</strong>, du lægger direkte i repoet — ingen manuel redigering.</p>' +
+    '<div class="field"><label class="fl" for="setNotify">Notifikationsendpoint (valgfrit)</label>' +
+    '<input type="text" id="setNotify" value="' + esc(s.notifyEndpoint) + '" placeholder="https://formspree.io/f/xxxxxxx"></div>' +
+    '<p style="font-size:.83rem;color:var(--gray);margin:-8px 0 18px;max-width:74ch">Endpointet modtager kun klientnavn, tidspunkt, fingeraftryk og antal besvarede spørgsmål — aldrig svar. Lad feltet stå tomt, hvis du hellere vil nøjes med den fil, klienten sender dig.</p>' +
+    '<div class="row"><button class="btn bp" id="buildIndex">Byg index.html med mine nøgler</button>' +
+    '<button class="btn bd" id="pickSrc">Vælg kildefil manuelt</button>' +
+    '<button class="btn bd" id="saveSettings">Gem indstillinger</button></div>' +
+    '<input type="file" id="srcFile" accept=".html,text/html" class="hidden">' +
+    '<div id="buildMsg" style="margin-top:14px;font-size:.85rem;color:var(--gray)"></div>' +
+    '<p style="font-size:.82rem;color:var(--gray);margin-top:12px;max-width:74ch">Knappen henter index.html fra samme mappe. Er den allerede bygget én gang, findes pladsholderne ikke længere — brug da “Vælg kildefil manuelt” og peg på den oprindelige index.html fra leverancen.</p></div>';
+
+  h += '<div class="card"><h3>Opbevaring</h3>' +
+    '<p class="sub">Standardperioden er 24 måneder efter modtagelse. Sletning sker aldrig automatisk — værktøjet markerer blot, hvornår fristen er nået, så du kan bekræfte den.</p>' +
+    '<div class="row" style="align-items:flex-end"><div style="max-width:200px"><label class="fl" for="setRet">Retention (måneder)</label>' +
+    '<input type="number" id="setRet" min="1" max="120" value="' + s.retentionMonths + '"></div>' +
+    '<button class="btn bd" id="saveRet">Gem</button></div>';
+  var over = A.submissions.filter(function(x){ return Date.now() > new Date(x.received).getTime() + s.retentionMonths * 30.44 * 86400000; });
+  if (over.length) h += '<div class="note warn" style="margin-top:18px"><strong>' + over.length + ' besvarelse' + (over.length>1?'r':'') + ' har passeret retention-fristen:</strong> ' +
+    esc(over.map(function(x){ return (x.label || x.clientId) + ' (' + dkd(x.received) + ')'; }).join(', ')) + '. Slet dem under fanen Data på den enkelte klient.</div>';
+  h += '</div>';
+
+  h += '<div class="card"><h3>Nøgler og sikkerhedskopi</h3>' +
+    '<p class="sub">Nøglefilen indeholder de private nøgler. Uden den kan indsendte besvarelser ikke låses op. Gem den et sikkert sted adskilt fra denne enhed. Sikkerhedskopien indeholder også dine klientdata og bør behandles derefter.</p>' +
+    '<div class="row"><button class="btn bd" id="dlKeys">Hent nøglefil</button>' +
+    '<button class="btn bd" id="dlBackup">Hent fuld sikkerhedskopi</button>' +
+    '<button class="btn bd" id="rotateSig" style="border-color:rgba(192,57,43,.4);color:var(--red)">Skift signeringsnøgle</button></div>' +
+    '<div class="note warn" style="margin-top:18px"><strong>Skift af signeringsnøgle spærrer alle udstedte links med det samme.</strong> Derefter skal du bygge en ny index.html og lægge den i repoet, ellers virker heller ikke nye links. Krypteringsnøglen ændres ikke, så tidligere besvarelser kan stadig åbnes.</div></div>';
+
+  h += '<div class="card"><h3>Hvad løsningen ikke gør</h3>' +
+    '<p class="sub">For god ordens skyld, så det står klart, hvis nogen spørger.</p>' +
+    '<ul style="padding-left:20px;font-size:.88rem;color:var(--gray-dark)">' +
+    '<li style="margin-bottom:7px">Der er ingen server og ingen database. Alt ligger krypteret på denne enhed.</li>' +
+    '<li style="margin-bottom:7px">Der ligger ingen API-nøgler nogen steder. AI-analysen kræver, at du selv kopierer prompten ind i din assistent.</li>' +
+    '<li style="margin-bottom:7px">Klientens kladde forlader aldrig klientens egen enhed, før vedkommende aktivt sender.</li>' +
+    '<li style="margin-bottom:7px">Ruten er noindex/nofollow og indgår ikke i navigation, footer eller sitemap.</li>' +
+    '<li>En skjult URL er ikke adgangskontrol — det er signaturen på invitationen og krypteringen af besvarelsen, der beskytter.</li></ul></div>';
+
+  el('view-settings').innerHTML = h;
+
+  el('saveSettings').addEventListener('click', async function(){
+    A.settings.notifyEndpoint = el('setNotify').value.trim();
+    audit('Indstillinger gemt'); await sealStore(); el('buildMsg').textContent = 'Gemt.';
+  });
+  el('saveRet').addEventListener('click', async function(){
+    A.settings.retentionMonths = Math.max(1, Number(el('setRet').value) || 24);
+    audit('Retention ændret', A.settings.retentionMonths + ' måneder'); await sealStore(); renderSettings();
+  });
+  el('dlKeys').addEventListener('click', function(){
+    dl('friisnaes-eca-noegler.ecakey', JSON.stringify({format:'ECA-KEYS', created:nowISO(),
+      advarsel:'Indeholder de private nøgler. Opbevares sikkert og adskilt.', keys:KEYS}, null, 2));
+    audit('Nøglefil hentet');
+  });
+  el('dlBackup').addEventListener('click', function(){
+    dl('friisnaes-eca-backup-' + new Date().toISOString().slice(0,10) + '.ecakey',
+      JSON.stringify({format:'ECA-KEYS', created:nowISO(),
+        advarsel:'Indeholder private nøgler OG klientdata. Behandles som fortroligt materiale.',
+        keys:KEYS, store:A}, null, 2));
+    audit('Fuld sikkerhedskopi hentet');
+  });
+  el('rotateSig').addEventListener('click', async function(){
+    if (!confirm('Skifte signeringsnøgle? Alle udstedte invitationslinks holder op med at virke med det samme.')) return;
+    var sig = await crypto.subtle.generateKey({name:'ECDSA', namedCurve:'P-256'}, true, ['sign','verify']);
+    KEYS.sigPub = b64(await crypto.subtle.exportKey('spki', sig.publicKey));
+    KEYS.sigPriv = b64(await crypto.subtle.exportKey('pkcs8', sig.privateKey));
+    audit('Signeringsnøgle skiftet — alle tidligere links spærret');
+    await sealStore();
+    alert('Nøglen er skiftet. Byg en ny index.html og læg den i repoet, ellers virker heller ikke nye links.');
+    renderSettings();
+  });
+  el('pickSrc').addEventListener('click', function(){ el('srcFile').click(); });
+  el('srcFile').addEventListener('change', async function(e){
+    var f = e.target.files[0]; if (!f) return;
+    buildFrom(await f.text());
+    e.target.value = '';
+  });
+  el('buildIndex').addEventListener('click', async function(){
+    var msg = el('buildMsg'); msg.textContent = 'Henter index.html …';
+    try {
+      var res = await fetch('index.html', {cache:'no-store'});
+      if (!res.ok) throw new Error('index.html blev ikke fundet i samme mappe (' + res.status + ')');
+      buildFrom(await res.text());
+    } catch(e){ msg.textContent = 'Kunne ikke bygge filen: ' + e.message; }
+  });
+  async function buildFrom(src){
+    var msg = el('buildMsg');
+    try {
+      var out = src.replace('__ENC_PUB_KEY__', KEYS.encPub)
+                   .replace('__SIG_PUB_KEY__', KEYS.sigPub)
+                   .replace('__NOTIFY_ENDPOINT__', el('setNotify').value.trim());
+      if (out.indexOf('__ENC_PUB_KEY__') !== -1) throw new Error('Kunne ikke finde pladsholderne — er filen allerede bygget?');
+      dl('index.html', out, 'text/html');
+      A.settings.notifyEndpoint = el('setNotify').value.trim();
+      audit('index.html bygget med offentlige nøgler');
+      await sealStore();
+      msg.innerHTML = '<strong style="color:var(--black)">Færdig.</strong> Læg den hentede index.html i mappen /sandbox/ i repoet, så den overskriver den nuværende. Derefter virker dine invitationslinks.';
+    } catch(e){ msg.textContent = 'Kunne ikke bygge filen: ' + e.message; }
+  }
+}
+
+/* ============================================================
+   AUDIT-LOG
+   ============================================================ */
+function renderAudit(){
+  var h = '<div class="card"><h3>Audit-log</h3>' +
+    '<p class="sub">Alle administratorhandlinger på denne enhed. Loggen opbevares krypteret sammen med resten og indeholder aldrig klientsvar.</p>' +
+    '<div class="row" style="margin-bottom:20px"><button class="btn bd bsm" id="expLog">Eksportér log</button></div>';
+  if (!A.audit.length) h += '<p style="color:var(--gray)">Ingen hændelser registreret.</p>';
+  A.audit.forEach(function(e){
+    h += '<div class="log"><b>' + esc(dk(e.ts)) + '</b> · ' + esc(e.action) + (e.detail ? ' — ' + esc(e.detail) : '') + '</div>';
+  });
+  h += '</div>';
+  el('view-audit').innerHTML = h;
+  el('expLog').addEventListener('click', function(){
+    dl('ECA-auditlog-' + new Date().toISOString().slice(0,10) + '.csv',
+      '﻿' + [['tidspunkt','handling','detalje']].concat(A.audit.map(function(e){ return [e.ts, e.action, e.detail]; }))
+      .map(function(r){ return r.map(function(c){ return '"' + String(c).replace(/"/g,'""') + '"'; }).join(';'); }).join('\r\n'), 'text/csv');
+  });
+}
+
+/* ---------- opstart ---------- */
+if (!localStorage.getItem(STORE_KEY)) {
+  el('lockErr').textContent = '';
+  el('lockText').innerHTML = 'Der er endnu ingen nøgler på denne enhed. Vælg <strong style="color:#fff">Første opsætning</strong> for at oprette dem — eller indlæs din eksisterende nøglefil nedenfor.';
+}
+</script>
+</body>
+</html>

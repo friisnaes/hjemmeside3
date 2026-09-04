@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Career Architecture — Friisnæs</title>
+<meta name="description" content="Et fortroligt refleksionsværktøj til dit næste vigtige karrierevalg.">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, private">
+<link rel="icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --black: #111;
+    --black-soft: #1a1a1a;
+    --black-light: #222;
+    --gray-dark: #444;
+    --gray: #777;
+    --gray-light: #bbb;
+    --off-white: #f5f4f0;
+    --white: #fafaf8;
+    --red: #c0392b;
+    --red-hover: #e74c3c;
+    --red-muted: rgba(192,57,43,.06);
+    --display: 'Playfair Display', Georgia, serif;
+    --body: 'Outfit', -apple-system, sans-serif;
+    --max: 760px;
+    --wide: 1100px;
+    --pad: clamp(24px, 6vw, 64px);
+    --gap: clamp(100px, 12vw, 160px);
+    --ease: cubic-bezier(.16, 1, .3, 1);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body { font-family: var(--body); color: var(--black); background: var(--white); line-height: 1.75; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: color .3s var(--ease); }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+.c { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+.cw { max-width: var(--wide); }
+.rv { opacity: 0; transform: translateY(28px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.rv.vis { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* ---------- nav ---------- */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; transition: all .4s var(--ease); }
+nav.sc, nav.solid { background: rgba(17,17,17,.97); backdrop-filter: blur(12px); padding: 14px 0; }
+nav .ni { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+nav .lo { font-family: var(--display); font-size: 1.22rem; font-weight: 600; color: var(--white); letter-spacing: .02em; flex-shrink: 0; white-space: nowrap; }
+nav .lo em { color: var(--red); font-style: normal; }
+.nav-meta { display: flex; align-items: center; gap: 18px; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.35); font-weight: 500; }
+.nav-meta .save { color: rgba(255,255,255,.3); transition: color .3s; }
+.nav-meta .save.on { color: var(--red); }
+.nav-lock { display: inline-flex; align-items: center; gap: 7px; }
+.nav-lock::before { content: ''; width: 6px; height: 6px; background: var(--red); border-radius: 50%; flex-shrink: 0; }
+.nav-btn { background: none; border: 1px solid rgba(255,255,255,.15); color: rgba(255,255,255,.5); font-family: var(--body); font-size: .65rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 7px 12px; cursor: pointer; transition: all .3s; }
+.nav-btn:hover { border-color: rgba(255,255,255,.4); color: var(--white); }
+
+/* ---------- hero ---------- */
+.hero { min-height: 100vh; background: var(--black); display: flex; align-items: center; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 70% 40%, rgba(192,57,43,.05), transparent 70%); pointer-events: none; }
+.hero .hc { position: relative; z-index: 2; max-width: var(--wide); margin: 0 auto; padding: 170px var(--pad) 90px; width: 100%; }
+.hero .hl { font-size: .68rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 28px; opacity: 0; animation: fu .7s var(--ease) .2s forwards; }
+.hero h1 { font-family: var(--display); font-size: clamp(2.5rem, 5vw, 4.1rem); font-weight: 400; color: var(--white); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 26px; max-width: 15ch; opacity: 0; animation: fu .7s var(--ease) .4s forwards; }
+.hero h1 em { font-style: italic; color: var(--red); }
+.hero .hsub { font-family: var(--display); font-size: 1.15rem; font-style: italic; color: rgba(255,255,255,.5); margin-bottom: 30px; opacity: 0; animation: fu .7s var(--ease) .5s forwards; }
+.hero .hp { font-size: 1.02rem; color: rgba(255,255,255,.55); line-height: 1.85; max-width: 60ch; margin-bottom: 18px; opacity: 0; animation: fu .7s var(--ease) .6s forwards; }
+.hero .hp2 { font-size: .92rem; color: rgba(255,255,255,.4); line-height: 1.8; max-width: 60ch; margin-bottom: 38px; opacity: 0; animation: fu .7s var(--ease) .7s forwards; }
+.hero .ha { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; opacity: 0; animation: fu .7s var(--ease) .8s forwards; }
+.hero .hm { font-size: .75rem; color: rgba(255,255,255,.3); margin-top: 20px; opacity: 0; animation: fu .7s var(--ease) .9s forwards; }
+@keyframes fu { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--body); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 14px 28px; cursor: pointer; border: none; transition: all .4s var(--ease); }
+.bp { background: var(--red); color: var(--white); }
+.bp:hover:not(:disabled) { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(192,57,43,.25); }
+.bg { background: transparent; color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.15); padding: 13px 27px; }
+.bg:hover { border-color: rgba(255,255,255,.4); color: var(--white); }
+.bd { background: transparent; color: var(--gray-dark); border: 1px solid rgba(0,0,0,.15); padding: 13px 27px; }
+.bd:hover { border-color: var(--black); color: var(--black); }
+.btn:disabled { opacity: .35; cursor: not-allowed; }
+
+/* ---------- sections ---------- */
+section { padding: var(--gap) 0; }
+.se { font-size: .65rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 14px; }
+h2 { font-family: var(--display); font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 400; color: var(--black); line-height: 1.15; letter-spacing: -.01em; margin-bottom: 24px; }
+h2 em { font-style: italic; color: var(--red); }
+h3 { font-family: var(--display); font-weight: 600; }
+.lead { font-size: .95rem; color: var(--gray-dark); line-height: 1.85; margin-bottom: 16px; max-width: 66ch; }
+.muted { font-size: .86rem; color: var(--gray); line-height: 1.75; max-width: 66ch; }
+
+.tri { background: var(--white); }
+.tri-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid rgba(0,0,0,.06); margin-top: 36px; }
+.tri-item { padding: 38px 30px; border-right: 1px solid rgba(0,0,0,.06); }
+.tri-item:last-child { border-right: none; }
+.tri-item h3 { font-size: 1.25rem; color: var(--black); margin-bottom: 14px; }
+.tri-item ul { list-style: none; }
+.tri-item li { font-size: .86rem; color: var(--gray); line-height: 1.65; padding: 7px 0; display: flex; gap: 10px; border-top: 1px solid rgba(0,0,0,.04); }
+.tri-item li:first-child { border-top: none; }
+.tri-item li::before { content: '—'; color: var(--red); font-weight: 600; flex-shrink: 0; }
+.tri-item.neg li::before { content: '×'; color: var(--gray-light); }
+
+.sit { background: var(--black); }
+.sit h2 { color: var(--white); }
+.sit .lead { color: rgba(255,255,255,.5); }
+.sit-grid { display: flex; flex-direction: column; margin-top: 36px; }
+.sit-item { padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,.06); display: grid; grid-template-columns: 28px 1fr; gap: 16px; align-items: baseline; }
+.sit-item:last-child { border-bottom: none; }
+.sit-num { font-family: var(--display); font-size: .8rem; color: var(--red); font-weight: 600; }
+.sit-text { font-size: .92rem; color: rgba(255,255,255,.65); line-height: 1.7; }
+
+.fmt { background: var(--off-white); border-top: 1px solid rgba(0,0,0,.06); border-bottom: 1px solid rgba(0,0,0,.06); }
+.fmt-box { margin-top: 32px; padding: 40px; background: var(--white); border: 1px solid rgba(0,0,0,.06); }
+.fmt-box h3 { font-size: 1.35rem; color: var(--black); margin-bottom: 12px; }
+.fmt-box p { font-size: .9rem; color: var(--gray-dark); line-height: 1.8; margin-bottom: 16px; }
+.fmt-details { list-style: none; }
+.fmt-details li { font-size: .84rem; color: var(--gray); padding: 9px 0; border-top: 1px solid rgba(0,0,0,.04); display: flex; gap: 10px; }
+.fmt-details li::before { content: '—'; color: var(--red); font-weight: 600; flex-shrink: 0; }
+.fmt-sec { margin-top: 28px; padding-top: 28px; border-top: 1px solid rgba(0,0,0,.06); }
+.fmt-sec h4 { font-size: .72rem; font-weight: 600; color: var(--red); letter-spacing: .15em; text-transform: uppercase; margin-bottom: 8px; }
+.fmt-sec p { font-size: .86rem; color: var(--gray); line-height: 1.7; }
+
+.proof { background: var(--white); }
+.proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid rgba(0,0,0,.06); margin-top: 36px; }
+.proof-item { padding: 34px 24px; border-right: 1px solid rgba(0,0,0,.06); border-bottom: 1px solid rgba(0,0,0,.06); }
+.proof-item:nth-child(3n) { border-right: none; }
+.proof-item:nth-last-child(-n+3) { border-bottom: none; }
+.proof-item::before { content: ''; display: block; width: 24px; height: 2px; background: var(--red); margin-bottom: 18px; }
+.proof-item p { font-size: .88rem; color: var(--gray-dark); line-height: 1.65; }
+
+.note { background: var(--off-white); border-left: 2px solid var(--red); padding: 24px 28px; margin: 28px 0; }
+.note p { font-size: .89rem; color: var(--gray-dark); line-height: 1.75; }
+.note p + p { margin-top: 12px; }
+.note.dark { background: rgba(255,255,255,.03); border-left-color: var(--red); }
+.note.dark p { color: rgba(255,255,255,.6); }
+
+footer { background: var(--black); padding: 36px 0 24px; border-top: 1px solid rgba(255,255,255,.04); }
+footer .fi3 { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+footer .fb { font-family: var(--display); font-size: .95rem; font-weight: 600; color: var(--white); }
+footer .fb em { color: var(--red); font-style: normal; }
+footer .fc { font-size: .68rem; color: rgba(255,255,255,.2); }
+footer .fc a { color: rgba(255,255,255,.35); border-bottom: 1px solid rgba(255,255,255,.15); }
+footer .fc a:hover { color: var(--red); border-color: var(--red); }
+
+/* ---------- gate ---------- */
+.gate { min-height: 100vh; background: var(--black); display: flex; align-items: center; justify-content: center; padding: 120px var(--pad) 80px; }
+.gate-box { width: 100%; max-width: 480px; }
+.gate-box .se { margin-bottom: 18px; }
+.gate-box h2 { color: var(--white); font-size: clamp(1.7rem,3vw,2.3rem); margin-bottom: 18px; }
+.gate-box p { font-size: .9rem; color: rgba(255,255,255,.45); line-height: 1.8; margin-bottom: 28px; }
+.gate-box .err { color: var(--red-hover); font-size: .85rem; margin-top: 14px; min-height: 1.2em; }
+
+/* ---------- app ---------- */
+.app { display: none; padding: 96px 0 0; min-height: 100vh; }
+.app.on { display: block; }
+.progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: var(--red); width: 0; z-index: 101; transition: width .4s var(--ease); }
+.step { max-width: var(--max); margin: 0 auto; padding: 48px var(--pad) 40px; }
+.step-head { border-bottom: 1px solid rgba(0,0,0,.08); padding-bottom: 22px; margin-bottom: 34px; }
+.step-head .se { margin-bottom: 10px; }
+.step-head h2 { font-size: clamp(1.6rem,3vw,2.3rem); margin-bottom: 10px; }
+.step-head .desc { font-size: .9rem; color: var(--gray); line-height: 1.75; max-width: 62ch; }
+.step-meta { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gray-light); margin-top: 12px; }
+
+.q { padding: 30px 0; border-bottom: 1px solid rgba(0,0,0,.06); }
+.q:last-of-type { border-bottom: none; }
+.q-label { display: block; font-size: 1.02rem; color: var(--black); line-height: 1.6; margin-bottom: 6px; font-weight: 400; }
+.q-help { font-size: .82rem; color: var(--gray); line-height: 1.65; margin-bottom: 16px; max-width: 62ch; }
+.q-req { color: var(--red); font-weight: 600; }
+.why { margin-bottom: 16px; }
+.why summary { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); cursor: pointer; font-weight: 500; list-style: none; display: inline-flex; align-items: center; gap: 6px; padding: 4px 0; }
+.why summary::-webkit-details-marker { display: none; }
+.why summary::before { content: '+'; color: var(--red); font-weight: 600; }
+.why[open] summary::before { content: '–'; }
+.why summary:hover { color: var(--black); }
+.why .why-body { font-size: .84rem; color: var(--gray-dark); line-height: 1.75; background: var(--off-white); padding: 16px 20px; margin-top: 10px; border-left: 2px solid rgba(192,57,43,.3); }
+.why .why-body cite { display: block; font-style: normal; font-size: .74rem; color: var(--gray); margin-top: 10px; }
+.why .why-body a { color: var(--red); border-bottom: 1px solid rgba(192,57,43,.3); }
+
+textarea, input[type=text], input[type=number], select {
+  width: 100%; font-family: var(--body); font-size: .95rem; color: var(--black); background: var(--white);
+  border: 1px solid rgba(0,0,0,.14); padding: 13px 15px; outline: none; transition: all .3s;
+  -webkit-appearance: none; appearance: none; border-radius: 0; line-height: 1.6;
+}
+textarea:focus, input:focus, select:focus { border-color: var(--red); background: #fff; }
+textarea { min-height: 108px; resize: vertical; }
+textarea.long { min-height: 168px; }
+select { cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, var(--gray) 50%), linear-gradient(135deg, var(--gray) 50%, transparent 50%); background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px); background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 40px; }
+.char-count { font-size: .72rem; color: var(--gray-light); text-align: right; margin-top: 5px; }
+
+.scale { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 8px; }
+.scale button { flex: 1; min-width: 40px; font-family: var(--body); font-size: .9rem; font-weight: 500; color: var(--gray-dark); background: var(--white); border: 1px solid rgba(0,0,0,.12); padding: 12px 0; cursor: pointer; transition: all .25s var(--ease); }
+.scale button:hover { border-color: var(--red); color: var(--red); }
+.scale button[aria-pressed="true"] { background: var(--black); border-color: var(--black); color: var(--white); }
+.scale-ends { display: flex; justify-content: space-between; font-size: .72rem; color: var(--gray-light); letter-spacing: .04em; }
+
+.opts { display: flex; flex-direction: column; gap: 0; border: 1px solid rgba(0,0,0,.1); }
+.opts label { display: flex; gap: 12px; align-items: flex-start; padding: 13px 16px; font-size: .9rem; color: var(--gray-dark); cursor: pointer; border-bottom: 1px solid rgba(0,0,0,.06); transition: background .25s; line-height: 1.55; }
+.opts label:last-child { border-bottom: none; }
+.opts label:hover { background: var(--off-white); }
+.opts input { margin-top: 5px; accent-color: var(--red); flex-shrink: 0; width: auto; }
+.opts label.sel { background: var(--red-muted); color: var(--black); }
+
+.rank { list-style: none; border: 1px solid rgba(0,0,0,.1); }
+.rank li { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-bottom: 1px solid rgba(0,0,0,.06); background: var(--white); }
+.rank li:last-child { border-bottom: none; }
+.rank .rk-n { font-family: var(--display); font-size: .85rem; font-weight: 600; color: var(--red); width: 22px; flex-shrink: 0; }
+.rank .rk-t { flex: 1; font-size: .9rem; color: var(--gray-dark); }
+.rank .rk-b { display: flex; gap: 4px; }
+.rank .rk-b button { background: none; border: 1px solid rgba(0,0,0,.12); color: var(--gray); width: 30px; height: 30px; cursor: pointer; font-size: .8rem; line-height: 1; transition: all .25s; }
+.rank .rk-b button:hover:not(:disabled) { border-color: var(--red); color: var(--red); }
+.rank .rk-b button:disabled { opacity: .25; cursor: default; }
+
+.alloc { display: flex; flex-direction: column; gap: 14px; }
+.alloc-row { display: grid; grid-template-columns: 1fr 90px; gap: 14px; align-items: center; }
+.alloc-row label { font-size: .92rem; color: var(--gray-dark); }
+.alloc-row input { text-align: right; }
+.alloc-sum { font-size: .82rem; color: var(--gray); text-align: right; border-top: 1px solid rgba(0,0,0,.08); padding-top: 10px; }
+.alloc-sum.bad { color: var(--red); }
+
+.matrix { width: 100%; border-collapse: collapse; font-size: .86rem; }
+.matrix th { text-align: left; font-size: .64rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); padding: 0 8px 10px 0; border-bottom: 1px solid rgba(0,0,0,.1); }
+.matrix td { padding: 8px 8px 8px 0; border-bottom: 1px solid rgba(0,0,0,.05); vertical-align: middle; }
+.matrix td:first-child { color: var(--gray-dark); }
+.matrix select, .matrix input { padding: 8px 10px; font-size: .85rem; }
+.matrix-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad); }
+.matrix-hint { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-light); margin-bottom: 10px; }
+#stepRoot:focus { outline: none; }
+.hs { display: flex; border-top: 1px solid rgba(255,255,255,.08); margin-top: 52px; opacity: 0; animation: fu .7s var(--ease) 1.1s forwards; }
+.hs .si { flex: 1; padding: 26px 0; border-right: 1px solid rgba(255,255,255,.08); }
+.hs .si:last-child { border-right: none; }
+.hs .sn { font-family: var(--display); font-size: clamp(1.6rem, 2.6vw, 2.1rem); font-weight: 400; color: var(--red); line-height: 1; margin-bottom: 6px; }
+.hs .sl { font-size: .64rem; font-weight: 500; color: rgba(255,255,255,.3); letter-spacing: .12em; text-transform: uppercase; }
+@media (max-width: 700px) { .hs { flex-direction: column; } .hs .si { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); padding: 18px 0; } .hs .si:last-child { border-bottom: none; } }
+
+.flags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.flag { font-family: var(--body); font-size: .7rem; font-weight: 500; letter-spacing: .06em; color: var(--gray); background: transparent; border: 1px solid rgba(0,0,0,.12); padding: 6px 12px; cursor: pointer; transition: all .25s; }
+.flag:hover { border-color: var(--gray-dark); color: var(--gray-dark); }
+.flag[aria-pressed="true"] { background: var(--black); border-color: var(--black); color: var(--white); }
+.conf { margin-top: 18px; padding-top: 16px; border-top: 1px dashed rgba(0,0,0,.1); }
+.conf .conf-l { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); margin-bottom: 8px; }
+
+.entries { display: flex; flex-direction: column; gap: 0; }
+.entry { border: 1px solid rgba(0,0,0,.1); padding: 22px 24px; margin-bottom: 14px; background: var(--white); }
+.entry-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 12px; }
+.entry-head h4 { font-family: var(--display); font-size: 1.05rem; font-weight: 600; }
+.entry-del { background: none; border: none; color: var(--gray-light); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; font-family: var(--body); }
+.entry-del:hover { color: var(--red); }
+.entry-f { margin-bottom: 12px; }
+.entry-f label { display: block; font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gray); margin-bottom: 5px; }
+.add-btn { background: none; border: 1px dashed rgba(0,0,0,.2); color: var(--gray-dark); font-family: var(--body); font-size: .78rem; font-weight: 500; letter-spacing: .06em; padding: 13px 20px; width: 100%; cursor: pointer; transition: all .3s; }
+.add-btn:hover { border-color: var(--red); color: var(--red); }
+
+.nav-steps { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 34px 0 0; border-top: 1px solid rgba(0,0,0,.08); margin-top: 20px; flex-wrap: wrap; }
+.nav-steps .left { display: flex; gap: 10px; }
+
+.toc { position: fixed; inset: 0; background: rgba(17,17,17,.98); backdrop-filter: blur(16px); z-index: 200; display: none; overflow-y: auto; padding: 90px var(--pad) 60px; }
+.toc.on { display: block; }
+.toc-inner { max-width: var(--max); margin: 0 auto; }
+.toc h3 { color: var(--white); font-size: 1.5rem; margin-bottom: 24px; }
+.toc-list { list-style: none; }
+.toc-list li { border-bottom: 1px solid rgba(255,255,255,.07); }
+.toc-list button { width: 100%; text-align: left; background: none; border: none; font-family: var(--body); color: rgba(255,255,255,.55); font-size: .9rem; padding: 15px 0; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+.toc-list button:hover { color: var(--white); }
+.toc-list button:disabled { color: rgba(255,255,255,.18); cursor: not-allowed; }
+.toc-list .st { font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); flex-shrink: 0; }
+.toc-list .st.done { color: var(--red); }
+.toc-close { position: absolute; top: 24px; right: var(--pad); background: none; border: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.6); font-family: var(--body); font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; padding: 8px 14px; cursor: pointer; }
+
+.review-mod { border: 1px solid rgba(0,0,0,.08); margin-bottom: 16px; }
+.review-mod > summary { padding: 16px 20px; cursor: pointer; font-size: .92rem; font-weight: 500; background: var(--off-white); list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+.review-mod > summary::-webkit-details-marker { display: none; }
+.review-mod > summary .cnt { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gray); }
+.review-body { padding: 8px 20px 18px; }
+.rq { padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,.05); }
+.rq:last-child { border-bottom: none; }
+.rq .rq-q { font-size: .82rem; color: var(--gray); line-height: 1.55; margin-bottom: 4px; }
+.rq .rq-a { font-size: .92rem; color: var(--black); line-height: 1.65; white-space: pre-wrap; }
+.rq .rq-a.empty { color: var(--gray-light); font-style: italic; }
+
+.check { display: flex; gap: 12px; align-items: flex-start; padding: 16px 0; border-top: 1px solid rgba(0,0,0,.06); font-size: .89rem; color: var(--gray-dark); line-height: 1.7; cursor: pointer; }
+.check input { margin-top: 5px; accent-color: var(--red); width: auto; flex-shrink: 0; }
+
+.receipt { text-align: left; }
+.receipt .code { font-family: 'Courier New', monospace; font-size: .8rem; color: var(--gray-dark); background: var(--off-white); padding: 14px 16px; word-break: break-all; border-left: 2px solid var(--red); }
+
+.sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.hidden { display: none !important; }
+.timeout-warn { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--black); color: var(--white); font-size: .82rem; padding: 14px 22px; z-index: 300; display: none; align-items: center; gap: 16px; max-width: 92vw; }
+.timeout-warn.on { display: flex; }
+.timeout-warn button { background: var(--red); border: none; color: #fff; font-family: var(--body); font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 8px 14px; cursor: pointer; }
+
+@media (max-width: 900px) {
+  .tri-grid { grid-template-columns: 1fr; }
+  .tri-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,.06); }
+  .tri-item:last-child { border-bottom: none; }
+  .proof-grid { grid-template-columns: 1fr; }
+  .proof-item { border-right: none; }
+  .proof-item:nth-last-child(-n+3) { border-bottom: 1px solid rgba(0,0,0,.06); }
+  .proof-item:last-child { border-bottom: none; }
+  .fmt-box { padding: 28px 24px; }
+}
+@media (max-width: 600px) {
+  .hero .ha { flex-direction: column; align-items: stretch; }
+  .btn { justify-content: center; padding: 16px 28px; font-size: .82rem; }
+  section { padding: clamp(80px, 14vw, 160px) 0; }
+  .nav-meta .save-label { display: none; }
+  .scale button { min-width: 0; padding: 11px 0; font-size: .82rem; }
+  .nav-steps { flex-direction: column-reverse; align-items: stretch; }
+  .nav-steps .btn { width: 100%; }
+  .nav-steps .left { flex-direction: column; }
+  .alloc-row { grid-template-columns: 1fr 80px; }
+}
+@media print {
+  nav, .nav-steps, .toc, .timeout-warn, .btn { display: none !important; }
+  body { background: #fff; }
+  .app { padding-top: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="pbar" role="progressbar" aria-label="Fremdrift" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+<nav id="nav">
+  <div class="ni">
+    <a href="#top" class="lo" aria-label="Friisnæs">Fr<em>ii</em>snæs</a>
+    <div class="nav-meta">
+      <span class="nav-lock" id="navLock">Fortroligt</span>
+      <span class="save" id="saveState"><span class="save-label">Gemt</span></span>
+      <button class="nav-btn hidden" id="tocBtn" type="button">Oversigt</button>
+      <button class="nav-btn hidden" id="moveBtn" type="button" title="Gem en krypteret kladde, du kan åbne på en anden enhed">Flyt enhed</button>
+      <button class="nav-btn hidden" id="exitBtn" type="button">Log ud</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ FORSIDE ============ -->
+<main id="front">
+<a id="top"></a>
+
+<div class="hero">
+  <div class="hc">
+    <div class="hl">Executive Career Architecture</div>
+    <h1>Du skal ikke først tage din karriere <em>alvorligt</em>, når du vil væk</h1>
+    <div class="hsub">Et fortroligt refleksionsværktøj til dit næste vigtige karrierevalg</div>
+    <p class="hp">En lederkarriere formes sjældent af én stor beslutning. Den formes af de roller,
+    relationer, resultater og fravalg, du samler over tid — og af de spørgsmål, du er villig til at
+    stille, før omstændighederne stiller dem for dig.</p>
+    <p class="hp2">Executive Career Architecture hjælper dig med at undersøge din nuværende position,
+    din retning og din parathed til næste fase. Dine svar deles fortroligt med Thomas og danner
+    grundlag for en dybere analyse og en mere præcis samtale om dine valg.</p>
+    <div class="ha">
+      <button class="btn bp" id="startBtn" type="button">Start din afklaring</button>
+      <a href="#saadan" class="btn bg">Sådan fungerer det</a>
+    </div>
+    <p class="hm">Adgang kræver personlig invitation · kan gemmes og genoptages</p>
+    <div class="hs">
+      <div class="si"><div class="sn">45–75</div><div class="sl">Minutter</div></div>
+      <div class="si"><div class="sn">18</div><div class="sl">Moduler, tilpasset din situation</div></div>
+      <div class="si"><div class="sn">100 %</div><div class="sl">Krypteret i din egen browser</div></div>
+      <div class="si"><div class="sn">0</div><div class="sl">Automatiske konklusioner</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="tri" id="saadan">
+  <div class="c cw">
+    <div class="rv">
+      <div class="se">Hvad det er — og ikke er</div>
+      <h2>Et arbejdsgrundlag, ikke en <em>test</em></h2>
+      <p class="lead">Værktøjet er bygget til at gøre din tænkning skarpere, ikke til at give dig et
+      svar. Det stiller spørgsmål, du sandsynligvis allerede burde have stillet dig selv — og et par
+      stykker, du helst vil springe over.</p>
+    </div>
+    <div class="tri-grid rv">
+      <div class="tri-item">
+        <h3>Det er</h3>
+        <ul>
+          <li>Et struktureret refleksionsforløb, du gennemfører alene og i eget tempo</li>
+          <li>En kombination af kvalitative spørgsmål, vurderingsskalaer og dokumentation</li>
+          <li>Et arbejdsgrundlag for den efterfølgende samtale med Thomas</li>
+          <li>Et øjebliksbillede, der senere kan gentages og sammenlignes</li>
+          <li>En metode til at opdage uklarhed, modsætninger, blinde vinkler og uudnyttet potentiale</li>
+        </ul>
+      </div>
+      <div class="tri-item neg">
+        <h3>Det er ikke</h3>
+        <ul>
+          <li>En personlighedstest</li>
+          <li>En automatisk karrieredom</li>
+          <li>En rekrutteringsdatabase</li>
+          <li>Et løfte om en bestemt titel eller rolle</li>
+          <li>En erstatning for personlig dømmekraft og dialog</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note rv">
+      <p><strong>Præmissen, sagt lige ud.</strong> Værktøjet er ingen garanti for et bedre
+      karriereudfald. Det er et redskab til selvindsigt, selvforståelse og selvledelse. Hvis du ikke
+      har selvindsigt, hvordan skal du så kunne lede dig selv? Og hvis du ikke kan lede dig selv,
+      hvordan skal du så kunne lede andre?</p>
+    </div>
+  </div>
+</section>
+
+<section class="sit">
+  <div class="c cw">
+    <div class="rv">
+      <div class="se">Hvorfor det er relevant</div>
+      <h2>Du leder virksomhedens strategi systematisk. <em>Din egen</em> gør du ikke</h2>
+      <p class="lead">De fleste executives arbejder disciplineret med strategi, risici, succession og
+      organisation. Langt færre arbejder lige så disciplineret med deres egen karriere. Først når
+      energien falder, en ny chef ankommer, mandatet ændres, eller en headhunter ringer, bliver de
+      grundlæggende spørgsmål presserende — og så træffes de under tidspres.</p>
+    </div>
+    <div class="sit-grid rv">
+      <div class="sit-item"><div class="sit-num">01</div><div class="sit-text">Du overvejer, om du skal blive, forme rollen eller søge videre — og du har overvejet det længe nok til, at det begynder at koste energi.</div></div>
+      <div class="sit-item"><div class="sit-num">02</div><div class="sit-text">Du står med en konkret mulighed og mangler et sted at tænke den ordentligt igennem, før du siger ja eller nej.</div></div>
+      <div class="sit-item"><div class="sit-num">03</div><div class="sit-text">Du er netop tiltrådt og vil ikke bruge de første 180 dage på at finde ud af, hvad du burde have spurgt om.</div></div>
+      <div class="sit-item"><div class="sit-num">04</div><div class="sit-text">Du er mellem roller og vil bruge tiden til noget andet end at være tilgængelig for det første, der dukker op.</div></div>
+      <div class="sit-item"><div class="sit-num">05</div><div class="sit-text">Bestyrelsesarbejde er en del af din ønskede retning, og du vil vide, hvad der reelt mangler.</div></div>
+    </div>
+    <div class="note dark rv">
+      <p>Formålet er at flytte karrierearbejdet fra reaktion til løbende ledelsesdisciplin. Det er
+      lettere at træffe et godt valg, når arbejdet er gjort i forvejen.</p>
+    </div>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="c cw">
+    <div class="rv">
+      <div class="se">Mulige udbytter</div>
+      <h2>Hvad du kan stå med <em>bagefter</em></h2>
+      <p class="lead">Ikke alt herunder gælder for alle. Flowet tilpasser sig din situation, og nogle
+      moduler bliver slet ikke aktiveret.</p>
+    </div>
+    <div class="proof-grid rv">
+      <div class="proof-item"><p>Et tydeligere billede af, om du skal blive, forme rollen eller søge videre.</p></div>
+      <div class="proof-item"><p>En skarpere beskrivelse af den værdi, du faktisk skaber — og kan dokumentere.</p></div>
+      <div class="proof-item"><p>Et mere præcist karrierenarrativ i tre længder.</p></div>
+      <div class="proof-item"><p>Et billede af de erfaringer og relationer, der mangler.</p></div>
+      <div class="proof-item"><p>Klarere kriterier for den næste rolle — og tydelige disqualifiers.</p></div>
+      <div class="proof-item"><p>En liste over forhold, der skal undersøges, før du siger ja.</p></div>
+      <div class="proof-item"><p>Større bevidsthed om de private og professionelle omkostninger.</p></div>
+      <div class="proof-item"><p>En prioriteret handlingsplan med noget, du gør inden for syv dage.</p></div>
+      <div class="proof-item"><p>Bedre spørgsmål til den næste samtale med din coach.</p></div>
+    </div>
+    <div class="note rv">
+      <p><strong>Du får ikke nødvendigvis et enkelt eller behageligt svar.</strong> Et fuldt legitimt
+      udfald er, at en vigtig beslutning viser sig at kræve mere undersøgelse, end du troede. Det er
+      en brugbar konklusion — den er bare ikke tilfredsstillende med det samme.</p>
+    </div>
+  </div>
+</section>
+
+<section class="fmt">
+  <div class="c">
+    <div class="rv">
+      <div class="se">Praktisk</div>
+      <h2>Sådan foregår det</h2>
+    </div>
+    <div class="fmt-box rv">
+      <h3>Før du går i gang</h3>
+      <p>Sæt tid af, hvor du ikke bliver forstyrret. Du kan holde pause og vende tilbage — alt gemmes
+      undervejs på din egen enhed.</p>
+      <ul class="fmt-details">
+        <li>Forventet tidsforbrug: cirka 45–75 minutter, afhængigt af din situation</li>
+        <li>Besvarelsen kan gemmes og genoptages, også på en anden enhed</li>
+        <li>Ikke alle spørgsmål er relevante for alle — du kan markere “ikke relevant”</li>
+        <li>Du kan altid markere “det ved jeg ikke endnu”. Det er et svar i sig selv</li>
+        <li>Flowet tilpasses din situation ud fra dine første svar</li>
+        <li>Du kan gå frem og tilbage og se, hvor langt du er</li>
+      </ul>
+      <div class="fmt-sec">
+        <h4>Fortrolighed</h4>
+        <p>Dine svar krypteres i din egen browser, før de forlader den. Ingen server — heller ikke
+        hjemmesidens — kan læse dem. Kun Thomas kan låse dem op med sin private nøgle. Din
+        besvarelse sendes først, når du aktivt vælger “Send fortroligt til analyse”. Kladder er
+        aldrig synlige for andre end dig.</p>
+      </div>
+      <div class="fmt-sec">
+        <h4>Hvad der sker bagefter</h4>
+        <p>Thomas gennemgår din besvarelse og forbereder en analyse til jeres samtale. Du modtager
+        ikke en automatisk genereret rapport — arbejdet sker i dialogen mellem jer.</p>
+      </div>
+      <div class="fmt-sec">
+        <h4>Metode og kilder</h4>
+        <p>Spørgsmålene bygger på forskning i lederovergange, beslutningskvalitet, fit og
+        executive-udvælgelse — og på Thomas’ egen praksis. Hvor evidensen er tynd eller mangler,
+        står det eksplicit. <a href="metode.html" style="color:var(--red);border-bottom:1px solid rgba(192,57,43,.3)">Se metode- og kildegrundlaget</a>.</p>
+      </div>
+    </div>
+    <div style="margin-top:36px" class="rv">
+      <button class="btn bp" id="startBtn2" type="button">Start din afklaring</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ GATE ============ -->
+<div class="gate hidden" id="gate">
+  <div class="gate-box">
+    <div class="se">Adgang</div>
+    <h2>Denne side er ikke offentlig</h2>
+    <p>Executive Career Architecture er kun tilgængelig via personlig invitation. Åbn linket fra
+    din invitation, eller indtast den adgangskode, du har fået.</p>
+    <form id="gateForm" autocomplete="off">
+      <label class="fl sr" for="gateCode">Adgangskode</label>
+      <input type="text" id="gateCode" placeholder="Adgangskode" autocapitalize="off" spellcheck="false"
+        style="background:var(--black-light);border-color:rgba(255,255,255,.1);color:var(--white)">
+      <div class="err" id="gateErr" role="alert"></div>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn bp" type="submit">Fortsæt</button>
+        <button class="btn bg" type="button" id="resumeFileBtn">Genoptag fra fil</button>
+      </div>
+    </form>
+    <input type="file" id="resumeFile" accept=".ecar,application/json" class="hidden">
+    <p style="margin-top:28px;font-size:.8rem;color:rgba(255,255,255,.3)">
+      Har du ikke en invitation? Skriv til
+      <a href="mailto:info@friisnaes.com" style="color:var(--red)">info@friisnaes.com</a>.
+    </p>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div class="app" id="app">
+  <div class="step" id="stepRoot" tabindex="-1"></div>
+</div>
+
+<!-- ============ OVERSIGT ============ -->
+<div class="toc" id="toc" role="dialog" aria-modal="true" aria-label="Oversigt over moduler">
+  <button class="toc-close" type="button" id="tocClose">Luk</button>
+  <div class="toc-inner">
+    <h3>Oversigt</h3>
+    <p style="color:rgba(255,255,255,.4);font-size:.86rem;margin-bottom:24px">Du kan springe frem og
+    tilbage mellem de moduler, du har åbnet. Betingede moduler aktiveres af dine svar i
+    situationsafklaringen.</p>
+    <ul class="toc-list" id="tocList"></ul>
+  </div>
+</div>
+
+<div class="timeout-warn" id="timeoutWarn" role="alert">
+  <span id="timeoutTxt">Din session udløber snart.</span>
+  <button type="button" id="timeoutKeep">Bliv logget ind</button>
+</div>
+
+<footer>
+  <div class="fi3">
+    <div class="fb">Fr<em>ii</em>snæs</div>
+    <div class="fc">
+      Fortroligt · <a href="privatliv.html">Privatliv og databehandling</a> ·
+      <a href="metode.html">Metode og kilder</a> · &copy; 2026 Friisnæs
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   Executive Career Architecture — klientværktøj
+   Statisk. Ingen backend. Al besvarelse krypteres i browseren
+   med Thomas' offentlige nøgle, før den forlader enheden.
+   ============================================================ */
+"use strict";
+
+/* ---- KONFIGURATION (udskiftes af admin.html ved opsætning) ---- */
+var CONFIG = {
+  /* Offentlig RSA-OAEP-nøgle (SPKI, base64). Klienten krypterer til denne. */
+  encPubKey: "__ENC_PUB_KEY__",
+  /* Offentlig ECDSA P-256-nøgle (SPKI, base64). Verificerer invitationer. */
+  sigPubKey: "__SIG_PUB_KEY__",
+  /* Valgfrit notifikationsendpoint (fx Formspree). Modtager ALDRIG svar —
+     kun klient-id, tidsstempel og et fingeraftryk af den låste besvarelse. */
+  notifyEndpoint: "__NOTIFY_ENDPOINT__",
+  /* Kladden slettes automatisk fra enheden efter dette antal dage. */
+  draftRetentionDays: 90,
+  /* Automatisk sessionsudløb i minutter uden aktivitet. */
+  sessionTimeoutMin: 45,
+  version: "1.0.0",
+  questionnaireVersion: "ECA-2026-09"
+};
+
+/* ---- SPØRGSMÅLSBANK ----------------------------------------
+   t: scale | single | multi | text | long | rank | alloc | matrix | repeat | info
+   d: dimension (til orienterende scoring)  rev: 1 = omvendt scoret
+   c: 1 = spørg om sikkerhed i eget svar    r: 1 = obligatorisk
+   w: {t: forklaring, c: kilde}             when: betingelse
+   Alle spørgsmål kan markeres "Ikke relevant" og "Det ved jeg ikke endnu".
+   ------------------------------------------------------------ */
+var SCALE10 = ['1','2','3','4','5','6','7','8','9','10'];
+
+var MODULES = [
+
+/* ===================== ROUTING ===================== */
+{
+  id: 'R0', letter: '·', title: 'Din situation lige nu',
+  desc: 'Elleve spørgsmål, der afgør hvilke moduler du bliver ledt igennem. Der er ingen rigtige svar — kun præcise.',
+  core: true,
+  qs: [
+    { i:'R0_sit', t:'single', r:1, q:'Hvad er din nuværende arbejdssituation?',
+      o:['Fastansat i en lederrolle','Ejerleder eller medejer','Interim eller konsulent','Mellem roller','På vej ind i en ny rolle','Primært bestyrelsesarbejde'] },
+    { i:'R0_tenure', t:'single', r:1, q:'Hvor længe har du været i din nuværende rolle?',
+      o:['Under 6 måneder','6–18 måneder','18 måneder – 3 år','3–6 år','Over 6 år','Ikke i en rolle lige nu'] },
+    { i:'R0_ansvar', t:'text', r:1, q:'Hvilket ansvar har du aktuelt?',
+      h:'Titel, rapporteringslinje, omfang — kort og konkret.' },
+    { i:'R0_hvorfor', t:'long', r:1, q:'Hvad fik dig til at gennemføre denne refleksion netop nu?',
+      h:'Vær ærlig om anledningen. Den siger ofte mere end selve spørgsmålet.',
+      w:{ t:'Karriereforskningen har længe overbetonet individets planlægning og underspillet de uforudsete begivenheder — en ny chef, en opkøbt virksomhed, et opkald — der reelt former forløb. Anledningen er derfor data, ikke småsnak.',
+          c:'Akkermans, Seibert & Mol (2018), SA Journal of Industrial Psychology' } },
+    { i:'R0_focus', t:'single', r:1, q:'Er du primært optaget af at blive, forme rollen, søge videre — eller af at få afklaret netop det?',
+      o:['Blive','Forme rollen','Søge videre','Afklare hvad der er rigtigt'] },
+    { i:'R0_dialog', t:'single', r:1, q:'Er du allerede i dialog om en konkret mulighed?', o:['Ja','Nej'] },
+    { i:'R0_tilbud', t:'single', r:1, q:'Har du modtaget et konkret tilbud?', o:['Ja','Nej','Forventer et snart'] },
+    { i:'R0_ny', t:'single', r:1, q:'Er du på vej ind i en ny rolle eller netop tiltrådt?',
+      o:['Ja, jeg er på vej ind','Ja, jeg er tiltrådt inden for de seneste 6 måneder','Nej'] },
+    { i:'R0_mellem', t:'single', r:1, q:'Er du mellem roller?', o:['Ja','Nej'] },
+    { i:'R0_best', t:'single', r:1, q:'Er bestyrelsesarbejde en del af din ønskede retning?',
+      o:['Ja, aktivt','Ja, på længere sigt','Nej'] },
+    { i:'R0_90', t:'single', r:1, q:'Er der en bestemt beslutning, du skal træffe inden for de næste 90 dage?',
+      o:['Ja','Nej','Måske'] },
+    { i:'R0_90hvad', t:'text', q:'Hvilken beslutning?', when:{q:'R0_90', in:['Ja','Måske']} }
+  ]
+},
+
+/* ===================== MODUL A ===================== */
+{
+  id: 'A', letter: 'A', title: 'Din aktuelle situation',
+  desc: 'Ni vurderinger og syv spørgsmål om, hvor du reelt står. Vurderingerne er ikke en måling af dig — de er et udgangspunkt for samtalen.',
+  core: true,
+  qs: [
+    { i:'A_intro', t:'info', q:'Om de næste ni vurderinger',
+      h:'Svar med den første fornemmelse frem for den rigtige. Hvis du giver en meget høj eller meget lav vurdering, bliver du bedt om at sige, hvad du bygger den på. Det er dér, arbejdet ligger.' },
+    { i:'A1', t:'scale', d:'mening_energi', c:1, q:'Hvor tilfreds er du samlet set i din nuværende rolle?', ends:['Slet ikke','I meget høj grad'] },
+    { i:'A2', t:'scale', d:'mening_energi', q:'Hvor meget energi giver arbejdet dig?', ends:['Dræner','Giver energi'],
+      w:{ t:'Spørgsmålet handler om rollen, ikke om dit helbred. Balancen mellem det rollen kræver og de ressourcer den stiller til rådighed er et arbejdsforhold — ikke en tilstand hos dig. Værktøjet stiller aldrig diagnoser og indsamler ikke helbredsoplysninger.',
+          c:'Bakker & Demerouti (2017), Journal of Occupational Health Psychology · WHO (2019) om burn-out som arbejdspladsfænomen' } },
+    { i:'A3', t:'scale', d:'mening_energi', q:'Hvor meget lærer du fortsat?', ends:['Ingenting','Hele tiden'] },
+    { i:'A4', t:'scale', d:'mening_energi', c:1, q:'Hvor meningsfuldt oplever du arbejdet?', ends:['Slet ikke','I meget høj grad'] },
+    { i:'A5', t:'scale', d:'selvindsigt', q:'Hvor tydeligt er dit mandat?', ends:['Meget uklart','Helt tydeligt'],
+      w:{ t:'Rolleklarhed er den stærkeste enkeltfaktor bag psykologisk tryghed i metaanalysen — stærkere end lederrelationen. Et uklart mandat er sjældent kun et kommunikationsproblem.',
+          c:'Frazier m.fl. (2017), Personnel Psychology (136 stikprøver). Bemærk: rolleklarhed hviler på få studier og er statistisk usikker.' } },
+    { i:'A6', t:'scale', d:'relationel_kapital', q:'Hvor stærk er relationen til din nærmeste chef?', ends:['Meget svag','Meget stærk'] },
+    { i:'A7', t:'scale', d:'relationel_kapital', q:'Hvor stor tillid oplever du fra bestyrelse, ejere eller øverste ledelse?', ends:['Meget lidt','Meget stor'] },
+    { i:'A8', t:'scale', d:'mening_energi', c:1, q:'Hvor godt passer organisationens reelle kultur til dine værdier?',
+      h:'Den reelle kultur — ikke den, der står på væggen.', ends:['Meget dårligt','Meget godt'] },
+    { i:'A9', t:'scale', d:'mening_energi', q:'Hvor bæredygtig er rollen for dit liv uden for arbejdet?', ends:['Slet ikke','Fuldt ud'] },
+    { i:'A10', t:'long', q:'Hvilke dele af rollen giver dig mest energi?' },
+    { i:'A11', t:'long', q:'Hvilke dele dræner dig?' },
+    { i:'A12', t:'long', q:'Hvad har ændret sig de seneste 12 måneder?' },
+    { i:'A13', t:'long', d:'selvindsigt', q:'Hvad tolererer du i øjeblikket, som du ikke bør tolerere på længere sigt?' },
+    { i:'A14', t:'long', d:'selvindsigt', q:'Hvilken vigtig samtale udskyder du?',
+      h:'Med hvem, om hvad — og hvad koster udskydelsen dig allerede nu?' },
+    { i:'A15', t:'long', d:'beslutningskvalitet', q:'Hvis intet ændrer sig de næste to år, hvad vil det så koste dig?',
+      w:{ t:'Vi overvurderer systematisk, hvor stærkt og hvor længe fremtidige begivenheder vil påvirke os — og undervurderer alt det andet, der også kommer til at fylde. Spørgsmålet er stillet for at trække opmærksomheden væk fra det ene forestillede skift og hen på den samlede hverdag.',
+          c:'Wilson & Gilbert (2005), Current Directions in Psychological Science' } },
+    { i:'A16', t:'long', q:'Hvad fungerer bedre, end du normalt anerkender?',
+      h:'Et modspørgsmål med vilje. De fleste er skarpere til at se, hvad der ikke virker.' }
+  ]
+},
+
+/* ===================== MODUL B ===================== */
+{
+  id: 'B', letter: 'B', title: 'Bliv, form eller forlad',
+  desc: 'Det egentlige valg er sjældent “bliv eller gå”. Det er som regel “hvad kan reelt ændres her, og hvad kan ikke”.',
+  core: true,
+  qs: [
+    { i:'B1', t:'single', r:1, q:'Hvis du ikke var i rollen i dag, ville du så aktivt søge den?',
+      o:['Ja, uden tøven','Ja, formentlig','Jeg er i tvivl','Nej, formentlig ikke','Nej'], d:'retningsklarhed' },
+    { i:'B2', t:'single', r:1, q:'Bevæger du dig mod noget eller primært væk fra noget?',
+      o:['Klart mod noget','Mest mod noget','Lige dele','Mest væk fra noget','Klart væk fra noget'], d:'retningsklarhed', rev:1,
+      w:{ t:'Skellet er ikke moralsk — det er praktisk. Bevægelser væk fra noget har en tendens til at gentage sig, fordi kriterierne for det næste aldrig blev formuleret. Spørgsmålet stilles igen i modul L.',
+          c:'Boyatzis (2006), Journal of Management Development — forandring båret af et ønsket fremtidsbillede frem for af pres' } },
+    { i:'B3', t:'long', q:'Hvilke problemer kan reelt løses i den nuværende rolle?' },
+    { i:'B4', t:'long', q:'Hvilke problemer er strukturelle — og altså ikke til at løse herfra?' },
+    { i:'B5', t:'long', d:'selvindsigt', r:1, q:'Hvad har du selv bidraget til i den situation, du ønsker ændret?',
+      h:'Ikke som selvkritik. Som information om, hvad du tager med dig videre.',
+      w:{ t:'Klassisk eskaleringsforskning viser, at personligt ansvar for et negativt udfald i sig selv får os til at investere mere i den fejlslagne kurs — ikke fordi ny information taler for det, men fordi vi retfærdiggør det tidligere valg. Spørgsmålet er stillet for at gøre den mekanisme synlig.',
+          c:'Staw (1976), Organizational Behavior and Human Performance. Bemærk: laboratorieeksperiment, ikke et estimat af hvor ofte ledere eskalerer.' } },
+    { i:'B6', t:'long', q:'Hvad har du konkret forsøgt?' },
+    { i:'B7', t:'long', q:'Hvad har du endnu ikke forsøgt?' },
+    { i:'B8', t:'long', q:'Hvilken ændring i mandat, chef, team, governance eller ressourcer ville gøre rollen attraktiv igen?',
+      w:{ t:'At omforme sit job — opgaver, relationer og den måde man forstår arbejdet på — hænger sammen med højere engagement. Men interventionsstudierne viser små effekter, og job crafting korrelerer så stærkt med proaktiv personlighed, at det er uklart, hvor meget der er adfærd og hvor meget der er disposition. Behandl det som en mulighed, ikke som en løsning.',
+          c:'Wrzesniewski & Dutton (2001), AMR · Oprea m.fl. (2019), EJWOP: samlet effekt g = 0,26' } },
+    { i:'B9', t:'long', r:1, q:'Hvad skulle være sandt, før du valgte at blive?' },
+    { i:'B10', t:'long', r:1, q:'Hvad skulle være sandt, før du valgte at gå?' },
+    { i:'B11', t:'long', q:'Hvad frygter du ved at blive?' },
+    { i:'B12', t:'long', q:'Hvad frygter du ved at forlade?',
+      w:{ t:'Når vi ikke ændrer noget trods oprigtig vilje, skyldes det sjældent motivation. Det skyldes typisk en konkurrerende forpligtelse — noget andet vi også holder fast i — beskyttet af en antagelse, vi ikke har testet. De to frygtspørgsmål er stillet for at få begge sider frem.',
+          c:'Kegan & Lahey (2009), Immunity to Change. Praktikerramme; teorien bag er velfunderet, metoden har begrænset uafhængig effektforskning.' } },
+    { i:'B13', t:'long', d:'beslutningskvalitet', q:'Hvilken beslutning ville du træffe, hvis titel og omdømme ikke talte med?' },
+    { i:'B14', t:'long', d:'beslutningskvalitet', q:'Hvilken beslutning ville du anbefale en leder, du respekterer, i præcis samme situation?',
+      h:'Skriv anbefalingen, som du ville sige den til vedkommende.' },
+    { i:'B15', t:'alloc', r:1, q:'Din foreløbige fordeling lige nu',
+      h:'Fordel 100 point. Det er et øjebliksbillede, ikke en beslutning.',
+      items:['Bliv','Form rollen','Søg videre'], sum:100, d:'retningsklarhed' }
+  ]
+},
+
+/* ===================== MODUL C ===================== */
+{
+  id: 'C', letter: 'C', title: 'Retning og mening',
+  desc: 'Hvad du vil mere af, hvad du vil mindre af — og hvad du er villig til at betale for det.',
+  core: true,
+  qs: [
+    { i:'C1', t:'long', r:1, d:'retningsklarhed', c:1, q:'Hvilken professionel virkelighed ønsker du om tre år?',
+      h:'Beskriv en almindelig arbejdsuge, ikke en titel.' },
+    { i:'C2', t:'long', d:'retningsklarhed', q:'Hvilke problemer vil du gerne være kendt for at kunne løse?' },
+    { i:'C3', t:'long', q:'Hvilken type organisatorisk situation gør dig bedst?',
+      h:'Opstart, turnaround, accelereret vækst, genopretning af en velfungerende forretning, eller videreførelse af noget der allerede lykkes?',
+      w:{ t:'Den adfærd, der lykkes i én forretningssituation, er ofte direkte kontraproduktiv i en anden — og de fleste gentager instinktivt det, der virkede sidst. Spørgsmålet stilles igen i modul J om en konkret rolle.',
+          c:'Watkins (2009), Harvard Business Review — STARS-rammen. Typologi, ikke empirisk afledt.' } },
+    { i:'C4', t:'long', q:'Hvilket ansvar ønsker du mere af?' },
+    { i:'C5', t:'long', q:'Hvilket ansvar ønsker du mindre af?' },
+    { i:'C6', t:'text', q:'Hvilke opgaver vil du savne, hvis de forsvinder?' },
+    { i:'C7', t:'text', q:'Hvilke opgaver vil du med glæde aldrig udføre igen?' },
+    { i:'C8', t:'long', q:'Hvilken indflydelse vil du gerne have — og over hvad?' },
+    { i:'C9', t:'text', q:'Hvem vil du gerne skabe værdi for?' },
+    { i:'C10', t:'rank', r:1, d:'retningsklarhed', q:'Rangér efter hvor vigtigt det er for dig nu',
+      h:'Flyt punkterne, til rækkefølgen er ubehageligt præcis. Det er de nederste tre, der er informative.',
+      items:['Titel og formel position','Mandat og beslutningsrettigheder','Økonomi','Indflydelse','Autonomi','Læring og udvikling','Formål og mening','Livsbalance'] },
+    { i:'C11', t:'long', r:1, q:'Hvilken pris er du villig til at betale for næste skridt?' },
+    { i:'C12', t:'long', r:1, q:'Hvilken pris er du ikke villig til at betale?' },
+    { i:'C13', t:'long', d:'selvindsigt', q:'Hvad er vigtigt for dig, men endnu ikke synligt i dine faktiske karrierevalg?',
+      h:'Forskellen mellem det, du siger er vigtigt, og det, din kalender viser.' },
+    { i:'C14', t:'long', q:'Hvad ville gøre den næste rolle meningsfuld — også efter den første begejstring har lagt sig?',
+      w:{ t:'Mening i arbejdet skabes både af personen og af konteksten: jobdesign, ledelse, kultur og relationer af høj kvalitet. Det er værd at vide, fordi det betyder, at manglende mening ikke automatisk er dit ansvar at løse alene.',
+          c:'Rosso, Dekas & Wrzesniewski (2010), Research in Organizational Behavior · Lysova m.fl. (2019), JVB' } },
+    { i:'C15', t:'long', q:'Hvad vil du gerne kunne sige om denne fase af din karriere om fem år?' }
+  ]
+},
+
+/* ===================== MODUL D ===================== */
+{
+  id: 'D', letter: 'D', title: 'Din karrierearkitektur',
+  desc: 'Karrierer ser altid mere planlagte ud bagfra, end de var forfra. Formålet her er ikke at bortforklare tilfældighederne, men at se mønsteret.',
+  core: true,
+  qs: [
+    { i:'D1', t:'long', r:1, q:'Hvordan hænger dine hidtidige roller sammen?',
+      h:'Skriv det som du ville sige det til en, der ikke kender dig.' },
+    { i:'D2', t:'long', q:'Hvad har hvert skifte tilført?' },
+    { i:'D3', t:'long', d:'selvindsigt', q:'Hvilke skift var bevidste, og hvilke var tilfældige?',
+      w:{ t:'Der er ingen skam i tilfældighed. Forskningen på området er tværtimod kritisk over for den udbredte antagelse om, at karrierer primært drives af individets planlægning — uforudsete begivenheder forklarer en stor del af forløbene. Pointen med spørgsmålet er at skelne, ikke at dømme.',
+          c:'Akkermans, Seibert & Mol (2018) · Wiernik & Kostal (2019), Journal of Counseling Psychology (N = 45.288)' } },
+    { i:'D4', t:'long', d:'selvindsigt', q:'Hvilket mønster gentager sig?',
+      h:'Både det, der gentager sig til din fordel, og det, der ikke gør.' },
+    { i:'D5', t:'long', q:'Hvilke valg har givet dig muligheder?' },
+    { i:'D6', t:'long', q:'Hvilke valg har reduceret din optionalitet?' },
+    { i:'D7', t:'long', r:1, d:'erfaringsparathed', q:'Hvilke erfaringer skal næste rolle tilføre, hvis den skal styrke din langsigtede retning?' },
+    { i:'D8', t:'long', d:'erfaringsparathed', q:'Hvilke erfaringer mangler mellem din nuværende position og din ønskede position om tre år?' },
+    { i:'D9', t:'text', q:'Hvilke roller kunne være værdifulde mellemstationer?',
+      h:'Roller du ikke nødvendigvis drømmer om, men som ville lukke et hul.',
+      w:{ t:'Vejen ind i topstillinger går sjældent direkte. I 2025 kom 48 % af nye S&P 1500-CEO’er fra en COO- eller president-rolle og 30 % fra en divisionsledelse — mellemstationer, ikke spring. 84 % var førstegangs-CEO’er.',
+          c:'Spencer Stuart (2026), 2025 S&P 1500 CEO Transitions. Amerikanske børsnoterede selskaber — overførbarheden til dansk kontekst er en åben antagelse.' } },
+    { i:'D10', t:'text', d:'beslutningskvalitet', q:'Hvilken rolle ser prestigefuld ud, men bringer dig ikke tættere på dit egentlige mål?' },
+    { i:'D11', t:'scale', d:'erfaringsparathed', c:1, q:'Hvor robust er din karriere, hvis din nuværende branche eller funktion ændres markant?',
+      ends:['Meget sårbar','Meget robust'] },
+    { i:'D12', t:'long', q:'Hvad bygger du den vurdering på?', when:{q:'D11', answered:1} }
+  ]
+},
+
+/* ===================== MODUL E ===================== */
+{
+  id: 'E', letter: 'E', title: 'Den værdi, du skaber',
+  desc: 'Her skal du være mere konkret, end du plejer at være. Det er den del af arbejdet, de fleste springer over — og den, en bestyrelse eller search-konsulent går direkte til.',
+  core: true,
+  qs: [
+    { i:'E1', t:'long', r:1, d:'dokumenteret_vaerdi', q:'Hvilke komplekse problemer bliver du typisk bedt om at løse?' },
+    { i:'E_res', t:'repeat', r:1, d:'dokumenteret_vaerdi', q:'Registrér dine væsentligste resultater',
+      h:'Tag to til fire. Hellere færre og præcise end mange og løse. Du kan tilføje flere senere.',
+      addLabel:'Tilføj resultat', itemLabel:'Resultat',
+      fields:[
+        {k:'kontekst', l:'Kontekst — hvad var situationen, da du begyndte?', t:'long'},
+        {k:'handling', l:'Handling — hvad gjorde du konkret?', t:'long'},
+        {k:'resultat', l:'Resultat — hvad ændrede sig?', t:'long'},
+        {k:'dok', l:'Dokumentation — hvad kan du underbygge det med?', t:'text'},
+        {k:'skala', l:'Skala — omsætning, budget, medarbejdere, geografi, kompleksitet', t:'text'},
+        {k:'andre', l:'Medvirkende — hvem gjorde det sammen med dig?', t:'text'},
+        {k:'andel', l:'Hvilken del af resultatet kan med rimelighed tilskrives dig?', t:'text'},
+        {k:'laering', l:'Læring', t:'text'},
+        {k:'relevans', l:'Relevans for fremtidige roller', t:'text'}
+      ],
+      w:{ t:'Feltet “hvilken del kan med rimelighed tilskrives dig” er med vilje ubehageligt. Det er præcis det spørgsmål, en erfaren interviewer stiller — og det, kandidater oftest ikke har tænkt igennem. Et ærligt svar er stærkere end et stort.',
+          c:'Kay & Sanders (2026), Show Up to Win — principniveau. Praktikerkilde uden uafhængig validering.' } },
+    { i:'E2', t:'long', d:'dokumenteret_vaerdi', q:'Hvilke transformationer har du ledet?' },
+    { i:'E3', t:'text', q:'Hvad har du bygget, forbedret, vendt eller afviklet?' },
+    { i:'E4', t:'long', q:'Hvordan har du udviklet andre ledere?',
+      h:'Navngiv gerne. Hvor er de i dag?' },
+    { i:'E5', t:'long', q:'Hvordan har du påvirket bestyrelse, ejere eller centrale stakeholders?' },
+    { i:'E6', t:'long', r:1, d:'selvindsigt', q:'Hvad gør du bedre end de fleste på dit niveau?' },
+    { i:'E7', t:'long', r:1, d:'selvindsigt', q:'Hvad tror du, du er god til, men har begrænset evidens for?',
+      w:{ t:'Overvurdering findes i mindst tre former: af egen præstation, af egen placering i forhold til andre, og af hvor sikker man er på sine egne vurderinger. De hænger ikke sammen på den måde, man skulle tro. Derfor spørger værktøjet konsekvent om, hvad du bygger en vurdering på — ikke om, hvor sikker du er i almindelighed.',
+          c:'Moore & Healy (2008), Psychological Review. Laboratoriestudier; overførsel til lederes selvvurdering er en ekstrapolation.' } },
+    { i:'E8', t:'long', q:'Hvor bliver din værdi undervurderet?' },
+    { i:'E9', t:'long', d:'selvindsigt', q:'Hvor bliver din værdi muligvis overvurderet?' },
+    { i:'E10', t:'long', r:1, q:'Hvad vil tidligere chefer, peers og medarbejdere nævne som din tydeligste værdi?',
+      h:'Tre grupper, tre svar. De er sjældent ens.',
+      w:{ t:'Topledere vurderer systematisk deres egen organisations tilstand mere positivt end niveauerne under dem. Det samme mønster findes med forskellige metoder hos McKinsey, BCG, Mercer og Deloitte — det er et af de mest robuste fund i hele grundlaget. Der er ingen grund til at tro, at selvvurdering af egen værdi skulle være undtaget.',
+          c:'Konvergent fund; se metode- og kildesiden' } },
+    { i:'E11', t:'long', d:'selvindsigt', q:'Hvilket resultat vil du helst ikke blive bedt om at dokumentere?' }
+  ]
+},
+
+/* ===================== MODUL F ===================== */
+{
+  id: 'F', letter: 'F', title: 'Parathed og erfaringsgab',
+  desc: 'Vurdér dit nuværende niveau og det niveau, din ønskede rolle kræver. Forskellen er arbejdslisten.',
+  core: true,
+  qs: [
+    { i:'F_intro', t:'info', q:'Sådan udfylder du matrixen',
+      h:'Vælg først de områder, der er relevante for din ønskede retning — typisk fem til otte. Vurdér derefter niveau nu og krævet niveau. Du behøver ikke udfylde alle felter. Der er ingen norm og ingen sammenligning med andre; tallene er kun til jeres samtale.' },
+    { i:'F_mx', t:'matrix', r:1, d:'erfaringsparathed', q:'Parathedsmatrix',
+      rows:['Strategi','Kommerciel ledelse','Driftsledelse','Finansiel forståelse','Transformation','Digitalisering og teknologi','AI-relateret ledelse','International erfaring','Regulering og governance','Bestyrelsesarbejde','Investor- og ejerrelationer','People leadership','Succession og talentudvikling','Krisestyring','Kommunikation og offentlig eksponering','Tværfunktionel ledelse','At lede gennem andre'],
+      cols:[
+        {k:'rel', l:'Relevant', t:'check'},
+        {k:'nu', l:'Niveau nu', t:'n10'},
+        {k:'krav', l:'Krævet', t:'n10'},
+        {k:'evidens', l:'Evidens', t:'text'},
+        {k:'arena', l:'Læringsarena', t:'text'},
+        {k:'tid', l:'Tidshorisont', t:'sel', o:['','0–6 mdr','6–12 mdr','1–2 år','2+ år']}
+      ] },
+    { i:'F1', t:'long', q:'For de områder med størst gab: hvad er risikoen ved ikke at lukke gabet?' },
+    { i:'F2', t:'text', r:1, d:'markedsparathed', q:'Hvilken erfaring er det mest sandsynligt, at en search-konsulent vil savne hos dig?',
+      w:{ t:'Egon Zehnder beskriver selv, at de screener på nysgerrighed, indsigt, engagement og målrettethed — eksplicit adskilt fra hidtidig performance. Det er firmaets erklærede metode, ikke evidens for at metoden virker, men det er en af de få offentlige beskrivelser af, hvad der reelt vurderes.',
+          c:'Egon Zehnder (2025). Ingen kvantitative data oplyst.' } },
+    { i:'F3', t:'text', d:'markedsparathed', q:'Hvilket hul vil en bestyrelse være mest bekymret for?' },
+    { i:'F4', t:'long', d:'selvindsigt', q:'Hvilket udviklingsområde undgår du, fordi du allerede er succesfuld?',
+      w:{ t:'På topniveau er den begrænsende faktor sjældent manglende kompetence, men adfærd der engang var en styrke. Succes gør problemet usynligt for personen selv — og feedbacken bliver knappere, jo højere man kommer.',
+          c:'Goldsmith & Reiter (2007). Praktikerramme; adfærdskataloget er erfaringsbaseret, ikke empirisk udledt.' } },
+    { i:'F5', t:'text', q:'Hvilket hul kan lukkes gennem din næste rolle?' },
+    { i:'F6', t:'text', r:1, q:'Hvilket hul kræver, at du handler inden næste rolle?' }
+  ]
+},
+
+/* ===================== MODUL G ===================== */
+{
+  id: 'G', letter: 'G', title: 'Dit executive-narrativ',
+  desc: 'Ikke en elevatortale. En sammenhængende forklaring på, hvem du er professionelt, som holder til at blive udfordret.',
+  core: true,
+  qs: [
+    { i:'G1', t:'long', r:1, d:'markedsparathed', q:'Hvem er du professionelt?' },
+    { i:'G2', t:'long', r:1, q:'Hvad er den røde tråd i din karriere?' },
+    { i:'G3', t:'text', q:'Hvilke resultater dokumenterer din værdi?', h:'Henvis gerne til resultaterne fra modul E.' },
+    { i:'G4', t:'long', r:1, q:'Hvad har dine vigtigste fejl lært dig?' },
+    { i:'G5', t:'long', q:'Hvorfor giver din ønskede retning mening?' },
+    { i:'G6', t:'long', r:1, q:'Hvorfor netop nu?' },
+    { i:'G7', t:'text', r:1, q:'Hvilket mandat søger du?' },
+    { i:'G8', t:'long', r:1, q:'Hvad skal en beslutningstager huske om dig dagen efter en samtale?',
+      h:'Én ting. Ikke tre.' },
+    { i:'G_v1', t:'long', d:'markedsparathed', q:'Version 1 — 30 sekunders introduktion',
+      h:'Skriv den, som du ville sige den. Læs den højt bagefter.' },
+    { i:'G_v2', t:'long', d:'markedsparathed', q:'Version 2 — 2 minutters karrierenarrativ' },
+    { i:'G_v3', t:'long', d:'markedsparathed', q:'Version 3 — 5 minutters dyb fortælling',
+      h:'Den version, der også rummer fejlene og fravalgene.',
+      w:{ t:'Ved store rolleskift rekonstrueres den professionelle identitet gennem selvfortælling — og fortællingen revideres efter, hvordan den bliver modtaget. Det er derfor, du skal skrive den, ikke bare tænke den: den bliver først virkelig, når den skal holde over for et publikum.',
+          c:'Ibarra & Barbulescu (2010), Academy of Management Review. Teoriartikel; propositionerne er ikke empirisk testet.' } },
+    { i:'G_stories', t:'repeat', r:1, d:'markedsparathed', q:'Seks proof stories',
+      h:'Én for hver type. Du kan nøjes med at skitsere de sidste, hvis tiden er knap — men lad være med at springe “fejl eller modgang” over.',
+      addLabel:'Tilføj historie', itemLabel:'Historie',
+      fields:[
+        {k:'type', l:'Type', t:'sel', o:['','1 · Et markant forretningsresultat','2 · En kompleks transformation','3 · En fejl eller modgang','4 · En vanskelig konflikt','5 · En beslutning under betydelig usikkerhed','6 · Udvikling af et menneske eller et team']},
+        {k:'situation', l:'Situation', t:'long'},
+        {k:'rolle', l:'Din rolle', t:'text'},
+        {k:'gjorde', l:'Hvad du gjorde', t:'long'},
+        {k:'fravalg', l:'Hvilke alternativer du fravalgte', t:'text'},
+        {k:'resultat', l:'Resultat', t:'text'},
+        {k:'laering', l:'Læring', t:'text'},
+        {k:'viser', l:'Hvad historien viser om dig', t:'text'},
+        {k:'udfordring', l:'Hvad en kritisk interviewer kunne udfordre', t:'text'}
+      ] }
+  ]
+},
+
+/* ===================== MODUL H ===================== */
+{
+  id: 'H', letter: 'H', title: 'Relationel kapital',
+  desc: 'Ikke et CRM. Et ærligt blik på, hvem der reelt kender kvaliteten af dit arbejde — og hvem der ville tale din sag, når du ikke er i rummet.',
+  core: true,
+  qs: [
+    { i:'H_map', t:'repeat', r:1, d:'relationel_kapital', q:'Kortlæg dine vigtigste relationer',
+      h:'Otte til femten navne er nok. Skriv fornavn og en kort beskrivelse — du behøver ikke registrere kontaktoplysninger, og du bør ikke skrive fortrolige oplysninger om andre.',
+      addLabel:'Tilføj relation', itemLabel:'Relation',
+      fields:[
+        {k:'navn', l:'Navn eller initialer', t:'text'},
+        {k:'type', l:'Type', t:'sel', o:['','Sponsor','Mentor','Tidligere chef','Peer','Tidligere medarbejder','Bestyrelsesrelation','Ejer eller investor','Search-konsulent','Markedsinformant','Kunde','Potentiel introducer','Vil sandsynligvis blive kontaktet uformelt']},
+        {k:'kender', l:'Kender vedkommende kvaliteten af dit arbejde?', t:'sel', o:['','Ja, indgående','Delvist','Nej, kun på afstand']},
+        {k:'ambition', l:'Kender vedkommende dine ambitioner?', t:'sel', o:['','Ja','Delvist','Nej']},
+        {k:'sidst', l:'Sidste reelle kontakt', t:'text'},
+        {k:'naeste', l:'Næste skridt, hvis nogen', t:'text'}
+      ],
+      w:{ t:'Ledere, hvis netværk bygger bro mellem ellers adskilte grupper, klarer sig målbart bedre på løn, vurdering og forfremmelse end dem med tætte, lukkede netværk. Derfor spørger værktøjet ikke om, hvor mange du kender, men om hvor spredt dit netværk er.',
+          c:'Burt (2004), American Journal of Sociology. Ét firma, én funktion, tværsnit — kausalretningen er ikke fastslået.' } },
+    { i:'H1', t:'long', r:1, q:'Hvem vil aktivt tale din sag, når du ikke er i rummet?',
+      h:'Ikke hvem der kan lide dig. Hvem der vil bruge sin egen kapital på dig.' },
+    { i:'H2', t:'text', q:'Hvem kender kvaliteten af dit arbejde på førstehånd?' },
+    { i:'H3', t:'text', q:'Hvem kender dine ambitioner?' },
+    { i:'H4', t:'text', q:'Hvilke relationer er blevet forsømt?' },
+    { i:'H5', t:'text', d:'selvindsigt', q:'Hvilke relationer kontakter du kun, når du har brug for noget?' },
+    { i:'H6', t:'scale', d:'relationel_kapital', rev:1, q:'Hvor koncentreret er dit netværk omkring din nuværende virksomhed?',
+      ends:['Meget spredt','Næsten udelukkende her'] },
+    { i:'H7', t:'scale', d:'relationel_kapital', q:'Hvor stærkt er dit netværk uden for din branche?',
+      ends:['Meget svagt','Meget stærkt'] },
+    { i:'H8', t:'text', r:1, d:'selvindsigt', q:'Hvem kan udfordre dit selvbillede troværdigt?',
+      w:{ t:'Netværk er ikke én ting. Det operationelle får det daglige til at fungere, det personlige giver læring udefra, og det strategiske giver adgang til muligheder. Overgangen til topledelse kræver et skift i tyngdepunkt mod det strategiske — og det skift sker sjældent af sig selv.',
+          c:'Ibarra & Hunter (2007), Harvard Business Review. Baseret på ca. 30 ledere; ingen kvantitativ validering.' } },
+    { i:'H9', t:'text', q:'Hvem ville du ringe til for at forstå en ny rolle eller virksomhed indefra?' },
+    { i:'H10', t:'long', r:1, q:'Hvem burde kende dig om 12 måneder — og hvad gør du ved det?' }
+  ]
+},
+
+/* ===================== MODUL I ===================== */
+{
+  id: 'I', letter: 'I', title: 'Referencer og omdømme',
+  desc: 'Det, andre siger om dig, når du ikke er til stede, afgør mere end du bryder dig om. Her ser vi på, hvor stor forskellen er mellem det og det, du gerne vil have sagt.',
+  when: { any: [ {q:'R0_focus', in:['Søge videre','Afklare hvad der er rigtigt']},
+                 {q:'R0_dialog', in:['Ja']}, {q:'R0_tilbud', in:['Ja','Forventer et snart']},
+                 {q:'R0_best', in:['Ja, aktivt']} ] },
+  qs: [
+    { i:'I_note', t:'info', q:'Om tredjeparter',
+      h:'Skriv kun det, der er nødvendigt for jeres samtale. Undlad helbredsoplysninger, private forhold og andet følsomt om de personer, du nævner. Fornavn eller initialer er nok.' },
+    { i:'I_refs', t:'repeat', r:1, d:'markedsparathed', q:'Din referenceportefølje',
+      h:'Tre til seks personer.', addLabel:'Tilføj reference', itemLabel:'Reference',
+      fields:[
+        {k:'navn', l:'Navn eller initialer', t:'text'},
+        {k:'relation', l:'Relation og periode', t:'text'},
+        {k:'observeret', l:'Hvilke dele af din ledelse har personen konkret observeret?', t:'long'},
+        {k:'legitimerer', l:'Hvilken type rolle kan personen legitimere dig til?', t:'text'},
+        {k:'forbehold', l:'Hvilke forbehold vil personen sandsynligvis nævne?', t:'text'},
+        {k:'afstemt', l:'Er referencen afstemt med vedkommende?', t:'sel', o:['','Ja','Nej','Ikke endnu']}
+      ] },
+    { i:'I1', t:'text', q:'Hvem vil blive kontaktet gennem backchannels, uden at du bliver spurgt?',
+      w:{ t:'Der findes ingen peer-reviewet evidens for, at uformelle baglandsreferencer forudsiger noget som helst. Selv formelle referencetjek indgår ikke i den nyeste opgørelse over udvælgelsesmetoders validitet. Vi behandler det derfor som praksis, ikke som forudsigelse — men praksis er det, og det er værd at være forberedt på.',
+          c:'Sackett m.fl. (2023), Industrial and Organizational Psychology' } },
+    { i:'I2', t:'long', q:'Er der tidligere relationer, som skal repareres eller i det mindste forstås?' },
+    { i:'I3', t:'long', r:1, q:'Hvad tror du, andre siger om dig, når du ikke er til stede?' },
+    { i:'I4', t:'long', r:1, q:'Hvad ønsker du, at de skal kunne sige?' },
+    { i:'I5', t:'scale', d:'selvindsigt', rev:1, c:1, q:'Hvor stor er forskellen mellem de to?',
+      ends:['Ingen forskel','Meget stor forskel'] },
+    { i:'I6', t:'long', d:'markedsparathed', q:'Hvilket omdømme har du i markedet?' },
+    { i:'I7', t:'long', r:1, d:'selvindsigt', q:'Hvilke tegn bygger du den vurdering på?',
+      h:'Konkrete hændelser — ikke fornemmelser.' }
+  ]
+},
+
+/* ===================== MODUL J ===================== */
+{
+  id: 'J', letter: 'J', title: 'Muligheds- og rollefit',
+  desc: 'Due diligence på rollen, chefen, teamet, kulturen, ejerkredsen — og på hvad den koster derhjemme. De fleste bruger mere tid på at undersøge en bil.',
+  when: { any: [ {q:'R0_dialog', in:['Ja']}, {q:'R0_tilbud', in:['Ja','Forventer et snart']},
+                 {q:'R0_ny', in:['Ja, jeg er på vej ind']},
+                 {q:'R0_sit', in:['På vej ind i en ny rolle']} ] },
+  qs: [
+    { i:'J_navn', t:'text', r:1, q:'Hvilken mulighed handler dette om?', h:'Rolle og organisation — eller et kaldenavn, hvis du foretrækker det.' },
+    { i:'J_intro', t:'info', q:'Om denne del',
+      h:'Nogle af spørgsmålene kan du ikke svare på endnu. Det er selve pointen — de ubesvarede bliver samlet til sidst som din undersøgelsesliste.' },
+    { i:'J1', t:'long', r:1, d:'rolle_dd', q:'Hvorfor eksisterer rollen?' },
+    { i:'J2', t:'long', r:1, d:'rolle_dd', q:'Hvilket problem skal reelt løses?' },
+    { i:'J3', t:'text', d:'rolle_dd', q:'Hvad skete der med forgængeren?' },
+    { i:'J4', t:'long', r:1, d:'rolle_dd', q:'Hvad betyder succes efter 6, 12 og 24 måneder?',
+      h:'Deres definition — ikke din.' },
+    { i:'J5', t:'long', r:1, d:'rolle_dd', q:'Hvad er mandatet?' },
+    { i:'J6', t:'long', d:'rolle_dd', q:'Hvilke beslutningsrettigheder følger reelt med?' },
+    { i:'J7', t:'text', d:'rolle_dd', q:'Hvilke ressourcer følger med?' },
+    { i:'J8', t:'text', d:'rolle_dd', q:'Hvad er ikke til forhandling?' },
+    { i:'J9', t:'long', d:'rolle_dd', q:'Hvad bliver underspillet i stillingsbeskrivelsen?' },
+    { i:'J10', t:'long', d:'rolle_dd', q:'Chefen: hvad forventer vedkommende — og hvordan træffer vedkommende beslutninger?' },
+    { i:'J11', t:'text', d:'rolle_dd', q:'Hvordan håndterer chefen uenighed?' },
+    { i:'J12', t:'text', d:'rolle_dd', q:'Hvad har tidligere direkte rapporterende oplevet?' },
+    { i:'J13', t:'single', d:'rolle_dd', q:'Vil chefen reelt give plads?', o:['Ja','Formentlig','Tvivlsomt','Nej','Ved ikke endnu'] },
+    { i:'J14', t:'long', q:'Hvordan ser et konstruktivt partnerskab med chefen ud?' },
+    { i:'J15', t:'long', d:'rolle_dd', q:'Teamet: hvem overtager du, hvem er stærke, og hvor er de væsentligste huller?' },
+    { i:'J16', t:'text', d:'rolle_dd', q:'Hvilke personer er politisk eller kulturelt svære at ændre?' },
+    { i:'J17', t:'single', d:'rolle_dd', q:'Er der frihed til at sammensætte holdet?', o:['Fuld frihed','Nogen frihed','Meget lidt','Ingen','Ved ikke endnu'] },
+    { i:'J18', t:'long', r:1, d:'rolle_dd', q:'Kulturen: hvordan træffes beslutninger i praksis?' },
+    { i:'J19', t:'text', d:'rolle_dd', q:'Hvilken adfærd belønnes — og hvilken tolereres?' },
+    { i:'J20', t:'text', d:'rolle_dd', q:'Hvor ligger den uformelle magt?' },
+    { i:'J21', t:'text', d:'rolle_dd', q:'Hvordan håndteres dårlige nyheder?' },
+    { i:'J22', t:'text', d:'rolle_dd', q:'Hvad må man ikke sige højt?' },
+    { i:'J23', t:'long', d:'rolle_dd', q:'Hvad fortæller personaleomsætning, succession og tidligere lederskift?' },
+    { i:'J24', t:'long', r:1, d:'rolle_dd', q:'Ejere og bestyrelse: hvem har reel indflydelse?' },
+    { i:'J25', t:'single', d:'rolle_dd', q:'Er ejerkredsen enig om retningen?', o:['Ja','Overvejende','Uenig','Ved ikke endnu'] },
+    { i:'J26', t:'text', d:'rolle_dd', q:'Hvilket tidsperspektiv og hvilken risikovillighed arbejder ejerne med?' },
+    { i:'J27', t:'text', d:'rolle_dd', q:'Hvordan ser bestyrelsen på rollen?' },
+    { i:'J28', t:'long', d:'rolle_dd', q:'Hvad sker der ved manglende performance eller strategisk uenighed?' },
+    { i:'J29', t:'long', r:1, q:'Privat bæredygtighed: hvad kræver rollen af tid, rejser og tilgængelighed?' },
+    { i:'J30', t:'long', r:1, q:'Hvilken betydning får det for familie og øvrigt liv?' },
+    { i:'J31', t:'long', r:1, d:'beslutningskvalitet', q:'Hvilke antagelser har du endnu ikke afstemt hjemme?' },
+    { i:'J32', t:'single', r:1, q:'Er den samlede pris bæredygtig?', o:['Ja','Formentlig','Tvivlsomt','Nej','Ved ikke endnu'] },
+    { i:'J_score', t:'matrix', r:1, d:'rolle_dd', q:'Executive Role Scorecard',
+      h:'Vægt hvert kriterium efter hvor meget det betyder for dig (1–5), og vurdér hvordan denne mulighed står (1–10). Markér disqualifier, hvis et forhold alene ville få dig til at sige nej.',
+      rows:['Mandat og beslutningsrettigheder','Problemet der skal løses','Chefen og partnerskabet','Ejerkredsens enighed','Bestyrelsens forventninger','Teamet du overtager','Kulturens virkemåde','Ressourcer og budget','Læring og udvikling','Økonomi og vilkår','Privat bæredygtighed','Omdømme og risiko'],
+      cols:[
+        {k:'vaegt', l:'Vægt 1–5', t:'n5'},
+        {k:'score', l:'Vurdering 1–10', t:'n10'},
+        {k:'dq', l:'Disqualifier', t:'check'},
+        {k:'aabent', l:'Åbent spørgsmål', t:'text'}
+      ],
+      w:{ t:'Logikken er hentet fra, hvordan bestyrelser bør vælge en CEO: match mod virksomhedens konkrete værdidrivere frem for mod en generisk lederprofil. Her er den vendt om, så du bruger den på rollen. Bemærk samtidig, at oplevet fit i forskningen forudsiger trivsel og fastholdelse — ikke præstation. En høj score betyder ikke, at du vil lykkes.',
+          c:'Larcker m.fl. (2024), Stanford GSB · Kristof-Brown m.fl. (2005), Personnel Psychology: P-O-fit korrelerer .07 med jobpræstation' } },
+    { i:'J33', t:'long', r:1, q:'Hvad skal undersøges, før du kan sige ja?',
+      h:'Skriv det som en liste med navne på, hvem der kan svare.' }
+  ]
+},
+
+/* ===================== MODUL K ===================== */
+{
+  id: 'K', letter: 'K', title: 'Interviewparathed',
+  desc: 'Indhold, adfærd og proces. De fleste forbereder sig kun på det første.',
+  when: { any: [ {q:'R0_dialog', in:['Ja']}, {q:'R0_tilbud', in:['Ja','Forventer et snart']},
+                 {q:'R0_focus', in:['Søge videre']} ] },
+  qs: [
+    { i:'K_ev', t:'info', q:'Hvad forskningen faktisk siger om udvælgelse',
+      h:'De validitetstal, der cirkulerer i HR og på LinkedIn, stammer fra et arbejdspapir, som aldrig blev publiceret eller fagfællebedømt. I den opdaterede opgørelse rangerer strukturerede interviews højest (.42), foran jobkendskabstests (.40) og arbejdsprøver (.33) — mens kognitive evnetests ligger på .31 og ustrukturerede interviews på .19. Praktisk konsekvens: jo mere struktureret samtalen er, jo mere tæller det, du faktisk kan dokumentere. Kilde: Sackett m.fl. (2023), Industrial and Organizational Psychology.' },
+    { i:'K1', t:'scale', d:'markedsparathed', c:1, q:'Kan du forklare din værdi præcist på under to minutter?', ends:['Nej','Ja, ubesværet'] },
+    { i:'K2', t:'scale', d:'dokumenteret_vaerdi', q:'Kan dine resultater dokumenteres?', ends:['Næppe','Fuldt ud'] },
+    { i:'K3', t:'scale', d:'markedsparathed', q:'Er dine historier relevante for netop den rolle, du søger?', ends:['Slet ikke','Meget'] },
+    { i:'K4', t:'long', r:1, q:'Kan du forklare dine karriereskift uden at forsvare dem?',
+      h:'Skriv forklaringen på det skift, der er sværest at forklare.' },
+    { i:'K5', t:'long', q:'Hvordan behandler du dine svagheder og fejl, når du bliver spurgt?',
+      h:'Skriv det svar, du faktisk ville give.' },
+    { i:'K6', t:'scale', d:'selvindsigt', q:'Adfærd: lytter du reelt i den type samtaler?', ends:['Sjældent','Konsekvent'] },
+    { i:'K7', t:'scale', d:'selvindsigt', rev:1, q:'Bliver dine svar for lange?', ends:['Aldrig','Ofte'] },
+    { i:'K8', t:'scale', d:'selvindsigt', rev:1, q:'Fylder du stilhed?', ends:['Aldrig','Ofte'] },
+    { i:'K9', t:'scale', d:'selvindsigt', rev:1, q:'Forsøger du at imponere frem for at undersøge?', ends:['Aldrig','Ofte'] },
+    { i:'K10', t:'long', q:'Hvordan reagerer du på kritik eller åben tvivl i en samtale?' },
+    { i:'K11', t:'single', d:'selvindsigt', q:'Er din nysgerrighed troværdig — eller er den en teknik?',
+      o:['Ægte og tydelig','Ægte, men træder i baggrunden','Mest teknik','Ved ikke'] },
+    { i:'K12', t:'long', r:1, d:'rolle_dd', q:'Proces: hvem er de egentlige beslutningstagere?' },
+    { i:'K13', t:'long', r:1, q:'Hvilke spørgsmål mangler stadig svar?' },
+    { i:'K14', t:'long', q:'Hvilke budskaber skal stå klart efter hver samtale?' },
+    { i:'K15', t:'text', q:'Hvilke referencer kan blive aktiveret — og hvornår?' },
+    { i:'K16', t:'text', r:1, q:'Hvad er næste skridt, og hvem har bolden?' },
+    { i:'K_q', t:'repeat', q:'Dine spørgsmål til de enkelte interessenter',
+      h:'Forbered to til tre skarpe spørgsmål til hver. Det er her, du selv laver due diligence.',
+      addLabel:'Tilføj interessent', itemLabel:'Interessent',
+      fields:[
+        {k:'hvem', l:'Hvem', t:'sel', o:['','CEO','Bestyrelsesformand','Ejer','Search-konsulent','Peer i ledergruppen','Potentielt team','Andet']},
+        {k:'navn', l:'Navn eller rolle', t:'text'},
+        {k:'sp', l:'Dine spørgsmål', t:'long'},
+        {k:'lytte', l:'Hvad du særligt vil lytte efter', t:'text'}
+      ] }
+  ]
+},
+
+/* ===================== MODUL L ===================== */
+{
+  id: 'L', letter: 'L', title: 'Valg mellem muligheder',
+  desc: 'Det farligste tidspunkt i en proces er, når du er begyndt at ville have den. Her forsøger vi at trække beslutningen tilbage til det, du faktisk ved.',
+  when: { any: [ {q:'R0_tilbud', in:['Ja','Forventer et snart']}, {q:'R0_dialog', in:['Ja']} ] },
+  qs: [
+    { i:'L1', t:'long', r:1, d:'beslutningskvalitet', q:'Hvilke reelle alternativer findes?',
+      h:'Husk at tage “bliv, hvor du er” med som et alternativ på lige fod.' },
+    { i:'L2', t:'single', r:1, d:'beslutningskvalitet', rev:1, q:'Er du ved at forelske dig i én mulighed for tidligt?',
+      o:['Nej','Måske','Formentlig','Ja, det er jeg'] },
+    { i:'L3', t:'long', r:1, d:'beslutningskvalitet', q:'Hvad ved du, og hvad antager du?',
+      h:'Skriv to lister. Vær hård ved den første.',
+      w:{ t:'Vi vurderer typisk en sag ud fra dens egne detaljer og glemmer at spørge, hvordan det plejer at gå i sammenlignelige tilfælde. Det er den enkeltstående mest robuste korrektion i beslutningslitteraturen — og den er ubehagelig, fordi den gør din situation mindre særlig.',
+          c:'Kahneman & Lovallo (1993), Management Science' } },
+    { i:'L4', t:'text', q:'Hvilken mulighed giver størst læring?' },
+    { i:'L5', t:'text', q:'Hvilken giver størst langsigtet optionalitet?' },
+    { i:'L6', t:'text', q:'Hvilken giver mest mening?' },
+    { i:'L7', t:'text', d:'selvindsigt', q:'Hvilken er primært attraktiv på grund af titel eller løn?' },
+    { i:'L8', t:'long', r:1, d:'beslutningskvalitet', q:'Hvad er worst case for hver mulighed?' },
+    { i:'L9', t:'single', d:'beslutningskvalitet', q:'Hvilken beslutning er mest reversibel?',
+      o:['Den nuværende situation','Mulighed A','Mulighed B','Ingen af dem er reversible','Ved ikke'] },
+    { i:'L10', t:'long', q:'Hvilke muligheder forsvinder ved et ja?' },
+    { i:'L11', t:'long', d:'beslutningskvalitet', q:'Hvad ville få dig til at fortryde?' },
+    { i:'L12', t:'long', r:1, d:'beslutningskvalitet', q:'Hvilken information kan stadig ændre beslutningen?',
+      h:'Hvis svaret er “ingen”, er beslutningen allerede truffet. Så er spørgsmålet et andet.' },
+    { i:'L_pm', t:'long', r:1, d:'beslutningskvalitet', q:'Præmortem',
+      h:'Forestil dig, at du om 18 måneder konkluderer, at valget var en fejl. Skriv i datid, hvad der viste sig at være galt. Vær konkret — navne, mekanismer, tidspunkter.',
+      w:{ t:'Teknikken er testet: den sænker planlægningskonfidensen markant mere end almindelige pro-et-contra-øvelser. Bemærk dog ærligt, at det målte udfald er lavere selvtillid — ikke dokumenteret bedre beslutninger. Værdien ligger i, at man får øje på fejlkilder, man ellers ikke ville nævne.',
+          c:'Veinott, Klein & Wiggins (2010), ISCRAM. Konferencebidrag, studenterstikprøve.' } },
+    { i:'L_pm2', t:'long', q:'Hvilke af de ting kan du undersøge eller afværge nu?' }
+  ]
+},
+
+/* ===================== MODUL M ===================== */
+{
+  id: 'M', letter: 'M', title: 'Forhandling',
+  desc: 'Løn er den letteste del at forhandle og den mindst afgørende for, om du lykkes. Her tager vi resten.',
+  when: { any: [ {q:'R0_tilbud', in:['Ja','Forventer et snart']} ] },
+  qs: [
+    { i:'M_note', t:'info', q:'Om denne del',
+      h:'Værktøjet beder dig ikke om beløb. Det beder dig klassificere, hvad der reelt betyder noget — og hvorfor. Der findes ingen aktuel forskning om forhandling af executive-pakker; dette modul står på Thomas’ metode og erfaring.' },
+    { i:'M_mx', t:'matrix', r:1, d:'forhandlingsklarhed', q:'Klassificér hvert punkt',
+      h:'Nødvendigt betyder: uden dette kan jeg ikke lykkes. Ego-drevet er ikke en anklage — det er en kategori, det er værd at kende hos sig selv.',
+      rows:['Fast løn','Bonus','Equity eller langsigtede incitamenter','Pension','Fratrædelsesbeskyttelse','Mandat','Beslutningsrettigheder','Team','Budget','Rapporteringslinje','Geografi og rejser','Fleksibilitet','Starttidspunkt','Eksterne bestyrelsesposter','Succeskriterier for de første 6–12 måneder','Støtte til onboarding eller coaching'],
+      cols:[
+        {k:'kat', l:'Kategori', t:'sel', o:['','Nødvendigt','Ønskeligt','Ego-drevet','Ikke vigtigt']},
+        {k:'note', l:'Hvorfor', t:'text'}
+      ] },
+    { i:'M1', t:'long', r:1, d:'forhandlingsklarhed', q:'Hvad skal være på plads, før du kan lykkes?',
+      h:'Kun det, der reelt er en forudsætning.' },
+    { i:'M2', t:'long', q:'Hvad vil du ønske, du havde fået afklaret?',
+      h:'Tænk tilbage på sidste gang du tiltrådte.' },
+    { i:'M3', t:'long', r:1, d:'beslutningskvalitet', q:'Hvor risikerer du at bytte reel handlekraft for symbolsk status?' },
+    { i:'M4', t:'text', q:'Hvilke indrømmelser er acceptable?' },
+    { i:'M5', t:'long', r:1, d:'forhandlingsklarhed', q:'Hvad er din klare walk-away-position?',
+      h:'Formulér den, som du ville sige den højt. Hvis du ikke kan, har du ikke én.' }
+  ]
+},
+
+/* ===================== MODUL N ===================== */
+{
+  id: 'N', letter: 'N', title: 'Exit og modtilbud',
+  desc: 'Hvordan du går, huskes længere end hvorfor. Og et modtilbud er sjældent et svar på det, der fik dig til at overveje at gå.',
+  when: { any: [ {q:'R0_focus', in:['Søge videre']}, {q:'R0_tilbud', in:['Ja']} ] },
+  qs: [
+    { i:'N1', t:'text', r:1, q:'Hvem skal høre beslutningen først?' },
+    { i:'N2', t:'long', r:1, q:'Hvilken rækkefølge er nødvendig?' },
+    { i:'N3', t:'long', r:1, q:'Hvordan vil du forklare beslutningen?',
+      h:'Én forklaring, som du kan give alle. Den holder ikke, hvis den kun holder over for nogle.' },
+    { i:'N4', t:'long', q:'Hvad vil du gerne efterlade?' },
+    { i:'N5', t:'text', q:'Hvilke relationer skal beskyttes?' },
+    { i:'N6', t:'long', q:'Hvad kan skabe unødvendig skade?' },
+    { i:'N7', t:'text', q:'Hvordan håndterer du fortrolighed undervejs?' },
+    { i:'N8', t:'text', q:'Hvilken overgang er rimelig?' },
+    { i:'N9', t:'long', r:1, d:'beslutningskvalitet', q:'Hvad vil et modtilbud forsøge at løse?' },
+    { i:'N10', t:'single', r:1, d:'beslutningskvalitet', q:'Løser modtilbuddet den oprindelige årsag?',
+      o:['Ja','Delvist','Nej','Der er ikke kommet et modtilbud'] },
+    { i:'N11', t:'long', d:'selvindsigt', q:'Hvad vil få dig til at tvivle?' },
+    { i:'N12', t:'long', q:'Hvad vil du om to år være stolt af ved din exit?' }
+  ]
+},
+
+/* ===================== MODUL O ===================== */
+{
+  id: 'O', letter: 'O', title: 'Mellem roller',
+  desc: 'Perioden mellem to roller er hverken ferie eller arbejdsløshed. Den har sin egen disciplin — og sine egne fælder.',
+  when: { any: [ {q:'R0_mellem', in:['Ja']}, {q:'R0_sit', in:['Mellem roller']} ] },
+  qs: [
+    { i:'O1', t:'long', r:1, q:'Hvad skal du restituere fra?' },
+    { i:'O2', t:'long', r:1, d:'selvindsigt', q:'Hvad sker der med din identitet, når titlen midlertidigt forsvinder?',
+      w:{ t:'Tab af en arbejdsidentitet behandles i litteraturen som noget andet end jobtab eller stress — det har sine egne genopretningsveje. Vær opmærksom på, at der ikke findes evidens for, at det forløber i forudsigelige faser eller tager en bestemt tid. Spørgsmålet er stillet for at gøre erfaringen italesættelig, ikke for at normalisere den.',
+          c:'Conroy & O’Leary-Kelly (2014), Academy of Management Review. Konceptuel model, ikke empirisk valideret.' } },
+    { i:'O3', t:'text', r:1, q:'Hvor lang tid har du reelt — økonomisk og mentalt?',
+      h:'Et tidsrum, ikke et beløb.' },
+    { i:'O4', t:'long', r:1, q:'Hvad er en hensigtsmæssig ugerytme for dig i denne periode?' },
+    { i:'O5', t:'text', q:'Hvilke relationer vil du prioritere?' },
+    { i:'O6', t:'text', q:'Hvad vil du lære eller undersøge?' },
+    { i:'O7', t:'long', q:'Hvordan beskytter du søvn, motion, familie og perspektiv?',
+      h:'Praktisk og konkret — hvad står i kalenderen?' },
+    { i:'O8', t:'long', d:'selvindsigt', q:'Hvornår bliver pausen passiv?',
+      h:'Beskriv de tegn, du selv skal holde øje med.' },
+    { i:'O9', t:'long', d:'selvindsigt', q:'Hvornår bliver aktiviteten et forsøg på at undgå refleksion?' },
+    { i:'O10', t:'long', r:1, d:'retningsklarhed', q:'Hvad skal være anderledes i næste rolle?' }
+  ]
+},
+
+/* ===================== MODUL P ===================== */
+{
+  id: 'P', letter: 'P', title: 'De første 180 dage',
+  desc: 'Fortolkningsrammen om dig sættes tidligt. Det her er ikke en tjekliste — det er en observationsdisciplin.',
+  when: { any: [ {q:'R0_ny', in:['Ja, jeg er på vej ind','Ja, jeg er tiltrådt inden for de seneste 6 måneder']},
+                 {q:'R0_sit', in:['På vej ind i en ny rolle']} ] },
+  qs: [
+    { i:'P_intro', t:'info', q:'Om modulet',
+      h:'Første del udfylder du før eller lige efter start. Checkpoint-delen kommer du tilbage til ved 30, 60, 100 og 180 dage — værktøjet kan genåbnes, og besvarelserne kan sammenlignes over tid.' },
+    { i:'P1', t:'long', r:1, d:'onboardingdisciplin', q:'Hvad er du blevet ansat til at gøre?',
+      h:'Deres formulering — ikke din.' },
+    { i:'P2', t:'long', r:1, d:'onboardingdisciplin', q:'Hvilke forventninger er stadig uklare?' },
+    { i:'P3', t:'long', d:'beslutningskvalitet', q:'Hvilke antagelser gør du om organisationen?',
+      w:{ t:'Blandt de mest almindelige fælder tidligt i en ny rolle er medbragte, forudbestemte konklusioner og for mange samtidige initiativer. Der findes ingen tal for, hvor ofte det sker — det er destilleret praksiserfaring, ikke forskning. Men det er værd at skrive antagelserne ned, mens de stadig er antagelser.',
+          c:'Watkins (2025), IMD — Transition traps. Ingen empirisk stikprøve.' } },
+    { i:'P4', t:'text', r:1, d:'onboardingdisciplin', q:'Hvem skal du forstå tidligt?' },
+    { i:'P5', t:'text', r:1, d:'onboardingdisciplin', q:'Hvad skal du undlade at love endnu?' },
+    { i:'P_ff', t:'matrix', d:'onboardingdisciplin', q:'Første fredag — dine allerførste observationer',
+      h:'Udfyld den første fredag efter din start. Skriv kort. Værdien ligger i, at det er skrevet før du har vænnet dig til det.',
+      rows:['Kvaliteten af møder','Beslutningshastighed','Konflikter','Informationsflow','Uformel magt','Ledelsesteamets dynamik','Forholdet mellem det sagte og det gjorte','Kunde- og markedsorientering','Energi og psykologisk tryghed','Overraskelser'],
+      cols:[ {k:'obs', l:'Observation', t:'text'} ] },
+    { i:'P_cp', t:'repeat', d:'onboardingdisciplin', q:'Checkpoints — 30, 60, 100 og 180 dage',
+      h:'Opret et checkpoint ad gangen, efterhånden som du når dem.',
+      addLabel:'Tilføj checkpoint', itemLabel:'Checkpoint',
+      fields:[
+        {k:'dag', l:'Checkpoint', t:'sel', o:['','Dag 30','Dag 60','Dag 100','Dag 180']},
+        {k:'aendret', l:'Hvad har ændret sig siden sidst?', t:'long'},
+        {k:'forstaar', l:'Hvad forstår du nu, som du ikke forstod ved starten?', t:'long'},
+        {k:'forkert', l:'Hvilke tidlige antagelser var forkerte?', t:'long'},
+        {k:'relationer', l:'Hvilke relationer er blevet afgørende?', t:'text'},
+        {k:'trov', l:'Hvor er din troværdighed stærk — og hvor er den udsat?', t:'long'},
+        {k:'handling', l:'Hvad kræver handling nu?', t:'text'},
+        {k:'observer', l:'Hvad skal du fortsat observere?', t:'text'},
+        {k:'mandat', l:'Er mandat, rolle og succeskriterier stadig de samme?', t:'sel', o:['','Ja','Delvist ændret','Væsentligt ændret']},
+        {k:'genbesoeg', l:'Hvilke aftaler med chef og bestyrelse skal genbesøges?', t:'text'},
+        {k:'egen', l:'Hvilken adfærd fra dig selv skal justeres?', t:'text'}
+      ],
+      w:{ t:'Den nyeste metaanalyse peger på fire indikatorer, der bærer en tilpasning: social accept, rolleklarhed, opgavemestring og oplevet fit. Checkpointene er bygget op om dem. Bemærk at studierne overvejende dækker nyansatte generelt — ikke topledere — så anvendelsen på direktionsniveau er en ekstrapolation.',
+          c:'Bauer m.fl. (2025), Journal of Management (256 studier)' } }
+  ]
+},
+
+/* ===================== MODUL Q ===================== */
+{
+  id: 'Q', letter: 'Q', title: 'Bestyrelsesspor',
+  desc: 'Bestyrelsesarbejde er ikke en forlængelse af en operationel karriere. Det er en anden rolle med et andet ansvar.',
+  when: { any: [ {q:'R0_best', in:['Ja, aktivt','Ja, på længere sigt']} ] },
+  qs: [
+    { i:'Q1', t:'long', r:1, d:'retningsklarhed', q:'Hvorfor ønsker du en bestyrelsesrolle?',
+      h:'Det ærlige svar, ikke det præsentable.' },
+    { i:'Q2', t:'long', r:1, d:'erfaringsparathed', q:'Hvad kan du bidrage med ud over din operationelle erfaring?' },
+    { i:'Q3', t:'text', q:'Hvilke virksomhedssituationer er du relevant for?' },
+    { i:'Q4', t:'text', q:'Hvilke ejerformer forstår du reelt?',
+      h:'Familieejet, kapitalfond, børsnoteret, fondsejet, andelsejet.' },
+    { i:'Q5', t:'long', d:'erfaringsparathed', q:'Hvilken governance-erfaring har du?' },
+    { i:'Q6', t:'single', r:1, d:'selvindsigt', q:'Kan du udfordre uden at overtage ledelsens rolle?',
+      o:['Ja, det har jeg trænet','Formentlig','Det bliver min største udfordring','Ved ikke'] },
+    { i:'Q7', t:'text', q:'Hvilke risici er du kvalificeret til at føre tilsyn med?' },
+    { i:'Q8', t:'long', r:1, d:'markedsparathed', q:'Hvad skal dokumentere din bestyrelsesparathed?',
+      w:{ t:'Bestyrelser køber i praksis “day-one”-parathed: 74 % af nye direktører i Fortune 500 i 2025 havde forudgående erfaring fra en børsnoteret bestyrelse. Samtidig havde 31 % af årgangen i S&P 500 aldrig siddet i en før — de to opgørelser bruger forskellige definitioner, så tallene skal ikke sammenlignes direkte. Bemærk desuden, at datagrundlaget er amerikansk enstrenget governance, ikke dansk.',
+          c:'Heidrick & Struggles (2026), Board Monitor US · Spencer Stuart (2025), New Director Snapshot' } },
+    { i:'Q9', t:'text', q:'Hvilke interessekonflikter kan opstå?' },
+    { i:'Q10', t:'text', r:1, q:'Hvor meget tid og omdømmerisiko er du villig til at påtage dig?' },
+    { i:'Q11', t:'text', r:1, d:'relationel_kapital', q:'Hvilke relationer kan legitimere dig som bestyrelseskandidat?' },
+    { i:'Q12', t:'long', r:1, d:'erfaringsparathed', q:'Hvilke erfaringer mangler du endnu?' }
+  ]
+},
+
+/* ===================== MODUL R ===================== */
+{
+  id: 'R', letter: 'R', title: 'Afsluttende syntese',
+  desc: 'Elleve spørgsmål, du kun kan svare på, fordi du har svaret på de andre.',
+  core: true,
+  qs: [
+    { i:'R1', t:'long', r:1, d:'selvindsigt', q:'Hvad står tydeligere nu?' },
+    { i:'R2', t:'long', r:1, q:'Hvad overraskede dig?' },
+    { i:'R3', t:'long', r:1, d:'selvindsigt', q:'Hvor modsiger dine svar hinanden?',
+      h:'Du får en oversigt over dine svar i næste trin, hvis du vil læse igennem først.' },
+    { i:'R4', t:'text', q:'Hvilket spørgsmål var sværest?' },
+    { i:'R5', t:'long', r:1, d:'selvindsigt', q:'Hvad forsøger du muligvis stadig at undgå?' },
+    { i:'R6', t:'long', r:1, d:'beslutningskvalitet', q:'Hvilke tre forhold kræver yderligere undersøgelse?' },
+    { i:'R7', t:'long', r:1, d:'retningsklarhed', q:'Hvilken beslutning er du tættere på?' },
+    { i:'R8', t:'long', r:1, d:'beslutningskvalitet', q:'Hvad skal du ikke beslutte endnu?',
+      h:'Det er lige så vigtigt som det foregående spørgsmål.' },
+    { i:'R9', t:'text', r:1, d:'overgangsparathed', q:'Hvilken konkret handling tager du inden for syv dage?',
+      h:'Én handling. Med en dato.',
+      w:{ t:'Det stærkeste enkeltfund i lederudviklingslitteraturen handler ikke om metoden, men om opfølgningen: ledere, der løbende drøftede deres prioriteter med andre og fulgte op, forbedrede sig målbart — de øvrige knap nok. Designet er svagt (ingen kontrolgruppe, perceptionsbaserede mål), men fundet er konsistent med beslægtet forskning.',
+          c:'Goldsmith & Morgan (2004), strategy+business (11.480 ledere)' } },
+    { i:'R10', t:'long', r:1, q:'Hvad ønsker du især, at Thomas udfordrer dig på?' },
+    { i:'R11', t:'long', r:1, q:'Hvad må analysen ikke overse?' },
+    { i:'R12', t:'long', q:'Er der noget, du ikke har skrevet, som er vigtigt?',
+      h:'Sidste chance for at få det med.' }
+  ]
+}
+
+];
+
+/* ---- DIMENSIONER ---- */
+var DIMS = {
+  retningsklarhed:      'Retningsklarhed',
+  mening_energi:        'Mening og energi',
+  selvindsigt:          'Selvindsigt',
+  dokumenteret_vaerdi:  'Dokumenteret værdiskabelse',
+  erfaringsparathed:    'Erfaringsmæssig parathed',
+  relationel_kapital:   'Relationel kapital',
+  markedsparathed:      'Markedsparathed',
+  beslutningskvalitet:  'Beslutningskvalitet',
+  rolle_dd:             'Rolle-due-diligence',
+  forhandlingsklarhed:  'Forhandlingsklarhed',
+  overgangsparathed:    'Overgangsparathed',
+  onboardingdisciplin:  'Onboardingdisciplin'
+};
+
+/* ============================================================
+   TILSTAND OG LAGRING
+   ============================================================ */
+var LS_KEY = 'eca_draft_v1';
+var S = null, stepIndex = 0, steps = [], saveTimer = null, idleTimer = null, warnTimer = null;
+
+function nowISO(){ return new Date().toISOString(); }
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function el(id){ return document.getElementById(id); }
+function b64(buf){ var b = new Uint8Array(buf), s = ''; for (var i=0;i<b.length;i++) s += String.fromCharCode(b[i]); return btoa(s); }
+function unb64(str){ var s = atob(str), b = new Uint8Array(s.length); for (var i=0;i<s.length;i++) b[i] = s.charCodeAt(i); return b; }
+function b64url(str){ return str.replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,''); }
+function unb64url(str){ str = str.replace(/-/g,'+').replace(/_/g,'/'); while (str.length % 4) str += '='; return str; }
+
+function newState(id, label){
+  return { v:1, clientId:id||'', label:label||'', qVersion:CONFIG.questionnaireVersion,
+    started:nowISO(), updated:nowISO(), answers:{}, flags:{}, conf:{}, notes:{},
+    consent:{}, submitted:null, step:0 };
+}
+
+function save(){
+  if (!S) return;
+  S.updated = nowISO();
+  S.step = stepIndex;
+  try { localStorage.setItem(LS_KEY, JSON.stringify(S)); flashSave(); }
+  catch(e){ /* privat browsing eller fuld lagring — arbejdet fortsætter i hukommelsen */ }
+}
+function queueSave(){ clearTimeout(saveTimer); saveTimer = setTimeout(save, 500); }
+function flashSave(){
+  var n = el('saveState'); if (!n) return;
+  n.classList.add('on');
+  n.innerHTML = '<span class="save-label">Gemt ' + new Date().toLocaleTimeString('da-DK',{hour:'2-digit',minute:'2-digit'}) + '</span>';
+  setTimeout(function(){ n.classList.remove('on'); }, 1400);
+}
+function load(){
+  try {
+    var raw = localStorage.getItem(LS_KEY); if (!raw) return null;
+    var d = JSON.parse(raw);
+    var age = (Date.now() - new Date(d.updated).getTime()) / 86400000;
+    if (age > CONFIG.draftRetentionDays) { localStorage.removeItem(LS_KEY); return null; }
+    if (d.qVersion !== CONFIG.questionnaireVersion) d.qVersionOld = d.qVersion;
+    return d;
+  } catch(e){ return null; }
+}
+
+/* ============================================================
+   ADGANG — signeret personlig invitation (ECDSA P-256)
+   ============================================================ */
+var UNCONFIGURED = CONFIG.sigPubKey.indexOf('__') === 0;
+
+async function importSigKey(){
+  var raw = unb64(CONFIG.sigPubKey);
+  return crypto.subtle.importKey('spki', raw, {name:'ECDSA', namedCurve:'P-256'}, false, ['verify']);
+}
+async function verifyToken(token){
+  if (!token) return null;
+  token = token.trim();
+  var m = token.match(/[#?]i=([A-Za-z0-9\-_.]+)/); if (m) token = m[1];
+  var parts = token.split('.');
+  if (parts.length !== 2) return null;
+  var msgBytes, payload;
+  try {
+    msgBytes = unb64(unb64url(parts[0]));
+    payload = JSON.parse(new TextDecoder().decode(msgBytes));
+  } catch(e){ return null; }
+  if (UNCONFIGURED) return payload;
+  var key, ok;
+  try {
+    key = await importSigKey();
+    ok = await crypto.subtle.verify({name:'ECDSA', hash:'SHA-256'}, key,
+      unb64(unb64url(parts[1])), msgBytes);
+  } catch(e){ return null; }
+  if (!ok) return null;
+  return payload;
+}
+function tokenExpired(p){ return p && p.exp && (Date.now() > p.exp * 1000); }
+
+/* ============================================================
+   BETINGELSER
+   ============================================================ */
+function answered(id){
+  var a = S.answers[id], f = S.flags[id];
+  if (f && (f.nr || f.idk)) return true;
+  if (a == null) return false;
+  if (typeof a === 'string') return a.trim().length > 0;
+  if (Array.isArray(a)) return a.length > 0;
+  if (typeof a === 'object') return Object.keys(a).length > 0;
+  return true;
+}
+function realAnswer(id){
+  var f = S.flags[id]; if (f && (f.nr || f.idk)) return false;
+  return answered(id);
+}
+function condOK(c){
+  if (!c) return true;
+  if (c.any) return c.any.some(condOK);
+  if (c.all) return c.all.every(condOK);
+  if (c.answered) return realAnswer(c.q);
+  var v = S.answers[c.q];
+  if (c.in) return c.in.indexOf(v) !== -1;
+  if (c.eq != null) return v === c.eq;
+  return true;
+}
+function activeModules(){ return MODULES.filter(function(m){ return m.core || condOK(m.when); }); }
+function activeQs(m){ return m.qs.filter(function(q){ return condOK(q.when); }); }
+
+/* ============================================================
+   ORIENTERENDE DIMENSIONSSCORER
+   Ingen samlet karakter. Ingen normering. Ingen sammenligning.
+   ============================================================ */
+function computeScores(){
+  var acc = {};
+  Object.keys(DIMS).forEach(function(k){ acc[k] = {sum:0, n:0, q:0, ans:0, conf:[], flagged:0}; });
+  activeModules().forEach(function(m){
+    activeQs(m).forEach(function(q){
+      if (!q.d || q.t === 'info') return;
+      var a = acc[q.d]; if (!a) return;
+      a.q++;
+      if (realAnswer(q.i)) a.ans++;
+      if (S.flags[q.i] && (S.flags[q.i].nr || S.flags[q.i].idk)) a.flagged++;
+      if (S.conf[q.i] != null) a.conf.push(Number(S.conf[q.i]));
+      var v = S.answers[q.i];
+      if (q.t === 'scale' && typeof v === 'number') {
+        a.sum += q.rev ? (11 - v) : v; a.n++;
+      } else if (q.t === 'single' && typeof v === 'string' && q.o) {
+        var idx = q.o.indexOf(v);
+        if (idx >= 0 && q.o.length > 1) {
+          var norm = 1 + 9 * (idx / (q.o.length - 1));
+          a.sum += q.rev ? (11 - norm) : (11 - norm); a.n++;
+        }
+      }
+    });
+  });
+  var out = {};
+  Object.keys(acc).forEach(function(k){
+    var a = acc[k];
+    if (!a.q) return;
+    out[k] = {
+      label: DIMS[k],
+      score: a.n ? Math.round(((a.sum / a.n) - 1) / 9 * 100) : null,
+      basedOn: a.n,
+      completeness: a.q ? Math.round(a.ans / a.q * 100) : 0,
+      questions: a.q,
+      answered: a.ans,
+      flagged: a.flagged,
+      confidence: a.conf.length ? Math.round(a.conf.reduce(function(x,y){return x+y;},0) / a.conf.length * 10) / 10 : null
+    };
+  });
+  return out;
+}
+
+/* ============================================================
+   RENDERING AF SPØRGSMÅL
+   ============================================================ */
+function flagsHTML(q){
+  var f = S.flags[q.i] || {};
+  return '<div class="flags">' +
+    '<button type="button" class="flag" data-flag="nr" data-q="' + q.i + '" aria-pressed="' + (f.nr?'true':'false') + '">Ikke relevant</button>' +
+    '<button type="button" class="flag" data-flag="idk" data-q="' + q.i + '" aria-pressed="' + (f.idk?'true':'false') + '">Det ved jeg ikke endnu</button>' +
+    '<button type="button" class="flag" data-flag="note" data-q="' + q.i + '" aria-pressed="' + (f.note?'true':'false') + '">Tilføj note</button>' +
+    '</div>' +
+    (f.note ? '<div style="margin-top:12px"><label class="conf-l" style="display:block;margin-bottom:6px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)">Din note</label>' +
+      '<textarea data-note="' + q.i + '" style="min-height:70px">' + esc(S.notes[q.i] || '') + '</textarea></div>' : '');
+}
+function confHTML(q){
+  if (!q.c) return '';
+  var v = S.conf[q.i];
+  var b = '';
+  for (var i=1;i<=10;i++) b += '<button type="button" data-conf="' + q.i + '" data-v="' + i + '" aria-pressed="' + (v===i?'true':'false') + '">' + i + '</button>';
+  return '<div class="conf"><div class="conf-l">Hvor sikker er du i dit eget svar? 1–10</div>' +
+    '<div class="scale">' + b + '</div>' +
+    '<div class="scale-ends"><span>Meget usikker</span><span>Meget sikker</span></div></div>';
+}
+function whyHTML(q){
+  if (!q.w) return '';
+  return '<details class="why"><summary>Hvorfor spørger vi om dette?</summary>' +
+    '<div class="why-body">' + esc(q.w.t) + '<cite>' + esc(q.w.c) + '</cite></div></details>';
+}
+function basisHTML(q){
+  if (q.t !== 'scale') return '';
+  var v = S.answers[q.i];
+  if (typeof v !== 'number' || (v > 3 && v < 8)) return '';
+  var k = q.i + '_basis';
+  return '<div style="margin-top:16px;padding-top:14px;border-top:1px dashed rgba(0,0,0,.1)">' +
+    '<label class="conf-l" style="display:block;margin-bottom:8px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)">Hvad bygger du den vurdering på?</label>' +
+    '<textarea data-note="' + k + '" style="min-height:76px">' + esc(S.notes[k] || '') + '</textarea></div>';
+}
+
+function inputHTML(q){
+  var a = S.answers[q.i], i, h;
+  switch (q.t) {
+    case 'info': return '';
+    case 'scale':
+      h = '<div class="scale">';
+      for (i=1;i<=10;i++) h += '<button type="button" data-scale="' + q.i + '" data-v="' + i + '" aria-pressed="' + (a===i?'true':'false') + '">' + i + '</button>';
+      h += '</div><div class="scale-ends"><span>' + esc((q.ends&&q.ends[0])||'1') + '</span><span>' + esc((q.ends&&q.ends[1])||'10') + '</span></div>';
+      return h;
+    case 'single':
+      h = '<div class="opts">';
+      q.o.forEach(function(o, n){
+        h += '<label class="' + (a===o?'sel':'') + '"><input type="radio" name="' + q.i + '" data-single="' + q.i + '" value="' + esc(o) + '"' + (a===o?' checked':'') + '><span>' + esc(o) + '</span></label>';
+      });
+      return h + '</div>';
+    case 'multi':
+      var arr = Array.isArray(a) ? a : [];
+      h = '<div class="opts">';
+      q.o.forEach(function(o){
+        var on = arr.indexOf(o) !== -1;
+        h += '<label class="' + (on?'sel':'') + '"><input type="checkbox" data-multi="' + q.i + '" value="' + esc(o) + '"' + (on?' checked':'') + '><span>' + esc(o) + '</span></label>';
+      });
+      return h + '</div>';
+    case 'text':
+      return '<input type="text" data-text="' + q.i + '" value="' + esc(a || '') + '">';
+    case 'long':
+      return '<textarea data-text="' + q.i + '" class="long">' + esc(a || '') + '</textarea>';
+    case 'rank':
+      var order = Array.isArray(a) && a.length === q.items.length ? a : q.items.slice();
+      h = '<ol class="rank">';
+      order.forEach(function(it, n){
+        h += '<li><span class="rk-n">' + (n+1) + '</span><span class="rk-t">' + esc(it) + '</span>' +
+             '<span class="rk-b"><button type="button" data-rank="' + q.i + '" data-dir="-1" data-idx="' + n + '"' + (n===0?' disabled':'') + ' aria-label="Flyt op">&#9650;</button>' +
+             '<button type="button" data-rank="' + q.i + '" data-dir="1" data-idx="' + n + '"' + (n===order.length-1?' disabled':'') + ' aria-label="Flyt ned">&#9660;</button></span></li>';
+      });
+      return h + '</ol>';
+    case 'alloc':
+      var vals = (a && typeof a === 'object') ? a : {};
+      var sum = 0;
+      h = '<div class="alloc">';
+      q.items.forEach(function(it){
+        var v = vals[it] == null ? '' : vals[it];
+        if (v !== '') sum += Number(v) || 0;
+        h += '<div class="alloc-row"><label for="al_' + q.i + '_' + esc(it) + '">' + esc(it) + '</label>' +
+             '<input id="al_' + q.i + '_' + esc(it) + '" type="number" min="0" max="100" data-alloc="' + q.i + '" data-item="' + esc(it) + '" value="' + esc(v) + '"></div>';
+      });
+      h += '<div class="alloc-sum' + (sum !== (q.sum||100) ? ' bad' : '') + '">I alt: ' + sum + ' af ' + (q.sum||100) + '</div></div>';
+      return h;
+    case 'matrix':
+      var mv = (a && typeof a === 'object') ? a : {};
+      h = '<div class="matrix-hint">Tabellen kan rulles vandret</div><div class="matrix-scroll"><table class="matrix"><thead><tr><th></th>';
+      q.cols.forEach(function(c){ h += '<th>' + esc(c.l) + '</th>'; });
+      h += '</tr></thead><tbody>';
+      q.rows.forEach(function(r){
+        var rv = mv[r] || {};
+        h += '<tr><td>' + esc(r) + '</td>';
+        q.cols.forEach(function(c){
+          var v = rv[c.k] == null ? '' : rv[c.k];
+          h += '<td>';
+          if (c.t === 'check') {
+            h += '<input type="checkbox" data-mx="' + q.i + '" data-row="' + esc(r) + '" data-col="' + c.k + '" style="width:auto"' + (v?' checked':'') + '>';
+          } else if (c.t === 'n10' || c.t === 'n5') {
+            var max = c.t === 'n10' ? 10 : 5;
+            h += '<select data-mx="' + q.i + '" data-row="' + esc(r) + '" data-col="' + c.k + '" style="min-width:72px"><option value=""></option>';
+            for (i=1;i<=max;i++) h += '<option value="' + i + '"' + (String(v)===String(i)?' selected':'') + '>' + i + '</option>';
+            h += '</select>';
+          } else if (c.t === 'sel') {
+            h += '<select data-mx="' + q.i + '" data-row="' + esc(r) + '" data-col="' + c.k + '" style="min-width:120px">';
+            c.o.forEach(function(o){ h += '<option value="' + esc(o) + '"' + (v===o?' selected':'') + '>' + esc(o) + '</option>'; });
+            h += '</select>';
+          } else {
+            h += '<input type="text" data-mx="' + q.i + '" data-row="' + esc(r) + '" data-col="' + c.k + '" value="' + esc(v) + '" style="min-width:150px">';
+          }
+          h += '</td>';
+        });
+        h += '</tr>';
+      });
+      return h + '</tbody></table></div>';
+    case 'repeat':
+      var list = Array.isArray(a) ? a : [];
+      h = '<div class="entries">';
+      list.forEach(function(entry, n){
+        h += '<div class="entry"><div class="entry-head"><h4>' + esc(q.itemLabel || 'Punkt') + ' ' + (n+1) + '</h4>' +
+             '<button type="button" class="entry-del" data-del="' + q.i + '" data-idx="' + n + '">Fjern</button></div>';
+        q.fields.forEach(function(f){
+          var v = entry[f.k] == null ? '' : entry[f.k];
+          h += '<div class="entry-f"><label>' + esc(f.l) + '</label>';
+          if (f.t === 'long') h += '<textarea data-rep="' + q.i + '" data-idx="' + n + '" data-key="' + f.k + '">' + esc(v) + '</textarea>';
+          else if (f.t === 'sel') {
+            h += '<select data-rep="' + q.i + '" data-idx="' + n + '" data-key="' + f.k + '">';
+            f.o.forEach(function(o){ h += '<option value="' + esc(o) + '"' + (v===o?' selected':'') + '>' + esc(o) + '</option>'; });
+            h += '</select>';
+          } else h += '<input type="text" data-rep="' + q.i + '" data-idx="' + n + '" data-key="' + f.k + '" value="' + esc(v) + '">';
+          h += '</div>';
+        });
+        h += '</div>';
+      });
+      h += '<button type="button" class="add-btn" data-add="' + q.i + '">+ ' + esc(q.addLabel || 'Tilføj') + '</button></div>';
+      return h;
+  }
+  return '';
+}
+
+function questionHTML(q){
+  if (q.t === 'info') {
+    return '<div class="q"><div class="note" style="margin:0"><p><strong>' + esc(q.q) + '</strong></p>' +
+      (q.h ? '<p>' + esc(q.h) + '</p>' : '') + '</div></div>';
+  }
+  var f = S.flags[q.i] || {};
+  var dim = f.nr ? ' style="opacity:.5"' : '';
+  return '<div class="q" id="q_' + q.i + '"' + dim + '>' +
+    '<label class="q-label">' + esc(q.q) + (q.r ? ' <span class="q-req" title="Obligatorisk">*</span>' : '') + '</label>' +
+    (q.h ? '<div class="q-help">' + esc(q.h) + '</div>' : '') +
+    whyHTML(q) +
+    (f.nr ? '<div class="q-help" style="color:var(--gray-light)">Markeret som ikke relevant.</div>' : inputHTML(q)) +
+    (f.nr ? '' : basisHTML(q)) +
+    (f.nr ? '' : confHTML(q)) +
+    flagsHTML(q) + '</div>';
+}
+
+/* ============================================================
+   TRIN
+   ============================================================ */
+function buildSteps(){
+  var s = [{k:'welcome'}, {k:'consent'}];
+  activeModules().forEach(function(m){ s.push({k:'mod', id:m.id}); });
+  s.push({k:'missing'}, {k:'review'}, {k:'submit'});
+  if (S.submitted) s.push({k:'receipt'});
+  steps = s;
+}
+function stepTitle(st){
+  if (st.k === 'mod') { var m = MODULES.filter(function(x){return x.id===st.id;})[0]; return 'Modul ' + m.letter + ' · ' + m.title; }
+  return {welcome:'Velkomst og fortrolighed', consent:'Samtykke', missing:'Manglende svar',
+          review:'Gennemse din besvarelse', submit:'Send til analyse', receipt:'Kvittering'}[st.k];
+}
+function missingRequired(){
+  var out = [];
+  activeModules().forEach(function(m){
+    activeQs(m).forEach(function(q){
+      if (q.r && q.t !== 'info' && !answered(q.i)) out.push({m:m, q:q});
+    });
+  });
+  return out;
+}
+function markedList(){
+  var out = [];
+  activeModules().forEach(function(m){
+    activeQs(m).forEach(function(q){
+      var f = S.flags[q.i];
+      if (f && (f.nr || f.idk)) out.push({m:m, q:q, kind: f.idk ? 'Det ved jeg ikke endnu' : 'Ikke relevant'});
+    });
+  });
+  return out;
+}
+
+function renderStep(){
+  var st = steps[stepIndex], root = el('stepRoot'), h = '';
+  var total = steps.length;
+  el('pbar').style.width = Math.round(stepIndex / (total-1) * 100) + '%';
+  el('pbar').setAttribute('aria-valuenow', Math.round(stepIndex / (total-1) * 100));
+
+  if (st.k === 'welcome') {
+    h = '<div class="step-head"><div class="se">Executive Career Architecture</div>' +
+      '<h2>Velkommen' + (S.label ? ', ' + esc(S.label.split(' ')[0]) : '') + '</h2>' +
+      '<p class="desc">Før du går i gang, er der tre ting, du skal vide.</p></div>' +
+      '<div class="note"><p><strong>Det er fortroligt — teknisk, ikke kun som løfte.</strong> Dine svar krypteres i din egen browser med Thomas’ offentlige nøgle. Ingen server kan læse dem undervejs, og der findes ingen database. Kun Thomas kan låse dem op.</p></div>' +
+      '<div class="note"><p><strong>Du bestemmer, hvornår det sendes.</strong> Alt, hvad du skriver, bliver liggende på din egen enhed som kladde, indtil du aktivt trykker “Send fortroligt til analyse”. Kladder er aldrig synlige for andre.</p></div>' +
+      '<div class="note"><p><strong>Det er ikke en test, og det er ikke en garanti.</strong> Værktøjet lover ikke et bedre karriereudfald. Det er et redskab til selvindsigt, selvforståelse og selvledelse — og et arbejdsgrundlag for jeres næste samtale. Nogle spørgsmål er ubehagelige at svare på. Det er med vilje, og du kan altid markere “det ved jeg ikke endnu”.</p></div>' +
+      (UNCONFIGURED ? '<div class="note" style="border-left-color:#e67e22"><p><strong>Bemærk:</strong> værktøjet kører i opsætningstilstand. Der er endnu ikke installeret krypteringsnøgler, så en besvarelse kan ikke krypteres. Brug det kun til gennemsyn.</p></div>' : '') +
+      '<p class="muted" style="margin-top:26px">Forventet tidsforbrug er 45–75 minutter. Du kan holde pause og vende tilbage — også på en anden enhed.</p>';
+  }
+
+  else if (st.k === 'consent') {
+    var c = S.consent;
+    h = '<div class="step-head"><div class="se">Trin 1</div><h2>Informeret samtykke</h2>' +
+      '<p class="desc">Læs teksten igennem. Du kan trække samtykket tilbage når som helst ved at skrive til Thomas.</p></div>' +
+      '<p class="lead">Ved at gå videre giver du samtykke til, at Thomas Friisnæs behandler de oplysninger, du selv skriver i dette værktøj, med det formål at forberede og gennemføre en coachinganalyse og en efterfølgende samtale med dig.</p>' +
+      '<ul class="fmt-details" style="margin:20px 0 28px">' +
+      '<li>Dine svar krypteres på din egen enhed og kan kun læses af Thomas</li>' +
+      '<li>Besvarelsen sendes først, når du aktivt vælger det</li>' +
+      '<li>Du kan til enhver tid få indsigt i, få rettet eller få slettet dine oplysninger</li>' +
+      '<li>Oplysningerne opbevares som udgangspunkt i 24 måneder efter jeres sidste samtale og slettes derefter, medmindre I aftaler andet</li>' +
+      '<li>Oplysningerne videregives ikke til tredjepart</li>' +
+      '<li>Værktøjet indsamler ikke helbredsoplysninger, politiske holdninger, fagforeningsforhold, religion eller andre særlige kategorier af personoplysninger — undlad at skrive den slags i fritekstfelterne</li>' +
+      '</ul>' +
+      '<div class="note"><p><strong>Om AI-behandling.</strong> Thomas kan vælge at bruge et AI-værktøj som støtte til at udarbejde et <em>udkast</em> til analyse. Det sker altid manuelt igangsat af ham, aldrig automatisk, og udkastet sendes aldrig til dig uden hans gennemgang. Nogle AI-leverandører behandler data uden for EU/EØS. Du kan fravælge AI-behandling nedenfor — så laves analysen udelukkende manuelt.</p></div>' +
+      '<label class="check"><input type="checkbox" data-consent="privacy"' + (c.privacy?' checked':'') + '><span>Jeg har læst og accepterer <a href="privatliv.html" target="_blank" rel="noopener" style="color:var(--red);border-bottom:1px solid rgba(192,57,43,.3)">privatlivsbetingelserne</a> og samtykker i behandlingen af mine oplysninger til det angivne formål.</span></label>' +
+      '<label class="check"><input type="checkbox" data-consent="ai"' + (c.ai?' checked':'') + '><span>Jeg accepterer, at der må anvendes AI som støtte til at udarbejde et udkast til analyse. <em style="color:var(--gray)">(Valgfrit — lad feltet stå tomt, hvis du ønsker udelukkende manuel analyse.)</em></span></label>' +
+      '<label class="check"><input type="checkbox" data-consent="notdiag"' + (c.notdiag?' checked':'') + '><span>Jeg er indforstået med, at værktøjet er professionel karriererefleksion. Det er ikke en psykologisk eller helbredsmæssig vurdering, stiller ingen diagnose og erstatter ikke egen læge, psykolog eller anden fagperson.</span></label>' +
+      '<p class="muted" style="margin-top:22px">De juridiske tekster gennemgås af en GDPR-rådgiver inden endelig lancering.</p>';
+  }
+
+  else if (st.k === 'mod') {
+    var m = MODULES.filter(function(x){return x.id===st.id;})[0];
+    var qs = activeQs(m);
+    var done = qs.filter(function(q){ return q.t==='info' || answered(q.i); }).length;
+    h = '<div class="step-head"><div class="se">Modul ' + esc(m.letter) + '</div><h2>' + esc(m.title) + '</h2>' +
+      '<p class="desc">' + esc(m.desc) + '</p>' +
+      '<div class="step-meta">' + done + ' af ' + qs.length + ' besvaret' + (m.core ? '' : ' · aktiveret af dine svar i situationsafklaringen') + '</div></div>';
+    qs.forEach(function(q){ h += questionHTML(q); });
+  }
+
+  else if (st.k === 'missing') {
+    var miss = missingRequired(), marked = markedList();
+    h = '<div class="step-head"><div class="se">Før du gennemser</div><h2>Manglende svar</h2>' +
+      '<p class="desc">De obligatoriske spørgsmål er markeret med *. Du kan ikke sende, før de er besvaret — men “det ved jeg ikke endnu” tæller som et svar.</p></div>';
+    if (!miss.length) {
+      h += '<div class="note"><p>Alle obligatoriske spørgsmål er besvaret.</p></div>';
+    } else {
+      h += '<p class="lead">' + miss.length + ' obligatoriske spørgsmål mangler stadig.</p><div class="entries">';
+      miss.forEach(function(x){
+        h += '<div class="rq"><div class="rq-q">Modul ' + esc(x.m.letter) + ' · ' + esc(x.m.title) + '</div>' +
+          '<div class="rq-a">' + esc(x.q.q) + '</div>' +
+          '<button type="button" class="flag" style="margin-top:8px" data-goto="' + esc(x.m.id) + '" data-qid="' + esc(x.q.i) + '">Gå til spørgsmålet</button></div>';
+      });
+      h += '</div>';
+    }
+    if (marked.length) {
+      h += '<h3 style="margin-top:44px;font-size:1.2rem">Markeret undervejs</h3>' +
+        '<p class="muted" style="margin-bottom:14px">' + marked.length + ' spørgsmål er markeret. De sendes med som markeringer — det er brugbar information i sig selv.</p><div class="entries">';
+      marked.forEach(function(x){
+        h += '<div class="rq"><div class="rq-q">Modul ' + esc(x.m.letter) + ' · ' + esc(x.kind) + '</div><div class="rq-a">' + esc(x.q.q) + '</div></div>';
+      });
+      h += '</div>';
+    }
+  }
+
+  else if (st.k === 'review') {
+    h = '<div class="step-head"><div class="se">Trin ' + (stepIndex) + '</div><h2>Gennemse din besvarelse</h2>' +
+      '<p class="desc">Det er præcis dette, der sendes. Intet andet. Klik på et modul for at folde det ud.</p></div>';
+    activeModules().forEach(function(m){
+      var qs = activeQs(m).filter(function(q){ return q.t !== 'info'; });
+      var n = qs.filter(function(q){ return answered(q.i); }).length;
+      h += '<details class="review-mod"><summary><span>Modul ' + esc(m.letter) + ' · ' + esc(m.title) + '</span><span class="cnt">' + n + '/' + qs.length + '</span></summary><div class="review-body">';
+      qs.forEach(function(q){
+        h += '<div class="rq"><div class="rq-q">' + esc(q.q) + '</div><div class="rq-a' + (answered(q.i)?'':' empty') + '">' + esc(displayAnswer(q)) + '</div>';
+        if (S.notes[q.i]) h += '<div class="rq-q" style="margin-top:6px">Note: ' + esc(S.notes[q.i]) + '</div>';
+        if (S.notes[q.i+'_basis']) h += '<div class="rq-q" style="margin-top:6px">Grundlag: ' + esc(S.notes[q.i+'_basis']) + '</div>';
+        if (S.conf[q.i] != null) h += '<div class="rq-q" style="margin-top:6px">Sikkerhed i eget svar: ' + S.conf[q.i] + '/10</div>';
+        h += '</div>';
+      });
+      h += '</div></details>';
+    });
+  }
+
+  else if (st.k === 'submit') {
+    var miss2 = missingRequired();
+    var ready = !miss2.length && S.consent.privacy && S.consent.notdiag;
+    h = '<div class="step-head"><div class="se">Sidste trin</div><h2>Send fortroligt til analyse</h2>' +
+      '<p class="desc">Når du sender, låses din besvarelse som et snapshot med tidsstempel. Du kan ikke ændre den bagefter, medmindre Thomas genåbner den.</p></div>' +
+      '<div class="fmt-box" style="margin-top:0"><h3>Hvad der sker</h3>' +
+      '<ul class="fmt-details">' +
+      '<li>Din besvarelse krypteres i din browser med Thomas’ offentlige nøgle</li>' +
+      '<li>Du får en krypteret fil, som du sender til ham — filen er ulæselig for alle andre, også for eventuelle mellemled</li>' +
+      '<li>Thomas modtager en notifikation med dit navn, tidspunkt og et fingeraftryk — aldrig dine svar i klartekst</li>' +
+      '<li>Han gennemgår besvarelsen og forbereder analysen til jeres samtale</li>' +
+      '<li>Du modtager ikke en automatisk genereret rapport</li>' +
+      '</ul></div>' +
+      '<div class="note" style="margin-top:26px"><p><strong>Modtager:</strong> Thomas Friisnæs, Friisnæs, Holte Stationsvej 18, 1., 2840 Holte. Dataansvarlig for behandlingen. Kontakt: info@friisnaes.com.</p></div>' +
+      '<label class="check"><input type="checkbox" data-consent="share"' + (S.consent.share?' checked':'') + '><span><strong>Jeg bekræfter, at min besvarelse må deles med Thomas Friisnæs</strong> med henblik på analyse og den efterfølgende samtale.</span></label>';
+    if (miss2.length) h += '<div class="note" style="margin-top:22px;border-left-color:#e67e22"><p>' + miss2.length + ' obligatoriske spørgsmål mangler. Gå tilbage til “Manglende svar” for at se hvilke.</p></div>';
+    if (!S.consent.privacy || !S.consent.notdiag) h += '<div class="note" style="margin-top:22px;border-left-color:#e67e22"><p>Samtykke mangler. Gå tilbage til trin 1.</p></div>';
+    h += '<div style="margin-top:32px"><button class="btn bp" id="sendBtn"' + ((ready && S.consent.share)?'':' disabled') + '>Send fortroligt til analyse</button></div>' +
+      '<div id="sendMsg" style="margin-top:18px;font-size:.88rem;color:var(--gray)"></div>';
+  }
+
+  else if (st.k === 'receipt') {
+    var sub = S.submitted;
+    h = '<div class="step-head"><div class="se">Kvittering</div><h2>Din besvarelse er låst</h2>' +
+      '<p class="desc">Tak. Nedenfor er din kvittering. Gem den, hvis du vil kunne henvise til den.</p></div>' +
+      '<div class="fmt-box" style="margin-top:0"><h3>Kvittering</h3>' +
+      '<ul class="fmt-details">' +
+      '<li>Tidspunkt: ' + esc(new Date(sub.ts).toLocaleString('da-DK')) + '</li>' +
+      '<li>Spørgeskemaversion: ' + esc(sub.qVersion) + '</li>' +
+      '<li>Antal besvarede spørgsmål: ' + sub.answeredCount + ' af ' + sub.totalCount + '</li>' +
+      '<li>Aktive moduler: ' + esc(sub.modules.join(', ')) + '</li>' +
+      '<li>AI-behandling: ' + (S.consent.ai ? 'accepteret' : 'fravalgt — analysen laves manuelt') + '</li>' +
+      '</ul>' +
+      '<div style="margin-top:20px"><div class="conf-l" style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px">Fingeraftryk af den låste besvarelse</div>' +
+      '<div class="code">' + esc(sub.fp) + '</div></div></div>' +
+      '<h3 style="margin-top:40px;font-size:1.2rem">Sådan sender du filen</h3>' +
+      '<p class="lead">Filen <strong>' + esc(sub.filename) + '</strong> er hentet til din enhed. Send den til Thomas som vedhæftet fil. Den er krypteret — den kan ikke læses undervejs, heller ikke af din eller hans mailudbyder.</p>' +
+      '<div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">' +
+      '<button class="btn bp" id="mailBtn">Åbn e-mail til Thomas</button>' +
+      '<button class="btn bd" id="againBtn">Hent filen igen</button>' +
+      '<button class="btn bd" id="copyBtn">Kopiér som tekst</button></div>' +
+      '<div class="note" style="margin-top:34px"><p><strong>Hvad sker der nu?</strong> Thomas gennemgår din besvarelse og forbereder en analyse. I aftaler en samtale, hvor analysen er udgangspunktet — ikke konklusionen. Du modtager ikke en automatisk rapport.</p></div>' +
+      '<div class="note"><p><strong>Vil du ændre noget?</strong> Den indsendte version er låst. Skriv til Thomas, hvis den skal genåbnes.</p></div>';
+  }
+
+  /* trinnavigation */
+  var atFirst = stepIndex === 0, atLast = stepIndex === steps.length - 1;
+  h += '<div class="nav-steps">' +
+    '<div class="left">' + (atFirst ? '' : '<button class="btn bd" data-nav="-1">Tilbage</button>') + '</div>' +
+    (atLast ? '' : '<button class="btn bp" data-nav="1">' + (st.k==='consent' ? 'Jeg giver samtykke' : (st.k==='review' ? 'Videre til indsendelse' : 'Videre')) + '</button>') +
+    '</div>';
+
+  root.innerHTML = h;
+  root.focus();
+  window.scrollTo({top:0, behavior:'instant' in window ? 'instant' : 'auto'});
+  if (st.k === 'consent') syncConsentNav();
+}
+function syncConsentNav(){
+  var b = document.querySelector('[data-nav="1"]');
+  if (b) b.disabled = !(S.consent.privacy && S.consent.notdiag);
+}
+
+function displayAnswer(q){
+  var a = S.answers[q.i], f = S.flags[q.i] || {};
+  if (f.nr) return '— ikke relevant';
+  if (f.idk) return '— det ved jeg ikke endnu';
+  if (a == null || a === '') return '— ikke besvaret';
+  if (q.t === 'scale') return a + ' / 10';
+  if (q.t === 'multi') return Array.isArray(a) ? a.join(', ') : String(a);
+  if (q.t === 'rank') return Array.isArray(a) ? a.map(function(x,n){ return (n+1) + '. ' + x; }).join('\n') : String(a);
+  if (q.t === 'alloc') return (a && typeof a === 'object') ? Object.keys(a).map(function(k){ return k + ': ' + a[k]; }).join('\n') : String(a);
+  if (q.t === 'matrix' && a && typeof a === 'object') {
+    return Object.keys(a).map(function(r){
+      var row = a[r], parts = Object.keys(row).filter(function(k){ return row[k] !== '' && row[k] !== false; })
+        .map(function(k){ var c = q.cols.filter(function(c){return c.k===k;})[0]; return (c?c.l:k) + ': ' + (row[k]===true?'ja':row[k]); });
+      return parts.length ? r + ' — ' + parts.join(' · ') : null;
+    }).filter(Boolean).join('\n') || '— ikke besvaret';
+  }
+  if (q.t === 'repeat' && Array.isArray(a)) {
+    return a.map(function(e, n){
+      var parts = q.fields.filter(function(f){ return e && e[f.k]; }).map(function(f){ return f.l + ': ' + e[f.k]; });
+      return (q.itemLabel||'Punkt') + ' ' + (n+1) + '\n' + parts.join('\n');
+    }).join('\n\n') || '— ikke besvaret';
+  }
+  if (a && typeof a === 'object') { try { return JSON.stringify(a); } catch(e){ return '—'; } }
+  return String(a);
+}
+
+/* ============================================================
+   HÆNDELSER
+   ============================================================ */
+var root = el('stepRoot');
+
+root.addEventListener('click', function(e){
+  var t = e.target.closest('button'); if (!t) return;
+
+  if (t.dataset.nav) { go(stepIndex + Number(t.dataset.nav)); return; }
+
+  if (t.dataset.scale) {
+    var id = t.dataset.scale, v = Number(t.dataset.v);
+    S.answers[id] = (S.answers[id] === v) ? null : v;
+    queueSave(); renderStep(); return;
+  }
+  if (t.dataset.conf) {
+    var cid = t.dataset.conf, cv = Number(t.dataset.v);
+    S.conf[cid] = (S.conf[cid] === cv) ? null : cv;
+    if (S.conf[cid] == null) delete S.conf[cid];
+    queueSave(); renderStep(); return;
+  }
+  if (t.dataset.flag) {
+    var fid = t.dataset.q, kind = t.dataset.flag;
+    S.flags[fid] = S.flags[fid] || {};
+    S.flags[fid][kind] = !S.flags[fid][kind];
+    if (kind === 'nr' && S.flags[fid].nr) S.flags[fid].idk = false;
+    if (kind === 'idk' && S.flags[fid].idk) S.flags[fid].nr = false;
+    queueSave(); renderStep(); return;
+  }
+  if (t.dataset.rank) {
+    var q = findQ(t.dataset.rank), idx = Number(t.dataset.idx), dir = Number(t.dataset.dir);
+    var arr = Array.isArray(S.answers[q.i]) && S.answers[q.i].length === q.items.length ? S.answers[q.i].slice() : q.items.slice();
+    var j = idx + dir;
+    if (j >= 0 && j < arr.length) { var tmp = arr[idx]; arr[idx] = arr[j]; arr[j] = tmp; }
+    S.answers[q.i] = arr; queueSave(); renderStep(); return;
+  }
+  if (t.dataset.add) {
+    var qa = findQ(t.dataset.add);
+    var list = Array.isArray(S.answers[qa.i]) ? S.answers[qa.i].slice() : [];
+    list.push({}); S.answers[qa.i] = list; queueSave(); renderStep(); return;
+  }
+  if (t.dataset.del) {
+    var qd = findQ(t.dataset.del), di = Number(t.dataset.idx);
+    var ld = (S.answers[qd.i] || []).slice(); ld.splice(di, 1); S.answers[qd.i] = ld;
+    queueSave(); renderStep(); return;
+  }
+  if (t.dataset.goto) {
+    var modId = t.dataset.goto, qid = t.dataset.qid;
+    var si = steps.findIndex(function(s){ return s.k === 'mod' && s.id === modId; });
+    if (si >= 0) { go(si); setTimeout(function(){
+      var n = el('q_' + qid); if (n) n.scrollIntoView({behavior:'smooth', block:'center'}); }, 120); }
+    return;
+  }
+  if (t.id === 'sendBtn') { doSubmit(t); return; }
+  if (t.id === 'againBtn') { downloadBlob(S.submitted.filename, S.submitted.envelope); return; }
+  if (t.id === 'copyBtn') {
+    navigator.clipboard.writeText(S.submitted.envelope).then(function(){ t.textContent = 'Kopieret'; setTimeout(function(){ t.textContent = 'Kopiér som tekst'; }, 1800); });
+    return;
+  }
+  if (t.id === 'mailBtn') {
+    var body = 'Kære Thomas%0D%0A%0D%0AJeg har gennemført Executive Career Architecture og vedhæfter min krypterede besvarelse.%0D%0A%0D%0AFil: ' +
+      encodeURIComponent(S.submitted.filename) + '%0D%0AFingeraftryk: ' + encodeURIComponent(S.submitted.fp) +
+      '%0D%0ATidspunkt: ' + encodeURIComponent(new Date(S.submitted.ts).toLocaleString('da-DK')) +
+      '%0D%0A%0D%0AHusk at vedhæfte filen, før du sender.%0D%0A%0D%0AVenlig hilsen%0D%0A' + encodeURIComponent(S.label || '');
+    location.href = 'mailto:info@friisnaes.com?subject=' + encodeURIComponent('Executive Career Architecture — besvarelse ' + (S.label||S.clientId)) + '&body=' + body;
+    return;
+  }
+});
+
+root.addEventListener('input', function(e){
+  var t = e.target;
+  if (t.dataset.text != null) { S.answers[t.dataset.text] = t.value; queueSave(); }
+  else if (t.dataset.note != null) { S.notes[t.dataset.note] = t.value; queueSave(); }
+  else if (t.dataset.alloc != null) {
+    var q = findQ(t.dataset.alloc);
+    var o = (S.answers[q.i] && typeof S.answers[q.i] === 'object') ? S.answers[q.i] : {};
+    var v = t.value === '' ? '' : Math.max(0, Math.min(100, Number(t.value)));
+    o[t.dataset.item] = v; S.answers[q.i] = o; queueSave();
+    var box = t.closest('.alloc'); if (box) {
+      var sum = 0; box.querySelectorAll('input').forEach(function(i){ sum += Number(i.value) || 0; });
+      var sEl = box.querySelector('.alloc-sum');
+      sEl.textContent = 'I alt: ' + sum + ' af ' + (q.sum||100);
+      sEl.classList.toggle('bad', sum !== (q.sum||100));
+    }
+  }
+  else if (t.dataset.rep != null) {
+    var qr = findQ(t.dataset.rep), ir = Number(t.dataset.idx);
+    var lr = (S.answers[qr.i] || []).slice();
+    lr[ir] = Object.assign({}, lr[ir]); lr[ir][t.dataset.key] = t.value;
+    S.answers[qr.i] = lr; queueSave();
+  }
+  else if (t.dataset.mx != null) {
+    setMatrix(t);
+  }
+});
+
+root.addEventListener('change', function(e){
+  var t = e.target;
+  if (t.dataset.single != null) { S.answers[t.dataset.single] = t.value; queueSave(); renderStep(); }
+  else if (t.dataset.multi != null) {
+    var id = t.dataset.multi, arr = Array.isArray(S.answers[id]) ? S.answers[id].slice() : [];
+    var k = arr.indexOf(t.value);
+    if (t.checked && k === -1) arr.push(t.value); else if (!t.checked && k !== -1) arr.splice(k, 1);
+    S.answers[id] = arr; queueSave(); renderStep();
+  }
+  else if (t.dataset.mx != null) { setMatrix(t); }
+  else if (t.dataset.rep != null) {
+    var qr = findQ(t.dataset.rep), ir = Number(t.dataset.idx);
+    var lr = (S.answers[qr.i] || []).slice();
+    lr[ir] = Object.assign({}, lr[ir]); lr[ir][t.dataset.key] = t.value;
+    S.answers[qr.i] = lr; queueSave();
+  }
+  else if (t.dataset.consent != null) {
+    S.consent[t.dataset.consent] = t.checked; queueSave();
+    if (steps[stepIndex].k === 'consent') syncConsentNav();
+    if (steps[stepIndex].k === 'submit') renderStep();
+  }
+});
+
+function setMatrix(t){
+  var q = findQ(t.dataset.mx);
+  var o = (S.answers[q.i] && typeof S.answers[q.i] === 'object') ? Object.assign({}, S.answers[q.i]) : {};
+  var r = t.dataset.row;
+  o[r] = Object.assign({}, o[r] || {});
+  o[r][t.dataset.col] = (t.type === 'checkbox') ? t.checked : t.value;
+  S.answers[q.i] = o; queueSave();
+}
+function findQ(id){
+  for (var i=0;i<MODULES.length;i++) {
+    var f = MODULES[i].qs.filter(function(q){ return q.i === id; });
+    if (f.length) return f[0];
+  }
+  return null;
+}
+function go(i){
+  buildSteps();
+  stepIndex = Math.max(0, Math.min(steps.length - 1, i));
+  save(); renderStep();
+}
+
+/* ---- oversigt ---- */
+el('tocBtn').addEventListener('click', function(){
+  buildSteps();
+  var h = '';
+  steps.forEach(function(st, i){
+    var label = stepTitle(st), status = '';
+    if (st.k === 'mod') {
+      var m = MODULES.filter(function(x){return x.id===st.id;})[0];
+      var qs = activeQs(m).filter(function(q){ return q.t !== 'info'; });
+      var n = qs.filter(function(q){ return answered(q.i); }).length;
+      status = n + '/' + qs.length;
+      if (n === qs.length && qs.length) status = 'Færdig';
+    }
+    h += '<li><button type="button" data-step="' + i + '"' + (i===stepIndex?' style="color:#fff"':'') + '>' +
+      '<span>' + esc(label) + '</span><span class="st' + (status==='Færdig'?' done':'') + '">' + esc(status) + '</span></button></li>';
+  });
+  el('tocList').innerHTML = h;
+  el('toc').classList.add('on');
+});
+el('tocClose').addEventListener('click', function(){ el('toc').classList.remove('on'); });
+el('tocList').addEventListener('click', function(e){
+  var b = e.target.closest('button[data-step]'); if (!b) return;
+  el('toc').classList.remove('on'); go(Number(b.dataset.step));
+});
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') el('toc').classList.remove('on'); });
+
+/* ============================================================
+   KRYPTERING OG INDSENDELSE
+   ============================================================ */
+async function sha256hex(str){
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+}
+async function encryptToCoach(obj){
+  var pub = await crypto.subtle.importKey('spki', unb64(CONFIG.encPubKey),
+    {name:'RSA-OAEP', hash:'SHA-256'}, false, ['encrypt']);
+  var aes = await crypto.subtle.generateKey({name:'AES-GCM', length:256}, true, ['encrypt']);
+  var iv = crypto.getRandomValues(new Uint8Array(12));
+  var ct = await crypto.subtle.encrypt({name:'AES-GCM', iv:iv}, aes,
+    new TextEncoder().encode(JSON.stringify(obj)));
+  var rawAes = await crypto.subtle.exportKey('raw', aes);
+  var ek = await crypto.subtle.encrypt({name:'RSA-OAEP'}, pub, rawAes);
+  return { format:'ECA-ENVELOPE', v:1, alg:'RSA-OAEP-SHA256 + AES-256-GCM',
+    created: nowISO(), client: obj.meta.label || obj.meta.clientId,
+    ek: b64(ek), iv: b64(iv), ct: b64(ct) };
+}
+function downloadBlob(name, text){
+  var b = new Blob([text], {type:'application/json'});
+  var u = URL.createObjectURL(b), a = document.createElement('a');
+  a.href = u; a.download = name; document.body.appendChild(a); a.click();
+  document.body.removeChild(a); setTimeout(function(){ URL.revokeObjectURL(u); }, 1500);
+}
+
+async function doSubmit(btn){
+  var msg = el('sendMsg');
+  if (UNCONFIGURED) { msg.textContent = 'Krypteringsnøgle mangler. Kontakt Thomas — værktøjet er ikke færdigopsat.'; return; }
+  btn.disabled = true; msg.textContent = 'Krypterer og låser din besvarelse …';
+  try {
+    var mods = activeModules();
+    var total = 0, ans = 0;
+    mods.forEach(function(m){ activeQs(m).forEach(function(q){ if (q.t !== 'info') { total++; if (answered(q.i)) ans++; } }); });
+    var payload = {
+      meta: { clientId:S.clientId, label:S.label, started:S.started, submitted:nowISO(),
+              qVersion:CONFIG.questionnaireVersion, toolVersion:CONFIG.version,
+              modules:mods.map(function(m){ return m.id; }),
+              answeredCount:ans, totalCount:total,
+              consent:S.consent, aiAllowed: !!S.consent.ai },
+      /* Spørgeskemaet som klienten faktisk så det — så en gammel besvarelse
+         altid kan forstås ud fra sin egen version. */
+      schema: mods.map(function(m){
+        return { id:m.id, letter:m.letter, title:m.title, core:!!m.core,
+          qs: activeQs(m).map(function(q){
+            return { i:q.i, q:q.q, t:q.t, d:q.d||null, r:!!q.r, h:q.h||'',
+              rows:q.rows||null, cols:q.cols||null, fields:q.fields||null,
+              items:q.items||null, o:q.o||null, ends:q.ends||null };
+          }) };
+      }),
+      answers: S.answers, flags: S.flags, confidence: S.conf, notes: S.notes,
+      scores: computeScores(),
+      unanswered: missingRequired().map(function(x){ return {module:x.m.id, q:x.q.i, text:x.q.q}; }),
+      marked: markedList().map(function(x){ return {module:x.m.id, q:x.q.i, text:x.q.q, kind:x.kind}; })
+    };
+    var env = await encryptToCoach(payload);
+    var envStr = JSON.stringify(env, null, 2);
+    var fpFull = await sha256hex(env.ct);
+    var fp = fpFull.slice(0,32).replace(/(.{4})/g, '$1 ').trim().toUpperCase();
+    var stamp = new Date().toISOString().slice(0,10);
+    var safe = (S.label || S.clientId || 'klient')
+      .replace(/[æÆ]/g,'ae').replace(/[øØ]/g,'oe').replace(/[åÅ]/g,'aa')
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+      .replace(/[^A-Za-z0-9-]+/g, '-').replace(/^-+|-+$/g,'') || 'klient';
+    var filename = 'ECA-' + safe + '-' + stamp + '.eca';
+
+    S.submitted = { ts:nowISO(), qVersion:CONFIG.questionnaireVersion, fp:fp, filename:filename,
+      envelope:envStr, answeredCount:ans, totalCount:total,
+      modules:mods.map(function(m){ return m.letter; }) };
+    save();
+    downloadBlob(filename, envStr);
+
+    if (CONFIG.notifyEndpoint && CONFIG.notifyEndpoint.indexOf('__') !== 0) {
+      try {
+        await fetch(CONFIG.notifyEndpoint, { method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ besked:'Ny besvarelse klar til analyse', klient:S.label || S.clientId,
+            tidspunkt:new Date().toLocaleString('da-DK'), fingeraftryk:fp,
+            besvarede:ans + ' af ' + total, moduler:S.submitted.modules.join(' ') }) });
+      } catch(e){ /* notifikation er valgfri; filen er det egentlige */ }
+    }
+    buildSteps(); go(steps.length - 1);
+  } catch(e) {
+    btn.disabled = false;
+    msg.textContent = 'Noget gik galt under krypteringen: ' + e.message + '. Prøv igen, eller kontakt Thomas.';
+  }
+}
+
+/* ============================================================
+   GENOPTAG PÅ EN ANDEN ENHED
+   ============================================================ */
+async function deriveKey(pass, salt){
+  var base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2', salt:salt, iterations:250000, hash:'SHA-256'},
+    base, {name:'AES-GCM', length:256}, false, ['encrypt','decrypt']);
+}
+async function exportResume(){
+  var pass = prompt('Vælg en kode til filen. Du skal bruge den samme kode for at åbne kladden på den anden enhed. Skriv den ned — den kan ikke gendannes.');
+  if (!pass || pass.length < 6) { if (pass !== null) alert('Koden skal være mindst 6 tegn.'); return; }
+  var salt = crypto.getRandomValues(new Uint8Array(16)), iv = crypto.getRandomValues(new Uint8Array(12));
+  var key = await deriveKey(pass, salt);
+  var ct = await crypto.subtle.encrypt({name:'AES-GCM', iv:iv}, key, new TextEncoder().encode(JSON.stringify(S)));
+  downloadBlob('ECA-kladde-' + new Date().toISOString().slice(0,10) + '.ecar',
+    JSON.stringify({format:'ECA-RESUME', v:1, salt:b64(salt), iv:b64(iv), ct:b64(ct)}, null, 2));
+}
+async function importResume(file){
+  var txt = await file.text(), d;
+  try { d = JSON.parse(txt); } catch(e){ return alert('Filen kunne ikke læses.'); }
+  if (d.format !== 'ECA-RESUME') return alert('Det ser ikke ud til at være en gemt kladde.');
+  var pass = prompt('Indtast koden til filen.');
+  if (!pass) return;
+  try {
+    var key = await deriveKey(pass, unb64(d.salt));
+    var pt = await crypto.subtle.decrypt({name:'AES-GCM', iv:unb64(d.iv)}, key, unb64(d.ct));
+    S = JSON.parse(new TextDecoder().decode(pt));
+    save(); enterApp(); go(S.step || 0);
+  } catch(e){ alert('Forkert kode, eller filen er beskadiget.'); }
+}
+el('moveBtn').addEventListener('click', exportResume);
+el('resumeFileBtn').addEventListener('click', function(){ el('resumeFile').click(); });
+el('resumeFile').addEventListener('change', function(e){ if (e.target.files[0]) importResume(e.target.files[0]); });
+
+/* ============================================================
+   SESSION
+   ============================================================ */
+function resetIdle(){
+  clearTimeout(idleTimer); clearTimeout(warnTimer);
+  el('timeoutWarn').classList.remove('on');
+  if (!S) return;
+  var ms = CONFIG.sessionTimeoutMin * 60000;
+  warnTimer = setTimeout(function(){
+    el('timeoutTxt').textContent = 'Din session udløber om 5 minutter. Dit arbejde er gemt.';
+    el('timeoutWarn').classList.add('on');
+  }, Math.max(1000, ms - 300000));
+  idleTimer = setTimeout(logout, ms);
+}
+el('timeoutKeep').addEventListener('click', resetIdle);
+['click','keydown','scroll','touchstart'].forEach(function(ev){
+  window.addEventListener(ev, function(){ if (S) resetIdle(); }, {passive:true});
+});
+function logout(){
+  save();
+  S = null; clearTimeout(idleTimer); clearTimeout(warnTimer);
+  el('timeoutWarn').classList.remove('on');
+  el('app').classList.remove('on');
+  el('front').classList.add('hidden');
+  el('gate').classList.remove('hidden');
+  el('nav').classList.add('solid');
+  el('tocBtn').classList.add('hidden'); el('moveBtn').classList.add('hidden'); el('exitBtn').classList.add('hidden');
+  el('gateErr').textContent = 'Du er logget ud. Dit arbejde er gemt på denne enhed.';
+  el('pbar').style.width = '0';
+}
+el('exitBtn').addEventListener('click', function(){
+  if (confirm('Log ud? Dit arbejde er gemt på denne enhed og kan genoptages med dit link.')) logout();
+});
+
+/* ============================================================
+   OPSTART
+   ============================================================ */
+function showGate(msg){
+  el('front').classList.add('hidden');
+  el('gate').classList.remove('hidden');
+  el('nav').classList.add('solid');
+  if (msg) el('gateErr').textContent = msg;
+}
+function enterApp(){
+  el('front').classList.add('hidden');
+  el('gate').classList.add('hidden');
+  el('app').classList.add('on');
+  el('nav').classList.add('solid');
+  el('tocBtn').classList.remove('hidden');
+  el('moveBtn').classList.remove('hidden');
+  el('exitBtn').classList.remove('hidden');
+  buildSteps(); resetIdle();
+}
+function startWith(payload){
+  var prev = load();
+  if (prev && prev.clientId === payload.id) { S = prev; }
+  else { S = newState(payload.id, payload.name || ''); }
+  S.label = payload.name || S.label;
+  save(); enterApp(); renderStep();
+  if (S.step) { stepIndex = Math.min(S.step, steps.length - 1); renderStep(); }
+}
+
+(function boot(){
+  var nv = el('nav');
+  window.addEventListener('scroll', function(){ nv.classList.toggle('sc', scrollY > 50); }, {passive:true});
+  if ('IntersectionObserver' in window) {
+    var ob = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('vis'); ob.unobserve(e.target); } });
+    }, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.rv').forEach(function(e){ ob.observe(e); });
+  } else document.querySelectorAll('.rv').forEach(function(e){ e.classList.add('vis'); });
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(this.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+
+  function begin(){ showGate(''); tryToken(location.hash + location.search); }
+  el('startBtn').addEventListener('click', begin);
+  el('startBtn2').addEventListener('click', begin);
+
+  el('gateForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    tryToken(el('gateCode').value, true);
+  });
+
+  async function tryToken(raw, manual){
+    var p = await verifyToken(raw);
+    if (!p) {
+      if (manual) el('gateErr').textContent = 'Koden kunne ikke genkendes. Kontrollér, at hele koden fra din invitation er indsat.';
+      else if (UNCONFIGURED) el('gateErr').textContent = 'Værktøjet er ikke færdigopsat. Indtast DEMO for at se det igennem.';
+      else if (String(raw).indexOf('i=') !== -1) el('gateErr').textContent = 'Linket kunne ikke bekræftes. Det kan være beskadiget undervejs — prøv at åbne det direkte fra din invitation, eller skriv til Thomas.';
+      if (UNCONFIGURED && String(raw).trim().toUpperCase() === 'DEMO') startWith({id:'DEMO', name:'Demo'});
+      return;
+    }
+    if (tokenExpired(p)) { el('gateErr').textContent = 'Dit link er udløbet. Skriv til Thomas, så sender han et nyt.'; return; }
+    startWith(p);
+  }
+
+  /* Automatisk adgang, hvis linket indeholder en gyldig invitation */
+  if (location.hash.indexOf('i=') !== -1 || location.search.indexOf('i=') !== -1) {
+    showGate('');
+    tryToken(location.hash + location.search);
+    history.replaceState(null, '', location.pathname);
+  } else {
+    var prev = load();
+    if (prev && prev.clientId) {
+      showGate('Du har en gemt kladde på denne enhed. Åbn dit personlige link for at fortsætte.');
+    }
+  }
+
+  window.addEventListener('beforeunload', function(){ if (S) save(); });
+})();
+</script>
+</body>
+</html>
