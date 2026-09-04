@@ -570,12 +570,12 @@ select { cursor: pointer; background-image: linear-gradient(45deg, transparent 5
 /* ---- KONFIGURATION (udskiftes af admin.html ved opsætning) ---- */
 var CONFIG = {
   /* Offentlig RSA-OAEP-nøgle (SPKI, base64). Klienten krypterer til denne. */
-  encPubKey: "__ENC_PUB_KEY__",
+  encPubKey: "MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA08sZHtcol9KzxXp+YmviNWfX62DwTHkKT+8yZNXrbKI75pLjY0mHNNaI8qwrcby1af8i6bE3n+2JOqTeG70Qjmq79Nlab/CpwAZBqD0PWCnRTBU9KaaaVOYomvTcbOwbYgD7q2TAM1OJSNZA6tizDg/E2LkOSpMZ0KowPOsiLvyYcofElV6Fa8/nOu8BMbZu7Mhlu/DissMGx1ClEldT46wK5aJT9OnXxIW7Xg6fL2z7n6QtVjvVpBn6ApLF9GTO/tVxIQASc9Fll4Q/Y2OQYgNuJZ8F5zgUKfnLbHfpsajYm6WIOzGOx/JHqWQibtCoWkNrjL1En/f5Ip+XGYMWpixi4MmAWdDpJqeG72v9JGebJqRW5EWF5hB2Gl0wIq5aaEAk7nFi55st9loyQCF5++opMI1xSKKjYfVPa3BLuUIAfMiMG91sAXXy5XoI1ERbp9L0dQwnxQtC+RA/GFBfK7y4Hk+fE5Dc7Hej/QO1EMt9fD/kVHSodPo9IlyAJByRAgMBAAE=",
   /* Offentlig ECDSA P-256-nøgle (SPKI, base64). Verificerer invitationer. */
-  sigPubKey: "__SIG_PUB_KEY__",
+  sigPubKey: "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEgwUM+SyoQLPjP/hmeWvGJwjqfsKCHAYSSvVI0X8RMzvf37pwUVUUtro0sacta7/qJWz38X012sPv81KDoRReoA==",
   /* Valgfrit notifikationsendpoint (fx Formspree). Modtager ALDRIG svar —
      kun klient-id, tidsstempel og et fingeraftryk af den låste besvarelse. */
-  notifyEndpoint: "__NOTIFY_ENDPOINT__",
+  notifyEndpoint: "",
   /* Kladden slettes automatisk fra enheden efter dette antal dage. */
   draftRetentionDays: 90,
   /* Automatisk sessionsudløb i minutter uden aktivitet. */
