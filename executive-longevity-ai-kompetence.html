@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relevansen: AI-kompetence som aldringsspørgsmål | Thomas Friisnæs</title>
+<meta name="description" content="For en erfaren leder er AI-kompetence mindre et spørgsmål om teknik end om at kunne bedømme, hvor teknologien hjælper, hvor den fejler, og hvornår den bør efterprøves. Ottende paper i Executive Longevity: DØMME-modellen, øvelse og FAQ til C-level ledere.">
+<meta name="keywords" content="AI-kompetence ledelse, AI aldring leder, generativ AI topledelse, cognitive offloading, executive longevity, relevans erfaren leder, AI dømmekraft">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/executive-longevity-ai-kompetence.html">
+<meta property="og:title" content="Relevansen: AI-kompetence som aldringsspørgsmål | Thomas Friisnæs">
+<meta property="og:description" content="AI kan både udvide og forringe professionel performance. For den erfarne leder bliver opgaven at forstå teknologien godt nok til at kalibrere sin tillid og bevare ansvaret for beslutningen. Ottende paper i Executive Longevity.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/executive-longevity-ai-kompetence.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Relevansen: AI-kompetence som aldringsspørgsmål">
+<meta name="twitter:description" content="AI er for en erfaren leder et spørgsmål om at kunne bedømme, hvor teknologien hjælper, hvor den fejler, og hvornår den bør efterprøves — ikke om teknik.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+  .research-note a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; }
+  .cpart-papers li { display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .micro-action, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+</style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Relevansen: AI-kompetence som aldringsspørgsmål",
+ "description": "For en erfaren leder er AI-kompetence mindre et teknisk spørgsmål end et spørgsmål om at kunne bedømme, hvor teknologien hjælper, hvor den fejler, og hvornår den bør efterprøves. AI-effekter er opgaveafhængige; opgaven er at forstå teknologien godt nok til at kalibrere sin tillid og bevare ansvaret for beslutningen.",
+ "author": { "@type": "Person", "@id": "https://www.friisnaes.com/#person", "name": "Thomas Friisnæs", "url": "https://www.friisnaes.com/" },
+ "publisher": { "@type": "Organization", "name": "Friisnæs", "url": "https://www.friisnaes.com/" },
+ "url": "https://www.friisnaes.com/executive-longevity-ai-kompetence.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": { "@type": "CreativeWorkSeries", "name": "Executive Longevity", "url": "https://www.friisnaes.com/executive-longevity.html" },
+ "inLanguage": "da",
+ "datePublished": "2026-09-11",
+ "dateModified": "2026-09-11"
+}
+</script>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+<div class="print-only print-cover">
+  <div class="pc-badge">Executive Longevity · Del 2 · Paper 08 af 10</div>
+  <div class="pc-title">Relevansen: AI-kompetence som aldringsspørgsmål</div>
+  <div class="pc-sub">Ikke et teknisk spørgsmål, men et spørgsmål om relevans og dømmekraft — og om at blive ved med at forstå det, du beslutter om.</div>
+  <div class="pc-author">Af Thomas Friisnæs · Executive Coach · Karakter · Disciplin · Klarhed · friisnaes.com</div>
+</div>
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Executive Longevity</span>
+      <span class="wp-series">Del 2 · Paper 08 af 10</span>
+      <span class="wp-readtime">15 min læsning</span>
+    </div>
+    <h1>Relevansen: AI-kompetence som <em>aldringsspørgsmål</em></h1>
+    <p class="wp-subtitle">For en erfaren leder er AI sjældent først og fremmest et teknisk spørgsmål. Det er et spørgsmål om relevans og dømmekraft. Uden tilstrækkelig egen forståelse bliver det sværere at kalibrere sin tillid, opdage fejl og stille de rigtige spørgsmål til det, man er sat til at bedømme.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · Executive Coach, Karakter · Disciplin · Klarhed<br>Mere end 20 års erfaring · 15.000+ coachingsamtaler med C-level ledere, ejerledere og bestyrelsesmedlemmer · Udgivet 2026</p>
+  </div>
+</header>
+<nav class="wp-toc">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Scenariet du kender</a></li>
+      <li><a href="#problem">AI som ledelsesproblem</a></li>
+      <li><a href="#kri">Seriens pejlemærke: Kognition</a></li>
+      <li><a href="#framework">DØMME — fire greb om AI-kompetence</a></li>
+      <li><a href="#d1">Deltag selv</a></li>
+      <li><a href="#d2">Øv dømmekraften</a></li>
+      <li><a href="#d3">Modvirk afkobling</a></li>
+      <li><a href="#d4">Miljø og eksempel</a></li>
+      <li><a href="#grammatik">Fremmedgørelsens grammatik</a></li>
+      <li><a href="#exercise">Øvelse: Kortlæg din AI-relevans</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit commitment & din progress</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#next">Fra analyse til handling</a></li>
+    </ol>
+  </div>
+</nav>
+<main class="wp-body">
+
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase</div>
+    <h2>Scenariet du kender</h2>
+    <p>Direktøren er 61 og skal tage stilling til en stor beslutning: hvordan hans virksomhed skal bruge AI. Hans yngre folk er begejstrede, konsulenterne er dyre, og bestyrelsen spørger. Han træffer beslutningen — godkender budgettet, vælger retningen — men han gør det uden selv at have brugt værktøjerne mere end et par gange. Han beslutter om noget, han ikke rigtig forstår indefra. Og han er ikke i tvivl om, at det er svært at få øje på, hvor han skulle finde tiden til at lære det.</p>
+    <p>Det, han antager, er, at det her nok mest er en teknisk sag, som andre kan håndtere. Men det er en misforståelse, der kan blive dyr. For hans rolle er ikke at kode eller at kende hver funktion. Hans rolle er at bedømme — og jo tyndere hans egen forståelse er, desto sværere bliver det at stille de spørgsmål, der kan afsløre begrænsninger og fejl. Han er ikke i fare for at blive teknisk overhalet. Han risikerer snarere at få dårligere forudsætninger for at vurdere råd om teknologien, fordi hans egen mentale model af dens muligheder og begrænsninger er for tynd.</p>
+    <p>Og her er det ubehagelige: hvis hele forståelsen ligger hos andre, bliver det vanskeligere selv at efterprøve deres vurderinger. Han kan blive afhængig af folk, hvis råd han ikke har grundlag for at bedømme. Det er ikke et spørgsmål om, at han er for gammel til at lære det — det viste det forrige paper. Det er et spørgsmål om, at han er holdt op med at sætte sig ind i det, han er sat til at bedømme.</p>
+    <p>Det er ikke et spørgsmål om at blive AI-ekspert eller at jage hver ny model. Det er et spørgsmål om, hvorvidt en leder, der vil forblive relevant gennem 60'erne og 70'erne, forstår en teknologi, der for mange felter er blevet svær at komme udenom, godt nok til at bedømme den — eller lader forståelsen glide over til andre. Og det er et af de mønstre, jeg oftest møder hos erfarne ledere lige nu.</p>
+  </div>
+</section>
+
+<section class="section" id="problem">
+  <div class="container">
+    <div class="section-label">02 — Problemet navngivet</div>
+    <h2>AI som ledelsesproblem</h2>
+    <p>Der er to modsatte fortællinger om AI og den erfarne leder, og begge er upræcise. Den ene siger, at AI vil gøre erfarne ledere overflødige. Den anden, at det hele er hype, der nok går over. Sandheden er mere nøgtern og mere interessant: AI er blevet en del af beslutningsgrundlaget i mange brancher, og hvordan det påvirker den enkelte rolle er stadig under udvikling og forskningsmæssigt blandet. Ingen af de to yderpunkter er en holdbar position.</p>
+
+    <p class="pull-quote">Den erfarne leders AI-risiko er ikke kun at vide for lidt. Det er at vide så lidt, at han ikke længere kan vurdere, hvornår teknologien fortjener hans tillid.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det første, der skal aflives, er myten om, at AI-beslutninger tilhører de unge. Data peger den anden vej: en stor del af beslutningerne om, hvordan AI bruges, træffes af erfarne medarbejdere. I en nyere arbejdsgiver-survey angav næsten halvdelen, at de fleste eller alle beslutninger om, hvor og hvordan AI bruges, blev truffet af medarbejdere på 40 år og opefter. Det gør ikke alle 40+ til topledere — men det viser, at erfarne folk sjældent er fraværende fra AI-beslutningerne; de sidder ofte med hånden på dem.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (arbejdsgiver-survey, 2026):</strong> I en AARP-undersøgelse af 1.019 amerikanske arbejdsgivere med 50+ ansatte (nov.-dec. 2025) angav 46 %, at de fleste eller alle beslutninger om, <em>hvor og hvordan</em> AI bruges, blev truffet af medarbejdere på 40 år og opefter; 88 % rapporterede aktuel organisatorisk AI-brug (Perron, 2026). Bemærk: det betyder ikke, at 46 % af C-suite-beslutninger — eller at alle 40+ er topledere. Survey-data i et felt, der bevæger sig hurtigt. <a href="https://doi.org/10.26419/res.01051.001" target="_blank" rel="noopener">doi.org/10.26419/res.01051.001</a></div>
+
+    <p>Men der er en reel skævhed — og den handler ikke først og fremmest om evne. Erfarne medarbejdere angiver ofte høj interesse i at lære AI, men deltager i mindre grad i træning og bruger værktøjerne mindre intensivt end de yngste. Det dokumenterede hul er primært et hul i brug, eksponering og træning. Dataene fortæller ikke, at alle aldersforskelle kan reduceres til én årsag — som det forrige paper viste, ændrer kognition sig med alderen, men alder alene afgør ikke, hvad man kan lære. Forskellene kan lige så vel handle om rolle, adgang, motivation, tillid og organisatoriske normer som om noget andet.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (survey, 2024-2026):</strong> Generativ AI er blevet taget hurtigt i brug — en nationalt repræsentativ amerikansk undersøgelse fandt, at arbejdspladsudbredelsen har været på niveau med pc'ens (Bick, Blandin &amp; Deming, 2024, NBER). Blandt amerikanere på 50+ i arbejdsstyrken (AARP Wave 3, marts 2026, N = 1.015) var 52 % vidende om AI på arbejdspladsen, 23 % brugte AI i arbejdet i nogen eller høj grad, 49 % var interesserede i at lære mere, mens 12 % havde deltaget i AI-træning (Perron, 2026). Dataene viser et hul mellem interesse og træning — men fastlægger ikke, hvorfor hvert hul opstår. <a href="https://doi.org/10.26419/res.00848.001" target="_blank" rel="noopener">doi.org/10.26419/res.00848.001</a></div>
+
+    <p>Og så er der den vigtigste nuance — den, der gør AI-kompetence til et dømmekrafts-spørgsmål og ikke bare et adoptions-spørgsmål. AI's effekt afhænger af opgaven: på nogle vidensopgaver kan det løfte både kvalitet og hastighed markant, på andre kan det forringe resultatet — nogle gange inden for samme arbejdsgang, uden at det er indlysende hvornår. Og en bestemt måde at bruge det på — at overtage svaret uden at efterprøve det — kan indebære reelle trade-offs for færdigheder og kritisk sans. Det er ikke et argument mod at bruge AI. Det er et argument for at bruge det som en, der stadig vurderer, hvornår teknologien fortjener tillid, frem for en, der pr. automatik overtager svaret.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (felteksperiment):</strong> I et præregistreret forsøg med 758 konsulenter (BCG) løftede AI inden for teknologiens »frontier« opgaveløsningen markant (bl.a. ~12 % flere gennemførte opgaver, betydeligt højere kvalitet), mens AI-brugerne på en kompleks opgave <em>uden for</em> frontier var 19 % mindre tilbøjelige til at producere en korrekt løsning end deltagerne uden AI; deltagerne havde tendens til at overreliere på AI (Dell'Acqua et al., 2026, <em>Organization Science</em>). AI-effekter er altså opgaveafhængige og uensartede. <a href="https://doi.org/10.1287/orsc.2025.21838" target="_blank" rel="noopener">doi.org/10.1287/orsc.2025.21838</a></div>
+
+    <div class="research-note"><strong>Forskningsgrundlag (survey + review):</strong> Et studie af 319 vidensarbejdere og 936 konkrete eksempler på AI-brug fandt, at højere tillid til AI'en var forbundet med <em>mindre</em> udøvet kritisk tænkning, mens højere tillid til egen faglighed var forbundet med <em>mere</em> — selvrapporterede associationer, ikke bevis for årsag (Lee et al., 2025, CHI). En nyere oversigt konkluderer, at det at overlade tænkning til AI kan hæmme tilegnelsen af færdigheder og føre til færdighedshenfald, men at risikoen afhænger af, hvordan AI bruges — og at mere grundlæggende kognitive evner kan være mere modstandsdygtige (Cash et al., 2026, <em>Trends in Cognitive Sciences</em>). <a href="https://doi.org/10.1016/j.tics.2026.06.004" target="_blank" rel="noopener">doi.org/10.1016/j.tics.2026.06.004</a></div>
+
+    <p>Der er også en forbindelse til de foregående papers. AI-kompetence er en form for læring (paper 07) — og den erfarne leders læringsopgave er den samme her: ikke at konkurrere med de yngre på hastighed, men at koble det nye til den domæneviden, han allerede har. Og risikoen for kognitiv afkobling er slægtning til den fragmenterede opmærksomhed fra fokus-paperet (paper 05): begge handler om at bevare den dømmekraft, en leder lever af.</p>
+
+    <p>I mine samtaler med erfarne ledere er AI det, der oftest bliver behandlet enten som en trussel, man håber går over, eller som en black box, man overlader til andre. <strong>Problemet er ikke, at de ikke kan lære det. Problemet er, at de træffer store beslutninger om noget, de har delegeret forståelsen af — og dermed kan få dårligere forudsætninger for selv at efterprøve de råd og vurderinger, de modtager.</strong></p>
+
+    <div class="cost-box">
+      <div class="cb-label">Hvad delegeret forståelse koster — konkret</div>
+      <div class="cost-grid">
+        <div class="cost-item">
+          <div class="ci-h">Dømmekraft</div>
+          <p>Jo tyndere din egen mentale model af teknologien er, desto vanskeligere bliver det at stille de spørgsmål, der kan afsløre begrænsninger, fejl og dårlige antagelser. Uden nok egen forståelse bliver man mere afhængig af råd, man ikke kan efterprøve.</p>
+        </div>
+        <div class="cost-item">
+          <div class="ci-h">Relevans</div>
+          <p>Hvis AI bliver strategisk væsentlig i dit felt, kan manglende forståelse skabe afstand til centrale beslutninger og samtaler. Ikke pludseligt, men gradvist — indtil afstanden er blevet stor.</p>
+        </div>
+        <div class="cost-item">
+          <div class="ci-h">Kritisk tænkning</div>
+          <p>Højere tillid til værktøjet er i forskningen forbundet med mindre udøvet kritisk tænkning. Bruger man AI uden at efterprøve, kan man komme til at overtage svar, man ikke selv har vurderet — en trade-off, der afhænger af opgaven og brugen.</p>
+        </div>
+        <div class="cost-item">
+          <div class="ci-h">Eksempel</div>
+          <p>Den dyreste post — og her taler jeg som coach: en leder, der afkobler sig fra det nye, signalerer til organisationen, at det er i orden. Man kan ikke bede andre om en nysgerrighed, man selv har lagt fra sig.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kri">
+  <div class="container">
+    <div class="section-label">03 — Seriens pejlemærke</div>
+    <h2>Kognition: relevansen over tid</h2>
+    <p>Serien måler executive longevity på seks kapaciteter — <strong>Krop, Kognition, Belastning, Mening, Relationer og Retning</strong>, tilsammen ELI: Executive Longevity Index. Dette er det sidste paper i Del 2 om <strong>Kognition</strong>. Fokus (paper 05) handlede om opmærksomhed, reserve (paper 06) om cognitive reserve som et længere-sigtet forskningskonstrukt, og læring (paper 07) om at blive ved med at tilegne sig nyt. Dette paper er, hvor de tre mødes i en konkret, aktuel prøve: en teknologi, der for mange felter er blevet svær at komme udenom.</p>
+    <p>AI er på den måde en test af hele Del 2. Det kræver opmærksomhed at forstå, læring at tilegne sig, og det udfordrer dømmekraften — både ved at kræve ny forståelse og ved at friste til at lade et hurtigt svar træde i stedet for overvejelsen. Og det er ikke kun et fremtidigt kompetencespørgsmål: for professionelle sent i karrieren er de job, 55+ allerede sidder i, ifølge nyere analyser omtrent lige så eksponerede for generativ AI som mid-career-job.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (observationel analyse, 2026):</strong> En analyse, der kombinerer amerikanske CPS-data med estimater for jobs AI-eksponering, finder, at 55+ sidder i job, der er omtrent lige så eksponerede for generativ AI som mid-career-arbejderes; efter ChatGPT var højere AI-eksponering forbundet med relative stigninger i overgange ud af arbejde. Det er tidlig, observationel evidens — den viser ikke, at AI <em>forårsagede</em> hverken pensionering eller jobskifte (Sanzenbacher, 2026, Center for Retirement Research). <a href="https://crr.bc.edu/are-the-careers-of-older-workers-being-cut-short-by-ai/" target="_blank" rel="noopener">crr.bc.edu</a></div>
+    <p>Spørgsmålet, hvert element i serien vender tilbage til, er det samme: <em>styrker denne vane dine betingelser for at bevare kapacitet over tid — eller gør den dig mere afhængig?</em> For AI er svaret dobbelt: brugt som en, der stadig bedømmer og efterprøver, kan det udvide, hvad du kan; brugt som en erstatning for selv at forstå kan det gøre det sværere at fange fejl og føre reelt tilsyn med det, du beslutter om.</p>
+  </div>
+</section>
+
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">04 — Frameworket</div>
+    <h2>DØMME — fire greb om AI-kompetence</h2>
+    <p>AI-kompetence lyder som noget teknisk, man enten har eller ikke har. For en leder er det noget andet: evnen til at forstå teknologien godt nok til at bedømme den — og til at bruge den uden at holde op med selv at tænke. DØMME er min egen model, og navnet er ikke tilfældigt: en leders opgave med AI er først og fremmest at forblive dommeren. Fire greb, der hver især beskytter den rolle. Modellen er bevidst enkel — den skal kunne huskes, ikke slås op.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">DØMME™ — fire greb om AI-kompetence</div>
+      <div class="fw-sub">Fire beslutninger, der holder den erfarne leder som den, der bedømmer — designet til at forvalte Kognition-dimensionen i ELI. DØMME™ er Thomas Friisnæs' praktiske coachingmodel, ikke en teknisk standard eller et valideret mål.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">01</div>
+        <div class="fw-step-body">
+          <h4>Deltag selv</h4>
+          <p>Brug værktøjerne med egne hænder, ikke kun gennem andres referater. Direkte erfaring kan give en anden mental model af teknologiens muligheder og begrænsninger end kun at møde den gennem slides og referater. Nok egen erfaring til at forstå muligheder og grænser understøtter klogere beslutninger.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">02</div>
+        <div class="fw-step-body">
+          <h4>Øv dømmekraften</h4>
+          <p>Behold rollen som den, der vurderer. Højere tillid til AI'en er i forskningen forbundet med mindre udøvet kritisk tænkning; modvirk det ved bevidst at efterprøve, hvad værktøjet leverer, mod din egen faglighed og eksterne kilder — kalibreret efter, hvad opgaven kræver.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">03</div>
+        <div class="fw-step-body">
+          <h4>Modvirk afkobling</h4>
+          <p>Brug AI til at udvide din tænkning, ikke til at springe overvejelsen over. Lad det gerne bidrage bredt — men forbliv den, der aktivt tager stilling til det, der kræver din erfaring, frem for at lade et hurtigt svar træde i stedet for din egen vurdering.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">04</div>
+        <div class="fw-step-body">
+          <h4>Miljø og eksempel</h4>
+          <p>Din egen omgang med AI former organisationens. Beslutninger om AI træffes ofte af erfarne ledere; ved selv at lære og bruge det med omtanke sætter du både en bedre beslutning og et bedre eksempel.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>De fire næste afsnit tager ét greb ad gangen. For hvert er spørgsmålet det samme: hvor har du koblet dig af det nye her — og hvad koster det den relevans og dømmekraft, du skal leve af de kommende årtier?</p>
+  </div>
+</section>
+<section class="section" id="d1">
+  <div class="container">
+    <div class="section-label">Greb 1 af 4</div>
+    <h3>Deltag selv</h3>
+    <p>Det første tab sker, fordi den erfarne leder ofte kender AI kun gennem andres øjne: en præsentation fra en yngre kollega, en konsulents slides, en artikel. Det giver et andenhåndsbillede — nok til at nikke med, men ikke nok til at bedømme. Man fornemmer ikke, hvad værktøjet faktisk kan og ikke kan, hvor det er stærkt, og hvor output kan være lige så flydende og autoritativt i tonen, når det er forkert, som når det er rigtigt. Og uden den fornemmelse er man overladt til at stole på andres vurdering.</p>
+    <p>At deltage selv betyder at bruge værktøjerne med egne hænder — ikke for at blive ekspert, men for at få den førstehåndsfornemmelse, der gør det muligt at stille kvalificerede spørgsmål. For mange ledere er egen brug en effektiv måde at gøre diskussionen konkret på; en session med værktøjet i hånden kan vise noget andet end endnu en præsentation om det. Det handler ikke om at kunne det hele, men om at kende teknologien indefra nok til at kunne bedømme den udefra.</p>
+    <div class="scenario">
+      <div class="sc-label">Genkendelig situation</div>
+      <p>Lederen godkender en stor AI-investering på baggrund af en præsentation. Han stiller få spørgsmål, for han har ikke grundlaget for at stille flere. Bagefter kan han ikke selv vurdere, om projektet leverer det lovede — han må tro på de samme mennesker, der solgte ham idéen. Han har truffet en af årets største beslutninger uden selv at have rørt det, den handler om.</p>
+    </div>
+    <div class="signs">
+      <div class="signs-h">Kendetegn på, at du ikke deltager selv:</div>
+      <ul>
+        <li>Din viden om AI kommer næsten udelukkende fra andres præsentationer og referater</li>
+        <li>Du har truffet eller skal træffe beslutninger om værktøjer, du næsten ikke selv har brugt</li>
+        <li>Du kan ikke selv efterprøve, om de råd, du får om AI, er gode</li>
+      </ul>
+    </div>
+    <p class="reflection">Hvornår brugte du sidst selv de AI-værktøjer, du træffer beslutninger om — hånden på tasterne, ikke bare øret til en præsentation?</p>
+  </div>
+</section>
+
+<section class="section" id="d2">
+  <div class="container">
+    <div class="section-label">Greb 2 af 4</div>
+    <h3>Øv dømmekraften</h3>
+    <p>Det andet tab sker, når man begynder at bruge AI — og så stoler for meget på det. Det er en naturlig glidning: værktøjet producerer hurtige, velformulerede svar, og det bliver fristende at tage dem for gode varer. Men generativ AI kan give forkerte svar, der ser lige så overbevisende ud som de rigtige. Den, der holder op med at efterprøve, har ikke nødvendigvis sparet tænkning — han kan have givet den fra sig også i de tilfælde, hvor hans egen faglighed ville have fanget fejlen.</p>
+    <p>At øve dømmekraften betyder at forblive den, der vurderer. Behandl et AI-svar som et forslag, der skal efterprøves mod din egen faglighed og eksterne kilder — brugbart, men ikke autoritativt i kraft af sig selv. Forskningen peger på en association: højere tillid til værktøjet hænger sammen med mindre udøvet kritisk tænkning, og en beslægtet risiko — automation bias, tendensen til at overtage et systems output ukritisk — er veldokumenteret i menneske-AI-samarbejde (Romeo &amp; Conti, 2026). Modgiften er ikke mistillid, men at holde sin egen faglighed i spil og kalibrere, hvor meget der skal efterprøves, efter hvad opgaven kræver.</p>
+    <div class="scenario">
+      <div class="sc-label">Genkendelig situation</div>
+      <p>Lederen beder AI om en analyse og bruger den næsten ordret i en bestyrelsespræsentation. Den ser gennemarbejdet ud, og han har ikke tid til at grave. Senere viser ét af tallene sig at være forkert — noget, han for få år siden ville have fanget, fordi han dengang selv lavede analysen. Han sparede tid og mistede et kontroltrin, han ikke vidste, han var holdt op med at bruge.</p>
+    </div>
+    <div class="signs">
+      <div class="signs-h">Kendetegn på, at dømmekraften ikke øves:</div>
+      <ul>
+        <li>Du bruger AI's svar uden systematisk at efterprøve dem mod din egen viden eller andre kilder</li>
+        <li>Du mærker, at du tænker mindre selv om det, du beder værktøjet om</li>
+        <li>Du stoler mere på et hurtigt, velformuleret AI-svar end på din egen tvivl</li>
+      </ul>
+    </div>
+    <p class="reflection">Hvornår efterprøvede du sidst et AI-svar, du var fristet til bare at bruge — og hvad fandt du, da du gjorde?</p>
+  </div>
+</section>
+
+<section class="section" id="d3">
+  <div class="container">
+    <div class="section-label">Greb 3 af 4</div>
+    <h3>Modvirk afkobling</h3>
+    <p>Det tredje greb handler om, hvordan man bruger AI. Der er stor forskel på at bruge det til at udvide sin tænkning — tage det trivielle fra, søge bredere, teste sine egne idéer mod et modspil — og at bruge det til at springe selve overvejelsen over. Det første kan frigøre opmærksomhed til det, der kræver mest af en leder. Det andet kan, afhængigt af opgaven, betyde, at man overtager en konklusion uden selv at have vejet den.</p>
+    <p>At modvirke afkobling betyder bevidst at forholde sig til, hvad du selv vil vurdere. AI kan sagtens bidrage til både udkast og analyse — pointen er ikke at holde teknologien ude af det vigtige. Det afgørende spørgsmål er ikke, om opgaven er rutine eller strategi. Det er, hvad der sker, hvis AI tager fejl — og om du kan opdage det. Jo større konsekvenser en fejl har, jo sværere den er at gøre om, og jo vanskeligere den er at verificere, desto mere bør du forblive den, der aktivt tager stilling, frem for at lade et hurtigt svar træde i stedet for overvejelsen. Bekvemmelighed er her den stille fristelse, det er værd at være opmærksom på.</p>
+    <div class="scenario">
+      <div class="sc-label">Genkendelig situation</div>
+      <p>I starten brugte lederen AI til det rutineprægede: udkast, opsummeringer, research. Efterhånden lod han det også forme selve konklusionerne — hvad mødet burde beslutte, hvordan strategien burde lyde. Det var lettere. Men han mærkede, at han var begyndt at komme til møder uden selv at have tænkt sagen igennem. Han havde ikke sparet arbejde; han havde givet det fra sig, der gjorde ham til leder.</p>
+    </div>
+    <div class="signs">
+      <div class="signs-h">Kendetegn på, at afkoblingen er i gang:</div>
+      <ul>
+        <li>Du bruger i stigende grad AI til opgaver med store konsekvenser, uden at have en måde at opdage en fejl på</li>
+        <li>Du kommer til beslutninger uden selv at have tænkt dem igennem først</li>
+        <li>Du kan mærke, at bekvemmeligheden trækker dig mod at lade værktøjet afgøre det vigtige</li>
+      </ul>
+    </div>
+    <p class="reflection">Hvad bruger du AI til — og for hvilke af de opgaver ville en uopdaget fejl være dyrest? Hvordan sikrer du dig, at du ville opdage den?</p>
+  </div>
+</section>
+
+<section class="section" id="d4">
+  <div class="container">
+    <div class="section-label">Greb 4 af 4</div>
+    <h3>Miljø og eksempel</h3>
+    <p>Det sidste greb handler om, at en leders egen omgang med AI ikke er en privatsag. Beslutninger om, hvordan en organisation bruger AI, træffes ofte netop af erfarne ledere — og måden, lederen selv forholder sig på, sætter tonen. En leder, der afkobler sig, giver tavst lov til, at andre gør det samme. En leder, der lærer og bruger med omtanke, viser, at det både kan og bør gøres ordentligt.</p>
+    <p>At sætte miljø og eksempel betyder at behandle sin egen AI-kompetence som en del af ledelsen, ikke som noget rent personligt. Det betyder at skabe rum for, at organisationen lærer det ordentligt — med kritisk sans — frem for enten at forbyde det af frygt eller omfavne det ukritisk. Men eksemplets magt har en grænse: et godt rollemodelforbillede er ikke i sig selv nok til at drive adoption i en organisation; det kræver også struktur, træning og rammer. Lederen sætter altså både en beslutning og en tone — og skal sikre, at der er mere end tonen at rette sig efter.</p>
+
+    <div class="research-note"><strong>Kontekst (regulering, pr. september 2026):</strong> For danske og øvrige EU-organisationer er AI-literacy heller ikke kun et personligt udviklingsvalg. AI-forordningens artikel 4 kræver, at providers og deployers tager tiltag, der understøtter udviklingen af AI-literacy hos medarbejdere og andre, der anvender systemerne på deres vegne. Der er ikke fastsat ét bestemt eller »tilstrækkeligt« individuelt kompetenceniveau. Hvad der er relevant, afhænger blandt andet af rolle, erfaring, anvendelse og kontekst. Dette paper er ikke juridisk rådgivning. <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+    <div class="scenario">
+      <div class="sc-label">Genkendelig situation</div>
+      <p>Lederen siger til organisationen, at AI er vigtigt, og at alle skal lære det. Men han bruger det ikke selv, og han stiller ingen krav til, hvordan det bruges klogt. Resultatet er en blanding: nogle bruger det ukritisk, andre lader være, og ingen har et eksempel at rette sig efter. Han bad om en kultur, han ikke selv viste.</p>
+    </div>
+    <div class="signs">
+      <div class="signs-h">Kendetegn på, at eksemplet mangler:</div>
+      <ul>
+        <li>Du opfordrer andre til at bruge AI, men bruger det ikke selv i praksis</li>
+        <li>Der er ingen fælles forventning i din organisation om, hvordan AI bruges med kritisk sans</li>
+        <li>Holdningen til AI hos jer svinger mellem ukritisk begejstring og undgåelse, uden en midte</li>
+      </ul>
+    </div>
+    <p class="reflection">Hvilket eksempel sætter din egen omgang med AI for din organisation — og er det det eksempel, du gerne vil sætte?</p>
+  </div>
+</section>
+<section class="section" id="grammatik">
+  <div class="container">
+    <div class="section-label">05 — Det sproglige lag</div>
+    <h2>Fremmedgørelsens grammatik</h2>
+    <p>Den delegerede forståelse vedligeholdes af et sprog. Fire sætninger optræder igen og igen, når en erfaren leder forklarer, hvorfor AI ikke rigtig er hans bord. De lyder som fornuftig arbejdsdeling eller sund skepsis. Men flere af dem er måder at retfærdiggøre, at man har koblet sig af det, man er sat til at bedømme.</p>
+
+    <p class="pull-quote">Man kan uddelegere udførelsen. Men i det øjeblik man også uddelegerer forståelsen, uddelegerer man dømmekraften — og det var den, man var ansat for.<cite>— Thomas Friisnæs</cite></p>
+
+    <div class="signs">
+      <div class="signs-h">»Det er en teknisk sag for de yngre.«</div>
+      <ul>
+        <li>Lyder som: fornuftig delegering. Er: ofte en afkobling forklædt som arbejdsdeling. Beslutninger om, hvordan AI bruges, træffes i vid udstrækning også af erfarne medarbejdere; at kalde det »teknisk« fritager ikke den, der skal bedømme det, for at forstå det.</li>
+      </ul>
+    </div>
+    <div class="signs">
+      <div class="signs-h">»Det går nok over — det er hype.«</div>
+      <ul>
+        <li>Lyder som: erfaren skepsis mod forbigående trends. Er: nogle gange berettiget, nogle gange en gambling på, at en teknologi, der allerede er taget bredt i brug, ikke får varig betydning i ens eget felt. Skepsis er sund, men den holder bedst, når den bygger på egen forståelse frem for på afstand — ellers er det et gæt forklædt som dømmekraft.</li>
+      </ul>
+    </div>
+    <div class="signs">
+      <div class="signs-h">»Jeg har ikke tid til at lære det.«</div>
+      <ul>
+        <li>Lyder som: en realitet i en fyldt kalender. Er: en prioritering, der har en pris. Det kræver ikke ekspertise, men eksponering — nok egen brug til at kunne bedømme. Interessen er som regel der; det er timerne i kalenderen, der mangler.</li>
+      </ul>
+    </div>
+    <div class="signs">
+      <div class="signs-h">»AI kan jo klare det hele for mig.«</div>
+      <ul>
+        <li>Lyder som: begejstret omfavnelse. Er: den modsatte grøft — lige så risikabel som afvisningen. At overlade også vurderingerne til værktøjet er forbundet med mindre kritisk tænkning. Den kloge brug ligger mellem afvisning og blind tillid.</li>
+      </ul>
+    </div>
+
+    <p>Grammatikken er ikke uærlig. Hver sætning peger på noget reelt — arbejdsdeling, skepsis, travlhed, begejstring. Men tilsammen udgør de et sprog, der enten kobler lederen af det nye eller får ham til at overgive sig ukritisk til det. Begge dele koster dømmekraft. At høre sætningerne i sin egen mund er første skridt til at tage rollen som dommer tilbage.</p>
+    <p class="reflection">Hvilken af de fire sætninger bruger du oftest — og trækker den dig mod at koble dig af eller mod at overgive dig ukritisk?</p>
+  </div>
+</section>
+
+<section class="section" id="exercise">
+  <div class="container">
+    <div class="section-label">06 — Øvelse</div>
+    <h2>Kortlæg din AI-relevans</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · Skriftlig</div>
+      <div class="ex-meta">⏱ 15 minutter · En struktureret refleksion, ikke en test af din AI-kompetence</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Formålet er ikke at måle, hvor teknisk dygtig du er — det kan denne øvelse ikke, og det er heller ikke pointen. Det er at se, om du forstår AI, dér hvor teknologien er blevet strategisk relevant for dit felt, godt nok til at bedømme den, og om du bruger den som en, der stadig tænker selv. Vær ærlig; ingen ser dine svar.</p>
+      <ol>
+        <li><strong>Deltag selv:</strong> Hvornår brugte du sidst selv de AI-værktøjer, du træffer beslutninger om? Skriv det ned. Kommer din viden mest fra egen brug eller fra andres præsentationer?</li>
+        <li><strong>Øv dømmekraften:</strong> Når du bruger AI, efterprøver du så svarene mod din egen faglighed og andre kilder — eller tager du dem for gode varer? Notér et ærligt skøn.</li>
+        <li><strong>Modvirk afkobling:</strong> Hvilke opgaver bruger du AI til, hvor store konsekvenser ville en fejl have, og hvordan verificerer du resultatet? Notér, hvor en uopdaget fejl ville koste mest.</li>
+        <li><strong>Miljø og eksempel:</strong> Hvilket eksempel sætter din egen omgang med AI for din organisation? Notér, om du viser den kultur, du beder om.</li>
+        <li><strong>Prioritering:</strong> Se på dine fire svar. Hvor er dit største hul? Skriv det ene greb ned, der ville gøre størst forskel, og én konkret ting, du vil gøre ved det den kommende måned.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">07 — 2-minutters mikrohandling</div>
+    <h2>Gør dette, før du lukker fanen</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · nu</span>
+      <h3>Book en time med værktøjet i egen hånd</h3>
+      <p>Åbn din kalender. Læg <strong>én time</strong> ind i den kommende uge, hvor du selv bruger et AI-værktøj, der er relevant for dit felt — på en reel opgave. Brug kun værktøjer, din organisation har godkendt, og respekter fortrolighed, persondata og interne retningslinjer; en åbningscase-agtig eksperimentlyst må ikke koste et databrud. Giv timen et navn, der forpligter: ikke »kigge på AI«, men »løse X med værktøjet selv«. Og skriv ét spørgsmål ned, du vil kunne besvare bagefter: Hvad kan det hjælpe mig med i denne opgave, hvad kan jeg selv verificere, og hvor er jeg usikker på dets pålidelighed?</p>
+      <p>Det gør dig ikke til ekspert på en time, og der findes ikke ét rigtigt timetal. Pointen er at erstatte et andenhåndsindtryk med din egen erfaring — nok til at du kan stille bedre spørgsmål til dem, der ved mere end dig. For nogle er en time et fint sted at begynde; for andre noget andet. Det afgørende er at begynde med hænderne på, ikke kun øret til.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">08 — Commitment & progress</div>
+    <h2>Commit dig — og følg din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 08 · Relevansen</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv dit ene commitment for dette paper. Det gemmes lokalt i din browser — ingen konto, intet sendes nogen steder — og din progress følger dig gennem alle ti papers.</p>
+      <label for="commitText">Min ene ændring (inden 48 timer)</label>
+      <textarea id="commitText" placeholder="Formulér én konkret ændring — det du faktisk vil gøre inden for 48 timer. Ikke en hensigt. Et skridt med et verbum."></textarea>
+      <div class="commit-actions">
+        <button class="commit-btn primary" onclick="saveCommit()">Gem commitment</button>
+        <button class="commit-btn ghost" onclick="markDone()">Marker paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Executive Longevity</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="executive-longevity.html">Se hele din progress på oversigtssiden →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">09 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Er AI ikke mest noget for de yngre i organisationen? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">I AARP's arbejdsgiver-survey sagde 46 %, at de fleste eller alle beslutninger om, hvor og hvordan AI bruges, blev truffet af medarbejdere på 40+. Det er ikke det samme som, at alle er C-level, eller at 40+ generelt er bedre beslutningstagere. Pointen er blot, at alder ikke placerer AI uden for den erfarne medarbejders eller leders ansvarsområde. At kalde det »teknisk« og delegere det væk fritager ikke den, der skal bedømme det, for at forstå det.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Bliver jeg ikke bare overhalet af yngre, der er vokset op med det? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ikke på den måde, mange frygter. Alder er en dårlig proxy for AI-kompetence — brug, træning, opgavetype, domæneviden og erfaring med det konkrete system betyder alle noget. Læringsrelaterede evner følger forskellige aldersbaner, men meningsfuld ny læring er fortsat mulig, som det forrige paper viste. Din risiko er ikke, at du ikke kan følge med teknisk, men at du holder op med at sætte dig ind i det, du er sat til at bedømme.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er der ikke en risiko ved at bruge AI for meget? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja, og det er en vigtig nuance. Et studie af vidensarbejdere fandt, at højere tillid til AI'en var forbundet med mindre udøvet kritisk tænkning — man kan komme til at overtage svar, man ikke selv har vurderet — og et review peger på, at det at overlade tænkning til AI kan hæmme færdighedstilegnelse, afhængigt af hvordan det bruges. Det er ikke et argument mod at bruge AI, men for at bruge det bevidst: efterprøv, hvor opgaven kræver det, og forbliv den, der afgør, hvor meget verifikation der er nødvendig. Det er associationer og et review, ikke et bevis for, at AI i sig selv forringer dømmekraft.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal jeg så blive AI-ekspert? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Din opgave er ikke at kode eller kende hver funktion — det er at forstå teknologien godt nok til at bedømme den. Det kræver eksponering, ikke ekspertise: nok egen brug til at fornemme, hvad værktøjet kan og ikke kan, og til at stille kvalificerede spørgsmål til dem, der ved mere. Og vær ærlig om, at menneskelig oversight ikke er ufejlbar — erfaren dømmekraft er ikke automatisk bedre end et godt AI-output; pointen er ikke, at lederen altid har ret, men at han forbliver ansvarlig for at afgøre, hvor meget der skal efterprøves. Det er en realistisk og nødvendig ambition for en leder.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hænger dette sammen med de andre papers i serien? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja, det binder Del 2 sammen. AI-kompetence er en form for læring (paper 07), og den erfarne leders læringsopgave er den samme: koble det nye til den viden, man har. Risikoen for kognitiv afkobling ligner den fragmenterede opmærksomhed fra fokus-paperet (paper 05) — begge handler om at bevare dømmekraften. Og livslang læring og kognitivt stimulerende aktivitet er blandt de eksponeringer/proxies, der forbindes med reserve-relaterede profiler (paper 06). AI er den aktuelle prøve på hele Del 2.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Feltet ændrer sig jo hele tiden — hvordan skal man følge med? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Man skal ikke følge med i alt, og det er heller ikke pointen. De konkrete værktøjer og modeller ændrer sig hurtigt. Den mere holdbare kompetence er ikke at kende hvert modelnavn, men løbende at teste, verificere, forstå risiko og opdatere sin mentale model, efterhånden som teknologien flytter sig. En vane med regelmæssigt selv at bruge og efterprøve det, der er relevant for dit felt, holder længere end kendskab til et enkelt værktøj.</div>
+    </details>
+  </div>
+</section>
+
+<section class="section" id="next">
+  <div class="container">
+    <div class="section-label">10 — Fra analyse til handling</div>
+    <h2>Den relevans, du kan begynde at forsvare i dag</h2>
+    <p>Der findes ikke én enkel historie, hvor AI enten erstatter eller redder den erfarne professionelle. Effekterne varierer med opgave, system, branche og måde at bruge teknologien på. Men adoptionen er allerede stor nok til, at mange ledere skal træffe reelle beslutninger om den. Gjort til en disciplin, ikke et teknisk projekt: deltage selv, øve dømmekraften, modvirke afkobling, og sætte et eksempel. Ikke for at blive ekspert, men for at forblive den, der kan bedømme, hvornår teknologien fortjener tillid.</p>
+    <p>Det gør AI-kompetence til et spørgsmål om professionel longevity: ikke fordi AI holder hjernen ung, men fordi lange lederkarrierer kræver fortsat tilpasning til nye værktøjer, muligheder og risici. AI-kompetence er her et aldringsspørgsmål i karrieremæssig forstand — ikke en biologisk anti-aging-intervention. Et praktisk første skridt er ikke at spørge: »Skal jeg lære alt om AI?« Det skal du ikke. Det er at spørge: »Forstår jeg AI, dér hvor det er blevet strategisk relevant i mit felt, godt nok til at bedømme det — eller har jeg delegeret den forståelse væk?«</p>
+
+    <p class="pull-quote">Du behøver ikke være den bedste i organisationen til AI. Men hvis du ejer beslutningen, skal du forstå teknologien godt nok til at vide, hvornår den fortjener din tillid.<cite>— Thomas Friisnæs</cite></p>
+
+    <h3 style="margin-top:36px;">Vil du arbejde videre med dette?</h3>
+    <p>Har dette paper beskrevet et mønster, du kender — fra dig selv eller din hverdag? Nedenfor er fire naturlige næste skridt.</p>
+    <p>Dette er det ottende paper og afslutningen på <strong>Del 2: Sindet</strong>. Det næste — første paper i Del 3 — er <a href="executive-longevity-belastning.html" style="color:var(--gold);">Den usynlige regning: stress og regulering.</a> Hele samlingen — ti papers i fire dele — er kortlagt nederst på siden.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="executive-longevity.html">
+        <div class="nc-tag">Hele serien</div>
+        <div class="nc-text"><strong>Se alle ti papers</strong> og følg din progress gennem Executive Longevity</div>
+      </a>
+      <a class="next-card" href="/#kontakt">
+        <div class="nc-tag">Executive Coaching</div>
+        <div class="nc-text"><strong>Forvalt din kapacitet</strong> i et coaching-forløb bygget om de kommende ti-femten år</div>
+      </a>
+      <a class="next-card" href="/#kontakt">
+        <div class="nc-tag">Foredrag</div>
+        <div class="nc-text"><strong>Executive longevity som tema</strong> for et oplæg til din ledergruppe eller bestyrelse</div>
+      </a>
+      <a class="next-card" href="/#kontakt">
+        <div class="nc-tag">Sparring</div>
+        <div class="nc-text"><strong>En fortrolig samtale</strong> om det, der fylder hos dig lige nu — 20 minutter</div>
+      </a>
+    </div>
+    <a class="start-btn" href="/#kontakt">Start en samtale →</a>
+  </div>
+</section>
+
+</main>
+
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Inspiration og forskningsgrundlag</div>
+    <ul>
+      <li>Perron, R. (2026). »AI, Employers, and the Multigenerational Workforce: Final Report.« <em>AARP Research</em> (survey af 1.019 amerikanske arbejdsgivere med 50+ ansatte, nov.-dec. 2025). <a href="https://doi.org/10.26419/res.01051.001" target="_blank" rel="noopener">doi.org/10.26419/res.01051.001</a></li>
+      <li>Perron, R. (2026). »How AI is Impacting the Future of Work Among Adults Age 50-Plus« (Wave 3, felt marts 2026, N = 1.015, US 50+ i arbejdsstyrken). <em>AARP Research</em>. <a href="https://doi.org/10.26419/res.00848.001" target="_blank" rel="noopener">doi.org/10.26419/res.00848.001</a></li>
+      <li>Bick, A., Blandin, A. &amp; Deming, D. J. (2024; rev. 2025). »The Rapid Adoption of Generative AI.« <em>NBER Working Paper</em> 32966 (nationalt repræsentativ US-survey af generativ AI-adoption). <a href="https://doi.org/10.3386/w32966" target="_blank" rel="noopener">doi.org/10.3386/w32966</a></li>
+      <li>Dell'Acqua, F., McFowland III, E., Mollick, E. et al. (2026). »Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of Artificial Intelligence on Knowledge Worker Productivity and Quality.« <em>Organization Science</em>, 37(2), 403-423 (præregistreret felteksperiment, 758 konsulenter). <a href="https://doi.org/10.1287/orsc.2025.21838" target="_blank" rel="noopener">doi.org/10.1287/orsc.2025.21838</a></li>
+      <li>Lee, H.-P., Sarkar, A., Tankelevitch, L. et al. (2025). »The Impact of Generative AI on Critical Thinking: Self-Reported Reductions in Cognitive Effort and Confidence Effects From a Survey of Knowledge Workers.« <em>Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems</em>, 1-22 (319 vidensarbejdere, 936 eksempler). <a href="https://doi.org/10.1145/3706598.3713778" target="_blank" rel="noopener">doi.org/10.1145/3706598.3713778</a></li>
+      <li>Cash, T. N., Kelly, M. O., Macnamara, B. N. &amp; Risko, E. F. (2026). »Is AI making us stupid?« <em>Trends in Cognitive Sciences</em>, 30(8), 673-675 (review om cognitive offloading, skill-tilegnelse og -henfald). <a href="https://doi.org/10.1016/j.tics.2026.06.004" target="_blank" rel="noopener">doi.org/10.1016/j.tics.2026.06.004</a></li>
+      <li>Romeo, G. &amp; Conti, D. (2026). »Exploring automation bias in human–AI collaboration.« <em>AI &amp; Society</em>, 41, 259-278. <a href="https://doi.org/10.1007/s00146-025-02422-7" target="_blank" rel="noopener">doi.org/10.1007/s00146-025-02422-7</a></li>
+      <li>Sanzenbacher, G. T. (2026). »Are the Careers of Older Workers Being Cut Short by AI?« <em>Center for Retirement Research at Boston College</em>, Issue in Brief 26-13 (CPS-data kombineret med estimater for jobs AI-eksponering). <a href="https://crr.bc.edu/are-the-careers-of-older-workers-being-cut-short-by-ai/" target="_blank" rel="noopener">crr.bc.edu</a></li>
+      <li>Europa-Parlamentet og Rådet (2024). Forordning (EU) 2024/1689 (AI-forordningen), artikel 4 om AI-literacy; jf. Europa-Kommissionen, »AI Literacy – Questions &amp; Answers« (2026). <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener">eur-lex.europa.eu</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Executive Longevity — den komplette samling</div>
+    <h2 class="collection-title">Ti papers i fire dele</h2>
+    <p class="collection-intro">Serien bevæger sig fra kroppen, til sindet, til belastningen, til meningen. Hvert paper kan læses alene. Tilsammen udgør de en samlet forvaltning af den kapacitet, der afgør de kommende årtier.</p>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 1</span><span class="cpart-name">Maskinen</span></div>
+      <p class="cpart-desc">Det fysiske fundament under dømmekraften.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="executive-longevity-soevn.html">Motoren — søvn som præstationsfaktor</a></li>
+        <li data-n="02"><a href="executive-longevity-fysisk-kapacitet.html">Iltoptaget — VO₂ max og muskelstyrke</a></li>
+        <li data-n="03"><a href="executive-longevity-alkohol.html">Den blinde vane — alkohol og kognitiv pris</a></li>
+        <li data-n="04"><a href="executive-longevity-restitution.html">Restitution som disciplin</a></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 2</span><span class="cpart-name">Sindet</span></div>
+      <p class="cpart-desc">Den kognitive kapacitet, når erfaringen er størst.</p>
+      <ol class="cpart-papers">
+        <li data-n="05"><a href="executive-longevity-fokus.html">Fokus i en afbrudt verden</a></li>
+        <li data-n="06"><a href="executive-longevity-kognitiv-reserve.html">Kognitiv reserve</a></li>
+        <li data-n="07"><a href="executive-longevity-laering.html">At blive ved med at lære</a></li>
+        <li data-n="08"><span class="current">Relevansen — du læser dette</span></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 3</span><span class="cpart-name">Belastningen</span></div>
+      <p class="cpart-desc">Sindet under vægt — det slid, der akkumulerer usynligt.</p>
+      <ol class="cpart-papers">
+        <li data-n="09"><a href="executive-longevity-belastning.html">Den usynlige regning — stress og regulering</a></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 4</span><span class="cpart-name">Meningen</span></div>
+      <p class="cpart-desc">Det, der holder motoren i gang — inklusive identiteten ud over rollen.</p>
+      <ol class="cpart-papers">
+        <li data-n="10"><a href="executive-longevity-mening.html">Motiven bag motoren — mening, relationer, retning og identitet</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller dele.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="executive-longevity-belastning.html">
+      <span class="ra-tag">Næste paper · Executive Longevity</span>
+      <span class="ra-title">Den usynlige regning: Stress og regulering</span>
+    </a>
+    <a href="executive-longevity-laering.html">
+      <span class="ra-tag">Relateret · Del 2</span>
+      <span class="ra-title">At blive ved med at lære: Neuroplasticitet efter de 50</span>
+    </a>
+    <a href="executive-longevity.html">
+      <span class="ra-tag">Hele serien</span>
+      <span class="ra-title">Executive Longevity: Ti papers om kapaciteten der afgør de sidste tyve år</span>
+    </a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Executive Longevity · Paper 08</div>
+        <div class="series-next">Næste: Den usynlige regning</div>
+        <a href="executive-longevity.html">Se hele serien →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+  var LS_C = 'el_p08_commit', LS_D = 'el_done';
+  (function init() {
+    try { var c = localStorage.getItem(LS_C); if (c) document.getElementById('commitText').value = c; renderProgress(); } catch (e) {}
+  })();
+  function saveCommit() {
+    try { localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try { var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(8) === -1) done.push(8);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓'; renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try { var done = JSON.parse(localStorage.getItem(LS_D) || '[]'); var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af 10 gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / 10) * 100)) + '%';
+      if (done.indexOf(8) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+  function friisnaesPdf(econo) {
+    try { document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () { if (econo) document.body.classList.remove('print-econo'); window.removeEventListener('afterprint', cleanup); };
+      window.addEventListener('afterprint', cleanup); window.print(); setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

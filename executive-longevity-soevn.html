@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motoren: Søvn som den underkendte præstationsfaktor | Thomas Friisnæs</title>
+<meta name="description" content="Søvn er en af de mest underkendte præstationsfaktorer hos højtfungerende ledere. Den kan koste dømmekraft, før du selv oplever dig markant træt. Første paper i Executive Longevity-serien: VÆRN-modellen, øvelse og FAQ til C-level ledere.">
+<meta name="keywords" content="søvn ledelse, executive longevity, dømmekraft søvnmangel, søvn og beslutninger, leder søvn, kognitiv præstation, søvnrestitution topledelse">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/executive-longevity-soevn.html">
+
+<meta property="og:title" content="Motoren: Søvn som den underkendte præstationsfaktor | Thomas Friisnæs">
+<meta property="og:description" content="Søvn kan koste dømmekraft, før du selv oplever dig markant træt. Første paper i Executive Longevity: forvaltning af den kapacitet, alt andet hviler på.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/executive-longevity-soevn.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Motoren: Søvn som den underkendte præstationsfaktor">
+<meta name="twitter:description" content="Søvn kan koste dømmekraft, før du selv oplever dig markant træt. Første paper i Executive Longevity.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .micro-action, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Motoren: Søvn som den underkendte præstationsfaktor",
+ "description": "Søvn er en af de mest underkendte præstationsfaktorer hos højtfungerende ledere. Den kan koste dømmekraft, før du selv oplever dig markant træt.",
+ "author": { "@type": "Person", "@id": "https://www.friisnaes.com/#person", "name": "Thomas Friisnæs", "url": "https://www.friisnaes.com/" },
+ "publisher": { "@type": "Organization", "name": "Friisnæs", "url": "https://www.friisnaes.com/" },
+ "url": "https://www.friisnaes.com/executive-longevity-soevn.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": { "@type": "CreativeWorkSeries", "name": "Executive Longevity", "url": "https://www.friisnaes.com/executive-longevity.html" },
+ "inLanguage": "da",
+ "datePublished": "2026-09-09",
+ "dateModified": "2026-09-09"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Executive Longevity · Del 1 · Paper 01 af 10</div>
+  <div class="pc-title">Motoren: Søvn som den underkendte præstationsfaktor</div>
+  <div class="pc-sub">Søvn kan koste dømmekraft, før du selv oplever dig markant træt.</div>
+  <div class="pc-author">Af Thomas Friisnæs · Executive Coach · Karakter · Disciplin · Klarhed · friisnaes.com</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Executive Longevity</span>
+      <span class="wp-series">Del 1 · Paper 01 af 10</span>
+      <span class="wp-readtime">15 min læsning</span>
+    </div>
+    <h1>Motoren: søvn som den underkendte <em>præstationsfaktor</em></h1>
+    <p class="wp-subtitle">Den kan koste dømmekraft, før du selv oplever dig markant træt. Og den, der har sværest ved at se det, er den, der sover for lidt.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · Executive Coach, Karakter · Disciplin · Klarhed<br>Mere end 20 års erfaring · 15.000+ coachingsamtaler med C-level ledere, ejerledere og bestyrelsesmedlemmer · Udgivet 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Scenariet du kender</a></li>
+      <li><a href="#problem">Søvn som ledelsesproblem</a></li>
+      <li><a href="#kri">Seriens pejlemærke: Krop</a></li>
+      <li><a href="#framework">VÆRN — fire greb om nattens kapacitet</a></li>
+      <li><a href="#v1">Værn</a></li>
+      <li><a href="#v2">Ærlighed</a></li>
+      <li><a href="#v3">Rytme</a></li>
+      <li><a href="#v4">Nedtrapning</a></li>
+      <li><a href="#grammatik">Søvnbenægtelsens grammatik</a></li>
+      <li><a href="#exercise">Øvelse: Kortlæg din søvnkapacitet</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit commitment & din progress</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#next">Fra analyse til handling</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase</div>
+    <h2>Scenariet du kender</h2>
+    <p>Direktøren er 58 og har ledet virksomheden i elleve år. Han er stolt af sin kapacitet: først op, sidst i seng, altid tilgængelig. Han sover fem-seks timer og har gjort det så længe, at han oplever det som en styrke — et bevis på, at han kan mere end de fleste. »Jeg har aldrig haft brug for meget søvn,« siger han. Det lyder som selvdisciplin.</p>
+    <p>I samme periode har to ting ændret sig, som han ikke forbinder med hinanden. Hans beslutninger er blevet hurtigere og mere kategoriske — han kalder det erfaring. Og hans direktion er blevet mere tavs — han kalder det alignment. Ingen af delene fortæller ham, at han træffer flere beslutninger på et smallere grundlag, og at hans reaktioner er blevet skarpere på en måde, folk omkring ham har lært at holde sig fra.</p>
+    <p>Han er ikke doven, og han er ikke svag. Han er en dygtig leder, der har bygget en identitet op omkring at kunne undvære det, andre har brug for. Problemet er ikke, at han ikke arbejder hårdt nok. Problemet er, at den motor, hans dømmekraft kører på, har kørt uden tilstrækkelig olie så længe, at han ikke længere kan høre, at den går uregelmæssigt.</p>
+    <p>Det er ikke et spørgsmål om viljestyrke. Det er et kapacitetsproblem. Og det er et af de mest udbredte — og mindst erkendte — jeg møder hos ledere over 50.</p>
+  </div>
+</section>
+
+<!-- 02 PROBLEM -->
+<section class="section" id="problem">
+  <div class="container">
+    <div class="section-label">02 — Problemet navngivet</div>
+    <h2>Søvn som ledelsesproblem</h2>
+    <p>Søvn behandles i lederkredse som et privat anliggende — noget, der hører hjemme sammen med kost og motion, i kategorien »sundhed«, adskilt fra det, der virkelig tæller: dømmekraft, beslutninger, lederskab. Den adskillelse er forkert. Søvn er ikke et wellness-emne. Det er en af de mest oversete forudsætninger for den kapacitet, du leder med.</p>
+    <p>De fleste ledere forsøger at kompensere for søvnunderskud med det, de er gode til: mere kaffe, mere struktur, mere vilje. Det virker på følelsen af træthed, men ikke nødvendigvis på det, der er svækket. For her ligger den ubehagelige pointe: <strong>søvn kan koste dømmekraft, før du selv oplever dig markant træt.</strong> Du kan føle dig funktionsdygtig, mens den kapacitet, du holder fokus, regulerer impulser og træffer komplekse beslutninger med, allerede er reduceret.</p>
+
+    <p class="pull-quote">Søvn er ikke det, der er tilbage, når arbejdet er gjort. Det er det, der afgør kvaliteten af arbejdet, før det begynder.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Mekanismen er velbeskrevet. Søvntab påvirker flere af de neurale netværk, der understøtter opmærksomhed, kognitiv kontrol og eksekutive funktioner. Den præfrontale cortex indgår centralt i flere af dem, men effekten er hverken begrænset til ét hjerneområde eller identisk på tværs af alle opgaver. Det robuste ledelsesbudskab er enklere end neuroanatomien: utilstrækkelig søvn kan reducere præcis den kapacitet, du bruger til at holde fokus, styre dine impulser og træffe de svære beslutninger.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (review):</strong> Krause et al. (2017), <em>The sleep-deprived human brain</em>, Nature Reviews Neuroscience, gennemgår, hvordan søvntab rammer flere neurale systemer bag opmærksomhed og eksekutiv funktion. Killgore (2010) finder stærk evidens for svækket alertness, opmærksomhed og vigilance, men mere blandede resultater for visse højere kognitive funktioner.</div>
+
+    <p>Der er et tal, der gør det konkret. I klassiske kontrollerede studier var 17-19 timers sammenhængende vågenhed på visse kognitive og motoriske tests forbundet med præstation svarende til eller dårligere end ved en blodalkoholkoncentration på 0,05 % — altså 0,5 ‰. Efter længere tids vågenhed nåede præstationen på nogle tests niveauer svarende til omkring 0,10 % BAC — 1,0 ‰. Sammenligningen betyder ikke, at søvnmangel og alkohol biologisk er det samme, og den gælder nogle tests, ikke enhver kognitiv funktion. Den illustrerer størrelsesordenen af den målbare præstationsforringelse.</p>
+
+    <p>Pointen er ikke tallet i sig selv. Pointen er, at ingen leder bevidst ville gå ind til en vigtig beslutning alkoholpåvirket — men mange accepterer et alvorligt søvnunderskud uden den samme respekt for risikoen.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (kontrollerede studier):</strong> Williamson &amp; Feyer (2000, <em>Occup Environ Med</em>) fandt, at 17-19 timers vågenhed på nogle tests gav præstation svarende til eller dårligere end BAC 0,05 %, og at længere vågenhed nåede niveauer op mod 0,10 %. Dawson &amp; Reid (1997, <em>Nature</em>) rapporterede en tilsvarende sammenhæng mellem timer vågen og præstationsforringelse.</div>
+
+    <p>Og her ligger en af de vigtigste fælder. Ved gentagen søvnrestriktion kan den objektive præstation fortsætte nedad dag for dag, mens den subjektive oplevelse af søvnighed kun ændrer sig beskedent. Du kan altså vænne dig til <strong>følelsen</strong> af for lidt søvn, uden at din præstation har vænnet sig til belastningen. Derfor er »jeg føler mig egentlig fin« et dårligere måleinstrument, end mange ledere tror — ikke fordi de lyver, men fordi fornemmelsen simpelthen halter bagefter tabet.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (randomiseret studie):</strong> Van Dongen et al. (2003, <em>Sleep</em>) randomiserede raske voksne til 4, 6 eller 8 timers tid i sengen pr. nat i 14 dage. Ved 4 og 6 timer akkumulerede dosisafhængige kognitive deficits, mens deltagernes subjektive søvnighed steg langt mindre end den objektive forringelse — forfatterne konkluderede, at deltagerne i høj grad var uvidende om deres voksende underskud.</div>
+
+    <p>For en leder er konsekvensen ikke kun privat. Den er organisatorisk. Christopher Barnes, professor ved University of Washington og forsker i blandt andet organisationsadfærd, ledelse og søvn, har gennem en række studier undersøgt, hvordan lederes søvn påvirker deres ledelse. I ét studie hang lavere søvn<em>kvalitet</em> — ikke søvnmængde — sammen med større ego depletion, som via mere urimelig ledelsesadfærd førte til lavere engagement i enheden næste dag. I et separat eksperiment reducerede søvndeprivation hos ledere ligefrem følgernes vurdering af deres karismatiske ledelse: den energi, det kræver at inspirere andre, er svær at mobilisere på en tom tank.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (to studier):</strong> Barnes et al. (2015, <em>Academy of Management Journal</em>) fandt en indirekte sammenhæng fra lav søvnkvalitet via ego depletion til mere urimelig ledelsesadfærd og lavere engagement. Barnes et al. (2016, <em>Journal of Applied Psychology</em>) viste eksperimentelt, at søvndeprivation hos ledere sænkede følgernes vurdering af deres karisma. Barnes' oversigt i <em>Harvard Business Review</em> (2018) formidler forskningen til ledere.</div>
+
+    <p>I mine samtaler med topledere er søvn det emne, der oftest afvises hurtigst — og som, når det undersøges, viser sig at have den mest direkte forbindelse til de mønstre, lederen egentlig gerne vil ændre: de forhastede beslutninger, den korte lunte, den snævrere dømmekraft. <strong>Problemet er ikke, at lederen ikke kan sove. Problemet er, at han har gjort det til en dyd at lade være.</strong></p>
+
+    <div class="cost-box">
+      <div class="cb-label">Hvad søvnunderskud koster — konkret</div>
+      <div class="cost-grid">
+        <div class="cost-item">
+          <div class="ci-h">Dømmekraft</div>
+          <p>Beslutninger træffes på et smallere grundlag, med mindre impulskontrol og dårligere risikovurdering. Præcis dér, hvor en leders værdi ligger.</p>
+        </div>
+        <div class="cost-item">
+          <div class="ci-h">Relationer</div>
+          <p>Den tømte selvkontrol viser sig som kortere lunte og skarpere tone. Teamet tilpasser sig — og holder op med at bringe dig det, du har mest brug for at høre.</p>
+        </div>
+        <div class="cost-item">
+          <div class="ci-h">Udstråling</div>
+          <p>Den energi, der får mennesker til at følge dig, kan ikke mobiliseres på en tom tank. Fladheden læses som manglende overbevisning.</p>
+        </div>
+        <div class="cost-item">
+          <div class="ci-h">Selvindsigt</div>
+          <p>Den dyreste post: din subjektive oplevelse følger ikke nødvendigvis det objektive tab. Du kan føle dig relativt normal, selv mens din målbare præstation er forringet.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 KRI / KROP -->
+<section class="section" id="kri">
+  <div class="container">
+    <div class="section-label">03 — Seriens pejlemærke</div>
+    <h2>Krop: den første af seks kapaciteter</h2>
+    <p>Hele denne serie hviler på ét spørgsmål: kan du stadig præstere på højt niveau om ti-femten år? For at gøre det spørgsmål håndterbart måler jeg executive longevity på seks kapaciteter — <strong>Krop, Kognition, Belastning, Mening, Relationer og Retning</strong>. Tilsammen udgør de det, jeg kalder ELI: Executive Longevity Index.</p>
+    <p>Dette paper handler om den første, <strong>Krop</strong>. Det begynder med søvn, fordi den ligger under både fysisk restitution og en stor del af den kognitive kapacitet, resten af serien skal bygge videre på. Ikke fordi kost og motion er uvæsentlige — de får deres egne papers — men fordi en træt krop træner dårligere, spiser dårligere og restituerer dårligere. Søvn er seriens strategiske startpunkt: det greb, de andre lettest hviler på.</p>
+    <p>Målet er ikke at sove mest muligt. Det er at holde din kropslige kapacitet høj nok til, at dømmekraften har noget at køre på — år efter år. Spørgsmålet, hvert element i serien vender tilbage til, er det samme: <em>vedligeholder denne vane din kapacitet, eller tærer den på den reserve, du får brug for senere?</em></p>
+  </div>
+</section>
+
+<!-- 04 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">04 — Frameworket</div>
+    <h2>VÆRN — fire greb om nattens kapacitet</h2>
+    <p>Søvn er ikke et spørgsmål om at ville sove mere. De fleste ledere vil gerne — de kan bare ikke se, hvor kapaciteten lækker. VÆRN er min egen model: fire greb, der hver især lukker et af de steder, hvor en leders søvn typisk taber værdi. Modellen er bevidst enkel. Den skal kunne huskes på vej i seng, ikke slås op.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">VÆRN-modellen™</div>
+      <div class="fw-sub">Fire greb, der beskytter den kapacitet, søvnen bygger — designet til at forvalte Krop-dimensionen i ELI.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">V</div>
+        <div class="fw-step-body">
+          <h4>Værn</h4>
+          <p>Behandl søvn som en beskyttet ressource på linje med dine vigtigste møder. Det, der ikke har en plads i kalenderen og en grænse, andre respekterer, taber altid til det næste, der råber højere.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">Æ</div>
+        <div class="fw-step-body">
+          <h4>Ærlighed</h4>
+          <p>Erstat følelsen med en måling. Din oplevelse af, hvor udhvilet du er, er upålidelig — netop fordi søvnmangel svækker selvvurderingen. Se på timerne, ikke på fornemmelsen.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">R</div>
+        <div class="fw-step-body">
+          <h4>Rytme</h4>
+          <p>Regelmæssighed er en selvstændig kapacitetsfaktor. Hold søvn- og vågnetider nogenlunde stabile — men uden at gøre regelmæssighed til en undskyldning for systematisk at sove for lidt. Den stærkeste kombination er tilstrækkelig søvn og en stabil rytme.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">N</div>
+        <div class="fw-step-body">
+          <h4>Nedtrapning</h4>
+          <p>En leder går ikke i seng — han holder op med at arbejde og håber, søvnen følger. Byg en kort, fast overgang mellem den sidste skærm og sengen. Motoren skal have lov at gå i tomgang, før den kan slukkes.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>De fire næste afsnit tager ét greb ad gangen. For hvert er spørgsmålet det samme: hvor lækker din søvnkapacitet her — og hvad koster det din dømmekraft at lade den lække?</p>
+  </div>
+</section>
+
+<!-- V1 -->
+<section class="section" id="v1">
+  <div class="container">
+    <div class="section-label">Greb 1 af 4 — V</div>
+    <h3>Værn</h3>
+    <p>Det første tab sker, før hovedet rammer puden. Det sker, fordi søvn er det eneste i lederens liv uden en advokat. Møder har deltagere, der protesterer, hvis de aflyses. Deadlines har konsekvenser. Søvn har ingen — den kan altid vige for en time mere, og den klager ikke. Så den taber, aften efter aften, til det, der råber højere.</p>
+    <p>At værne betyder at give søvnen den samme status som dine vigtigste forpligtelser: et fast tidsrum, en grænse, og en vilje til at beskytte den mod det, der vil trænge sig på. Ikke fordi søvn er hellig, men fordi den er fundamentet under alt det, du vurderer den efter.</p>
+    <div class="scenario">
+      <div class="sc-label">Genkendelig situation</div>
+      <p>Klokken er 23.15. Arbejdet er egentlig gjort. Men der er lige én mail mere, lige én ting, der kan ordnes nu, så morgendagen bliver lettere. Klokken bliver 00.30. Vækkeuret er sat til 05.45. Det føles ansvarligt. Det er i virkeligheden en beslutning om at møde i morgen med nedsat dømmekraft.</p>
+    </div>
+    <div class="signs">
+      <div class="signs-h">Kendetegn på, at Værn mangler:</div>
+      <ul>
+        <li>Din sengetid bestemmes af, hvornår arbejdet slipper — ikke af, hvornår du skal op</li>
+        <li>Du ville aldrig aflyse et bestyrelsesmøde for at rydde op i mails, men du udskyder rutinemæssigt søvn for det samme</li>
+        <li>Søvn er det første, der ryger, når en uge bliver travl — og det sidste, du overvejer at beskytte</li>
+      </ul>
+    </div>
+    <p class="reflection">Hvis din søvn var et bestyrelsesmøde, ville du så tillade det, der afkorter den? Og hvad ville det kræve at give den samme beskyttelse?</p>
+  </div>
+</section>
+
+<!-- V2 -->
+<section class="section" id="v2">
+  <div class="container">
+    <div class="section-label">Greb 2 af 4 — Æ</div>
+    <h3>Ærlighed</h3>
+    <p>Det andet tab sker i selvvurderingen. »Jeg klarer mig fint på seks timer« er en af de mest udbredte sætninger, jeg hører. Den behøver ikke være uærlig — lederen oplever det virkelig sådan. Problemet er, at følelsen ikke nødvendigvis følger præstationen. Ved gentagen søvnrestriktion kan mennesker vænne sig til oplevelsen af underskuddet, mens de objektive deficits fortsætter med at akkumulere.</p>
+    <p>At praktisere ærlighed betyder at supplere fornemmelsen med et mere nøgternt datapunkt: hvor mange timer sov du faktisk? Ikke en app med grafer og scorer — bare det nøgterne tal, så godt du kan gøre det op. Timer er ikke et perfekt mål, men de er sværere at bortforklare end en fornemmelse. Og tallet er ofte lavere, end følelsen sagde.</p>
+    <div class="scenario">
+      <div class="sc-label">Genkendelig situation</div>
+      <p>To ledere har begge sovet for lidt. Den ene siger: »Jeg er helt smadret.« Den anden siger: »Jeg har det fint.« Pointen er ikke, at den ene nødvendigvis er mere påvirket end den anden. Pointen er, at deres egen fornemmelse ikke kan bruges som facit på deres faktiske kapacitet — og at den, der føler sig fin, derfor risikerer at træffe dagens vigtigste beslutninger i fuld tillid til et grundlag, han ikke har efterprøvet.</p>
+    </div>
+    <div class="signs">
+      <div class="signs-h">Kendetegn på, at Ærlighed mangler:</div>
+      <ul>
+        <li>Du beskriver din søvn i selvbillede (»jeg er en, der ikke behøver meget«) frem for i timer</li>
+        <li>Du er stolt af, hvor lidt du kan klare dig med — frem for opmærksom på, hvad det koster</li>
+        <li>Du har aldrig faktisk talt dine timer over en uge, kun vurderet dem på fornemmelsen</li>
+      </ul>
+    </div>
+    <p class="reflection">Hvor mange timer sov du faktisk de sidste syv nætter — talt, ikke fornemmet? Og hvad fortæller forskellen mellem tallet og din følelse dig?</p>
+  </div>
+</section>
+
+<!-- V3 -->
+<section class="section" id="v3">
+  <div class="container">
+    <div class="section-label">Greb 3 af 4 — R</div>
+    <h3>Rytme</h3>
+    <p>Det tredje tab sker i uregelmæssigheden. Mange ledere behandler søvn som en konto, de kan overtrække i ugens løb og betale tilbage i weekenden. Fem korte nætter, to lange. Regelmæssighed er imidlertid en selvstændig dimension af søvnsundhed. Større variation i søvn- og vågnetider er gennemgående forbundet med dårligere health- og performance-outcomes, selv om litteraturen endnu ikke kan isolere alle kausale mekanismer.</p>
+    <p>At bygge rytme betyder at holde tidspunktet nogenlunde stabilt — uden at bruge regelmæssigheden som en undskyldning for at sove for lidt. Den stærkeste kombination er tilstrækkelig søvn <em>og</em> en stabil rytme; det ene erstatter ikke det andet. Fem korte nætter og to meget lange weekendaftener er ikke en optimal strategi — ekstra søvn efter en periode med underskud kan hjælpe, men det er delvis skadesbegrænsning, ikke en fuld nulstilling.</p>
+    <div class="scenario">
+      <div class="sc-label">Genkendelig situation</div>
+      <p>Mandag til torsdag: sengetid mellem midnat og et, op kvart i seks. Fredag og lørdag: i seng klokken to, op klokken ti. Lederen kalder weekenden »at indhente søvn«. Som en løs analogi ligner det at flyve et par tidszoner frem og tilbage hver uge — og skulle være skarp midt i det. Analogien er billedlig, men uroen i rytmen er reel nok.</p>
+    </div>
+    <div class="research-note"><strong>Forskningsgrundlag (systematisk review + konsensus):</strong> Kalkanis et al. (2025, <em>Sleep Medicine Reviews</em>) gennemgår 59 primærstudier og finder konsistente associationer mellem større uregelmæssighed i søvntiming og bl.a. mentale, metaboliske, kardiovaskulære og kognitive outcomes — men noterer, at det endnu ikke er endeligt afgjort, om uregelmæssighed uafhængigt og kausalt forudsiger dem alle. National Sleep Foundations konsensus (Sletten et al., 2023) fremhæver regelmæssighed og bemærker, at catch-up-søvn på fridage kan være gavnlig, når ugens søvn er utilstrækkelig.</div>
+    <div class="signs">
+      <div class="signs-h">Kendetegn på, at Rytme mangler:</div>
+      <ul>
+        <li>Din sengetid og opvågning svinger med flere timer fra dag til dag</li>
+        <li>Weekenden bruges til at »sove ud« efter en uge med underskud</li>
+        <li>Du er skarpest på uforudsigelige tidspunkter — og har svært ved at planlægge dit vigtigste arbejde efter din energi</li>
+      </ul>
+    </div>
+    <p class="reflection">Hvor meget svinger dit søvnvindue fra dag til dag? Og hvad ville der ske med din kapacitet, hvis tidspunktet var det faste, du beskyttede først?</p>
+  </div>
+</section>
+
+<!-- V4 -->
+<section class="section" id="v4">
+  <div class="container">
+    <div class="section-label">Greb 4 af 4 — N</div>
+    <h3>Nedtrapning</h3>
+    <p>Det sidste tab sker i overgangen. En leder går sjældent i seng — han holder op med at arbejde og lægger sig ned med hovedet stadig kørende på højeste omdrejninger. Så ligger han vågen, ikke fordi noget er galt, men fordi motoren ikke fik lov at gå i tomgang, før den skulle slukkes. Og han fortolker det som, at han »ikke har brug for meget søvn«, når han i virkeligheden bare aldrig landede.</p>
+    <p>At nedtrappe betyder at bygge en kort, fast overgang mellem den sidste skærm og sengen. Ikke et ritual med lys og te, medmindre det passer dig — bare en grænse: her stopper arbejdet, og de næste tyve minutter gør jeg noget, der ikke kræver, at hjernen løser problemer. Start med tyve minutter — ikke fordi tyve er et biologisk magisk tal, men fordi det er kort nok til faktisk at blive gjort og langt nok til at skabe en reel grænse mellem arbejde og seng. Overgangen er ikke spildtid. Den er det, der gør søvnen mulig.</p>
+    <div class="scenario">
+      <div class="sc-label">Genkendelig situation</div>
+      <p>Sidste mail sendt 23.40 fra telefonen i sengen. Lys slukket 23.42. Klokken 00.30 er han stadig vågen og tænker på det, mailen satte i gang. Klokken 01.00 tjekker han lige, om der er kommet svar. Han konkluderer næste dag, at han har svært ved at falde i søvn — ikke at han aldrig holdt op med at arbejde.</p>
+    </div>
+    <div class="signs">
+      <div class="signs-h">Kendetegn på, at Nedtrapning mangler:</div>
+      <ul>
+        <li>Du arbejder helt frem til det øjeblik, du lægger dig — ofte på en skærm i sengen</li>
+        <li>Du ligger vågen med tanker om det, du lige lukkede ned, uden at kunne slippe det</li>
+        <li>Du fortolker svær indsovning som et søvnbehov-problem frem for et nedtrapnings-problem</li>
+      </ul>
+    </div>
+    <p class="reflection">Hvad er der mellem din sidste arbejdshandling og din søvn i aften? Og hvis svaret er »ingenting«, hvad ville tyve minutters tomgang så kunne gøre for din nat?</p>
+  </div>
+</section>
+
+<!-- GRAMMATIK -->
+<section class="section" id="grammatik">
+  <div class="container">
+    <div class="section-label">05 — Det sproglige lag</div>
+    <h2>Søvnbenægtelsens grammatik</h2>
+    <p>Søvnunderskud vedligeholdes af et sprog. Fire sætninger optræder igen og igen, når en leder forsvarer for lidt søvn. De lyder som styrke. De er i virkeligheden formuleringer, der gør underskuddet acceptabelt — og dermed permanent.</p>
+
+    <p class="pull-quote">Den mest overbevisende stemme, der fortæller dig, at du ikke har brug for søvn, er den, der allerede mangler den.<cite>— Thomas Friisnæs</cite></p>
+
+    <div class="signs">
+      <div class="signs-h">»Jeg har aldrig haft brug for meget søvn.«</div>
+      <ul>
+        <li>Lyder som: en medfødt styrke. Ægte naturlige kortsovere findes, og sjældne genetiske varianter er blevet knyttet til familiær naturlig kort søvn. Men fænomenet er usædvanligt, og at man »altid kun har behøvet fem timer« er ikke i sig selv bevis for, at man tilhører den gruppe. For langt de fleste voksne ligger regelmæssig søvn på under seks timer under de etablerede anbefalinger.</li>
+      </ul>
+    </div>
+    <div class="signs">
+      <div class="signs-h">»Jeg sover, når jeg er død.«</div>
+      <ul>
+        <li>Lyder som: arbejdsomhed og drive. Er: en fejlslutning om, at søvn er tabt tid. Søvn er ikke fravær af produktivitet — det er den proces, der genopbygger den kapacitet, produktiviteten trækker på.</li>
+      </ul>
+    </div>
+    <div class="signs">
+      <div class="signs-h">»Jeg henter det ind i weekenden.«</div>
+      <ul>
+        <li>Lyder som: fuld tilbagebetaling. Er: delvis skadesbegrænsning. Ekstra søvn efter en periode med underskud kan hjælpe, men restitutionen efter kronisk søvnrestriktion er kompleks, og én eller to lange nætter kan ikke forventes at nulstille alle konsekvenserne — og den store variation, indhentningen kræver, er i sig selv forbundet med dårligere outcomes.</li>
+      </ul>
+    </div>
+    <div class="signs">
+      <div class="signs-h">»Jeg fungerer fint.«</div>
+      <ul>
+        <li>Lyder som: en observation. Er: præcis den selvvurdering, søvnmangel gør upålidelig. Det er den farligste af de fire, fordi den lyder som data, men er det stik modsatte.</li>
+      </ul>
+    </div>
+
+    <p>Grammatikken er ikke uærlig. Hver sætning peger på noget reelt — drive, arbejdsomhed, robusthed. Men tilsammen udgør de et sprog, der gør et kapacitetsproblem til et karaktertræk, man kan være stolt af. At høre dem i sin egen mund er første skridt til at holde op med at betale for dem.</p>
+    <p class="reflection">Hvilken af de fire sætninger bruger du oftest — og over for hvem: dine omgivelser, eller dig selv?</p>
+  </div>
+</section>
+
+<!-- EXERCISE -->
+<section class="section" id="exercise">
+  <div class="container">
+    <div class="section-label">06 — Øvelse</div>
+    <h2>Kortlæg din søvnkapacitet</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · Skriftlig</div>
+      <div class="ex-meta">⏱ 20 minutter · Hav din kalender for den seneste uge ved hånden — og vær ærlig om timerne, ikke fornemmelsen</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Formålet er ikke at føle skyld. Det er at diagnosticere: at finde ud af, hvor din søvnkapacitet faktisk lækker — ved hvilket af VÆRN's fire greb. De fleste tror, deres problem er tid (for travlt). Oftest ligger det i Ærlighed (de mærker ikke omkostningen) eller Nedtrapning (de lander aldrig).</p>
+      <ol>
+        <li><strong>Værn:</strong> Se på den seneste uge. Hvor mange aftener afkortede du din søvn for noget, der kunne have ventet til næste dag? Skriv antallet ned.</li>
+        <li><strong>Ærlighed:</strong> Notér din bedste realistiske vurdering af faktisk søvn de sidste syv nætter. Kender du den ikke, så brug tid i seng minus de længere perioder, hvor du ved, du var vågen, som et groft estimat. Læg sammen, del med syv, og sammenlign med, hvad du ville have gættet. Notér forskellen. (En wearable kan bruges som trend, men tag ikke dens tal som klinisk præcise.)</li>
+        <li><strong>Rytme:</strong> Skriv din sengetid og opvågning ned for hver af de syv dage. Hvor meget svinger de? Flytter dine tider sig gentagne gange mere end cirka to timer, så markér det som en praktisk alarm i denne øvelse — ikke en klinisk cutoff, men et signal om, at din rytme er værd at undersøge.</li>
+        <li><strong>Nedtrapning:</strong> Hvad lå der mellem din sidste arbejdshandling og din søvn i går? Hvis svaret er »ingenting« eller »en skærm«, er det her, dit greb mangler.</li>
+        <li><strong>Diagnose:</strong> Se på de fire svar. Hvor er dit tab størst? Skriv det ene greb ned, der ville gøre mest forskel — og den ene konkrete ændring, du vil lave ved det.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">07 — 2-minutters mikrohandling</div>
+    <h2>Gør dette, før du lukker fanen</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · nu</span>
+      <h3>Sæt søvnvinduet i kalenderen</h3>
+      <p>Åbn din kalender. Find det tidspunkt, du realistisk skal begynde dit søvnvindue i aften, hvis du skal give dig selv mulighed for <strong>mindst syv timers faktisk søvn</strong>. For mange betyder det omtrent 7½-8 timer mellem »i seng« og vækkeur — et praktisk eksempel, ikke et universelt medicinsk krav. Sæt en fast begivenhed på det tidspunkt — hver aften i den kommende uge. Giv den et navn, der forpligter: ikke »sengetid«, men »beskyttet — dømmekraft i morgen«.</p>
+      <p>Det er det. Én grænse sat, syv gange. Du har netop givet søvnen det, den manglede: en advokat i din egen kalender.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">08 — Commitment & progress</div>
+    <h2>Commit dig — og følg din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 01 · Motoren</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv dit ene commitment for dette paper. Det gemmes lokalt i din browser — ingen konto, intet sendes nogen steder — og din progress følger dig gennem alle ti papers.</p>
+      <label for="commitText">Min ene ændring (inden 48 timer)</label>
+      <textarea id="commitText" placeholder="Formulér én konkret ændring i din søvn — det du faktisk vil gøre inden for 48 timer. Ikke en hensigt. Et skridt med et verbum."></textarea>
+      <div class="commit-actions">
+        <button class="commit-btn primary" onclick="saveCommit()">Gem commitment</button>
+        <button class="commit-btn ghost" onclick="markDone()">Marker paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Executive Longevity</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="executive-longevity.html">Se hele din progress på oversigtssiden →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">09 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Hvor meget søvn har en leder faktisk brug for? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">For de fleste voksne er 7-9 timer et solidt generelt pejlemærke. American Academy of Sleep Medicine og Sleep Research Society anbefaler voksne regelmæssigt at få mindst syv timers søvn, mens National Sleep Foundation anbefaler 7-9 timer for voksne 18-64 år og 7-8 timer for voksne fra 65 år. Det er relevant her, fordi en del læsere bevæger sig ind i 65+-gruppen. Ægte naturlige kortsovere findes, men er sjældne — og »jeg har altid kun behøvet fem timer« er ikke i sig selv bevis for at være en af dem.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan man træne sig til at klare sig med mindre søvn? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Man kan vænne sig til at fungere trods søvnunderskud, men i kontrollerede studier fortsætter den objektive præstation med at falde, selv når den subjektive følelse af søvnighed kun ændrer sig beskedent. Man bliver altså ikke bedre til at undvære søvn — man vænner sig til følelsen, uden at præstationen har vænnet sig til belastningen. Det er en vigtig forskel, for den ene ville være en styrke, den anden er en risiko.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvorfor undervurderer jeg selv, hvor påvirket jeg er af søvnmangel? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Fordi den subjektive oplevelse af søvnighed er et upålideligt måleinstrument. Van Dongen et al. (2003) fandt, at ved gentagen søvnrestriktion fortsatte den objektive præstation nedad dag for dag, mens deltagernes egen fornemmelse af træthed kun steg beskedent — de var i høj grad uvidende om deres voksende underskud. Derfor er »jeg føler mig egentlig fin« et dårligere mål, end mange ledere tror, og en nøgtern optælling af timer siger mere end fornemmelsen.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er søvn virkelig et ledelsesemne og ikke bare et sundhedsemne? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det er begge dele, men for en leder er ledelsesdimensionen den afgørende. Barnes et al. (2015) fandt, at lavere søvnkvalitet hos ledere via øget ego depletion hang sammen med mere urimelig ledelsesadfærd og lavere engagement i enheden. Et separat eksperiment (Barnes et al., 2016) viste, at søvndeprivation hos ledere reducerede følgernes vurdering af deres karismatiske ledelse. Din søvn er ikke kun din egen sag — den kan mærkes i din direktion og din organisation.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad med al den modstridende omtale af søvnforskning? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Der er reel debat om enkelte populære påstande — nogle bøger og overskrifter har overdrevet eller forsimplet. Men kernen, dette paper hviler på, er robust og gentaget i peer-reviewet forskning: søvntab påvirker de neurale netværk bag opmærksomhed, kognitiv kontrol og eksekutive funktioner, og den subjektive træthedsvurdering er upålidelig. Man behøver ikke tro på de mest dramatiske overskrifter for at tage det alvorligt.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Jeg vågner tidligt og kan ikke sove igen — er det et problem? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Enkeltstående nætter er normale og sjældent et problem i sig selv. Bliver det et vedvarende mønster, der forringer din dagsform, er det værd at tage alvorligt — og her går dette paper ikke ind i behandling. Vedvarende søvnbesvær bør vurderes af en læge. Formålet her er det, der ligger inden for din egen forvaltning: at holde op med aktivt at undergrave en søvn, kroppen ellers gerne vil give dig.</div>
+    </details>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="section" id="next">
+  <div class="container">
+    <div class="section-label">10 — Fra analyse til handling</div>
+    <h2>Den nat, du kan beskytte i aften</h2>
+    <p>Søvnunderskud kan ikke elimineres helt — der vil være nætter, hvor arbejdet, familien eller livet vinder. Men det kan gøres til undtagelsen frem for reglen. Og det gøres ikke ved at ville sove mere. Det gøres ved at holde op med aktivt at undergrave den søvn, kroppen gerne vil give.</p>
+    <p>Det mest effektive første skridt er ikke at spørge: »Hvordan får jeg mere søvn?« Det spørgsmål har intet konkret svar. Det effektive spørgsmål er: »Hvor undergraver jeg selv min søvn — og hvad kalder jeg det, når jeg gør det?« Svaret på det spørgsmål ændrer mere end nogen ny madras.</p>
+
+    <p class="pull-quote">Den leder, der beskytter sin søvn, snyder ikke sin ambition. Han fodrer den motor, ambitionen kører på.<cite>— Thomas Friisnæs</cite></p>
+
+    <h3 style="margin-top:36px;">Vil du arbejde videre med dette?</h3>
+    <p>Har dette paper beskrevet et mønster, du kender — fra dig selv eller din hverdag? Nedenfor er fire naturlige næste skridt.</p>
+    <p>Dette er det første paper i Executive Longevity. Det næste i <strong>Del 1: Maskinen</strong> er <a href="executive-longevity-fysisk-kapacitet.html" style="color:var(--gold);">Iltoptaget — VO₂ max og muskelstyrke som lederkapital.</a> Hele samlingen — ti papers i fire dele — er kortlagt nederst på siden.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="executive-longevity.html">
+        <div class="nc-tag">Hele serien</div>
+        <div class="nc-text"><strong>Se alle ti papers</strong> og følg din progress gennem Executive Longevity</div>
+      </a>
+      <a class="next-card" href="/#kontakt">
+        <div class="nc-tag">Executive Coaching</div>
+        <div class="nc-text"><strong>Forvalt din kapacitet</strong> i et coaching-forløb bygget om de kommende ti-femten år</div>
+      </a>
+      <a class="next-card" href="/#kontakt">
+        <div class="nc-tag">Foredrag</div>
+        <div class="nc-text"><strong>Executive longevity som tema</strong> for et oplæg til din ledergruppe eller bestyrelse</div>
+      </a>
+      <a class="next-card" href="/#kontakt">
+        <div class="nc-tag">Sparring</div>
+        <div class="nc-text"><strong>En fortrolig samtale</strong> om det, der fylder hos dig lige nu — 20 minutter</div>
+      </a>
+    </div>
+    <a class="start-btn" href="/#kontakt">Start en samtale →</a>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Inspiration og forskningsgrundlag</div>
+    <ul>
+      <li>Krause, A. J., Simon, E. B., Mander, B. A. et al. (2017). »The sleep-deprived human brain.« <em>Nature Reviews Neuroscience</em>, 18, 404-418. <a href="https://doi.org/10.1038/nrn.2017.55" target="_blank" rel="noopener">doi.org/10.1038/nrn.2017.55</a></li>
+      <li>Killgore, W. D. S. (2010). »Effects of sleep deprivation on cognition.« <em>Progress in Brain Research</em>, 185, 105-129. <a href="https://doi.org/10.1016/B978-0-444-53702-7.00007-5" target="_blank" rel="noopener">doi.org/10.1016/B978-0-444-53702-7.00007-5</a></li>
+      <li>Van Dongen, H. P. A., Maislin, G., Mullington, J. M. &amp; Dinges, D. F. (2003). »The cumulative cost of additional wakefulness: dose-response effects on neurobehavioral functions and sleep physiology from chronic sleep restriction and total sleep deprivation.« <em>Sleep</em>, 26(2), 117-126. <a href="https://doi.org/10.1093/sleep/26.2.117" target="_blank" rel="noopener">doi.org/10.1093/sleep/26.2.117</a></li>
+      <li>Dawson, D. &amp; Reid, K. (1997). »Fatigue, alcohol and performance impairment.« <em>Nature</em>, 388, 235. <a href="https://doi.org/10.1038/40775" target="_blank" rel="noopener">doi.org/10.1038/40775</a></li>
+      <li>Williamson, A. M. &amp; Feyer, A. M. (2000). »Moderate sleep deprivation produces impairments in cognitive and motor performance equivalent to legally prescribed levels of alcohol intoxication.« <em>Occupational and Environmental Medicine</em>, 57(10), 649-655. <a href="https://doi.org/10.1136/oem.57.10.649" target="_blank" rel="noopener">doi.org/10.1136/oem.57.10.649</a></li>
+      <li>Barnes, C. M., Lucianetti, L., Bhave, D. P. &amp; Christian, M. S. (2015). »You Wouldn't Like Me When I'm Sleepy: Leaders' Sleep, Daily Abusive Supervision, and Work Unit Engagement.« <em>Academy of Management Journal</em>, 58(5), 1419-1437. <a href="https://doi.org/10.5465/amj.2013.1063" target="_blank" rel="noopener">doi.org/10.5465/amj.2013.1063</a></li>
+      <li>Barnes, C. M., Guarana, C. L., Nauman, S. &amp; Kong, D. T. (2016). »Too tired to inspire or be inspired: Sleep deprivation and charismatic leadership.« <em>Journal of Applied Psychology</em>, 101(8), 1191-1199. <a href="https://doi.org/10.1037/apl0000123" target="_blank" rel="noopener">doi.org/10.1037/apl0000123</a></li>
+      <li>Barnes, C. M. (2018). »Sleep Well, Lead Better.« <em>Harvard Business Review</em>, September-October 2018 (formidlende ledelsesoversigt). <a href="https://hbr.org/2018/09/sleep-well-lead-better" target="_blank" rel="noopener">hbr.org/2018/09/sleep-well-lead-better</a></li>
+      <li>Watson, N. F. et al. (2015). »Recommended Amount of Sleep for a Healthy Adult: A Joint Consensus Statement of the American Academy of Sleep Medicine and Sleep Research Society.« <em>Sleep</em>, 38(6), 843-844. <a href="https://doi.org/10.5665/sleep.4716" target="_blank" rel="noopener">doi.org/10.5665/sleep.4716</a></li>
+      <li>Hirshkowitz, M., Whiton, K., Albert, S. M. et al. (2015). »National Sleep Foundation's sleep time duration recommendations: methodology and results summary.« <em>Sleep Health</em>, 1(1), 40-43. <a href="https://doi.org/10.1016/j.sleh.2014.12.010" target="_blank" rel="noopener">doi.org/10.1016/j.sleh.2014.12.010</a></li>
+      <li>Sletten, T. L. et al. (2023). »The importance of sleep regularity: a consensus statement of the National Sleep Foundation sleep timing and variability panel.« <em>Sleep Health</em>, 9(6), 801-820. <a href="https://doi.org/10.1016/j.sleh.2023.07.016" target="_blank" rel="noopener">doi.org/10.1016/j.sleh.2023.07.016</a></li>
+      <li>Kalkanis, A., Lenkens, D., Steiropoulos, P. &amp; Testelmans, D. (2025). »Sleep regularity as an important component of sleep hygiene: a systematic review.« <em>Sleep Medicine Reviews</em>, 84, 102203. <a href="https://doi.org/10.1016/j.smrv.2025.102203" target="_blank" rel="noopener">doi.org/10.1016/j.smrv.2025.102203</a></li>
+      <li>Guzzetti, J. R. &amp; Banks, S. (2023). »Dynamics of recovery sleep from chronic sleep restriction.« <em>Sleep Advances</em>, 4(1), zpac044. <a href="https://doi.org/10.1093/sleepadvances/zpac044" target="_blank" rel="noopener">doi.org/10.1093/sleepadvances/zpac044</a></li>
+      <li>He, Y., Jones, C. R., Fujiki, N. et al. (2009). »The Transcriptional Repressor DEC2 Regulates Sleep Length in Mammals.« <em>Science</em>, 325(5942), 866-870. <a href="https://doi.org/10.1126/science.1174443" target="_blank" rel="noopener">doi.org/10.1126/science.1174443</a></li>
+      <li>Shi, G., Xing, L., Wu, D. et al. (2019). »A Rare Mutation of β1-Adrenergic Receptor Affects Sleep/Wake Behaviors.« <em>Neuron</em>, 103(6), 1044-1055.e7. <a href="https://doi.org/10.1016/j.neuron.2019.07.026" target="_blank" rel="noopener">doi.org/10.1016/j.neuron.2019.07.026</a></li>
+      <li>Walker, M. (2017). <em>Why We Sleep: The New Science of Sleep and Dreams</em>. Penguin. (Tilgængelig/populær indføring; enkelte påstande er siden debatteret. Konkrete empiriske claims i dette paper hviler primært på originalstudier, reviews og konsensuspapirer ovenfor.)</li>
+    </ul>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Executive Longevity — den komplette samling</div>
+    <h2 class="collection-title">Ti papers i fire dele</h2>
+    <p class="collection-intro">Serien bevæger sig fra kroppen, til sindet, til belastningen, til meningen. Hvert paper kan læses alene. Tilsammen udgør de en samlet forvaltning af den kapacitet, der afgør de kommende årtier.</p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 1</span><span class="cpart-name">Maskinen</span></div>
+      <p class="cpart-desc">Det fysiske fundament under dømmekraften.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><span class="current">Motoren — du læser dette</span></li>
+        <li data-n="02"><a href="executive-longevity-fysisk-kapacitet.html">Iltoptaget — VO₂ max og muskelstyrke</a></li>
+        <li data-n="03"><a href="executive-longevity-alkohol.html">Den blinde vane — alkohol og kognitiv pris</a></li>
+        <li data-n="04"><a href="executive-longevity-restitution.html">Restitution som disciplin</a></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 2</span><span class="cpart-name">Sindet</span></div>
+      <p class="cpart-desc">Den kognitive kapacitet, når erfaringen er størst.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="05"><a href="executive-longevity-fokus.html">Fokus i en afbrudt verden</a></li>
+        <li data-n="06"><a href="executive-longevity-kognitiv-reserve.html">Kognitiv reserve</a></li>
+        <li data-n="07"><a href="executive-longevity-laering.html">At blive ved med at lære</a></li>
+        <li data-n="08"><a href="executive-longevity-ai-kompetence.html">Relevansen — AI-kompetence som aldringsspørgsmål</a></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 3</span><span class="cpart-name">Belastningen</span></div>
+      <p class="cpart-desc">Sindet under vægt — det slid, der akkumulerer usynligt.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="09"><a href="executive-longevity-belastning.html">Den usynlige regning — stress og regulering</a></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 4</span><span class="cpart-name">Meningen</span></div>
+      <p class="cpart-desc">Det, der holder motoren i gang — inklusive identiteten ud over rollen.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="10"><a href="executive-longevity-mening.html">Motiven bag motoren — mening, relationer, retning og identitet</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller dele.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="executive-longevity-fysisk-kapacitet.html">
+      <span class="ra-tag">Næste paper · Executive Longevity</span>
+      <span class="ra-title">Iltoptaget: VO₂ max og muskelstyrke som lederkapital</span>
+    </a>
+    <a href="executive-longevity.html">
+      <span class="ra-tag">Hele serien</span>
+      <span class="ra-title">Executive Longevity: Ti papers om kapaciteten der afgør de sidste tyve år</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Executive Longevity · Serie 03</div>
+        <div class="series-next">Næste: Iltoptaget</div>
+        <a href="executive-longevity.html">Se hele serien →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — virker på det live site
+  var LS_C = 'el_p01_commit', LS_D = 'el_done';
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(1) === -1) done.push(1);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af 10 gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / 10) * 100)) + '%';
+      if (done.indexOf(1) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>
