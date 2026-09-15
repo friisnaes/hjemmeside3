@@ -343,6 +343,15 @@
   .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
   .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
   @media print { .lens-grid, .dispo { page-break-inside: avoid; } .lens { background: #fff !important; border: 0.75pt solid #ddd !important; } .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; } }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
 </style>
 
 <script type="application/ld+json">

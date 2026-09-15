@@ -352,6 +352,15 @@
   .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
   @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
   @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
 </style>
 
 <script type="application/ld+json">

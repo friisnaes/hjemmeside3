@@ -232,7 +232,16 @@
         @media (max-width: 600px) {
             .nl.open { justify-content: flex-start; padding: 88px 24px 48px; overflow-y: auto; gap: 18px; height: 100vh; height: 100dvh; width: 100vw; }
         }
-    </style>
+    
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .nl a { padding-top: 8px; padding-bottom: 8px; }
+    .sc-paper-list li { padding-top: 15px; padding-bottom: 15px; }
+    .path-list li { padding-top: 14px; padding-bottom: 14px; }
+    .fnav a { padding-top: 6px; padding-bottom: 6px; }
+  }
+</style>
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
