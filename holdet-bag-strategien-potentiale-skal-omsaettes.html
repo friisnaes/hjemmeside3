@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Potentiale skal omsættes | Holdet bag strategien | Thomas Friisnæs</title>
+<meta name="description" content="Potentiale er en hypotese. Parathed er det, du har bevis for. Paper 07 i Holdet bag strategien handler om succession og executive development på C-level: hvordan en vurdering af leadership potential bliver omsat til reel, observerbar parathed gennem erfaring, ansvar, eksponering og læring. Med framework, øvelse og FAQ til CEO'er og bestyrelser.">
+<meta name="keywords" content="leadership potential, succession, executive development, C-level, parathed, readiness, lederudvikling, erfaring, CEO-succession, high potential, bestyrelse">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/holdet-bag-strategien-potentiale-skal-omsaettes.html">
+
+<meta property="og:title" content="Potentiale skal omsættes | Holdet bag strategien | Thomas Friisnæs">
+<meta property="og:description" content="Potentiale er en hypotese. Parathed er det, du har bevis for. Paper 07 i Holdet bag strategien: fra navn på succession-listen til ny evidens.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/holdet-bag-strategien-potentiale-skal-omsaettes.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-09-13">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Potentiale skal omsættes">
+<meta name="twitter:description" content="Potentiale er en hypotese. Parathed er det, du har bevis for. Paper 07 i Holdet bag strategien.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .micro-action, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–06) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  @media print { .lens-grid, .dispo { page-break-inside: avoid; } .lens { background: #fff !important; border: 0.75pt solid #ddd !important; } .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; } }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Potentiale skal omsættes",
+ "alternativeHeadline": "Potentiale er en hypotese. Parathed er det, du har bevis for.",
+ "description": "Potentiale er en hypotese. Parathed er det, du har bevis for. Paper 07 i Holdet bag strategien handler om succession og executive development på C-level: hvordan en vurdering af leadership potential bliver omsat til reel, observerbar parathed gennem erfaring, ansvar, eksponering og læring.",
+ "author": { "@type": "Person", "@id": "https://www.friisnaes.com/#person", "name": "Thomas Friisnæs", "url": "https://www.friisnaes.com/" },
+ "publisher": { "@type": "Organization", "name": "Friisnæs", "url": "https://www.friisnaes.com/" },
+ "url": "https://www.friisnaes.com/holdet-bag-strategien-potentiale-skal-omsaettes.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/holdet-bag-strategien-potentiale-skal-omsaettes.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": { "@type": "CreativeWorkSeries", "name": "Holdet bag strategien", "url": "https://www.friisnaes.com/library.html#holdet" },
+ "position": 7,
+ "inLanguage": "da",
+ "datePublished": "2026-09-13",
+ "dateModified": "2026-09-15"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Holdet bag strategien · Paper 07 af 10</div>
+  <div class="pc-title">Potentiale skal omsættes</div>
+  <div class="pc-sub">Potentiale er en hypotese. Parathed er det, du har bevis for.</div>
+  <div class="pc-author">Af Thomas Friisnæs · Executive Coach · Karakter · Disciplin · Klarhed · friisnaes.com · September 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Holdet bag strategien</span>
+      <span class="wp-series">Paper 07 af 10 · Serien er komplet</span>
+      <span class="wp-readtime">15 min læsning</span>
+    </div>
+    <h1>Potentiale skal <em>omsættes</em></h1>
+    <p class="wp-subtitle">Potentiale er en hypotese. Parathed er det, du har bevis for. Om hvordan et navn på succession-listen bliver til ny evidens gennem erfaring, ansvar, eksponering og læring, og hvorfor det ikke sker af sig selv.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · Executive Coach, Karakter · Disciplin · Klarhed<br>Mere end 20 års coachingerfaring · 15.000+ sessioner · Arbejder med C-level ledere, ejerledere og bestyrelsesmedlemmer · Udgivet 13. september 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Tre år som high potential</a></li>
+      <li><a href="#core">Potentiale er en hypotese</a></li>
+      <li><a href="#construct">Potentiale er ikke én ren konstruktion</a></li>
+      <li><a href="#four">Fire ting, der ikke er det samme</a></li>
+      <li><a href="#experience">Erfaring kan udvikle, men ikke automatisk</a></li>
+      <li><a href="#framework">Fra potentiale til parathed</a></li>
+      <li><a href="#stretch">»Stretch assignment« er for upræcist</a></li>
+      <li><a href="#exposure">Eksponering er ikke ansvar</a></li>
+      <li><a href="#governance">Udvikling er også governance</a></li>
+      <li><a href="#exercise">Øvelse: Fra navn på listen til ny evidens</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit commitment &amp; din progress</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#next">Fra analyse til handling</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase · Et illustrativt eksempel</div>
+    <h2>Tre år som high potential</h2>
+    <p>COO'en har stået som »high potential« og mulig CEO-efterfølger i tre år. Alle er enige. Hun er dygtig, hun har høj integritet, hun lærer hurtigt, hun har stærk opbakning i organisationen, og hun leverer. Udviklingsplanen har gennem årene rummet et executive-program på en god business school, en ekstern mentor, et par præsentationer for bestyrelsen, et coachingforløb og noget, der i planen hedder »mere strategisk eksponering«. Ved hver talentgennemgang bliver hun bekræftet. Ready in two to three years. Året efter: ready in two to three years.</p>
+    <p>Så meddeler CEO'en, at han stopper tidligere end forventet. Bestyrelsen stiller det spørgsmål, som hele udviklingsarbejdet egentlig skulle kunne besvare: <strong>Er hun klar?</strong> Og svaret bliver uklart. Ikke fordi nogen tvivler på hende. Men fordi ingen kan pege på, hvad hun har stået i. Hun har aldrig haft det samlede resultatansvar. Hun har aldrig stået alene med en større transformation. Hun har ikke håndteret ejerkredsen eller investorerne. Hun har ikke lukket en upopulær beslutning på virksomhedens vegne og båret konsekvensen af en strategi, hun selv valgte. Og hun har aldrig ledet executives, der før var hendes ligestillede. Der er masser af positive vurderinger. Der er begrænset ny evidens.</p>
+    <p>Casen er konstrueret, men spørgsmålet er ikke. Organisationen vurderede hende til at have CEO-potentiale for tre år siden. Den vurdering kan stadig være velbegrundet. Problemet er, at organisationen brugte tre år på at gentage den i stedet for at skabe ny evidens, der kunne styrke, svække eller nuancere den. Og en bestyrelse, der skal træffe en af virksomhedens vigtigste beslutninger, sidder nu med performancehistorik, omdømme og håb. Det er ikke ingenting. Men det er ikke det, tre års udvikling skulle have givet dem.</p>
+  </div>
+</section>
+
+<!-- 02 CORE -->
+<section class="section" id="core">
+  <div class="container">
+    <div class="section-label">02 — Kernen</div>
+    <h2>Potentiale er en hypotese</h2>
+    <p><a href="/holdet-bag-strategien-de-bedste-skal-ogsaa-ledes.html" style="color:var(--gold);">Paper 06</a> sluttede med en skelnen: At holde en stærk executive engageret, udfordret og ledet er én ting. At gøre hende klar til noget, hun endnu ikke kan, er en anden. Dette paper handler om det andet. Og det begynder med at tage et ord alvorligt, som organisationer bruger hver dag uden at være præcise om det.</p>
+    <p>Når en direktion eller bestyrelse siger, at nogen »har potentiale«, siger den i virkeligheden: Vi tror, at denne person kan lykkes med noget større, end det, hun gør nu. Det er en fremadrettet vurdering. Det er ikke en egenskab, man har fundet i personen, og det er ikke noget, der er sket endnu. Det er en hypotese om fremtidig kapacitet. Den kan være velbegrundet. Den er stadig en hypotese, og hypoteser har det med at blive stående, hvis ingen tester dem.</p>
+
+    <p class="pull-quote">Potentiale er en hypotese. Parathed er det, du har bevis for.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det er derfor, paperets modbegreb til potentiale ikke er talent, ambition eller performance. Det er parathed. Og det er mit praktiske arbejdssprog, ikke en valideret taksonomi: <strong>Parathed er graden af relevant, aktuel evidens for, at en person kan håndtere kravene i en konkret fremtidig rolle eller opgave.</strong> Og når jeg skriver bevis, mener jeg ikke sikkerhed. Parathed kan ikke bevises fuldt ud, før rollen er levet; den kan underbygges bedre eller dårligere, og det er den forskel, dette paper handler om. Tre ord i definitionen bærer hele vægten. Relevant: Erfaringen skal ligne de krav, personen faktisk skal møde. Aktuel: Femten år gammel erfaring siger ikke nødvendigvis alt om, hvad hun kan i dag. Konkret: Ingen er »ready« i abstrakt form. Ready til hvad, under hvilke betingelser, hvornår?</p>
+    <p>Mange organisationer kommer til at behandle potentiale som et lagerført aktiv. Personen står på succession-listen, i talentpuljen, som »ready later«, som mulig CFO eller CEO. Året efter står hun samme sted, og organisationen har stadig en følelse af at »have talent«. Men det spørgsmål, der burde stilles ved hver eneste gennemgang, er et andet: <strong>Hvad ved vi nu, som vi ikke vidste for tolv måneder siden?</strong> Hvis svaret er »hun er stadig stærk«, er der ikke nødvendigvis sket nogen udvikling. Der er sket en gentagelse af vurderingen. Hvis din vurdering af en persons potentiale er den samme om to år, og evidensen også er den samme, har du ikke en stærkere pipeline. Du har en ældre hypotese.</p>
+  </div>
+</section>
+
+<!-- 03 CONSTRUCT -->
+<section class="section" id="construct">
+  <div class="container">
+    <div class="section-label">03 — Præcisering</div>
+    <h2>Potentiale er ikke én ren konstruktion</h2>
+    <p>Der er en grund til, at jeg bruger ordet så forsigtigt. Forskningen om leadership potential har ikke én bredt accepteret definition, som paperet kan læne sig op ad. Et systematisk review fra 2025, der gennemgår 81 empiriske artikler fra 27 førende tidsskrifter i perioden 2011 til 2024, finder betydelig inkonsistens i, hvordan begrebet defineres og operationaliseres på tværs af studier. Omkring en tredjedel af studierne har ingen eksplicit teoretisk forankring, resten bygger overvejende på træk- og kognitionsbaserede rammer, forskningen prioriterer individuelle faktorer frem for kontekst, og kvantitative metoder dominerer. Forfatterne foreslår selv en ny operationalisering; det er et forslag, ikke en konsensus.</p>
+    <p>Konsekvensen for en CEO er praktisk, ikke akademisk. Ingen kan med forskningens autoritet sige, at »leadership potential er X«, og derfor kan ingen heller sige med den autoritet, at en bestemt person har det. Når jeg i dette paper skriver potentiale, mener jeg en fremadrettet hypotese om mulig kapacitet i en anden og større kontekst, ikke én fast videnskabelig konstruktion, og slet ikke et træk, personen bærer rundt på uafhængigt af rolle, tid og betingelser. Det gør ordet mere brugbart, ikke mindre. En hypotese kan man arbejde med. Den kan præciseres, testes, styrkes og svækkes. En etiket kan man kun gentage.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (systematisk review):</strong> Raj &amp; Krishnan (2025), <em>International Journal of Organizational Analysis</em>, 33(10), 3528–3561: systematisk litteraturgennemgang af 81 empiriske artikler fra 27 førende tidsskrifter, 2011–2024, struktureret efter TCCM-rammen (teori, kontekst, karakteristika, metode). Dokumenterer definitorisk og operationel inkonsistens i leadership potential-litteraturen; cirka en tredjedel af studierne mangler teoretisk forankring, og forskningen er overvejende individ- og kvantitativt orienteret. Reviewet foreslår en ny operationalisering baseret på motivationens retning, intensitet og vedholdenhed; det er forfatternes forslag og bruges ikke som definition her. Bruges alene som korrektion: Der findes ikke én etableret videnskabelig definition af potentiale.</div>
+  </div>
+</section>
+
+<!-- 04 FOUR -->
+<section class="section" id="four">
+  <div class="container">
+    <div class="section-label">04 — Skellet</div>
+    <h2>Fire ting, der ikke er det samme</h2>
+    <p>Meget af det, der går galt i succession-arbejde, kan spores til, at fire forskellige spørgsmål bliver behandlet som ét. De fortjener hver sin sætning, og de må aldrig bruges som synonymer.</p>
+
+    <div class="lens-grid">
+      <div class="lens">
+        <div class="l-tag">Performance</div>
+        <h4>Hvad hun allerede har vist</h4>
+        <p>Det, personen har demonstreret i den rolle og kontekst, hun allerede har stået i. Vigtig evidens. Hvor relevant den er for den næste rolle, afhænger af, hvor meget de kritiske krav overlapper.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Potentiale</div>
+        <h4>Hvad vi tror, hun kan blive</h4>
+        <p>En fremadrettet hypotese om, hvad personen muligvis kan udvikle sig til eller lykkes med i en anden eller større kontekst. En vurdering, ikke et fund.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Parathed</div>
+        <h4>Hvad vi har evidens for nu</h4>
+        <p>Graden af relevant, aktuel evidens for, at personen kan håndtere en konkret fremtidig rolle, opgave eller kompleksitet inden for en bestemt tidshorisont.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Aspiration</div>
+        <h4>Om hun faktisk vil det</h4>
+        <p>Om personen ønsker den fremtidige rolle, med dens belastning, eksponering, afvejninger og livssituation. Ikke om hun »har ambition«; ambition kan se ud på mange måder.</p>
+      </div>
+    </div>
+
+    <p>Performance er ikke potentiale. En stærk nuværende performer kan være meget parat til større scope, måske parat, ikke interesseret, bedst i sin nuværende rolle, eller stærk under andre betingelser, end den fremtidige rolle kræver. Det er ikke et argument for, at de bedste performere er dårlige forfremmelser; det påstår paperet ikke. Det er et argument for, at nuværende performance er vigtig evidens uden at være hele svaret på et spørgsmål om en anden rolle. Og det gælder den anden vej: Potentiale må ikke blive en undskyldning for svag performance i det uendelige. »Hun har potentiale« er ikke en permanent immunitet.</p>
+    <p>Potentiale er ikke parathed. Det første er en hypotese, det andet er evidens, og afstanden mellem dem er præcis det, udvikling skal lukke. Parathed er ikke aspiration. Organisationen kan udvikle en person mod en rolle, hun ikke vil have, og det sker, hvis potentialet bliver organisationens projekt alene. Spørg ikke, om hun har ambition. Spørg, om hun vil rollen: dens liv, dens afvejninger, dens eksponering, dens ansvar. Kapacitet uden lyst er ikke succession. Det er en mulighed, organisationen har forelsket sig i. Og aspiration er ikke et krav på noget. At ville rollen giver ikke ret til den. Aspiration kan udvikle sig, og en reel erfaring kan også hjælpe personen med at finde ud af, om hun vil rollen. Men jo mere målrettet og flerårigt succession-arbejdet bliver, desto vigtigere er det at afklare og genbesøge, om personen faktisk ønsker rollen og dens konsekvenser.</p>
+  </div>
+</section>
+
+<!-- 05 EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-label">05 — Forskningen</div>
+    <h2>Erfaring kan udvikle, men ikke automatisk</h2>
+    <p>Hvis parathed er evidens, og evidens kommer af, at personen har stået i noget, så bliver spørgsmålet, hvilke erfaringer der faktisk udvikler, og hvornår. Her er forskningen mere nuanceret end den populære version. Et centralt studie fulgte 60 ledere og 225 af deres konkrete jobopgaver og fandt, at sammenhængen mellem udviklingsmæssig udfordring i opgaven og udvikling af ledelsesfærdigheder ikke er lineær. Den viser aftagende udbytte: Mere udfordring giver ikke ubegrænset mere udvikling, og ved høje niveauer af udfordring flader kurven ud. Adgang til feedback kunne opveje det aftagende udbytte ved høj udfordring. Det er ét studie med en relativt lille stikprøve af ledere, ikke C-level, og det viser sammenhænge, ikke årsager. Men det peger på noget, der bør ændre, hvordan man designer udvikling: Mere stretch er ikke nødvendigvis mere udvikling. Konteksten omkring erfaringen betyder noget. Det er Paper 06's pointe om belastning, set fra udviklingens side.</p>
+    <p>Et andet studie af 215 yngre ledere med data fra deres chefer fandt, at kvaliteten af de udviklingsmæssige opgaver, lederne havde haft, hang positivt sammen med deres ledelseskompetencer ud over det, som anciennitet kunne forklare, og at ledere med en stærkere læringsorientering i højere grad opsøgte den slags opgaver, når de oplevede at have adgang til dem. Populationen er langt fra en direktion, og designet er tværsnit. Men skellet er brugbart, og det er det, jeg vil have med herfra: <strong>Tid i rollen er ikke det samme som udviklende erfaring.</strong> Ti år kan være ti forskellige års læring. Det kan også være det samme år gentaget ti gange. Det sidste er min formulering, ikke et forskningsresultat, men skellet har dækning.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (to feltstudier):</strong> DeRue &amp; Wellman (2009), <em>Journal of Applied Psychology</em>, 94(4), 859–875: 225 jobopgaver fordelt på 60 ledere; sammenhængen mellem udviklingsmæssig udfordring (developmental challenge) og udvikling af ledelsesfærdigheder viser aftagende udbytte, og adgang til feedback kan opveje det aftagende udbytte ved høje udfordringsniveauer; læringsorientering indgår som personfaktor. Lille stikprøve, ikke C-level, sammenhænge. Dragoni, Tesluk, Russell &amp; Oh (2009), <em>Academy of Management Journal</em>, 52(4), 731–743: 215 yngre ledere med matchede chefvurderinger (deltidsstuderende på et MBA-program); udviklingsmæssig kvalitet af opgaver var positivt associeret med ledelseskompetencer ud over anciennitet, og læringsorientering hænger sammen med, at ledere opsøger sådanne opgaver, når de har adgang til dem. Tværsnit, ikke executives. Ingen af studierne viser, at erfaring automatisk bliver til kompetence.</div>
+
+    <p>To ting skal siges, før nogen læser dette som »kun erfaring virker«. For det første kan veludformet formel ledertræning virke. En omfattende metaanalyse af ledertræning, 335 uafhængige stikprøver, finder positive gennemsnitseffekter på reaktioner, læring, overførsel til jobbet og organisatoriske resultater, og den finder moderatormønstre, der peger på, at design og implementering betyder noget, blandt andet behovsanalyse, feedback, flere leveringsformer med praksis og spredte sessioner frem for ét langt forløb; ikke alle greb virker ens på alle udfald. Et kursus er ikke spild af tid. Men paperets pointe er en anden, og den er min syntese, ikke metaanalysens resultat: Et kursus kan bygge viden og færdigheder. Det kan ikke i sig selv skabe bevis for, hvordan en executive håndterer den konkrete fremtidige rolle under virkelige organisatoriske betingelser. Formel læring, erfaring, coaching og mentoring er ikke konkurrenter. De svarer på forskellige spørgsmål.</p>
+    <p>For det andet er 70-20-10 ikke en dokumenteret fordelingslov. Erfaring, relationer og formel læring kan alle bidrage, og det er godt dokumenteret, at erfaring på jobbet kan være udviklende. Det er noget andet end at vide, at præcis 70 procent af lederudvikling kommer derfra. En kritisk gennemgang af litteraturen bag »70 %-reglen« finder, at evidensgrundlaget er svagt, og at reglen bør lægges til side som empirisk påstand. Den kan fungere som praktikerheuristik. Den har ikke den status, den ofte får.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (metaanalyse og kritisk review):</strong> Lacerenza, Reyes, Marlow, Joseph &amp; Salas (2017), <em>Journal of Applied Psychology</em>, 102(12), 1686–1718: metaanalyse af 335 uafhængige stikprøver (N = 26.573) om ledertræning; effekter på reaktioner (δ = 0,63), læring (0,73), overførsel (0,82) og resultater (0,72); moderatormønstre, hvor blandt andet behovsanalyse, feedback, flere leveringsformer med praksis, spredte sessioner og face-to-face-levering hang sammen med stærkere effekter på udvalgte udfald. Bred lederpopulation, ikke executive succession. Clardy (2018), <em>Human Resource Development Review</em>, 17(2), 153–178: kritisk gennemgang af fem litteraturtraditioner bag påstanden om, at 70 % eller mere af arbejdsbaseret læring sker uformelt; finder evidensgrundlaget svagt og anbefaler, at »70 %-reglen« lægges til side.</div>
+
+    <p>Og så den tredje korrektion, som er vigtigst for dette paper: <strong>Erfaring er råmateriale. Den er ikke det samme som læring.</strong> En metaanalyse af debriefs, altså struktureret refleksion, diskussion og målsætning efter en erfaring, finder på tværs af 46 stikprøver en forbedring af performance på omkring 20 til 25 procent i forhold til kontrolgrupper, og effekten var nogenlunde ens for individer og teams, i simulerede og virkelige omgivelser. Det målte udfald er effektivitet og performance, ikke ledelseslæring og ikke parathed, og det er bred trænings- og performanceforskning, ikke executive succession; det siger ikke, at en debrief gør nogen klar til en direktørstol. Jeg bruger det derfor kun som støtte for en mere beskeden antagelse: Det kan gøre en forskel, om erfaringen bagefter bliver struktureret bearbejdet. Erfaring uden bearbejdning kan blive gentagelse i stedet for udvikling.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (metaanalyse):</strong> Tannenbaum &amp; Cerasoli (2013), <em>Human Factors</em>, 55(1), 231–245: metaanalyse af 46 stikprøver (N = 2.136) af debriefs på individ- og teamniveau; debriefs forbedrede effektivitet med cirka 25 % i forhold til kontrolgrupper (d = 0,67), med sammenlignelige effekter for individer og teams, simulerede og virkelige settings, medicinske og ikke-medicinske stikprøver; struktur, facilitering og alignment påvirker effekten. Overvejende trænings- og operationelle kontekster; ikke executive development. Metaanalysen dokumenterer forbedret efterfølgende effektivitet/performance ved strukturerede debriefs; den måler ikke executive learning eller parathed. Bruges her alene som begrænset støtte for, at struktureret bearbejdning efter en erfaring kan have betydning, ikke som dokumentation for, at debriefing i sig selv skaber læring eller parathed.</div>
+  </div>
+</section>
+
+<!-- 06 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">06 — Frameworket</div>
+    <h2>Fra potentiale til parathed</h2>
+    <p>De fem bevægelser nedenfor er min praktiske refleksions- og beslutningsramme til at omsætte en potentialehypotese til ny evidens. De er ikke et valideret instrument, ikke en readiness-score, ikke en talentmatrix, ikke en algoritme og ikke et assessment. De er fem spørgsmål i en bestemt rækkefølge, og rækkefølgen er ikke tilfældig: Den begynder ikke med personen.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">Fra potentiale til parathed</div>
+      <div class="fw-sub">Thomas Friisnæs' praktiske refleksionsramme til succession og executive development. Ingen score.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Fremtidskravet</h4>
+          <p>Start ikke med personen. Start med rollen: Hvad skal den faktisk kunne levere om to til fire år? Knyt det til strategien, konteksten, scope, interessentkompleksiteten, beslutningsrettighederne og betydningen for hele virksomheden. <a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html" style="color:var(--gold);">Paper 01</a> gælder stadig: Strategien bestemmer kapabilitetsbehovet. Ingen generisk kompetencemodel kan erstatte det spørgsmål.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Bevisgabet</h4>
+          <p>Hvad har vi endnu ikke set personen håndtere, som den fremtidige rolle vil kræve? Ikke »hvad er hendes svagheder«. Et bevisgab er ikke nødvendigvis en personlig mangel. Det kan blot være erfaring, personen endnu ikke har haft mulighed for at demonstrere: samlet resultatansvar, international scope, bestyrelsen, regulatorisk kompleksitet, transformation, executives som direkte reports, kapitalallokering, eksternt pres, tvetydighed, upopulære afvejninger.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Erfaringen</h4>
+          <p>Design en reel erfaring, der giver personen mulighed for at demonstrere noget nyt: udvidet mandat, ansvar for et enterprise-projekt, rotation, midlertidigt ansvar, tværfunktionel accountability, integration, turnaround, ny geografi, resultatansvar, eksternt interessentansvar. Men erfaringen skal matche bevisgabet. Ikke »hun mangler bredde, send hende på kursus«, og ikke »han er high potential, giv ham noget svært«. Spørgsmålet er: Hvilken konkret erfaring vil give os ny evidens om netop det, vi endnu ikke ved?</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Læringssløjfen</h4>
+          <p>Erfaringen skal have et tydeligt udviklingsformål, et reelt mandat, relevante rammer, adgang til sparring, en aftalt bearbejdning bagefter, mulighed for at justere undervejs, og klarhed om, hvad der bliver observeret. Ikke alle erfaringer kræver samme støtte, og coaching er ikke obligatorisk. Men erfaring uden bearbejdning kan blive gentagelse snarere end udvikling.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">5</div>
+        <div class="fw-step-body">
+          <h4>Ny evidens</h4>
+          <p>Bagefter: Spørg ikke kun »gik det godt?«. Spørg: Hvad demonstrerede personen, under hvilke betingelser? Hvad lærte vi? Hvilken usikkerhed blev mindre, og hvilken ny opstod? Har vurderingen af parathed ændret sig, og i hvilken retning? Hvad er det næste bevisgab? Her bliver udvikling til succession-evidens.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Den femte bevægelse er den, der lettest bliver sprunget over, og det er grunden til, at COO'en i åbningscasen stod samme sted efter tre år. Udvikling, der ikke ender i en opdateret vurdering, er aktivitet. Et godt udviklingsforløb ændrer ikke kun personen. Det ændrer kvaliteten af det, organisationen ved om personen. Og det er dét, bestyrelsen har brug for den dag, spørgsmålet kommer.</p>
+  </div>
+</section>
+
+<!-- 07 STRETCH -->
+<section class="section" id="stretch">
+  <div class="container">
+    <div class="section-label">07 — Præcisionen</div>
+    <h2>»Stretch assignment« er for upræcist</h2>
+    <p>»Hun har brug for et stretch assignment.« Sætningen lyder som en beslutning. Det er den ikke. Stretch på hvad? Størrelse, usikkerhed, interessentkompleksitet, enterprise-scope, tidspres, fagområde, ledelse af mennesker, tvetydighed? »Stretch« er ikke et udviklingsmål. Det beskriver kun, at noget er nyt eller krævende. Det fortæller endnu ikke, hvad personen skal lære, hvilket fremtidskrav erfaringen skal belyse, eller hvilken evidens den skal skabe. Et udviklingsassignment bliver først interessant, når det er forbundet til et specifikt bevisgab: Det er den erfaring, der kan vise os, om hun kan håndtere præcis dét, vi endnu ikke har set.</p>
+    <p>Og så er der dosis. Forskningen om udviklingsmæssig udfordring viste aftagende udbytte, og feedback påvirkede den sammenhæng. Det er ikke grundlag for en eksakt »zone« med tre farver; den slags modeller har ikke dokumentation bag sig i den forskning, dette paper bygger på. Men den praktiske pointe holder: Opgaven skal rumme reel ny udfordring uden at blive så belastende eller så kunstig, at udviklingsformålet forsvinder. Udfordring har også en mørk side. I et studie af 153 ledere og 631 af deres medarbejdere hang udviklingsmæssig udfordring både sammen med engagement og transformationsledelse og med følelsesmæssig udmattelse og laissez faire-ledelse, og ledere med lavere tro på egen ledelsesevne var mere udsatte for den negative side. Ét studie, én virksomhed, sammenhænge. Men det er nok til at problematisere antagelsen om, at udfordring er et gratis udviklingsmiddel. Et udviklingsgreb kan samtidig være en belastning. Derfor: <strong>Et stretch assignment skal være designet som udvikling, ikke bare forklædt overbelastning.</strong> Paper 06 behandlede belastningen. Her handler det om, at belastningen skal være en del af designet, ikke en bivirkning af det.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (feltstudie):</strong> Courtright, Colbert &amp; Choi (2014), <em>Journal of Applied Psychology</em>, 99(4), 681–696: 153 ledere og 631 direkte medarbejdere i én Fortune 500-virksomhed; udviklingsmæssig udfordring hang positivt sammen med både engagement og transformationsledelse og med følelsesmæssig udmattelse og laissez faire-ledelse; ledere med lavere leadership self-efficacy var mere tilbøjelige til at opleve den negative vej. Ét studie, én virksomhed, ikke C-level; sammenhænge, ikke årsag. Bruges alene til designpointen: Udfordring er samtidig et jobkrav.</div>
+  </div>
+</section>
+
+<!-- 08 EXPOSURE -->
+<section class="section" id="exposure">
+  <div class="container">
+    <div class="section-label">08 — Skellet</div>
+    <h2>Eksponering er ikke ansvar</h2>
+    <p>Der er en form for udvikling, som er let at give, ser god ud i planen og producerer mindre evidens, end den ser ud til. At sidde med på bestyrelsesmødet. At følge CEO'en en dag om ugen. At overvære investorpræsentationen. At være observatør på et opkøb. Det er eksponering, og den kan være værdifuld. Den giver overblik, sprog, netværk og en fornemmelse for, hvordan tingene ser ud fra toppen. Men den er ikke det samme som selv at eje analysen, træffe afvejningen, stå på anbefalingen og bære konsekvensen. Du kan lære meget af at være i rummet. Når noget i rummet bliver dit ansvar, producerer erfaringen en mere direkte slags evidens: om hvordan du handler med reelt ejerskab og reel konsekvens.</p>
+    <p>Det er ikke et argument imod observation, shadowing eller mentoring. De kan støtte udvikling, og en bestyrelse, der aldrig har set en kandidat, har et andet problem. Det er et argument for at holde to ting adskilt, når man gør status: Hvad har hun set, og hvad har hun stået for? I åbningscasen var svaret på det første langt. Svaret på det andet var det, bestyrelsen manglede. Eksponering er værdifuld. Ansvar producerer en anden slags evidens.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Fire spørgsmål, der skal kunne besvares</div>
+      <ul class="dispo-list">
+        <li><strong>»Hun har potentiale«</strong> <em>→</em> til hvad? Hvilken rolle, hvilket scope, hvilken kontekst, hvornår?</li>
+        <li><strong>»Hun er ikke klar«</strong> <em>→</em> til hvad, hvornår, og baseret på hvilken evidens?</li>
+        <li><strong>»Hun mangler erfaring«</strong> <em>→</em> hvilken erfaring, og hvorfor er netop den relevant for kravet?</li>
+        <li><strong>»Hun har brug for stretch«</strong> <em>→</em> stretch på hvad, og hvilket bevisgab skal det lukke?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 GOVERNANCE -->
+<section class="section" id="governance">
+  <div class="container">
+    <div class="section-label">09 — Governance</div>
+    <h2>Udvikling er også governance</h2>
+    <p>Et executive development assignment er ikke kun et læringslaboratorium. Det er også virksomhedens kunder, medarbejdere, kapital, regulatoriske ansvar og strategi. Ingen skal »lære« på en måde, hvor virksomheden ubeskyttet bærer massiv risiko, og en CEO, der giver en kandidat ansvaret for en transformation for at se, hvad der sker, har ikke designet udvikling; han har outsourcet en beslutning. Spørgsmålet, der skal stilles før hver reel erfaring, er derfor: <strong>Hvor meget forretningsrisiko er vi villige til at tage for denne udvikling, og hvilke rammer gør erfaringen forsvarlig uden at gøre den kunstig?</strong></p>
+    <p>Det sidste led er lige så vigtigt som det første. Hvis mentoren står klar og redder hver svær beslutning, hvis CEO'en i praksis træffer afgørelserne bag kandidaten, hvis mandatet er så indhegnet, at intet kan gå galt, så producerer erfaringen mindre evidens. Man får at vide, hvordan hun klarer sig med et sikkerhedsnet, og det var ikke spørgsmålet. Spændingen er: støtte uden redning. Men målet er ikke at fjerne støtten for at gøre testen ren. Den fremtidige rolle vil også have en bestyrelse, en CFO, kolleger, rådgivere og en organisation omkring sig, og en kunstigt ensom erfaring siger ikke meget om den. Designspørgsmålet er derfor: Hvilken støtte vil også være legitim i den fremtidige rolle, og hvornår går støtte over til, at en anden reelt overtager ansvaret? Det kræver, at nogen på forhånd har besluttet, hvad kandidaten ejer, hvad hun kan bede om hjælp til, og hvad der ville udløse, at nogen griber ind.</p>
+    <p>Det rejser spørgsmålet om, hvem der ejer udviklingen. HR kan strukturere, følge, facilitere, administrere og hjælpe med assessment, og et godt HR-system gør det hele mere disciplineret. Men kun virksomhedens reelle ledelse kan give mandat, ansvar, beslutningsrum, eksponering til hele virksomheden, risiko og adgang til rigtige problemer. Udviklingssystemet kan understøttes af HR. De erfaringer, der bygger parathed til en enterprise-rolle, opstår i det virkelige arbejde og kræver ledelsens aktive design. Og ved CEO-succession er »ledelsen« ikke CEO'en alene. Bestyrelsen, og typisk formanden, har en central rolle i vurderingen af kandidater, i eksponeringen og i udviklingshorisonten, og udvikling og vurdering er dér et fælles ansvar mellem bestyrelse, formand, CEO og de governance-processer, virksomheden har. For øvrige C-level-roller kan CEO'en have et mere direkte ledelsesansvar. Paper 01 og 04 gælder stadig: Hvem der formelt beslutter, afhænger af governance og beslutningstype.</p>
+    <p>Hvad gør bestyrelser så i praksis? I en amerikansk undersøgelse blandt 797 bestyrelsesmedlemmer fra 2024 svarede halvdelen, at de brugte executive coaching til at fremskynde interne kandidaters parathed, 46 % brugte forfremmelse til nye roller for at bygge kapabiliteter eller erfaringer, 38 % mentoring fra bestyrelsesmedlemmer og 32 % målrettede interne rotationer. Samtidig var 45 % bekymrede for ikke at have mindst én intern kandidat klar, når skiftet kommer. Det er en praktikerundersøgelse. Den viser, hvad bestyrelser gør og frygter, ikke hvad der virker, og »46 % gør X« er ikke evidens for, at X skaber parathed. Men fordelingen er interessant i lyset af dette paper: Coaching ligger øverst. Rotationer og nye roller, som producerer den anden slags evidens, ligger lavere. Surveyen viser brug, ikke effekt og ikke årsagen til valget. Praktikere i executive search skelner på samme måde mellem potentiale, som vurderes flere år før et skifte, og parathed, som er spørgsmålet om, hvorvidt kandidaten faktisk har de færdigheder og erfaringer, virksomhedens prioriteter kræver, og anbefaler at vurdere mod en defineret fremtidig profil i god tid, så der er tid til reel udvikling. Det er praktikerframing, ikke en valideret model. Men det er den samme logik som frameworket ovenfor.</p>
+
+    <div class="research-note"><strong>Praktikerevidens (Spencer Stuart, 2024; Russell Reynolds Associates, 2022):</strong> Spencer Stuart Director Pulse Survey: CEO Succession 2024 (november 2024): 797 bestyrelsesmedlemmer fra amerikanske børsnoterede og private selskaber; på spørgsmålet »What steps are you taking to accelerate the readiness of your possible internal successors?« svarede 50 % executive coaching, 46 % forfremmelse til nye roller for at bygge kapabiliteter eller erfaringer, 38 % mentoring fra bestyrelsesmedlemmer, 32 % målrettede interne rotationer, 28 % ekstern executive-træning og 14 % ingen udviklingstiltag; 45 % var bekymrede for ikke at have mindst én intern kandidat klar. Praktikersurvey om praksis og bekymring, ikke effektmåling. O'Brien, Zolna &amp; Williamson, »How Boards Can Assess the Potential and Readiness of Future CEOs« (RRA, 12. august 2022): skelner mellem potentiale (vurderet fire til fem år før et skifte) og parathed (om kandidaten har de færdigheder og erfaringer, virksomhedens prioriteter kræver); anbefaler vurdering mod en dokumenteret profil af, hvad virksomheden har brug for i sin næste CEO. Praktikerframing uden empiri.</div>
+  </div>
+</section>
+
+<!-- EXERCISE -->
+<section class="section" id="exercise">
+  <div class="container">
+    <div class="section-label">10 — Øvelse</div>
+    <h2>Fra navn på listen til ny evidens</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · CEO eller bestyrelse · Skriftlig</div>
+      <div class="ex-meta">⏱ Cirka 20 minutter · Øvelsen er en refleksionsramme, ikke et assessment og ikke en readiness-score. Den skal ende i én erfaring, ét bevisgab og én dato.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Vælg én person, som i dag bliver omtalt som high potential, mulig efterfølger, »ready later«, kommende C-level eller mulig CEO. Svar skriftligt. Hvis et svar bliver til tillægsord, så start forfra på det spørgsmål.</p>
+      <ol>
+        <li><strong>Potentiale til hvad?</strong> Hvilken konkret rolle, hvilket scope, hvilken kontekst?</li>
+        <li><strong>Hvornår?</strong> Klar nu, om et til to år, om tre til fem? Og hvad betyder den tidshorisont reelt for, hvad der skal ske i mellemtiden?</li>
+        <li><strong>Hvilken evidens har vi allerede?</strong> Observeret adfærd, resultater og erfaring. Hold omdømme og generelle tillægsord i en separat kolonne, og spørg, hvilken konkret observation de bygger på.</li>
+        <li><strong>Hvilke to eller tre krav i den fremtidige rolle har vi endnu ikke tilstrækkelig evidens på?</strong> Det er bevisgabene.</li>
+        <li><strong>Hvilken konkret erfaring kunne skabe ny evidens om ét af dem?</strong> Vælg ét gab. Ikke tre.</li>
+        <li><strong>Hvad skal personen eje, ikke bare observere?</strong> Hvilken analyse, hvilken afvejning, hvilken anbefaling, hvilken konsekvens?</li>
+        <li><strong>Hvilke rammer kræver virksomhedens risiko?</strong> Hvad må ikke gå galt, og hvem griber ind hvornår?</li>
+        <li><strong>Hvilken støtte skal være til stede uden at gøre erfaringen kunstig?</strong> Støtte uden redning.</li>
+        <li><strong>Hvordan skal erfaringen bearbejdes bagefter?</strong> Af hvem, hvornår, og med hvilke spørgsmål?</li>
+        <li><strong>Hvilket konkret tegn ville få dig til at opgradere, nedgradere eller ændre din vurdering af personens parathed?</strong> Hvis du ikke kan svare, er vurderingen ikke testbar endnu.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">11 — 2-minutters mikrohandling</div>
+    <h2>Gør dette, før du lukker fanen</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · nu</span>
+      <h3>Det, vi endnu ikke har set</h3>
+      <p>Vælg den person i din succession-pipeline, du tror mest på. Færdiggør to sætninger skriftligt: <strong>»Det vigtigste, vi endnu ikke har set hende håndtere, som den næste rolle kræver, er …«</strong> og <strong>»Den erfaring, der kunne give os ny evidens om det, er …«</strong></p>
+      <p>Hvis den første sætning er svær at udfylde, er potentialevurderingen sandsynligvis for upræcis til at kunne omsættes. Det er ikke en dom over personen. Det er en oplysning om, hvor arbejdet skal begynde.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">12 — Commitment &amp; progress</div>
+    <h2>Commit dig — og følg din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 07 · Potentiale skal omsættes</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv dit ene commitment for dette paper. Det gemmes lokalt i din browser, ingen konto, intet sendes nogen steder, og din progress følger dig gennem alle ti papers.</p>
+      <label for="commitText">Den person, hvis potentiale vi nu skal omsætte til ny evidens, er …</label>
+      <textarea id="commitText" placeholder="Person/rolle → fremtidigt krav. Bevisgab: ét konkret krav, vi endnu ikke har set håndteret. Erfaring: ansvar for X. Aftales senest [dato]. Fx: »CCO → mulig CEO. Bevisgab: samlet resultatansvar. Erfaring: ejer integrationen af Y. Aftales senest 1. oktober.«"></textarea>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem commitment</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Holdet bag strategien</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html#holdet">Se hele serien i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">13 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Er potentiale ikke noget, man kan teste? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Assessment kan bidrage med evidens og med en vis forudsigelse, og det er ikke uden værdi. En test kan måle definerede konstruktioner som kognitive evner, personlighed og motivation med forskellige grader af validitet. Det er noget andet end at måle »leadership potential« som én samlet, entydig egenskab; den definition har forskningen ikke, og potentiale er ikke reducerbart til én testscore. En vurdering fra et assessment er ét input til hypotesen. Den erstatter ikke evidens fra, at personen faktisk har stået i noget, der ligner kravet.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvorfor ikke bare forfremme personen og se, hvad der sker? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Fordi udvikling også er governance og risikostyring, og fordi en forfremmelse, der går galt, kan koste virksomheden, holdet og personen langt mere end et designet assignment. Samtidig er det rigtigt, at al usikkerhed ikke kan fjernes før en forfremmelse. Der vil altid være et spring. Udviklingens opgave er ikke at fjerne det. Det er at gøre det mindre blindt.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal man have prøvet jobbet, før man kan få det? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Parathed er ikke det samme som tidligere titel, og »du må kun få rollen, hvis du allerede har haft rollen« ville blokere al mobilitet. Parathed handler om, hvilke krav der er kritiske, hvilke nærliggende erfaringer der findes, hvor store de resterende usikkerheder er, hvilke der kan accepteres, hvilke der kan designes ned gennem erfaring, og hvor støtte og rammer skal ligge. Parathed er ikke fravær af ukendt terræn. Det er et kvalificeret billede af, hvor det ukendte ligger.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er stretch assignments ikke veldokumenterede? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Udfordrende erfaringer kan være udviklende, og det har forskningen dækning for. Men mere udfordring er ikke automatisk bedre; det centrale studie viser aftagende udbytte, og værdien afhænger af person, kontekst og læringsbetingelser som adgang til feedback. Udfordring er samtidig en belastning. »Stretch« er derfor ikke et svar. Det er et spørgsmål om, hvad der skal strækkes, og hvorfor.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad med 70-20-10? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Brug den gerne som huskeregel for, at erfaring, relationer og kurser alle kan bidrage. Brug den ikke som en dokumenteret fordelingslov. Det er godt dokumenteret, at erfaring på jobbet kan være udviklende. Det er noget andet end at vide, at præcis 70 procent af lederudvikling kommer derfra, og evidensgrundlaget for den fordeling er svagt.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan coaching gøre en kandidat klar? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Coaching kan understøtte udvikling, hjælpe med at bearbejde erfaring og skærpe det, personen tager med fra den. Det kan ikke erstatte relevante erfaringer, hvis bevisgabet netop handler om at udøve rollen i virkeligheden. Man kan ikke coache sig til at have haft resultatansvar. Man kan coache sig til at få mere ud af det, når man har det.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis der ikke er tid til at udvikle? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Så er det først og fremmest et aktuelt succession- og risikoproblem, og det skal behandles som det. Udviklingsbehovet forsvinder ikke, men organisationen kan ikke skabe manglende erfaring med tilbagevirkende kraft, så beslutningen må træffes med de kandidater, den evidens og de eksterne muligheder, der findes nu. Det, dette paper kan, er at sørge for, at spørgsmålet ikke står ubesvaret igen om tre år.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis personen fejler i assignmentet? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ét resultat er ikke automatisk en endelig dom. Undersøg opgaven, mandatet, støtten, konteksten, adfærden og læringen, før du konkluderer om personen; <a href="/holdet-bag-strategien-karakteren-bag-kompetencen.html" style="color:var(--gold);">Paper 03</a> gælder stadig. Men udvikling skal producere ærlig evidens, også når den er mindre positiv end håbet. Et assignment kan godt være udviklende, selv om det ikke bruges som test. Men hvis det også skulle give ny evidens om parathed, og intet udfald må ændre vurderingen, blev hypotesen ikke testet. Så blev den bekræftet på forhånd.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal personen vide, at hun er mulig efterfølger? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Der er ikke én universel regel. Åbenhed kan give ejerskab, aspiration kan afklares, og udviklingen kan designes sammen med personen. Åbenhed kan også skabe forventninger, som organisationen ikke kan indfri, og positioneringer i holdet, som ingen ønsker. Det, der gælder uanset, er, at personen skal kende udviklingsformålet med den erfaring, hun får, og at aspirationen skal afklares, før organisationen investerer år i en hypotese. Hvordan man kommunikerer succession-status, er et større emne, som dette paper ikke åbner.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvem ejer udviklingen, CEO'en eller HR? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Begge har roller. HR kan strukturere, følge, facilitere og hjælpe med assessment. Men de reelle enterprise-erfaringer kræver linjeledelsens mandat og ansvar, fordi kun ledelsen kan give beslutningsrum, risiko og adgang til rigtige problemer. Og ved CEO-succession er bestyrelsen og formanden en del af ejerskabet. Udviklingen kan understøttes af HR. Den kan ikke uddelegeres dertil.</div>
+    </details>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="section" id="next">
+  <div class="container">
+    <div class="section-label">14 — Fra analyse til handling</div>
+    <h2>Springet skal være mindre blindt</h2>
+    <p>Hvis du tager én ting med herfra, så lad det være denne: Hold op med at spørge, hvem der er high potential, som om det var slutningen på analysen. Spørg: potentiale til hvad, hvilken evidens har vi, hvad mangler vi endnu at se, og hvilken konkret erfaring kan give os et bedre svar? Målet er ikke at gøre succession risikofri. Det bliver den aldrig. Målet er, at den vurdering, I skal træffe senere, bygger på mere end performancehistorik, omdømme og håb. Og hvis en kandidat står samme sted på listen om to år, skal du kunne pege på ny evidens, ikke bare på to års ekstra anciennitet.</p>
+    <p>Selv den bedst designede erfaring udvikler ikke automatisk den læring, man håbede på. Og ingen executive kan fuldt ud se sin egen adfærd udefra. Når personen har stået i den nye erfaring, kommer det næste spørgsmål: Hvad ser hun selv, og hvad ser alle andre? Det er <a href="/holdet-bag-strategien-spejlet.html" style="color:var(--gold);">Paper 08</a>: Spejlet.</p>
+
+    <p class="pull-quote">Succession bliver aldrig risikofrit. Udviklingens opgave er ikke at fjerne springet. Det er at gøre springet mindre blindt.<cite>— Thomas Friisnæs</cite></p>
+
+    <h3 style="margin-top:36px;">Vil du arbejde videre med dette?</h3>
+    <p>Har dette paper ramt et navn på din egen succession-liste? Nedenfor er fire naturlige næste skridt.</p>
+    <p>Dette er det syvende paper i Holdet bag strategien. De forrige er <a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html" style="color:var(--gold);">01 — Strategien bestemmer holdet</a>, <a href="/holdet-bag-strategien-syv-stjerner-er-ikke-et-stjernehold.html" style="color:var(--gold);">02 — Syv stjerner er ikke et stjernehold</a>, <a href="/holdet-bag-strategien-karakteren-bag-kompetencen.html" style="color:var(--gold);">03 — Karakteren bag kompetencen</a>, <a href="/holdet-bag-strategien-virksomheden-foer-funktionen.html" style="color:var(--gold);">04 — Virksomheden før funktionen</a>, <a href="/holdet-bag-strategien-uenighed-uden-krig.html" style="color:var(--gold);">05 — Uenighed uden krig</a> og <a href="/holdet-bag-strategien-de-bedste-skal-ogsaa-ledes.html" style="color:var(--gold);">06 — De bedste skal også ledes</a>. Det næste er <a href="/holdet-bag-strategien-spejlet.html" style="color:var(--gold);">08 — Spejlet</a>. Hele serien er kortlagt nederst på siden.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="/library.html#holdet">
+        <div class="nc-tag">Hele serien</div>
+        <div class="nc-text"><strong>Se alle ti papers</strong> i Holdet bag strategien i Executive Library</div>
+      </a>
+      <a class="next-card" href="/ceo-sparring.html">
+        <div class="nc-tag">CEO-sparring</div>
+        <div class="nc-text"><strong>Hvem i din succession-pipeline har du mest tro på, og mindst ny evidens på?</strong> — en fortrolig samtale om det, listen ikke viser</div>
+      </a>
+      <a class="next-card" href="/executive-coaching.html">
+        <div class="nc-tag">Executive Coaching</div>
+        <div class="nc-text"><strong>Når du står i den erfaring, der skal vise noget nyt</strong> — for executives, der vil have mere ud af det ansvar, de har fået</div>
+      </a>
+      <a class="next-card" href="/#kontakt">
+        <div class="nc-tag">Samtale</div>
+        <div class="nc-text"><strong>20 min. Ét problem. Én plan.</strong> En kort samtale om det, der fylder lige nu</div>
+      </a>
+    </div>
+    <a class="start-btn" href="/#kontakt">Start en samtale →</a>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <ul>
+      <li>Raj, G. &amp; Krishnan, T. N. (2025). »Research on leadership potential: where are we and where should we be heading?« <em>International Journal of Organizational Analysis</em>, 33(10), 3528–3561. <a href="https://doi.org/10.1108/IJOA-04-2024-4470" target="_blank" rel="noopener">doi.org/10.1108/IJOA-04-2024-4470</a></li>
+      <li>DeRue, D. S. &amp; Wellman, N. (2009). »Developing Leaders via Experience: The Role of Developmental Challenge, Learning Orientation, and Feedback Availability.« <em>Journal of Applied Psychology</em>, 94(4), 859–875. <a href="https://doi.org/10.1037/a0015317" target="_blank" rel="noopener">doi.org/10.1037/a0015317</a></li>
+      <li>Dragoni, L., Tesluk, P. E., Russell, J. E. A. &amp; Oh, I.-S. (2009). »Understanding Managerial Development: Integrating Developmental Assignments, Learning Orientation, and Access to Developmental Opportunities in Predicting Managerial Competencies.« <em>Academy of Management Journal</em>, 52(4), 731–743. <a href="https://doi.org/10.5465/amj.2009.43669936" target="_blank" rel="noopener">doi.org/10.5465/amj.2009.43669936</a></li>
+      <li>Lacerenza, C. N., Reyes, D. L., Marlow, S. L., Joseph, D. L. &amp; Salas, E. (2017). »Leadership Training Design, Delivery, and Implementation: A Meta-Analysis.« <em>Journal of Applied Psychology</em>, 102(12), 1686–1718. <a href="https://doi.org/10.1037/apl0000241" target="_blank" rel="noopener">doi.org/10.1037/apl0000241</a></li>
+      <li>Tannenbaum, S. I. &amp; Cerasoli, C. P. (2013). »Do Team and Individual Debriefs Enhance Performance? A Meta-Analysis.« <em>Human Factors</em>, 55(1), 231–245. <a href="https://doi.org/10.1177/0018720812448394" target="_blank" rel="noopener">doi.org/10.1177/0018720812448394</a></li>
+      <li>Courtright, S. H., Colbert, A. E. &amp; Choi, D. (2014). »Fired Up or Burned Out? How Developmental Challenge Differentially Impacts Leader Behavior.« <em>Journal of Applied Psychology</em>, 99(4), 681–696. <a href="https://doi.org/10.1037/a0035790" target="_blank" rel="noopener">doi.org/10.1037/a0035790</a></li>
+      <li>Clardy, A. (2018). »70-20-10 and the Dominance of Informal Learning: A Fact in Search of Evidence.« <em>Human Resource Development Review</em>, 17(2), 153–178. <a href="https://doi.org/10.1177/1534484318759399" target="_blank" rel="noopener">doi.org/10.1177/1534484318759399</a></li>
+      <li>Spencer Stuart (2024). »Spencer Stuart Director Pulse Survey: CEO Succession 2024.« November 2024. Praktikerevidens: 797 bestyrelsesmedlemmer, amerikanske børsnoterede og private selskaber; praksis og bekymring, ikke effektmåling. <a href="https://www.spencerstuart.com/research-and-insight/spencer-stuart-director-pulse-survey-ceo-succession-2024" target="_blank" rel="noopener">spencerstuart.com</a></li>
+      <li>O'Brien, J., Zolna, E. &amp; Williamson, A. (2022). »How Boards Can Assess the Potential and Readiness of Future CEOs.« Russell Reynolds Associates, 12. august 2022. Praktikerframing. <a href="https://www.russellreynolds.com/en/insights/articles/how-boards-can-assess-the-potential-and-readiness-of-future-ceos" target="_blank" rel="noopener">russellreynolds.com</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Skellet mellem performance, potentiale, parathed og aspiration, definitionen af parathed og de fem bevægelser fra potentiale til parathed er Thomas Friisnæs' egne praktiske rammer, ikke validerede instrumenter. Åbningscasen er et konstrueret, illustrativt eksempel.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Holdet bag strategien — den komplette serie</div>
+    <h2 class="collection-title">Ti papers om det ledelseshold, der skal levere</h2>
+    <p class="collection-intro">Strategien bliver aldrig eksekveret af et organisationsdiagram. Den bliver eksekveret af mennesker. Serien handler om, hvordan CEO'en sammensætter, udvikler og fornyer det ledelseshold, der skal levere resultaterne. Alle ti papers er udgivet.</p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Serie 04</span><span class="cpart-name">Holdet bag strategien</span></div>
+      <p class="cpart-desc">Fra kapabiliteter og karakter, over konstruktiv uenighed og udvikling af de bedste, til succession og fornyelse.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html">Strategien bestemmer holdet</a></li>
+        <li data-n="02"><a href="/holdet-bag-strategien-syv-stjerner-er-ikke-et-stjernehold.html">Syv stjerner er ikke et stjernehold</a></li>
+        <li data-n="03"><a href="/holdet-bag-strategien-karakteren-bag-kompetencen.html">Karakteren bag kompetencen</a></li>
+        <li data-n="04"><a href="/holdet-bag-strategien-virksomheden-foer-funktionen.html">Virksomheden før funktionen</a></li>
+        <li data-n="05"><a href="/holdet-bag-strategien-uenighed-uden-krig.html">Uenighed uden krig</a></li>
+        <li data-n="06"><a href="/holdet-bag-strategien-de-bedste-skal-ogsaa-ledes.html">De bedste skal også ledes</a></li>
+        <li data-n="07"><span class="current">Potentiale skal omsættes — du læser dette</span></li>
+        <li data-n="08"><a href="/holdet-bag-strategien-spejlet.html">Spejlet</a></li>
+        <li data-n="09"><a href="/holdet-bag-strategien-naar-pladsen-skal-skifte-haender.html">Når pladsen skal skifte hænder</a></li>
+        <li data-n="10"><a href="/holdet-bag-strategien-holdet-bliver-aldrig-faerdigt.html">Holdet bliver aldrig færdigt</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til næste talentgennemgang eller bestyrelsesmøde.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/holdet-bag-strategien-de-bedste-skal-ogsaa-ledes.html">
+      <span class="ra-tag">Forrige paper · Holdet bag strategien</span>
+      <span class="ra-title">De bedste skal også ledes: De bedste behøver mindre styring. Det betyder ikke, at de behøver mindre ledelse.</span>
+    </a>
+    <a href="/succession-som-strategi.html">
+      <span class="ra-tag">Anatomi af topledelse</span>
+      <span class="ra-title">Succession som strategi: Det ledelsesskifte organisationer ikke er klar til</span>
+    </a>
+    <a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html">
+      <span class="ra-tag">Holdet bag strategien · Paper 01</span>
+      <span class="ra-title">Strategien bestemmer holdet: Hvilken kollektiv kapacitet kræver strategien?</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Holdet bag strategien · Serie 04 · Paper 07 af 10</div>
+        <div class="series-next"><a href="/holdet-bag-strategien-spejlet.html" style="color:inherit;margin-top:0;border-bottom:1px solid rgba(255,255,255,0.25);">Næste: Spejlet →</a></div>
+        <a href="/library.html#holdet">Se hele serien →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: hbs_ (Holdet bag strategien)
+  var LS_C = 'hbs_p07_commit', LS_D = 'hbs_done', PAPER_N = 7, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+<script src="/lyt.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Når pladsen skal skifte hænder | Holdet bag strategien | Thomas Friisnæs</title>
+<meta name="description" content="En plads er ikke en belønning for fortiden. Den er et ansvar for fremtiden. Paper 09 i Holdet bag strategien handler om C-level succession og executive transition: hvornår spørgsmålet ikke længere er udvikling, men om personen fortsat er det rigtige match til den rolle, strategien kræver, inden for den tid virksomheden har. Om leadership fit, udviklingstid og virksomhedstid, omkostningen ved at skifte og værdighed uden at omskrive fortiden. Med framework, øvelse og FAQ.">
+<meta name="keywords" content="C-level succession, executive transition, CEO succession, leadership fit, person-job fit, strategic fit, ledelseshold, direktion, executive replacement, succession, mismatch">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/holdet-bag-strategien-naar-pladsen-skal-skifte-haender.html">
+
+<meta property="og:title" content="Når pladsen skal skifte hænder | Holdet bag strategien | Thomas Friisnæs">
+<meta property="og:description" content="En plads er ikke en belønning for fortiden. Den er et ansvar for fremtiden. Paper 09 i Holdet bag strategien: hvornår udvikling er blevet til succession.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/holdet-bag-strategien-naar-pladsen-skal-skifte-haender.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-09-13">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Når pladsen skal skifte hænder">
+<meta name="twitter:description" content="En plads er ikke en belønning for fortiden. Den er et ansvar for fremtiden. Paper 09 i Holdet bag strategien.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .micro-action, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–08) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  @media print { .lens-grid, .dispo { page-break-inside: avoid; } .lens { background: #fff !important; border: 0.75pt solid #ddd !important; } .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; } }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Når pladsen skal skifte hænder",
+ "alternativeHeadline": "En plads er ikke en belønning for fortiden. Den er et ansvar for fremtiden.",
+ "description": "En plads er ikke en belønning for fortiden. Den er et ansvar for fremtiden. Paper 09 i Holdet bag strategien handler om C-level succession og executive transition: hvornår spørgsmålet ikke længere er udvikling, men om personen fortsat er det rigtige match til den rolle, strategien kræver, inden for den tid virksomheden har.",
+ "author": { "@type": "Person", "@id": "https://www.friisnaes.com/#person", "name": "Thomas Friisnæs", "url": "https://www.friisnaes.com/" },
+ "publisher": { "@type": "Organization", "name": "Friisnæs", "url": "https://www.friisnaes.com/" },
+ "url": "https://www.friisnaes.com/holdet-bag-strategien-naar-pladsen-skal-skifte-haender.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/holdet-bag-strategien-naar-pladsen-skal-skifte-haender.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": { "@type": "CreativeWorkSeries", "name": "Holdet bag strategien", "url": "https://www.friisnaes.com/library.html#holdet" },
+ "position": 9,
+ "inLanguage": "da",
+ "datePublished": "2026-09-13",
+ "dateModified": "2026-09-15"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Holdet bag strategien · Paper 09 af 10</div>
+  <div class="pc-title">Når pladsen skal skifte hænder</div>
+  <div class="pc-sub">En plads er ikke en belønning for fortiden. Den er et ansvar for fremtiden.</div>
+  <div class="pc-author">Af Thomas Friisnæs · Executive Coach · Karakter · Disciplin · Klarhed · friisnaes.com · September 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Holdet bag strategien</span>
+      <span class="wp-series">Paper 09 af 10 · Serien er komplet</span>
+      <span class="wp-readtime">15 min læsning</span>
+    </div>
+    <h1>Når pladsen skal <em>skifte hænder</em></h1>
+    <p class="wp-subtitle">En plads er ikke en belønning for fortiden. Den er et ansvar for fremtiden. Om hvornår spørgsmålet ikke længere er udvikling, feedback eller coaching, men om personen fortsat er den rigtige til den rolle, strategien kræver, inden for den tid virksomheden har.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · Executive Coach, Karakter · Disciplin · Klarhed<br>Mere end 20 års coachingerfaring · 15.000+ sessioner · Arbejder med C-level ledere, ejerledere og bestyrelsesmedlemmer · Udgivet 13. september 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">»Hun fortjener mere tid«</a></li>
+      <li><a href="#core">Et ansvar for fremtiden</a></li>
+      <li><a href="#results">Dårlige resultater er ikke en diagnose</a></li>
+      <li><a href="#fit">Match er ikke en fast egenskab</a></li>
+      <li><a href="#chose">Beslutningen bliver sværere, når du selv valgte personen</a></li>
+      <li><a href="#framework">Fra tvivl til beslutning</a></li>
+      <li><a href="#clocks">De to ure</a></li>
+      <li><a href="#cost">At skifte koster også</a></li>
+      <li><a href="#dignity">Når stolen skifter hænder</a></li>
+      <li><a href="#exercise">Øvelse: Den stol, du tøver ved</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit commitment &amp; din progress</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#next">Fra analyse til handling</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase · Et illustrativt eksempel</div>
+    <h2>»Hun fortjener mere tid«</h2>
+    <p>COO'en har været central i virksomhedens succes i otte år. Hun byggede driftsorganisationen op fra noget, der knap hang sammen, til noget, konkurrenterne kigger på. Hun har leveret år efter år, hun har høj troværdighed i huset og hos bestyrelsen, hun har stærke relationer, hun har været loyal, og hun bar virksomheden igennem to perioder, hvor andre ville have givet op. Ingen i direktionen ville sætte spørgsmålstegn ved hendes bidrag. Det gør CEO'en heller ikke.</p>
+    <p>Men strategien har ændret sig. Den næste fase kræver noget andet af netop hendes stol: et markant større enterprise-scope, en transformation, der skærer på tværs af alle funktioner, kapitaldisciplin på et niveau, virksomheden ikke har haft brug for før, og en international skalering, hvor driften skal designes til at kunne kopieres, ikke til at blive holdt sammen af hende. Hun er stadig dygtig. Men spejlet fra <a href="/holdet-bag-strategien-spejlet.html" style="color:var(--gold);">Paper 08</a> har vist et vedvarende mønster, og det er relevant for præcis det, rollen nu kræver: I de store tværgående beslutninger vinder driftens behov konsekvent over de prioriteter, direktionen har aftalt sammen. CEO'en har allerede forsøgt flere relevante ledelsesgreb. Han har givet feedback, tydeliggjort mandatet, sørget for sparring, justeret rammerne og givet hende konkret tid til at ændre adfærden. Noget har flyttet sig. Ikke nok. Og rollen bliver vigtigere for hver måned.</p>
+    <p>CEO'en tænker: »Hun fortjener mere tid.« Det kan være sandt. Hun har gjort sig fortjent til meget. Men virksomheden har også en tid, og de to tider er ikke den samme. Casen er konstrueret, men spørgsmålet er ikke: <strong>Hvor længe er »mere tid« stadig udvikling, og hvornår er det udsættelse af en beslutning?</strong> Dette paper svarer ikke på det spørgsmål for CEO'en. Det giver ham en måde at svare på det selv, uden at loyalitet, anciennitet eller handlekraft bliver hele begrundelsen.</p>
+  </div>
+</section>
+
+<!-- 02 CORE -->
+<section class="section" id="core">
+  <div class="container">
+    <div class="section-label">02 — Kernen</div>
+    <h2>Et ansvar for fremtiden</h2>
+    <p>Paper 08 sluttede med, at nogle mønstre kan ændres, andre ændrer sig ikke hurtigt nok, og at problemet nogle gange ikke er personen, men matchet mellem person, rolle, strategi og timing. Dette paper ejer det sidste spørgsmål. Det handler ikke om, hvornår man skal fyre nogen. Det handler om noget, der er sværere og mere ordentligt: Hvornår har vi tilstrækkeligt grundlag for at konkludere, at matchet mellem person og rolle sandsynligvis ikke bliver godt nok inden for den tidshorisont, virksomheden har? Og hvad skal så ændres? Mandatet, organiseringen, støtten, rollen, scope, eller personen. Personudskiftning er én af mulighederne. Den er ikke den forudbestemte.</p>
+
+    <p class="pull-quote">En plads er ikke en belønning for fortiden. Den er et ansvar for fremtiden.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det er paperets bærende sætning, og den er min syntese, ikke et forskningscitat. Den lyder hård, men den er det modsatte. Den frigør beslutningen fra spørgsmålet om, hvad personen har fortjent, fordi det spørgsmål ikke kan besvares med en stol. En executive, der har leveret i otte år, har fortjent respekt, anerkendelse, ærlighed og en ordentlig proces. Hun har ikke dermed fortjent en bestemt rolle i en fremtid, som rollen ikke længere ligner. Det rigtige spørgsmål er ikke, om personen er dygtig. Det er, om personen fortsat er den rigtige til den rolle, strategien nu kræver, og om et eventuelt gab realistisk kan lukkes inden for den tid, virksomheden har.</p>
+    <p>Og her ligger paperets vigtigste menneskelige korrektion, som skal stå, før noget andet bliver sagt. Et mismatch betyder ikke nødvendigvis dårlig leder, dårlig karakter, inkompetence, fejlslagen karriere, forkert ansættelse, eller at nogen har gjort noget forkert. Strategien kan have ændret sig. Rollen kan have ændret sig. Virksomheden kan have skiftet størrelse, og markedet kan have skiftet krav. <strong>Når rollen ændrer sig, kan den samme person blive et dårligere match uden at være blevet en dårligere leder.</strong> Det er ikke en trøst. Det er en præcision, og den er nødvendig, fordi den beslutning, dette paper handler om, kun kan træffes ordentligt, hvis den ikke samtidig er en dom over et menneske.</p>
+    <p>Det kræver, at fire ting holdes adskilt, som ofte bliver blandet sammen. Dårlig performance er et resultat, og det kan have mange årsager. Et kapabilitetsgab er noget, rollen kræver, som personen endnu ikke demonstrerer tilstrækkeligt. Et mismatch er et relevant gab mellem personens aktuelle kapacitet og adfærd og rollens krav i den konkrete kontekst. Og et forkert match, det, man i praksis kalder en fejlbesætning, er en ledelsesvurdering af, at mismatchet er så centralt eller så tidskritisk, at stolen bør bemandes anderledes. Ingen af de fire er moralske diagnoser. Ingen af dem er synonymer. Og vejen fra den første til den fjerde går gennem undersøgelse, ikke gennem stemning.</p>
+  </div>
+</section>
+
+<!-- 03 RESULTS -->
+<section class="section" id="results">
+  <div class="container">
+    <div class="section-label">03 — Korrektionen</div>
+    <h2>Dårlige resultater er ikke en diagnose</h2>
+    <p>Den mest bekvemme genvej i den her slags beslutninger er også den mest upræcise: Resultaterne er dårlige, altså er personen problemet. Forskningen om CEO-afgange giver en ubekvem korrektion. I et studie af 3.365 CEO-skift i amerikanske børsnoterede selskaber fra 1993 til 2009 var sandsynligheden for, at en CEO blev afsat, markant højere efter dårlig performance i branchen som helhed og i mindre grad efter dårlig performance i markedet som helhed, altså forhold uden for CEO'ens fulde kontrol. Et fald i branchekomponenten af virksomhedens performance fra 90. til 10. percentil omtrent fordoblede sandsynligheden for en tvungen afgang. Det er ét studie af én population, børsnoterede amerikanske CEO'er, og det siger ikke, at bestyrelser er irrationelle, at CEO'er rutinemæssigt bliver afsat uretfærdigt, eller at branchen forklarer alle afskedigelser. Det siger noget mere beskedent og mere nyttigt: Selv på det højeste niveau reagerede afgangsmønstret også på forhold, som personen ikke ejer; eksterne stød blev altså ikke fuldt filtreret ud.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (arkivstudie):</strong> Jenter &amp; Kanaan (2015), <em>The Journal of Finance</em>, 70(5), 2155–2184: håndindsamlet stikprøve af 3.365 CEO-skift i amerikanske børsnoterede selskaber, 1993–2009. CEO'er blev signifikant oftere afsat efter dårlig brancheperformance og i mindre grad efter dårlig markedsperformance; et fald i branchekomponenten fra 90. til 10. percentil omtrent fordoblede sandsynligheden for tvungen afgang. Observationsdata om børsnoterede amerikanske selskaber; bruges alene som korrektion: Dårlig performance er ikke i sig selv bevis for, at personen er problemet.</div>
+
+    <p>Konsekvensen for CEO'en i åbningscasen, og for enhver, der overvejer en stol, er en rækkefølge af spørgsmål, der skal stilles før et skifte: Hvad skyldes markedet? Hvad skyldes strategien? Hvad skyldes mandatet? Hvad skyldes organisationen? Hvad skyldes ressourcerne? Og hvad skyldes lederens egne, observerbare valg og adfærd? Det er den samme disciplin som i <a href="/holdet-bag-strategien-karakteren-bag-kompetencen.html" style="color:var(--gold);">Paper 03</a>, 06 og 08: systemet i spejlet, før personen skal ud. Er rollen tydelig? Er mandatet reelt? Er forventningerne konsistente? Har personen de nødvendige ressourcer? Er organisationen designet, så rollen kan lykkes? Modsiger CEO'en selv det mandat, executive'en forventes at tage? Er der konflikt mellem KPI'erne og den adfærd, der faktisk bliver belønnet? Har strategien ændret sig hurtigere end rollebeskrivelsen? En personudskiftning kan ikke kompensere permanent for en rolle, der ikke kan lykkes. <strong>Skift ikke mennesket for at slippe for at reparere rollen.</strong></p>
+    <p>Men systemforklaringen må heller ikke blive en evig undskyldning. Alt kan forklares med uklart mandat, organisation, marked, kolleger og ressourcer, og en CEO, der vil undgå beslutningen, kan finde en systemforklaring til hvert kvartal. Derfor gælder det omvendte også: Når systemet er rimeligt korrigeret, mandatet er klart, og gabet stadig viser sig i den adfærd, personen selv ejer, bliver spørgsmålet mere person- og rollespecifikt. Ikke med falsk sikkerhed. Bare med gradvist stærkere evidens. Og det er dét, spørgsmålet fra Paper 08 er til for: Hvad ville stadig være personens ansvar, hvis alle rimelige kontekstforklaringer var korrekte?</p>
+  </div>
+</section>
+
+<!-- 04 FIT -->
+<section class="section" id="fit">
+  <div class="container">
+    <div class="section-label">04 — Forskningen</div>
+    <h2>Match er ikke en fast egenskab</h2>
+    <p>Forskningen har et ord for det, dette paper handler om, og det er bredere end direktionen: fit. En omfattende metaanalyse, 172 studier og 836 effektstørrelser, finder, at forskellige former for fit mellem person og job, organisation, gruppe og nærmeste leder hænger sammen med holdninger, performance, tilbagetrækning, belastning og anciennitet, og at sammenhængene er robuste på tværs af situationer. Det er vigtigt at sige, hvad det er, og hvad det ikke er. Det er bred arbejdspsykologisk litteratur om medarbejdere i almindelighed. Det er ikke forskning om executives, CEO'er, bestyrelser eller strategisk rollematch, og det siger ikke, at fit forårsager performance. Det siger, at match betyder noget for, hvordan det går mennesker på arbejde, og det er nok til at tage begrebet alvorligt.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (metaanalyse):</strong> Kristof-Brown, Zimmerman &amp; Johnson (2005), <em>Personnel Psychology</em>, 58(2), 281–342: metaanalyse af 172 studier med 836 effektstørrelser om person–job-, person–organisation-, person–gruppe- og person–leder-fit og sammenhænge med holdninger, performance, tilbagetrækningsadfærd, belastning og anciennitet; næsten alle troværdighedsintervaller udelukkede nul. Bred arbejdspsykologisk litteratur; ikke executive-, CEO- eller bestyrelsesspecifik; korrelationer. Paperets kæde person → rolle → strategi → timing er Thomas Friisnæs' praktiske anvendelse, ikke en valideret udvidelse.</div>
+
+    <p>Det, forskningen ikke siger, og som dette paper insisterer på, er, at fit er dynamisk. Fit er ikke en egenskab ved personen. Det er et forhold mellem en person og en rolle i en bestemt kontekst på et bestemt tidspunkt, og hvert af de tre led kan ændre sig. <a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html" style="color:var(--gold);">Paper 01</a> sagde, at strategien bestemmer kapabilitetsbehovet. Når strategien flytter sig, flytter kravene til stolen sig, og så flytter matchet sig, selv om personen står stille. Det er derfor, »hun var den rigtige, da vi ansatte hende« og »hun er den rigtige nu« er to forskellige udsagn, som begge kan være sande, og som begge kan være sande samtidig med, at hun ikke er den rigtige om to år. Ordet, der skal undgås her, er »culture fit«. »Hun passer ikke ind i kulturen« forklarer ingenting, og det kan skjule konformitet, personlig præference, skævhed eller politisk uenighed. Hvis kultur er en del af gabet, skal det beskrives som konkret adfærd og konkrete krav: Rollen kræver konstruktiv modsigelse på tværs af funktioner, men executive'en undgår konsekvent konflikt med sine kolleger. Den konkrete adfærd kan undersøges. Etiketten »culture mismatch« kan ikke bære beslutningen alene.</p>
+    <p>Heidrick &amp; Struggles rammesætter i deres 2026-materiale CEO-match på en tilsvarende fremadrettet måde. I deres internationale undersøgelse blandt godt tusind CEO'er og bestyrelsesmedlemmer vurderede respondenterne, at CEO'en i mere end en tredjedel af de amerikanske virksomheder ikke havde de kapabiliteter, organisationen ville få brug for i de kommende to til tre år; blandt bestyrelsesmedlemmerne rapporterede 46 % et sådant gab, og 93 % forventede ændringer i strategi eller driftsmodel i samme periode, halvdelen af dem væsentlige. Det er respondenters vurderinger i en praktikerundersøgelse, ikke målt effekt, og det handler om amerikanske forhold. Men det illustrerer, at spørgsmålet om match dér bliver stillet som et spørgsmål om fremtidige strategiske behov, ikke om lederens permanente kvalitet. Det er præcis den ramme, dette paper bruger om enhver stol i direktionen.</p>
+
+    <div class="research-note"><strong>Praktikerevidens (Heidrick &amp; Struggles, 2026):</strong> »Route to the Top US 2026: Closing the CEO capability gap« (12. maj 2026): survey blandt 1.033 CEO'er og bestyrelsesmedlemmer globalt, heraf 253 i USA. Respondenterne vurderede, at CEO'en i mere end en tredjedel af amerikanske virksomheder ikke har de kapabiliteter, organisationen behøver de næste to til tre år; 46 % af bestyrelsesmedlemmerne rapporterede et sådant gab; 93 % forventede ændringer i strategi og driftsmodel i perioden, halvdelen væsentlige. Selvrapporterede vurderinger, ikke effektmåling, ikke danske forhold; bruges alene til at illustrere én praktikerkildes fremadrettede rammesætning af CEO-match.</div>
+  </div>
+</section>
+
+<!-- 05 CHOSE -->
+<section class="section" id="chose">
+  <div class="container">
+    <div class="section-label">05 — Den ubehagelige del</div>
+    <h2>Beslutningen bliver sværere, når du selv valgte personen</h2>
+    <p>Der er en grund til, at den her beslutning er sværere for CEO'en end for en udenforstående, og den handler ikke om, at CEO'en ved mere. Hvis CEO'en selv ansatte personen, selv forfremmede hende, argumenterede for hende over for bestyrelsen, gav hende flere chancer og fortalte formanden, at hun ville lykkes, så er en beslutning om at fortsætte ikke længere kun en vurdering af hende. Den er også en vurdering af CEO'ens egen dømmekraft, egen loyalitet og egen evne til at udvikle mennesker. Beslutningsforskningen har et navn for det generelle fænomen: eskalering af commitment, tilbøjeligheden til at holde fast i eller øge investeringen i en kurs, man selv har valgt, også når evidensen taler imod. En metaanalyse af den litteratur gennemgår de forhold, der er forbundet med eskalering, herunder netop personligt ansvar for den oprindelige beslutning. Det er bred beslutningsforskning, i høj grad fra eksperimenter og projektbeslutninger, ikke direkte evidens om fastholdelse af executives. Derfor skal det ikke bruges til at sige »CEO'en holder fast, fordi han ikke vil indrømme en fejl«. Det kan være én hypotese. Det er ikke en diagnose.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (metaanalyse):</strong> Sleesman, Conlon, McNamara &amp; Miles (2012), <em>Academy of Management Journal</em>, 55(3), 541–562: metaanalytisk gennemgang af determinanterne for eskalering af commitment til en igangværende kurs, herunder forhold knyttet til projektet, beslutningstageren (blandt andet personligt ansvar for den oprindelige beslutning), det sociale og det strukturelle. Bred beslutningsforskning på tværs af kontekster; ikke evidens om C-level fastholdelse. Bruges alene til én hypotese: Tidligere commitment kan farve en senere beslutning om fortsættelse.</div>
+
+    <p>Det, man kan gøre ved en hypotese, er at stille et spørgsmål, der isolerer den. Jeg bruger to. Det første: <strong>Hvis rollen blev ledig i morgen, og du skulle besætte den ud fra de krav, strategien stiller nu, ville du så aktivt vælge den samme person igen?</strong> Det er et refleksionsspørgsmål, ikke en valideret bias-test, og et »nej« betyder ikke »afsæt personen«. Det betyder, at det nuværende match bør undersøges, uden at tidligere investering, loyalitet og anciennitet er hele begrundelsen. Det andet spørgsmål er beregnet til CEO'en, der selv valgte: <strong>Hvis en anden CEO havde truffet den oprindelige ansættelsesbeslutning, ville du så se situationen anderledes i dag?</strong> Hvis svaret er ja, har du et signal om, at din relation til den oprindelige beslutning er værd at undersøge. Ikke en diagnose af hvorfor. Og hvis svaret på det første spørgsmål ikke er et klart ja, kommer det spørgsmål, der tvinger »mere tid« til at blive konkret: Hvad er det præcist, du venter på at få ny evidens for, og hvornår skal den evidens senest være synlig?</p>
+  </div>
+</section>
+
+<!-- 06 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">06 — Frameworket</div>
+    <h2>Fra tvivl til beslutning</h2>
+    <p>De fem bevægelser nedenfor er min praktiske beslutningsramme til én stol, hvor tvivlen er reel. De er ikke en score, ikke et trafiklys, ikke en algoritme og ikke en valideret model. De er en rækkefølge, og rækkefølgen er pointen: Rollen kommer først, personen kommer sidst, og tiden kommer før beslutningen.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">Fra tvivl til beslutning</div>
+      <div class="fw-sub">Thomas Friisnæs' praktiske beslutningsramme til én stol, hvor spørgsmålet er blevet aktuelt. Ingen score.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Rollen</h4>
+          <p>Start igen med rollen, ikke personen. Hvad kræver denne stol af den, der sidder i den, i den periode strategien faktisk skal bæres igennem, eksempelvis de næste 24 til 36 måneder? Knyt det til strategi, mandat, kontekst, ansvar for helheden og den fase, virksomheden er i. Og stil det spørgsmål, der er let at springe over: Har rollen ændret sig, siden personen blev udnævnt? Et ja betyder noget. Paper 01 gælder stadig.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Gabet</h4>
+          <p>Beskriv kun observerbar adfærd, demonstreret kapacitet, resultater, hvor tilskrivningen er rimelig, tilbagevendende mønstre og kontekst. Hvad kræver rollen, som vi stadig ikke ser konsekvent nok? Ingen etiketter. Ikke »ikke strategisk nok«, men »i de seneste tre porteføljebeslutninger har funktionens optimering gentagne gange vundet over de aftalte enterprise-prioriteter«. Gabet skal være relevant, konsekvensfuldt og underbygget. Ikke en personlighedspræference.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Forklaringen</h4>
+          <p>Før noget tilskrives personen: Test strategi, mandat, ressourcer, organisation, incitamenter, rolledesign, afhængigheder af kolleger, CEO'ens egen adfærd og eksterne stød. Og stil derefter Paper 08's spørgsmål: Hvad ville stadig være personens ansvar, hvis alle rimelige kontekstforklaringer var korrekte?</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Tiden</h4>
+          <p>Sammenlign den realistiske udviklingstid med den forsvarlige ventetid. Er der allerede synlig bevægelse? Forstår personen gabet? Vil hun? Kan kapaciteten realistisk udvikles? Hvad er allerede forsøgt? Hvilken ny evidens skal vise sig, og hvornår? Hvad sker der med virksomheden, hvis den ikke gør? Når udviklingstiden er længere end virksomhedstiden, er spørgsmålet blevet et succession-spørgsmål.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">5</div>
+        <div class="fw-step-body">
+          <h4>Beslutningen</h4>
+          <p>Der er flere muligheder end behold eller afsæt: fornyet commitment med eksplicit mandat og beslutningsdato, redesign af rollen, ændret scope, ændrede snitflader eller ressourcer, en anden rolle, en efterfølger, en overgang ud. Ændr det, der faktisk skaber mismatchet, ikke nødvendigvis det mest synlige. Og hvis personen skal forlade stolen: Gør beslutningen klar. Ikke endnu en uklar »sidste chance«.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Den fjerde bevægelse er den, der adskiller dette paper fra de tre foregående. <a href="/holdet-bag-strategien-de-bedste-skal-ogsaa-ledes.html" style="color:var(--gold);">Paper 06</a>, 07 og 08 handlede om at lede, udvikle og spejle stærke mennesker, og de gav CEO'en ansvar for betingelserne. Det ansvar forsvinder ikke her. Men Paper 09 tilføjer det, de andre ikke kunne sige: <strong>Udvikling er et tilbud om reel bevægelse. Det er ikke en garanti for ubestemt tid i stolen.</strong></p>
+  </div>
+</section>
+
+<!-- 07 CLOCKS -->
+<section class="section" id="clocks">
+  <div class="container">
+    <div class="section-label">07 — Grebet</div>
+    <h2>De to ure</h2>
+    <p>Det centrale greb i dette paper er ikke et nyt begreb. Det er to tidshorisonter, som i praksis bliver holdt i samme hånd, og som skal skilles ad. Det er min praktiske governance-ramme, ikke en videnskabelig model, og den har ingen ratio, ingen formel og ingen score.</p>
+
+    <div class="lens-grid">
+      <div class="lens">
+        <div class="l-tag">Udviklingstid</div>
+        <h4>Hvor lang tid kræver det realistisk?</h4>
+        <p>Før personen kan demonstrere den nødvendige adfærd og kapacitet. Ikke hvor lang tid hun fortjener. Hvor lang tid det tager, vurderet ud fra gabets størrelse, den bevægelse, der allerede er set, og hvad der er forsøgt.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Virksomhedstid</div>
+        <h4>Hvor længe kan virksomheden forsvarligt vente?</h4>
+        <p>Før gabet skaber uacceptabel risiko, tabt momentum eller strategisk skade. Ikke hvor længe CEO'en har lyst til at vente. Hvor længe strategien, kunderne, kapitalen og organisationen kan bære det.</p>
+      </div>
+    </div>
+
+    <p class="pull-quote">Når udviklingstiden realistisk er længere end virksomhedstiden, er problemet ikke længere kun udvikling. Det er succession.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det er paperets praktiske beslutningsprincip, og det skal læses som et governance-spørgsmål, ikke som matematik. Ingen af de to ure kan aflæses præcist, og det er ikke meningen. Meningen er, at de bliver aflæst hver for sig, så »hun fortjener mere tid« ikke automatisk bliver til »virksomheden har mere tid«. For det har den måske ikke. <strong>At give mere tid er også en beslutning. Den bruger virksomhedens tid.</strong> Og der er ingen universel udviklingsfrist. En ny kapabilitet kan tage år at bygge; en regulatorisk krise kan give uger. Tidshorisonten følger gabet, rollen, konsekvensen og den strategiske hast, og enhver, der siger 90 dage, seks måneder eller tolv måneder som regel, har erstattet en vurdering med et tal.</p>
+    <p>Hvis beslutningen er, at personen får mere tid, og det kan udmærket være den rigtige beslutning, så skal den se ud som en beslutning. Det kræver et konkret gab, en konkret adfærd eller et konkret resultat, der skal ses, konkret støtte, en konkret observationsperiode og en konkret beslutningsdato. Ikke »vi ser det an«. <strong>»Vi ser det an« er kun en beslutning, hvis du også ved, hvad du ser efter, og hvornår du beslutter dig.</strong> Og det er også svaret på den indvending, der kommer: »Mennesker kan overraske én. Hvad hvis jeg fjerner nogen, lige før det vender?« Det kan ske. Den usikkerhed kan ikke fjernes. Derfor skal man bruge evidens, definere vinduet, definere den bevægelse, der kræves, og undlade sikkerhedsteater. Målet er ikke sikkerhed. Det er en beslutning, hvor den resterende usikkerhed er eksplicit i stedet for gemt inde i »mere tid«.</p>
+  </div>
+</section>
+
+<!-- 08 COST -->
+<section class="section" id="cost">
+  <div class="container">
+    <div class="section-label">08 — Modvægten</div>
+    <h2>At skifte koster også</h2>
+    <p>Hvis dette paper stoppede her, ville det være et paper om handlekraft, og det ville være forkert. Et lederskifte er ikke gratis, og det er ikke automatisk en forbedring. En metaanalyse af forskningen om CEO-succession finder, at succession i gennemsnit hænger negativt sammen med virksomhedens performance på kort sigt, at der ikke er nogen signifikant direkte effekt på langsigtet performance samlet set, og at de langsigtede sammenhænge er mere sammensatte og afhænger af blandt andet omfanget af strategisk forandring, om efterfølgeren kommer indefra eller udefra, og konteksten. Det er forskning om CEO-skift i børsnoterede selskaber, ikke om alle executive-overgange, og det siger ikke »skift aldrig«, ikke »interne kandidater er bedre« og ikke, at tvungne skift er ligegyldige. Det siger det, dette paper har brug for som hegn mod sin egen argumentation: Succession kan medføre forstyrrelsesomkostninger, især på kort sigt, og evidensen understøtter ikke en generel performancegevinst ved blot at skifte lederen.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (metaanalyse):</strong> Schepker, Kim, Patel, Thatcher &amp; Campion (2017), <em>The Leadership Quarterly</em>, 28(6), 701–720: metaanalyse af CEO-succession, strategisk forandring og performance efter skiftet; 60 stikprøver, 1972–2013, 13.578 CEO-successions. CEO-succession var positivt relateret til strategisk forandring og negativt relateret til kortsigtet performance; ingen signifikant direkte samlet effekt på langsigtet performance; de langsigtede sammenhænge var betingede af blandt andet strategisk forandring, efterfølgerens oprindelse og kontekst. Overvejende børsnoterede selskaber; korrelationer på tværs af heterogene studier. Bruges alene til pointen, at lederskifte har omkostninger og ikke er en automatisk forbedring.</div>
+
+    <p>Det betyder, at både at vente og at skifte har omkostninger, og at ledelse i den her situation består i at sammenligne de relevante risici, ikke i at vælge den mest handlekraftige historie. <strong>At vente kan være fejhed. Det kan også være god ledelse. At skifte hurtigt kan være mod. Det kan også være en fejldiagnose.</strong> Og sammenligningen skal være ærlig om, hvad der sammenlignes. Den nuværende executive er allerede observeret i den faktiske rolle: hendes styrker og svagheder, hendes historik, relationer og viden om virksomheden. En realistisk efterfølger kan være bedre eller dårligere kendt, men er endnu ikke observeret i netop denne stol under netop disse betingelser. <strong>Sammenlign aldrig et menneske, du kender i detaljer, med en efterfølger, du kun kender som mulighed.</strong> Den relevante sammenligning er ikke nuværende ufuldkommenheder mod en forestillet perfekt afløser. Den er den nuværende person i den faktiske rolle mod et realistisk alternativ med sin egen usikkerhed og sin egen overgangsomkostning. Derfor er spørgsmålet »ville du vælge personen igen?« kun det første. Det isolerer diagnosen. Det andet spørgsmål er: Er det realistiske alternativ samlet set bedre nok til at retfærdiggøre overgangsrisikoen?</p>
+    <p>Det bringer os til den fælde, som mange CEO'er kender: »Jeg har ikke andre.« Her skal to ting holdes adskilt. Diagnosen: Er det nuværende match godt nok? Og eksekveringen: Hvilke alternativer findes? Manglen på en oplagt efterfølger gør ikke det nuværende match bedre. Men den påvirker i høj grad timing, overgangsrisiko, midlertidige løsninger, søgning og rækkefølge. <strong>Manglen på en afløser ændrer din handlemulighed. Den ændrer ikke automatisk din diagnose.</strong> Og det er også det ene sted, hvor <a href="/holdet-bag-strategien-potentiale-skal-omsaettes.html" style="color:var(--gold);">Paper 07</a> rækker ind i dette paper: Beslutningen er væsentligt lettere, når alternativer er blevet udviklet, før problemet blev akut. Resten af den pointe hører til dér og i <a href="/holdet-bag-strategien-holdet-bliver-aldrig-faerdigt.html" style="color:var(--gold);">Paper 10</a>.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Fem ting, der ikke er det samme</div>
+      <ul class="dispo-list">
+        <li><strong>Loyalitet</strong> <em>≠</em> permanent mandat. Loyalitet til mennesket og ansvar for rollen er to forskellige forpligtelser.</li>
+        <li><strong>Udvikling</strong> <em>≠</em> ubestemt tid. Udvikling er et tilbud om bevægelse med en horisont, ikke en garanti for stolen.</li>
+        <li><strong>Dårlig performance</strong> <em>≠</em> automatisk personproblem. Resultater er data. Tilskrivningen er arbejdet.</li>
+        <li><strong>Sædeskifte</strong> <em>≠</em> garanteret forbedring. Succession har omkostninger, og evidensen lover ingen gevinst af skiftet alene.</li>
+        <li><strong>Et nej til rollen</strong> <em>≠</em> et nej til mennesket. Beslutningen om fremtiden omskriver ikke bidraget i fortiden.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 DIGNITY -->
+<section class="section" id="dignity">
+  <div class="container">
+    <div class="section-label">09 — Efter beslutningen</div>
+    <h2>Når stolen skifter hænder</h2>
+    <p>Hvis undersøgelsen ender med, at stolen skal bemandes anderledes, er der én ting, dette paper skal sige, og den skal siges kort, fordi den ellers bliver til en manual. En beslutning om match er ikke en omskrivning af personens bidrag. Man kan på samme tid sige: Du har leveret enormt her. Og: Denne rolle har nu brug for noget andet. Begge dele kan være sande, og begge dele skal siges. <strong>Et nej til stolen behøver ikke være et nej til mennesket.</strong> Og: <strong>At ændre fremtiden kræver ikke, at du omskriver fortiden.</strong></p>
+    <p>Værdighed er ikke vage komplimenter, falsk taknemmelighed, at lade som om beslutningen er gensidig, eller at skjule begrundelsen. Værdighed kræver en klar beslutning, en ærlig begrundelse på det rigtige niveau, anerkendelse af bidraget, ingen karaktermord og ingen offentlig omskrivning af historien. Nogle gange vil personen kunne fylde en anden rolle i virksomheden. Nogle gange vil interesserne skilles, og det skal ikke pyntes. Værdighed kræver ikke, at alle afgange bliver en fælles sejr, og den kan ikke garantere, hvordan beslutningen bliver oplevet. Den beskriver processen: hvad du selv gør og siger. Den praktiske udførelse, det juridiske og det processuelle, hører til hos de rådgivere, der har det som fag; dette paper ejer beslutningen, ikke afviklingen.</p>
+    <p>Én ting til, som er en praktisk risiko og ikke et forskningsresultat: Perioden mellem, at CEO'en har mistet tilliden, og at beslutningen bliver truffet, er ikke neutral. Executive'en fornemmer det. Kollegerne fornemmer det. Rollen er formelt uændret, men beslutninger begynder at gå udenom, mandatet krymper i praksis, og positioneringen begynder. En leder, som formelt har mandatet, men reelt ikke længere har din tillid, sidder i en rolle, der allerede er begyndt at ændre sig. Det er endnu en grund til, at »vi ser det an« skal have en dato. Og det gælder også for den sværeste variant af alle: det menneske, der byggede funktionen op, og som virksomheden nu er vokset fra. <strong>Det menneske, der var præcis rigtigt til at bygge første version, er ikke automatisk det rigtige til at lede den næste.</strong> Det er ikke respektløst. Det er den mest respektfulde måde at sige det på, fordi det anerkender, hvad der blev bygget.</p>
+  </div>
+</section>
+
+<!-- EXERCISE -->
+<section class="section" id="exercise">
+  <div class="container">
+    <div class="section-label">10 — Øvelse</div>
+    <h2>Den stol, du tøver ved</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · CEO eller formand · Skriftlig</div>
+      <div class="ex-meta">⏱ Cirka 20 minutter · Øvelsen er en beslutningsramme, ikke en score, ikke et trafiklys og ikke en vurdering af personen. Den skal ende i ét gab, én observation og én beslutningsdato.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Vælg én executive-rolle, hvor du har tilbagevendende tvivl. Svar skriftligt, i rækkefølgen. Hvis du springer til spørgsmål 12 først, så gå tilbage.</p>
+      <ol>
+        <li><strong>Hvis stolen var tom i dag, hvad ville strategien kræve af den næste person i den relevante strategihorisont, eksempelvis de kommende 24 til 36 måneder?</strong> Skriv det, før du tænker på personen.</li>
+        <li><strong>Hvilke tre til fem krav er reelt kritiske?</strong> Ikke ønskelisten. De krav, hvor et gab koster.</li>
+        <li><strong>Hvad demonstrerer den nuværende executive allerede stærkt?</strong> Konkret og ærligt.</li>
+        <li><strong>Hvad er det konkrete gab?</strong> Observerbar evidens, ikke adjektiver.</li>
+        <li><strong>Hvor stor er forretningskonsekvensen af gabet?</strong> Hvad koster det, hvis det står uændret i tolv måneder?</li>
+        <li><strong>Hvilken del kan plausibelt forklares af marked, system, mandat, ressourcer eller din egen adfærd?</strong> Vær grundig her; det er her, genvejen tages.</li>
+        <li><strong>Hvad står tilbage som et person-rolle-spørgsmål?</strong> Det, der ville være personens ansvar, hvis alle kontekstforklaringer var korrekte.</li>
+        <li><strong>Hvad har vi allerede forsøgt?</strong> Feedback, mandat, sparring, rammer, tid.</li>
+        <li><strong>Hvilken reel bevægelse har vi set?</strong> Ikke hensigter. Adfærd.</li>
+        <li><strong>Hvor lang tid kræver videre udvikling realistisk?</strong> Udviklingstiden.</li>
+        <li><strong>Hvor lang tid kan virksomheden forsvarligt vente?</strong> Virksomhedstiden.</li>
+        <li><strong>Hvis rollen var ledig i morgen, ville jeg aktivt vælge personen igen? Hvorfor?</strong> Loyalitet, anciennitet, »hun fortjener det« og »jeg har ikke andre« tæller ikke som eneste svar.</li>
+        <li><strong>Hvilken ny evidens kunne ændre min vurdering?</strong> I begge retninger.</li>
+        <li><strong>Hvornår tager jeg den faktiske beslutning?</strong> Dato.</li>
+        <li><strong>Hvis stolen skal skifte hænder: Hvad vil jeg bevare sandt og værdigt om personens bidrag?</strong> Skriv det nu, mens det ikke er nødvendigt.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">11 — 2-minutters mikrohandling</div>
+    <h2>Gør dette, før du lukker fanen</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · nu</span>
+      <h3>Ville du vælge personen igen?</h3>
+      <p>Vælg den stol i din direktion, du tøver mest ved. Færdiggør tre sætninger skriftligt: <strong>»Hvis rollen blev ledig i morgen, ville jeg vælge den samme person igen, fordi …«</strong> Loyalitet, anciennitet, »hun fortjener det« og manglen på en efterfølger må ikke være det eneste svar. Derefter: <strong>»Det konkrete forhold, der gør mig i tvivl, er …«</strong> Og til sidst: <strong>»Senest [dato] skal jeg vide …«</strong></p>
+      <p>Det er en praktisk øvelse, ikke en valideret beslutningsmetode. Men hvis den første sætning kun kan færdiggøres med fortiden, og den tredje ikke kan færdiggøres med en dato, har du fundet noget, der fortjener nærmere undersøgelse, før »mere tid« får lov at fortsætte.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">12 — Commitment &amp; progress</div>
+    <h2>Commit dig — og følg din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 09 · Når pladsen skal skifte hænder</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv dit ene commitment for dette paper. Det gemmes lokalt i din browser, ingen konto, intet sendes nogen steder, og din progress følger dig gennem alle ti papers.</p>
+      <label for="commitText">Den beslutning, jeg ikke længere vil lade være tidsløs, er …</label>
+      <textarea id="commitText" placeholder="Rolle + det kritiske gab + den næste evidens + beslutningsdato. Fx: »COO. Gab: enterprise-prioritering under kapacitetspres. Observerer de næste to porteføljebeslutninger. Endelig beslutning 15. november.« Commitmentet må gerne være at beholde efter evidens. Disciplinen er datoen."></textarea>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem commitment</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Holdet bag strategien</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html#holdet">Se hele serien i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">13 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Hvordan ved jeg, om jeg bare er utålmodig? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det ved du ikke automatisk, og det kan du være. Derfor er rækkefølgen i frameworket vigtig: Definér rollens krav først, beskriv gabet som observerbar adfærd, test kontekstforklaringerne, se på den bevægelse, der faktisk er sket, og gør konsekvensen af at vente konkret. Hvis du springer de mellemste trin over, bør du i hvert fald undersøge, om hastigheden er begyndt at styre diagnosen. Mennesker udvikler sig forskelligt, og nogle kapabiliteter tager år. Men det gør ikke virksomhedstiden længere; det gør bare sammenligningen vigtigere.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis resultaterne er dårlige? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Så er de data, ikke tilskrivning. Forskningen om CEO-afgange viser, at tvungne afgange i børsnoterede selskaber også reagerede på dårlige branche- og markedsforhold uden for CEO'ens fulde kontrol; sådanne eksterne stød blev altså ikke fuldt filtreret ud af afgangsmønstret. Spørg, hvad der skyldes markedet, strategien, mandatet, organisationen og ressourcerne, før du spørger, hvad der skyldes personen. Og spørg derefter ærligt, hvad der står tilbage.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis resultaterne er gode? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Gode tal besvarer heller ikke alle rollens krav. Performance kan være stærk, mens matchet forringes på en anden, strategisk kritisk dimension: Kortsigtede tal holder, mens transformationen gentagne gange går i stå, efterfølgerbænken er tom, enterprise-beslutninger konsekvent bliver ofret for egen funktion, eller tilliden hos tilsyn eller ejere svækkes. Men pas på subjektiviteten. Det kræver konkrete krav og konkret evidens, ikke en vag fornemmelse af »bløde« mangler.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvor lang tid skal en executive have? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Der er ingen universel frist, og enhver, der giver dig ét tal, har erstattet en vurdering med en regel. Sammenlign udviklingstiden, hvor lang tid det realistisk tager at demonstrere det, rollen kræver, med virksomhedstiden, hvor længe virksomheden forsvarligt kan vente. Horisonten følger gabet, rollen, konsekvensen og den strategiske hast. Det, der gælder uanset, er, at »mere tid« skal have en beslutningsdato.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal man ikke være loyal over for mennesker, der har leveret i mange år? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Jo. Langvarigt bidrag skal have reel vægt i den måde, beslutningen bliver truffet og gennemført på. Men loyalitet til et menneske og ansvar for en rolle er to forskellige forpligtelser. Loyaliteten udtrykkes i ærlighed, anerkendelse, ordentlighed og en værdig proces. Ansvaret for rollen udtrykkes i, at stolen er bemandet med den, strategien kræver. Man kan opfylde begge. Man kan ikke opfylde den første ved at svigte den anden.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis jeg selv ansatte personen? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Så er din tidligere beslutning relevant at undersøge, ikke bevis for, at du er forudindtaget. Beslutningsforskningen viser, at personligt ansvar for en oprindelig beslutning er ét af de forhold, der hænger sammen med at holde fast; det er en hypotese om dig, ikke en diagnose. Stil spørgsmålet: Hvis en anden CEO havde truffet den oprindelige ansættelsesbeslutning, ville du så se situationen anderledes i dag? Svaret fortæller dig ikke, hvor meget der handler om hende, og hvor meget der handler om dig. Men hvis dit svar ændrer sig, når du fjerner dit eget ejerskab til den oprindelige beslutning, er det en forskel, der fortjener at blive undersøgt.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis jeg ikke har en efterfølger? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Så ændrer det din handlemulighed, ikke automatisk din diagnose. Manglen på en afløser gør ikke det nuværende match bedre, men den påvirker timing, overgangsrisiko, midlertidige løsninger, søgning og rækkefølge, og den skal indgå i sammenligningen af de realistiske alternativer. Det er også grunden til, at Paper 07 handlede om at bygge evidens om kandidater, før spørgsmålet blev akut.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er det ikke farligere at skifte? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det kan det være. Metaanalysen af CEO-succession finder negative sammenhænge med kortsigtet performance og ingen generel langsigtet gevinst ved skiftet alene. Succession har forstyrrelsesomkostninger, og en efterfølger, du kun kender som mulighed, har sin egen usikkerhed. Men at vente har også omkostninger, og de er sværere at se, fordi de ikke har en dato. Opgaven er at gøre begge risici synlige og sammenligne dem, ikke at vælge den, der føles tryggest.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis personen kunne passe godt i en anden rolle? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Så behøver et sædeskifte ikke betyde, at personen forlader virksomheden. Frameworkets femte bevægelse rummer flere muligheder end behold eller afsæt: redesign af rollen, ændret scope, en anden rolle. Men det må ikke blive en antagelse. Ikke alle kan omplaceres, ikke alle vil, og en rolle, der er opfundet for at undgå en beslutning, er ikke en løsning for nogen af parterne.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvordan siger man det ordentligt? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Klar beslutning, ærlig begrundelse på det rigtige niveau, anerkendelse af bidraget, ingen omskrivning af historien og ingen forestilling om, at beslutningen er gensidig, hvis den ikke er det. Det er den del, dette paper ejer. Den ansættelsesretlige og processuelle udførelse kræver relevant HR- og juridisk støtte og hører ikke hjemme her.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvornår bliver det Paper 10? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Når beslutningen om én stol bliver til det bredere spørgsmål: Hvordan holder vi løbende hele holdet matchet til en strategi, der flytter sig? Dette paper handler om én plads, hvor beslutningen er aktuel nu. Paper 10 handler om, at holdet aldrig bliver færdigt.</div>
+    </details>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="section" id="next">
+  <div class="container">
+    <div class="section-label">14 — Fra analyse til handling</div>
+    <h2>Holdet er rigtigt. I dag.</h2>
+    <p>Hvis du tager én ting med herfra, så lad det være denne: Du skal ikke spørge, om personen fortjener mere tid. Du skal spørge, hvad rollen kræver, hvad gabet konkret er, hvad der forklarer det, hvor meget reel bevægelse der er, og hvor længe virksomheden forsvarligt kan vente. Hvis du selv valgte personen, skal du være ekstra opmærksom på, at din tidligere beslutning ikke bliver et argument for din næste. Og du skal hverken romantisere loyalitet eller handlekraft. At vente har en risiko. At skifte har en risiko. Din opgave er at gøre begge synlige og træffe beslutningen på det bedst mulige grundlag, med en dato.</p>
+    <p>Selv når du træffer den rigtige beslutning i dag, er arbejdet ikke færdigt. Strategien flytter sig, roller flytter sig, mennesker udvikler sig, mennesker rejser, og nye kapabiliteter bliver nødvendige. Den største fejl efter en god succession-beslutning er at tro, at holdet nu er rigtigt. Det er det måske. I dag. Det er Paper 10: Holdet bliver aldrig færdigt.</p>
+
+    <p class="pull-quote">At give mere tid er også en beslutning. Den bruger virksomhedens tid.<cite>— Thomas Friisnæs</cite></p>
+
+    <h3 style="margin-top:36px;">Vil du arbejde videre med dette?</h3>
+    <p>Har dette paper ramt en stol, du selv tøver ved? Nedenfor er fire naturlige næste skridt.</p>
+    <p>Dette er det niende paper i Holdet bag strategien. De forrige er <a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html" style="color:var(--gold);">01 — Strategien bestemmer holdet</a>, <a href="/holdet-bag-strategien-syv-stjerner-er-ikke-et-stjernehold.html" style="color:var(--gold);">02 — Syv stjerner er ikke et stjernehold</a>, <a href="/holdet-bag-strategien-karakteren-bag-kompetencen.html" style="color:var(--gold);">03 — Karakteren bag kompetencen</a>, <a href="/holdet-bag-strategien-virksomheden-foer-funktionen.html" style="color:var(--gold);">04 — Virksomheden før funktionen</a>, <a href="/holdet-bag-strategien-uenighed-uden-krig.html" style="color:var(--gold);">05 — Uenighed uden krig</a>, <a href="/holdet-bag-strategien-de-bedste-skal-ogsaa-ledes.html" style="color:var(--gold);">06 — De bedste skal også ledes</a>, <a href="/holdet-bag-strategien-potentiale-skal-omsaettes.html" style="color:var(--gold);">07 — Potentiale skal omsættes</a> og <a href="/holdet-bag-strategien-spejlet.html" style="color:var(--gold);">08 — Spejlet</a>. Det sidste er <a href="/holdet-bag-strategien-holdet-bliver-aldrig-faerdigt.html" style="color:var(--gold);">10 — Holdet bliver aldrig færdigt</a>. Hele serien er kortlagt nederst på siden.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="/library.html#holdet">
+        <div class="nc-tag">Hele serien</div>
+        <div class="nc-text"><strong>Se alle ti papers</strong> i Holdet bag strategien i Executive Library</div>
+      </a>
+      <a class="next-card" href="/ceo-sparring.html">
+        <div class="nc-tag">CEO-sparring</div>
+        <div class="nc-text"><strong>Er det stadig et udviklingsspørgsmål, eller er det blevet en beslutning?</strong> — en fortrolig samtale om det, du ikke kan drøfte bredt internt</div>
+      </a>
+      <a class="next-card" href="/executive-coaching.html">
+        <div class="nc-tag">Executive Coaching</div>
+        <div class="nc-text"><strong>Når spørgsmålet stadig er bevægelse</strong> — for executives, der kender gabet og vil arbejde med det, mens tiden er der</div>
+      </a>
+      <a class="next-card" href="/#kontakt">
+        <div class="nc-tag">Samtale</div>
+        <div class="nc-text"><strong>20 min. Ét problem. Én plan.</strong> En kort samtale om det, der fylder lige nu</div>
+      </a>
+    </div>
+    <a class="start-btn" href="/#kontakt">Start en samtale →</a>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <ul>
+      <li>Jenter, D. &amp; Kanaan, F. (2015). »CEO Turnover and Relative Performance Evaluation.« <em>The Journal of Finance</em>, 70(5), 2155–2184. <a href="https://doi.org/10.1111/jofi.12282" target="_blank" rel="noopener">doi.org/10.1111/jofi.12282</a></li>
+      <li>Kristof-Brown, A. L., Zimmerman, R. D. &amp; Johnson, E. C. (2005). »Consequences of Individuals' Fit at Work: A Meta-Analysis of Person–Job, Person–Organization, Person–Group, and Person–Supervisor Fit.« <em>Personnel Psychology</em>, 58(2), 281–342. <a href="https://doi.org/10.1111/j.1744-6570.2005.00672.x" target="_blank" rel="noopener">doi.org/10.1111/j.1744-6570.2005.00672.x</a></li>
+      <li>Sleesman, D. J., Conlon, D. E., McNamara, G. &amp; Miles, J. E. (2012). »Cleaning Up the Big Muddy: A Meta-Analytic Review of the Determinants of Escalation of Commitment.« <em>Academy of Management Journal</em>, 55(3), 541–562. <a href="https://doi.org/10.5465/amj.2010.0696" target="_blank" rel="noopener">doi.org/10.5465/amj.2010.0696</a></li>
+      <li>Schepker, D. J., Kim, Y., Patel, P. C., Thatcher, S. M. B. &amp; Campion, M. C. (2017). »CEO succession, strategic change, and post-succession performance: A meta-analysis.« <em>The Leadership Quarterly</em>, 28(6), 701–720. <a href="https://doi.org/10.1016/j.leaqua.2017.03.001" target="_blank" rel="noopener">doi.org/10.1016/j.leaqua.2017.03.001</a></li>
+      <li>Heidrick &amp; Struggles (2026). »Route to the Top US 2026: Closing the CEO capability gap.« 12. maj 2026. Praktikerevidens: survey blandt 1.033 CEO'er og bestyrelsesmedlemmer globalt, 253 i USA; selvrapporterede vurderinger, ikke effektmåling. <a href="https://www.heidrick.com/en/insights/chief-executive-officer/route-to-the-top-us-2026-closing-the-ceo-capability-gap" target="_blank" rel="noopener">heidrick.com</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Skellet mellem dårlig performance, kapabilitetsgab, mismatch og fejlbesætning, de fem bevægelser fra tvivl til beslutning, de to ure (udviklingstid og virksomhedstid) og de fem ting, der ikke er det samme, er Thomas Friisnæs' egne praktiske rammer, ikke validerede modeller. Åbningscasen er et konstrueret, illustrativt eksempel. Paperet er ledelses- og governance-refleksion, ikke juridisk rådgivning.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Holdet bag strategien — den komplette serie</div>
+    <h2 class="collection-title">Ti papers om det ledelseshold, der skal levere</h2>
+    <p class="collection-intro">Strategien bliver aldrig eksekveret af et organisationsdiagram. Den bliver eksekveret af mennesker. Serien handler om, hvordan CEO'en sammensætter, udvikler og fornyer det ledelseshold, der skal levere resultaterne. Alle ti papers er udgivet.</p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Serie 04</span><span class="cpart-name">Holdet bag strategien</span></div>
+      <p class="cpart-desc">Fra kapabiliteter og karakter, over konstruktiv uenighed og udvikling af de bedste, til succession og fornyelse.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html">Strategien bestemmer holdet</a></li>
+        <li data-n="02"><a href="/holdet-bag-strategien-syv-stjerner-er-ikke-et-stjernehold.html">Syv stjerner er ikke et stjernehold</a></li>
+        <li data-n="03"><a href="/holdet-bag-strategien-karakteren-bag-kompetencen.html">Karakteren bag kompetencen</a></li>
+        <li data-n="04"><a href="/holdet-bag-strategien-virksomheden-foer-funktionen.html">Virksomheden før funktionen</a></li>
+        <li data-n="05"><a href="/holdet-bag-strategien-uenighed-uden-krig.html">Uenighed uden krig</a></li>
+        <li data-n="06"><a href="/holdet-bag-strategien-de-bedste-skal-ogsaa-ledes.html">De bedste skal også ledes</a></li>
+        <li data-n="07"><a href="/holdet-bag-strategien-potentiale-skal-omsaettes.html">Potentiale skal omsættes</a></li>
+        <li data-n="08"><a href="/holdet-bag-strategien-spejlet.html">Spejlet</a></li>
+        <li data-n="09"><span class="current">Når pladsen skal skifte hænder — du læser dette</span></li>
+        <li data-n="10"><a href="/holdet-bag-strategien-holdet-bliver-aldrig-faerdigt.html">Holdet bliver aldrig færdigt</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til den samtale med formanden, du har udskudt.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/holdet-bag-strategien-spejlet.html">
+      <span class="ra-tag">Forrige paper · Holdet bag strategien</span>
+      <span class="ra-title">Spejlet: Du er den eneste i rummet, der aldrig oplever dig selv udefra.</span>
+    </a>
+    <a href="/succession-som-strategi.html">
+      <span class="ra-tag">Anatomi af topledelse</span>
+      <span class="ra-title">Succession som strategi: Det ledelsesskifte organisationer ikke er klar til</span>
+    </a>
+    <a href="/de-udskudte-samtaler.html">
+      <span class="ra-tag">Eksekveringsserien</span>
+      <span class="ra-title">De udskudte samtaler: Hvorfor den svære samtale koster mere, jo længere den venter</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Holdet bag strategien · Serie 04 · Paper 09 af 10</div>
+        <div class="series-next"><a href="/holdet-bag-strategien-holdet-bliver-aldrig-faerdigt.html" style="color:inherit;margin-top:0;border-bottom:1px solid rgba(255,255,255,0.25);">Næste: Holdet bliver aldrig færdigt →</a></div>
+        <a href="/library.html#holdet">Se hele serien →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: hbs_ (Holdet bag strategien)
+  var LS_C = 'hbs_p09_commit', LS_D = 'hbs_done', PAPER_N = 9, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+<script src="/lyt.js" defer></script>
+</body>
+</html>

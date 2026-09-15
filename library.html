@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Executive Library | Thomas Friisnæs — White paper-serier om topledelse og eksekvering</title>
-<meta name="description" content="Executive Library: systematiske white paper-serier for C-level ledere. Eksekveringsserien, C-Level Serien og Executive Longevity — om eksekvering, karakter, klarhed og den kapacitet, der bærer en lang lederkarriere. Gratis at læse, downloade og dele.">
+<meta name="description" content="Executive Library: fire white paper-serier for C-level ledere — om eksekvering, topledelse, kapacitet og det hold, der skal levere strategien. 40 papers, gratis at læse og downloade.">
 <meta name="author" content="Thomas Friisnæs">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://www.friisnaes.com/library.html">
@@ -13,7 +13,7 @@
 <meta property="og:locale" content="da_DK">
 <meta property="og:url" content="https://www.friisnaes.com/library.html">
 <meta property="og:title" content="Executive Library | Thomas Friisnæs">
-<meta property="og:description" content="Systematiske white paper-serier for C-level ledere — om topledelse, karakter og eksekvering. Gratis at læse og downloade.">
+<meta property="og:description" content="Fire systematiske white paper-serier for C-level ledere — om eksekvering, topledelse, kapacitet og det ledelseshold, der skal levere. Gratis at læse og downloade.">
 <meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -198,6 +198,36 @@
   .sc-signup a { color: var(--red); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--red); padding-bottom: 1px; transition: opacity .3s; }
   .sc-signup a:hover { opacity: .75; }
 
+  /* Krydsreferencer pr. seriekort */
+  .sc-cross { margin-top: 20px; font-family: var(--body); font-size: .82rem; color: var(--gray); line-height: 1.9; }
+  .sc-cross b { font-weight: 600; color: var(--gray-dark); margin-right: 6px; }
+  .sc-cross a { color: var(--red); border-bottom: 1px solid rgba(192,57,43,.35); padding-bottom: 1px; }
+  .sc-cross a:hover { border-bottom-color: var(--red); }
+  .sc-cross-sep { color: var(--gray-light); margin: 0 4px; }
+
+  /* Læsespor */
+  .paths { background: var(--white); border-bottom: 1px solid rgba(0,0,0,.06); scroll-margin-top: 90px; }
+  .paths-intro { font-family: var(--body); font-size: .95rem; color: var(--gray-dark); line-height: 1.85; max-width: 640px; margin-bottom: 8px; }
+  .paths-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid rgba(0,0,0,.08); margin-top: 40px; background: var(--white); }
+  .path { padding: 32px 30px 28px; border-right: 1px solid rgba(0,0,0,.08); border-bottom: 1px solid rgba(0,0,0,.08); }
+  .path:nth-child(2n) { border-right: none; }
+  .path:last-child { border-right: none; grid-column: 1 / -1; }
+  .path-num { font-family: var(--display); font-size: .78rem; font-weight: 600; color: var(--red); letter-spacing: .1em; margin-bottom: 10px; }
+  .path h3 { font-family: var(--display); font-size: 1.22rem; font-weight: 600; color: var(--black); line-height: 1.3; margin-bottom: 10px; }
+  .path > p { font-family: var(--body); font-size: .85rem; color: var(--gray); line-height: 1.7; margin-bottom: 18px; }
+  .path-list { list-style: none; counter-reset: pa; }
+  .path-list li { counter-increment: pa; display: flex; gap: 14px; align-items: baseline; padding: 10px 0; border-top: 1px solid rgba(0,0,0,.05); }
+  .path-list li::before { content: counter(pa); font-family: var(--display); font-size: .7rem; color: var(--red); font-weight: 600; min-width: 14px; }
+  .path-list a { display: flex; flex-direction: column; gap: 1px; flex: 1; }
+  .path-list .pa-t { font-family: var(--body); font-size: .88rem; font-weight: 500; color: var(--black); transition: color .3s; }
+  .path-list .pa-s { font-family: var(--body); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gray-light); }
+  .path-list a:hover .pa-t { color: var(--red); }
+  @media (max-width: 860px) {
+    .paths-grid { grid-template-columns: 1fr; }
+    .path { border-right: none; }
+    .path:last-child { grid-column: auto; }
+  }
+
         /* nl-scrollfix: mobilmenu må scrolle når den er højere end skærmen */
         @media (max-width: 600px) {
             .nl.open { justify-content: flex-start; padding: 88px 24px 48px; overflow-y: auto; gap: 18px; height: 100vh; height: 100dvh; width: 100vw; }
@@ -207,7 +237,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
 <meta name="twitter:title" content="Executive Library">
-<meta name="twitter:description" content="Executive Library: systematiske white paper-serier for C-level ledere. Eksekveringsserien, C-Level Serien og Executive Longevity — om eksekvering, karakter, klarhed og den kapacitet, der bærer en lang lederkarriere. Gratis at læse, downloade og dele.">
+<meta name="twitter:description" content="Executive Library: fire white paper-serier for C-level ledere — om eksekvering, topledelse, kapacitet og det hold, der skal levere strategien. 40 papers, gratis at læse og downloade.">
 <meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
 
 <script type="application/ld+json">
@@ -215,10 +245,12 @@
  "@context": "https://schema.org",
  "@type": "CollectionPage",
  "name": "Executive Library",
- "description": "Systematiske white paper-serier for C-level ledere om topledelse, karakter og eksekvering.",
+ "description": "Fire systematiske white paper-serier for C-level ledere om eksekvering, topledelse, kapacitet og det ledelseshold, der skal levere strategien.",
  "url": "https://www.friisnaes.com/library.html",
+ "inLanguage": "da",
  "author": {
   "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
   "name": "Thomas Friisnæs",
   "url": "https://www.friisnaes.com"
  },
@@ -231,20 +263,103 @@
   {
    "@type": "CreativeWorkSeries",
    "name": "Eksekveringsserien",
+   "position": 1,
    "description": "Ti white papers om eksekvering — maksimalt output med minimal indsats. Bygget på måletallet OPI og modellen FASEL.",
-   "url": "https://www.friisnaes.com/eksekveringsserien.html"
+   "url": "https://www.friisnaes.com/eksekveringsserien.html",
+   "inLanguage": "da"
   },
   {
    "@type": "CreativeWorkSeries",
    "name": "C-Level Serien",
+   "position": 2,
    "description": "Ti white papers — en samlet anatomi af topledelse, i fire dele.",
-   "url": "https://www.friisnaes.com/c-level-serien.html"
+   "url": "https://www.friisnaes.com/c-level-serien.html",
+   "inLanguage": "da"
+  },
+  {
+   "@type": "CreativeWorkSeries",
+   "name": "Executive Longevity",
+   "position": 3,
+   "description": "Ti white papers om den kapacitet og det motiv, der afgør de sidste to årtier af en lederkarriere.",
+   "url": "https://www.friisnaes.com/executive-longevity.html",
+   "inLanguage": "da"
+  },
+  {
+   "@type": "CreativeWorkSeries",
+   "name": "Holdet bag strategien",
+   "position": 4,
+   "description": "Ti white papers om det ledelseshold, der skal levere strategien — fra kapabiliteter og karakter, over konstruktiv uenighed og udvikling af de bedste, til succession og fornyelse.",
+   "url": "https://www.friisnaes.com/library.html#holdet",
+   "inLanguage": "da",
+   "hasPart": [
+    {
+     "@type": "Article",
+     "position": 1,
+     "name": "Strategien bestemmer holdet",
+     "url": "https://www.friisnaes.com/holdet-bag-strategien-strategien-bestemmer-holdet.html"
+    },
+    {
+     "@type": "Article",
+     "position": 2,
+     "name": "Syv stjerner er ikke et stjernehold",
+     "url": "https://www.friisnaes.com/holdet-bag-strategien-syv-stjerner-er-ikke-et-stjernehold.html"
+    },
+    {
+     "@type": "Article",
+     "position": 3,
+     "name": "Karakteren bag kompetencen",
+     "url": "https://www.friisnaes.com/holdet-bag-strategien-karakteren-bag-kompetencen.html"
+    },
+    {
+     "@type": "Article",
+     "position": 4,
+     "name": "Virksomheden før funktionen",
+     "url": "https://www.friisnaes.com/holdet-bag-strategien-virksomheden-foer-funktionen.html"
+    },
+    {
+     "@type": "Article",
+     "position": 5,
+     "name": "Uenighed uden krig",
+     "url": "https://www.friisnaes.com/holdet-bag-strategien-uenighed-uden-krig.html"
+    },
+    {
+     "@type": "Article",
+     "position": 6,
+     "name": "De bedste skal også ledes",
+     "url": "https://www.friisnaes.com/holdet-bag-strategien-de-bedste-skal-ogsaa-ledes.html"
+    },
+    {
+     "@type": "Article",
+     "position": 7,
+     "name": "Potentiale skal omsættes",
+     "url": "https://www.friisnaes.com/holdet-bag-strategien-potentiale-skal-omsaettes.html"
+    },
+    {
+     "@type": "Article",
+     "position": 8,
+     "name": "Spejlet",
+     "url": "https://www.friisnaes.com/holdet-bag-strategien-spejlet.html"
+    },
+    {
+     "@type": "Article",
+     "position": 9,
+     "name": "Når pladsen skal skifte hænder",
+     "url": "https://www.friisnaes.com/holdet-bag-strategien-naar-pladsen-skal-skifte-haender.html"
+    },
+    {
+     "@type": "Article",
+     "position": 10,
+     "name": "Holdet bliver aldrig færdigt",
+     "url": "https://www.friisnaes.com/holdet-bag-strategien-holdet-bliver-aldrig-faerdigt.html"
+    }
+   ]
   },
   {
    "@type": "CreativeWorkSeries",
    "name": "C-Level Coaching Brief",
    "description": "Ugentlig brief med de udviklinger fra forskning, målinger og praksis, der har reel betydning for topledere.",
-   "url": "https://www.friisnaes.com/library.html#brief"
+   "url": "https://www.friisnaes.com/library.html#brief",
+   "inLanguage": "da"
   }
  ]
 }
@@ -287,7 +402,7 @@
                   <li><a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
                   <li><a href="/library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a></li>
                   <li><a href="/vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a></li>
-              <li><a href="soeg.html">Søg</a></li>
+              <li><a href="/soeg.html" data-da="Søg" data-en="Search">Søg</a></li>
               </ul>
           </li>
           <li><a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
@@ -305,9 +420,9 @@
     <p class="hp" data-da="Ikke enkeltstående artikler — men hele universer af white papers, bygget til at blive læst, brugt og vendt tilbage til." data-en="Not one-off articles — but whole universes of white papers, built to be read, used and returned to.">Ikke enkeltstående artikler — men hele universer af white papers, bygget til at blive læst, brugt og vendt tilbage til.</p>
     <p class="hp2" data-da="De største ledelsesudfordringer løses sjældent med ét godt råd. De kræver en sammenhængende måde at tænke på. Gratis at læse, downloade som PDF og dele." data-en="The biggest leadership challenges are rarely solved by one good piece of advice. They require a coherent way of thinking. Free to read, download as PDF and share.">De største ledelsesudfordringer løses sjældent med ét godt råd. De kræver en sammenhængende måde at tænke på. Gratis at læse, downloade som PDF og dele.</p>
     <div class="hs">
-      <div class="si"><div class="sn">3</div><div class="sl" data-da="Serier" data-en="Series">Serier</div></div>
+      <div class="si"><div class="sn">4</div><div class="sl" data-da="Serier" data-en="Series">Serier</div></div>
       <div class="si"><div class="sn" data-da="Ugentlig" data-en="Weekly">Ugentlig</div><div class="sl" data-da="C-level brief" data-en="C-level brief">C-level brief</div></div>
-      <div class="si"><div class="sn">30</div><div class="sl" data-da="White papers" data-en="White papers">White papers</div></div>
+      <div class="si"><div class="sn">40</div><div class="sl" data-da="White papers" data-en="White papers">White papers</div></div>
       <div class="si"><div class="sn">PDF</div><div class="sl" data-da="Download klar" data-en="Download ready">Download klar</div></div>
       <div class="si"><div class="sn">Gratis</div><div class="sl" data-da="At læse &amp; dele" data-en="To read &amp; share">At læse &amp; dele</div></div>
     </div>
@@ -317,9 +432,9 @@
 <section class="intro">
   <div class="c rv">
     <div class="se" data-da="Om biblioteket" data-en="About the library">Om biblioteket</div>
-    <h2 data-da="Tre serier. Tredive papers. En ugentlig brief. <em>Én sammenhængende tænkning.</em>" data-en="Three series. Thirty papers. A weekly brief. <em>One coherent line of thought.</em>">Tre serier. Tredive papers. En ugentlig brief. <em>Én sammenhængende tænkning.</em></h2>
+    <h2 data-da="Fire serier. Fyrre papers. En ugentlig brief. <em>Én sammenhængende tænkning.</em>" data-en="Four series. Forty papers. A weekly brief. <em>One coherent line of thought.</em>">Fire serier. Fyrre papers. En ugentlig brief. <em>Én sammenhængende tænkning.</em></h2>
     <p data-da="Executive Library samler mine white paper-serier ét sted. Hver serie tager et afgrænset område af topledelse og bygger det ud i dybden — forankret i forskning, formet af mere end to årtiers arbejde med C-level ledere, og skrevet til at holde over tid." data-en="The Executive Library gathers my white paper series in one place. Each series takes a defined area of executive leadership and builds it out in depth — grounded in research, shaped by more than two decades of work with C-level leaders, and written to last.">Executive Library samler mine white paper-serier ét sted. Hver serie tager et afgrænset område af topledelse og bygger det ud i dybden — forankret i forskning, formet af mere end to årtiers arbejde med C-level ledere, og skrevet til at holde over tid.</p>
-    <p data-da="Vælg en serie nedenfor, dyk ned i de enkelte papers — eller læs ugens C-level coaching brief." data-en="Choose a series below, dive into the individual papers — or read this week's C-level coaching brief.">Vælg en serie nedenfor, dyk ned i de enkelte papers — eller læs ugens C-level coaching brief.</p>
+    <p data-da="Vælg en serie nedenfor, dyk ned i de enkelte papers, følg et af <a href='#laesespor' style='color:var(--red);border-bottom:1px solid var(--red)'>læsesporene på tværs af serierne</a> — eller læs ugens C-level coaching brief." data-en="Choose a series below, dive into the individual papers, follow one of the <a href='#laesespor' style='color:var(--red);border-bottom:1px solid var(--red)'>reading paths across the series</a> — or read this week's C-level coaching brief.">Vælg en serie nedenfor, dyk ned i de enkelte papers, følg et af <a href="#laesespor" style="color:var(--red);border-bottom:1px solid var(--red)">læsesporene på tværs af serierne</a> — eller læs ugens C-level coaching brief.</p>
   </div>
 </section>
 
@@ -328,7 +443,7 @@
     <div class="se rv" data-da="Serierne" data-en="The series">Serierne</div>
     <h2 class="rv" data-da="Vælg din <em>indgang</em>" data-en="Choose your <em>entry point</em>">Vælg din <em>indgang</em></h2>
 
-    <article class="series-card rv">
+    <article class="series-card rv" id="eksekvering">
       <div class="sc-head">
         <div class="sc-head-inner">
           <div class="sc-eyebrow">
@@ -350,6 +465,7 @@
           <a href="/eksekveringsserien.html" class="btn bp" data-da="Åbn serien" data-en="Open the series">Åbn serien</a>
           <button class="btn bo" onclick="togglePapers('papers-eks', this)" data-da="Se alle 10 papers" data-en="See all 10 papers">Se alle 10 papers</button>
         </div>
+        <p class="sc-cross"><b data-da="Læs videre på tværs:" data-en="Continue across the series:">Læs videre på tværs:</b> <a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html" data-da="Strategien bestemmer holdet" data-en="Strategy determines the team">Strategien bestemmer holdet</a> <span class="sc-cross-sep">·</span> <a href="/klarhed-som-konkurrencefordel.html" data-da="Klarhed som konkurrencefordel" data-en="Clarity as competitive advantage">Klarhed som konkurrencefordel</a> <span class="sc-cross-sep">·</span> <a href="/executive-longevity-fokus.html" data-da="Fokus i en afbrudt verden" data-en="Focus in an interrupted world">Fokus i en afbrudt verden</a></p>
         <div class="sc-papers" id="papers-eks">
           <div class="sc-partgroup">
             <div class="sc-part-head"><span class="sc-part-num">Del 1</span><span class="sc-part-name">Flaskehalsen</span></div>
@@ -380,7 +496,7 @@
       </div>
     </article>
 
-    <article class="series-card rv">
+    <article class="series-card rv" id="c-level-serien">
       <div class="sc-head">
         <div class="sc-head-inner">
           <div class="sc-eyebrow">
@@ -403,6 +519,7 @@
           <a href="/c-level-serien.html" class="btn bp" data-da="Åbn serien" data-en="Open the series">Åbn serien</a>
           <button class="btn bo" onclick="togglePapers('papers-clevel', this)" data-da="Se alle 10 papers" data-en="See all 10 papers">Se alle 10 papers</button>
         </div>
+        <p class="sc-cross"><b data-da="Læs videre på tværs:" data-en="Continue across the series:">Læs videre på tværs:</b> <a href="/holdet-bag-strategien-uenighed-uden-krig.html" data-da="Uenighed uden krig" data-en="Disagreement without war">Uenighed uden krig</a> <span class="sc-cross-sep">·</span> <a href="/eksekveringsgabet.html" data-da="Eksekveringsgabet" data-en="The execution gap">Eksekveringsgabet</a> <span class="sc-cross-sep">·</span> <a href="/executive-longevity-belastning.html" data-da="Den usynlige regning" data-en="The invisible bill">Den usynlige regning</a></p>
         <div class="sc-papers" id="papers-clevel">
           <div class="sc-partgroup">
             <div class="sc-part-head"><span class="sc-part-num">Del 1</span><span class="sc-part-name">Lederen som menneske</span></div>
@@ -438,7 +555,7 @@
       </div>
     </article>
 
-    <article class="series-card rv">
+    <article class="series-card rv" id="longevity">
       <div class="sc-head">
         <div class="sc-head-inner">
           <div class="sc-eyebrow">
@@ -461,6 +578,7 @@
           <a href="/executive-longevity.html" class="btn bp" data-da="Åbn serien" data-en="Open the series">Åbn serien</a>
           <button class="btn bo" onclick="togglePapers('papers-longevity', this)" data-da="Se alle 10 papers" data-en="See all 10 papers">Se alle 10 papers</button>
         </div>
+        <p class="sc-cross"><b data-da="Læs videre på tværs:" data-en="Continue across the series:">Læs videre på tværs:</b> <a href="/ensomheden-i-toppen.html" data-da="Ensomheden i toppen" data-en="Loneliness at the top">Ensomheden i toppen</a> <span class="sc-cross-sep">·</span> <a href="/personligt-lederskab.html" data-da="Personligt lederskab" data-en="Personal leadership">Personligt lederskab</a> <span class="sc-cross-sep">·</span> <a href="/holdet-bag-strategien-spejlet.html" data-da="Spejlet" data-en="The mirror">Spejlet</a></p>
         <div class="sc-papers" id="papers-longevity">
           <div class="sc-partgroup">
             <div class="sc-part-head"><span class="sc-part-num">Del 1</span><span class="sc-part-name">Maskinen</span></div>
@@ -490,6 +608,50 @@
             <div class="sc-part-head"><span class="sc-part-num">Del 4</span><span class="sc-part-name">Meningen</span></div>
             <ul class="sc-paper-list">
               <li><a href="/executive-longevity-mening.html"><span class="pl-t">Motivet bag motoren</span><span class="pl-s">Mening, relationer, retning og identitet: hvad al kapaciteten egentlig er til for</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="series-card rv" id="holdet">
+      <div class="sc-head">
+        <div class="sc-head-inner">
+          <div class="sc-eyebrow">
+            <span class="sc-serienum">Serie 04</span>
+            <span class="sc-count-top" data-da="10 papers · ét samlet forløb" data-en="10 papers · one continuous arc">10 papers · ét samlet forløb</span>
+          </div>
+          <div class="sc-title">Holdet bag <em>strategien</em></div>
+          <div class="sc-tagline" data-da="Strategien bestemmer holdet." data-en="Strategy determines the team.">Strategien bestemmer holdet.</div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p class="sc-desc" data-da="Ti white papers om det ledelseshold, der skal levere strategien. <strong>Strategien bliver aldrig eksekveret af et organisationsdiagram. Den bliver eksekveret af mennesker.</strong> Fra kapabiliteter og karakter, over konstruktiv uenighed og udvikling af de bedste, til succession og fornyelse — skrevet til CEO&#39;en, direktionen og bestyrelsen." data-en="Ten white papers on the leadership team that has to deliver the strategy. <strong>Strategy is never executed by an org chart. It is executed by people.</strong> From capabilities and character, through constructive disagreement and the development of the strongest, to succession and renewal — written for the CEO, the executive team and the board.">Ti white papers om det ledelseshold, der skal levere strategien. <strong>Strategien bliver aldrig eksekveret af et organisationsdiagram. Den bliver eksekveret af mennesker.</strong> Fra kapabiliteter og karakter, over konstruktiv uenighed og udvikling af de bedste, til succession og fornyelse — skrevet til CEO&#39;en, direktionen og bestyrelsen.</p>
+        <div class="sc-parts">
+          <span class="sc-part-tag"><b>01–02</b> · <span data-da="Kravet til holdet" data-en="What the team must be able to do">Kravet til holdet</span></span>
+          <span class="sc-part-tag"><b>03–05</b> · <span data-da="Karakter og samspil" data-en="Character and interplay">Karakter og samspil</span></span>
+          <span class="sc-part-tag"><b>06–08</b> · <span data-da="At lede de bedste" data-en="Leading the strongest">At lede de bedste</span></span>
+          <span class="sc-part-tag"><b>09–10</b> · <span data-da="Skifte og fornyelse" data-en="Change and renewal">Skifte og fornyelse</span></span>
+        </div>
+        <div class="sc-actions">
+          <a href="/holdet-bag-strategien.html" class="btn bp" data-da="Åbn serien" data-en="Open the series">Åbn serien</a>
+          <button class="btn bo" onclick="togglePapers('papers-holdet', this)" data-da="Se alle 10 papers" data-en="See all 10 papers" data-hide-da="Skjul papers" data-hide-en="Hide papers">Se alle 10 papers</button>
+        </div>
+        <p class="sc-cross"><b data-da="Læs videre på tværs:" data-en="Continue across the series:">Læs videre på tværs:</b> <a href="/den-tavse-direktion.html" data-da="Den tavse direktion" data-en="The silent executive team">Den tavse direktion</a> <span class="sc-cross-sep">·</span> <a href="/succession-som-strategi.html" data-da="Succession som strategi" data-en="Succession as strategy">Succession som strategi</a> <span class="sc-cross-sep">·</span> <a href="/modspillet-der-mangler.html" data-da="Modspillet der mangler" data-en="The missing pushback">Modspillet der mangler</a></p>
+        <div class="sc-papers" id="papers-holdet">
+          <div class="sc-partgroup">
+            <div class="sc-part-head"><span class="sc-part-num" data-da="Serien" data-en="The series">Serien</span><span class="sc-part-name" data-da="Alle ti papers — i rækkefølge" data-en="All ten papers — in order">Alle ti papers — i rækkefølge</span></div>
+            <ul class="sc-paper-list">
+              <li><a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html"><span class="pl-t">Strategien bestemmer holdet</span><span class="pl-s" data-da="Hvorfor du først kan vurdere din direktion, når du ved, hvad virksomheden skal kunne" data-en="Why you can only assess your executive team once you know what the business must be able to do">Hvorfor du først kan vurdere din direktion, når du ved, hvad virksomheden skal kunne</span></a></li>
+              <li><a href="/holdet-bag-strategien-syv-stjerner-er-ikke-et-stjernehold.html"><span class="pl-t">Syv stjerner er ikke et stjernehold</span><span class="pl-s" data-da="Hvorfor individuel dygtighed ikke af sig selv bliver til kollektiv kapacitet" data-en="Why individual excellence does not by itself become collective capacity">Hvorfor individuel dygtighed ikke af sig selv bliver til kollektiv kapacitet</span></a></li>
+              <li><a href="/holdet-bag-strategien-karakteren-bag-kompetencen.html"><span class="pl-t">Karakteren bag kompetencen</span><span class="pl-s" data-da="Det, du kan, og den måde, du bruger det på, er to forskellige ledelsesspørgsmål" data-en="What you can do and how you use it are two different leadership questions">Det, du kan, og den måde, du bruger det på, er to forskellige ledelsesspørgsmål</span></a></li>
+              <li><a href="/holdet-bag-strategien-virksomheden-foer-funktionen.html"><span class="pl-t">Virksomheden før funktionen</span><span class="pl-s" data-da="Du stopper ikke med at være CFO eller CCO i direktionen. Du får et ansvar mere" data-en="You don't stop being CFO or CCO on the executive team. You take on one more responsibility">Du stopper ikke med at være CFO eller CCO i direktionen. Du får et ansvar mere</span></a></li>
+              <li><a href="/holdet-bag-strategien-uenighed-uden-krig.html"><span class="pl-t">Uenighed uden krig</span><span class="pl-s" data-da="Ikke mere konflikt — mere relevant modsigelse, før beslutningen bliver truffet" data-en="Not more conflict — more relevant dissent, before the decision is made">Ikke mere konflikt — mere relevant modsigelse, før beslutningen bliver truffet</span></a></li>
+              <li><a href="/holdet-bag-strategien-de-bedste-skal-ogsaa-ledes.html"><span class="pl-t">De bedste skal også ledes</span><span class="pl-s" data-da="De bedste behøver mindre styring. Det betyder ikke, at de behøver mindre ledelse" data-en="The best need less managing. That does not mean they need less leadership">De bedste behøver mindre styring. Det betyder ikke, at de behøver mindre ledelse</span></a></li>
+              <li><a href="/holdet-bag-strategien-potentiale-skal-omsaettes.html"><span class="pl-t">Potentiale skal omsættes</span><span class="pl-s" data-da="Potentiale er en hypotese. Parathed er det, du har bevis for" data-en="Potential is a hypothesis. Readiness is what you have evidence for">Potentiale er en hypotese. Parathed er det, du har bevis for</span></a></li>
+              <li><a href="/holdet-bag-strategien-spejlet.html"><span class="pl-t">Spejlet</span><span class="pl-s" data-da="Du er den eneste i rummet, der aldrig oplever dig selv udefra" data-en="You are the only one in the room who never experiences yourself from the outside">Du er den eneste i rummet, der aldrig oplever dig selv udefra</span></a></li>
+              <li><a href="/holdet-bag-strategien-naar-pladsen-skal-skifte-haender.html"><span class="pl-t">Når pladsen skal skifte hænder</span><span class="pl-s" data-da="En plads er ikke en belønning for fortiden. Den er et ansvar for fremtiden" data-en="A seat is not a reward for the past. It is a responsibility for the future">En plads er ikke en belønning for fortiden. Den er et ansvar for fremtiden</span></a></li>
+              <li><a href="/holdet-bag-strategien-holdet-bliver-aldrig-faerdigt.html"><span class="pl-t">Holdet bliver aldrig færdigt</span><span class="pl-s" data-da="Om at bevare det, der virker, mens du bygger det, der bliver nødvendigt" data-en="On preserving what works while you build what becomes necessary">Om at bevare det, der virker, mens du bygger det, der bliver nødvendigt</span></a></li>
             </ul>
           </div>
         </div>
@@ -536,6 +698,71 @@
   </div>
 </section>
 
+<section class="paths" id="laesespor">
+  <div class="cw">
+    <div class="se rv" data-da="Læsespor" data-en="Reading paths">Læsespor</div>
+    <h2 class="rv" data-da="Start med dit <em>problem</em> — ikke med en serie" data-en="Start with your <em>problem</em> — not with a series">Start med dit <em>problem</em> — ikke med en serie</h2>
+    <p class="paths-intro rv" data-da="Serierne er bygget til at blive læst hver for sig. Men de taler sammen. Her er fem spor på tværs af biblioteket — fire papers hver, i den rækkefølge jeg selv ville læse dem." data-en="The series are built to be read on their own. But they speak to each other. Here are five paths across the library — four papers each, in the order I would read them myself.">Serierne er bygget til at blive læst hver for sig. Men de taler sammen. Her er fem spor på tværs af biblioteket — fire papers hver, i den rækkefølge jeg selv ville læse dem.</p>
+    <div class="paths-grid">
+      <article class="path rv">
+        <div class="path-num">01</div>
+        <h3 data-da="Strategien bliver ikke eksekveret" data-en="The strategy isn't getting executed">Strategien bliver ikke eksekveret</h3>
+        <p data-da="Planen er god. Organisationen leverer ikke. Start med gabet, og gå derefter til holdet, der skal lukke det." data-en="The plan is sound. The organisation isn't delivering. Start with the gap, then go to the team that has to close it.">Planen er god. Organisationen leverer ikke. Start med gabet, og gå derefter til holdet, der skal lukke det.</p>
+        <ol class="path-list">
+          <li><a href="/eksekveringsgabet.html"><span class="pa-t" data-da="Eksekveringsgabet" data-en="The execution gap">Eksekveringsgabet</span><span class="pa-s" data-da="Eksekveringsserien" data-en="Eksekveringsserien">Eksekveringsserien</span></a></li>
+          <li><a href="/prioriteringsparalysen.html"><span class="pa-t" data-da="Prioriteringsparalysen" data-en="Prioritisation paralysis">Prioriteringsparalysen</span><span class="pa-s" data-da="Eksekveringsserien" data-en="Eksekveringsserien">Eksekveringsserien</span></a></li>
+          <li><a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html"><span class="pa-t" data-da="Strategien bestemmer holdet" data-en="Strategy determines the team">Strategien bestemmer holdet</span><span class="pa-s" data-da="Holdet bag strategien" data-en="Holdet bag strategien">Holdet bag strategien</span></a></li>
+          <li><a href="/holdet-bag-strategien-virksomheden-foer-funktionen.html"><span class="pa-t" data-da="Virksomheden før funktionen" data-en="Enterprise before function">Virksomheden før funktionen</span><span class="pa-s" data-da="Holdet bag strategien" data-en="Holdet bag strategien">Holdet bag strategien</span></a></li>
+        </ol>
+      </article>
+      <article class="path rv">
+        <div class="path-num">02</div>
+        <h3 data-da="Direktionen er dygtig — men fungerer ikke som hold" data-en="A capable executive team that isn't working as a team">Direktionen er dygtig — men fungerer ikke som hold</h3>
+        <p data-da="Individuel styrke er ikke kollektiv kapacitet. Sporet går fra samspillet til det, der bliver sagt i rummet — og det, der ikke bliver." data-en="Individual strength is not collective capacity. This path runs from interplay to what gets said in the room — and what doesn't.">Individuel styrke er ikke kollektiv kapacitet. Sporet går fra samspillet til det, der bliver sagt i rummet — og det, der ikke bliver.</p>
+        <ol class="path-list">
+          <li><a href="/holdet-bag-strategien-syv-stjerner-er-ikke-et-stjernehold.html"><span class="pa-t" data-da="Syv stjerner er ikke et stjernehold" data-en="Seven stars are not a star team">Syv stjerner er ikke et stjernehold</span><span class="pa-s" data-da="Holdet bag strategien" data-en="Holdet bag strategien">Holdet bag strategien</span></a></li>
+          <li><a href="/den-tavse-direktion.html"><span class="pa-t" data-da="Den tavse direktion" data-en="The silent executive team">Den tavse direktion</span><span class="pa-s" data-da="C-Level Serien" data-en="C-Level Serien">C-Level Serien</span></a></li>
+          <li><a href="/holdet-bag-strategien-uenighed-uden-krig.html"><span class="pa-t" data-da="Uenighed uden krig" data-en="Disagreement without war">Uenighed uden krig</span><span class="pa-s" data-da="Holdet bag strategien" data-en="Holdet bag strategien">Holdet bag strategien</span></a></li>
+          <li><a href="/modspillet-der-mangler.html"><span class="pa-t" data-da="Modspillet der mangler" data-en="The missing pushback">Modspillet der mangler</span><span class="pa-s" data-da="C-Level Serien" data-en="C-Level Serien">C-Level Serien</span></a></li>
+        </ol>
+      </article>
+      <article class="path rv">
+        <div class="path-num">03</div>
+        <h3 data-da="Jeg skal vurdere og udvikle mine executives" data-en="I need to assess and develop my executives">Jeg skal vurdere og udvikle mine executives</h3>
+        <p data-da="Fra kompetence til karakter, fra potentiale til parathed — og til den ledelse, de stærkeste stadig har brug for." data-en="From competence to character, from potential to readiness — and to the leadership the strongest still need.">Fra kompetence til karakter, fra potentiale til parathed — og til den ledelse, de stærkeste stadig har brug for.</p>
+        <ol class="path-list">
+          <li><a href="/holdet-bag-strategien-karakteren-bag-kompetencen.html"><span class="pa-t" data-da="Karakteren bag kompetencen" data-en="The character behind the competence">Karakteren bag kompetencen</span><span class="pa-s" data-da="Holdet bag strategien" data-en="Holdet bag strategien">Holdet bag strategien</span></a></li>
+          <li><a href="/karakter-under-pres.html"><span class="pa-t" data-da="Karakter under pres" data-en="Character under pressure">Karakter under pres</span><span class="pa-s" data-da="C-Level Serien" data-en="C-Level Serien">C-Level Serien</span></a></li>
+          <li><a href="/holdet-bag-strategien-potentiale-skal-omsaettes.html"><span class="pa-t" data-da="Potentiale skal omsættes" data-en="Potential has to be converted">Potentiale skal omsættes</span><span class="pa-s" data-da="Holdet bag strategien" data-en="Holdet bag strategien">Holdet bag strategien</span></a></li>
+          <li><a href="/holdet-bag-strategien-de-bedste-skal-ogsaa-ledes.html"><span class="pa-t" data-da="De bedste skal også ledes" data-en="The best need leadership too">De bedste skal også ledes</span><span class="pa-s" data-da="Holdet bag strategien" data-en="Holdet bag strategien">Holdet bag strategien</span></a></li>
+        </ol>
+      </article>
+      <article class="path rv">
+        <div class="path-num">04</div>
+        <h3 data-da="Der skal skiftes i toppen" data-en="A seat at the top has to change hands">Der skal skiftes i toppen</h3>
+        <p data-da="Fra spejlet, over beslutningen, til det hold, der aldrig bliver færdigt. Det tungeste spor — og det, der sjældent tåler at blive improviseret." data-en="From the mirror, through the decision, to the team that is never finished. The heaviest path — and the one that rarely survives improvisation.">Fra spejlet, over beslutningen, til det hold, der aldrig bliver færdigt. Det tungeste spor — og det, der sjældent tåler at blive improviseret.</p>
+        <ol class="path-list">
+          <li><a href="/holdet-bag-strategien-spejlet.html"><span class="pa-t" data-da="Spejlet" data-en="The mirror">Spejlet</span><span class="pa-s" data-da="Holdet bag strategien" data-en="Holdet bag strategien">Holdet bag strategien</span></a></li>
+          <li><a href="/succession-som-strategi.html"><span class="pa-t" data-da="Succession som strategi" data-en="Succession as strategy">Succession som strategi</span><span class="pa-s" data-da="C-Level Serien" data-en="C-Level Serien">C-Level Serien</span></a></li>
+          <li><a href="/holdet-bag-strategien-naar-pladsen-skal-skifte-haender.html"><span class="pa-t" data-da="Når pladsen skal skifte hænder" data-en="When the seat changes hands">Når pladsen skal skifte hænder</span><span class="pa-s" data-da="Holdet bag strategien" data-en="Holdet bag strategien">Holdet bag strategien</span></a></li>
+          <li><a href="/holdet-bag-strategien-holdet-bliver-aldrig-faerdigt.html"><span class="pa-t" data-da="Holdet bliver aldrig færdigt" data-en="The team is never finished">Holdet bliver aldrig færdigt</span><span class="pa-s" data-da="Holdet bag strategien" data-en="Holdet bag strategien">Holdet bag strategien</span></a></li>
+        </ol>
+      </article>
+      <article class="path rv">
+        <div class="path-num">05</div>
+        <h3 data-da="Jeg kan ikke holde til det tempo, jeg har lagt" data-en="I can't sustain the pace I've set">Jeg kan ikke holde til det tempo, jeg har lagt</h3>
+        <p data-da="Kapacitet er ikke karaktersvaghed. Sporet går fra belastningen til restitutionen — og til den tilstand, organisationen kopierer." data-en="Capacity is not a character flaw. This path runs from load to recovery — and to the state the organisation copies.">Kapacitet er ikke karaktersvaghed. Sporet går fra belastningen til restitutionen — og til den tilstand, organisationen kopierer.</p>
+        <ol class="path-list">
+          <li><a href="/executive-longevity-belastning.html"><span class="pa-t" data-da="Den usynlige regning" data-en="The invisible bill">Den usynlige regning</span><span class="pa-s" data-da="Executive Longevity" data-en="Executive Longevity">Executive Longevity</span></a></li>
+          <li><a href="/executive-longevity-restitution.html"><span class="pa-t" data-da="Restitution som disciplin" data-en="Recovery as a discipline">Restitution som disciplin</span><span class="pa-s" data-da="Executive Longevity" data-en="Executive Longevity">Executive Longevity</span></a></li>
+          <li><a href="/personligt-lederskab.html"><span class="pa-t" data-da="Personligt lederskab" data-en="Personal leadership">Personligt lederskab</span><span class="pa-s" data-da="Eksekveringsserien" data-en="Eksekveringsserien">Eksekveringsserien</span></a></li>
+          <li><a href="/ensomheden-i-toppen.html"><span class="pa-t" data-da="Ensomheden i toppen" data-en="Loneliness at the top">Ensomheden i toppen</span><span class="pa-s" data-da="Eksekveringsserien" data-en="Eksekveringsserien">Eksekveringsserien</span></a></li>
+        </ol>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section class="usenote">
   <div class="c rv">
     <div class="se" data-da="Sådan bruges biblioteket" data-en="How to use the library">Sådan bruges biblioteket</div>
@@ -565,6 +792,7 @@
       <a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a>
       <a href="/library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a>
       <a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a>
+      <a href="/soeg.html" data-da="Søg" data-en="Search">Søg</a>
       <a href="/#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
     </div>
   </div>

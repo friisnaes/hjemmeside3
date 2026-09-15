@@ -25,7 +25,7 @@
     <script type="application/ld+json">
     {"@context":"https://schema.org","@graph":[
         {"@type":"WebSite","@id":"https://www.friisnaes.com/#website","url":"https://www.friisnaes.com/","name":"Friisnæs","description":"Executive Coach for C-level ledere","publisher":{"@id":"https://www.friisnaes.com/#person"},"inLanguage":"da","availableLanguage":["da","en"]},
-        {"@type":"Person","@id":"https://www.friisnaes.com/#person","name":"Thomas Friisnæs","givenName":"Thomas","familyName":"Friisnæs","url":"https://www.friisnaes.com","image":"https://www.friisnaes.com/hero.jpg","jobTitle":"Executive Coach & Strategisk Sparringspartner","description":"Executive coaching og strategisk sparring for C-level ledere, ejerledere og direktionsmedlemmer. 22+ års erfaring og 15.000+ sessioner.","knowsAbout":["Executive Coaching","Strategisk Sparring","Ledelsesudvikling","Prioritering","Eksekvering","Stresshåndtering","Karakter-baseret Ledelse"],"email":"info@friisnaes.com","telephone":"+4526818218","address":{"@type":"PostalAddress","streetAddress":"Holte Stationsvej 18, 1.","addressLocality":"Holte","postalCode":"2840","addressCountry":"DK","addressRegion":"Hovedstaden"},"sameAs":["https://www.linkedin.com/in/friisnaes/","https://www.instagram.com/thomasfriisnaes/","https://www.facebook.com/tfriisnaes"]},
+        {"@type":"Person","@id":"https://www.friisnaes.com/#person","name":"Thomas Friisnæs","givenName":"Thomas","familyName":"Friisnæs","url":"https://www.friisnaes.com","image":"https://www.friisnaes.com/hero.jpg","jobTitle":"Executive Coach & Strategisk Sparringspartner","description":"Executive coaching og strategisk sparring for C-level ledere, ejerledere og direktionsmedlemmer. 22+ års erfaring og 15.000+ sessioner.","knowsAbout":["Executive Coaching","Strategisk Sparring","Ledelsesudvikling","Prioritering","Eksekvering","Stresshåndtering","Karakter-baseret Ledelse","Direktionsudvikling","Succession"],"email":"info@friisnaes.com","telephone":"+4526818218","address":{"@type":"PostalAddress","streetAddress":"Holte Stationsvej 18, 1.","addressLocality":"Holte","postalCode":"2840","addressCountry":"DK","addressRegion":"Hovedstaden"},"sameAs":["https://www.linkedin.com/in/friisnaes/","https://www.instagram.com/thomasfriisnaes/","https://www.facebook.com/tfriisnaes"]},
         {"@type":"ProfessionalService","@id":"https://www.friisnaes.com/#business","name":"Friisnæs","url":"https://www.friisnaes.com","founder":{"@id":"https://www.friisnaes.com/#person"},"description":"Executive coaching og strategisk sparring for topledere i Danmark og internationalt.","telephone":"+4526818218","email":"info@friisnaes.com","address":{"@type":"PostalAddress","streetAddress":"Holte Stationsvej 18, 1.","addressLocality":"Holte","postalCode":"2840","addressCountry":"DK"},"geo":{"@type":"GeoCoordinates","latitude":55.8139,"longitude":12.4703},"areaServed":{"@type":"Country","name":"Denmark"},"priceRange":"$$$$","availableLanguage":["da","en"],"contactPoint":{"@type":"ContactPoint","telephone":"+4526818218","email":"info@friisnaes.com","contactType":"sales","availableLanguage":["da","en"],"areaServed":"DK"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Coaching og Sparring","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Executive Coaching","description":"Individuelt coaching-forløb for C-level ledere og ejerledere med fokus på klarhed, prioritering og eksekvering."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Strategisk Sparring","description":"Løbende strategisk sparring for topledere i kritiske beslutnings- og eksekveringsfaser."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Team Retainer","description":"12-måneders forløb for ledelsesteams bygget omkring execution-kadence og strategisk governance."}}]}}
     ]}
     </script>
@@ -155,6 +155,9 @@
         .about strong { color: var(--black); }
         .books { background: var(--white); border-top: 1px solid rgba(0,0,0,.06); }
         .library { background: var(--white); border-top: 1px solid rgba(0,0,0,.06); }
+        .library a.book-item { transition: color .3s var(--ease); }
+        .library a.book-item:hover .book-title { color: var(--red); }
+        .library a.book-item:hover .book-type { color: var(--gray-dark); }
         .books p.intro { font-family: var(--body); font-size: .9rem; color: var(--gray); line-height: 1.75; margin-bottom: 28px; max-width: 600px; }
         .book-list { display: flex; flex-direction: column; gap: 0; }
         .book-item { padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,.04); display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
@@ -275,7 +278,7 @@
                     <li><a href="library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
                     <li><a href="library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a></li>
                     <li><a href="vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a></li>
-                <li><a href="soeg.html">Søg</a></li>
+                <li><a href="soeg.html" data-da="Søg" data-en="Search">Søg</a></li>
                 </ul>
             </li>
             <li><a href="boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
@@ -444,16 +447,24 @@
     <div class="c">
         <p class="se" data-da="Executive Library" data-en="Executive Library">Executive Library</p>
         <h2 id="library-heading" data-da="White papers om <em>topledelse</em>" data-en="White papers on <em>executive leadership</em>">White papers om <em>topledelse</em></h2>
-        <p class="intro" data-da="To serier white papers — gratis at læse og downloade. Systematisk tænkning om eksekvering og topledelse, formet af mere end to årtiers arbejde med C-level ledere." data-en="Two series of white papers — free to read and download. Systematic thinking on execution and executive leadership, shaped by more than two decades of work with C-level leaders.">To serier white papers — gratis at læse og downloade. Systematisk tænkning om eksekvering og topledelse, formet af mere end to årtiers arbejde med C-level ledere.</p>
+        <p class="intro" data-da="Fire serier — 40 white papers, gratis at læse og downloade. Systematisk tænkning om eksekvering, topledelse, kapacitet og det ledelseshold, der skal levere strategien, formet af mere end to årtiers arbejde med C-level ledere." data-en="Four series — 40 white papers, free to read and download. Systematic thinking on execution, executive leadership, capacity and the team that has to deliver the strategy, shaped by more than two decades of work with C-level leaders.">Fire serier — 40 white papers, gratis at læse og downloade. Systematisk tænkning om eksekvering, topledelse, kapacitet og det ledelseshold, der skal levere strategien, formet af mere end to årtiers arbejde med C-level ledere.</p>
         <div class="book-list">
-            <div class="book-item">
+            <a class="book-item" href="library.html#eksekvering">
                 <span class="book-title">Eksekveringsserien</span>
                 <span class="book-type" data-da="10 papers · 3 dele" data-en="10 papers · 3 parts">10 papers · 3 dele</span>
-            </div>
-            <div class="book-item" style="border-bottom:none;padding-bottom:0;">
+            </a>
+            <a class="book-item" href="library.html#c-level-serien">
                 <span class="book-title">C-Level Serien</span>
                 <span class="book-type" data-da="10 papers · 4 dele" data-en="10 papers · 4 parts">10 papers · 4 dele</span>
-            </div>
+            </a>
+            <a class="book-item" href="library.html#longevity">
+                <span class="book-title">Executive Longevity</span>
+                <span class="book-type" data-da="10 papers · 4 dele" data-en="10 papers · 4 parts">10 papers · 4 dele</span>
+            </a>
+            <a class="book-item" href="library.html#holdet" style="border-bottom:none;padding-bottom:0;">
+                <span class="book-title">Holdet bag strategien</span>
+                <span class="book-type" data-da="10 papers · nyeste serie" data-en="10 papers · newest series">10 papers · nyeste serie</span>
+            </a>
         </div>
         <div style="margin-top:28px;">
             <a href="library.html" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-size:.76rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border-bottom:1px solid var(--red);padding-bottom:2px;transition:opacity .3s;" data-da="Se hele biblioteket →" data-en="Explore the library →">Se hele biblioteket →</a>
