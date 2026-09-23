@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Din kalender har en ejer. Det er bare ikke dig. | Struktur sætter fri | Thomas Friisnæs</title>
+<meta name="description" content="Din arbejdsdag er designet — bare ikke af dig. Paper 01 i Struktur sætter fri navngiver kalenderanarkiet: hvorfor fragmenterede kalendere, mødeinflation og tabt fokus er et ledelsesproblem og ikke et personligt. Med Designgraden som måletal, TAKT-modellen, dokumenteret forskningsgrundlag, øvelse, mikrohandling og FAQ.">
+<meta name="keywords" content="kalenderanarki, fragmenteret arbejdsdag, mødeinflation, fokustid, deep work ledelse, arbejdsdagens design, Designgraden, TAKT model, afbrydelser produktivitet, kalenderkultur, mødekultur, C-level">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/struktur-saetter-fri-din-kalender-har-en-ejer.html">
+
+<meta property="og:title" content="Din kalender har en ejer. Det er bare ikke dig. | Struktur sætter fri | Thomas Friisnæs">
+<meta property="og:description" content="Din arbejdsdag er designet — af den, der bookede først. Paper 01 i Struktur sætter fri navngiver kalenderanarkiet og flytter ansvaret derhen, hvor designretten ligger: hos ledelsen.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/struktur-saetter-fri-din-kalender-har-en-ejer.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Din kalender har en ejer. Det er bare ikke dig.">
+<meta name="twitter:description" content="Din arbejdsdag er designet — af den, der bookede først. Paper 01 i Struktur sætter fri.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .micro-action, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–07) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  @media print { .lens-grid, .dispo { page-break-inside: avoid; } .lens { background: #fff !important; border: 0.75pt solid #ddd !important; } .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; } }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+
+  /* Struktur sætter fri — serie-specifikke tilføjelser i samme designsprog */
+  @media (max-width: 700px) { .cost-grid { grid-template-columns: 1fr; } }
+  .situation { background: var(--cream); border-left: 2px solid var(--gold); border-radius: 0 4px 4px 0; padding: 18px 24px; margin: 24px 0; }
+  .situation .sit-tag { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .situation p { font-size: 15px !important; line-height: 1.65 !important; color: var(--text-mid); margin: 0 !important; }
+  .situation p + p { margin-top: 10px !important; }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Din kalender har en ejer. Det er bare ikke dig.",
+ "alternativeHeadline": "Kalenderanarkiet som ledelsesproblem: Din arbejdsdag er designet — af den, der bookede først.",
+ "description": "Din arbejdsdag er designet — bare ikke af dig. Paper 01 i Struktur sætter fri navngiver kalenderanarkiet: hvorfor fragmenterede kalendere, mødeinflation og tabt fokus er et ledelsesproblem og ikke et personligt. Med Designgraden som måletal og TAKT-modellen som metode.",
+ "author": { "@type": "Person", "@id": "https://www.friisnaes.com/#person", "name": "Thomas Friisnæs", "url": "https://www.friisnaes.com/" },
+ "publisher": { "@type": "Organization", "name": "Friisnæs", "url": "https://www.friisnaes.com/" },
+ "url": "https://www.friisnaes.com/struktur-saetter-fri-din-kalender-har-en-ejer.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/struktur-saetter-fri-din-kalender-har-en-ejer.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": { "@type": "CreativeWorkSeries", "name": "Struktur sætter fri", "url": "https://www.friisnaes.com/library.html#struktur" },
+ "position": 1,
+ "inLanguage": "da",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Struktur sætter fri · Paper 01 af 9</div>
+  <div class="pc-title">Din kalender har en ejer. Det er bare ikke dig.</div>
+  <div class="pc-sub">Din arbejdsdag er designet ned til mindste detalje. Hver time er placeret af nogen med en hensigt. Der er bare sjældent tale om dig og din hensigt.</div>
+  <div class="pc-author">Af Thomas Friisnæs · Executive Coach · Karakter · Disciplin · Klarhed · friisnaes.com · Oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Struktur sætter fri</span>
+      <span class="wp-series">Paper 01 af 9 · Del 1: Dagen, ingen har designet</span>
+      <span class="wp-readtime">14 min læsning</span>
+    </div>
+    <h1>Din kalender har en ejer. <em>Det er bare ikke dig.</em></h1>
+    <p class="wp-subtitle">Din arbejdsdag er designet ned til mindste detalje. Hver time er placeret af nogen med en hensigt. Der er bare sjældent tale om dig og din hensigt. Første paper i serien navngiver problemet — kalenderanarkiet — og flytter ansvaret derhen, hvor designretten ligger: hos ledelsen.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · Executive Coach, Karakter · Disciplin · Klarhed<br>Mere end 20 års coachingerfaring · 15.000+ sessioner · Arbejder med C-level ledere, ejerledere og bestyrelsesmedlemmer · Udgivet 1. oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Øvelsen, der aldrig fejler</a></li>
+      <li><a href="#problem">Kalenderanarkiet som ledelsesproblem</a></li>
+      <li><a href="#evidence">Tallene bag fornemmelsen</a></li>
+      <li><a href="#designgrad">Designgraden: seriens måletal</a></li>
+      <li><a href="#takt">TAKT: seriens metode</a></li>
+      <li><a href="#klik">Kendetegn 1: Mødet koster ét klik</a></li>
+      <li><a href="#besvaerlig">Kendetegn 2: Den, der beskytter sin tid, fremstår besværlig</a></li>
+      <li><a href="#designet">Kendetegn 3: Alt andet er designet</a></li>
+      <li><a href="#vane">Kendetegn 4: Fragmenteringen er blevet en vane</a></li>
+      <li><a href="#grammatik">Anarkiets grammatik</a></li>
+      <li><a href="#exercise">Øvelse: Farvelæg din uge</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit commitment &amp; din progress</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#next">Fra analyse til handling</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningsscene · Fra coachingrummet</div>
+    <h2>Øvelsen, der aldrig fejler</h2>
+    <p>Gennem mere end 20 år og 15.000 samtaler med ledere har jeg lavet den samme øvelse utallige gange. Den tager to minutter. Den fejler aldrig.</p>
+    <p>Jeg beder lederen åbne sin kalender for den seneste uge. Så stiller jeg ét spørgsmål: <strong>Hvor mange af disse timer har du selv besluttet indholdet af?</strong></p>
+    <p>Der bliver stille. Så begynder optællingen. Møder, andre har indkaldt til. Faste møder, ingen kan huske hvem der besluttede. Statusopdateringer, der findes, fordi de altid har fundet sted. En »hurtig snak«, der blev til en time. Når vi er færdige, er svaret sjældent mere end en time eller to om dagen. Resten er placeret af andre.</p>
+    <p>Det bemærkelsesværdige er ikke tallet. Det er reaktionen. For lederen har aldrig set sin egen uge sådan før. Hun har set den som travl, som fyldt, som et vilkår. Hun har aldrig set den som det, den er: et design. Bare ikke hendes. Scenen her er ikke én bestemt klient — den er et mønster, sammensat af mange års samtaler, og netop derfor er den værd at tage alvorligt. Og pointen, de fleste overser, er denne: Din arbejdsdag <em>er</em> designet. Hver eneste time er lagt der af nogen med en hensigt. Der er bare sjældent tale om dig og din hensigt.</p>
+    <p class="pull-quote">Din dag er designet af den, der bookede først.<cite>— Thomas Friisnæs</cite></p>
+  </div>
+</section>
+
+<!-- 02 PROBLEM -->
+<section class="section" id="problem">
+  <div class="container">
+    <div class="section-label">02 — Problemet navngivet</div>
+    <h2>Kalenderanarkiet som ledelsesproblem</h2>
+    <p>Lad os kalde tilstanden det, den er: <strong>kalenderanarki</strong>. Den tilstand, hvor alle kan booke alle, når som helst, uden omkostning for den, der booker. Begrebet er mit eget praktiske navn for et mønster, jeg møder i næsten alle organisationer — ikke en valideret diagnose, men en beskrivelse, de fleste genkender med det samme.</p>
+    <p>Ingen har besluttet det. Der sad ikke en direktion og vedtog, at virksomhedens dyreste ressource — kvalificerede menneskers opmærksomhed — skulle fordeles efter først-til-mølle. Det skete, fordi teknologien fjernede friktionen. Et møde koster indkalderen ét klik. Det koster deltagerne en formiddag. Når prisen på at tage andres tid er nul, bliver forbruget grænseløst. Det ville det også blive med penge. For det er præcis, hvad kalenderen er: organisationens mest brugte allokeringssystem — den fordeler hver dag virksomhedens samlede opmærksomhed. Bare sjældent efter et design, direktionen har valgt.</p>
+    <p>Undervejs skete der noget andet: Vi begyndte at forveksle fleksibilitet med frihed. Den totalt åbne kalender lyder som frihed. I praksis betyder den, at ingen ejer sin egen dag — mindst af alle de mest efterspurgte. Frihed kræver rammer. Det ved enhver, der har haft ansvar for et fælles resultat — og det er den påstand, hele denne serie står på.</p>
+
+    <div class="cost-grid">
+      <div class="lens">
+        <div class="l-tag">Strategisk</div>
+        <h4>Det vigtige viger</h4>
+        <p>Tænkningen, analysen og de langsigtede beslutninger har ingen blok i kalenderen — og det, der ikke har en blok, bliver ikke lavet. Det presserende vinder hver dag over det vigtige.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Økonomisk</div>
+        <h4>En usynlig bundlinjepost</h4>
+        <p>Spildte persontimer, forlænget gennemløbstid, beslutninger i kø — en potentielt betydelig omkostning, der ikke står i dit regnskab. Hvor betydelig, regner vi på i Paper 02.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Kulturelt</div>
+        <h4>Heltemod som driftsmodel</h4>
+        <p>Når systemet ikke beskytter fokus, bliver fokus til heltemod. De mest samvittighedsfulde slides mest, og de dygtigste lærer, at tilgængelighed belønnes højere end fordybelse.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Personligt</div>
+        <h4>Travl uden fremdrift</h4>
+        <p>Følelsen af at være maksimalt optaget og alligevel bagud. En dag, der tømmer uden at fylde — ikke af meningsfuldt arbejde, men af konstant afvikling uden nærvær.</p>
+      </div>
+    </div>
+
+    <p>Her skal teksten være ærlig om, hvad der er hvad. At møderne er vokset, og at fragmentering koster koncentration, er dokumenteret — det uddyber jeg i næste afsnit. At summen fortjener navnet <em>anarki</em>, og at ansvaret ligger hos ledelsen, er min oversættelse af tallene til ledelse, bygget på mine egne observationer fra coachingrummet. De to ting skal ikke veje det samme, og det gør de ikke her.</p>
+  </div>
+</section>
+
+<!-- 03 EVIDENCE -->
+<section class="section" id="evidence">
+  <div class="container">
+    <div class="section-label">03 — Det dokumenterede grundlag</div>
+    <h2>Tallene bag fornemmelsen</h2>
+    <p>Fornemmelsen af en fragmenteret dag er ikke indbildning — men kilderne skal vejes rigtigt, og de to vigtigste er af meget forskellig karakter.</p>
+    <p>Den første er telemetri. Microsofts egne data viste, at den gennemsnitlige Teams-brugers ugentlige mødetid voksede med 252 procent fra februar 2020 til februar 2022, og antallet af ugentlige møder med 153 procent. Det er faktisk adfærd målt i produktet, ikke spørgeskemaer — men det er også leverandørens egne tal om leverandørens eget produkt, målt i en periode med massiv digital omstilling. Tallene skal derfor bruges til det, de kan bære: I den målte periode voksede mødemængden voldsomt. Om kurven siden er fladet ud, siger kilden ikke — og det behøver den heller ikke. Paperets påstand står ikke på Microsofts kurve. Den står på din egen kalender fra sidste uge.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (telemetri / leverandørdata):</strong> Microsoft (2022), <em>Work Trend Index: Annual Report</em>: For den gennemsnitlige Teams-bruger steg den ugentlige mødetid med 252 % og antallet af ugentlige møder med 153 % fra februar 2020 til februar 2022; antallet af chats pr. bruger steg 32 %, og arbejdsdagens spænd voksede med cirka 46 minutter. Adfærdsdata fra Microsofts egne produkter — ikke uafhængig eller peer-reviewed forskning. Bruges alene til pointen, at mødemængden voksede markant i den målte periode; tallene siger intet om mødernes kvalitet eller nødvendighed — eller om niveauet siden.</div>
+
+    <p>Den anden kilde er forskning, og den står solidere. Professor Gloria Mark, UC Irvine, har målt videnarbejderes opmærksomhed i to årtier — og udviklingen er entydig:</p>
+
+    <div class="lens-grid">
+      <div class="lens">
+        <div class="l-tag">2004</div>
+        <h4>2½ minut</h4>
+        <p>Gennemsnitlig sammenhængende opmærksomhed på én skærm, før vi skiftede til noget andet.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Cirka 2012</div>
+        <h4>75 sekunder</h4>
+        <p>Samme mål, målt igen nogle år senere. Halveret — og faldet fortsatte.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Seneste målinger</div>
+        <h4>47 sekunder</h4>
+        <p>Marks senest offentliggjorte tal. Under ét minut, før opmærksomheden skifter.</p>
+      </div>
+    </div>
+
+    <p>Og når vi afbrydes i en opgave, går der i størrelsesordenen 23 minutter, før vi er fuldt tilbage i den. Tallet cirkulerer ofte med falsk præcision — ned til sekundet — men størrelsesordenen er solid: Genstart efter en afbrydelse måles i mange minutter, ikke i sekunder. Og regnestykket er ubønhørligt: I en dag, der afbrydes hvert kvarter, bliver der aldrig plads til det arbejde, der kræver sammenhæng. Marks eksperimentelle arbejde viser desuden, at vi ofte kompenserer ved at arbejde hurtigere — og betaler med målbart højere stress, frustration og oplevet tidspres.</p>
+    <p>Hendes mest ubekvemme fund er dog et andet: <strong>Vi afbryder os selv lige så ofte, som vi bliver afbrudt af andre.</strong> Fragmenteringen er blevet en vane, vi har trænet. Det vender jeg tilbage til som fjerde kendetegn — for det betyder, at problemet ikke forsvinder, selv hvis møderne gjorde.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (observations- og eksperimentelle studier samt bog):</strong> Mark, Gonzalez &amp; Harris (2005), <em>Proc. CHI 2005</em>, 321–330: detaljeret observation af 24 informationsarbejdere; arbejdet var stærkt fragmenteret, og 57 % af arbejdssfærerne blev afbrudt. Mark, Gudith &amp; Klocke (2008), <em>Proc. CHI 2008</em>, 107–110: eksperimentelt studie; afbrudte opgaver blev løst hurtigere uden målbart kvalitetstab, men med signifikant højere stress, frustration, tidspres og oplevet anstrengelse. Mark (2023), <em>Attention Span</em>: gennemsnitlig skærmopmærksomhed cirka 2½ minut i 2004, cirka 75 sekunder omkring 2012 og cirka 47 sekunder i de seneste målinger; fuld refokusering efter afbrydelse i størrelsesordenen 23–25 minutter; selvafbrydelser omtrent lige så hyppige som eksterne. Gennemsnit fra observations- og logstudier af videnarbejdere, overvejende amerikanske; sekundpræcisionen skal ikke overfortolkes, og fundene er deskriptive gennemsnit, ikke domme over enkeltpersoner.</div>
+  </div>
+</section>
+
+<!-- 04 DESIGNGRAD -->
+<section class="section" id="designgrad">
+  <div class="container">
+    <div class="section-label">04 — Seriens måletal</div>
+    <h2>Designgraden: hvor meget af ugen er designet?</h2>
+    <p>Serien hviler på ét tal, som jeg selv har formuleret. Jeg kalder det <strong>Designgraden</strong>: andelen af arbejdsugen, hvor tidens indhold og placering følger en bevidst prioritering eller en fælles arbejdsarkitektur — frem for at være opstået reaktivt gennem booking, vane og afbrydelse. Det er et praktisk måletal, ikke et valideret instrument, og dets styrke er enkeltheden: Det kan beregnes af enhver med en kalender og tyve minutter.</p>
+    <p>Bemærk, hvad Designgraden spørger om. Øvelsen i coachingrummet spurgte, hvem der besluttede dine timer. Designgraden stiller det skarpere spørgsmål: <strong>Fulgte timerne en bevidst prioritering af arbejdet — uanset hvem der bookede dem?</strong> Et møde kan være indkaldt af en anden og stadig være designet. En egen blok kan omvendt være pseudo-design, hvis den bare opstod tilfældigt. Designgraden måler ikke personlig kontrol. Den måler graden af bevidst arbejdsdesign.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Seriens måletal · min egen model</div>
+      <div class="fw-title">Designgraden</div>
+      <div class="fw-sub">Bevidst arbejdsdesign frem for reaktiv udfyldning — på individ-, team- og organisationsniveau.</div>
+      <ul class="dispo-list">
+        <li><strong>Formlen:</strong> designet tid ÷ samlet arbejdstid. Måles på en hel, typisk arbejdsuge — din egen eller organisationens.</li>
+        <li><strong>Tæller med:</strong> bevidst valgt fokustid, møder med tydeligt formål og bevidst placering, fælles fokusblokke og faste driftsrytmer, der stadig har en aktiv begrundelse.</li>
+        <li><strong>Tæller ikke med:</strong> vanemøder uden aktuelt formål, reaktiv fyldning, ad hoc-afbrydelser — og tid, der kun findes, fordi »sådan plejer vi«.</li>
+        <li><strong>Ambitionen:</strong> at hæve den — serien igennem. Ikke mod fuld personlig kontrol, men mod en uge, hvor tiden følger en prioritering, nogen faktisk har valgt.</li>
+      </ul>
+    </div>
+
+    <p>De fleste lederes Designgrad ligger efter min erfaring markant under, hvad de selv gætter på, før de måler — et praksisbaseret skøn, ikke statistik. Netop derfor er målingen første skridt, og den laver du i øvelsen sidst i paperet: Gæt er anarkiets bedste ven.</p>
+  </div>
+</section>
+
+<!-- 05 TAKT -->
+<section class="section" id="takt">
+  <div class="container">
+    <div class="section-label">05 — Seriens metode</div>
+    <h2>TAKT: tre designprincipper — og gevinsten</h2>
+    <p>Hvor Designgraden måler tilstanden, beskriver <strong>TAKT</strong> vejen. Det er min model for arbejdsdagens arkitektur: tre designprincipper — og den gevinst, de skal frigøre. <strong>Tydelighed + Adskillelse + Kadence → Tid tilbage.</strong></p>
+
+    <div class="framework-box">
+      <div class="fw-label">Seriens metode · min egen model</div>
+      <div class="fw-title">TAKT — arbejdsdagens arkitektur</div>
+      <div class="fw-sub">Tre designprincipper og det resultat, de skal skabe. Ikke et skema — en arkitektur med tilpasningsregler.</div>
+      <div class="fw-step">
+        <div class="fw-letter">T</div>
+        <div class="fw-step-body">
+          <h4>Tydelighed</h4>
+          <p>Hvad er vigtigst? Dagen starter med et kort, fælles commitment — klarhed før aktivitet.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">A</div>
+        <div class="fw-step-body">
+          <h4>Adskillelse</h4>
+          <p>Hvornår arbejder vi fokuseret, og hvornår koordinerer vi? Fokustid og mødetid blandes ikke — fordybelsen beskyttes som fælles regel.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">K</div>
+        <div class="fw-step-body">
+          <h4>Kadence</h4>
+          <p>Hvilken rytme gentager vi? Møder planlægges baglæns fra dagens slutning, og dagen lukkes med feedback på morgenens commitment.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">T</div>
+        <div class="fw-step-body">
+          <h4>Tid tilbage — gevinsten</h4>
+          <p>Hvad gør vi med den kapacitet, designet frigør? Overskuddet veksles til tid — ikke bare til mere arbejde.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>I dette paper bruger vi TAKT som spejl, ikke som opskrift — principperne foldes ud i seriens Del 2, gevinsten i Del 3. Stil de fire spørgsmål til din egen organisation: Ved alle, hvad der er vigtigst i dag? Er der tidspunkter, hvor fordybelse er fredet? Har dagen en rytme, nogen har besluttet? Og bliver effektivitet nogensinde vekslet til tid — eller kun til mere arbejde? <strong>Fire gange nej er kalenderanarkiets signatur.</strong> De næste afsnit folder kendetegnene ud, ét ad gangen.</p>
+  </div>
+</section>
+
+<!-- 06 KLIK -->
+<section class="section" id="klik">
+  <div class="container">
+    <div class="section-label">06 — Kendetegn 1</div>
+    <h2>Mødet koster ét klik</h2>
+    <p>Det første kendetegn er asymmetrien: Den, der tager tiden, betaler ikke for den.</p>
+    <p>At indkalde otte mennesker til en time koster indkalderen tredive sekunder. Det koster organisationen otte persontimer — plus det, Gloria Marks forskning lægger til: otte gange omkostningen ved at forlade det, man var i gang med, og finde tilbage igen. Ingen anden ressource i virksomheden kan rekvireres så billigt af så mange. Og det er ikke et argument mod møder. Et velbegrundet møde er noget af det mest værdifulde, en organisation kan holde. Det er et argument mod, at prisen er usynlig for den, der bestiller.</p>
+
+    <div class="situation">
+      <span class="sit-tag">Genkendelig situation</span>
+      <p>Det ugentlige statusmøde. En time, otte deltagere. Reelt indhold: fem opdateringer, der kunne stå i en delt note.</p>
+      <p>Ingen kan huske, hvem der oprettede mødet. Alle kan huske, at det altid har ligget der.</p>
+    </div>
+
+    <p>Kendetegn på asymmetrien i din organisation: Møder oprettes uden angivet formål. Indkaldelser accepteres pr. automatik. Antallet af deltagere vokser, »så alle er med«. Og ingen har mandat til at sige nej til et møde, de ikke kan se meningen med.</p>
+    <p><em>Hvornår har du sidst afvist en mødeindkaldelse — og hvad kostede det dig at gøre det?</em></p>
+  </div>
+</section>
+
+<!-- 07 BESVAERLIG -->
+<section class="section" id="besvaerlig">
+  <div class="container">
+    <div class="section-label">07 — Kendetegn 2</div>
+    <h2>Den, der beskytter sin tid, fremstår besværlig</h2>
+    <p>Det andet kendetegn er, hvad kulturen gør ved dem, der prøver at løse problemet selv.</p>
+    <p>De fleste virksomheder behandler fragmenteringen som et personligt problem og udleverer personlige løsninger: kurser i time management, gode råd om mailhåndtering, en app mod distraktioner. Det svarer til at udlevere svømmeveste i stedet for at reparere skibet. For den enkelte taber til systemet.</p>
+
+    <div class="situation">
+      <span class="sit-tag">Genkendelig situation</span>
+      <p>En dygtig medarbejder blokerer to timers fokustid hver formiddag. Inden for en måned har hun tre gange fået at vide, at hun er »svær at booke«.</p>
+      <p>Til MUS får hun ordet <em>fleksibilitet</em> med som udviklingspunkt. Hun åbner kalenderen igen.</p>
+    </div>
+
+    <p>Det kræver ikke karakterstyrke at holde fokus i en organisation, der har designet sin dag til det. Det kræver heltemod i en organisation, der ikke har. Og heltemod er ikke en driftsmodel — det er et symptom på manglende design. Cal Newport har beskrevet koncentreret, uafbrudt arbejde som en stadig sjældnere og derfor stadig mere værdifuld evne. Seriens tilføjelse: Den evne får aldrig en chance som individuel dyd. Den skal bygges ind i organisationens dag.</p>
+    <p><em>Hvem i din organisation beskytter deres tid — og omtales de som disciplinerede eller som besværlige?</em></p>
+  </div>
+</section>
+
+<!-- 08 DESIGNET -->
+<section class="section" id="designet">
+  <div class="container">
+    <div class="section-label">08 — Kendetegn 3</div>
+    <h2>Alt andet er designet</h2>
+    <p>Det tredje kendetegn træder frem, når man ser på kontrasten.</p>
+    <p>Tænk over, hvad din virksomhed <em>har</em> designet. Budgettet er designet — ingen bruger virksomhedens penge efter først-til-mølle. Forsyningskæden er designet. Kvalitetskontrollen, likviditetsstyringen, godkendelsesprocesserne — alt sammen designet, fordi ressourcerne er for dyre til at flyde frit. Kun arbejdsdagen selv, rammen om al værdiskabelsen, er overladt til tilfældet og den hurtigste indkalder.</p>
+
+    <div class="situation">
+      <span class="sit-tag">Genkendelig situation</span>
+      <p>Direktionen bruger tre måneder på næste års budget. Antal minutter brugt på at beslutte, hvordan en arbejdsdag skal se ud i virksomheden: nul.</p>
+      <p>Ikke i år. Ikke sidste år. Aldrig.</p>
+    </div>
+
+    <p>Det er ikke et vilkår. Det er et fravalg. Og fravalg af design er også en ledelsesbeslutning — bare en, ingen har taget ansvar for. Deri ligger paperets egentlige pointe: Kalenderanarkiet kan ikke løses dér, hvor det mærkes, kun dér, hvor designretten ligger.</p>
+    <p><em>Hvis din bank fordelte virksomhedens likviditet efter samme princip som jeres kalender — hvor længe ville du acceptere det?</em></p>
+  </div>
+</section>
+
+<!-- 09 VANE -->
+<section class="section" id="vane">
+  <div class="container">
+    <div class="section-label">09 — Kendetegn 4</div>
+    <h2>Fragmenteringen er blevet en vane</h2>
+    <p>Det fjerde kendetegn er det mest ubekvemme, for det peger indad: Selv når roen indtræffer, opsøger vi uroen.</p>
+    <p>Marks forskning viser som nævnt, at vi afbryder os selv lige så ofte, som vi bliver afbrudt. Årene i den fragmenterede dag har trænet en refleks: Efter få minutters koncentration rækker hånden selv ud efter telefonen, indbakken, det hurtige tjek. Miljøet skabte vanen — men vanen har nu sit eget liv. Det er et dokumenteret mønster på gennemsnitsniveau, ikke en dom over dig; om det gælder dig, kan du teste på to minutter, og det gør du nedenfor.</p>
+
+    <div class="situation">
+      <span class="sit-tag">Genkendelig situation</span>
+      <p>Den mødefri fredag, ledelsen indførte med de bedste intentioner. Kalenderen er tom.</p>
+      <p>Alligevel er dagen ved fyraften blevet til mails, småopgaver og femogtyve selvvalgte afbrydelser. Fordybelsen kom aldrig — for en tom kalender er ikke det samme som en designet dag.</p>
+    </div>
+
+    <p>Det er den vigtigste grund til, at løsningen ikke bare er <em>færre møder</em>. Kalenderanarkiet skal erstattes af noget — en arkitektur, der både beskytter tiden og genoptræner evnen til at bruge den. Det er præcis, hvad seriens Del 2 handler om.</p>
+    <p><em>Prøv det af: Hvor mange minutter kan du arbejde koncentreret, før du afbryder dig selv første gang? Tag tid. Tallet er din ærligste baseline.</em></p>
+  </div>
+</section>
+
+<!-- 10 GRAMMATIK -->
+<section class="section" id="grammatik">
+  <div class="container">
+    <div class="section-label">10 — Anarkiets grammatik</div>
+    <h2>Tre sætninger, der holder kalenderanarkiet i live</h2>
+    <p>Kalenderanarkiet vedligeholdes af et sprog. Tre sætninger går igen, hver gang nogen forsvarer det. De lyder som dyder. De er forsvarstaler for et manglende design.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Tre sætninger — og hvad de reelt siger</div>
+      <ul class="dispo-list">
+        <li><strong>»Min dør er altid åben.«</strong> Lyder som tilgængelighed. <em>Er:</em> et løfte om, at enhver andens indskydelse går forud for din egen tænkning — og et signal til hele organisationen om, at afbrydelser er gratis.</li>
+        <li><strong>»Det tager kun et kvarter.«</strong> Lyder som hensynsfuldhed. <em>Er:</em> en regnefejl. Kvarteret koster kvarteret plus genstarten — gange antallet af deltagere. Det billige møde findes ikke.</li>
+        <li><strong>»Sådan er det bare i en travl virksomhed.«</strong> Lyder som realisme. <em>Er:</em> resignation gjort til kultur. Et fravalg af design, forklædt som et vilkår.</li>
+      </ul>
+    </div>
+
+    <p>Sætningerne er ikke uærlige. Hver peger på noget ægte — nærvær, hensyn, realisme. Men tilsammen gør de det umuligt at forsvare en designet dag. At høre dem i sin egen mund er første tegn på, at anarkiet taler igennem en.</p>
+    <p><em>Hvilken af de tre bruger du selv oftest — og hvad har den senest forsvaret?</em></p>
+  </div>
+</section>
+
+<!-- 11 EXERCISE -->
+<section class="section" id="exercise">
+  <div class="container">
+    <div class="section-label">11 — Øvelse</div>
+    <h2>Farvelæg din uge</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · Med din kalender åben</div>
+      <div class="ex-meta">⏱ Cirka 20 minutter · Hav din faktiske kalender for den seneste hele arbejdsuge åben. Øvelsen er måling, ikke dom — og din Designgrad er en baseline, ikke en karakter.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Formålet er ikke at optimere noget endnu. Det er at se din uge, som den faktisk er — og sætte tal på den. Øvelsen er konkret og lidt ubehagelig, for den fjerner muligheden for at gætte pænt.</p>
+      <ol>
+        <li><strong>Farvelæg ugen med tre farver.</strong> Én farve for tid, der fulgte en bevidst prioritering eller fælles arkitektur — uanset hvem der bookede den. Én for tid, der opstod reaktivt: booking, vane, afbrydelse. Én for sammenhængende blokke over 90 minutter, hvor reel tænkning var mulig.</li>
+        <li><strong>Beregn din Designgrad:</strong> designet tid delt med samlet arbejdstid. Skriv tallet ned — det er din baseline for hele serien.</li>
+        <li><strong>Tæl fokusblokkene.</strong> Hvor mange 90-minutters blokke fandtes der i ugen? Nul er et almindeligt svar. Det er også et alarmerende svar.</li>
+        <li><strong>Find ugens tre dyreste møder</strong> — dem med flest deltagere og mindst tydeligt formål. Notér, hvornår formålet sidst blev udfordret.</li>
+        <li><strong>Tag billedet med til dit næste direktionsmøde</strong> og stil tre spørgsmål: Hvem har designet vores arbejdsdag? Hvornår har vi sidst truffet en aktiv beslutning om den? Og hvis dagen var et produkt, vi skulle levere til en kunde — ville vi så være stolte af det?</li>
+      </ol>
+      <div class="dispo" style="margin-top:26px;">
+        <div class="dispo-h">Din baseline-skabelon</div>
+        <ul class="dispo-list">
+          <li><strong>Min Designgrad:</strong> ____ % — designet tid ÷ samlet arbejdstid</li>
+          <li><strong>Fokusblokke ≥ 90 min:</strong> ____ stk. i ugen</li>
+          <li><strong>Reaktivt placeret tid:</strong> ____ %</li>
+          <li><strong>Ugens tre dyreste møder:</strong> ____</li>
+          <li><strong>Det, der overraskede mig mest:</strong> ____</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">12 — 2-minutters mikrohandling</div>
+    <h2>Gør dette, før du lukker fanen</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · nu</span>
+      <h3>Ét spørgsmål til ét møde</h3>
+      <p>Et paper om kalenderen, der ikke ændrer noget i din faktiske kalender, har ikke flyttet noget. Så: <strong>Find ét tilbagevendende møde i din kalender, som du ikke kan forklare formålet med på én sætning.</strong> Ikke ti. Ét.</p>
+      <p>Skriv til mødeejeren — eller til dig selv, hvis det er dit: <strong>»Hvad er formålet med dette møde, og hvad ville der ske, hvis vi ikke holdt det i to uger?«</strong></p>
+      <p>Det er det. Du har lige stillet det spørgsmål, kalenderanarkiet lever af, at ingen stiller.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">13 — Commitment &amp; progress</div>
+    <h2>Commit dig — og følg din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 01 · Din kalender har en ejer</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv dit ene commitment for dette paper. Det gemmes lokalt i din browser, ingen konto, intet sendes nogen steder, og din progress følger dig gennem alle ni papers.</p>
+      <label for="commitText">Det, jeg vil måle i stedet for at gætte, er …</label>
+      <textarea id="commitText" placeholder="Én konkret handling inden for 48 timer. Fx: »Jeg farvelægger sidste uges kalender og beregner min Designgrad inden fredag. Baseline: __ %. Fokusblokke: __. Tager billedet med til direktionsmødet d. __.«"></textarea>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem commitment</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Struktur sætter fri</span><span id="cpCount">0 af 9 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html#struktur">Se hele serien i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">14 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad er kalenderanarki? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Kalenderanarki er den tilstand, hvor alle i en organisation kan booke alle, når som helst, uden omkostning for den, der booker. Resultatet er en arbejdsdag, der ikke er designet af nogen, men opstår som summen af, hvem der bookede først — med fragmentering, mødeinflation og tab af fokus til følge. Begrebet er Thomas Friisnæs' praktiske navn for mønsteret, ikke en valideret diagnose.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvorfor er en åben bookingkultur et problem? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Fordi den fordeler virksomhedens dyreste ressource — kvalificerede menneskers opmærksomhed — efter først-til-mølle. Når det er gratis at tage andres tid, bliver forbruget grænseløst. Ingen ville fordele virksomhedens penge på den måde — men de fleste organisationer fordeler deres opmærksomhed sådan, uden nogensinde at have besluttet det.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad koster afbrydelser på arbejdet? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Forskning fra UC Irvine (Gloria Mark) viser, at det efter en afbrydelse tager i størrelsesordenen 23 minutter at komme fuldt tilbage i opgaven, og at vi ofte kompenserer ved at arbejde hurtigere — mod betaling i målbart højere stress og frustration. Den gennemsnitlige sammenhængende skærmopmærksomhed er samtidig faldet fra 2½ minut i 2004 til 47 sekunder i de seneste målinger. Tallene er gennemsnit fra studier af videnarbejdere, ikke præcise mål for den enkelte.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er problemet ikke bare for mange møder? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Færre møder hjælper, men forskningen viser, at vi afbryder os selv lige så ofte, som vi bliver afbrudt — fragmenteringen er blevet en trænet vane. Derfor virker en mødefri dag sjældent alene. Der skal en arkitektur til, som både beskytter tiden og genopbygger evnen til at bruge den. Det er dét, TAKT-modellen og seriens Del 2 handler om.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvorfor er time management ikke nok? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Individuelle teknikker kan hjælpe — men de kan ikke alene løse et organisatorisk designproblem. En medarbejder, der beskytter sin tid i en kultur uden fælles regler, fremstår besværlig og taber til systemet, uanset hvor god teknikken er. Fokus skal være en organisatorisk beslutning, ikke en individuel heltegerning. Teknikkerne får først deres fulde værdi inden for en dag, der er designet til dem.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad er Designgraden? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Designgraden er andelen af arbejdsugen, hvor tidens indhold og placering følger en bevidst prioritering eller en fælles arbejdsarkitektur — frem for reaktiv booking, vane og afbrydelse. Den beregnes som designet tid delt med samlet arbejdstid og er seriens gennemgående måletal. Et møde med tydeligt formål tæller med, også hvis en anden har indkaldt det; et vanemøde gør ikke. Designgraden måler ikke personlig kontrol, men graden af bevidst arbejdsdesign — et praktisk måletal formuleret af Thomas Friisnæs, ikke et valideret instrument.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad kan ledelsen konkret gøre ved kalenderanarki? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Behandle arbejdsdagens design som en ledelsesbeslutning på linje med budgettet: måle organisationens Designgrad, indføre en fælles dagsarkitektur med beskyttet fokustid, en fast møderytme og et dagligt commitment — og selv gå forrest i at holde den. Det er, hvad denne series følgende papers folder ud, element for element.</div>
+    </details>
+  </div>
+</section>
+
+<!-- 15 NEXT -->
+<section class="section" id="next">
+  <div class="container">
+    <div class="section-label">15 — Fra analyse til handling</div>
+    <h2>Ansvaret ligger, hvor designretten ligger</h2>
+    <p>Hvis du tager én ting med herfra, så lad det være denne: Kalenderanarkiet er ikke en naturlov. Det er summen af mange års små, hver især fornuftige beslutninger — og fraværet af én stor: beslutningen om, hvordan en arbejdsdag skal se ud i jeres virksomhed. Den beslutning kan kun træffes ét sted. Ikke af den enkelte medarbejder, der taber til systemet. HR kan understøtte principperne — men designretten til driftsrytmen må ejes af den ledelse, der prioriterer arbejdet.</p>
+    <p>Man kunne indvende, at alt dette handler om trivsel og fornemmelser. Det er en misforståelse, og den er dyr. Den udesignede arbejdsdag er en bundlinjepost, der ikke står i dit regnskab — og de færreste direktioner har nogensinde regnet på, hvor stor den er. I næste paper laver vi det regnestykke, jeg endnu ikke har mødt en direktion, der havde lavet: hvad kalenderanarkiet koster i kroner. Og hvorfor enhver virksomhed, der overvejer at spare på hovederne, bør regne det ud, <em>før</em> den gør det.</p>
+
+    <p class="pull-quote">Den udesignede arbejdsdag er ikke et vilkår. Den er et fravalg — og fravalg af design er også en ledelsesbeslutning. Bare en, ingen har taget ansvar for.<cite>— Thomas Friisnæs</cite></p>
+
+    <h3 style="margin-top:36px;">Næste skridt</h3>
+    <p>Det stærkeste næste skridt er det næste paper: <strong>02 — Regnestykket, ingen direktion har lavet</strong>. Gem dit commitment ovenfor, og følg serien i Executive Library. Og har paperet ramt noget, der ikke kan vente på serien, findes den korte vej også.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="/library.html#struktur">
+        <div class="nc-tag">Hele serien</div>
+        <div class="nc-text"><strong>Følg Struktur sætter fri</strong> i Executive Library — alle ni papers er samlet der</div>
+      </a>
+      <a class="next-card" href="/executive-coaching.html">
+        <div class="nc-tag">Executive Coaching</div>
+        <div class="nc-text"><strong>Mål din egen Designgrad</strong> — og genvind ejerskabet over din kalender i et fortroligt forløb</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <ul>
+      <li>Microsoft (2022). <em>Work Trend Index: Annual Report — Great Expectations: Making Hybrid Work Work.</em> <a href="https://www.microsoft.com/en-us/worklab/work-trend-index/" target="_blank" rel="noopener">microsoft.com/worklab/work-trend-index</a></li>
+      <li>Mark, G., Gonzalez, V. M. &amp; Harris, J. (2005). »No Task Left Behind? Examining the Nature of Fragmented Work.« <em>Proceedings of CHI 2005</em>, ACM, 321–330. <a href="https://doi.org/10.1145/1054972.1055017" target="_blank" rel="noopener">doi.org/10.1145/1054972.1055017</a></li>
+      <li>Mark, G., Gudith, D. &amp; Klocke, U. (2008). »The Cost of Interrupted Work: More Speed and Stress.« <em>Proceedings of CHI 2008</em>, ACM, 107–110. <a href="https://doi.org/10.1145/1357054.1357072" target="_blank" rel="noopener">doi.org/10.1145/1357054.1357072</a></li>
+      <li>Mark, G. (2023). <em>Attention Span: Finding Focus for a Fulfilling Life.</em> Hanover Square Press.</li>
+      <li>Newport, C. (2016). <em>Deep Work: Rules for Focused Success in a Distracted World.</em> Grand Central Publishing.</li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Begreberne kalenderanarki, Designgraden og TAKT samt anarkiets fire kendetegn og grammatik er Thomas Friisnæs' egne praktiske begreber og rammer, ikke validerede instrumenter eller diagnoser. Åbningsscenen og de genkendelige situationer er sammensatte, illustrative mønstre fra mere end 15.000 samtaler — ikke bestemte klienter. Tal for refokusering efter afbrydelser angives som størrelsesorden, ikke som præcist mål.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Struktur sætter fri — den komplette serie</div>
+    <h2 class="collection-title">Ni papers om arbejdsdagen som ledelsesdesign</h2>
+    <p class="collection-intro">Produktivitet og arbejdsglæde er ikke et motivationsprojekt. Det er et designprojekt. Serien viser, hvordan en fælles, disciplineret dagsarkitektur — TAKT — kan skabe bedre betingelser for begge dele — og hvorfor en 4-dages uge, der skal være et resultat og ikke en rabat på output, kræver, at arbejdet designes først. Serien er komplet; alle ni papers er samlet her.</p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 1</span><span class="cpart-name">Dagen, ingen har designet</span></div>
+      <p class="cpart-desc">Problemet navngives, prisen gøres op, og fundamentet støbes: fra motivationsafhængighed til driftsdisciplin.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><span class="current">Din kalender har en ejer. Det er bare ikke dig. — du læser dette</span></li>
+        <li data-n="02"><a href="/struktur-saetter-fri-regnestykket-ingen-direktion-har-lavet.html">Regnestykket, ingen direktion har lavet</a></li>
+        <li data-n="03"><a href="/struktur-saetter-fri-motivation-er-en-daarlig-chef.html">Motivation er en dårlig chef</a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 2</span><span class="cpart-name">Arkitekturens tre designprincipper</span></div>
+      <p class="cpart-desc">TAKT foldes ud: Tydelighed, Adskillelse og Kadence — dagens bærende konstruktion.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="04"><a href="/struktur-saetter-fri-femten-minutter-der-styrer-otte-timer.html">Femten minutter, der styrer otte timer</a></li>
+        <li data-n="05"><a href="/struktur-saetter-fri-fokus-er-ikke-en-personlig-praeference.html">Fokus er ikke en personlig præference</a></li>
+        <li data-n="06"><a href="/struktur-saetter-fri-vend-kalenderen-om.html">Vend kalenderen om</a></li>
+        <li data-n="07"><a href="/struktur-saetter-fri-dagen-skal-lukkes-ikke-bare-slutte.html">Dagen skal lukkes, ikke bare slutte</a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 3</span><span class="cpart-name">Gevinsten</span></div>
+      <p class="cpart-desc">Tid tilbage: 4-dages ugen som resultat, ikke som frynsegode.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="08"><a href="/struktur-saetter-fri-fredag-er-ikke-et-gode-den-er-et-resultat.html">Fredag er ikke et gode. Den er et resultat.</a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 4</span><span class="cpart-name">Implementeringen</span></div>
+      <p class="cpart-desc">Fra blueprint til driftsrytme — uden at udløse oprør.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="09"><a href="/struktur-saetter-fri-takten-foer-reglerne.html">Takten før reglerne</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Gem som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til det direktionsmøde, hvor du lægger den farvelagte kalender på bordet.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Gem som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Gem som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/den-bookede-kalender.html">
+      <span class="ra-tag">Eksekveringsserien · Del 1</span>
+      <span class="ra-title">Den bookede kalender: Hvorfor 100 % belægning gør lederen til en flaskehals</span>
+    </a>
+    <a href="/kontekstskiftet.html">
+      <span class="ra-tag">Eksekveringsserien · Del 2</span>
+      <span class="ra-title">Kontekstskiftet: Hvorfor belastningen ikke kommer fra timerne, men fra skiftene</span>
+    </a>
+    <a href="/moedekulturen.html">
+      <span class="ra-tag">Eksekveringsserien · Del 2</span>
+      <span class="ra-title">Mødekulturen: Når problemet ikke er antallet, men kvaliteten</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Struktur sætter fri · Paper 01 af 9</div>
+        <div class="series-next">Næste: Regnestykket, ingen direktion har lavet</div>
+        <a href="/library.html#struktur">Se hele serien →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: ssf_ (Struktur sætter fri)
+  var LS_C = 'ssf_p01_commit', LS_D = 'ssf_done', PAPER_N = 1, TOTAL = 9;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

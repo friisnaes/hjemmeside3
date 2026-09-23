@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dagen skal lukkes, ikke bare slutte | Struktur sætter fri | Thomas Friisnæs</title>
+<meta name="description" content="Hvis dagen starter med et commitment og slutter uden et regnskab, lærer systemet ingenting. Paper 07 i Struktur sætter fri bygger feedback-loopet rundt om TAKT: Dagens Lukning — fire spørgsmål, få minutter, der sammenligner det, der skulle vinde, med det, der faktisk vandt. Accountability uden micromanagement. Ikke en aftenrutine — en lærende arbejdsarkitektur.">
+<meta name="keywords" content="dagens lukning, feedback-loop arbejdsdag, commitment opfølgning, accountability uden kontrol, daglig læring ledelse, arbejdsdesign feedback, lukke arbejdsdagen, TAKT feedback, carry-forward genbeslutning, ledergruppe eksekvering">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/struktur-saetter-fri-dagen-skal-lukkes-ikke-bare-slutte.html">
+
+<meta property="og:title" content="Dagen skal lukkes, ikke bare slutte | Struktur sætter fri | Thomas Friisnæs">
+<meta property="og:description" content="Forskellen mellem det planlagte og det faktiske er ikke et moralsk problem. Det er data om arbejdsdesignet. Paper 07: Dagens Lukning — feedback-loopet, der gør TAKT lærende.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/struktur-saetter-fri-dagen-skal-lukkes-ikke-bare-slutte.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dagen skal lukkes, ikke bare slutte">
+<meta name="twitter:description" content="Hvis dagen starter med et commitment og slutter uden et regnskab, lærer systemet ingenting. Paper 07: Dagens Lukning — fire spørgsmål, der gør TAKT lærende.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .micro-action, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–07) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  @media print { .lens-grid, .dispo { page-break-inside: avoid; } .lens { background: #fff !important; border: 0.75pt solid #ddd !important; } .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; } }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+
+  /* Struktur sætter fri — serie-specifikke tilføjelser i samme designsprog */
+  @media (max-width: 700px) { .cost-grid { grid-template-columns: 1fr; } }
+  .situation { background: var(--cream); border-left: 2px solid var(--gold); border-radius: 0 4px 4px 0; padding: 18px 24px; margin: 24px 0; }
+  .situation .sit-tag { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .situation p { font-size: 15px !important; line-height: 1.65 !important; color: var(--text-mid); margin: 0 !important; }
+  .situation p + p { margin-top: 10px !important; }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Dagen skal lukkes, ikke bare slutte",
+ "alternativeHeadline": "Dagens Lukning: feedback-loopet, der gør TAKT lærende — forskellen er data, ikke skyld.",
+ "description": "Paper 07 i Struktur sætter fri bygger feedback-loopet rundt om TAKT's tre designprincipper: Dagens Lukning — fire spørgsmål, der sammenligner morgenens commitment med dagens faktiske udfald og omsætter forskellen til én designændring. Accountability uden micromanagement.",
+ "author": { "@type": "Person", "@id": "https://www.friisnaes.com/#person", "name": "Thomas Friisnæs", "url": "https://www.friisnaes.com/" },
+ "publisher": { "@type": "Organization", "name": "Friisnæs", "url": "https://www.friisnaes.com/" },
+ "url": "https://www.friisnaes.com/struktur-saetter-fri-dagen-skal-lukkes-ikke-bare-slutte.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/struktur-saetter-fri-dagen-skal-lukkes-ikke-bare-slutte.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": { "@type": "CreativeWorkSeries", "name": "Struktur sætter fri", "url": "https://www.friisnaes.com/library.html#struktur" },
+ "position": 7,
+ "inLanguage": "da",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Struktur sætter fri · Paper 07 af 9</div>
+  <div class="pc-title">Dagen skal lukkes, ikke bare slutte</div>
+  <div class="pc-sub">Hvis dagen starter med et commitment og slutter uden et regnskab, lærer systemet ingenting.</div>
+  <div class="pc-author">Af Thomas Friisnæs · Executive Coach · Karakter · Disciplin · Klarhed · friisnaes.com · Oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Struktur sætter fri</span>
+      <span class="wp-series">Paper 07 af 9 · Del 2: Arkitekturens tre designprincipper</span>
+      <span class="wp-readtime">14 min læsning</span>
+    </div>
+    <h1>Dagen skal <em>lukkes</em>, ikke bare slutte</h1>
+    <p class="wp-subtitle">Paper 04–06 designede arbejdsdagen: hvad der skal vinde, hvad der skal beskyttes, og hvor arbejdet skal bo. Men et design uden feedback lærer aldrig af sig selv. Paper 07 bygger sløjfen rundt om de tre principper — Dagens Lukning: fire spørgsmål, få minutter, der sammenligner det, vi sagde, med det, der skete. Ikke for at bedømme mennesker. For at forbedre designet.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · Executive Coach, Karakter · Disciplin · Klarhed<br>Mere end 20 års coachingerfaring · 15.000+ sessioner · Arbejder med C-level ledere, ejerledere og bestyrelsesmedlemmer · Udgivet 1. oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Kl. 16:47</a></li>
+      <li><a href="#hul">Det usynlige hul i TAKT</a></li>
+      <li><a href="#regnskab">Dagen skal have et regnskab</a></li>
+      <li><a href="#data">Forskellen er data — ikke skyld</a></li>
+      <li><a href="#forskning">Hvad forskningen kan bære</a></li>
+      <li><a href="#lukning">Dagens Lukning: fire spørgsmål</a></li>
+      <li><a href="#outcome">Ikke alt, der glipper, er failure</a></li>
+      <li><a href="#niveau">Individuelt eller fælles?</a></li>
+      <li><a href="#antipattern">Når Dagens Lukning går galt</a></li>
+      <li><a href="#exercise">Øvelse: Luk gårsdagen</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit commitment &amp; din progress</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#next">Fra lukket dag til Tid tilbage</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningsscene · Et sammensat mønster fra praksis</div>
+    <h2>Kl. 16:47</h2>
+    <p>Dagen var designet. Kalenderen var vendt om, som Paper 06 foreskrev; højværditiden lå først, møderne havde deres vindue. Og kl. 08:30 sagde Dagens Commitment tre ting højt: Få beslutningen om leverandørskiftet lukket. Færdiggør analysen til bestyrelsen. Giv den udskudte feedback til afdelingslederen.</p>
+    <p>Nu er klokken 16:47. To af de tre skete. Den tredje blev ædt — af et ekstra møde, en eskalation, en prioritet, der ændrede sig undervejs. Det er ikke det interessante; det sker i enhver drift. Det interessante er, hvad der sker nu: <strong>ingenting</strong>. Ingen gør status. Ingen spørger, hvad der åd den tredje. Dagen slutter bare — og i morgen kl. 08:30 starter samme organisation med et nyt commitment, uden at have lært noget af gårsdagens.</p>
+    <p>Det er ikke en rytme. Det er gentagelse uden læring.</p>
+  </div>
+</section>
+
+<!-- 02 HUL -->
+<section class="section" id="hul">
+  <div class="container">
+    <div class="section-label">02 — Diagnosen</div>
+    <h2>Det usynlige hul i TAKT</h2>
+    <p>Gør vi status på arkitekturen, har de tre foregående papers bygget en komplet dagsdesign: Tydelighed besluttede, hvad der skal vinde (Paper 04). Adskillelse gav det beskyttet plads til at kunne vinde (Paper 05). Kadence placerede pladsen først og byggede kalenderen omkring den (Paper 06). Tre designprincipper — TAKT's bærende konstruktion.</p>
+    <p>Men Paper 06 sluttede med en advarsel, der er dette papers ærinde: En designet dag er stadig kun en hypotese, indtil vi ser, om det vigtigste faktisk blev gjort. Commitmentet kan være sagt højt, vinduet kan være beskyttet, møderne kan bo rigtigt — og dagen kan alligevel ende et andet sted. <strong>En designet dag uden feedback er bare en pæn hypotese.</strong> Og en hypotese, der aldrig testes, er ikke ledelse; den er indretning.</p>
+    <p>Lad mig være præcis om, hvad dette paper <em>ikke</em> er: Det er ikke et fjerde designprincip. TAKT har tre, og de står. Dette paper bygger <strong>feedback-loopet rundt om de tre</strong> — sløjfen, der hver dag stiller ét spørgsmål til designet: Gjorde vi faktisk det, vi sagde skulle vinde — og hvis ikke, hvad lærte vi om dagen? Det er den sløjfe, der gør TAKT lærende og ikke bare designet.</p>
+    <p class="pull-quote">Hvis dagen starter med et commitment og slutter uden et regnskab, lærer systemet ingenting.<cite>— Thomas Friisnæs</cite></p>
+  </div>
+</section>
+
+<!-- 03 REGNSKAB -->
+<section class="section" id="regnskab">
+  <div class="container">
+    <div class="section-label">03 — Grebet</div>
+    <h2>Dagen skal have et regnskab</h2>
+    <p>Ordet regnskab skal forstås rigtigt. Det handler ikke om kroner — den økonomiske oversættelse af arbejdsdagens design hører hjemme i Paper 02's Kapacitetsregnskab, og dette paper lover ingen ROI. Dagens regnskab er en anden og enklere størrelse: <strong>forskellen mellem det, vi sagde skulle vinde, og det, der faktisk vandt.</strong></p>
+    <p>I kompleks drift opstår der løbende forskelle mellem det planlagte og det faktiske. Spørgsmålet er kun, om forskellen bliver set. I organisationer uden lukning forsvinder den i overgangen mellem to dage — og med den forsvinder meget af den information, forskellen bar på: om commitmentet var det rigtige, om kapacitetsvurderingen holdt, om fokusvinduet reelt var beskyttet, om møderne boede de rigtige steder. Executive-testen er ét spørgsmål: <strong>Har jeres arbejdsdag et feedback-loop — eller starter I bare forfra hver morgen?</strong></p>
+    <p>Og til den skeptiske CFO, der spørger, hvad lukningen giver: ikke automatiske besparelser og ingen performanceprocent — men dagligt opdaterede svar på, om kapacitetsvurderingerne holder, hvor blokeringerne sidder, og om TAKT virker i praksis eller kun på papiret. Min designheuristik — og det er en heuristik, ikke et dokumenteret afkast: <strong>Lukningen skal koste mindre tid, end den friktion, den opdager.</strong> Kan den ikke det, er lukningen designet forkert.</p>
+  </div>
+</section>
+
+<!-- 04 DATA -->
+<section class="section" id="data">
+  <div class="container">
+    <div class="section-label">04 — Governance-reglen</div>
+    <h2>Forskellen er data — ikke skyld</h2>
+    <p>Her kommer paperets vigtigste regel, og den afgør, om lukningen bliver et læringsredskab eller et kontrolregime. Når dagens vigtigste commitment ikke blev leveret, er det fristende at starte med spørgsmålet »Hvem fejlede?«. Det er det forkerte første spørgsmål. Det rigtige er: <strong>Var commitmentet forkert, kapaciteten urealistisk — eller designet utilstrækkeligt?</strong></p>
+    <p class="pull-quote">Forskellen er data — ikke skyld.<cite>— Thomas Friisnæs</cite></p>
+    <p>Det udelukker ikke individuelt ansvar; det findes, og det skal håndteres. Men rækkefølgen betyder alt: Serien har fra Paper 03 insisteret på, at et designproblem ikke må gøres til et karakterproblem — og fra Paper 05, at når fokus kræver mod, har organisationen gjort en arbejdsbetingelse til et karaktertræk. Samme logik gælder her — med en vigtig præcisering: Hvis commitments konsekvent ikke leveres, er det et signal, der skal diagnosticeres, før der konkluderes noget om enten design eller person. Rækkefølgen er ikke design før individ; den er <strong>diagnose før dom</strong>. Er rammen sund, og mønstret stadig individuelt, hører det hjemme i performanceledelse, i det rum der findes til det — det må aldrig smugles ind i et TAKT-ritual. Og er rammen syg, må individet omvendt ikke bære designets regning.</p>
+    <p>Derfor er der ting, Dagens Lukning per design ikke gør: Den scorer ikke mennesker. Den er ikke en daglig performance review. Den offentliggør ikke røde og grønne medarbejdere, tæller ikke lukkede opgaver og er ikke et skjult timesheet. Den holder <em>beslutninger, kapacitet, afhængigheder, design og bevidste fravalg</em> op mod det, der faktisk skete. Forskningen i næste afsnit giver en yderligere — og overraskende kontant — grund til netop dét designvalg.</p>
+  </div>
+</section>
+
+<!-- 05 FORSKNING -->
+<section class="section" id="forskning">
+  <div class="container">
+    <div class="section-label">05 — Evidensen</div>
+    <h2>Hvad forskningen kan bære</h2>
+    <p>Tre forskningsspor er relevante for en daglig lukning — og alle tre skal bruges med præcision, for feltet omkring »refleksion« og »feedback« flyder med popclaims.</p>
+    <p><strong>Første spor: Progress monitoring kan fremme måloppnåelse.</strong> En stor eksperimentel metaanalyse af progress monitoring — 138 studier med tilfældig fordeling, knap 20.000 deltagere — fandt, at interventioner, der fik folk til at følge deres fremdrift mod et mål, i gennemsnit fremmede måloppnåelsen, og at effekten var stærkere, når fremdriften blev registreret fysisk eller delt med andre. Vigtige forbehold: Studierne handlede overvejende om sundhedsmål som motion, vægt og blodtryk — ikke om videnarbejde eller ledergrupper — og interventionerne varierede bredt. Fundet understøtter den mere begrænsede mekanisme: Aktiv monitorering af fremdrift mod et mål kan fremme måloppnåelse. Dagens Lukning er min organisatoriske oversættelse — fundet bærer den ikke.</p>
+    <p><strong>Andet spor: Det ufærdige kan blive mentalt hængende — indtil det har en plan.</strong> Laboratorieforskning i ufuldførte mål viser, at de kan forblive kognitivt aktive — de trængte sig på som forstyrrende tanker under en urelateret læseopgave og forringede præstationen på en efterfølgende opgave. Det mest interessante fund er løsningen: Når deltagerne formulerede en <em>konkret plan</em> for det ufærdige mål, forsvandt de målte effekter i forsøgene — selv om målet stadig var ufuldført. Det er den forskningsmæssige rygrad i lukningens carry-forward-regel: Det ufærdige skal ikke huskes; det skal besluttes.</p>
+    <p><strong>Tredje spor: Feedback er ikke automatisk godt.</strong> Den klassiske metaanalyse af feedbackinterventioner — 607 effektstørrelser — fandt en positiv gennemsnitseffekt, men også et vigtigt korrektiv til forestillingen om, at feedback automatisk hjælper: <strong>Over en tredjedel af interventionerne forringede performance.</strong> Forskernes egen forklaringsmodel peger på opmærksomhedens retning: Effekten falder, når feedbacken flytter opmærksomheden væk fra opgaven og op mod selvet. Det er ikke et bevis for min model — men det er en forskningsbaseret grund til dens vigtigste designvalg: Dagens Lukning retter sig mod <em>opgaven, beslutningen og designet</em> — ikke mod en vurdering af personen, selvet eller karakteren. Præcis derfor er »data, ikke skyld« ikke blødsødenhed. Det er et evidensinformeret designvalg.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (individniveau — metaanalyser og laboratoriestudier; ikke test af Dagens Lukning):</strong> Harkin m.fl. (2016): eksperimentel metaanalyse, 138 studier, N=19.951; interventioner øgede monitoreringsfrekvensen (d=1,98) og fremmede måloppnåelse (d=0,40; 95 % CI 0,32–0,48), stærkest ved fysisk registrering eller deling; populationen var overvejende sundhedsadfærd. Masicampo &amp; Baumeister (2011): laboratorieeksperimenter; ufuldførte mål gav intrusive tanker og dårligere præstation på efterfølgende opgaver, og konkrete planer fjernede de målte effekter i forsøgene — ikke et søvnstudie og ikke en organisationsintervention. Kluger &amp; DeNisi (1996): metaanalyse af feedbackinterventioner, 607 effektstørrelser; gennemsnitlig positiv effekt (d=0,41), men over en tredjedel af interventionerne forringede performance; effektiviteten falder, når opmærksomheden rettes mod selvet frem for opgaven. Ingen af kilderne har testet Dagens Lukning; tidspunktet, de fire spørgsmål og koblingen til TAKT er Thomas Friisnæs' organisatoriske design.</div>
+  </div>
+</section>
+
+<!-- 06 LUKNING -->
+<section class="section" id="lukning">
+  <div class="container">
+    <div class="section-label">06 — Paperets værktøj</div>
+    <h2>Dagens Lukning: fire spørgsmål</h2>
+    <p>Værktøjet er bevidst lille. Dagens Lukning er den naturlige pendant til Dagens Commitment fra Paper 04 — morgenens tre spørgsmål får aftenens fire. Ikke en retrospektiv i tyve punkter, ikke et nyt møde som default. Fire spørgsmål, få minutter:</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Paperets værktøj · pendant til Dagens Commitment · min egen model</div>
+      <div class="fw-title">Dagens Lukning</div>
+      <div class="fw-sub">Fire spørgsmål, få minutter. Regnskabet, der gør TAKT lærende.</div>
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Hvad sagde vi skulle vinde i dag?</h4>
+          <p>Direkte reference til morgenens Dagens Commitment. Ingen rekonstruktion, ingen efterrationalisering — commitmentet står, som det blev sagt kl. 08:30.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Hvad vandt faktisk?</h4>
+          <p>Fakta, ikke forklaring. Hvad blev leveret, hvad blev det ikke — og hvad fyldte dagen i stedet? Forklaringen kommer i næste spørgsmål; dette er kun regnskabets tal.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Hvad forklarede forskellen?</h4>
+          <p>Her læses dataene: forkert prioritering, urealistisk kapacitetsvurdering, afbrydelser, møder, afhængigheder, akutte hændelser, dårlig beskyttelse, forkert placeret arbejde, individuel eksekvering — eller en bevidst omprioritering, der var det rigtige valg.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Hvad ændrer vi i morgen?</h4>
+          <p>Én justering — ikke en handlingsplan. Et skarpere commitment, et bedre beskyttet vindue, et flyttet møde, en genforhandlet afhængighed. Lukningen er først færdig, når læringen har en adresse i morgendagens design.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Bemærk arkitekturen: Spørgsmål 1–2 er regnskabet, spørgsmål 3 er analysen, spørgsmål 4 er designændringen. Springes spørgsmål 4 over, er lukningen refleksion uden konsekvens; springes spørgsmål 3 over, bliver den afkrydsning uden læring. Og med samme evidensdisciplin som resten af serien: Forskningen ovenfor understøtter værdien af progress monitoring, planlægning af det ufærdige og gennemtænkt feedback — selve Dagens Lukning, tidspunktet, spørgsmålene og koblingen til TAKT er min organisatoriske konstruktion, ikke en intervention, forskningen har testet.</p>
+  </div>
+</section>
+
+<!-- 07 OUTCOME -->
+<section class="section" id="outcome">
+  <div class="container">
+    <div class="section-label">07 — De tre udfald</div>
+    <h2>Ikke alt, der glipper, er failure</h2>
+    <p>Spørgsmål 3 kræver et sprog for forskellen — og det er her, opfølgningsritualer let bliver enten for hårde eller for bløde. Sproget skal skille to lag ad: <em>hvad der skete</em> — og <em>hvorfor</em>. Første lag er status, og den har tre udfald:</p>
+
+    <div class="lens-grid">
+      <div class="lens">
+        <div class="l-tag">Status 1</div>
+        <h4>Leveret</h4>
+        <p>Det, morgenen sagde skulle vinde, vandt. Regnskabet stemmer — og lukningen kan gå direkte til spørgsmål 4: Hvad gjorde det muligt, og skal noget af det gentages i morgendagens design?</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Status 2</div>
+        <h4>Bevidst omprioriteret</h4>
+        <p>Noget vigtigere opstod, og retningsskiftet var det rigtige valg. Det er ikke et problem — det er ledelse. Kravet er kun, at omprioriteringen var eksplicit, jf. Paper 04: Tavshed er ikke et fravalg.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Status 3</div>
+        <h4>Ikke leveret — diagnosticér hvorfor</h4>
+        <p>Det planlagte blev hverken leveret eller bevidst omprioriteret. Her — og først her — åbner andet lag: diagnosen. Status fortæller, hvad der skete; diagnosen fortæller hvorfor, og de to må aldrig blandes.</p>
+      </div>
+    </div>
+
+    <p>Andet lag er diagnosen, og den hører kun til under »ikke leveret«: Var det commitmentet selv — for stort, for vagt, bygget på en kapacitetsvurdering, der ikke holdt? Var det en afhængighed, en afbrydelse, møde- og kalenderdesignet, uklart ejerskab — eller den individuelle eksekvering? Flere diagnoser kan være sande samtidig. Og her hører seriens vigtigste diagnosebegreb hjemme: <strong>Designsvigt er en diagnose, ikke et udfald</strong> — det vigtige tabte til møder, afbrydelser, afhængigheder eller forkert kalenderarkitektur. Det er en særligt handlingsnær diagnose, fordi den peger direkte tilbage på TAKT: Tydeligheden, beskyttelsen eller placeringen skal justeres.</p>
+    <p>Deraf paperets princip: <strong>Et commitment, der ikke blev leveret, er ikke automatisk et failure. Men det skal forklares.</strong> Og så kommer reglen, der adskiller en lukning fra en to-do-liste, der bare ruller: <strong>Ufærdigt arbejde skal ikke bare flyttes. Det skal genbesluttes.</strong> Når noget ikke blev færdigt, træffes et aktivt valg: Gør det i morgen. Flyt det til en bestemt dato. Delegér det. Drop det. Eller omprioritér det ind i et nyt commitment. Automatisk rollover er forbudt — ikke af pedanteri, men fordi den skjuler prioriteringsbeslutninger, ingen har truffet.</p>
+    <p class="pull-quote">En opgave, der bare ruller videre, er ikke prioriteret. Den er parkeret uden beslutning.<cite>— Thomas Friisnæs</cite></p>
+    <p>Der er også en menneskelig side, som skal siges med evidensmæssig forsigtighed: At gøre det ufærdige eksplicit og give det en plan kan reducere behovet for at holde det aktivt mentalt — det peger laboratoriefundene ovenfor på. Men dette paper lover ikke et psykologisk shutdown på kommando. Gevinsten, der kan loves, er en anden: Ved dagens slutning er det ufærdige identificeret, besluttet, placeret eller droppet — i systemet, ikke kun i hovedet.</p>
+  </div>
+</section>
+
+<!-- 08 NIVEAU -->
+<section class="section" id="niveau">
+  <div class="container">
+    <div class="section-label">08 — Formatet</div>
+    <h2>Individuelt eller fælles?</h2>
+    <p>Det ville være ironisk, hvis en serie om at reducere kalenderfriktion sluttede med at indføre endnu et dagligt møde for alle. Det gør den ikke. Dagens Lukning har to niveauer — og det første er default:</p>
+    <p><strong>Individuelt — typisk 3–5 minutter ved arbejdsdagens afslutning.</strong> De fire spørgsmål besvares af den enkelte, skriftligt eller mentalt struktureret: Hvad skulle vinde? Hvad vandt? Hvad flyttes bevidst? Hvad ændres i morgen? Det kræver ingen indkaldelse og ingen deltagere — kun en fast plads sidst i arbejdsdagen, før dagen reelt er slut.</p>
+    <p><strong>Fælles — 5–10 minutter eller asynkront, kun hvor interdependens gør det relevant.</strong> Teamet deler ikke hele regnskabet, kun det, der påvirker andre: en blocker, en afhængighed, en ændret prioritet, en læring, der ændrer teamets design. I mange teams kan det klares skriftligt i en fast tråd; i tæt koblede teams kan det være fem minutter i forlængelse af dagen. Reglen er den samme som i hele serien: Formatet skal koste mindre, end det opdager.</p>
+    <p>Og her kommer den informationsregel, der gør sløjfen organisatorisk uden at gøre den til overvågning: <strong>Det personlige regnskab er privat som default. Kun det, der ændrer fælles prioritering, afhængigheder, kapacitet eller arbejdsdesign, løftes videre.</strong> Eller kortere: <strong>Del ikke hele lukningen. Del designsignalet.</strong> Et designsignal er fx, at samme møde bryder fokusvinduet tre dage i træk, at en afhængighed konsekvent stopper leverancen, eller at commitments systematisk er større end kapaciteten. Det er den sløjfe, der gør TAKT lærende: Morgenens commitment skaber intention, lukningen skaber feedback — men først når designsignalet når tilbage til det fælles system, bliver feedbacken til organisatorisk læring.</p>
+    <p>Og for god ordens skyld: 3–5 og 5–10 minutter er praktiske designranges — startpunkter at teste og justere efter jeres drift. De er ikke empiriske optimums, og ingen forskning har udpeget det rigtige antal minutter til at lukke en dag. Paperets governance kan siges i tre sætninger: <strong>Privat regnskab. Fælles designsignal. Diagnose før dom.</strong></p>
+  </div>
+</section>
+
+<!-- 09 ANTIPATTERN -->
+<section class="section" id="antipattern">
+  <div class="container">
+    <div class="section-label">09 — Faldgruberne</div>
+    <h2>Når Dagens Lukning går galt</h2>
+    <p>Lukningen er et lille ritual med stor faldhøjde, for den rører ved noget følsomt: forskellen mellem det lovede og det leverede. Otte mønstre, der dræber den:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Otte måder, lukningen dør på</div>
+      <ul class="dispo-list">
+        <li><strong>Status til chefen:</strong> Alle rapporterer opad, ingen lærer. Lukningen er et læringsloop for designet — ikke en rapporteringslinje.</li>
+        <li><strong>Rød/grøn-personer:</strong> Ritualet bliver performancekontrol med farvekoder. Så risikerer ærligheden i spørgsmål 2 og 3 at forsvinde — og med den en stor del af dataværdien.</li>
+        <li><strong>Forklaringsmaraton:</strong> Ti minutter bliver femogfyrre. Spørgsmål 3 er en diagnose, ikke et forsvar; lukningen skal koste mindre, end den opdager.</li>
+        <li><strong>Alt ruller videre:</strong> Ingen reel genbeslutning — det ufærdige flytter bare automatisk til i morgen, og prioriteringen sander til.</li>
+        <li><strong>Kun individet vurderes:</strong> Designet får altid fripas, og hvert gab bliver et personspørgsmål. Det er præcis den fejl, »data, ikke skyld« findes for at forhindre.</li>
+        <li><strong>Kun designet får skylden:</strong> Den modsatte grøft — individuelt ansvar forsvinder helt, og lukningen bliver et alibi. Begge ansvar skal kunne stå.</li>
+        <li><strong>Ingen ændring til i morgen:</strong> Spørgsmål 4 springes over, og lukningen bliver refleksion uden konsekvens. Accountability uden læring bliver kontrol; læring uden accountability bliver dagbog.</li>
+        <li><strong>Dagen lukkes for sent:</strong> Ritualet skubbes til om aftenen og bliver endnu et stykke aftensarbejde. Som designobservation: Lukningen hører til i arbejdsdagens sidste minutter — ikke i familiens første.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10 EXERCISE -->
+<section class="section" id="exercise">
+  <div class="container">
+    <div class="section-label">10 — Øvelse</div>
+    <h2>Luk gårsdagen</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Ledergruppeøvelse · Kan også laves alene</div>
+      <div class="ex-meta">⏱ 15–20 minutter · Output er én læring om arbejdsdesignet, én konkret ændring og ét bevidst carry-forward. Ingen score, ingen »execution percentage«, ingen gamification.</div>
+      <ol>
+        <li><strong>Tag gårsdagen frem.</strong> Den faktiske — ikke en idealiseret dag. Havde I et Dagens Commitment, så brug det; havde I ikke, så rekonstruér ærligt, hvad der <em>skulle</em> have vundet.</li>
+        <li><strong>Skriv de 1–3 vigtigste commitments op.</strong> Det, dagen var til for.</li>
+        <li><strong>Gør regnskabet op:</strong> Hvad blev faktisk leveret? Hvad blev bevidst omprioriteret? Hvad glippede?</li>
+        <li><strong>Sæt status på hvert commitment</strong> — leveret, bevidst omprioriteret eller ikke leveret — og diagnosticér derefter hvert »ikke leveret«: Skyldtes det commitmentet, kapaciteten, afbrydelser, afhængigheder, mødeplaceringen, uklart ejerskab — eller eksekveringen?</li>
+        <li><strong>Genbeslut det ufærdige.</strong> Hver post får et aktivt valg: gør, flyt, delegér, drop eller omprioritér. Intet ruller videre af sig selv.</li>
+        <li><strong>Vælg én ting, I ændrer ved i morgen.</strong> Én designjustering — ikke en liste. Det er den ændring, der gør øvelsen til et loop og ikke et tilbageblik.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 11 MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">11 — 2-minutters mikrohandling</div>
+    <h2>Gør dette, før du lukker fanen</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · nu</span>
+      <h3>Luk dagen i dag — bare én gang</h3>
+      <p><strong>Åbn Dagens Commitment fra i morges</strong> — eller skriv efter hukommelsen, hvad der skulle have vundet. Sæt tre markeringer: <em>leveret</em>, <em>bevidst omprioriteret</em>, <em>ikke leveret</em>. Vælg derefter én ting, du ændrer i morgen.</p>
+      <p><strong>Luk ikke dagen med en længere to-do-liste. Luk den med en bedre beslutning.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">12 — Commitment &amp; progress</div>
+    <h2>Commit dig — og følg din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 07 · Dagen skal lukkes, ikke bare slutte</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv dit ene commitment for dette paper. Det gemmes lokalt i din browser, ingen konto, intet sendes nogen steder, og din progress følger dig gennem alle ni papers.</p>
+      <label for="commitText">Det ene, jeg ændrer i morgendagens design, er …</label>
+      <textarea id="commitText" placeholder="Konkret og lille. Fx: »Analysen får det beskyttede vindue 08:45–10:30 — og jeg lukker dagen kl. 16:30 med de fire spørgsmål, inden jeg går.«"></textarea>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem commitment</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Struktur sætter fri</span><span id="cpCount">0 af 9 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html#struktur">Se hele serien i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">13 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Er det ikke bare en daily retrospective? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Beslægtet mekanisme, forskellig kobling. Agile retrospectives arbejder typisk på iterations- eller sprintniveau med teamets proces som genstand. Dagens Luknings kerne er kæden commitment → faktisk udfald → designændring, koblet direkte til morgenens Dagens Commitment i TAKT-arkitekturen — typisk dagligt, i den kadence driften kræver. De kan sagtens leve side om side.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal vi virkelig mødes igen sidst på dagen? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej — det er pointen med de to niveauer. Default er individuel lukning på 3–5 minutter uden møde. Fælles lukning bruges kun, hvor interdependens gør den relevant, og kan i mange teams klares asynkront og skriftligt. En serie, der har brugt seks papers på at reducere kalenderfriktion, ender ikke med at indføre et nyt dagligt møde.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Bliver medarbejdere ikke overvåget med det her? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det er den reelle risiko, og den skal designes væk, ikke benægtes. Dagens Lukning måler ikke personen; den synliggør commitment, udfald, forklaring og designændring. Ingen scoring, ingen røde og grønne navne, intet skjult timesheet. Individuelle performanceproblemer håndteres som performanceledelse i sit eget rum. Og informationsreglen er eksplicit: Det personlige regnskab er privat som default — der bygges ingen central historik over den enkeltes daglige lukninger, og hele lukningen deles ikke; kun designsignaler, der kræver fælles handling, løftes videre. Smugles performancevurdering alligevel ind, risikerer ærligheden at forsvinde — og med den en stor del af dataværdien.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis dagen ændrede sig af gode grunde? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Så er udfaldet »bevidst omprioriteret« — og det er et godt udfald, ikke et gab, der skal undskyldes. En organisation, der aldrig omprioriterer, reagerer ikke på virkeligheden. Kravet er kun, at omprioriteringen var eksplicit og bliver registreret som en beslutning, så mønsteret kan ses: Sker det igen og igen, er det et signal om, at morgenens prioritering — eller rammerne omkring den — bør undersøges.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis noget bare ikke blev færdigt? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Så siger lukningen det højt og genbeslutter det: gør i morgen, flyt til dato, delegér, drop eller omprioritér. Et commitment, der ikke blev leveret, er ikke automatisk et failure — men det skal forklares, for forklaringen er dataene: Var opgaven større end vurderet? Var kapaciteten urealistisk? Eller tabte den til designet?</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad med kreative eller lange opgaver, der ikke kan »lukkes« dagligt? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Lukningen vurderer dagens bidrag, ikke hele opgaven. Et commitment for langstrakt arbejde formuleres som dagens delmål — »to timers sammenhængende arbejde på analysen« eller »første udkast af afsnit 3« — og det kan gøres op, uanset om værket er færdigt om tre uger. Det er samme logik som i Paper 04: Commitmentet er dagens vigtigste bidrag, ikke en bucket list.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad med globale teams og forskudte tidszoner? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Individuel lukning er tidszoneuafhængig — hver lukker sin egen dag. Den fælles del kan fx køre asynkront og skriftligt i en fast tråd, så næste tidszone åbner sin morgen med gårsdagens blockers og ændrede prioriteter foran sig. For forskudte teams kan den skriftlige lukning samtidig fungere som en præcis overlevering — den, ingen behøvede møde op til.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal CEO'en selv gøre det? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Som udgangspunkt ja — hvis lederen forventer, at andre bruger grebet. Ellers risikerer ritualet at blive læst som noget, der kun gælder nedad. Og der er en ekstra gevinst: Ledergruppens egne lukninger er en direkte kilde til at se, om TAKT virker på det niveau, hvor kalenderanarkiet ofte starter — et tilbagevendende mønster i ledergruppens egne commitments er et værdifuldt designsignal.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er 3–5 og 5–10 minutter evidensbaserede tal? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Det er praktiske designranges — startpunkter, der er små nok til at overleve en travl drift og store nok til fire spørgsmål. Test dem, og justér efter jeres virkelighed. Ingen forskning har udpeget det optimale antal minutter til at lukke en arbejdsdag, og paperet påstår det ikke.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Forbedrer det søvn eller evnen til at koble fra? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det lover paperet bevidst ikke. Laboratorieforskning viser, at ufuldførte mål kan forblive mentalt aktive, og at konkrete planer fjernede de målte effekter i forsøgene — men det er lab-fund om kognition, ikke søvnstudier eller organisationsinterventioner. Det, lukningen kan love, er strukturelt: Det ufærdige er besluttet og placeret i systemet, før dagen slutter — i stedet for kun at bo i hovedet.</div>
+    </details>
+  </div>
+</section>
+
+<!-- 14 NEXT -->
+<section class="section" id="next">
+  <div class="container">
+    <div class="section-label">14 — Fra lukket dag til Tid tilbage</div>
+    <h2>Tid tilbage skal bevises</h2>
+    <p>Dermed er Del 2 komplet — ikke som fire principper, men som tre principper og sløjfen rundt om dem: Tydelighed valgte, hvad der skal vinde. Adskillelse beskyttede det. Kadence placerede det. Og Dagens Lukning spørger hver dag, om det så faktisk vandt — og omsætter svaret til morgendagens design. <strong>Accountability uden læring bliver kontrol. Læring uden accountability bliver refleksion uden konsekvens.</strong> Sløjfen skal kunne begge dele.</p>
+    <p>Og så står seriens fjerde T tilbage — det, der aldrig var et designprincip, men en gevinst: <strong>Tid tilbage.</strong> Her skal vi være lige så nøgterne som i resten af serien: Først når dagene lukkes med et reelt regnskab over commitment, kapacitet og design, kan organisationen se, om den faktisk skaber tid tilbage — eller bare flytter arbejdet ud af kalenderen, til aftener, weekender og hjemmearbejdsdage. Dagens Lukning er ét af de signaler, der kan afsløre, om den frigjorte plads er reel — eller om arbejdet blot flytter sig.</p>
+    <p><strong>Tid tilbage er ikke et løfte. Det er noget, driften skal bevise.</strong> Hvad organisationen kan gøre med den beviste tid — herunder det spørgsmål, flere og flere direktioner stiller om den fire dages arbejdsuge — er næste papers ærinde: <strong>08 · Fredag er ikke et gode. Den er et resultat</strong>.</p>
+
+    <h3 style="margin-top:36px;">Næste skridt</h3>
+    <p>Det stærkeste næste skridt: Kør »Luk gårsdagen« med din ledergruppe — og test Dagens Lukning individuelt i morgen. Fortsæt derefter direkte til Paper 08.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="/library.html#struktur">
+        <div class="nc-tag">Hele serien</div>
+        <div class="nc-text"><strong>Følg Struktur sætter fri</strong> i Executive Library — alle ni papers er samlet der</div>
+      </a>
+      <a class="next-card" href="/#kontakt">
+        <div class="nc-tag">Ledergruppe-workshop</div>
+        <div class="nc-text"><strong>Design jeres egen TAKT</strong> — fra Dagens Commitment til Dagens Lukning i en arkitektur, der passer til jeres drift</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <ul>
+      <li>Harkin, B., Webb, T. L., Chang, B. P. I., Prestwich, A., Conner, M., Kellar, I., Benn, Y. &amp; Sheeran, P. (2016). »Does Monitoring Goal Progress Promote Goal Attainment? A Meta-Analysis of the Experimental Evidence.« <em>Psychological Bulletin</em>, 142(2), 198–229. <a href="https://doi.org/10.1037/bul0000025" target="_blank" rel="noopener">doi.org/10.1037/bul0000025</a></li>
+      <li>Masicampo, E. J. &amp; Baumeister, R. F. (2011). »Consider It Done! Plan Making Can Eliminate the Cognitive Effects of Unfulfilled Goals.« <em>Journal of Personality and Social Psychology</em>, 101(4), 667–683. <a href="https://doi.org/10.1037/a0024192" target="_blank" rel="noopener">doi.org/10.1037/a0024192</a></li>
+      <li>Kluger, A. N. &amp; DeNisi, A. (1996). »The Effects of Feedback Interventions on Performance: A Historical Review, a Meta-Analysis, and a Preliminary Feedback Intervention Theory.« <em>Psychological Bulletin</em>, 119(2), 254–284. <a href="https://doi.org/10.1037/0033-2909.119.2.254" target="_blank" rel="noopener">doi.org/10.1037/0033-2909.119.2.254</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Dagens Lukning, de tre udfaldskategorier og carry-forward-reglen er Thomas Friisnæs' egne designgreb — ikke validerede instrumenter, og ingen af de citerede kilder har testet dem. Den citerede forskning er individniveau (metaanalyser og laboratoriestudier); Harkin m.fl.s population var overvejende sundhedsadfærd, ikke videnarbejde, og oversættelsen til arbejdsarkitektur og ledergrupper er forfatterens ledelsessyntese, informeret af forskningen, ikke bevist af den. Tidsangivelserne 3–5 og 5–10 minutter er praktiske designranges, ikke empiriske optimums. Paperet fremsætter bevidst ingen løfter om søvn, psykologisk detachment eller ro på kommando, ingen popclaims om, at hjernen ikke kan slippe ufærdige opgaver, ingen procenttal for refleksions- eller accountability-effekter og ingen ROI-claims — den økonomiske oversættelse hører hjemme i seriens Paper 02. »Lukningen skal koste mindre tid, end den friktion, den opdager« er en designheuristik, ikke et dokumenteret afkast. Åbningsscenen og de genkendelige situationer er sammensatte, illustrative mønstre fra forfatterens coachingpraksis — ikke bestemte virksomheder eller personer.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Struktur sætter fri — den komplette serie</div>
+    <h2 class="collection-title">Ni papers om arbejdsdagen som ledelsesdesign</h2>
+    <p class="collection-intro">Produktivitet og arbejdsglæde er ikke et motivationsprojekt. Det er et designprojekt. Serien viser, hvordan en fælles, disciplineret dagsarkitektur — TAKT — kan skabe bedre betingelser for begge dele — og hvorfor en 4-dages uge, der skal være et resultat og ikke en rabat på output, kræver, at arbejdet designes først. Serien er komplet; alle ni papers er samlet her.</p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 1</span><span class="cpart-name">Dagen, ingen har designet</span></div>
+      <p class="cpart-desc">Problemet navngives, prisen gøres op, og fundamentet støbes: fra motivationsafhængighed til driftsdisciplin.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/struktur-saetter-fri-din-kalender-har-en-ejer.html">Din kalender har en ejer. Det er bare ikke dig.</a></li>
+        <li data-n="02"><a href="/struktur-saetter-fri-regnestykket-ingen-direktion-har-lavet.html">Regnestykket, ingen direktion har lavet</a></li>
+        <li data-n="03"><a href="/struktur-saetter-fri-motivation-er-en-daarlig-chef.html">Motivation er en dårlig chef</a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 2</span><span class="cpart-name">Arkitekturens tre designprincipper</span></div>
+      <p class="cpart-desc">TAKT foldes ud: Tydelighed, Adskillelse og Kadence — dagens bærende konstruktion.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="04"><a href="/struktur-saetter-fri-femten-minutter-der-styrer-otte-timer.html">Femten minutter, der styrer otte timer</a></li>
+        <li data-n="05"><a href="/struktur-saetter-fri-fokus-er-ikke-en-personlig-praeference.html">Fokus er ikke en personlig præference</a></li>
+        <li data-n="06"><a href="/struktur-saetter-fri-vend-kalenderen-om.html">Vend kalenderen om</a></li>
+        <li data-n="07"><span class="current">Dagen skal lukkes, ikke bare slutte — du læser dette</span></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 3</span><span class="cpart-name">Gevinsten</span></div>
+      <p class="cpart-desc">Tid tilbage: 4-dages ugen som resultat, ikke som frynsegode.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="08"><a href="/struktur-saetter-fri-fredag-er-ikke-et-gode-den-er-et-resultat.html">Fredag er ikke et gode. Den er et resultat.</a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 4</span><span class="cpart-name">Implementeringen</span></div>
+      <p class="cpart-desc">Fra blueprint til driftsrytme — uden at udløse oprør.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="09"><a href="/struktur-saetter-fri-takten-foer-reglerne.html">Takten før reglerne</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Gem som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 med Dagens Luknings fire spørgsmål, de tre udfaldskategorier og »Luk gårsdagen«-øvelsen — klar til jeres næste ledergruppemøde.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Gem som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Gem som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/struktur-saetter-fri-vend-kalenderen-om.html">
+      <span class="ra-tag">Forrige paper · Struktur sætter fri</span>
+      <span class="ra-title">Vend kalenderen om</span>
+    </a>
+    <a href="/struktur-saetter-fri-femten-minutter-der-styrer-otte-timer.html">
+      <span class="ra-tag">Paper 04 · Struktur sætter fri</span>
+      <span class="ra-title">Femten minutter, der styrer otte timer</span>
+    </a>
+    <a href="/struktur-saetter-fri-din-kalender-har-en-ejer.html">
+      <span class="ra-tag">Paper 01 · Struktur sætter fri</span>
+      <span class="ra-title">Din kalender har en ejer. Det er bare ikke dig.</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Struktur sætter fri · Paper 07 af 9</div>
+        <div class="series-next">Næste: Fredag er ikke et gode. Den er et resultat.</div>
+        <a href="/library.html#struktur">Se hele serien →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: ssf_ (Struktur sætter fri)
+  var LS_C = 'ssf_p07_commit', LS_D = 'ssf_done', PAPER_N = 7, TOTAL = 9;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

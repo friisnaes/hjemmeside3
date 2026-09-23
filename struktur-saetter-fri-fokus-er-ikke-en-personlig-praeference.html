@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fokus er ikke en personlig præference | Struktur sætter fri | Thomas Friisnæs</title>
+<meta name="description" content="Fokus er ikke en personlig præference. Det er en kollektiv arbejdsbetingelse. Paper 05 i Struktur sætter fri folder TAKT's andet designprincip ud — Adskillelse: hvorfor organisationen ikke kan producere afbrydelsen og bede individet løse den, og Fokusaftalen: fire kollektive beslutninger, der gør beskyttet koncentration til design i stedet for heltemod.">
+<meta name="keywords" content="fokustid, beskyttet fokustid, afbrydelser arbejde, deep work organisation, adskillelse TAKT, fokusaftale, kollektiv fokustid, koncentration arbejdsplads, mødefri tid, arbejdsdagens design, tilgængelighed samarbejde, attention residue">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/struktur-saetter-fri-fokus-er-ikke-en-personlig-praeference.html">
+
+<meta property="og:title" content="Fokus er ikke en personlig præference | Struktur sætter fri | Thomas Friisnæs">
+<meta property="og:description" content="Organisationen producerer afbrydelsen — og beder individet løse den. Paper 05: Adskillelse som designprincip, og Fokusaftalen: fire kollektive beslutninger, der gør beskyttet koncentration til arbejdsbetingelse i stedet for heltegerning.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/struktur-saetter-fri-fokus-er-ikke-en-personlig-praeference.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fokus er ikke en personlig præference">
+<meta name="twitter:description" content="Organisationen producerer afbrydelsen — og beder individet løse den. Paper 05: Adskillelse som designprincip og Fokusaftalens fire kollektive beslutninger.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .micro-action, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–07) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  @media print { .lens-grid, .dispo { page-break-inside: avoid; } .lens { background: #fff !important; border: 0.75pt solid #ddd !important; } .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; } }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+
+  /* Struktur sætter fri — serie-specifikke tilføjelser i samme designsprog */
+  @media (max-width: 700px) { .cost-grid { grid-template-columns: 1fr; } }
+  .situation { background: var(--cream); border-left: 2px solid var(--gold); border-radius: 0 4px 4px 0; padding: 18px 24px; margin: 24px 0; }
+  .situation .sit-tag { display: block; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .situation p { font-size: 15px !important; line-height: 1.65 !important; color: var(--text-mid); margin: 0 !important; }
+  .situation p + p { margin-top: 10px !important; }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Fokus er ikke en personlig præference",
+ "alternativeHeadline": "Adskillelse som designprincip: Fokus er en kollektiv arbejdsbetingelse — ikke en individuel heltegerning.",
+ "description": "Paper 05 i Struktur sætter fri folder TAKT's andet designprincip ud — Adskillelse: hvorfor organisationen ikke kan producere afbrydelsen og bede individet løse den, og Fokusaftalen: fire kollektive beslutninger, der gør beskyttet koncentration til design i stedet for heltemod.",
+ "author": { "@type": "Person", "@id": "https://www.friisnaes.com/#person", "name": "Thomas Friisnæs", "url": "https://www.friisnaes.com/" },
+ "publisher": { "@type": "Organization", "name": "Friisnæs", "url": "https://www.friisnaes.com/" },
+ "url": "https://www.friisnaes.com/struktur-saetter-fri-fokus-er-ikke-en-personlig-praeference.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/struktur-saetter-fri-fokus-er-ikke-en-personlig-praeference.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": { "@type": "CreativeWorkSeries", "name": "Struktur sætter fri", "url": "https://www.friisnaes.com/library.html#struktur" },
+ "position": 5,
+ "inLanguage": "da",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Struktur sætter fri · Paper 05 af 9</div>
+  <div class="pc-title">Fokus er ikke en personlig præference</div>
+  <div class="pc-sub">Organisationen producerer afbrydelsen — og beder individet løse den. Fokus er en kollektiv arbejdsbetingelse, ikke en heltegerning.</div>
+  <div class="pc-author">Af Thomas Friisnæs · Executive Coach · Karakter · Disciplin · Klarhed · friisnaes.com · Oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Struktur sætter fri</span>
+      <span class="wp-series">Paper 05 af 9 · Del 2: Arkitekturens tre designprincipper</span>
+      <span class="wp-readtime">14 min læsning</span>
+    </div>
+    <h1>Fokus er ikke <em>en personlig præference</em></h1>
+    <p class="wp-subtitle">Det er en kollektiv arbejdsbetingelse. Paper 05 folder TAKT's andet designprincip ud — Adskillelse — og gør op med refleksen, der producerer afbrydelser kollektivt og beder individet løse dem alene. Paperets værktøj er Fokusaftalen: fire fælles beslutninger, der gør beskyttet koncentration til design i stedet for heltemod.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · Executive Coach, Karakter · Disciplin · Klarhed<br>Mere end 20 års coachingerfaring · 15.000+ sessioner · Arbejder med C-level ledere, ejerledere og bestyrelsesmedlemmer · Udgivet 1. oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Kl. 09:07</a></li>
+      <li><a href="#personligt">Fokus er blevet et personligt problem</a></li>
+      <li><a href="#heltemod">Heltemod er ikke en driftsmodel</a></li>
+      <li><a href="#forskning">Hvad afbrydelsen faktisk gør</a></li>
+      <li><a href="#adskillelse">Fokus og samarbejde er ikke modsætninger</a></li>
+      <li><a href="#aftalen">Fokusaftalen: fire kollektive beslutninger</a></li>
+      <li><a href="#governance">Hvem må afbryde hvem?</a></li>
+      <li><a href="#antipattern">Når fokustid går galt</a></li>
+      <li><a href="#exercise">Øvelse: Afbrydelsesregnskabet — uden kroner</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit commitment &amp; din progress</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#next">Fra adskillelse til kalenderarkitektur</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningsscene · Et sammensat mønster fra praksis</div>
+    <h2>Kl. 09:07</h2>
+    <p>Paper 04 sluttede med en advarsel: Tydelighed er værdiløs, hvis kalenderen straks får lov til at overtrumfe den. Lad os se, hvor hurtigt det sker. Scenen er sammensat fra min praksis — og den begynder faktisk godt.</p>
+    <p>Kl. 09:00 har teamet gennemført Dagens Commitment. Alle ved, hvad der skal vinde. Din vigtigste opgave er tydelig: en analyse, der skal bære en beslutning i morgen. Du åbner dokumentet.</p>
+    <p>Kl. 09:07 lyser den første Teams-besked. Kl. 09:12 tikker en mødeindkaldelse ind til 09:30 — »kort sync«. Kl. 09:14 står en kollega ved bordet: »Kan du lige?« Kl. 09:41, efter det korte sync, ligger der en mail fra en direktør med et spørgsmål, der »godt lige kan vente til frokost«, men lyser i indbakken alligevel. Kl. 11:30 gør du status: Prioriteten er stadig rigtig. Commitmentet var ægte. Men opgaven har ikke haft ét sammenhængende stræk på mere end tyve minutter. Ikke fordi nogen ville det — hver enkelt afbrydelse var rimelig. Tilsammen var de et design.</p>
+    <p>Det er dette papers ærinde: <strong>Tydelighed uden beskyttelse bliver intention.</strong> Paper 04 gav dagen en prioritet. Dette paper handler om at give prioriteten et sted, hvor den faktisk kan vinde.</p>
+    <p class="pull-quote">Det tog femten minutter at vælge det vigtigste. Syv minutter at gøre det umuligt.<cite>— Thomas Friisnæs</cite></p>
+  </div>
+</section>
+
+<!-- 02 PERSONLIGT -->
+<section class="section" id="personligt">
+  <div class="container">
+    <div class="section-label">02 — Refleksen</div>
+    <h2>Fokus er blevet et personligt problem</h2>
+    <p>Se på de råd, organisationer typisk giver, når koncentrationen mangler: Blokér din kalender. Slå notifikationerne fra. Find et stille rum. Bliv bedre til at sige nej. Arbejd hjemme, hvis du skal have noget fra hånden. Prøv Pomodoro. Tag høretelefonerne på.</p>
+    <p>Ingen af rådene er dumme — flere af dem virker, og jeg har selv givet dem. Men læg mærke til, hvad de har til fælles: De placerer alle ansvaret hos individet. Afbrydelserne kommer fra møderne, kanalerne, kulturen og forventningen om øjeblikkeligt svar — alt sammen kollektivt produceret. Løsningen forventes at komme fra den enkeltes værktøjer, vaner og rygrad. <strong>Organisationen producerer afbrydelsen — og beder individet løse den.</strong></p>
+    <p>Med Paper 03's sprog er det endnu en post på motivationsgælden: Den viljestyrke, medarbejderen skal bruge på at forsvare sin koncentration, er en regning for rammer, organisationen ikke har bygget. Og bemærk paradokset fra Paper 04: Organisationen har måske netop besluttet, hvad der skal vinde i dag — men ikke besluttet, hvornår det må få lov.</p>
+  </div>
+</section>
+
+<!-- 03 HELTEMOD -->
+<section class="section" id="heltemod">
+  <div class="container">
+    <div class="section-label">03 — Diagnosen</div>
+    <h2>Heltemod er ikke en driftsmodel</h2>
+    <p>Sætningen stod allerede i Paper 01, og her folder jeg den ud. Se på, hvad det i dag kræver at udføre sit vigtigste arbejde i mange organisationer: Man skal turde afvise chefens »kan du lige«. Ignorere kolleger, man holder af. Lukke Teams og leve med skyldfølelsen. Gemme sig i et mødelokale. Møde ind kl. 06:30 eller arbejde efter aftensmaden. Eller bruge hjemmearbejdsdagen som flugt fra arbejdspladsens egen arbejdsform.</p>
+    <p>Nogle klarer det. I praksis er det ofte dem med mest autonomi, erfaring eller organisatorisk kapital, der lettest kan forsvare tiden — dem, der har råd til at skuffe. Og netop dét afslører designfejlen: <strong>Hvis det vigtigste arbejde kun kan udføres af dem, der er dygtigst til at forsvare sig mod organisationen, er fokusdesignet forkert.</strong> Koncentration er blevet en karaktertest i stedet for en arbejdsbetingelse — og deep work fejler så ikke primært, fordi mennesker mangler disciplin. Det fejler, fordi organisationen gør fokus til en individuel heltegerning i en kalender, der er designet imod det.</p>
+    <p class="pull-quote">Når fokus kræver mod, har organisationen gjort en arbejdsbetingelse til et karaktertræk.<cite>— Thomas Friisnæs</cite></p>
+  </div>
+</section>
+
+<!-- 04 FORSKNING -->
+<section class="section" id="forskning">
+  <div class="container">
+    <div class="section-label">04 — Det dokumenterede grundlag</div>
+    <h2>Hvad afbrydelsen faktisk gør</h2>
+    <p>Er prisen for afbrydelser og skift så reel — eller er det bare fornemmelse? Her er forskningen faktisk klar, så længe man citerer den præcist og ikke strækker den til de populære regnestykker.</p>
+    <p>For det første: Opmærksomheden følger ikke med i skiftet. Sophie Leroys eksperimenter viste det, hun kaldte <em>attention residue</em> — opmærksomhedsrester: Når man skifter fra én opgave til en anden, bliver en del af opmærksomheden hængende ved den forrige, og det kan svække præstationen på den næste. Effekten er størst, når den forrige opgave er <em>uafsluttet</em>; at få lov at gøre noget færdigt — i studierne især under tidspres, som skaber en oplevelse af lukning — gør det lettere at slippe opgaven mentalt. Resterne er ikke en fast størrelse, og alle skift er ikke lige. Men mekanismen forklarer, hvorfor gentagne skift kan skabe kognitiv friktion, selv når det enkelte skift virker harmløst.</p>
+    <p>For det andet: Mennesker kompenserer — og betaler for det. Mark, Gudith og Klockes eksperiment med afbrudt arbejde fandt noget mere interessant end det forventede: Afbrudte opgaver blev faktisk løst <em>hurtigere</em> — men til prisen af målbart mere stress, frustration, tidspres og oplevet anstrengelse. Afbrydelser sletter altså ikke nødvendigvis output på den enkelte opgave. De flytter omkostningen over på mennesket. Det er værd at læse igen for enhver, der måler produktivitet i leverancer og undrer sig over belastningstallene.</p>
+    <p>Og for det tredje det, Paper 01 allerede dokumenterede: Skærmarbejdet er målt fragmenteret i korte spæn, og vi afbryder os selv omtrent lige så ofte, som vi bliver afbrudt. Afbrydelsen er ikke kun noget, andre gør ved os — den er blevet en arbejdsform.</p>
+    <p>Læg mærke til, hvad forskningen <em>ikke</em> siger. Den giver intet fast antal minutter, det »tager at refokusere« — refokuseringssporet og opmærksomhedsresterne er to forskellige forskningsspor, og Paper 01 har allerede advaret mod at gange refokuseringstal med afbrydelser. Den siger ikke, at alle afbrydelser er skadelige, at multitasking koster en bestemt procent, eller at hjernen kun kan fokusere i et bestemt antal minutter. Og den har ikke testet fælles fokusvinduer for hele organisationer. <strong>Forskningen dokumenterer friktionen ved afbrydelser og opgaveskift. Fokusaftalen, som resten af paperet bygger, er min organisatoriske oversættelse af problemet — ikke en intervention, forskningen direkte har valideret.</strong></p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (individniveau — eksperimenter og observationsstudier; ikke test af fælles fokusvinduer):</strong> Leroy (2009): eksperimentelle studier; skift fra en opgave — især en uafsluttet — efterlader opmærksomhedsrester, der kan svække præstationen på den næste opgave; afslutning, i studierne særligt under tidspres, letter den mentale frigørelse. Effekten er ikke en fast størrelse pr. skift. Mark, Gudith &amp; Klocke (2008): eksperiment; afbrudt arbejde blev udført hurtigere, men med signifikant højere stress, frustration, tidspres og anstrengelse. Mark, Gonzalez &amp; Harris (2005): observationsstudier af fragmenteret vidensarbejde (uddybet i Paper 01, inkl. selvafbrydelser). Intet af det leverer et fast refokuseringstal, en produktivitetsprocent eller evidens for én bestemt fokusblok-længde; oversættelsen til kollektiv arbejdsarkitektur er Thomas Friisnæs' syntese.</div>
+  </div>
+</section>
+
+<!-- 05 ADSKILLELSE -->
+<section class="section" id="adskillelse">
+  <div class="container">
+    <div class="section-label">05 — Designprincippet</div>
+    <h2>Fokus og samarbejde er ikke modsætninger</h2>
+    <p>Lad mig sige det, før nogen læser paperet som et angreb på møder, Teams eller åbne døre: Koordinering er ikke fjenden. Møder, chat, sparring og adgang til kolleger er nødvendige — meget vidensarbejde kræver samarbejde. Paperet er ikke anti-møde. Det er anti-<em>sammenblanding</em>. Problemet opstår, når koordineringen er kontinuerlig, uforudsigelig, gratis at påføre andre og uden tydelige grænser — for så flyder to forskellige arbejdsformer sammen, og begge risikerer at lide.</p>
+    <p>Det er TAKT's andet designprincip, <strong>Adskillelse</strong>: at organisationen skelner mellem tid til koncentreret arbejde og tid til koordinering — og beskytter begge mod at flyde sammen. Ikke mindre samarbejde. Renere skift mellem arbejdsformer. Og skellet hviler på en sondring, de fleste kalendere har mistet:</p>
+
+    <div class="lens-grid">
+      <div class="lens">
+        <div class="l-tag">Tilgængelighed</div>
+        <h4>At kunne blive afbrudt når som helst</h4>
+        <p>Tilgængelighed er en tilstand: kanalen er åben, svaret forventes nu. Den føles samarbejdende — men den beskriver kun, hvor let det er at få fat i nogen, ikke hvor godt der arbejdes sammen.</p>
+      </div>
+      <div class="lens">
+        <div class="l-tag">Samarbejde</div>
+        <h4>At koordinere, når opgaven kræver det</h4>
+        <p>Samarbejde er en handling: den rigtige afklaring, det rigtige møde, den rigtige sparring — på et tidspunkt, hvor begge parter kan tænke sig om. Det kræver kontaktflader, ikke konstant åbne kanaler.</p>
+      </div>
+    </div>
+
+    <p>Deraf paperets måske vigtigste C-level-erkendelse: <strong>En organisation kan være ekstremt tilgængelig og stadig samarbejde dårligt</strong> — og samarbejdet bliver ikke nødvendigvis bedre af, at alle altid kan få fat i alle. Executive-spørgsmålet lyder derfor: Hvilken adfærd belønner jeres kalender faktisk — koncentration eller tilgængelighed?</p>
+    <p>Én nuance til, før værktøjet: Beskyttet fokustid er ikke kun en <em>ret</em> til at være utilgængelig. Den er også en <em>forpligtelse</em> til at bruge vinduet på det prioriterede arbejde fra Dagens Commitment. Ellers er fokusblokken bare en tom kalender med et pænere navn — og som Paper 01 fastslog med Designgraden: En tom blok er ikke nødvendigvis designet tid. Adskillelse kræver tydeligt formål, kollektiv beskyttelse og faktisk anvendelse.</p>
+  </div>
+</section>
+
+<!-- 06 AFTALEN -->
+<section class="section" id="aftalen">
+  <div class="container">
+    <div class="section-label">06 — Paperets værktøj</div>
+    <h2>Fokusaftalen: fire kollektive beslutninger</h2>
+    <p>Hvordan flytter man så fokus fra heltemod til design? Ikke med en politik på tredive sider — med fire fælles beslutninger, truffet på forhånd og kendt af alle. Jeg kalder det Fokusaftalen: en kollektiv operating agreement for teamet eller organisationen. Det er mit eget greb, ikke et valideret instrument — og det er bevidst enkelt, for det skal kunne overleve driften:</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Paperets værktøj · min egen model</div>
+      <div class="fw-title">Fokusaftalen</div>
+      <div class="fw-sub">Fire kollektive beslutninger. Truffet fælles — så de ikke skal genforhandles fra nul hver dag.</div>
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Hvornår er vi i fokus?</h4>
+          <p>Vælg ét eller flere fælles, tydelige fokusvinduer. Tidspunktet afhænger af drift og funktion — og hvor fokus og møder bedst placeres i dagen, er næste papers ærinde. Beslutningen her er, <em>at</em> vinduet findes, og at alle kender det.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Hvad betyder »beskyttet«?</h4>
+          <p>I vinduet: ingen interne møder, ingen forventning om øjeblikkeligt svar, interne beskeder må vente, notifikationer kan slukkes med god samvittighed. Fokus er standard i vinduet — ingen skal melde sig ud af organisationen for at arbejde.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Hvad er en legitim undtagelse?</h4>
+          <p>Kundekrise, sikkerhed, drift, en akut beslutning med reel tidskritikalitet — definér listen på forhånd. »Det føltes vigtigt« er ikke en undtagelse; det er den standard, I netop har forladt. Undtagelser designes, de opstår ikke.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Hvordan håndterer vi koordineringen?</h4>
+          <p>Fokusvinduer må ikke skabe kaos bagefter: aftalte koordineringsvinduer, tydelige forventninger til svartid og synlige undtagelser. Adskillelse er ikke mindre samarbejde — det er samarbejde med en adresse.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Om »alle samtidig«: Et fælles vindue for alle er et stærkt designvalg, hvor det kan lade sig gøre — det reducerer den interne efterspørgsel, gør normen tydelig og beskytter fokus socialt: Ingen skal være helten, når stilheden er standard. Men det er ikke universelt muligt. Kundeservice, drift, produktion, salg og globale teams kan arbejde med rotation, forskudte vinduer eller teamdækning. Den egentlige regel er vigtigere end klokkeslættet: <strong>Fokus skal være kollektivt beskyttet — også når det ikke er tidsmæssigt identisk for alle.</strong> Samme princip, forskellig takt.</p>
+    <p class="pull-quote">En kalenderblok beskytter kun tid. En fælles regel beskytter fokus.<cite>— Thomas Friisnæs</cite></p>
+  </div>
+</section>
+
+<!-- 07 GOVERNANCE -->
+<section class="section" id="governance">
+  <div class="container">
+    <div class="section-label">07 — Governance</div>
+    <h2>Hvem må afbryde hvem?</h2>
+    <p>Her løfter paperet sig fra teamværktøj til ledelsesspørgsmål, for Fokusaftalen gør et ofte uafklaret ledelsesspørgsmål synligt: <strong>Har organisationen besluttet, hvornår mennesker må være utilgængelige for hinanden?</strong> I mange organisationer er svaret uklart: Tilgængelighed er i praksis ofte standard, mens retten til at være utilgængelig kræver en individuel forklaring — og retten til at afbryde er gratis. Det er en governance-beslutning, der er truffet ved ikke at blive truffet. Spørgsmålet bagved er ubehageligt præcist: <strong>Hvem har ret til at afbryde hvem — og hvornår?</strong> Så længe svaret er »alle, altid«, er fokus en heltegerning.</p>
+    <p>To indvendinger skal have et ærligt svar. Den skeptiske CEO siger: »Mine folk skal være tilgængelige. Vi driver en virksomhed, ikke et kloster.« Ja — og netop derfor skal tilgængelighed behandles som det, den er: <strong>Tilgængelighed er en driftsparameter, ikke en dyd.</strong> Den dimensioneres efter funktion — den bevises ikke døgnet rundt. Kundevendte teams, drift og akutfunktioner skal selvfølgelig kunne nås — med rotation, vagtdækning og designede undtagelser, som Fokusaftalens beslutning 3 og 4 netop håndterer. Kundedækning kræver ikke, at alle er tilgængelige hele tiden; den kræver, at dækningen er designet, og at alle ved, hvem der har den.</p>
+    <p>Og medarbejderen spørger fra den anden side: »Skal ledelsen nu også bestemme, hvornår jeg må koncentrere mig?« Nej. Fokusaftalen mikrostyrer ikke metode, overvåger ikke skærme og indfører ingen fokus-politi. Den beskytter én ting: retten til sammenhængende arbejde. Inden for vinduet vælger specialisten selv opgave og metode ud fra prioriteringen. Som i Paper 03: Rammen bestemmer ikke, hvordan du arbejder. Den beskytter, at du kan.</p>
+  </div>
+</section>
+
+<!-- 08 ANTIPATTERN -->
+<section class="section" id="antipattern">
+  <div class="container">
+    <div class="section-label">08 — Faldgruberne</div>
+    <h2>Når fokustid går galt</h2>
+    <p>Fokustid er let at indføre og let at udhule. Genkender du et af mønstrene her, er reglen ikke forkert — den er bare ikke færdigbygget:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Otte måder, fokustiden dør på</div>
+      <ul class="dispo-list">
+        <li><strong>Den private kalenderblok:</strong> Kun den enkelte ved, hvad blokken betyder — så respekterer ingen den. Beskyttelse kræver en fælles regel, ikke en farve i kalenderen.</li>
+        <li><strong>Fokus med åbne notifikationer:</strong> Tiden er reserveret, men opmærksomheden er det ikke. Vinduet uden beslutning 2 er kosmetik.</li>
+        <li><strong>Chefen er undtagelsen:</strong> Fokus gælder — indtil lederen skriver. Så har teamet lært, at reglen er teater, og at hierarki slår aftale.</li>
+        <li><strong>Alle undtagelser er akutte:</strong> Når »haster« ikke er defineret, er alt en undtagelse — og definitionen er værdiløs.</li>
+        <li><strong>Fokus uden prioritet:</strong> Vinduet findes, men ingen har besluttet, hvad det skal bruges til. Uden Paper 04's Tydelighed er blokken bare tom tid.</li>
+        <li><strong>Fokus uden koordinering:</strong> Resten af organisationen ved ikke, hvornår de kan få svar — så bygger frustrationen sig op og udløses kl. 11:01. Beslutning 4 mangler.</li>
+        <li><strong>Fokus som statussymbol:</strong> Kun seniorer »har råd« til at være utilgængelige. Så er fokus stadig et privilegium, ikke en arbejdsbetingelse.</li>
+        <li><strong>Hjemmearbejde som nødudgang:</strong> »Jeg arbejder hjemme for at få noget fra hånden« er en ærlig sætning — og et signal, der er værd at undersøge: Kontoret beskytter måske ikke den type arbejde godt nok. Hjemmet er blevet organisationens uofficielle fokusvindue, uden at nogen har besluttet det.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 09 EXERCISE -->
+<section class="section" id="exercise">
+  <div class="container">
+    <div class="section-label">09 — Øvelse</div>
+    <h2>Afbrydelsesregnskabet — uden kroner</h2>
+    <p>Paper 02 satte økonomi på den udesignede arbejdsdag; det regnestykke gentages ikke her. Dette regnskab gøres op i noget andet: rettigheder, forventninger og huller i designet.</p>
+    <div class="exercise-box">
+      <div class="ex-tag">Ledergruppeøvelse · Kan også laves i det enkelte team</div>
+      <div class="ex-meta">⏱ Ca. 20 minutter · Output er de største afbrydelseskilder, de uklare undtagelser, ét fokusvindue at teste og én fælles forventning om svartid. Ingen score, intet »fokus-indeks« — samtalen er resultatet.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Tag en typisk arbejdsdag i jeres organisation — ikke den værste, ikke den bedste — og kortlæg den sammen med seks spørgsmål:</p>
+      <ol>
+        <li><strong>Hvornår forventes mennesker at være tilgængelige?</strong> Skriv det faktiske svar, ikke det officielle. Er svaret »altid«, så notér det.</li>
+        <li><strong>Hvornår kan de realistisk arbejde 60–90 minutter uden intern afbrydelse?</strong> (Et praktisk spænd at teste med — ikke et videnskabeligt optimum.) Find de reelle vinduer, hvis de findes.</li>
+        <li><strong>Hvilke kanaler kan afbryde dem?</strong> Møder, chat, mail, telefon, skulderprik — lav den ærlige liste.</li>
+        <li><strong>Hvilke afbrydelser er legitime?</strong> Og hvem har defineret det? Hvis svaret er »ingen«, har I fundet jeres første designbeslutning.</li>
+        <li><strong>Hvem bærer i dag ansvaret for at sige nej?</strong> Hvis svaret er »den enkelte«, betaler I fokus med heltemod.</li>
+        <li><strong>Hvad ville ændre sig, hvis fokus var standard og afbrydelsen undtagelsen — i bare ét defineret vindue?</strong> Slut med at vælge det vindue, I vil teste, og den svartidsforventning, der følger med.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- 10 MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">10 — 2-minutters mikrohandling</div>
+    <h2>Gør dette, før du lukker fanen</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · nu</span>
+      <h3>Find blokken — hvis den findes</h3>
+      <p><strong>Åbn morgendagens kalender. Find den vigtigste opgave fra dit commitment.</strong> Peg så på den sammenhængende tid, hvor den faktisk kan blive lavet.</p>
+      <p>Kan du ikke pege på den, har du netop stillet paperets diagnose på dig selv: <strong>Du har en prioritet — men endnu ikke et design.</strong></p>
+      <p>Spørgsmålet er nu, om den tid skal forsvares af dig alene — eller beskyttes af en fælles regel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 11 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">11 — Commitment &amp; progress</div>
+    <h2>Commit dig — og følg din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 05 · Fokus er ikke en personlig præference</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv dit ene commitment for dette paper. Det gemmes lokalt i din browser, ingen konto, intet sendes nogen steder, og din progress følger dig gennem alle ni papers.</p>
+      <label for="commitText">Det fokusvindue, jeg vil teste med mit team, er …</label>
+      <textarea id="commitText" placeholder="Konkret og inden for 48 timer. Fx: »90 minutter, hvor interne beskeder må vente — vi kører Fokusaftalens fire beslutninger på næste teammøde og tester vinduet i to uger.«"></textarea>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem commitment</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Struktur sætter fri</span><span id="cpCount">0 af 9 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html#struktur">Se hele serien i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">12 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Skal folk virkelig være utilgængelige? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">I et defineret vindue, med definerede undtagelser — ja. Ikke hele dagen, ikke for kunder i krise, ikke for driften. Pointen er ikke utilgængelighed som tilstand, men at organisationen bevidst skelner mellem tid til koncentration og tid til koordinering i stedet for at lade alt flyde sammen. Uden for vinduet er tilgængeligheden intakt — og ofte bedre, fordi den har en adresse.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad med kunder? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Kundevendte funktioner designes med dækning: rotation, vagtfunktion eller forskudte vinduer, så kunden altid kan komme igennem, uden at alle altid skal være åbne. Fokusaftalens undtagelsesliste starter typisk med kundekritiske situationer. Det er tilgængelighed som driftsparameter — dimensioneret, ikke afskaffet.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad med Slack, Teams og de spontane afklaringer? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Kanalerne er ikke problemet — den udefinerede forventning om øjeblikkeligt svar er. I fokusvinduet må interne beskeder vente; i koordineringsvinduerne har de fortrinsret, og der er der plads til det spontane. Pointen er at definere, hvilke afklaringer der faktisk ikke kan vente til efter fokusvinduet — netop de skal stå på undtagelseslisten.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvor lang skal en fokusblok være? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Der findes ikke et videnskabeligt facit, og paperet påstår ikke ét. 60–90 minutter er et praktisk testinterval i denne model — ikke et optimum. Start dér, mål om det fungerer i jeres drift, og justér. Lad funktionen bestemme — ikke en påstået biologisk rytme.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvorfor skal alle have fokus samtidig? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det skal de ikke nødvendigvis. Et fælles vindue er den enkleste og tydeligste model, hvor det kan lade sig gøre — det reducerer den interne efterspørgsel og gør normen social i stedet for individuel. Men reglen er vigtigere end klokkeslættet: Fokus skal være kollektivt beskyttet, også når det er rotationsbaseret, forskudt eller teamdækket. Samme princip, forskellig takt.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad med dem, der ikke har »deep work«-opgaver? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Adskillelse handler ikke kun om analyse og fordybelse. Også koordinerende roller har arbejde, der kræver sammenhæng — planlægning, kvalitetssikring, den svære mail. Og selv hvor fokusbehovet er mindre, har rollen gavn af renere skift: Den, der dækker telefonen i vinduet, ved præcis, hvad opgaven er. Vinduet skal bare dimensioneres efter funktionen, ikke ens for alle.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er det ikke bare Cal Newports deep work? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Newport populariserede begrebet og fortjener krediteringen — hans bog er et practitioner-perspektiv, ikke evidens for denne series model. Men vinklen er en anden: Newport har især gjort det individuelle fokusproblem synligt. Denne serie flytter spørgsmålet til organisationsniveau: Hvordan designes en arbejdsdag, hvor fokus ikke kræver individuel kamp? Det er ikke en kritik af Newport — det er den organisatoriske udvidelse, ledelsen ejer.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad med ledere — de bliver jo afbrudt hele tiden? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja, og en del af lederjobbet <em>er</em> at være til rådighed. Men også ledere har arbejde, der kræver sammenhæng — strategien, den svære beslutning, forberedelsen — og en leder, der aldrig selv respekterer fokusvinduet, underminerer det for alle andre. Lederens dobbeltrolle er at beskytte teamets vindue udadtil og at vise, at reglen også gælder opad.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Vores kultur forventer øjeblikkeligt svar — kan det overhovedet ændres? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja, men ikke med en mail om »bedre mødekultur«. Forventninger om svartid er normer, og normer kan ændres gennem synlige, kollektive beslutninger, som ledelsen selv overholder — præcis dét er Fokusaftalen. Start med ét vindue, definerede undtagelser og en leder, der lader være med at skrive i det. Hvordan hele implementeringen gribes an uden oprør, er Paper 09's ærinde.</div>
+    </details>
+  </div>
+</section>
+
+<!-- 13 NEXT -->
+<section class="section" id="next">
+  <div class="container">
+    <div class="section-label">13 — Fra adskillelse til kalenderarkitektur</div>
+    <h2>Vi har skilt fokus fra koordinering i princippet</h2>
+    <p>Lad os samle Del 2 indtil nu. Paper 04 fastslog, at det første designvalg er at gøre det tydeligt, hvad der skal vinde i dag. Dette paper har leveret det andet: <strong>Det, der skal vinde, skal have beskyttet plads til faktisk at kunne vinde.</strong> Fokus er flyttet fra personlig præference til kollektiv arbejdsbetingelse — med Fokusaftalens fire beslutninger som værktøjet og ét spørgsmål som governance-testen: Hvem må afbryde hvem, og hvornår?</p>
+    <p>Men bemærk, hvad der endnu ikke er besluttet. Fokusaftalen siger, <em>at</em> der skal være et beskyttet vindue — ikke <em>hvor</em> i dagen det ligger. Og det spørgsmål er større, end det ser ud: Når fokus og koordinering skal adskilles, hvor skal fokusvinduet så bo — og hvor skal møderne? Skal dagen bygges forfra, som den plejer, eller bagfra? Det er TAKT's tredje designprincip — Kadence — og det er næste papers ærinde: <strong>06 · Vend kalenderen om</strong>. Vi har nu skilt fokus fra koordinering i princippet. Næste paper gør det i kalenderen.</p>
+
+    <h3 style="margin-top:36px;">Næste skridt</h3>
+    <p>Det stærkeste næste skridt: Kør Afbrydelsesregnskabet med din ledergruppe, og lav Fokusaftalens fire beslutninger med dit team — start med ét vindue som test. Fortsæt derefter direkte til Paper 06.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="/library.html#struktur">
+        <div class="nc-tag">Hele serien</div>
+        <div class="nc-text"><strong>Følg Struktur sætter fri</strong> i Executive Library — alle ni papers er samlet der</div>
+      </a>
+      <a class="next-card" href="/#kontakt">
+        <div class="nc-tag">Ledergruppe-workshop</div>
+        <div class="nc-text"><strong>Design jeres egen TAKT</strong> — fra Afbrydelsesregnskabet til en Fokusaftale, der passer til jeres drift</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <ul>
+      <li>Leroy, S. (2009). »Why Is It So Hard to Do My Work? The Challenge of Attention Residue when Switching Between Work Tasks.« <em>Organizational Behavior and Human Decision Processes</em>, 109(2), 168–181. <a href="https://doi.org/10.1016/j.obhdp.2009.04.002" target="_blank" rel="noopener">doi.org/10.1016/j.obhdp.2009.04.002</a></li>
+      <li>Mark, G., Gudith, D. &amp; Klocke, U. (2008). »The Cost of Interrupted Work: More Speed and Stress.« <em>Proceedings of CHI 2008</em>, 107–110. <a href="https://doi.org/10.1145/1357054.1357072" target="_blank" rel="noopener">doi.org/10.1145/1357054.1357072</a></li>
+      <li>Mark, G., Gonzalez, V. M. &amp; Harris, J. (2005). »No Task Left Behind? Examining the Nature of Fragmented Work.« <em>Proceedings of CHI 2005</em>, 321–330. <a href="https://doi.org/10.1145/1054972.1055017" target="_blank" rel="noopener">doi.org/10.1145/1054972.1055017</a></li>
+      <li>Newport, C. (2016). <em>Deep Work: Rules for Focused Success in a Distracted World</em>. Grand Central Publishing — practitioner-/bogperspektiv, ikke forskningsevidens for seriens model.</li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Fokusaftalen og Afbrydelsesregnskabet er Thomas Friisnæs' egne praktiske greb — ikke validerede instrumenter. Den citerede forskning er individniveau (eksperimenter og observationsstudier) og har ikke testet fælles fokusvinduer for organisationer; oversættelsen til kollektiv arbejdsarkitektur er forfatterens ledelsessyntese, informeret af forskningen, ikke bevist af den. Paperet anvender bevidst ingen faste refokuseringstal (opmærksomhedsrester og refokuseringstid er to forskellige forskningsspor, jf. Paper 01), ingen produktivitetsprocenter for multitasking eller kontortyper og ingen påstand om en biologisk optimal fokusblok-længde — 60–90 minutter er et praktisk spænd at teste med, ikke et optimum. Åbningsscenen og de genkendelige situationer er sammensatte, illustrative mønstre fra forfatterens coachingpraksis — ikke bestemte virksomheder eller personer.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Struktur sætter fri — den komplette serie</div>
+    <h2 class="collection-title">Ni papers om arbejdsdagen som ledelsesdesign</h2>
+    <p class="collection-intro">Produktivitet og arbejdsglæde er ikke et motivationsprojekt. Det er et designprojekt. Serien viser, hvordan en fælles, disciplineret dagsarkitektur — TAKT — kan skabe bedre betingelser for begge dele — og hvorfor en 4-dages uge, der skal være et resultat og ikke en rabat på output, kræver, at arbejdet designes først. Serien er komplet; alle ni papers er samlet her.</p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 1</span><span class="cpart-name">Dagen, ingen har designet</span></div>
+      <p class="cpart-desc">Problemet navngives, prisen gøres op, og fundamentet støbes: fra motivationsafhængighed til driftsdisciplin.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/struktur-saetter-fri-din-kalender-har-en-ejer.html">Din kalender har en ejer. Det er bare ikke dig.</a></li>
+        <li data-n="02"><a href="/struktur-saetter-fri-regnestykket-ingen-direktion-har-lavet.html">Regnestykket, ingen direktion har lavet</a></li>
+        <li data-n="03"><a href="/struktur-saetter-fri-motivation-er-en-daarlig-chef.html">Motivation er en dårlig chef</a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 2</span><span class="cpart-name">Arkitekturens tre designprincipper</span></div>
+      <p class="cpart-desc">TAKT foldes ud: Tydelighed, Adskillelse og Kadence — dagens bærende konstruktion.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="04"><a href="/struktur-saetter-fri-femten-minutter-der-styrer-otte-timer.html">Femten minutter, der styrer otte timer</a></li>
+        <li data-n="05"><span class="current">Fokus er ikke en personlig præference — du læser dette</span></li>
+        <li data-n="06"><a href="/struktur-saetter-fri-vend-kalenderen-om.html">Vend kalenderen om</a></li>
+        <li data-n="07"><a href="/struktur-saetter-fri-dagen-skal-lukkes-ikke-bare-slutte.html">Dagen skal lukkes, ikke bare slutte</a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 3</span><span class="cpart-name">Gevinsten</span></div>
+      <p class="cpart-desc">Tid tilbage: 4-dages ugen som resultat, ikke som frynsegode.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="08"><a href="/struktur-saetter-fri-fredag-er-ikke-et-gode-den-er-et-resultat.html">Fredag er ikke et gode. Den er et resultat.</a></li>
+      </ol>
+    </div>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 4</span><span class="cpart-name">Implementeringen</span></div>
+      <p class="cpart-desc">Fra blueprint til driftsrytme — uden at udløse oprør.</p>
+      <ol class="cpart-papers cont">
+        <li data-n="09"><a href="/struktur-saetter-fri-takten-foer-reglerne.html">Takten før reglerne</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Gem som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 med Fokusaftalens fire beslutninger og Afbrydelsesregnskabet — klar til jeres næste ledergruppemøde.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Gem som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Gem som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/struktur-saetter-fri-femten-minutter-der-styrer-otte-timer.html">
+      <span class="ra-tag">Forrige paper · Struktur sætter fri</span>
+      <span class="ra-title">Femten minutter, der styrer otte timer</span>
+    </a>
+    <a href="/struktur-saetter-fri-motivation-er-en-daarlig-chef.html">
+      <span class="ra-tag">Paper 03 · Struktur sætter fri</span>
+      <span class="ra-title">Motivation er en dårlig chef</span>
+    </a>
+    <a href="/struktur-saetter-fri-din-kalender-har-en-ejer.html">
+      <span class="ra-tag">Paper 01 · Struktur sætter fri</span>
+      <span class="ra-title">Din kalender har en ejer. Det er bare ikke dig.</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Struktur sætter fri · Paper 05 af 9</div>
+        <div class="series-next">Næste: Vend kalenderen om</div>
+        <a href="/library.html#struktur">Se hele serien →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: ssf_ (Struktur sætter fri)
+  var LS_C = 'ssf_p05_commit', LS_D = 'ssf_done', PAPER_N = 5, TOTAL = 9;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Struktur sætter fri — Ni papers om arbejdsdagen som ledelsesdesign | Thomas Friisnæs</title>
+<meta name="description" content="Struktur sætter fri er en serie på ni white papers om arbejdsdagen som ledelsesdesign: fra kalenderanarkiet over arkitekturen TAKT — Tydelighed, Adskillelse, Kadence — til gevinsten Tid tilbage og implementeringens fire mandater. Inklusive companion-værktøjet TAKT for hver stol. Gratis at læse og downloade som PDF.">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/struktur-saetter-fri.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="og:locale" content="da_DK">
+<meta property="og:url" content="https://www.friisnaes.com/struktur-saetter-fri.html">
+<meta property="og:title" content="Struktur sætter fri — Ni papers om arbejdsdagen som ledelsesdesign">
+<meta property="og:description" content="Produktivitet og arbejdsglæde er ikke et motivationsprojekt. Det er et designprojekt. Ni papers for direktionen, lederen og teamet — bygget på én arkitektur: TAKT. Af Thomas Friisnæs.">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Struktur sætter fri — white paper-serie af Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Struktur sætter fri — Ni papers">
+<meta name="twitter:description" content="Arbejdsdagen som ledelsesdesign — fra kalenderanarkiet over TAKT til den 4-dages uge, der skal bevises, ikke vedtages.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --black: #111; --black-soft: #1a1a1a; --black-light: #222;
+    --gray-dark: #444; --gray: #777; --gray-light: #bbb;
+    --off-white: #f5f4f0; --white: #fafaf8;
+    --red: #c0392b; --red-hover: #e74c3c; --red-muted: rgba(192,57,43,.06);
+    --display: 'Playfair Display', Georgia, serif;
+    --body: 'Outfit', -apple-system, sans-serif;
+    --ease: cubic-bezier(.22,1,.36,1);
+    --wide: 1140px; --narrow: 760px; --pad: 24px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--body); background: var(--white); color: var(--black); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(17,17,17,.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.06); }
+  .ni { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .lo { font-family: var(--display); font-size: 1.3rem; color: #fff; letter-spacing: .01em; }
+  .lo em { font-style: italic; color: var(--red); }
+  .nl { display: flex; align-items: center; gap: 26px; list-style: none; }
+  .nl a { font-size: .8rem; font-weight: 400; color: rgba(255,255,255,.72); transition: color .25s; }
+  .nl a:hover { color: #fff; }
+  .nd { position: relative; }
+  .nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background: var(--black-soft); border: 1px solid rgba(255,255,255,.08); padding: 10px 0; min-width: 180px; display: none; list-style: none; }
+  .nd:hover .nd-m { display: block; }
+  .nd-m a { display: block; padding: 8px 20px; font-size: .78rem; }
+  .nd-m a.active { color: var(--red-hover); }
+  .cta-n { border: 1px solid var(--red); padding: 8px 18px; color: #fff !important; transition: background .25s; }
+  .cta-n:hover { background: var(--red); }
+  .nt { display: none; background: none; border: none; cursor: pointer; padding: 10px; }
+  .nt span { display: block; width: 22px; height: 2px; background: #fff; margin: 5px 0; }
+  @media (max-width: 900px) {
+    .nl { position: fixed; top: 64px; right: 0; bottom: 0; width: min(320px, 85vw); background: var(--black-soft); flex-direction: column; align-items: flex-start; padding: 32px 28px; gap: 18px; transform: translateX(100%); transition: transform .35s var(--ease); overflow-y: auto; }
+    .nl.open { transform: translateX(0); }
+    .nd-m { position: static; transform: none; display: block; border: none; padding: 8px 0 0 14px; background: none; }
+    .nt { display: block; }
+  }
+
+  /* HERO */
+  .hero { background: var(--black); position: relative; overflow: hidden; padding: 170px 0 0; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 70% 40%, rgba(192,57,43,.05), transparent 70%); pointer-events: none; }
+  .hc { position: relative; z-index: 2; max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); }
+  .hl { font-size: .68rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 26px; }
+  .hero h1 { font-family: var(--display); font-size: clamp(2.7rem, 5vw, 4.1rem); font-weight: 400; color: #fff; line-height: 1.12; letter-spacing: -.02em; margin-bottom: 24px; max-width: 900px; }
+  .hero h1 em { font-style: italic; color: var(--red); }
+  .hp { font-size: 1rem; color: rgba(255,255,255,.55); line-height: 1.85; max-width: 680px; margin-bottom: 40px; }
+  .hs { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,.08); }
+  .si { flex: 1; padding: 26px 0; border-right: 1px solid rgba(255,255,255,.08); text-align: center; }
+  .si:last-child { border-right: none; }
+  .sn { font-family: var(--display); font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 400; color: var(--red); line-height: 1.15; margin-bottom: 4px; }
+  .sn small { font-size: .62em; color: rgba(255,255,255,.55); }
+  .sl { font-size: .64rem; font-weight: 500; color: rgba(255,255,255,.32); letter-spacing: .12em; text-transform: uppercase; }
+  @media (max-width: 640px) {
+    .hero { padding-top: 130px; }
+    .hs { flex-direction: column; }
+    .si { border-right: none; border-bottom: 1px solid rgba(255,255,255,.08); padding: 18px 0; text-align: left; }
+    .si:last-child { border-bottom: none; }
+  }
+
+  /* PROGRESS */
+  .progress-mod { background: var(--black); padding: 34px 0 60px; }
+  .pm-inner { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); }
+  .pm-box { border: 1px solid rgba(255,255,255,.1); padding: 24px 28px; }
+  .pm-row { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+  .pm-count { font-size: .88rem; color: rgba(255,255,255,.75); }
+  .pm-count b { color: #fff; font-weight: 600; }
+  .pm-count .pct { color: var(--red-hover); font-weight: 600; }
+  .pm-reset { background: none; border: none; cursor: pointer; font-family: var(--body); font-size: .72rem; color: rgba(255,255,255,.35); letter-spacing: .06em; border-bottom: 1px solid rgba(255,255,255,.2); padding: 0 0 2px; transition: color .25s; }
+  .pm-reset:hover { color: rgba(255,255,255,.7); }
+  .pm-track { height: 6px; background: rgba(255,255,255,.1); overflow: hidden; }
+  .pm-fill { height: 100%; width: 0%; background: var(--red); transition: width .6s var(--ease); }
+
+  /* INTRO */
+  .intro { padding: 90px 0 30px; }
+  .c { max-width: var(--narrow); margin: 0 auto; padding: 0 var(--pad); }
+  .cw { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); }
+  .se { font-size: .66rem; font-weight: 600; color: var(--red); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 20px; }
+  .intro p { font-size: .98rem; color: var(--gray-dark); line-height: 1.85; margin-bottom: 16px; }
+  .intro p strong { color: var(--black); font-weight: 600; }
+
+  /* PAPERS */
+  .papers { padding: 40px 0 80px; }
+  .pgroup { margin-top: 56px; }
+  .pg-head { display: flex; align-items: baseline; gap: 18px; margin-bottom: 8px; flex-wrap: wrap; }
+  .pg-num { font-family: var(--display); font-size: 1.05rem; color: var(--red); font-style: italic; letter-spacing: .02em; white-space: nowrap; }
+  .pg-name { font-family: var(--display); font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 400; color: var(--black); letter-spacing: -.01em; }
+  .pg-desc { font-size: .92rem; color: var(--gray); line-height: 1.75; max-width: 620px; margin-bottom: 26px; }
+  .pg-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .pcard { position: relative; display: block; background: var(--white); border: 1px solid rgba(0,0,0,.09); padding: 26px 28px 24px; transition: border-color .3s, transform .3s var(--ease), box-shadow .3s; }
+  .pcard:hover { border-color: var(--red); transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,.07); }
+  .pc-top { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .pc-num { font-family: var(--display); font-size: 1.15rem; color: var(--red); font-style: italic; }
+  .pc-done { font-size: .78rem; color: var(--gray-light); transition: color .3s; }
+  .pcard.done .pc-done { color: var(--red); }
+  .pc-title { font-family: var(--display); font-size: 1.22rem; font-weight: 500; color: var(--black); line-height: 1.3; margin-bottom: 8px; letter-spacing: -.005em; }
+  .pc-sub { font-size: .85rem; color: var(--gray); line-height: 1.7; margin-bottom: 14px; }
+  .pc-go { font-size: .74rem; font-weight: 600; color: var(--red); letter-spacing: .1em; text-transform: uppercase; }
+  .pcard:hover .pc-go { color: var(--red-hover); }
+  @media (max-width: 720px) { .pg-list { grid-template-columns: 1fr; } }
+
+  /* COMPANION */
+  .companion { background: var(--off-white); border: 1px solid rgba(0,0,0,.08); margin-top: 64px; padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
+  .comp-left { max-width: 620px; }
+  .comp-tag { display: inline-block; font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #fff; background: var(--red); padding: 5px 12px; margin-bottom: 14px; }
+  .comp-title { font-family: var(--display); font-size: clamp(1.35rem, 2.4vw, 1.7rem); font-weight: 500; color: var(--black); margin-bottom: 8px; }
+  .comp-text { font-size: .9rem; color: var(--gray-dark); line-height: 1.75; }
+  .comp-btn { display: inline-block; border: 1px solid var(--black); padding: 13px 26px; font-size: .8rem; font-weight: 500; letter-spacing: .04em; color: var(--black); transition: all .3s; white-space: nowrap; }
+  .comp-btn:hover { background: var(--black); color: #fff; }
+
+  /* CTA */
+  .cta { background: var(--black); padding: 90px 0; text-align: center; position: relative; overflow: hidden; }
+  .cta::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 30%, rgba(192,57,43,.06), transparent 70%); pointer-events: none; }
+  .cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; padding: 0 var(--pad); }
+  .cta h2 { font-family: var(--display); font-size: clamp(1.8rem, 3.4vw, 2.6rem); font-weight: 400; color: #fff; line-height: 1.25; margin-bottom: 18px; letter-spacing: -.01em; }
+  .cta h2 em { font-style: italic; color: var(--red); }
+  .cta p { font-size: .95rem; color: rgba(255,255,255,.55); line-height: 1.8; margin-bottom: 32px; }
+  .cta-btn { display: inline-block; background: var(--red); color: #fff; padding: 15px 34px; font-size: .84rem; font-weight: 500; letter-spacing: .05em; transition: background .3s; }
+  .cta-btn:hover { background: var(--red-hover); }
+
+  /* FOOTER */
+  .site-footer { background: var(--black); border-top: 1px solid rgba(255,255,255,.07); padding: 46px 0; }
+  .footer-inner { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; justify-content: space-between; align-items: flex-start; gap: 30px; flex-wrap: wrap; }
+  .footer-brand { font-family: var(--display); font-size: 1.25rem; color: #fff; }
+  .footer-tagline { font-size: .72rem; color: rgba(255,255,255,.35); letter-spacing: .12em; text-transform: uppercase; margin-top: 6px; }
+  .footer-series { text-align: right; }
+  .fs-label { font-size: .78rem; color: rgba(255,255,255,.65); margin-bottom: 4px; }
+  .fs-status { font-size: .72rem; color: var(--red-hover); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 10px; }
+  .footer-series a { font-size: .8rem; color: rgba(255,255,255,.5); border-bottom: 1px solid rgba(255,255,255,.2); padding-bottom: 2px; transition: color .25s; }
+  .footer-series a:hover { color: #fff; }
+  @media (max-width: 640px) { .footer-series { text-align: left; } }
+
+  @media print {
+    nav.site-nav, .progress-mod, .cta { display: none; }
+    .hero { padding-top: 40px; }
+    body { background: #fff; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "CreativeWorkSeries",
+ "name": "Struktur sætter fri",
+ "alternateName": "Struktur sætter fri — arbejdsdagen som ledelsesdesign",
+ "description": "Ni white papers om arbejdsdagen som ledelsesdesign — fra kalenderanarkiet over arkitekturen TAKT (Tydelighed, Adskillelse, Kadence) til gevinsten Tid tilbage og implementeringens fire mandater. Inklusive companion-værktøjet TAKT for hver stol.",
+ "url": "https://www.friisnaes.com/struktur-saetter-fri.html",
+ "inLanguage": "da",
+ "datePublished": "2026-10-01",
+ "author": { "@type": "Person", "@id": "https://www.friisnaes.com/#person", "name": "Thomas Friisnæs", "url": "https://www.friisnaes.com/" },
+ "publisher": { "@type": "Organization", "name": "Friisnæs", "url": "https://www.friisnaes.com/" },
+ "isPartOf": { "@type": "CollectionPage", "name": "Executive Library", "url": "https://www.friisnaes.com/library.html" },
+ "hasPart": [
+  { "@type": "Article", "position": 1, "name": "Din kalender har en ejer. Det er bare ikke dig.", "url": "https://www.friisnaes.com/struktur-saetter-fri-din-kalender-har-en-ejer.html" },
+  { "@type": "Article", "position": 2, "name": "Regnestykket, ingen direktion har lavet", "url": "https://www.friisnaes.com/struktur-saetter-fri-regnestykket-ingen-direktion-har-lavet.html" },
+  { "@type": "Article", "position": 3, "name": "Motivation er en dårlig chef", "url": "https://www.friisnaes.com/struktur-saetter-fri-motivation-er-en-daarlig-chef.html" },
+  { "@type": "Article", "position": 4, "name": "Femten minutter, der styrer otte timer", "url": "https://www.friisnaes.com/struktur-saetter-fri-femten-minutter-der-styrer-otte-timer.html" },
+  { "@type": "Article", "position": 5, "name": "Fokus er ikke en personlig præference", "url": "https://www.friisnaes.com/struktur-saetter-fri-fokus-er-ikke-en-personlig-praeference.html" },
+  { "@type": "Article", "position": 6, "name": "Vend kalenderen om", "url": "https://www.friisnaes.com/struktur-saetter-fri-vend-kalenderen-om.html" },
+  { "@type": "Article", "position": 7, "name": "Dagen skal lukkes, ikke bare slutte", "url": "https://www.friisnaes.com/struktur-saetter-fri-dagen-skal-lukkes-ikke-bare-slutte.html" },
+  { "@type": "Article", "position": 8, "name": "Fredag er ikke et gode. Den er et resultat.", "url": "https://www.friisnaes.com/struktur-saetter-fri-fredag-er-ikke-et-gode-den-er-et-resultat.html" },
+  { "@type": "Article", "position": 9, "name": "Takten før reglerne", "url": "https://www.friisnaes.com/struktur-saetter-fri-takten-foer-reglerne.html" }
+ ]
+}
+</script>
+</head>
+<body>
+
+<nav class="site-nav" role="navigation" aria-label="Hovednavigation">
+  <div class="ni">
+    <a href="/" class="lo" aria-label="Friisnæs – Executive Coach, forside">Fr<em>ii</em>snæs</a>
+    <ul class="nl" id="navLinks" aria-label="Primær navigation">
+      <li><a href="/#situationer">Situationer</a></li>
+      <li><a href="/#om">Om</a></li>
+      <li><a href="/testimonials.html">Klienter</a></li>
+      <li class="nd">
+        <a href="/blog.html" style="color:#fff">Indsigter ▾</a>
+        <ul class="nd-m">
+          <li><a href="/blog.html">Blogindlæg</a></li>
+          <li><a href="/library.html" class="active">Executive Library</a></li>
+          <li><a href="/library.html#brief">C-Level Brief</a></li>
+          <li><a href="/vaerktoejer.html">Værktøjer</a></li>
+          <li><a href="/soeg.html">Søg</a></li>
+        </ul>
+      </li>
+      <li><a href="/boeger.html">Bøger</a></li>
+      <li><a href="/#kontakt" class="cta-n">Book en samtale</a></li>
+    </ul>
+    <button class="nt" id="navToggle" aria-label="Åbn menu" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hc">
+    <div class="hl">Executive Library · Serie 05</div>
+    <h1>Struktur <em>sætter fri</em></h1>
+    <p class="hp">Produktivitet og arbejdsglæde er ikke et motivationsprojekt. Det er et designprojekt. Ni papers om, hvordan direktionen, lederen og teamet designer arbejdsdagen i stedet for at overleve den — fra kalenderanarkiet over arkitekturen TAKT til den 4-dages uge, der skal bevises, ikke vedtages. Hvert paper kan læses alene; tilsammen er de én sammenhængende måde at tænke arbejdsdagen på — fra problemet, over designprincipperne, til gevinsten og implementeringen.</p>
+    <div class="hs">
+      <div class="si"><div class="sn">9</div><div class="sl">Papers · ét samlet forløb</div></div>
+      <div class="si"><div class="sn">~135</div><div class="sl">Minutters læsning</div></div>
+      <div class="si"><div class="sn">+1</div><div class="sl">Companion: TAKT for hver stol</div></div>
+      <div class="si"><div class="sn"><small>Af</small> Thomas Friisnæs</div><div class="sl">Executive Coach</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="progress-mod">
+  <div class="pm-inner">
+    <div class="pm-box">
+      <div class="pm-row">
+        <div class="pm-count"><b id="pmN">0</b> af 9 papers gennemført <span class="pct">(<span id="pmPct">0</span> %)</span></div>
+        <button class="pm-reset" type="button" onclick="ssfReset()">Nulstil min progress</button>
+      </div>
+      <div class="pm-track" role="progressbar" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0" id="pmTrack"><div class="pm-fill" id="pmFill"></div></div>
+    </div>
+  </div>
+</div>
+
+<section class="intro">
+  <div class="c">
+    <div class="se">Om serien</div>
+    <p>De fleste organisationer har designet deres strategi, deres organisation og deres processer med stor omhu — og overladt selve arbejdsdagen til tilfældighederne. <strong>Struktur sætter fri</strong> stiller det spørgsmål, kalenderanarkiet aldrig får: Hvem har egentlig designet den dag, alle arbejder i? Serien er skrevet til direktionen, funktionslederen og teamet, og den holder sig tæt på det, forskningen faktisk viser: hvad der er dokumenteret, hvad der er praktikererfaring, og hvad der er min egen praktiske syntese.</p>
+    <p>Serien er bygget til at blive brugt, ikke bare læst. Hvert paper slutter med et konkret commitment og en 2-minutters mikrohandling. Din progress gemmes lokalt i din browser og følger dig på tværs af alle ni — markér et paper som gennemført, og feltet herover fyldes. Til implementeringen hører desuden companion-værktøjet <strong>TAKT for hver stol</strong>: rollekortene til ledergruppen, når serien skal omsættes.</p>
+  </div>
+</section>
+
+<section class="papers">
+  <div class="cw">
+
+    <div class="pgroup">
+      <div class="pg-head"><span class="pg-num">01–03</span><span class="pg-name">Dagen, ingen har designet</span></div>
+      <p class="pg-desc">Problemet navngives, prisen gøres op, og fundamentet støbes: fra motivationsafhængighed til driftsdisciplin.</p>
+      <div class="pg-list">
+        <a class="pcard" data-n="1" href="/struktur-saetter-fri-din-kalender-har-en-ejer.html">
+          <div class="pc-top"><span class="pc-num">01</span><span class="pc-done">✓</span></div>
+          <div class="pc-title">Din kalender har en ejer. Det er bare ikke dig.</div>
+          <div class="pc-sub">En tom kalender er ikke det samme som en designet dag.</div>
+          <div class="pc-go">Læs paper →</div>
+        </a>
+        <a class="pcard" data-n="2" href="/struktur-saetter-fri-regnestykket-ingen-direktion-har-lavet.html">
+          <div class="pc-top"><span class="pc-num">02</span><span class="pc-done">✓</span></div>
+          <div class="pc-title">Regnestykket, ingen direktion har lavet</div>
+          <div class="pc-sub">Kapacitetsregnskabet: hvad kalenderanarkiet koster — og hvem der betaler.</div>
+          <div class="pc-go">Læs paper →</div>
+        </a>
+        <a class="pcard" data-n="3" href="/struktur-saetter-fri-motivation-er-en-daarlig-chef.html">
+          <div class="pc-top"><span class="pc-num">03</span><span class="pc-done">✓</span></div>
+          <div class="pc-title">Motivation er en dårlig chef</div>
+          <div class="pc-sub">Disciplin er beslutninger, der ikke skal genforhandles fra nul hver dag.</div>
+          <div class="pc-go">Læs paper →</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="pgroup">
+      <div class="pg-head"><span class="pg-num">04–07</span><span class="pg-name">Arkitekturens tre designprincipper</span></div>
+      <p class="pg-desc">TAKT foldes ud: Tydelighed, Adskillelse og Kadence — dagens bærende konstruktion.</p>
+      <div class="pg-list">
+        <a class="pcard" data-n="4" href="/struktur-saetter-fri-femten-minutter-der-styrer-otte-timer.html">
+          <div class="pc-top"><span class="pc-num">04</span><span class="pc-done">✓</span></div>
+          <div class="pc-title">Femten minutter, der styrer otte timer</div>
+          <div class="pc-sub">Dagens Commitment: et eksplicit svar på, hvad der skal vinde.</div>
+          <div class="pc-go">Læs paper →</div>
+        </a>
+        <a class="pcard" data-n="5" href="/struktur-saetter-fri-fokus-er-ikke-en-personlig-praeference.html">
+          <div class="pc-top"><span class="pc-num">05</span><span class="pc-done">✓</span></div>
+          <div class="pc-title">Fokus er ikke en personlig præference</div>
+          <div class="pc-sub">Tilgængelighed er en driftsparameter, ikke en dyd.</div>
+          <div class="pc-go">Læs paper →</div>
+        </a>
+        <a class="pcard" data-n="6" href="/struktur-saetter-fri-vend-kalenderen-om.html">
+          <div class="pc-top"><span class="pc-num">06</span><span class="pc-done">✓</span></div>
+          <div class="pc-title">Vend kalenderen om</div>
+          <div class="pc-sub">Reverse Scheduling: Beskyt værdien først. Planlæg koordineringen bagefter.</div>
+          <div class="pc-go">Læs paper →</div>
+        </a>
+        <a class="pcard" data-n="7" href="/struktur-saetter-fri-dagen-skal-lukkes-ikke-bare-slutte.html">
+          <div class="pc-top"><span class="pc-num">07</span><span class="pc-done">✓</span></div>
+          <div class="pc-title">Dagen skal lukkes, ikke bare slutte</div>
+          <div class="pc-sub">Dagens Lukning: Forskellen er data — ikke skyld.</div>
+          <div class="pc-go">Læs paper →</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="pgroup">
+      <div class="pg-head"><span class="pg-num">08</span><span class="pg-name">Gevinsten</span></div>
+      <p class="pg-desc">Tid tilbage: 4-dages ugen som resultat, ikke som frynsegode.</p>
+      <div class="pg-list">
+        <a class="pcard" data-n="8" href="/struktur-saetter-fri-fredag-er-ikke-et-gode-den-er-et-resultat.html">
+          <div class="pc-top"><span class="pc-num">08</span><span class="pc-done">✓</span></div>
+          <div class="pc-title">Fredag er ikke et gode. Den er et resultat.</div>
+          <div class="pc-sub">Fredagsprøven: fire krav, der skiller frigjort tid fra flyttet tid.</div>
+          <div class="pc-go">Læs paper →</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="pgroup">
+      <div class="pg-head"><span class="pg-num">09</span><span class="pg-name">Implementeringen</span></div>
+      <p class="pg-desc">Fra blueprint til driftsrytme — uden at udløse oprør.</p>
+      <div class="pg-list">
+        <a class="pcard" data-n="9" href="/struktur-saetter-fri-takten-foer-reglerne.html">
+          <div class="pc-top"><span class="pc-num">09</span><span class="pc-done">✓</span></div>
+          <div class="pc-title">Takten før reglerne</div>
+          <div class="pc-sub">Fire mandater og TAKT-piloten: find takten, før I skriver reglerne.</div>
+          <div class="pc-go">Læs paper →</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="companion">
+      <div class="comp-left">
+        <span class="comp-tag">Companion · Anvendelsesværktøj</span>
+        <div class="comp-title">TAKT for hver stol</div>
+        <p class="comp-text">Hvad modellen kræver af dig — og hvad du får tilbage. Rollekortene for direktion, forretningsledelse, team og medarbejder, seks læseveje gennem serien og ledergruppeøvelsen »TAKT rundt om bordet«. Ikke et tiende paper — værktøjet, der omsætter de ni.</p>
+      </div>
+      <a class="comp-btn" href="/struktur-saetter-fri-takt-for-hver-stol.html">Åbn companion →</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-inner">
+    <h2>Skal vi finde jeres takt, <em>før I skriver reglerne?</em></h2>
+    <p>Serien er et sted at begynde. En fokuseret samtale om, hvor jeres første TAKT-pilot skal testes — 20 minutter, ét problem, én plan — er stedet at gøre den til jeres egen.</p>
+    <a class="cta-btn" href="/#kontakt">Start en samtale</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Friisn&aelig;s</div>
+      <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+    </div>
+    <div class="footer-series">
+      <div class="fs-label">Struktur sætter fri · Serie 05 · 9 papers + companion</div>
+      <div class="fs-status">Serien er komplet</div>
+      <a href="/library.html#struktur">Tilbage til Executive Library →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress — læser samme localStorage-kontrakt som Paper 01–09 (ssf_done = JSON-array af paper-numre)
+  var SSF_TOTAL = 9;
+  function ssfRender() {
+    try {
+      var done = JSON.parse(localStorage.getItem('ssf_done') || '[]');
+      var n = Math.max(0, Math.min(SSF_TOTAL, done.length));
+      document.getElementById('pmN').textContent = n;
+      document.getElementById('pmPct').textContent = Math.round((n / SSF_TOTAL) * 100);
+      document.getElementById('pmFill').style.width = (n / SSF_TOTAL) * 100 + '%';
+      document.getElementById('pmTrack').setAttribute('aria-valuenow', n);
+      document.querySelectorAll('.pcard').forEach(function (c) {
+        var num = parseInt(c.getAttribute('data-n'), 10);
+        if (done.indexOf(num) !== -1) c.classList.add('done'); else c.classList.remove('done');
+      });
+    } catch (e) {}
+  }
+  function ssfReset() {
+    try {
+      localStorage.removeItem('ssf_done');
+      for (var i = 1; i <= SSF_TOTAL; i++) {
+        localStorage.removeItem('ssf_p0' + i + '_commit');
+      }
+      ssfRender();
+    } catch (e) {}
+  }
+  ssfRender();
+</script>
+</body>
+</html>
