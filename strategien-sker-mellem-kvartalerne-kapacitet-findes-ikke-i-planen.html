@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kapacitet findes ikke i planen | Strategisk observabilitet | Thomas Friisnæs</title>
+<meta name="description" content="En plan kan være ressourcebelagt og stadig overforpligte organisationen. Paper 04 om kapacitet, BAU, samtidighed, shared constraints og strategisk observabilitet.">
+<meta name="keywords" content="strategieksekvering, kapacitet, resource allocation, project portfolio management, BAU, shared resources, capacity realism, strategisk observabilitet, strategy execution, porteføljestyring, direktion">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">
+
+<meta property="og:title" content="Kapacitet findes ikke i planen | Strategisk observabilitet | Thomas Friisnæs">
+<meta property="og:description" content="En plan kan fordele arbejdet. Den kan ikke alene fortælle, om organisationen kan bære de samtidige krav. Paper 04 om strategisk observabilitet.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Thomas Friisnæs – Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kapacitet findes ikke i planen">
+<meta name="twitter:description" content="En plan kan allokere den samme kapacitet flere gange. Organisationen kan kun bruge den én gang. Paper 04 om kapacitet i strategieksekvering.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* Paper 02 — Farven og underlaget (Grøn på hvad?): redaktionel tabel, ingen trafiklysfarver */
+  .basis { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .basis-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .basis-head .bh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .basis-head .bh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .basis-head .bh-sub { font-size: 14px; line-height: 1.55; color: var(--text-light); margin: 6px 0 0; }
+  .basis-colour { display: flex; align-items: baseline; gap: 16px; padding: 16px 30px; border-bottom: 1px solid var(--border); }
+  .basis-colour .bc-name { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; min-width: 64px; }
+  .basis-colour .bc-desc { flex: 1; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .basis-colour .bc-value { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 24px; line-height: 1; color: var(--navy); }
+  .basis-table { width: 100%; border-collapse: collapse; }
+  .basis-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table th.bt-group { text-align: left; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; padding: 20px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table td { font-size: 15px; line-height: 1.5; color: var(--text-mid); padding: 11px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .basis-table td.bt-state { width: 34%; color: var(--navy); font-weight: 500; }
+  .basis-table td.bt-state.out { color: var(--text-light); font-weight: 400; }
+  .basis-table td.bt-state.unknown { color: var(--text-mid); font-weight: 400; font-style: italic; }
+  .basis-foot { padding: 16px 30px; background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 600px) {
+    .basis-head, .basis-colour, .basis-foot { padding-left: 20px; padding-right: 20px; }
+    .basis-colour { flex-wrap: wrap; row-gap: 4px; }
+    .basis-colour .bc-desc { flex-basis: 100%; order: 3; }
+    .basis-table thead { display: none; }
+    .basis-table th.bt-group { padding: 18px 20px 8px; }
+    .basis-table td { padding: 10px 20px; }
+    .basis-table td.bt-state { width: auto; white-space: nowrap; }
+  }
+  @media print {
+    .basis, .basis-table tr { page-break-inside: avoid; }
+    .basis-head, .basis-foot { background: #fff !important; }
+    body.print-econo .basis { border-color: #999 !important; }
+    body.print-econo .basis-head .bh-label, body.print-econo .basis-colour .bc-name, body.print-econo .basis-table th.bt-group { color: #333 !important; }
+  }
+
+  /* Paper 03 — Samme tal. Forskelligt billede.: én redaktionel talkomponent, ingen farver og ingen graf */
+  .spread { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .spread-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .spread-head .sp-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .spread-head .sp-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .spread-groups { display: grid; grid-template-columns: 1fr 1fr; }
+  .sp-group { padding: 30px 26px 26px; text-align: center; }
+  .sp-group + .sp-group { border-left: 1px solid var(--border); }
+  .sp-name { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 12px; }
+  .sp-values { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4.6vw, 44px); font-weight: 400; line-height: 1.1; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .sp-values .sp-dot { display: inline-block; margin: 0 0.32em; color: var(--text-light); font-size: 0.6em; vertical-align: 0.2em; }
+  .sp-mean { margin: 22px auto 0; padding-top: 14px; border-top: 1px solid var(--border); max-width: 250px; line-height: 1.5; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .sp-mean b { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 32px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .sp-read { margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .spread-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .spread-head, .spread-foot { padding-left: 20px; padding-right: 20px; }
+    .spread-groups { grid-template-columns: 1fr; }
+    .sp-group { padding: 24px 20px 22px; }
+    .sp-group + .sp-group { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  /* Paper 03 — Fire slags tal: redaktionel tabel i Paper 02's modelramme */
+  .kinds-table { width: 100%; border-collapse: collapse; }
+  .kinds-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .kinds-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 14px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .kinds-table td:first-child { width: 38%; padding-right: 12px; }
+  .kinds-table td:first-child strong { display: block; color: var(--navy); font-weight: 600; }
+  .kinds-table td:first-child span { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; color: var(--text-mid); }
+  /* Paper 03 — tre versioner af samme vurdering: Paper 01's vinduer stablet */
+  .windows.stack { grid-template-columns: 1fr; }
+  .windows.stack .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+  .sig-cols ul + h4 { margin-top: 18px; }
+  @media (max-width: 600px) {
+    .kinds-table thead { display: none; }
+    .kinds-table, .kinds-table tbody, .kinds-table tr, .kinds-table td { display: block; width: 100%; }
+    .kinds-table tr { padding: 12px 20px; border-bottom: 1px solid var(--border); }
+    .kinds-table td, .kinds-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .kinds-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 8px 0 2px; }
+  }
+  @media print {
+    .spread, .kinds-table tr { page-break-inside: avoid; }
+    .spread-head, .spread-foot { background: #fff !important; }
+    body.print-econo .spread { border-color: #999 !important; }
+    body.print-econo .spread-head .sp-label { color: #333 !important; }
+  }
+
+  /* Paper 04 — Lokalt plausibelt — samlet umuligt: én redaktionel illustration, ingen trafiklys og intet dashboard */
+  .load { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .load-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .load-head .ld-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .load-head .ld-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .load-head .ld-cond { margin-top: 8px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .load-rows { padding: 10px 30px 8px; }
+  .ld-row { display: grid; grid-template-columns: 170px minmax(0, 1fr) 76px; align-items: center; column-gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .ld-name { font-size: 15px; line-height: 1.3; color: var(--navy); font-weight: 500; }
+  .ld-name small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--text-light); font-weight: 300; }
+  .ld-track { position: relative; display: block; height: 12px; }
+  .ld-track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--border); }
+  .ld-fill, .ld-over { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); border-radius: 1px; }
+  .ld-over { background: var(--gold); border-radius: 0; top: auto; bottom: -7px; height: 3px; }
+  .ld-cut { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; }
+  .ld-tag { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 10.5px; letter-spacing: 0.1em; font-weight: 600; color: #fff; }
+  .ld-limit { position: absolute; left: 71.429%; top: -13px; bottom: -13px; border-left: 1px dashed var(--gold); }
+  .ld-val { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; line-height: 1; color: var(--navy); text-align: right; font-variant-numeric: lining-nums; white-space: nowrap; }
+  .ld-row.ld-scale { padding: 4px 0 0; border-bottom: 0; }
+  .ld-scale .ld-track { height: 16px; }
+  .ld-scale .ld-track::before { display: none; }
+  .ld-mark { position: absolute; left: 71.429%; bottom: 1px; transform: translateX(-50%); font-size: 10.5px; line-height: 1; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; white-space: nowrap; }
+  .ld-row.ld-sum { border-bottom: 0; padding-top: 17px; }
+  .ld-sum .ld-name { font-weight: 600; }
+  .ld-sum .ld-track { height: 24px; }
+  .ld-sum .ld-limit { top: -17px; bottom: -13px; }
+  .ld-sum .ld-val { font-style: italic; font-size: 32px; color: var(--gold); }
+  .section .load-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .load-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .load-head, .load-rows, .section .load-note, .load-foot { padding-left: 20px; padding-right: 20px; }
+    .ld-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 9px; }
+    .ld-row .ld-track { grid-column: 1 / -1; grid-row: 2; }
+    .ld-row.ld-scale { row-gap: 0; padding-top: 6px; }
+    .ld-val { font-size: 21px; }
+    .ld-sum .ld-val { font-size: 28px; }
+    .load-rows { position: relative; }
+    .load-rows::after { content: ''; position: absolute; top: 34px; bottom: 10px; left: calc(20px + (100% - 40px) * 0.71429); border-left: 1px dashed var(--gold); pointer-events: none; }
+    .ld-limit { visibility: hidden; }
+  }
+  @media print {
+    .load, .ld-row { page-break-inside: avoid; }
+    .load-head, .load-foot { background: #fff !important; }
+    body.print-econo .load { border-color: #999 !important; }
+    body.print-econo .load-head .ld-label, body.print-econo .ld-mark { color: #333 !important; }
+    body.print-econo .ld-fill { background: #8a8a8a !important; }
+    body.print-econo .ld-over { background: #000 !important; }
+    body.print-econo .ld-track, body.print-econo .ld-tag, body.print-econo .ld-limit, body.print-econo .ld-mark { background: transparent !important; }
+    body.print-econo .ld-tag { color: #000 !important; }
+    body.print-econo .ld-limit, body.print-econo .load-rows::after { border-left-color: #000 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Kapacitet findes ikke i planen",
+ "alternativeHeadline": "En plan kan fordele arbejdet. Den kan ikke alene fortælle, om organisationen kan bære de samtidige krav.",
+ "description": "En strategi kan være fuldt ressourcebelagt på papiret og stadig overforpligte organisationen. Paper 04 om forskellen på planlagt efterspørgsel, tilgængelig kapacitet og vurderet realistisk eksekveringskapacitet, om BAU, timing, samtidighed og fælles begrænsninger, og om hvorfor kapacitetsproblemer ender som ledelsestradeoffs.",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Strategien sker mellem kvartalerne",
+  "url": "https://www.friisnaes.com/library.html"
+ },
+ "position": 4,
+ "inLanguage": "da",
+ "keywords": "kapacitet, strategieksekvering, BAU, porteføljestyring, fælles begrænsninger, strategisk observabilitet",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Strategien sker mellem kvartalerne · Paper 04 af 10</div>
+  <div class="pc-title">Kapacitet findes ikke i planen</div>
+  <div class="pc-sub">En plan kan fordele arbejdet. Den kan ikke alene fortælle, om organisationen kan bære de samtidige krav.</div>
+  <div class="pc-author">Af Thomas Friisnæs · External Excellence Partner · Strategy Execution Governance · C-level-sparring · friisnaes.com · oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Strategisk observabilitet</span>
+      <span class="wp-series">Strategien sker mellem kvartalerne · Paper 04 af 10</span>
+      <span class="wp-readtime">ca. 25 min læsning</span>
+    </div>
+    <h1>Kapacitet findes <em>ikke i planen</em></h1>
+    <p class="wp-subtitle">En plan kan fordele arbejdet. Den kan ikke alene fortælle, om organisationen kan bære de samtidige krav.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · External Excellence Partner · Strategy Execution Governance · C-level-sparring<br>Udgivet oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Ressourcerne er bekræftet — tre gange</a></li>
+      <li><a href="#tesen">Kapacitet findes ikke i planen</a></li>
+      <li><a href="#ressource">At have en ressource er ikke det samme som at have kapacitet</a></li>
+      <li><a href="#begreber">Fire forskellige ting, vi let kalder kapacitet</a></li>
+      <li><a href="#bau">BAU er en del af kapacitetsregnestykket</a></li>
+      <li><a href="#timing">Kapacitet har et tidspunkt</a></li>
+      <li><a href="#portefoelje">Lokalt muligt. Samlet urealistisk.</a></li>
+      <li><a href="#faelles">Den fælles begrænsning står ikke i nogen enkelt plan</a></li>
+      <li><a href="#samtidighed">At starte mere arbejde skaber ikke mere kapacitet</a></li>
+      <li><a href="#regel">80 % er ikke en universel forskningsregel</a></li>
+      <li><a href="#tradeoffs">Kapacitetsproblemet ender på ledelsens bord</a></li>
+      <li><a href="#framework">Framework: Fra allokering til realisme</a></li>
+      <li><a href="#tidligere">Hvad kunne du se tidligere?</a></li>
+      <li><a href="#konkludere">Hvad må du ikke konkludere?</a></li>
+      <li><a href="#diagnose">Diagnose: Hvor er kapaciteten lovet to gange?</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit næste skridt</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#handling">Fra analyse til handling</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase · Et illustrativt eksempel</div>
+    <h2>Ressourcerne er bekræftet — tre gange</h2>
+    <p>Direktionen gennemgår den strategiske portefølje før næste kvartal. Tre initiativer er på dagsordenen, og ingen af dem giver anledning til bekymring. Hvert initiativ har en ansvarlig, en godkendt plan, milepæle og en ressourceplan. Alle tre er grønne.</p>
+    <p>I hver af de tre planer står der en linje om datateamet:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Tre planer · samme kvartal</div>
+      <ul class="dispo-list">
+        <li><strong>Initiativ A · ny digital kundeløsning</strong> <em>→</em> datateamet: 60 %. Bekræftet.</li>
+        <li><strong>Initiativ B · ny planlægning i forsyningskæden</strong> <em>→</em> datateamet: 50 %. Bekræftet.</li>
+        <li><strong>Initiativ C · nyt datagrundlag for prisstyring</strong> <em>→</em> datateamet: 30 %. Bekræftet.</li>
+      </ul>
+    </div>
+
+    <p>Ingen har pyntet på noget. Hver initiativansvarlig har talt med datateamets leder og fået en bekræftelse, som derefter er skrevet ind i planen. Bekræftelserne blev givet på forskellige tidspunkter, hver som svar på én konkret forespørgsel og til tidsplaner, der ikke overlappede. Siden er to af initiativerne blevet forskudt, så alle tre nu trækker på datateamet i det samme kvartal, mens linjerne i planerne står uændret.</p>
+    <p>Så lægger strategichefen de tre planer ved siden af hinanden. Det er det samme team og det samme kvartal, og procenterne er regnet af den samme helhed: teamets samlede arbejdstid i kvartalet. Tilsammen forudsætter planerne 140 % af datateamet. Og det er, før teamets faste driftsopgaver er regnet med.</p>
+    <p><strong>Hver plan er blevet vurderet lokalt. Kapaciteten findes kun én gang for virksomheden som helhed.</strong></p>
+    <p>CEO'en ser på tallene: <strong>»Så alle tre planer kan være realistiske hver for sig — og stadig umulige på samme tid?«</strong></p>
+    <p>Strategichefen svarer: <strong>»Ja. Hver bekræftelse var ærlig, da den blev givet. Det er bare første gang, nogen ser dem samlet.«</strong></p>
+    <p>På overfladen er det et regnestykke. Men for direktionen er det egentlige spørgsmål ikke, hvem der har regnet forkert. Det er, hvad den skal gøre, når tre prioriteter, den selv har godkendt, kræver den samme kapacitet i den samme periode — og om det samme gælder andre steder i porteføljen, hvor ingen har lagt planerne ved siden af hinanden. Spørgsmålene melder sig med det samme:</p>
+
+    <div class="signs">
+      <ul>
+        <li>Hvad er 100 % egentlig for dette team?</li>
+        <li>Hvad er teamet allerede forpligtet til i kvartalet?</li>
+        <li>Er der uger, hvor to af initiativerne har brug for de samme personer?</li>
+        <li>Hvilke andre krav rammer det samme team uden at stå i porteføljen?</li>
+        <li>Hvilket initiativ får kapaciteten, hvis ikke alle tre kan få den?</li>
+        <li>Og hvem har mandat til at afgøre det?</li>
+      </ul>
+    </div>
+
+    <p>Det er de spørgsmål, dette paper handler om.</p>
+  </div>
+</section>
+
+<!-- 02 TESEN -->
+<section class="section" id="tesen">
+  <div class="container">
+    <div class="section-label">02 — Tesen</div>
+    <h2>Kapacitet findes ikke i planen</h2>
+    <p><a href="/strategien-sker-mellem-kvartalerne.html" style="color:var(--gold);">Paper 01</a> skelnede mellem resultatindsigt og eksekveringsindsigt. <a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a> spurgte, hvad en grøn status egentlig dækker. <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a> viste, at en vurdering kan struktureres uden at blive objektiv sandhed, og sluttede med at formulere det næste skel i hverdagssprog: Planlagt kapacitet er ikke det samme som reel kapacitet.</p>
+    <p>Retningen holder, men begge udtryk er for upræcise til at bære en ledelsesbeslutning. Det, der står i en plan, er i første omgang ikke kapacitet. Det er et ressourcebehov, en allokering, en bemandingsantagelse eller et løfte om tilgængelighed. Og den realistiske kapacitet står ikke i et system, man kan slå op i. Den er et skøn, der bygger på både registrerede tal og vurderinger.</p>
+    <p><strong>Linjen »Datateam: 60 %« betyder, at planen forudsætter 60 % af datateamet. Den betyder ikke, at 60 % af teamet er frit.</strong></p>
+    <p>Titlen er derfor en tilspidsning, og den skal læses præcist. Den påstår ikke, at planer ikke kan indeholde kapacitetsdata, at ressourceplanlægning er værdiløs, eller at kapacitet ikke kan estimeres. Den påstår én ting: <strong>Planen dokumenterer en antagelse om kapacitet. Den skaber ikke kapaciteten, og den viser ikke alene, om antagelsen holder på tværs af organisationens øvrige forpligtelser.</strong></p>
+    <p>Det flytter ledelsens spørgsmål to gange. Fra <strong>»Er initiativerne ressourcebelagt?«</strong> til <strong>»Kan de samlede samtidige krav faktisk bæres af organisationen?«</strong> — og videre til det spørgsmål, som kan besvares i praksis: <strong>»Hvor er den samme kapacitet lovet mere end én gang?«</strong></p>
+    <p>Tesen er min egen syntese, ikke et forskningsresultat: <strong>Kapacitet er ikke det arbejde, planen har fordelt. Kapacitet handler om det arbejde, organisationen realistisk kan absorbere.</strong></p>
+
+    <p class="pull-quote">En plan kan allokere den samme kapacitet flere gange. Organisationen kan kun bruge den én gang.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Sætningen gælder, når der er tale om den samme ressource i den samme periode, opgjort på samme måde — som i åbningscasen. Men den peger på noget, der rækker ud over regnestykket. Et billede af eksekveringen, der viser hvert initiativs ressourceplan for sig, viser ikke konkurrencen om kapaciteten, for den findes mellem planerne. Og bliver den først synlig, når milepælene begynder at glide, er en del af handlemulighederne måske allerede brugt. Det er det, strategisk observabilitet skal hjælpe med: at se, mens der stadig er mulighed for at påvirke forløbet.</p>
+  </div>
+</section>
+
+<!-- 03 RESSOURCE -->
+<section class="section" id="ressource">
+  <div class="container">
+    <div class="section-label">03 — Ressource og kapacitet</div>
+    <h2>At have en ressource er ikke det samme som at have kapacitet</h2>
+    <p>En ressource er noget, organisationen har: en person, et team, en platform, et budget, en leders tid. I dette paper er kapacitet den del af ressourcen, der realistisk kan sættes ind på et bestemt krav i en bestemt periode, når alt det, ressourcen allerede er forpligtet til, er regnet med.</p>
+    <p>Derfor er antallet af medarbejdere heller ikke det samme som kapacitet. En del af medarbejdernes tid går til drift, kunder, andre projekter, ledelsesopgaver, fravær og andet arbejde, der ikke nødvendigvis fremgår af den strategiske portefølje. <strong>Et årsværk er en måleenhed, ikke en vurdering af kapacitet.</strong> Og der er ikke én enkelt faktor, der afgør, hvor meget kapacitet der er. Det afhænger af arbejdet, af, hvem der skal udføre det, af, hvornår det skal ske, og af, hvad der ellers foregår.</p>
+    <p>Et tredje spørgsmål er let at blande sammen med de to første: om organisationen har de kompetencer, strategien kræver. Det er et spørgsmål om kapabilitet, og serien vender tilbage til det i Paper 08. Dette paper handler om noget smallere og mere håndgribeligt: om ressourcen er tilgængelig, om arbejdet kan absorberes, hvad der ellers foregår på samme tid, hvilke begrænsninger flere initiativer deler, og hvornår kravene falder.</p>
+    <p>Problemet er ikke nyt, og det er ikke særegent for strategiarbejde. Mats Engwall og Anna Jerbrant undersøgte i 2003 to organisationer, hvor en stor del af arbejdet var organiseret som samtidige eller efterfølgende projekter. I begge organisationer drejede det primære ledelsesspørgsmål sig om ressourcer, og porteføljeledelsen var optaget af at prioritere mellem projekter og fordele personale. Forfatterne kaldte fænomenet <em>the resource allocation syndrome</em> og spurgte i titlen, om det er den største udfordring i ledelse af mange samtidige projekter.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (kvalitative casestudier):</strong> Engwall &amp; Jerbrant (2003), »The resource allocation syndrome: the prime challenge of multi-project management?«, <em>International Journal of Project Management</em>, 21(6), 403–409: to kvalitative casestudier i organisationer med mange samtidige projekter, ikke en repræsentativ undersøgelse. Bruges til pointen, at fordelingen af ressourcer kan blive det dominerende ledelsesspørgsmål, når mange projekter trækker på de samme mennesker — ikke som evidens for, at det er strategiarbejdets største problem.</div>
+
+    <p><strong>Når mange initiativer trækker på de samme mennesker, kan fordelingen af dem blive et ledelsesspørgsmål og ikke kun en administrativ detalje.</strong></p>
+  </div>
+</section>
+
+<!-- 04 BEGREBER -->
+<section class="section" id="begreber">
+  <div class="container">
+    <div class="section-label">04 — Begrebsrammen</div>
+    <h2>Fire forskellige ting, vi let kalder kapacitet</h2>
+    <p>Når en direktion taler om kapacitet, kan ordet dække mindst fire forskellige ting. Skellet nedenfor er min praktiske ramme, ikke et forskningsbegreb, men det gør det lettere at høre, hvad der faktisk bliver sagt, når nogen siger »vi har kapaciteten«.</p>
+
+    <div class="basis" role="group" aria-label="Model: Fire ting, vi kalder kapacitet">
+      <div class="basis-head">
+        <div class="bh-label">Model · Thomas Friisnæs' praktiske skel</div>
+        <div class="bh-title">Fire ting, vi kalder kapacitet</div>
+        <p class="bh-sub">Illustrative eksempler fra åbningscasen.</p>
+      </div>
+      <table class="kinds-table">
+        <thead>
+          <tr><th scope="col">Begreb</th><th scope="col">Hvad det svarer på — og hvad det ikke svarer på</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>A · Nominel kapacitet</strong><span>»Datateamet er otte personer«</span></td><td data-label="Hvad det svarer på — og hvad det ikke svarer på">Hvor mange ressourcer der findes på papiret, og hvor meget arbejdstid de repræsenterer i perioden. Det siger intet om, hvor meget af tiden der er fri.</td></tr>
+          <tr><td><strong>B · Planlagt efterspørgsel</strong><span>»Datateam: 60 %«</span></td><td data-label="Hvad det svarer på — og hvad det ikke svarer på">Hvor meget af ressourcen en plan forudsætter, som behov, allokering eller bemandingsantagelse. Det er efterspørgsel, ikke udbud.</td></tr>
+          <tr><td><strong>C · Tilgængelig kapacitet</strong><span>»Det, der er tilbage efter kendte forpligtelser«</span></td><td data-label="Hvad det svarer på — og hvad det ikke svarer på">Hvor meget der er tilbage, når drift, kunder, regulatorisk arbejde, vedligehold, eksisterende projekter, fravær og andre transformationer er trukket fra. Også dette tal er delvist et skøn, fordi ikke alle forpligtelser er registreret.</td></tr>
+          <tr><td><strong>D · Vurderet realistisk eksekveringskapacitet</strong><span>»Det, vi realistisk kan bære i kvartalet«</span></td><td data-label="Hvad det svarer på — og hvad det ikke svarer på">Hvor meget af kravet organisationen realistisk kan absorbere i perioden, når samtidighed, afhængigheder og usikkerhed er taget med. Et beslutningsrelevant skøn, ikke den sande kapacitet.</td></tr>
+        </tbody>
+      </table>
+      <div class="basis-foot">Planen indeholder B. Beslutningen kræver et billede af C og en vurdering af D.</div>
+    </div>
+
+    <p>Forvekslingerne sker i overgangene. Når B bliver læst som C, bliver en efterspørgsel til en bekræftet tilgængelighed. Når A bliver læst som C, bliver otte personer til otte personers tid. Og når D bliver fremstillet som en registreret kendsgerning, får et skøn en sikkerhed, det ikke har.</p>
+    <p><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a> viste, at tal kan hvile på meget forskellige slags observationer. Det gælder også her. Alle fire kan skrives som timer eller procenter, men A bygger på optællinger, B på planer, C blander registreringer og skøn, og D er en vurdering, der kan struktureres. <strong>At de kan stå i den samme kolonne, gør dem ikke til den samme slags tal.</strong></p>
+    <p>Jeg undgår med vilje at kalde C for den »faktiske« kapacitet. Også tilgængelighed er et billede på et bestemt tidspunkt, og billedet ændrer sig, når en kunde eskalerer, en nøgleperson er væk, eller et andet initiativ rykker frem.</p>
+    <p>Skellet kræver ingen ny metode. <strong>Det kræver, at nogen spørger, hvilken af de fire ting et kapacitetstal er, før det bliver brugt i en beslutning.</strong></p>
+  </div>
+</section>
+
+<!-- 05 BAU -->
+<section class="section" id="bau">
+  <div class="container">
+    <div class="section-label">05 — Driften</div>
+    <h2>BAU er en del af kapacitetsregnestykket</h2>
+    <p>Når en plan skriver »60 % af datateamet«, er det første spørgsmål: 60 % af hvad? Er 100 % teamets samlede arbejdstid, eller er det den del, der er tilbage, når driften er dækket? Begge definitioner kan bruges. Men to planer, der bruger hver sin, kan ikke lægges sammen, og en plan, der ikke gør definitionen tydelig, kan ikke fortolkes entydigt.</p>
+    <p>Det er her, BAU — <em>business as usual</em> — kommer ind. BAU er drift, kunder, compliance og regulatoriske krav, vedligehold, hændelser, møder, leverancer, der allerede er lovet, og de ledelsesopgaver, der ikke forsvinder, fordi et initiativ starter. Hertil kommer andre transformationer, der trækker på de samme mennesker. Alt det bruger den samme kapacitet. Hvis 100 % er teamets samlede arbejdstid, er BAU en allerede disponeret del af kapaciteten, som reducerer det, der er tilgængeligt for de strategiske initiativer. Hvis 100 % derimod betyder kapaciteten efter BAU, skal det være eksplicit. <strong>BAU ligger ikke ved siden af kapacitetsbilledet. Men det skal være klart, hvor i regnestykket den ligger.</strong></p>
+    <p>Et strategisk initiativ konkurrerer altså ikke kun med de andre initiativer i porteføljen. Det konkurrerer også med tirsdag formiddag.</p>
+    <p>Et enkelt kontrolspørgsmål kan vise, om regnestykket hænger sammen: <strong>Er nogen af de personer, planen forudsætter, samtidig regnet med som fuldt dækkende for driften?</strong> Er svaret ja, står I med en antagelse, der skal testes, ikke med en fejl, der skal findes en skyldig for.</p>
+    <p>Bodil Stilling Blichfeldt og Pernille Eskerod gennemførte 128 dybdeinterviews i 30 virksomheder om deres projektporteføljestyring. Virksomhederne kunne styre deres porteføljer efter teorien og alligevel opleve forsinkede projekter, kamp om ressourcer, stress og manglende overblik. Ifølge forfatterne var en central forklaring, at porteføljestyringen ofte kun omfattede en del af de igangværende projekter, mens projekterne uden for den bandt ressourcer, som var tiltænkt porteføljens projekter.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (kvalitativ interviewundersøgelse):</strong> Blichfeldt &amp; Eskerod (2008), »Project portfolio management – There's more to it than what management enacts«, <em>International Journal of Project Management</em>, 26(4), 357–365: 128 dybdeinterviews i 30 virksomheder om styringen af deres projekter. Handler om projekter uden for den formelle porteføljestyring, ikke om driften som helhed. Bruges til pointen, at arbejde uden for porteføljen kan binde den kapacitet, porteføljen regner med — ikke som evidens for, at alle virksomheder har skjulte projekter.</div>
+
+    <p>Min oversættelse er enkel: <strong>Det arbejde, der ikke står i porteføljen, bruger stadig kapacitet.</strong> Studiet dokumenterer projekter uden for den formelle porteføljestyring, ikke driften. Overførslen til BAU er min egen praktiske analogi.</p>
+    <p>En praktikerkilde peger i samme retning. I en artikel fra 2026 anbefaler Boston Consulting Group, at organisationer ser på deres nuværende kapacitet og råderum — ikke kun i form af medarbejdernes arbejdsbyrde, men også den samlede investering, de tekniske krav og de igangværende BAU-forpligtelser.</p>
+
+    <div class="research-note"><strong>Praktikerartikel (Boston Consulting Group, 2026):</strong> Chau, Sood, Brown, Baker, Ellmer, Weinstein &amp; Catchlove, »The Power of Priorities: Why Less Is More in a Transformation«, 9. januar 2026: rådgivningsvirksomhedens egen praktikervurdering, ikke forskning. Artiklens tal om transformationers succesrate og om fordelingen af værdi mellem initiativer bruges ikke. Bruges alene som eksempel på, at BAU-forpligtelser indgår i praktikeres kapacitetsvurdering.</div>
+  </div>
+</section>
+
+<!-- 06 TIMING -->
+<section class="section" id="timing">
+  <div class="container">
+    <div class="section-label">06 — Tidspunktet</div>
+    <h2>Kapacitet har et tidspunkt</h2>
+    <p>»Vi har kapacitet nok i år« kan være rigtigt og alligevel ikke være nok. Et års kapacitet bliver ikke brugt som et årsgennemsnit. Den bliver brugt af bestemte mennesker i bestemte uger. Konflikten i åbningscasen opstod ikke, fordi nogen bad om for meget, men fordi to initiativer blev forskudt ind i det samme kvartal.</p>
+    <p>Tag en anden version af casen, hvor datateamet har plads til både initiativ A og B, opgjort på året og endda på kvartalet. Men A skal flytte kundedata over på den nye løsning i to bestemte uger i marts, og B skal tage den nye planlægning i brug i de samme to uger. I gennemsnit går det op. I de to uger gør det ikke.</p>
+    <p>Et kapacitetsudsagn bliver derfor først brugbart, når det indeholder fire ting: <strong>hvilken ressource, hvilket tidsvindue, hvor stort kravet er, og hvilke forpligtelser der allerede ligger i vinduet.</strong> »Datateamet har kapacitet i foråret« er et andet udsagn end »de to dataspecialister har omkring halvdelen af deres tid fri i de to uger i marts, når månedsafslutningen er klaret«.</p>
+    <p>Operationsanalysen behandler netop dette som et formelt problem. I en oversigtsartikel fra 2023 beskriver Mariam Gómez Sánchez og kolleger det, der på engelsk hedder <em>the resource-constrained multi-project scheduling problem</em>: at give opgaverne i to eller flere samtidige projekter et starttidspunkt, så både rækkefølgen mellem opgaverne og de begrænsede ressourcer bliver respekteret. Selv i den formelle model er spørgsmålet altså ikke kun, om der er ressourcer nok i alt, men også hvornår og i hvilken rækkefølge de bliver brugt.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (oversigtsartikel, operationsanalyse):</strong> Gómez Sánchez, Lalla-Ruiz, Fernández Gil, Castro &amp; Voß (2023), »Resource-constrained multi-project scheduling problem: A survey«, <em>European Journal of Operational Research</em>, 309(3), 958–976: inviteret oversigtsartikel om matematiske planlægningsmodeller og løsningsmetoder. Handler om formelle planlægningsproblemer, ikke om empirisk forskning i ledelse af videnarbejde. Bruges alene til pointen, at tid og rækkefølge er en del af selve kapacitetsproblemet.</div>
+
+    <p>Det betyder ikke, at direktionen skal løse et planlægningsproblem. Det er ikke dens opgave, og strategisk arbejde lader sig ikke planlægge som en produktionslinje. <strong>Men direktionen skal kunne se, hvor tidsvinduerne kolliderer, for det er dér, prioriteringen i sidste ende skal træffes.</strong></p>
+  </div>
+</section>
+
+<!-- 07 PORTEFOELJE -->
+<section class="section" id="portefoelje">
+  <div class="container">
+    <div class="section-label">07 — Porteføljen</div>
+    <h2>Lokalt muligt. Samlet urealistisk.</h2>
+    <p>Hver af de tre planer i åbningscasen blev vurderet af dem, der kendte initiativet bedst, og set fra initiativet holdt vurderingen. <strong>Kapacitet kan se realistisk ud initiativ for initiativ og være urealistisk på porteføljeniveau.</strong></p>
+    <p><a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a> spurgte: »Grøn på hvad?« Kapacitet rejser et nabospørgsmål: <strong>Realistisk set fra hvor?</strong> Et initiativ kan være realistisk inden for sin egen plan og urealistisk, når det bliver lagt ved siden af de initiativer, der trækker på de samme mennesker.</p>
+    <p>Det behøver ikke at skyldes dårlig planlægning. Når en initiativansvarlig siger »Vi kan levere vores del«, og datateamets leder siger »Ressourcen er bekræftet«, kan begge udsagn være ærlige. De svarer på et lokalt spørgsmål. Ingen af dem er blevet bedt om at svare på, om summen af alle bekræftelser går op. <strong>Det er et spørgsmål om informationsarkitektur, ikke om skyld.</strong></p>
+    <p>Et casestudie af to porteføljer af interne udviklingsprojekter peger i samme retning. Suvi Elonen og Karlos Artto fandt i 2003 seks problemområder. Blandt dem var manglende ressourcer, kompetencer og metoder, men også utilstrækkelige aktiviteter på porteføljeniveau og utilstrækkelig informationshåndtering. En del af problemet lå altså på porteføljeniveau og i informationen, ikke kun i mængden af ressourcer.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (casestudie):</strong> Elonen &amp; Artto (2003), »Problems in managing internal development projects in multi-project environments«, <em>International Journal of Project Management</em>, 21(6), 395–402: interviews, spørgeskemaer og workshops i to casebaserede porteføljer af interne udviklingsprojekter. Bruges til pointen, at problemer i miljøer med mange samtidige projekter også kan ligge på porteføljeniveau og i informationshåndteringen — ikke som generel beskrivelse af strategiske porteføljer.</div>
+
+    <p>Det ville være bekvemt, hvis løsningen blot var et bedre regneark. Miia Martinsuos forskningsoversigt fra 2013 over empirisk forskning i projektporteføljestyring nuancerer den forestilling. Oversigten tager udgangspunkt i, at virksomheder kæmper med suboptimering og ændringer blandt deres projekter, også når de har indført normative anvisninger og god praksis. Ifølge Martinsuo kan porteføljestyring i praksis også forstås som forhandling og som strukturel omkonfigurering, ikke kun som en rationel beslutningsproces.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (forskningsoversigt):</strong> Martinsuo (2013), »Project portfolio management in practice and in context«, <em>International Journal of Project Management</em>, 31(6), 794–803: oversigt over nyere empirisk forskning i projektporteføljestyring. Bruges til pointen, at beslutninger om porteføljer også forhandles og omstruktureres og ikke kun beregnes — ikke som kritik af porteføljestyring som disciplin.</div>
+
+    <p>For kapaciteten betyder det, at summen på 140 % ikke er svaret. Den er begyndelsen på en drøftelse af prioriteter, som nogen skal have mandat til at afslutte.</p>
+    <p>Her kan et stærkt Strategy Office skabe værdi. Ikke ved at eje kapaciteten eller træffe beslutningerne, men ved at sikre fælles definitioner af, hvad 100 % betyder, samle de lokale krav, udfordre dobbeltbookinger, gøre fælles begrænsninger og tidsvinduer synlige og facilitere den prioritering, direktionen skal foretage. Udfordringen er ikke nødvendigvis, at ingen har kapacitetsdata. Den er, om direktionen kan se, hvor kravene konkurrerer. <strong>Kapacitetsdata skaber først værdi for hele virksomheden, når de lokale planer kan ses samlet.</strong></p>
+  </div>
+</section>
+
+<!-- 08 FAELLES -->
+<section class="section" id="faelles">
+  <div class="container">
+    <div class="section-label">08 — Den fælles begrænsning</div>
+    <h2>Den fælles begrænsning står ikke i nogen enkelt plan</h2>
+    <p>Bag procenterne står navne. De to dataspecialister, initiativ A har fået bekræftet, er de samme to, som initiativ B har fået bekræftet. Og den arkitekt, initiativ C regner med, har initiativ A også brug for. Ingen har gjort noget forkert. Men det, der ligner tre ressourceplaner, er i praksis tre krav til de samme få mennesker.</p>
+
+    <div class="load" role="group" aria-label="Illustration: Lokalt plausibelt — samlet umuligt">
+      <div class="load-head">
+        <div class="ld-label">Illustration · konstruerede tal fra åbningscasen</div>
+        <div class="ld-title">Lokalt plausibelt — samlet umuligt</div>
+        <div class="ld-cond">Samme team · samme periode · samme nævner</div>
+      </div>
+      <div class="load-rows">
+        <div class="ld-row ld-scale" aria-hidden="true">
+          <span class="ld-name"></span>
+          <span class="ld-track"><span class="ld-mark">100 %</span></span>
+          <span class="ld-val"></span>
+        </div>
+        <div class="ld-row">
+          <span class="ld-name">Initiativ A<small>vurderet lokalt</small></span>
+          <span class="ld-track" aria-hidden="true"><span class="ld-fill" style="width:42.857%"></span><span class="ld-limit"></span></span>
+          <span class="ld-val">60 %</span>
+        </div>
+        <div class="ld-row">
+          <span class="ld-name">Initiativ B<small>vurderet lokalt</small></span>
+          <span class="ld-track" aria-hidden="true"><span class="ld-fill" style="width:35.714%"></span><span class="ld-limit"></span></span>
+          <span class="ld-val">50 %</span>
+        </div>
+        <div class="ld-row">
+          <span class="ld-name">Initiativ C<small>vurderet lokalt</small></span>
+          <span class="ld-track" aria-hidden="true"><span class="ld-fill" style="width:21.429%"></span><span class="ld-limit"></span></span>
+          <span class="ld-val">30 %</span>
+        </div>
+        <div class="ld-row ld-sum">
+          <span class="ld-name">Samlet efterspørgsel<small>set på tværs</small></span>
+          <span class="ld-track" aria-hidden="true"><span class="ld-fill" style="width:100%"></span><span class="ld-over" style="left:71.429%;right:0"></span><span class="ld-cut" style="left:42.857%"></span><span class="ld-cut" style="left:78.571%"></span><span class="ld-tag" style="left:0;width:42.857%">A</span><span class="ld-tag" style="left:42.857%;width:35.714%">B</span><span class="ld-tag" style="left:78.571%;width:21.429%">C</span><span class="ld-limit"></span></span>
+          <span class="ld-val">140 %</span>
+        </div>
+      </div>
+      <p class="load-note">Summen giver kun mening, fordi ressourcen, perioden og nævneren er de samme: 100 % er datateamets samlede arbejdstid i kvartalet, før driftsopgaverne er trukket fra. Rækkefølgen i søjlen er vilkårlig: Det er summen, ikke initiativ C, der overstiger teamets samlede arbejdstid. Tallene er illustrative.</p>
+      <div class="load-foot">Tre plausible lokale planer kan tilsammen blive en urealistisk enterprise-plan.</div>
+    </div>
+
+    <p>Bruger planerne hver sin definition af 100 %, eller gælder de forskellige uger, giver summen ingen mening. Det gør ikke nødvendigvis konflikten mindre. Det gør den bare sværere at se.</p>
+    <p>En fælles begrænsning — på engelsk en <em>shared constraint</em> — er en ressource, som flere prioriteter afhænger af på samme tid, og som ikke umiddelbart kan erstattes eller udvides. Det kan være et datateam, en arkitekt, en platform, en compliancefunktion, en salgsorganisation eller de samme få ledere. Hvilke begrænsninger der er kritiske, afhænger af strategien. Det er ikke altid teknologien, og det er ikke altid antallet af mennesker.</p>
+
+    <p class="pull-quote">Et kapacitetsproblem kan være svært at se, netop fordi det ikke ligger inde i ét initiativ. Det bliver først synligt mellem dem.<cite>— Thomas Friisnæs</cite></p>
+  </div>
+</section>
+
+<!-- 09 SAMTIDIGHED -->
+<section class="section" id="samtidighed">
+  <div class="container">
+    <div class="section-label">09 — Samtidighed</div>
+    <h2>At starte mere arbejde skaber ikke mere kapacitet</h2>
+    <p>Når en direktion vil have mere fart på strategien, er det nærliggende at sætte flere initiativer i gang. Men <strong>at starte mere arbejde skaber ikke i sig selv mere kapacitet. Det fordeler den kapacitet, der er, over flere samtidige krav.</strong> At et initiativ er startet, er ikke i sig selv dokumentation for mere fremdrift, hvis det ikke kan bemandes i den periode, planen forudsætter. Det kan i stedet lægge endnu et krav på de samme ressourcer.</p>
+    <p>Det betyder ikke, at mennesker kun kan arbejde på én ting ad gangen, eller at arbejde på tværs af flere projekter er ineffektivt. Michael O'Leary, Mark Mortensen og Anita Williams Woolley har udviklet en teoretisk model for medlemskab af flere teams på samme tid. Organisationer bruger den struktur til at øge både produktivitet og læring, men den skaber også konkurrerende krav til opmærksomhed og information. Ifølge modellen afhænger virkningerne af både antallet af teams og af, hvor forskellige de er.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (teoretisk model):</strong> O'Leary, Mortensen &amp; Woolley (2011), »Multiple Team Membership: A Theoretical Model of its Effects on Productivity and Learning for Individuals and Teams«, <em>Academy of Management Review</em>, 36(3), 461–478: teoretisk artikel, ikke et empirisk studie. Bruges til nuancen, at arbejde på tværs af flere teams både kan have fordele og skabe konkurrerende krav — ikke til at fastsætte et bestemt antal teams eller initiativer.</div>
+
+    <p>Et eksplorativt studie fra 2006 belyser den anden side af sagen. Annika Zika-Viktorsson, Per Sundström og Mats Engwall spurgte 392 projektmedarbejdere i ni svenske virksomheder inden for industri, medicinalindustri og byggeri om det, de kaldte <em>project overload</em>: oplevet fragmentering, afbrydelse og ineffektivitet, når man skifter mellem opgaver i separate, men samtidige projekter. I studiet hang den oplevede overbelastning sammen med blandt andet manglende mulighed for restitution, utilstrækkelige rutiner, knap tid og mange samtidige projekter — og med stressreaktioner, mindre kompetenceudvikling og afvigelser fra tidsplaner.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (eksplorativt spørgeskemastudie):</strong> Zika-Viktorsson, Sundström &amp; Engwall (2006), »Project overload: An exploratory study of work and management in multi-project settings«, <em>International Journal of Project Management</em>, 24(5), 385–394: én spørgeskemaundersøgelse blandt projektmedarbejdere i ni svenske virksomheder. Studiet viser sammenhænge, ikke årsag og virkning; den læsning er min metodebemærkning. Bruges til pointen, at samtidighed kan opleves som belastning og hænge sammen med forsinkelser — ikke som evidens for, at flere projekter forårsager dårligere resultater.</div>
+
+    <p>Tilsammen giver de to kilder et mere præcist billede end påstanden om, at det altid er dårligt at arbejde på flere ting ad gangen. Samtidighed er ikke et problem i sig selv. <strong>Men den kan have en pris, som ikke står i nogen plan, og som ikke bliver mindre af, at initiativerne er vigtige.</strong></p>
+    <p>Heller ikke antallet af initiativer siger så meget, som det ser ud til. Et stort og et lille initiativ tæller begge som ét. Det, der betyder noget, er, hvor meget de kræver, af hvem og hvornår — og hvad de samme mennesker ellers skal.</p>
+  </div>
+</section>
+
+<!-- 10 REGEL -->
+<section class="section" id="regel">
+  <div class="container">
+    <div class="section-label">10 — Tommelfingerregler</div>
+    <h2>80 % er ikke en universel forskningsregel</h2>
+    <p>Når et kapacitetsproblem først er erkendt, kan der dukke en tommelfingerregel op: Planlæg folk til 80 %, så er der plads til det uforudsete. Reglen er forståelig, men den findes ikke som universel sandhed. Høj udnyttelse er ikke automatisk dårlig, og lav udnyttelse er ikke automatisk god.</p>
+    <p>Selv i køteori, hvor sammenhængen mellem udnyttelse og serviceniveau kan beregnes, er svaret ikke én procent. I en analyse af servicesystemer med flere betjeningssteder viste Ward Whitt i 1992, at den passende udnyttelsesgrad typisk stiger med systemets størrelse, og at mere variation i ankomster og betjeningstider har en tendens til at trække den ned, hvis det samme serviceniveau skal holdes.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (operationsanalyse):</strong> Whitt (1992), »Understanding the Efficiency of Multi-Server Service Systems«, <em>Management Science</em>, 38(5), 708–723: matematisk analyse af køsystemer med flere betjeningssteder. Strategieksekvering er ikke et køsystem, og ingen formler eller procenter overføres. Bruges alene til pointen, at der heller ikke i køteori findes én passende udnyttelsesgrad uafhængigt af sammenhængen.</div>
+
+    <p>Whitt dokumenterer ikke noget om C-level-arbejde eller strategieksekvering, og jeg bruger derfor ikke studiet til at fastsætte en kapacitetsregel for organisationer. Det relevante her er smallere: <strong>Selv i et formaliseret servicesystem er en passende udnyttelsesgrad ikke én kontekstuafhængig procent.</strong> I strategiarbejde må spørgsmålet om råderum derfor vurderes ud fra den konkrete ressource, variationen, tidsvinduet og konsekvensen af uforudsete krav. Et team med forudsigeligt arbejde og et team, der også håndterer hændelser og kundeeskaleringer, kan derfor have brug for forskelligt råderum.</p>
+    <p>Det nyttige spørgsmål er derfor ikke »hvilken procent?«, men <strong>»hvor meget variation og hvor mange uforudsete krav skal denne ressource kunne bære i denne periode — og hvad sker der med de andre prioriteter, hvis den ikke kan?«</strong></p>
+  </div>
+</section>
+
+<!-- 11 TRADEOFFS -->
+<section class="section" id="tradeoffs">
+  <div class="container">
+    <div class="section-label">11 — Tradeoffs</div>
+    <h2>Kapacitetsproblemet ender på ledelsens bord</h2>
+    <p>I åbningscasen er det let at se, hvad direktionen ikke kan: forvente, at datateamet leverer 140 %. Arbejdstiden kan godt strækkes i en periode, men også det er en ledelsesbeslutning med en pris, ikke en detalje i planen.</p>
+    <p>Når to eller flere prioriteter kræver den samme knappe kapacitet på samme tid, står ledelsen over for et tradeoff. Og der er flere muligheder, end det første reflekssvar lægger op til:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Svar på en kapacitetskonflikt</div>
+      <ul class="dispo-list">
+        <li><strong>Efterspørgslen</strong> <em>→</em> stop et initiativ, reducér omfanget eller forenkl løsningen</li>
+        <li><strong>Rækkefølgen</strong> <em>→</em> sekvensér, udskyd, flyt tidsvinduet eller ændr en afhængighed</li>
+        <li><strong>Den tilgængelige kapacitet</strong> <em>→</em> fjern BAU-arbejde med lav værdi, automatisér eller omfordel fra lavere prioriteter</li>
+        <li><strong>Mere eller anden kapacitet</strong> <em>→</em> redesign teamet, tilfør kompetence, brug ekstern kapacitet eller ansæt</li>
+      </ul>
+    </div>
+
+    <p>Listen begynder med efterspørgslen og slutter med ansættelse. Det er ikke en rangorden, men en påmindelse om, at <strong>et kapacitetsgab ikke automatisk er et bemandingsproblem.</strong> Er problemet timing, hjælper flere hænder til næste år ikke i marts. Er begrænsningen én bestemt arkitekt, kan en ny medarbejder ikke nødvendigvis træde i stedet.</p>
+
+    <p class="pull-quote">Nogle kapacitetsproblemer er i virkeligheden prioriteringsproblemer, som endnu ikke er blevet gjort eksplicitte.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Kapacitet er et allokeringsspørgsmål på linje med kapital. <strong>For den samme knappe ressource i det samme tidsvindue er den tid, der bruges på ét initiativ, ikke samtidig tilgængelig for et andet.</strong> Det er en alternativomkostning, også når den ikke står i budgettet. En lancering, der ikke får de data- og arkitekturfolk, den regner med, kan flytte sig, selv om dens egen plan er grøn.</p>
+    <p><strong>En strategi kan være fuldt ressourcebelagt på papiret og stadig overforpligte organisationen.</strong> Det er ikke nødvendigvis et tegn på dårlig ledelse. Det kan betyde, at de tradeoffs, der hører hjemme på porteføljeniveau, endnu ikke er truffet.</p>
+  </div>
+</section>
+
+<!-- 12 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">12 — Frameworket</div>
+    <h2>Fra allokering til realisme</h2>
+    <p>De fem bevægelser nedenfor er min praktiske refleksionsramme, ikke en score, et indeks eller en algoritme. De bruges på én kritisk ressource eller ét tidsvindue ad gangen, og de ender i en beslutning, ikke i et tal.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">Fra allokering til realisme</div>
+      <div class="fw-sub">Thomas Friisnæs' praktiske refleksionsramme til at teste en kapacitetsantagelse på tværs af porteføljen. Ingen score, intet indeks og ingen algoritme.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Kravet</h4>
+          <p><strong>Hvad kræver strategien — og hvornår?</strong> Beskriv kravet som ressource, omfang og periode: hvilke roller eller teams, hvor stor en del af deres tid og i hvilke uger eller måneder. »Datateamet i foråret« er for groft til at blive testet. »To dataspecialister, halvdelen af tiden, i to bestemte uger i marts« kan testes.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Basen</h4>
+          <p><strong>Hvad er registreret eller vurderet tilgængeligt efter kendte forpligtelser?</strong> Træk drift, andre projekter og kendt fravær fra, og skeln mellem det, der er registreret, og det, der er vurderet. Gør nævneren eksplicit: Hvad er 100 %?</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Knapheden</h4>
+          <p><strong>Hvilke ressourcer bliver kritiske begrænsninger?</strong> Ikke alle ressourcer behøver at blive fulgt lige tæt. Find dem, som flere prioriteter afhænger af, og som ikke umiddelbart kan erstattes eller udvides i perioden.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Samtidigheden</h4>
+          <p><strong>Hvor kræver flere prioriteter den samme kapacitet i samme tidsvindue?</strong> Læg planerne ved siden af hinanden for de kritiske ressourcer. Det er her, dobbeltbookinger bliver synlige. Og her giver en sum kun mening, hvis ressource, periode og nævner er de samme.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">5</div>
+        <div class="fw-step-body">
+          <h4>Tradeoffet</h4>
+          <p><strong>Hvad gør ledelsen, hvis kravene ikke kan bæres samtidig?</strong> Formulér valget eksplicit: hvad der får kapaciteten, hvad der bliver flyttet, reduceret eller stoppet, og hvem der træffer beslutningen. Et tradeoff, ledelsen ikke gør eksplicit, forsvinder ikke. Det kan i stedet vise sig som ventetid, implicit nedprioritering, reduceret omfang eller lokale valg hos dem, der står med opgaverne.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Rammen ender ikke i et tal. Den ender i én konkret ledelsesbeslutning: <strong>hvilken prioritet der får den knappe kapacitet i det tidsvindue, hvor der ikke er nok til dem alle — og hvad der sker med de andre.</strong></p>
+    <p>Rækkefølgen er ikke tilfældig. De to første bevægelser kan tages inden for det enkelte initiativ. De tre sidste kræver, at nogen ser på tværs af initiativerne, og den sidste kræver et klart prioriteringsmandat på det niveau, hvor konflikten kan afgøres.</p>
+  </div>
+</section>
+
+<!-- 13 TIDLIGERE -->
+<section class="section" id="tidligere">
+  <div class="container">
+    <div class="section-label">13 — Seriens signatur</div>
+    <h2>Hvad kunne du se tidligere?</h2>
+    <p>Den første faste rubrik handler i Paper 04 om mønstre, der kan gøre konkurrencen om kapaciteten synlig, mens der stadig er tid til at spørge ind til den.</p>
+
+    <div class="sig sig-earlier">
+      <div class="sig-label">Seriens signatur · Paper 04</div>
+      <div class="sig-title">Hvad kunne du se tidligere?</div>
+      <table class="sig-table">
+        <thead>
+          <tr><th scope="col">Det, du kan se</th><th scope="col">Spørgsmålet, det rejser</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Den samme knappe ressource står i flere planer i den samme periode</td><td data-label="Spørgsmålet, det rejser">Er den samme kapacitet lovet mere end én gang?</td></tr>
+          <tr><td>De samme personer får flere samtidige opgaver</td><td data-label="Spørgsmålet, det rejser">Hvad bliver skubbet, og hvem har besluttet det?</td></tr>
+          <tr><td>Planlagt efterspørgsel og tilgængelig kapacitet glider fra hinanden</td><td data-label="Spørgsmålet, det rejser">Styrer vi stadig efter den antagelse, planen bygger på?</td></tr>
+          <tr><td>BAU-forpligtelserne vokser</td><td data-label="Spørgsmålet, det rejser">Er den tilgængelige kapacitet blevet mindre, uden at planerne er ændret?</td></tr>
+          <tr><td>Den samme begrænsning går igen i kapacitetskommentarerne</td><td data-label="Spørgsmålet, det rejser">Er det en fælles begrænsning snarere end en række lokale problemer?</td></tr>
+          <tr><td>Data- og teknologikapacitet dukker op på tværs af initiativer</td><td data-label="Spørgsmålet, det rejser">Hvem prioriterer mellem initiativerne, når de har brug for de samme folk?</td></tr>
+          <tr><td>Ledelsens råderum bliver nævnt på tværs af initiativer</td><td data-label="Spørgsmålet, det rejser">Er de samme ledere forudsat mange steder i den samme periode?</td></tr>
+          <tr><td>Tidsvinduer kolliderer</td><td data-label="Spørgsmålet, det rejser">Hvem har brug for hvad i de samme uger?</td></tr>
+          <tr><td>Lokale bekræftelser af den samme ressource i den samme periode går ikke op, når de lægges sammen</td><td data-label="Spørgsmålet, det rejser">Hvem ser summen, og hvem har mandat til at handle på den?</td></tr>
+        </tbody>
+      </table>
+      <p class="sig-note"><strong>Illustrative signalhypoteser — ikke validerede ledende indikatorer, forudsigelser eller årsager.</strong></p>
+    </div>
+
+    <p>Ingen af mønstrene fortæller, at et initiativ vil glide. De peger på, hvor det kan betale sig at spørge.</p>
+  </div>
+</section>
+
+<!-- 14 KONKLUDERE -->
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="section-label">14 — Seriens signatur</div>
+    <h2>Hvad må du ikke konkludere?</h2>
+    <p>Den anden faste rubrik er særlig vigtig her, fordi en synlig kapacitetskonflikt let bliver læst som en dom over et initiativ, et team eller en funktion.</p>
+
+    <div class="sig sig-conclude">
+      <div class="sig-label">Seriens signatur · Paper 04</div>
+      <div class="sig-title">Hvad må du ikke konkludere?</div>
+      <div class="sig-cols">
+        <div>
+          <h4>Ud fra et lavt kapacitetssignal eller en synlig konflikt alene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at initiativet vil fejle</li>
+            <li>at teamet underpræsterer</li>
+            <li>at ledelsen er dårlig</li>
+            <li>at strategien er for ambitiøs</li>
+            <li>at der skal ansættes</li>
+            <li>at et initiativ skal stoppes</li>
+            <li>at én bestemt funktion er problemet</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ud fra et højt kapacitetssignal alene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at kapaciteten objektivt er tilstrækkelig</li>
+            <li>at der ikke er fælles begrænsninger</li>
+            <li>at den rette specialist er til rådighed på det rette tidspunkt</li>
+            <li>at driften er stabil</li>
+            <li>at afhængighederne er løst</li>
+            <li>at udfaldet bliver godt</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sig-close">Et kapacitetssignal kan gøre en konflikt synlig. Det afgør ikke alene, hvad konflikten betyder, eller hvad ledelsen skal gøre ved den.</div>
+    </div>
+
+    <p>En bestyrelse behøver normalt ikke gennemgå detaljerede ressourceplaner. Men den kan have brug for at vide, om ambitionen og organisationens bæreevne er blevet holdt op mod hinanden — og hvilke tradeoffs der er truffet for at få dem til at hænge sammen.</p>
+  </div>
+</section>
+
+<!-- 15 DIAGNOSE -->
+<section class="section" id="diagnose">
+  <div class="container">
+    <div class="section-label">15 — Diagnose · 10 minutter</div>
+    <h2>Hvor er kapaciteten lovet to gange?</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · CEO, direktionsmedlem eller Strategy Office · Skriftlig</div>
+      <div class="ex-meta">⏱ Cirka 10 minutter · Ingen score og ingen modenhedsvurdering.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Vælg ét strategisk initiativ, der i dag bliver rapporteret som på plan. Svar skriftligt og i rækkefølge.</p>
+      <ol>
+        <li><strong>Hvilke ressourcer eller roller er kritiske for initiativet?</strong></li>
+        <li><strong>Hvornår har initiativet brug for dem?</strong></li>
+        <li><strong>Hvilke driftsopgaver har de samme ressourcer i den periode?</strong></li>
+        <li><strong>Hvilke andre initiativer har brug for den samme kapacitet?</strong></li>
+        <li><strong>Hvad antager planen om deres tilgængelighed?</strong></li>
+        <li><strong>Hvilke dele af antagelsen er registrerede fakta, og hvilke er vurderinger?</strong></li>
+        <li><strong>Hvad kunne gøre antagelsen forkert?</strong></li>
+        <li><strong>Er der en fælles begrænsning, som påvirker flere initiativer — og i givet fald hvilken?</strong></li>
+        <li><strong>Er problemet primært timing, tilgængelighed, rækkefølge, teknologi, kompetence, adgang til beslutninger eller antallet af medarbejdere?</strong></li>
+        <li><strong>Er der et tradeoff, som endnu ikke er gjort eksplicit — og i givet fald hvilket?</strong></li>
+      </ol>
+      <p style="font-size:15.5px;color:var(--text-mid);margin:22px 0 0;">Øvelsen ender ikke i en score, men i tre linjer: <strong>én kapacitetsantagelse · én tværgående kapacitetskonflikt · ét ledelsestradeoff.</strong> Kan du ikke besvare spørgsmål 4, er det også et svar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16 MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">16 — 2-minutters mikrohandling</div>
+    <h2>Spørg, hvad den grønne plan forudsætter</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · ved næste porteføljegennemgang</span>
+      <h3>Ét spørgsmål og to opfølgende. Intet nyt værktøj og ingen ny ressourceplan.</h3>
+      <p>Vælg ét initiativ, der bliver rapporteret som grønt eller på plan. Spørg: <strong>»Hvilken kapacitet forudsætter denne plan, som allerede kan være lovet til noget andet?«</strong></p>
+      <p>Derefter: <strong>»I hvilken periode?«</strong> og <strong>»Hvis vi ikke kan få begge dele samtidig, hvad prioriterer vi så?«</strong></p>
+      <p>Og stop så der. Spørgsmålene løser ikke konflikten. De tester, om der er en, og om prioriteringsmandatet er tydeligt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">17 — Dit næste skridt</div>
+    <h2>Gør det konkret — og fortsæt din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 04 · Kapacitet findes ikke i planen</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv ét konkret næste skridt; det gemmes kun lokalt i din browser.</p>
+      <label for="commitText">Den kapacitetsantagelse, vi vil teste, er …</label>
+      <p class="commit-note">Skriv initiativet, den begrænsede ressource, perioden, det konkurrerende krav, den eksisterende drift, den nuværende antagelse, hvad antagelsen bygger på, og det tradeoff eller næste skridt, I vil tage. Eksempel: »Initiativ A forudsætter to dataspecialister halvdelen af tiden i to uger i marts. De samme to er forudsat i initiativ B og har samtidig ansvaret for månedsafslutningen. Antagelsen bygger på en mundtlig bekræftelse. Næste skridt: Strategy Office lægger de to planer ved siden af hinanden, og direktionen beslutter, hvad der kommer først.« Eksemplet er en illustration, ikke en anbefaling.</p>
+      <textarea id="commitText" placeholder="Initiativ · ressource · periode · konkurrerende krav · drift · antagelse · grundlag · tradeoff eller næste skridt"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit næste skridt</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Strategien sker mellem kvartalerne</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">18 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Er kapacitet ikke bare bemanding? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Antallet af medarbejdere fortæller, hvor mange der er, ikke hvor meget af deres tid der er til rådighed for et bestemt krav i en bestemt periode. Drift, andre projekter, ledelsesopgaver og fravær skal med, og nogle begrænsninger handler om én bestemt person eller platform snarere end om antallet (se <a href="#ressource" style="color:var(--gold);">afsnit 03</a> og <a href="#begreber" style="color:var(--gold);">04</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal vi bare planlægge mennesker til 80 %? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Paperet giver ikke belæg for én universel procent. Et fast tal kan være en bevidst styringskonvention, men bør ikke fremstilles som et valideret optimum. Hvor meget råderum det er hensigtsmæssigt at planlægge med, må vurderes ud fra ressource, variation, tidsvindue og konsekvensen af uforudsete krav (se <a href="#regel" style="color:var(--gold);">afsnit 10</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan vi ikke bare ansætte os ud af problemet? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nogle gange er ansættelse det rigtige svar. Men et kapacitetsgab er ikke automatisk et bemandingsproblem. Er begrænsningen timing, rækkefølge eller én bestemt specialist, løser flere medarbejdere ikke nødvendigvis problemet i den periode, hvor det opstår, og nye folk skal også findes og sættes ind i arbejdet (se <a href="#tradeoffs" style="color:var(--gold);">afsnit 11</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er multitasking altid ineffektivt? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det påstår paperet ikke. Arbejde på tværs af flere teams kan have fordele for både produktivitet og læring. Men samtidige krav konkurrerer om den samme tid og opmærksomhed, og i et eksplorativt studie hang oplevet overbelastning blandt andet sammen med mange samtidige projekter. Hvor meget samtidighed der er for meget, findes der ikke ét universelt svar på (se <a href="#samtidighed" style="color:var(--gold);">afsnit 09</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis alle funktionschefer siger, at de har kapacitet? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Så kan de alle have ret for deres egen del. Spørgsmålet er, om deres bekræftelser gælder den samme ressource, den samme periode og den samme nævner — og om nogen har lagt dem sammen. Et ja fra hver funktion er ikke et ja fra porteføljen (se <a href="#portefoelje" style="color:var(--gold);">afsnit 07</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal alle strategiske initiativer have buffer? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ikke som fast regel. Det relevante spørgsmål er, hvor usikkerheden og variationen er størst, og hvilke kritiske ressourcer der ikke kan tåle, at noget uforudset sker. En buffer kan være en klog beslutning ét sted og unødvendig et andet.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er dette ikke bare project portfolio management? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det bygger på meget af det samme. Project portfolio management er en moden disciplin med stærke metoder til prioritering og ressourcefordeling, og dette paper låner fra den. Vinklen her er strategisk observabilitet: om direktionen kan se konkurrencen om kapaciteten, mens der stadig er tid til at træffe tradeoffs, og om de bliver truffet på det rette niveau. En forskningsoversigt om porteføljestyring peger selv på, at porteføljebeslutninger i praksis også forhandles og ikke kun beregnes (se <a href="#portefoelje" style="color:var(--gold);">afsnit 07</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Betyder et lavt kapacitetssignal, at vi bør stoppe et initiativ? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Et lavt signal er en grund til at undersøge, ikke en beslutning. Første skridt er at forstå, hvad signalet bygger på: hvilken ressource, hvilken periode, hvilken nævner og hvilke konkurrerende krav. Derefter kommer tradeoffet, og her er det at stoppe ét blandt flere mulige svar, ved siden af at udskyde, sekvensere, reducere omfanget, frigøre kapacitet eller tilføre den (se <a href="#tradeoffs" style="color:var(--gold);">afsnit 11</a> og <a href="#konkludere" style="color:var(--gold);">14</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan et gennemsnitligt kapacitetssignal skjule et problem? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja. Et gennemsnit på tværs af initiativer eller funktioner kan se acceptabelt ud, mens én kritisk ressource er lovet væk flere gange i den samme periode. Derfor har ledelsen brug for både et samlet billede og et blik på de enkelte begrænsninger (se <a href="#faelles" style="color:var(--gold);">afsnit 08</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad gør jeg på mandag? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Vælg ét initiativ, der bliver rapporteret som på plan, og spørg, hvilken kapacitet planen forudsætter, som allerede kan være lovet til noget andet. Mikrohandlingen i <a href="#action" style="color:var(--gold);">afsnit 16</a> tager to minutter, diagnosen i <a href="#diagnose" style="color:var(--gold);">afsnit 15</a> cirka ti.</div>
+    </details>
+  </div>
+</section>
+
+<!-- 19 HANDLING -->
+<section class="section" id="handling">
+  <div class="container">
+    <div class="section-label">19 — Fra analyse til handling</div>
+    <h2>Fra analyse til handling</h2>
+    <p>Spørgsmålet, paperet efterlader, kræver ikke et værktøj: <strong>Hvor i jeres strategi har to eller flere prioriteter fået lovet den samme knappe kapacitet i samme periode?</strong></p>
+    <p>Det er alligevel rimeligt at sige, hvor jeg selv arbejder med spørgsmålet, og at jeg har en kommerciel interesse i det værktøj, jeg nævner her. Strategy Execution Observatory™ sammenholder blandt andet det, værktøjet kalder planlagt kapacitet — i dette papers sprog planlagt efterspørgsel — med den kapacitet, de ansvarlige vurderer som realistisk. Det er ét eksekveringssignal blandt flere. Og pointen i dette paper gælder også for det: Ét forholdstal kan ikke alene beskrive kapaciteten i en portefølje. Det skal læses sammen med tidsvinduet, driften, de fælles begrænsninger, nævneren og porteføljens sammenhæng — forhold, som et forholdstal ikke selv viser.</p>
+    <p>Signalet er min praktiske operationalisering, ikke en valideret måling, og principperne i dette paper gælder også mit eget arbejde: Nævnere, tidsvinduer, tærskler og eventuelle handlingsforslag er metodevalg, der skal kunne efterprøves, forbedres og dokumenteres. Et signal er et udgangspunkt for undersøgelse, ikke en beslutning — heller ikke når et værktøj foreslår en handling.</p>
+
+    <div class="cta-box">
+      <div class="cta-label">Samtale</div>
+      <h3>Hvor er jeres kapacitet lovet mere end én gang?</h3>
+      <p>Vælg én kritisk ressource og ét tidsvindue i jeres strategieksekvering — et datateam, en compliancefunktion, en salgsorganisation eller de samme få ledere. På 20 minutter kan vi skitsere, hvilke planer der trækker på den, og om der ligger et tradeoff, som ledelsen endnu ikke har truffet, uden at gøre det til et nyt planlægningsprojekt.</p>
+      <a class="start-btn" href="/#kontakt">20 min. Ét problem. Én plan. →</a>
+      <p class="print-only">20 min. Ét problem. Én plan. · friisnaes.com/#kontakt</p>
+    </div>
+
+    <h3 style="margin-top:36px;">Næste problem</h3>
+    <p>Åbningscasen sluttede med spørgsmålet om, hvem der har mandat til at afgøre, hvilket initiativ der får kapaciteten. Det peger på det næste problem. <strong>Kapacitet er ikke kun et spørgsmål om, hvem der har tid til at gøre arbejdet. Nogle gange er arbejdet klar — men venter på, at nogen beslutter, hvad der skal ske.</strong> Det er emnet for Paper 05.</p>
+
+    <div class="next-grid">
+      <div class="next-card soon" aria-disabled="true">
+        <div class="nc-tag">Paper 05 · Kommer</div>
+        <div class="nc-text"><strong>Beslutninger er en del af produktionsapparatet</strong> — når arbejdet er klar, men beslutningen venter</div>
+      </div>
+      <a class="next-card" href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">
+        <div class="nc-tag">Paper 03</div>
+        <div class="nc-text"><strong>Det kvalitative kan godt kvantificeres</strong> — vurderinger, skalaer og hvad et tal kan bære</div>
+      </a>
+      <a class="next-card" href="/library.html">
+        <div class="nc-tag">Executive Library</div>
+        <div class="nc-text"><strong>Alle serier og papers</strong> om strategi, hold, eksekvering og kapacitet</div>
+      </a>
+      <a class="next-card" href="/ceo-sparring.html">
+        <div class="nc-tag">CEO-sparring</div>
+        <div class="nc-text"><strong>Hvor konkurrerer jeres prioriteter om de samme folk?</strong> En fortrolig samtale, før spørgsmålet bliver til et projekt</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">Multi-project management og resource allocation</div>
+    <ul>
+      <li>Engwall, M. &amp; Jerbrant, A. (2003). »The resource allocation syndrome: the prime challenge of multi-project management?« <em>International Journal of Project Management</em>, 21(6), 403–409. <a href="https://doi.org/10.1016/S0263-7863(02)00113-8" target="_blank" rel="noopener">doi.org/10.1016/S0263-7863(02)00113-8</a></li>
+      <li>Elonen, S. &amp; Artto, K. A. (2003). »Problems in managing internal development projects in multi-project environments.« <em>International Journal of Project Management</em>, 21(6), 395–402. <a href="https://doi.org/10.1016/S0263-7863(02)00097-2" target="_blank" rel="noopener">doi.org/10.1016/S0263-7863(02)00097-2</a></li>
+      <li>Zika-Viktorsson, A., Sundström, P. &amp; Engwall, M. (2006). »Project overload: An exploratory study of work and management in multi-project settings.« <em>International Journal of Project Management</em>, 24(5), 385–394. <a href="https://doi.org/10.1016/j.ijproman.2006.02.010" target="_blank" rel="noopener">doi.org/10.1016/j.ijproman.2006.02.010</a></li>
+      <li>O'Leary, M. B., Mortensen, M. &amp; Woolley, A. W. (2011). »Multiple Team Membership: A Theoretical Model of its Effects on Productivity and Learning for Individuals and Teams.« <em>Academy of Management Review</em>, 36(3), 461–478. <a href="https://doi.org/10.5465/amr.2009.0275" target="_blank" rel="noopener">doi.org/10.5465/amr.2009.0275</a></li>
+    </ul>
+    <div class="sb-group">Project portfolio management</div>
+    <ul>
+      <li>Blichfeldt, B. S. &amp; Eskerod, P. (2008). »Project portfolio management – There's more to it than what management enacts.« <em>International Journal of Project Management</em>, 26(4), 357–365. <a href="https://doi.org/10.1016/j.ijproman.2007.06.004" target="_blank" rel="noopener">doi.org/10.1016/j.ijproman.2007.06.004</a></li>
+      <li>Martinsuo, M. (2013). »Project portfolio management in practice and in context.« <em>International Journal of Project Management</em>, 31(6), 794–803. <a href="https://doi.org/10.1016/j.ijproman.2012.10.013" target="_blank" rel="noopener">doi.org/10.1016/j.ijproman.2012.10.013</a></li>
+    </ul>
+    <div class="sb-group">Resource-constrained scheduling og operations research</div>
+    <ul>
+      <li>Gómez Sánchez, M., Lalla-Ruiz, E., Fernández Gil, A., Castro, C. &amp; Voß, S. (2023). »Resource-constrained multi-project scheduling problem: A survey.« <em>European Journal of Operational Research</em>, 309(3), 958–976. Inviteret oversigtsartikel. <a href="https://doi.org/10.1016/j.ejor.2022.09.033" target="_blank" rel="noopener">doi.org/10.1016/j.ejor.2022.09.033</a></li>
+      <li>Whitt, W. (1992). »Understanding the Efficiency of Multi-Server Service Systems.« <em>Management Science</em>, 38(5), 708–723. <a href="https://doi.org/10.1287/mnsc.38.5.708" target="_blank" rel="noopener">doi.org/10.1287/mnsc.38.5.708</a></li>
+    </ul>
+    <div class="sb-group">Aktuel praktikerkontekst</div>
+    <ul>
+      <li>Chau, G., Sood, V., Brown, A., Baker, A., Ellmer, K., Weinstein, S. &amp; Catchlove, P. (2026). »The Power of Priorities: Why Less Is More in a Transformation.« Boston Consulting Group, 9. januar 2026. Praktikerartikel; ikke forskning. <a href="https://www.bcg.com/publications/2026/the-power-of-priorities-in-a-transformation" target="_blank" rel="noopener">bcg.com</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Begrebet strategisk observabilitet, skellet mellem nominel kapacitet, planlagt efterspørgsel, tilgængelig kapacitet og vurderet realistisk eksekveringskapacitet, tesen om, at kapacitet handler om det arbejde, organisationen realistisk kan absorbere, formuleringerne om lokal plausibilitet og samlet realisme, illustrationen »Lokalt plausibelt — samlet umuligt«, synet på kapacitetsproblemer som ledelsestradeoffs, de fem bevægelser i »Fra allokering til realisme«, signalhypoteserne i »Hvad kunne du se tidligere?«, diagnosen »Hvor er kapaciteten lovet to gange?« og mikrohandlingen er Thomas Friisnæs' egne praktiske begreber og rammer, ikke validerede modeller. Studierne har hver deres kontekst: casestudier og interviews i organisationer med mange samtidige projekter, et eksplorativt spørgeskemastudie i ni svenske virksomheder, en teoretisk model og en forskningsoversigt om porteføljestyring. De operationsanalytiske kilder handler om formelle planlægnings- og køsystemer, ikke om empirisk forskning i direktioners videnarbejde, og BCG-artiklen er en praktikerkilde. Åbningscasen og procenterne i illustrationen er konstruerede, illustrative eksempler. Danske gengivelser af engelske formuleringer er egne oversættelser.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Strategien sker mellem kvartalerne — serien</div>
+    <h2 class="collection-title">Ti papers om strategisk observabilitet</h2>
+    <p class="collection-intro">Serien handler om, hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang, og om at gøre det synligt uden at forveksle signaler med sandhed. <strong>Alle 10 papers er udgivet.</strong></p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Serie 06</span><span class="cpart-name">Strategien sker mellem kvartalerne</span></div>
+      <p class="cpart-desc">Fra informationsgabet over signaler, kapacitet, beslutninger og friktion til kompetencer, metode og governance.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/strategien-sker-mellem-kvartalerne.html">Strategien sker mellem kvartalerne</a></li>
+        <li data-n="02"><a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">Grøn er ikke det samme som sund</a></li>
+        <li data-n="03"><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">Det kvalitative kan godt kvantificeres</a></li>
+        <li data-n="04"><span class="current">Kapacitet findes ikke i planen — du læser dette</span></li>
+        <li data-n="05"><a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">Beslutninger er en del af produktionsapparatet</a></li>
+        <li data-n="06"><a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html">Friktion er data</a></li>
+        <li data-n="07"><a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">Før resultatet flytter sig</a></li>
+        <li data-n="08"><a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">Ved vi, om vi kan det, strategien kræver?</a></li>
+        <li data-n="09"><a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">Et indeks er ikke sandheden</a></li>
+        <li data-n="10"><a href="/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html">Demokratisér udsynet. Centralisér metoden.</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til næste strategimøde i direktionen eller bestyrelsen.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">
+      <span class="ra-tag">Næste i serien · Paper 05</span>
+      <span class="ra-title">Beslutninger er en del af produktionsapparatet: Hvad venter det vigtigste arbejde på?</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 02</span>
+      <span class="ra-title">Grøn er ikke det samme som sund: Hvad fortæller statusfarven jer — og hvad ligger uden for den?</span>
+    </a>
+    <a href="/holdet-bag-strategien-virksomheden-foer-funktionen.html">
+      <span class="ra-tag">Holdet bag strategien · Paper 04</span>
+      <span class="ra-title">Virksomheden før funktionen: Når funktionens mål og virksomhedens behov ikke peger samme vej</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Strategien sker mellem kvartalerne · Serie 06 · Paper 04 af 10</div>
+        <div class="series-next">Næste: <a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.35)">Beslutninger er en del af produktionsapparatet</a></div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: smk_ (Strategien sker mellem kvartalerne)
+  var LS_C = 'smk_p04_commit', LS_D = 'smk_done', PAPER_N = 4, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // FAQ åben i print, også når browserens egen udskriv-funktion bruges
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

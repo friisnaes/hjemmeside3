@@ -1,0 +1,1843 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demokratisér udsynet. Centralisér metoden. | Strategisk observabilitet | Thomas Friisnæs</title>
+<meta name="description" content="Strategisk observabilitet kræver bredt relevant udsyn og tydelige beslutningsrettigheder for metode og publicering. Paper 10 afslutter serien.">
+<meta name="keywords" content="strategieksekvering, strategisk observabilitet, governance, metodegovernance, beslutningsrettigheder, data governance, Strategy Office, ledelsesinformation, execution governance, adgang og metoderet">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html">
+
+<meta property="og:title" content="Demokratisér udsynet. Centralisér metoden. | Strategisk observabilitet | Thomas Friisnæs">
+<meta property="og:description" content="Udsynet må gerne have mange brugere. Metoden skal have et tydeligt hjem. Seriens sidste paper om, hvem der må se, udfordre, ændre og publicere.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Thomas Friisnæs – Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Demokratisér udsynet. Centralisér metoden.">
+<meta name="twitter:description" content="Hvem skal kunne se hvad — og hvem må ændre metoden? Paper 10 afslutter serien om strategisk observabilitet.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* Paper 02 — Farven og underlaget (Grøn på hvad?): redaktionel tabel, ingen trafiklysfarver */
+  .basis { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .basis-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .basis-head .bh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .basis-head .bh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .basis-head .bh-sub { font-size: 14px; line-height: 1.55; color: var(--text-light); margin: 6px 0 0; }
+  .basis-colour { display: flex; align-items: baseline; gap: 16px; padding: 16px 30px; border-bottom: 1px solid var(--border); }
+  .basis-colour .bc-name { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; min-width: 64px; }
+  .basis-colour .bc-desc { flex: 1; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .basis-colour .bc-value { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 24px; line-height: 1; color: var(--navy); }
+  .basis-table { width: 100%; border-collapse: collapse; }
+  .basis-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table th.bt-group { text-align: left; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; padding: 20px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table td { font-size: 15px; line-height: 1.5; color: var(--text-mid); padding: 11px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .basis-table td.bt-state { width: 34%; color: var(--navy); font-weight: 500; }
+  .basis-table td.bt-state.out { color: var(--text-light); font-weight: 400; }
+  .basis-table td.bt-state.unknown { color: var(--text-mid); font-weight: 400; font-style: italic; }
+  .basis-foot { padding: 16px 30px; background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 600px) {
+    .basis-head, .basis-colour, .basis-foot { padding-left: 20px; padding-right: 20px; }
+    .basis-colour { flex-wrap: wrap; row-gap: 4px; }
+    .basis-colour .bc-desc { flex-basis: 100%; order: 3; }
+    .basis-table thead { display: none; }
+    .basis-table th.bt-group { padding: 18px 20px 8px; }
+    .basis-table td { padding: 10px 20px; }
+    .basis-table td.bt-state { width: auto; white-space: nowrap; }
+  }
+  @media print {
+    .basis, .basis-table tr { page-break-inside: avoid; }
+    .basis-head, .basis-foot { background: #fff !important; }
+    body.print-econo .basis { border-color: #999 !important; }
+    body.print-econo .basis-head .bh-label, body.print-econo .basis-colour .bc-name, body.print-econo .basis-table th.bt-group { color: #333 !important; }
+  }
+
+  /* Paper 03 — Samme tal. Forskelligt billede.: én redaktionel talkomponent, ingen farver og ingen graf */
+  .spread { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .spread-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .spread-head .sp-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .spread-head .sp-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .spread-groups { display: grid; grid-template-columns: 1fr 1fr; }
+  .sp-group { padding: 30px 26px 26px; text-align: center; }
+  .sp-group + .sp-group { border-left: 1px solid var(--border); }
+  .sp-name { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 12px; }
+  .sp-values { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4.6vw, 44px); font-weight: 400; line-height: 1.1; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .sp-values .sp-dot { display: inline-block; margin: 0 0.32em; color: var(--text-light); font-size: 0.6em; vertical-align: 0.2em; }
+  .sp-mean { margin: 22px auto 0; padding-top: 14px; border-top: 1px solid var(--border); max-width: 250px; line-height: 1.5; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .sp-mean b { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 32px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .sp-read { margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .spread-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .spread-head, .spread-foot { padding-left: 20px; padding-right: 20px; }
+    .spread-groups { grid-template-columns: 1fr; }
+    .sp-group { padding: 24px 20px 22px; }
+    .sp-group + .sp-group { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  /* Paper 03 — Fire slags tal: redaktionel tabel i Paper 02's modelramme */
+  .kinds-table { width: 100%; border-collapse: collapse; }
+  .kinds-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .kinds-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 14px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .kinds-table td:first-child { width: 38%; padding-right: 12px; }
+  .kinds-table td:first-child strong { display: block; color: var(--navy); font-weight: 600; }
+  .kinds-table td:first-child span { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; color: var(--text-mid); }
+  /* Paper 03 — tre versioner af samme vurdering: Paper 01's vinduer stablet */
+  .windows.stack { grid-template-columns: 1fr; }
+  .windows.stack .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+  .sig-cols ul + h4 { margin-top: 18px; }
+  @media (max-width: 600px) {
+    .kinds-table thead { display: none; }
+    .kinds-table, .kinds-table tbody, .kinds-table tr, .kinds-table td { display: block; width: 100%; }
+    .kinds-table tr { padding: 12px 20px; border-bottom: 1px solid var(--border); }
+    .kinds-table td, .kinds-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .kinds-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 8px 0 2px; }
+  }
+  @media print {
+    .spread, .kinds-table tr { page-break-inside: avoid; }
+    .spread-head, .spread-foot { background: #fff !important; }
+    body.print-econo .spread { border-color: #999 !important; }
+    body.print-econo .spread-head .sp-label { color: #333 !important; }
+  }
+
+  /* Paper 04 — Lokalt plausibelt — samlet umuligt: én redaktionel illustration, ingen trafiklys og intet dashboard */
+  .load { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .load-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .load-head .ld-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .load-head .ld-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .load-head .ld-cond { margin-top: 8px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .load-rows { padding: 10px 30px 8px; }
+  .ld-row { display: grid; grid-template-columns: 170px minmax(0, 1fr) 76px; align-items: center; column-gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .ld-name { font-size: 15px; line-height: 1.3; color: var(--navy); font-weight: 500; }
+  .ld-name small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--text-light); font-weight: 300; }
+  .ld-track { position: relative; display: block; height: 12px; }
+  .ld-track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--border); }
+  .ld-fill, .ld-over { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); border-radius: 1px; }
+  .ld-over { background: var(--gold); border-radius: 0; top: auto; bottom: -7px; height: 3px; }
+  .ld-cut { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; }
+  .ld-tag { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 10.5px; letter-spacing: 0.1em; font-weight: 600; color: #fff; }
+  .ld-limit { position: absolute; left: 71.429%; top: -13px; bottom: -13px; border-left: 1px dashed var(--gold); }
+  .ld-val { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; line-height: 1; color: var(--navy); text-align: right; font-variant-numeric: lining-nums; white-space: nowrap; }
+  .ld-row.ld-scale { padding: 4px 0 0; border-bottom: 0; }
+  .ld-scale .ld-track { height: 16px; }
+  .ld-scale .ld-track::before { display: none; }
+  .ld-mark { position: absolute; left: 71.429%; bottom: 1px; transform: translateX(-50%); font-size: 10.5px; line-height: 1; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; white-space: nowrap; }
+  .ld-row.ld-sum { border-bottom: 0; padding-top: 17px; }
+  .ld-sum .ld-name { font-weight: 600; }
+  .ld-sum .ld-track { height: 24px; }
+  .ld-sum .ld-limit { top: -17px; bottom: -13px; }
+  .ld-sum .ld-val { font-style: italic; font-size: 32px; color: var(--gold); }
+  .section .load-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .load-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .load-head, .load-rows, .section .load-note, .load-foot { padding-left: 20px; padding-right: 20px; }
+    .ld-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 9px; }
+    .ld-row .ld-track { grid-column: 1 / -1; grid-row: 2; }
+    .ld-row.ld-scale { row-gap: 0; padding-top: 6px; }
+    .ld-val { font-size: 21px; }
+    .ld-sum .ld-val { font-size: 28px; }
+    .load-rows { position: relative; }
+    .load-rows::after { content: ''; position: absolute; top: 34px; bottom: 10px; left: calc(20px + (100% - 40px) * 0.71429); border-left: 1px dashed var(--gold); pointer-events: none; }
+    .ld-limit { visibility: hidden; }
+  }
+  @media print {
+    .load, .ld-row { page-break-inside: avoid; }
+    .load-head, .load-foot { background: #fff !important; }
+    body.print-econo .load { border-color: #999 !important; }
+    body.print-econo .load-head .ld-label, body.print-econo .ld-mark { color: #333 !important; }
+    body.print-econo .ld-fill { background: #8a8a8a !important; }
+    body.print-econo .ld-over { background: #000 !important; }
+    body.print-econo .ld-track, body.print-econo .ld-tag, body.print-econo .ld-limit, body.print-econo .ld-mark { background: transparent !important; }
+    body.print-econo .ld-tag { color: #000 !important; }
+    body.print-econo .ld-limit, body.print-econo .load-rows::after { border-left-color: #000 !important; }
+  }
+
+  /* Paper 05 — Seks dage. Og 37.: én redaktionel illustration, ingen dashboard-elementer */
+  .decs { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .decs-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .decs-head .dc-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .decs-head .dc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .decs-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .dec { padding: 28px 30px 26px; }
+  .dec + .dec { border-left: 1px solid var(--border); }
+  .d-tag { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 14px; }
+  .d-vals { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(33px, 4.6vw, 44px); font-weight: 400; line-height: 1.05; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .d-vals .d-dot { display: inline-block; margin: 0 0.3em; color: var(--text-light); font-size: 0.55em; vertical-align: 0.22em; }
+  .dec + .dec .d-vals { color: var(--gold); font-style: italic; }
+  .d-unit { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .d-mean { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-mean b { display: block; margin-top: 3px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 30px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .d-list { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .d-list dt { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-list dd { margin: 3px 0 11px; font-size: 15px; line-height: 1.5; color: var(--text-mid); }
+  .d-list dd:last-of-type { margin-bottom: 0; }
+  .section .decs-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .decs-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .decs-head, .dec, .section .decs-note, .decs-foot { padding-left: 20px; padding-right: 20px; }
+    .decs-grid { grid-template-columns: 1fr; }
+    .dec { padding-top: 24px; padding-bottom: 22px; }
+    .dec + .dec { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .decs { page-break-inside: avoid; }
+    .decs-head, .decs-foot { background: #fff !important; }
+    body.print-econo .decs { border-color: #999 !important; }
+    body.print-econo .decs-head .dc-label { color: #333 !important; }
+  }
+
+  /* Paper 06 — Lukket fem gange: én redaktionel tidslinje, ingen dashboard-elementer */
+  .frx { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .frx-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .frx-head .fx-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .frx-head .fx-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .frx-line { list-style: none; margin: 0; padding: 22px 30px 20px; }
+  .section .frx-line li { position: relative; display: grid; grid-template-columns: 74px 1fr auto; align-items: baseline; gap: 0 18px; padding: 10px 0; margin: 0; }
+  .frx-line li::before { content: ""; position: absolute; left: 83px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .frx-line li:first-child::before { top: 21px; }
+  .frx-line li:last-child::before { bottom: auto; height: 22px; }
+  .frx-line li::after { content: ""; position: absolute; left: 80px; top: 18px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .frx-line .fx-wk { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .frx-line .fx-ev { font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .frx-line .fx-st { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; white-space: nowrap; }
+  .frx-sum { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+  .fx-cell { padding: 24px 30px 22px; }
+  .fx-cell + .fx-cell { border-left: 1px solid var(--border); }
+  .fx-num { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(38px, 5.2vw, 50px); font-weight: 400; line-height: 1; color: var(--navy); font-variant-numeric: lining-nums; }
+  .fx-cell + .fx-cell .fx-num { color: var(--gold); font-style: italic; }
+  .fx-cap { margin-top: 9px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .section .frx-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .frx-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .frx-head, .fx-cell, .section .frx-note, .frx-foot { padding-left: 20px; padding-right: 20px; }
+    .section .frx-line { padding-left: 20px; padding-right: 20px; }
+    .section .frx-line li { grid-template-columns: 1fr auto; grid-template-areas: "wk st" "ev ev"; gap: 4px 14px; padding-left: 22px; }
+    .frx-line .fx-wk { grid-area: wk; }
+    .frx-line .fx-ev { grid-area: ev; }
+    .frx-line .fx-st { grid-area: st; justify-self: end; }
+    .frx-line li::before { left: 3px; }
+    .frx-line li::after { left: 0; }
+    .frx-sum { grid-template-columns: 1fr; }
+    .fx-cell + .fx-cell { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .frx { page-break-inside: avoid; }
+    .frx-head, .frx-foot { background: #fff !important; }
+    body.print-econo .frx { border-color: #999 !important; }
+    body.print-econo .frx-head .fx-label { color: #333 !important; }
+    body.print-econo .frx-line li::after { background: #000 !important; }
+    body.print-econo .frx-line li::before { background: #999 !important; }
+  }
+
+  /* Paper 07 — Fire felter: ét redaktionelt 2×2, ingen dashboard-elementer */
+  .fld { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .fld-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .fld-head .fl-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .fld-head .fl-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .fld-grid { display: grid; grid-template-columns: 118px 1fr 1fr; }
+  .fl-corner { border-bottom: 1px solid var(--border); }
+  .fl-col { padding: 13px 18px 11px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; text-align: center; border-bottom: 1px solid var(--border); border-left: 1px solid var(--border); }
+  .fl-row { display: flex; align-items: center; padding: 20px 14px 20px 30px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; line-height: 1.5; }
+  .fl-cell { padding: 22px 20px 20px; border-left: 1px solid var(--border); }
+  .fl-r2 { border-top: 1px solid var(--border); }
+  .fl-cell b { display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .fl-cell.fl-mark b { color: var(--gold); font-style: italic; }
+  .fl-cell span { display: block; margin-top: 7px; font-size: 14px; line-height: 1.55; color: var(--text-mid); }
+  .fl-when { display: none; }
+  .section .fld-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .fld-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 640px) {
+    .fld-head, .section .fld-note, .fld-foot { padding-left: 20px; padding-right: 20px; }
+    .fld-grid { grid-template-columns: 1fr; }
+    .fl-corner, .fl-col, .fl-row { display: none; }
+    .fl-cell { border-left: 0; border-top: 1px solid var(--border); padding: 20px; }
+    .fl-when { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; font-style: normal; margin-bottom: 6px; }
+  }
+  @media print {
+    .fld { page-break-inside: avoid; }
+    .fld-head, .fld-foot { background: #fff !important; }
+    body.print-econo .fld { border-color: #999 !important; }
+    body.print-econo .fld-head .fl-label, body.print-econo .fl-cell.fl-mark b { color: #333 !important; }
+  }
+
+  /* Paper 08 — Evidensbilledet: ét redaktionelt opslag, ingen dashboard-elementer */
+  .evb { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .evb-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .evb-head .eb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .evb-head .eb-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .evb-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .eb-side { padding: 26px 30px 24px; }
+  .eb-side + .eb-side { border-left: 1px solid var(--border); }
+  .eb-kind { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 14px; }
+  .eb-num { font-family: 'Playfair Display', Georgia, serif; font-size: 46px; font-weight: 500; color: var(--navy); line-height: 1; }
+  .eb-num.eb-open { color: var(--gold); font-style: italic; }
+  .eb-claim { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; color: var(--navy); margin: 10px 0 18px; }
+  .eb-list { list-style: none; margin: 0; padding: 0; }
+  .eb-list li { font-size: 14.5px; line-height: 1.5; color: var(--text-mid); padding: 7px 0 7px 22px; position: relative; border-top: 1px solid var(--border); }
+  .eb-list li:first-child { border-top: 0; }
+  .eb-list li::before { content: "✓"; position: absolute; left: 0; top: 7px; color: var(--text-light); font-size: 13px; }
+  .eb-list.eb-ask li::before { content: "?"; color: var(--gold); font-weight: 600; }
+  .eb-stmt { margin: 18px 0 0; padding: 14px 16px; background: var(--cream); border-left: 2px solid var(--gold); font-size: 14.5px; line-height: 1.55; color: var(--navy); }
+  .section .evb-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .evb-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 640px) {
+    .evb-head, .eb-side, .section .evb-note, .evb-foot { padding-left: 20px; padding-right: 20px; }
+    .evb-grid { grid-template-columns: 1fr; }
+    .eb-side + .eb-side { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .evb { page-break-inside: avoid; }
+    .evb-head, .evb-foot, .eb-stmt { background: #fff !important; }
+    body.print-econo .evb { border-color: #999 !important; }
+    body.print-econo .evb-head .eb-label, body.print-econo .eb-num.eb-open, body.print-econo .eb-list.eb-ask li::before { color: #333 !important; }
+  }
+
+  /* Paper 09 — Modelvisual og metodetabeller: redaktionelt opslag, ingen dashboard-elementer */
+  .mdx { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .mdx-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .mdx-head .mx-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .mdx-head .mx-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .mdx-grid { display: grid; grid-template-columns: 1fr minmax(150px, 0.8fr) 1fr; }
+  .mdx-grid.mx-two { grid-template-columns: 1fr 1fr; }
+  .mx-side { padding: 26px 30px 24px; text-align: center; }
+  .mx-cov { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 12px; }
+  .mx-score { font-family: 'Playfair Display', Georgia, serif; font-size: 52px; font-weight: 500; color: var(--navy); line-height: 1; }
+  .mx-score.mx-open { color: var(--gold); font-style: italic; }
+  .mx-note { font-size: 13.5px; line-height: 1.5; color: var(--text-light); margin-top: 12px; }
+  .mx-mid { display: flex; align-items: center; justify-content: center; padding: 22px 20px; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+  .mx-mid p { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; line-height: 1.45; color: var(--text-mid); text-align: center; }
+  .mdx-grid.mx-two .mx-side + .mx-side { border-left: 1px solid var(--border); }
+  .mx-bars { list-style: none; margin: 16px 0 18px; padding: 0; }
+  .mx-bars li { display: flex; align-items: center; gap: 10px; padding: 3px 0; }
+  .mx-bars .mx-bt { flex: 1; height: 9px; background: var(--cream); border: 1px solid var(--border); position: relative; }
+  .mx-bars .mx-bt i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); opacity: 0.5; }
+  .mx-bars .mx-bn { width: 30px; text-align: right; font-size: 12.5px; color: var(--text-light); font-variant-numeric: tabular-nums; }
+  .section .mdx-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .mdx-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  .mx-wt { width: 100%; border-collapse: collapse; margin: 26px 0 24px; }
+  .mx-wt caption { caption-side: bottom; text-align: left; font-size: 12.5px; color: var(--text-light); padding-top: 10px; line-height: 1.5; }
+  .mx-wt th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 16px 10px 0; border-bottom: 1px solid var(--border); }
+  .mx-wt td { font-size: 15px; line-height: 1.5; color: var(--text-mid); padding: 9px 16px 9px 0; border-bottom: 1px solid var(--border); vertical-align: top; font-variant-numeric: tabular-nums; }
+  .mx-wt td:first-child { color: var(--navy); font-weight: 500; }
+  .mx-wt tbody tr:last-child td { border-bottom: 0; }
+  .mx-pas td { font-variant-numeric: normal; }
+  .mx-pas td:first-child { width: 33%; }
+  @media (max-width: 640px) {
+    .mdx-head, .mx-side, .section .mdx-note, .mdx-foot { padding-left: 20px; padding-right: 20px; }
+    .mdx-grid, .mdx-grid.mx-two { grid-template-columns: 1fr; }
+    .mx-mid { border-left: 0; border-right: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .mdx-grid.mx-two .mx-side + .mx-side { border-left: 0; border-top: 1px solid var(--border); }
+    .mx-wt th, .mx-wt td { font-size: 13.5px; padding-right: 10px; }
+    .mx-pas thead { display: none; }
+    .mx-pas, .mx-pas tbody, .mx-pas tr, .mx-pas td { display: block; width: 100%; }
+    .mx-pas tr { padding: 11px 0; border-bottom: 1px solid var(--border); }
+    .mx-pas tbody tr:last-child { border-bottom: 0; }
+    .mx-pas td, .mx-pas td:first-child { border: 0; padding: 0; width: 100%; }
+    .mx-pas td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  @media print {
+    .mdx, .mx-wt tr { page-break-inside: avoid; }
+    .mdx-head, .mdx-foot { background: #fff !important; }
+    .mx-bars .mx-bt { background: #fff !important; }
+    .mx-bars .mx-bt i { background: #444 !important; opacity: 1 !important; }
+    body.print-econo .mdx { border-color: #999 !important; }
+    body.print-econo .mdx-head .mx-label, body.print-econo .mx-score.mx-open { color: #333 !important; }
+  }
+
+  /* Paper 10 — governance-kort, seriesløjfe og seriens afslutning */
+  .gvn { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .gvn-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .gvn-head .gv-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .gvn-head .gv-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .gv-grid { display: grid; grid-template-columns: 108px 1fr 1fr; }
+  .gv-yl { display: flex; align-items: center; justify-content: flex-end; padding: 0 14px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .gv-yl span { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; text-align: right; line-height: 1.45; }
+  .gv-cell { padding: 22px 24px; border-bottom: 1px solid var(--border); }
+  .gv-cell + .gv-cell { border-left: 1px solid var(--border); }
+  .gv-cell.gv-goal { background: var(--cream); }
+  .gv-pos { display: none; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 7px; }
+  .gv-name { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); line-height: 1.25; margin-bottom: 8px; }
+  .gv-goal .gv-name { color: var(--gold); }
+  .section .gv-cell p { font-size: 14.5px; line-height: 1.55; color: var(--text-mid); margin: 0; }
+  .gv-corner { border-right: 1px solid var(--border); }
+  .gv-xl { padding: 13px 24px 16px; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; line-height: 1.45; }
+  .gv-xl + .gv-xl { border-left: 1px solid var(--border); }
+  .gvn-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+
+  .loop { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .loop-h { padding: 20px 30px 16px; background: var(--cream); border-bottom: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 500; color: var(--navy); }
+  .loop-list { list-style: none; margin: 0; padding: 0; }
+  .loop-list li { display: flex; gap: 18px; align-items: baseline; padding: 13px 30px; border-top: 1px solid var(--border); }
+  .loop-list li:first-child { border-top: 0; }
+  .lp-n { font-family: 'Playfair Display', Georgia, serif; font-size: 15px; color: var(--gold); font-weight: 600; min-width: 26px; font-variant-numeric: tabular-nums; }
+  .lp-q { font-size: 16px; line-height: 1.5; color: var(--navy); }
+  .loop-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+
+  .seriedone { background: var(--navy); border-radius: 5px; padding: 38px 34px; margin: 34px 0 10px; text-align: center; }
+  .sd-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 10px; }
+  .sd-title { font-family: 'Playfair Display', Georgia, serif; font-size: 28px; font-weight: 500; color: #fff; line-height: 1.2; margin-bottom: 12px; }
+  .sd-sub { font-size: 15.5px; line-height: 1.65; color: rgba(255,255,255,0.72); max-width: 54ch; margin: 0 auto 24px; }
+  .sd-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .sd-links a { font-size: 13.5px; letter-spacing: 0.05em; color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.28); border-radius: 3px; padding: 11px 20px; transition: border-color 0.2s; }
+  .sd-links a:hover { border-color: var(--gold-light); }
+
+  @media (max-width: 640px) {
+    .gvn-head, .gvn-foot, .loop-h, .loop-foot { padding-left: 20px; padding-right: 20px; }
+    .loop-list li { padding-left: 20px; padding-right: 20px; }
+    .gv-grid { grid-template-columns: 1fr; }
+    .gv-yl, .gv-corner, .gv-xl { display: none; }
+    .gv-cell { padding-left: 20px; padding-right: 20px; }
+    .gv-cell + .gv-cell { border-left: 0; }
+    .gv-pos { display: block; }
+    .seriedone { padding: 30px 22px; }
+    .sd-links { flex-direction: column; }
+  }
+  @media print {
+    .gvn, .loop, .seriedone, .loop-list li { page-break-inside: avoid; }
+    .gvn-head, .gvn-foot, .loop-h, .loop-foot, .gv-cell.gv-goal { background: #fff !important; }
+    .seriedone { background: #fff !important; border: 1px solid #999; }
+    .seriedone .sd-title { color: var(--navy) !important; }
+    .seriedone .sd-sub { color: var(--text-mid) !important; }
+    .sd-links { display: none !important; }
+    body.print-econo .gvn, body.print-econo .loop, body.print-econo .seriedone { border-color: #999 !important; }
+    body.print-econo .gvn-head .gv-label, body.print-econo .gv-goal .gv-name, body.print-econo .lp-n, body.print-econo .sd-label { color: #333 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Demokratisér udsynet. Centralisér metoden.",
+ "alternativeHeadline": "Udsynet må gerne have mange brugere. Metoden skal have et tydeligt hjem.",
+ "description": "Seriens afsluttende paper om governance af ledelsesinformation: hvorfor adgang og metoderet er to forskellige ting, de fem rettigheder omkring et ledelsessignal, rolle-relevant udsyn, forskellen på versionering og governance, og hvem der må ændre metoden og publicere den officielle version.",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Strategien sker mellem kvartalerne",
+  "url": "https://www.friisnaes.com/library.html"
+ },
+ "position": 10,
+ "inLanguage": "da",
+ "keywords": "governance, metodegovernance, beslutningsrettigheder, strategisk observabilitet, strategieksekvering, ledelsesinformation, data governance",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Strategien sker mellem kvartalerne · Paper 10 af 10</div>
+  <div class="pc-title">Demokratisér udsynet. Centralisér metoden.</div>
+  <div class="pc-sub">Udsynet må gerne have mange brugere. Metoden skal have et tydeligt hjem.</div>
+  <div class="pc-author">Af Thomas Friisnæs · External Excellence Partner · Strategy Execution Governance · C-level-sparring · friisnaes.com · oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Strategisk observabilitet</span>
+      <span class="wp-series">Strategien sker mellem kvartalerne · Paper 10 af 10</span>
+      <span class="wp-readtime">ca. 25 min læsning</span>
+    </div>
+    <h1>Demokratisér udsynet. <em>Centralisér metoden.</em></h1>
+    <p class="wp-subtitle">Udsynet må gerne have mange brugere. Metoden skal have et tydeligt hjem. Seriens sidste paper handler om, hvem der må se, udfordre, ændre og publicere.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · External Excellence Partner · Strategy Execution Governance · C-level-sparring<br>Udgivet oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Alle fik adgang. Så holdt tallene op med at betyde det samme</a></li>
+      <li><a href="#akser">Udsyn og metoderet er to forskellige ting</a></li>
+      <li><a href="#demokratiser">Demokratisér betyder ikke: alle ser alt</a></li>
+      <li><a href="#opmaerksomhed">Et ledelsessystem fordeler også opmærksomhed</a></li>
+      <li><a href="#fortolkning">Samme data er ikke samme fortolkning</a></li>
+      <li><a href="#stemme">Et felt i et system er ikke en stemme</a></li>
+      <li><a href="#bureaukrati">Central metode behøver ikke være central kontrol</a></li>
+      <li><a href="#rettigheder">Fem rettigheder omkring et ledelsessignal</a></li>
+      <li><a href="#skaerm">Samme udsyn kræver ikke samme skærm</a></li>
+      <li><a href="#versionering">Versionering er ikke governance</a></li>
+      <li><a href="#aendre">Hvem må ændre metoden?</a></li>
+      <li><a href="#publicere">Hvem må publicere den officielle version?</a></li>
+      <li><a href="#framework">Framework: Fra signal til fælles udsyn</a></li>
+      <li><a href="#tidligere">Hvad kunne du se tidligere?</a></li>
+      <li><a href="#konkludere">Hvad må du ikke konkludere?</a></li>
+      <li><a href="#diagnose">Diagnose: Hvem må se, udfordre og ændre?</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit næste skridt</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#handling">Fra arkitektur til beslutningsret</a></li>
+      <li><a href="#loop">Ti spørgsmål. Én ledelseskapabilitet</a></li>
+      <li><a href="#slut">Strategien sker stadig mellem kvartalerne</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase · Et konstrueret forløb</div>
+    <h2>Alle fik adgang. Så holdt tallene op med at betyde det samme</h2>
+    <p>En organisation kører fem strategiske initiativer på tværs af produkt, teknologi, compliance, kommerciel og drift. Signalerne samles centralt, men de lokale ledere ser kun deres eget, og tværgående friktion bliver først synlig i den månedlige gennemgang — når den har kostet fjorten dage.</p>
+    <p>CEO'en siger det fornuftige: <strong>»Giv flere adgang. Vi skal kunne se problemerne tidligere.«</strong></p>
+    <p>Det virker. Områdelederne får adgang til hinandens billeder, afhængigheder dukker op tidligere, og der bliver færre overraskelser i gennemgangen.</p>
+    <p>Så begynder noget andet. For at gøre rapporteringen mere brugbar lokalt justerer et område sin tærskel for, hvornår en risiko er kritisk. Et andet vurderer, at en beslutning er lukket, når den er truffet — ikke når den er meldt ud. Et tredje tæller kun friktion, der har varet over en uge.</p>
+    <p>Hver ændring er rimelig i sin sammenhæng, ingen sket i ond tro, og ingen annonceret — fordi ingen opfattede dem som andet end en lokal tilpasning.</p>
+    <p>Tre måneder senere har direktionen mere information og mindre fælles grund. To områder rapporterer samme tal for noget, der ikke længere er det samme, og et initiativ får grønt lys på et tal, et andet område ville have kaldt gult. Diskussionen på mødet handler ikke om eksekveringen, men om hvorfor tallene ikke stemmer.</p>
+    <p>CEO-spørgsmålet er blevet et andet: <strong>»Hvordan deler vi udsynet uden at dele retten til at ændre, hvad tallene betyder?«</strong></p>
+    <p>Én ting skal siges med det samme. <strong>Det er et konstrueret forløb</strong>, og det er ikke en påstand om, at bredere adgang normalt fører til metodekaos. Jeg kender ikke tal for, hvor ofte det sker. Når det sker, kan det blandt andet ske sådan: i små, velmenende skridt, som ingen kaldte en metodeændring.</p>
+  </div>
+</section>
+
+<!-- 02 AKSER -->
+<section class="section" id="akser">
+  <div class="container">
+    <div class="section-label">02 — Tesen</div>
+    <h2>Udsyn og metoderet er to forskellige ting</h2>
+    <p>Ni papers har gjort eksekveringen synlig: informationsgabet (<a href="/strategien-sker-mellem-kvartalerne.html" style="color:var(--gold);">Paper 01</a>), den grønne status (<a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a>), tallet på en vurdering (<a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a>), kapaciteten mellem initiativerne (<a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html" style="color:var(--gold);">Paper 04</a>), beslutningerne som arbejde (<a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html" style="color:var(--gold);">Paper 05</a>), friktionen som data (<a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html" style="color:var(--gold);">Paper 06</a>), tidligt mod ledende (<a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html" style="color:var(--gold);">Paper 07</a>), kompetence mod evne (<a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html" style="color:var(--gold);">Paper 08</a>) og indekset som model (<a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html" style="color:var(--gold);">Paper 09</a>).</p>
+    <p>Tilsammen beskriver de et udsyn. Men et udsyn, der kun findes, fordi én person vedligeholder det, er ikke en kapabilitet. Det er en afhængighed.</p>
+
+    <p class="pull-quote">Udsynet må gerne have mange brugere. Metoden skal have et tydeligt hjem.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Seriens sidste idé består af to principper, der gælder samtidig — ikke et kompromis mellem dem.</p>
+    <p><strong>Strategisk observabilitet bliver først en organisatorisk kapabilitet, når relevante mennesker kan bidrage til og bruge udsynet, mens ændringer i definitioner, metode og officielle publiceringsregler har tydelige beslutningsrettigheder.</strong></p>
+    <p>Åbningscasen gik galt ét sted: den behandlede adgang og metoderet som den samme ting. Da adgangen blev bredere, fulgte retten til at justere med — ikke fordi nogen besluttede det, men fordi ingen havde skilt dem ad.</p>
+
+    <p class="pull-quote">Adgang til data er ikke det samme som ret til at ændre metoden.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Skiller man de to ad, bliver der to akser i stedet for én skala mellem centralt og decentralt — og så bliver både »lås det hele« og »luk det hele op« svar på det forkerte spørgsmål:</p>
+
+    <div class="gvn" role="group" aria-label="Illustration: Udsyn og metoderet som to akser">
+      <div class="gvn-head">
+        <div class="gv-label">Illustration · Thomas Friisnæs' praktiske governance-kort</div>
+        <div class="gv-title">To akser, ikke én skala</div>
+      </div>
+      <div class="gv-grid">
+        <div class="gv-yl gv-yl-top"><span>Bredt, rolle-relevant udsyn</span></div>
+        <div class="gv-cell">
+          <div class="gv-pos">Bredt udsyn · uafklaret metoderet</div>
+          <div class="gv-name">Semantisk drift</div>
+          <p>Mange kan se meget. Men tallene kan nå at betyde forskelligt, før nogen opdager det.</p>
+        </div>
+        <div class="gv-cell gv-goal">
+          <div class="gv-pos">Bredt udsyn · tydelig metoderet</div>
+          <div class="gv-name">Fælles udsyn</div>
+          <p>Relevante mennesker ser, bidrager og udfordrer. Definitioner og version er fælles; ændringer har en ejer.</p>
+        </div>
+        <div class="gv-yl"><span>Smalt udsyn</span></div>
+        <div class="gv-cell">
+          <div class="gv-pos">Smalt udsyn · uafklaret metoderet</div>
+          <div class="gv-name">Lokale sandheder</div>
+          <p>Få ser helheden, og definitionerne glider, uden at nogen har besluttet det.</p>
+        </div>
+        <div class="gv-cell">
+          <div class="gv-pos">Smalt udsyn · tydelig metoderet</div>
+          <div class="gv-name">Kontroltårn</div>
+          <p>Metoden er i orden. Men for få kan se nok til at opdage, hvad den overser.</p>
+        </div>
+        <div class="gv-corner" aria-hidden="true"></div>
+        <div class="gv-xl">Distribueret eller uafklaret metoderet</div>
+        <div class="gv-xl">Tydeligt placeret metoderet</div>
+      </div>
+      <div class="gvn-foot">Målet er ikke maksimal adgang eller maksimal centralisering, men bredt relevant udsyn og en stabil metode, der kan udfordres.</div>
+    </div>
+
+    <p>Kortet er min egen praktiske skelnen, ikke en valideret model. Det stiller ét spørgsmål: hvilket felt er vi faktisk i — og hvilket troede vi, vi var i?</p>
+  </div>
+</section>
+
+<!-- 03 DEMOKRATISÉR -->
+<section class="section" id="demokratiser">
+  <div class="container">
+    <div class="section-label">03 — Den første halvdel af titlen</div>
+    <h2>Demokratisér betyder ikke: alle ser alt</h2>
+    <p>Ordet er farligt og skal defineres først. »Demokratisér udsynet« betyder ikke fri adgang til alt: ikke rådata overalt, ikke persondata til enhver, ikke følsomme compliance-sager på en fælles skærm, og ikke at alle kan eksportere.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Demokratiseret udsyn — praktisk definition</div>
+      <ul class="dispo-list">
+        <li><strong>Demokratiseret udsyn</strong> <em>→</em> rolle-relevant adgang til de signaler og den kontekst, der er nødvendige for at tage ansvar og udfordre ledelsesbilledet.</li>
+      </ul>
+    </div>
+
+    <p>Definitionen er min egen. Det afgørende ligger i ordet <em>ansvar</em>: adgang skal følge af, hvad nogen skal kunne svare for — ikke af rang og ikke af åbenhed som princip. Skal en initiativejer stå på mål for inputtet, bør vedkommende også kunne se, hvordan det indgår i ledelsesbilledet.</p>
+    <p>Omvendt: adgang, der ikke knytter sig til et ansvar, er ikke demokrati. Det er støj med en pæn begrundelse.</p>
+    <p>Den sætning kan misbruges, så den skal have en modvægt med det samme. Den, der begrænser adgang, skal kunne pege på et legitimt hensyn — formål, need-to-know, fortrolighed, sikkerhed, persondata eller regulering — ikke på, at indsigten er ubelejlig. Og den, der beder om adgang, bør selv beskrive det ansvar, adgangen skal tjene.</p>
+    <p>Ét hensyn bliver sjældent sagt højt: et system, der gør eksekveringen synlig, gør også mennesker synlige. Derfor skal adgang <strong>minimere persondata, hvor de ikke er nødvendige</strong>, aggregere hvor muligt, og holde følsomme noter bag snævrere rettigheder. Et spor over, hvem der bidrog med hvad, findes for at kunne rette et signal — ikke for at vurdere mennesker. Hvem der har besluttet formål og opbevaringstid, er i sig selv en beslutningsret, og den skal have et navn på linje med de øvrige.</p>
+
+    <p class="pull-quote">Transparens er ikke at hælde rådata ud over organisationen. Transparens er at gøre grundlag, metode og begrænsninger tilgængelige for dem, der skal kunne stille nogen til ansvar for konklusionen.<cite>— Thomas Friisnæs</cite></p>
+  </div>
+</section>
+
+<!-- 04 OPMÆRKSOMHED -->
+<section class="section" id="opmaerksomhed">
+  <div class="container">
+    <div class="section-label">04 — Hvad adgang egentlig fordeler</div>
+    <h2>Et ledelsessystem fordeler også opmærksomhed</h2>
+    <p>Beslutningen om, hvad der står øverst på hvilken skærm, ligner en designdetalje. Den er noget andet. Det, et ledelsessystem viser frem, former, hvad der overhovedet kan blive bemærket — og dermed hvad der har en chance for at blive diskuteret, og hvad der sjældent når frem til et møde.</p>
+
+    <p class="pull-quote">Et ledelsessystem fordeler ikke bare information. Det fordeler opmærksomhed.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det gør adgangsdesign til et ledelsesvalg, ikke et it-valg. Vises friktion kun på teamniveau, giver systemet ikke selv direktionen et tværgående friktionssignal. Lyser noget først rødt ved et niveau, der sjældent nås, gør designet det mindre sandsynligt, at netop det signal får opmærksomhed ad den vej — uden at nogen besluttede det.</p>
+
+    <div class="research-note">
+      <strong>Forskningsnote.</strong> To teoretiske arbejder ligger bag formuleringen. Galbraith beskrev i 1974 — med Herbert Simon og hans teori om kognitive grænser som ledetråd — hvordan informationssystemer kan integreres i organisationsdesign. Ocasio formulerede i 1997 påstanden, at <em>»firm behavior is the result of how firms channel and distribute the attention of their decision-makers«</em>. Begge er begrebslige arbejder uden empirisk test i artiklen selv, og ingen af dem handler om dashboards, adgangsrettigheder eller strategieksekvering. De understøtter én ting: at det ikke er neutralt, hvad et system gør synligt.
+    </div>
+
+    <p>Det peger på en advarsel mod casens egen reaktion. At give flere adgang løser ikke automatisk noget, for <strong>mere information er ikke det samme som bedre informationsbehandling</strong>. En organisation, der ikke kunne fortolke ét tal, bliver ikke klogere af tyve.</p>
+    <p>Modtrækket er ikke færre tal, men færre <em>alarmer</em> og flere <em>begrundelser</em>: det, der kræver handling, skubbes til den, der kan handle; resten skal kunne findes.</p>
+  </div>
+</section>
+
+<!-- 05 FORTOLKNING -->
+<section class="section" id="fortolkning">
+  <div class="container">
+    <div class="section-label">05 — Grænsen for, hvad fælles tal kan</div>
+    <h2>Samme data er ikke samme fortolkning</h2>
+    <p>Antag, at det lykkedes: samme definitioner, samme version, samme tal på alles skærm. To ledere ser det samme indekstal på 68 og er stadig uenige: den ene ser et kapacitetsproblem, den anden ser en prioriteringsfejl.</p>
+    <p>Det er ikke et tegn på, at governance har fejlet. Det er det normale — og pointen med at have fælles tal.</p>
+
+    <p class="pull-quote">Fælles måling er begyndelsen på samtalen, ikke slutningen.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Her ligger en grænse, som paperet skal være meget præcist om. Man kan standardisere, hvad der tælles. Man kan ikke standardisere, hvad det betyder.</p>
+
+    <div class="research-note">
+      <strong>Forskningsnote.</strong> Maitlis og Christianson gennemgik i 2014 sensemaking-litteraturen i <em>Academy of Management Annals</em> og definerer meningsskabelse som <em>»the process through which people work to understand issues or events that are novel, ambiguous, confusing, or in some other way violate expectations«</em>. Det er en litteraturgennemgang, ikke et måleresultat, og den handler ikke om indeks eller adgangsrettigheder. Den understøtter én ting: at tvetydighed bearbejdes socialt. At standardiserede definitioner derfor ikke fjerner den, er min slutning, ikke reviewets.
+    </div>
+
+    <p>Konsekvensen er en arbejdsdeling værd at skrive ned. <strong>Standardisér definitionen. Lad fortolkningen være en ledelsesopgave.</strong></p>
+    <p>Metoden kan definere, hvad en åben beslutning er, og hvornår den tæller som lukket, sådan som <a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html" style="color:var(--gold);">Paper 05</a> definerede det. Den kan ikke afgøre, om atten dage er for længe i netop dette initiativ, hvorfor det trækker ud, og hvad der skal gøres. Det sidste er ledelse.</p>
+    <p>Det gælder også den modsatte vej. <strong>Én officiel metode er ikke det samme som én tilladt fortolkning.</strong> At et tal er beregnet efter den styrede metode, gør ikke den nærmeste forklaring rigtig.</p>
+  </div>
+</section>
+
+<!-- 06 STEMME -->
+<section class="section" id="stemme">
+  <div class="container">
+    <div class="section-label">06 — Grænsen for, hvad et system kan</div>
+    <h2>Et felt i et system er ikke en stemme</h2>
+    <p>Der findes en fejlslutning, der er let at begå, fordi den ligner fremskridt. Et skema får et felt, der hedder »friktion«. Feltet eksisterer. Altså er der en kanal. Altså kommer det ubehagelige frem.</p>
+
+    <p class="pull-quote">Et felt i et system er ikke det samme som en stemme i organisationen.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Arkitektur kan skabe en kanal. Om den bliver brugt til det, der er svært at sige, afhænger af mere end arkitektur: om det tidligere har kostet noget at sige det, om nogen svarede, og om den, der skrev, kunne se, at det blev til noget.</p>
+
+    <div class="research-note">
+      <strong>Forskningsnote.</strong> Morrison opsummerede i 2023 i <em>Annual Review of Organizational Psychology and Organizational Behavior</em>, hvad hundredvis af studier over et årti har vist om, <em>»when and why employees choose to speak up or remain silent«</em>. Det er arbejdspsykologi. Det handler ikke om systemdesign eller governance, og det siger ikke, at tavshed skyldes den måde, information er organiseret på. Det bruges til én afgrænset pointe: at en kanal ikke i sig selv er nok til, at noget bliver sagt.
+    </div>
+
+    <p>Det gør ikke feltet værdiløst — kun at man ikke kan aflæse organisationens ærlighed på, hvor mange felter der findes. Én ting hjælper konkret: den, der bidrager med et signal, skal kunne se, <strong>hvilken definition der blev brugt, hvor data gik hen, om de blev rettet eller lagt sammen, og hvad ledelsen må slutte af dem.</strong></p>
+    <p>Det garanterer ingenting, men gør det muligt at protestere kvalificeret.</p>
+  </div>
+</section>
+
+<!-- 07 BUREAUKRATI -->
+<section class="section" id="bureaukrati">
+  <div class="container">
+    <div class="section-label">07 — Den anden halvdel af titlen</div>
+    <h2>Central metode behøver ikke være central kontrol</h2>
+    <p>Her kommer den oplagte indvending: hvis metoden centraliseres, har vi så ikke bare bygget bureaukrati igen? Svaret er ikke automatisk nej. En styret metode <em>kan</em> blive bureaukrati — det afhænger af, hvad den bruges til.</p>
+
+    <div class="research-note">
+      <strong>Forskningsnote.</strong> Adler og Borys foreslog i 1996 i <em>Administrative Science Quarterly</em> <em>»a conceptualization of workflow formalization that helps reconcile contrasting assessments of bureaucracy as alienating or enabling to employees«</em> — altså to typer formalisering: den <strong>understøttende</strong> og den <strong>tvingende</strong>. Det er et begrebsligt forslag, ikke en måling: det viser ikke, at en centraliseret metode er understøttende, men giver et kriterium at afprøve den på. Simons fulgte i 1994 ti nyudnævnte topledere over omtrent atten måneder og beskrev, hvordan formelle kontrolsystemer kunne bruges <em>interaktivt</em> — til at skabe debat om strategiske usikkerheder, ikke kun til måling. Et lille, kontekstafhængigt studie; ikke dokumentation for, at en central metode åbner dialog, men samme kriterium.
+    </div>
+
+    <p>Oversat til en metode, der styrer ledelsesinformation: den er understøttende, når den hjælper folk med at forstå definitionerne, rette fejl og udfordre antagelserne — og tvingende, når den mest bruges til at fremtvinge overholdelse, undertrykke lokal viden og gøre indvendinger upassende.</p>
+
+    <p class="pull-quote">En standard er nyttig, når den gør arbejdet lettere at forstå og udfordre — ikke når den gør afvigelser ulovlige at tale om.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Der er en prøve på fem minutter: spørg tre, der leverer data ind, hvad definitionen betyder, og hvad de ville gøre, hvis den var forkert. Kan de svare på det første og ikke det andet, er det værd at undersøge, om formaliseringen er på vej mod den tvingende ende. Tre svar er ingen måling, men en anledning til at spørge videre.</p>
+    <p>Og modsat: låser man alt centralt og lader kun ét kontor se helheden, risikerer man at miste kontekst, gøre metodeejeren til flaskehals og svække muligheden for lokal udfordring. Det er ikke governance. Det er et kontroltårn med udsigt til for lidt.</p>
+    <p>Og så det ord, titlen bruger. <em>Centralisér</em> betyder ikke ét kontor, ét system eller én koncernstandard for alt, men at metoden har ét sted, hvor den kan ændres for det, der sammenlignes. En koncern med selvstændige enheder kan have flere metodehjem — ét per enhed. Betingelsen er den samme: hvert hjem skal være udpeget, og dér, hvor tal lægges sammen på tværs, skal der være ét hjem for den sammenlægning. Ordet er et krav om placering, ikke om afstand til toppen.</p>
+  </div>
+</section>
+
+<!-- 08 RETTIGHEDER -->
+<section class="section" id="rettigheder">
+  <div class="container">
+    <div class="section-label">08 — Modellen</div>
+    <h2>Fem rettigheder omkring et ledelsessignal</h2>
+    <p>Diskussionen om adgang ender let som ét spørgsmål: hvem skal have adgang? Det er for groft. Omkring ethvert ledelsessignal findes mindst fem rettigheder, og de behøver ikke ligge samme sted.</p>
+
+    <table class="mx-wt mx-pas">
+      <caption>Thomas Friisnæs' praktiske governance-model. Ikke en valideret taksonomi — en måde at stille spørgsmålet skarpere.</caption>
+      <thead><tr><th scope="col">Rettighed</th><th scope="col">Spørgsmålet, den besvarer</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Bidrage</td><td data-label="Spørgsmålet, den besvarer">Hvem må skabe, indsende og rette et signal eller et belæg?</td></tr>
+        <tr><td>2 · Se</td><td data-label="Spørgsmålet, den besvarer">Hvem må se egne data, mønstre på tværs, ledelsens sammenfatning og kilden bag?</td></tr>
+        <tr><td>3 · Udfordre</td><td data-label="Spørgsmålet, den besvarer">Hvem må bestride data, bestride fortolkningen, tilføje kontekst og <em>foreslå</em> en metodeændring?</td></tr>
+        <tr><td>4 · Ændre metoden</td><td data-label="Spørgsmålet, den besvarer">Hvem må ændre den officielle definition, skala, normalisering, vægt, tærskel, aggregation, regel for manglende data eller komponent?</td></tr>
+        <tr><td>5 · Publicere</td><td data-label="Spørgsmålet, den besvarer">Hvem må gøre et datasæt, et øjebliksbillede eller en rapport til officielt ledelsesgrundlag?</td></tr>
+      </tbody>
+    </table>
+
+    <p>Mønstret er det interessante: <strong>rettighed 1 til 3 kan ofte være relativt brede og rolle-relevante</strong> — men altid afgrænset af ansvar, formål og følsomhed, ikke af rang. <strong>Rettighed 4 og 5 bør normalt være eksplicitte og typisk snævrere.</strong></p>
+    <p>Grunden er ikke, at de er vigtigere, men at de gør to forskellige ting. En metodeændring kan ændre, hvordan tidligere tal kan sammenlignes og fortolkes. En publicering gør én bestemt version til officielt ledelsesgrundlag. Begge kræver derfor en eksplicit beslutningsret, <em>før</em> de gennemføres — ellers er der ingen at spørge bagefter. »Snævrere« er konsekvensen af det krav, ikke et mål i sig selv.</p>
+    <p>Det er ingen juridisk regel: fordelingen kan se anderledes ud. At den er placeret, kan ikke. Men i de fleste organisationer, jeg møder, er det omvendte tilfældet: retten til at se er snæver, og retten til at ændre er uafklaret.</p>
+
+    <p class="pull-quote">Metoden skal kunne udfordres bredt og ændres snævert.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>»Snævert« skal læses præcist: <em>gennem en defineret beslutningsret</em> — ikke i hemmelighed, ikke hos én person. En snæver ret, der er skrevet ned, er governance. En, ingen kan pege på, er en vane.</p>
+    <p>Bemærk også, at rettighed 3 rummer retten til at <em>foreslå</em> en metodeændring — ikke til at gennemføre den. At skille de to ad gør det muligt at have en bred udfordringskultur uden en flydende metode.</p>
+  </div>
+</section>
+
+<!-- 09 SKÆRM -->
+<section class="section" id="skaerm">
+  <div class="container">
+    <div class="section-label">09 — Rolle-relevant udsyn</div>
+    <h2>Samme udsyn kræver ikke samme skærm</h2>
+
+    <p class="pull-quote">Samme udsyn kræver ikke samme skærm. Det kræver samme definitioner.<cite>— Thomas Friisnæs</cite></p>
+    <p>Følger adgang ansvar, har hvert lag brug for sit eget billede af samme grundlag.</p>
+
+
+    <div class="dispo">
+      <div class="dispo-h">Fire lag — min praktiske opdeling, ikke en adgangsstandard</div>
+      <ul class="dispo-list">
+        <li><strong>Arbejdslaget</strong> <em>→</em> initiativejere og teams: egne kildesignaler, kontekst, mulighed for at rette faktuelle fejl og se, hvordan deres input bruges.</li>
+        <li><strong>Metodelaget</strong> <em>→</em> den funktion, der forvalter metoden: mønstre på tværs, dækning, datakvalitet, version, afvigelser og ændringsforslag.</li>
+        <li><strong>Direktionslaget</strong> <em>→</em> komprimering, mulighed for at bore ned, de væsentlige usikkerheder, beslutningerne og advarsel ved metodebrud.</li>
+        <li><strong>Bestyrelseslaget</strong> <em>→</em> strategisk væsentlige mønstre, større usikkerheder og metodeændringer og de forpligtelser, der kræver tilsyn. Normalt ikke den rå log.</li>
+      </ul>
+    </div>
+
+    <p>Lagene er ingen rangorden for, hvem der fortjener at vide mest. De matcher informationens form med det ansvar, der skal bæres. En bestyrelse, der får den rå log, får ikke mere indsigt — den får mindre, fordi det væsentlige forsvinder i mængden. Det er et argument om form, ikke om ret: et tilsynsorgan, der beder om det underliggende, skal kunne få det.</p>
+    <p>Det væsentlige er, at <strong>grundlaget er det samme</strong>. Fire lag med fire definitioner er fire organisationer. Fire lag med samme definitioner er ét udsyn.</p>
+    <p>Og lokale mål er tilladt: egne driftsmål, forsøgssignaler og diagnoser. Betingelsen er, at et lokalt mål, der afviger fra det officielle, <strong>skal hedde noget andet</strong> — og ikke lægges ind i en officiel tidsserie uden eksplicit kobling. Det er den styring, der gør lokal frihed mulig.</p>
+  </div>
+</section>
+
+<!-- 10 VERSIONERING -->
+<section class="section" id="versionering">
+  <div class="container">
+    <div class="section-label">10 — Hvad et versionsnummer ikke kan</div>
+    <h2>Versionering er ikke governance</h2>
+    <p><a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html" style="color:var(--gold);">Paper 09</a> sluttede med et krav om, at et tal skulle rejse sammen med sin metodeversion. Det krav står ved magt. Men det er ikke nok, og det er værd at være præcis om hvorfor.</p>
+    <p>Et versionsnummer og et aftryk af konfigurationen fortæller, at noget ændrede sig, og hvornår. De fortæller ikke, om ændringen var besluttet af nogen, der måtte beslutte den.</p>
+
+    <p class="pull-quote">Versionering dokumenterer, at noget ændrede sig. Governance dokumenterer, hvem der måtte ændre det — og hvorfor.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>En ordentligt registreret metodeændring fylder ikke mere end et skærmbillede — men besvarer noget andet end et versionsnummer:</p>
+
+    <table class="mx-wt mx-pas">
+      <caption>Metodeændring — otte felter mere end »gem«. Min praktiske registrering, ikke et ændringsråd.</caption>
+      <thead><tr><th scope="col">Felt</th><th scope="col">Spørgsmålet, det besvarer</th></tr></thead>
+      <tbody>
+        <tr><td>Hvad</td><td data-label="Spørgsmålet, det besvarer">Hvad ændres konkret — hvilken definition, tærskel, vægt eller regel?</td></tr>
+        <tr><td>Hvorfor</td><td data-label="Spørgsmålet, det besvarer">Hvad er begrundelsen, hvad skulle den løse — og hvilke indvendinger blev rejst og ikke fulgt?</td></tr>
+        <tr><td>Foreslået af</td><td data-label="Spørgsmålet, det besvarer">Hvem rejste den?</td></tr>
+        <tr><td>Godkendt af</td><td data-label="Spørgsmålet, det besvarer">Hvem havde beslutningsretten — som person eller forum, ikke som systemrolle?</td></tr>
+        <tr><td>Effektiv fra</td><td data-label="Spørgsmålet, det besvarer">Fra hvilken dato eller periode gælder den?</td></tr>
+        <tr><td>Historik</td><td data-label="Spørgsmålet, det besvarer">Hvilke sammenligninger påvirkes — og genberegnes historikken, kobles den, eller markeres bruddet?</td></tr>
+        <tr><td>Version</td><td data-label="Spørgsmålet, det besvarer">Hvilken metode- og konfigurationsversion udløste den?</td></tr>
+        <tr><td>Orientering</td><td data-label="Spørgsmålet, det besvarer">Hvem skal vide det, før de læser næste rapport?</td></tr>
+      </tbody>
+    </table>
+
+    <p>Otte felter. Ikke en komité — bare et spor af, hvad der blev ændret og med hvilket mandat. Det er hele forskellen mellem en metode, der kan revideres, og en, der bare har et nummer.</p>
+    <p>Og en advarsel mod overdrivelse: ikke alt kræver samme niveau. At rette en forkert dato er ingen metodeændring. At skifte normaliseringskurve midt i et kvartal er. <strong>Governance skal være proportional</strong> — ellers risikerer den selv at blive en friktion, folk begynder at omgå, og så er man tilbage ved de stille ændringer.</p>
+    <p>Proportionalt har en praktisk form. Start med den håndfuld tal, der faktisk flytter beslutninger hos jer; det er dem, der skal have alle otte felter og en publiceringskontrol. Resten skal have ét felt: et navn på den, der ejer definitionen. Rækkefølgen betyder lige så meget — tag ét tal først, placér rettighed 4 og 5 på det, og lad resten vente. En model, der indføres på alt på én gang, bliver til et skema, folk udfylder uden at læse.</p>
+  </div>
+</section>
+
+<!-- 11 ÆNDRE -->
+<section class="section" id="aendre">
+  <div class="container">
+    <div class="section-label">11 — Beslutningsretten</div>
+    <h2>Hvem må ændre metoden?</h2>
+    <p>Før man kan svare på, hvem der må ændre metoden, skal man kunne se, hvornår man er ved at gøre det. Det er sværere, end det lyder, fordi tre forskellige handlinger ligner hinanden i praksis.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Tre ting, der ligner hinanden</div>
+      <ul class="dispo-list">
+        <li><strong>At rette data</strong> <em>→</em> forkert dato, dubleret hændelse, tastefejl. Faktuelle rettelser tæt på arbejdet.</li>
+        <li><strong>At ændre fortolkning</strong> <em>→</em> »den friktion er ikke sammenlignelig med den anden«. Ledelsesarbejde.</li>
+        <li><strong>At ændre metoden</strong> <em>→</em> definitionen af lukket, en vægt, en tærskel, en kurve, en inklusionsregel. Noget, der kan ændre, hvordan historiske tal kan sammenlignes og fortolkes.</li>
+      </ul>
+    </div>
+
+    <p>De kræver forskellige rettigheder. Og spørgsmålet, der skiller dem ad, er enkelt nok til et møde:</p>
+
+    <p class="pull-quote">Er vi ved at rette et datapunkt — eller ændre den regel, der bestemmer, hvad datapunktet betyder?<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Hvem der har retten, kan dette paper ikke svare på. Det kan være et Strategy Office, et tværgående metodeforum, en data governance-funktion eller en anden eksplicit ansvarlig struktur. <strong>Funktionsnavnet er sekundært. Mandatet er det afgørende.</strong></p>
+    <p>Det er ikke et forsøg på at slippe uden om spørgsmålet — her er en regel at vælge efter. Ligger tallet primært til grund for direktionens prioritering på tværs, hører metoden hjemme hos den funktion, der forbereder beslutningen. Er det i hovedsagen et fagligt mål i ét domæne, hører den hjemme dér. Kan to svare ja, er svaret ikke en tredje funktion — det er et forum med begge og en navngiven formand.</p>
+    <p>Uanset hvem der har den, gælder to begrænsninger. Den første: en metodeejer definerer, hvad der tælles, hvordan det beregnes, og hvilken version der gælder — ikke hvad tallet betyder for forretningen.</p>
+
+    <p class="pull-quote">En central metodeejer må ikke blive en central fortolkningsmonopolist.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Den anden: metoden <em>skal</em> ændres, når den er forkert. En metode, der ikke kan ændres, er ikke stabil — den er forældet med ekstra trin. Governance beskytter ikke mod ændringer, men mod dem, der sker usynligt, eller fordi resultatet ikke passede.</p>
+    <p>Det sidste har et navn værd at kende: at skifte målestok, indtil tallet ser rigtigt ud. Modtrækket er ikke mistillid, men rækkefølge — <strong>en metodeændring, der foreslås efter at resultatet er kendt, skal begrundes stærkere end en, der foreslås før.</strong> Det gælder også den anden vej: en <em>afvisning</em>, der først kommer, efter resultatet er kendt, skal begrundes lige så stærkt.</p>
+  </div>
+</section>
+
+<!-- 12 PUBLICERE -->
+<section class="section" id="publicere">
+  <div class="container">
+    <div class="section-label">12 — Den oversete rettighed</div>
+    <h2>Hvem må publicere den officielle version?</h2>
+    <p>Den femte rettighed er let at overse. Man kan have styr på, hvem der må ændre metoden, og stadig ikke vide, hvem der må gøre et bestemt tal til <em>det officielle ledelsesgrundlag</em>. Evnen til at beregne og retten til at publicere er to ting: enhver, der kan eksportere et regneark, kan beregne, men det gør ikke resultatet til organisationens tal.</p>
+
+    <div class="research-note">
+      <strong>Forskningsnote.</strong> Skellet mellem governance og den daglige administration er formuleret klart af Khatri og Brown i 2010 i <em>Communications of the ACM</em>: <em>»Governance refers to what decisions must be made … and who makes the decisions (locus of accountability for decision-making). Management involves making and implementing decisions.«</em> De opstiller fem beslutningsdomæner for data. Abraham og kolleger gennemgik i 2019 145 publikationer og beskriver data governance som <em>»the exercise of authority and control over the management of data«</em>. Begge handler om <strong>data</strong> governance, ikke eksekveringsinformation, og reviewet bemærker selv, at effekten på præstation kræver mere forskning. De understøtter ét princip: at beslutningsdomæner og ansvarsplacering må besluttes eksplicit — i deres tilfælde for data. Overførslen til eksekveringsinformation er min.
+    </div>
+
+    <p>Overført til metodegovernance bliver spørgsmålet: hvem har myndighed over definitioner, konfiguration og publicering — ikke hvem har adgang til knappen.</p>
+    <p>Den stærkeste tekniske indvending hører til her. Moderne dataplatforme styrer allerede definitioner i et semantisk lag, hvor beregningen ligger i versionsstyret kode med review før ændring. Er problemet så ikke løst? Indvendingen rammer rigtigt: et semantisk lag løser beregningshalvdelen. Tre ting står tilbage. Et kode-review er ikke en beslutningsret — en godkendt commit siger ikke, hvem der måtte ændre standarden. Publicering er en organisatorisk begivenhed, ikke et deploy. Og meget af det, serien måler, har intet kildesystem: det er menneskers vurderinger.</p>
+
+    <p class="pull-quote">Governance er ikke det samme som administration.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det fører til en skelnen, der bliver vigtigere, jo mere ledelsesinformation der ligger i systemer. <strong>Et teknisk »admin«-flag er ikke en beslutningsret.</strong> At et modul er den autoritative beregningskilde, gør ikke brugeren til metodeejer. Det første er arkitektur, det andet mandat.</p>
+    <p>Derfor bør publicering behandles som en selvstændig begivenhed med en ansvarlig — ikke som en teknisk handling, der sker, når nogen er færdig. Og publiceringskontrollen skal teste det, den hedder.</p>
+    <p>Et forbehold først: ikke enhver regel behøver være kodet. Meget governance fungerer som aftale mellem mennesker — en uskreven regel kan være governance, en <em>uplaceret</em> kan ikke. Pointen er snævrere: <em>hvis</em> en kontrol hævder at håndhæve en standard, skal den teste netop den standard.</p>
+
+    <p class="pull-quote">Governance er først virkelig, når den kritiske regel også kan stoppe publiceringen.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>To grænser hører med. En kontrol behøver ikke altid kunne tilsidesættes — ugyldigt format, brudt integritet eller manglende bemyndigelse kan med god grund være hårde stop. Tillader governance en undtagelse, skal den registreres med ansvarlig og begrundelse; omgås kontrollen usynligt, er den værre end ingen. Og den må kun afvise på forhånd definerede kriterier — dækning, metode og version, format, integritet, nødvendige forbehold eller publiceringsmandat. Ikke fordi konklusionen er ubelejlig. En afvisning uden en sådan regel bag sig er ikke en kontrol — det er en redaktør.</p>
+  </div>
+</section>
+
+<!-- 13 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">13 — Frameworket</div>
+    <h2>Fra signal til fælles udsyn</h2>
+    <p>De syv led samler, hvad ni papers har bygget: vejen fra et signal tæt på arbejdet til et fælles ledelsesbillede, der kan bruges og udfordres.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">Fra signal til fælles udsyn</div>
+      <div class="fw-sub">Thomas Friisnæs' praktiske governance-framework. Anvendes på ét ledelsessignal ad gangen.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Indsaml tæt på arbejdet</h4>
+          <p><strong>Den, der er tæt nok på til at vide det, bidrager.</strong> Signalet opstår, hvor arbejdet foregår — ikke hvor rapporten skrives. Bevar, hvem der indsendte hvad og hvornår, så et signal kan rettes — og hold sporet til det formål.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Bevar kilde og evidensstatus</h4>
+          <p><strong>Hvad er det for et tal?</strong> Kilde, tidspunkt, omfang og hvilken slags belæg det er — <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a>'s krav, båret hele vejen op.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Beregn efter én styret metode</h4>
+          <p><strong>Officielle definitioner og én version.</strong> Ikke fordi metoden er sand, men fordi den skal være ens for alle, der sammenligner.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Publicér gennem eksplicitte gates</h4>
+          <p><strong>Officiel status kræver en kontrol, der kan sige nej.</strong> Dækning, version, de forbehold der skal med — og en ansvarlig for beslutningen om at udgive.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">5</div>
+        <div class="fw-step-body">
+          <h4>Vis efter rolle og behov</h4>
+          <p><strong>Samme metode, forskellige billeder.</strong> Fire lag, ét grundlag. Adgangen følger ansvar og følsomhed, ikke rang.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">6</div>
+        <div class="fw-step-body">
+          <h4>Fortolk og udfordr bredt</h4>
+          <p><strong>Her skal der være mange stemmer.</strong> Lokal kontekst, ledelsesdømmekraft og retten til at sige, at tallet er rigtigt beregnet og alligevel misvisende.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">7</div>
+        <div class="fw-step-body">
+          <h4>Ændr metoden gennem eksplicitte beslutningsrettigheder</h4>
+          <p><strong>Version, begrundelse, ejer, dato.</strong> Og en afgørelse om, hvad der sker med historikken. Otte felter, ét skærmbillede.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Led 1, 2 og 6 skal give plads til bred, rolle-relevant deltagelse og udfordring. Led 3, 4 og 7 skal have tydeligt placerede rettigheder: led 3 og 7 styrer den fælles metode, mens led 4 gør en bestemt version officiel. Led 5 gør begge dele mulige samtidig.</p>
+  </div>
+</section>
+
+<!-- 14 TIDLIGERE -->
+<section class="section" id="tidligere">
+  <div class="container">
+    <div class="section-label">14 — Seriens signatur</div>
+    <h2>Hvad kunne du se tidligere?</h2>
+    <p>Rubrikken handler her om governance, ikke om eksekvering. Linjerne er <strong>governancesignaler — ikke beviser på governancekvalitet</strong>, og ingen af dem afgør noget i sig selv.</p>
+
+    <div class="sig sig-earlier">
+      <div class="sig-label">Seriens signatur · Paper 10</div>
+      <div class="sig-title">Governancesignaler — ikke beviser på governancekvalitet</div>
+      <table class="sig-table">
+        <thead>
+          <tr><th scope="col">Det, du kan se</th><th scope="col">Hvad det kunne betyde — og hvad der skal undersøges</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Samme metriknavn bruges med forskellige definitioner</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde en semantisk forgrening. Undersøg: hvornår skiltes de, og hvem besluttede det?</td></tr>
+          <tr><td>Konfigurationsversionen er skiftet uden synlig begrundelse</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde uformel ændringsstyring. Undersøg: hvad ændrede sig, og hvem godkendte det?</td></tr>
+          <tr><td>Direktionens visning kører på reservekonfiguration</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at tallet ikke er den styrede model. Undersøg: hvilke vægte og regler blev brugt?</td></tr>
+          <tr><td>Mange lokale udtræk bærer det officielle metriknavn</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde et uklart autoritativt grundlag. Undersøg: hvilken version regner de på?</td></tr>
+          <tr><td>Rettelser venter længe hos metodeejeren</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde en central flaskehals. Undersøg: hvilke rettelser kunne ligge tættere på arbejdet?</td></tr>
+          <tr><td>Bidragydere kan ikke se, hvordan deres data bliver brugt</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at kvalificeret modspil er svært. Undersøg: hvad får de at vide efter indsendelse?</td></tr>
+          <tr><td>Metoden er ændret midt i en rapporteringsperiode</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde et brud i tidsserien. Undersøg: fra hvornår gælder ændringen, og hvad sker der med historikken?</td></tr>
+          <tr><td>En publiceringskontrol godkender trods manglende dækning</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at reglen findes uden håndhævelse. Undersøg: hvad tester kontrollen faktisk?</td></tr>
+          <tr><td>En algoritme anbefaler en handling uden navngiven beslutningstager</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at autoritetsgrænsen er uafklaret. Undersøg: hvem afgør, om anbefalingen følges?</td></tr>
+        </tbody>
+      </table>
+      <p class="sig-note"><strong>Alle ni er signalhypoteser om governance — ikke målinger af, om den er god.</strong> »Kunne betyde« er en mulig forklaring, ikke et fund, og undersøgelseslinjen er første spørgsmål, ikke hele undersøgelsen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 15 KONKLUDERE -->
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="section-label">15 — Seriens signatur</div>
+    <h2>Hvad må du ikke konkludere?</h2>
+    <p>Governance indbyder til en bestemt selvtilfredshed: at fordi noget er registreret, er det også i orden.</p>
+
+    <div class="sig sig-conclude">
+      <div class="sig-label">Seriens signatur · Paper 10</div>
+      <div class="sig-title">Hvad må du ikke konkludere?</div>
+      <div class="sig-cols">
+        <div>
+          <h4>Ud fra bred adgang kan du ikke konkludere …</h4>
+          <ul>
+            <li>at folk siger til, når noget er galt</li>
+            <li>at de fortolker tallene ens</li>
+            <li>at dataene er rigtige</li>
+            <li>at metoden er styret</li>
+            <li>at privatliv og fortrolighed er håndteret</li>
+          </ul>
+          <h4>Ud fra central metodeejerskab kan du ikke konkludere …</h4>
+          <ul>
+            <li>at metoden er valid</li>
+            <li>at den er rimelig</li>
+            <li>at lokal viden er kommet med</li>
+            <li>at organisationen lærer noget</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ud fra systemets spor kan du ikke konkludere …</h4>
+          <ul>
+            <li>at en versioneret ændring var autoriseret</li>
+            <li>at en publiceringskontrol håndhæver den regel, den er opkaldt efter</li>
+            <li>at en teknisk admin-rolle svarer til et organisatorisk mandat</li>
+            <li>at en skrivebeskyttet ledelsesvisning betyder, at beslutningsretterne er rigtige</li>
+          </ul>
+          <h4>Ud fra et hash eller et versionsnummer kan du ikke konkludere …</h4>
+          <ul>
+            <li>at metoden er rigtig</li>
+            <li>at nogen tog stilling</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sig-close">Governance gør rettigheder og ansvar synlige. Det gør ikke automatisk metoden rigtig.</div>
+    </div>
+
+    <p>Den omvendte fejl er lige så dyr: at afvise et helt udsyn, fordi ét spor mangler. Et ufuldstændigt governance-lag er ingen grund til at holde op med at måle — det er en liste over, hvad der skal på plads.</p>
+  </div>
+</section>
+
+<!-- 16 DIAGNOSE -->
+<section class="section" id="diagnose">
+  <div class="container">
+    <div class="section-label">16 — Diagnose · 10 minutter</div>
+    <h2>Hvem må se, udfordre og ændre?</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · CEO, direktionsmedlem, CIO eller Strategy Office · Skriftlig</div>
+      <div class="ex-meta">⏱ Cirka 10 minutter · Ingen modenhedsscore.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Vælg ét strategisk vigtigt tal. Svar skriftligt og i rækkefølge.</p>
+      <ol>
+        <li><strong>Hvem skaber signalet?</strong></li>
+        <li><strong>Hvem kan rette faktuelle input?</strong></li>
+        <li><strong>Hvem kan se kilden og konteksten — og hvem har besluttet, hvad der må gemmes om hvem, og hvor længe?</strong></li>
+        <li><strong>Hvem kan se mønstret på tværs?</strong></li>
+        <li><strong>Hvem kan udfordre fortolkningen?</strong></li>
+        <li><strong>Hvem ejer definitionen?</strong></li>
+        <li><strong>Hvem kan ændre en tærskel, en vægt eller en beregningsregel?</strong></li>
+        <li><strong>Hvem godkender en metodeændring — og fra hvornår gælder den?</strong></li>
+        <li><strong>Hvem må publicere den officielle ledelsesversion?</strong></li>
+        <li><strong>Kan modtageren se dækning, metodeversion og de relevante forbehold?</strong></li>
+      </ol>
+      <p style="font-size:15.5px;color:var(--text-mid);margin:22px 0 0;">Øvelsen ender i fire linjer: <strong>ét adgangsgab · én uklar beslutningsret · ét sted, hvor en regel ikke håndhæves · én navngiven governance-ejer.</strong> Hvor du ikke kan svare, er svaret »ved ikke« — og det er øvelsens egentlige resultat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17 MIKROHANDLING -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">17 — 2-minutters mikrohandling</div>
+    <h2>Spørgsmålet, der skiller de to ting ad</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · ved næste ledelsesgennemgang</span>
+      <h3>Ét spørgsmål og tre opfølgende. Ingen ny proces, intet ekstra møde.</h3>
+      <p>Næste gang nogen siger <strong>»lad os ændre den tærskel — den passer bedre til vores virkelighed«</strong>, spørg: <strong>»Er det en bedre fortolkning af den samme metode — eller er vi ved at ændre metoden?«</strong></p>
+      <p>Er det en metodeændring: <strong>»Hvem ejer den beslutning, fra hvornår gælder den, og hvad gør den ved historikken?«</strong></p>
+      <p>Kan ingen svare, er det ingen anklage, men den næste opgave: at placere retten, før ændringen laves — og den, der rejste forslaget, skal have et svar, ikke en henvisning til et forum.</p>
+      <p>Siger ingen noget ved næste gennemgang, kan du starte selv: tag ét tal, I bruger til at prioritere, og skriv de fem rettigheder ned med et navn ud for hver. De tomme felter er dagsordenen.</p>
+      <p>Bemærk tonen. Forslaget er tit rigtigt — folk tæt på arbejdet opdager skævheder, andre ikke ser. Spørgsmålet er ikke, om ændringen er klog, men hvem der må foretage den.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 18 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">18 — Dit næste skridt</div>
+    <h2>Gør det konkret — og luk din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 10 · Demokratisér udsynet. Centralisér metoden.</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv ét næste skridt — det gemmes kun lokalt i din browser.</p>
+      <label for="commitText">Den governance-ret, vi skal gøre tydeligere, er …</label>
+      <p class="commit-note">Skriv signalet, hvilken rettighed det handler om, hvem der har den i dag, hvem der bør have den, hvordan beslutningen træffes, fra hvornår — og hvad første skridt er. Eksempel: »Signal: eksekveringsindekset i direktionsrapporten. Rettighed: at ændre metoden. I dag: uafklaret — tærskler ændret tre gange uden registrering. Bør: metodeforum med CFO, COO og Strategy Office. Effektiv fra næste kvartalsstart. Første skridt: skriv de seneste tre ændringer ned med begrundelse og dato.« En illustration, ikke en anbefaling.</p>
+      <textarea id="commitText" placeholder="Signal · rettighed · nuværende ejer · ønsket ejer · beslutningsregel · effektiv fra · første skridt"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit næste skridt</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Strategien sker mellem kvartalerne</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 19 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">19 — Ofte stillede spørgsmål</div>
+    <h2>Det, der bliver spurgt om</h2>
+
+    <details class="faq-item">
+      <summary class="faq-q">Betyder »demokratisér udsynet«, at alle skal se alt?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Nej. Det betyder rolle-relevant adgang: de signaler og den kontekst, der er nødvendige for at tage ansvar og udfordre ledelsesbilledet. Formål og følsomhed sætter grænsen — persondata, fortrolige sager og regulerede oplysninger hører ikke til på en fælles skærm.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvem skal eje metoden?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Der findes ikke én funktion, der altid er svaret. Det afgørende er, at der findes et eksplicit ansvarligt hjem med en beslutningsret, der kan peges på. Et Strategy Office er én mulighed; et tværgående metodeforum eller en data governance-funktion er andre. Funktionsnavnet er sekundært — mandatet er det afgørende.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Må lokale teams have deres egne målinger?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Ja. Driftsmål, forsøgssignaler og lokale diagnoser er en styrke. Betingelsen er, at et lokalt mål med anden betydning skal hedde noget andet end det officielle — og ikke lægges ind i en officiel tidsserie uden en eksplicit kobling.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Må en CEO ændre en tærskel?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Hvis beslutningsretten ligger der, ja. Men ændringen skal være eksplicit, versioneret og håndteret med hensyn til sammenligneligheden. Det problematiske er ikke, at magten findes. Det problematiske er en magt, der virker som en usynlig metodeændring.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Er en central metode ikke bare bureaukrati?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Ikke nødvendigvis. Formalisering kan være understøttende eller tvingende. Den er understøttende, når den hjælper folk med at forstå definitionerne, finde fejl og udfordre antagelser — og tvingende, når den mest bruges til at fremtvinge overholdelse og gøre afvigelser upassende at tale om.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvem må udfordre metoden?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Så bredt som ansvar og følsomhed tillader. En bred ret til at bestride data, bestride fortolkningen og <em>foreslå</em> ændringer er sund. At gennemføre ændringen i den officielle metode er en anden rettighed, og de to skal ikke blandes sammen.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Er én kilde til sandheden målet?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Formuleringen er uheldig, og <a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html" style="color:var(--gold);">Paper 09</a> advarede mod sandhedssprog. Sigt efter én autoritativ metode og version til officiel brug. Flere visninger og flere fortolkninger kan udmærket eksistere samtidig.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Løser adgang problemet med, at folk ikke siger noget?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Nej. En kanal er ikke en stemme. Adgang og felter gør det muligt at sige noget; om det bliver sagt, afhænger af, hvad det tidligere har kostet, og om nogen svarede.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvad er forskellen på at rette data og ændre metoden?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>At rette data er at ordne en faktuel fejl — en forkert dato, en dubleret hændelse. At ændre metoden er at ændre den regel, der bestemmer, hvad data betyder — en definition, en tærskel, en vægt. Det første ændrer ét tal. Det andet kan ændre, hvordan alle tidligere tal kan sammenlignes og fortolkes. Derfor kræver de forskellige rettigheder.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Skal bestyrelsen have adgang til rådata?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Normalt ikke som standard. Bestyrelsen har brug for strategisk væsentlige mønstre, de store usikkerheder, større metodeændringer og de forpligtelser, der kræver tilsyn. Rå operationelle logs giver sjældent mere indsigt — de gør det væsentlige sværere at få øje på.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Kan en ekstern rådgiver eje metoden?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>En ekstern kan designe, facilitere og forvalte metoden i en periode. Men det interne ansvar skal være eksplicit og navngivet, og ordningen skal have en udløbsdato. Ellers har organisationen outsourcet retten til at definere, hvad dens egen eksekvering betyder — og det er ikke en ydelse, det er en afhængighed.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvem må publicere?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Den, der har fået retten eksplicit. Ikke den, der kan eksportere en fil. Publicering bør behandles som en selvstændig begivenhed med en ansvarlig, ikke som en teknisk handling, der sker, når nogen er færdig.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvad betyder et admin-login?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>En teknisk tilladelse. Det er ikke automatisk et organisatorisk mandat. At et modul er den autoritative beregningskilde, gør ikke brugeren af modulet til metodeejer i governance-forstand.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvad gør jeg på mandag?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Tag ét tal, I bruger til at prioritere. Skriv de fem rettigheder ned med et navn ud for hver: hvem bidrager, hvem ser, hvem udfordrer, hvem ændrer, hvem publicerer. De tomme felter er dagsordenen. Det tager en halv time og kræver ingen beslutning.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- 20 HANDLING -->
+<section class="section" id="handling">
+  <div class="container">
+    <div class="section-label">20 — Fra arkitektur til beslutningsret</div>
+    <h2>Fra arkitektur til beslutningsret</h2>
+    <p>Spørgsmålet, paperet efterlader, kræver intet værktøj: <strong>Hvem skal kunne se hvad — og hvem må ændre metoden?</strong> Kan I svare for ét tal ved næste gennemgang, har paperet gjort sit.</p>
+    <p>Jeg har en kommerciel interesse i både Strategy Execution Governance og Strategy Execution Observatory™. I seriens sidste paper er det rimeligt at måle mit eget arbejde på paperets egen model.</p>
+    <p>Først det, der er rigtigt bygget. Værktøjet er delt i tre moduler: ét indsamler signaler og bærer kilde- og integritetsmetadata uden at eje beregningen; ét definerer, beregner, versionerer og publicerer; og ledelsesmodulet læser kun publicerede pakker, afviser rå indsendelser og viser proveniens, version og dækning — altså <em>bidrage</em>, <em>beregne</em> og <em>forbruge</em>. Det er den rigtige arkitektur.</p>
+
+    <p class="pull-quote">Systemarkitektur kan understøtte governance. Den kan ikke erstatte governance.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Og det er præcis her, paperet rammer mit eget. Arkitekturen er foran governance-detaljen — på syv punkter, jeg har fundet ved at holde værktøjet op mod de fem rettigheder.</p>
+    <p><strong>Den ansvarlige udgiver findes ikke.</strong> En publiceringsbegivenhed registrerer i dag <code>publishedBy: "admin"</code> — en modulrolle, ikke et menneske. Teknisk aktør og organisatorisk udgiver bør være to felter.</p>
+    <p><strong>En konfigurationsændring er ikke en ændringsbegivenhed.</strong> Funktionen validerer, at vægtene summerer til 100, og gemmer. Der er versionsnumre og et betydeligt spor af proveniens — men selve ændringen registreres uden aktør, begrundelse, godkender, ikrafttrædelse eller vurdering af sammenligneligheden. Det er ikke fravær af revisionsspor. Det er fravær af ændringsgovernance.</p>
+    <p><strong>Konfigurationens identitet afhænger af datoen.</strong> Versionsstrengen dannes af dagens dato plus et hash af konfigurationen, så den samme konfiguration kan få et andet id på en anden dag. Identiteten bør følge indholdet; udgivelses- og ikrafttrædelsesdato bør være egne felter.</p>
+    <p><strong>Publiceringskontrollen »Minimum coverage« tester ikke dækning.</strong> I den nuværende kode består den, hvis der findes mindst én indsendelse. Den erklærede tærskel bruges ikke, og 6/8-reglen fra <a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html" style="color:var(--gold);">Paper 09</a> håndhæves ikke. Retningen er rigtig — der <em>er</em> kontroller før udgivelse — men en kontrol skal teste den standard, den er opkaldt efter.</p>
+    <p><strong>Og »Config locked« låser ikke.</strong> Den kontrollerer, at SSI-vægtene summerer til 100. Det viser, at vægtsummen er gyldig — ikke at konfigurationen er godkendt, autoriseret eller fastfrosset for perioden. <strong>100 % er en sum. Ikke en godkendelse.</strong></p>
+    <p>De to sidste er konkrete implementeringshuller, ikke spørgsmål om smag. Skal kontrollerne blive ved med at hedde »Minimum coverage« og »Config locked«, skal deres logik matche det, navnene lover — og rettelsen hører hjemme i netop den registrering, paperet lige har beskrevet.</p>
+
+    <p>Og modulerne er adskilt i roller, men det er ikke i sig selv dokumentation for identitets- og adgangsstyring på virksomhedsniveau. Adskilte moduler er ikke håndhævede rettigheder.</p>
+    <p>Den sidste rammer hårdest, og den står på min egen salgsside. Der står, at jeg leverer data og værktøjer, der giver PMO'en mandat og direktionen overblik — og at jeg håndterer alt det tunge: <em>bygger SSI'en, konsoliderer data og udarbejder ledelsesrapporteringen</em>. Målt på paperets egen model gør formuleringen det uklart, om jeg udfører arbejdet på et internt mandat, eller om rettighed 4 og 5 reelt er flyttet ud af organisationen. Det er præcis den uklarhed, paperet siger skal væk — og jeg ville begå paperets egen fejl, hvis jeg sluttede fra udført arbejde til beslutningsret. Dertil er <em>giver PMO'en mandat</em> selve det, paperet advarer imod: et værktøj kan levere grundlag, ikke myndighed.</p>
+    <p>Det kan være rigtigt i en pilot. Problemet opstår, hvis ordningen ikke får en udløbsdato og en navngiven intern modtager. <strong>Et eksternt metodeejerskab uden et eksplicit internt mandat og en overdragelsesplan kan blive en afhængighed.</strong> Det skal min egen ydelse være tydeligere på, før kravet skal stå i nogen andens materiale.</p>
+
+    <p class="pull-quote">Hvis Observatory skal stå for governance, skal det kunne vise forskellen på, hvem der kan levere data, hvem der kan se dem, hvem der kan ændre metoden, og hvem der kan publicere den officielle version. Ellers er »governance« bare et ord i navnet.<cite>— Thomas Friisnæs</cite></p>
+  </div>
+</section>
+
+<!-- 21 LOOP -->
+<section class="section" id="loop">
+  <div class="container">
+    <div class="section-label">21 — Serien samlet</div>
+    <h2>Ti spørgsmål. Én ledelseskapabilitet</h2>
+    <p>Ti papers er blevet til ti spørgsmål. De er ingen tjekliste og skal ikke stilles samtidig — men tilsammen er de bevægelsen, serien har handlet om.</p>
+
+    <div class="loop">
+      <div class="loop-h">Ti spørgsmål</div>
+      <ol class="loop-list">
+        <li><span class="lp-n">01</span><span class="lp-q">Hvad sker der mellem resultaterne?</span></li>
+        <li><span class="lp-n">02</span><span class="lp-q">Grøn på hvad?</span></li>
+        <li><span class="lp-n">03</span><span class="lp-q">Hvilken type evidens er tallet?</span></li>
+        <li><span class="lp-n">04</span><span class="lp-q">Kan organisationen bære de samtidige krav?</span></li>
+        <li><span class="lp-n">05</span><span class="lp-q">Hvilken beslutning venter arbejdet på?</span></li>
+        <li><span class="lp-n">06</span><span class="lp-q">Hvor møder arbejdet modstand igen og igen?</span></li>
+        <li><span class="lp-n">07</span><span class="lp-q">Er signalet tidligt — eller faktisk valideret som ledende?</span></li>
+        <li><span class="lp-n">08</span><span class="lp-q">Hvilken evne forudsætter strategien, som vi endnu ikke har bevis for?</span></li>
+        <li><span class="lp-n">09</span><span class="lp-q">Hvilke antagelser skal ændres, før konklusionen ændrer sig?</span></li>
+        <li><span class="lp-n">10</span><span class="lp-q">Hvem skal kunne se hvad — og hvem må ændre metoden?</span></li>
+      </ol>
+      <div class="loop-foot">Det er ikke ti dashboards. Det er ti spørgsmål, der tilsammen flytter ledelsen fra periodisk rapportering til løbende, efterprøveligt udsyn.</div>
+    </div>
+
+    <p>Bevægelsen bag dem er den samme hele vejen: fra <strong>resultat</strong> til <strong>signal</strong>, videre til <strong>mønster</strong>, <strong>diagnose</strong>, <strong>beslutning</strong>, <strong>handling</strong> og <strong>ny evidens</strong> — og så forfra. Paper 10 tilføjer ikke et ekstra led, men rammen om hele sløjfen: at den kan bruges af mange og kun ændres af nogen.</p>
+  </div>
+</section>
+
+<!-- 22 SLUT -->
+<section class="section" id="slut">
+  <div class="container">
+    <div class="section-label">22 — Serien lukkes</div>
+    <h2>Strategien sker stadig mellem kvartalerne</h2>
+    <p>Serien begyndte med en påstand, der var lettere at misforstå end at skrive: at kvartalsrapporten ikke er problemet. Problemet var, at den blev brugt til et spørgsmål, den aldrig var bygget til at besvare — hvad sker der lige nu?</p>
+    <p><strong>Kvartalsrapporten forsvinder ikke. Den skifter rolle: fra stedet, hvor ledelsen opdager strategien, til et periodisk snapshot af noget, organisationen allerede har kunnet se, undersøge og handle på.</strong></p>
+    <p>Det er hele forskellen. Ikke flere tal, ikke hurtigere rapportering — men et udsyn, der findes mellem rapporterne, som flere kan bruge, og hvor metoden er sværere at ændre ubemærket.</p>
+    <p>Om ti papers har bygget en kategori eller bare en samling begreber, afgør ikke jeg. Det afgøres af, om nogen kan bruge dem på et møde i næste uge — og det kræver hverken værktøj, model eller rådgiver. Det kræver, at nogen stiller ét af de ti spørgsmål og bliver stående, til der kommer et svar.</p>
+
+    <p class="pull-quote">Strategien sker stadig mellem kvartalerne. Forskellen er, at nu kan ledelsen se den.<cite>— Thomas Friisnæs</cite></p>
+
+    <div class="cta-box">
+      <div class="cta-label">Samtale</div>
+      <h3>Hvor uklart er jeres governance-lag?</h3>
+      <p>Vil du teste, hvor synlig jeres strategieksekvering er — og hvor beslutningsretterne omkring metoden er uafklarede — så tager vi 20 minutter på ét konkret tal.</p>
+      <a class="start-btn" href="/#kontakt">20 min. Ét problem. Én plan. →</a>
+      <p class="print-only">20 min. Ét problem. Én plan. · friisnaes.com/#kontakt</p>
+    </div>
+
+    <div class="seriedone">
+      <div class="sd-label">Serien er komplet</div>
+      <div class="sd-title">10 papers · Strategisk observabilitet</div>
+      <div class="sd-sub">Fra resultat til styret udsyn — fra informationsgabet i Paper 01 til beslutningsretterne her.</div>
+      <div class="sd-links">
+        <a href="/strategien-sker-mellem-kvartalerne.html">Start forfra med Paper 01</a>
+        <a href="/library.html">Se hele serien</a>
+        <a href="/#kontakt">Kontakt Thomas</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">Information, opmærksomhed og organisationsdesign</div>
+    <ul>
+      <li>Galbraith, J. R. (1974). »Organization Design: An Information Processing View.« <em>Interfaces</em>, 4(3), 28–36. Teoretisk artikel. <a href="https://doi.org/10.1287/inte.4.3.28" target="_blank" rel="noopener">doi.org/10.1287/inte.4.3.28</a></li>
+      <li>Ocasio, W. (1997). »Towards an Attention-Based View of the Firm.« <em>Strategic Management Journal</em>, 18(S1), 187–206. Teoretisk artikel. <a href="https://doi.org/10.1002/(SICI)1097-0266(199707)18:1+%3C187::AID-SMJ936%3E3.0.CO;2-K" target="_blank" rel="noopener">doi.org/10.1002/(SICI)1097-0266(199707)18:1+&lt;187::AID-SMJ936&gt;3.0.CO;2-K</a></li>
+    </ul>
+    <div class="sb-group">Fortolkning og stemme</div>
+    <ul>
+      <li>Maitlis, S. &amp; Christianson, M. (2014). »Sensemaking in Organizations: Taking Stock and Moving Forward.« <em>Academy of Management Annals</em>, 8(1), 57–125. Litteraturreview. <a href="https://doi.org/10.5465/19416520.2014.873177" target="_blank" rel="noopener">doi.org/10.5465/19416520.2014.873177</a></li>
+      <li>Morrison, E. W. (2023). »Employee Voice and Silence: Taking Stock a Decade Later.« <em>Annual Review of Organizational Psychology and Organizational Behavior</em>, 10, 79–107. Review. <a href="https://doi.org/10.1146/annurev-orgpsych-120920-054654" target="_blank" rel="noopener">doi.org/10.1146/annurev-orgpsych-120920-054654</a></li>
+    </ul>
+    <div class="sb-group">Formalisering og styring</div>
+    <ul>
+      <li>Adler, P. S. &amp; Borys, B. (1996). »Two Types of Bureaucracy: Enabling and Coercive.« <em>Administrative Science Quarterly</em>, 41(1), 61–89. Begrebslig artikel. <a href="https://doi.org/10.2307/2393986" target="_blank" rel="noopener">doi.org/10.2307/2393986</a></li>
+      <li>Simons, R. (1994). »How new top managers use control systems as levers of strategic renewal.« <em>Strategic Management Journal</em>, 15(3), 169–189. Longitudinelt studie af ti nyudnævnte topledere. <a href="https://doi.org/10.1002/smj.4250150301" target="_blank" rel="noopener">doi.org/10.1002/smj.4250150301</a></li>
+    </ul>
+    <div class="sb-group">Beslutningsrettigheder og data governance</div>
+    <ul>
+      <li>Khatri, V. &amp; Brown, C. V. (2010). »Designing Data Governance.« <em>Communications of the ACM</em>, 53(1), 148–152. Praktikerrettet begrebsartikel. <a href="https://doi.org/10.1145/1629175.1629210" target="_blank" rel="noopener">doi.org/10.1145/1629175.1629210</a></li>
+      <li>Abraham, R., Schneider, J. &amp; vom Brocke, J. (2019). »Data governance: A conceptual framework, structured review, and research agenda.« <em>International Journal of Information Management</em>, 49, 424–438. Struktureret review af 145 publikationer. <a href="https://doi.org/10.1016/j.ijinfomgt.2019.07.008" target="_blank" rel="noopener">doi.org/10.1016/j.ijinfomgt.2019.07.008</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Begrebet strategisk observabilitet, governance-kortets to akser, den praktiske definition af demokratiseret udsyn, de fem rettigheder, de fire synlighedslag, registreringen af en metodeændring, frameworket »Fra signal til fælles udsyn«, governancesignalerne i »Hvad kunne du se tidligere?«, diagnosen, mikrohandlingen, åbningscasen og de ti spørgsmål er Thomas Friisnæs' egne praktiske begreber og rammer, ikke validerede modeller. Kilderne har hver deres kontekst: Galbraith og Ocasio er teoretiske arbejder om henholdsvis organisationsdesign og opmærksomhed; Maitlis og Christianson gennemgår sensemaking-litteraturen; Morrison gennemgår litteraturen om medarbejderes voice og tavshed; Adler og Borys fremsætter et begrebsligt skel mellem understøttende og tvingende formalisering; Khatri og Brown er en praktikerartikel om <strong>data</strong> governance; Abraham og kolleger gennemgår 145 publikationer om samme felt og bemærker selv, at effekten på virksomhedens præstation kræver mere forskning; Simons fulgte <strong>ti</strong> nyudnævnte topledere i omkring atten måneder. <strong>Ingen af de citerede arbejder tester »demokratisér udsynet, centralisér metoden« som en afprøvet indgriben, ingen af dem handler om strategieksekvering i den form, serien beskriver, og ingen af dem validerer noget i Strategy Execution Observatory™ — hverken de fem rettigheder, titlens princip som universel regel, Strategy Office som ejer eller de konkrete publiceringskontroller.</strong> Åbningscasen er konstrueret. Beskrivelsen af Observatory's moduler, publiceringskontroller og versionsfelter er min egen gennemgang af mit eget værktøj. Danske gengivelser af engelske formuleringer er egne oversættelser.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Strategien sker mellem kvartalerne — serien</div>
+    <h2 class="collection-title">Ti papers om strategisk observabilitet</h2>
+    <p class="collection-intro">Serien handler om, hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang, og om at gøre det synligt uden at forveksle signaler med sandhed. <strong>Alle 10 papers er udgivet.</strong></p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Serie 06</span><span class="cpart-name">Strategien sker mellem kvartalerne</span></div>
+      <p class="cpart-desc">Fra informationsgabet over signaler, kapacitet, beslutninger og friktion til kompetencer, metode og governance.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/strategien-sker-mellem-kvartalerne.html">Strategien sker mellem kvartalerne</a></li>
+        <li data-n="02"><a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">Grøn er ikke det samme som sund</a></li>
+        <li data-n="03"><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">Det kvalitative kan godt kvantificeres</a></li>
+        <li data-n="04"><a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">Kapacitet findes ikke i planen</a></li>
+        <li data-n="05"><a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">Beslutninger er en del af produktionsapparatet</a></li>
+        <li data-n="06"><a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html">Friktion er data</a></li>
+        <li data-n="07"><a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">Før resultatet flytter sig</a></li>
+        <li data-n="08"><a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">Ved vi, om vi kan det, strategien kræver?</a></li>
+        <li data-n="09"><a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">Et indeks er ikke sandheden</a></li>
+        <li data-n="10"><span class="current">Demokratisér udsynet. Centralisér metoden. — du læser dette</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til næste strategimøde i direktionen eller bestyrelsen.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 09</span>
+      <span class="ra-title">Et indeks er ikke sandheden: vægte, dækning og robusthed i samlede tal</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 01</span>
+      <span class="ra-title">Start forfra: hvad ledelsen kan se af eksekveringen, mens den sker</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 05</span>
+      <span class="ra-title">Beslutninger er en del af produktionsapparatet: definitioner, rettigheder og lukning</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Strategien sker mellem kvartalerne · Serie 06 · Paper 10 af 10</div>
+        <div class="series-next">Serien er komplet — alle 10 papers er udgivet</div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: smk_ (Strategien sker mellem kvartalerne)
+  var LS_C = 'smk_p10_commit', LS_D = 'smk_done', PAPER_N = 10, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = (n >= TOTAL ? 'Serien fuldført · ' + TOTAL + '/' + TOTAL : n + ' af ' + TOTAL + ' gennemført');
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // FAQ åben i print, også når browserens egen udskriv-funktion bruges
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

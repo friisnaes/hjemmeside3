@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friktion er data | Strategisk observabilitet | Thomas Friisnæs</title>
+<meta name="description" content="En friktion kan være lukket i loggen og stadig vende tilbage i arbejdet. Paper 06 om gentagelser, grænseflader, workarounds og friktion som eksekveringssignal.">
+<meta name="keywords" content="strategieksekvering, organisatorisk friktion, koordinering, tværgående samarbejde, grænseflader, workarounds, driftsforstyrrelser, gentagelser, strategisk observabilitet, governance, Strategy Office">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-friktion-er-data.html">
+
+<meta property="og:title" content="Friktion er data | Strategisk observabilitet | Thomas Friisnæs">
+<meta property="og:description" content="Nul åbne problemer er ikke det samme som ingen gentagelser. Paper 06 om strategisk observabilitet.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-friktion-er-data.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Thomas Friisnæs – Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Friktion er data">
+<meta name="twitter:description" content="Hvis vi har løst det samme fem gange, hvorfor er vi så løbet ind i det fem gange? Paper 06 om friktion som eksekveringsdata.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* Paper 02 — Farven og underlaget (Grøn på hvad?): redaktionel tabel, ingen trafiklysfarver */
+  .basis { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .basis-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .basis-head .bh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .basis-head .bh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .basis-head .bh-sub { font-size: 14px; line-height: 1.55; color: var(--text-light); margin: 6px 0 0; }
+  .basis-colour { display: flex; align-items: baseline; gap: 16px; padding: 16px 30px; border-bottom: 1px solid var(--border); }
+  .basis-colour .bc-name { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; min-width: 64px; }
+  .basis-colour .bc-desc { flex: 1; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .basis-colour .bc-value { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 24px; line-height: 1; color: var(--navy); }
+  .basis-table { width: 100%; border-collapse: collapse; }
+  .basis-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table th.bt-group { text-align: left; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; padding: 20px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table td { font-size: 15px; line-height: 1.5; color: var(--text-mid); padding: 11px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .basis-table td.bt-state { width: 34%; color: var(--navy); font-weight: 500; }
+  .basis-table td.bt-state.out { color: var(--text-light); font-weight: 400; }
+  .basis-table td.bt-state.unknown { color: var(--text-mid); font-weight: 400; font-style: italic; }
+  .basis-foot { padding: 16px 30px; background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 600px) {
+    .basis-head, .basis-colour, .basis-foot { padding-left: 20px; padding-right: 20px; }
+    .basis-colour { flex-wrap: wrap; row-gap: 4px; }
+    .basis-colour .bc-desc { flex-basis: 100%; order: 3; }
+    .basis-table thead { display: none; }
+    .basis-table th.bt-group { padding: 18px 20px 8px; }
+    .basis-table td { padding: 10px 20px; }
+    .basis-table td.bt-state { width: auto; white-space: nowrap; }
+  }
+  @media print {
+    .basis, .basis-table tr { page-break-inside: avoid; }
+    .basis-head, .basis-foot { background: #fff !important; }
+    body.print-econo .basis { border-color: #999 !important; }
+    body.print-econo .basis-head .bh-label, body.print-econo .basis-colour .bc-name, body.print-econo .basis-table th.bt-group { color: #333 !important; }
+  }
+
+  /* Paper 03 — Samme tal. Forskelligt billede.: én redaktionel talkomponent, ingen farver og ingen graf */
+  .spread { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .spread-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .spread-head .sp-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .spread-head .sp-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .spread-groups { display: grid; grid-template-columns: 1fr 1fr; }
+  .sp-group { padding: 30px 26px 26px; text-align: center; }
+  .sp-group + .sp-group { border-left: 1px solid var(--border); }
+  .sp-name { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 12px; }
+  .sp-values { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4.6vw, 44px); font-weight: 400; line-height: 1.1; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .sp-values .sp-dot { display: inline-block; margin: 0 0.32em; color: var(--text-light); font-size: 0.6em; vertical-align: 0.2em; }
+  .sp-mean { margin: 22px auto 0; padding-top: 14px; border-top: 1px solid var(--border); max-width: 250px; line-height: 1.5; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .sp-mean b { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 32px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .sp-read { margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .spread-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .spread-head, .spread-foot { padding-left: 20px; padding-right: 20px; }
+    .spread-groups { grid-template-columns: 1fr; }
+    .sp-group { padding: 24px 20px 22px; }
+    .sp-group + .sp-group { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  /* Paper 03 — Fire slags tal: redaktionel tabel i Paper 02's modelramme */
+  .kinds-table { width: 100%; border-collapse: collapse; }
+  .kinds-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .kinds-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 14px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .kinds-table td:first-child { width: 38%; padding-right: 12px; }
+  .kinds-table td:first-child strong { display: block; color: var(--navy); font-weight: 600; }
+  .kinds-table td:first-child span { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; color: var(--text-mid); }
+  /* Paper 03 — tre versioner af samme vurdering: Paper 01's vinduer stablet */
+  .windows.stack { grid-template-columns: 1fr; }
+  .windows.stack .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+  .sig-cols ul + h4 { margin-top: 18px; }
+  @media (max-width: 600px) {
+    .kinds-table thead { display: none; }
+    .kinds-table, .kinds-table tbody, .kinds-table tr, .kinds-table td { display: block; width: 100%; }
+    .kinds-table tr { padding: 12px 20px; border-bottom: 1px solid var(--border); }
+    .kinds-table td, .kinds-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .kinds-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 8px 0 2px; }
+  }
+  @media print {
+    .spread, .kinds-table tr { page-break-inside: avoid; }
+    .spread-head, .spread-foot { background: #fff !important; }
+    body.print-econo .spread { border-color: #999 !important; }
+    body.print-econo .spread-head .sp-label { color: #333 !important; }
+  }
+
+  /* Paper 04 — Lokalt plausibelt — samlet umuligt: én redaktionel illustration, ingen trafiklys og intet dashboard */
+  .load { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .load-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .load-head .ld-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .load-head .ld-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .load-head .ld-cond { margin-top: 8px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .load-rows { padding: 10px 30px 8px; }
+  .ld-row { display: grid; grid-template-columns: 170px minmax(0, 1fr) 76px; align-items: center; column-gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .ld-name { font-size: 15px; line-height: 1.3; color: var(--navy); font-weight: 500; }
+  .ld-name small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--text-light); font-weight: 300; }
+  .ld-track { position: relative; display: block; height: 12px; }
+  .ld-track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--border); }
+  .ld-fill, .ld-over { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); border-radius: 1px; }
+  .ld-over { background: var(--gold); border-radius: 0; top: auto; bottom: -7px; height: 3px; }
+  .ld-cut { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; }
+  .ld-tag { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 10.5px; letter-spacing: 0.1em; font-weight: 600; color: #fff; }
+  .ld-limit { position: absolute; left: 71.429%; top: -13px; bottom: -13px; border-left: 1px dashed var(--gold); }
+  .ld-val { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; line-height: 1; color: var(--navy); text-align: right; font-variant-numeric: lining-nums; white-space: nowrap; }
+  .ld-row.ld-scale { padding: 4px 0 0; border-bottom: 0; }
+  .ld-scale .ld-track { height: 16px; }
+  .ld-scale .ld-track::before { display: none; }
+  .ld-mark { position: absolute; left: 71.429%; bottom: 1px; transform: translateX(-50%); font-size: 10.5px; line-height: 1; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; white-space: nowrap; }
+  .ld-row.ld-sum { border-bottom: 0; padding-top: 17px; }
+  .ld-sum .ld-name { font-weight: 600; }
+  .ld-sum .ld-track { height: 24px; }
+  .ld-sum .ld-limit { top: -17px; bottom: -13px; }
+  .ld-sum .ld-val { font-style: italic; font-size: 32px; color: var(--gold); }
+  .section .load-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .load-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .load-head, .load-rows, .section .load-note, .load-foot { padding-left: 20px; padding-right: 20px; }
+    .ld-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 9px; }
+    .ld-row .ld-track { grid-column: 1 / -1; grid-row: 2; }
+    .ld-row.ld-scale { row-gap: 0; padding-top: 6px; }
+    .ld-val { font-size: 21px; }
+    .ld-sum .ld-val { font-size: 28px; }
+    .load-rows { position: relative; }
+    .load-rows::after { content: ''; position: absolute; top: 34px; bottom: 10px; left: calc(20px + (100% - 40px) * 0.71429); border-left: 1px dashed var(--gold); pointer-events: none; }
+    .ld-limit { visibility: hidden; }
+  }
+  @media print {
+    .load, .ld-row { page-break-inside: avoid; }
+    .load-head, .load-foot { background: #fff !important; }
+    body.print-econo .load { border-color: #999 !important; }
+    body.print-econo .load-head .ld-label, body.print-econo .ld-mark { color: #333 !important; }
+    body.print-econo .ld-fill { background: #8a8a8a !important; }
+    body.print-econo .ld-over { background: #000 !important; }
+    body.print-econo .ld-track, body.print-econo .ld-tag, body.print-econo .ld-limit, body.print-econo .ld-mark { background: transparent !important; }
+    body.print-econo .ld-tag { color: #000 !important; }
+    body.print-econo .ld-limit, body.print-econo .load-rows::after { border-left-color: #000 !important; }
+  }
+
+  /* Paper 05 — Seks dage. Og 37.: én redaktionel illustration, ingen dashboard-elementer */
+  .decs { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .decs-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .decs-head .dc-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .decs-head .dc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .decs-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .dec { padding: 28px 30px 26px; }
+  .dec + .dec { border-left: 1px solid var(--border); }
+  .d-tag { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 14px; }
+  .d-vals { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(33px, 4.6vw, 44px); font-weight: 400; line-height: 1.05; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .d-vals .d-dot { display: inline-block; margin: 0 0.3em; color: var(--text-light); font-size: 0.55em; vertical-align: 0.22em; }
+  .dec + .dec .d-vals { color: var(--gold); font-style: italic; }
+  .d-unit { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .d-mean { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-mean b { display: block; margin-top: 3px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 30px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .d-list { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .d-list dt { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-list dd { margin: 3px 0 11px; font-size: 15px; line-height: 1.5; color: var(--text-mid); }
+  .d-list dd:last-of-type { margin-bottom: 0; }
+  .section .decs-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .decs-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .decs-head, .dec, .section .decs-note, .decs-foot { padding-left: 20px; padding-right: 20px; }
+    .decs-grid { grid-template-columns: 1fr; }
+    .dec { padding-top: 24px; padding-bottom: 22px; }
+    .dec + .dec { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .decs { page-break-inside: avoid; }
+    .decs-head, .decs-foot { background: #fff !important; }
+    body.print-econo .decs { border-color: #999 !important; }
+    body.print-econo .decs-head .dc-label { color: #333 !important; }
+  }
+
+  /* Paper 06 — Lukket fem gange: én redaktionel tidslinje, ingen dashboard-elementer */
+  .frx { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .frx-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .frx-head .fx-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .frx-head .fx-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .frx-line { list-style: none; margin: 0; padding: 22px 30px 20px; }
+  .section .frx-line li { position: relative; display: grid; grid-template-columns: 74px 1fr auto; align-items: baseline; gap: 0 18px; padding: 10px 0; margin: 0; }
+  .frx-line li::before { content: ""; position: absolute; left: 83px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .frx-line li:first-child::before { top: 21px; }
+  .frx-line li:last-child::before { bottom: auto; height: 22px; }
+  .frx-line li::after { content: ""; position: absolute; left: 80px; top: 18px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .frx-line .fx-wk { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .frx-line .fx-ev { font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .frx-line .fx-st { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; white-space: nowrap; }
+  .frx-sum { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+  .fx-cell { padding: 24px 30px 22px; }
+  .fx-cell + .fx-cell { border-left: 1px solid var(--border); }
+  .fx-num { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(38px, 5.2vw, 50px); font-weight: 400; line-height: 1; color: var(--navy); font-variant-numeric: lining-nums; }
+  .fx-cell + .fx-cell .fx-num { color: var(--gold); font-style: italic; }
+  .fx-cap { margin-top: 9px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .section .frx-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .frx-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .frx-head, .fx-cell, .section .frx-note, .frx-foot { padding-left: 20px; padding-right: 20px; }
+    .section .frx-line { padding-left: 20px; padding-right: 20px; }
+    .section .frx-line li { grid-template-columns: 1fr auto; grid-template-areas: "wk st" "ev ev"; gap: 4px 14px; padding-left: 22px; }
+    .frx-line .fx-wk { grid-area: wk; }
+    .frx-line .fx-ev { grid-area: ev; }
+    .frx-line .fx-st { grid-area: st; justify-self: end; }
+    .frx-line li::before { left: 3px; }
+    .frx-line li::after { left: 0; }
+    .frx-sum { grid-template-columns: 1fr; }
+    .fx-cell + .fx-cell { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .frx { page-break-inside: avoid; }
+    .frx-head, .frx-foot { background: #fff !important; }
+    body.print-econo .frx { border-color: #999 !important; }
+    body.print-econo .frx-head .fx-label { color: #333 !important; }
+    body.print-econo .frx-line li::after { background: #000 !important; }
+    body.print-econo .frx-line li::before { background: #999 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Friktion er data",
+ "alternativeHeadline": "Det, der bliver løst igen og igen, kan fortælle noget om eksekveringen, som antallet af åbne problemer ikke viser.",
+ "description": "Nul åbne friktioner kan være et korrekt svar og stadig skjule fem hændelser ved den samme grænseflade. Paper 06 om skellet mellem hændelse, mønster og årsag, om hvorfor lokale løsninger kan gøre gentagelser usynlige, om hvad gentagelse kræver af definition, og om hvorfor mere rapportering kan se værre ud.",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-friktion-er-data.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-friktion-er-data.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Strategien sker mellem kvartalerne",
+  "url": "https://www.friisnaes.com/library.html"
+ },
+ "position": 6,
+ "inLanguage": "da",
+ "keywords": "organisatorisk friktion, koordinering, grænseflader, workarounds, gentagelser, strategieksekvering, strategisk observabilitet",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Strategien sker mellem kvartalerne · Paper 06 af 10</div>
+  <div class="pc-title">Friktion er data</div>
+  <div class="pc-sub">Det, der bliver løst igen og igen, kan fortælle noget om eksekveringen, som antallet af åbne problemer ikke viser.</div>
+  <div class="pc-author">Af Thomas Friisnæs · External Excellence Partner · Strategy Execution Governance · C-level-sparring · friisnaes.com · oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Strategisk observabilitet</span>
+      <span class="wp-series">Strategien sker mellem kvartalerne · Paper 06 af 10</span>
+      <span class="wp-readtime">ca. 25 min læsning</span>
+    </div>
+    <h1>Friktion <em>er data</em></h1>
+    <p class="wp-subtitle">Det, der bliver løst igen og igen, kan fortælle noget om eksekveringen, som antallet af åbne problemer ikke viser.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · External Excellence Partner · Strategy Execution Governance · C-level-sparring<br>Udgivet oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Lukket fem gange</a></li>
+      <li><a href="#tesen">Friktion er data</a></li>
+      <li><a href="#nul">Nul åbne kan stadig være et mønster</a></li>
+      <li><a href="#lag">Hændelse, mønster og årsag er tre forskellige ting</a></li>
+      <li><a href="#konflikt">Friktion er ikke det samme som konflikt</a></li>
+      <li><a href="#tilsigtet">Ikke al friktion skal væk</a></li>
+      <li><a href="#lokalt">Det, der løses lokalt, kan forblive usynligt centralt</a></li>
+      <li><a href="#specialisering">Specialisering er ikke problemet</a></li>
+      <li><a href="#graenseflade">Grænsefladen er et observationssted</a></li>
+      <li><a href="#gentagelse">Gentagelse kræver en definition</a></li>
+      <li><a href="#frekvens">Frekvens er ikke alvor</a></li>
+      <li><a href="#rapportering">Mere rapportering kan se værre ud</a></li>
+      <li><a href="#framework">Framework: Fra irritation til ledelsesdata</a></li>
+      <li><a href="#tidligere">Hvad kunne du se tidligere?</a></li>
+      <li><a href="#konkludere">Hvad må du ikke konkludere?</a></li>
+      <li><a href="#diagnose">Diagnose: Hvad har vi løst mere end én gang?</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit næste skridt</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#handling">Fra mønster til handling</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase · Et illustrativt eksempel</div>
+    <h2>Lukket fem gange</h2>
+    <p>Et strategisk initiativ skal bringe en ny kundeløsning på markedet. Tre dele af organisationen er involveret: den kommercielle enhed, compliance og data- og IT-siden. Ingen af dem er i konflikt med de andre. Alle tre leverer det, de er sat i verden for.</p>
+    <p>I løbet af seks uger sker der fem små ting.</p>
+    <p>I uge 1 bliver et kundetilbud sendt retur, fordi et nødvendigt datagrundlag mangler. Det bliver skaffet samme dag. Lukket. I uge 2 går en prisundtagelse frem og tilbage, fordi kriteriet bliver læst forskelligt de to steder. Afklaret. Lukket. I uge 3 venter en lancering på et input, som begge enheder troede, den anden ejede. Leveret. Lukket. I uge 5 må en sag behandles igen, fordi den blev sendt videre, før grundlaget var komplet. Den bliver færdiggjort. Lukket. I uge 6 rammer et nyt initiativ det samme sted og bliver hjulpet videre af en medarbejder, der ved, hvem man skal ringe til. Lukket.</p>
+    <p>Ingen af de fem hændelser er alvorlig. Ingen milepæl bliver rød. Ingen status skifter farve. Hver gang kan det involverede team med god samvittighed sige: <strong>»Det er håndteret.«</strong></p>
+
+    <div class="dispo">
+      <div class="dispo-h">To korrekte tal om de samme seks uger</div>
+      <ul class="dispo-list">
+        <li><strong>Åbne friktionshændelser lige nu</strong> <em>→</em> 0. Alle fem sager er registreret som lukket.</li>
+        <li><strong>Registrerede hændelser i perioden</strong> <em>→</em> 5. Alle fem er vurderet til at høre til den samme grænseflade.</li>
+      </ul>
+    </div>
+
+    <p>Grænsefladen er ikke en afdeling. Det er det sted i forløbet, hvor en kundesag skal have et verificeret datagrundlag, før den kan gå videre — og alle tre enheder mødes der.</p>
+    <p>På statusmødet ser direktionen det første tal. Det andet står ingen steder, fordi ingen har stillet spørgsmålet, der ville få det frem.</p>
+    <p>Så gør CEO'en det alligevel: <strong>»Hvis vi har løst det her fem gange, hvorfor er vi så løbet ind i det fem gange?«</strong></p>
+    <p>Det er et bedre spørgsmål, end mødet var ved at stille. Det kræver ikke nødvendigvis et nyt system. Men det kræver, at historikken bevares, og at nogen ser på hændelser over tid med et eksplicit kriterium for, hvad der ligner hinanden.</p>
+    <p>Bemærk samtidig, hvad de fem hændelser <em>ikke</em> beviser: ikke at de tre enheder samarbejder dårligt, ikke at der er én fælles årsag, og ikke at governance er forkert. De peger på ét sted, der fortjener at blive undersøgt.</p>
+  </div>
+</section>
+
+<!-- 02 TESEN -->
+<section class="section" id="tesen">
+  <div class="container">
+    <div class="section-label">02 — Tesen</div>
+    <h2>Friktion er data</h2>
+    <p><a href="/strategien-sker-mellem-kvartalerne.html" style="color:var(--gold);">Paper 01</a> skelnede mellem resultatindsigt og eksekveringsindsigt. <a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a> spurgte, hvad en grøn status dækker. <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a> handlede om, hvad et tal på en vurdering kan bære. <a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html" style="color:var(--gold);">Paper 04</a> viste, at kapacitetsproblemet kan ligge mellem initiativerne. Og <a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html" style="color:var(--gold);">Paper 05</a> sluttede med at pege herhen: Beslutningen kan være truffet, uden at samarbejdet bagefter flyder.</p>
+    <p><strong>Når de samme problemer bliver ved med at vende tilbage i eksekveringen, er de ikke kun irritation. De kan være data.</strong></p>
+    <p>Titlen skal læses præcist. Den siger ikke, at friktion er dårlig, eller at den bør fjernes. Den siger, at modstand i arbejdet kan observeres — at den har et sted, et tidspunkt, en konsekvens og en historik, og at den derfor kan behandles som noget, ledelsen kan se på, i stedet for noget, organisationen bare lever med.</p>
+    <p>Jeg bruger ordet friktion som en praktisk samlebetegnelse. Det er ikke et etableret forskningsbegreb. Forskningen, jeg trækker på, arbejder med mere præcist afgrænsede begreber — koordinering, indbyrdes afhængighed, driftsforstyrrelser, vidensgrænser, grænseflader — og min samlebetegnelse dækker flere af dem på én gang. Det skal siges højt, før den bruges.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Min praktiske definition</div>
+      <ul class="dispo-list">
+        <li><strong>Friktion</strong> <em>→</em> observerbar ekstra modstand i arbejdet — ventetid, omvej, genarbejde, gentagen koordinering eller blokering — som opstår, når en aktivitet møder en afhængighed, en grænseflade eller en uklarhed, der kræver mere arbejde end det tilsigtede forløb forudsætter.</li>
+      </ul>
+    </div>
+
+    <p>Definitionen skal testes hårdt, for den kan hurtigt komme til at dække alt. En kontrol er ikke friktion, blot fordi den tager tid. En diskussion er ikke friktion, blot fordi den er svær. <strong>Og et legitimt regulatorisk kontrolpunkt er ikke unødvendig modstand, blot fordi det koster tid.</strong></p>
+    <p>Det, der kan være friktion, er noget andet og mere konkret: at input til kontrolpunktet er uklare, at den samme sag går retur fem gange, at ingen ved, hvem der ejer den, eller at der bliver lavet en undtagelse hver gang. Modstanden ligger ikke i kontrollen. Den ligger i det arbejde, der skal til for at komme igennem den.</p>
+
+    <p class="pull-quote">Friktion fortæller først og fremmest, hvor arbejdet møder modstand. Ikke hvorfor.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det er både paperets omdrejningspunkt og dets begrænsning. Kilderne bærer mekanismer, ikke begrebet. Det er også alt, jeg bruger dem til.</p>
+  </div>
+</section>
+
+<!-- 03 NUL -->
+<section class="section" id="nul">
+  <div class="container">
+    <div class="section-label">03 — Dækningsgraden</div>
+    <h2>Nul åbne kan stadig være et mønster</h2>
+    <p>Sæt de to tal fra åbningscasen ved siden af hinanden.</p>
+
+    <div class="frx" role="group" aria-label="Illustration: Lukket fem gange">
+      <div class="frx-head">
+        <div class="fx-label">Illustration · konstrueret eksempel</div>
+        <div class="fx-title">Lukket fem gange</div>
+      </div>
+      <ol class="frx-line">
+        <li><span class="fx-wk">Uge 1</span><span class="fx-ev">Tilbud retur: nødvendigt datagrundlag manglede</span><span class="fx-st">Lukket</span></li>
+        <li><span class="fx-wk">Uge 2</span><span class="fx-ev">Prisundtagelse frem og tilbage: kriteriet læst forskelligt</span><span class="fx-st">Lukket</span></li>
+        <li><span class="fx-wk">Uge 3</span><span class="fx-ev">Lancering ventede: begge troede, den anden ejede input</span><span class="fx-st">Lukket</span></li>
+        <li><span class="fx-wk">Uge 5</span><span class="fx-ev">Sag genbehandlet: sendt videre før grundlaget var komplet</span><span class="fx-st">Lukket</span></li>
+        <li><span class="fx-wk">Uge 6</span><span class="fx-ev">Nyt initiativ ramte det samme sted: hjulpet videre manuelt</span><span class="fx-st">Lukket</span></li>
+      </ol>
+      <div class="frx-sum">
+        <div class="fx-cell">
+          <div class="fx-num">0</div>
+          <div class="fx-cap">åbne friktionshændelser lige nu</div>
+        </div>
+        <div class="fx-cell">
+          <div class="fx-num">5</div>
+          <div class="fx-cap">registrerede hændelser ved den samme grænseflade</div>
+        </div>
+      </div>
+      <p class="frx-note">Konstrueret eksempel. Beskrivelserne er forkortede og siger, hvad der skete — ikke hvorfor. At de fem er placeret ved den samme grænseflade, er i sig selv en vurdering, som skal kunne begrundes.</p>
+      <div class="frx-foot">Øjebliksbilledet siger nul åbne. Mønsterbilledet siger fem hændelser. Det beviser ikke én fælles årsag — men det giver ledelsen et sted at undersøge.</div>
+    </div>
+
+    <p>Ingen af tallene er forkerte. De svarer bare på to forskellige spørgsmål. <strong>»Nul åbne friktioner« kan være et helt præcist svar på spørgsmålet: Hvor mange registrerede friktionshændelser har status åben lige nu?</strong> Det er bare ikke svaret på, hvor mange hændelser der er opstået ved den samme vurderede grænseflade i perioden.</p>
+    <p>Skellet er elementært nok: Det er forskellen på en beholdning og en strøm. Forskellen bliver ledelsesmæssigt vigtig, når rapporteringen primært viser den aktuelle beholdning og ikke hændelserne over tid. En lukket post forsvinder fra øjebliksbilledet, selv om historikken stadig kan være analytisk relevant.</p>
+    <p>Det er den skelnen, <a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a> handlede om: Et præcist svar på et for smalt spørgsmål er stadig et for smalt ledelsesgrundlag. Øjebliksbilledet siger intet om:</p>
+
+    <div class="signs">
+      <ul>
+        <li>hvor mange hændelser der har været i perioden</li>
+        <li>hvor ofte den samme grænseflade går igen</li>
+        <li>hvor gamle de åbne er</li>
+        <li>hvad hændelserne kostede i tid, genarbejde eller ventetid</li>
+        <li>hvilke midlertidige veje udenom der bliver brugt for at komme videre</li>
+        <li>om noget lukkes lokalt og kommer tilbage et andet sted</li>
+      </ul>
+    </div>
+
+    <p>Det er ikke et paradoks at have nul åbne og fem lukkede ved den samme grænseflade i den samme periode. Det er to spørgsmål, og det ene bliver stillet oftere end det andet.</p>
+  </div>
+</section>
+
+<!-- 04 LAG -->
+<section class="section" id="lag">
+  <div class="container">
+    <div class="section-label">04 — Begrebsrammen</div>
+    <h2>Hændelse, mønster og årsag er tre forskellige ting</h2>
+    <p>Hvis friktion skal kunne bruges som ledelsesdata, er der ét skel, der skal holde hele vejen. Ellers kan enhver optælling blive til en diagnose, og enhver diagnose til en udpegning.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Tre niveauer, der ikke må skrides sammen</div>
+      <ul class="dispo-list">
+        <li><strong>Hændelsen</strong> <em>→</em> En konkret observeret episode. En levering skal laves om. En overlevering mangler information. En godkendelse sendes retur. To teams arbejder efter forskellige antagelser. Hændelsen er det, man faktisk så.</li>
+        <li><strong>Mønstret</strong> <em>→</em> Flere hændelser med relevant lighed — samme grænseflade, samme procestrin, samme symptom eller samme afhængighed. Mønstret er ikke observeret på samme måde som hændelsen. At to hændelser »ligner hinanden«, er en analytisk vurdering, som nogen har foretaget.</li>
+        <li><strong>Årsagen</strong> <em>→</em> Det, der efter en undersøgelse bedst forklarer mønstret. Årsagen er hverken talt eller set. Den er konkluderet — og den kan være forkert.</li>
+      </ul>
+    </div>
+
+    <p>Springet fra hændelse til årsag er det, der gør friktionsdata farlige i stedet for nyttige. Fem hændelser ved den samme grænseflade kan skyldes, at to systemer ikke har samme opdateringsfrekvens. De kan også skyldes, at en rolle er blevet vakant, at et nyt produkt har andre krav end det gamle, at kriteriet aldrig er blevet skrevet ned — eller at fire af de fem hændelser i virkeligheden ikke har noget med hinanden at gøre.</p>
+    <p><strong>En enkelt friktion er et datapunkt. Gentagelser kan gøre den til et mønster.</strong> Men et mønster er ikke en fælles årsag, og det bliver det ikke af at blive talt op. Optællingen kan pege på, hvor det er værd at kigge. Undersøgelsen kan kvalificere, hvad der er på spil.</p>
+    <p>Det samme gælder det ord, der næsten altid bliver brugt for hurtigt: rodårsag. Det samme mønster kan have flere medvirkende faktorer, og forklaringen kan ændre sig over tid. Derfor bruger jeg konsekvent <strong>forklaringshypotese</strong>, indtil noget er testet. Det er ikke forsigtighed for forsigtighedens skyld. Det er forskellen på at ændre noget, der virker, og noget, der lyder rigtigt.</p>
+  </div>
+</section>
+
+<!-- 05 KONFLIKT -->
+<section class="section" id="konflikt">
+  <div class="container">
+    <div class="section-label">05 — Afgrænsningen</div>
+    <h2>Friktion er ikke det samme som konflikt</h2>
+    <p>Ordet friktion trækker samtalen mod mennesker. Det er den letteste fejl at begå med dette paper, og den er værd at lukke med det samme.</p>
+    <p>Friktion i eksekveringen kan være teknisk: to systemer, der ikke taler sammen. Den kan være procesmæssig: et trin, der kommer i den forkerte rækkefølge. Den kan være informationsmæssig: en oplysning, der findes i to versioner. Den kan handle om kapacitet, om en beslutning, der mangler, eller om governance, der ikke er klar. Og den kan være relationel.</p>
+    <p><strong>Mellemmenneskelig konflikt er én mulig form for friktion. Den er ikke definitionen.</strong></p>
+    <p>Skellet har praktiske konsekvenser. Hvis en organisation registrerer friktion som »tværgående konflikter«, vil den systematisk overse det, der ikke ligner en uenighed: dobbeltarbejde, ventetid, manuelle mellemled, uklart ejerskab og de små omveje, som ingen nødvendigvis oplever som konflikt, men som stadig kræver tid. Den gør samtidig registreringen personfølsom, hvilket kan gøre den sjældnere.</p>
+    <p>Derfor er reglen i dette paper enkel: Registrér, hvad der skete med arbejdet. Ikke hvem der var vanskelig.</p>
+  </div>
+</section>
+
+<!-- 06 TILSIGTET -->
+<section class="section" id="tilsigtet">
+  <div class="container">
+    <div class="section-label">06 — Det bevidste valg</div>
+    <h2>Ikke al friktion skal væk</h2>
+    <p>Målet i dette paper er ikke nul friktion. Det ville hverken være realistisk eller klogt.</p>
+    <p>En del af den modstand, arbejdet møder, er lagt der med vilje. En risikogennemgang i anden forsvarslinje skal stille de spørgsmål, første linje ikke stiller sig selv. Funktionsadskillelse skal gøre det besværligt for én person at gøre det hele alene. En kvalitetsgate skal stoppe noget, der ikke er færdigt. Og en veltimet indvending fra en kollega, der ser noget andet, kan være en enkel og værdifuld form for kvalitetssikring.</p>
+    <p>Alt det er modstand. Intet af det er en fejl.</p>
+    <p>Skellet, jeg arbejder med, er derfor ikke mellem meget og lidt friktion, men mellem <strong>tilsigtet modstand, som organisationen har valgt</strong>, og <strong>gentagen eller uafklaret modstand, som ikke er et bevidst designvalg</strong>. Det er mit eget praktiske skel, ikke en valideret taksonomi.</p>
+
+    <p class="pull-quote">Spørgsmålet er ikke, om organisationen har friktion. Spørgsmålet er, om modstanden er tilsigtet — eller om den bliver ved med at vende tilbage uden at være et bevidst designvalg.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Et beslægtet skel bruges allerede i direktionssprog, om end med en anden skillelinje. BCG skelner i en kommentar fra februar 2025 mellem konstruktiv og ukonstruktiv friktion i ledelsesteamet: at friktion kan sætte gang i vigtige samtaler og innovation, mens ukonstruktiv friktion gør det modsatte. Deres skel går på virkningen. Mit går på, om modstanden er valgt. De to falder ikke nødvendigvis sammen — en tilsigtet kontrol kan sagtens fungere dårligt.</p>
+
+    <div class="research-note"><strong>Praktikerkommentar (BCG, 2025):</strong> Barton, Gaynes, Lesser &amp; Wallenstein, »Moves Only a CEO Can Make«, BCG, 18. februar 2025. Kommentar bygget på rådgivningserfaring; ingen undersøgelse, ingen data, ikke forskning. Afsnittet om friktion handler om ledelsesteamet, mens dette paper handler bredere om modstand i eksekveringen. Bruges alene til at vise, at skellet allerede bruges i praksis.</div>
+
+    <p>For en direktion er den brugbare konsekvens ikke at rydde op, men at kunne svare på to ting om en tilbagevendende modstand: Er den her, fordi vi har besluttet det? Og hvis ja — koster den det, vi troede?</p>
+  </div>
+</section>
+
+<!-- 07 LOKALT -->
+<section class="section" id="lokalt">
+  <div class="container">
+    <div class="section-label">07 — Den lokale løsning</div>
+    <h2>Det, der løses lokalt, kan forblive usynligt centralt</h2>
+    <p>Den næste mekanisme er kontraintuitiv, og den har intet med dårlige medarbejdere at gøre. Tværtimod.</p>
+    <p>Anita Tucker undersøgte i 2004 driftsforstyrrelser i sygeplejerskers arbejde på hospitaler. To fund fra den kontekst er relevante her: Analysen pegede på, at de fleste forstyrrelser stammede fra brud i forsyningen af materialer og information <strong>på tværs af organisatoriske grænser</strong>, og at medarbejderne hurtigt kompenserede for de fleste af dem. Tuckers forslag er, at netop de to forhold tilsammen — at frontlinjen ikke kontrollerer de processer, der skaber forstyrrelserne, og samtidig er dygtig til at få arbejdet til at fortsætte — gør det vanskeligt for organisationen at genkende hændelserne som læringsmuligheder.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (dybdegående empirisk studie, hospital):</strong> Tucker (2004), »The impact of operational failures on hospital nurses and their patients«, <em>Journal of Operations Management</em>, 22(2), 151–169: dybdegående studie af driftsforstyrrelser i sygeplejerskers arbejde. Hospitalskontekst; kan ikke overføres direkte til andre brancher. Bruges alene til mekanismen — at hurtig lokal kompensation kan gøre tilbagevendende problemer mindre synlige som læringsmuligheder — ikke til tal for, hvad friktion koster andre steder.</div>
+
+    <p>Overført til en direktions virkelighed — og det er en overførsel, ikke et forskningsresultat — lyder mekanismen sådan: <strong>Når lokal genopretning fungerer godt, kan det underliggende problem blive mindre synligt for ledelsen.</strong></p>
+    <p>Det er værd at være tydelig om, hvem der her er problemet: ingen. Den medarbejder, der finder en vej udenom, gør det rigtige for kunden og for sagen. En workaround — en midlertidig vej udenom — kan være kompetent, nødvendig og fuldstændig rationel i situationen. Det, der kan blive et problem, er noget andet:</p>
+
+    <div class="signs">
+      <ul>
+        <li>når den samme workaround bliver nødvendig igen og igen</li>
+        <li>når den bliver så indarbejdet, at ingen længere registrerer den som en omvej</li>
+        <li>når organisationen læser lokal genopretning som en forbedring af systemet</li>
+      </ul>
+    </div>
+
+    <p>Det sidste punkt er det vigtigste. <a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html" style="color:var(--gold);">Paper 05</a> etablerede, at besluttet ikke er det samme som implementeret. Her gælder den parallelle skelnen:</p>
+
+    <p class="pull-quote">En friktion kan være lukket i loggen og stadig leve i systemet.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>En sag kan blive lukket, fordi kunden fik sit svar, fordi filen blev rettet, eller fordi nogen ringede til den rigtige person. Intet af det betyder nødvendigvis, at grænsefladen er ændret, eller at det næste tilfælde bliver lettere. <strong>At arbejdet kom videre, er ikke det samme som, at friktionen er fjernet.</strong></p>
+    <p><strong>Hvis den samme type problem bliver løst fem gange, er fem lukninger ikke nødvendigvis fem forbedringer.</strong> De kan være fem genopretninger af det samme.</p>
+  </div>
+</section>
+
+<!-- 08 SPECIALISERING -->
+<section class="section" id="specialisering">
+  <div class="container">
+    <div class="section-label">08 — Vidensgrænsen</div>
+    <h2>Specialisering er ikke problemet</h2>
+    <p>Når tværgående problemer gentager sig, ligger »siloer« som forklaring lige for. Men gentagelsen alene kan ikke bære den diagnose.</p>
+    <p>Paul Carlile studerede i 2002 etnografisk fire indbyrdes afhængige funktioner i udviklingen og produktionen af et produkt, der fremstilles i store mængder. Hans beskrivelse af viden er præcis og ubehagelig for enhver, der drømmer om at bryde siloerne ned: Viden er lokal, indlejret i praksis og investeret i den enkelte funktion. Det er ikke en defekt. Det er, hvad specialisering består af. Der opstår ofte konsekvenser, når arbejdet går på tværs af funktionerne — konsekvenser, der skaber vanskelige vidensgrænser.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (etnografisk studie, produktudvikling):</strong> Carlile (2002), »A Pragmatic View of Knowledge and Boundaries: Boundary Objects in New Product Development«, <em>Organization Science</em>, 13(4), 442–455: etnografisk studie af fire indbyrdes afhængige funktioner i udviklingen og produktionen af ét produkt. Bruges til, at viden er lokal, indlejret og investeret i den enkelte funktion, og at vanskelige vidensgrænser ofte opstår, når der arbejdes på tværs — ikke som evidens for, at specialisering er skadelig.</div>
+
+    <p><strong>Problemet er ikke, at funktionerne ved forskellige ting. Det er, når arbejdet afhænger af, at forskellene bliver oversat — og de ikke bliver det.</strong></p>
+    <p>David Hoopes og Steven Postrel arbejder med et beslægtet, men selvstændigt begreb fra en anden kontekst. De undersøgte i 1999 produktudviklingen i ét videnskabeligt softwarefirma og definerer en <em>glitch</em> som en dyr fejl, der kun var mulig, fordi viden ikke var delt. I den virksomhed fandt de, at huller i den delte viden påførte virksomheden betydelige ekstraomkostninger.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (empirisk studie, én virksomhed):</strong> Hoopes &amp; Postrel (1999), »Shared knowledge, ›glitches,‹ and product development performance«, <em>Strategic Management Journal</em>, 20(9), 837–865: studie af produktudviklingen i ét videnskabeligt softwarefirma. <em>Glitch</em> er forfatternes begreb og ikke det samme som min samlebetegnelse friktion. Resultatet gælder én virksomhed og er ikke evidens for, at manglende delt viden forklarer friktion generelt.</div>
+
+    <p>At funktionerne har adgang til de samme data, er derfor ikke i sig selv dokumentation for fælles forståelse. At kunne se de samme tal betyder ikke, at man lægger den samme betydning i dem, arbejder ud fra de samme antagelser eller drager de samme konsekvenser. Det behøver ikke være uvilje. Det kan simpelthen være, hvad det vil sige at kunne noget forskelligt.</p>
+    <p>Den ledelsesmæssige konsekvens er ikke at fjerne specialiseringen, men at behandle oversættelsen som arbejde, der skal gøres — og som kan skabe ekstra koordinering og genarbejde, når den ikke sker.</p>
+  </div>
+</section>
+
+<!-- 09 GRÆNSEFLADE -->
+<section class="section" id="graenseflade">
+  <div class="container">
+    <div class="section-label">09 — Observationsstedet</div>
+    <h2>Grænsefladen er et observationssted</h2>
+    <p><a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html" style="color:var(--gold);">Paper 04</a> gjorde de fælles begrænsninger synlige, som ingen enkelt initiativplan indeholdt. Paper 06 gør grænsefladerne synlige: mellem to teams, mellem to funktioner, mellem forretning og IT, mellem salg og compliance, mellem menneske og system eller mellem to trin i den samme proces.</p>
+    <p>Gerardo Okhuysen og Beth Bechky gennemgik i 2009 forskningen i koordinering i et integrativt review og foreslog en ramme for, hvad koordineringsmekanismer som rutiner, møder, planer og tidsplaner egentlig udretter. De virker, foreslår forfatterne, ved at skabe tre integrerende betingelser for koordineret arbejde: <strong>ansvarlighed, forudsigelighed og fælles forståelse.</strong></p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (integrativt review):</strong> Okhuysen &amp; Bechky (2009), »Coordination in Organizations: An Integrative Perspective«, <em>Academy of Management Annals</em>, 3(1), 463–502: integrativ gennemgang af forskningen i koordinering, forstået som den proces, der binder indbyrdes afhængige opgaver sammen. De tre integrerende betingelser er en teoretisk ramme til at forstå, hvad koordineringsmekanismer udretter — ikke en diagnostisk model for årsager. Der kan derfor ikke sluttes, at en friktion skyldes manglende ansvarlighed, forudsigelighed eller fælles forståelse.</div>
+
+    <p>De tre er ikke svar. De er tre gode spørgsmål, når noget gentager sig ved den samme grænseflade: Er det tydeligt, hvem der står på mål for hvad? Kan de involverede regne med, hvad der sker hvornår? Og forstår de det samme ved det samme?</p>
+    <p>Manuel Sosa, Steven Eppinger og Craig Rowles undersøgte i 2004 udviklingen af en stor kommerciel flymotor og sammenlignede de tekniske designgrænseflader med teamenes faktiske kommunikationsmønstre. De fandt begge afvigelser: kendte grænseflader, som teamene ikke havde kontakt om, og kontakt mellem teams, som grænsefladerne ikke forudsagde.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (empirisk studie, flymotorudvikling):</strong> Sosa, Eppinger &amp; Rowles (2004), »The Misalignment of Product Architecture and Organizational Structure in Complex Product Development«, <em>Management Science</em>, 50(12), 1674–1689: data fra udviklingen af en stor kommerciel flymotor. Kompleks produktudvikling; kan ikke uden videre overføres. Bruges alene til, at tekniske afhængigheder og faktiske kommunikationsmønstre ikke nødvendigvis følges ad — ikke som evidens for, at organisatoriske grænser skaber friktion.</div>
+
+    <p>Og så er der det, der er nemmest at tage fejl af. At en friktion opstår <em>ved</em> en grænseflade, betyder ikke, at grænsefladen er årsagen. <strong>Grænsefladen er stedet, hvor man kan se det. Ikke nødvendigvis det, der forklarer det.</strong> Forskellen er både metodisk og menneskelig: Den ene læsning sender ledelsen ud for at undersøge. Den anden sender den ud for at finde en skyldig.</p>
+    <p>Og friktion er ikke per definition tværgående. Den kan lige så vel opstå inden for ét team, én funktion eller ét system. Tværgående friktion kan være særlig relevant i strategieksekvering, fordi strategiske afhængigheder ofte krydser organisationsgrænser. Men <strong>lokal eller tværgående er en egenskab ved den enkelte hændelse — ikke en del af definitionen.</strong> Et registreringssystem, der kræver to forskellige områder, gør sig blind for den friktion, der sker ét sted.</p>
+  </div>
+</section>
+
+<!-- 10 GENTAGELSE -->
+<section class="section" id="gentagelse">
+  <div class="container">
+    <div class="section-label">10 — Definitionen</div>
+    <h2>Gentagelse kræver en definition</h2>
+    <p>Hele paperet hviler på ordet »samme«. Derfor skal det ord kunne tåle at blive set efter.</p>
+    <p>To hændelser kan ligne hinanden, ligge ved den samme grænseflade og få den samme kategori og stadig have vidt forskellige forklaringer. Omvendt kan to hændelser, der ser helt forskellige ud, være to udslag af det samme. Den enkelte hændelse kan beskrives af den, der så den. <strong>At to hændelser hører til det samme mønster, er derimod ikke et råt observationsfaktum. Det kræver et eksplicit kriterium og en vurdering.</strong></p>
+    <p>Det betyder ikke, at gentagelse er ubrugelig. Det betyder, at kriteriet skal siges højt, før man tæller. Gentages den samme grænseflade? Det samme procestrin? Det samme symptom? Den samme afhængighed? De fire kriterier kan give forskellige grupperinger af de samme hændelser, og ingen af dem bør behandles som den eneste rigtige, før definitionen er gjort eksplicit. Peger flere meningsfulde kriterier mod den samme gruppe, kan det styrke hypotesen om et mønster — men det gør stadig ikke mønstret til en årsagsdiagnose. Peger de hver sin vej, er uenigheden selv et fund.</p>
+    <p>For at kunne vurdere det overhovedet skal den enkelte hændelse være beskrevet præcist nok. Rammen nedenfor er min egen praktiske ramme, ikke en valideret taksonomi. Den bruges på én hændelse ad gangen.</p>
+
+    <div class="basis" role="group" aria-label="Model: Fem spørgsmål til én friktionshændelse">
+      <div class="basis-head">
+        <div class="bh-label">Model · Thomas Friisnæs' fem spørgsmål</div>
+        <div class="bh-title">Fem spørgsmål til én friktionshændelse</div>
+        <p class="bh-sub">Eksemplerne er hændelsen fra uge 1 i åbningscasen.</p>
+      </div>
+      <table class="kinds-table">
+        <thead>
+          <tr><th scope="col">Spørgsmålet</th><th scope="col">Hvad det fastholder — og hvad det ikke afgør</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>1 · Hændelsen</strong><span>»Godkendelsen blev sendt retur«</span></td><td data-label="Hvad det fastholder — og hvad det ikke afgør">Hvad der konkret skete, hvor og hvornår. Beskriv handlingen, ikke skylden: ikke »IT er svært«, men »godkendelsen blev sendt retur, fordi datakilden ikke kunne verificeres«. Ingen afdeling som subjekt.</td></tr>
+          <tr><td><strong>2 · Stedet</strong><span>»Mellem kommerciel og compliance«</span></td><td data-label="Hvad det fastholder — og hvad det ikke afgør">Hvor modstanden opstod: hvilket team, hvilken funktion, hvilket system, hvilken overlevering eller hvilket governance-punkt. Stedet er et observationssted — ikke en årsag og ikke en placering af ansvar.</td></tr>
+          <tr><td><strong>3 · Gentagelsen</strong><span>»Ligner uge 2 — samme grænseflade«</span></td><td data-label="Hvad det fastholder — og hvad det ikke afgør">Om noget relevant lignende er set før — og efter hvilket af de fire kriterier. En klassifikation foretaget af nogen, ikke en automatisk gruppering.</td></tr>
+          <tr><td><strong>4 · Konsekvensen</strong><span>»Sagen gik retur og blev afklaret samme dag«</span></td><td data-label="Hvad det fastholder — og hvad det ikke afgør">Hvad der skete med arbejdet: ventetid, genarbejde, eskalering, ekstra koordinering, en berørt kunde eller en ramt milepæl. Er omkostningen ikke målt, så skriv hvad der skete, frem for at opfinde et tal.</td></tr>
+          <tr><td><strong>5 · Forklaringshypotesen</strong><span>»Måske uklart, hvad et tilstrækkeligt datagrundlag er«</span></td><td data-label="Hvad det fastholder — og hvad det ikke afgør">Den bedste nuværende forklaring — formuleret som en hypotese, der kan tage fejl. Den hører til undersøgelsen, ikke til selve hændelsesbeskrivelsen. Den kan foreslås af den, der registrerer, men skal markeres som hypotese og udfordres med de relevante aktører, før den behandles som en forklaring.</td></tr>
+        </tbody>
+      </table>
+      <div class="basis-foot">Hændelsen, stedet og konsekvensen beskriver observerbare forhold. Gentagelsen er en klassifikation af lighed. Forklaringshypotesen er en tolkning. De tre evidenstyper må ikke blandes sammen.</div>
+    </div>
+
+    <p>Det er også grunden til, at jeg ikke tror på en automatisk mønstergenkendelse, der kalder sit eget resultat sandt. Et system kan udmærket gruppere efter grænseflade eller kategori. Men grupperingen er kun så god som den definition, den bygger på — og den definition er et valg, mennesker har truffet.</p>
+    <p>Og jeg skylder at sige, at de fem spørgsmål ligner de felter, mit eget værktøj registrerer. Rammen er vokset ud af det samme arbejde. Det gør den ikke rigtig, og det er ikke et argument for værktøjet.</p>
+  </div>
+</section>
+
+<!-- 11 FREKVENS -->
+<section class="section" id="frekvens">
+  <div class="container">
+    <div class="section-label">11 — Adskillelsen</div>
+    <h2>Frekvens er ikke alvor</h2>
+    <p>Når gentagelse bliver interessant, opstår den næste fejl næsten af sig selv: at det, der sker oftest, også er det vigtigste.</p>
+    <p>Fem små hændelser kan være irriterende og alligevel have beskeden betydning. Én sjælden hændelse kan være dyr, regulatorisk kritisk eller fuldstændig blokerende. Derfor skal mindst tre forhold holdes adskilt, og et fjerde hører ofte med.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Fire spørgsmål, der ikke besvarer hinanden</div>
+      <ul class="dispo-list">
+        <li><strong>Antallet</strong> <em>→</em> Hvor mange hændelser er der registreret?</li>
+        <li><strong>Påvirkningen</strong> <em>→</em> Hvad betød de for arbejdet, kunden eller risikoen?</li>
+        <li><strong>Gentagelsen</strong> <em>→</em> Kommer den samme type igen, og efter hvilket kriterium?</li>
+        <li><strong>Alderen</strong> <em>→</em> Hvor længe har de åbne stået åbne?</li>
+      </ul>
+    </div>
+
+    <p>De fire er fire forskellige billeder, ikke fire dele af én score. Jeg lægger dem bevidst ikke sammen i dette paper. At samle flere forhold i ét tal er en metodeopgave med sine egne krav — vægte, normalisering, dækningsgrad og usikkerhed — og den hører til i Paper 09.</p>
+    <p><strong>Den første præcisering handler om påvirkning.</strong> Bruger man en skala fra 1 til 5, er den præcis så meget værd, som <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a> beskrev: en struktureret vurdering, ikke en objektiv måling. En friktion med 4 er ikke dobbelt så alvorlig som en med 2, og en gennemsnitlig påvirkning på 3,7 er ikke organisationens sande friktionsniveau. Gevinsten ved at sætte tal på er, at vurderingerne bliver sammenlignelige og kan diskuteres. Det er nok.</p>
+    <p><strong>Den anden handler om blokering.</strong> Det er fristende kun at lade det, der blokerer helt, tælle som vigtigt. Men en friktion, der ikke blokerer, kan stadig skabe genarbejde, bruge ledelsesopmærksomhed, koste tid, øge variationen i det, kunden oplever — og være det signal, der gentager sig. <strong>Delvis modstand, der kommer igen hver gang, kan betyde mere end en enkelt fuld blokering, der blev løst.</strong></p>
+    <p>Alder fortjener den samme forsigtighed. At en åben friktion bliver ældre, kan være et nyttigt signal. Men en 30 dage gammel bagatel er ikke automatisk vigtigere end en to dage gammel kritisk sag. Alder er ét billede, ikke en rangorden.</p>
+  </div>
+</section>
+
+<!-- 12 RAPPORTERING -->
+<section class="section" id="rapportering">
+  <div class="container">
+    <div class="section-label">12 — Registreringen</div>
+    <h2>Mere rapportering kan se værre ud</h2>
+    <p>Alt det foregående hviler på, at nogen registrerer noget. Det har en konsekvens, som er så vigtig, at den fortjener sin egen plads: <strong>Friktionstal er først og fremmest tal om registrerede hændelser — ikke en direkte måling af al den friktion, der findes.</strong></p>
+    <p>Bliver der registreret mere, stiger antallet. Det kan betyde mere modstand. Det kan også afspejle bedre observabilitet, en mere åben rapporteringskultur, at et team arbejder med mere komplekse sager end andre, eller at nogen registrerer i mindre enheder end deres kolleger.</p>
+    <p>Derfor gælder to sætninger samtidig, og de er lige vigtige:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">To ting, et antal ikke kan bære</div>
+      <ul class="dispo-list">
+        <li><strong>Flere registrerede friktioner</strong> <em>→</em> er ikke automatisk en dårligere organisation</li>
+        <li><strong>Nul registrerede friktioner</strong> <em>→</em> er ikke automatisk en organisation uden friktion</li>
+      </ul>
+    </div>
+
+    <p>Den anden er den, der bliver overset. Serien har brugt princippet før, og det gælder også her: <strong>manglende data er ikke det samme som nul.</strong> At et team ikke har registreret noget, kan betyde, at der ikke var noget, at der ikke blev registreret, at de bruger en anden tærskel for, hvad der er værd at skrive ned, at de ikke har været udsat for det samme — eller at de ikke har haft tid.</p>
+    <p>Det har en konsekvens for enhver sammenligning. Skal to teams, perioder eller funktioner sammenlignes på rå antal, skal eksponering, registreringspraksis, hændelsesdefinition og tidsvindue være tilstrækkeligt sammenlignelige — eller forskellene skal gøres eksplicitte og håndteres i analysen. Ellers bør rå tal ikke rangordnes.</p>
+    <p>Og så er der den ubehagelige mekanisme, som ethvert sådant system skal designes imod. Hvis flere registreringer giver et dårligere tal, har man givet organisationen en grund til at registrere mindre. Jeg har ikke observeret det som et faktisk adfærdsproblem, og det skal ikke fremstilles som et. Men princippet skal stå fast, før tallene bliver brugt:</p>
+
+    <p class="pull-quote">Et observabilitetssystem må ikke gøre god rapportering til dårlig performance.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det er derfor, denne slags tal hører hjemme i en undersøgende samtale og ikke i en resultatvurdering af en afdeling. Bliver en friktionsopgørelse til en karakter, risikerer man, at folk holder op med at skrive tingene ned — og så svækkes netop den kilde, observabiliteten hviler på.</p>
+  </div>
+</section>
+
+<!-- 13 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">13 — Frameworket</div>
+    <h2>Fra irritation til ledelsesdata</h2>
+    <p>De fem spørgsmål i <a href="#gentagelse" style="color:var(--gold);">afsnit 10</a> beskriver, hvad der skal stå om én hændelse. De fem led nedenfor omsætter dem til noget, ledelsen kan handle på — anvendt på ét mønster ad gangen. Ingen modenhedsmodel, ingen erstatning for en ordentlig undersøgelse og intet tal til sidst.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">Fra irritation til ledelsesdata</div>
+      <div class="fw-sub">Thomas Friisnæs' praktiske arbejdsgang til ét friktionsmønster ad gangen. Ingen score og ingen algoritme.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Registrér hændelsen</h4>
+          <p><strong>Hvad skete der konkret?</strong> »IT er svært« er en stemning. »Godkendelsen blev sendt retur, fordi datakilden i tilbuddet ikke kunne verificeres« er en hændelse. Beskriv handlingen, stedet og tidspunktet. Ikke skylden. Bemærk formen: Ingen afdeling er subjekt i sætningen (se <a href="#konflikt" style="color:var(--gold);">afsnit 05</a>).</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Placér grænsefladen</h4>
+          <p><strong>Hvor opstod modstanden?</strong> Mellem hvilke teams, funktioner, systemer, procestrin eller governance-punkter? Placeringen gør hændelsen sammenlignelig med andre — og den udpeger ikke nogen.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Se efter gentagelsen</h4>
+          <p><strong>Er noget relevant lignende sket før?</strong> Sig eksplicit, efter hvilket af de fire kriterier. Kriteriet skal vælges, før der tælles, og det skal skrives ned. Ingen automatisk gruppering, og ingen gruppering, der ikke kan forklares.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Beskriv konsekvensen</h4>
+          <p><strong>Hvad skete der med arbejdet?</strong> Ventede det, blev det lavet om, blev det eskaleret, ramte det en kunde eller en milepæl? Kan omkostningen ikke opgøres meningsfuldt, er et ærligt »vi ved det ikke« mere brugbart end et opdigtet beløb.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">5</div>
+        <div class="fw-step-body">
+          <h4>Test forklaringen</h4>
+          <p><strong>Hvad kunne forklare mønstret — og hvordan finder vi ud af, om det passer?</strong> Formulér én forklaringshypotese og ét konkret greb, der kan afprøve den. »Vi tror, returløbene skyldes, at kriteriet for et tilstrækkeligt datagrundlag aldrig er skrevet ned. Vi aftaler en fælles inputstandard på de næste tre sager.« Og så følger man op: Ændrede gentagelsen sig?</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Den ender i to ting: <strong>et mønster, der er beskrevet præcist nok til at kunne undersøges — og ét greb, organisationen faktisk kan afprøve.</strong> Ændrer mønstret sig ikke, er det også information. Det kan svække hypotesen, men falsificerer den ikke alene; grebet, implementeringen eller observationsvinduet kan også være en del af forklaringen.</p>
+  </div>
+</section>
+
+<!-- 14 TIDLIGERE -->
+<section class="section" id="tidligere">
+  <div class="container">
+    <div class="section-label">14 — Seriens signatur</div>
+    <h2>Hvad kunne du se tidligere?</h2>
+    <p>Den første faste rubrik handler i Paper 06 om mønstre, der kan blive synlige, mens der stadig er tid til at undersøge dem.</p>
+
+    <div class="sig sig-earlier">
+      <div class="sig-label">Seriens signatur · Paper 06</div>
+      <div class="sig-title">Hvad kunne du se tidligere?</div>
+      <table class="sig-table">
+        <thead>
+          <tr><th scope="col">Det, du kan se</th><th scope="col">Spørgsmålet, det rejser</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Den samme grænseflade optræder i flere friktionshændelser</td><td data-label="Spørgsmålet, det rejser">Hvad er det, der gentager sig her — og efter hvilket kriterium kalder vi det det samme?</td></tr>
+          <tr><td>Nul åbne friktioner, men mange lukkede i perioden</td><td data-label="Spørgsmålet, det rejser">Har vi løst det samme flere gange uden at ændre noget?</td></tr>
+          <tr><td>Den samme type hændelse lukkes og opstår igen</td><td data-label="Spørgsmålet, det rejser">Lukkede vi hændelsen eller problemet?</td></tr>
+          <tr><td>Åbne friktioner bliver ældre</td><td data-label="Spørgsmålet, det rejser">Venter de på en beslutning, en kapacitet eller en afklaring — og hvem ejer den?</td></tr>
+          <tr><td>Den samme midlertidige vej udenom bliver nævnt igen og igen</td><td data-label="Spørgsmålet, det rejser">Er den blevet den normale vej, uden at nogen har besluttet det?</td></tr>
+          <tr><td>Den samme grænseflade har flyttet en meldt dato mere end én gang</td><td data-label="Spørgsmålet, det rejser">Hvor mange gange har det samme forhold rykket noget, vi havde meldt ud?</td></tr>
+          <tr><td>Flere teams beskriver den samme afhængighed forskelligt</td><td data-label="Spørgsmålet, det rejser">Er der en fælles forståelse at bygge på, eller skal den bygges først?</td></tr>
+          <tr><td>Friktionen flytter kategori, men bliver ved den samme grænseflade</td><td data-label="Spørgsmålet, det rejser">Er kategorien for grov — eller er det stedet, der er det egentlige fællestræk?</td></tr>
+          <tr><td>Delvist bremsende hændelser hober sig op</td><td data-label="Spørgsmålet, det rejser">Hvad er den samlede konsekvens, som hver enkelt hændelse ikke viste alene?</td></tr>
+          <tr><td>Et område registrerer pludselig meget mere end før</td><td data-label="Spørgsmålet, det rejser">Er der kommet mere modstand — eller er de bare begyndt at skrive det ned?</td></tr>
+        </tbody>
+      </table>
+      <p class="sig-note"><strong>Illustrative signalhypoteser — ikke validerede ledende indikatorer, forudsigelser eller årsager.</strong></p>
+    </div>
+
+    <p>Ingen af mønstrene fortæller, at eksekveringen er i fare. De peger på, hvor det kan betale sig at spørge.</p>
+  </div>
+</section>
+
+<!-- 15 KONKLUDERE -->
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="section-label">15 — Seriens signatur</div>
+    <h2>Hvad må du ikke konkludere?</h2>
+    <p>Den anden rubrik er særligt vigtig her, fordi friktionstal er lette at læse som en dom over et samarbejde eller en funktion.</p>
+
+    <div class="sig sig-conclude">
+      <div class="sig-label">Seriens signatur · Paper 06</div>
+      <div class="sig-title">Hvad må du ikke konkludere?</div>
+      <div class="sig-cols">
+        <div>
+          <h4>Ud fra mange registrerede friktioner alene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at eksekveringen er dårlig</li>
+            <li>at en funktion er inkompetent</li>
+            <li>at samarbejdet ikke fungerer</li>
+            <li>at kulturen er et problem</li>
+            <li>at der er for mange siloer</li>
+            <li>at friktionen bør fjernes</li>
+            <li>at der findes én fælles årsag</li>
+            <li>at resultatet bliver dårligt</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ud fra få eller ingen registrerede friktioner alene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at eksekveringen er sund</li>
+            <li>at samarbejdet fungerer</li>
+            <li>at grænsefladerne er i orden</li>
+            <li>at rapporteringen er dækkende</li>
+          </ul>
+          <h4>Ud fra gentagelser alene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at hændelserne har den samme årsag</li>
+            <li>at der er påvist en mekanisme</li>
+            <li>at det samme vil ske igen</li>
+            <li>at den, der står tættest på, bærer ansvaret</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sig-close">Et friktionsmønster kan vise, hvor organisationen bør undersøge nærmere. Det afgør ikke alene, hvorfor mønstret findes, eller hvad ledelsen bør gøre ved det.</div>
+    </div>
+
+    <p>Det gælder også opad. En bestyrelse behøver normalt ikke en rå friktionslog eller alle lokale sager. Men den kan have brug for at vide, om der er tilbagevendende modstand ved grænseflader med væsentlig betydning for strategien, om der er governance-mønstre, som bliver ved med at vende tilbage, og om noget af det udgør en reel eksekveringsrisiko. Ét spørgsmål rækker langt i et bestyrelseslokale: <strong>Er der en grænseflade, direktionen har rapporteret som håndteret mere end én gang i år?</strong></p>
+  </div>
+</section>
+
+<!-- 16 DIAGNOSE -->
+<section class="section" id="diagnose">
+  <div class="container">
+    <div class="section-label">16 — Diagnose · 10 minutter</div>
+    <h2>Hvad har vi løst mere end én gang?</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · CEO, direktionsmedlem, COO eller Strategy Office · Skriftlig</div>
+      <div class="ex-meta">⏱ Cirka 10 minutter · Ingen modenhedsvurdering.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Vælg én strategisk proces, ét kritisk initiativ eller én grænseflade, og se fire til otte uger tilbage. Vinduet er et valg, ikke en regel; brug det samme næste gang. Svar skriftligt og i rækkefølge.</p>
+      <ol>
+        <li><strong>Hvilke konkrete friktionshændelser opstod?</strong></li>
+        <li><strong>Hvilke af dem blev lukket?</strong></li>
+        <li><strong>Hvilke ligner hinanden nok til at undersøge samlet — og efter hvilket kriterium?</strong></li>
+        <li><strong>Ved hvilken grænseflade eller hvilket procestrin opstod de?</strong></li>
+        <li><strong>Var de lokale eller tværgående?</strong></li>
+        <li><strong>Hvad gjorde organisationen for at komme videre?</strong></li>
+        <li><strong>Var det en permanent ændring eller en midlertidig vej udenom?</strong></li>
+        <li><strong>Hvilken konsekvens havde hændelserne for arbejdet?</strong></li>
+        <li><strong>Hvad ved vi faktisk — og hvad er kun forklaringshypoteser?</strong></li>
+        <li><strong>Hvilket lille greb kan vi teste for at se, om mønstret ændrer sig?</strong></li>
+      </ol>
+      <p style="font-size:15.5px;color:var(--text-mid);margin:22px 0 0;">Øvelsen ender ikke i en score, men i fire linjer: <strong>ét tilbagevendende mønster · én grænseflade · én forklaringshypotese · ét testbart greb.</strong> Kan du ikke besvare spørgsmål 1, fordi ingen har skrevet hændelserne ned, er det også et svar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17 MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">17 — 2-minutters mikrohandling</div>
+    <h2>Spørg, hvad I har løst mere end én gang</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · ved næste strategigennemgang</span>
+      <h3>Ét spørgsmål og tre opfølgende. Ingen ny proces og intet ekstra møde.</h3>
+      <p>Spørg: <strong>»Hvilket problem har vi løst mere end én gang den sidste måned?«</strong></p>
+      <p>Derefter: <strong>»Hvor opstår det?«</strong> og <strong>»Hvordan kommer folk udenom det i dag?«</strong></p>
+      <p>Og til sidst: <strong>»Hvad skulle vi ændre for at finde ud af, om mønstret kan reduceres?«</strong></p>
+      <p>Bemærk, hvad der ikke bliver spurgt om: hvem der ejer fejlen. Det er en undersøgelse, ikke en placering af ansvar — og den forskel kan have betydning for, hvor åbent der bliver svaret næste gang.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 18 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">18 — Dit næste skridt</div>
+    <h2>Gør det konkret — og fortsæt din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 06 · Friktion er data</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv ét konkret næste skridt; det gemmes kun lokalt i din browser.</p>
+      <label for="commitText">Det friktionsmønster, vi vil undersøge, er …</label>
+      <p class="commit-note">Skriv hændelserne, grænsefladen, perioden, om det er lokalt eller tværgående, konsekvensen, den midlertidige vej udenom I bruger i dag, hvad der er fakta, hvad der kun er en forklaringshypotese, det greb I vil teste, og hvornår I følger op. Eksempel: »Fem hændelser på seks uger, alle ved det sted, hvor en kundesag skal have et verificeret datagrundlag. Tværgående. Konsekvens: hver sag gik retur og blev afklaret, men tre gange først dagen efter. I dag løses det ved, at en medarbejder ringer direkte. Fakta: hændelserne og datoerne. Hypotese: kriteriet for et tilstrækkeligt datagrundlag er aldrig skrevet ned. Greb: fælles inputstandard på de næste tre sager. Opfølgning den 14.« Eksemplet er en illustration, ikke en anbefaling.</p>
+      <textarea id="commitText" placeholder="Hændelser · grænseflade · periode · lokal eller tværgående · konsekvens · nuværende vej udenom · fakta · hypotese · greb · opfølgning"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit næste skridt</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Strategien sker mellem kvartalerne</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 19 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">19 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Er friktion altid dårligt? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. En del af den modstand, arbejdet møder, er lagt der med vilje: kontroller, risikogennemgange, funktionsadskillelse, kvalitetsgates og relevant modsigelse. Spørgsmålet er ikke, om der er modstand, men om den er et bevidst designvalg (se <a href="#tilsigtet" style="color:var(--gold);">afsnit 06</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal målet være nul friktion? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Nul friktion kan være urealistisk, uhensigtsmæssigt eller blot udtryk for, at ingen har registreret noget. Målet er at vide, hvilken modstand organisationen har valgt, og hvilken den bliver ved med at betale for uden at lære af.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er friktion det samme som konflikt? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Mellemmenneskelig konflikt er én mulig form. Friktion i eksekveringen kan lige så vel være teknisk, procesmæssig, informationsmæssig, kapacitetsmæssig, beslutningsmæssig eller governance-relateret. Registrerer man kun konflikter, overser man systematisk resten (se <a href="#konflikt" style="color:var(--gold);">afsnit 05</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er en lukket friktion løst? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Hændelsen kan være håndteret, uden at det underliggende forhold er ændret. En sag kan lukkes, fordi nogen fandt en vej udenom. At arbejdet kom videre, er ikke det samme som, at friktionen er fjernet (se <a href="#lokalt" style="color:var(--gold);">afsnit 07</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er fem gentagelser bevis på én fælles årsag? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Gentagelse er et mønster, der fortjener en undersøgelse. Hændelser, der ligner hinanden, kan have forskellige forklaringer, og hvorvidt de overhovedet er »de samme«, er en vurdering, som nogen har foretaget (se <a href="#lag" style="color:var(--gold);">afsnit 04</a> og <a href="#gentagelse" style="color:var(--gold);">10</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er mange registrerede friktioner tegn på en dårlig organisation? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ikke nødvendigvis. Antallet afhænger af, hvor meget der bliver registreret, hvor udsat området er, og hvor fint der registreres. Flere registreringer kan være et tegn på bedre observabilitet (se <a href="#rapportering" style="color:var(--gold);">afsnit 12</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er få registrerede friktioner et godt tegn? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ikke nødvendigvis. Manglende data er ikke det samme som nul. Fravær af registreringer kan betyde, at der ikke var noget, at tærsklen for at skrive noget ned er en anden, eller at ingen har haft tid (se <a href="#rapportering" style="color:var(--gold);">afsnit 12</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal friktion altid være tværgående? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Friktion kan opstå inden for ét team, én funktion eller ét system. Lokal eller tværgående er en egenskab ved den enkelte hændelse, ikke en del af definitionen. Et system, der kræver to forskellige områder, før noget må registreres, gør sig blind for den lokale del (se <a href="#graenseflade" style="color:var(--gold);">afsnit 09</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan vi ikke bare tælle de åbne friktioner? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det er ét view, og det er et præcist svar på ét spørgsmål: hvor mange registrerede friktioner har status åben lige nu? Det svarer ikke på, hvor mange hændelser der har været i perioden, hvor ofte den samme grænseflade går igen, eller hvilken samlet konsekvens de havde (se <a href="#nul" style="color:var(--gold);">afsnit 03</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er en høj påvirkningsscore et objektivt mål for alvor? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. En skala fra 1 til 5 er en struktureret vurdering, ikke en måling. Gevinsten ved tallet er ikke sandhed, men at vurderingerne bliver sammenlignelige og kan diskuteres (se <a href="#frekvens" style="color:var(--gold);">afsnit 11</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er et friktionsmønster en ledende indikator? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej, ikke som en valideret ledende indikator. Paper 06 viser kun, at et mønster kan være synligt i eksekveringsdata uden at være synligt i det aktuelle statusbillede. Det etablerer ikke, at mønstret systematisk går forud for milepæle eller resultater. Det spørgsmål hører til i Paper 07.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad gør jeg på mandag? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Find det problem, organisationen har »løst« mere end én gang den sidste måned. Beskriv hændelserne, placér grænsefladen og formulér én hypotese og ét greb, I kan teste. Mikrohandlingen i <a href="#action" style="color:var(--gold);">afsnit 17</a> tager to minutter, diagnosen i <a href="#diagnose" style="color:var(--gold);">afsnit 16</a> cirka ti.</div>
+    </details>
+  </div>
+</section>
+
+<!-- 20 HANDLING -->
+<section class="section" id="handling">
+  <div class="container">
+    <div class="section-label">20 — Fra mønster til handling</div>
+    <h2>Fra mønster til handling</h2>
+    <p>Spørgsmålet, paperet efterlader, kræver ikke et værktøj: <strong>Hvilket problem er vi blevet gode til at løse igen og igen?</strong> Kan I svare på det ved næste strategigennemgang — med hændelserne, grænsefladen og ét greb — har paperet gjort sit arbejde.</p>
+    <p>Det er alligevel rimeligt at sige, hvor jeg selv arbejder med spørgsmålet, og at jeg har en kommerciel interesse i det værktøj, jeg nævner her. Strategy Execution Observatory™ registrerer strukturerede friktionshændelser — blandt andet hvor de opstår, en vurderet påvirkning og om de bremser fremdriften. Det er signaler, ikke et objektivt mål for organisatorisk friktion, og hvordan de samles og fortolkes, er metodevalg.</p>
+    <p>Og paperets egen metodekritik rammer også mit eget værktøj. Et aktuelt antal åbne friktioner ser ikke den gentagelse, der allerede er lukket — det er præcis åbningscasen. Kategorierne er praktiske og ikke en valideret taksonomi, og den samme hændelse kan høre til i flere af dem. En påvirkning fra 1 til 5 er en vurdering. Eventuelle tærskler for, hvornår et antal, en påvirkning eller en blokering udløser opmærksomhed, er governance-valg; de er ikke forskningsvaliderede breakpoints eller kalibreret mod et udfald.</p>
+    <p>Og nogle nuværende produktformuleringer og valideringsregler skal følge metoden, ikke omvendt. Friktion bør ikke beskrives som konflikt. Lokal eller tværgående skal være scope og ikke en definition. Og fuld blokering må ikke være betingelsen for, at en hændelse er relevant. Den aktuelle registrering kan allerede markere både lokal og tværgående og både ja, delvist og nej på fremdrift — men en valideringsregel behandler samtidig friktion som »per definition tværgående«. Den modstrid skal væk.</p>
+    <p>Det fører til ét princip: <strong>Et friktionssignal bør udløse en undersøgelse, ikke en automatisk fjernelse.</strong> Undersøg, før du fjerner.</p>
+
+    <p class="pull-quote">Mit eget værktøj er underlagt samme krav: Et friktionstal er først nyttigt, når vi ved, hvad der bliver talt — og hvad tallet ikke kan se.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Mit eget værktøj samler desuden flere signaler under ét navn. Så skylder jeg en forklaring på, hvorfor de begrebsmæssigt hører sammen. Det svar findes ikke her — hvad det kræver at samle flere signaler i ét tal, er emnet for Paper 09.</p>
+
+    <div class="cta-box">
+      <div class="cta-label">Samtale</div>
+      <h3>Hvilket problem har I løst mere end én gang?</h3>
+      <p>Vælg ét tilbagevendende mønster — den type sag, der bliver ved med at dukke op det samme sted. På 20 minutter kan vi skille tingene ad: hvad der er observeret, hvad der kun er en forklaring, og hvilket greb der kan afprøves først.</p>
+      <a class="start-btn" href="/#kontakt">20 min. Ét problem. Én plan. →</a>
+      <p class="print-only">20 min. Ét problem. Én plan. · friisnaes.com/#kontakt</p>
+    </div>
+
+    <h3 style="margin-top:36px;">Næste problem</h3>
+    <p>Sæt nu, at mønstret er beskrevet, grænsefladen er placeret, og grebet er afprøvet. Så står det spørgsmål tilbage, som dette paper med vilje ikke har besvaret. <strong>Et mønster er stadig ikke en forudsigelse. Men hvis bestemte mønstre ændrer sig, før resultatet gør — og om de gør, er ikke afgjort her — så opstår det næste spørgsmål: Hvilke signaler kan faktisk fortælle os noget tidligere, og hvor meget må vi tillade os at slutte ud fra dem?</strong> Det er emnet for Paper 07.</p>
+
+    <div class="next-grid">
+      <div class="next-card soon" aria-disabled="true">
+        <div class="nc-tag">Paper 07 · Kommer</div>
+        <div class="nc-text"><strong>Før resultatet flytter sig</strong> — hvad et tidligt signal kan sige, og hvad det ikke kan</div>
+      </div>
+      <a class="next-card" href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">
+        <div class="nc-tag">Paper 05</div>
+        <div class="nc-text"><strong>Beslutninger er en del af produktionsapparatet</strong> — beslutningsflow, mandat, alder og lukning</div>
+      </a>
+      <a class="next-card" href="/library.html">
+        <div class="nc-tag">Executive Library</div>
+        <div class="nc-text"><strong>Alle serier og papers</strong> om strategi, hold, eksekvering og kapacitet</div>
+      </a>
+      <a class="next-card" href="/ceo-sparring.html">
+        <div class="nc-tag">CEO-sparring</div>
+        <div class="nc-text"><strong>Hvad bliver ved med at vende tilbage hos jer?</strong> En fortrolig samtale, før spørgsmålet bliver til et projekt</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">Koordinering og indbyrdes afhængighed</div>
+    <ul>
+      <li>Okhuysen, G. A. &amp; Bechky, B. A. (2009). »Coordination in Organizations: An Integrative Perspective.« <em>Academy of Management Annals</em>, 3(1), 463–502. Integrativt review. <a href="https://doi.org/10.5465/19416520903047533" target="_blank" rel="noopener">doi.org/10.5465/19416520903047533</a></li>
+    </ul>
+    <div class="sb-group">Driftsforstyrrelser og læring</div>
+    <ul>
+      <li>Tucker, A. L. (2004). »The impact of operational failures on hospital nurses and their patients.« <em>Journal of Operations Management</em>, 22(2), 151–169. Hospitalskontekst. <a href="https://doi.org/10.1016/j.jom.2003.12.006" target="_blank" rel="noopener">doi.org/10.1016/j.jom.2003.12.006</a></li>
+    </ul>
+    <div class="sb-group">Vidensgrænser og grænseflader</div>
+    <ul>
+      <li>Hoopes, D. G. &amp; Postrel, S. (1999). »Shared knowledge, ›glitches,‹ and product development performance.« <em>Strategic Management Journal</em>, 20(9), 837–865. Én virksomhed. <a href="https://doi.org/10.1002/(SICI)1097-0266(199909)20:9%3C837::AID-SMJ54%3E3.0.CO;2-I" target="_blank" rel="noopener">doi.org/10.1002/(SICI)1097-0266(199909)20:9&lt;837::AID-SMJ54&gt;3.0.CO;2-I</a></li>
+      <li>Carlile, P. R. (2002). »A Pragmatic View of Knowledge and Boundaries: Boundary Objects in New Product Development.« <em>Organization Science</em>, 13(4), 442–455. Etnografisk studie. <a href="https://doi.org/10.1287/orsc.13.4.442.2953" target="_blank" rel="noopener">doi.org/10.1287/orsc.13.4.442.2953</a></li>
+      <li>Sosa, M. E., Eppinger, S. D. &amp; Rowles, C. M. (2004). »The Misalignment of Product Architecture and Organizational Structure in Complex Product Development.« <em>Management Science</em>, 50(12), 1674–1689. Flymotorudvikling. <a href="https://doi.org/10.1287/mnsc.1040.0289" target="_blank" rel="noopener">doi.org/10.1287/mnsc.1040.0289</a></li>
+    </ul>
+    <div class="sb-group">Aktuel praktikerkontekst</div>
+    <ul>
+      <li>Barton, C., Gaynes, M., Lesser, R. &amp; Wallenstein, J. (2025). »Moves Only a CEO Can Make.« BCG, 18. februar 2025. Praktikerkommentar uden rapporterede data; ikke forskning. <a href="https://www.bcg.com/publications/2025/six-moves-ceos-can-make-to-drive-change" target="_blank" rel="noopener">bcg.com</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Begrebet strategisk observabilitet, samlebetegnelsen friktion og definitionen af den, skellet mellem hændelse, mønster og årsag, casen »Lukket fem gange«, illustrationen med nul åbne og fem hændelser, de fem spørgsmål til én friktionshændelse, skellet mellem tilsigtet og gentagen modstand, frameworket »Fra irritation til ledelsesdata«, signalhypoteserne i »Hvad kunne du se tidligere?«, diagnosen »Hvad har vi løst mere end én gang?« og mikrohandlingen er Thomas Friisnæs' egne praktiske begreber og rammer, ikke validerede modeller. Ingen af kilderne etablerer friktion som ét samlet forskningsbegreb. Studierne har hver deres kontekst: Tucker undersøgte sygeplejerskers arbejde på hospitaler, Hoopes og Postrel ét videnskabeligt softwarefirma, Carlile fire funktioner i produktudvikling og Sosa og kolleger udviklingen af en stor kommerciel flymotor; Okhuysen og Bechky er et review, ikke et enkeltstudie, og deres tre integrerende betingelser er en teoretisk ramme, ikke en årsagsdiagnostik. BCG er praktikerkommentar uden data, og afsnittet om friktion dér handler om ledelsesteamet. Åbningscasen er konstrueret, alle tidsangivelser og tal i eksemplerne er illustrative, gentagelse beviser ikke en fælles årsag, og ingen tærskel i paperet er en universel regel. Danske gengivelser af engelske formuleringer er egne oversættelser.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Strategien sker mellem kvartalerne — serien</div>
+    <h2 class="collection-title">Ti papers om strategisk observabilitet</h2>
+    <p class="collection-intro">Serien handler om, hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang, og om at gøre det synligt uden at forveksle signaler med sandhed. <strong>Alle 10 papers er udgivet.</strong></p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Serie 06</span><span class="cpart-name">Strategien sker mellem kvartalerne</span></div>
+      <p class="cpart-desc">Fra informationsgabet over signaler, kapacitet, beslutninger og friktion til kompetencer, metode og governance.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/strategien-sker-mellem-kvartalerne.html">Strategien sker mellem kvartalerne</a></li>
+        <li data-n="02"><a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">Grøn er ikke det samme som sund</a></li>
+        <li data-n="03"><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">Det kvalitative kan godt kvantificeres</a></li>
+        <li data-n="04"><a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">Kapacitet findes ikke i planen</a></li>
+        <li data-n="05"><a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">Beslutninger er en del af produktionsapparatet</a></li>
+        <li data-n="06"><span class="current">Friktion er data — du læser dette</span></li>
+        <li data-n="07"><a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">Før resultatet flytter sig</a></li>
+        <li data-n="08"><a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">Ved vi, om vi kan det, strategien kræver?</a></li>
+        <li data-n="09"><a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">Et indeks er ikke sandheden</a></li>
+        <li data-n="10"><a href="/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html">Demokratisér udsynet. Centralisér metoden.</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til næste strategimøde i direktionen eller bestyrelsen.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">
+      <span class="ra-tag">Næste i serien · Paper 07</span>
+      <span class="ra-title">Før resultatet flytter sig: Hvad kan et tidligt signal egentlig bære?</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 02</span>
+      <span class="ra-title">Grøn er ikke det samme som sund: Hvad dækker et præcist svar ikke?</span>
+    </a>
+    <a href="/holdet-bag-strategien-virksomheden-foer-funktionen.html">
+      <span class="ra-tag">Holdet bag strategien · Paper 04</span>
+      <span class="ra-title">Virksomheden før funktionen: Det dobbelte mandat og de eksplicitte tradeoffs</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Strategien sker mellem kvartalerne · Serie 06 · Paper 06 af 10</div>
+        <div class="series-next">Næste: <a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.35)">Før resultatet flytter sig</a></div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: smk_ (Strategien sker mellem kvartalerne)
+  var LS_C = 'smk_p06_commit', LS_D = 'smk_done', PAPER_N = 6, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // FAQ åben i print, også når browserens egen udskriv-funktion bruges
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

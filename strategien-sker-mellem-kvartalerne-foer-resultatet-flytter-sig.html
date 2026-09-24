@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Før resultatet flytter sig | Strategisk observabilitet | Thomas Friisnæs</title>
+<meta name="description" content="Et tidligt signal er ikke automatisk en ledende indikator. Paper 07 om signalhypoteser, falske alarmer, tidshorisonter og evidensstatus i strategieksekvering.">
+<meta name="keywords" content="strategieksekvering, ledende indikatorer, tidlige signaler, signalhypotese, prædiktiv validitet, tidshorisont, falske alarmer, performance measurement, strategisk observabilitet, governance, Strategy Office">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">
+
+<meta property="og:title" content="Før resultatet flytter sig | Strategisk observabilitet | Thomas Friisnæs">
+<meta property="og:description" content="At et signal kommer før resultatet, gør det ikke til en ledende indikator. Paper 07 om strategisk observabilitet.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Thomas Friisnæs – Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Før resultatet flytter sig">
+<meta name="twitter:description" content="Ledende for hvad — og over hvilken tidshorisont? Paper 07 om tidlige signaler og den evidens, ordet kræver.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* Paper 02 — Farven og underlaget (Grøn på hvad?): redaktionel tabel, ingen trafiklysfarver */
+  .basis { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .basis-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .basis-head .bh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .basis-head .bh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .basis-head .bh-sub { font-size: 14px; line-height: 1.55; color: var(--text-light); margin: 6px 0 0; }
+  .basis-colour { display: flex; align-items: baseline; gap: 16px; padding: 16px 30px; border-bottom: 1px solid var(--border); }
+  .basis-colour .bc-name { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; min-width: 64px; }
+  .basis-colour .bc-desc { flex: 1; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .basis-colour .bc-value { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 24px; line-height: 1; color: var(--navy); }
+  .basis-table { width: 100%; border-collapse: collapse; }
+  .basis-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table th.bt-group { text-align: left; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; padding: 20px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table td { font-size: 15px; line-height: 1.5; color: var(--text-mid); padding: 11px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .basis-table td.bt-state { width: 34%; color: var(--navy); font-weight: 500; }
+  .basis-table td.bt-state.out { color: var(--text-light); font-weight: 400; }
+  .basis-table td.bt-state.unknown { color: var(--text-mid); font-weight: 400; font-style: italic; }
+  .basis-foot { padding: 16px 30px; background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 600px) {
+    .basis-head, .basis-colour, .basis-foot { padding-left: 20px; padding-right: 20px; }
+    .basis-colour { flex-wrap: wrap; row-gap: 4px; }
+    .basis-colour .bc-desc { flex-basis: 100%; order: 3; }
+    .basis-table thead { display: none; }
+    .basis-table th.bt-group { padding: 18px 20px 8px; }
+    .basis-table td { padding: 10px 20px; }
+    .basis-table td.bt-state { width: auto; white-space: nowrap; }
+  }
+  @media print {
+    .basis, .basis-table tr { page-break-inside: avoid; }
+    .basis-head, .basis-foot { background: #fff !important; }
+    body.print-econo .basis { border-color: #999 !important; }
+    body.print-econo .basis-head .bh-label, body.print-econo .basis-colour .bc-name, body.print-econo .basis-table th.bt-group { color: #333 !important; }
+  }
+
+  /* Paper 03 — Samme tal. Forskelligt billede.: én redaktionel talkomponent, ingen farver og ingen graf */
+  .spread { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .spread-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .spread-head .sp-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .spread-head .sp-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .spread-groups { display: grid; grid-template-columns: 1fr 1fr; }
+  .sp-group { padding: 30px 26px 26px; text-align: center; }
+  .sp-group + .sp-group { border-left: 1px solid var(--border); }
+  .sp-name { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 12px; }
+  .sp-values { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4.6vw, 44px); font-weight: 400; line-height: 1.1; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .sp-values .sp-dot { display: inline-block; margin: 0 0.32em; color: var(--text-light); font-size: 0.6em; vertical-align: 0.2em; }
+  .sp-mean { margin: 22px auto 0; padding-top: 14px; border-top: 1px solid var(--border); max-width: 250px; line-height: 1.5; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .sp-mean b { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 32px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .sp-read { margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .spread-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .spread-head, .spread-foot { padding-left: 20px; padding-right: 20px; }
+    .spread-groups { grid-template-columns: 1fr; }
+    .sp-group { padding: 24px 20px 22px; }
+    .sp-group + .sp-group { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  /* Paper 03 — Fire slags tal: redaktionel tabel i Paper 02's modelramme */
+  .kinds-table { width: 100%; border-collapse: collapse; }
+  .kinds-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .kinds-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 14px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .kinds-table td:first-child { width: 38%; padding-right: 12px; }
+  .kinds-table td:first-child strong { display: block; color: var(--navy); font-weight: 600; }
+  .kinds-table td:first-child span { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; color: var(--text-mid); }
+  /* Paper 03 — tre versioner af samme vurdering: Paper 01's vinduer stablet */
+  .windows.stack { grid-template-columns: 1fr; }
+  .windows.stack .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+  .sig-cols ul + h4 { margin-top: 18px; }
+  @media (max-width: 600px) {
+    .kinds-table thead { display: none; }
+    .kinds-table, .kinds-table tbody, .kinds-table tr, .kinds-table td { display: block; width: 100%; }
+    .kinds-table tr { padding: 12px 20px; border-bottom: 1px solid var(--border); }
+    .kinds-table td, .kinds-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .kinds-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 8px 0 2px; }
+  }
+  @media print {
+    .spread, .kinds-table tr { page-break-inside: avoid; }
+    .spread-head, .spread-foot { background: #fff !important; }
+    body.print-econo .spread { border-color: #999 !important; }
+    body.print-econo .spread-head .sp-label { color: #333 !important; }
+  }
+
+  /* Paper 04 — Lokalt plausibelt — samlet umuligt: én redaktionel illustration, ingen trafiklys og intet dashboard */
+  .load { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .load-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .load-head .ld-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .load-head .ld-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .load-head .ld-cond { margin-top: 8px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .load-rows { padding: 10px 30px 8px; }
+  .ld-row { display: grid; grid-template-columns: 170px minmax(0, 1fr) 76px; align-items: center; column-gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .ld-name { font-size: 15px; line-height: 1.3; color: var(--navy); font-weight: 500; }
+  .ld-name small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--text-light); font-weight: 300; }
+  .ld-track { position: relative; display: block; height: 12px; }
+  .ld-track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--border); }
+  .ld-fill, .ld-over { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); border-radius: 1px; }
+  .ld-over { background: var(--gold); border-radius: 0; top: auto; bottom: -7px; height: 3px; }
+  .ld-cut { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; }
+  .ld-tag { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 10.5px; letter-spacing: 0.1em; font-weight: 600; color: #fff; }
+  .ld-limit { position: absolute; left: 71.429%; top: -13px; bottom: -13px; border-left: 1px dashed var(--gold); }
+  .ld-val { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; line-height: 1; color: var(--navy); text-align: right; font-variant-numeric: lining-nums; white-space: nowrap; }
+  .ld-row.ld-scale { padding: 4px 0 0; border-bottom: 0; }
+  .ld-scale .ld-track { height: 16px; }
+  .ld-scale .ld-track::before { display: none; }
+  .ld-mark { position: absolute; left: 71.429%; bottom: 1px; transform: translateX(-50%); font-size: 10.5px; line-height: 1; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; white-space: nowrap; }
+  .ld-row.ld-sum { border-bottom: 0; padding-top: 17px; }
+  .ld-sum .ld-name { font-weight: 600; }
+  .ld-sum .ld-track { height: 24px; }
+  .ld-sum .ld-limit { top: -17px; bottom: -13px; }
+  .ld-sum .ld-val { font-style: italic; font-size: 32px; color: var(--gold); }
+  .section .load-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .load-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .load-head, .load-rows, .section .load-note, .load-foot { padding-left: 20px; padding-right: 20px; }
+    .ld-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 9px; }
+    .ld-row .ld-track { grid-column: 1 / -1; grid-row: 2; }
+    .ld-row.ld-scale { row-gap: 0; padding-top: 6px; }
+    .ld-val { font-size: 21px; }
+    .ld-sum .ld-val { font-size: 28px; }
+    .load-rows { position: relative; }
+    .load-rows::after { content: ''; position: absolute; top: 34px; bottom: 10px; left: calc(20px + (100% - 40px) * 0.71429); border-left: 1px dashed var(--gold); pointer-events: none; }
+    .ld-limit { visibility: hidden; }
+  }
+  @media print {
+    .load, .ld-row { page-break-inside: avoid; }
+    .load-head, .load-foot { background: #fff !important; }
+    body.print-econo .load { border-color: #999 !important; }
+    body.print-econo .load-head .ld-label, body.print-econo .ld-mark { color: #333 !important; }
+    body.print-econo .ld-fill { background: #8a8a8a !important; }
+    body.print-econo .ld-over { background: #000 !important; }
+    body.print-econo .ld-track, body.print-econo .ld-tag, body.print-econo .ld-limit, body.print-econo .ld-mark { background: transparent !important; }
+    body.print-econo .ld-tag { color: #000 !important; }
+    body.print-econo .ld-limit, body.print-econo .load-rows::after { border-left-color: #000 !important; }
+  }
+
+  /* Paper 05 — Seks dage. Og 37.: én redaktionel illustration, ingen dashboard-elementer */
+  .decs { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .decs-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .decs-head .dc-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .decs-head .dc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .decs-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .dec { padding: 28px 30px 26px; }
+  .dec + .dec { border-left: 1px solid var(--border); }
+  .d-tag { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 14px; }
+  .d-vals { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(33px, 4.6vw, 44px); font-weight: 400; line-height: 1.05; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .d-vals .d-dot { display: inline-block; margin: 0 0.3em; color: var(--text-light); font-size: 0.55em; vertical-align: 0.22em; }
+  .dec + .dec .d-vals { color: var(--gold); font-style: italic; }
+  .d-unit { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .d-mean { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-mean b { display: block; margin-top: 3px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 30px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .d-list { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .d-list dt { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-list dd { margin: 3px 0 11px; font-size: 15px; line-height: 1.5; color: var(--text-mid); }
+  .d-list dd:last-of-type { margin-bottom: 0; }
+  .section .decs-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .decs-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .decs-head, .dec, .section .decs-note, .decs-foot { padding-left: 20px; padding-right: 20px; }
+    .decs-grid { grid-template-columns: 1fr; }
+    .dec { padding-top: 24px; padding-bottom: 22px; }
+    .dec + .dec { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .decs { page-break-inside: avoid; }
+    .decs-head, .decs-foot { background: #fff !important; }
+    body.print-econo .decs { border-color: #999 !important; }
+    body.print-econo .decs-head .dc-label { color: #333 !important; }
+  }
+
+  /* Paper 06 — Lukket fem gange: én redaktionel tidslinje, ingen dashboard-elementer */
+  .frx { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .frx-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .frx-head .fx-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .frx-head .fx-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .frx-line { list-style: none; margin: 0; padding: 22px 30px 20px; }
+  .section .frx-line li { position: relative; display: grid; grid-template-columns: 74px 1fr auto; align-items: baseline; gap: 0 18px; padding: 10px 0; margin: 0; }
+  .frx-line li::before { content: ""; position: absolute; left: 83px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .frx-line li:first-child::before { top: 21px; }
+  .frx-line li:last-child::before { bottom: auto; height: 22px; }
+  .frx-line li::after { content: ""; position: absolute; left: 80px; top: 18px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .frx-line .fx-wk { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .frx-line .fx-ev { font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .frx-line .fx-st { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; white-space: nowrap; }
+  .frx-sum { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+  .fx-cell { padding: 24px 30px 22px; }
+  .fx-cell + .fx-cell { border-left: 1px solid var(--border); }
+  .fx-num { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(38px, 5.2vw, 50px); font-weight: 400; line-height: 1; color: var(--navy); font-variant-numeric: lining-nums; }
+  .fx-cell + .fx-cell .fx-num { color: var(--gold); font-style: italic; }
+  .fx-cap { margin-top: 9px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .section .frx-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .frx-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .frx-head, .fx-cell, .section .frx-note, .frx-foot { padding-left: 20px; padding-right: 20px; }
+    .section .frx-line { padding-left: 20px; padding-right: 20px; }
+    .section .frx-line li { grid-template-columns: 1fr auto; grid-template-areas: "wk st" "ev ev"; gap: 4px 14px; padding-left: 22px; }
+    .frx-line .fx-wk { grid-area: wk; }
+    .frx-line .fx-ev { grid-area: ev; }
+    .frx-line .fx-st { grid-area: st; justify-self: end; }
+    .frx-line li::before { left: 3px; }
+    .frx-line li::after { left: 0; }
+    .frx-sum { grid-template-columns: 1fr; }
+    .fx-cell + .fx-cell { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .frx { page-break-inside: avoid; }
+    .frx-head, .frx-foot { background: #fff !important; }
+    body.print-econo .frx { border-color: #999 !important; }
+    body.print-econo .frx-head .fx-label { color: #333 !important; }
+    body.print-econo .frx-line li::after { background: #000 !important; }
+    body.print-econo .frx-line li::before { background: #999 !important; }
+  }
+
+  /* Paper 07 — Fire felter: ét redaktionelt 2×2, ingen dashboard-elementer */
+  .fld { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .fld-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .fld-head .fl-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .fld-head .fl-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .fld-grid { display: grid; grid-template-columns: 118px 1fr 1fr; }
+  .fl-corner { border-bottom: 1px solid var(--border); }
+  .fl-col { padding: 13px 18px 11px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; text-align: center; border-bottom: 1px solid var(--border); border-left: 1px solid var(--border); }
+  .fl-row { display: flex; align-items: center; padding: 20px 14px 20px 30px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; line-height: 1.5; }
+  .fl-cell { padding: 22px 20px 20px; border-left: 1px solid var(--border); }
+  .fl-r2 { border-top: 1px solid var(--border); }
+  .fl-cell b { display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .fl-cell.fl-mark b { color: var(--gold); font-style: italic; }
+  .fl-cell span { display: block; margin-top: 7px; font-size: 14px; line-height: 1.55; color: var(--text-mid); }
+  .fl-when { display: none; }
+  .section .fld-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .fld-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 640px) {
+    .fld-head, .section .fld-note, .fld-foot { padding-left: 20px; padding-right: 20px; }
+    .fld-grid { grid-template-columns: 1fr; }
+    .fl-corner, .fl-col, .fl-row { display: none; }
+    .fl-cell { border-left: 0; border-top: 1px solid var(--border); padding: 20px; }
+    .fl-when { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; font-style: normal; margin-bottom: 6px; }
+  }
+  @media print {
+    .fld { page-break-inside: avoid; }
+    .fld-head, .fld-foot { background: #fff !important; }
+    body.print-econo .fld { border-color: #999 !important; }
+    body.print-econo .fld-head .fl-label, body.print-econo .fl-cell.fl-mark b { color: #333 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Før resultatet flytter sig",
+ "alternativeHeadline": "At et signal kommer før resultatet, gør det ikke automatisk til en ledende indikator.",
+ "description": "Én historie, der passer, er ikke evidens. Paper 07 om skellet mellem tidligt og ledende, om de fire felter et signal skal overleve, om baseline og tidshorisont, om forskellen på at forudsige og at forklare, og om signalhypotesen som den ærlige mellemstation.",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Strategien sker mellem kvartalerne",
+  "url": "https://www.friisnaes.com/library.html"
+ },
+ "position": 7,
+ "inLanguage": "da",
+ "keywords": "ledende indikatorer, tidlige signaler, signalhypotese, prædiktiv validitet, strategieksekvering, strategisk observabilitet",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Strategien sker mellem kvartalerne · Paper 07 af 10</div>
+  <div class="pc-title">Før resultatet flytter sig</div>
+  <div class="pc-sub">At et signal kommer før resultatet, gør det ikke automatisk til en ledende indikator.</div>
+  <div class="pc-author">Af Thomas Friisnæs · External Excellence Partner · Strategy Execution Governance · C-level-sparring · friisnaes.com · oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Strategisk observabilitet</span>
+      <span class="wp-series">Strategien sker mellem kvartalerne · Paper 07 af 10</span>
+      <span class="wp-readtime">ca. 25 min læsning</span>
+    </div>
+    <h1>Før resultatet <em>flytter sig</em></h1>
+    <p class="wp-subtitle">At et signal kommer før resultatet, gør det ikke automatisk til en ledende indikator.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · External Excellence Partner · Strategy Execution Governance · C-level-sparring<br>Udgivet oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Tre uger før</a></li>
+      <li><a href="#tesen">Før er ikke det samme som ledende</a></li>
+      <li><a href="#hvad">Ledende for hvad?</a></li>
+      <li><a href="#niveau">Niveau, retning og forspring</a></li>
+      <li><a href="#felter">Et signal skal overleve alle fire felter</a></li>
+      <li><a href="#baseline">Bedre end hvad?</a></li>
+      <li><a href="#kausalitet">At forudsige er ikke at forklare</a></li>
+      <li><a href="#horisont">Tidshorisonten er en del af påstanden</a></li>
+      <li><a href="#retrospektiv">Historier fortalt bagfra er ikke validering</a></li>
+      <li><a href="#hypotese">Signalhypotesen — den ærlige mellemstation</a></li>
+      <li><a href="#framework">Framework: Fra signalhypotese til evidens</a></li>
+      <li><a href="#nyttigt">Et signal kan være nyttigt, før det er valideret</a></li>
+      <li><a href="#tidligere">Hvad kunne du se tidligere?</a></li>
+      <li><a href="#konkludere">Hvad må du ikke konkludere?</a></li>
+      <li><a href="#diagnose">Diagnose: Hvad kalder vi ledende uden at vide det?</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit næste skridt</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#handling">Fra signal til evidens</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase · Et illustrativt eksempel</div>
+    <h2>Tre uger før</h2>
+    <p>Et strategisk initiativ misser en vigtig milepæl i august. Ingen katastrofe, men dyrt nok til, at direktionen vil vide, hvorfor ingen så det komme.</p>
+    <p>Nogen finder det. Tre uger før milepælen faldt initiativets Team Confidence tydeligt — fra et niveau, det havde ligget stabilt på i to perioder. Signalet stod i systemet. Ingen kiggede.</p>
+    <p>På næste direktionsmøde bliver konklusionen formuleret på tolv ord: <strong>»Team Confidence var vores ledende indikator. Vi skal bare reagere hurtigere på den.«</strong></p>
+    <p>Det kan være rigtigt. Problemet er, at vi ikke ved det endnu — og at sætningen ændrer, hvad direktionen kigger på, og hvad der udløser eskalering. Så inden nogen beslutter noget, ser strategichefen på de tre andre initiativer fra perioden.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Fire initiativer i den samme periode</div>
+      <ul class="dispo-list">
+        <li><strong>Initiativ A</strong> <em>→</em> Team Confidence faldt. Milepælen blev senere misset.</li>
+        <li><strong>Initiativ B</strong> <em>→</em> Team Confidence faldt. Milepælen blev nået alligevel.</li>
+        <li><strong>Initiativ C</strong> <em>→</em> Team Confidence lå stabilt. Milepælen blev alligevel misset.</li>
+        <li><strong>Initiativ D</strong> <em>→</em> Team Confidence lå stabilt. Milepælen blev nået.</li>
+      </ul>
+    </div>
+
+    <p>Initiativ A er historien, mødet startede med. De tre andre havde ingen set på, fordi de ikke fejlede på en måde, der krævede en forklaring. Med alle fire på bordet ændrede signalet sig to gange — og resultatet fulgte efter den ene.</p>
+    <p>CEO'en stiller det spørgsmål, der bliver hængende resten af paperet: <strong>»Hvornår har vi egentlig evidens nok til at kalde noget ledende?«</strong></p>
+    <p>Bemærk, hvad casen ikke afgør. Den siger ikke, at Team Confidence er ubrugelig, eller at signalet er uden værdi. Den siger kun, at én historie, der passer, ikke er nok til at vide, om signalet holder.</p>
+  </div>
+</section>
+
+<!-- 02 TESEN -->
+<section class="section" id="tesen">
+  <div class="container">
+    <div class="section-label">02 — Tesen</div>
+    <h2>Før er ikke det samme som ledende</h2>
+    <p>Serien har brugt seks papers på at gøre eksekveringen synlig. <a href="/strategien-sker-mellem-kvartalerne.html" style="color:var(--gold);">Paper 01</a> skelnede mellem resultatindsigt og eksekveringsindsigt. <a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a> spurgte, hvad en grøn status dækker. <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a> handlede om, hvad et tal på en vurdering kan bære. <a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html" style="color:var(--gold);">Paper 04</a> viste kapaciteten mellem initiativerne, <a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html" style="color:var(--gold);">Paper 05</a> beslutningerne som arbejde, og <a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html" style="color:var(--gold);">Paper 06</a> friktionen som eksekveringsdata.</p>
+    <p>Hvert af dem sluttede med den samme forsigtighed: <strong>illustrative signalhypoteser — ikke validerede ledende indikatorer.</strong> Det var ikke en tom formulering, men et løfte om, at spørgsmålet ville blive taget alvorligt, når vi nåede hertil.</p>
+    <p>Vi er her nu. Og svaret begynder med et skel, der er lettere at acceptere end at overholde.</p>
+    <p>Først en oplysning om ordet. <strong>Begrebet »ledende indikator« bruges forskelligt på tværs af fag</strong> — nogle steder om et forebyggende mål, andre steder om et mål med en efterprøvet relation til et senere resultat. Her bruger jeg det bevidst stramt: et signal får først status som ledende, når relationen til et navngivet senere resultat er efterprøvet i en defineret population og tidshorisont. Alt før det kalder jeg observation, tidligt signal, signalhypotese eller kandidat. Det er en metodisk konvention i dette paper — ikke en påstand om, at alle fag bruger ordet sådan.</p>
+
+    <p class="pull-quote">Før er et spørgsmål om tid. Ledende er et spørgsmål om dokumenteret relation.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>At et signal kommer først, gør det til et tidligere signal. Ikke til en ledende indikator. Rækkefølgen er en observation, enhver kan gøre bagefter. Relationen er en påstand, der skal kunne efterprøves.</p>
+    <p>Skellet er krævende, fordi ordet <em>ledende</em> er nemt at tildele og langt sværere at dokumentere. Det lyder som en egenskab ved tallet, men en ledende indikator er ikke en type tal. Det er en relation mellem ét bestemt signal og ét bestemt senere resultat, inden for en bestemt periode og sammenhæng. Fjerner man et led, er påstanden ikke forkert. Den er ufuldstændig.</p>
+    <p>Og så er der den pointe, jeg vender tilbage til til sidst: <strong>et signal kan være ledelsesmæssigt nyttigt, længe før det er valideret som prædiktivt.</strong> Paperet handler om ikke at forveksle de to spørgsmål.</p>
+  </div>
+</section>
+
+<!-- 03 HVAD -->
+<section class="section" id="hvad">
+  <div class="container">
+    <div class="section-label">03 — Det ufuldstændige udsagn</div>
+    <h2>Ledende for hvad?</h2>
+    <p>Sætningen »det er en ledende indikator« er ikke forkert. Den er uafsluttet — den mangler det, den er ledende <em>for</em>.</p>
+    <p>Prøv den på casen. Team Confidence kan tænkes at hænge sammen med, om et initiativ misser en milepæl i den følgende periode — et konkret, afgrænset resultat, og noget helt andet end at hævde, at Team Confidence er ledende for omsætning, markedsandel eller »strategiens succes«. De ting har forskellige tidsskalaer og målemetoder.</p>
+    <p>Det samme gælder seriens øvrige signaler. Alderen på en åben beslutning kan hænge sammen med, hvor længe et stykke arbejde står stille. Om den også siger noget om strategiens resultat to år senere, er et langt sværere spørgsmål.</p>
+    <p>Derfor er en påstand om, at noget er ledende, først fuldstændig, når den har tre led:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Tre led, en påstand om ledende ikke kan undvære</div>
+      <ul class="dispo-list">
+        <li><strong>Resultatet</strong> <em>→</em> Hvilket konkret, senere forhold skal signalet sige noget om? Ikke »succes«, men en milepæl, der skrider, et scope, der skæres, en lancering, der rykker.</li>
+        <li><strong>Populationen</strong> <em>→</em> For hvilke initiativer, enheder eller sager gælder relationen? Den, der gælder for store tværgående programmer, gælder ikke nødvendigvis for små lokale.</li>
+        <li><strong>Tidshorisonten</strong> <em>→</em> Hvor lang tid før? Et signal kan hænge sammen med noget, der sker om tre uger, og ikke med det samme om et år.</li>
+      </ul>
+    </div>
+
+    <p>De tre led afgør, hvad man kan gøre. Et signal om næste uge kalder på en anden handling end et, der peger et halvt år frem — og et, der kun gælder én type initiativ, skal ikke udløse eskalering på tværs af porteføljen.</p>
+    <p>Spørgsmålet, der gør arbejdet, er derfor kort nok til at stille ved et direktionsbord: <strong>Ledende for hvad — og over hvilken tidshorisont?</strong></p>
+    <p>Spørgsmålet er kort, fordi det skal kunne stilles. Populationen følger som det næste: <em>for hvilke initiativer?</em></p>
+    <p>At styrken kan variere, er ikke kun en retorisk pointe. I et studie af CEO-aflønningsordninger arbejder Vincent O'Connell og Don O'Sullivan med det, de kalder <em>lead indicator strength</em> — hvor stærkt kundetilfredshed i den enkelte virksomhed hænger sammen med senere indtjening — og undersøger, om en stærkere relation oftere følges af, at aflønningen kobles til målet.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (empirisk studie, CEO-aflønning):</strong> O'Connell &amp; O'Sullivan (2014), »The influence of lead indicator strength on the use of nonfinancial measures in performance management: Evidence from CEO compensation schemes«, <em>Strategic Management Journal</em>, 35(6), 826–844. Konteksten er kundetilfredshed som ikke-finansielt mål i aflønningsordninger. Bruges alene som empirisk eksempel på, at lead indicator strength kan operationaliseres som styrken i relationen mellem et bestemt mål og et bestemt senere resultat — ikke som evidens for, at alle fag definerer »ledende indikator« sådan, og ikke som evidens for, at kundetilfredshed generelt er en ledende indikator for indtjening.</div>
+
+    <p>Det, der overføres, er formen — ikke resultatet og ikke metoden. <strong>Det er den form, jeg bruger i dette paper: relationen kan være stærkere eller svagere og kan derfor undersøges.</strong> »Ledende« bliver dermed en evidenspåstand — ikke bare et label.</p>
+  </div>
+</section>
+
+<!-- 04 NIVEAU -->
+<section class="section" id="niveau">
+  <div class="container">
+    <div class="section-label">04 — Begrebsrammen</div>
+    <h2>Niveau, retning og forspring</h2>
+    <p>Når et signal bliver diskuteret, bliver tre spørgsmål typisk til ét. Skellet nedenfor er mit eget, ikke en etableret taksonomi, men det afgør, hvad man kan sige.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Tre spørgsmål, der besvares hver for sig</div>
+      <ul class="dispo-list">
+        <li><strong>Niveauet</strong> <em>→</em> Hvor står signalet nu? Ét tal fra én periode. Det siger, hvor vi er — ikke hvor vi er på vej hen.</li>
+        <li><strong>Retningen</strong> <em>→</em> Hvordan har signalet ændret sig? Det kræver mindst to sammenlignelige tidspunkter, den samme definition og den samme målemetode. Ændrer definitionen sig undervejs, er kurven ikke en retning. Den er to forskellige mål tegnet sammen.</li>
+        <li><strong>Forspringet</strong> <em>→</em> Har signalet en dokumenteret relation til et navngivet senere resultat? Det er hverken niveauet eller retningen. Det er et tredje spørgsmål, som kun data over tid kan besvare.</li>
+      </ul>
+    </div>
+
+    <p>Sammenblandingen er nem at få øje på, når den står alene. En eksekveringsscore på 72 kan være steget fra 55, faldet fra 88 eller ligget stille i tre perioder. Samme tal, tre forløb — og ingen af dem fortæller, hvad der sker i næste periode.</p>
+    <p><strong>Et højt niveau er ikke fremdrift. En stigende kurve er ikke i sig selv en ledende indikator.</strong> Det første er et øjebliksbillede, det andet er en beskrivelse af noget, der allerede er sket. Begge kan være rigtige. Ingen af dem er en påstand om fremtiden, før relationen er undersøgt.</p>
+    <p>Vær særligt opmærksom, når et mål bærer ordet <em>momentum</em> i navnet. Beregnes tallet på den aktuelle periodes værdier, beskriver det den aktuelle periode — uanset hvad det hedder.</p>
+  </div>
+</section>
+
+<!-- 05 FELTER -->
+<section class="section" id="felter">
+  <div class="container">
+    <div class="section-label">05 — Prøven</div>
+    <h2>Et signal skal overleve alle fire felter</h2>
+    <p>De fire initiativer fra åbningscasen er ikke tilfældige historier. Når signalet og resultatet er defineret binært — ændrede sig / ændrede sig ikke og indtraf / indtraf ikke — er de de fire mulige kombinationer og tilsammen den prøve, ethvert signal skal bestå.</p>
+
+    <div class="fld" role="group" aria-label="Illustration: Et signal skal overleve alle fire felter">
+      <div class="fld-head">
+        <div class="fl-label">Illustration · konstrueret eksempel</div>
+        <div class="fl-title">Et signal skal overleve alle fire felter</div>
+      </div>
+      <div class="fld-grid">
+        <div class="fl-corner" aria-hidden="true"></div>
+        <div class="fl-col">Resultatet kom</div>
+        <div class="fl-col">Resultatet kom ikke</div>
+        <div class="fl-row">Signalet<br>ændrede sig</div>
+        <div class="fl-cell fl-mark"><i class="fl-when">Signal · resultat</i><b>Ramte</b><span>Initiativ A. Signalet faldt, og milepælen skred bagefter.</span></div>
+        <div class="fl-cell"><i class="fl-when">Signal · intet resultat</i><b>Falsk alarm</b><span>Initiativ B. Signalet faldt, og milepælen blev nået alligevel.</span></div>
+        <div class="fl-row fl-r2">Signalet<br>ændrede sig ikke</div>
+        <div class="fl-cell fl-r2"><i class="fl-when">Intet signal · resultat</i><b>Misset varsel</b><span>Initiativ C. Signalet lå stille, og milepælen skred alligevel.</span></div>
+        <div class="fl-cell fl-r2"><i class="fl-when">Intet signal · intet resultat</i><b>Stille sag</b><span>Initiativ D. Hverken signal eller afvigelse.</span></div>
+      </div>
+      <p class="fld-note">Konstrueret eksempel med fire illustrative initiativer. Felterne kræver, at både signalet og resultatet er defineret på forhånd — hvad tæller som en ændring, hvad tæller som resultatet, og inden for hvilken periode.</p>
+      <div class="fld-foot">Ser du kun på de gange, signalet ramte, validerer du historien — ikke signalet.</div>
+    </div>
+
+    <p>Og så er der det, casen ikke sagde. Med én sag i hvert felt ændrede signalet sig i halvdelen af sagerne, og resultatet indtraf i halvdelen: signalet skiller ikke de fire initiativer ad. Det var præcis den fordeling, mødet læste som et varsel.</p>
+    <p>I en retrospektiv forklaring er det fristende at holde sig til de to felter til venstre. »Ramte« bliver til beviset, »misset varsel« bliver til grunden til at indføre et nyt signal, og ingen har bedt om en forklaring på B og D. Men hvis de falske alarmer og de stille sager ikke bliver hentet frem, kan relationen ikke vurderes — og så kan spørgsmålet, der afgør sagen, ikke besvares: <strong>hvor ofte ændrer signalet sig, uden at der sker noget?</strong></p>
+    <p>Falske alarmer er ikke en teknikalitet. De koster opmærksomhed, møder og indgreb i initiativer, der ikke havde brug for det — og den pris skal ikke opgøres i kroner for at være reel. Missede varsler er den modsatte fejl: sagerne, hvor systemet var tavst, og det gik galt alligevel.</p>
+    <p>Når en konkret tærskel eller beslutningsregel vælges, vil der ofte være en afvejning mellem falske alarmer og missede varsler. Et bedre signal kan flytte hele afvejningen, men ingen af fejltyperne må forsvinde ud af vurderingen. Hvor grænsen skal ligge, hører til Paper 09. Her er pointen kun, at begge felter skal med, før nogen bruger ordet ledende.</p>
+    <p>Og en ting, der er nem at glemme: <strong>et signal behøver ikke ramme hver gang for at være nyttigt.</strong> Validering handler om dokumenteret performance under en defineret test — ikke om fejlfrihed. Et signal må gerne tage fejl; det afgørende er, at vi ved hvor ofte, hvordan og i hvilken sammenhæng.</p>
+  </div>
+</section>
+
+<!-- 06 BASELINE -->
+<section class="section" id="baseline">
+  <div class="container">
+    <div class="section-label">06 — Sammenligningen</div>
+    <h2>Bedre end hvad?</h2>
+    <p>Selv et signal, der rammer ofte, kan være uden værdi. Det afhænger af alternativet.</p>
+    <p>Forestil dig, at ni ud af ti initiativer rammer deres milepæle. Et signal, der altid siger »det går efter planen«, får ret i ni ud af ti tilfælde. Det lyder imponerende, men siger det samme som at gætte på det almindeligste udfald. Det tilfører ingen information.</p>
+    <p>Derfor skal enhver påstand om et signal besvare et spørgsmål mere: <strong>bedre end hvad?</strong> Sammenligningsgrundlaget behøver ikke være avanceret — hvor ofte resultatet plejer at indtræffe, eller hvad statusbilledet allerede ville have fortalt.</p>
+
+    <p class="pull-quote">Et signal bliver først interessant som varsel, når det gør os bedre end et rimeligt udgangspunkt.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Den anden halvdel af spørgsmålet er lige så vigtig: <strong>fortæller signalet os noget, vi ikke allerede vidste?</strong></p>
+    <p>Falder Team Confidence først, efter at forsinkelsen er synlig i rapporteringen, er signalet ikke tidligt. Det er en anden måde at se det samme på — stadig nyttigt, bare ikke som varsel. Et signal skal have et forspring i forhold til det billede, organisationen har i forvejen. Ellers bekræfter det bare.</p>
+    <p>Discipliner, der lever af at forudsige, har formaliseret det. En metoderamme fra epidemiologien anbefaler, at prædiktionsmodeller vurderes ad flere dimensioner — blandt andet hvor godt de adskiller de tilfælde, der ender forskelligt, og hvor godt vurderingerne stemmer med det, der faktisk sker. Pointen for et direktionsbord er princippet: <strong>en prædiktiv påstand skal vurderes eksplicit og ad flere dimensioner. Én beskrevet sammenhæng er ikke nok.</strong></p>
+
+    <div class="research-note"><strong>Metodegrundlag (prædiktionsmodeller, epidemiologi):</strong> Steyerberg, Vickers, Cook m.fl. (2010), »Assessing the Performance of Prediction Models: A Framework for Traditional and Novel Measures«, <em>Epidemiology</em>, 21(1), 128–138. Konteksten er kliniske prædiktionsmodeller, og dette paper bygger ikke en sådan model. Bruges alene til det generelle metodiske princip, at prædiktive påstande kræver eksplicit vurdering ad flere dimensioner — ikke til at overføre kliniske mål eller metrikker til strategieksekvering.</div>
+  </div>
+</section>
+
+<!-- 07 KAUSALITET -->
+<section class="section" id="kausalitet">
+  <div class="container">
+    <div class="section-label">07 — Det andet skel</div>
+    <h2>At forudsige er ikke at forklare</h2>
+    <p>Antag nu, at relationen holder: Team Confidence falder, og milepælen skrider oftere bagefter, også når de andre felter tælles med. Så ligger den næste fejl klar — at behandle signalet som årsagen.</p>
+    <p>Galit Shmueli beskrev i en metodeartikel fra 2010 forskellen mellem to formål med statistisk modellering — at forklare og at forudsige — og gjorde opmærksom på, at sammenblandingen er udbredt. Antagelsen om, at høj forklaringskraft også giver høj forudsigelseskraft, holder ikke nødvendigvis.</p>
+
+    <div class="research-note"><strong>Metodegrundlag (statistisk metodeartikel):</strong> Shmueli (2010), »To Explain or to Predict?«, <em>Statistical Science</em>, 25(3), 289–310. Generel statistisk metodelitteratur; artiklen handler ikke om strategieksekvering. Bruges alene til skellet mellem at forklare og at forudsige som forskellige formål, og til pointen, at høj forklaringskraft ikke automatisk medfører høj forudsigelseskraft.</div>
+
+    <p>Oversat til vores sammenhæng betyder det to ting, der begge er ubekvemme:</p>
+    <p><strong>Noget kan forudsige uden at være årsagen.</strong> Faldende Team Confidence kan være et symptom på noget, teamet allerede har opdaget. Eller den kan dele en fælles årsag med forsinkelsen — en afhængighed, der er skredet, og som både påvirker humøret og tidsplanen. I begge tilfælde kan signalet hjælpe med at se noget tidligere. I ingen af dem forårsager det forsinkelsen.</p>
+    <p>Det har en direkte konsekvens for handlingen. Falder Team Confidence, følger det ikke, at man skal hæve Team Confidence — det ville være at behandle termometeret. Det, der følger, er at undersøge, hvad faldet handler om.</p>
+    <p><strong>Og noget kan være en årsag uden at være en god forudsigelse.</strong> En faktor kan have reel betydning og alligevel være ubrugelig til at skelne mellem de initiativer, der klarer sig, og dem der ikke gør — fordi den varierer for lidt, måles for upræcist eller slår igennem for sent.</p>
+    <p>En beslægtet antagelse har en ældre form i strategisk performance-måling. Hanne Nørreklit analyserede i 2000 kritisk nogle af Balanced Scorecards antagelser og undersøgte, i hvilket omfang der er en årsags-virkningsrelation mellem kortets fire perspektiver. Pointen er ikke en dom over modellen, men at en kæde mellem drivere og resultater ikke bliver dokumenteret af at blive tegnet.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (kritisk analyse):</strong> Nørreklit (2000), »The balance on the balanced scorecard — a critical analysis of some of its assumptions«, <em>Management Accounting Research</em>, 11(1), 65–88. En kritisk analyse af Balanced Scorecards antagelser, herunder i hvilket omfang der findes en årsags-virkningsrelation mellem de fire perspektiver. Bruges alene til princippet, at en antaget årsagskæde mellem drivere og resultater skal undersøges, ikke forudsættes — ikke som dom over Balanced Scorecard som styringsredskab.</div>
+
+    <p>Når en ledelsesmodel indeholder sådan en kæde, er kæden ikke i sig selv problemet — den gør en antagelse eksplicit. Problemet opstår, når pilen mellem to kasser bliver læst som et resultat i stedet for som det, den er: <strong>en antagelse, der endnu ikke er efterprøvet.</strong></p>
+  </div>
+</section>
+
+<!-- 08 HORISONT -->
+<section class="section" id="horisont">
+  <div class="container">
+    <div class="section-label">08 — Tiden</div>
+    <h2>Tidshorisonten er en del af påstanden</h2>
+    <p>Et signal kan hænge sammen med noget, der sker om tre uger, og slet ikke med det samme et halvt år senere. Eller omvendt: være uden værdi på kort sigt og alligevel sige noget om et forløb over et år.</p>
+    <p>Derfor er »ledende« uden en tidshorisont metodisk ufuldstændigt. Det tredje led fra <a href="#hvad" style="color:var(--gold);">afsnit 03</a> rummer i praksis tre spørgsmål: Hvor længe før? Målt over hvilken periode? Og med hvilken kadence i opfølgningen?</p>
+    <p>Kadencen bliver overset. Hvis selve signalet kun observeres ved kvartalsskift, kan et forspring på tre uger ikke opløses i data — ikke fordi forspringet ikke findes, men fordi målingen ikke er fin nok til at se det. En månedlig observation kan tilsvarende være for grov til at dokumentere rækkefølgen i et forløb, der udspiller sig på ti dage.</p>
+    <p>Jeg vil ikke foreslå et bestemt antal dage. <strong>Der findes ingen universel lead time.</strong> Horisonten skal vælges ud fra det resultat, signalet skal sige noget om, og ud fra hvor lang tid en handling skal bruge for at nå at virke. Et varsel, der kommer for sent til at handle på, kan være korrekt og stadig kun bruges til at kalibrere næste periode.</p>
+  </div>
+</section>
+
+<!-- 09 RETROSPEKTIV -->
+<section class="section" id="retrospektiv">
+  <div class="container">
+    <div class="section-label">09 — Bagklogskaben</div>
+    <h2>Historier fortalt bagfra er ikke validering</h2>
+    <p>Tilbage til åbningscasen. Det, der skete på mødet, var ikke en analyse, men en søgning med facit i hånden — og ingen havde defineret, hvad »tydeligt« betød, før mødet begyndte.</p>
+    <p>Når resultatet er kendt, er det let at finde noget, der gik forud: en survey, der faldt, en kommentar i et referat, en beslutning, der trak ud. Jo flere målepunkter organisationen kan lede tilbage i, desto lettere bliver det bagefter at finde mindst ét, der bevægede sig i en retning, som passer til historien. Det kan være et resultat af antallet af målepunkter lige så vel som af forudgående indsigt.</p>
+    <p>Modtrækket er ikke mistro over for egne observationer, men at flytte beslutningen om, hvad der tæller, hen før man kender svaret.</p>
+
+    <div class="signs">
+      <ul>
+        <li>Hvilket signal ser vi på — og hvad tæller som en ændring?</li>
+        <li>Hvilket konkret resultat skal det sige noget om?</li>
+        <li>Over hvilken tidshorisont?</li>
+        <li>I hvilken retning forventer vi, relationen går?</li>
+        <li>Hvad vil vi kalde en træffer, en falsk alarm og et misset varsel?</li>
+      </ul>
+    </div>
+
+    <p>Fem spørgsmål, besvaret skriftligt før perioden begynder. Det er hele indgrebet — ikke hele metoden, for sammenligningsgrundlaget og populationen kommer til nedenfor. Det fjerner ikke usikkerheden, men det gør det sværere at vælge sit bevis bagefter.</p>
+    <p>Og en ting mere, før nogen tror, det er nemt. Arbejdsmiljøområdet har arbejdet med ledende indikatorer længe. Et scoping review fra 2025 gennemgik 48 studier af, hvordan de faktisk præsterer. Forfatterne skriver, at ingen to studier undersøgte det samme forskningsspørgsmål, hvilket forhindrede en meningsfuld sammenfatning. De fleste rapporterede en positiv sammenhæng — men forfatterne vurderer samlet evidensgrundlaget som svagt på tre punkter: studiedesignene var ikke egnede til at afgøre årsag, den interne validitet var moderat til lav, og resultaterne lod sig dårligt generalisere.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (scoping review, arbejdsmiljø):</strong> Watkins m.fl. (2025), »A scoping review of the evidence base for the performance of leading indicators for improving safety outcomes«, <em>Journal of Safety Research</em>, 95, 530–544: søgning i otte databaser, 48 inkluderede primærstudier. Konteksten er arbejdsmiljø og sikkerhed, ikke strategieksekvering, og reviewet siger intet om strategiske signaler. Bruges alene som tværfaglig forsigtighed: selv i et felt, hvor ledende indikatorer har været brugt længe, er definitioner, evidens og validering fortsat vanskelige.</div>
+
+    <p>Det er ikke et argument for at lade være, og ikke en dom over vores egne tal — reviewet handler om et andet fag. Det er et argument om vores selvsikkerhed. <strong>Hvis et felt med sin egen forskningstradition kan nå frem til, at evidensgrundlaget er svagt, skal vi være varsomme med at kalde vores egne tal ledende efter én periode og fire initiativer.</strong></p>
+  </div>
+</section>
+
+<!-- 10 HYPOTESE -->
+<section class="section" id="hypotese">
+  <div class="container">
+    <div class="section-label">10 — Mellemstationen</div>
+    <h2>Signalhypotesen — den ærlige mellemstation</h2>
+    <p>Mellem »det her ser vi ofte« og »det er en valideret ledende indikator« ligger en nyttig arbejdsposition. Når den mangler et navn, ender samtalen let i enten overdrivelse eller afvisning.</p>
+    <p>Jeg kalder den en <strong>signalhypotese</strong> — mit eget arbejdsbegreb, ikke en etableret term.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Signalhypotese</div>
+      <ul class="dispo-list">
+        <li><strong>Definition</strong> <em>→</em> en eksplicit, testbar antagelse om, at et bestemt eksekveringssignal kan have en relevant relation til et navngivet senere resultat inden for en defineret tidshorisont.</li>
+        <li><strong>Skabelon</strong> <em>→</em> Når <em>[signal]</em> ændrer sig på <em>[defineret måde]</em>, forventer vi oftere <em>[navngivet resultat]</em> inden for <em>[horisont]</em>.</li>
+      </ul>
+    </div>
+
+    <p>Skabelonen er ikke en formalitet. Den tvinger de led frem, som den løse udgave springer over, og gør påstanden mulig at tage fejl af. En hypotese, der ikke kan vise sig forkert, er en overbevisning.</p>
+    <p>Bemærk også, hvad der skal navngives som resultat. »Strategiens succes« kan man ikke teste imod. Et studie af eksekveringsbegrebet, afprøvet på 276 virksomheder, opbygger begrebet af flere dimensioner og skelner mellem de handlinger, der skal gennemføres, og de resultater, de forventes at give. Begrebet kan måles — men ikke som ét forhold, og det er en god grund til ikke at bede ét signal dække det hele.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (målemodel, 276 virksomheder):</strong> de Oliveira, Carneiro &amp; Esteves (2019), »Conceptualizing and measuring the ›strategy execution‹ construct«, <em>Journal of Business Research</em>, 105, 333–344: en begrebs- og målemodel afprøvet på 276 virksomheder, som omfatter årsager (de handlinger, der skal gennemføres) og konsekvenser (de resultater, handlingerne forventes at give). Bruges alene til, at eksekvering er flerdimensionel, og at handlinger og resultater er begrebsmæssigt forskellige — ikke som validering af noget bestemt signal.</div>
+
+    <p>Signalhypotesen er ét trin på en stige. Stigen nedenfor er mit eget praktiske skel, ikke en akademisk taksonomi, og den bruges på ét signal ad gangen. Dens funktion er at svare ærligt på: <em>hvad ved vi egentlig om det her signal i dag?</em></p>
+
+    <div class="basis" role="group" aria-label="Model: Evidensstigen for et signal">
+      <div class="basis-head">
+        <div class="bh-label">Model · Thomas Friisnæs' praktiske evidensstige</div>
+        <div class="bh-title">Seks trin — hvad ved vi om signalet?</div>
+        <p class="bh-sub">Status, ikke kvalitet. Et signal på trin 2 kan være mere nyttigt end et på trin 5.</p>
+      </div>
+      <table class="kinds-table">
+        <thead>
+          <tr><th scope="col">Trin</th><th scope="col">Hvad der skal til — og hvad man må sige</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>1 · Observation</strong><span>»Vi kan se det«</span></td><td data-label="Hvad der skal til — og hvad man må sige">Signalet er defineret og registreres. Man må sige, hvad der står. Ikke hvad det betyder for noget senere.</td></tr>
+          <tr><td><strong>2 · Tidligt signal</strong><span>»Det kom før«</span></td><td data-label="Hvad der skal til — og hvad man må sige">Signalet blev i en eller flere sager observeret før et relevant resultat. Man må sige rækkefølgen — ikke at den gentager sig.</td></tr>
+          <tr><td><strong>3 · Signalhypotese</strong><span>»Vi har skrevet den ned«</span></td><td data-label="Hvad der skal til — og hvad man må sige">Relationen er gjort eksplicit og testbar med resultat, retning og horisont — før næste periode. Man må sige, at den testes.</td></tr>
+          <tr><td><strong>4 · Kandidat</strong><span>»Den holder indtil videre«</span></td><td data-label="Hvad der skal til — og hvad man må sige">Relationen er gentaget over flere perioder, med begge fejltyper talt med, og ligger over det udgangspunkt, den blev sammenlignet med. Man må sige kandidat. Ikke ledende.</td></tr>
+          <tr><td><strong>5 · Lokalt valideret</strong><span>»Vi har testet den her«</span></td><td data-label="Hvad der skal til — og hvad man må sige">Relationen er testet mod det definerede resultat over den definerede horisont, med begge fejltyper talt med, mod et rimeligt udgangspunkt og på perioder, der ikke blev brugt til at finde den. <strong>Lokalt</strong> betyder: i denne organisation, i denne sammenhæng, i denne periode.</td></tr>
+          <tr><td><strong>6 · Overvåget</strong><span>»Og vi tester den igen«</span></td><td data-label="Hvad der skal til — og hvad man må sige">Relationen genbesøges. Ændrer processen, strategien, populationen eller målemetoden sig, kan den forsvinde. Validering er ikke permanent.</td></tr>
+        </tbody>
+      </table>
+      <div class="basis-foot">Trinnet er ikke en dom over signalet. Det er en oplysning om, hvor meget vægt det kan bære i en beslutning.</div>
+    </div>
+
+    <p>Det er helt legitimt, at et signal bliver stående på trin 1 til 3. Problemet opstår først, hvis det omtales, som om det stod på trin 5.</p>
+    <p>Trin 6 fortjener en bemærkning. En relation kan forsvinde af sig selv — men også fordi organisationen begynder at styre efter signalet. Får et mål vægt i governance, kan adfærden omkring det ændre sig. Det er ikke nødvendigvis snyd; det kan være den reaktion, man ønskede. Men relationen skal genbesøges, netop fordi man bruger den.</p>
+  </div>
+</section>
+
+<!-- 11 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">11 — Frameworket</div>
+    <h2>Fra signalhypotese til evidens</h2>
+    <p>Evidensstigen i <a href="#hypotese" style="color:var(--gold);">afsnit 10</a> siger, hvor et signal står. De seks led nedenfor er arbejdsgangen, der kan flytte det — ét signal ad gangen. Ingen modenhedsmodel, ingen score, ingen garanti for, at signalet ender højere, end det begyndte.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">Fra signalhypotese til evidens</div>
+      <div class="fw-sub">Thomas Friisnæs' praktiske arbejdsgang til ét signal ad gangen. Ender i en evidensstatus, ikke i et tal.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Navngiv resultatet</h4>
+          <p><strong>Hvad præcis skal signalet sige noget om?</strong> Ikke »strategiens succes«, men noget, der kan afgøres: en milepæl, der skrider, et scope, der skæres, en beslutning, der står åben ud over en aftalt grænse. Kan I ikke blive enige om, hvornår resultatet er indtruffet, kan I ikke teste det. Sig samtidig, for hvilke initiativer påstanden gælder.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Fastlæg tidshorisonten</h4>
+          <p><strong>Hvor tidligt skal signalet være relevant — og hvor tidligt kan I se det?</strong> Én opfølgningsperiode, to, eller en anden konkret horisont. Vælg den ud fra, hvor lang tid en handling skal bruge for at virke. Horisonten aftales før analysen, ikke efter.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Formulér signalhypotesen</h4>
+          <p><strong>Skriv den ned, før perioden begynder.</strong> Når <em>[signal]</em> ændrer sig på <em>[defineret måde]</em>, forventer vi oftere <em>[resultat]</em> inden for <em>[horisont]</em>. Definér samtidig, hvad der tæller som en ændring. Ingen universelle tærskler — jeres definition er jeres valg, og den skal kunne begrundes.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Tæl hele billedet</h4>
+          <p><strong>Alle fire felter, ikke kun træfferne.</strong> Hvor ofte kom signal og resultat sammen? Hvor ofte kom signalet uden resultat? Resultatet uden signal? Og hvor ofte skete ingen af delene? Sammenlign så med et rimeligt udgangspunkt, og spørg, om signalet tilføjer noget til det statusbillede, I har.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">5</div>
+        <div class="fw-step-body">
+          <h4>Afprøv på nye data</h4>
+          <p><strong>En relation, der er fundet i et datasæt, skal bekræftes uden for det.</strong> Brug de næste perioder, nye initiativer eller den del af materialet, der ikke blev brugt til at finde den. Holder den ikke, så nedgradér evidensstatus. Det er ikke et nederlag — det er det, der gør de øvrige trin troværdige.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">6</div>
+        <div class="fw-step-body">
+          <h4>Hold øje med relationen</h4>
+          <p><strong>Også et signal, der har virket, skal genbesøges.</strong> Ændrer processen, strategien, populationen eller målemetoden sig, kan relationen forsvinde — og det gælder også, når I selv begynder at styre efter signalet. Sæt en dato for næste eftersyn, samtidig med at I tager signalet i brug.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Rammen ender ikke i en score, men i en sætning, en direktion kan bruge: <strong>dette signal står i dag på trin tre, det testes mod dette resultat over denne horisont og for disse initiativer, og vi gør status, når perioden er slut.</strong></p>
+  </div>
+</section>
+
+<!-- 12 NYTTIGT -->
+<section class="section" id="nyttigt">
+  <div class="container">
+    <div class="section-label">12 — Den vigtige undtagelse</div>
+    <h2>Et signal kan være nyttigt, før det er valideret</h2>
+    <p>Alt det foregående kunne læses som en opfordring til at droppe signaler, indtil de er bevist. Det ville være den forkerte konklusion — to ting skal holdes adskilt.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">To forskellige værdier</div>
+      <ul class="dispo-list">
+        <li><strong>Varslingsværdi</strong> <em>→</em> Hvor godt siger signalet noget om et senere resultat? Det er spørgsmålet, resten af paperet har handlet om, og det kræver evidens.</li>
+        <li><strong>Undersøgelsesværdi</strong> <em>→</em> Får signalet ledelsen til at tage et initiativ op, den ellers ikke havde taget op i denne periode? Det kræver ikke <em>prædiktiv</em> validering. Men det bør stadig vurderes på, om signalet bringer ny, beslutningsrelevant information frem til en rimelig belastning.</li>
+      </ul>
+    </div>
+
+    <p>Et signal med høj varslingsværdi kan være ubrugeligt, hvis det først kommer, når alt er afgjort. Og et utestet signal kan være værdifuldt med det samme, hvis det får en direktion til at spørge ind til et initiativ, den ellers ikke havde talt om. Gratis er det ikke: det signal, der åbner den gode samtale, er det samme, der af og til åbner den unødvendige. En undersøgelse bruger også tid og opmærksomhed; forskellen er, at signalet ikke i sig selv udløser den endelige handling.</p>
+    <p>Sådan har de foregående papers brugt deres signaler. Alderen på en åben beslutning, den gentagne friktion ved samme grænseflade, den kapacitet, der er lovet to steder — ingen er validerede varsler. Hver især er de en grund til at åbne en samtale tidligere, ikke mere.</p>
+
+    <p class="pull-quote">Et signal behøver ikke være en valideret forudsigelse for at være et legitimt ledelsessignal. Det skal bare ikke omtales som noget, det ikke er.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Seriens rækkefølge gælder også her: <strong>signal, undersøgelse, diagnose, beslutning, handling.</strong> Ikke signal og så handling. Et signal, der automatisk udløser en indgriben, har sprunget det led over, hvor man kunne have opdaget, at det var en falsk alarm.</p>
+    <p>Og en sidste balance er værd at sige højt: <strong>et resultatmål er ikke gammeldags.</strong> Det, der er sket, er ofte mere direkte målt og bedre egnet til ansvarlighed end noget signal undervejs. De to har forskellige opgaver, det ene erstatter ikke det andet, og en governance-model med kun den ene slags mangler noget.</p>
+  </div>
+</section>
+
+<!-- 13 TIDLIGERE -->
+<section class="section" id="tidligere">
+  <div class="container">
+    <div class="section-label">13 — Seriens signatur</div>
+    <h2>Hvad kunne du se tidligere?</h2>
+    <p>Den faste rubrik får en anden funktion her. Hidtil har den vist, hvad man kan få øje på — nu, hvordan man skriver det ned, så det kan afprøves.</p>
+
+    <div class="sig sig-earlier">
+      <div class="sig-label">Seriens signatur · Paper 07</div>
+      <div class="sig-title">Signalhypoteser — ikke validerede ledende indikatorer</div>
+      <table class="sig-table">
+        <thead>
+          <tr><th scope="col">Signalet og ændringen</th><th scope="col">Muligt resultat, horisont — og hvad der skal testes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Team Confidence falder mærkbart på ét initiativ</td><td data-label="Muligt resultat, horisont — og hvad der skal testes">Muligt resultat: milepæl, der skrider i den følgende periode. Plausibelt, hvis teamets vurdering kan fange forhold, før de bliver synlige i statusrapporteringen. Test: hvor ofte faldt den uden at noget skred?</td></tr>
+          <tr><td>Alderen på åbne beslutninger med høj påvirkning stiger</td><td data-label="Muligt resultat, horisont — og hvad der skal testes">Muligt resultat: arbejde, der står stille i næste periode. Plausibelt, fordi noget venter på valget. Test: skete det også, når alderen ikke steg?</td></tr>
+          <tr><td>Den vurderede kapacitetsrealisme falder over to perioder</td><td data-label="Muligt resultat, horisont — og hvad der skal testes">Muligt resultat: leverance, der rykkes inden for kvartalet. Plausibelt, hvis de, der udfører arbejdet, ser belastningen før planen gør. Test: hvor ofte rykkede noget uden faldet?</td></tr>
+          <tr><td>Gentagen friktion ved en kritisk grænseflade tager til</td><td data-label="Muligt resultat, horisont — og hvad der skal testes">Muligt resultat: genarbejde eller forsinkelse inden for de følgende to perioder. Plausibelt, fordi den type modstand kan skabe ventetid eller genarbejde. Test: hvad skete der de gange, gentagelsen ikke tog til?</td></tr>
+          <tr><td>Mængden af igangsat, men ikke afsluttet arbejde vokser</td><td data-label="Muligt resultat, horisont — og hvad der skal testes">Muligt resultat: længere gennemløbstid i næste periode. Plausibelt, fordi meget påbegyndt arbejde deler den samme kapacitet. Test: gælder det for alle initiativtyper eller kun nogle?</td></tr>
+          <tr><td>Den vurderede milepælsfremdrift sakker bagud i forhold til planen</td><td data-label="Muligt resultat, horisont — og hvad der skal testes">Muligt resultat: milepæl, der misses. Men tilføjer det noget ud over statusrapporteringen? Test: kommer signalet før eller samtidig?</td></tr>
+          <tr><td>Antallet af lokale omveje omkring det samme procestrin stiger</td><td data-label="Muligt resultat, horisont — og hvad der skal testes">Muligt resultat: kvalitetsafvigelse eller genarbejde inden for kvartalet. Plausibelt, men svagt observeret. Test: registreres omvejene overhovedet konsekvent?</td></tr>
+          <tr><td>Andelen af beslutninger, der bliver lukket, falder over flere perioder</td><td data-label="Muligt resultat, horisont — og hvad der skal testes">Muligt resultat: flere initiativer med arbejde, der står stille, i den følgende periode. Test: hvad tæller nævneren med — og ændrede den sig, samtidig med at andelen faldt?</td></tr>
+        </tbody>
+      </table>
+      <p class="sig-note"><strong>Alle otte er signalhypoteser. Ingen af dem er validerede ledende indikatorer, forudsigelser eller årsager.</strong> »Plausibelt« er en foreslået mekanisme, ikke evidens — derfor er linjen en hypotese. Horisonterne er eksempler, og hvad der tæller som en ændring, står bevidst udefineret: det er jeres valg i trin&nbsp;3. Testlinjen er det første spørgsmål, ikke hele testen; den kræver alle fire felter og et sammenligningsgrundlag.</p>
+    </div>
+
+    <p>Bemærk, hvad hver linje gør ud over at pege på noget: den navngiver et resultat, siger hvorfor relationen er plausibel, og hvad der skal undersøges først. Det er forskellen på en liste over KPI'er og et register over hypoteser.</p>
+  </div>
+</section>
+
+<!-- 14 KONKLUDERE -->
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="section-label">14 — Seriens signatur</div>
+    <h2>Hvad må du ikke konkludere?</h2>
+    <p>Den anden faste rubrik er vigtigere her end i de foregående papers, fordi fejlslutningerne er så nemme at gøre i god tro.</p>
+
+    <div class="sig sig-conclude">
+      <div class="sig-label">Seriens signatur · Paper 07</div>
+      <div class="sig-title">Hvad må du ikke konkludere?</div>
+      <div class="sig-cols">
+        <div>
+          <h4>Ud fra et signal, der kom før et resultat, kan du ikke konkludere …</h4>
+          <ul>
+            <li>at det er en ledende indikator</li>
+            <li>at det forårsagede resultatet</li>
+            <li>at rækkefølgen gentager sig</li>
+            <li>at den grænse, I valgte, er den rigtige</li>
+            <li>at en indsats rettet mod signalet ændrer resultatet</li>
+          </ul>
+          <h4>Ud fra en samvariation kan du ikke konkludere …</h4>
+          <ul>
+            <li>at der er en årsagssammenhæng</li>
+            <li>at relationen kan handles på</li>
+            <li>at den gælder uden for jeres eget materiale</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ud fra et signal, der er valideret ét sted, kan du ikke konkludere …</h4>
+          <ul>
+            <li>at det gælder universelt</li>
+            <li>at horisonten er den samme andre steder</li>
+            <li>at grænsen er den samme</li>
+            <li>at det gælder for en anden population</li>
+            <li>at det bliver ved med at gælde</li>
+          </ul>
+          <h4>Ud fra en høj samlet score kan du ikke konkludere …</h4>
+          <ul>
+            <li>at fremtiden ser god ud</li>
+            <li>at kurven peger opad</li>
+            <li>at strategien lykkes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sig-close">Et tidligt signal kan give ledelsen et bedre spørgsmål. Det giver ikke automatisk et svar om fremtiden.</div>
+    </div>
+
+    <p>Det gælder også opad. En bestyrelse behøver normalt ikke valideringsmatricer, men kan have god grund til at spørge, hvilke tidlige varsler direktionen stoler på, om relationerne er efterprøvede, og hvilke der stadig kun er hypoteser. <strong>Det er et rimeligt bestyrelsesspørgsmål.</strong></p>
+  </div>
+</section>
+
+<!-- 15 DIAGNOSE -->
+<section class="section" id="diagnose">
+  <div class="container">
+    <div class="section-label">15 — Diagnose · 10 minutter</div>
+    <h2>Hvad kalder vi ledende uden at vide det?</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · CEO, direktionsmedlem, CFO eller Strategy Office · Skriftlig</div>
+      <div class="ex-meta">⏱ Cirka 10 minutter · Ingen score og ingen modenhedsvurdering.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Vælg ét tal, som organisationen i dag omtaler som ledende, som et tidligt varsel eller som et udtryk for fremdrift. Svar skriftligt og i rækkefølge.</p>
+      <ol>
+        <li><strong>Hvilket konkret senere resultat siger vi, at signalet leder?</strong></li>
+        <li><strong>Over hvilken tidshorisont?</strong></li>
+        <li><strong>Blev relationen defineret før resultatet — eller bagefter?</strong></li>
+        <li><strong>Hvor mange sager bygger vi det på?</strong></li>
+        <li><strong>Hvor ofte ændrede signalet sig, uden at resultatet kom?</strong></li>
+        <li><strong>Hvor ofte kom resultatet, uden at signalet ændrede sig — og hvor ofte skete ingen af delene?</strong></li>
+        <li><strong>Hvad ville et rimeligt udgangspunkt have sagt?</strong></li>
+        <li><strong>Tilføjer signalet noget ud over det, vi allerede kunne se?</strong></li>
+        <li><strong>Hvilket trin på evidensstigen fortjener det i dag?</strong></li>
+        <li><strong>Hvad er den billigste næste test?</strong></li>
+      </ol>
+      <p style="font-size:15.5px;color:var(--text-mid);margin:22px 0 0;">Øvelsen ender ikke i en score, men i seks linjer: <strong>ét signal · ét resultat · én horisont · ét sammenligningsgrundlag · én evidensstatus · ét næste valideringstrin.</strong> Kan du ikke besvare spørgsmål 5 og 6, er det svaret på spørgsmål 9.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16 MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">16 — 2-minutters mikrohandling</div>
+    <h2>Stil det spørgsmål, ingen stiller</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · ved næste strategigennemgang</span>
+      <h3>Ét spørgsmål, to opfølgende og ét tilbud. Ingen ny proces og intet ekstra møde.</h3>
+      <p>Næste gang nogen siger »det er en ledende indikator«, så spørg: <strong>»Ledende for hvad — og over hvilken tidshorisont?«</strong></p>
+      <p>Derefter: <strong>»Hvad er vores evidens — og hvor ofte har signalet taget fejl?«</strong></p>
+      <p>Er svaret »det plejer vi at kunne se«, så er det ikke et nederlag. Så er det et sted at begynde: <strong>»Fint. Så lad os kalde det en signalhypotese og skrive den ned, før næste periode.«</strong></p>
+      <p>Bemærk tonen. Spørgsmålet er ikke en afvisning af signalet — det er en opgradering af, hvordan det bliver brugt. Den forskel kan have betydning for, om folk fortsat bringer usikre signaler frem, før de er færdiganalyseret.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">17 — Dit næste skridt</div>
+    <h2>Gør det konkret — og fortsæt din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 07 · Før resultatet flytter sig</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv ét konkret næste skridt; det gemmes kun lokalt i din browser.</p>
+      <label for="commitText">Den signalhypotese, vi vil teste, er …</label>
+      <p class="commit-note">Skriv signalet, dets definition, hvad der tæller som en ændring, resultatet, populationen, horisonten, sammenligningsgrundlaget, hvad der tæller som træffer, falsk alarm og misset varsel — og hvornår I gør op. Eksempel: »Signal: Team Confidence på initiativniveau, defineret som medianen af de indsendte vurderinger. Ændring: fald på mindst ét trin fra én periode til den næste. Resultat: milepæl, der rykkes. Population: de strategiske initiativer i porteføljen. Horisont: den følgende periode. Sammenligning: hvor ofte milepæle rykkes i det hele taget. Træffer: fald efterfulgt af rykket milepæl. Falsk alarm: fald uden rykket milepæl. Misset varsel: rykket milepæl uden fald. Gøres op efter Q2.« Eksemplet er en illustration, ikke en anbefaling.</p>
+      <textarea id="commitText" placeholder="Signal · definition · ændring · resultat · horisont · retning · sammenligning · træffer · falsk alarm · misset varsel · opgørelse"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit næste skridt</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Strategien sker mellem kvartalerne</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">18 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad er forskellen på et tidligt signal og en ledende indikator? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">I dette paper bruger jeg skellet sådan: tidligt handler om timing — signalet blev observeret før resultatet. Ledende kræver derudover en efterprøvet relation til et navngivet senere resultat for en bestemt population inden for en defineret tidshorisont. Det første kan konstateres i én sag. Det andet kræver, at relationen testes. Andre fag bruger »ledende indikator« bredere; dette er paperets bevidst strenge metodiske konvention (se <a href="#tesen" style="color:var(--gold);">afsnit 02</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal et ledende signal være årsagen? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. At forudsige og at forklare er to forskellige formål. Et signal kan sige noget om et senere resultat uden at være det, der frembringer det — for eksempel fordi begge dele har en fælles bagvedliggende årsag (se <a href="#kausalitet" style="color:var(--gold);">afsnit 07</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan noget være en årsag og alligevel en dårlig forudsigelse? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja. En faktor kan have reel betydning og stadig være ubrugelig til at skelne mellem de forløb, der går godt, og dem der ikke gør — hvis den varierer for lidt, måles for upræcist eller slår igennem for sent. Betydning og forudsigelseskraft er ikke det samme.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvor mange observationer kræver en validering? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Der findes ikke ét universelt minimum. Det afhænger af, hvor ofte resultatet indtræffer, hvor meget signalet varierer, hvor sammenlignelige sagerne er, og hvad relationen skal bruges til. Der er intet magisk antal, og et tal uden de forudsætninger siger ikke det, det ser ud til at sige.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er en samvariation ikke nok? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Den er højst ét element. Uden falske alarmer, missede varsler, et rimeligt sammenligningsgrundlag og en afprøvning på data, der ikke blev brugt til at finde relationen, er en samvariation en beskrivelse af fortiden (se <a href="#felter" style="color:var(--gold);">afsnit 05</a> og <a href="#baseline" style="color:var(--gold);">06</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad med falske alarmer? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">De er en del af signalets præstation og skal tælles med. Et signal, der udløser opmærksomhed, møder og indgreb, hver gang det bevæger sig, har en pris, også når der ikke sker noget bagefter. Man må ikke kun tælle de gange, det ramte.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis resultatet kommer uden signal? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det er et misset varsel, og det skal tælles med. Hvor tungt det bør veje i en beslutning, afhænger af konsekvensen af at overse et relevant udfald sammenlignet med konsekvensen af en falsk alarm. Det er også det felt, der er lettest at glemme, fordi der ikke er noget at kigge på — signalet var jo tavst (se <a href="#felter" style="color:var(--gold);">afsnit 05</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er Team Confidence en ledende indikator? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ikke som generel påstand. Det kan være en signalhypotese, der kan testes mod et bestemt resultat over en bestemt horisont i jeres egen organisation. Om den så holder, er et empirisk spørgsmål — og svaret gælder jer, ikke alle.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan vi bruge et signal, der ikke er valideret? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja. Som anledning til at undersøge noget tidligere — og det kan også indgå i en eksplicit governance-trigger, hvis organisationen accepterer afvejningen. Men reglen skal beskrives som et governance-valg, ikke som bevis på, at signalet forudsiger udfaldet. Jo mere irreversibel handlingen er, desto højere bør evidenskravet være (se <a href="#nyttigt" style="color:var(--gold);">afsnit 12</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er signaler undervejs bedre end resultatmål? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. De har forskellige opgaver. Resultatmål er ofte mere direkte målt og bedre egnet til ansvarlighed, mens signaler på vejen kan gøre noget synligt tidligere. En governance-model, der kun har den ene slags, mangler noget.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad gør jeg på mandag? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Find ét tal, I kalder ledende eller et tidligt varsel. Spørg: ledende for hvad, over hvilken horisont, og hvad er vores evidens? Skriv derefter én signalhypotese ned, før næste periode begynder. Mikrohandlingen i <a href="#action" style="color:var(--gold);">afsnit 16</a> tager to minutter, diagnosen i <a href="#diagnose" style="color:var(--gold);">afsnit 15</a> cirka ti.</div>
+    </details>
+  </div>
+</section>
+
+<!-- 19 HANDLING -->
+<section class="section" id="handling">
+  <div class="container">
+    <div class="section-label">19 — Fra signal til evidens</div>
+    <h2>Fra signal til evidens</h2>
+    <p>Spørgsmålet, paperet efterlader, kræver ikke et værktøj: <strong>Ledende for hvad — og over hvilken tidshorisont?</strong> Kan I svare på det for bare ét af jeres tal ved næste strategigennemgang, har paperet gjort sit arbejde.</p>
+    <p>Det er rimeligt at sige, hvor jeg selv arbejder med spørgsmålet, og at jeg har en kommerciel interesse i værktøjet. Strategy Execution Observatory™ gør flere eksekveringssignaler synlige: beslutninger, vurderet milepælsfremdrift, kapacitet, friktion og teamets vurdering af tilliden til planen. Om de er synlige <em>tidligere</em> end det, statusrapporteringen viser, afgør synligheden ikke i sig selv. Det er den påstand, der skal testes — også af mig, og ingen af paperets kilder handler om de signaler.</p>
+    <p>Og her rammer paperet mit eget værktøj. Det sammensatte tal hedder Execution Momentum Index, men regnes på den aktuelle periodes komponentværdier: et øjebliksbillede, ikke en bane og ikke en forudsigelse. Navnet lover mere, end beregningen holder. Tærsklerne for, hvornår tallet kaldes stærkt eller svagt, er konfiguration og ikke kalibreret mod noget resultat. Dækning, beregning og fremstilling bruger heller ikke samme komponentafgrænsning, og det felt, hvor et team selv vurderer fremdriften, indgår slet ikke i beregningen. Og den vurdering, der hedder milepælsrate, opgøres som gennemsnitlig fremdrift — ikke som andelen af ramte milepæle.</p>
+    <p>Tallet kan være regnet korrekt og stadig være fortolket for stærkt. Det metodiske problem ligger i betydningen; formuleringerne er det, der rejser længst. Mit eget metodegrundlag har beskrevet Closure Rate som <em>den stærkeste ledende indikator for strategirealisering</em>, og min egen side taler om førende adfærdsindikatorer. Der er tre problemer i den formulering: <em>stærkeste</em> er en rangering uden sammenligning, <em>strategirealisering</em> er for bredt som senere resultat uden en eksplicit operationalisering, og <em>ledende</em> er ikke valideret over nogen defineret horisont. De enkelte mål bør derfor omtales som <strong>eksekveringssignaler</strong>, og det sammensatte EMI bør foreløbig beskrives som et <strong>composite execution signal</strong> — ikke som dokumenteret momentum eller et prædiktivt indeks.</p>
+
+    <p class="pull-quote">Hvis mit eget værktøj bruger ordet ledende, skylder det samme evidens som alle andre.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det er ikke en undskyldning for værktøjet. Det er den ærlige status, målt på min egen stige: <strong>Observatorys nuværende signaler kan placeres på trin 1 — de er defineret, og de registreres.</strong> Et konkret signal kan først placeres på trin 2, når det kan dokumenteres, at det faktisk blev observeret før et navngivet senere resultat i en konkret sag. Det dokumenterer produktet ikke systematisk i dag. Trin 3 kræver desuden, at signal, resultat, population og horisont er specificeret, før perioden begynder — den struktur er heller ikke en del af metoden i dag. Det er samtidig køreplanen: log de fire led, tæl begge fejltyper, sammenlign med et rimeligt udgangspunkt, og validér på perioder, der kommer efter.</p>
+
+    <div class="cta-box">
+      <div class="cta-label">Samtale</div>
+      <h3>Hvilket af jeres tal kalder I ledende?</h3>
+      <p>Vælg ét tal, som nogen omtaler som et tidligt varsel. På 20 minutter kan vi skille tingene ad: hvilket resultat det skulle lede, over hvilken horisont, hvilket trin på evidensstigen det står på, og hvad den billigste næste test ville være.</p>
+      <a class="start-btn" href="/#kontakt">20 min. Ét problem. Én plan. →</a>
+      <p class="print-only">20 min. Ét problem. Én plan. · friisnaes.com/#kontakt</p>
+    </div>
+
+    <h3 style="margin-top:36px;">Næste problem</h3>
+    <p>Sæt nu, at signalet er skrevet ned, testet og holder. Så står det spørgsmål tilbage, som al tidlig viden løber ind i. <strong>Et tidligt signal kan fortælle, at noget bevæger sig i en uønsket retning. Det fortæller ikke, om organisationen har de kompetencer og den kapabilitet, der skal til for at ændre den.</strong> Det er emnet for Paper 08.</p>
+
+    <div class="next-grid">
+      <div class="next-card soon" aria-disabled="true">
+        <div class="nc-tag">Paper 08 · Kommer</div>
+        <div class="nc-text"><strong>Ved vi, om vi kan det, strategien kræver?</strong> — kompetencer og kapabilitet, nu og fremadrettet</div>
+      </div>
+      <a class="next-card" href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html">
+        <div class="nc-tag">Paper 06</div>
+        <div class="nc-text"><strong>Friktion er data</strong> — hændelser, gentagelser og grænseflader som eksekveringssignal</div>
+      </a>
+      <a class="next-card" href="/library.html">
+        <div class="nc-tag">Executive Library</div>
+        <div class="nc-text"><strong>Alle serier og papers</strong> om strategi, hold, eksekvering og kapacitet</div>
+      </a>
+      <a class="next-card" href="/ceo-sparring.html">
+        <div class="nc-tag">CEO-sparring</div>
+        <div class="nc-text"><strong>Hvad tror I, I kan se tidligt?</strong> En fortrolig samtale, før spørgsmålet bliver til et projekt</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">Forudsigelse og evidensstatus</div>
+    <ul>
+      <li>Shmueli, G. (2010). »To Explain or to Predict?« <em>Statistical Science</em>, 25(3), 289–310. Statistisk metodeartikel. <a href="https://doi.org/10.1214/10-STS330" target="_blank" rel="noopener">doi.org/10.1214/10-STS330</a></li>
+      <li>Steyerberg, E. W., Vickers, A. J., Cook, N. R. m.fl. (2010). »Assessing the Performance of Prediction Models: A Framework for Traditional and Novel Measures.« <em>Epidemiology</em>, 21(1), 128–138. Metoderamme fra epidemiologi. <a href="https://doi.org/10.1097/EDE.0b013e3181c30fb2" target="_blank" rel="noopener">doi.org/10.1097/EDE.0b013e3181c30fb2</a></li>
+    </ul>
+    <div class="sb-group">Strategisk performance-måling</div>
+    <ul>
+      <li>Nørreklit, H. (2000). »The balance on the balanced scorecard — a critical analysis of some of its assumptions.« <em>Management Accounting Research</em>, 11(1), 65–88. <a href="https://doi.org/10.1006/mare.1999.0121" target="_blank" rel="noopener">doi.org/10.1006/mare.1999.0121</a></li>
+      <li>O'Connell, V. &amp; O'Sullivan, D. (2014). »The influence of lead indicator strength on the use of nonfinancial measures in performance management: Evidence from CEO compensation schemes.« <em>Strategic Management Journal</em>, 35(6), 826–844. <a href="https://doi.org/10.1002/smj.2124" target="_blank" rel="noopener">doi.org/10.1002/smj.2124</a></li>
+      <li>de Oliveira, C. A., Carneiro, J. &amp; Esteves, F. (2019). »Conceptualizing and measuring the ›strategy execution‹ construct.« <em>Journal of Business Research</em>, 105, 333–344. Målemodel afprøvet på 276 virksomheder. <a href="https://doi.org/10.1016/j.jbusres.2018.03.012" target="_blank" rel="noopener">doi.org/10.1016/j.jbusres.2018.03.012</a></li>
+    </ul>
+    <div class="sb-group">Aktuel tværfaglig forsigtighed</div>
+    <ul>
+      <li>Watkins, D., Bishop, E., Naylor, S. m.fl. (2025). »A scoping review of the evidence base for the performance of leading indicators for improving safety outcomes: Available evidence, implications for practice and future directions.« <em>Journal of Safety Research</em>, 95, 530–544. Arbejdsmiljø; 48 studier. <a href="https://doi.org/10.1016/j.jsr.2025.10.024" target="_blank" rel="noopener">doi.org/10.1016/j.jsr.2025.10.024</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Begrebet strategisk observabilitet, skellet mellem tidligt og ledende, skellet mellem niveau, retning og forspring, begrebet signalhypotese, evidensstigen, firefeltsillustrationen, frameworket »Fra signalhypotese til evidens«, signalhypoteserne i »Hvad kunne du se tidligere?«, diagnosen og mikrohandlingen er Thomas Friisnæs' egne praktiske begreber og rammer, ikke validerede modeller. Kilderne har hver deres kontekst og felt: Shmueli er generel statistisk metodelitteratur; Steyerberg og kolleger beskriver vurdering af prædiktionsmodeller i epidemiologi; Nørreklit er en kritisk analyse af Balanced Scorecards antagelser; O'Connell og O'Sullivan undersøger kundetilfredshed i CEO-aflønningsordninger; de Oliveira og kolleger afprøver en målemodel for eksekvering på 276 virksomheder; og Watkins og kolleger gennemgår ledende indikatorer på arbejdsmiljøområdet. <strong>Ingen af de citerede studier validerer noget signal i Strategy Execution Observatory™, og ingen af dem handler om de konkrete signaler, paperet nævner.</strong> Åbningscasen er konstrueret, alle horisonter og eksempler er illustrative, ingen tærskel i paperet er en universel regel, og ingen af de nævnte signalhypoteser er validerede ledende indikatorer. Danske gengivelser af engelske formuleringer er egne oversættelser.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Strategien sker mellem kvartalerne — serien</div>
+    <h2 class="collection-title">Ti papers om strategisk observabilitet</h2>
+    <p class="collection-intro">Serien handler om, hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang, og om at gøre det synligt uden at forveksle signaler med sandhed. <strong>Alle 10 papers er udgivet.</strong></p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Serie 06</span><span class="cpart-name">Strategien sker mellem kvartalerne</span></div>
+      <p class="cpart-desc">Fra informationsgabet over signaler, kapacitet, beslutninger og friktion til kompetencer, metode og governance.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/strategien-sker-mellem-kvartalerne.html">Strategien sker mellem kvartalerne</a></li>
+        <li data-n="02"><a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">Grøn er ikke det samme som sund</a></li>
+        <li data-n="03"><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">Det kvalitative kan godt kvantificeres</a></li>
+        <li data-n="04"><a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">Kapacitet findes ikke i planen</a></li>
+        <li data-n="05"><a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">Beslutninger er en del af produktionsapparatet</a></li>
+        <li data-n="06"><a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html">Friktion er data</a></li>
+        <li data-n="07"><span class="current">Før resultatet flytter sig — du læser dette</span></li>
+        <li data-n="08"><a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">Ved vi, om vi kan det, strategien kræver?</a></li>
+        <li data-n="09"><a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">Et indeks er ikke sandheden</a></li>
+        <li data-n="10"><a href="/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html">Demokratisér udsynet. Centralisér metoden.</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til næste strategimøde i direktionen eller bestyrelsen.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">
+      <span class="ra-tag">Næste i serien · Paper 08</span>
+      <span class="ra-title">Ved vi, om vi kan det, strategien kræver? Kompetence, evne og evidens</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 03</span>
+      <span class="ra-title">Det kvalitative kan godt kvantificeres: Hvad kan et tal på en vurdering bære?</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 01</span>
+      <span class="ra-title">Strategien sker mellem kvartalerne: Hvad sker der med eksekveringen lige nu?</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Strategien sker mellem kvartalerne · Serie 06 · Paper 07 af 10</div>
+        <div class="series-next">Næste: <a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.35)">Ved vi, om vi kan det, strategien kræver?</a></div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: smk_ (Strategien sker mellem kvartalerne)
+  var LS_C = 'smk_p07_commit', LS_D = 'smk_done', PAPER_N = 7, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // FAQ åben i print, også når browserens egen udskriv-funktion bruges
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

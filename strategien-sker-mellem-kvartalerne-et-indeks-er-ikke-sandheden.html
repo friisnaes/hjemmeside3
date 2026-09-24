@@ -1,0 +1,1827 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Et indeks er ikke sandheden | Strategisk observabilitet | Thomas Friisnæs</title>
+<meta name="description" content="Et samlet indeks er en model, ikke sandheden. Paper 09 om normalisering, vægte, kompensation, manglende data, følsomhed og robust strategieksekvering.">
+<meta name="keywords" content="strategieksekvering, composite index, sammensat indeks, normalisering, vægtning, aggregation, følsomhedsanalyse, robusthed, dækning, Strategy Execution Index, strategisk observabilitet, governance">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">
+
+<meta property="og:title" content="Et indeks er ikke sandheden | Strategisk observabilitet | Thomas Friisnæs">
+<meta property="og:description" content="Et samlet tal er altid resultatet af valg om, hvad der tæller, hvordan det skaleres, og hvad der må kompensere for hvad. Paper 09 om strategisk observabilitet.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Thomas Friisnæs – Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Et indeks er ikke sandheden">
+<meta name="twitter:description" content="Hvilke antagelser skal ændres, før konklusionen ændrer sig? Paper 09 om vægte, dækning og robusthed i samlede tal.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* Paper 02 — Farven og underlaget (Grøn på hvad?): redaktionel tabel, ingen trafiklysfarver */
+  .basis { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .basis-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .basis-head .bh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .basis-head .bh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .basis-head .bh-sub { font-size: 14px; line-height: 1.55; color: var(--text-light); margin: 6px 0 0; }
+  .basis-colour { display: flex; align-items: baseline; gap: 16px; padding: 16px 30px; border-bottom: 1px solid var(--border); }
+  .basis-colour .bc-name { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; min-width: 64px; }
+  .basis-colour .bc-desc { flex: 1; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .basis-colour .bc-value { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 24px; line-height: 1; color: var(--navy); }
+  .basis-table { width: 100%; border-collapse: collapse; }
+  .basis-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table th.bt-group { text-align: left; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; padding: 20px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table td { font-size: 15px; line-height: 1.5; color: var(--text-mid); padding: 11px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .basis-table td.bt-state { width: 34%; color: var(--navy); font-weight: 500; }
+  .basis-table td.bt-state.out { color: var(--text-light); font-weight: 400; }
+  .basis-table td.bt-state.unknown { color: var(--text-mid); font-weight: 400; font-style: italic; }
+  .basis-foot { padding: 16px 30px; background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 600px) {
+    .basis-head, .basis-colour, .basis-foot { padding-left: 20px; padding-right: 20px; }
+    .basis-colour { flex-wrap: wrap; row-gap: 4px; }
+    .basis-colour .bc-desc { flex-basis: 100%; order: 3; }
+    .basis-table thead { display: none; }
+    .basis-table th.bt-group { padding: 18px 20px 8px; }
+    .basis-table td { padding: 10px 20px; }
+    .basis-table td.bt-state { width: auto; white-space: nowrap; }
+  }
+  @media print {
+    .basis, .basis-table tr { page-break-inside: avoid; }
+    .basis-head, .basis-foot { background: #fff !important; }
+    body.print-econo .basis { border-color: #999 !important; }
+    body.print-econo .basis-head .bh-label, body.print-econo .basis-colour .bc-name, body.print-econo .basis-table th.bt-group { color: #333 !important; }
+  }
+
+  /* Paper 03 — Samme tal. Forskelligt billede.: én redaktionel talkomponent, ingen farver og ingen graf */
+  .spread { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .spread-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .spread-head .sp-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .spread-head .sp-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .spread-groups { display: grid; grid-template-columns: 1fr 1fr; }
+  .sp-group { padding: 30px 26px 26px; text-align: center; }
+  .sp-group + .sp-group { border-left: 1px solid var(--border); }
+  .sp-name { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 12px; }
+  .sp-values { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4.6vw, 44px); font-weight: 400; line-height: 1.1; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .sp-values .sp-dot { display: inline-block; margin: 0 0.32em; color: var(--text-light); font-size: 0.6em; vertical-align: 0.2em; }
+  .sp-mean { margin: 22px auto 0; padding-top: 14px; border-top: 1px solid var(--border); max-width: 250px; line-height: 1.5; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .sp-mean b { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 32px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .sp-read { margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .spread-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .spread-head, .spread-foot { padding-left: 20px; padding-right: 20px; }
+    .spread-groups { grid-template-columns: 1fr; }
+    .sp-group { padding: 24px 20px 22px; }
+    .sp-group + .sp-group { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  /* Paper 03 — Fire slags tal: redaktionel tabel i Paper 02's modelramme */
+  .kinds-table { width: 100%; border-collapse: collapse; }
+  .kinds-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .kinds-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 14px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .kinds-table td:first-child { width: 38%; padding-right: 12px; }
+  .kinds-table td:first-child strong { display: block; color: var(--navy); font-weight: 600; }
+  .kinds-table td:first-child span { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; color: var(--text-mid); }
+  /* Paper 03 — tre versioner af samme vurdering: Paper 01's vinduer stablet */
+  .windows.stack { grid-template-columns: 1fr; }
+  .windows.stack .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+  .sig-cols ul + h4 { margin-top: 18px; }
+  @media (max-width: 600px) {
+    .kinds-table thead { display: none; }
+    .kinds-table, .kinds-table tbody, .kinds-table tr, .kinds-table td { display: block; width: 100%; }
+    .kinds-table tr { padding: 12px 20px; border-bottom: 1px solid var(--border); }
+    .kinds-table td, .kinds-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .kinds-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 8px 0 2px; }
+  }
+  @media print {
+    .spread, .kinds-table tr { page-break-inside: avoid; }
+    .spread-head, .spread-foot { background: #fff !important; }
+    body.print-econo .spread { border-color: #999 !important; }
+    body.print-econo .spread-head .sp-label { color: #333 !important; }
+  }
+
+  /* Paper 04 — Lokalt plausibelt — samlet umuligt: én redaktionel illustration, ingen trafiklys og intet dashboard */
+  .load { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .load-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .load-head .ld-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .load-head .ld-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .load-head .ld-cond { margin-top: 8px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .load-rows { padding: 10px 30px 8px; }
+  .ld-row { display: grid; grid-template-columns: 170px minmax(0, 1fr) 76px; align-items: center; column-gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .ld-name { font-size: 15px; line-height: 1.3; color: var(--navy); font-weight: 500; }
+  .ld-name small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--text-light); font-weight: 300; }
+  .ld-track { position: relative; display: block; height: 12px; }
+  .ld-track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--border); }
+  .ld-fill, .ld-over { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); border-radius: 1px; }
+  .ld-over { background: var(--gold); border-radius: 0; top: auto; bottom: -7px; height: 3px; }
+  .ld-cut { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; }
+  .ld-tag { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 10.5px; letter-spacing: 0.1em; font-weight: 600; color: #fff; }
+  .ld-limit { position: absolute; left: 71.429%; top: -13px; bottom: -13px; border-left: 1px dashed var(--gold); }
+  .ld-val { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; line-height: 1; color: var(--navy); text-align: right; font-variant-numeric: lining-nums; white-space: nowrap; }
+  .ld-row.ld-scale { padding: 4px 0 0; border-bottom: 0; }
+  .ld-scale .ld-track { height: 16px; }
+  .ld-scale .ld-track::before { display: none; }
+  .ld-mark { position: absolute; left: 71.429%; bottom: 1px; transform: translateX(-50%); font-size: 10.5px; line-height: 1; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; white-space: nowrap; }
+  .ld-row.ld-sum { border-bottom: 0; padding-top: 17px; }
+  .ld-sum .ld-name { font-weight: 600; }
+  .ld-sum .ld-track { height: 24px; }
+  .ld-sum .ld-limit { top: -17px; bottom: -13px; }
+  .ld-sum .ld-val { font-style: italic; font-size: 32px; color: var(--gold); }
+  .section .load-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .load-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .load-head, .load-rows, .section .load-note, .load-foot { padding-left: 20px; padding-right: 20px; }
+    .ld-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 9px; }
+    .ld-row .ld-track { grid-column: 1 / -1; grid-row: 2; }
+    .ld-row.ld-scale { row-gap: 0; padding-top: 6px; }
+    .ld-val { font-size: 21px; }
+    .ld-sum .ld-val { font-size: 28px; }
+    .load-rows { position: relative; }
+    .load-rows::after { content: ''; position: absolute; top: 34px; bottom: 10px; left: calc(20px + (100% - 40px) * 0.71429); border-left: 1px dashed var(--gold); pointer-events: none; }
+    .ld-limit { visibility: hidden; }
+  }
+  @media print {
+    .load, .ld-row { page-break-inside: avoid; }
+    .load-head, .load-foot { background: #fff !important; }
+    body.print-econo .load { border-color: #999 !important; }
+    body.print-econo .load-head .ld-label, body.print-econo .ld-mark { color: #333 !important; }
+    body.print-econo .ld-fill { background: #8a8a8a !important; }
+    body.print-econo .ld-over { background: #000 !important; }
+    body.print-econo .ld-track, body.print-econo .ld-tag, body.print-econo .ld-limit, body.print-econo .ld-mark { background: transparent !important; }
+    body.print-econo .ld-tag { color: #000 !important; }
+    body.print-econo .ld-limit, body.print-econo .load-rows::after { border-left-color: #000 !important; }
+  }
+
+  /* Paper 05 — Seks dage. Og 37.: én redaktionel illustration, ingen dashboard-elementer */
+  .decs { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .decs-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .decs-head .dc-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .decs-head .dc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .decs-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .dec { padding: 28px 30px 26px; }
+  .dec + .dec { border-left: 1px solid var(--border); }
+  .d-tag { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 14px; }
+  .d-vals { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(33px, 4.6vw, 44px); font-weight: 400; line-height: 1.05; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .d-vals .d-dot { display: inline-block; margin: 0 0.3em; color: var(--text-light); font-size: 0.55em; vertical-align: 0.22em; }
+  .dec + .dec .d-vals { color: var(--gold); font-style: italic; }
+  .d-unit { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .d-mean { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-mean b { display: block; margin-top: 3px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 30px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .d-list { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .d-list dt { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-list dd { margin: 3px 0 11px; font-size: 15px; line-height: 1.5; color: var(--text-mid); }
+  .d-list dd:last-of-type { margin-bottom: 0; }
+  .section .decs-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .decs-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .decs-head, .dec, .section .decs-note, .decs-foot { padding-left: 20px; padding-right: 20px; }
+    .decs-grid { grid-template-columns: 1fr; }
+    .dec { padding-top: 24px; padding-bottom: 22px; }
+    .dec + .dec { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .decs { page-break-inside: avoid; }
+    .decs-head, .decs-foot { background: #fff !important; }
+    body.print-econo .decs { border-color: #999 !important; }
+    body.print-econo .decs-head .dc-label { color: #333 !important; }
+  }
+
+  /* Paper 06 — Lukket fem gange: én redaktionel tidslinje, ingen dashboard-elementer */
+  .frx { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .frx-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .frx-head .fx-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .frx-head .fx-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .frx-line { list-style: none; margin: 0; padding: 22px 30px 20px; }
+  .section .frx-line li { position: relative; display: grid; grid-template-columns: 74px 1fr auto; align-items: baseline; gap: 0 18px; padding: 10px 0; margin: 0; }
+  .frx-line li::before { content: ""; position: absolute; left: 83px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .frx-line li:first-child::before { top: 21px; }
+  .frx-line li:last-child::before { bottom: auto; height: 22px; }
+  .frx-line li::after { content: ""; position: absolute; left: 80px; top: 18px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .frx-line .fx-wk { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .frx-line .fx-ev { font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .frx-line .fx-st { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; white-space: nowrap; }
+  .frx-sum { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+  .fx-cell { padding: 24px 30px 22px; }
+  .fx-cell + .fx-cell { border-left: 1px solid var(--border); }
+  .fx-num { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(38px, 5.2vw, 50px); font-weight: 400; line-height: 1; color: var(--navy); font-variant-numeric: lining-nums; }
+  .fx-cell + .fx-cell .fx-num { color: var(--gold); font-style: italic; }
+  .fx-cap { margin-top: 9px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .section .frx-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .frx-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .frx-head, .fx-cell, .section .frx-note, .frx-foot { padding-left: 20px; padding-right: 20px; }
+    .section .frx-line { padding-left: 20px; padding-right: 20px; }
+    .section .frx-line li { grid-template-columns: 1fr auto; grid-template-areas: "wk st" "ev ev"; gap: 4px 14px; padding-left: 22px; }
+    .frx-line .fx-wk { grid-area: wk; }
+    .frx-line .fx-ev { grid-area: ev; }
+    .frx-line .fx-st { grid-area: st; justify-self: end; }
+    .frx-line li::before { left: 3px; }
+    .frx-line li::after { left: 0; }
+    .frx-sum { grid-template-columns: 1fr; }
+    .fx-cell + .fx-cell { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .frx { page-break-inside: avoid; }
+    .frx-head, .frx-foot { background: #fff !important; }
+    body.print-econo .frx { border-color: #999 !important; }
+    body.print-econo .frx-head .fx-label { color: #333 !important; }
+    body.print-econo .frx-line li::after { background: #000 !important; }
+    body.print-econo .frx-line li::before { background: #999 !important; }
+  }
+
+  /* Paper 07 — Fire felter: ét redaktionelt 2×2, ingen dashboard-elementer */
+  .fld { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .fld-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .fld-head .fl-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .fld-head .fl-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .fld-grid { display: grid; grid-template-columns: 118px 1fr 1fr; }
+  .fl-corner { border-bottom: 1px solid var(--border); }
+  .fl-col { padding: 13px 18px 11px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; text-align: center; border-bottom: 1px solid var(--border); border-left: 1px solid var(--border); }
+  .fl-row { display: flex; align-items: center; padding: 20px 14px 20px 30px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; line-height: 1.5; }
+  .fl-cell { padding: 22px 20px 20px; border-left: 1px solid var(--border); }
+  .fl-r2 { border-top: 1px solid var(--border); }
+  .fl-cell b { display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .fl-cell.fl-mark b { color: var(--gold); font-style: italic; }
+  .fl-cell span { display: block; margin-top: 7px; font-size: 14px; line-height: 1.55; color: var(--text-mid); }
+  .fl-when { display: none; }
+  .section .fld-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .fld-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 640px) {
+    .fld-head, .section .fld-note, .fld-foot { padding-left: 20px; padding-right: 20px; }
+    .fld-grid { grid-template-columns: 1fr; }
+    .fl-corner, .fl-col, .fl-row { display: none; }
+    .fl-cell { border-left: 0; border-top: 1px solid var(--border); padding: 20px; }
+    .fl-when { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; font-style: normal; margin-bottom: 6px; }
+  }
+  @media print {
+    .fld { page-break-inside: avoid; }
+    .fld-head, .fld-foot { background: #fff !important; }
+    body.print-econo .fld { border-color: #999 !important; }
+    body.print-econo .fld-head .fl-label, body.print-econo .fl-cell.fl-mark b { color: #333 !important; }
+  }
+
+  /* Paper 08 — Evidensbilledet: ét redaktionelt opslag, ingen dashboard-elementer */
+  .evb { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .evb-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .evb-head .eb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .evb-head .eb-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .evb-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .eb-side { padding: 26px 30px 24px; }
+  .eb-side + .eb-side { border-left: 1px solid var(--border); }
+  .eb-kind { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 14px; }
+  .eb-num { font-family: 'Playfair Display', Georgia, serif; font-size: 46px; font-weight: 500; color: var(--navy); line-height: 1; }
+  .eb-num.eb-open { color: var(--gold); font-style: italic; }
+  .eb-claim { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; color: var(--navy); margin: 10px 0 18px; }
+  .eb-list { list-style: none; margin: 0; padding: 0; }
+  .eb-list li { font-size: 14.5px; line-height: 1.5; color: var(--text-mid); padding: 7px 0 7px 22px; position: relative; border-top: 1px solid var(--border); }
+  .eb-list li:first-child { border-top: 0; }
+  .eb-list li::before { content: "✓"; position: absolute; left: 0; top: 7px; color: var(--text-light); font-size: 13px; }
+  .eb-list.eb-ask li::before { content: "?"; color: var(--gold); font-weight: 600; }
+  .eb-stmt { margin: 18px 0 0; padding: 14px 16px; background: var(--cream); border-left: 2px solid var(--gold); font-size: 14.5px; line-height: 1.55; color: var(--navy); }
+  .section .evb-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .evb-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 640px) {
+    .evb-head, .eb-side, .section .evb-note, .evb-foot { padding-left: 20px; padding-right: 20px; }
+    .evb-grid { grid-template-columns: 1fr; }
+    .eb-side + .eb-side { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .evb { page-break-inside: avoid; }
+    .evb-head, .evb-foot, .eb-stmt { background: #fff !important; }
+    body.print-econo .evb { border-color: #999 !important; }
+    body.print-econo .evb-head .eb-label, body.print-econo .eb-num.eb-open, body.print-econo .eb-list.eb-ask li::before { color: #333 !important; }
+  }
+
+  /* Paper 09 — Modelvisual og metodetabeller: redaktionelt opslag, ingen dashboard-elementer */
+  .mdx { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .mdx-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .mdx-head .mx-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .mdx-head .mx-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .mdx-grid { display: grid; grid-template-columns: 1fr minmax(150px, 0.8fr) 1fr; }
+  .mdx-grid.mx-two { grid-template-columns: 1fr 1fr; }
+  .mx-side { padding: 26px 30px 24px; text-align: center; }
+  .mx-cov { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 12px; }
+  .mx-score { font-family: 'Playfair Display', Georgia, serif; font-size: 52px; font-weight: 500; color: var(--navy); line-height: 1; }
+  .mx-score.mx-open { color: var(--gold); font-style: italic; }
+  .mx-note { font-size: 13.5px; line-height: 1.5; color: var(--text-light); margin-top: 12px; }
+  .mx-mid { display: flex; align-items: center; justify-content: center; padding: 22px 20px; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+  .mx-mid p { margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; line-height: 1.45; color: var(--text-mid); text-align: center; }
+  .mdx-grid.mx-two .mx-side + .mx-side { border-left: 1px solid var(--border); }
+  .mx-bars { list-style: none; margin: 16px 0 18px; padding: 0; }
+  .mx-bars li { display: flex; align-items: center; gap: 10px; padding: 3px 0; }
+  .mx-bars .mx-bt { flex: 1; height: 9px; background: var(--cream); border: 1px solid var(--border); position: relative; }
+  .mx-bars .mx-bt i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); opacity: 0.5; }
+  .mx-bars .mx-bn { width: 30px; text-align: right; font-size: 12.5px; color: var(--text-light); font-variant-numeric: tabular-nums; }
+  .section .mdx-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .mdx-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  .mx-wt { width: 100%; border-collapse: collapse; margin: 26px 0 24px; }
+  .mx-wt caption { caption-side: bottom; text-align: left; font-size: 12.5px; color: var(--text-light); padding-top: 10px; line-height: 1.5; }
+  .mx-wt th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 16px 10px 0; border-bottom: 1px solid var(--border); }
+  .mx-wt td { font-size: 15px; line-height: 1.5; color: var(--text-mid); padding: 9px 16px 9px 0; border-bottom: 1px solid var(--border); vertical-align: top; font-variant-numeric: tabular-nums; }
+  .mx-wt td:first-child { color: var(--navy); font-weight: 500; }
+  .mx-wt tbody tr:last-child td { border-bottom: 0; }
+  .mx-pas td { font-variant-numeric: normal; }
+  .mx-pas td:first-child { width: 33%; }
+  @media (max-width: 640px) {
+    .mdx-head, .mx-side, .section .mdx-note, .mdx-foot { padding-left: 20px; padding-right: 20px; }
+    .mdx-grid, .mdx-grid.mx-two { grid-template-columns: 1fr; }
+    .mx-mid { border-left: 0; border-right: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .mdx-grid.mx-two .mx-side + .mx-side { border-left: 0; border-top: 1px solid var(--border); }
+    .mx-wt th, .mx-wt td { font-size: 13.5px; padding-right: 10px; }
+    .mx-pas thead { display: none; }
+    .mx-pas, .mx-pas tbody, .mx-pas tr, .mx-pas td { display: block; width: 100%; }
+    .mx-pas tr { padding: 11px 0; border-bottom: 1px solid var(--border); }
+    .mx-pas tbody tr:last-child { border-bottom: 0; }
+    .mx-pas td, .mx-pas td:first-child { border: 0; padding: 0; width: 100%; }
+    .mx-pas td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  @media print {
+    .mdx, .mx-wt tr { page-break-inside: avoid; }
+    .mdx-head, .mdx-foot { background: #fff !important; }
+    .mx-bars .mx-bt { background: #fff !important; }
+    .mx-bars .mx-bt i { background: #444 !important; opacity: 1 !important; }
+    body.print-econo .mdx { border-color: #999 !important; }
+    body.print-econo .mdx-head .mx-label, body.print-econo .mx-score.mx-open { color: #333 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Et indeks er ikke sandheden",
+ "alternativeHeadline": "Et samlet tal kan være nyttigt. Men det er altid resultatet af valg om, hvad der tæller, hvordan det skaleres, og hvad der må kompensere for hvad.",
+ "description": "Et indeks er en model af virkeligheden. Paper 09 om de seks lag under et samlet tal, om normalisering og vægte som modelvalg, om hvad der må kompensere for hvad, om hvordan manglende data ændrer selve modellen, og om robusthed målt på beslutningen frem for på decimalerne.",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Strategien sker mellem kvartalerne",
+  "url": "https://www.friisnaes.com/library.html"
+ },
+ "position": 9,
+ "inLanguage": "da",
+ "keywords": "composite index, sammensat indeks, normalisering, vægtning, aggregation, følsomhedsanalyse, robusthed, strategieksekvering, strategisk observabilitet",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Strategien sker mellem kvartalerne · Paper 09 af 10</div>
+  <div class="pc-title">Et indeks er ikke sandheden</div>
+  <div class="pc-sub">Et samlet tal kan være nyttigt. Men det er altid resultatet af valg om, hvad der tæller, hvordan det skaleres, og hvad der må kompensere for hvad.</div>
+  <div class="pc-author">Af Thomas Friisnæs · External Excellence Partner · Strategy Execution Governance · C-level-sparring · friisnaes.com · oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Strategisk observabilitet</span>
+      <span class="wp-series">Strategien sker mellem kvartalerne · Paper 09 af 10</span>
+      <span class="wp-readtime">ca. 25 min læsning</span>
+    </div>
+    <h1>Et indeks er <em>ikke sandheden</em></h1>
+    <p class="wp-subtitle">Et samlet tal kan være nyttigt. Men det er altid resultatet af valg om, hvad der tæller, hvordan det skaleres, og hvad der må kompensere for hvad.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · External Excellence Partner · Strategy Execution Governance · C-level-sparring<br>Udgivet oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">71,4 blev til 78,3</a></li>
+      <li><a href="#model">Et indeks er en model</a></li>
+      <li><a href="#construct">Hvad bliver egentlig komprimeret?</a></li>
+      <li><a href="#normalisering">Normalisering er et modelvalg</a></li>
+      <li><a href="#vaegte">Vægte er prioriteringer</a></li>
+      <li><a href="#indflydelse">22 % er ikke nødvendigvis 22 % indflydelse</a></li>
+      <li><a href="#kompensation">Hvad må kompensere for hvad?</a></li>
+      <li><a href="#missing">Manglende data kan ændre selve modellen</a></li>
+      <li><a href="#coverage">Dækning er ikke sammenlignelighed</a></li>
+      <li><a href="#taerskler">69 og 70 er naboer</a></li>
+      <li><a href="#tid">Organisationen eller modellen?</a></li>
+      <li><a href="#robusthed">Overlever konklusionen?</a></li>
+      <li><a href="#framework">Framework: Fra score til forsvarlig konklusion</a></li>
+      <li><a href="#pas">Metodepasset</a></li>
+      <li><a href="#tidligere">Hvad kunne du se tidligere?</a></li>
+      <li><a href="#konkludere">Hvad må du ikke konkludere?</a></li>
+      <li><a href="#diagnose">Diagnose: Kan vores indeks tåle at blive åbnet?</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit næste skridt</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#handling">Fra tal til beslutning</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase · En konstrueret modeltest</div>
+    <h2>71,4 blev til 78,3</h2>
+    <p>Et ledelsesteam følger eksekveringen på ét samlet tal. Bag det ligger otte normaliserede signaler med hver sin vægt. Sidste kvartal:</p>
+
+    <table class="mx-wt">
+      <caption>Konstrueret eksempel. Tallene er illustrative.</caption>
+      <thead><tr><th scope="col">Signal</th><th scope="col">Normaliseret</th><th scope="col">Vægt</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td>95</td><td>22 %</td></tr>
+        <tr><td>B</td><td>95</td><td>18 %</td></tr>
+        <tr><td>C</td><td>85</td><td>13 %</td></tr>
+        <tr><td>D</td><td>80</td><td>13 %</td></tr>
+        <tr><td>E</td><td>35</td><td>10 %</td></tr>
+        <tr><td>F</td><td>35</td><td>8 %</td></tr>
+        <tr><td>G</td><td>35</td><td>8 %</td></tr>
+        <tr><td>H</td><td>35</td><td>8 %</td></tr>
+      </tbody>
+    </table>
+
+    <p>Vægtene summerer til 100. Det vægtede gennemsnit giver præcis <strong>71,35</strong>, der rapporteres som <strong>71,4</strong> — halve rundes op, og også den regel er et valg.</p>
+    <p>Dette kvartal mangler data for G og H. De seks øvrige er uændrede — nøjagtig samme målinger, samme vurderinger, samme tal. Modellen beregner scoren over de tilgængelige vægte: de 84 point, der er tilbage, bliver til 100.</p>
+    <p>Resultatet er <strong>78,3</strong>.</p>
+    <p>Tallet er steget med næsten syv point, uden at ét eneste observeret signal har flyttet sig. Det er samtidig det tal, der afgør, hvilket initiativ der får flere ressourcer næste kvartal.</p>
+    <p>CEO'en spørger det nærliggende: <strong>»Så vi blev bedre?«</strong></p>
+    <p>Nej. Modellen fik mindre information og ændrede samtidig sin vægtning. De to lave signaler er ikke blevet bedre — de er holdt op med at tælle med, og deres vægt er fordelt ud på dem, der er tilbage.</p>
+    <p>Spørgsmålet, der burde være stillet i stedet, er paperets: <strong>»Hvilke antagelser skal ændres, før vores konklusion ændrer sig?«</strong></p>
+    <p>Én sætning skal med, så casen ikke bliver til en forkert regel: <strong>manglende data løfter ikke altid scoren.</strong> Retningen afhænger af, hvilke komponenter der mangler, og hvad de stod på — det regner vi på i <a href="#missing" style="color:var(--gold);">afsnit 08</a>. Pointen er ikke, at huller pynter. Pointen er, at huller ændrer modellen.</p>
+    <p>Signalværdierne er konstruerede, ikke observerede. Vægtfordelingen og reglen for manglende data er derimod hentet fra en model, der er i brug — det vender jeg tilbage til i <a href="#handling" style="color:var(--gold);">sidste afsnit</a>. Regnestykkerne kan efterprøves.</p>
+  </div>
+</section>
+
+<!-- 02 MODEL -->
+<section class="section" id="model">
+  <div class="container">
+    <div class="section-label">02 — Tesen</div>
+    <h2>Et indeks er en model</h2>
+    <p>Otte papers har gjort eksekveringen synlig: informationsgabet (<a href="/strategien-sker-mellem-kvartalerne.html" style="color:var(--gold);">Paper 01</a>), den grønne status (<a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a>), tallet på en vurdering (<a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a>), kapaciteten mellem initiativerne (<a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html" style="color:var(--gold);">Paper 04</a>), beslutningerne som arbejde (<a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html" style="color:var(--gold);">Paper 05</a>), friktionen som data (<a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html" style="color:var(--gold);">Paper 06</a>), tidligt mod ledende (<a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html" style="color:var(--gold);">Paper 07</a>) og kompetence mod evne (<a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html" style="color:var(--gold);">Paper 08</a>).</p>
+    <p>Alt det arbejde ender ét sted: i et samlet tal. Og der er det ikke længere kun data, ledelsen ser på.</p>
+
+    <p class="pull-quote">Et indeks er en model af virkeligheden. Jo mere det komprimerer, jo vigtigere er det, at metoden bag komprimeringen kan ses og udfordres.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Titlen skal nuanceres med det samme. Dette er ikke et opgør med indeks. Et samlet tal kan være et stærkt ledelsesværktøj: det gør en uoverskuelig mængde signaler til noget, en direktion kan holde i hovedet og følge over tid. Komprimering er ikke problemet — den er pointen. Men et indeks kan kun forsvares, hvis modelvalgene kan ses.</p>
+
+    <p>Et ord om ordene. Litteraturen bruger både <em>composite indicator</em> og <em>composite index</em> om det samme, og der er ingen fast dansk konvention. Jeg bruger <strong>indeks</strong>:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Indeks — praktisk definition</div>
+      <ul class="dispo-list">
+        <li><strong>Et indeks</strong> <em>→</em> et samlet tal, der komprimerer flere indikatorer eller signaler gennem regler for skalering, vægtning og aggregation.</li>
+      </ul>
+    </div>
+    <p>Definitionen er min egen praktiske formulering, ikke et citat fra litteraturen. Det afgørende ligger i ordet <em>regler</em>. Et samlet tal er aldrig bare summen af det, organisationen gjorde. Det er data <strong>plus</strong> modelvalg — og de valg er truffet af mennesker, ikke fundet i data.</p>
+
+    <div class="mdx" role="group" aria-label="Illustration: Samme seks observerede signaler, ny score">
+      <div class="mdx-head">
+        <div class="mx-label">Illustration · konstrueret eksempel</div>
+        <div class="mx-title">Samme seks observerede signaler. Ny score.</div>
+      </div>
+      <div class="mdx-grid">
+        <div class="mx-side">
+          <div class="mx-cov">8 / 8 data</div>
+          <div class="mx-score">71,4</div>
+          <div class="mx-note">Alle otte signaler indgår, med de besluttede vægte.</div>
+        </div>
+        <div class="mx-mid"><p>To lave komponenter bliver utilgængelige. Intet andet ændrer sig.</p></div>
+        <div class="mx-side">
+          <div class="mx-cov">6 / 8 data</div>
+          <div class="mx-score mx-open">78,3</div>
+          <div class="mx-note">Samme seks tal som før. Ny vægtning.</div>
+        </div>
+      </div>
+      <p class="mdx-note">Konstrueret eksempel. Ingen af de seks observerede signaler ændrede værdi mellem de to beregninger.</p>
+      <div class="mdx-foot">Indekset steg ikke, fordi organisationen blev bedre. Det steg, fordi de resterende vægte blev gjort relativt større.</div>
+    </div>
+
+    <p>Under ethvert samlet tal ligger mindst seks valg. Ingen er en teknisk detalje — alle kan ændre, hvad tallet betyder:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Et indeks har mindst seks lag</div>
+      <ul class="dispo-list">
+        <li><strong>Construct</strong> <em>→</em> hvad påstår vi, tallet sammenfatter?</li>
+        <li><strong>Komponenter</strong> <em>→</em> hvilke signaler kommer med — og hvilke gør ikke?</li>
+        <li><strong>Normalisering</strong> <em>→</em> hvordan oversættes forskellige enheder til samme skala?</li>
+        <li><strong>Vægte</strong> <em>→</em> hvor meget prioritet får hvert signal?</li>
+        <li><strong>Aggregation</strong> <em>→</em> hvordan samles de — og hvad må kompensere for hvad?</li>
+        <li><strong>Dækning</strong> <em>→</em> hvad sker der, når data mangler?</li>
+      </ul>
+    </div>
+
+    <p>Dertil kommer tre, der ofte glemmes: tærsklerne, der oversætter tallet til en handling; følsomheden, der viser, hvor meget tallet afhænger af antagelserne; og versionen. Åbningscasen rørte kun ved ét af de ni — dækningen. Det var nok til at ændre vægtningen og flytte tallet næsten syv point.</p>
+  </div>
+</section>
+
+<!-- 03 CONSTRUCT -->
+<section class="section" id="construct">
+  <div class="container">
+    <div class="section-label">03 — Construct og komponenter</div>
+    <h2>Hvad bliver egentlig komprimeret?</h2>
+    <p>Det første spørgsmål til et indeks er ikke, hvordan det regnes ud, men hvad det påstår at sammenfatte.</p>
+    <p>»Eksekveringssundhed« lyder som noget, der findes. Det gør det ikke på samme måde som omsætning eller antal ansatte. Det er et begreb, nogen har defineret — og definitionen afgør, hvilke signaler der hører med. Constructet er ikke en overskrift, men den påstand, resten af modellen skal leve op til.</p>
+    <p><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a> viste, at det samme tal kan komme fra vidt forskellige underliggende vurderinger. Paper 09 tilføjer et lag: det samme tal kan også komme fra forskellige <em>modeller</em> af den samme virkelighed.</p>
+    <p>Derfor er komponentvalget det mest oversete sted i kæden. Det, der ikke er med, kan ikke trække tallet ned — uanset hvor galt det står til. Et eksekveringsindeks uden noget om, hvorvidt beslutningerne træffes, kan se pænt ud i netop det kvartal, hvor det er problemet. Udeladelsen er kun synlig i listen over, hvad der kom med.</p>
+
+    <p class="pull-quote">Et samlet tal skjuler altid noget. Spørgsmålet er, om det skjuler noget, der ændrer beslutningen.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Al komprimering koster information. Det er ikke en fejl, det er prisen. Spørgsmålet er ikke, om der gik noget tabt — det gjorde der — men om det tabte ville have ført til en anden beslutning.</p>
+
+    <div class="research-note">
+      <strong>Metodenote.</strong> OECD, EU og Europa-Kommissionens forskningscenter udgav i 2008 en metodehåndbog for sammensatte indikatorer. Den beskriver ti trin, og det første er <em>theoretical framework</em> — det begrebslige grundlag. Derefter følger datavalg, manglende data, statistisk analyse af sammenhænge, normalisering, vægtning og aggregation, usikkerheds- og følsomhedsanalyse, tilbagevenden til data, sammenhæng med andre indikatorer og visualisering. Håndbogen er skrevet til at rangere lande, ikke til at måle eksekvering i én virksomhed, og er en konvention for god praksis — ikke evidens for, at et konkret indeks er validt. Rækkefølgen er instruktiv: begrebet kommer før beregningen.
+    </div>
+  </div>
+</section>
+
+<!-- 04 NORMALISERING -->
+<section class="section" id="normalisering">
+  <div class="container">
+    <div class="section-label">04 — Normalisering</div>
+    <h2>Normalisering er et modelvalg</h2>
+    <p>Otte signaler kan ikke lægges sammen, som de er. Et er en procentdel, et andet antal dage, et tredje en vurdering på 1–5. De skal på fælles skala først. Det kaldes normalisering og lyder som enhedsomregning.</p>
+    <p>Det er det ikke. Enhedsomregning er entydig: 1.000 meter er en kilometer, uanset hvem der regner. Normalisering kræver, at nogen bestemmer, <em>hvad der er godt</em>.</p>
+    <p>Tag beslutningshastighed. Skal nul dage give 100? Næppe — en beslutning, der falder samme dag, er ikke nødvendigvis velovervejet. Skal 14 dage give 100, og 60 dage give 0? Hver af de beslutninger lægger en holdning ind i tallet: til hvad der er hurtigt nok, og hvor hurtigt det bliver skadeligt.</p>
+
+    <p class="pull-quote">Normalisering gør ikke forskellige signaler ens. Den gør dem beregningsmæssigt kombinerbare under en valgt model.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Formuleringen er mere præcis end den gængse om at »gøre dem sammenlignelige«. Efter normalisering kan de regnes sammen; om de er sammenlignelige i dybere forstand afhænger af, om kurverne rammer noget virkeligt.</p>
+    <p>Det bliver særligt følsomt ved vurderingsskalaer. Et svar på 1–5 kan oversættes lineært til 0, 25, 50, 75 og 100. Men det er værd at tvivle på, at afstanden fra 3 til 4 er den samme som fra 4 til 5 i respondentens hoved — min antagelse, ikke et fund fra paperets kilder. Derfor vælger nogle modeller en ikke-lineær kurve, hvor 4 bliver til 78 frem for 75. Det er en <strong>fornuftig indvending</strong> mod den lineære antagelse. Men kurven ophæver ikke ordinalproblemet; den erstatter den lineære afstandsantagelse med en anden valgt afstandsstruktur. Kurven er derfor en kalibrering, ikke en målt egenskab ved svarskalaen.</p>
+    <p>Det er skellet, der skal holdes: forskning kan begrunde en <em>bekymring</em> og et <em>designprincip</em>. Den validerer ikke automatisk de konkrete knækpunkter, en model ender med at bruge.</p>
+    <p>Konsekvensen er værd at stoppe ved. Er kurven stejl mellem 2 og 3 og flad mellem 4 og 5, betyder en forbedring i den lave ende mere end den samme forbedring i den høje. <strong>Normaliseringskurven former altså signalets marginale gennemslag på indekset, uafhængigt af den nominelle vægttabel.</strong> Den effekt er ikke synlig i vægttabellen og kan forblive skjult, hvis kurven ikke dokumenteres.</p>
+  </div>
+</section>
+
+<!-- 05 VÆGTE -->
+<section class="section" id="vaegte">
+  <div class="container">
+    <div class="section-label">05 — Vægte</div>
+    <h2>Vægte er prioriteringer</h2>
+    <p>Når signalerne er på fælles skala, skal de vejes. Her bliver sproget upræcist på en måde, der har konsekvenser. »Vægt« kan betyde mindst fire ting: hvor vigtigt noget er normativt, hvad ledelsen prioriterer, hvor meget noget faktisk påvirker det samlede tal, eller hvor meget det empirisk forudsiger. De fire behøver ikke falde sammen. Derfor skal et indeks sige eksplicit, hvad en vægt betyder i netop den model.</p>
+
+    <p class="pull-quote">Vægte er ikke bare matematik. De er prioriteringer skrevet ind i modellen.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det gælder også de vægte, ingen har diskuteret. Standardvægte kan være dataafledte, normative, ekspertbaserede eller en kombination — i mit eget værktøj er de ekspertkalibrerede. Uanset metode er de et modelvalg, hvis rationale skal være synligt.</p>
+    <p>Tag åbningscasens tal igen — samme otte målinger, men med lige vægte:</p>
+    <p>(95 + 95 + 85 + 80 + 35 + 35 + 35 + 35) ÷ 8 = <strong>61,875</strong>, altså <strong>61,9</strong>.</p>
+    <p>Mod 71,4 med de oprindelige vægte — næsten ti point, alene fordi vægtene blev valgt anderledes.</p>
+    <p>Hverken 71,4 eller 61,9 er det rigtige svar. De koder to prioriteringer: at de fire tunge signaler vejer tungest, og at alt tæller lige meget. Begge er holdninger.</p>
+    <p>Og her er fælden: <strong>lige vægte føles neutralt.</strong> Det er det ikke. At give alt samme vægt er også et valg — at ingen af de otte skal prioriteres højere end de øvrige i formlen. Det kan passe til formålet eller være forkert for constructet. Det afgøres ikke af, at vægtene er lige.</p>
+
+    <div class="research-note">
+      <strong>Forskningsnote.</strong> En oversigtsartikel fra 2013 gennemgår otte tilgange til at sætte vægte i flerdimensionelle indeks i tre klasser — datadrevne, normative og hybride — og udpeger ingen bedste metode. Et metodisk review fra 2019 om vægtning, aggregation og robusthed formulerer det skarpere: <em>»each approach has its benefits and drawbacks, and there is no ultimate case of a clear winner«</em> — og lægger ansvaret hos den, der bygger indekset: <em>»It is up to the index developer to choose a weighting system that is best fitted to the purpose of the construction, as disclosed in the theoretical framework.«</em> Samme review kalder lige vægte »obviously convenient«, men ikke neutrale. Begge handler om velfærds- og samfundsindeks, ikke om ledelsesindeks i en virksomhed, og ingen af dem siger, at ekspertvurderede vægte er vilkårlige. De kan være legitime — hvis begrundelsen er eksplicit, og robustheden er afprøvet.
+    </div>
+  </div>
+</section>
+
+<!-- 06 INDFLYDELSE -->
+<section class="section" id="indflydelse">
+  <div class="container">
+    <div class="section-label">06 — Nominel vægt og faktisk indflydelse</div>
+    <h2>22 % er ikke nødvendigvis 22 % indflydelse</h2>
+    <p>En vægt på 22 % ser ud som en oplysning om vigtighed. Den er mere beskeden: en koefficient i den aktuelle formel.</p>
+    <p>Hvor meget et signal faktisk flytter tallet, afhænger også af, hvor meget det svinger, og hvordan det hænger sammen med de andre. Et signal, der står stille kvartal efter kvartal, flytter ikke noget — uanset vægttabellen. Og bevæger to signaler sig meget tæt sammen, bliver det sværere at skelne deres individuelle indflydelse på det samlede tal.</p>
+    <p>Åbningscasen viser det simpleste tilfælde. Da G og H forsvandt, ændrede de besluttede vægte sig ikke — men dem, modellen regnede med:</p>
+
+    <table class="mx-wt">
+      <caption>Renormaliserede vægte, når to komponenter mangler. Konstrueret eksempel.</caption>
+      <thead><tr><th scope="col">Signal</th><th scope="col">Besluttet vægt</th><th scope="col">Vægt i modellen ved 6/8</th></tr></thead>
+      <tbody>
+        <tr><td>A</td><td>22 %</td><td>26,2 %</td></tr>
+        <tr><td>B</td><td>18 %</td><td>21,4 %</td></tr>
+        <tr><td>C</td><td>13 %</td><td>15,5 %</td></tr>
+        <tr><td>D</td><td>13 %</td><td>15,5 %</td></tr>
+        <tr><td>E</td><td>10 %</td><td>11,9 %</td></tr>
+        <tr><td>F</td><td>8 %</td><td>9,5 %</td></tr>
+      </tbody>
+    </table>
+
+    <p>Ingen har besluttet, at A skulle op på 26,2 %. Den effektive vægtning blev ændret af en datamangel, ikke af en beslutning. Bemærk samtidig, hvad tabellen <em>ikke</em> viser: 26,2 % er stadig en koefficient — nu under et andet effektivt vægtgrundlag. Hvor meget A faktisk flytter tallet, afhænger fortsat af, hvor meget A varierer — og det kan kun afgøres i data.</p>
+
+    <div class="research-note">
+      <strong>Forskningsnote.</strong> En artikel fra 2013 undersøgte seks eksisterende sammensatte indeks — blandt andre Human Development Index og to kendte universitetsrangeringer — og målte hver variabels faktiske indflydelse på resultatet. Konklusionen var, at <em>»in many cases the declared importance of single indicators and their main effect are very different«</em>, og at datas indbyrdes sammenhæng ofte gør det umuligt at opnå den erklærede vigtighed, selv hvis man justerer vægtene. Studiet bygger på socioøkonomiske landedata med en bestemt korrelationsstruktur. Det er ingen universel lov, og det siger ikke, at nominelle vægte er meningsløse — kun at faktisk indflydelse ikke kan aflæses af vægttabellen alene.
+    </div>
+
+    <p>Men pas på i den modsatte retning. To signaler, der korrelerer, er ikke automatisk det samme signal. Beslutningshastighed og friktion kan hænge sammen, fordi begge påvirkes af det samme pres, uden at det ene er en kopi. At fjerne den ene som »dublet« kan fjerne information, ledelsen har brug for.</p>
+    <p>Bed derfor om én ting ved næste gennemgang: <strong>hvilken komponent stod aritmetisk for mest af ændringen i det samlede tal sidste kvartal?</strong> Kan ingen svare, fortæller vægttabellen alene ikke, hvad der drev scorebevægelsen.</p>
+  </div>
+</section>
+
+<!-- 07 KOMPENSATION -->
+<section class="section" id="kompensation">
+  <div class="container">
+    <div class="section-label">07 — Aggregation</div>
+    <h2>Hvad må kompensere for hvad?</h2>
+    <p>Når signalerne er skaleret og vægtet, skal de samles. Den oplagte metode er et vægtet gennemsnit — og netop fordi den er oplagt, behøver den ikke blive behandlet som et valg. Det er den, og den svarer på et ledelsesspørgsmål:</p>
+
+    <p class="pull-quote">Aggregationsreglen er det sted, hvor modellen afgør, hvad der må kompensere for hvad.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Et vægtet gennemsnit tillader fuld kompensation til fast kurs: hvert point, et signal falder, kan udlignes af point, et andet stiger. Det er en matematisk egenskab, ikke en fejl — men også en påstand om virkeligheden, og nogle gange en forkert en.</p>
+    <p>To organisationer, otte signaler, lige vægte:</p>
+
+    <div class="mdx mdx-prof" role="group" aria-label="Illustration: Samme 70, forskellig profil">
+      <div class="mdx-head">
+        <div class="mx-label">Illustration · konstrueret eksempel</div>
+        <div class="mx-title">Samme 70. Forskellig organisation.</div>
+      </div>
+      <div class="mdx-grid mx-two">
+        <div class="mx-side">
+          <div class="mx-cov">Organisation A</div>
+          <ul class="mx-bars">
+            <li><span class="mx-bt"><i style="width:100%"></i></span><span class="mx-bn">100</span></li>
+            <li><span class="mx-bt"><i style="width:100%"></i></span><span class="mx-bn">100</span></li>
+            <li><span class="mx-bt"><i style="width:100%"></i></span><span class="mx-bn">100</span></li>
+            <li><span class="mx-bt"><i style="width:100%"></i></span><span class="mx-bn">100</span></li>
+            <li><span class="mx-bt"><i style="width:40%"></i></span><span class="mx-bn">40</span></li>
+            <li><span class="mx-bt"><i style="width:40%"></i></span><span class="mx-bn">40</span></li>
+            <li><span class="mx-bt"><i style="width:40%"></i></span><span class="mx-bn">40</span></li>
+            <li><span class="mx-bt"><i style="width:40%"></i></span><span class="mx-bn">40</span></li>
+          </ul>
+          <div class="mx-score">70</div>
+        </div>
+        <div class="mx-side">
+          <div class="mx-cov">Organisation B</div>
+          <ul class="mx-bars">
+            <li><span class="mx-bt"><i style="width:70%"></i></span><span class="mx-bn">70</span></li>
+            <li><span class="mx-bt"><i style="width:70%"></i></span><span class="mx-bn">70</span></li>
+            <li><span class="mx-bt"><i style="width:70%"></i></span><span class="mx-bn">70</span></li>
+            <li><span class="mx-bt"><i style="width:70%"></i></span><span class="mx-bn">70</span></li>
+            <li><span class="mx-bt"><i style="width:70%"></i></span><span class="mx-bn">70</span></li>
+            <li><span class="mx-bt"><i style="width:70%"></i></span><span class="mx-bn">70</span></li>
+            <li><span class="mx-bt"><i style="width:70%"></i></span><span class="mx-bn">70</span></li>
+            <li><span class="mx-bt"><i style="width:70%"></i></span><span class="mx-bn">70</span></li>
+          </ul>
+          <div class="mx-score">70</div>
+        </div>
+      </div>
+      <div class="mdx-foot">Samme samlede tal. To organisationer, der kræver hver sin samtale.</div>
+    </div>
+
+    <p>Det er ikke et bevis for, at jævn er bedre end spids. A kan være i fremragende form med fire uprioriterede områder; B kan være middelmådig overalt. Tallet siger det ikke.</p>
+    <p>Det viser, at et gennemsnit behandler høje værdier som gyldig kompensation for lave — til fast kurs, uanset hvad de lave handler om. Om det giver mening, afhænger af, hvad tallet påstår at sammenfatte.</p>
+    <p><a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html" style="color:var(--gold);">Paper 08</a> pegede på et sted, hvor det ikke gør: en kritisk evne, strategien forudsætter, kan ikke uden videre erstattes af fire andre, der er i orden. Repræsenterer en komponent en betingelse, der reelt ikke kan substitueres, er fuld kompensation fra ubeslægtede høje tal uønsket.</p>
+    <p>Men man skal først vise, at komponenten faktisk <em>er</em> ikke-substituerbar; at den føles vigtig, er ikke nok. Og den modsatte regel, hvor den laveste bestemmer alt, er bare en anden aggregationsregel med sine egne problemer.</p>
+
+    <div class="research-note">
+      <strong>Forskningsnote.</strong> En artikel fra 2009 om landerangering behandler aggregationskonventionen som en teknisk svaghed og udvikler en ramme med ikke-kompenserende, ikke-lineære regler. Metodehåndbogen fra 2008 beskriver konsekvensen af den lineære variant direkte: <em>»A deficit in one dimension can thus be offset (compensated) by a surplus in another«</em> — og bemærker, at hvis vægte skal forblive et udtryk for vigtighed, bør man bruge metoder uden kompensation. Begge handler om landerangeringer, og ingen viser, at additiv aggregation er forkert — kun at valget har konsekvenser og skal træffes bevidst.
+    </div>
+  </div>
+</section>
+
+<!-- 08 MISSING -->
+<section class="section" id="missing">
+  <div class="container">
+    <div class="section-label">08 — Manglende data</div>
+    <h2>Manglende data kan ændre selve modellen</h2>
+    <p>»Manglende« er ikke én ting. Et signal kan mangle, fordi det ikke blev indsamlet, ikke var relevant, ingen nåede at rapportere, eller fordi noget teknisk gik galt. De fire betyder vidt forskellige ting og kan blive behandlet ens. Værre: de kan pege modsat. Et irrelevant signal er neutral information; et urapporteret kan være et signal i sig selv.</p>
+    <p>Når noget mangler, er der tre praktiske muligheder:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Tre praktiske svar på et hul</div>
+      <ul class="dispo-list">
+        <li><strong>Lad være med at beregne</strong> <em>→</em> intet samlet tal, når en påkrævet komponent mangler. Ærligt, men ubekvemt.</li>
+        <li><strong>Beregn et delvist tal</strong> <em>→</em> et tal over det, der findes, tydeligt mærket som ikke sammenligneligt med et fuldt tal.</li>
+        <li><strong>Omfordel vægtene</strong> <em>→</em> beregn over de tilgængelige vægte, og vis de effektive vægte, der opstår.</li>
+      </ul>
+    </div>
+
+    <p>Alle tre kan være forsvarlige under de rette forudsætninger. Det afgørende er, at valget passer til constructet, er dokumenteret og ikke ændrer fortolkningen lydløst — og at metodeteksten beskriver det, beregningen gør.</p>
+    <p>Den tredje kan bevare et samlet tal ved delvis dækning, men ændrer samtidig det effektive vægtgrundlag. Vises de nye vægte ikke, sker ændringen lydløst. Det er derfor, en score bør rejse sammen med sin dækning. <strong>71,4 ved 8/8 og 78,3 ved 6/8 er beregnet med samme algoritme, men ikke på samme effektive vægtgrundlag.</strong> De bør derfor ikke læses som direkte sammenlignelige målinger, blot fordi metodeversionen er den samme.</p>
+    <p>Og retningen er ikke givet. I åbningscasens model: forsvinder G alene, bliver tallet 74,5. Forsvinder A og B, som begge står højt, falder det til 55,6. Forsvinder C og D, falder det til 67,4. <strong>Retningen afhænger af, hvordan de manglende komponenters vægtede niveau ligger i forhold til den fulde score.</strong> Vægtene påvirker derfor både størrelsen på udsvinget og — når flere forskellige komponenter mangler — i nogle tilfælde også retningen.</p>
+
+    <p class="pull-quote">Et indeks kan flytte sig, uden at organisationen har flyttet sig — fordi modellen gjorde.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Sætningen gælder den konstruerede case. Den er ikke en påstand om, at enhver bevægelse i et indeks skyldes modellen. Men man kan ikke vide hvilke der gør, før man har set efter.</p>
+  </div>
+</section>
+
+<!-- 09 COVERAGE -->
+<section class="section" id="coverage">
+  <div class="container">
+    <div class="section-label">09 — Dækning</div>
+    <h2>Dækning er ikke sammenlignelighed</h2>
+    <p>I den nuværende Observatory-model er der sat en dækningsgrænse på seks af otte komponenter: derfra markeres tallet som sammenligneligt. Det er en praktisk styringsregel — men antal alene dokumenterer ikke sammenlignelighed.</p>
+    <p>Antagelsen er, at alle seks-af-otte er lige gode. Det er de ikke: 78,3, 55,6 og 67,4 er alle tre 6/8 af samme model.</p>
+    <p><strong>Dækningsgrad er en egenskab ved datagrundlaget. Sammenlignelighed er en egenskab ved hele målingen.</strong></p>
+    <p>En stærkere regel ville kombinere tre ting: hvor mange komponenter der er, <em>hvilke</em> af dem der er påkrævede, og hvor meget de effektive vægte har flyttet sig. Jeg foreslår ingen ny magisk grænse — det ville gentage fejlen i en anden indpakning. En dækningsgrænse er en styringskonvention: rimelig, men ikke valideret, og den bør ikke stå alene.</p>
+    <p>Det praktiske svar er beskedent og effektivt: lad tallet rejse med sin identitet. Ikke »72«, men <strong>»72 · 8/8 · metodeversion 2.0 · konfiguration XYZ«</strong>. Direktionen behøver ikke se det hele hver gang — men det skal findes.</p>
+  </div>
+</section>
+
+<!-- 10 TÆRSKLER -->
+<section class="section" id="taerskler">
+  <div class="container">
+    <div class="section-label">10 — Tærskler</div>
+    <h2>69 og 70 er naboer</h2>
+    <p>Et tal bliver til en handling, når det passerer en tærskel. Under 70 er feltet orange; fra 70 og opefter er det grønt. Og dermed er forskellen mellem 69 og 70 blevet til forskellen mellem bekymring og ro.</p>
+
+    <p class="pull-quote">69 og 70 er naboer i data. Et dashboard kan få dem til at ligne to forskellige verdener.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Tærskler er nyttige: ledelse kræver, at noget udløser en handling. Problemet opstår, når en styringsaftale læses som et naturligt knækpunkt. Der findes tre slags, og de kan let blive blandet sammen:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Tre slags tærskler</div>
+      <ul class="dispo-list">
+        <li><strong>Beskrivende</strong> <em>→</em> til fortolkning og visning. »Over 80 kalder vi stærk.«</li>
+        <li><strong>Styringsmæssig</strong> <em>→</em> udløser en undersøgelse eller en handling. »Under 60 kommer det på direktionsmødet.«</li>
+        <li><strong>Empirisk kalibreret</strong> <em>→</em> understøttet af en dokumenteret sammenhæng mellem tallet og et udfald.</li>
+      </ul>
+    </div>
+
+    <p>Tærskler i ledelsesindeks er typisk af de to første slags. Intet galt i det — så længe de ikke omtales som den tredje.</p>
+    <p>To krav følger. Tærskler skal fastlægges ét sted og gælde alle steder: skifter farven ved 70, mens teksten kalder det acceptabelt fra 60, står samme tal under to regimer på samme skærm. Og en tærskelovergang på ét point bør udløse et blik på, hvor robust bevægelsen er — ikke automatisk en ny konklusion.</p>
+  </div>
+</section>
+
+<!-- 11 TID -->
+<section class="section" id="tid">
+  <div class="container">
+    <div class="section-label">11 — Sammenligning over tid</div>
+    <h2>Organisationen eller modellen?</h2>
+    <p>Et indeks bliver for alvor brugbart, når det følges over tid. Og netop dér bliver det farligst.</p>
+    <p>En bevægelse fra 68 til 74 kan komme fra organisationens data. Den kan også komme fra en ændret vægt, en justeret kurve, en flyttet tærskel, en komponent, der kom til eller forsvandt, eller en ændret respondentgruppe. Kurven ser ens ud i alle seks tilfælde.</p>
+
+    <p class="pull-quote">Hvad ændrede sig — organisationen eller modellen?<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Spørgsmålet kan besvares, men kun hvis svaret er gemt på forhånd. Det kræver, at modellen har en version: et aftryk af de valg, tallet er beregnet under — definitioner, vægte, kurver, tærskler, konfiguration. Ændrer aftrykket sig, er det ikke længere den samme model.</p>
+    <p>Det giver et krav, der er svært at snige sig uden om: <strong>ændrer modellens aftryk sig mellem to perioder, skal enhver trendfortolkning enten blokeres eller tydeligt markeres som et metodebrud.</strong></p>
+    <p>Men aftrykket alene rækker ikke. Åbningscasen viser hvorfor: konfigurationen var uændret, og alligevel ændrede den effektive vægtning sig, fordi to komponenter faldt ud. <strong>Et uændret konfigurationsaftryk er nødvendigt for metodekontinuitet, men ikke tilstrækkeligt for sammenlignelighed.</strong> Dækning og effektiv vægtning skal følge med.</p>
+    <p>Og et sted, der er let at overse: har en model reservevægte, den falder tilbage på, når konfigurationen ikke er tilgængelig, kan samme indeksnavn dække to formler. Reservetilstanden må derfor ikke se ud som normaltilstanden.</p>
+  </div>
+</section>
+
+<!-- 12 ROBUSTHED -->
+<section class="section" id="robusthed">
+  <div class="container">
+    <div class="section-label">12 — Robusthed</div>
+    <h2>Overlever konklusionen?</h2>
+    <p>Et indeks hviler på en række valg, der hvert kunne være truffet anderledes. Spørgsmålet er ikke, om der findes usikkerhed — det gør der altid — men om den rækker ind i beslutningen.</p>
+
+    <p class="pull-quote">Hvilke antagelser skal ændres, før konklusionen ændrer sig?<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Det er paperets ene spørgsmål, og det kan stilles uden metodeviden. Det flytter bevisbyrden til den, der byggede modellen.</p>
+    <p>To ord bruges i flæng. <strong>Usikkerhedsanalyse</strong>: hvor meget varierer resultatet, når antagelserne varierer inden for det rimelige? <strong>Følsomhedsanalyse</strong>: hvilke antagelser står bag variationen? Den første giver et spænd, den anden peger på, hvor man skal se efter.</p>
+    <p>Ingen af dem er det samme som at flytte hver komponent ti point op og ned. Den test er brugbar, men holder alt andet fast: vægte, kurver, aggregationsregel, hulhåndtering, tærskler, komponentliste. Den bør hedde <strong>lokal komponentfølsomhed</strong>, ikke robusthedsanalyse.</p>
+
+    <div class="research-note">
+      <strong>Forskningsnote.</strong> En artikel fra 2005 i <em>Journal of the Royal Statistical Society</em> foreslår usikkerheds- og følsomhedsanalyse undervejs i konstruktionen af sammensatte indikatorer — både til at definere kvaliteten og til at vurdere, hvor pålidelig rangeringen af lande er. Anvendt på FN's technology achievement index. Landeniveau, én case: den siger intet om ledelsesindeks i en virksomhed og sætter ingen grænse for, hvornår noget er robust nok.
+    </div>
+
+    <p>Den praktiske udgave er enkel. Vælg de modelvalg, der kunne have været anderledes. Sæt et rimeligt alternativ for hvert. Genberegn. Se så ikke på, hvor meget tallet flyttede sig — men på, om konklusionen holdt.</p>
+
+    <p class="pull-quote">Den rigtige test spørger ikke kun, hvor meget tallet flytter sig. Den spørger, om beslutningen flytter sig.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Et spring fra 71 til 78 er dramatisk på en skærm og ligegyldigt, hvis handlingen er den samme. Et fald fra 70,4 til 69,6 er ubetydeligt — medmindre 70 udløser en beslutning. Robusthed måles på beslutningen, ikke på decimalerne.</p>
+
+    <div class="research-note">
+      <strong>Forskningsnote.</strong> En artikel fra 2018 i <em>Social Choice and Welfare</em> afprøver robusthed ved at aftale en mindste og største tilladt vægt pr. dimension og så se, om en sammenligning holder i hele det tilladte sæt. Anvendt på Human Development Index; udviklet til udviklingsindeks, ikke til ledelsesindeks, og robustheden er defineret i forhold til netop det aftalte interval — ikke absolut. Princippet kan overføres, men overførslen er min, ikke artiklens.
+    </div>
+
+    <p>To faldgruber. Rimelige alternativer skal defineres, <em>før</em> resultatet kendes — ellers leder man efter det vægtsæt, der bekræfter det, man havde tænkt sig. Og tester man vildt urimelige alternativer, ender man med et spænd fra 40 til 90. Et for bredt spænd er ikke ærlighed, men en anden måde at undgå at konkludere på.</p>
+    <p>Resultatet kan meldes med tre etiketter: <strong>robust under de afprøvede antagelser</strong>, <strong>følsom over for dem</strong>, eller <strong>ikke undersøgt</strong>. Den sidste er et gyldigt svar — bedre end et falsk et.</p>
+    <p>Og så en fælde, paperet selv kunne falde i. Vi løser ikke usikkerheden ved at lægge endnu et samlet robusthedstal ovenpå: uden en eksplicit definition ville det blot flytte problemet ét niveau op. Derfor rapporteres her, hvad der blev afprøvet, og om konklusionen holdt.</p>
+    <p>Til sidst den vigtigste begrænsning: <strong>robusthed er ikke validitet.</strong> Et indeks kan være robust over for alle rimelige vægtændringer og stadig måle noget uden betydning. Constructet er lag et, robusthed er lag to. Sammenfatter tallet de forkerte signaler, hjælper det ikke, at det gør det stabilt.</p>
+  </div>
+</section>
+
+<!-- 13 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">13 — Frameworket</div>
+    <h2>Fra score til forsvarlig konklusion</h2>
+    <p>De syv led bruges på ét samlet tal ad gangen, når det skal bære en beslutning — ikke hver måned og ikke på alle indeks. Formålet er at nå fra et tal til en sætning, ledelsen kan stå på.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">Fra score til forsvarlig konklusion</div>
+      <div class="fw-sub">Thomas Friisnæs' praktiske arbejdsgang. Anvendes på ét indeks ad gangen og ender i en konklusion med status, ikke i et nyt tal.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Åbn tallet</h4>
+          <p><strong>Hvilke komponenter skabte det?</strong> Se profilen, ikke kun summen. To vidt forskellige organisationer kan stå på samme tal — og forskellen er hele samtalen.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Kontrollér dækningen</h4>
+          <p><strong>Hvad mangler — og ændrede det modellen?</strong> Ikke bare hvor mange komponenter, men hvilke, og hvad vægtene blev renormaliseret til. Er en komponents vægt vokset, uden at nogen besluttede det?</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Kontrollér metoden</h4>
+          <p><strong>Er det den samme model som sidst?</strong> Normalisering, vægte, aggregation, population, version. Har metoden flyttet sig, er den rå trend ikke automatisk sammenlignelig: enten genberegnes historikken, eller også markeres metodebruddet.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Test rimelige alternativer</h4>
+          <p><strong>Hvad ville et fagligt forsvarligt andet valg give?</strong> Andre vægte, anden hulhåndtering, anden tærskel, anden kurve. Definér »rimeligt«, før du regner.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">5</div>
+        <div class="fw-step-body">
+          <h4>Find beslutningsgrænsen</h4>
+          <p><strong>Ændrer konklusionen sig?</strong> Ikke om tallet bevægede sig, men om handlingen blev en anden. Gør den ikke det, ændrede den testede usikkerhed ikke den konkrete beslutning under den valgte regel.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">6</div>
+        <div class="fw-step-body">
+          <h4>Formulér konklusionen med sin status</h4>
+          <p><strong>Ikke »eksekveringen er 72«</strong>, men noget, et menneske kan sige højt: »72. To af otte mangler. Konklusionen holder, når vi varierer vægtene — men den vender, hvis de to manglende kommer tilbage lavt. Så vi venter en uge med beslutningen.«</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">7</div>
+        <div class="fw-step-body">
+          <h4>Beslut</h4>
+          <p><strong>Brug indekset til det, det kan:</strong> komprimering, navigation og anledning til at undersøge noget. Ikke som orakel — og ikke som alibi for ikke at åbne det.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 METODEPAS -->
+<section class="section" id="pas">
+  <div class="container">
+    <div class="section-label">14 — Metodepasset</div>
+    <h2>Et pas på én side</h2>
+    <p>Frameworket er en arbejdsgang. Passet er dokumentationen bag — og det eneste artefakt, en direktion behøver kunne bede om.</p>
+
+    <p class="pull-quote">Hvis et indeks ikke kan få et metodepas på én side, bør det ikke få lov at rejse alene ind i direktionen.<cite>— Thomas Friisnæs</cite></p>
+
+    <table class="mx-wt mx-pas">
+      <caption>Thomas Friisnæs' praktiske metodepas. Ikke en akademisk standard — en ledelsesmæssig huskeliste.</caption>
+      <thead><tr><th scope="col">Felt</th><th scope="col">Spørgsmålet, det besvarer</th></tr></thead>
+      <tbody>
+        <tr><td>Formål</td><td data-label="Spørgsmålet, det besvarer">Hvilken beslutning skal tallet støtte?</td></tr>
+        <tr><td>Construct</td><td data-label="Spørgsmålet, det besvarer">Hvad påstår tallet at sammenfatte?</td></tr>
+        <tr><td>Komponenter</td><td data-label="Spørgsmålet, det besvarer">Hvilke signaler indgår — og hvorfor?</td></tr>
+        <tr><td>Rå betydning</td><td data-label="Spørgsmålet, det besvarer">Hvad betyder hvert signal før omregningen?</td></tr>
+        <tr><td>Normalisering</td><td data-label="Spørgsmålet, det besvarer">Hvordan kommer de på fælles skala — og hvem valgte kurverne?</td></tr>
+        <tr><td>Vægte</td><td data-label="Spørgsmålet, det besvarer">Hvad betyder vægtene, og hvem har besluttet dem?</td></tr>
+        <tr><td>Aggregation</td><td data-label="Spørgsmålet, det besvarer">Hvordan samles de — og hvad må kompensere for hvad?</td></tr>
+        <tr><td>Dækning</td><td data-label="Spørgsmålet, det besvarer">Hvad sker der ved manglende data — og vises de effektive vægte?</td></tr>
+        <tr><td>Tærskler</td><td data-label="Spørgsmålet, det besvarer">Er de beskrivende, styringsmæssige eller empirisk kalibrerede?</td></tr>
+        <tr><td>Robusthed</td><td data-label="Spørgsmålet, det besvarer">Hvilke alternative modelvalg er afprøvet?</td></tr>
+        <tr><td>Version</td><td data-label="Spørgsmålet, det besvarer">Hvilken metode- og konfigurationsversion?</td></tr>
+        <tr><td>Tilladt brug</td><td data-label="Spørgsmålet, det besvarer">Hvad må tallet legitimt bruges til?</td></tr>
+        <tr><td>Forbudt brug</td><td data-label="Spørgsmålet, det besvarer">Hvad må det ikke kaldes?</td></tr>
+      </tbody>
+    </table>
+
+    <p>Det er bevidst ikke et bilag på fem sider — et pas, ingen læser, beskytter ingen. Og det skal ikke ligge i hver månedsrapport: direktionen skal se tallet, profilen, dækningen og versionen. Resten skal bare kunne fremskaffes.</p>
+    <p>En bestyrelse behøver normalt ikke otte normaliseringskurver, men tre ting: hvad tallet påstår at sammenfatte, om metoden har flyttet sig siden sidst, og om konklusionen holder under rimelige alternativer.</p>
+
+    <p class="pull-quote">Et indeks er mest værdifuldt, når det kan åbnes igen.<cite>— Thomas Friisnæs</cite></p>
+  </div>
+</section>
+
+<!-- 15 TIDLIGERE -->
+<section class="section" id="tidligere">
+  <div class="container">
+    <div class="section-label">15 — Seriens signatur</div>
+    <h2>Hvad kunne du se tidligere?</h2>
+    <p>Rubrikken er anderledes her: linjerne handler om modellen, ikke om eksekveringen. <strong>Metodesignaler, ikke eksekveringssignaler</strong> — og ingen siger noget om fremtiden.</p>
+
+    <div class="sig sig-earlier">
+      <div class="sig-label">Seriens signatur · Paper 09</div>
+      <div class="sig-title">Metodesignaler — ikke eksekveringssignaler</div>
+      <table class="sig-table">
+        <thead>
+          <tr><th scope="col">Det, du kan se</th><th scope="col">Hvad det kunne betyde — og hvad der skal undersøges</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Scoren stiger, mens dækningen falder</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at modellens sammensætning har ændret sig. Undersøg: hvilke komponenter mangler, og hvad blev vægtene renormaliseret til?</td></tr>
+          <tr><td>Samme score, men spredningen mellem komponenterne er vokset</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at komprimeringen skjuler en ubalance. Undersøg: hvilke to trækker længst fra hinanden?</td></tr>
+          <tr><td>Modellens aftryk har ændret sig mellem to perioder</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at trenden indeholder et metodebrud. Undersøg: hvad blev ændret, hvornår, og af hvem?</td></tr>
+          <tr><td>Konklusionen vender, når vægtene sættes til et andet rimeligt sæt</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at beslutningen er vægtfølsom. Undersøg: hvilket vægtvalg er besluttet — og af hvem?</td></tr>
+          <tr><td>En tærskel passeres ved en meget lille bevægelse i tallet</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at handlingen er tærskelfølsom snarere end datadrevet. Undersøg: holder skiftet, hvis én antagelse ændres?</td></tr>
+          <tr><td>Én komponent forklarer næsten al bevægelse i det samlede tal</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at vægttabellen ikke beskriver den faktiske indflydelse. Undersøg: hvor meget varierer de øvrige?</td></tr>
+          <tr><td>Hullerne samler sig i de områder, der plejer at score lavt</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde alt fra travlhed til rapporteringsproblemer. Undersøg: hvorfor mangler de data — og tillæg ingen motiver.</td></tr>
+          <tr><td>Tallet er beregnet under en reservekonfiguration</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at det ikke er den samme styrede model. Undersøg: hvilke vægte og kurver blev faktisk brugt?</td></tr>
+        </tbody>
+      </table>
+      <p class="sig-note"><strong>Alle otte er signalhypoteser om modellen — ikke validerede indikatorer, forudsigelser eller årsager</strong>; <a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html" style="color:var(--gold);">Paper 07</a> gælder også her. »Kunne betyde« er en mulig forklaring, ikke et fund.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16 KONKLUDERE -->
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="section-label">16 — Seriens signatur</div>
+    <h2>Hvad må du ikke konkludere?</h2>
+    <p>Listen er lang, fordi et samlet tal indbyder til flere slutninger, end det kan bære:</p>
+
+    <div class="sig sig-conclude">
+      <div class="sig-label">Seriens signatur · Paper 09</div>
+      <div class="sig-title">Hvad må du ikke konkludere?</div>
+      <div class="sig-cols">
+        <div>
+          <h4>Ud fra en score på 75 kan du ikke konkludere …</h4>
+          <ul>
+            <li>at eksekveringen er 75 % sund</li>
+            <li>at alle komponenter er i orden</li>
+            <li>at organisationen er blevet bedre siden sidst</li>
+            <li>at tallet er sammenligneligt med en anden periode</li>
+            <li>at en høj komponent legitimt dækker en kritisk lav</li>
+          </ul>
+          <h4>Ud fra vægtene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at 22 % vægt betyder 22 % indflydelse</li>
+            <li>at vægtene afspejler årsagssammenhænge</li>
+            <li>at lige vægte er et neutralt valg</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ud fra metoden kan du ikke konkludere …</h4>
+          <ul>
+            <li>at 70 er et naturligt knækpunkt</li>
+            <li>at 6 af 8 komponenter altid er nok</li>
+            <li>at manglende data er uskadelige</li>
+            <li>at indekset er valideret, fordi regnestykket kan efterprøves</li>
+            <li>at følsomheden er undersøgt, fordi hver komponent blev flyttet ti point</li>
+          </ul>
+          <h4>Ud fra en grøn score kan du ikke konkludere …</h4>
+          <ul>
+            <li>at der ikke er noget at undersøge</li>
+            <li>at et stabilt tal betyder en robust beslutning</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sig-close">Et indeks kan være et godt kort. Det bliver farligt, når vi glemmer, at kortets målestok, symboler og udsnit er valgt.</div>
+    </div>
+
+    <p>Paperets to modsatrettede fejl står yderst i listen: at lade en høj komponent dække en kritisk lav, og at læse ro ind i en grøn score. Den sidste er lettest at begå — den føles ikke som en slutning.</p>
+    <p>Listen har en modsat side. <strong>Ud fra en score på 75 må du gerne konkludere, at profilen bag er værd at se på.</strong> Du må bruge tallet til at navigere, til at følge en bevægelse under samme metode og til at vælge, hvor næste samtale skal ligge. Et indeks er en god grund til at undersøge noget — bare ikke et svar.</p>
+  </div>
+</section>
+
+<!-- 17 DIAGNOSE -->
+<section class="section" id="diagnose">
+  <div class="container">
+    <div class="section-label">17 — Diagnose · 10 minutter</div>
+    <h2>Kan vores indeks tåle at blive åbnet?</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · CEO, direktionsmedlem, CFO eller Strategy Office · Skriftlig</div>
+      <div class="ex-meta">⏱ Cirka 10 minutter · Ingen score og ingen modenhedsvurdering.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Vælg ét samlet tal, der bruges i jeres ledelse. Svar skriftligt og i rækkefølge.</p>
+      <ol>
+        <li><strong>Hvad er constructet — hvad påstår tallet at sammenfatte?</strong></li>
+        <li><strong>Hvilken beslutning skal det støtte?</strong></li>
+        <li><strong>Hvilke komponenter indgår — og hvilke gør bevidst ikke?</strong></li>
+        <li><strong>Hvordan normaliseres de, og hvem valgte kurverne?</strong></li>
+        <li><strong>Hvad betyder vægtene, og hvornår blev de besluttet?</strong></li>
+        <li><strong>Hvad må kompensere for hvad?</strong></li>
+        <li><strong>Hvad sker der, når data mangler?</strong></li>
+        <li><strong>Hvilke tærskler ændrer en handling?</strong></li>
+        <li><strong>Hvilke rimelige alternative modelvalg har vi afprøvet?</strong></li>
+        <li><strong>Ændrer nogen af dem konklusionen?</strong></li>
+      </ol>
+      <p style="font-size:15.5px;color:var(--text-mid);margin:22px 0 0;">Øvelsen ender i fire linjer: <strong>ét indeks · én kritisk modelantagelse · én robusthedstest · én regel for, hvad tallet må bruges til.</strong> Ingen score. Og hvor du ikke kan svare, er svaret »ved ikke« — det er øvelsens egentlige resultat. Kan I ikke besvare spørgsmål 9, er svaret på spørgsmål 10 derfor ikke »nej«, men »ikke undersøgt«.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 18 MIKROHANDLING -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">18 — 2-minutters mikrohandling</div>
+    <h2>Spørgsmålet, der åbner tallet</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · ved næste ledelsesgennemgang</span>
+      <h3>Ét spørgsmål, ét opfølgende og én konsekvens. Ingen ny proces, intet ekstra møde.</h3>
+      <p>Næste gang nogen siger »indekset er 72«, så spørg: <strong>»Hvilke antagelser skal ændres, før vores konklusion ændrer sig?«</strong></p>
+      <p>Derefter: <strong>»Og hvad ændrede sig siden sidst — organisationen eller modellen?«</strong></p>
+      <p>Kan ingen svare, er det ingen anklage, men en anden næste handling: <strong>»Så er opgaven ikke at diskutere 72. Den er at åbne metoden.«</strong></p>
+      <p>Bemærk tonen. Spørgsmålet er ikke mistillid til den, der byggede tallet, men en anerkendelse af, at et tal, der skal bære en beslutning, skal kunne åbnes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 19 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">19 — Dit næste skridt</div>
+    <h2>Gør det konkret — og fortsæt din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 09 · Et indeks er ikke sandheden</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv ét næste skridt; det gemmes kun lokalt i din browser.</p>
+      <label for="commitText">Den modelantagelse bag vores vigtigste samlede score, som vi vil teste, er …</label>
+      <p class="commit-note">Skriv indekset, beslutningen det støtter, antagelsen I vil teste, det rimelige alternativ og hvad I forventer. Resten — hvad der faktisk skete, og hvilken metodeversion tallet er beregnet under — skriver I bagefter. Eksempel: »Indeks: eksekveringsindekset i direktionsrapporten. Beslutning: om initiativ C skal have flere ressourcer. Antagelse: at de to tungeste signaler skal veje 22 og 18. Alternativ: lige vægte. Forventning: tallet falder, men prioriteringen holder. Faktisk: tallet faldt ni point, og C blev nummer tre i stedet for nummer et. Robusthed: følsom over for den afprøvede antagelse. Version: metode 2.0, konfiguration fra marts.« Eksemplet er en illustration, ikke en anbefaling.</p>
+      <textarea id="commitText" placeholder="Indeks · beslutning · antagelse · rimeligt alternativ · forventet effekt · faktisk robusthed · metodeversion"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit næste skridt</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Strategien sker mellem kvartalerne</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 20 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">20 — Ofte stillede spørgsmål</div>
+    <h2>Det, der bliver spurgt om</h2>
+
+    <details class="faq-item">
+      <summary class="faq-q">Er et indeks en dårlig idé?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Nej. Komprimering er nyttig og ofte nødvendig — en direktion kan ikke navigere efter fyrre signaler. Et indeks er en god idé, når metoden og begrænsningerne kan ses. Paperet er ikke et argument mod indeks, men mod indeks, der ikke kan åbnes.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Er lige vægte mest objektivt?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Nej. Lige vægte er også et valg — nemlig at intet signal skal prioriteres højere end de øvrige i formlen. Det er en stærk styringsmæssig påstand om et sæt strategiske signaler. Bekvemmelighed er ikke det samme som neutralitet.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Er ekspertvurderede vægte så vilkårlige?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Ikke nødvendigvis. Vægte, der er sat af mennesker med indsigt i feltet, kan være helt legitime — hvis begrundelsen er eksplicit, og robustheden er afprøvet. Det problematiske er ikke, at nogen har valgt. Det problematiske er, når ingen kan huske, at der blev valgt.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Er datadrevne vægte ikke mere objektive end menneskelige?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Nej. En vægt, der er udledt af data, er stadig resultatet af valg: hvilken metode, hvilket datasæt, hvilken periode, hvilken statistisk model. Den flytter valget fra en ledelsesdiskussion til en teknisk beslutning. Den fjerner det ikke.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvad betyder en vægt på 22 %?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>At signalet indgår med koefficienten 0,22 i den formel, der bruges lige nu. Det er ikke automatisk 22 % af den faktiske indflydelse på, hvordan tallet bevæger sig, og slet ikke 22 % af årsagen til resultatet. Faktisk indflydelse afhænger også af, hvor meget signalet varierer, og hvordan det hænger sammen med de andre.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Kan en høj komponent kompensere for en lav?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Matematisk ja, i additiv aggregation — det er præcis, hvad et vægtet gennemsnit gør. Om den <em>bør</em> gøre det, er et spørgsmål om, hvad tallet påstår at sammenfatte. Hvis en komponent er en betingelse, der reelt ikke kan erstattes, er fuld kompensation uønsket. Men det skal vises, ikke antages.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Skal vi så bruge geometrisk aggregation i stedet?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Ikke automatisk. Forskellige aggregationsregler koder forskellige afvejninger, og ingen af dem er den rigtige uafhængigt af, hvad man måler. Og reglen om, at den svageste komponent altid bestemmer, er ikke sandheden — det er bare en tredje regel med sine egne konsekvenser.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvad gør vi ved manglende data?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Vælg en eksplicit metode: lad være med at beregne, beregn et delvist tal og mærk det, eller omfordel over de tilgængelige vægte og vis dem. Alle tre kan være forsvarlige under de rette forudsætninger; det afgørende er, at valget passer til constructet og er dokumenteret. Det, der ikke er forsvarligt, er at ændre tallets betydning uden at sige det — eller at have en metodetekst, der beskriver noget andet end det, beregningen gør.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Er 6 af 8 komponenter dækning nok?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Der findes ikke et universelt svar. En dækningsgrænse er en styringskonvention, ikke en valideret regel. Og sammenlignelighed kræver mere end en optælling: det afhænger af, hvilke komponenter der mangler, og hvor meget de effektive vægte har flyttet sig i forhold til den fulde model.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Er 70 en naturlig grænse?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Der er ingen dokumentation for et universelt knækpunkt ved 70 eller noget andet tal. En tærskel kan være en fornuftig styringsaftale — den udløser en samtale. Den er bare ikke et naturligt skel i virkeligheden, og 69 er stadig naboen til 70.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Er det ikke nok at flytte hver komponent ti point op og ned?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Det er en nyttig test, og den bør beholdes. Men den holder vægte, kurver, aggregationsregel, hulhåndtering og tærskler fast, og undersøger kun ét signal ad gangen. Den bør derfor kaldes lokal komponentfølsomhed. Fuld robusthed kræver, at man også varierer selve modelvalgene.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvordan sammenligner vi over tid?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Enten med samme construct, samme metode og samme konfiguration — eller med et eksplicit metodebrud, der er markeret i grafen. En kurve, der blander organisatorisk ændring og modelændring, kan ikke læses som ren organisatorisk udvikling uden en genberegning eller en tydelig markering af metodebruddet.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Kan et indeks bruges i bestyrelsesrapportering?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Ja — hvis profilen bag tallet, usikkerheden og eventuelle metodeændringer er synlige på det rette niveau. Bestyrelsen behøver ikke kurverne. Den har brug for at vide, hvad tallet påstår, om metoden har flyttet sig, og om konklusionen holder under rimelige alternativer.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Gør metodegennemsigtighed ikke bare alting tungere?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Det er en reel risiko. Hvis hvert tal skal ledsages af et bilag, er komprimeringen ophævet af sin egen dokumentation. Derfor skellet: i den daglige rapportering vises tallet, profilen, dækningen og versionen. Metodepasset skal findes og kunne fremskaffes — ikke læses hver måned.</p></div>
+    </details>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvad gør jeg på mandag?<span class="faq-icon">+</span></summary>
+      <div class="faq-a"><p>Vælg ét samlet tal, der bruges til at træffe beslutninger. Ændr én rimelig modelantagelse. Genberegn. Og se, om beslutningen ville have været en anden. To minutter til at stille spørgsmålet på næste møde, ti minutter til at skrive det ned selv — og en eftermiddag hos den, der ejer modellen, til at regne det igennem.</p></div>
+    </details>
+  </div>
+</section>
+
+<!-- 21 HANDLING -->
+<section class="section" id="handling">
+  <div class="container">
+    <div class="section-label">21 — Fra tal til beslutning</div>
+    <h2>Fra tal til beslutning</h2>
+    <p>Spørgsmålet, paperet efterlader, kræver intet værktøj: <strong>Hvilke antagelser skal ændres, før vores konklusion ændrer sig?</strong> Kan I svare for ét samlet tal ved næste gennemgang, har paperet gjort sit.</p>
+
+    <p>Jeg har en kommerciel interesse i både Strategy Execution Governance og Strategy Execution Observatory™. Her rammer paperet mit eget.</p>
+    <p>Først det, der er på plads, for det er ikke småting: eksplicitte signaldefinitioner, redigerbare vægte gemt med begrundelse, dokumenterede normaliseringsregler, visning af dækning, en følsomhedsberegning, et konfigurationsaftryk, en versionsarkitektur, en evidenspakke med metadata og hashes og et revisionsspor. Det er den infrastruktur, metodegennemsigtighed forudsætter — og aftrykket er særligt vigtigt: et tal uden metodeversion er svagere.</p>
+    <p>Men infrastruktur er ikke sammenhæng. <strong>Paper 09's opgave er at teste, om delene fortæller én sammenhængende metodisk historie.</strong> Det gør de ikke endnu.</p>
+
+    <p>Den alvorligste er den, åbningscasen er bygget på. Metodeteksten siger, at manglende data aldrig omfordeles. Beregningen summerer de tilgængelige vægte og dividerer med dem — hvilket netop er en omfordeling. <strong>Åbningscasen er regnet på konstruerede signalværdier, men med de standardvægte og den hulhåndtering, værktøjet faktisk bruger.</strong> En reproducerbar metodetest — og en fejl, jeg fandt, mens jeg skrev paperet. De to skal bringes i overensstemmelse: enten beskriver teksten omfordelingen, eller også lader beregningen være.</p>
+
+    <p class="pull-quote">Hvis mit eget indeks kun kan forsvares, når ingen ændrer på antagelserne, er problemet ikke kritikken. Så er problemet modellen.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Der er mere. <strong>Tærsklerne er ikke harmoniseret</strong>: farve skifter ved 70 og 50, fortolkning ved 80 og 60. <strong>Følsomhedsberegningen</strong> holder alt andet fast og bør hedde lokal komponentfølsomhed. <strong>Reservekonfigurationen</strong> i ledelsesmodulet har væsentligt andre vægte og normaliseringsregler; modulet vælger med rette den rigtige konfiguration og viser tydeligt, hvor den kommer fra — men to formler under samme indeksnavn bør ikke sammenlignes som ét tal. Og <strong>kommentaren om »korrigerede, forskningsbegrundede kurver«</strong> er for stærk: forskning kan begrunde bekymringer og designprincipper, ikke de konkrete knækpunkter.</p>
+    <p>To ting mere hører til samme familie. <strong>Nul er ikke det samme som manglende.</strong> Friction Load og Risk Exposure tælles i dag som dækkede komponenter, også når der ikke er registreret en eneste post, og nul åbne poster kan give en høj score. Det er kun metodisk rent, hvis indsendelsen kan skelne et bekræftet nul fra en tom log — den skelnen, <a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html" style="color:var(--gold);">Paper 06</a> etablerede. Ellers overvurderer dækningstallet, hvor meget vi ved.</p>
+    <p>Og <strong>de viste komponentbidrag summerer ikke til tallet ved ufuldstændig dækning.</strong> Totalscoren renormaliseres over de tilgængelige vægte, mens bidraget stadig beregnes med de nominelle. I 6/8-casen summerer de viste bidrag derfor til 65,8, mens scoren er 78,3; den uafrundede nominelle sum er 65,75. Enten skal bidraget bruge de effektive vægte, eller også mærkes tydeligt som nominelt.</p>
+    <p>Begrundelsen for standardvægtene skal beskrive en styringsmæssig hensigt eller en hypotese — ikke en forudsigende status, <a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html" style="color:var(--gold);">Paper 07</a> allerede har afvist. Og bidraget er aritmetisk, ikke årsagsmæssigt.</p>
+    <p>Alt dette gælder også friktionsindekset og momentumindekset; intet indeks får fripas, fordi navnet er et andet. Sætningen om, at eksekveringssundhed er momentum minus friktion, er en kommunikationsfigur, ikke en dokumenteret sammenhæng. Og driverkortene er styringshypoteser. <strong>En kobling arver ikke årsagsautoritet, fordi den ligger inde i et indeks.</strong></p>
+    <p>For den, der bruger værktøjet i dag: tallene er gode at navigere efter og at åbne en samtale med. <strong>Og de kan indgå i et beslutningsgrundlag, når constructet er klart, komponenterne kan forsvares, dækning og metodeversion følger med, og den relevante konklusion har overlevet de robusthedstests, vi faktisk har kørt.</strong> Det er det krav, paperet stiller til ethvert indeks — mit eget inklusive.</p>
+
+    <div class="cta-box">
+      <div class="cta-label">Samtale</div>
+      <h3>Kan jeres vigtigste tal tåle at blive åbnet?</h3>
+      <p>Vælg ét samlet tal, I prioriterer efter. På 20 minutter finder vi den modelantagelse, der betyder mest — og afgør, om konklusionen overlever et rimeligt alternativ.</p>
+      <a class="start-btn" href="/#kontakt">20 min. Ét problem. Én plan. →</a>
+      <p class="print-only">20 min. Ét problem. Én plan. · friisnaes.com/#kontakt</p>
+    </div>
+
+    <h3 style="margin-top:36px;">Næste problem</h3>
+    <p>Sæt nu, at indekset kan åbnes, versioneres og udfordres. Så står seriens sidste spørgsmål tilbage: <strong>Hvem må ændre metoden — og hvem skal have adgang til udsynet?</strong> Strategisk observabilitet bliver først en ledelseskapabilitet, når udsynet kan deles, uden at definitionerne flyder. Emnet for Paper 10.</p>
+
+    <div class="next-grid">
+      <div class="next-card soon" aria-disabled="true">
+        <div class="nc-tag">Paper 10 · Kommer</div>
+        <div class="nc-text"><strong>Demokratisér udsynet. Centralisér metoden.</strong> — adgang, mandat og governance</div>
+      </div>
+      <a class="next-card" href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">
+        <div class="nc-tag">Paper 08</div>
+        <div class="nc-text"><strong>Ved vi, om vi kan det, strategien kræver?</strong> — kompetence, evne og evidens</div>
+      </a>
+      <a class="next-card" href="/library.html">
+        <div class="nc-tag">Executive Library</div>
+        <div class="nc-text"><strong>Alle serier og papers</strong> om strategi, hold, eksekvering og kapacitet</div>
+      </a>
+      <a class="next-card" href="/ceo-sparring.html">
+        <div class="nc-tag">CEO-sparring</div>
+        <div class="nc-text"><strong>Hvad bygger jeres vigtigste tal på?</strong> En fortrolig samtale, før tallet bliver til en beslutning</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">Sammensatte indeks — metode</div>
+    <ul>
+      <li>OECD, European Union &amp; EC Joint Research Centre (2008). <em>Handbook on Constructing Composite Indicators: Methodology and User Guide.</em> Paris: OECD Publishing. Metodehåndbog; landesammenligning. <a href="https://doi.org/10.1787/9789264043466-en" target="_blank" rel="noopener">doi.org/10.1787/9789264043466-en</a></li>
+      <li>Greco, S., Ishizaka, A., Tasiou, M. &amp; Torrisi, G. (2019). »On the Methodological Framework of Composite Indices: A Review of the Issues of Weighting, Aggregation, and Robustness.« <em>Social Indicators Research</em>, 141(1), 61–94. Metodisk review. <a href="https://doi.org/10.1007/s11205-017-1832-9" target="_blank" rel="noopener">doi.org/10.1007/s11205-017-1832-9</a></li>
+    </ul>
+    <div class="sb-group">Vægte og indflydelse</div>
+    <ul>
+      <li>Decancq, K. &amp; Lugo, M. A. (2013). »Weights in Multidimensional Indices of Wellbeing: An Overview.« <em>Econometric Reviews</em>, 32(1), 7–34. Oversigtsartikel; velfærdsindeks. <a href="https://doi.org/10.1080/07474938.2012.690641" target="_blank" rel="noopener">doi.org/10.1080/07474938.2012.690641</a></li>
+      <li>Paruolo, P., Saisana, M. &amp; Saltelli, A. (2013). »Ratings and Rankings: Voodoo or Science?« <em>Journal of the Royal Statistical Society: Series A</em>, 176(3), 609–634. Metodeartikel; seks eksisterende indeks. <a href="https://doi.org/10.1111/j.1467-985X.2012.01059.x" target="_blank" rel="noopener">doi.org/10.1111/j.1467-985X.2012.01059.x</a></li>
+    </ul>
+    <div class="sb-group">Aggregation og kompensation</div>
+    <ul>
+      <li>Munda, G. &amp; Nardo, M. (2009). »Noncompensatory/nonlinear composite indicators for ranking countries: a defensible setting.« <em>Applied Economics</em>, 41(12), 1513–1523. Teoretisk metodeartikel; landerangering. <a href="https://doi.org/10.1080/00036840601019364" target="_blank" rel="noopener">doi.org/10.1080/00036840601019364</a></li>
+    </ul>
+    <div class="sb-group">Robusthed og følsomhed</div>
+    <ul>
+      <li>Saisana, M., Saltelli, A. &amp; Tarantola, S. (2005). »Uncertainty and sensitivity analysis techniques as tools for the quality assessment of composite indicators.« <em>Journal of the Royal Statistical Society: Series A</em>, 168(2), 307–323. Metodeartikel; én case. <a href="https://doi.org/10.1111/j.1467-985X.2005.00350.x" target="_blank" rel="noopener">doi.org/10.1111/j.1467-985X.2005.00350.x</a></li>
+      <li>Seth, S. &amp; McGillivray, M. (2018). »Composite indices, alternative weights, and comparison robustness.« <em>Social Choice and Welfare</em>, 51(4), 657–679. Teoretisk artikel; anvendt på Human Development Index. <a href="https://doi.org/10.1007/s00355-018-1132-6" target="_blank" rel="noopener">doi.org/10.1007/s00355-018-1132-6</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Begrebet strategisk observabilitet, den praktiske definition af et indeks, de seks lag, metodepasset, frameworket »Fra score til forsvarlig konklusion«, de tre slags tærskler, de tre praktiske muligheder ved et hul, robusthedsetiketterne, metodesignalerne i »Hvad kunne du se tidligere?«, diagnosen og mikrohandlingen er Thomas Friisnæs' egne praktiske begreber og rammer, ikke validerede modeller. Kilderne har hver deres kontekst: OECD-håndbogen er en metodekonvention skrevet til at sammenligne og rangere lande; Greco og kolleger gennemgår litteraturen om vægtning, aggregation og robusthed uden at udpege en vinder; Decancq og Lugo gennemgår otte tilgange til vægtsætning i velfærdsindeks; Paruolo og kolleger analyserer faktisk indflydelse i seks eksisterende indeks bygget på socioøkonomiske landedata; Munda og Nardo udvikler en ikke-kompenserende ramme for landerangering; Saisana og kolleger anvender usikkerheds- og følsomhedsanalyse på ét indeks; Seth og McGillivray afprøver sammenligningsrobusthed på Human Development Index. <strong>Ingen af de citerede arbejder validerer noget indeks i Strategy Execution Observatory™, ingen af dem handler om ledelsesindeks i en enkelt virksomhed, og ingen af dem fastlægger en grænse for, hvornår et indeks er robust nok.</strong> Alle <em>taleksempler</em> i paperet er konstruerede: signalværdierne i åbningscasen, de to organisationer på 70 og de beregnede scorer 71,4, 78,3, 74,5, 67,4, 55,6 og 61,9 er illustrative og ikke målinger. Vægtfordelingen 22·18·13·13·10·8·8·8 og reglen om at beregne over de tilgængelige vægte er derimod de faktiske fra Strategy Execution Observatory™, som beskrevet i sidste afsnit. Beregningerne kan efterprøves; halve rundes op; de er ikke resultater. Ingen tærskel i paperet er en universel regel. Danske gengivelser af engelske formuleringer er egne oversættelser.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Strategien sker mellem kvartalerne — serien</div>
+    <h2 class="collection-title">Ti papers om strategisk observabilitet</h2>
+    <p class="collection-intro">Serien handler om, hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang, og om at gøre det synligt uden at forveksle signaler med sandhed. <strong>Alle 10 papers er udgivet.</strong></p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Serie 06</span><span class="cpart-name">Strategien sker mellem kvartalerne</span></div>
+      <p class="cpart-desc">Fra informationsgabet over signaler, kapacitet, beslutninger og friktion til kompetencer, metode og governance.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/strategien-sker-mellem-kvartalerne.html">Strategien sker mellem kvartalerne</a></li>
+        <li data-n="02"><a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">Grøn er ikke det samme som sund</a></li>
+        <li data-n="03"><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">Det kvalitative kan godt kvantificeres</a></li>
+        <li data-n="04"><a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">Kapacitet findes ikke i planen</a></li>
+        <li data-n="05"><a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">Beslutninger er en del af produktionsapparatet</a></li>
+        <li data-n="06"><a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html">Friktion er data</a></li>
+        <li data-n="07"><a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">Før resultatet flytter sig</a></li>
+        <li data-n="08"><a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">Ved vi, om vi kan det, strategien kræver?</a></li>
+        <li data-n="09"><span class="current">Et indeks er ikke sandheden — du læser dette</span></li>
+        <li data-n="10"><a href="/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html">Demokratisér udsynet. Centralisér metoden.</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til næste strategimøde i direktionen eller bestyrelsen.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html">
+      <span class="ra-tag">Næste i serien · Paper 10</span>
+      <span class="ra-title">Demokratisér udsynet. Centralisér metoden — hvem må se, udfordre, ændre og publicere?</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 03</span>
+      <span class="ra-title">Det kvalitative kan godt kvantificeres: Hvad kan et tal på en vurdering bære?</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 02</span>
+      <span class="ra-title">Grøn er ikke det samme som sund: Hvad dækker en status egentlig?</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Strategien sker mellem kvartalerne · Serie 06 · Paper 09 af 10</div>
+        <div class="series-next">Næste: <a href="/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.35)">Demokratisér udsynet. Centralisér metoden.</a></div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: smk_ (Strategien sker mellem kvartalerne)
+  var LS_C = 'smk_p09_commit', LS_D = 'smk_done', PAPER_N = 9, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // FAQ åben i print, også når browserens egen udskriv-funktion bruges
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

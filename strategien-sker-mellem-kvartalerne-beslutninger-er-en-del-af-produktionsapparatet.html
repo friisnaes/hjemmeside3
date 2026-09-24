@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beslutninger er en del af produktionsapparatet | Strategisk observabilitet | Thomas Friisnæs</title>
+<meta name="description" content="Strategisk arbejde kan stå stille, selv når kapaciteten er der, hvis beslutningen mangler. Paper 05 om beslutningsflow, mandat, alder, lukning og strategisk observabilitet.">
+<meta name="keywords" content="strategieksekvering, beslutningsflow, beslutningshastighed, decision speed, beslutningsrettigheder, beslutningsalder, mandat, strategisk observabilitet, governance, direktion, Strategy Office">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">
+
+<meta property="og:title" content="Beslutninger er en del af produktionsapparatet | Strategisk observabilitet | Thomas Friisnæs">
+<meta property="og:description" content="Arbejdet kan være klart. Eksekveringen kan stadig stå stille, hvis beslutningen mangler. Paper 05 om strategisk observabilitet.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Thomas Friisnæs – Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Beslutninger er en del af produktionsapparatet">
+<meta name="twitter:description" content="Medianen fortæller, hvor lang tid de trufne beslutninger tog. Ikke hvor gammel den beslutning er, der stadig mangler. Paper 05 om beslutningsflow.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* Paper 02 — Farven og underlaget (Grøn på hvad?): redaktionel tabel, ingen trafiklysfarver */
+  .basis { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .basis-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .basis-head .bh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .basis-head .bh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .basis-head .bh-sub { font-size: 14px; line-height: 1.55; color: var(--text-light); margin: 6px 0 0; }
+  .basis-colour { display: flex; align-items: baseline; gap: 16px; padding: 16px 30px; border-bottom: 1px solid var(--border); }
+  .basis-colour .bc-name { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; min-width: 64px; }
+  .basis-colour .bc-desc { flex: 1; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .basis-colour .bc-value { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 24px; line-height: 1; color: var(--navy); }
+  .basis-table { width: 100%; border-collapse: collapse; }
+  .basis-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table th.bt-group { text-align: left; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; padding: 20px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table td { font-size: 15px; line-height: 1.5; color: var(--text-mid); padding: 11px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .basis-table td.bt-state { width: 34%; color: var(--navy); font-weight: 500; }
+  .basis-table td.bt-state.out { color: var(--text-light); font-weight: 400; }
+  .basis-table td.bt-state.unknown { color: var(--text-mid); font-weight: 400; font-style: italic; }
+  .basis-foot { padding: 16px 30px; background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 600px) {
+    .basis-head, .basis-colour, .basis-foot { padding-left: 20px; padding-right: 20px; }
+    .basis-colour { flex-wrap: wrap; row-gap: 4px; }
+    .basis-colour .bc-desc { flex-basis: 100%; order: 3; }
+    .basis-table thead { display: none; }
+    .basis-table th.bt-group { padding: 18px 20px 8px; }
+    .basis-table td { padding: 10px 20px; }
+    .basis-table td.bt-state { width: auto; white-space: nowrap; }
+  }
+  @media print {
+    .basis, .basis-table tr { page-break-inside: avoid; }
+    .basis-head, .basis-foot { background: #fff !important; }
+    body.print-econo .basis { border-color: #999 !important; }
+    body.print-econo .basis-head .bh-label, body.print-econo .basis-colour .bc-name, body.print-econo .basis-table th.bt-group { color: #333 !important; }
+  }
+
+  /* Paper 03 — Samme tal. Forskelligt billede.: én redaktionel talkomponent, ingen farver og ingen graf */
+  .spread { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .spread-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .spread-head .sp-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .spread-head .sp-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .spread-groups { display: grid; grid-template-columns: 1fr 1fr; }
+  .sp-group { padding: 30px 26px 26px; text-align: center; }
+  .sp-group + .sp-group { border-left: 1px solid var(--border); }
+  .sp-name { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 12px; }
+  .sp-values { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4.6vw, 44px); font-weight: 400; line-height: 1.1; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .sp-values .sp-dot { display: inline-block; margin: 0 0.32em; color: var(--text-light); font-size: 0.6em; vertical-align: 0.2em; }
+  .sp-mean { margin: 22px auto 0; padding-top: 14px; border-top: 1px solid var(--border); max-width: 250px; line-height: 1.5; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .sp-mean b { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 32px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .sp-read { margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .spread-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .spread-head, .spread-foot { padding-left: 20px; padding-right: 20px; }
+    .spread-groups { grid-template-columns: 1fr; }
+    .sp-group { padding: 24px 20px 22px; }
+    .sp-group + .sp-group { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  /* Paper 03 — Fire slags tal: redaktionel tabel i Paper 02's modelramme */
+  .kinds-table { width: 100%; border-collapse: collapse; }
+  .kinds-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .kinds-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 14px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .kinds-table td:first-child { width: 38%; padding-right: 12px; }
+  .kinds-table td:first-child strong { display: block; color: var(--navy); font-weight: 600; }
+  .kinds-table td:first-child span { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; color: var(--text-mid); }
+  /* Paper 03 — tre versioner af samme vurdering: Paper 01's vinduer stablet */
+  .windows.stack { grid-template-columns: 1fr; }
+  .windows.stack .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+  .sig-cols ul + h4 { margin-top: 18px; }
+  @media (max-width: 600px) {
+    .kinds-table thead { display: none; }
+    .kinds-table, .kinds-table tbody, .kinds-table tr, .kinds-table td { display: block; width: 100%; }
+    .kinds-table tr { padding: 12px 20px; border-bottom: 1px solid var(--border); }
+    .kinds-table td, .kinds-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .kinds-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 8px 0 2px; }
+  }
+  @media print {
+    .spread, .kinds-table tr { page-break-inside: avoid; }
+    .spread-head, .spread-foot { background: #fff !important; }
+    body.print-econo .spread { border-color: #999 !important; }
+    body.print-econo .spread-head .sp-label { color: #333 !important; }
+  }
+
+  /* Paper 04 — Lokalt plausibelt — samlet umuligt: én redaktionel illustration, ingen trafiklys og intet dashboard */
+  .load { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .load-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .load-head .ld-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .load-head .ld-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .load-head .ld-cond { margin-top: 8px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .load-rows { padding: 10px 30px 8px; }
+  .ld-row { display: grid; grid-template-columns: 170px minmax(0, 1fr) 76px; align-items: center; column-gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .ld-name { font-size: 15px; line-height: 1.3; color: var(--navy); font-weight: 500; }
+  .ld-name small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--text-light); font-weight: 300; }
+  .ld-track { position: relative; display: block; height: 12px; }
+  .ld-track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--border); }
+  .ld-fill, .ld-over { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); border-radius: 1px; }
+  .ld-over { background: var(--gold); border-radius: 0; top: auto; bottom: -7px; height: 3px; }
+  .ld-cut { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; }
+  .ld-tag { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 10.5px; letter-spacing: 0.1em; font-weight: 600; color: #fff; }
+  .ld-limit { position: absolute; left: 71.429%; top: -13px; bottom: -13px; border-left: 1px dashed var(--gold); }
+  .ld-val { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; line-height: 1; color: var(--navy); text-align: right; font-variant-numeric: lining-nums; white-space: nowrap; }
+  .ld-row.ld-scale { padding: 4px 0 0; border-bottom: 0; }
+  .ld-scale .ld-track { height: 16px; }
+  .ld-scale .ld-track::before { display: none; }
+  .ld-mark { position: absolute; left: 71.429%; bottom: 1px; transform: translateX(-50%); font-size: 10.5px; line-height: 1; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; white-space: nowrap; }
+  .ld-row.ld-sum { border-bottom: 0; padding-top: 17px; }
+  .ld-sum .ld-name { font-weight: 600; }
+  .ld-sum .ld-track { height: 24px; }
+  .ld-sum .ld-limit { top: -17px; bottom: -13px; }
+  .ld-sum .ld-val { font-style: italic; font-size: 32px; color: var(--gold); }
+  .section .load-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .load-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .load-head, .load-rows, .section .load-note, .load-foot { padding-left: 20px; padding-right: 20px; }
+    .ld-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 9px; }
+    .ld-row .ld-track { grid-column: 1 / -1; grid-row: 2; }
+    .ld-row.ld-scale { row-gap: 0; padding-top: 6px; }
+    .ld-val { font-size: 21px; }
+    .ld-sum .ld-val { font-size: 28px; }
+    .load-rows { position: relative; }
+    .load-rows::after { content: ''; position: absolute; top: 34px; bottom: 10px; left: calc(20px + (100% - 40px) * 0.71429); border-left: 1px dashed var(--gold); pointer-events: none; }
+    .ld-limit { visibility: hidden; }
+  }
+  @media print {
+    .load, .ld-row { page-break-inside: avoid; }
+    .load-head, .load-foot { background: #fff !important; }
+    body.print-econo .load { border-color: #999 !important; }
+    body.print-econo .load-head .ld-label, body.print-econo .ld-mark { color: #333 !important; }
+    body.print-econo .ld-fill { background: #8a8a8a !important; }
+    body.print-econo .ld-over { background: #000 !important; }
+    body.print-econo .ld-track, body.print-econo .ld-tag, body.print-econo .ld-limit, body.print-econo .ld-mark { background: transparent !important; }
+    body.print-econo .ld-tag { color: #000 !important; }
+    body.print-econo .ld-limit, body.print-econo .load-rows::after { border-left-color: #000 !important; }
+  }
+
+  /* Paper 05 — Seks dage. Og 37.: én redaktionel illustration, ingen dashboard-elementer */
+  .decs { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .decs-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .decs-head .dc-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .decs-head .dc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .decs-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .dec { padding: 28px 30px 26px; }
+  .dec + .dec { border-left: 1px solid var(--border); }
+  .d-tag { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 14px; }
+  .d-vals { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(33px, 4.6vw, 44px); font-weight: 400; line-height: 1.05; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .d-vals .d-dot { display: inline-block; margin: 0 0.3em; color: var(--text-light); font-size: 0.55em; vertical-align: 0.22em; }
+  .dec + .dec .d-vals { color: var(--gold); font-style: italic; }
+  .d-unit { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .d-mean { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-mean b { display: block; margin-top: 3px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 30px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .d-list { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .d-list dt { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-list dd { margin: 3px 0 11px; font-size: 15px; line-height: 1.5; color: var(--text-mid); }
+  .d-list dd:last-of-type { margin-bottom: 0; }
+  .section .decs-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .decs-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .decs-head, .dec, .section .decs-note, .decs-foot { padding-left: 20px; padding-right: 20px; }
+    .decs-grid { grid-template-columns: 1fr; }
+    .dec { padding-top: 24px; padding-bottom: 22px; }
+    .dec + .dec { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .decs { page-break-inside: avoid; }
+    .decs-head, .decs-foot { background: #fff !important; }
+    body.print-econo .decs { border-color: #999 !important; }
+    body.print-econo .decs-head .dc-label { color: #333 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Beslutninger er en del af produktionsapparatet",
+ "alternativeHeadline": "Arbejdet kan være klart. Eksekveringen kan stadig stå stille, hvis beslutningen mangler.",
+ "description": "En median for de beslutninger, der er truffet, kan være korrekt og stadig overse den beslutning, arbejdet venter på. Paper 05 om beslutningsflow, de tre ure i flowet, forskellen på besluttet og implementeret, mandat og reel autoritet, og om hvad det kræver at kalde en beslutning lukket.",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Strategien sker mellem kvartalerne",
+  "url": "https://www.friisnaes.com/library.html"
+ },
+ "position": 5,
+ "inLanguage": "da",
+ "keywords": "beslutningsflow, beslutningshastighed, mandat, beslutningsalder, strategieksekvering, strategisk observabilitet",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Strategien sker mellem kvartalerne · Paper 05 af 10</div>
+  <div class="pc-title">Beslutninger er en del af produktionsapparatet</div>
+  <div class="pc-sub">Arbejdet kan være klart. Eksekveringen kan stadig stå stille, hvis beslutningen mangler.</div>
+  <div class="pc-author">Af Thomas Friisnæs · External Excellence Partner · Strategy Execution Governance · C-level-sparring · friisnaes.com · oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Strategisk observabilitet</span>
+      <span class="wp-series">Strategien sker mellem kvartalerne · Paper 05 af 10</span>
+      <span class="wp-readtime">ca. 25 min læsning</span>
+    </div>
+    <h1>Beslutninger er <em>en del af produktionsapparatet</em></h1>
+    <p class="wp-subtitle">Arbejdet kan være klart. Eksekveringen kan stadig stå stille, hvis beslutningen mangler.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · External Excellence Partner · Strategy Execution Governance · C-level-sparring<br>Udgivet oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Seks dage. Og 37.</a></li>
+      <li><a href="#tesen">Beslutninger er en del af produktionsapparatet</a></li>
+      <li><a href="#flow">Beslutningshastighed er ikke beslutningsflow</a></li>
+      <li><a href="#medianen">Medianen kan være korrekt og stadig overse det åbne arbejde</a></li>
+      <li><a href="#ure">Tre forskellige ure</a></li>
+      <li><a href="#implementeret">Besluttet er ikke implementeret</a></li>
+      <li><a href="#hurtig">Hurtig er ikke det samme som god</a></li>
+      <li><a href="#tempo">Ikke alle beslutninger fortjener samme tempo</a></li>
+      <li><a href="#mandat">Hvem har egentlig mandatet?</a></li>
+      <li><a href="#wip">En beslutning, der venter, er strategisk WIP</a></li>
+      <li><a href="#closure">Lukket kræver en definition</a></li>
+      <li><a href="#framework">Framework: Fra beslutningsbehov til bevægelse</a></li>
+      <li><a href="#tidligere">Hvad kunne du se tidligere?</a></li>
+      <li><a href="#konkludere">Hvad må du ikke konkludere?</a></li>
+      <li><a href="#diagnose">Diagnose: Hvad venter på en beslutning?</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit næste skridt</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#handling">Fra analyse til handling</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase · Et illustrativt eksempel</div>
+    <h2>Seks dage. Og 37.</h2>
+    <p>Et af de initiativer, strategien hviler tungest på, har alt det, en plan kan give det. Budgettet er godkendt, teamet er på plads, kapaciteten er bekræftet, og milepælene for kvartalet står i planen. Alligevel har tre af initiativets workstreams stået stille i flere uger.</p>
+    <p>Direktionen ser på beslutningsopfølgningen. Der står ét tal, som ser fornuftigt ud: <strong>median beslutningstid 6 dage.</strong> Fire beslutninger er truffet i kvartalet, og de tog 3, 5, 7 og 9 dage fra det tidspunkt, hvor behovet blev registreret, til valget var truffet.</p>
+    <p>Så spørger CFO'en, hvad de tre workstreams egentlig venter på. Svaret er én beslutning: om den nye løsning skal bygges på den eksisterende platform eller på en ny. Behovet blev registreret for 37 dage siden. Valget er ikke truffet. Og beslutningen indgår ikke i medianen, for medianen regner kun på de beslutninger, der har fået en beslutningsdato.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">To korrekte tal om det samme kvartal</div>
+      <ul class="dispo-list">
+        <li><strong>Median beslutningstid</strong> <em>→</em> 6 dage. Beregnet på de fire beslutninger, der er truffet.</li>
+        <li><strong>Ældste åbne beslutning</strong> <em>→</em> 37 dage. Høj påvirkning. Holder tre workstreams tilbage.</li>
+      </ul>
+    </div>
+
+    <p>Ingen af tallene er forkerte. De beskriver bare to forskellige ting. Det ene beskriver trufne beslutninger. Det andet beskriver et beslutningsbehov, der stadig står åbent.</p>
+    <p>CEO'en ser på de to linjer: <strong>»Så vores beslutningshastighed kan se fin ud, mens den beslutning, alt det vigtigste venter på, bare bliver ældre?«</strong></p>
+    <p>Strategichefen svarer: <strong>»Ja. Vi har et tal for de beslutninger, vi har truffet. Vi har ikke et tal for den, vi ikke har truffet.«</strong></p>
+    <p>Det er her, samtalen bliver interessant. For spørgsmålet er ikke, om nogen har været for langsom. Det er, hvad de 37 dage består af, og hvad der skal til for at få valget truffet:</p>
+
+    <div class="signs">
+      <ul>
+        <li>Hvad er det konkrete valg, der mangler?</li>
+        <li>Hvem har mandatet til at træffe det?</li>
+        <li>Har beslutningen manglet et grundlag — eller har den ventet på os?</li>
+        <li>Hvad venter på den, og hvad koster ventetiden?</li>
+        <li>Hvad skal der til, før valget kan træffes ansvarligt?</li>
+        <li>Og hvornår bliver det så truffet?</li>
+      </ul>
+    </div>
+
+    <p>Det er dem, dette paper handler om.</p>
+  </div>
+</section>
+
+<!-- 02 TESEN -->
+<section class="section" id="tesen">
+  <div class="container">
+    <div class="section-label">02 — Tesen</div>
+    <h2>Beslutninger er en del af produktionsapparatet</h2>
+    <p><a href="/strategien-sker-mellem-kvartalerne.html" style="color:var(--gold);">Paper 01</a> skelnede mellem resultatindsigt og eksekveringsindsigt. <a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a> spurgte, hvad en grøn status dækker. <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a> handlede om, hvad et tal på en vurdering kan bære. Og <a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html" style="color:var(--gold);">Paper 04</a> sluttede med at pege herhen: Kapacitet er ikke kun et spørgsmål om, hvem der har tid til at gøre arbejdet. Nogle gange er arbejdet klar — men venter på, at nogen beslutter, hvad der skal ske.</p>
+    <p><strong>Kapaciteten kan være til stede. Arbejdet kan være klart. Eksekveringen kan stadig stå stille, hvis et nødvendigt valg mangler.</strong></p>
+    <p>Titlen er en ledelsesmetafor, ikke en industriel model. Organisationer er ikke fabrikker, og strategisk arbejde lader sig ikke sætte på et samlebånd. Men i eksekveringen er beslutninger mere end referater fra ledelsesmøder. De frigiver ressourcer, vælger retning, afgør tradeoffs, giver mandat, låser omfang og lader det efterfølgende arbejde fortsætte. <strong>Beslutninger er ikke kun noget, ledelsen producerer. I eksekveringen er de også input til det arbejde, organisationen skal udføre.</strong></p>
+    <p>Det er samtidig et spring i serien, som er let at overse. Paper 01 til 04 har gradvist gjort mere af eksekveringen synlig. Men <strong>mere synlighed er ikke det samme som mere bevægelse.</strong> En organisation kan være rig på data, velrapporteret og opdateret og stadig vente på et valg.</p>
+    <p>En aktuel amerikansk praktikerundersøgelse viser i hvert fald den samme kontrast. I KPMG's Adaptability Index fra 2026 svarer 63 % af de adspurgte ledere, at de i højere grad læner sig på data og analyser, mens under halvdelen siger, at beslutninger sker hurtigere eller med større klarhed.</p>
+
+    <div class="research-note"><strong>Praktikerundersøgelse (KPMG, 2026):</strong> 2026 KPMG Adaptability Index: survey blandt 300 ledere på C-niveau og seniorniveau i amerikanske virksomheder, gennemført 19. december 2025 til 14. januar 2026, suppleret med bl.a. earnings calls. Selvrapporterede oplevelser fra én praktikerundersøgelse, ikke forskning og ikke evidens for en årsagssammenhæng. Bruges alene til kontrasten mellem øget brug af data og oplevet hastighed eller klarhed i beslutningerne.</div>
+
+    <p>Tallene beviser ingenting om årsager. Men kontrasten svarer til det, jeg møder i direktionslokaler: Der kan være mere data og et mere omfattende beslutningsgrundlag, uden at selve valget bliver lettere at få truffet.</p>
+
+    <p class="pull-quote">Et beslutningsgrundlag er ikke en beslutning. Når grundlaget er tilstrækkeligt, kan arbejdet stadig vente på valget.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Paperet handler derfor ikke om at træffe beslutninger hurtigere. Det handler om at kunne se beslutningsflowet: hvilke valg der venter, hvor længe de har ventet, hvem der kan træffe dem, hvad der venter på dem, og hvad vi mener, når vi kalder dem lukket.</p>
+  </div>
+</section>
+
+<!-- 03 FLOW -->
+<section class="section" id="flow">
+  <div class="container">
+    <div class="section-label">03 — Skellet</div>
+    <h2>Beslutningshastighed er ikke beslutningsflow</h2>
+    <p>Når en direktion vil styrke beslutningerne, bliver det let til ét tal: Hvor lang tid tager det os at beslutte? Tallet er ikke ubrugeligt. Men det beskriver én afstand i et forløb, der har flere led.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Det, et hastighedstal ikke rummer</div>
+      <ul class="dispo-list">
+        <li><strong>De åbne beslutningsbehov</strong> <em>→</em> de valg, der endnu ikke er truffet</li>
+        <li><strong>Alderen</strong> <em>→</em> hvor længe de har stået åbne</li>
+        <li><strong>Beslutningsklarheden</strong> <em>→</em> om valget overhovedet kan træffes endnu</li>
+        <li><strong>Mandatet</strong> <em>→</em> hvem der må træffe det</li>
+        <li><strong>Eskaleringen</strong> <em>→</em> hvornår noget skal et niveau op, og hvorfor</li>
+        <li><strong>Kritikaliteten</strong> <em>→</em> hvad der venter på valget</li>
+        <li><strong>Implementeringen</strong> <em>→</em> hvad der sker, efter at valget er truffet</li>
+      </ul>
+    </div>
+
+    <p>Et beslutningsbehov ser desuden forskelligt ud fra hvert sæde ved bordet: en prisstruktur, en lanceringsdato eller en undtagelse fra standardaftalen; et platformvalg, en sikkerhedsgodkendelse eller en regel for, hvem der ejer data; rækkefølgen mellem to ting, der ikke kan køre samtidig; en investeringsramme. Fælles for dem er, at noget andet venter på svaret.</p>
+    <p>Et beslutningsflow er altså ikke ét tal, men et forløb: Et valg opstår. Det bliver afgrænset. Det bliver beslutningsklart. Det bliver truffet af nogen med mandat. Det bliver registreret og kommunikeret. Og det bliver til handling. Et hastighedstal måler afstanden mellem to punkter i det forløb — for de sager, der er nået hele vejen.</p>
+    <p><a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a> formulerede forskellen mellem præcision og dækningsgrad: Et præcist svar på et for smalt spørgsmål er stadig et for smalt ledelsesgrundlag. Det gælder også her. <strong>En korrekt median for de beslutninger, der er truffet, kan stadig være et for smalt billede af beslutningsflowet, hvis det valg, arbejdet venter på, ikke er truffet endnu.</strong></p>
+  </div>
+</section>
+
+<!-- 04 MEDIANEN -->
+<section class="section" id="medianen">
+  <div class="container">
+    <div class="section-label">04 — Dækningsgraden</div>
+    <h2>Medianen kan være korrekt og stadig overse det åbne arbejde</h2>
+    <p>Sæt de to tal fra åbningscasen ved siden af hinanden.</p>
+
+    <div class="decs" role="group" aria-label="Illustration: Seks dage. Og 37.">
+      <div class="decs-head">
+        <div class="dc-label">Illustration · konstrueret eksempel</div>
+        <div class="dc-title">Seks dage. Og 37.</div>
+      </div>
+      <div class="decs-grid">
+        <div class="dec">
+          <div class="d-tag">Trufne beslutninger i kvartalet</div>
+          <div class="d-vals">3<span class="d-dot" aria-hidden="true">·</span>5<span class="d-dot" aria-hidden="true">·</span>7<span class="d-dot" aria-hidden="true">·</span>9</div>
+          <div class="d-unit">dage fra registrering til valg</div>
+          <div class="d-mean">Median<b>6 dage</b></div>
+        </div>
+        <div class="dec">
+          <div class="d-tag">Åben beslutning</div>
+          <div class="d-vals">37</div>
+          <div class="d-unit">dage siden behovet blev registreret</div>
+          <dl class="d-list">
+            <dt>Påvirkning</dt><dd>Høj</dd>
+            <dt>Venter på</dt><dd>Valget mellem den eksisterende og en ny platform</dd>
+            <dt>Holder tilbage</dt><dd>Tre workstreams</dd>
+          </dl>
+        </div>
+      </div>
+      <p class="decs-note">Konstrueret eksempel med illustrative tal. Medianen er beregnet på de fire beslutninger, der har både en registreringsdato og en beslutningsdato. Den åbne beslutning har kun den første og indgår derfor ikke i medianen.</p>
+      <div class="decs-foot">Medianen beskriver de beslutninger, der blev truffet. Den beskriver ikke alderen på den beslutning, der stadig mangler.</div>
+    </div>
+
+    <p>Fire trufne beslutninger er i øvrigt et spinkelt grundlag for en median. Men pointen ville være den samme med fyrre: Der er ingen regnefejl i billedet. De to tal er beregnet på to forskellige mængder. Sådan er det, når en gennemløbstid regnes på de beslutninger, der er truffet: De sager, der stadig er åbne, er ikke fejl i datasættet, men de er heller ikke med i beregningen.</p>
+    <p>Derfor giver det mening at se to ting ved siden af hinanden: hvor lang tid de trufne beslutninger tog, og hvor gamle de åbne beslutningsbehov er. Ingen af delene er hele billedet. Sammen rejser de et bedre spørgsmål, end hver af dem gør alene.</p>
+    <p>Og ét forhold mere hører med: hvad der venter på den ældste åbne beslutning. Fem ugers ventetid kan være uden betydning for et lokalt valg og dyr for et valg, tre workstreams står stille på. <strong>Alder alene er ikke et problem. Alder plus påvirkning plus ventende arbejde er et ledelsesspørgsmål.</strong></p>
+  </div>
+</section>
+
+<!-- 05 URE -->
+<section class="section" id="ure">
+  <div class="container">
+    <div class="section-label">05 — Begrebsrammen</div>
+    <h2>Tre forskellige ure</h2>
+    <p>Når vi taler om tid i beslutningsflowet, taler vi ofte om tre forskellige ting på én gang. Skellet nedenfor er mit eget praktiske skel, ikke en etableret taksonomi. Men det gør samtalen mere præcis, og det afgør, hvad man kan konkludere.</p>
+
+    <div class="basis" role="group" aria-label="Model: Tre ure i beslutningsflowet">
+      <div class="basis-head">
+        <div class="bh-label">Model · Thomas Friisnæs' praktiske skel</div>
+        <div class="bh-title">Tre ure i beslutningsflowet</div>
+        <p class="bh-sub">Illustrative eksempler fra åbningscasen.</p>
+      </div>
+      <table class="kinds-table">
+        <thead>
+          <tr><th scope="col">Uret</th><th scope="col">Hvad det måler — og hvad det ikke måler</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>1 · Beslutningsbehovets alder</strong><span>»Registreret for 37 dage siden«</span></td><td data-label="Hvad det måler — og hvad det ikke måler">Hvor lang tid der er gået, siden behovet for et valg blev registreret, målt frem til i dag for en beslutning, der stadig er åben. Det er ikke det samme som ventetid hos beslutningstageren. Tiden kan rumme analyse, dataindsamling, afhængigheder og en fase, hvor valget slet ikke kunne træffes.</td></tr>
+          <tr><td><strong>2 · Beslutningens gennemløbstid</strong><span>»6 dage fra registrering til valg«</span></td><td data-label="Hvad det måler — og hvad det ikke måler">Hvor lang tid der går fra et defineret startpunkt, til et legitimt valg er truffet. Startpunktet kan være registreringen, det tidspunkt, hvor beslutningen blev beslutningsklar, eller en formel gate. Kender systemet kun registreringsdatoen, er tallet et forløb fra sag til beslutning — ikke ren beslutningsventetid.</td></tr>
+          <tr><td><strong>3 · Implementeringslaget</strong><span>»Besluttet i marts, i drift i juni«</span></td><td data-label="Hvad det måler — og hvad det ikke måler">Hvor lang tid der går, fra valget er truffet, til det er omsat til handling eller synlig effekt. Det er et andet forløb med andre årsager end selve beslutningen, og det bør ikke lægges sammen med de to første.</td></tr>
+        </tbody>
+      </table>
+      <div class="basis-foot">De tre ure måler ikke det samme. Et tal, der ikke siger, hvilket ur det kommer fra, er svært at handle på.</div>
+    </div>
+
+    <p>Skellet er ikke pedanteri. Står ur 1 på 37 dage, kan det skyldes, at valget har været svært at afgrænse, at et nødvendigt grundlag manglede, at en afhængighed ikke var på plads — eller at ingen har taget ansvaret for at træffe det. De fire forklaringer kalder på fire forskellige handlinger, og tallet alene kan ikke skelne mellem dem.</p>
+    <p>Derfor gælder den samme disciplin som i <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a>: <strong>Kald ikke et interval mere præcist, end de data, det bygger på, tillader.</strong> Kender systemet kun datoen for, hvornår behovet blev registreret, er det dét, tallet handler om.</p>
+  </div>
+</section>
+
+<!-- 06 IMPLEMENTERET -->
+<section class="section" id="implementeret">
+  <div class="container">
+    <div class="section-label">06 — Efter valget</div>
+    <h2>Besluttet er ikke implementeret</h2>
+    <p>En beslutning kan være truffet, skrevet i referatet og meldt ud uden at være ført ud i livet. Det lyder banalt. Alligevel er det et af de steder, hvor opfølgningen bliver upræcis: Et felt, der hedder »lukket«, kan i praksis dække både »valget er truffet« og »arbejdet er gennemført«.</p>
+    <p>Forskningen skelner. I en meta-analyse fra 2025 samler Kalin Kolev og kolleger 127 studier med 239 effektstørrelser og behandler beslutningshastighed, implementeringshastighed og responshastighed som tre forskellige begreber. De rapporterer positive gennemsnitlige sammenhænge med virksomhedens performance for alle tre — og samtidig, at sammenhængene varierer på tværs af kontekstuelle og metodiske betingelser.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (meta-analyse):</strong> Kolev, Dykes, Kang, Hughes-Morgan &amp; Ferrier (2025), »Fast or slow? A meta-analysis on the performance implications of decision, implementation, and response speed«, <em>Journal of Management Scientific Reports</em>, 3(1), 40–67: meta-analyse af 127 studier med 239 effektstørrelser. Bruges til to ting: at beslutning, implementering og respons er forskellige begreber, og at sammenhængen med performance varierer med kontekst og metode. Effektstørrelser er ikke procentvise forbedringer og gengives derfor ikke som sådan, og en gennemsnitlig sammenhæng i litteraturen er ikke en årsagslov for den enkelte virksomhed.</div>
+
+    <p>For en direktion er den praktiske konsekvens enkel nok: <strong>Beslutningen kan være lukket i mødet og stadig være åben i eksekveringen.</strong> Lukket i mødet betyder, at valget er truffet af den, der har mandatet. Åben i eksekveringen betyder, at det arbejde, valget skulle frigøre, endnu ikke er gennemført.</p>
+    <p>De to ting kan udmærket registreres i samme system. De bør bare ikke registreres i det samme felt — og slet ikke rapporteres som det samme tal.</p>
+  </div>
+</section>
+
+<!-- 07 HURTIG -->
+<section class="section" id="hurtig">
+  <div class="container">
+    <div class="section-label">07 — Hastighed og kvalitet</div>
+    <h2>Hurtig er ikke det samme som god</h2>
+    <p>Når ventetid bliver synlig, ligger én konklusion lige for: Så må vi beslutte hurtigere. Det er ikke dette papers konklusion, og det er heller ikke, hvad forskningen siger.</p>
+    <p>Neil Shepherd og kolleger undersøgte i 2021 sammenhængen mellem beslutningshastighed og beslutningskvalitet i 117 britiske virksomheder, med svar fra flere informanter i topledelsen suppleret med sekundære data. Deres resultat er, at sammenhængen modereres af omgivelserne: Ressourcerigdommen i omgivelserne er den centrale mekanisme i deres analyse, og den ændrer mærkbart de positive effekter af hastighed, som tidligere er antaget i dynamiske omgivelser.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (surveystudie):</strong> Shepherd, Mooi, Elbanna &amp; Rudd (2021), »Deciding Fast: Examining the Relationship between Strategic Decision Speed and Decision Quality across Multiple Environmental Contexts«, <em>European Management Review</em>, 18(2), 119–140: spørgeskemadata fra flere informanter i 117 britiske virksomheder kombineret med sekundære data. Bruges til pointen, at sammenhængen mellem hastighed og kvalitet afhænger af omgivelserne — ikke som evidens for, at hurtige beslutninger er dårlige i stabile markeder.</div>
+
+    <p>Omvendt holder den modsatte fordom heller ikke: at hurtigt er overfladisk. Kathleen Eisenhardts studie fra 1989 af otte virksomheder i mikrocomputerbranchen peger i en anden retning. De hurtigste beslutningstagere brugte ikke mindre information end de langsommere. De arbejdede med flere alternativer på samme tid, trak på erfarne rådgivere og håndterede uenigheden aktivt.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (kvalitativt casestudie):</strong> Eisenhardt (1989), »Making Fast Strategic Decisions in High-Velocity Environments«, <em>Academy of Management Journal</em>, 32(3), 543–576: otte virksomheder i mikrocomputerbranchen i en periode med meget høj forandringshastighed. Konteksten er specifik, og resultatet kan ikke overføres til alle organisationer. Bruges alene til, at hurtige beslutninger i dette studie ikke byggede på mindre information end de langsomme.</div>
+
+    <p class="pull-quote">Hurtig er ikke automatisk godt. Langsom er ikke automatisk grundigt.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Den brugbare position er derfor snævrere end både utålmodigheden og forsigtigheden lægger op til: <strong>Beslutningshastighed er et signal om flow. Det er ikke i sig selv et mål for kvalitet.</strong> Et hurtigt truffet valg kan være dårligt. Et langsomt kan være klogt. Hastigheden fortæller noget om, hvordan arbejdet bevæger sig — ikke om valget var rigtigt.</p>
+  </div>
+</section>
+
+<!-- 08 TEMPO -->
+<section class="section" id="tempo">
+  <div class="container">
+    <div class="section-label">08 — Kadencen</div>
+    <h2>Ikke alle beslutninger fortjener samme tempo</h2>
+    <p>Hvis hastighed ikke er et kvalitetsmål, bliver spørgsmålet, hvilke beslutninger der skal have hvilket tempo. Her er kontekst ikke en floskel, men det, forskningen bliver ved med at finde.</p>
+    <p>William Judge og Alex Miller sammenlignede i 1991 beslutningshastighed i tre forskellige miljøer: bioteknologi, hospitaler og tekstilindustri. Hastighed hang kun sammen med højere performance i det af miljøerne, der bevægede sig hurtigst. Til gengæld hang det at overveje flere alternativer samtidig sammen med hastighed på tværs af miljøerne.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (empirisk studie):</strong> Judge &amp; Miller (1991), »Antecedents and Outcomes of Decision Speed in Different Environmental Context«, <em>Academy of Management Journal</em>, 34(2), 449–463: sammenligning af beslutningshastighed i tre brancher med forskellig forandringshastighed. Bruges til pointen, at sammenhængen mellem hastighed og performance var afhængig af miljøet — ikke som evidens for, at hurtigere beslutninger generelt forbedrer resultaterne.</div>
+
+    <p>Et review fra 2014 af Neil Shepherd og John Rudd gennemgår litteraturen om den strategiske beslutningsproces med netop kontekst som omdrejningspunkt: topledelsen, beslutningens egne karakteristika, omverdenen og virksomhedens karakteristika. Konklusionen for en direktion er ikke, at alt afhænger af alt. Den er, at spørgsmålet »hvor lang tid må en beslutning tage?« ikke har ét svar.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (review):</strong> Shepherd &amp; Rudd (2014), »The Influence of Context on the Strategic Decision-Making Process: A Review of the Literature«, <em>International Journal of Management Reviews</em>, 16(3), 340–364: kritisk gennemgang af forskningen i den strategiske beslutningsproces med fokus på konteksteffekter. Bruges til princippet om kontekstafhængighed, ikke til at udlede en anbefalet beslutningshastighed.</div>
+
+    <p>Praktikerlitteraturen har foreslået inddelinger, som kan være nyttige ved et direktionsbord. McKinsey skelnede i en survey fra 2019 mellem tre typer. Store satsninger er sjældne beslutninger med høj indsats, som opkøb og den årlige ressourceallokering. Tværgående beslutninger er lige så brede, men hyppigere og mere velkendte, og de består af mange sammenhængende valg på tværs af grupper. Delegerede beslutninger er hyppige og snævrere og håndteres af en enkelt person eller et team. Inddelingen er deres, ikke min, og den er praktikerarbejde. Men den er nyttig her, fordi de tre beslutningstyper ikke nødvendigvis kalder på den samme governance.</p>
+
+    <div class="research-note"><strong>Praktikersurvey (McKinsey, 2019):</strong> Aminov, De Smet, Jost &amp; Mendelsohn, »Decision making in the age of urgency«, 30. april 2019: onlinesurvey i felten 13.–23. februar 2018 med 1.259 respondenter fra 91 lande. Praktikermateriale, ikke forskning. Bruges alene til inddelingen af beslutningstyper som illustration; undersøgelsens sammenligninger af »vindere« og øvrige bruges ikke.</div>
+
+    <p>En lokal og reversibel beslutning med lav påvirkning behøver ikke den samme proces som et irreversibelt strategisk commitment. Det afgørende er ikke en scoringsmodel, men at direktionen kan svare på fire ting om det enkelte valg: <strong>hvad der står på spil, hvor svært det er at gøre om, hvor stor usikkerheden er, og hvad der venter på det.</strong></p>
+    <p>Og så er der det spørgsmål, enhver direktion før eller siden stiller: Hvor lang tid må en strategisk beslutning tage? <strong>Der findes ikke et universelt svar.</strong> En organisation kan godt vælge en kadence — at beslutninger med høj påvirkning for eksempel skal have et fast beslutningstidspunkt hver måned. Men det er en styringskonvention, ikke et forskningsresultat, og den skal kunne begrundes i den type beslutninger, den gælder for.</p>
+  </div>
+</section>
+
+<!-- 09 MANDAT -->
+<section class="section" id="mandat">
+  <div class="container">
+    <div class="section-label">09 — Mandatet</div>
+    <h2>Hvem har egentlig mandatet?</h2>
+    <p>En beslutning, der venter, venter ikke altid på information. Nogle gange venter den på, at det bliver klart, hvem der må træffe den.</p>
+    <p>Philippe Aghion og Jean Tirole skelnede i 1997 teoretisk mellem formel autoritet — retten til at beslutte — og reel autoritet, altså den effektive kontrol over, hvad der bliver besluttet. De to falder ikke nødvendigvis sammen. Den, der har retten, kan i praksis være henvist til at godkende det, andre har forberedt, fordi de sidder med informationen og forarbejdet.</p>
+
+    <div class="research-note"><strong>Teoretisk grundlag:</strong> Aghion &amp; Tirole (1997), »Formal and Real Authority in Organizations«, <em>Journal of Political Economy</em>, 105(1), 1–29: en teoretisk model, ikke et empirisk feltstudie. Bruges alene til skellet mellem formel og reel autoritet — ikke som evidens for, at organisationer bør decentralisere beslutninger.</div>
+
+    <p>Oversat til en direktions hverdag er det ikke en anklage mod nogen. Det er et sæt spørgsmål, der kan besvares:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Fem spørgsmål om ét valg</div>
+      <ul class="dispo-list">
+        <li><strong>Retten</strong> <em>→</em> Hvem har det formelle mandat til netop dette valg?</li>
+        <li><strong>Grundlaget</strong> <em>→</em> Hvem sidder reelt med informationen og forberedelsen?</li>
+        <li><strong>Ja og nej</strong> <em>→</em> Hvem kan sige ja, og hvem kan stoppe det?</li>
+        <li><strong>Vejen op</strong> <em>→</em> Hvad udløser en eskalering, og til hvem?</li>
+        <li><strong>Tydeligheden</strong> <em>→</em> Ved de, der venter, hvor valget skal træffes?</li>
+      </ul>
+    </div>
+
+    <p>Her er det værd at være præcis om eskalering. En eskalering er ikke i sig selv et tegn på dårlig governance. Den kan være præcis den rigtige vej, når risikoen, mandatet eller den tværgående konsekvens hører til et højere niveau. <strong>Antallet af eskaleringer kan være et signal. Det afgørende er, om beslutningerne ligger på det rigtige niveau — og om vejen derhen er tydelig.</strong></p>
+    <p>Det omvendte gælder også. At flytte beslutninger længere ned i organisationen er ikke en universalløsning. Det kan være rigtigt for nogle valg og forkert for andre. Niveauet bør følge konsekvensen og risikoen, ikke en principerklæring.</p>
+  </div>
+</section>
+
+<!-- 10 WIP -->
+<section class="section" id="wip">
+  <div class="container">
+    <div class="section-label">10 — Beslutningen som arbejde</div>
+    <h2>En beslutning, der venter, er strategisk WIP</h2>
+    <p>I produktionssprog betyder WIP — <em>work in progress</em> — det arbejde, der er sat i gang, men ikke afsluttet. Metaforen er min og skal bruges med omtanke, for en organisation er ikke en fabrik. Men den fanger noget præcist: <strong>En beslutning, der venter, er strategisk WIP.</strong> Den er sat i gang, den er ikke afsluttet, og andet arbejde kan afhænge af den.</p>
+    <p>Metaforen skal ikke strækkes for langt. Ikke alle åbne beslutninger blokerer noget. Nogle er bevidst holdt åbne, fordi det er klogere at vente på ny information. Nogle mangler et input, ingen kan fremskaffe endnu. Nogle har så lav påvirkning, at de fint kan ligge, til der er anledning til at tage dem. <strong>Det, der gør en åben beslutning interessant for en direktion, er ikke alderen alene. Det er alderen sammen med påvirkningen og det arbejde, der venter.</strong></p>
+    <p>Derfor siger antallet af åbne beslutninger heller ikke så meget i sig selv. Ti mindre afklaringer kan betyde mindre end ét uafklaret valg om kapital, prissætning, arkitektur, compliance eller go/no-go. <strong>En liste over åbne beslutninger er ikke det samme som strategisk eksponering.</strong></p>
+    <p>Det fører til det spørgsmål, en CFO stiller først: Hvad koster ventetiden? Nogle gange kan det estimeres — en lancering, der rykker et kvartal, et team, der står klar uden at kunne arbejde, en kontrakt, der skal genforhandles, fordi vinduet lukkede. Andre gange kan omkostningen ikke opgøres meningsfuldt, og så er det bedre at sige det end at opfinde et tal. <strong>Men selv uden et beløb er der en pris, som er værd at være eksplicit om: Udskyder man et valg længe nok, kan omstændighederne ende med at træffe det for én.</strong></p>
+    <p>Det forklarer også, hvorfor et ekstra beslutningsmøde ikke altid hjælper. <strong>Flere beslutningsmøder skaber ikke i sig selv mere beslutningskapacitet.</strong> Er valget ikke afgrænset, er mandatet uklart, mangler et nødvendigt grundlag, eller ligger beslutningen på det forkerte niveau, bliver mødet endnu et sted, hvor sagen bliver drøftet. Kalenderen er ikke altid den bindende begrænsning.</p>
+  </div>
+</section>
+
+<!-- 11 CLOSURE -->
+<section class="section" id="closure">
+  <div class="container">
+    <div class="section-label">11 — Lukningen</div>
+    <h2>Lukket kræver en definition</h2>
+    <p>Hvis en beslutning kan være lukket i mødet og åben i eksekveringen, skal ordet »lukket« defineres, før det kan bruges i opfølgning. Skellet nedenfor er praktisk, ikke en standard.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Tre slags lukning</div>
+      <ul class="dispo-list">
+        <li><strong>Valget er truffet</strong> <em>→</em> En person eller et forum med mandat har foretaget et legitimt valg.</li>
+        <li><strong>Beslutningscyklussen er lukket</strong> <em>→</em> Valget er eksplicit, registreret, kommunikeret til dem, det vedrører, og koblet til en næste handling med en ejer. Sagen er ikke længere uafklaret som beslutningsspørgsmål.</li>
+        <li><strong>Implementeringen er lukket</strong> <em>→</em> Det aftalte implementeringsarbejde er gennemført, og den aftalte dokumentation for gennemførelsen kan efterprøves. Den forretningsmæssige effekt kan komme senere.</li>
+      </ul>
+    </div>
+
+    <p>Forskellen er praktisk. Skal en beslutningslog kunne bruges til andet end at dokumentere, at noget blev drøftet, skal den kunne bære fire ting: hvad der blev besluttet, hvem der traf valget, hvem der ejer den næste handling, og hvornår det, der ventede, kan fortsætte. Om implementeringen er gennemført, hører til et andet felt og ofte til et andet tidspunkt.</p>
+    <p>De tre er ikke rangordnet efter vigtighed, men efter, hvad de dokumenterer. Et system, der kun registrerer, at valget er truffet, kan ikke alene dokumentere, at valget er kommunikeret og koblet til næste handling. Og kalder man det trufne valg for implementering, lover man mere, end man ved. Det engelske ord <em>closure</em> dækker i praksis alle tre — hvilket er netop grunden til at sige, hvilken man mener. Det samme gælder en andel af lukkede beslutninger: Den afhænger også af, hvad nævneren tæller med. Skal en beslutning, der blev annulleret undervejs, tælle som ikke-lukket?</p>
+    <p>Her kan et stærkt Strategy Office gøre en forskel. Ikke ved at træffe beslutningerne, men ved at formulere beslutningsbehovet skarpt nok til, at det kan besvares, holde beslutningsloggen, gøre alderen synlig, skelne mellem »afventer«, »beslutningsklar« og »besluttet«, hjælpe med at få beslutningsrettighederne på plads, sikre, at åbne beslutninger med høj påvirkning bliver synlige for direktionen, og koble det trufne valg til den næste handling.</p>
+
+    <p class="pull-quote">Hvis beslutningsloggen også skal understøtte eksekveringen, er det ikke nok, at den viser, hvad der blev besluttet. Den skal også kunne vise, hvad der stadig venter.<cite>— Thomas Friisnæs</cite></p>
+  </div>
+</section>
+
+<!-- 12 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">12 — Frameworket</div>
+    <h2>Fra beslutningsbehov til bevægelse</h2>
+    <p>James Dean og Mark Sharfman fulgte i 1996 52 strategiske beslutninger i 24 virksomheder og undersøgte, om måden, beslutningerne blev til på, havde betydning for, hvor effektive de blev — også når der blev taget højde for omgivelserne og for implementeringen. Beslutningsprocessen hang sammen med effektiviteten. Det beviser ikke, at en bestemt governance-proces virker alle steder. Men det er et argument for at være omhyggelig med, hvordan beslutninger bliver til.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (longitudinelt feltstudie):</strong> Dean &amp; Sharfman (1996), »Does Decision Process Matter? A Study of Strategic Decision-Making Effectiveness«, <em>Academy of Management Journal</em>, 39(2), 368–396: 52 strategiske beslutninger i 24 virksomheder, med kontrol for omgivelsernes gunstighed og for implementeringen. Bruges til pointen, at processen omkring beslutningen hang sammen med beslutningens effektivitet — ikke som evidens for, at en bestemt proces forbedrer resultater i alle virksomheder.</div>
+
+    <p>De fem led nedenfor er min praktiske refleksionsramme. Ikke en modenhedsmodel, ikke en score og ikke en erstatning for beslutningsrettigheder. De bruges på ét beslutningsbehov ad gangen.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">Fra beslutningsbehov til bevægelse</div>
+      <div class="fw-sub">Thomas Friisnæs' praktiske refleksionsramme til ét beslutningsbehov ad gangen. Ingen score, intet indeks og ingen algoritme.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Valget</h4>
+          <p><strong>Hvad er det konkrete valg?</strong> »Vi skal have talt om prissætningen« er et emne. »Skal prisstrukturen ændres fra A til B for segment X med virkning fra 1. marts?« er et valg. Et beslutningsemne bliver først en beslutning, når det er skarpt nok til at kunne besvares.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Mandatet</h4>
+          <p><strong>Hvem har ret til at træffe valget — og på hvilket niveau?</strong> Navngiv beslutningsejeren, det forum, valget hører hjemme i, og vejen videre, hvis det skal et niveau op. Alle behøver ikke en stemme. Men de input, valget ikke kan træffes uden, skal være kendte.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Beslutningsklarheden</h4>
+          <p><strong>Hvad skal vi vide for at kunne træffe et ansvarligt valg — og hvad behøver vi ikke vide endnu?</strong> En beslutning er beslutningsklar, når valget er tilstrækkeligt afgrænset, den relevante beslutningstager er kendt, og grundlaget rækker til at tage ansvaret i den konkrete risikokontekst. Hvad der er tilstrækkeligt, afhænger af, hvad der står på spil, hvor svært valget er at gøre om, og hvor stor usikkerheden er. Der findes ingen procentregel for, hvor meget man skal vide.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Alderen</h4>
+          <p><strong>Hvor længe har behovet stået åbent, hvor længe har det været beslutningsklart, og hvad venter på det?</strong> Kender systemet kun datoen for registreringen, så sig det. Et ærligt upræcist ur er bedre end et opfundet præcist.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">5</div>
+        <div class="fw-step-body">
+          <h4>Lukningen</h4>
+          <p><strong>Er valget truffet, registreret og omsat til en tydelig næste handling?</strong> Fire spørgsmål afgør det: Hvad blev besluttet? Hvem ejer næste handling? Hvem skal vide det? Og kan det arbejde, der ventede, fortsætte nu? Om det besluttede også er gennemført, er et selvstændigt spørgsmål, der skal holdes adskilt.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Rammen ender ikke i en score. Den ender i to ting: <strong>et valg, der er blevet konkret nok til at kunne træffes — og et tidspunkt, hvor det bliver truffet.</strong></p>
+  </div>
+</section>
+
+<!-- 13 TIDLIGERE -->
+<section class="section" id="tidligere">
+  <div class="container">
+    <div class="section-label">13 — Seriens signatur</div>
+    <h2>Hvad kunne du se tidligere?</h2>
+    <p>Den første faste rubrik handler i Paper 05 om mønstre i beslutningsflowet, der kan gøre ventetid synlig, mens der stadig er tid til at spørge ind til den.</p>
+
+    <div class="sig sig-earlier">
+      <div class="sig-label">Seriens signatur · Paper 05</div>
+      <div class="sig-title">Hvad kunne du se tidligere?</div>
+      <table class="sig-table">
+        <thead>
+          <tr><th scope="col">Det, du kan se</th><th scope="col">Spørgsmålet, det rejser</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Antallet af åbne beslutningsbehov stiger</td><td data-label="Spørgsmålet, det rejser">Bliver der truffet færre valg — eller registrerer vi dem bare bedre?</td></tr>
+          <tr><td>Den ældste åbne beslutning med høj påvirkning bliver ældre</td><td data-label="Spørgsmålet, det rejser">Hvad venter på den, og hvem kan træffe den?</td></tr>
+          <tr><td>Medianen ser stabil ud, mens den ældste åbne beslutning vokser i alder</td><td data-label="Spørgsmålet, det rejser">Hvad er det, medianen ikke dækker?</td></tr>
+          <tr><td>Den samme beslutning vender tilbage i flere fora</td><td data-label="Spørgsmålet, det rejser">Er det uklart, hvor valget hører hjemme?</td></tr>
+          <tr><td>Flere beslutninger bliver eskaleret</td><td data-label="Spørgsmålet, det rejser">Er mandaterne uklare, eller hører beslutningerne faktisk hjemme højere oppe?</td></tr>
+          <tr><td>Deadlines passerer uden et eksplicit valg</td><td data-label="Spørgsmålet, det rejser">Blev der truffet en beslutning ved ikke at beslutte?</td></tr>
+          <tr><td>Initiativer melder »afventer beslutning«</td><td data-label="Spørgsmålet, det rejser">Hvilket konkret valg venter de på?</td></tr>
+          <tr><td>Beslutninger registreres som truffet, men næste handling har ingen ejer</td><td data-label="Spørgsmålet, det rejser">Hvad betyder »lukket« hos os?</td></tr>
+          <tr><td>»Vi mangler mere information« går igen på den samme sag</td><td data-label="Spørgsmålet, det rejser">Hvad er kriteriet for, at beslutningen er beslutningsklar?</td></tr>
+        </tbody>
+      </table>
+      <p class="sig-note"><strong>Illustrative signalhypoteser — ikke validerede ledende indikatorer, forudsigelser eller årsager.</strong></p>
+    </div>
+
+    <p>Ingen af mønstrene fortæller, at strategien er i fare. De peger på, hvor det kan betale sig at spørge — og hvad man skal spørge om.</p>
+  </div>
+</section>
+
+<!-- 14 KONKLUDERE -->
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="section-label">14 — Seriens signatur</div>
+    <h2>Hvad må du ikke konkludere?</h2>
+    <p>Den anden faste rubrik er vigtig her, fordi ventetid let bliver læst som en dom over en person eller over ledelsen.</p>
+
+    <div class="sig sig-conclude">
+      <div class="sig-label">Seriens signatur · Paper 05</div>
+      <div class="sig-title">Hvad må du ikke konkludere?</div>
+      <div class="sig-cols">
+        <div>
+          <h4>Ud fra en gammel eller åben beslutning alene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at ledelsen er ubeslutsom</li>
+            <li>at governance er dårlig</li>
+            <li>at valget burde have været truffet for længst</li>
+            <li>at der mangler et møde</li>
+            <li>at der mangler data</li>
+            <li>at én bestemt person blokerer</li>
+            <li>at beslutningen skal eskaleres</li>
+            <li>at mere decentralisering løser det</li>
+            <li>at strategien vil fejle</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ud fra en hurtig median alene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at beslutningskvaliteten er høj</li>
+            <li>at de vigtigste beslutninger går lige så hurtigt</li>
+            <li>at de åbne beslutninger er under kontrol</li>
+            <li>at mandatet er klart</li>
+            <li>at beslutningerne bliver implementeret</li>
+          </ul>
+          <h4>Ud fra en høj andel af lukkede beslutninger alene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at de rigtige valg blev truffet</li>
+            <li>at beslutningerne er ført ud i livet</li>
+            <li>at de mest kritiske beslutninger er lukket</li>
+            <li>at eksekveringen er sund</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sig-close">Et beslutningssignal kan gøre ventetid synlig. Det afgør ikke alene, om ventetiden er et problem, hvad der forklarer den, eller hvad ledelsen bør gøre.</div>
+    </div>
+
+    <p>Det gælder også opad. En bestyrelse behøver normalt ikke en rå beslutningslog eller en liste over alle åbne punkter. Men den kan have brug for at vide, om væsentlige commitments venter på et valg, om uafklarede tradeoffs på tværs af virksomheden er kendte, og om de beslutninger, der hører til dens eget niveau, rent faktisk er nået derhen.</p>
+  </div>
+</section>
+
+<!-- 15 DIAGNOSE -->
+<section class="section" id="diagnose">
+  <div class="container">
+    <div class="section-label">15 — Diagnose · 10 minutter</div>
+    <h2>Hvad venter på en beslutning?</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · CEO, direktionsmedlem eller Strategy Office · Skriftlig</div>
+      <div class="ex-meta">⏱ Cirka 10 minutter · Ingen score og ingen modenhedsvurdering.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Vælg ét strategisk initiativ. Find tre til fem beslutninger eller beslutningsbehov, som arbejdet aktuelt afhænger af. Svar skriftligt og i rækkefølge for hver af dem.</p>
+      <ol>
+        <li><strong>Hvad er det konkrete valg?</strong></li>
+        <li><strong>Hvem har mandatet?</strong></li>
+        <li><strong>På hvilket niveau bør valget træffes?</strong></li>
+        <li><strong>Er beslutningen faktisk beslutningsklar?</strong></li>
+        <li><strong>Hvad mangler i givet fald?</strong></li>
+        <li><strong>Hvornår blev behovet registreret?</strong></li>
+        <li><strong>Hvor længe har det stået åbent?</strong></li>
+        <li><strong>Hvilket arbejde eller commitment venter på det?</strong></li>
+        <li><strong>Hvad er næste konkrete beslutningstidspunkt?</strong></li>
+        <li><strong>Hvad betyder »lukket« for netop denne beslutning?</strong></li>
+      </ol>
+      <p style="font-size:15.5px;color:var(--text-mid);margin:22px 0 0;">Øvelsen ender ikke i en score, men i tre linjer: <strong>én beslutning, der bliver ældre · én uklarhed om mandat eller beslutningsklarhed · ét konkret næste beslutningstidspunkt.</strong> Kan du ikke besvare spørgsmål 8, er det også et svar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16 MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">16 — 2-minutters mikrohandling</div>
+    <h2>Spørg, hvad arbejdet venter på</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · ved næste strategigennemgang</span>
+      <h3>Ét spørgsmål og tre opfølgende. Ingen ny proces og intet ekstra møde.</h3>
+      <p>Spørg: <strong>»Hvilken beslutning venter det mest kritiske strategiske arbejde på lige nu?«</strong></p>
+      <p>Derefter: <strong>»Hvem har mandatet?«</strong> og <strong>»Hvad mangler, før valget kan træffes?«</strong></p>
+      <p>Er svaret på det sidste »ingenting«, så er der kun ét spørgsmål tilbage: <strong>»Hvornår bliver det så truffet?«</strong></p>
+      <p>Ingen regel om syv eller fjorten dage. Ingen automatisk eskalering. Det er et ledelsesspørgsmål, ikke en servicedeklaration.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">17 — Dit næste skridt</div>
+    <h2>Gør det konkret — og fortsæt din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 05 · Beslutninger er en del af produktionsapparatet</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv ét konkret næste skridt; det gemmes kun lokalt i din browser.</p>
+      <label for="commitText">Den beslutning, vi vil lukke eller gøre beslutningsklar, er …</label>
+      <p class="commit-note">Skriv det konkrete valg, hvem der har mandatet, hvilket niveau det hører til, hvornår behovet blev registreret, hvad det holder tilbage, hvad der mangler, næste governance-event, den planlagte beslutningsdato og den næste handling efter valget. Eksempel: »Valget om platform for den nye kundeløsning. Mandat: CTIO efter indstilling fra arkitekturforum. Registreret for 37 dage siden. Holder tre workstreams tilbage. Mangler et estimat på driftsomkostningen i begge scenarier. Behandles på direktionsmødet den 12., hvor valget træffes. Næste handling: arkitekturforum opdaterer designgrundlaget.« Eksemplet er en illustration, ikke en anbefaling.</p>
+      <textarea id="commitText" placeholder="Valget · mandat · niveau · registreret · hvad det holder tilbage · hvad der mangler · beslutningstidspunkt · næste handling"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit næste skridt</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Strategien sker mellem kvartalerne</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">18 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Er hurtigere beslutninger ikke bare bedre? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Forskningen i beslutningshastighed er kontekstafhængig: I ét studie hang hastighed kun sammen med højere performance i det af tre miljøer, der bevægede sig hurtigst, og i et andet blev sammenhængen mellem hastighed og beslutningskvalitet modereret af omgivelserne. Hastighed er et signal om flow, ikke et kvalitetsmål i sig selv (se <a href="#hurtig" style="color:var(--gold);">afsnit 07</a> og <a href="#tempo" style="color:var(--gold);">08</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvor mange dage må en strategisk beslutning tage? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Der findes ingen universel grænse. Det relevante er beslutningens type, hvad der står på spil, hvor svær den er at gøre om, hvor stor usikkerheden er, og hvad der venter på den. (Se <a href="#tempo" style="color:var(--gold);">afsnit 08</a>.)</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er en beslutning lukket, når den er truffet? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det afhænger af, hvad I mener med lukket. Valget kan være truffet, uden at det er registreret, kommunikeret og koblet til en næste handling — og uden at arbejdet er gennemført. De tre ting bør holdes adskilt i både sprog og system (se <a href="#closure" style="color:var(--gold);">afsnit 11</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er en gammel beslutning automatisk et problem? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Alder er et signal, ikke en diagnose. Nogle beslutninger holdes bevidst åbne, fordi det er klogere at vente. Det, der gør alderen ledelsesrelevant, er kombinationen af påvirkning, beslutningsklarhed og det arbejde, der venter (se <a href="#wip" style="color:var(--gold);">afsnit 10</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal gamle beslutninger bare eskaleres? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Eskalering giver mening, når mandatet, risikoen eller den tværgående konsekvens hører til et højere niveau. Er problemet i stedet, at valget ikke er afgrænset, eller at et nødvendigt grundlag mangler, flytter en eskalering kun sagen (se <a href="#mandat" style="color:var(--gold);">afsnit 09</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er en høj eskaleringsrate dårlig? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ikke automatisk. Den kan afspejle korrekt governance, hvor beslutninger med stor konsekvens finder det rigtige niveau. Den kan også afspejle uklare beslutningsrettigheder. Det er et signal, der bør undersøges, ikke en dom (se <a href="#mandat" style="color:var(--gold);">afsnit 09</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan en god median skjule et problem? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja. En median over trufne beslutninger beskriver ikke alderen på de beslutninger, der stadig er åbne, fordi de ikke indgår i beregningen. Derfor hører de to tal sammen (se <a href="#medianen" style="color:var(--gold);">afsnit 04</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er RACI ikke nok? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Rolletydelighed hjælper, og en ansvarsmatrix kan afklare, hvem der bør inddrages. Men et diagram beskriver roller, ikke flow. Det siger ikke i sig selv noget om, hvornår en beslutning er beslutningsklar, hvor gammelt behovet er, hvad der venter på valget, eller hvad der skal til, for at det regnes som lukket.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal beslutninger altid træffes lavest muligt i organisationen? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Det rigtige niveau afhænger af omfang, risiko, mandat og konsekvenser. Nogle valg hører hjemme tæt på arbejdet, andre hører hjemme i direktionen eller bestyrelsen. Pointen er, at niveauet er tydeligt, og at vejen derhen er kendt (se <a href="#mandat" style="color:var(--gold);">afsnit 09</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er beslutningsalder en ledende indikator? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej, ikke som en valideret ledende indikator. Alder på åbne beslutninger er et muligt eksekveringssignal, som kan gøre ventetid synlig tidligere end milepælene. Hvorvidt et signal faktisk går forud for resultaterne, er et selvstændigt spørgsmål, som serien vender tilbage til i Paper 07.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad gør jeg på mandag? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Find den ældste åbne beslutning med høj påvirkning, som faktisk holder strategisk arbejde tilbage. Afklar tre ting: mandatet, beslutningsklarheden og det næste beslutningstidspunkt. Mikrohandlingen i <a href="#action" style="color:var(--gold);">afsnit 16</a> tager to minutter, diagnosen i <a href="#diagnose" style="color:var(--gold);">afsnit 15</a> cirka ti.</div>
+    </details>
+  </div>
+</section>
+
+<!-- 19 HANDLING -->
+<section class="section" id="handling">
+  <div class="container">
+    <div class="section-label">19 — Fra analyse til handling</div>
+    <h2>Fra analyse til handling</h2>
+    <p>Spørgsmålet, paperet efterlader, kræver ikke et værktøj: <strong>Hvilken beslutning venter det mest kritiske strategiske arbejde på lige nu?</strong> Kan I svare på det ved næste strategigennemgang — med navn på valget, mandatet og datoen — har paperet gjort sit arbejde.</p>
+    <p>Det er alligevel rimeligt at sige, hvor jeg selv arbejder med spørgsmålet, og at jeg har en kommerciel interesse i det værktøj, jeg nævner her. Strategy Execution Observatory™ forsøger at gøre dele af beslutningsflowet synlige gennem registrerede beslutninger, tiden fra registrering til beslutning og alderen på de beslutninger, der stadig er åbne. Det er strukturerede signaler, ikke et mål for beslutningskvalitet.</p>
+    <p>Og paperets egen metodekritik gælder også mit eget værktøj: Medianen over trufne beslutninger viser ikke alderen på de åbne. »Besluttet« er ikke det samme som »implementeret«. Tærskler for, hvornår noget er gammelt, er valg truffet i en governance-sammenhæng, ikke naturlove. Og en eskalering er ikke automatisk et problem. Et signal bør udløse en undersøgelse, ikke en automatisk handling.</p>
+
+    <p class="pull-quote">Mit eget værktøj er underlagt samme krav: Hvis begreberne er uklare, gør et præcist tal dem ikke klarere.<cite>— Thomas Friisnæs</cite></p>
+
+    <div class="cta-box">
+      <div class="cta-label">Samtale</div>
+      <h3>Hvilken beslutning venter jeres vigtigste initiativ på?</h3>
+      <p>Vælg ét strategisk initiativ, der bevæger sig langsommere, end I havde regnet med. På 20 minutter kan vi skille tingene ad: hvilket valg der mangler, hvem der har mandatet, om beslutningen er klar til at blive truffet, og hvad der skal ske, for at arbejdet kan fortsætte.</p>
+      <a class="start-btn" href="/#kontakt">20 min. Ét problem. Én plan. →</a>
+      <p class="print-only">20 min. Ét problem. Én plan. · friisnaes.com/#kontakt</p>
+    </div>
+
+    <h3 style="margin-top:36px;">Næste problem</h3>
+    <p>Sæt nu, at valget er truffet, mandatet er klart, og næste handling har en ejer. Så kan eksekveringen stadig gå trægt. <strong>Beslutningen kan være truffet, uden at samarbejdet bagefter flyder. Når de samme tværgående problemer bliver ved med at vende tilbage, er de ikke kun irritation. De kan være data.</strong> Det er emnet for Paper 06.</p>
+
+    <div class="next-grid">
+      <div class="next-card soon" aria-disabled="true">
+        <div class="nc-tag">Paper 06 · Kommer</div>
+        <div class="nc-text"><strong>Friktion er data</strong> — når de samme tværgående problemer bliver ved med at vende tilbage</div>
+      </div>
+      <a class="next-card" href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">
+        <div class="nc-tag">Paper 04</div>
+        <div class="nc-text"><strong>Kapacitet findes ikke i planen</strong> — planlagt efterspørgsel, BAU, samtidighed og fælles begrænsninger</div>
+      </a>
+      <a class="next-card" href="/library.html">
+        <div class="nc-tag">Executive Library</div>
+        <div class="nc-text"><strong>Alle serier og papers</strong> om strategi, hold, eksekvering og kapacitet</div>
+      </a>
+      <a class="next-card" href="/ceo-sparring.html">
+        <div class="nc-tag">CEO-sparring</div>
+        <div class="nc-text"><strong>Hvad venter jeres eksekvering på?</strong> En fortrolig samtale, før spørgsmålet bliver til et projekt</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">Reviews og meta-analyse</div>
+    <ul>
+      <li>Kolev, K. D., Dykes, B. J., Kang, S., Hughes-Morgan, M. &amp; Ferrier, W. J. (2025). »Fast or slow? A meta-analysis on the performance implications of decision, implementation, and response speed.« <em>Journal of Management Scientific Reports</em>, 3(1), 40–67. <a href="https://doi.org/10.1177/27550311241291976" target="_blank" rel="noopener">doi.org/10.1177/27550311241291976</a></li>
+      <li>Shepherd, N. G. &amp; Rudd, J. M. (2014). »The Influence of Context on the Strategic Decision-Making Process: A Review of the Literature.« <em>International Journal of Management Reviews</em>, 16(3), 340–364. <a href="https://doi.org/10.1111/ijmr.12023" target="_blank" rel="noopener">doi.org/10.1111/ijmr.12023</a></li>
+    </ul>
+    <div class="sb-group">Empirisk forskning i strategiske beslutninger</div>
+    <ul>
+      <li>Eisenhardt, K. M. (1989). »Making Fast Strategic Decisions in High-Velocity Environments.« <em>Academy of Management Journal</em>, 32(3), 543–576. <a href="https://doi.org/10.5465/256434" target="_blank" rel="noopener">doi.org/10.5465/256434</a></li>
+      <li>Judge, W. Q. &amp; Miller, A. (1991). »Antecedents and Outcomes of Decision Speed in Different Environmental Context.« <em>Academy of Management Journal</em>, 34(2), 449–463. <a href="https://doi.org/10.5465/256451" target="_blank" rel="noopener">doi.org/10.5465/256451</a></li>
+      <li>Dean, J. W. &amp; Sharfman, M. P. (1996). »Does Decision Process Matter? A Study of Strategic Decision-Making Effectiveness.« <em>Academy of Management Journal</em>, 39(2), 368–396. <a href="https://doi.org/10.5465/256784" target="_blank" rel="noopener">doi.org/10.5465/256784</a></li>
+      <li>Shepherd, N. G., Mooi, E. A., Elbanna, S. &amp; Rudd, J. M. (2021). »Deciding Fast: Examining the Relationship between Strategic Decision Speed and Decision Quality across Multiple Environmental Contexts.« <em>European Management Review</em>, 18(2), 119–140. <a href="https://doi.org/10.1111/emre.12430" target="_blank" rel="noopener">doi.org/10.1111/emre.12430</a></li>
+    </ul>
+    <div class="sb-group">Autoritet og organisationsteori</div>
+    <ul>
+      <li>Aghion, P. &amp; Tirole, J. (1997). »Formal and Real Authority in Organizations.« <em>Journal of Political Economy</em>, 105(1), 1–29. Teoretisk model. <a href="https://doi.org/10.1086/262063" target="_blank" rel="noopener">doi.org/10.1086/262063</a></li>
+    </ul>
+    <div class="sb-group">Aktuel praktikerkontekst</div>
+    <ul>
+      <li>KPMG (2026). <em>2026 KPMG Adaptability Index</em>. Survey blandt 300 ledere på C-niveau og seniorniveau i amerikanske virksomheder, december 2025 til januar 2026. Praktikerundersøgelse; ikke forskning. <a href="https://kpmg.com/us/en/articles/2026/kpmg-adaptability-index.html" target="_blank" rel="noopener">kpmg.com</a></li>
+      <li>Aminov, I., De Smet, A., Jost, G. &amp; Mendelsohn, D. (2019). »Decision making in the age of urgency.« McKinsey &amp; Company, 30. april 2019. Survey blandt 1.259 respondenter; praktikermateriale. <a href="https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/decision-making-in-the-age-of-urgency" target="_blank" rel="noopener">mckinsey.com</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Begrebet strategisk observabilitet, metaforen »En beslutning, der venter, er strategisk WIP«, skellet mellem de tre ure, begrebet beslutningsklar, de tre slags lukning, frameworket »Fra beslutningsbehov til bevægelse«, signalhypoteserne i »Hvad kunne du se tidligere?«, diagnosen »Hvad venter på en beslutning?« og mikrohandlingen er Thomas Friisnæs' egne praktiske begreber og rammer, ikke validerede modeller. Studierne har hver deres kontekst: Eisenhardt undersøgte otte virksomheder i mikrocomputerbranchen i en periode med meget høj forandringshastighed; Judge og Miller sammenlignede tre brancher; Shepherd og kolleger byggede på 117 britiske virksomheder; Dean og Sharfman fulgte 52 beslutninger i 24 virksomheder; Aghion og Tirole er teori, ikke empiri; og Kolevs meta-analyse rapporterer gennemsnitlige sammenhænge på tværs af 127 studier, ikke årsagssammenhænge for den enkelte virksomhed. KPMG og McKinsey er praktikerkilder med selvrapporterede svar. Åbningscasen er konstrueret, alle tidsangivelser i eksemplerne er illustrative, og ingen tærskel i paperet er en universel regel. Danske gengivelser af engelske formuleringer er egne oversættelser.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Strategien sker mellem kvartalerne — serien</div>
+    <h2 class="collection-title">Ti papers om strategisk observabilitet</h2>
+    <p class="collection-intro">Serien handler om, hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang, og om at gøre det synligt uden at forveksle signaler med sandhed. <strong>Alle 10 papers er udgivet.</strong></p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Serie 06</span><span class="cpart-name">Strategien sker mellem kvartalerne</span></div>
+      <p class="cpart-desc">Fra informationsgabet over signaler, kapacitet, beslutninger og friktion til kompetencer, metode og governance.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/strategien-sker-mellem-kvartalerne.html">Strategien sker mellem kvartalerne</a></li>
+        <li data-n="02"><a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">Grøn er ikke det samme som sund</a></li>
+        <li data-n="03"><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">Det kvalitative kan godt kvantificeres</a></li>
+        <li data-n="04"><a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">Kapacitet findes ikke i planen</a></li>
+        <li data-n="05"><span class="current">Beslutninger er en del af produktionsapparatet — du læser dette</span></li>
+        <li data-n="06"><a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html">Friktion er data</a></li>
+        <li data-n="07"><a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">Før resultatet flytter sig</a></li>
+        <li data-n="08"><a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">Ved vi, om vi kan det, strategien kræver?</a></li>
+        <li data-n="09"><a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">Et indeks er ikke sandheden</a></li>
+        <li data-n="10"><a href="/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html">Demokratisér udsynet. Centralisér metoden.</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til næste strategimøde i direktionen eller bestyrelsen.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html">
+      <span class="ra-tag">Næste i serien · Paper 06</span>
+      <span class="ra-title">Friktion er data: Hvilket problem er I blevet gode til at løse igen og igen?</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 03</span>
+      <span class="ra-title">Det kvalitative kan godt kvantificeres: Hvad kan et tal på en vurdering bære?</span>
+    </a>
+    <a href="/holdet-bag-strategien-uenighed-uden-krig.html">
+      <span class="ra-tag">Holdet bag strategien · Paper 05</span>
+      <span class="ra-title">Uenighed uden krig: Relevant modsigelse før beslutningen — og opbakning efter</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Strategien sker mellem kvartalerne · Serie 06 · Paper 05 af 10</div>
+        <div class="series-next">Næste: <a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.35)">Friktion er data</a></div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: smk_ (Strategien sker mellem kvartalerne)
+  var LS_C = 'smk_p05_commit', LS_D = 'smk_done', PAPER_N = 5, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // FAQ åben i print, også når browserens egen udskriv-funktion bruges
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grøn er ikke det samme som sund | Strategisk observabilitet | Thomas Friisnæs</title>
+<meta name="description" content="En grøn status kan være korrekt uden at være et helhedsbillede. Paper 02 om statusfarver, eksekveringens sundhed, afhængigheder og strategisk observabilitet.">
+<meta name="keywords" content="RAG-status, statusrapportering, projektstatus, statusfarve, eksekveringens sundhed, execution health, strategisk observabilitet, porteføljestyring, afhængigheder, kapacitet, strategieksekvering, direktion">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">
+
+<meta property="og:title" content="Grøn er ikke det samme som sund | Strategisk observabilitet | Thomas Friisnæs">
+<meta property="og:description" content="Grøn fortæller dig kun noget om det, farven er defineret til at sammenfatte. Paper 02 om strategisk observabilitet: Grøn på hvad?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Thomas Friisnæs – Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Grøn er ikke det samme som sund">
+<meta name="twitter:description" content="Farven er ikke problemet. Uklarheden om, hvad den komprimerer, er. Paper 02 om statusfarver og strategisk observabilitet.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* Paper 02 — Farven og underlaget (Grøn på hvad?): redaktionel tabel, ingen trafiklysfarver */
+  .basis { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .basis-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .basis-head .bh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .basis-head .bh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .basis-head .bh-sub { font-size: 14px; line-height: 1.55; color: var(--text-light); margin: 6px 0 0; }
+  .basis-colour { display: flex; align-items: baseline; gap: 16px; padding: 16px 30px; border-bottom: 1px solid var(--border); }
+  .basis-colour .bc-name { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; min-width: 64px; }
+  .basis-colour .bc-desc { flex: 1; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .basis-colour .bc-value { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 24px; line-height: 1; color: var(--navy); }
+  .basis-table { width: 100%; border-collapse: collapse; }
+  .basis-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table th.bt-group { text-align: left; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; padding: 20px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table td { font-size: 15px; line-height: 1.5; color: var(--text-mid); padding: 11px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .basis-table td.bt-state { width: 34%; color: var(--navy); font-weight: 500; }
+  .basis-table td.bt-state.out { color: var(--text-light); font-weight: 400; }
+  .basis-table td.bt-state.unknown { color: var(--text-mid); font-weight: 400; font-style: italic; }
+  .basis-foot { padding: 16px 30px; background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 600px) {
+    .basis-head, .basis-colour, .basis-foot { padding-left: 20px; padding-right: 20px; }
+    .basis-colour { flex-wrap: wrap; row-gap: 4px; }
+    .basis-colour .bc-desc { flex-basis: 100%; order: 3; }
+    .basis-table thead { display: none; }
+    .basis-table th.bt-group { padding: 18px 20px 8px; }
+    .basis-table td { padding: 10px 20px; }
+    .basis-table td.bt-state { width: auto; white-space: nowrap; }
+  }
+  @media print {
+    .basis, .basis-table tr { page-break-inside: avoid; }
+    .basis-head, .basis-foot { background: #fff !important; }
+    body.print-econo .basis { border-color: #999 !important; }
+    body.print-econo .basis-head .bh-label, body.print-econo .basis-colour .bc-name, body.print-econo .basis-table th.bt-group { color: #333 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Grøn er ikke det samme som sund",
+ "alternativeHeadline": "Hvad fortæller statusfarven jer — og hvad ligger uden for den?",
+ "description": "En statusfarve kan være korrekt og stadig være utilstrækkelig som billede af eksekveringen. Paper 02 om status som kompression, skellet mellem status og eksekveringens sundhed, afhængigheder i porteføljen og spørgsmålet: Grøn på hvad?",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Strategien sker mellem kvartalerne",
+  "url": "https://www.friisnaes.com/library.html"
+ },
+ "position": 2,
+ "inLanguage": "da",
+ "keywords": "statusrapportering, RAG-status, eksekveringens sundhed, strategisk observabilitet, afhængigheder, porteføljestyring",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Strategien sker mellem kvartalerne · Paper 02 af 10</div>
+  <div class="pc-title">Grøn er ikke det samme som sund</div>
+  <div class="pc-sub">Hvad fortæller statusfarven jer — og hvad ligger uden for den?</div>
+  <div class="pc-author">Af Thomas Friisnæs · External Excellence Partner · Strategy Execution Governance · C-level-sparring · friisnaes.com · oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Strategisk observabilitet</span>
+      <span class="wp-series">Strategien sker mellem kvartalerne · Paper 02 af 10</span>
+      <span class="wp-readtime">ca. 20 min læsning</span>
+    </div>
+    <h1>Grøn er ikke <em>det samme som sund</em></h1>
+    <p class="wp-subtitle">Hvad fortæller statusfarven jer — og hvad ligger uden for den?</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · External Excellence Partner · Strategy Execution Governance · C-level-sparring<br>Udgivet oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">Alle fire er grønne</a></li>
+      <li><a href="#tesen">Farven er ikke problemet</a></li>
+      <li><a href="#kompression">Status er kompression</a></li>
+      <li><a href="#sundhed">Fremdrift og sundhed er to spørgsmål</a></li>
+      <li><a href="#rapportering">Når status også er kommunikation</a></li>
+      <li><a href="#underlaget">Hvad ligger uden for farven?</a></li>
+      <li><a href="#portefoeljen">Mellem initiativerne</a></li>
+      <li><a href="#framework">Framework: Fra farve til forståelse</a></li>
+      <li><a href="#tidligere">Hvad kunne du se tidligere?</a></li>
+      <li><a href="#konkludere">Hvad må du ikke konkludere?</a></li>
+      <li><a href="#diagnose">Diagnose: Hvad betyder grøn hos jer?</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit næste skridt</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#handling">Fra analyse til handling</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase · Et illustrativt eksempel</div>
+    <h2>Alle fire er grønne</h2>
+    <p>Direktionen gennemgår de fire initiativer, der er udpeget som de vigtigste for strategiens næste fase. Alle fire står grønne. Statusdefinitionen er klar og kendt af alle omkring bordet: Et initiativ er grønt, når milepælene nås til tiden, forbruget ligger inden for den aftalte tolerance, scope er uændret, og ingen kritisk risiko er indtruffet. Ingen har manipuleret med noget, og kriterierne er anvendt korrekt.</p>
+    <p>Så stiller CEO'en et spørgsmål, som rapporten ikke er bygget til at besvare: <strong>»Hvis de alle er grønne, hvilket af dem er jeg så mest bekymret for?«</strong></p>
+    <p>Svaret kommer ikke fra farverne, men fra de initiativansvarlige, når de bliver spurgt:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Fire grønne initiativer</div>
+      <ul class="dispo-list">
+        <li><strong>Initiativ A · Et nyt forretningsområde</strong> <em>→</em> fem tværgående beslutninger om blandt andet pris og salgskanaler har stået åbne usædvanligt længe.</li>
+        <li><strong>Initiativ B · En ny kommerciel model</strong> <em>→</em> følger milepælsplanen, men bruger de samme tre nøglepersoner som to andre strategiske initiativer.</li>
+        <li><strong>Initiativ C · En ny kundeplatform</strong> <em>→</em> har én central afhængighed til et andet program, som selv er begyndt at glide.</li>
+        <li><strong>Initiativ D · En omlægning af forsyningskæden</strong> <em>→</em> leverer efter planen, men teamets egen vurdering af, om det kan levere den næste fase, er faldet.</li>
+      </ul>
+    </div>
+
+    <p>Alle fire kan stadig med rette være grønne efter den aktuelle definition, og ingen af observationerne beviser, at et initiativ er ved at fejle. Beslutningerne kan have ventet af gode grunde, nøglepersonerne kan måske godt bære belastningen, programmet kan nå at rette op, og teamets vurdering kan være udtryk for nøgtern realisme. Men ingen af de fire forhold indgår udtrykkeligt i det, farven er defineret til at sammenfatte. Definitionen er kendt. Det, den lader ude, er bare aldrig blevet sagt højt.</p>
+    <p>CEO'ens spørgsmål bliver derfor kortere og mere præcist: <strong>»Grøn på hvad?«</strong> Det er ikke en anklage mod rapporteringen, og det er ikke en jagt på den »rigtige« farve bag den grønne. Farven svarer på ét defineret spørgsmål, og observationerne rejser andre spørgsmål, som også er relevante.</p>
+  </div>
+</section>
+
+<!-- 02 TESEN -->
+<section class="section" id="tesen">
+  <div class="container">
+    <div class="section-label">02 — Tesen</div>
+    <h2>Farven er ikke problemet</h2>
+    <p><a href="/strategien-sker-mellem-kvartalerne.html" style="color:var(--gold);">Paper 01</a> skelnede mellem resultatindsigt og eksekveringsindsigt: det, der er leveret, og det, der sker i processen, før det næste resultat er kendt. Dette paper tager næste skridt. Selv når en organisation allerede følger eksekveringen løbende, kan den status, ledelsen ser, udviske forskellen mellem det, farven faktisk sammenfatter, og andre forhold, der kan have betydning for eksekveringen.</p>
+    <p>Tesen er min egen syntese, ikke et forskningsresultat: <strong>En statusfarve kan være korrekt og stadig være utilstrækkelig som billede af eksekveringen.</strong> Den hviler ikke på en påstand om, at grøn status er forkert. Den hviler på det modsatte, nemlig at grøn kan være helt korrekt på de kriterier, farven faktisk sammenfatter.</p>
+    <p>Det fører til den sætning, som paperet i virkeligheden handler om: <strong>Grøn fortæller dig kun noget om det, farven er defineret til at sammenfatte. Hvis kapacitet, beslutningsflow eller afhængigheder ikke indgår, kan de være under pres, uden at farven skifter.</strong></p>
+
+    <p class="pull-quote">Farven er ikke problemet. Uklarheden om, hvad den komprimerer, er.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Titlen er en tilspidsning, og den skal læses præcist. Den påstår ikke, at grøn er usand, at RAG-status er et dårligt værktøj, at PMO'ens status er værdiløs, eller at rød er mere ærlig end grøn. Den påstår kun, at »grøn status« og et bredere billede af, om eksekveringen er sund, ikke nødvendigvis er det samme. Har en organisation defineret sin grønne status ud fra et bredt og gennemsigtigt sæt af forhold, kan farven rumme langt mere information. Så er det netop definitionen, der gør forskellen.</p>
+    <p>Ordet »sund« bruger jeg som praktisk kortform for det bredere mønster af aktuelle forhold i eksekveringen, ikke som en diagnose, en score eller en sandsynlighed for succes. Afsnit 04 gør begrebet præcist.</p>
+  </div>
+</section>
+
+<!-- 03 KOMPRESSION -->
+<section class="section" id="kompression">
+  <div class="container">
+    <div class="section-label">03 — Begrebet</div>
+    <h2>Status er kompression</h2>
+    <p>En status til ledelsen reducerer mange observationer til noget, der kan læses på et øjeblik: et tal, en farve, et ord, en pil eller en samlet vurdering. Det er ikke en svaghed. Det er det, status er til for. En direktion kan ikke læse alle initiativers rådata, og det bør den ikke forsøge.</p>
+    <p>RAG-status, altså rød, gul og grøn, findes af gode grunde. Farverne kan rette opmærksomheden mod det, der kræver den, gøre en stor portefølje overskuelig, give et fælles sprog, understøtte eskalering og sammenfatte status mod aftalte tærskler. <strong>En direktion med 30 initiativer har brug for kompression. Den har ikke brug for 30 projektmapper.</strong></p>
+    <p>Men kompression har en pris, som intet har med dårlig rapportering at gøre: <strong>Kompression betyder, at information vælges fra.</strong> Når flere dimensioner bliver til én status, forsvinder nogle forskelle. Det er ikke en empirisk påstand, der skal dokumenteres, men en følge af selve sammenfatningen. To initiativer, der adskiller sig på noget, farven ikke er defineret til at sammenfatte, kan få samme farve.</p>
+
+    <p class="pull-quote">Ledelsen har brug for kompression. Den skal bare vide, hvad der blev komprimeret væk.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Derfor har »grøn« ingen præcis ledelsesmæssig betydning uden den regel, der danner farven. Grøn kan betyde, at tidsplanen ligger inden for en aftalt afvigelse, at forbruget er inden for tolerancen, at milepælene er leveret, at ingen kritisk risiko er indtruffet, at den ansvarliges tiltro til leverancen ligger over en bestemt tærskel, eller at nogen har foretaget en samlet vurdering. Organisationer definerer farverne forskelligt, og der findes ikke én universel definition.</p>
+    <p>En samlet status kan rumme både målinger, tærskler og vurdering, og blandingen varierer. Selv en veldesignet status kan derfor indeholde måleusikkerhed, skøn og valg af, hvad der vægtes. Det gør ikke statusrapporter upålidelige. Det betyder, at en status kun kan fortolkes så godt, som dens kriterier, tærskler, sammenfatningsregel, tidshorisont, dataenes aktualitet og vurderingsproces er til at forstå. Metoden bag sammensatte mål får sit eget paper senere i serien. Her er pointen enklere: Definitionen betyder noget.</p>
+    <p>Et forbehold hører med fra starten. Ikke al strategieksekvering kan reduceres til initiativer med statusfarver. Eksekveringen foregår også i driftsmodellen, i adfærd, i kapabiliteter, i ressourceskift og i de beslutninger, der bliver truffet i den løbende forretning. Initiativstatus er én vigtig sammenhæng, hvor spørgsmålet »grøn på hvad?« er skarpt, men den er ikke hele strategieksekveringen.</p>
+  </div>
+</section>
+
+<!-- 04 SUNDHED -->
+<section class="section" id="sundhed">
+  <div class="container">
+    <div class="section-label">04 — Forskningen</div>
+    <h2>Fremdrift og sundhed er to spørgsmål</h2>
+    <p>Skellet mellem at måle fremdrift og at vurdere sundhed er ikke nyt. I projekt- og programlitteraturen beskrev Jaafari i 2007 en metode til at diagnosticere store projekters og programmers sundhed, og han var tydelig om, hvad den ikke var: Projektdiagnostik må ikke forveksles med måling og kontrol af fremdrift. Formålet er ikke at vurdere, hvor langt projektet er nået, og sammenligne det med planen, men at undersøge, om projektteamet anvender en systemisk tilgang til at planlægge og lede projektet. Sundheden vurderes ud fra de faktiske ledelsespraksisser på tværs af en række variabler, og ifølge Jaafari kan resultatet derefter holdes op mod den traditionelle fremdriftsmåling.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (metodepaper):</strong> Jaafari (2007), »Project and program diagnostics: A systemic approach«, <em>International Journal of Project Management</em>, 25(8), 781–790: præsenterer en metode til sundhedstjek af store projekter og programmer (»PH-Check«) og skelner den fra fremdriftsmåling og modenhedsmodeller. Et metodeforslag, ikke en validering, og en projekt- og programkontekst. Bruges alene til skellet mellem fremdrift og sundhed.</div>
+
+    <p>I et senere studie brugte Almahmoud, Doloi og Panuwatwanich et eksisterende sundhedstjek i tre byggeprojekter i Saudi-Arabien. De gennemgik projekternes performancehistorik ud fra de gældende performanceindikatorer, vurderede de ledelsesmæssige forudsætninger med sundhedstjekket og analyserede sammenhængene kvalitativt, blandt andet ud fra interviews med projektlederne. Deres pointe var, at de to billeder skal ses sammen. At koble forudsætningerne og udfaldene er ifølge forfatterne afgørende for effektiv performancestyring.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (kvalitativt casestudie):</strong> Almahmoud, Doloi &amp; Panuwatwanich (2012), »Linking project health to project performance indicators: Multiple case studies of construction projects in Saudi Arabia«, <em>International Journal of Project Management</em>, 30(3), 296–307: tre byggeprojekter i ét land, analyseret kvalitativt på tværs af casene. Ingen kausal validering og ingen strategiske porteføljer. Bruges til pointen, at der findes projektforskning, som skelner mellem forudsætninger og udfald og argumenterer for at se dem sammen.</div>
+
+    <p>Begge kilder kommer fra projektledelse, og begge bruger »sundhed« om noget snævrere end det, dette paper handler om, nemlig om ledelsespraksisserne i et projekt. Jeg bruger dem derfor ikke som dokumentation for en model af strategieksekvering, men som forløbere for et skel, der også giver mening på direktionsniveau: Fremdrift og sundhed er to forskellige spørgsmål. Projektlitteraturen er det evidensgrundlag, paperet bygger på her, men strategiske porteføljer kan adskille sig væsentligt fra enkeltprojekter.</p>
+    <p>Resten af paperet bygger på to arbejdsdefinitioner.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">To ord, der ikke er det samme</div>
+      <ul class="dispo-list">
+        <li><strong>Status</strong> <em>→</em> en repræsentation af den aktuelle position målt mod udvalgte kriterier, tærskler eller vurderingsregler.</li>
+        <li><strong>Eksekveringens sundhed</strong> <em>→</em> mit praktiske udtryk for det bredere mønster af aktuelle forhold og signaler, der har betydning for, om et initiativ fortsat kan bære den strategiske hensigt.</li>
+      </ul>
+    </div>
+
+    <p>Den anden definition er praktisk sprog, ikke en standard. Eksekveringens sundhed er ikke en medicinsk diagnose, ikke et valideret akademisk konstrukt, ikke en garanti for resultatet og ikke en score. Sund betyder heller ikke problemfri. En eksekvering kan rumme konflikt, risiko, forsinkelse og tilpasning og stadig være i stand til at få de relevante forhold frem, fortolke dem og reagere på dem.</p>
+  </div>
+</section>
+
+<!-- 05 RAPPORTERING -->
+<section class="section" id="rapportering">
+  <div class="container">
+    <div class="section-label">05 — Rapporteringen</div>
+    <h2>Når status også er kommunikation</h2>
+    <p>Statusrapportering kan rumme både måling og organisatorisk kommunikation. Hvor meget af hver afhænger af designet og konteksten. Forskningen i statusrapportering er et nyttigt korrektiv, men den skal bruges varsomt, fordi den let bliver læst som en anklage.</p>
+    <p>Iacovou, Thompson og Smith undersøgte i 2009 selektiv rapportering, når projektledere i it-projekter kommunikerer status til deres topledere. I en spørgeskemaundersøgelse blandt 561 projektledere fandt de en positiv sammenhæng mellem rapporteringskvalitet og projekternes performance, og en bestemt form for selektiv rapportering, optimistisk skævvridning, hang sammen med lavere rapporteringskvalitet. Tilbøjeligheden til at rapportere selektivt hang sammen med forhold i relationen mellem projektleder og topleder: direkte med toplederens magt, projektlederens tillid til toplederen og kvaliteten af toplederens kommunikation, og indirekte med toplederens fortrolighed med udviklingsprocessen og toplederens organisatoriske tilhørsforhold sammenlignet med projektlederens.</p>
+    <p>Pointen er ikke, at topledere er skyld i skæv rapportering, eller at projektledere pynter på status. Pointen er enklere og mere brugbar: Statusrapportering sker ikke i et organisatorisk vakuum.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (spørgeskemaundersøgelse):</strong> Iacovou, Thompson &amp; Smith (2009), »Selective Status Reporting in Information Systems Projects: A Dyadic-Level Investigation«, <em>MIS Quarterly</em>, 33(4), 785–810: besvarelser fra 561 projektledere i it-projekter. Sammenhængene stammer fra én spørgeskemaundersøgelse og kan ikke uden videre overføres til andre organisationer eller til strategiske porteføljer. Bruges til pointen, at statusrapportering sker i en organisatorisk sammenhæng, ikke til at placere skyld.</div>
+
+    <p>Et nyere studie gør billedet mere kompliceret. I 2023 analyserede Kaufmann og Kock 46.474 statusrapporter fra 1.229 projekter i én international virksomhed. De beskriver den samlede projektstatus som en enkel form, der potentielt er nyttig for beslutningstagere, men som er udsat for bias, fordi vurderingen er subjektiv. Resultatet kalder forfatterne selv overraskende og i modstrid med tidligere forskning, blandt andet Iacovou m.fl.: Optimistisk rapporteringsadfærd hang positivt sammen med projekternes senere performance, pessimistisk rapporteringsadfærd negativt. Med stigende færdiggørelsesgrad blev den positive sammenhæng svagere, og den negative sammenhæng for pessimistisk rapportering vendte og blev positiv. Ved gentagen adfærd var sammenhængene svagere for begge typer.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (longitudinelle projektdata):</strong> Kaufmann &amp; Kock (2023), »The performance effects of optimistic and pessimistic project status reporting behavior«, <em>International Journal of Project Management</em>, 41(7), 102514: 46.474 statusrapporter fra 1.229 projekter i hele projektdatabasen hos én international virksomhed (over 50.000 ansatte og over 10 mia. USD i årlig omsætning), der leverer kundespecifikke, komplekse maskiner. For hvert projekt og hver måned beregner forfatterne en hypotetisk gennemsnitsstatus ud fra objektive projektdata og undersøger sammenhængen mellem rapporteringsadfærden og projekternes senere performance. Et stort datasæt, men fra én virksomhed; resultaterne er sammenhænge, ikke årsagssammenhænge, og kan ikke uden videre generaliseres. Bruges som korrektiv til en forenklet forståelse af optimisme og pessimisme i statusrapporter.</div>
+
+    <p>Jeg vil ikke forsøge at forene de to resultater. Det er nok at konstatere, at de to studier ikke passer ind i en ligning, hvor optimisme er lig med uærlighed og pessimisme er lig med sandhed. Resultaterne er hverken et argument for optimistisk rapportering eller en grund til at tro, at en pessimistisk rapport er mere sand.</p>
+    <p><strong>Statusrapportering kan derfor være både måling og organisatorisk kommunikation; blandingen afhænger af design og kontekst.</strong> Det betyder ikke, at enhver status er politisk. Og for dette paper er det vigtigste noget andet: Argumentet hviler ikke på rapporteringsbias. Det holder, selv hvis alle rapporterer fuldstændig ærligt. <strong>En helt ærlig grøn status kan stadig være ufuldstændig, hvis kriterierne ikke omfatter de forhold, der er relevante for den beslutning, ledelsen står over for.</strong></p>
+  </div>
+</section>
+
+<!-- 06 UNDERLAGET -->
+<section class="section" id="underlaget">
+  <div class="container">
+    <div class="section-label">06 — Underlaget</div>
+    <h2>Hvad ligger uden for farven?</h2>
+    <p>Tilbage til de fire initiativer. De forhold, samtalen bragte frem, har én ting til fælles: Ingen af dem indgår udtrykkeligt i statusdefinitionen. Tværgående beslutninger, nøglepersoners samlede belastning, afhængigheder til andre programmer og teamets vurdering af næste fase kan alle være relevante for, om eksekveringen er sund, uden at de ændrer farven.</p>
+
+    <div class="basis" role="group" aria-label="Model: Farven og underlaget">
+      <div class="basis-head">
+        <div class="bh-label">Model · Grøn på hvad?</div>
+        <div class="bh-title">Farven og underlaget</div>
+        <p class="bh-sub">Illustration med statusdefinitionen fra åbningscasen.</p>
+      </div>
+      <div class="basis-colour">
+        <span class="bc-name">Farven</span>
+        <span class="bc-desc">Den komprimerede status, ledelsen ser</span>
+        <span class="bc-value">Grøn</span>
+      </div>
+      <table class="basis-table">
+        <thead>
+          <tr><th scope="col">Forhold</th><th scope="col">I den aktuelle definition</th></tr>
+        </thead>
+        <tbody>
+          <tr><th class="bt-group" colspan="2" scope="colgroup">Underlaget · det, farven er defineret til at sammenfatte</th></tr>
+          <tr><td>Milepæle nås til tiden</td><td class="bt-state" data-label="I den aktuelle definition">Indgår</td></tr>
+          <tr><td>Forbrug inden for den aftalte tolerance</td><td class="bt-state" data-label="I den aktuelle definition">Indgår</td></tr>
+          <tr><td>Uændret scope</td><td class="bt-state" data-label="I den aktuelle definition">Indgår</td></tr>
+          <tr><td>Ingen kritisk risiko er indtruffet</td><td class="bt-state" data-label="I den aktuelle definition">Indgår</td></tr>
+        </tbody>
+        <tbody>
+          <tr><th class="bt-group" colspan="2" scope="colgroup">Uden for underlaget · det, ledelsen ikke kan læse ud af farven</th></tr>
+          <tr><td>Alder på tværgående beslutninger</td><td class="bt-state out" data-label="I den aktuelle definition">Indgår ikke</td></tr>
+          <tr><td>Nøglepersoners samlede belastning</td><td class="bt-state out" data-label="I den aktuelle definition">Indgår ikke</td></tr>
+          <tr><td>Afhængigheder til andre programmer</td><td class="bt-state unknown" data-label="I den aktuelle definition">Ukendt</td></tr>
+          <tr><td>Teamets vurdering af næste fase</td><td class="bt-state out" data-label="I den aktuelle definition">Indgår ikke</td></tr>
+        </tbody>
+      </table>
+      <div class="basis-foot">Det betyder ikke, at initiativet er usundt. Det betyder, at den nuværende grønne status ikke besvarer de spørgsmål.</div>
+    </div>
+
+    <p>Modellen har tre lag. <strong>Farven</strong> er den komprimerede status, ledelsen ser. <strong>Underlaget</strong> er de definerede kriterier, tærskler og observationer, farven hviler på. Og <strong>uden for underlaget</strong> ligger de strategisk relevante forhold, som ikke indgår, eller hvor det ikke fremgår af definitionen, om de indgår. »Ukendt« dækker netop det sidste: Om et program, der glider, ville tælle som en indtruffet kritisk risiko, afhænger af en vurdering, som farven ikke viser.</p>
+    <p>Det yderste lag er ikke en fejl i rapporteringen. Ingen status kan rumme alt, og det skal den heller ikke. Spørgsmålet er, om udeladelserne er bevidste og kendte af dem, der bruger farven.</p>
+    <p>Her ligger paperets vigtigste skel. Spørgsmålet »er status korrekt?« er et andet spørgsmål end »dækker status nok til den beslutning, vi skal træffe?«. En korrekt grøn kan være for smal, og et bredt billede kan stadig være usikkert. <strong>Præcision og dækningsgrad er ikke det samme.</strong></p>
+
+    <p class="pull-quote">Et præcist svar på et for smalt spørgsmål er stadig et for smalt ledelsesgrundlag.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Den mest direkte måde at få dækningsgraden frem på er et spørgsmål, der lyder enklere, end det er: <strong>Hvad skal blive dårligere, før farven skifter?</strong> Er svaret »tidsplanen eller budgettet«, ved ledelsen, hvad grøn fanger. Så følger det andet spørgsmål: <strong>Hvad kan blive dårligere, uden at farven skifter?</strong> Det er det svar, der viser dækningen. <strong>Hvis direktionen ikke kan forklare, hvad der skal ændre sig, før grøn bliver gul, er status sværere at fortolke, end farven får den til at se ud.</strong></p>
+    <p>Se lidt nærmere på initiativ A. Milepælene er grønne, og budgettet er grønt. Samtidig vokser antallet af uafklarede beslutninger, eksponeringen mod afhængigheder stiger, og vurderingen af, om kapaciteten er realistisk, falder. Det gør ikke initiativet rødt. Den rigtige reaktion er hverken at farve det om eller at se bort fra signalerne, men at spørge, hvordan ledelsen skal fortolke billedet. <strong>Når farven og de øvrige signaler er uenige, har du ikke nødvendigvis et problem. Du har et bedre spørgsmål.</strong></p>
+    <p>Derfor undgår jeg udtryk som »den sande status« eller »rødt under overfladen«. Der findes ingen skjult farve under den grønne. Forskellige mål beskriver forskellige dimensioner, og opgaven er fortolkning. Det stiller til gengæld et enkelt krav til status, som følger af ordet »efterprøvbart« i Paper 01: <strong>En leder bør kunne spørge »hvorfor er den grøn?« og få et svar, der kan spores til kriterier og observationer.</strong> Det kræver ingen revision. Det kræver, at definitionen findes og kan forklares.</p>
+    <p>Den modsatte fejl ligger lige for. Svaret på én farve er ikke hundrede indikatorer. <strong>Et bredere billede er ikke det samme som et større dashboard.</strong> Målet er nogle få strategisk relevante forhold, ikke størst mulig dækning, og hvilke forhold der er relevante, afhænger af strategien. Kapacitet, afhængigheder, beslutningsflow, risiko, milepæle, kapabiliteter og tiltro er eksempler, ikke en universel liste. Intet af det erstatter den hårde leverancestatus. Milepæle, budget og scope bliver ikke mindre vigtige af at få kontekst, og vurderinger af kapacitet eller tiltro bør være supplerende, strukturerede observationer, ikke erstatninger for de finansielle og leverancemæssige mål.</p>
+    <p>Nogle organisationer er nået længere: <strong>Hvis jeres status allerede kombinerer leverance, kapacitet, afhængigheder, risiko og relevant vurdering på en gennemsigtig måde, er pointen ikke at erstatte den. Så er næste spørgsmål blot, om ledelsen ved, hvad farven betyder, og kan se de vigtigste modsignaler og udviklingen over tid.</strong></p>
+  </div>
+</section>
+
+<!-- 07 PORTEFOELJEN -->
+<section class="section" id="portefoeljen">
+  <div class="container">
+    <div class="section-label">07 — Porteføljen</div>
+    <h2>Mellem initiativerne</h2>
+    <p>Nogle af de vigtigste spørgsmål om eksekveringen ligger ikke inde i det enkelte initiativ, men mellem initiativerne. Initiativ B i åbningscasen er et eksempel. Det følger sin plan, men deler tre nøglepersoner med to andre strategiske initiativer. Hvert af de tre initiativer kan se gennemførligt ud for sig, mens de tilsammen konkurrerer om de samme få nøglepersoner, og det samme kan gælde teknologikapacitet og ledelsens opmærksomhed. <strong>Et initiativ kan være på plan isoleret set og samtidig skabe eller absorbere en kapacitets- eller afhængighedsrisiko på porteføljeniveau.</strong></p>
+    <p>Det samme mønster kan vise sig i den kommercielle strategi og i driften. Et vækstinitiativ kan være grønt på milepæle, mens den salgsorganisation, der skal bære lanceringen, også skal håndtere to andre lanceringer i samme kvartal. En ny kundeoplevelse kan være på plan i sit eget program og samtidig afhænge af en dataplatform, der glider. En omlægning af driften kan levere efter planen og samtidig trække på de samme specialister, som den kommercielle strategi har brug for. Hver status kan være korrekt, men ingen af dem er bygget til at vise det samlede billede.</p>
+    <p>Praktikere peger på et lignende behov. I en artikel fra april 2026 om store kapitalprojekter bygger McKinsey på samtaler med mere end to dusin topledere, der tilsammen har leveret kapitalprojekter for hundredvis af milliarder dollars. Lederne understregede, at topledelsen bør se under overfladen af »grøn status« og finde de signaler, der bør få den til at stille skarpere spørgsmål.</p>
+
+    <div class="research-note"><strong>Praktikerevidens (McKinsey &amp; Company, 2026):</strong> Kok, Parsons, Stokvis &amp; Danner, »An executive's survival guide to capital projects«, 29. april 2026: praktikerartikel fra en rådgivningsvirksomhed, bygget på samtaler med mere end to dusin topledere med erfaring fra store energi-, infrastruktur- og industriprojekter. Ikke forskning og ingen metode ud over samtalerne, og kapitalprojekter er en særlig kontekst. Bruges som illustration af et ledelsesbehov, ikke som dokumentation for, at grønne projekter skjuler problemer.</div>
+
+    <p>Gartner ser på strategiske porteføljer i en rapport fra 11. september 2026. Ifølge det offentligt tilgængelige abstract peger rapporten blandt andet på at koble initiativerne til målene, følge afhængighederne og skabe gennemsigtighed.</p>
+
+    <div class="research-note"><strong>Praktikervejledning (Gartner, 2026):</strong> Budgar &amp; Guerra, »Bridging the Strategy-Execution Gap: Proactive Monitoring for Strategic Portfolios«, Gartner, 11. september 2026: kun det offentligt tilgængelige abstract er anvendt. Aktuel praktikervejledning, ikke fagfællebedømt forskning og ikke årsagsevidens; metoden bag er ikke vurderet. Abstractets udsagn om bedre strategisk performance og om AI-understøttet monitorering bruges ikke. Bruges til pointen, at opfølgning på strategiske porteføljer også omfatter koblingen til målene, afhængighederne og gennemsigtigheden, ikke som validering af nogen model eller af et værktøj.</div>
+
+    <p>BCG nævner i en artikel fra januar 2026 om prioritering i transformationer begrænsninger som rækkefølge og indbyrdes afhængigheder, finansiering, kapabiliteter, teknologikapacitet og ledelsens tid og fokus.</p>
+
+    <div class="research-note"><strong>Praktikerperspektiv (BCG, 2026):</strong> Chau m.fl., »The Power of Priorities: Why Less Is More in a Transformation«, BCG, 9. januar 2026: praktikerartikel uden offentliggjort metode fra en rådgivningsvirksomhed. Artiklens tal bruges ikke. Bruges alene til pointen, at begrænsninger som rækkefølge, finansiering, kapabiliteter, teknologikapacitet og ledelsens tid og fokus kan ligge på tværs af initiativer.</div>
+
+    <p>Kilderne kommer fra forskellige praktikerkontekster: store kapitalprojekter, strategisk porteføljemonitorering og transformationer. De dokumenterer ikke en universel model for strategisk observabilitet og viser ikke, at kapacitetspres eller afhængigheder nødvendigvis fører til dårlige resultater. Anvendelsen er min: Hvis vigtige spørgsmål om eksekveringen ligger mellem initiativerne, kan man ikke forvente at finde svarene i initiativernes egne farver alene.</p>
+    <p>Det har betydning for, hvem der skal se hvad. Direktionen skal ikke gennemgå hvert datapunkt, og intet her er et argument for detailstyring. Ledelsen har brug for at kende statusdefinitionen, de væsentlige undtagelser, udviklingen over tid, de signaler, der går imod farven, og de afhængigheder, der går på tværs. En bestyrelse har normalt ikke brug for rå signaler, men den bør kunne stole på, at væsentlige bekymringer på porteføljeniveau ikke forsvinder, blot fordi de enkelte initiativer står grønne.</p>
+    <p>Her ligger en oplagt rolle for Strategy Office eller PMO. Funktionen kan definere ensartede statusregler, udfordre vurderinger, der ikke er underbygget, identificere signaler, der går imod farven, samle afhængighederne i porteføljen og skille undtagelser fra støj. Det er ikke en kritik af funktionen, men en beskrivelse af, hvor den kan skabe endnu mere værdi. Et enkelt spørgsmål til den næste porteføljegennemgang gør pointen praktisk: <strong>Hvilke af vores grønne initiativer deler nøglepersoner, teknologikapacitet eller afhængigheder?</strong></p>
+    <p>Min praktiske position er enkel, og den er ikke et forskningsresultat: <strong>Et strategikontor bør ikke blive mindre værdifuldt, blot fordi direktionen kan se mere selv.</strong> Når direktionen lettere har adgang til statusdefinitionen, de væsentlige modsignaler, udviklingen over tid og afhængighederne i porteføljen, kan mere af funktionens værdi ligge i rollen som metodeejer, kvalitetsvogter, porteføljefortolker og kvalificeret udfordrer af det, ledelsen ser, og mindre i, at statusinformationen går gennem den. Serien vender tilbage til spørgsmålet: Hvis direktionen kan se mere selv, hvor skaber strategikontoret så mest værdi?</p>
+  </div>
+</section>
+
+<!-- 08 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">08 — Frameworket</div>
+    <h2>Fra farve til forståelse</h2>
+    <p>De fem bevægelser nedenfor er min praktiske refleksionsramme, ikke en score og ikke en modenhedsmodel. De bruges på ét grønt initiativ ad gangen, og de ender ikke i en ny farve.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">Fra farve til forståelse</div>
+      <div class="fw-sub">Thomas Friisnæs' praktiske refleksionsramme til at forstå, hvad én grøn status dækker. Ingen score og ingen ny farve.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Definitionen</h4>
+          <p><strong>Hvad betyder grøn konkret hos os?</strong> Kan alle omkring direktionsbordet give det samme svar? Skriv kriterierne, tærsklerne og den tidshorisont, farven beskriver. Det kræver ikke en lang metodebeskrivelse, men et par linjer, som alle kan genkende.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Dækningen</h4>
+          <p><strong>Hvilke relevante eksekveringsforhold indgår i status — og hvilke gør ikke?</strong> Spørgsmålet handler om dækning, ikke om fuldstændighed. Ingen status kan rumme alt. Det afgørende er, at udeladelserne er bevidste.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Modsignalerne</h4>
+          <p><strong>Hvilke andre signaler bevæger sig anderledes end statusfarven?</strong> Det kan være beslutninger, der venter længere, stigende kapacitetspres, flere problemer i afhængighederne eller faldende tiltro. Et modsignal er ikke et bevis, men en grund til at undersøge nærmere.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Trenden</h4>
+          <p><strong>Er grøn stabil, eller er den grøn på vej mod tærsklen?</strong> En farve på et givet tidspunkt viser ikke i sig selv retning, hastighed eller afstand til tærsklen. Et forbrug lige inden for tolerancen og et forbrug med god margin til den giver samme farve, og en rød status kan være i hastig bedring. Det kræver ingen forudsigelsesmodel at se forskellen, kun det underliggende tal og udviklingen over tid. <strong>Farven viser positionen. Trenden kan vise bevægelsen.</strong> Viser jeres status allerede retningen, for eksempel med pile, er det godt.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">5</div>
+        <div class="fw-step-body">
+          <h4>Beslutningen</h4>
+          <p><strong>Hvilken beslutning ville vi træffe anderledes, hvis et af disse forhold ændrede sig?</strong> Er svaret »ingen«, skal forholdet ikke nødvendigvis ind i ledelsesinformationen. Det er samme disciplin som i Paper 01: Information fortjener sin plads, når den kan ændre et spørgsmål, en prioritering eller en beslutning.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Rammen giver hverken en farve, en sundhedsscore eller en anbefaling. Den giver tre linjer: <strong>én statusdefinition, ét dækningshul og ét signal, der er værd at undersøge.</strong></p>
+  </div>
+</section>
+
+<!-- 09 TIDLIGERE -->
+<section class="section" id="tidligere">
+  <div class="container">
+    <div class="section-label">09 — Seriens signatur</div>
+    <h2>Hvad kunne du se tidligere?</h2>
+    <p>Den første faste rubrik vender tilbage med et snævrere fokus i Paper 02: forhold, der kan bevæge sig, mens en bestemt del af status forbliver grøn.</p>
+
+    <div class="sig sig-earlier">
+      <div class="sig-label">Seriens signatur · Paper 02</div>
+      <div class="sig-title">Hvad kunne du se tidligere?</div>
+      <table class="sig-table">
+        <thead>
+          <tr><th scope="col">Grøn på</th><th scope="col">Mulige observationer uden for farven</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Milepæle</td><td data-label="Mulige observationer uden for farven">Tværgående beslutninger, der venter længere og længere</td></tr>
+          <tr><td>Budget</td><td data-label="Mulige observationer uden for farven">Flere initiativer, der konkurrerer om den samme kapacitet</td></tr>
+          <tr><td>Kritiske risici</td><td data-label="Mulige observationer uden for farven">Afhængigheder til andre initiativer eller programmer, der begynder at glide</td></tr>
+          <tr><td>Scope</td><td data-label="Mulige observationer uden for farven">Faldende tiltro i teamet eller usikkerhed om kapabiliteterne til næste fase</td></tr>
+        </tbody>
+      </table>
+      <p class="sig-note"><strong>Illustrative signalhypoteser — ikke ledende indikatorer og ikke årsagssammenhænge.</strong></p>
+    </div>
+
+    <p>Tabellen påstår ikke, at observationerne går forud for et problem. Den viser kun, hvilke spørgsmål en grøn farve ikke besvarer af sig selv. Om en bestemt observation har betydning, må vurderes ud fra relevante egne data, virksomhedens kontekst, ekstern evidens, hvor den findes, og kvalificeret dømmekraft.</p>
+  </div>
+</section>
+
+<!-- 10 KONKLUDERE -->
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="section-label">10 — Seriens signatur</div>
+    <h2>Hvad må du ikke konkludere?</h2>
+    <p>Den anden faste rubrik er symmetrisk med vilje. Den gælder både den grønne farve og det signal, der går imod den.</p>
+
+    <div class="sig sig-conclude">
+      <div class="sig-label">Seriens signatur · Paper 02</div>
+      <div class="sig-title">Hvad må du ikke konkludere?</div>
+      <div class="sig-cols">
+        <div>
+          <h4>Ud fra en grøn status alene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at initiativet er sundt</li>
+            <li>at det vil lykkes</li>
+            <li>at der ikke er brug for at gribe ind</li>
+            <li>at teamet har tiltro til leverancen</li>
+            <li>at kapaciteten er realistisk</li>
+            <li>at afhængighederne er under kontrol</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ud fra ét negativt signal alene kan du ikke konkludere …</h4>
+          <ul>
+            <li>at initiativet er usundt</li>
+            <li>at status burde være gul eller rød</li>
+            <li>at ledelsen fejler</li>
+            <li>at resultatet vil blive dårligere</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sig-close">Farven retter opmærksomheden. Den afslutter ikke fortolkningen.</div>
+    </div>
+
+    <p>De tre sidste punkter om den grønne status gælder, medmindre jeres definition af grøn udtrykkeligt omfatter det pågældende forhold. Symmetrien gælder også rød. <strong>Rød er heller ikke en diagnose.</strong> Rød kan betyde, at en tærskel er overskredet, at nogen beder om opmærksomhed, at et problem er indtruffet, eller at der er en bekymring for det, der kommer. Farven siger ikke, hvad årsagen er. <strong>En statusfarve er ofte mest nyttig som et opmærksomhedssignal, ikke som en færdig diagnose.</strong></p>
+  </div>
+</section>
+
+<!-- 11 DIAGNOSE -->
+<section class="section" id="diagnose">
+  <div class="container">
+    <div class="section-label">11 — Diagnose · 10 minutter</div>
+    <h2>Hvad betyder grøn hos jer?</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · CEO, direktionsmedlem eller strategiansvarlig · Skriftlig</div>
+      <div class="ex-meta">⏱ Cirka 10 minutter · Ingen score og ingen ny farve. Øvelsen skal ende i én definition af grøn, ét forhold, farven ikke dækker, og ét opfølgende spørgsmål.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Vælg ét strategisk vigtigt initiativ, der står grønt lige nu. Svar skriftligt og i rækkefølge.</p>
+      <ol>
+        <li><strong>Hvad betyder grøn konkret for dette initiativ?</strong></li>
+        <li><strong>Hvilke kriterier indgår?</strong></li>
+        <li><strong>Hvilke tærskler eller vurderinger afgør status?</strong></li>
+        <li><strong>Hvilken tidshorisont beskriver den?</strong></li>
+        <li><strong>Hvilke relevante eksekveringsforhold indgår ikke?</strong></li>
+        <li><strong>Hvilket af de forhold kunne ændre sig væsentligt, uden at farven skifter?</strong></li>
+        <li><strong>Er nogen af de relevante signaler begyndt at bevæge sig?</strong></li>
+        <li><strong>Er status alene et øjebliksbillede, eller kan I også se retningen?</strong></li>
+        <li><strong>Hvilke afhængigheder til andre initiativer er ikke synlige i farven?</strong></li>
+        <li><strong>Hvilken ledelsesbeslutning kunne et af de signaler realistisk påvirke?</strong></li>
+      </ol>
+      <p style="font-size:15.5px;color:var(--text-mid);margin:22px 0 0;">Øvelsen ender ikke i en vurdering af, om jeres statusrapportering er god, men i tre korte linjer: <strong>én definition af grøn, ét forhold, farven ikke dækker, og ét opfølgende spørgsmål.</strong> Kan I ikke besvare spørgsmål 1 uden at slå det op, er det også et svar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 12 MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">12 — 2-minutters mikrohandling</div>
+    <h2>Stil ét ekstra spørgsmål til den næste grønne status</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · ved næste statusgennemgang</span>
+      <h3>Ét spørgsmål og to opfølgende. Intet nyt dashboard.</h3>
+      <p>Når det næste initiativ bliver præsenteret som grønt, så spørg: <strong>»Grøn på hvad?«</strong></p>
+      <p>Derefter: <strong>»Hvad kan ændre sig væsentligt, uden at denne farve skifter?«</strong> og <strong>»Er noget af det allerede ved at bevæge sig?«</strong></p>
+      <p>Spørg til definitionen, ikke til den, der præsenterer. Og stop så der. Spørgsmålene kræver ingen ny rapport; de viser kun, om farven kan forklares.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">13 — Dit næste skridt</div>
+    <h2>Gør det konkret — og fortsæt din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 02 · Grøn er ikke det samme som sund</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv ét konkret næste skridt; det gemmes kun lokalt i din browser.</p>
+      <label for="commitText">Den grønne status, vi vil forstå bedre, er …</label>
+      <p class="commit-note">Skriv initiativet, hvad grøn er defineret på, ét forhold eller signal, farven ikke dækker, og det spørgsmål, I vil undersøge. Eksempel: »Initiativ X er grønt på milepæle og budget. Vi vil undersøge, om den fælles it-kapacitet og de åbne tværgående beslutninger bør være en del af ledelsens kontekst omkring status.« Eksemplet er en illustration, ikke en anbefaling.</p>
+      <textarea id="commitText" placeholder="Initiativ · grøn på · forhold uden for farven · spørgsmål"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit næste skridt</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Strategien sker mellem kvartalerne</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">14 — Ofte stillede spørgsmål</div>
+    <h2>FAQ</h2>
+    <details class="faq-item">
+      <summary class="faq-q">Er RAG-status så et dårligt værktøj? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. En klar statusfarve kan være fremragende kompression. Den gør en stor portefølje overskuelig, retter opmærksomheden og understøtter eskalering. Den skal bare have en definition, som dem, der bruger den, kender (se <a href="#kompression" style="color:var(--gold);">afsnit 03</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvis et initiativ er grønt, hvorfor skal vi så lede efter problemer? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ikke af mistanke. Pointen er ikke at jagte problemer i grønne initiativer, men at forstå, hvad status indeholder, og hvad den ikke indeholder.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal vi så have otte nye KPI'er på hvert initiativ? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Et bredere billede er ikke det samme som et større dashboard. Målet er nogle få forhold, der er relevante for netop jeres strategi, og kun dem, der kan ændre en beslutning.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er en grøn status subjektiv? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Det afhænger af designet. Nogle elementer kan være objektive tærskler, for eksempel en maksimal afvigelse fra tidsplanen eller en budgettolerance. Men sammenfatningen og den samlede vurdering kan stadig rumme skøn.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er optimistisk statusrapportering et stort problem? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">De to studier giver ikke grundlag for en enkel regel om, at optimistisk rapportering er dårligere og pessimistisk rapportering bedre. Iacovou, Thompson og Smith (2009) fandt, at optimistisk skævvridning hang sammen med lavere rapporteringskvalitet, mens Kaufmann og Kock (2023) fandt en positiv sammenhæng mellem optimistisk rapporteringsadfærd og projekternes senere performance. Ingen af delene berettiger en generel mistanke til grønne statusser (se <a href="#rapportering" style="color:var(--gold);">afsnit 05</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal status blive rød, hvis et andet signal ser dårligt ud? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ikke nødvendigvis. Et signal åbner en undersøgelse. Statusreglen bør ikke ændres fra sag til sag, for så mister farven den betydning, den har (se <a href="#underlaget" style="color:var(--gold);">afsnit 06</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er det her ikke bare project health checks? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Slægtskabet er reelt. Projektlitteraturen skelner allerede mellem diagnostik af sundhed og måling af fremdrift (se <a href="#sundhed" style="color:var(--gold);">afsnit 04</a>). Strategisk observabilitet bruger skellet på et andet niveau: strategien, porteføljen og de afhængigheder, der går på tværs af initiativer.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad hvis vores grønne status allerede indeholder alle disse forhold? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Fremragende. Så flytter udfordringen sig til definitionens kvalitet, udviklingen over tid, samspillet i porteføljen og spørgsmålet om, hvorvidt ledelsen kan fortolke farven.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er sundhed det samme som sandsynligheden for succes? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Eksekveringens sundhed er i serien et praktisk udtryk for det bredere mønster af aktuelle forhold og signaler, der har betydning for eksekveringen. Det er hverken en sandsynlighed, en score eller en garanti.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Handler det her kun om projekter? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Forskningen i paperet kommer fra projekter og programmer. Men strategieksekvering foregår også i driftsmodellen, i kapabiliteter, i ressourceskift og i løbende beslutninger, og strategiske porteføljer kan adskille sig væsentligt fra enkeltprojekter.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad gør jeg på mandag? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Mikrohandlingen i <a href="#action" style="color:var(--gold);">afsnit 12</a>: Når det næste initiativ bliver præsenteret som grønt, så spørg: »Grøn på hvad?«</div>
+    </details>
+  </div>
+</section>
+
+<!-- 15 HANDLING -->
+<section class="section" id="handling">
+  <div class="container">
+    <div class="section-label">15 — Fra analyse til handling</div>
+    <h2>Fra analyse til handling</h2>
+    <p>Spørgsmålet, paperet efterlader, kræver ikke et værktøj: Hvad er jeres grønne status egentlig grøn på?</p>
+    <p>Det er alligevel rimeligt at sige, hvor jeg selv arbejder med spørgsmålet, og at jeg har en kommerciel interesse i det værktøj, jeg nævner her. Strategy Execution Observatory™ er mit praktiske forsøg på at arbejde med netop denne forskel. I stedet for at erstatte den eksisterende status supplerer det leverancebilledet med et begrænset sæt andre execution-signaler. Formålet er ikke at »korrigere« grøn til en anden farve eller at finde den »rigtige« farve, men at give ledelsen mere kontekst til at forstå den.</p>
+    <p>Værktøjet afgør ikke, om et initiativ er sundt. Det kan give definerede signaler, udviklingen i dem over tid og et billede, hvor metode og datakvalitet er forvaltet. Fortolkningen forbliver menneskelig. Synlighed er ikke diagnose.</p>
+
+    <div class="cta-box">
+      <div class="cta-label">Samtale</div>
+      <h3>Hvad betyder grøn hos jer?</h3>
+      <p>Vælg ét strategisk initiativ, der står grønt lige nu. På 20 minutter kan vi skille ad, hvad farven faktisk bygger på, hvilke relevante forhold der ligger uden for den, og om noget af det bør være synligt for ledelsen.</p>
+      <a class="start-btn" href="/#kontakt">20 min. Ét problem. Én plan. →</a>
+      <p class="print-only">20 min. Ét problem. Én plan. · friisnaes.com/#kontakt</p>
+    </div>
+
+    <h3 style="margin-top:36px;">Næste problem</h3>
+    <p>Når ledelsen først har accepteret, at én status ikke nødvendigvis rummer alle relevante forhold, er initiativ D et godt billede på det, der kommer bagefter. Teamets vurdering af næste fase er relevant information, men den er en vurdering, ikke en måling. <strong>Hvis det, der ligger uden for farven, blandt andet er kapacitetsvurderinger, friktion, tiltro og kompetenceparathed, opstår næste problem med det samme: Kan man overhovedet gøre den slags systematisk målbart uden at gøre bløde vurderinger til falsk objektivitet?</strong></p>
+
+    <div class="next-grid">
+      <div class="next-card soon" aria-disabled="true">
+        <div class="nc-tag">Paper 03 · Kommer</div>
+        <div class="nc-text"><strong>Det kvalitative kan godt kvantificeres</strong> — når vurderinger skal kunne følges over tid</div>
+      </div>
+      <a class="next-card" href="/strategien-sker-mellem-kvartalerne.html">
+        <div class="nc-tag">Paper 01</div>
+        <div class="nc-text"><strong>Strategien sker mellem kvartalerne</strong> — resultatindsigt, eksekveringsindsigt og informationsforsinkelse</div>
+      </a>
+      <a class="next-card" href="/library.html">
+        <div class="nc-tag">Executive Library</div>
+        <div class="nc-text"><strong>Alle serier og papers</strong> om strategi, hold, eksekvering og kapacitet</div>
+      </a>
+      <a class="next-card" href="/ceo-sparring.html">
+        <div class="nc-tag">CEO-sparring</div>
+        <div class="nc-text"><strong>Hvad kan direktionen se, og hvad kan den ikke?</strong> En fortrolig samtale, før spørgsmålet bliver til et projekt</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">Projekt- og programforskning</div>
+    <ul>
+      <li>Jaafari, A. (2007). »Project and program diagnostics: A systemic approach.« <em>International Journal of Project Management</em>, 25(8), 781–790. <a href="https://doi.org/10.1016/j.ijproman.2007.05.008" target="_blank" rel="noopener">doi.org/10.1016/j.ijproman.2007.05.008</a></li>
+      <li>Almahmoud, E. S., Doloi, H. K. &amp; Panuwatwanich, K. (2012). »Linking project health to project performance indicators: Multiple case studies of construction projects in Saudi Arabia.« <em>International Journal of Project Management</em>, 30(3), 296–307 (online 2011). <a href="https://doi.org/10.1016/j.ijproman.2011.07.001" target="_blank" rel="noopener">doi.org/10.1016/j.ijproman.2011.07.001</a></li>
+    </ul>
+    <div class="sb-group">Forskning i statusrapportering</div>
+    <ul>
+      <li>Iacovou, C. L., Thompson, R. L. &amp; Smith, H. J. (2009). »Selective Status Reporting in Information Systems Projects: A Dyadic-Level Investigation.« <em>MIS Quarterly</em>, 33(4), 785–810. <a href="https://aisel.aisnet.org/misq/vol33/iss4/11" target="_blank" rel="noopener">aisel.aisnet.org</a></li>
+      <li>Kaufmann, C. &amp; Kock, A. (2023). »The performance effects of optimistic and pessimistic project status reporting behavior.« <em>International Journal of Project Management</em>, 41(7), 102514. <a href="https://doi.org/10.1016/j.ijproman.2023.102514" target="_blank" rel="noopener">doi.org/10.1016/j.ijproman.2023.102514</a></li>
+    </ul>
+    <div class="sb-group">Praktikerkilder</div>
+    <ul>
+      <li>Kok, E., Parsons, J., Stokvis, K. &amp; Danner, K. (2026). »An executive's survival guide to capital projects.« McKinsey &amp; Company, 29. april 2026. Praktikerartikel fra en rådgivningsvirksomhed, bygget på samtaler med topledere; ikke forskning. <a href="https://www.mckinsey.com/capabilities/operations/our-insights/an-executives-survival-guide-to-capital-projects" target="_blank" rel="noopener">mckinsey.com</a></li>
+      <li>Budgar, E. &amp; Guerra, A. B. (2026). »Bridging the Strategy-Execution Gap: Proactive Monitoring for Strategic Portfolios.« Gartner, 11. september 2026. Praktikervejledning; kun det offentligt tilgængelige abstract er anvendt. <a href="https://www.gartner.com/en/documents/8375749" target="_blank" rel="noopener">gartner.com</a></li>
+      <li>Chau, G., Sood, V., Brown, A., Baker, A., Ellmer, K., Weinstein, S. &amp; Catchlove, P. (2026). »The Power of Priorities: Why Less Is More in a Transformation.« BCG, 9. januar 2026. Praktikerartikel fra en rådgivningsvirksomhed. <a href="https://www.bcg.com/publications/2026/the-power-of-priorities-in-a-transformation" target="_blank" rel="noopener">bcg.com</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Tesen om statusfarven, sætningen om, hvad grøn fortæller, »Farven er ikke problemet. Uklarheden om, hvad den komprimerer, er.«, begrebet »status er kompression«, arbejdsdefinitionerne af status og eksekveringens sundhed, modellen »Farven og underlaget«, »Præcision og dækningsgrad er ikke det samme«, de fem bevægelser i »Fra farve til forståelse«, diagnosen »Hvad betyder grøn hos jer?«, positionen om strategikontorets værdi og rubrikkerne »Hvad kunne du se tidligere?« og »Hvad må du ikke konkludere?« er Thomas Friisnæs' egne praktiske begreber og rammer, ikke validerede modeller. Forskningen om status og sundhed kommer fra projekter og programmer; strategiske porteføljer kan adskille sig væsentligt. Observationerne i tabellerne er illustrative hypoteser. Åbningscasen er et konstrueret, illustrativt eksempel. Danske gengivelser af engelske formuleringer er egne oversættelser.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Strategien sker mellem kvartalerne — serien</div>
+    <h2 class="collection-title">Ti papers om strategisk observabilitet</h2>
+    <p class="collection-intro">Serien handler om, hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang, og om at gøre det synligt uden at forveksle signaler med sandhed. <strong>Alle 10 papers er udgivet.</strong></p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Serie 06</span><span class="cpart-name">Strategien sker mellem kvartalerne</span></div>
+      <p class="cpart-desc">Fra informationsgabet over signaler, kapacitet, beslutninger og friktion til kompetencer, metode og governance.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/strategien-sker-mellem-kvartalerne.html">Strategien sker mellem kvartalerne</a></li>
+        <li data-n="02"><span class="current">Grøn er ikke det samme som sund — du læser dette</span></li>
+        <li data-n="03"><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">Det kvalitative kan godt kvantificeres</a></li>
+        <li data-n="04"><a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">Kapacitet findes ikke i planen</a></li>
+        <li data-n="05"><a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">Beslutninger er en del af produktionsapparatet</a></li>
+        <li data-n="06"><a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html">Friktion er data</a></li>
+        <li data-n="07"><a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">Før resultatet flytter sig</a></li>
+        <li data-n="08"><a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">Ved vi, om vi kan det, strategien kræver?</a></li>
+        <li data-n="09"><a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">Et indeks er ikke sandheden</a></li>
+        <li data-n="10"><a href="/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html">Demokratisér udsynet. Centralisér metoden.</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til næste strategimøde i direktionen eller bestyrelsen.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">
+      <span class="ra-tag">Næste i serien · Paper 03</span>
+      <span class="ra-title">Det kvalitative kan godt kvantificeres: Hvad kan et tal på en vurdering bære?</span>
+    </a>
+    <a href="/prioriteringsparalysen.html">
+      <span class="ra-tag">Eksekveringsserien · Paper 02</span>
+      <span class="ra-title">Prioriteringsparalysen: Når alt er vigtigt, bliver intet rigtig vigtigt</span>
+    </a>
+    <a href="/holdet-bag-strategien-virksomheden-foer-funktionen.html">
+      <span class="ra-tag">Holdet bag strategien · Paper 04</span>
+      <span class="ra-title">Virksomheden før funktionen</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Strategien sker mellem kvartalerne · Serie 06 · Paper 02 af 10</div>
+        <div class="series-next">Næste: <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.35)">Det kvalitative kan godt kvantificeres</a></div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: smk_ (Strategien sker mellem kvartalerne)
+  var LS_C = 'smk_p02_commit', LS_D = 'smk_done', PAPER_N = 2, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // FAQ åben i print, også når browserens egen udskriv-funktion bruges
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

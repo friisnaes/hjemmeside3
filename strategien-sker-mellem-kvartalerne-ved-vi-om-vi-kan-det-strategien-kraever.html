@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ved vi, om vi kan det, strategien kræver? | Strategisk observabilitet | Thomas Friisnæs</title>
+<meta name="description" content="Kompetencer er ikke det samme som organisatorisk evne. Paper 08 om capability readiness, evidens og de evner, strategien faktisk forudsætter.">
+<meta name="keywords" content="strategieksekvering, organisatorisk capability, organisatorisk evne, competence readiness, capability readiness, kompetenceparathed, evidens, organizational readiness, strategisk observabilitet, governance, Strategy Office">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">
+
+<meta property="og:title" content="Ved vi, om vi kan det, strategien kræver? | Strategisk observabilitet | Thomas Friisnæs">
+<meta property="og:description" content="At kompetencerne findes, er ikke det samme som, at organisationen kan det, strategien kræver. Paper 08 om strategisk observabilitet.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:alt" content="Thomas Friisnæs – Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:published_time" content="2026-10-01">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ved vi, om vi kan det, strategien kræver?">
+<meta name="twitter:description" content="Hvilken organisatorisk evne forudsætter strategien — og hvad er vores bevis? Paper 08 om kompetence, evne og evidens.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* Paper 02 — Farven og underlaget (Grøn på hvad?): redaktionel tabel, ingen trafiklysfarver */
+  .basis { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .basis-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .basis-head .bh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .basis-head .bh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .basis-head .bh-sub { font-size: 14px; line-height: 1.55; color: var(--text-light); margin: 6px 0 0; }
+  .basis-colour { display: flex; align-items: baseline; gap: 16px; padding: 16px 30px; border-bottom: 1px solid var(--border); }
+  .basis-colour .bc-name { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; min-width: 64px; }
+  .basis-colour .bc-desc { flex: 1; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .basis-colour .bc-value { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 24px; line-height: 1; color: var(--navy); }
+  .basis-table { width: 100%; border-collapse: collapse; }
+  .basis-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table th.bt-group { text-align: left; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; padding: 20px 30px 8px; border-bottom: 1px solid var(--border); }
+  .basis-table td { font-size: 15px; line-height: 1.5; color: var(--text-mid); padding: 11px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .basis-table td.bt-state { width: 34%; color: var(--navy); font-weight: 500; }
+  .basis-table td.bt-state.out { color: var(--text-light); font-weight: 400; }
+  .basis-table td.bt-state.unknown { color: var(--text-mid); font-weight: 400; font-style: italic; }
+  .basis-foot { padding: 16px 30px; background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 600px) {
+    .basis-head, .basis-colour, .basis-foot { padding-left: 20px; padding-right: 20px; }
+    .basis-colour { flex-wrap: wrap; row-gap: 4px; }
+    .basis-colour .bc-desc { flex-basis: 100%; order: 3; }
+    .basis-table thead { display: none; }
+    .basis-table th.bt-group { padding: 18px 20px 8px; }
+    .basis-table td { padding: 10px 20px; }
+    .basis-table td.bt-state { width: auto; white-space: nowrap; }
+  }
+  @media print {
+    .basis, .basis-table tr { page-break-inside: avoid; }
+    .basis-head, .basis-foot { background: #fff !important; }
+    body.print-econo .basis { border-color: #999 !important; }
+    body.print-econo .basis-head .bh-label, body.print-econo .basis-colour .bc-name, body.print-econo .basis-table th.bt-group { color: #333 !important; }
+  }
+
+  /* Paper 03 — Samme tal. Forskelligt billede.: én redaktionel talkomponent, ingen farver og ingen graf */
+  .spread { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .spread-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .spread-head .sp-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .spread-head .sp-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .spread-groups { display: grid; grid-template-columns: 1fr 1fr; }
+  .sp-group { padding: 30px 26px 26px; text-align: center; }
+  .sp-group + .sp-group { border-left: 1px solid var(--border); }
+  .sp-name { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 12px; }
+  .sp-values { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(32px, 4.6vw, 44px); font-weight: 400; line-height: 1.1; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .sp-values .sp-dot { display: inline-block; margin: 0 0.32em; color: var(--text-light); font-size: 0.6em; vertical-align: 0.2em; }
+  .sp-mean { margin: 22px auto 0; padding-top: 14px; border-top: 1px solid var(--border); max-width: 250px; line-height: 1.5; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .sp-mean b { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 32px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .sp-read { margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: var(--text-mid); }
+  .spread-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .spread-head, .spread-foot { padding-left: 20px; padding-right: 20px; }
+    .spread-groups { grid-template-columns: 1fr; }
+    .sp-group { padding: 24px 20px 22px; }
+    .sp-group + .sp-group { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  /* Paper 03 — Fire slags tal: redaktionel tabel i Paper 02's modelramme */
+  .kinds-table { width: 100%; border-collapse: collapse; }
+  .kinds-table thead th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 14px 30px 8px; border-bottom: 1px solid var(--border); }
+  .kinds-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 14px 30px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .kinds-table td:first-child { width: 38%; padding-right: 12px; }
+  .kinds-table td:first-child strong { display: block; color: var(--navy); font-weight: 600; }
+  .kinds-table td:first-child span { display: block; margin-top: 2px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16px; color: var(--text-mid); }
+  /* Paper 03 — tre versioner af samme vurdering: Paper 01's vinduer stablet */
+  .windows.stack { grid-template-columns: 1fr; }
+  .windows.stack .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+  .sig-cols ul + h4 { margin-top: 18px; }
+  @media (max-width: 600px) {
+    .kinds-table thead { display: none; }
+    .kinds-table, .kinds-table tbody, .kinds-table tr, .kinds-table td { display: block; width: 100%; }
+    .kinds-table tr { padding: 12px 20px; border-bottom: 1px solid var(--border); }
+    .kinds-table td, .kinds-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .kinds-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 8px 0 2px; }
+  }
+  @media print {
+    .spread, .kinds-table tr { page-break-inside: avoid; }
+    .spread-head, .spread-foot { background: #fff !important; }
+    body.print-econo .spread { border-color: #999 !important; }
+    body.print-econo .spread-head .sp-label { color: #333 !important; }
+  }
+
+  /* Paper 04 — Lokalt plausibelt — samlet umuligt: én redaktionel illustration, ingen trafiklys og intet dashboard */
+  .load { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .load-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .load-head .ld-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .load-head .ld-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .load-head .ld-cond { margin-top: 8px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .load-rows { padding: 10px 30px 8px; }
+  .ld-row { display: grid; grid-template-columns: 170px minmax(0, 1fr) 76px; align-items: center; column-gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .ld-name { font-size: 15px; line-height: 1.3; color: var(--navy); font-weight: 500; }
+  .ld-name small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--text-light); font-weight: 300; }
+  .ld-track { position: relative; display: block; height: 12px; }
+  .ld-track::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px solid var(--border); }
+  .ld-fill, .ld-over { position: absolute; left: 0; top: 0; bottom: 0; background: var(--navy); border-radius: 1px; }
+  .ld-over { background: var(--gold); border-radius: 0; top: auto; bottom: -7px; height: 3px; }
+  .ld-cut { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; }
+  .ld-tag { position: absolute; top: 0; bottom: 0; display: flex; align-items: center; justify-content: center; font-size: 10.5px; letter-spacing: 0.1em; font-weight: 600; color: #fff; }
+  .ld-limit { position: absolute; left: 71.429%; top: -13px; bottom: -13px; border-left: 1px dashed var(--gold); }
+  .ld-val { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; line-height: 1; color: var(--navy); text-align: right; font-variant-numeric: lining-nums; white-space: nowrap; }
+  .ld-row.ld-scale { padding: 4px 0 0; border-bottom: 0; }
+  .ld-scale .ld-track { height: 16px; }
+  .ld-scale .ld-track::before { display: none; }
+  .ld-mark { position: absolute; left: 71.429%; bottom: 1px; transform: translateX(-50%); font-size: 10.5px; line-height: 1; letter-spacing: 0.12em; color: var(--gold); font-weight: 600; white-space: nowrap; }
+  .ld-row.ld-sum { border-bottom: 0; padding-top: 17px; }
+  .ld-sum .ld-name { font-weight: 600; }
+  .ld-sum .ld-track { height: 24px; }
+  .ld-sum .ld-limit { top: -17px; bottom: -13px; }
+  .ld-sum .ld-val { font-style: italic; font-size: 32px; color: var(--gold); }
+  .section .load-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .load-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .load-head, .load-rows, .section .load-note, .load-foot { padding-left: 20px; padding-right: 20px; }
+    .ld-row { grid-template-columns: minmax(0, 1fr) auto; row-gap: 9px; }
+    .ld-row .ld-track { grid-column: 1 / -1; grid-row: 2; }
+    .ld-row.ld-scale { row-gap: 0; padding-top: 6px; }
+    .ld-val { font-size: 21px; }
+    .ld-sum .ld-val { font-size: 28px; }
+    .load-rows { position: relative; }
+    .load-rows::after { content: ''; position: absolute; top: 34px; bottom: 10px; left: calc(20px + (100% - 40px) * 0.71429); border-left: 1px dashed var(--gold); pointer-events: none; }
+    .ld-limit { visibility: hidden; }
+  }
+  @media print {
+    .load, .ld-row { page-break-inside: avoid; }
+    .load-head, .load-foot { background: #fff !important; }
+    body.print-econo .load { border-color: #999 !important; }
+    body.print-econo .load-head .ld-label, body.print-econo .ld-mark { color: #333 !important; }
+    body.print-econo .ld-fill { background: #8a8a8a !important; }
+    body.print-econo .ld-over { background: #000 !important; }
+    body.print-econo .ld-track, body.print-econo .ld-tag, body.print-econo .ld-limit, body.print-econo .ld-mark { background: transparent !important; }
+    body.print-econo .ld-tag { color: #000 !important; }
+    body.print-econo .ld-limit, body.print-econo .load-rows::after { border-left-color: #000 !important; }
+  }
+
+  /* Paper 05 — Seks dage. Og 37.: én redaktionel illustration, ingen dashboard-elementer */
+  .decs { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .decs-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .decs-head .dc-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .decs-head .dc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .decs-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .dec { padding: 28px 30px 26px; }
+  .dec + .dec { border-left: 1px solid var(--border); }
+  .d-tag { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 14px; }
+  .d-vals { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(33px, 4.6vw, 44px); font-weight: 400; line-height: 1.05; color: var(--navy); font-variant-numeric: lining-nums; white-space: nowrap; }
+  .d-vals .d-dot { display: inline-block; margin: 0 0.3em; color: var(--text-light); font-size: 0.55em; vertical-align: 0.22em; }
+  .dec + .dec .d-vals { color: var(--gold); font-style: italic; }
+  .d-unit { margin-top: 8px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .d-mean { margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-mean b { display: block; margin-top: 3px; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 30px; line-height: 1.15; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 400; }
+  .d-list { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .d-list dt { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .d-list dd { margin: 3px 0 11px; font-size: 15px; line-height: 1.5; color: var(--text-mid); }
+  .d-list dd:last-of-type { margin-bottom: 0; }
+  .section .decs-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .decs-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .decs-head, .dec, .section .decs-note, .decs-foot { padding-left: 20px; padding-right: 20px; }
+    .decs-grid { grid-template-columns: 1fr; }
+    .dec { padding-top: 24px; padding-bottom: 22px; }
+    .dec + .dec { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .decs { page-break-inside: avoid; }
+    .decs-head, .decs-foot { background: #fff !important; }
+    body.print-econo .decs { border-color: #999 !important; }
+    body.print-econo .decs-head .dc-label { color: #333 !important; }
+  }
+
+  /* Paper 06 — Lukket fem gange: én redaktionel tidslinje, ingen dashboard-elementer */
+  .frx { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .frx-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .frx-head .fx-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .frx-head .fx-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .section .frx-line { list-style: none; margin: 0; padding: 22px 30px 20px; }
+  .section .frx-line li { position: relative; display: grid; grid-template-columns: 74px 1fr auto; align-items: baseline; gap: 0 18px; padding: 10px 0; margin: 0; }
+  .frx-line li::before { content: ""; position: absolute; left: 83px; top: 0; bottom: 0; width: 1px; background: var(--border); }
+  .frx-line li:first-child::before { top: 21px; }
+  .frx-line li:last-child::before { bottom: auto; height: 22px; }
+  .frx-line li::after { content: ""; position: absolute; left: 80px; top: 18px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .frx-line .fx-wk { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; }
+  .frx-line .fx-ev { font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .frx-line .fx-st { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; white-space: nowrap; }
+  .frx-sum { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+  .fx-cell { padding: 24px 30px 22px; }
+  .fx-cell + .fx-cell { border-left: 1px solid var(--border); }
+  .fx-num { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(38px, 5.2vw, 50px); font-weight: 400; line-height: 1; color: var(--navy); font-variant-numeric: lining-nums; }
+  .fx-cell + .fx-cell .fx-num { color: var(--gold); font-style: italic; }
+  .fx-cap { margin-top: 9px; font-size: 13px; line-height: 1.5; color: var(--text-light); }
+  .section .frx-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .frx-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 600px) {
+    .frx-head, .fx-cell, .section .frx-note, .frx-foot { padding-left: 20px; padding-right: 20px; }
+    .section .frx-line { padding-left: 20px; padding-right: 20px; }
+    .section .frx-line li { grid-template-columns: 1fr auto; grid-template-areas: "wk st" "ev ev"; gap: 4px 14px; padding-left: 22px; }
+    .frx-line .fx-wk { grid-area: wk; }
+    .frx-line .fx-ev { grid-area: ev; }
+    .frx-line .fx-st { grid-area: st; justify-self: end; }
+    .frx-line li::before { left: 3px; }
+    .frx-line li::after { left: 0; }
+    .frx-sum { grid-template-columns: 1fr; }
+    .fx-cell + .fx-cell { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .frx { page-break-inside: avoid; }
+    .frx-head, .frx-foot { background: #fff !important; }
+    body.print-econo .frx { border-color: #999 !important; }
+    body.print-econo .frx-head .fx-label { color: #333 !important; }
+    body.print-econo .frx-line li::after { background: #000 !important; }
+    body.print-econo .frx-line li::before { background: #999 !important; }
+  }
+
+  /* Paper 07 — Fire felter: ét redaktionelt 2×2, ingen dashboard-elementer */
+  .fld { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .fld-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .fld-head .fl-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .fld-head .fl-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .fld-grid { display: grid; grid-template-columns: 118px 1fr 1fr; }
+  .fl-corner { border-bottom: 1px solid var(--border); }
+  .fl-col { padding: 13px 18px 11px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; text-align: center; border-bottom: 1px solid var(--border); border-left: 1px solid var(--border); }
+  .fl-row { display: flex; align-items: center; padding: 20px 14px 20px 30px; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; line-height: 1.5; }
+  .fl-cell { padding: 22px 20px 20px; border-left: 1px solid var(--border); }
+  .fl-r2 { border-top: 1px solid var(--border); }
+  .fl-cell b { display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .fl-cell.fl-mark b { color: var(--gold); font-style: italic; }
+  .fl-cell span { display: block; margin-top: 7px; font-size: 14px; line-height: 1.55; color: var(--text-mid); }
+  .fl-when { display: none; }
+  .section .fld-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .fld-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 640px) {
+    .fld-head, .section .fld-note, .fld-foot { padding-left: 20px; padding-right: 20px; }
+    .fld-grid { grid-template-columns: 1fr; }
+    .fl-corner, .fl-col, .fl-row { display: none; }
+    .fl-cell { border-left: 0; border-top: 1px solid var(--border); padding: 20px; }
+    .fl-when { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; font-style: normal; margin-bottom: 6px; }
+  }
+  @media print {
+    .fld { page-break-inside: avoid; }
+    .fld-head, .fld-foot { background: #fff !important; }
+    body.print-econo .fld { border-color: #999 !important; }
+    body.print-econo .fld-head .fl-label, body.print-econo .fl-cell.fl-mark b { color: #333 !important; }
+  }
+
+  /* Paper 08 — Evidensbilledet: ét redaktionelt opslag, ingen dashboard-elementer */
+  .evb { background: #fff; border: 1px solid var(--border); border-radius: 5px; margin: 34px 0; overflow: hidden; }
+  .evb-head { padding: 22px 30px 18px; background: var(--cream); border-bottom: 1px solid var(--border); }
+  .evb-head .eb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .evb-head .eb-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .evb-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .eb-side { padding: 26px 30px 24px; }
+  .eb-side + .eb-side { border-left: 1px solid var(--border); }
+  .eb-kind { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 14px; }
+  .eb-num { font-family: 'Playfair Display', Georgia, serif; font-size: 46px; font-weight: 500; color: var(--navy); line-height: 1; }
+  .eb-num.eb-open { color: var(--gold); font-style: italic; }
+  .eb-claim { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.4; color: var(--navy); margin: 10px 0 18px; }
+  .eb-list { list-style: none; margin: 0; padding: 0; }
+  .eb-list li { font-size: 14.5px; line-height: 1.5; color: var(--text-mid); padding: 7px 0 7px 22px; position: relative; border-top: 1px solid var(--border); }
+  .eb-list li:first-child { border-top: 0; }
+  .eb-list li::before { content: "✓"; position: absolute; left: 0; top: 7px; color: var(--text-light); font-size: 13px; }
+  .eb-list.eb-ask li::before { content: "?"; color: var(--gold); font-weight: 600; }
+  .eb-stmt { margin: 18px 0 0; padding: 14px 16px; background: var(--cream); border-left: 2px solid var(--gold); font-size: 14.5px; line-height: 1.55; color: var(--navy); }
+  .section .evb-note { margin: 0; padding: 14px 30px; border-top: 1px solid var(--border); font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .evb-foot { padding: 16px 30px; background: var(--cream); border-top: 1px solid var(--border); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: var(--navy); text-align: center; }
+  @media (max-width: 640px) {
+    .evb-head, .eb-side, .section .evb-note, .evb-foot { padding-left: 20px; padding-right: 20px; }
+    .evb-grid { grid-template-columns: 1fr; }
+    .eb-side + .eb-side { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .evb { page-break-inside: avoid; }
+    .evb-head, .evb-foot, .eb-stmt { background: #fff !important; }
+    body.print-econo .evb { border-color: #999 !important; }
+    body.print-econo .evb-head .eb-label, body.print-econo .eb-num.eb-open, body.print-econo .eb-list.eb-ask li::before { color: #333 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Ved vi, om vi kan det, strategien kræver?",
+ "alternativeHeadline": "At kompetencerne findes et sted i organisationen er ikke det samme som, at organisationen kan det, strategien kræver.",
+ "description": "En kompetenceliste fortæller, hvem der kan noget. Paper 08 om skellet mellem kompetence og organisatorisk evne, om capability statements, om hvad der tæller som evidens, om forskellen på manglende evne og manglende evidens, og om parathed som et spørgsmål med en dato.",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Strategien sker mellem kvartalerne",
+  "url": "https://www.friisnaes.com/library.html"
+ },
+ "position": 8,
+ "inLanguage": "da",
+ "keywords": "organisatorisk capability, organisatorisk evne, capability readiness, competence readiness, evidens, strategieksekvering, strategisk observabilitet",
+ "datePublished": "2026-10-01",
+ "dateModified": "2026-10-01"
+}
+</script>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="site-nav" aria-label="Hovednavigation">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
+    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="/#situationer">Situationer</a>
+      <a href="/#om">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="nav-nd">
+        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
+        <span class="nav-nd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Strategien sker mellem kvartalerne · Paper 08 af 10</div>
+  <div class="pc-title">Ved vi, om vi kan det, strategien kræver?</div>
+  <div class="pc-sub">At kompetencerne findes et sted i organisationen er ikke det samme som, at organisationen kan det, strategien kræver.</div>
+  <div class="pc-author">Af Thomas Friisnæs · External Excellence Partner · Strategy Execution Governance · C-level-sparring · friisnaes.com · oktober 2026</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Strategisk observabilitet</span>
+      <span class="wp-series">Strategien sker mellem kvartalerne · Paper 08 af 10</span>
+      <span class="wp-readtime">ca. 25 min læsning</span>
+    </div>
+    <h1>Ved vi, om vi kan det, <em>strategien kræver?</em></h1>
+    <p class="wp-subtitle">At kompetencerne findes et sted i organisationen er ikke det samme som, at organisationen kan det, strategien kræver.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · External Excellence Partner · Strategy Execution Governance · C-level-sparring<br>Udgivet oktober 2026</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#case">4,3 ud af 5. Og vi kan stadig ikke gå live</a></li>
+      <li><a href="#tesen">Kompetencerne findes. Evnen er ikke vist</a></li>
+      <li><a href="#vurdering">Fire ledere, fire spørgsmål, ét tal</a></li>
+      <li><a href="#integration">Evne er ikke summen af CV'er</a></li>
+      <li><a href="#kapacitet">Evne er ikke kapacitet</a></li>
+      <li><a href="#gentagelse">At kunne én gang er ikke at kunne igen</a></li>
+      <li><a href="#igaar">Det, vi kunne i går</a></li>
+      <li><a href="#statement">Kravet skal kunne udføres</a></li>
+      <li><a href="#parathed">Parat til hvad — og hvornår?</a></li>
+      <li><a href="#evidens">Hvad tæller som evidens?</a></li>
+      <li><a href="#ukendt">Manglende evne og manglende evidens</a></li>
+      <li><a href="#framework">Framework: Fra strategikrav til demonstreret evne</a></li>
+      <li><a href="#tidligere">Hvad kunne du se tidligere?</a></li>
+      <li><a href="#konkludere">Hvad må du ikke konkludere?</a></li>
+      <li><a href="#diagnose">Diagnose: Hvad forudsætter strategien, at vi kan?</a></li>
+      <li><a href="#action">2-minutters mikrohandling</a></li>
+      <li><a href="#commit">Dit næste skridt</a></li>
+      <li><a href="#faq">Ofte stillede spørgsmål</a></li>
+      <li><a href="#handling">Fra vurdering til evidens</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+
+<!-- 01 CASE -->
+<section class="section first" id="case">
+  <div class="container">
+    <div class="section-label">01 — Åbningscase · Et illustrativt eksempel</div>
+    <h2>4,3 ud af 5. Og vi kan stadig ikke gå live</h2>
+    <p>En virksomhed skal lancere et nyt digitalt tilbud i et reguleret marked. Planen kræver, at produkt, data, teknologi og compliance bringes sammen i én kommerciel leverance.</p>
+    <p>Ti ledere og fagansvarlige på tværs af de fire områder vurderer, om der er kompetencer nok. Gennemsnittet bliver <strong>4,3 ud af 5.</strong> Alle kan pege på noget konkret: en erfaren produktchef, en stærk data scientist, en jurist, der kender feltet, en rutineret arkitekt.</p>
+    <p>Tallet giver ro og bliver til en linje i oplægget.</p>
+    <p>Tre uger senere ser reviewet anderledes ud. Ingen har gennemført forløbet fra ende til anden i den nye tekniske og regulatoriske sammenhæng. Integrationen mellem data, produkt og compliance er ikke testet. Én kritisk ekstern specialkompetence er ikke kontraheret. Og ingen har defineret, hvad der tæller som bevis.</p>
+    <p>Ingen behøver have vurderet uærligt eller sjusket. Men et bredt spørgsmål kan have fået dem til at svare på forskellige ting.</p>
+    <p>CEO'en stiller det spørgsmål, der bliver hængende: <strong>»Hvordan kan vi være 4,3 på kompetence og stadig ikke vide, om vi kan levere?«</strong></p>
+    <p>Bemærk, hvad casen ikke siger. Ikke at folkene er for dårlige — men at spørgsmålet var for bredt til at kunne besvares med ét tal.</p>
+  </div>
+</section>
+
+<!-- 02 TESEN -->
+<section class="section" id="tesen">
+  <div class="container">
+    <div class="section-label">02 — Tesen</div>
+    <h2>Kompetencerne findes. Evnen er ikke vist</h2>
+    <p>Serien har brugt syv papers på at gøre eksekveringen synlig. <a href="/strategien-sker-mellem-kvartalerne.html" style="color:var(--gold);">Paper 01</a> skelnede mellem resultatindsigt og eksekveringsindsigt. <a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a> spurgte, hvad en grøn status dækker. <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a>, hvad et tal på en vurdering kan bære. <a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html" style="color:var(--gold);">Paper 04</a> viste kapaciteten mellem initiativerne, <a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html" style="color:var(--gold);">Paper 05</a> beslutningerne som arbejde, <a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html" style="color:var(--gold);">Paper 06</a> friktionen som data, og <a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html" style="color:var(--gold);">Paper 07</a> skellet mellem tidligt og ledende.</p>
+    <p>Nu kommer det spørgsmål, al den synlighed løber ind i. At se noget skride hjælper ikke, hvis vi ikke ved, om organisationen kan det, planen forudsætter.</p>
+
+    <p class="pull-quote">En kompetenceliste fortæller, hvem der kan noget. Strategien kræver svar på, hvad organisationen faktisk kan gøre.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Først en oplysning om ordene, for litteraturen er ikke entydig og den danske brug endnu mindre. <strong>Jeg bruger her et praktisk skel</strong>, ikke en universel definition:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Tre ord, der ikke betyder det samme</div>
+      <ul class="dispo-list">
+        <li><strong>Kompetence</strong> <em>→</em> viden, færdighed eller dømmekraft hos mennesker, enkeltvis eller i en gruppe. Det, et CV eller en erfaren kollega dækker.</li>
+        <li><strong>Ressource</strong> <em>→</em> noget, organisationen har adgang til: mennesker, data, systemer, kapital, partnere.</li>
+        <li><strong>Organisatorisk evne</strong> <em>→</em> evnen til pålideligt at udføre en strategisk relevant aktivitet ved at bringe den nødvendige viden, de relevante ressourcer, arbejdsmønstre og betingelser sammen.</li>
+      </ul>
+    </div>
+
+    <p>Det tredje kaldes i litteraturen <em>organizational capability</em>. Jeg bruger »organisatorisk evne« i brødteksten og det engelske ord, hvor præcisionen kræver det. Definitionen er min egen praktiske — inspireret af litteraturen, ikke hentet fra den.</p>
+    <p>Kategorierne overlapper med vilje: et menneske er både ressource og bærer af en kompetence. Skellet er ikke ordkløveri — det er forskellen på at pege på nogen, der kan noget, og på noget, organisationen har gjort.</p>
+
+    <div class="evb" role="group" aria-label="Illustration: Fire flueben og ét ubesvaret spørgsmål">
+      <div class="evb-head">
+        <div class="eb-label">Illustration · konstrueret eksempel</div>
+        <div class="eb-title">Fire flueben og ét ubesvaret spørgsmål</div>
+      </div>
+      <div class="evb-grid">
+        <div class="eb-side">
+          <div class="eb-kind">Det, vurderingen svarede på</div>
+          <div class="eb-num">4,3<span style="font-size:22px;color:var(--text-light);"> / 5</span></div>
+          <p class="eb-claim">»Vi har kompetencerne.«</p>
+          <ul class="eb-list">
+            <li>Produkt — erfaren ansvarlig på plads</li>
+            <li>Data — specialist med relevant baggrund</li>
+            <li>Teknologi — arkitekt med større projekter bag sig</li>
+            <li>Compliance — jurist, der kender området</li>
+          </ul>
+        </div>
+        <div class="eb-side">
+          <div class="eb-kind">Det, strategien spurgte om</div>
+          <div class="eb-num eb-open">?</div>
+          <p class="eb-claim">»Kan vi levere det, strategien kræver?«</p>
+          <ul class="eb-list eb-ask">
+            <li>Er de fire dele bragt sammen i ét forløb før?</li>
+            <li>Har vi demonstreret det i denne sammenhæng?</li>
+            <li>Er den tidligere erfaring sammenlignelig?</li>
+            <li>Er den kritiske eksterne afhængighed sikret?</li>
+          </ul>
+          <p class="eb-stmt"><strong>Kan vi</strong> [aktivitet] <strong>i</strong> [kvalitet og omfang] <strong>under</strong> [betingelser] <strong>senest</strong> [dato]?</p>
+        </div>
+      </div>
+      <p class="evb-note">Konstrueret eksempel; 4,3 er illustrativt og ikke et benchmark. Venstre side opgør tilstedeværelsen af input, højre side spørger til den samlede udførelse — og de to spørgsmål har ikke samme svar.</p>
+      <div class="evb-foot">At de nødvendige input er til stede, er ikke det samme som, at den organisatoriske evne er demonstreret.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 VURDERING -->
+<section class="section" id="vurdering">
+  <div class="container">
+    <div class="section-label">03 — Tallet</div>
+    <h2>Fire ledere, fire spørgsmål, ét tal</h2>
+    <p>Hvorfor kunne ti mennesker lande på 4,3 og alligevel ikke vide, om de kunne levere? Fordi de ikke svarede på det samme. Spørgsmålet gik til den enkelte; tallet blev til på organisationens vegne.</p>
+    <p>Spørgsmålet lød på, om der var de nødvendige kompetencer til at eksekvere strategien. Det kan læses på fire måder:</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Samme skala. Fire forskellige spørgsmål</div>
+      <ul class="dispo-list">
+        <li><strong>»Har vi de rigtige mennesker?«</strong> <em>→</em> et spørgsmål om bemanding.</li>
+        <li><strong>»Er de dygtige nok?«</strong> <em>→</em> et spørgsmål om niveau.</li>
+        <li><strong>»Kan vi løse opgaven?«</strong> <em>→</em> et spørgsmål om samlet udførelse.</li>
+        <li><strong>»Bliver vi klar til tiden?«</strong> <em>→</em> et spørgsmål om parathed på en dato.</li>
+      </ul>
+    </div>
+
+    <p>Ærlige svar på forskellige spørgsmål, lagt sammen til ét gennemsnit. <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html" style="color:var(--gold);">Paper 03</a> argumenterede for, at en struktureret vurdering godt kan bære et tal — men at det ikke bliver mere objektivt af at være et tal. Her kommer pointen igen, et lag dybere: <strong>uenighed om et tal kan skyldes, at spørgsmålet ikke er defineret</strong>, ikke at nogen vurderer forkert.</p>
+    <p>Det ændrer, hvad man gør ved spredning. To ledere, der svarer 4 og 2, er ikke nødvendigvis uenige om virkeligheden. De kan se på hver sin del af den — og bruge hver sin målestok for, hvad der skulle til, før de ville sige 5.</p>
+    <p>Spørgsmålet står i øvrigt højt på dagsordenen mange steder. I World Economic Forums arbejdsgiverundersøgelse fra januar 2025 pegede 63&nbsp;% af de adspurgte arbejdsgivere på kompetencehuller <em>på arbejdsmarkedet</em> som den barriere, de <em>oplever</em> som den største for forretningsmæssig transformation i perioden 2025–2030.</p>
+
+    <div class="research-note"><strong>Praktikerkontekst (arbejdsgiverundersøgelse):</strong> World Economic Forum (2025), <em>The Future of Jobs Report 2025</em>, 7. januar 2025: over 1.000 arbejdsgivere med mere end 14 mio. medarbejdere, 22 brancheklynger, 55 økonomier. To ting skal med: det er <strong>oplevede</strong> barrierer, og det handler om <strong>arbejdsmarkedet</strong> — ikke om de adspurgtes egen interne evne. Bruges alene til at vise, at spørgsmålet står højt på dagsordenen. Ikke som evidens for, at kompetencer er den primære interne begrænsning, og ikke som årsagssammenhæng.</div>
+
+    <p>Det er netop derfor, spørgsmålet er værd at gøre skarpere. Når et spørgsmål presser sig på, er fristelsen til at få et hurtigt tal tilsvarende stor — og et hurtigt mål på et bredt spørgsmål er den letteste måde at få ro på et grundlag, der ikke bærer.</p>
+  </div>
+</section>
+
+<!-- 04 INTEGRATION -->
+<section class="section" id="integration">
+  <div class="container">
+    <div class="section-label">04 — Det første skel</div>
+    <h2>Evne er ikke summen af CV'er</h2>
+    <p>En organisation kan have en dygtig jurist, en stærk data scientist, en erfaren produktchef og en solid platformingeniør — og stadig ikke kunne levere ét sammenhængende resultat på tværs af de fire.</p>
+    <p>Det er ingen kritik af de fire, men en påstand om, hvor evnen sidder.</p>
+    <p>Robert Grant formulerede i 1996 en videnbaseret teori: viden findes i specialiseret form hos de enkelte medlemmer, og organisatorisk evne består i den forstand i at integrere den. Argumentet er betinget og teoretisk, ikke et måleresultat — men det flytter spørgsmålet.</p>
+
+    <div class="research-note"><strong>Teorigrundlag (videnbaseret teori):</strong> Grant (1996), »Prospering in Dynamically-Competitive Environments: Organizational Capability as Knowledge Integration«, <em>Organization Science</em>, 7(4), 375–387. Teoretisk artikel uden empirisk test; argumentet er eksplicit betinget (»if … and if …«). Bruges alene til, at specialiseret viden hos enkeltpersoner er <em>input</em>, og at organisatorisk evne i denne teori beror på integrationen — ikke som bevis for, at evne kan måles.</div>
+
+    <p class="pull-quote">Capability er ikke summen af CV'er.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Konsekvensen er ubehagelig for enhver kompetencekortlægning: <strong>en liste over, hvem der kan hvad, opgør input.</strong> Den siger ikke, om organisationen kan bringe dem sammen.</p>
+    <p>Integrationen er ingen formalitet. Den ligger i arbejdsdelingen, i de fælles standarder, i systemerne, i afleveringerne mellem funktioner — og i, om de fire har arbejdet sammen om noget, der lignede dette. Dorothy Leonard-Barton fandt i sit studie af produktudvikling, at en evne rummer mere end viden og færdigheder: også tekniske systemer, ledelsessystemer og de værdier, der styrer dem. Mere om konteksten i <a href="#igaar" style="color:var(--gold);">afsnit 07</a>.</p>
+    <p>Det udvider listen over steder, et hul kan sidde — og dermed også listen over mulige svar.</p>
+  </div>
+</section>
+
+<!-- 05 KAPACITET -->
+<section class="section" id="kapacitet">
+  <div class="container">
+    <div class="section-label">05 — Det andet skel</div>
+    <h2>Evne er ikke kapacitet</h2>
+    <p>Det næste sammenfald sender problemet hen til den forkerte afdeling.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">To spørgsmål, der bliver til ét</div>
+      <ul class="dispo-list">
+        <li><strong>Evne</strong> <em>→</em> Kan vi udføre denne aktivitet — overhovedet, og i den form der kræves?</li>
+        <li><strong>Kapacitet</strong> <em>→</em> Hvor meget kan vi bære, og hvornår er der plads?</li>
+      </ul>
+    </div>
+
+    <p>Et team kan være fagligt i stand til at migrere platformen og alligevel ikke have en time til det i fjerde kvartal. Og omvendt: have al tiden i verden og mangle evnen. De to tilstande ser ens ud i en statusrapport og kræver helt forskellige beslutninger.</p>
+    <p><a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html" style="color:var(--gold);">Paper 04</a> ejer kapaciteten: den realistiske tilgængelighed, de samtidige krav, den samme ressource lovet to steder. Det skal ikke skrives om her. Men det er værd at sige, hvad der sker, når de blandes sammen.</p>
+    <p><strong>Et kapacitetsproblem, der bliver omdøbt til et kompetencehul, kan føre til rekruttering, hvor der skulle have været prioritering.</strong> Og et evneproblem, der bliver omdøbt til et kapacitetsproblem, kan føre til flere hænder på noget, ingen af dem kan.</p>
+    <p>Spørgsmålet, der åbner samtalen, er enkelt nok til at bruge ved bordet: <em>ville vi kunne det, hvis vi havde al den tid, vi kunne ønske os?</em> Ja peger på kapacitet, nej og »det ved vi ikke« peger på noget andet. Svaret er selv en vurdering, så spørgsmålet afgør ikke sagen — det åbner den.</p>
+    <p><a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html" style="color:var(--gold);">Paper 05</a> og <a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html" style="color:var(--gold);">Paper 06</a> har hver deres kandidat til samme forveksling. Et hold kan kunne arbejdet fagligt og vente på en beslutning. Og gentagen friktion ved samme grænseflade er ikke i sig selv bevis på manglende evne — den kan være et design- eller mandatproblem.</p>
+  </div>
+</section>
+
+<!-- 06 GENTAGELSE -->
+<section class="section" id="gentagelse">
+  <div class="container">
+    <div class="section-label">06 — Det tredje skel</div>
+    <h2>At kunne én gang er ikke at kunne igen</h2>
+    <p>Når en organisation har reddet en lancering eller gennemført en vanskelig migrering, bliver historien naturligt brugt som bevis på, hvad den kan. Den er evidens for noget — men ikke nødvendigvis for det, den bruges til.</p>
+    <p>Sidney Winter argumenterer i en kort artikel fra 2003 for, at den strategiske substans i organisatoriske evner ligger i mønstrede aktiviteter, og at mønsteret typisk kræver kostbare investeringer at skabe og holde ved lige. Men virksomheder kan også skabe forandring uden en sådan evne, gennem det, han kalder ad hoc-problemløsning. Valget afhænger af omkostningen ved mønsteret sat op mod udbyttet.</p>
+
+    <div class="research-note"><strong>Teorigrundlag (begrebslig research note):</strong> Winter (2003), »Understanding dynamic capabilities«, <em>SMJ</em>, 24(10), 991–995. Kort begrebslig artikel, ikke et empirisk studie af strategieksekvering. Bruges alene til skellet mellem mønstret aktivitet og ad hoc-problemløsning. Winter behandler udtrykkeligt ad hoc-problemløsning som <strong>legitim</strong> — ikke som en fejl — og paperet påstår ikke, at alle evner skal rutiniseres.</div>
+
+    <p class="pull-quote">At tre stærke mennesker redder én lancering, viser, at organisationen fik netop den situation løst. Det viser ikke nødvendigvis, at den har bygget en evne, den kan bruge igen.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Overførslen er min, ikke Winters. Men den ændrer ét spørgsmål ved bordet: <em>gjorde vi det, eller kan vi det?</em> Det er intet argument for at rutinisere alting. Ad hoc er en gyldig vej — den er bare ikke det samme som at have evnen, og valget har en pris i begge ender.</p>
+    <p>Den peger også på et mønster. Hvis organisationen gang på gang klarer den samme opgave ved at trække på den samme person, den samme manuelle omvej eller den samme undtagelse, leverer den — men måske uden at have bygget noget, den kan gentage. Det er ingen kritik af den person; vedkommende kan være grunden til, at det lykkes. Det er et muligt signal om personafhængighed — om hvor robust leverancen er, når personen ikke er der.</p>
+  </div>
+</section>
+
+<!-- 07 IGÅR -->
+<section class="section" id="igaar">
+  <div class="container">
+    <div class="section-label">07 — Tiden bagud</div>
+    <h2>Det, vi kunne i går</h2>
+    <p>Den næste antagelse er sympatisk og derfor svær at se: at det, vi har været gode til, også er det, den nye strategi kræver.</p>
+    <p>Constance Helfat og Margaret Peteraf introducerede i 2003 begrebet <em>capability lifecycle</em>: generelle mønstre i, hvordan evner udvikler sig — fra de opstår, gennem udvikling og modenhed, med mulighed for at forgrene sig i ændrede former. Teoretisk, og ingen påstand om, at enhver evne følger ét fast forløb.</p>
+
+    <div class="research-note"><strong>Teorigrundlag (capability lifecycle):</strong> Helfat &amp; Peteraf (2003), »The dynamic resource-based view: capability lifecycles«, <em>SMJ</em>, 24(10), 997–1010. Artiklen beskriver efter eget udsagn »general patterns and paths« — ikke ét obligatorisk livsforløb. Bruges alene til, at evner udvikler sig og kan forgrene sig, og at »det har vi altid været gode til« derfor ikke i sig selv er en vurdering af fremtidig evne.</div>
+
+    <p>Leonard-Barton beskrev i 1992 en bagside, hun kaldte <em>core rigidities</em>: at de samme styrker, der bærer én slags arbejde, kan hæmme en ny slags. Et fund fra tyve casestudier i produktudvikling, ikke en naturlov — og hun skriver ikke, at kernekompetencer altid ender der.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (20 casestudier i fem virksomheder):</strong> Leonard-Barton (1992), »Core capabilities and core rigidities: A paradox in managing new product development«, <em>SMJ</em>, 13(temanummer), 111–125. Konteksten er produkt- og procesudviklingsprojekter. Bruges til to ting: at en evne rummer tekniske systemer, ledelsessystemer og værdier ud over menneskers viden — og at styrker bygget til én slags arbejde kan hæmme en ny. Ikke som påstand om, at det altid sker, og ikke som dom over nogen organisations styrker.</div>
+
+    <p>Ingen af kilderne handler om strategieksekvering, og de leverer ingen regel. Men de gør en nøgtern pointe rimelig: <strong>fortidens evne er evidens. Den er ikke en garanti for fremtidens krav.</strong></p>
+    <p>Det er ingen påstand om, at tidligere succes forårsager fremtidig fiasko, men om, at de to spørgsmål skal stilles hver for sig — og at et hold, der er fremragende til driften, godt kan stå over for noget, strategien har gjort nyt.</p>
+  </div>
+</section>
+
+<!-- 08 STATEMENT -->
+<section class="section" id="statement">
+  <div class="container">
+    <div class="section-label">08 — Kravet</div>
+    <h2>Kravet skal kunne udføres</h2>
+    <p>Indtil nu har paperet sagt, hvad evne ikke er. Her begynder det brugbare — som i resten af serien med at gøre påstanden konkret nok til, at nogen kan kræve belæg.</p>
+    <p>»AI-kompetence« er ikke et krav, man kan efterprøve. Heller ikke »digital transformation« eller »kommerciel excellence«. Det er overskrifter, og de kan hverken bekræftes eller afkræftes — derfor kan ingen sige noget klogt om, hvorvidt organisationen har dem.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">Capability statement — fem led</div>
+      <ul class="dispo-list">
+        <li><strong>Verbum og objekt</strong> <em>→</em> Hvad skal organisationen konkret <em>gøre</em>? Ikke et emne, men en handling med et objekt.</li>
+        <li><strong>Standard</strong> <em>→</em> I hvilken kvalitet? Svartid, fejlrate, dokumentation, servicemål — det, der gør leverancen god nok.</li>
+        <li><strong>Omfang</strong> <em>→</em> I hvilket omfang? Antal markeder, volumen, frekvens, gentagelse.</li>
+        <li><strong>Kontekst</strong> <em>→</em> Under hvilke betingelser? Regulatoriske krav, systemer, partnere, kundetype.</li>
+        <li><strong>Tid</strong> <em>→</em> Fra hvornår? En dato, ikke »fremadrettet«.</li>
+      </ul>
+    </div>
+
+    <p>Sat sammen giver det en sætning, der kan tages alvorligt: <em>godkende og udsende personaliserede tilbud med dokumenteret compliance inden for 48 timer pr. release, i tre markeder, under det nye regelsæt og på den nye platform, fra 1. april 2027.</em></p>
+    <p>Den er ikke pænere end »AI-kompetence«. Den er bare svær at være enig i uden at have set noget.</p>
+
+    <p class="pull-quote">Kan kravet ikke gøres konkret, kan parathed heller ikke efterprøves.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>To faldgruber er værd at nævne. Den første er, at <strong>den samme etiket ikke behøver betyde det samme to steder.</strong> »Datakompetence« kan betyde rapportering i ét initiativ, maskinlæring i det næste og beslutninger i realtid i det tredje. Tre evner under ét ord, og formentlig tre forskellige svar på, om vi har den.</p>
+    <p>Den anden er omfanget. At kunne noget én gang i ét marked er ikke evidens for det samme i tre markeder hver uge. Prøven fra <a href="#kapacitet" style="color:var(--gold);">afsnit 05</a> gælder her: holder måden til gentagelse — eller er det tiden og hænderne, der mangler?</p>
+  </div>
+</section>
+
+<!-- 09 PARATHED -->
+<section class="section" id="parathed">
+  <div class="container">
+    <div class="section-label">09 — Tiden fremad</div>
+    <h2>Parat til hvad — og hvornår?</h2>
+    <p>Selv når evnen findes, kan den være ubrugelig for den her plan: afhængig af et system, der ikke er klar, en partner, der ikke er kontraheret, en godkendelse, der ikke er givet — eller kun vist i en sammenhæng, der ikke ligner den nye.</p>
+    <p>Derfor bruger jeg et begreb, der binder evnen til et konkret krav og et tidspunkt: <strong>capability readiness</strong> — en tids- og kontekstspecifik vurdering af, om organisationen kan gøre den krævede evne tilgængelig i den nødvendige form på det tidspunkt, strategien forudsætter. Det er mit praktiske begreb, ikke en etableret standard.</p>
+    <p>Og så det led, der er let at springe over: <strong>vurderingen skal altid følges af en separat evidensstatus.</strong> Hvad bygger vi den på, og hvor stærkt er belægget? De to skal holdes adskilt, ellers forsvinder paperets vigtigste skel: en evne kan være der, uden at vi har set den, og en tynd evidensstatus siger noget om, hvad vi ved — ikke om, hvad organisationen kan. »Tilgængelig« betyder her, at organisationen kan komme til evnen, ikke at der er plads i kalenderen; det sidste er <a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html" style="color:var(--gold);">Paper 04</a>'s.</p>
+    <p>Skellet er vigtigt, fordi der findes forskning om organisatorisk parathed, og den handler om noget andet. Bryan Weiner beskrev i 2009 <em>organizational readiness for change</em> som en fælles tilstand: beslutsomheden om at gennemføre en bestemt forandring og troen på, at man kan. Den varierer med, hvordan medlemmerne vurderer opgavens krav, ressourcerne og situationen.</p>
+
+    <div class="research-note"><strong>Teorigrundlag (organisatorisk parathed, sundhedsvæsen):</strong> Weiner (2009), »A theory of organizational readiness for change«, <em>Implementation Science</em>, 4:67. Teoretisk artikel i en implementeringskontekst i sundhedsvæsenet. Bruges alene til, at parathed her er knyttet til <em>en bestemt forandring</em> og vurderes ud fra opgavens krav, ressourcer og situation — kontekstspecifik og bredere end »har vi færdighederne?«. Weiners begreb er <strong>ikke</strong> paperets capability readiness og er ikke evidens for noget signal i noget værktøj.</div>
+
+    <p>Pointen, jeg tager med, er ikke Weiners model, men at parathed i de kilder, jeg bygger på, er knyttet til en bestemt forandring og vurderet ud fra dens krav. Ikke en almen egenskab ved organisationen, men parathed <em>til noget</em>.</p>
+    <p>Hvad der sker, når man måler sådan et begreb ordentligt, er også værd at vide. Christopher Shea og kolleger udviklede i 2014 målet ORIC gennem fire studier: indholdsdækning, faktorstruktur og reliabilitet i en simulation, et mål på organisationsniveau baseret på aggregerede individuelle vurderinger — hvor de også undersøgte, om der var enighed nok til at aggregere — og et mindre feltstudie. De noterer selv, at der manglede test af, om målet hang sammen med noget senere.</p>
+
+    <div class="research-note"><strong>Metodegrundlag (psykometrisk udvikling):</strong> Shea, Jacobs, Esserman, Bruce &amp; Weiner (2014), »Organizational readiness for implementing change: a psychometric assessment of a new measure«, <em>Implementation Science</em>, 9:7. Fire studier i en implementeringskontekst. Bruges alene til, at et parathedsbegreb, der måles alvorligt, kræver en defineret construct, psykometrisk afprøvning og et gennemtænkt spring fra individuelle vurderinger til organisationsniveau — og at forfatterne selv efterlader den prædiktive validitet uafklaret. Ikke som validering af paperets begreb eller nogen skala.</div>
+
+    <p>Et systematisk review fra maj 2025 viser, hvor ujævnt begrebet bliver operationaliseret. Det gennemgik parathedslitteraturen i sundhedsvæsenet: 2.907 poster identificeret, 346 fuldtekster vurderet, 47 studier inkluderet. Billedet er, at begrebet bruges med forskellige definitioner og redskaber, at klarheden er begrænset, og at parathed i de fleste studier kun blev målt én gang. Forfatterne efterlyser klarere definitioner og gentagne målinger.</p>
+
+    <div class="research-note"><strong>Forskningsgrundlag (systematisk review, sundhedsvæsen):</strong> Caci m.fl. (2025), »Organizational readiness for change: A systematic review of the healthcare literature«, <em>Implementation Research and Practice</em>, 6, 15. maj 2025. Konteksten er sundhedsvæsenet, ikke strategieksekvering, og reviewet siger intet om strategiske evner. Bruges alene som tværfaglig forsigtighed: et parathedsbegreb er let at navngive og svært at definere konsistent, og én enkelt måling er et tyndt grundlag. Ikke som bevis for, at der findes ét rigtigt parathedsmål.</div>
+
+    <p>Det er ubehageligt læsestof for enhver, der lige har indført en parathedsscore — mig selv indbefattet. Og jeg kender ironien i at føje endnu et begreb til et felt, hvor mængden af begreber er problemet. Derfor er mit bundet til ét krav og én dato. Konsekvensen er ikke at lade være med at spørge, men at spørge til noget bestemt: <strong>parat til hvad, i hvilken form, og hvornår.</strong></p>
+  </div>
+</section>
+
+<!-- 10 EVIDENS -->
+<section class="section" id="evidens">
+  <div class="container">
+    <div class="section-label">10 — Belægget</div>
+    <h2>Hvad tæller som evidens?</h2>
+    <p>Når kravet er skrevet, bliver det næste spørgsmål muligt: <em>hvad har vi set, der gør vurderingen troværdig?</em> Fem slags belæg bliver let brugt i flæng. De besvarer ikke det samme spørgsmål, og bogstaverne nedenfor er navne, ikke trin.</p>
+
+    <div class="basis" role="group" aria-label="Model: Fem slags belæg for organisatorisk evne">
+      <div class="basis-head">
+        <div class="bh-label">Model · Thomas Friisnæs' praktiske evidenstyper</div>
+        <div class="bh-title">Fem slags belæg — hvad bygger vurderingen på?</div>
+        <p class="bh-sub">Ikke en modenhedsskala, ingen score og ingen rangorden. Hvilken type der vejer tungest, afhænger af, hvor sammenlignelig den er med kravet.</p>
+      </div>
+      <table class="kinds-table">
+        <thead>
+          <tr><th scope="col">Type</th><th scope="col">Hvad den viser — og hvad den ikke viser</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>A · Udsagn</strong><span>»Vi kan godt«</span></td><td data-label="Hvad den viser — og hvad den ikke viser">En vurdering fra nogen, der kender området — et legitimt udgangspunkt og ofte det eneste, der findes tidligt. Den siger, hvad nogen tror, ikke hvad organisationen har gjort.</td></tr>
+          <tr><td><strong>B · Inventar</strong><span>»Vi har rollerne«</span></td><td data-label="Hvad den viser — og hvad den ikke viser">At de nødvendige input er til stede: mennesker, systemer, data, aftaler. Det er den evidenstype, en kompetenceliste leverer. Den siger intet om integrationen.</td></tr>
+          <tr><td><strong>C · Historisk leverance</strong><span>»Vi har gjort noget lignende«</span></td><td data-label="Hvad den viser — og hvad den ikke viser">At organisationen har udført noget beslægtet. Styrken afhænger af sammenligneligheden, af hvor længe siden det er, og af omfanget.</td></tr>
+          <tr><td><strong>D · Aktuel demonstration</strong><span>»Vi har vist det her«</span></td><td data-label="Hvad den viser — og hvad den ikke viser">At det er gjort i den nuværende eller en tilstrækkeligt sammenlignelig sammenhæng: en generalprøve, en pilot, en kontrolleret lancering, en nylig leverance. Viser det, der blev afprøvet — ikke mere.</td></tr>
+          <tr><td><strong>E · Gentagen leverance</strong><span>»Vi gør det regelmæssigt«</span></td><td data-label="Hvad den viser — og hvad den ikke viser">At aktiviteten er udført flere gange med relevant kvalitet og stabilitet. Det er evidens for gentagelse under de observerede betingelser — men spørg, om gentagelsen hviler på en arbejdsgang eller på de samme få personer, og husk, at den ikke automatisk dækker ny kontekst, nyt omfang eller ny regulering.</td></tr>
+        </tbody>
+      </table>
+      <div class="basis-foot">Typen er ingen dom. Den gør synligt, hvad vurderingen hviler på, hvad den slags belæg kan vise — og hvad den ikke kan vise uden mere evidens.</div>
+    </div>
+
+    <p>Det afgørende er, at listen <strong>ikke er en rangorden.</strong> En gammel leverance fra en sammenhæng, der ikke ligner den nye, kan være svagere end en aktuel pilot i den nye. Og en gentagen leverance under betingelser, der lige er ændret, kan være mindre værd, end den ser ud. Det afhænger af sagen, ikke af typen.</p>
+    <p>Typerne er til for at stille spørgsmål med, ikke score med. Spørgsmålet ved bordet er ikke »hvilket trin er vi på?«, men <em>hvilken slags belæg står vurderingen på — og hvor sammenligneligt er det med det, vi skal gøre?</em></p>
+  </div>
+</section>
+
+<!-- 11 UKENDT -->
+<section class="section" id="ukendt">
+  <div class="container">
+    <div class="section-label">11 — Det vigtigste skel</div>
+    <h2>Manglende evne og manglende evidens</h2>
+    <p>Når belægget er svagt, er det fristende at springe til en konklusion. Men der er to tilstande bag, og de kalder på hver sit svar.</p>
+
+    <div class="dispo">
+      <div class="dispo-h">To tilstande, der ser ens ud i et statusfelt</div>
+      <ul class="dispo-list">
+        <li><strong>Evnehul</strong> <em>→</em> organisationen kan det ikke. Noget skal bygges, hentes ind eller købes, og det tager den tid, det tager.</li>
+        <li><strong>Evidenshul</strong> <em>→</em> vi ved det ikke. Evnen kan være der, men vi har ikke set noget, der afgør det. Her er der noget at undersøge, ikke nødvendigvis noget at bygge.</li>
+      </ul>
+    </div>
+
+    <p>Forskellen er dyr at tage fejl af begge veje. Behandles et evidenshul som et evnehul, køber man noget, man måske har. Behandles et evnehul som et evidenshul, undersøger man videre, mens tiden til at bygge løber ud.</p>
+
+    <p class="pull-quote">Ukendt er ikke det samme som nej. Men en kritisk evne, der står som ukendt tæt på et commitment, er stadig ledelsesrelevant.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Serien har holdt fast i det siden <a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html" style="color:var(--gold);">Paper 02</a>: <strong>»det ved vi ikke« er et legitimt svar</strong>, og ofte mere brugbart end en grøn markering uden noget bag sig. Manglende belæg er ikke belæg for, at evnen mangler. Men når planen forudsætter den, er det manglende belæg i sig selv noget, ledelsen skal forholde sig til.</p>
+    <p>Så er der den stærkeste indvending mod hele dette paper, og den fortjener et ærligt svar: <em>hvis strategien kræver noget, vi aldrig har gjort før, findes belægget jo per definition ikke. Skal vi så lade være?</em></p>
+    <p>Nej, og præmissen holder ikke helt. Det, der mangler per definition, er et <em>direkte</em> bevis på den samlede evne i netop den form. Der kan være stærkt delvist eller analogt belæg: en beslægtet leverance, en afprøvet komponent, en teknisk test, en partner med dokumenteret erfaring. Evidenstyperne i <a href="#evidens" style="color:var(--gold);">afsnit 10</a> er til for at få det frem.</p>
+    <p>Og to ting ændrer sig. Antagelsen bliver skrevet ned som en antagelse i stedet for at gå igennem som et tal. Og spørgsmålet bliver til noget, man kan handle på: <strong>hvad er det mindste bevis, der faktisk kan ændre beslutningen — og hvornår kan det ligge?</strong> Netop når evnen er ny, er der grund til at planlægge det tidligt frem for at opdage tre uger før lancering, at ingen havde set det gjort.</p>
+  </div>
+</section>
+
+<!-- 12 FRAMEWORK -->
+<section class="section" id="framework">
+  <div class="container">
+    <div class="section-label">12 — Frameworket</div>
+    <h2>Fra strategikrav til demonstreret evne</h2>
+    <p>De syv led bruges på ét strategisk krav ad gangen. Ingen modenhedsmodel, ingen score, ingen kortlægning af organisationens evner. Formålet er at komme fra en overskrift til en sætning, ledelsen kan beslutte på.</p>
+
+    <div class="framework-box">
+      <div class="fw-label">Framework</div>
+      <div class="fw-title">Fra strategikrav til demonstreret evne</div>
+      <div class="fw-sub">Thomas Friisnæs' praktiske arbejdsgang. Anvendes på ét krav ad gangen og ender i en evidensstatus, ikke i et tal.</div>
+
+      <div class="fw-step">
+        <div class="fw-letter">1</div>
+        <div class="fw-step-body">
+          <h4>Kravet</h4>
+          <p><strong>Hvad skal organisationen konkret kunne gøre?</strong> Skriv det som en handling med et objekt, ikke som et emne. »AI«, »digital« og »kommerciel excellence« kan ikke efterprøves. Kan I ikke blive enige om handlingen, kan I heller ikke blive enige om, hvorvidt I kan den.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">2</div>
+        <div class="fw-step-body">
+          <h4>Betingelserne</h4>
+          <p><strong>Under hvilke betingelser, i hvilken kvalitet og i hvilket omfang?</strong> Servicemål, fejlrate, regulatoriske krav, antal markeder, frekvens. Og hvornår — en dato, ikke »fremadrettet«. Datoen er en afgørende del af parathedsspørgsmålet: en evne, der kan bygges senere, er ikke nødvendigvis parat til det commitment, planen allerede har lavet.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">3</div>
+        <div class="fw-step-body">
+          <h4>Sammensætningen</h4>
+          <p><strong>Hvad skal bringes sammen, for at det kan lade sig gøre?</strong> Specialiseret viden, roller, systemer, data, arbejdsgange, partneradgang. Ikke en bemandingsplan, men hvad der skal spille sammen — og hvor afleveringerne ligger.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">4</div>
+        <div class="fw-step-body">
+          <h4>Evidensen</h4>
+          <p><strong>Hvad har vi set, der gør vurderingen troværdig?</strong> Navngiv typen — udsagn, inventar, historisk leverance, aktuel demonstration eller gentagen leverance — og sig, hvor sammenligneligt belægget er med kravet.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">5</div>
+        <div class="fw-step-body">
+          <h4>Hullet — og usikkerheden</h4>
+          <p><strong>Hvad mangler vi, og hvad ved vi bare ikke endnu?</strong> Skel mellem det, organisationen ikke kan, og det, vi ikke har set. Sig også, hvad der kan bryde evnen: et system, en godkendelse, en partner, en person.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">6</div>
+        <div class="fw-step-body">
+          <h4>Bevis-eventet</h4>
+          <p><strong>Hvad er det mindste bevis, der faktisk kan ændre beslutningen?</strong> Billigst er ikke nok — testen skal kunne rykke noget. En generalprøve, en teknisk test, en pilot i lille skala, en enkelt rigtig sag, en ekstern vurdering. Sæt en dato på, og sig på forhånd, hvad den skal vise for at tælle.</p>
+        </div>
+      </div>
+      <div class="fw-step">
+        <div class="fw-letter">7</div>
+        <div class="fw-step-body">
+          <h4>Beslutningsrummet, før beviset foreligger</h4>
+          <p><strong>Aftal på forhånd, hvilke beslutninger et utilstrækkeligt eller tvetydigt bevis skal åbne for:</strong> bygge selv, hente adgang udefra, gå i partnerskab, ændre design eller teknologi, skære omfanget, ændre rækkefølgen eller flytte tidspunktet. Ingen følger automatisk af, at et hul er fundet — heller ikke »så ansætter vi nogen«, som er én mulighed blandt flere og den rigtige, når hullet er en kompetence, organisationen mangler og kan tiltrække.</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Arbejdsgangen ender ikke i en score, men i fem linjer: <strong>ét krav med sin sammensætning, ét belæg med sin type, ét hul — af evne eller evidens — ét bevis med en dato, og ét beslutningsrum.</strong></p>
+    <p>Én ting om ejerskabet. People-funktionen kan sidde på vigtig viden om kompetencer, erfaring og udvikling, mens linjen og de faglige miljøer ofte ligger tættere på leverancen. Den viden kan være vigtig evidens — men skal holdes op mod det konkrete evnekrav. Derfor samles vurderingen på tværs og ejes ikke af én funktion. Og <strong>hvilken organisatorisk evne strategien forudsætter, er et ledelsesspørgsmål</strong>, der ikke kan uddelegeres.</p>
+    <p>Og så niveauet. Vurderingen hører hjemme på initiativet, holdet, enheden eller den samlede evne — <strong>ikke på navngivne medarbejdere.</strong> Det er både et hensyn til de mennesker, det handler om, og metodisk nødvendigt: spørgsmålet er ikke, hvor dygtig nogen er, men om organisationen kan bringe det nødvendige sammen. At notere, at en leverance afhænger af én person, er ingen vurdering af personen — det er en oplysning om robusthed.</p>
+  </div>
+</section>
+
+<!-- 13 TIDLIGERE -->
+<section class="section" id="tidligere">
+  <div class="container">
+    <div class="section-label">13 — Seriens signatur</div>
+    <h2>Hvad kunne du se tidligere?</h2>
+    <p>Rubrikken viser, hvad der er værd at kigge efter i et evnekrav. Ingen af linjerne er et varsel eller siger noget om fremtiden.</p>
+
+    <div class="sig sig-earlier">
+      <div class="sig-label">Seriens signatur · Paper 08</div>
+      <div class="sig-title">Illustrative signalhypoteser — ikke validerede ledende indikatorer</div>
+      <table class="sig-table">
+        <thead>
+          <tr><th scope="col">Det, du kan se</th><th scope="col">Hvad det kunne betyde — og hvad der skal undersøges</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Høj sikkerhed på et krav, hvor ingen kan nævne et konkret belæg</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at vurderingen bygger på inventar frem for demonstration. Undersøg: hvad er det seneste, vi har set — og hvor sammenligneligt?</td></tr>
+          <tr><td>Én kritisk evne står stadig som ukendt tæt på et commitment</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde et evidenshul — om der også er et evnehul, er endnu uvist. Undersøg: hvad er det mindste bevis, der kunne afgøre det, og kan det nå at ligge før beslutningen?</td></tr>
+          <tr><td>Strategien forudsætter en evne, hvis opbygning tager længere end horisonten</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at kravet er reelt, men tidspunktet ikke er. Undersøg: kan noget hentes udefra, kan rækkefølgen ændres, eller skal omfanget skæres?</td></tr>
+          <tr><td>Belægget kommer fra en sammenhæng, der er væsentligt anderledes</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at erfaringen ikke dækker kravet. Undersøg: hvilke betingelser — teknologi, omfang, regulering, kunde — er reelt de samme?</td></tr>
+          <tr><td>Den samme specialist optræder som forudsætning i flere initiativer</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at leverancen hviler på en person frem for en arbejdsgang. Undersøg: hvad sker der, hvis vedkommende er væk i seks uger?</td></tr>
+          <tr><td>Stor uenighed mellem ledere om det samme evnekrav</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at kravet ikke er defineret — ikke at nogen tager fejl. Undersøg: svarer de på samme handling, standard og tidspunkt?</td></tr>
+          <tr><td>Den samme etiket bruges om evner i flere initiativer</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at ét ord dækker forskellige ting. Undersøg: skriv de to krav som handlinger, og se om de ligner hinanden.</td></tr>
+          <tr><td>En pilot er gennemført, men har ikke afprøvet det, kravet handler om</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at beviset er ægte, men besvarer et andet spørgsmål. Undersøg: hvilke af kravets betingelser blev testet — og hvilke ikke?</td></tr>
+          <tr><td>Vurderingen stiger, mens definitionen af kravet ændrer sig</td><td data-label="Hvad det kunne betyde — og hvad der skal undersøges">Kunne betyde, at bevægelsen ikke er sammenlignelig. Undersøg: er det, vi måler os mod, det samme som sidste gang?</td></tr>
+        </tbody>
+      </table>
+      <p class="sig-note"><strong>Alle ni er signalhypoteser. Ingen af dem er validerede ledende indikatorer, forudsigelser eller årsager</strong> — <a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html" style="color:var(--gold);">Paper 07</a> gælder her. »Kunne betyde« er en mulig forklaring, ikke et fund, og undersøgelseslinjen er det første spørgsmål, ikke hele undersøgelsen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 14 KONKLUDERE -->
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="section-label">14 — Seriens signatur</div>
+    <h2>Hvad må du ikke konkludere?</h2>
+    <p>Fejlslutningerne går begge veje, og den optimistiske er lettest at overse, fordi den ikke føles som en slutning.</p>
+
+    <div class="sig sig-conclude">
+      <div class="sig-label">Seriens signatur · Paper 08</div>
+      <div class="sig-title">Hvad må du ikke konkludere?</div>
+      <div class="sig-cols">
+        <div>
+          <h4>Ud fra en høj kompetencevurdering kan du ikke konkludere …</h4>
+          <ul>
+            <li>at den organisatoriske evne findes</li>
+            <li>at delene er bragt sammen før</li>
+            <li>at evnen holder i det krævede omfang</li>
+            <li>at den er tilgængelig på det tidspunkt, planen forudsætter</li>
+            <li>at den nye kontekst er dækket</li>
+          </ul>
+          <h4>Ud fra én vellykket pilot kan du ikke konkludere …</h4>
+          <ul>
+            <li>at evnen er moden i hele organisationen</li>
+            <li>at den holder i fuld skala</li>
+            <li>at det, der ikke blev testet, også virker</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Ud fra en lav vurdering kan du ikke konkludere …</h4>
+          <ul>
+            <li>at medarbejderne er for dårlige</li>
+            <li>at der skal ansættes</li>
+            <li>at uddannelse løser det</li>
+            <li>at evnen ikke findes</li>
+            <li>at strategien skal stoppes</li>
+          </ul>
+          <h4>Ud fra én mislykket leverance kan du ikke konkludere …</h4>
+          <ul>
+            <li>at organisationen ikke kan det</li>
+            <li>at det var et kompetenceproblem</li>
+            <li>at det ikke var kapacitet, mandat, design eller en afhængighed</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sig-close">En evnevurdering kan gøre en strategisk antagelse synlig. Den beviser ikke alene, at evnen findes — eller at den mangler.</div>
+    </div>
+
+    <p>Det gælder også opad. En bestyrelse behøver normalt ikke kompetenceoversigter, men kan have grund til at spørge, hvilke strategisk kritiske evner der stadig er uafprøvede, hvilke der kræver en større beslutning om at bygge, købe eller gå i partnerskab, og om der er balance mellem det, vi har forpligtet os til, og det, vi har set.</p>
+  </div>
+</section>
+
+<!-- 15 DIAGNOSE -->
+<section class="section" id="diagnose">
+  <div class="container">
+    <div class="section-label">15 — Diagnose · 10 minutter</div>
+    <h2>Hvad forudsætter strategien, at vi kan?</h2>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · CEO, direktionsmedlem, COO eller Strategy Office · Skriftlig</div>
+      <div class="ex-meta">⏱ Cirka 10 minutter · Ingen score og ingen modenhedsvurdering.</div>
+      <p style="font-size:15.5px;color:var(--text-mid);margin-bottom:20px;">Vælg ét strategisk initiativ — helst besluttet, men ikke leveret. Svar skriftligt og i rækkefølge.</p>
+      <ol>
+        <li><strong>Hvilken konkret organisatorisk evne forudsætter initiativet?</strong></li>
+        <li><strong>Skriv den som handling, standard, omfang, kontekst og dato.</strong></li>
+        <li><strong>Hvilken specialiseret viden og hvilke ressourcer skal bringes sammen?</strong></li>
+        <li><strong>Hvilket belæg har vi for, at vi kan gøre det?</strong></li>
+        <li><strong>Hvilken slags belæg er det — udsagn, inventar, historisk leverance, aktuel demonstration eller gentagen leverance?</strong></li>
+        <li><strong>Hvor sammenligneligt er det med den nye sammenhæng?</strong></li>
+        <li><strong>Hvad er reelt ukendt — og hvad mangler vi at kunne?</strong></li>
+        <li><strong>Hvilken afhængighed kan bryde evnen?</strong></li>
+        <li><strong>Hvad er det mindste bevis, der faktisk kunne ændre beslutningen?</strong></li>
+        <li><strong>Hvad gør vi, hvis beviset ikke holder?</strong></li>
+      </ol>
+      <p style="font-size:15.5px;color:var(--text-mid);margin:22px 0 0;">Øvelsen ender i de samme fem linjer som frameworket: <strong>ét capability statement · ét belæg med sin type · ét hul, af evne eller evidens · ét næste bevis med dato · én beslutningsmulighed.</strong> Kan du ikke svare på spørgsmål 4 og 5, har du i det mindste fundet et evidenshul. Du har endnu ikke vist, om der <em>også</em> er et evnehul.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16 MICRO ACTION -->
+<section class="section" id="action">
+  <div class="container">
+    <div class="section-label">16 — 2-minutters mikrohandling</div>
+    <h2>Stil det spørgsmål, ingen stiller</h2>
+    <div class="micro-action">
+      <span class="ma-tag">⏱ 2 minutter · ved næste strategigennemgang</span>
+      <h3>Ét spørgsmål, to opfølgende og ét tilbud. Ingen ny proces, intet ekstra møde.</h3>
+      <p>Næste gang nogen siger »vi har kompetencerne«, så spørg: <strong>»Hvad har vi set, som viser, at organisationen kan gøre det, strategien kræver — i den form og på det tidspunkt, vi har brug for?«</strong></p>
+      <p>Derefter: <strong>»Hvad er stadig en antagelse?«</strong></p>
+      <p>Er der ikke noget at pege på, er det ingen anklage, men et sted at begynde: <strong>»Fint. Hvad er det mindste bevis, der kunne ændre vores beslutning — og hvornår kan det ligge?«</strong></p>
+      <p>Bemærk tonen. Spørgsmålet er ikke mistillid til holdet, men en anerkendelse af, at kravet er nyt nok til at fortjene et bevis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 17 COMMITMENT -->
+<section class="section" id="commit">
+  <div class="container">
+    <div class="section-label">17 — Dit næste skridt</div>
+    <h2>Gør det konkret — og fortsæt din vej gennem serien</h2>
+    <div class="commit-box">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 08 · Ved vi, om vi kan det, strategien kræver?</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv ét konkret næste skridt; det gemmes kun lokalt i din browser.</p>
+      <label for="commitText">Den evne, strategien forudsætter, og som vi vil efterprøve, er …</label>
+      <p class="commit-note">Skriv initiativet, evnen som handling, standard og omfang, konteksten, datoen, belægget, hvad der stadig er en antagelse, hvad der kan bryde den, hvad der er ukendt, hvad næste bevis er — og hvad I gør, hvis det svigter. Eksempel: »Initiativ: lancering i tre markeder. Evne: godkende og udsende personaliserede tilbud med dokumenteret compliance inden for 48 timer pr. release. Kontekst: nyt regelsæt, ny platform. Dato: fra 1. april 2027. Belæg: ét manuelt forløb i ét marked for halvandet år siden. Antagelse: at godkendelsen kan automatiseres. Afhængighed: ekstern specialist, ikke kontraheret. Ukendt: om compliance kan følge med ved ugentlige releases. Næste bevis: generalprøve på ét marked i marts. Hvis det ikke holder: skær til ét marked.« Eksemplet er en illustration, ikke en anbefaling.</p>
+      <textarea id="commitText" placeholder="Initiativ · evne som handling · standard · omfang · kontekst · dato · belæg · antagelse · afhængighed · ukendt · næste bevis · beslutning"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit næste skridt</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Strategien sker mellem kvartalerne</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-label">18 — Ofte stillede spørgsmål</div>
+    <h2>Det, der bliver spurgt om</h2>
+
+    <details class="faq-item">
+      <summary class="faq-q">Hvad er forskellen på kompetence og organisatorisk evne? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">I dette papers praktiske skel er kompetence viden, færdighed eller dømmekraft hos mennesker, mens organisatorisk evne er det, organisationen pålideligt kan udføre ved at bringe viden, ressourcer, arbejdsmønstre og betingelser sammen. Terminologien varierer i litteraturen; dette er min egen arbejdsdefinition, ikke en universel standard (se <a href="#tesen" style="color:var(--gold);">afsnit 02</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan en evne være til stede, uden at kompetencen er intern? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja. En partner, en leverandør, en alliance eller en delt funktion kan være en del af den måde, organisationen leverer på. »Vi har ikke kompetencen internt« er derfor ikke det samme som »vi kan ikke«. Det relevante spørgsmål er, om organisationen har stabil og rettidig adgang til evnen under de betingelser, strategien kræver.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er en kompetencevurdering på 4 ud af 5 et bevis? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Det er en struktureret selvvurdering. Den kan være ærlig, konsistent og nyttig som puls — og den er stadig et udsagn, ikke en demonstration. Hvad den er værd, afhænger af, hvor klart spørgsmålet var defineret, og hvad vurderingen bygger på (se <a href="#evidens" style="color:var(--gold);">afsnit 10</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Betyder en lav vurdering, at vi skal ansætte? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Hullet skal diagnosticeres først. Det kan ligge i kompetence, integration, systemer, data, arbejdsgange, partneradgang, mandat, proces, design eller omfang — eller det kan være et evidenshul. Svarmulighederne er tilsvarende flere end rekruttering.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan vi bruge tidligere leverancer som belæg? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja, og det er ofte det bedste, der findes. Styrken afhænger af, hvor sammenlignelig sagen er med det nye krav, hvor længe siden det er, og i hvilket omfang det skete. Kræv ikke fuldstændig lighed — spørg til sammenlignelighed på de betingelser, der faktisk er kritiske.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Beviser en pilot, at vi har evnen? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">En pilot kan demonstrere nogle sider af den. Den beviser ikke automatisk fuldt omfang, driftsstabilitet eller det, den ikke testede. Læs en pilot for det, den faktisk afprøvede — og noter, hvad den ikke nåede.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er »det ved vi ikke« et dårligt svar? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Det er ofte mere brugbart end en sikkerhed, der ikke har noget bag sig. Ukendt er ikke det samme som nej — men en kritisk evne, der står som ukendt tæt på et commitment, er stadig noget, ledelsen skal forholde sig til (se <a href="#ukendt" style="color:var(--gold);">afsnit 11</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Kan ét kritisk hul betyde mere end et højt gennemsnit? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ja, hvis det, der mangler, ikke kan erstattes af noget andet i netop den leverance. Men det følger ikke, at det laveste tal altid skal bestemme. Gennemsnit og flaskehalsbillede besvarer to forskellige spørgsmål, og hvilket der er relevant, afhænger af, hvor kritisk og hvor udskiftelig den enkelte del er.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Skal HR eje evnevurderingen? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ikke alene, og ingen anden funktion heller. Spørgsmålet går på tværs af strategi, forretning, teknologi, drift og mennesker. People kan sidde på vigtig viden om kompetencer, erfaring og udvikling, mens linjen og de faglige miljøer ofte ligger tættere på leverancen — derfor samles vurderingen på tværs. Men hvilken organisatorisk evne strategien forudsætter, er et ledelsesspørgsmål, der ikke kan uddelegeres.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er organisatorisk parathed for forandring det samme som capability readiness? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Nej. Forskningen om organizational readiness for change — Weiner og de mål, der er bygget på hans teori — handler om en fælles beslutsomhed og en fælles tro på, at man kan gennemføre en bestemt forandring. Paperets capability readiness er snævrere: om organisationen kan gøre den krævede evne tilgængelig i den nødvendige form på det tidspunkt, planen forudsætter — og den vurdering følges altid af en separat evidensstatus. De to begreber skal ikke slås sammen (se <a href="#parathed" style="color:var(--gold);">afsnit 09</a>).</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Er en kompetencevurdering en ledende indikator? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Ikke som valideret sådan. <a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html" style="color:var(--gold);">Paper 07</a> gælder her: at noget observeres før et resultat, gør det ikke til en ledende indikator. Det kræver en efterprøvet relation til et navngivet senere resultat for en bestemt population inden for en defineret tidshorisont.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Hvad gør jeg på mandag? <span class="faq-icon">+</span></summary>
+      <div class="faq-a">Vælg ét initiativ og spørg: hvilken evne forudsætter denne plan, som vi ikke har demonstreret? Skriv evnen som en handling med standard, omfang, kontekst og dato. Så har du noget, resten af huset kan svare på.</div>
+    </details>
+  </div>
+</section>
+
+<!-- 19 HANDLING -->
+<section class="section" id="handling">
+  <div class="container">
+    <div class="section-label">19 — Fra vurdering til evidens</div>
+    <h2>Fra vurdering til evidens</h2>
+    <p>Spørgsmålet, paperet efterlader, kræver ikke et værktøj: <strong>Hvilken evne forudsætter strategien, som vi endnu ikke har bevis for?</strong> Kan I svare for ét initiativ ved næste strategigennemgang, har paperet gjort sit.</p>
+    <p>Det er rimeligt at sige, hvor jeg selv arbejder med spørgsmålet, og at jeg har en kommerciel interesse i værktøjet. Her rammer paperet mit eget. Strategy Execution Observatory™ har et signal, der hedder Competence Readiness, står under overskriften <em>mennesker</em> og spørger, om vi har de rette kompetencer til det, vi har besluttet. Målt på paperets egne ord er det et spørgsmål om kompetence — første kategori i <a href="#tesen" style="color:var(--gold);">afsnit 02</a> — ikke om organisatorisk evne. Det er det skel, paperet har brugt atten afsnit på, og mit eget signal står på den forkerte side. Det kan være en nyttig puls; evidens for en evne er det ikke.</p>
+    <p>Der er mere. Skalaens øverste etiket hedder <em>fuldt bemandet</em> — men bemanding er en ressource, ikke en kompetence og slet ikke en evne. Når toppen af skalaen beskriver bemanding, blandes den ind i et spørgsmål, der hedder kompetenceparathed, og <strong>constructet bliver uklart: en høj score kan afspejle bemanding, kompetence eller en blanding.</strong> Både ankeret og formentlig operationaliseringen skal ændres. Spørgsmålet er bredt nok til, at en respondent kan blande »har vi folk?«, »kan de det?« og »virker systemerne?«. Indsenderens rolle og område registreres, men selve vurderingen angiver ikke, hvilket scope der bedømmes — eget område, teamet, initiativet eller organisationen — og scoren bør derfor ikke læses uden at vide, hvem og hvor mange svar den bygger på. Metodeteksten beskriver medianen; den samlede porteføljeberegning bruger i dag et gennemsnit, mens per-initiativ-beregningen bruger median. De tre lag skal harmoniseres, før tallet kan læses entydigt. Fire vurderinger på 5, 5, 5 og 1 giver 4,0 — gennemsnit og flaskehalsbillede besvarer to forskellige spørgsmål, uden at det laveste tal dermed bestemmer. Kommentar anbefales ved lave svar, men ikke ved høje, så belægget efterspørges kun den ene vej. Og det, der hedder en trend i kompetencehullet, er en vurderet parathedstrend: en bevægelse i tallet er ikke et hul, der lukker.</p>
+    <p>Én konsekvens er mere direkte. I den nuværende ledelsesvisning kan en score under 3 automatisk udløse anbefalingen <em>investér i kompetenceudvikling</em>. Det er for stærkt — og præcis den slutning, paperet siger, man ikke kan lave. En lav bred vurdering kan åbne en undersøgelse af, hvilken slags hul det er; den kan ikke afgøre, at svaret er kompetenceudvikling. Reglen skal fra løsning til spørgsmål.</p>
+
+    <p class="pull-quote">Hvis mit eget værktøj spørger bredere, end det kan dokumentere, er opgaven at forbedre spørgsmålet — ikke at forsvare tallet.<cite>— Thomas Friisnæs</cite></p>
+
+    <p>Den største gæld er dog en anden. <strong>Vurderingen er ikke koblet til et navngivet krav.</strong> Uden det kan et tal være både oprigtigt og konsistent og stadig tvetydigt. Det siger også, hvad der skal ændres: metoden skal registrere den krævede evne, belæggets type, hvornår evnen skal være der, hvad der kan bryde den, og hvad næste bevis er.</p>
+    <p>For den, der bruger værktøjet i dag: signalet er godt at åbne en samtale med, ikke godt nok at forpligte sig på. Skal et tal bære et commitment, må kravet skrives og belægget findes. Signalet indgår desuden i et sammensat tal — hvad det gør, hører til i næste paper.</p>
+
+    <div class="cta-box">
+      <div class="cta-label">Samtale</div>
+      <h3>Hvilken evne forudsætter jeres strategi?</h3>
+      <p>Vælg ét initiativ, der er besluttet, men ikke leveret. På 20 minutter kan vi skrive evnen som en handling med standard, omfang, kontekst og dato — og se, hvilket belæg der findes, og hvad det mindste næste bevis er.</p>
+      <a class="start-btn" href="/#kontakt">20 min. Ét problem. Én plan. →</a>
+      <p class="print-only">20 min. Ét problem. Én plan. · friisnaes.com/#kontakt</p>
+    </div>
+
+    <h3 style="margin-top:36px;">Næste problem</h3>
+    <p>Sæt nu, at hvert signal har fået en klar definition, et ærligt belæg og en synlig usikkerhed. Så står ét spørgsmål tilbage. <strong>Hvad sker der, når vi normaliserer dem, vægter dem og lægger dem sammen til ét tal?</strong> Et samlet tal kan være nyttigt — og det kan skjule præcis de forskelle, vi lige har arbejdet for at gøre synlige. Det er emnet for Paper 09.</p>
+
+    <div class="next-grid">
+      <div class="next-card soon" aria-disabled="true">
+        <div class="nc-tag">Paper 09 · Kommer</div>
+        <div class="nc-text"><strong>Et indeks er ikke sandheden</strong> — vægte, normalisering, dækning og usikkerhed</div>
+      </div>
+      <a class="next-card" href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">
+        <div class="nc-tag">Paper 07</div>
+        <div class="nc-text"><strong>Før resultatet flytter sig</strong> — tidlige signaler, signalhypoteser og evidensstatus</div>
+      </a>
+      <a class="next-card" href="/library.html">
+        <div class="nc-tag">Executive Library</div>
+        <div class="nc-text"><strong>Alle serier og papers</strong> om strategi, hold, eksekvering og kapacitet</div>
+      </a>
+      <a class="next-card" href="/ceo-sparring.html">
+        <div class="nc-tag">CEO-sparring</div>
+        <div class="nc-text"><strong>Hvad tror I, I kan levere?</strong> En fortrolig samtale, før spørgsmålet bliver til et projekt</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">Organisatorisk evne</div>
+    <ul>
+      <li>Grant, R. M. (1996). »Prospering in Dynamically-Competitive Environments: Organizational Capability as Knowledge Integration.« <em>Organization Science</em>, 7(4), 375–387. Teoretisk artikel. <a href="https://doi.org/10.1287/orsc.7.4.375" target="_blank" rel="noopener">doi.org/10.1287/orsc.7.4.375</a></li>
+      <li>Winter, S. G. (2003). »Understanding dynamic capabilities.« <em>Strategic Management Journal</em>, 24(10), 991–995. Begrebslig research note. <a href="https://doi.org/10.1002/smj.318" target="_blank" rel="noopener">doi.org/10.1002/smj.318</a></li>
+      <li>Helfat, C. E. &amp; Peteraf, M. A. (2003). »The dynamic resource-based view: capability lifecycles.« <em>Strategic Management Journal</em>, 24(10), 997–1010. Teoretisk artikel. <a href="https://doi.org/10.1002/smj.332" target="_blank" rel="noopener">doi.org/10.1002/smj.332</a></li>
+      <li>Leonard-Barton, D. (1992). »Core capabilities and core rigidities: A paradox in managing new product development.« <em>Strategic Management Journal</em>, 13(temanummer), 111–125. 20 casestudier i fem virksomheder. <a href="https://doi.org/10.1002/smj.4250131009" target="_blank" rel="noopener">doi.org/10.1002/smj.4250131009</a></li>
+    </ul>
+    <div class="sb-group">Parathed og måling</div>
+    <ul>
+      <li>Weiner, B. J. (2009). »A theory of organizational readiness for change.« <em>Implementation Science</em>, 4:67. Teoretisk artikel, sundhedsvæsen. <a href="https://doi.org/10.1186/1748-5908-4-67" target="_blank" rel="noopener">doi.org/10.1186/1748-5908-4-67</a></li>
+      <li>Shea, C. M., Jacobs, S. R., Esserman, D. A., Bruce, K. &amp; Weiner, B. J. (2014). »Organizational readiness for implementing change: a psychometric assessment of a new measure.« <em>Implementation Science</em>, 9:7. Fire studier. <a href="https://doi.org/10.1186/1748-5908-9-7" target="_blank" rel="noopener">doi.org/10.1186/1748-5908-9-7</a></li>
+      <li>Caci, L., Nyantakyi, E., Blum, K. m.fl. (2025). »Organizational readiness for change: A systematic review of the healthcare literature.« <em>Implementation Research and Practice</em>, 6. Sundhedsvæsen; 47 studier. <a href="https://doi.org/10.1177/26334895251334536" target="_blank" rel="noopener">doi.org/10.1177/26334895251334536</a></li>
+    </ul>
+    <div class="sb-group">Aktuel praktikerkontekst</div>
+    <ul>
+      <li>World Economic Forum (2025). <em>The Future of Jobs Report 2025.</em> Arbejdsgiverundersøgelse: over 1.000 virksomheder, 22 brancheklynger, 55 økonomier. <a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/" target="_blank" rel="noopener">weforum.org</a></li>
+    </ul>
+    <p style="font-size:13px;color:var(--text-light);margin-top:18px;line-height:1.6;">Begrebet strategisk observabilitet, det praktiske skel mellem kompetence, ressource og organisatorisk evne, begrebet capability readiness, syntaksen for et capability statement, de fem evidenstyper, skellet mellem manglende evne og manglende evidens, frameworket »Fra strategikrav til demonstreret evne«, illustrationen, signalhypoteserne i »Hvad kunne du se tidligere?«, diagnosen og mikrohandlingen er Thomas Friisnæs' egne praktiske begreber og rammer, ikke validerede modeller. Kilderne har hver deres kontekst og felt: Grant er teoretisk videnbaseret teori; Winter er en begrebslig research note; Helfat og Peteraf beskriver generelle mønstre i evners udvikling; Leonard-Barton bygger på 20 casestudier af produktudvikling i fem virksomheder; Weiner er en teori om organisatorisk parathed for forandring i sundhedsvæsenet; Shea og kolleger udvikler et psykometrisk mål i samme felt; Caci og kolleger gennemgår parathedslitteraturen i sundhedsvæsenet; og World Economic Forum rapporterer en arbejdsgiverundersøgelse om oplevede barrierer på arbejdsmarkedet. <strong>Ingen af de citerede studier validerer noget signal i Strategy Execution Observatory™, ingen af dem validerer en 1–5-skala, og ingen af dem handler om de konkrete evner, paperet nævner.</strong> Weiners og Sheas parathedsbegreb er ikke det samme som paperets capability readiness. Åbningscasen er konstrueret, 4,3 er illustrativt og ikke et benchmark, alle eksempler og datoer er illustrative, og ingen tærskel i paperet er en universel regel. Danske gengivelser af engelske formuleringer er egne oversættelser.</p>
+  </div>
+</section>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Strategien sker mellem kvartalerne — serien</div>
+    <h2 class="collection-title">Ti papers om strategisk observabilitet</h2>
+    <p class="collection-intro">Serien handler om, hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang, og om at gøre det synligt uden at forveksle signaler med sandhed. <strong>Alle 10 papers er udgivet.</strong></p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Serie 06</span><span class="cpart-name">Strategien sker mellem kvartalerne</span></div>
+      <p class="cpart-desc">Fra informationsgabet over signaler, kapacitet, beslutninger og friktion til kompetencer, metode og governance.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/strategien-sker-mellem-kvartalerne.html">Strategien sker mellem kvartalerne</a></li>
+        <li data-n="02"><a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html">Grøn er ikke det samme som sund</a></li>
+        <li data-n="03"><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">Det kvalitative kan godt kvantificeres</a></li>
+        <li data-n="04"><a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">Kapacitet findes ikke i planen</a></li>
+        <li data-n="05"><a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html">Beslutninger er en del af produktionsapparatet</a></li>
+        <li data-n="06"><a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html">Friktion er data</a></li>
+        <li data-n="07"><a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html">Før resultatet flytter sig</a></li>
+        <li data-n="08"><span class="current">Ved vi, om vi kan det, strategien kræver? — du læser dette</span></li>
+        <li data-n="09"><a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">Et indeks er ikke sandheden</a></li>
+        <li data-n="10"><a href="/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html">Demokratisér udsynet. Centralisér metoden.</a></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4 — klar til at læse, gemme eller tage med til næste strategimøde i direktionen eller bestyrelsen.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html">
+      <span class="ra-tag">Næste i serien · Paper 09</span>
+      <span class="ra-title">Et indeks er ikke sandheden: vægte, dækning og robusthed i samlede tal</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 04</span>
+      <span class="ra-title">Kapacitet findes ikke i planen: Hvad kan organisationen reelt bære?</span>
+    </a>
+    <a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html">
+      <span class="ra-tag">Strategien sker mellem kvartalerne · Paper 03</span>
+      <span class="ra-title">Det kvalitative kan godt kvantificeres: Hvad kan et tal på en vurdering bære?</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Strategien sker mellem kvartalerne · Serie 06 · Paper 08 af 10</div>
+        <div class="series-next">Næste: <a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.35)">Et indeks er ikke sandheden</a></div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: smk_ (Strategien sker mellem kvartalerne)
+  var LS_C = 'smk_p08_commit', LS_D = 'smk_done', PAPER_N = 8, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // FAQ åben i print, også når browserens egen udskriv-funktion bruges
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>
