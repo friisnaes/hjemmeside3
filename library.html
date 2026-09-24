@@ -124,6 +124,9 @@
   .sc-paper-list li { counter-increment: p; display: flex; gap: 16px; align-items: baseline; padding: 11px 0; border-bottom: 1px solid rgba(0,0,0,.04); }
   .sc-paper-list li:last-child { border-bottom: none; }
   .sc-paper-list li::before { content: counter(p, decimal-leading-zero); font-family: var(--display); font-size: .72rem; color: var(--red); font-weight: 600; min-width: 22px; padding-top: 2px; }
+  /* Serie 06: gennemgående nummerering 01–10 på tværs af de fire dele (papers'ene er eksplicit nummereret Paper 01–10) */
+  #papers-observabilitet { counter-reset: p; }
+  #papers-observabilitet .sc-paper-list { counter-reset: none; }
   .sc-paper-list a { display: flex; flex-direction: column; gap: 2px; flex: 1; }
   .sc-paper-list .pl-t { font-family: var(--body); font-size: .92rem; color: var(--black); font-weight: 500; transition: color .3s; }
   .sc-paper-list .pl-s { font-family: var(--body); font-size: .8rem; color: var(--gray); line-height: 1.5; }
@@ -370,6 +373,76 @@
    "description": "Ni white papers om arbejdsdagen som ledelsesdesign — bygget på arkitekturen TAKT (Tydelighed, Adskillelse, Kadence → Tid tilbage), fra kalenderanarkiet til implementeringens fire mandater. Inklusive companion-værktøjet TAKT for hver stol.",
    "url": "https://www.friisnaes.com/struktur-saetter-fri.html",
    "inLanguage": "da"
+  },
+  {
+     "@type": "CreativeWorkSeries",
+     "name": "Strategien sker mellem kvartalerne",
+     "position": 6,
+     "description": "Ti white papers om strategisk observabilitet — hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang, fra informationsgabet til governance.",
+     "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-serie.html",
+     "inLanguage": "da",
+     "hasPart": [
+        {
+           "@type": "Article",
+           "position": 1,
+           "name": "Strategien sker mellem kvartalerne",
+           "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne.html"
+        },
+        {
+           "@type": "Article",
+           "position": 2,
+           "name": "Grøn er ikke det samme som sund",
+           "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html"
+        },
+        {
+           "@type": "Article",
+           "position": 3,
+           "name": "Det kvalitative kan godt kvantificeres",
+           "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html"
+        },
+        {
+           "@type": "Article",
+           "position": 4,
+           "name": "Kapacitet findes ikke i planen",
+           "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html"
+        },
+        {
+           "@type": "Article",
+           "position": 5,
+           "name": "Beslutninger er en del af produktionsapparatet",
+           "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html"
+        },
+        {
+           "@type": "Article",
+           "position": 6,
+           "name": "Friktion er data",
+           "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-friktion-er-data.html"
+        },
+        {
+           "@type": "Article",
+           "position": 7,
+           "name": "Før resultatet flytter sig",
+           "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html"
+        },
+        {
+           "@type": "Article",
+           "position": 8,
+           "name": "Ved vi, om vi kan det, strategien kræver?",
+           "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html"
+        },
+        {
+           "@type": "Article",
+           "position": 9,
+           "name": "Et indeks er ikke sandheden",
+           "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html"
+        },
+        {
+           "@type": "Article",
+           "position": 10,
+           "name": "Demokratisér udsynet. Centralisér metoden.",
+           "url": "https://www.friisnaes.com/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html"
+        }
+     ]
   },
   {
    "@type": "CreativeWorkSeries",
@@ -733,6 +806,65 @@
             <div class="sc-part-head"><span class="sc-part-num" data-da="Companion" data-en="Companion">Companion</span><span class="sc-part-name" data-da="Anvendelsesværktøj til serien" data-en="Companion tool for the series">Anvendelsesværktøj til serien</span></div>
             <ul class="sc-paper-list">
               <li><a href="/struktur-saetter-fri-takt-for-hver-stol.html"><span class="pl-t">TAKT for hver stol</span><span class="pl-s" data-da="Rollekort, seks læseveje og ledergruppeøvelsen TAKT rundt om bordet" data-en="Role cards, six reading paths and the leadership exercise TAKT around the table">Rollekort, seks læseveje og ledergruppeøvelsen TAKT rundt om bordet</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="series-card rv" id="observabilitet">
+      <div class="sc-head">
+        <div class="sc-head-inner">
+          <div class="sc-eyebrow">
+            <span class="sc-serienum">Serie 06</span>
+            <span class="sc-count-top" data-da="10 papers · 4 dele" data-en="10 papers · 4 parts">10 papers · 4 dele</span>
+          </div>
+          <div class="sc-title">Strategien sker <em>mellem kvartalerne</em></div>
+          <div class="sc-tagline" data-da="Strategisk observabilitet." data-en="Strategic observability.">Strategisk observabilitet.</div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p class="sc-desc" data-da="Ti white papers om <strong>strategisk observabilitet</strong> — hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang. Fra informationsgabet over signaler, kapacitet, beslutninger og friktion til kompetencer, metode og governance. <strong>Kvartalsrapporten er ikke problemet. Problemet er, at den bliver brugt til et spørgsmål, den aldrig var bygget til at besvare.</strong> Hvert paper siger udtrykkeligt, hvad man <em>ikke</em> må konkludere. Serien er komplet." data-en="Ten white papers on <strong>strategic observability</strong> — what leadership can see of strategy execution while it is still under way. From the information gap through signals, capacity, decisions and friction to capabilities, method and governance. <strong>The quarterly report is not the problem. The problem is that it is used for a question it was never built to answer.</strong> Every paper states explicitly what you may <em>not</em> conclude. The series is complete.">Ti white papers om <strong>strategisk observabilitet</strong> — hvad ledelsen kan se af strategiens eksekvering, mens den stadig er i gang. Fra informationsgabet over signaler, kapacitet, beslutninger og friktion til kompetencer, metode og governance. <strong>Kvartalsrapporten er ikke problemet. Problemet er, at den bliver brugt til et spørgsmål, den aldrig var bygget til at besvare.</strong> Hvert paper siger udtrykkeligt, hvad man <em>ikke</em> må konkludere. Serien er komplet.</p>
+        <div class="sc-parts">
+          <span class="sc-part-tag"><b>Del 1</b> · <span data-da="Hvad ledelsen kan se" data-en="What leadership can see">Hvad ledelsen kan se</span></span>
+          <span class="sc-part-tag"><b>Del 2</b> · <span data-da="Hvad der står i vejen" data-en="What stands in the way">Hvad der står i vejen</span></span>
+          <span class="sc-part-tag"><b>Del 3</b> · <span data-da="Hvad tallene kan bære" data-en="What the numbers can carry">Hvad tallene kan bære</span></span>
+          <span class="sc-part-tag"><b>Del 4</b> · <span data-da="Hvem der må hvad" data-en="Who may do what">Hvem der må hvad</span></span>
+        </div>
+        <div class="sc-actions">
+          <a href="/strategien-sker-mellem-kvartalerne-serie.html" class="btn bp" data-da="Åbn serien" data-en="Open the series">Åbn serien</a>
+          <button class="btn bo" onclick="togglePapers('papers-observabilitet', this)" data-da="Se alle 10 papers" data-en="See all 10 papers">Se alle 10 papers</button>
+        </div>
+        <p class="sc-cross"><b data-da="Læs videre på tværs:" data-en="Continue across the series:">Læs videre på tværs:</b> <a href="/prioriteringsparalysen.html" data-da="Prioriteringsparalysen" data-en="Prioritisation paralysis">Prioriteringsparalysen</a> <span class="sc-cross-sep">·</span> <a href="/modspillet-der-mangler.html" data-da="Modspillet, der mangler" data-en="The challenge that is missing">Modspillet, der mangler</a> <span class="sc-cross-sep">·</span> <a href="/holdet-bag-strategien-strategien-bestemmer-holdet.html" data-da="Strategien bestemmer holdet" data-en="Strategy determines the team">Strategien bestemmer holdet</a></p>
+        <div class="sc-papers" id="papers-observabilitet">
+          <div class="sc-partgroup">
+            <div class="sc-part-head"><span class="sc-part-num">Del 1</span><span class="sc-part-name" data-da="Hvad ledelsen kan se" data-en="What leadership can see">Hvad ledelsen kan se</span></div>
+            <ul class="sc-paper-list">
+              <li><a href="/strategien-sker-mellem-kvartalerne.html"><span class="pl-t">Strategien sker mellem kvartalerne</span><span class="pl-s" data-da="Informationsgabet mellem rapporterne — hvad ledelsen kan se, mens eksekveringen sker" data-en="The information gap between reports — what leadership can see while execution happens">Informationsgabet mellem rapporterne — hvad ledelsen kan se, mens eksekveringen sker</span></a></li>
+              <li><a href="/strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund.html"><span class="pl-t">Grøn er ikke det samme som sund</span><span class="pl-s" data-da="Statusfarven fortæller noget — spørgsmålet er, hvad der ligger uden for den" data-en="The status colour tells you something — the question is what lies outside it">Statusfarven fortæller noget — spørgsmålet er, hvad der ligger uden for den</span></a></li>
+              <li><a href="/strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres.html"><span class="pl-t">Det kvalitative kan godt kvantificeres</span><span class="pl-s" data-da="Et tal gør ikke vurderingen objektiv — men det gør den mulig at udfordre" data-en="A number does not make the judgement objective — but it makes it challengeable">Et tal gør ikke vurderingen objektiv — men det gør den mulig at udfordre</span></a></li>
+            </ul>
+          </div>
+          <div class="sc-partgroup">
+            <div class="sc-part-head"><span class="sc-part-num">Del 2</span><span class="sc-part-name" data-da="Hvad der står i vejen" data-en="What stands in the way">Hvad der står i vejen</span></div>
+            <ul class="sc-paper-list">
+              <li><a href="/strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen.html"><span class="pl-t">Kapacitet findes ikke i planen</span><span class="pl-s" data-da="En plan kan fordele arbejdet, men ikke fortælle, om organisationen kan bære det" data-en="A plan can distribute the work, but not tell you whether the organisation can carry it">En plan kan fordele arbejdet, men ikke fortælle, om organisationen kan bære det</span></a></li>
+              <li><a href="/strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet.html"><span class="pl-t">Beslutninger er en del af produktionsapparatet</span><span class="pl-s" data-da="Arbejdet kan være klart — eksekveringen står stille, hvis beslutningen mangler" data-en="The work can be clear — execution still stalls when the decision is missing">Arbejdet kan være klart — eksekveringen står stille, hvis beslutningen mangler</span></a></li>
+              <li><a href="/strategien-sker-mellem-kvartalerne-friktion-er-data.html"><span class="pl-t">Friktion er data</span><span class="pl-s" data-da="Det, der løses igen og igen, siger mere end antallet af åbne problemer" data-en="What gets solved again and again says more than the number of open problems">Det, der løses igen og igen, siger mere end antallet af åbne problemer</span></a></li>
+            </ul>
+          </div>
+          <div class="sc-partgroup">
+            <div class="sc-part-head"><span class="sc-part-num">Del 3</span><span class="sc-part-name" data-da="Hvad tallene kan bære" data-en="What the numbers can carry">Hvad tallene kan bære</span></div>
+            <ul class="sc-paper-list">
+              <li><a href="/strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig.html"><span class="pl-t">Før resultatet flytter sig</span><span class="pl-s" data-da="At et signal kommer før resultatet, gør det ikke til en ledende indikator" data-en="A signal arriving before the outcome is not thereby a leading indicator">At et signal kommer før resultatet, gør det ikke til en ledende indikator</span></a></li>
+              <li><a href="/strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever.html"><span class="pl-t">Ved vi, om vi kan det, strategien kræver?</span><span class="pl-s" data-da="Kompetencer et sted i organisationen er ikke det samme som evne" data-en="Competence somewhere in the organisation is not the same as capability">Kompetencer et sted i organisationen er ikke det samme som evne</span></a></li>
+              <li><a href="/strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden.html"><span class="pl-t">Et indeks er ikke sandheden</span><span class="pl-s" data-da="Et samlet tal er altid resultatet af valg om vægt, skala og kompensation" data-en="A composite number is always the result of choices about weight, scale and compensation">Et samlet tal er altid resultatet af valg om vægt, skala og kompensation</span></a></li>
+            </ul>
+          </div>
+          <div class="sc-partgroup">
+            <div class="sc-part-head"><span class="sc-part-num">Del 4</span><span class="sc-part-name" data-da="Hvem der må hvad" data-en="Who may do what">Hvem der må hvad</span></div>
+            <ul class="sc-paper-list">
+              <li><a href="/strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden.html"><span class="pl-t">Demokratisér udsynet. Centralisér metoden.</span><span class="pl-s" data-da="Udsynet må have mange brugere — metoden skal have et tydeligt hjem" data-en="The view may have many users — the method needs a clear home">Udsynet må have mange brugere — metoden skal have et tydeligt hjem</span></a></li>
             </ul>
           </div>
         </div>
