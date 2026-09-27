@@ -1,0 +1,43 @@
+name: Ugentlig udgivelse (søgning og sitemap)
+
+on:
+  schedule:
+    # Hver mandag kl. 00:15 dansk vintertid (23:15 UTC søndag). I sommertid kører den kl. 01:15.
+    - cron: '15 23 * * 0'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: ugentlig-udgivelse
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Byg søgeindeks og sitemap
+        run: python3 scripts/release.py
+      - name: Gem ændringer
+        run: |
+          git config user.name "friisnaes-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A pagefind sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Ingen ændringer denne uge."
+          else
+            git commit -m "Ugentlig udgivelse: søgeindeks og sitemap ($(TZ=Europe/Copenhagen date +%F))"
+            git push
+            # Et push fra en Action starter ikke altid GitHub Pages af sig selv, så vi beder om en ny build
+            curl -s -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${{ github.repository }}/pages/builds" || true
+          fi
