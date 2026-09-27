@@ -16,22 +16,25 @@ concurrency:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: '20'
-      - name: Byg søgeindeks og sitemap
-        run: python3 scripts/release.py
+      - name: Byg søgeindeks, sitemap og situationsfinder
+        run: |
+          pip install --quiet beautifulsoup4
+          python3 scripts/release.py
+          python3 scripts/situationsfinder.py
       - name: Gem ændringer
         run: |
           git config user.name "friisnaes-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A pagefind sitemap.xml
+          git add -A pagefind sitemap.xml situationsfinder-index.json
           if git diff --cached --quiet; then
             echo "Ingen ændringer denne uge."
           else
