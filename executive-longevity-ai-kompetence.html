@@ -320,6 +320,7 @@
  "dateModified": "2026-09-11"
 }
 </script>
+<style>a.e27x:not([href]){cursor:default;opacity:.75} a.e27x .e27s{font-size:.85em;opacity:.8}</style>
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
@@ -851,6 +852,10 @@
       <span class="ra-tag">Hele serien</span>
       <span class="ra-title">Executive Longevity: Ti papers om kapaciteten der afgør de sidste tyve år</span>
     </a>
+    <a class="e27x" data-e27-date="2026-11-16" data-e27-href="/executive-coaching-2027-doemmekraft-kan-ikke-outsources.html">
+      <span class="ra-tag">Relateret · Executive Coaching 2027 · Paper 02<span class="e27s"> · udkommer 16. nov. 2026</span></span>
+      <span class="ra-title">Dømmekraft kan ikke outsources</span>
+    </a>
   </div>
 </section>
 
@@ -907,6 +912,15 @@
       window.addEventListener('afterprint', cleanup); window.print(); setTimeout(cleanup, 1500);
     } catch (e) { window.print(); }
   }
+</script>
+<script>
+  // Krydsreference til Executive Coaching 2027: bliver et link på udgivelsesdatoen
+  (function () {
+    var now = new Date();
+    document.querySelectorAll('a.e27x[data-e27-date]').forEach(function (a) {
+      if (now >= new Date(a.getAttribute('data-e27-date') + 'T00:00:00+01:00')) { a.setAttribute('href', a.getAttribute('data-e27-href')); var s = a.querySelector('.e27s'); if (s) s.remove(); }
+    });
+  })();
 </script>
 </body>
 </html>

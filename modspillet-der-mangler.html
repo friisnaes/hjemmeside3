@@ -1097,6 +1097,7 @@
  ]
 }
 </script>
+<style>a.e27x:not([href]){cursor:default;opacity:.75} a.e27x .e27s{font-size:.85em;opacity:.8}</style>
 </head>
 <body>
 <nav class="pnav-bar">
@@ -1797,6 +1798,7 @@
 <li><span class="fn-kind">Næste paper · C-Level Serien</span><a href="den-tavse-direktion.html">Den tavse direktion: Konsensuskultur som ledelsessvigt</a></li>
 <li><span class="fn-kind">Forrige paper · C-Level Serien</span><a href="fra-manager-til-leder.html">Ekspertfælden™: Den skjulte årsag til at dygtige ledere bliver organisatoriske flaskehalse</a></li>
 <li><span class="fn-kind">Hele serien</span><a href="c-level-serien.html">C-Level Serien: Ti papers i fire dele — en anatomi af topledelse</a></li>
+<li><span class="fn-kind">Relateret · Executive Coaching 2027 · Paper 05</span><a class="e27x" data-e27-date="2027-01-11" data-e27-href="/executive-coaching-2027-jo-hoejere-du-kommer-jo-dyrere-bliver-aerlig-modstand.html">Jo højere du kommer, jo dyrere bliver ærlig modstand<span class="e27s"> · udkommer 11. jan. 2027</span></a></li>
 </ul>
 </section>
 <footer class="wp-footer">
@@ -1829,5 +1831,14 @@
   }
 </script>
 
+<script>
+  // Krydsreference til Executive Coaching 2027: bliver et link på udgivelsesdatoen
+  (function () {
+    var now = new Date();
+    document.querySelectorAll('a.e27x[data-e27-date]').forEach(function (a) {
+      if (now >= new Date(a.getAttribute('data-e27-date') + 'T00:00:00+01:00')) { a.setAttribute('href', a.getAttribute('data-e27-href')); var s = a.querySelector('.e27s'); if (s) s.remove(); }
+    });
+  })();
+</script>
 </body>
 </html>

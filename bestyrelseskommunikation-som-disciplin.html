@@ -539,6 +539,7 @@
  ]
 }
 </script>
+<style>a.e27x:not([href]){cursor:default;opacity:.75} a.e27x .e27s{font-size:.85em;opacity:.8}</style>
 </head>
 <body>
 <nav class="pnav-bar">
@@ -1210,6 +1211,7 @@
 <li><span class="fn-kind">Næste paper · C-Level Serien</span><a href="succession-som-strategi.html">Succession som strategi: Det ledelsesskifte organisationer ikke er klar til</a></li>
 <li><span class="fn-kind">Forrige paper · C-Level Serien</span><a href="den-usynlige-ceo.html">Den usynlige CEO: Ledelse fra toppen uden at blive isoleret</a></li>
 <li><span class="fn-kind">Hele serien</span><a href="c-level-serien.html">C-Level Serien: Ti papers i fire dele — en anatomi af topledelse</a></li>
+<li><span class="fn-kind">Relateret · Executive Coaching 2027 · Paper 08</span><a class="e27x" data-e27-date="2027-02-22" data-e27-href="/executive-coaching-2027-du-leder-ogsaa-opad-udad-og-paa-tvaers.html">Du leder også opad, udad og på tværs<span class="e27s"> · udkommer 22. feb. 2027</span></a></li>
 </ul>
 </section>
 <footer class="wp-footer">
@@ -1241,5 +1243,14 @@
   }
 </script>
 
+<script>
+  // Krydsreference til Executive Coaching 2027: bliver et link på udgivelsesdatoen
+  (function () {
+    var now = new Date();
+    document.querySelectorAll('a.e27x[data-e27-date]').forEach(function (a) {
+      if (now >= new Date(a.getAttribute('data-e27-date') + 'T00:00:00+01:00')) { a.setAttribute('href', a.getAttribute('data-e27-href')); var s = a.querySelector('.e27s'); if (s) s.remove(); }
+    });
+  })();
+</script>
 </body>
 </html>

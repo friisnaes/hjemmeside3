@@ -590,6 +590,7 @@
  ]
 }
 </script>
+<style>a.e27x:not([href]){cursor:default;opacity:.75} a.e27x .e27s{font-size:.85em;opacity:.8}</style>
 </head>
 <body>
 <nav class="pnav-bar">
@@ -1255,6 +1256,8 @@
 <ul>
 <li><span class="fn-kind">Forrige paper · Eksekveringsserien</span><a href="personligt-lederskab.html">Personligt lederskab: Hvorfor din indre tilstand er organisationens mest kopierede fil</a></li>
 <li><span class="fn-kind">Hele serien</span><a href="eksekveringsserien.html">Eksekveringsserien: Ti papers om maksimalt output med minimal indsats</a></li>
+<li><span class="fn-kind">Relateret · Executive Coaching 2027 · Paper 05</span><a class="e27x" data-e27-date="2027-01-11" data-e27-href="/executive-coaching-2027-jo-hoejere-du-kommer-jo-dyrere-bliver-aerlig-modstand.html">Jo højere du kommer, jo dyrere bliver ærlig modstand<span class="e27s"> · udkommer 11. jan. 2027</span></a></li>
+<li><span class="fn-kind">Relateret · Executive Coaching 2027 · Beslutningsguide</span><a class="e27x" data-e27-date="2026-11-02" data-e27-href="/executive-coaching-2027-foer-du-hyrer-en-executive-coach.html">Før du hyrer en executive coach<span class="e27s"> · udkommer 2. nov. 2026</span></a></li>
 </ul>
 </section>
 <footer class="wp-footer">
@@ -1374,6 +1377,15 @@
       d.papers[PAPER_ID].done = !d.papers[PAPER_ID].done;
       if (input) d.papers[PAPER_ID].commitment = input.value.trim();
       if (save(d)) { mine = d.papers[PAPER_ID]; renderStatus(); renderProgress(); flashSaved(); }
+    });
+  })();
+</script>
+<script>
+  // Krydsreference til Executive Coaching 2027: bliver et link på udgivelsesdatoen
+  (function () {
+    var now = new Date();
+    document.querySelectorAll('a.e27x[data-e27-date]').forEach(function (a) {
+      if (now >= new Date(a.getAttribute('data-e27-date') + 'T00:00:00+01:00')) { a.setAttribute('href', a.getAttribute('data-e27-href')); var s = a.querySelector('.e27s'); if (s) s.remove(); }
     });
   })();
 </script>

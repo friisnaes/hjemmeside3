@@ -554,6 +554,7 @@ body { padding: 56px 0 80px; }
  ]
 }
 </script>
+<style>a.e27x:not([href]){cursor:default;opacity:.75} a.e27x .e27s{font-size:.85em;opacity:.8}</style>
 </head>
 <body>
 <nav class="pnav-bar">
@@ -1223,6 +1224,7 @@ body { padding: 56px 0 80px; }
 <li><span class="fn-kind">Næste paper · C-Level Serien</span><a href="modspillet-der-mangler.html">Modspillet der mangler: Når topledere tier stille</a></li>
 <li><span class="fn-kind">Forrige paper · C-Level Serien</span><a href="klarhed-som-konkurrencefordel.html">Klarhed som konkurrencefordel: Det lederskab ingen har tid til</a></li>
 <li><span class="fn-kind">Hele serien</span><a href="c-level-serien.html">C-Level Serien: Ti papers i fire dele — en anatomi af topledelse</a></li>
+<li><span class="fn-kind">Relateret · Executive Coaching 2027 · Paper 07</span><a class="e27x" data-e27-date="2027-02-08" data-e27-href="/executive-coaching-2027-din-naeste-styrke-er-maaske-at-fylde-mindre.html">Din næste styrke er måske at fylde mindre<span class="e27s"> · udkommer 8. feb. 2027</span></a></li>
 </ul>
 </section>
 <footer class="wp-footer">
@@ -1254,5 +1256,14 @@ body { padding: 56px 0 80px; }
   }
 </script>
 
+<script>
+  // Krydsreference til Executive Coaching 2027: bliver et link på udgivelsesdatoen
+  (function () {
+    var now = new Date();
+    document.querySelectorAll('a.e27x[data-e27-date]').forEach(function (a) {
+      if (now >= new Date(a.getAttribute('data-e27-date') + 'T00:00:00+01:00')) { a.setAttribute('href', a.getAttribute('data-e27-href')); var s = a.querySelector('.e27s'); if (s) s.remove(); }
+    });
+  })();
+</script>
 </body>
 </html>

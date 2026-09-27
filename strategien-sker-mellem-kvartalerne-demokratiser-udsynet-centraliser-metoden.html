@@ -862,6 +862,7 @@
  "dateModified": "2026-10-01"
 }
 </script>
+<style>a.e27x:not([href]){cursor:default;opacity:.75} a.e27x .e27s{font-size:.85em;opacity:.8}</style>
 </head>
 <body>
 
@@ -1755,6 +1756,10 @@
       <span class="ra-tag">Executive Library</span>
       <span class="ra-title">Alle serier og papers — strategi, hold, eksekvering og kapacitet</span>
     </a>
+    <a class="e27x" data-e27-date="2027-03-22" data-e27-href="/executive-coaching-2027-din-personlige-governance.html">
+      <span class="ra-tag">Relateret · Executive Coaching 2027 · Paper 10<span class="e27s"> · udkommer 22. mar. 2027</span></span>
+      <span class="ra-title">Din personlige governance</span>
+    </a>
   </div>
 </section>
 
@@ -1838,6 +1843,15 @@
       setTimeout(cleanup, 1500);
     } catch (e) { window.print(); }
   }
+</script>
+<script>
+  // Krydsreference til Executive Coaching 2027: bliver et link på udgivelsesdatoen
+  (function () {
+    var now = new Date();
+    document.querySelectorAll('a.e27x[data-e27-date]').forEach(function (a) {
+      if (now >= new Date(a.getAttribute('data-e27-date') + 'T00:00:00+01:00')) { a.setAttribute('href', a.getAttribute('data-e27-href')); var s = a.querySelector('.e27s'); if (s) s.remove(); }
+    });
+  })();
 </script>
 </body>
 </html>

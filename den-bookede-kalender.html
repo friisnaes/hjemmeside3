@@ -586,6 +586,7 @@
  ]
 }
 </script>
+<style>a.e27x:not([href]){cursor:default;opacity:.75} a.e27x .e27s{font-size:.85em;opacity:.8}</style>
 </head>
 <body>
 <nav class="pnav-bar">
@@ -1258,6 +1259,7 @@
 <li><span class="fn-kind">Næste paper · Eksekveringsserien</span><a href="kontekstskiftet.html">Kontekstskiftet: Hvorfor belastningen ikke kommer fra timerne, men fra skiftene</a></li>
 <li><span class="fn-kind">Forrige paper · Eksekveringsserien</span><a href="prioriteringsparalysen.html">Prioriteringsparalysen: Når alt er vigtigt, bliver intet rigtig vigtigt</a></li>
 <li><span class="fn-kind">Hele serien</span><a href="eksekveringsserien.html">Eksekveringsserien: Ti papers om maksimalt output med minimal indsats</a></li>
+<li><span class="fn-kind">Relateret · Executive Coaching 2027 · Paper 03</span><a class="e27x" data-e27-date="2026-11-30" data-e27-href="/executive-coaching-2027-tiden-viser-hvilket-job-du-faktisk-har.html">Tiden viser, hvilket job du faktisk har<span class="e27s"> · udkommer 30. nov. 2026</span></a></li>
 </ul>
 </section>
 <footer class="wp-footer">
@@ -1377,6 +1379,15 @@
       d.papers[PAPER_ID].done = !d.papers[PAPER_ID].done;
       if (input) d.papers[PAPER_ID].commitment = input.value.trim();
       if (save(d)) { mine = d.papers[PAPER_ID]; renderStatus(); renderProgress(); flashSaved(); }
+    });
+  })();
+</script>
+<script>
+  // Krydsreference til Executive Coaching 2027: bliver et link på udgivelsesdatoen
+  (function () {
+    var now = new Date();
+    document.querySelectorAll('a.e27x[data-e27-date]').forEach(function (a) {
+      if (now >= new Date(a.getAttribute('data-e27-date') + 'T00:00:00+01:00')) { a.setAttribute('href', a.getAttribute('data-e27-href')); var s = a.querySelector('.e27s'); if (s) s.remove(); }
     });
   })();
 </script>
