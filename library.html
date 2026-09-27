@@ -127,6 +127,12 @@
   /* Serie 06: gennemgående nummerering 01–10 på tværs af de fire dele (papers'ene er eksplicit nummereret Paper 01–10) */
   #papers-observabilitet { counter-reset: p; }
   #papers-observabilitet .sc-paper-list { counter-reset: none; }
+  #papers-coaching { counter-reset: p; }
+  #papers-coaching .sc-paper-list { counter-reset: none; }
+  .sc-paper-list .pl-d { font-family: var(--body); font-size: .72rem; color: var(--red); letter-spacing: .04em; margin-top: 2px; }
+  .sc-paper-list a.e27x:not([href]) { cursor: default; }
+  .sc-paper-list a.e27x:not([href]) .pl-t { color: var(--gray); }
+  .sc-paper-list a.e27x:not([href]):hover .pl-t { color: var(--gray); }
   .sc-paper-list a { display: flex; flex-direction: column; gap: 2px; flex: 1; }
   .sc-paper-list .pl-t { font-family: var(--body); font-size: .92rem; color: var(--black); font-weight: 500; transition: color .3s; }
   .sc-paper-list .pl-s { font-family: var(--body); font-size: .8rem; color: var(--gray); line-height: 1.5; }
@@ -510,9 +516,9 @@
     <p class="hp" data-da="Ikke enkeltstående artikler — men hele universer af white papers, bygget til at blive læst, brugt og vendt tilbage til." data-en="Not one-off articles — but whole universes of white papers, built to be read, used and returned to.">Ikke enkeltstående artikler — men hele universer af white papers, bygget til at blive læst, brugt og vendt tilbage til.</p>
     <p class="hp2" data-da="De største ledelsesudfordringer løses sjældent med ét godt råd. De kræver en sammenhængende måde at tænke på. Gratis at læse, downloade som PDF og dele." data-en="The biggest leadership challenges are rarely solved by one good piece of advice. They require a coherent way of thinking. Free to read, download as PDF and share.">De største ledelsesudfordringer løses sjældent med ét godt råd. De kræver en sammenhængende måde at tænke på. Gratis at læse, downloade som PDF og dele.</p>
     <div class="hs">
-      <div class="si"><div class="sn">6</div><div class="sl" data-da="Serier" data-en="Series">Serier</div></div>
+      <div class="si"><div class="sn">7</div><div class="sl" data-da="Serier" data-en="Series">Serier</div></div>
       <div class="si"><div class="sn" data-da="Ugentlig" data-en="Weekly">Ugentlig</div><div class="sl" data-da="C-level brief" data-en="C-level brief">C-level brief</div></div>
-      <div class="si"><div class="sn">59</div><div class="sl" data-da="White papers" data-en="White papers">White papers</div></div>
+      <div class="si"><div class="sn" id="libCount">59</div><div class="sl" data-da="White papers" data-en="White papers">White papers</div></div>
       <div class="si"><div class="sn">PDF</div><div class="sl" data-da="Download klar" data-en="Download ready">Download klar</div></div>
       <div class="si"><div class="sn">Gratis</div><div class="sl" data-da="At læse &amp; dele" data-en="To read &amp; share">At læse &amp; dele</div></div>
     </div>
@@ -522,7 +528,7 @@
 <section class="intro">
   <div class="c rv">
     <div class="se" data-da="Om biblioteket" data-en="About the library">Om biblioteket</div>
-    <h2 data-da="Seks serier. Nioghalvtreds papers. En ugentlig brief. <em>Én sammenhængende tænkning.</em>" data-en="Six series. Fifty-nine papers. A weekly brief. <em>One coherent line of thought.</em>">Seks serier. Nioghalvtreds papers. En ugentlig brief. <em>Én sammenhængende tænkning.</em></h2>
+    <h2 data-da="Syv serier. En ugentlig brief. <em>Én sammenhængende tænkning.</em>" data-en="Seven series. A weekly brief. <em>One coherent line of thought.</em>">Syv serier. En ugentlig brief. <em>Én sammenhængende tænkning.</em></h2>
     <p data-da="Executive Library samler mine white paper-serier ét sted. Hver serie tager et afgrænset område af topledelse og bygger det ud i dybden — forankret i forskning, formet af mere end to årtiers arbejde med C-level ledere, og skrevet til at holde over tid." data-en="The Executive Library gathers my white paper series in one place. Each series takes a defined area of executive leadership and builds it out in depth — grounded in research, shaped by more than two decades of work with C-level leaders, and written to last.">Executive Library samler mine white paper-serier ét sted. Hver serie tager et afgrænset område af topledelse og bygger det ud i dybden — forankret i forskning, formet af mere end to årtiers arbejde med C-level ledere, og skrevet til at holde over tid.</p>
     <p data-da="Vælg en serie nedenfor, dyk ned i de enkelte papers, følg et af <a href='#laesespor' style='color:var(--red);border-bottom:1px solid var(--red)'>læsesporene på tværs af serierne</a> — eller læs ugens C-level coaching brief." data-en="Choose a series below, dive into the individual papers, follow one of the <a href='#laesespor' style='color:var(--red);border-bottom:1px solid var(--red)'>reading paths across the series</a> — or read this week's C-level coaching brief.">Vælg en serie nedenfor, dyk ned i de enkelte papers, følg et af <a href="#laesespor" style="color:var(--red);border-bottom:1px solid var(--red)">læsesporene på tværs af serierne</a> — eller læs ugens C-level coaching brief.</p>
   </div>
@@ -871,6 +877,65 @@
       </div>
     </article>
 
+    <article class="series-card rv" id="coaching" data-e27-launch="2026-11-02">
+      <div class="sc-head">
+        <div class="sc-head-inner">
+          <div class="sc-eyebrow">
+            <span class="sc-serienum">Serie 07</span>
+            <span class="sc-count-top" data-da="10 papers · 4 dele" data-en="10 papers · 4 parts">10 papers · 4 dele</span>
+          </div>
+          <div class="sc-title">Executive Coaching <em>2027</em></div>
+          <div class="sc-tagline" data-da="Din egen fremtidssikring og bæredygtighed som executive." data-en="Your own future-proofing and sustainability as an executive.">Din egen fremtidssikring og bæredygtighed som executive.</div>
+        </div>
+      </div>
+      <div class="sc-body">
+        <p class="sc-desc" data-da="Ti white papers om <strong>executive sustainability</strong> — rollen, dømmekraften, tiden, prisen for performance, modspillet, afhængigheden, relationerne, relevansen og til sidst et system, der opdager ændringen næste gang. <strong>Jobtitlen kan stå stille, mens jobbet flytter sig.</strong> Hvert paper siger udtrykkeligt, hvad man <em>ikke</em> må konkludere. Et nyt paper hver anden mandag fra 2. november 2026 til 22. marts 2027." data-en="Ten white papers on <strong>executive sustainability</strong> — the role, judgement, time, the price of performance, challenge, dependency, relationships, relevance and, finally, a system that detects the next shift. <strong>The job title can stand still while the job moves.</strong> Every paper states explicitly what you may <em>not</em> conclude. A new paper every other Monday from 2 November 2026 to 22 March 2027.">Ti white papers om <strong>executive sustainability</strong> — rollen, dømmekraften, tiden, prisen for performance, modspillet, afhængigheden, relationerne, relevansen og til sidst et system, der opdager ændringen næste gang. <strong>Jobtitlen kan stå stille, mens jobbet flytter sig.</strong> Hvert paper siger udtrykkeligt, hvad man <em>ikke</em> må konkludere. Et nyt paper hver anden mandag fra 2. november 2026 til 22. marts 2027.</p>
+        <div class="sc-parts">
+          <span class="sc-part-tag"><b>Del 1</b> · <span data-da="Rollen" data-en="The role">Rollen</span></span>
+          <span class="sc-part-tag"><b>Del 2</b> · <span data-da="Mennesket" data-en="The person">Mennesket</span></span>
+          <span class="sc-part-tag"><b>Del 3</b> · <span data-da="Systemet omkring rollen" data-en="The system around the role">Systemet omkring rollen</span></span>
+          <span class="sc-part-tag"><b>Del 4</b> · <span data-da="Governance" data-en="Governance">Governance</span></span>
+        </div>
+        <div class="sc-actions">
+          <a href="/executive-coaching-2027.html" class="btn bp" data-da="Åbn serien" data-en="Open the series">Åbn serien</a>
+          <button class="btn bo" onclick="togglePapers('papers-coaching', this)" data-da="Se alle 10 papers" data-en="See all 10 papers">Se alle 10 papers</button>
+        </div>
+        <p class="sc-cross"><b data-da="Læs videre på tværs:" data-en="Continue across the series:">Læs videre på tværs:</b> <a href="/ensomheden-i-toppen.html" data-da="Ensomheden i toppen" data-en="Loneliness at the top">Ensomheden i toppen</a> <span class="sc-cross-sep">·</span> <a href="/fra-manager-til-leder.html" data-da="Ekspertfælden™" data-en="The expert trap™">Ekspertfælden™</a> <span class="sc-cross-sep">·</span> <a href="/executive-longevity.html" data-da="Executive Longevity" data-en="Executive Longevity">Executive Longevity</a> <span class="sc-cross-sep">·</span> <a href="/executive-coaching-2027-foer-du-hyrer-en-executive-coach.html" data-da="Før du hyrer en executive coach" data-en="Before you hire an executive coach">Før du hyrer en executive coach</a> <span class="sc-cross-sep">·</span> <a href="/executive-sustainability-map.html" data-da="Executive Sustainability Map" data-en="Executive Sustainability Map">Executive Sustainability Map</a></p>
+        <div class="sc-papers" id="papers-coaching">
+          <div class="sc-partgroup">
+            <div class="sc-part-head"><span class="sc-part-num">Del 1</span><span class="sc-part-name" data-da="Rollen" data-en="The role">Rollen</span></div>
+            <ul class="sc-paper-list">
+              <li><a class="e27x" data-e27-date="2026-11-02" data-e27-href="/executive-coaching-2027-jobbet-flytter-sig-mens-du-sidder-i-det.html"><span class="pl-t">Jobbet flytter sig, mens du sidder i det</span><span class="pl-s" data-da="Du blev ansat til én version af rollen — du leder allerede i en anden" data-en="You were hired for one version of the role — you already lead in another">Du blev ansat til én version af rollen — du leder allerede i en anden</span><span class="pl-d e27s" data-da="Udkommer 2. nov. 2026" data-en="Coming 2 Nov 2026">Udkommer 2. nov. 2026</span></a></li>
+              <li><a class="e27x" data-e27-date="2026-11-16" data-e27-href="/executive-coaching-2027-doemmekraft-kan-ikke-outsources.html"><span class="pl-t">Dømmekraft kan ikke outsources</span><span class="pl-s" data-da="AI kan levere analysen — du skal stadig stå på mål for beslutningen" data-en="AI can deliver the analysis — you still have to own the decision">AI kan levere analysen — du skal stadig stå på mål for beslutningen</span><span class="pl-d e27s" data-da="Udkommer 16. nov. 2026" data-en="Coming 16 Nov 2026">Udkommer 16. nov. 2026</span></a></li>
+              <li><a class="e27x" data-e27-date="2026-11-30" data-e27-href="/executive-coaching-2027-tiden-viser-hvilket-job-du-faktisk-har.html"><span class="pl-t">Tiden viser, hvilket job du faktisk har</span><span class="pl-s" data-da="Din tid viser, hvad jobbet faktisk får dig til at gøre" data-en="Your time shows what the job actually makes you do">Din tid viser, hvad jobbet faktisk får dig til at gøre</span><span class="pl-d e27s" data-da="Udkommer 30. nov. 2026" data-en="Coming 30 Nov 2026">Udkommer 30. nov. 2026</span></a></li>
+            </ul>
+          </div>
+          <div class="sc-partgroup">
+            <div class="sc-part-head"><span class="sc-part-num">Del 2</span><span class="sc-part-name" data-da="Mennesket" data-en="The person">Mennesket</span></div>
+            <ul class="sc-paper-list">
+              <li><a class="e27x" data-e27-date="2026-12-14" data-e27-href="/executive-coaching-2027-performance-maa-ikke-finansieres-af-dig-selv.html"><span class="pl-t">Performance må ikke finansieres af dig selv</span><span class="pl-s" data-da="Samme resultat, forskellig regning" data-en="Same result, a different bill">Samme resultat, forskellig regning</span><span class="pl-d e27s" data-da="Udkommer 14. dec. 2026" data-en="Coming 14 Dec 2026">Udkommer 14. dec. 2026</span></a></li>
+              <li><a class="e27x" data-e27-date="2027-01-11" data-e27-href="/executive-coaching-2027-jo-hoejere-du-kommer-jo-dyrere-bliver-aerlig-modstand.html"><span class="pl-t">Jo højere du kommer, jo dyrere bliver ærlig modstand</span><span class="pl-s" data-da="Toprollen fjerner ikke modspil — den ændrer prisen på at give det" data-en="The top role does not remove challenge — it changes the price of giving it">Toprollen fjerner ikke modspil — den ændrer prisen på at give det</span><span class="pl-d e27s" data-da="Udkommer 11. jan. 2027" data-en="Coming 11 Jan 2027">Udkommer 11. jan. 2027</span></a></li>
+              <li><a class="e27x" data-e27-date="2027-01-25" data-e27-href="/executive-coaching-2027-det-skal-ogsaa-vaere-godt-at-vaere-god.html"><span class="pl-t">Det skal også være godt at være god</span><span class="pl-s" data-da="At kunne fortsætte er ikke det samme som at være værd at fortsætte" data-en="Being able to continue is not the same as being worth continuing">At kunne fortsætte er ikke det samme som at være værd at fortsætte</span><span class="pl-d e27s" data-da="Udkommer 25. jan. 2027" data-en="Coming 25 Jan 2027">Udkommer 25. jan. 2027</span></a></li>
+            </ul>
+          </div>
+          <div class="sc-partgroup">
+            <div class="sc-part-head"><span class="sc-part-num">Del 3</span><span class="sc-part-name" data-da="Systemet omkring rollen" data-en="The system around the role">Systemet omkring rollen</span></div>
+            <ul class="sc-paper-list">
+              <li><a class="e27x" data-e27-date="2027-02-08" data-e27-href="/executive-coaching-2027-din-naeste-styrke-er-maaske-at-fylde-mindre.html"><span class="pl-t">Din næste styrke er måske at fylde mindre</span><span class="pl-s" data-da="Delegation flytter arbejde — leverage reducerer unødig afhængighed" data-en="Delegation moves work — leverage reduces unnecessary dependency">Delegation flytter arbejde — leverage reducerer unødig afhængighed</span><span class="pl-d e27s" data-da="Udkommer 8. feb. 2027" data-en="Coming 8 Feb 2027">Udkommer 8. feb. 2027</span></a></li>
+              <li><a class="e27x" data-e27-date="2027-02-22" data-e27-href="/executive-coaching-2027-du-leder-ogsaa-opad-udad-og-paa-tvaers.html"><span class="pl-t">Du leder også opad, udad og på tværs</span><span class="pl-s" data-da="Formel autoritet slutter ved grænsen — dit executive-ansvar gør ikke" data-en="Formal authority ends at the boundary — your executive responsibility does not">Formel autoritet slutter ved grænsen — dit executive-ansvar gør ikke</span><span class="pl-d e27s" data-da="Udkommer 22. feb. 2027" data-en="Coming 22 Feb 2027">Udkommer 22. feb. 2027</span></a></li>
+              <li><a class="e27x" data-e27-date="2027-03-08" data-e27-href="/executive-coaching-2027-erfaring-er-kapital-indtil-den-bliver-gammel-gaeld.html"><span class="pl-t">Erfaring er kapital — indtil den bliver gammel gæld</span><span class="pl-s" data-da="Det, der gjorde dig værdifuld, er ikke automatisk det, der holder dig relevant" data-en="What made you valuable is not automatically what keeps you relevant">Det, der gjorde dig værdifuld, er ikke automatisk det, der holder dig relevant</span><span class="pl-d e27s" data-da="Udkommer 8. mar. 2027" data-en="Coming 8 Mar 2027">Udkommer 8. mar. 2027</span></a></li>
+            </ul>
+          </div>
+          <div class="sc-partgroup">
+            <div class="sc-part-head"><span class="sc-part-num">Del 4</span><span class="sc-part-name" data-da="Governance" data-en="Governance">Governance</span></div>
+            <ul class="sc-paper-list">
+              <li><a class="e27x" data-e27-date="2027-03-22" data-e27-href="/executive-coaching-2027-din-personlige-governance.html"><span class="pl-t">Din personlige governance</span><span class="pl-s" data-da="Et system, der opdager små skævheder tidligt — Executive Sustainability Map" data-en="A system that detects small misalignments early — the Executive Sustainability Map">Et system, der opdager små skævheder tidligt — Executive Sustainability Map</span><span class="pl-d e27s" data-da="Udkommer 22. mar. 2027" data-en="Coming 22 Mar 2027">Udkommer 22. mar. 2027</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+
     <article class="series-card rv" id="brief">
       <div class="sc-head">
         <div class="sc-head-inner">
@@ -916,7 +981,7 @@
   <div class="cw">
     <div class="se rv" data-da="Læsespor" data-en="Reading paths">Læsespor</div>
     <h2 class="rv" data-da="Start med dit <em>problem</em> — ikke med en serie" data-en="Start with your <em>problem</em> — not with a series">Start med dit <em>problem</em> — ikke med en serie</h2>
-    <p class="paths-intro rv" data-da="Serierne er bygget til at blive læst hver for sig. Men de taler sammen. Her er fem spor på tværs af biblioteket — fire papers hver, i den rækkefølge jeg selv ville læse dem." data-en="The series are built to be read on their own. But they speak to each other. Here are five paths across the library — four papers each, in the order I would read them myself.">Serierne er bygget til at blive læst hver for sig. Men de taler sammen. Her er fem spor på tværs af biblioteket — fire papers hver, i den rækkefølge jeg selv ville læse dem.</p>
+    <p class="paths-intro rv" data-da="Serierne er bygget til at blive læst hver for sig. Men de taler sammen. Her er seks spor på tværs af biblioteket — fire papers hver, i den rækkefølge jeg selv ville læse dem." data-en="The series are built to be read on their own. But they speak to each other. Here are six paths across the library — four papers each, in the order I would read them myself.">Serierne er bygget til at blive læst hver for sig. Men de taler sammen. Her er seks spor på tværs af biblioteket — fire papers hver, i den rækkefølge jeg selv ville læse dem.</p>
     <div class="paths-grid">
       <article class="path rv">
         <div class="path-num">01</div>
@@ -971,6 +1036,17 @@
           <li><a href="/executive-longevity-restitution.html"><span class="pa-t" data-da="Restitution som disciplin" data-en="Recovery as a discipline">Restitution som disciplin</span><span class="pa-s" data-da="Executive Longevity" data-en="Executive Longevity">Executive Longevity</span></a></li>
           <li><a href="/personligt-lederskab.html"><span class="pa-t" data-da="Personligt lederskab" data-en="Personal leadership">Personligt lederskab</span><span class="pa-s" data-da="Eksekveringsserien" data-en="Eksekveringsserien">Eksekveringsserien</span></a></li>
           <li><a href="/ensomheden-i-toppen.html"><span class="pa-t" data-da="Ensomheden i toppen" data-en="Loneliness at the top">Ensomheden i toppen</span><span class="pa-s" data-da="Eksekveringsserien" data-en="Eksekveringsserien">Eksekveringsserien</span></a></li>
+        </ol>
+      </article>
+      <article class="path rv">
+        <div class="path-num">06</div>
+        <h3 data-da="Jobbet har flyttet sig under mig" data-en="The job has moved beneath me">Jobbet har flyttet sig under mig</h3>
+        <p data-da="Titlen er den samme, men rollen er en anden. Sporet går fra rollen og ensomheden i toppen til modspillet — og til spørgsmålet, om ekstern sparring er det rigtige redskab." data-en="The title is the same, but the role is different. This path runs from the role and loneliness at the top to challenge — and to the question of whether external sparring is the right tool.">Titlen er den samme, men rollen er en anden. Sporet går fra rollen og ensomheden i toppen til modspillet — og til spørgsmålet, om ekstern sparring er det rigtige redskab.</p>
+        <ol class="path-list">
+          <li><a href="/executive-coaching-2027-jobbet-flytter-sig-mens-du-sidder-i-det.html"><span class="pa-t" data-da="Jobbet flytter sig, mens du sidder i det" data-en="The job moves while you are in it">Jobbet flytter sig, mens du sidder i det</span><span class="pa-s" data-da="Executive Coaching 2027" data-en="Executive Coaching 2027">Executive Coaching 2027</span></a></li>
+          <li><a href="/ensomheden-i-toppen.html"><span class="pa-t" data-da="Ensomheden i toppen" data-en="Loneliness at the top">Ensomheden i toppen</span><span class="pa-s" data-da="Eksekveringsserien" data-en="Eksekveringsserien">Eksekveringsserien</span></a></li>
+          <li><a href="/modspillet-der-mangler.html"><span class="pa-t" data-da="Modspillet der mangler" data-en="The missing pushback">Modspillet der mangler</span><span class="pa-s" data-da="C-Level Serien" data-en="C-Level Serien">C-Level Serien</span></a></li>
+          <li><a href="/executive-coaching-2027-foer-du-hyrer-en-executive-coach.html"><span class="pa-t" data-da="Før du hyrer en executive coach" data-en="Before you hire an executive coach">Før du hyrer en executive coach</span><span class="pa-s" data-da="Executive Coaching 2027 · Guide" data-en="Executive Coaching 2027 · Guide">Executive Coaching 2027 · Guide</span></a></li>
         </ol>
       </article>
     </div>
@@ -1069,5 +1145,18 @@
 })();
 </script>
 
+<script>
+  // Executive Coaching 2027: kortet vises fra lanceringen, papers bliver links på deres udgivelsesdato
+  (function () {
+    var now = new Date(), live = 0;
+    function on(d) { return now >= new Date(d + 'T00:00:00+01:00'); }
+    var card = document.getElementById('coaching');
+    if (card && !on(card.getAttribute('data-e27-launch'))) { card.style.display = 'none'; var p6 = document.querySelectorAll('.path')[5]; if (p6) p6.style.display = 'none'; }
+    document.querySelectorAll('a.e27x[data-e27-date]').forEach(function (a) {
+      if (on(a.getAttribute('data-e27-date'))) { a.setAttribute('href', a.getAttribute('data-e27-href')); var s = a.querySelector('.e27s'); if (s) s.remove(); live++; }
+    });
+    var c = document.getElementById('libCount'); if (c) c.textContent = 59 + live;
+  })();
+</script>
 </body>
 </html>
