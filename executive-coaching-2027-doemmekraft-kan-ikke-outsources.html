@@ -551,6 +551,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -700,7 +709,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>»Hvad anbefaler du?«</h2>
-    <p><a href="/executive-coaching-2027-jobbet-flytter-sig-mens-du-sidder-i-det.html">Paper 01</a> handlede om den rolle, jobbet faktisk er blevet til. Dette paper går ind i en del af arbejdet, der flytter sig lige nu: hvad der er tilbage til dig, når AI kan tage en større del af analysen.</p>
+    <p><a href="/executive-coaching-2027-jobbet-flytter-sig-mens-du-sidder-i-det.html"><span class="dc">P</span>aper 01</a> handlede om den rolle, jobbet faktisk er blevet til. Dette paper går ind i en del af arbejdet, der flytter sig lige nu: hvad der er tilbage til dig, når AI kan tage en større del af analysen.</p>
     <p>Hun er CCO i en nordisk B2B-virksomhed og skal inden kvartalets udgang anbefale direktionen en ny prisstruktur for virksomhedens største kundesegment. Beslutningen er væsentlig. Den påvirker marginen, tre af de ti største kunder og salgsorganisationens arbejde det næste år.</p>
     <p>Hun er ikke skeptisk over for AI. Hun har selv skubbet på for, at hendes team bruger det, og det gjorde de her. På tre uger har de fået sammenstillet transaktionsdata fra fire år, kundernes købsmønstre, konkurrenternes offentlige priser og tre scenarier med konsekvenser for omsætning og margin. Materialet er bedre struktureret end noget, afdelingen har lavet før. Anbefalingen er klar: Hæv priserne for den mest prisufølsomme del af segmentet, og lad de mindst rentable aftaler udløbe.</p>
     <p>Anbefalingen er fornuftig. Den er måske også rigtig. Men den ved ikke, at en af de tre store kunder er midt i en genforhandling, hvor forholdet hviler på et løfte, hun selv gav for to år siden. Den ved ikke, at bestyrelsen på sidste møde signalerede, at den vil undgå kundetab i år, uden at det står i noget referat. Og den ved ikke, at salgsorganisationen er midt i en omlægning og har begrænset kapacitet til at gennemføre en større prisændring nu.</p>

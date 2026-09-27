@@ -561,6 +561,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -710,7 +719,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>Det var ikke spørgsmålet</h2>
-    <p><a href="/executive-coaching-2027-jo-hoejere-du-kommer-jo-dyrere-bliver-aerlig-modstand.html">Paper 05</a> handlede om, hvor du kan blive korrigeret. Men et bæredygtigt arbejdsliv kan ikke kun vurderes på, om du undgår fejl, holder til presset og forbliver relevant. Det skal også have noget, der trækker dig hen imod arbejdet.</p>
+    <p><a href="/executive-coaching-2027-jo-hoejere-du-kommer-jo-dyrere-bliver-aerlig-modstand.html"><span class="dc">P</span>aper 05</a> handlede om, hvor du kan blive korrigeret. Men et bæredygtigt arbejdsliv kan ikke kun vurderes på, om du undgår fejl, holder til presset og forbliver relevant. Det skal også have noget, der trækker dig hen imod arbejdet.</p>
     <p>Hun kunne godt fortsætte. Det var ikke spørgsmålet.</p>
     <p>Hun er investeringsdirektør i en stor pensionskasse og har været det i seks år. Afkastet har været solidt, organisationen er stærkere end da hun kom, og bestyrelsen vil gerne forlænge. Formanden har bedt om en uformel samtale inden forhandlingen om en ny treårig periode. Der er ingen krise, intet helbredsproblem og ingen grund til at gå. Hun er respekteret, og hun leverer.</p>
     <p>Mod slutningen af samtalen spørger formanden: »Hvis jobbet fortsatte præcis sådan her i tre år mere, ville du så stadig have lyst til det?«</p>

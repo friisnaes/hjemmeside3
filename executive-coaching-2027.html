@@ -317,6 +317,13 @@
   .tools { padding: 0 0 80px; }
   .tools .tg { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); }
   @media (max-width: 760px) { .tools .tg { grid-template-columns: 1fr; } }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
 </style>
 </head>
 <body>

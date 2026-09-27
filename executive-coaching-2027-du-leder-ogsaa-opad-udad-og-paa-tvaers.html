@@ -564,6 +564,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -713,7 +722,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>Resultatet og de mennesker, der skulle skabe det</h2>
-    <p><a href="/executive-coaching-2027-din-naeste-styrke-er-maaske-at-fylde-mindre.html">Paper 07</a> handlede om at reducere unødig afhængighed af dig internt. Dette paper går den anden vej: mod de resultater, du kun kan skabe sammen med mennesker, der ikke er underlagt din direkte autoritet.</p>
+    <p><a href="/executive-coaching-2027-din-naeste-styrke-er-maaske-at-fylde-mindre.html"><span class="dc">P</span>aper 07</a> handlede om at reducere unødig afhængighed af dig internt. Dette paper går den anden vej: mod de resultater, du kun kan skabe sammen med mennesker, der ikke er underlagt din direkte autoritet.</p>
     <p>Hun ejede resultatet. Hun ejede ikke de mennesker, der skulle skabe det.</p>
     <p>Hun er strategidirektør i et stort, reguleret energiselskab. CEO'en har givet hende ansvaret for virksomhedens vigtigste nye initiativ: en ny forretning, der skal kombinere det eksisterende net med ydelser til store erhvervskunder. Mandatet er tydeligt og skriftligt. Hun rapporterer direkte til CEO'en, og initiativet står øverst på direktionens liste.</p>
     <p>Alligevel afhænger initiativet af tre relationer, hun ikke kan instruere. Økonomidirektøren skal frigive kapital i et år, hvor han har lovet bestyrelsen at holde investeringsrammen. Bestyrelsen skal støtte en væsentlig afvejning: lavere indtjening de næste to år mod en mulig ny position bagefter. Og en teknologipartner skal forpligte kapacitet, som partneren også kan sælge til andre.</p>

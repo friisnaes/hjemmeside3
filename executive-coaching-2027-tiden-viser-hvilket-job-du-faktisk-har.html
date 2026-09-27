@@ -551,6 +551,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -700,7 +709,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>Fire uger med rigtigt arbejde</h2>
-    <p><a href="/executive-coaching-2027-jobbet-flytter-sig-mens-du-sidder-i-det.html">Paper 01</a> gjorde rollen synlig. <a href="/executive-coaching-2027-doemmekraft-kan-ikke-outsources.html">Paper 02</a> sluttede med et spørgsmål: Kan man se i din tid, at du behandler din dømmekraft som knap? Dette paper undersøger, om din adfærd er fulgt med rollen.</p>
+    <p><a href="/executive-coaching-2027-jobbet-flytter-sig-mens-du-sidder-i-det.html"><span class="dc">P</span>aper 01</a> gjorde rollen synlig. <a href="/executive-coaching-2027-doemmekraft-kan-ikke-outsources.html">Paper 02</a> sluttede med et spørgsmål: Kan man se i din tid, at du behandler din dømmekraft som knap? Dette paper undersøger, om din adfærd er fulgt med rollen.</p>
     <p>Han har været CEO i halvandet år. Før det var han COO i samme virksomhed i fem år, og det var hans evne til at få driften til at hænge sammen, der gjorde ham til det naturlige valg. Bestyrelsen var tydelig om mandatet: Virksomheden skal omstilles fra at sælge udstyr til at sælge serviceaftaler, ledelsesholdet skal styrkes, og to eksterne relationer skal plejes personligt, en strategisk partner og den største ejer.</p>
     <p>Når man spørger ham om hans prioriteter, er svaret klart og hurtigt. Omstillingen, holdet, de to relationer. Han siger det uden tøven, og han mener det.</p>
     <p>Så lægger vi de seneste fire uger på bordet. Kalenderen og det, han kan huske uden for kalenderen. Den største enkeltpost er de ugentlige driftsgennemgange, som han har fortsat fra sin tid som COO. Dernæst en række eskalerede prisbeslutninger, som kunne have ligget et niveau længere nede, men som kom op til ham, fordi han kender kunderne. Et forsinket IT-projekt, han startede som COO, og som ingen andre helt har taget over. Tre møder om et kvalitetsproblem på en fabrik. Omstillingen har fået to halve dage. Ejeren har fået én frokost.</p>

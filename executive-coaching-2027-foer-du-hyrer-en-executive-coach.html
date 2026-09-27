@@ -603,6 +603,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -751,7 +760,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>Et tilbud, der kan læses på to måder</h2>
-    <p>Hun er netop blevet forfremmet til direktør for virksomhedens største forretningsområde. Tre uger inde i rollen siger hendes CEO i slutningen af et møde: »Vi vil gerne tilbyde dig en executive coach. Tænk over det.«</p>
+    <p><span class="dc">H</span>un er netop blevet forfremmet til direktør for virksomhedens største forretningsområde. Tre uger inde i rollen siger hendes CEO i slutningen af et møde: »Vi vil gerne tilbyde dig en executive coach. Tænk over det.«</p>
     <p>Hun takker. Men på vej ud af mødet er hun i tvivl om, hvad hun egentlig har fået tilbudt. Er det en investering i hende, fordi hun skal lykkes? Eller er det et forsigtigt signal om, at der er noget, de er bekymrede for? Hvem får at vide, hvad hun taler om? Og hvad skal hun bruge det til, når hun ikke har et problem, hun kan pege på, bare en rolle, der er større end den forrige?</p>
     <p>Hun har kolleger, der har haft en coach og talt varmt om det. Hun har andre, der har haft en og aldrig nævnt det igen. Hun har ingen idé om, hvordan man vælger, og hun har ikke lyst til at bruge tid på noget, hun ikke tror på.</p>
     <p class="pull-quote">Det svære er ikke at finde en coach. Det er at vide, om du har brug for en, og til hvad.</p>

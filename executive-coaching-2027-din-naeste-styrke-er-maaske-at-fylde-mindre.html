@@ -562,6 +562,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -711,7 +720,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>Ni beslutninger</h2>
-    <p><a href="/executive-coaching-2027-det-skal-ogsaa-vaere-godt-at-vaere-god.html">Paper 06</a> handlede om, hvad i arbejdet der er værd at bevare. Det næste spørgsmål er næsten det modsatte: Hvad behøver ikke længere at være dit for at være godt?</p>
+    <p><a href="/executive-coaching-2027-det-skal-ogsaa-vaere-godt-at-vaere-god.html"><span class="dc">P</span>aper 06</a> handlede om, hvad i arbejdet der er værd at bevare. Det næste spørgsmål er næsten det modsatte: Hvad behøver ikke længere at være dit for at være godt?</p>
     <p>Der lå ingen krise og ventede på ham. Der lå bare ni beslutninger.</p>
     <p>Han er teknologidirektør i en stor finansiel virksomhed og har været væk i ti arbejdsdage, en planlagt rejse. Da han kommer tilbage, er intet brudt sammen. Projekterne er rykket, teamet har arbejdet hårdt, og ingen har ringet til ham undervejs. Hans ledergruppe er stærk. Han har selv rekrutteret de fleste af dem, og han har tillid til dem.</p>
     <p>Men i hans indbakke ligger ni beslutninger. En undtagelse fra arkitekturprincipperne. En prioritetskonflikt mellem to programmer. En afvejning mellem to leverandører. En ansættelse, der ligger uden for lønrammen. En risiko, der skal accepteres eller afvises. Og fire mere af samme slags. Den sætning, der går igen i mails og møder, er: »Den tager vi, når du er tilbage.«</p>

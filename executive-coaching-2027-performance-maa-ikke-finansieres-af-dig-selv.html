@@ -553,6 +553,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -702,7 +711,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>Et godt år</h2>
-    <p><a href="/executive-coaching-2027-tiden-viser-hvilket-job-du-faktisk-har.html">Paper 03</a> så på, hvor din tid går hen. Dette paper spørger, hvad det koster dig at blive ved med at levere sådan.</p>
+    <p><a href="/executive-coaching-2027-tiden-viser-hvilket-job-du-faktisk-har.html"><span class="dc">P</span>aper 03</a> så på, hvor din tid går hen. Dette paper spørger, hvad det koster dig at blive ved med at levere sådan.</p>
     <p>Hun er CFO i en børsnoteret industrivirksomhed, og hun har haft et godt år. Refinansieringen kom på plads før renterne steg. Det nye økonomisystem gik i drift, uden at en eneste kvartalsrapport blev forsinket. Bestyrelsen har rost hende, revisionen havde ingen væsentlige bemærkninger, og CEO'en har sagt til flere, at han ikke ved, hvad han skulle have gjort uden hende.</p>
     <p>Alt det er sandt. Hun er skarp, respekteret og ikke udbrændt. Der har ikke været sygefravær, ingen sammenbrud, ingen krise. Set udefra er det et eksempel på høj performance.</p>
     <p>Det, der er sværere at se, er, hvordan resultatet blev produceret. I ni måneder har aftenerne været den faste tid til at indhente det, dagen ikke nåede. Hun har været tilgængelig for alle, hele tiden, fordi systemet ellers ikke hang sammen. Det lederudviklingsforløb, hun var tilmeldt, blev udskudt to gange. Hun mærker selv, at hun har mindre tålmodighed i de svære samtaler med sit hold, end hun plejer. Efter store beslutninger er der ikke længere et åndehul, bare den næste. Og aftaler uden for arbejdet bliver aflyst, ikke dramatisk, men regelmæssigt.</p>

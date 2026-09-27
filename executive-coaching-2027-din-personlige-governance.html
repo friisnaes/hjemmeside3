@@ -589,6 +589,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -738,7 +747,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>En fast rytme for alt andet</h2>
-    <p><a href="/executive-coaching-2027-erfaring-er-kapital-indtil-den-bliver-gammel-gaeld.html">Paper 09</a> handlede om at holde erfaring relevant ved at genvalidere den mod virkeligheden. Men ingen enkelt genvalidering løser et problem, der kommer igen. Derfor slutter serien med governance: en fast måde at opdage, hvornår næste justering er nødvendig.</p>
+    <p><a href="/executive-coaching-2027-erfaring-er-kapital-indtil-den-bliver-gammel-gaeld.html"><span class="dc">P</span>aper 09</a> handlede om at holde erfaring relevant ved at genvalidere den mod virkeligheden. Men ingen enkelt genvalidering løser et problem, der kommer igen. Derfor slutter serien med governance: en fast måde at opdage, hvornår næste justering er nødvendig.</p>
     <p>Der var en fast rytme for strategi, risiko, kapital og succession. Ikke for CEO'en selv.</p>
     <p>Hun er CEO i en nordisk koncern med tre forretningsområder og har været det i fire år. Virksomheden klarer sig godt. Der er ingen krise og ingen utilfreds bestyrelse. Hun er grundig og reflekteret, og virksomheden har faste systemer for næsten alt, der betyder noget: en årlig strategigennemgang, en risikoappetit, der revideres to gange om året, disciplineret kapitalallokering, succession i direktionen og revision. Bestyrelsen gennemfører desuden sin egen årlige evaluering.</p>
     <p>På bestyrelsens strategiseminar stiller formanden et spørgsmål, der ikke står på dagsordenen: »Hvornår gennemgår du systematisk, om din måde at være CEO på stadig passer til det, virksomheden har brug for?«</p>

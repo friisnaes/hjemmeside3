@@ -560,6 +560,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -709,7 +718,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>Det lettere tidspunkt</h2>
-    <p><a href="/executive-coaching-2027-performance-maa-ikke-finansieres-af-dig-selv.html">Paper 04</a> gjorde den skjulte pris ved performance synlig. Dette paper spørger, hvem der kan sige det til dig, når du selv er den sidste, der ser den.</p>
+    <p><a href="/executive-coaching-2027-performance-maa-ikke-finansieres-af-dig-selv.html"><span class="dc">P</span>aper 04</a> gjorde den skjulte pris ved performance synlig. Dette paper spørger, hvem der kan sige det til dig, når du selv er den sidste, der ser den.</p>
     <p>Det mest interessante ved den ærlige indvending var ikke, hvad han sagde. Det var, hvornår han sagde det.</p>
     <p>Han var direktør for forretningsudvikling og en af de mest respekterede i direktionen. Nu havde han sagt ja til en CEO-stilling i en anden virksomhed, og samtalen med sin egen CEO var den sidste af de lange. Den var god. De talte om de ting, de havde nået sammen, og om hvem der skulle tage over. Så sagde han roligt:</p>
     <p>»Der er én ting, jeg burde have sagt tidligere. Du beder om modspil, og jeg tror, du mener det. Men når du selv har lagt en retning på bordet, bliver resten af os bedre til at kvalificere den end til at udfordre den.«</p>

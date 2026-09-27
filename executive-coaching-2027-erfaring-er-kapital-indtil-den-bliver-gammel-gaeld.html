@@ -564,6 +564,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -713,7 +722,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>En god regel</h2>
-    <p><a href="/executive-coaching-2027-du-leder-ogsaa-opad-udad-og-paa-tvaers.html">Paper 08</a> handlede om relationer, der kan bære resultater på tværs af grænser. Men relationel kapital kan ikke i sig selv holde dig relevant, hvis din dømmekraft, dine antagelser eller din faglige værdi er kalibreret til en verden, der har flyttet sig.</p>
+    <p><a href="/executive-coaching-2027-du-leder-ogsaa-opad-udad-og-paa-tvaers.html"><span class="dc">P</span>aper 08</a> handlede om relationer, der kan bære resultater på tværs af grænser. Men relationel kapital kan ikke i sig selv holde dig relevant, hvis din dømmekraft, dine antagelser eller din faglige værdi er kalibreret til en verden, der har flyttet sig.</p>
     <p>Det var en god regel. Spørgsmålet var bare, om den stadig passede til den virkelighed, den skulle bruges i.</p>
     <p>Han er risikodirektør i en nordisk bank og har været det i elleve år. Han har ført banken gennem to kriser uden store tab, og bestyrelsen stoler på hans vurderinger. Han er ikke gammeldags. Han er analytisk skarp, læser meget og har selv været med til at bygge bankens nuværende modeller.</p>
     <p>En af hans tommelfingerregler har tjent banken godt: Større engagementer med virksomheder med få håndgribelige aktiver får ikke grønt lys alene på forventede pengestrømme. Banken skal kunne pege på en robust risikobeskyttelse, hvis forretningen udvikler sig dårligere end forventet. Reglen blev formet efter en periode med tab på vækstvirksomheder og har siden holdt banken ude af flere dårlige engagementer.</p>

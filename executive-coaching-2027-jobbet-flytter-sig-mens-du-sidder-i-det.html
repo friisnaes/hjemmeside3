@@ -546,6 +546,15 @@
     .section .clock .clock-q { color: #c0392b !important; }
     .section .coach-q .cq-text { font-size: 22pt; }
   }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
 </style>
 
 <script type="application/ld+json">
@@ -695,7 +704,7 @@
   <div class="container">
     <div class="section-label">01 — Scenen du genkender · En konstrueret case</div>
     <h2>Mandatet, der stadig står i papirerne</h2>
-    <p>Hun blev ansat som COO i en nordisk industrikoncern for knap to år siden. Mandatet var tydeligt, og det blev sagt på samme måde af CEO'en og af formanden: Få driften stabiliseret, og gør leverancen forudsigelig igen. Det var dét, bestyrelsen havde brug for. Det var dét, hun blev målt på.</p>
+    <p><span class="dc">H</span>un blev ansat som COO i en nordisk industrikoncern for knap to år siden. Mandatet var tydeligt, og det blev sagt på samme måde af CEO'en og af formanden: Få driften stabiliseret, og gør leverancen forudsigelig igen. Det var dét, bestyrelsen havde brug for. Det var dét, hun blev målt på.</p>
     <p>Hun har leveret. Leveringspræcisionen er steget. De to største fabrikker arbejder efter samme standard. Kvartalsrapporten er blevet kedelig på den gode måde, og i direktionen bliver hun omtalt som en af dem, man ikke behøver bekymre sig om.</p>
     <p>Undervejs er der kommet andre ting til. Ingen af dem kom med en overskrift. Et pilotprojekt med AI i produktionsplanlægningen landede hos hende, fordi det rørte ved driften. Nye leverandør- og rapporteringskrav gjorde forsyningskæden til et emne på bestyrelsesmøderne, og det blev naturligt hende, der fremlagde. To af de største kunder ønsker hende med i deres styregrupper. Et mindre opkøb skal integreres, og integrationen er i praksis blevet et driftsspørgsmål. Hvert enkelt skridt var fornuftigt. Hun sagde ja, fordi det var rigtigt at sige ja.</p>
     <p>Der har ikke været en omorganisering. Hun har ikke fået en ny titel. Ingen har på et bestyrelsesmøde sagt: <em>Dit job er nu et andet.</em> Og hun gennemgår stadig selv den ugentlige driftsopfølgning linje for linje, som hun gjorde det første år, hvor netop den opfølgning var hele pointen.</p>
