@@ -21,7 +21,7 @@ for name in os.listdir(ROOT):
         shutil.copy2(os.path.join(ROOT, name), stage)
 out = os.path.join(ROOT, 'pagefind')
 shutil.rmtree(out, ignore_errors=True)  # rydder også gamle, ubrugte fragmenter
-r = subprocess.run(['npx', '-y', 'pagefind@1.5.2', '--site', stage, '--glob', '*.html', '--output-path', out], capture_output=True, text=True)
+r = subprocess.run(['npx', '-y', 'pagefind@1.5.2', '--site', stage, '--glob', '*.html', '--output-path', out, '--force-language', 'da', '--exclude-selectors', 'nav,.site-nav,footer,.site-footer,.wp-toc,.wp-collection,.pdf-cta,.read-also,.progress-bar,.ix-progress-wrap,.fnlyt-bar,.nav-links'], capture_output=True, text=True)
 print(r.stdout[-600:]); 
 if r.returncode != 0:
     print(r.stderr); sys.exit(1)
