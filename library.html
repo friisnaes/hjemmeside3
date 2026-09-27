@@ -516,7 +516,7 @@
     <p class="hp" data-da="Ikke enkeltstående artikler — men hele universer af white papers, bygget til at blive læst, brugt og vendt tilbage til." data-en="Not one-off articles — but whole universes of white papers, built to be read, used and returned to.">Ikke enkeltstående artikler — men hele universer af white papers, bygget til at blive læst, brugt og vendt tilbage til.</p>
     <p class="hp2" data-da="De største ledelsesudfordringer løses sjældent med ét godt råd. De kræver en sammenhængende måde at tænke på. Gratis at læse, downloade som PDF og dele." data-en="The biggest leadership challenges are rarely solved by one good piece of advice. They require a coherent way of thinking. Free to read, download as PDF and share.">De største ledelsesudfordringer løses sjældent med ét godt råd. De kræver en sammenhængende måde at tænke på. Gratis at læse, downloade som PDF og dele.</p>
     <div class="hs">
-      <div class="si"><div class="sn">7</div><div class="sl" data-da="Serier" data-en="Series">Serier</div></div>
+      <div class="si"><div class="sn" id="libSeries">7</div><div class="sl" data-da="Serier" data-en="Series">Serier</div></div>
       <div class="si"><div class="sn" data-da="Ugentlig" data-en="Weekly">Ugentlig</div><div class="sl" data-da="C-level brief" data-en="C-level brief">C-level brief</div></div>
       <div class="si"><div class="sn" id="libCount">59</div><div class="sl" data-da="White papers" data-en="White papers">White papers</div></div>
       <div class="si"><div class="sn">PDF</div><div class="sl" data-da="Download klar" data-en="Download ready">Download klar</div></div>
@@ -528,7 +528,7 @@
 <section class="intro">
   <div class="c rv">
     <div class="se" data-da="Om biblioteket" data-en="About the library">Om biblioteket</div>
-    <h2 data-da="Syv serier. En ugentlig brief. <em>Én sammenhængende tænkning.</em>" data-en="Seven series. A weekly brief. <em>One coherent line of thought.</em>">Syv serier. En ugentlig brief. <em>Én sammenhængende tænkning.</em></h2>
+    <h2 id="libH2" data-da="Syv serier. En ugentlig brief. <em>Én sammenhængende tænkning.</em>" data-en="Seven series. A weekly brief. <em>One coherent line of thought.</em>">Syv serier. En ugentlig brief. <em>Én sammenhængende tænkning.</em></h2>
     <p data-da="Executive Library samler mine white paper-serier ét sted. Hver serie tager et afgrænset område af topledelse og bygger det ud i dybden — forankret i forskning, formet af mere end to årtiers arbejde med C-level ledere, og skrevet til at holde over tid." data-en="The Executive Library gathers my white paper series in one place. Each series takes a defined area of executive leadership and builds it out in depth — grounded in research, shaped by more than two decades of work with C-level leaders, and written to last.">Executive Library samler mine white paper-serier ét sted. Hver serie tager et afgrænset område af topledelse og bygger det ud i dybden — forankret i forskning, formet af mere end to årtiers arbejde med C-level ledere, og skrevet til at holde over tid.</p>
     <p data-da="Vælg en serie nedenfor, dyk ned i de enkelte papers, følg et af <a href='#laesespor' style='color:var(--red);border-bottom:1px solid var(--red)'>læsesporene på tværs af serierne</a> — eller læs ugens C-level coaching brief." data-en="Choose a series below, dive into the individual papers, follow one of the <a href='#laesespor' style='color:var(--red);border-bottom:1px solid var(--red)'>reading paths across the series</a> — or read this week's C-level coaching brief.">Vælg en serie nedenfor, dyk ned i de enkelte papers, følg et af <a href="#laesespor" style="color:var(--red);border-bottom:1px solid var(--red)">læsesporene på tværs af serierne</a> — eller læs ugens C-level coaching brief.</p>
   </div>
@@ -1151,7 +1151,14 @@
     var now = new Date(), live = 0;
     function on(d) { return now >= new Date(d + 'T00:00:00+01:00'); }
     var card = document.getElementById('coaching');
-    if (card && !on(card.getAttribute('data-e27-launch'))) { card.style.display = 'none'; var p6 = document.querySelectorAll('.path')[5]; if (p6) p6.style.display = 'none'; }
+    if (card && !on(card.getAttribute('data-e27-launch'))) {
+      card.style.display = 'none'; var p6 = document.querySelectorAll('.path')[5]; if (p6) p6.style.display = 'none';
+      var ls = document.getElementById('libSeries'); if (ls) ls.textContent = '6';
+      var h = document.getElementById('libH2');
+      if (h) { h.setAttribute('data-da', h.getAttribute('data-da').replace('Syv serier', 'Seks serier')); h.setAttribute('data-en', h.getAttribute('data-en').replace('Seven series', 'Six series')); h.innerHTML = h.getAttribute(document.documentElement.lang === 'en' ? 'data-en' : 'data-da'); }
+      var pi = document.querySelector('.paths-intro');
+      if (pi) { pi.setAttribute('data-da', pi.getAttribute('data-da').replace('seks spor', 'fem spor')); pi.setAttribute('data-en', pi.getAttribute('data-en').replace('six paths', 'five paths')); pi.innerHTML = pi.getAttribute(document.documentElement.lang === 'en' ? 'data-en' : 'data-da'); }
+    }
     document.querySelectorAll('a.e27x[data-e27-date]').forEach(function (a) {
       if (on(a.getAttribute('data-e27-date'))) { a.setAttribute('href', a.getAttribute('data-e27-href')); var s = a.querySelector('.e27s'); if (s) s.remove(); live++; }
     });
