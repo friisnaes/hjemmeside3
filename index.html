@@ -253,6 +253,24 @@
             section { padding: clamp(80px, 14vw, 160px) 0; }
         }
     
+        /* mobil-overflow-fix: klientpladerne var låst i 3 kolonner og gjorde siden bredere end skærmen,
+           så den faste menu (og burgerknappen) lå uden for synsfeltet på telefonen */
+        .cl-plate { min-width: 0; overflow-wrap: anywhere; }
+        @media (max-width: 900px) {
+            .cl-plates { grid-template-columns: repeat(2, 1fr); }
+            .cl-plate, .cl-plate:nth-child(3n), .cl-plate:nth-child(n+4) { border-right: 1px solid rgba(0,0,0,.08); border-bottom: 1px solid rgba(0,0,0,.08); }
+            .cl-plate:nth-child(2n) { border-right: none; }
+            .cl-plate:nth-child(n+5) { border-bottom: none; }
+        }
+        @media (max-width: 600px) {
+            .cl-plates { grid-template-columns: 1fr; }
+            .cl-plate, .cl-plate:nth-child(2n), .cl-plate:nth-child(3n), .cl-plate:nth-child(n+4), .cl-plate:nth-child(n+5) { border-right: none; border-bottom: 1px solid rgba(0,0,0,.08); }
+            .cl-plate:last-child { border-bottom: none; }
+            .cl-plate { padding: 22px 22px; }
+        }
+        /* sikkerhedsnet: intet element må nogensinde gøre siden bredere end skærmen */
+        html, body { overflow-x: clip; }
+
         /* nl-scrollfix: mobilmenu må scrolle når den er højere end skærmen */
         @media (max-width: 600px) {
             .nl.open { justify-content: flex-start; padding: 88px 24px 48px; overflow-y: auto; gap: 18px; height: 100vh; height: 100dvh; width: 100vw; }
