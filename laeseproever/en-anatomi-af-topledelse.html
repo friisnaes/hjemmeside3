@@ -159,7 +159,7 @@
   .bsh.l { left: 1.5%; } .bsh.r { right: 1.5%; }
   .book.at-start .bsh.l, .book.at-end .bsh.r { opacity: 0; transition: opacity calc(var(--turn) * .22) ease 0s; }
 
-  .leaf { position: absolute; top: 0; left: 50%; width: var(--pw); height: var(--ph); transform-origin: left center; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; transition: transform var(--turn) cubic-bezier(.45,0,.55,1); will-change: transform; }
+  .leaf { position: absolute; top: 0; left: 50%; width: var(--pw); height: var(--ph); transform-origin: left center; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; transition: transform var(--turn) cubic-bezier(.45,0,.55,1); }
   .leaf.flipped { transform: rotateY(-180deg); }
   .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
   .face.back { transform: rotateY(180deg); }
@@ -497,6 +497,13 @@
     update();
   }
 
+  // Kun de nærmeste blade tegnes; resten er display:none, så telefoners indbyggede browsere
+  // (fx Messenger) ikke løber tør for grafikhukommelse, når bogen har mange sider.
+  function prune() {
+    if (mode === 'spread') leaves.forEach(function (L, i) { L.style.display = (i === 0 || i === N - 1 || (i >= flipped - 3 && i <= flipped + 2)) ? '' : 'none'; });
+    else sheets.forEach(function (S, k) { S.style.display = (k >= cur - 1 && k <= cur + 2) ? '' : 'none'; });
+  }
+
   function layout() {
     var W = stage.clientWidth, H = stage.clientHeight;
     if (!W || !H) return;
@@ -528,7 +535,16 @@
 
   function goSpread(target) {
     target = Math.max(0, Math.min(N, target));
-    var steps = Math.abs(target - flipped), gap = steps > 6 ? 45 : 80, d = 0;
+    var steps = Math.abs(target - flipped), gap = 80, d = 0;
+    if (steps > 3) {
+      var near = target > flipped ? target - 1 : target + 1;
+      leaves.forEach(function (L, i) {
+        (L._timers || []).forEach(clearTimeout); L.classList.remove('turning', 'peek');
+        L.style.display = 'none';
+        var f = i < near; L.classList.toggle('flipped', f); L.style.zIndex = f ? i + 1 : N - i;
+      });
+      flipped = near; prune(); void book.offsetWidth;
+    }
     while (flipped !== target) {
       if (target > flipped) { turnLeaf(flipped, true, d); flipped++; }
       else { flipped--; turnLeaf(flipped, false, d); }
@@ -554,6 +570,7 @@
 
   function faceLabel(f) { return f ? (f.getAttribute('data-n') ? null : f.getAttribute('data-label')) : null; }
   function update() {
+    prune();
     var text = '', atStart, atEnd;
     if (mode === 'spread') {
       var Lf = flipped > 0 ? faces[2 * flipped - 1] : null, Rf = flipped < N ? faces[2 * flipped] : null;
