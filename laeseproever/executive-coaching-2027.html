@@ -295,6 +295,17 @@
   @media print { .site-nav, .rd-bar, .rd-head .btn-buy, .site-footer { display: none !important; } }
 
 </style>
+<!-- kompakt-landskab v3 -->
+<style id="kompakt-landskab">
+.rd-kmenu{display:none}
+@media (pointer: coarse) and (min-width: 700px) {
+  html.rd-kompakt .site-nav,html.rd-kompakt .rd-head{display:none!important}
+  html.rd-kompakt .reader{height:100vh!important;height:100svh!important}
+  html.rd-kompakt .rd-kmenu{display:inline-flex;position:fixed;top:10px;left:10px;z-index:60;align-items:center;gap:8px;min-height:44px;padding:0 16px;
+    border:0;border-radius:22px;background:rgba(25,26,48,.82);color:#fff;font:600 14px/1 'Outfit',system-ui,sans-serif;letter-spacing:.04em;cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,.18);-webkit-tap-highlight-color:transparent}
+}
+</style>
 </head>
 <body data-pagefind-ignore="all">
 
@@ -323,6 +334,7 @@
 </nav>
 
 <main>
+<button type="button" class="rd-kmenu" id="rdKmenu" aria-label="Vis menu og titel">☰ Menu</button>
 <section class="reader" id="reader" aria-label="Læseprøve, du kan bladre i">
   <header class="rd-head">
     <div class="rd-title">
@@ -706,6 +718,23 @@
     var cov = faces[0].querySelector('img');
     if (cov && cov.decode) cov.decode().then(hint, hint); else hint();
   }
+})();
+</script>
+<script>/* kompakt-landskab: mere plads til opslaget på iPad i landskab */
+(function(){
+  var mq=window.matchMedia&&window.matchMedia('(pointer: coarse) and (min-width: 700px)');if(!mq)return;
+  var root=document.documentElement,stage=document.getElementById('stage'),btn=document.getElementById('rdKmenu'),fra=false;
+  if(!stage||!btn)return;
+  function til(){if(fra||!mq.matches||root.classList.contains('rd-kompakt'))return;root.classList.add('rd-kompakt');window.scrollTo(0,0);}
+  function af(){root.classList.remove('rd-kompakt');fra=true;}
+  ['click','touchend'].forEach(function(t){stage.addEventListener(t,til,{passive:true});});
+  ['btnPrev','btnNext','rdRange'].forEach(function(id){var e=document.getElementById(id);if(e){e.addEventListener('click',til);e.addEventListener('input',til);}});
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft')til();});
+  btn.addEventListener('click',af);
+  var skift=function(){fra=false;if(!mq.matches)root.classList.remove('rd-kompakt');};
+  if(mq.addEventListener)mq.addEventListener('change',skift);else if(mq.addListener)mq.addListener(skift);
+  var ori=window.matchMedia('(orientation: landscape)');var drej=function(){fra=false;};   /* når iPad'en drejes, må den gerne folde sammen igen */
+  if(ori.addEventListener)ori.addEventListener('change',drej);else if(ori.addListener)ori.addListener(drej);
 })();
 </script>
 </body>
