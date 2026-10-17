@@ -308,6 +308,20 @@
     box-shadow:0 4px 14px rgba(0,0,0,.18);-webkit-tap-highlight-color:transparent}
 }
 </style>
+<meta name="flipbog-fuldskaerm" content="v4">
+<style id="fuldskaerm-v4">
+/* fuldskærm v4: bogen går ud til skærmens kanter på laptop og iPad */
+html.rd-fuld, html.rd-fuld body { overflow: hidden !important; }
+html.rd-fuld .site-nav, html.rd-fuld .rd-head, .reader:fullscreen .rd-head, .reader:-webkit-full-screen .rd-head { display: none !important; }
+html.rd-fuld .reader { position: fixed !important; inset: 0 !important; width: 100vw !important; height: 100vh !important; height: 100dvh !important;
+  min-height: 0 !important; margin: 0 !important; border-radius: 0 !important; z-index: 9999 !important; }
+.reader:fullscreen { width: 100vw; height: 100vh !important; }
+.reader:-webkit-full-screen { width: 100vw; height: 100vh !important; }
+.rd-fuld-luk { display: none; position: absolute; top: 10px; right: 10px; z-index: 70; min-width: 44px; min-height: 44px; border: 0; border-radius: 22px;
+  background: rgba(20,20,22,.62); color: #fff; font: 600 20px/1 'Outfit', system-ui, sans-serif; cursor: pointer; }
+html.rd-fuld .rd-fuld-luk, .reader:fullscreen .rd-fuld-luk, .reader:-webkit-full-screen .rd-fuld-luk { display: inline-flex; align-items: center; justify-content: center; }
+html:not(.rd-fuld) .reader:not(:fullscreen) #stage { cursor: zoom-in; }
+</style>
 </head>
 <body data-pagefind-ignore="all">
 
@@ -519,10 +533,10 @@
   function layout() {
     var W = stage.clientWidth, H = stage.clientHeight;
     if (!W || !H) return;
-    var px = W < 640 ? 12 : 40, py = W < 640 ? 12 : 26;
+    var fu = document.documentElement.classList.contains('rd-fuld') || !!(document.fullscreenElement || document.webkitFullscreenElement); var px = fu ? 6 : (W < 640 ? 12 : 40), py = fu ? 6 : (W < 640 ? 12 : 26);
     var aw = W - 2 * px, ah = H - 2 * py;
     var p1 = Math.min(ah * A, aw), p2 = Math.min(ah * A, aw / 2);
-    var m = (aw >= 600 && p2 >= 0.74 * p1) ? 'spread' : 'single';
+    var m = (aw >= 600 && p2 >= 0.74 * p1) ? 'spread' : 'single'; if (window.matchMedia && window.matchMedia('(pointer: coarse) and (min-width: 700px)').matches) m = (window.innerWidth > window.innerHeight) ? 'spread' : 'single';   /* iPad: landscape 2 sider, portrait 1 side */
     var pw = Math.max(120, Math.floor((m === 'spread' ? p2 : p1) * zoom));
     wrap.style.setProperty('--pw', pw + 'px');
     wrap.style.setProperty('--ph', Math.round(pw / A) + 'px');
@@ -737,6 +751,39 @@
   if(mq.addEventListener)mq.addEventListener('change',skift);else if(mq.addListener)mq.addListener(skift);
   var ori=window.matchMedia('(orientation: landscape)');var drej=function(){fra=false;};   /* når iPad'en drejes, må den gerne folde sammen igen */
   if(ori.addEventListener)ori.addEventListener('change',drej);else if(ori.addListener)ori.addListener(drej);
+})();
+</script>
+<script id="fuldskaerm-v4">
+(function () {
+  var reader = document.getElementById('reader'), stage = document.getElementById('stage'); if (!reader || !stage) return;
+  var root = document.documentElement, stor = window.matchMedia('(min-width: 700px)');
+  var luk = document.createElement('button'); luk.type = 'button'; luk.className = 'rd-fuld-luk'; luk.setAttribute('aria-label', 'Luk fuld skærm'); luk.textContent = '×';
+  reader.appendChild(luk);
+  function ægte() { return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+  function fuld() { return ægte() || root.classList.contains('rd-fuld'); }
+  function relayout() { setTimeout(function () { window.dispatchEvent(new Event('resize')); }, 60); setTimeout(function () { window.dispatchEvent(new Event('resize')); }, 400); }
+  function ind() {
+    var req = reader.requestFullscreen || reader.webkitRequestFullscreen, ok = false;
+    if (req) { try { var r = req.call(reader); ok = true; if (r && r.catch) r.catch(function () { root.classList.add('rd-fuld'); relayout(); }); } catch (e) { ok = false; } }
+    if (!ok) root.classList.add('rd-fuld');            /* fx iPhone eller ældre Safari: fuld skærm i vinduet */
+    relayout();
+  }
+  function ud() {
+    if (ægte()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    root.classList.remove('rd-fuld'); relayout();
+  }
+  /* første klik på bogen: fuld skærm (bladrer ikke); derefter bladrer klik som før */
+  stage.addEventListener('click', function (e) {
+    if (fuld() || !stor.matches) return;
+    if (e.target.closest('a, button, input')) return;
+    ind();                                             /* klikket går videre, så bogen også åbner/bladrer som før */
+  }, true);
+  luk.addEventListener('click', function (e) { e.stopPropagation(); ud(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && root.classList.contains('rd-fuld')) ud(); });
+  ['fullscreenchange', 'webkitfullscreenchange'].forEach(function (ev) { document.addEventListener(ev, function () { if (!ægte()) root.classList.remove('rd-fuld'); relayout(); }); });
+  var ori = window.matchMedia('(orientation: landscape)'); var drej = function () { relayout(); };
+  if (ori.addEventListener) ori.addEventListener('change', drej); else if (ori.addListener) ori.addListener(drej);
+  window.addEventListener('orientationchange', drej);
 })();
 </script>
 </body>
