@@ -26,7 +26,7 @@
     {"@context":"https://schema.org","@graph":[
         {"@type":"WebSite","@id":"https://www.friisnaes.com/#website","url":"https://www.friisnaes.com/","name":"Friisnæs","description":"Executive Coach for C-level ledere","publisher":{"@id":"https://www.friisnaes.com/#person"},"inLanguage":"da","availableLanguage":["da","en"]},
         {"@type":"Person","@id":"https://www.friisnaes.com/#person","name":"Thomas Friisnæs","givenName":"Thomas","familyName":"Friisnæs","url":"https://www.friisnaes.com","image":"https://www.friisnaes.com/hero.jpg","jobTitle":"Executive Coach & Strategisk Sparringspartner","description":"Executive coaching og strategisk sparring for C-level ledere, ejerledere og direktionsmedlemmer. 22+ års erfaring og 15.000+ sessioner.","knowsAbout":["Executive Coaching","Strategisk Sparring","Ledelsesudvikling","Prioritering","Eksekvering","Stresshåndtering","Karakter-baseret Ledelse","Direktionsudvikling","Succession"],"email":"info@friisnaes.com","telephone":"+4526818218","address":{"@type":"PostalAddress","streetAddress":"Holte Stationsvej 18, 1.","addressLocality":"Holte","postalCode":"2840","addressCountry":"DK","addressRegion":"Hovedstaden"},"sameAs":["https://www.linkedin.com/in/friisnaes/","https://www.instagram.com/thomasfriisnaes/","https://www.facebook.com/tfriisnaes"]},
-        {"@type":"ProfessionalService","@id":"https://www.friisnaes.com/#business","name":"Friisnæs","url":"https://www.friisnaes.com","founder":{"@id":"https://www.friisnaes.com/#person"},"description":"Executive coaching og strategisk sparring for topledere i Danmark og internationalt.","telephone":"+4526818218","email":"info@friisnaes.com","address":{"@type":"PostalAddress","streetAddress":"Holte Stationsvej 18, 1.","addressLocality":"Holte","postalCode":"2840","addressCountry":"DK"},"geo":{"@type":"GeoCoordinates","latitude":55.8139,"longitude":12.4703},"areaServed":{"@type":"Country","name":"Denmark"},"priceRange":"$$$$","availableLanguage":["da","en"],"contactPoint":{"@type":"ContactPoint","telephone":"+4526818218","email":"info@friisnaes.com","contactType":"sales","availableLanguage":["da","en"],"areaServed":"DK"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Coaching og Sparring","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Executive Coaching","description":"Individuelt coaching-forløb for C-level ledere og ejerledere med fokus på klarhed, prioritering og eksekvering."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Strategisk Sparring","description":"Løbende strategisk sparring for topledere i kritiske beslutnings- og eksekveringsfaser."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Team Retainer","description":"12-måneders forløb for ledelsesteams bygget omkring execution-kadence og strategisk governance."}}]}}
+        {"@type":"ProfessionalService","@id":"https://www.friisnaes.com/#business","name":"Friisnæs","legalName":"Friisnæs / Thomas Friisnæs","identifier":{"@type":"PropertyValue","propertyID":"CVR","value":"26569346"},"url":"https://www.friisnaes.com","founder":{"@id":"https://www.friisnaes.com/#person"},"description":"Executive coaching og strategisk sparring for topledere i Danmark og internationalt.","telephone":"+4526818218","email":"info@friisnaes.com","address":{"@type":"PostalAddress","streetAddress":"Holte Stationsvej 18, 1.","addressLocality":"Holte","postalCode":"2840","addressCountry":"DK"},"geo":{"@type":"GeoCoordinates","latitude":55.8139,"longitude":12.4703},"areaServed":{"@type":"Country","name":"Denmark"},"priceRange":"$$$$","availableLanguage":["da","en"],"contactPoint":{"@type":"ContactPoint","telephone":"+4526818218","email":"info@friisnaes.com","contactType":"sales","availableLanguage":["da","en"],"areaServed":"DK"},"hasOfferCatalog":{"@type":"OfferCatalog","name":"Coaching og Sparring","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Executive Coaching","description":"Individuelt coaching-forløb for C-level ledere og ejerledere med fokus på klarhed, prioritering og eksekvering."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Strategisk Sparring","description":"Løbende strategisk sparring for topledere i kritiske beslutnings- og eksekveringsfaser."}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Team Retainer","description":"12-måneders forløb for ledelsesteams bygget omkring execution-kadence og strategisk governance."}}]}}
     ]}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -207,6 +207,9 @@
         footer .fb { font-family: var(--display); font-size: .95rem; font-weight: 600; color: var(--white); }
         footer .fb em { color: var(--red); font-style: normal; }
         footer .fc { font-family: var(--body); font-size: .68rem; color: rgba(255,255,255,.2); }
+        footer .fl2 { font-family: var(--body); font-size: .74rem; display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: center; }
+        footer .fl2 a { color: rgba(255,255,255,.6); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.2); padding: 6px 0 2px; }
+        footer .fl2 a:hover { color: var(--white); border-color: var(--red); }
         @media (max-width: 900px) {
             .hero .hc { grid-template-columns: 1fr; gap: 40px; }
             .hero-img { max-height: 360px; width: 60%; }
@@ -539,6 +542,7 @@
                 <div class="fg"><label for="challenge" class="fl" data-da="Hvad fylder lige nu?" data-en="What's on your mind right now?">Hvad fylder lige nu?</label><textarea id="challenge" name="challenge" class="ft" placeholder="Skriv gerne kort – et par linjer er nok." style="min-height:120px"></textarea></div>
                 <button type="submit" class="btn bp submit-btn" data-da="Send besked" data-en="Send message">Send besked</button>
                 <p style="font-family:var(--body);font-size:.78rem;color:rgba(255,255,255,.4);text-align:center;margin-top:14px" data-da="Fortroligt. Jeg vender tilbage inden for 24 timer." data-en="Confidential. I'll reply within 24 hours.">Fortroligt. Jeg vender tilbage inden for 24 timer.</p>
+                <p style="font-family:var(--body);font-size:.72rem;color:rgba(255,255,255,.4);text-align:center;margin-top:6px" data-da="Din besked sendes via Formspree og bruges kun til at svare dig. Læs mere under <a href=&quot;vilkaar.html#privatliv&quot; style=&quot;color:rgba(255,255,255,.65)&quot;>Privatliv</a>." data-en="Your message is sent via Formspree and used only to reply to you. Read more under <a href=&quot;vilkaar.html#privatliv&quot; style=&quot;color:rgba(255,255,255,.65)&quot;>Privacy</a>.">Din besked sendes via Formspree og bruges kun til at svare dig. Læs mere under <a href="vilkaar.html#privatliv" style="color:rgba(255,255,255,.65)">Privatliv</a>.</p>
             </form>
         </div>
     </div>
@@ -566,7 +570,11 @@
 <footer role="contentinfo">
     <div class="fi3">
         <div class="fb">Fr<em>ii</em>snæs</div>
-        <div class="fc">&copy; 2026 Friisnæs. Alle rettigheder forbeholdes.</div>
+        <div class="fl2">
+            <a href="vilkaar.html" data-da="Vilkår, privatliv og ansvar" data-en="Terms, privacy and liability">Vilkår, privatliv og ansvar</a>
+            <a href="fortryd.html" data-da="Fortryd aftale" data-en="Cancel a purchase (Fortryd aftale)">Fortryd aftale</a>
+        </div>
+        <div class="fc">&copy; 2026 Friisnæs · CVR-nr. 26569346. Alle rettigheder forbeholdes.</div>
     </div>
 </footer>
 <script>
