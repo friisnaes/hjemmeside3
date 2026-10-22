@@ -162,6 +162,7 @@
         .book-list { display: flex; flex-direction: column; gap: 0; }
         .book-item { padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,.04); display: flex; justify-content: space-between; align-items: baseline; gap: 20px; }
         .book-item:last-child { border-bottom: none; }
+        .library .book-item:last-child { padding-bottom: 0; }
         .book-title { font-family: var(--display); font-size: 1.05rem; font-weight: 600; color: var(--black); }
         .book-type { font-family: var(--body); font-size: .72rem; color: var(--gray); letter-spacing: .08em; text-transform: uppercase; flex-shrink: 0; }
         .clients { background: var(--off-white); border-top: 1px solid rgba(0,0,0,.06); border-bottom: 1px solid rgba(0,0,0,.06); }
@@ -468,7 +469,7 @@
     <div class="c">
         <p class="se" data-da="Executive Library" data-en="Executive Library">Executive Library</p>
         <h2 id="library-heading" data-da="White papers om <em>topledelse</em>" data-en="White papers on <em>executive leadership</em>">White papers om <em>topledelse</em></h2>
-        <p class="intro" data-da="Fire serier — 40 white papers, gratis at læse og downloade. Systematisk tænkning om eksekvering, topledelse, kapacitet og det ledelseshold, der skal levere strategien, formet af mere end to årtiers arbejde med C-level ledere." data-en="Four series — 40 white papers, free to read and download. Systematic thinking on execution, executive leadership, capacity and the team that has to deliver the strategy, shaped by more than two decades of work with C-level leaders.">Fire serier — 40 white papers, gratis at læse og downloade. Systematisk tænkning om eksekvering, topledelse, kapacitet og det ledelseshold, der skal levere strategien, formet af mere end to årtiers arbejde med C-level ledere.</p>
+        <p class="intro" id="libIntro" data-da="Seks serier — 59 white papers, gratis at læse og downloade. Systematisk tænkning om eksekvering, topledelse, kapacitet, arbejdsdagen som design, strategisk observabilitet og det ledelseshold, der skal levere strategien – formet af mere end to årtiers arbejde med C-level ledere." data-en="Six series — 59 white papers, free to read and download. Systematic thinking on execution, executive leadership, capacity, the working day as design, strategic observability and the team that has to deliver the strategy – shaped by more than two decades of work with C-level leaders.">Seks serier — 59 white papers, gratis at læse og downloade. Systematisk tænkning om eksekvering, topledelse, kapacitet, arbejdsdagen som design, strategisk observabilitet og det ledelseshold, der skal levere strategien – formet af mere end to årtiers arbejde med C-level ledere.</p>
         <div class="book-list">
             <a class="book-item" href="library.html#eksekvering">
                 <span class="book-title">Eksekveringsserien</span>
@@ -482,9 +483,21 @@
                 <span class="book-title">Executive Longevity</span>
                 <span class="book-type" data-da="10 papers · 4 dele" data-en="10 papers · 4 parts">10 papers · 4 dele</span>
             </a>
-            <a class="book-item" href="library.html#holdet" style="border-bottom:none;padding-bottom:0;">
+            <a class="book-item" href="library.html#holdet">
                 <span class="book-title">Holdet bag strategien</span>
-                <span class="book-type" data-da="10 papers · nyeste serie" data-en="10 papers · newest series">10 papers · nyeste serie</span>
+                <span class="book-type" data-da="10 papers · 4 dele" data-en="10 papers · 4 parts">10 papers · 4 dele</span>
+            </a>
+            <a class="book-item" href="library.html#struktur">
+                <span class="book-title">Struktur sætter fri</span>
+                <span class="book-type" data-da="9 papers · 4 dele + companion" data-en="9 papers · 4 parts + companion">9 papers · 4 dele + companion</span>
+            </a>
+            <a class="book-item" href="library.html#observabilitet">
+                <span class="book-title">Strategien sker mellem kvartalerne</span>
+                <span class="book-type" data-da="10 papers · 4 dele" data-en="10 papers · 4 parts">10 papers · 4 dele</span>
+            </a>
+            <a class="book-item" href="library.html#coaching" id="libE27" data-e27-launch="2026-11-02">
+                <span class="book-title">Executive Coaching 2027</span>
+                <span class="book-type" id="libE27Type" data-da="Ny serie · udkommer løbende" data-en="New series · published in instalments">Ny serie · udkommer løbende</span>
             </a>
         </div>
         <div style="margin-top:28px;">
@@ -629,6 +642,27 @@
     });
   });
 })();
+</script>
+<script>
+  // Executive Library-tal på forsiden: følger library.html. Executive Coaching 2027 vises fra 2.11.2026,
+  // og tallet for white papers stiger automatisk på hvert papers udgivelsesdato.
+  (function () {
+    var now = new Date(), D = ["2026-11-02","2026-11-16","2026-11-30","2026-12-14","2027-01-11","2027-01-25","2027-02-08","2027-02-22","2027-03-08","2027-03-22"];
+    function on(d) { return now >= new Date(d + 'T00:00:00+01:00'); }
+    var row = document.getElementById('libE27');
+    if (!row || !on(row.getAttribute('data-e27-launch'))) { if (row) row.remove(); return; }
+    var n = 59 + D.filter(on).length, cur = document.documentElement.lang === 'en' ? 'en' : 'da';
+    var it = document.getElementById('libIntro');
+    if (it) {
+      it.setAttribute('data-da', it.getAttribute('data-da').replace('Seks serier — 59', 'Syv serier — ' + n));
+      it.setAttribute('data-en', it.getAttribute('data-en').replace('Six series — 59', 'Seven series — ' + n));
+      it.innerHTML = it.getAttribute('data-' + cur);
+    }
+    if (on(D[D.length - 1])) {
+      var t = document.getElementById('libE27Type');
+      if (t) { t.setAttribute('data-da', '10 papers · 4 dele'); t.setAttribute('data-en', '10 papers · 4 parts'); t.innerHTML = t.getAttribute('data-' + cur); }
+    }
+  })();
 </script>
 </body>
 </html>
