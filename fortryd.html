@@ -102,14 +102,14 @@
 
 <main>
 
-<div id="opsaetning" class="afventer hidden" role="note"><strong>Afventer opsætning:</strong> formularen er endnu ikke koblet til Formspree. Indtil da kan du fortryde ved at skrive til <a href="mailto:info@friisnaes.com?subject=Fortrydelse">info@friisnaes.com</a>.</div>
+<div id="opsaetning" class="afventer hidden" role="note"><strong>Afventer opsætning:</strong> formularen er endnu ikke koblet til. Indtil da kan du fortryde ved at skrive til <a href="mailto:info@friisnaes.com?subject=Fortrydelse">info@friisnaes.com</a>.</div>
 
 <section id="trin1" aria-labelledby="t1">
   <h2 id="t1">Udfyld fortrydelsen</h2>
   <p>Felter med <span class="req">*</span> skal udfyldes. Du gennemser oplysningerne, før du bekræfter.</p>
 
-  <form id="fortrydform" action="https://formspree.io/f/DIN-FORMSPREE-ID" method="POST" novalidate>
-    <input type="hidden" name="_subject" id="f-subject" value="Fortrydelse af e-bog – friisnaes.com">
+  <form id="fortrydform" action="https://script.google.com/macros/s/AKfycbx1HajlV7Lt1WUcNlYF6R7bC5RNaSd9iaTewtuzS3Zd-bg1x6ADqptcCKwqoXiaMZum/exec" method="POST" novalidate>
+    <input type="hidden" name="_svar" id="f-svar" value="html">
     <input type="hidden" name="indsendt" id="f-indsendt" value="">
     <input type="hidden" name="vilkaarsversion" value="Vilkår, version af 22. oktober 2026">
     <div class="gotcha" aria-hidden="true"><label for="f-gotcha">Lad dette felt være tomt</label><input type="text" name="_gotcha" id="f-gotcha" tabindex="-1" autocomplete="off"></div>
@@ -140,6 +140,7 @@
         <option>Du ansætter på CV – men du leder på karakter</option>
         <option>Executive Coaching 2027</option>
         <option>En anatomi af topledelse</option>
+        <option>Før det knækker</option>
         <option>Tvillingepakke (begge bøger)</option>
         <option>Digtsamling (Δ+, Σ= eller begge)</option>
         <option>Anden e-bog</option>
@@ -219,7 +220,7 @@
   <h2 id="t4">Andre måder at fortryde på</h2>
   <p>Du kan også fortryde ved at skrive til <a href="mailto:info@friisnaes.com?subject=Fortrydelse">info@friisnaes.com</a> eller med almindelig post til Friisnæs, Ranunkelvej 13, 2820 Gentofte. Det er nok, at du sender meddelelsen, før fristen udløber. Du kan bruge <a href="vilkaar.html#fortrydelsesformular">standardfortrydelsesformularen</a>, men det er ikke et krav.</p>
   <h3>Dine oplysninger</h3>
-  <p>Det, du skriver her, bruger jeg kun til at behandle din fortrydelse og tilbagebetalingen. Formularen sendes via tjenesten Formspree. Læs mere under <a href="vilkaar.html#privatliv">Privatliv</a>.</p>
+  <p>Det, du skriver her, bruger jeg kun til at behandle din fortrydelse og tilbagebetalingen. Formularen behandles via Google (Google Apps Script, Google Sheets og Gmail), som også sender kvitteringen. Læs mere under <a href="vilkaar.html#privatliv">Privatliv</a>.</p>
   <p class="meta">Friisnæs / Thomas Friisnæs · CVR-nr. 26569346 · Ranunkelvej 13, 2820 Gentofte · <a href="mailto:info@friisnaes.com">info@friisnaes.com</a> · <a href="tel:+4526818218">+45 26 81 82 18</a></p>
 </section>
 
@@ -234,7 +235,7 @@
 (function(){
   var form = document.getElementById('fortrydform');
   var ENDPOINT = form.getAttribute('action');
-  var opsat = /^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/.test(ENDPOINT);
+  var opsat = /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(ENDPOINT);
   if (!opsat) document.getElementById('opsaetning').classList.remove('hidden');
 
   var $ = function(id){ return document.getElementById(id); };
@@ -308,13 +309,19 @@
     }
     var tid=tidspunkt();
     $('f-indsendt').value=tid;
-    $('f-subject').value='Fortrydelse: '+(bog.value==='Anden e-bog' ? $('f-anden').value : bog.value)+' – '+$('f-navn').value;
+    $('f-svar').value='json';
     knap.disabled=true; knap.textContent='Sender …';
-    fetch(ENDPOINT,{method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}})
-      .then(function(r){
-        if(!r.ok) throw new Error('status '+r.status);
-        fyld($('kvittering'), ['Indsendt', tid]);
-        $('kvit-tid').textContent='Indsendt '+tid+'.';
+    fetch(ENDPOINT,{method:'POST', body:new URLSearchParams(new FormData(form)), redirect:'follow'})
+      .then(function(r){ if(!r.ok) throw new Error('status '+r.status); return r.json(); })
+      .then(function(d){
+        if(!d || !d.ok){
+          var e=$('fejl2'); e.textContent=(d && d.fejl) ? d.fejl : 'Fortrydelsen kunne ikke sendes.'; e.classList.remove('hidden');
+          knap.disabled=false; knap.textContent='Bekræft fortrydelse'; return;
+        }
+        var t=d.tid||tid;
+        fyld($('kvittering'), ['Indsendt', t]);
+        if(d.id){ var dl=$('kvittering'); var dt=document.createElement('dt'); dt.textContent='Kvitteringsnummer'; var dd=document.createElement('dd'); dd.textContent=d.id; dl.appendChild(dt); dl.appendChild(dd); }
+        $('kvit-tid').textContent='Indsendt '+t+(d.id?' · kvitteringsnummer '+d.id:'')+'.';
         vis('trin3');
       })
       .catch(function(){
