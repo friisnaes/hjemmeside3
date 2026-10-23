@@ -280,7 +280,19 @@
         @media (max-width: 600px) {
             .nl.open { justify-content: flex-start; padding: 88px 24px 48px; overflow-y: auto; gap: 18px; height: 100vh; height: 100dvh; width: 100vw; }
         }
-    </style>
+    
+/* --- klientudsagn på forsiden --- */
+.cl-quotes { display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px }
+.cq { background:var(--white);border:1px solid rgba(0,0,0,.08);padding:28px 28px 24px;margin:0;display:flex;flex-direction:column;transition:border-color .3s }
+.cq:hover { border-color:var(--red) }
+.cq-q { font-family:var(--display);font-style:italic;font-size:1.02rem;line-height:1.6;color:var(--black);margin:0 0 20px;quotes:none }
+.cq-q::before { content:'\201C';color:var(--red);font-size:2.2rem;line-height:0;vertical-align:-.35em;margin-right:4px }
+.cq figcaption { margin-top:auto;display:flex;flex-direction:column;gap:3px }
+.cq-n { font-family:var(--display);font-size:1.05rem;font-weight:600;color:var(--black) }
+.cq-r { font-family:var(--body);font-size:.78rem;color:var(--gray) }
+.cq-y { font-family:var(--body);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-top:8px }
+@media (max-width:760px){ .cl-quotes { grid-template-columns:1fr } .cq { padding:22px 20px 20px } }
+</style>
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Friisnæs – Executive Coach Thomas Friisnæs">
@@ -421,14 +433,24 @@
             <span class="cl-tag" data-da="Direktionsmedlemmer" data-en="Board members">Direktionsmedlemmer</span>
             <span class="cl-tag" data-da="Ledere med stort strategisk ansvar" data-en="Leaders with major strategic responsibility">Ledere med stort strategisk ansvar</span>
         </div>
-        <p style="font-family:var(--body);font-size:.88rem;color:var(--gray);line-height:1.8;max-width:620px;margin-top:28px;margin-bottom:14px" data-da="Udvalgte ledere jeg arbejder med – nævnt med tilladelse:" data-en="Selected leaders I work with – named with permission:">Udvalgte ledere jeg arbejder med – nævnt med tilladelse:</p>
-        <div class="cl-plates">
-            <div class="cl-plate"><div class="cp-name">Casper Stylsvig</div><div class="cp-role">Executive Director</div><div class="cp-org">Hong Kong Jockey Club</div></div>
-            <div class="cl-plate"><div class="cp-name">Kim Kehlet Johansen</div><div class="cp-role">CEO</div><div class="cp-org">Velliv A/S</div></div>
-            <div class="cl-plate"><div class="cp-name">Willy Chavarria</div><div class="cp-role">Owner &amp; CCO</div><div class="cp-org">Willy Chavarria</div></div>
-            <div class="cl-plate"><div class="cp-name">Lars Christensen</div><div class="cp-role">CEO</div><div class="cp-org">WTW</div></div>
-            <div class="cl-plate"><div class="cp-name">Mikkel Kryger</div><div class="cp-role">TV Host</div><div class="cp-org">TV2</div></div>
-            <div class="cl-plate"><div class="cp-name">Henrik Gram</div><div class="cp-role" data-da="Partner / Direktør" data-en="Partner / Director">Partner / Direktør</div><div class="cp-org">Solstra Capital Partners</div></div>
+        <p style="font-family:var(--body);font-size:.88rem;color:var(--gray);line-height:1.8;max-width:620px;margin-top:28px;margin-bottom:14px" data-da="Det siger nogle af de ledere, jeg arbejder med – med navn og tilladelse:" data-en="What some of the leaders I work with say – by name, with permission:">Det siger nogle af de ledere, jeg arbejder med – med navn og tilladelse:</p>
+        <div class="cl-quotes">
+            <figure class="cq">
+                <blockquote class="cq-q" data-da="Mit konkrete udbytte er en langt klarere forståelse af, hvorfor jeg reagerer og tænker, som jeg gør – og værktøjer til at udvikle mine kompetencer og mit potentiale. Man lærer hurtigt, at Thomas’ coaching ikke er et quick fix. Det er en ny måde at forbedre sig på – i en proces, der aldrig slutter." data-en="My specific output is a much clearer understanding of why I react and think as I do. And tools to develop my competencies and potentials. Soon you learn that Thomas’ coaching is not a quick fix. It’s a new way to improve yourself in a never-ending process.">Mit konkrete udbytte er en langt klarere forståelse af, hvorfor jeg reagerer og tænker, som jeg gør – og værktøjer til at udvikle mine kompetencer og mit potentiale. Man lærer hurtigt, at Thomas’ coaching ikke er et quick fix. Det er en ny måde at forbedre sig på – i en proces, der aldrig slutter.</blockquote>
+                <figcaption><span class="cq-n">Kim Kehlet Johansen</span><span class="cq-r"><span data-da="Adm. direktør (CEO)" data-en="CEO">Adm. direktør (CEO)</span> · Velliv A/S</span><span class="cq-y" data-da="Klient i 10 år" data-en="Client for 10 years">Klient i 10 år</span></figcaption>
+            </figure>
+            <figure class="cq">
+                <blockquote class="cq-q" lang="en" data-da="To be a leader in the fashion industry requires a firm self-awareness. Thomas helps me to see ways to be better even when I think I’m at my best. It’s a great ongoing self-realization." data-en="To be a leader in the fashion industry requires a firm self-awareness. Thomas helps me to see ways to be better even when I think I’m at my best. It’s a great ongoing self-realization.">To be a leader in the fashion industry requires a firm self-awareness. Thomas helps me to see ways to be better even when I think I’m at my best. It’s a great ongoing self-realization.</blockquote>
+                <figcaption><span class="cq-n">Willy Chavarria</span><span class="cq-r"><span data-da="Owner &amp; Chief Creative Officer" data-en="Owner &amp; Chief Creative Officer">Owner &amp; Chief Creative Officer</span> · WILLY CHAVARRIA</span><span class="cq-y" data-da="Klient i 8 år" data-en="Client for 8 years">Klient i 8 år</span></figcaption>
+            </figure>
+            <figure class="cq">
+                <blockquote class="cq-q" data-da="Min karriere og min familie kørte for fuld fart. Alt var godt. Men hvordan kunne jeg gøre det bedre?" data-en="My career and family were at full speed. Everything was good. But how could I do better?">Min karriere og min familie kørte for fuld fart. Alt var godt. Men hvordan kunne jeg gøre det bedre?</blockquote>
+                <figcaption><span class="cq-n">Casper Stylsvig</span><span class="cq-r"><span data-da="Executive Director, CRO" data-en="Executive Director, CRO">Executive Director, CRO</span> · Hong Kong Jockey Club</span><span class="cq-y" data-da="Klient i 14 år" data-en="Client for 14 years">Klient i 14 år</span></figcaption>
+            </figure>
+            <figure class="cq">
+                <blockquote class="cq-q" data-da="Thomas hjalp mig med at få styr på mine prioriteter og forløse et potentiale, jeg godt vidste, jeg havde. Men det er vores strukturerede arbejde med planlægning, der har gjort mig langt mere effektiv og produktiv på det, der betyder mest. Alle burde arbejde med Thomas." data-en="Thomas helped me get my priorities straight and unlock potential I already knew I had. But it is our structured approach to planning that has made me far more effective and productive on the things that matter most. Everyone should work with Thomas.">Thomas hjalp mig med at få styr på mine prioriteter og forløse et potentiale, jeg godt vidste, jeg havde. Men det er vores strukturerede arbejde med planlægning, der har gjort mig langt mere effektiv og produktiv på det, der betyder mest. Alle burde arbejde med Thomas.</blockquote>
+                <figcaption><span class="cq-n">Stefan Pagels</span><span class="cq-r"><span data-da="Founder &amp; CEO" data-en="Founder &amp; CEO">Founder &amp; CEO</span> · Improv Communication</span><span class="cq-y" data-da="Klient i 6 år" data-en="Client for 6 years">Klient i 6 år</span></figcaption>
+            </figure>
         </div>
         <p class="cl-plates-note"><a href="testimonials.html" data-da="Se alle 33 navngivne referencer →" data-en="See all 33 named references →">Se alle 33 navngivne referencer →</a></p>
         <p style="font-family:var(--body);font-size:.88rem;color:var(--gray);line-height:1.8;max-width:620px;margin-top:28px;margin-bottom:8px" data-da="Ofte i situationer hvor:" data-en="Often in situations where:">Ofte i situationer hvor:</p>
