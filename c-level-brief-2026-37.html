@@ -391,6 +391,12 @@
 @media (pointer:coarse) and (min-width:781px){.fn-links a{padding-top:9px;padding-bottom:9px}}
 @media print{.fn-nav{display:none !important}}
 </style>
+<style id="a11y-contrast">
+/* --- a11y: kontrast (AA 4.5:1) --- */
+:root { --ink-faint:rgba(17,17,17,.62) }
+.label, .part, .source, .caveat strong, .key .label, .sources .label, .byline { color:#666 }
+.hero .eyebrow { color:#e74c3c }
+</style>
 </head>
 <body data-pagefind-ignore>
 <nav class="fn-nav" aria-label="Hovednavigation">
@@ -444,7 +450,7 @@
     <span class="brand">friisnaes.com</span>
   </div>
 
-  <article>
+  <article role="main">
 
     <p class="standfirst">Denne uge er der kun én udvikling, jeg vurderer som både ny, veldokumenteret og direkte relevant for danske C-level-ledere. Jeg har ikke fundet en international udvikling, der består samme relevanstest. Derfor får du ét stærkt dansk signal i stedet for en håndfuld historier, der blot udfylder formatet.</p>
 
