@@ -611,23 +611,75 @@
  "dateModified": "2026-10-01"
 }
 </script>
+<style id="fn-nav-css">
+.fn-nav{position:sticky;top:0;z-index:90;background:#111;border-bottom:1px solid rgba(192,57,43,.14);font-family:'Outfit',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.fn-in{max-width:1100px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fn-brand{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:500;color:#fff;text-decoration:none;letter-spacing:.01em;white-space:nowrap}
+.fn-brand em{font-style:normal;color:#e74c3c}
+.fn-links{display:flex;gap:24px;align-items:center}
+.fn-links a{font-size:13px;color:rgba(255,255,255,.78);text-decoration:none;letter-spacing:.02em;transition:color .2s;white-space:nowrap;font-weight:400;text-transform:none;border:0;padding:0}
+.fn-links a:hover,.fn-links a.active{color:#e74c3c}
+.fn-links a.fn-cta{color:#fff !important;background:#c0392b;padding:8px 16px;border-radius:2px;font-weight:500}
+.fn-links a.fn-cta:hover{background:#e74c3c}
+.fn-dd{position:relative;display:inline-flex;align-items:center}
+.fn-dd-t{display:inline-flex;align-items:center;gap:4px}
+.fn-dd-c{font-size:9px;opacity:.7;transition:transform .2s}
+.fn-dd:hover .fn-dd-c,.fn-dd.open .fn-dd-c{transform:rotate(180deg)}
+.fn-dd-m{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);background:#1a1a1a;border:1px solid rgba(192,57,43,.18);padding:8px 0;min-width:210px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;display:flex;flex-direction:column;z-index:95;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.fn-dd-m::before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px}
+.fn-dd:hover .fn-dd-m,.fn-dd:focus-within .fn-dd-m,.fn-dd.open .fn-dd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(2px)}
+.fn-dd-m a{padding:9px 18px !important;font-size:12.5px;white-space:nowrap}
+.fn-dd-m a:hover{background:rgba(255,255,255,.04)}
+.fn-toggle{display:none;background:none;border:0;color:#fff;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1}
+@media (max-width:780px){
+  .fn-in{padding:0 20px}
+  .fn-links{display:none}
+  .fn-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:#111;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 14px;border-bottom:1px solid rgba(192,57,43,.14);max-height:calc(100vh - 62px);overflow-y:auto}
+  .fn-links.open a{padding:12px 24px}
+  .fn-links.open a.fn-cta{margin:10px 24px 0;text-align:center}
+  .fn-toggle{display:block}
+  .fn-dd{flex-direction:column;align-items:stretch;width:100%}
+  .fn-dd-m{position:static;transform:none;opacity:1;visibility:visible;background:none;border:0;padding:0 0 0 16px;min-width:0;box-shadow:none}
+  .fn-dd-m::before{display:none}
+  .fn-dd-c{display:none}
+}
+@media (pointer:coarse) and (min-width:781px){.fn-links a{padding-top:9px;padding-bottom:9px}}
+@media print{.fn-nav{display:none !important}}
+</style>
+<style id="fb-signup-css">
+.fb-signup{max-width:760px;margin:0 auto;padding:8px 32px 56px;font-family:'Outfit',-apple-system,sans-serif}
+.fb-signup-in{background:#111;color:#f5f4f0;padding:2.3rem 2.2rem;display:flex;flex-wrap:wrap;gap:1.4rem 2rem;align-items:center;justify-content:space-between;border-radius:4px}
+.fb-signup-k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#e74c3c;font-weight:500;margin-bottom:10px}
+.fb-signup h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.4rem;line-height:1.25;margin:0 0 .45rem;color:#fff}
+.fb-signup h3 em{font-style:italic;color:#e74c3c}
+.fb-signup p{font-size:.95rem;color:rgba(245,244,240,.72);margin:0;max-width:440px;line-height:1.55;font-weight:300}
+.fb-signup a.fb-signup-btn{display:inline-block;background:#c0392b;color:#fff;font-family:'Outfit',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:.95rem 1.6rem;border-radius:2px;white-space:nowrap;transition:background .2s;border:0}
+.fb-signup a.fb-signup-btn:hover{background:#e74c3c}
+@media (max-width:640px){.fb-signup{padding:8px 20px 44px}.fb-signup-in{padding:1.8rem 1.4rem}.fb-signup a.fb-signup-btn{width:100%;text-align:center}}
+@media print{.fb-signup{display:none !important}}
+</style>
 </head>
 <body>
-
-<div class="progress-bar" id="progressBar"></div>
-
-<!-- NAV -->
-<nav class="site-nav" aria-label="Hovednavigation">
-  <div class="nav-inner">
-    <a href="/" class="nav-brand">Fr<em>ii</em>snæs</a>
-    <button class="nav-toggle" aria-label="Menu" aria-controls="navLinks" aria-expanded="false" onclick="var n=document.getElementById('navLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
-    <div class="nav-links" id="navLinks">
+<nav class="fn-nav" aria-label="Hovednavigation">
+  <div class="fn-in">
+    <a href="/" class="fn-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <button class="fn-toggle" aria-label="Menu" aria-controls="fnLinks" aria-expanded="false" onclick="var n=document.getElementById('fnLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="fn-links" id="fnLinks">
       <a href="/#situationer">Situationer</a>
-      <a href="/#om">Om</a>
+      <span class="fn-dd">
+        <a href="/executive-coaching.html" class="fn-dd-t" aria-haspopup="true">Ydelser <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/executive-coaching.html">Executive Coaching</a>
+          <a href="/ceo-sparring.html">CEO-sparring</a>
+          <a href="/seg.html">Ledergrupper (SEG)</a>
+          <a href="/#format">Sådan arbejder vi</a>
+        </span>
+      </span>
+      <a href="/om.html">Om</a>
       <a href="/testimonials.html">Klienter</a>
-      <span class="nav-nd">
-        <span class="nav-nd-t">Indsigter <span class="nav-nd-c">▾</span></span>
-        <span class="nav-nd-m">
+      <span class="fn-dd">
+        <a href="/library.html" class="fn-dd-t active" aria-haspopup="true">Indsigter <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
           <a href="/blog.html">Blogindlæg</a>
           <a href="/library.html" class="active">Executive Library</a>
           <a href="/library.html#brief">C-Level Brief</a>
@@ -636,11 +688,14 @@
         </span>
       </span>
       <a href="/boeger.html">Bøger</a>
-      <a href="/#kontakt" class="nav-cta">Book en samtale</a>
+      <a href="/#kontakt" class="fn-cta">Book en samtale</a>
     </div>
   </div>
 </nav>
 
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
 <!-- PRINT COVER -->
 <div class="print-only print-cover">
   <div class="pc-badge">Strategien sker mellem kvartalerne · Paper 04 af 10</div>
@@ -1336,6 +1391,16 @@
 </section>
 
 <!-- READ ALSO -->
+<section class="fb-signup" aria-label="Tilmeld dig C-Level Brief">
+  <div class="fb-signup-in">
+    <div>
+      <div class="fb-signup-k">C-Level Brief · hver mandag</div>
+      <h3>Få briefen <em>hver mandag.</em></h3>
+      <p>Signaler med konsekvens for topledere – i din indbakke. Otte minutter. Afmeld med ét klik.</p>
+    </div>
+    <a class="fb-signup-btn" href="https://brief.subscribepage.io" target="_blank" rel="noopener">Tilmeld dig</a>
+  </div>
+</section>
 <section class="read-also">
   <div class="container">
     <h2>Læs også</h2>
@@ -1438,6 +1503,10 @@
       setTimeout(cleanup, 1500);
     } catch (e) { window.print(); }
   }
+</script>
+<script>
+(function(){var ts=document.querySelectorAll('.fn-dd-t');for(var i=0;i<ts.length;i++){ts[i].addEventListener('touchend',function(e){if(window.innerWidth<=780)return;var p=this.parentNode;if(!p.classList.contains('open')){e.preventDefault();var o=document.querySelectorAll('.fn-dd.open');for(var k=0;k<o.length;k++)o[k].classList.remove('open');p.classList.add('open');}},{passive:false});}
+document.addEventListener('touchend',function(e){if(!e.target.closest('.fn-dd')){var o=document.querySelectorAll('.fn-dd.open');for(var k=0;k<o.length;k++)o[k].classList.remove('open');}},{passive:true});})();
 </script>
 </body>
 </html>
