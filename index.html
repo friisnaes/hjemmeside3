@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preload" as="image" href="hero-680.webp" imagesrcset="hero-680.webp 680w, hero-1020.webp 1020w" imagesizes="(max-width: 600px) 80vw, (max-width: 900px) 60vw, 340px" fetchpriority="high">
     <title>Executive Coach Thomas Friisnæs – sparring for C-level</title>
-    <meta name="description" content="Skab klarhed og eksekveringskraft med en erfaren Executive Coach. 22+ års erfaring med topledere og ejerledere. Book en 20-minutters strategisk samtale.">
+    <meta name="description" content="Når ansvaret er dit, har du brug for et sted at tænke højt. Executive coaching og fortrolig sparring for CEO's, ejerledere og direktioner – siden 2003.">
     <meta name="author" content="Thomas Friisnæs">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="https://www.friisnaes.com/">
@@ -15,13 +15,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.friisnaes.com/">
     <meta property="og:title" content="Executive Coach Thomas Friisnæs | Sparring for C-level ledere">
-    <meta property="og:description" content="Skab klarhed og eksekveringskraft med en erfaren Executive Coach. 22+ års erfaring med topledere og ejerledere. Book en 20-minutters strategisk samtale.">
+    <meta property="og:description" content="Når ansvaret er dit, har du brug for et sted at tænke højt. Executive coaching og fortrolig sparring for CEO's, ejerledere og direktioner – siden 2003.">
     <meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
     <meta property="og:locale" content="da_DK">
     <meta property="og:site_name" content="Friisnæs">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Executive Coach Thomas Friisnæs | Sparring for C-level ledere">
-    <meta name="twitter:description" content="Skab klarhed og eksekveringskraft med en erfaren Executive Coach. 22+ års erfaring med topledere og ejerledere. Book en 20-minutters strategisk samtale.">
+    <meta name="twitter:description" content="Skab klarhed og eksekveringskraft med en erfaren Executive Coach. 22+ års erfaring med topledere og ejerledere. Aftal en 20-minutters samtale.">
     <meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
     <script type="application/ld+json">
     {"@context":"https://schema.org","@graph":[
@@ -282,7 +282,8 @@
         }
     
 /* --- klientudsagn på forsiden --- */
-.cl-quotes { display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px }
+.cl-quotes { display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:8px }
+.clients .client-list { max-width: 760px }
 .cq { background:var(--white);border:1px solid rgba(0,0,0,.08);padding:28px 28px 24px;margin:0;display:flex;flex-direction:column;transition:border-color .3s }
 .cq:hover { border-color:var(--red) }
 .cq-q { font-family:var(--display);font-style:italic;font-size:1.02rem;line-height:1.6;color:var(--black);margin:0 0 20px;quotes:none }
@@ -291,7 +292,28 @@
 .cq-n { font-family:var(--display);font-size:1.05rem;font-weight:600;color:var(--black) }
 .cq-r { font-family:var(--body);font-size:.78rem;color:var(--gray) }
 .cq-y { font-family:var(--body);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-top:8px }
+@media (max-width:1000px){ .cl-quotes { grid-template-columns:1fr 1fr } }
 @media (max-width:760px){ .cl-quotes { grid-template-columns:1fr } .cq { padding:22px 20px 20px } }
+
+/* --- pakke E: hero, bevisbånd, trin --- */
+.hero h1 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); }
+.hero .h1sub { font-family: var(--display); font-style: italic; font-size: clamp(1.1rem, 1.8vw, 1.45rem); color: rgba(255,255,255,.7); margin: -8px 0 22px; opacity: 0; animation: fu .7s var(--ease) .45s forwards; }
+@media (max-width: 600px) { .hero h1 { font-size: 2rem; } .hero .hc { padding-top: 120px; } }
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+.proofband { background: var(--off-white); border-bottom: 1px solid rgba(0,0,0,.06); padding: clamp(56px, 7vw, 88px) 0; }
+.lead-q { margin: 0 auto; max-width: 860px; text-align: center; }
+.lead-q blockquote { font-family: var(--display); font-style: italic; font-size: clamp(1.35rem, 2.4vw, 1.9rem); line-height: 1.45; color: var(--black); margin: 0 0 18px; quotes: none; }
+.lead-q blockquote::before { content: '\201C'; color: var(--red); margin-right: 2px; }
+.lead-q blockquote::after { content: '\201D'; color: var(--red); margin-left: 2px; }
+.lead-q figcaption { font-family: var(--body); font-size: .86rem; color: var(--gray); }
+.lead-q figcaption strong { color: var(--black); font-weight: 600; }
+.proof-line { font-family: var(--body); font-size: .78rem; color: var(--gray); text-align: center; margin: 36px auto 0; max-width: 900px; line-height: 1.9; }
+.proof-names { font-weight: 600; color: var(--black); letter-spacing: .04em; text-transform: uppercase; font-size: .72rem; display: block; margin: 6px 0 8px; }
+.proof-line a { color: var(--red); border-bottom: 1px solid var(--red); }
+.contact .steps { list-style: none; margin: 0 0 40px; max-width: 620px; display: flex; flex-direction: column; gap: 12px; }
+.contact .steps li { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; font-family: var(--body); font-size: .92rem; color: rgba(255,255,255,.7); line-height: 1.7; }
+.contact .steps strong { color: var(--white); font-weight: 600; }
+.contact .st-n { font-family: var(--display); font-size: 1.1rem; color: var(--red); border: 1px solid rgba(192,57,43,.5); width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; margin-top: 2px; }
 </style>
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -341,7 +363,7 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
                 </ul>
             </li>
             <li><a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
-            <li><a href="#kontakt" class="cta-n" data-da="Book en samtale" data-en="Book a conversation" aria-label="Book en samtale">Book en samtale</a></li>
+            <li><a href="#kontakt" class="cta-n" data-da="Aftal en samtale" data-en="Arrange a conversation" aria-label="Aftal en samtale">Aftal en samtale</a></li>
             <li class="ls"><button onclick="setLang('da')" class="on" aria-label="DA – skift til dansk">DA</button><span aria-hidden="true">/</span><button onclick="setLang('en')" aria-label="EN – switch to English">EN</button></li>
         </ul><button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
@@ -349,15 +371,16 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
 <header class="hero" id="top">
     <div class="hc">
         <div>
-            <p class="hl" data-da="Executive Coach & Strategisk Sparringspartner" data-en="Executive Coach & Strategic Sparring Partner">Executive Coach & Strategisk Sparringspartner</p>
-            <h1 data-da="Executive Coaching: Klarhed. Prioritering.<br><em>Eksekvering.</em>" data-en="Executive Coaching: Clarity. Prioritization.<br><em>Execution.</em>">Executive Coaching: Klarhed. Prioritering.<br><em>Eksekvering.</em></h1>
-            <p class="hp" data-da="Strategisk sparring for topledere, CEO's og ejerledere der vil skabe resultater uden burnout." data-en="Strategic sparring for senior executives, CEOs, and owner-managers who want results without burnout.">Strategisk sparring for topledere, CEO's og ejerledere der vil skabe resultater uden burnout.</p>
-            <p class="hp2" data-da="Executive coaching for ledere der ønsker bedre beslutninger, stærkere retning og højere eksekveringskraft i organisationen. Holte, København og online." data-en="Executive coaching for leaders who want better decisions, stronger direction, and higher execution power. Holte, Copenhagen, and online.">Executive coaching for ledere der ønsker bedre beslutninger, stærkere retning og højere eksekveringskraft i organisationen. Holte, København og online.</p>
+            <p class="hl" data-da="Executive coaching for CEO's, ejerledere og direktioner" data-en="Executive coaching for CEOs, owner-managers and executive teams">Executive coaching for CEO's, ejerledere og direktioner</p>
+            <h1 data-da="Når ansvaret er dit, har du brug for et sted <em>at tænke højt.</em>" data-en="When the responsibility is yours, you need a place <em>to think out loud.</em>">Når ansvaret er dit, har du brug for et sted <em>at tænke højt.</em></h1>
+            <p class="h1sub" data-da="Klarhed. Prioritering. Eksekvering." data-en="Clarity. Prioritization. Execution.">Klarhed. Prioritering. Eksekvering.</p>
+            <p class="hp" data-da="Jeg hjælper dig med at træffe de svære beslutninger, skære prioriteterne til og få organisationen til at handle. Fortrolig sparring – siden 2003 og mere end 15.000 sessioner." data-en="I help you make the hard decisions, cut your priorities down and get the organisation to act. Confidential sparring – since 2003 and more than 15,000 sessions.">Jeg hjælper dig med at træffe de svære beslutninger, skære prioriteterne til og få organisationen til at handle. Fortrolig sparring – siden 2003 og mere end 15.000 sessioner.</p>
+            <p class="hp2" data-da="Et sted uden politiske konsekvenser. Holte, København og online." data-en="A place without political consequences. Holte, Copenhagen and online.">Et sted uden politiske konsekvenser. Holte, København og online.</p>
             <div class="ha">
-                <a href="#kontakt" class="btn bp" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation">Book en 20-minutters samtale</a>
+                <a href="#kontakt" class="btn bp" data-da="Aftal en 20-minutters samtale" data-en="Arrange a 20-minute conversation">Aftal en 20-minutters samtale</a>
                 <a href="#format" class="btn bg" data-da="Se hvordan jeg arbejder" data-en="See how I work">Se hvordan jeg arbejder</a>
             </div>
-            <p class="hm" data-da="20 minutter. Ét problem. Én plan. Ingen salgsteater." data-en="20 minutes. One problem. One plan. No sales theater.">20 minutter. Ét problem. Én plan. Ingen salgsteater.</p>
+            <p class="hm" data-da="20 minutter. Ét problem. Én plan." data-en="20 minutes. One problem. One plan.">20 minutter. Ét problem. Én plan.</p>
         </div>
         <img decoding="async" src="hero-680.webp" srcset="hero-680.webp 680w, hero-1020.webp 1020w" sizes="(max-width: 600px) 80vw, (max-width: 900px) 60vw, 340px" alt="Thomas Friisnæs – Executive Coach, Holte og København" class="hero-img" width="340" height="500" loading="eager" fetchpriority="high">
         <div class="hs" aria-label="Nøgletal">
@@ -370,12 +393,14 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
     </div>
 </header>
 <main>
-<section class="who rv" aria-labelledby="who-heading">
-    <div class="c">
-        <p class="se" data-da="Hvem jeg arbejder med" data-en="Who I work with">Hvem jeg arbejder med</p>
-        <h2 id="who-heading" data-da="Mit arbejde er ikke <em>for alle ledere.</em>" data-en="My work is not for <em>all leaders.</em>">Mit arbejde er ikke <em>for alle ledere.</em></h2>
-        <p data-da="Jeg arbejder med C-level ledere, ejerledere og direktionsmedlemmer. Mennesker med stort ansvar, højt tempo og komplekse beslutninger." data-en="I work with C-level executives, owner-managers, and board members. People with significant responsibility, high pace, and complex decisions.">Jeg arbejder med C-level ledere, ejerledere og direktionsmedlemmer. Mennesker med stort ansvar, højt tempo og komplekse beslutninger.</p>
-        <p data-da="De mangler ikke ambition eller kompetence. De mangler klarhed, prioritering og et sted hvor de kan tænke højt – uden politiske konsekvenser." data-en="They don't lack ambition or competence. They lack clarity, prioritization, and a space to think out loud – without political consequences.">De mangler ikke ambition eller kompetence. De mangler klarhed, prioritering og et sted hvor de kan tænke højt – uden politiske konsekvenser.</p>
+<section class="proofband rv" aria-labelledby="proofband-heading">
+    <div class="c cw">
+        <h2 id="proofband-heading" class="sr-only">Det siger mine klienter</h2>
+        <figure class="lead-q">
+            <blockquote data-da="Man lærer hurtigt, at Thomas’ coaching ikke er et quick fix. Det er en ny måde at forbedre sig på – i en proces, der aldrig slutter." data-en="Soon you learn that Thomas’ coaching is not a quick fix. It’s a new way to improve yourself in a never-ending process.">Man lærer hurtigt, at Thomas’ coaching ikke er et quick fix. Det er en ny måde at forbedre sig på – i en proces, der aldrig slutter.</blockquote>
+            <figcaption><strong>Kim Kehlet Johansen</strong> · <span data-da="Adm. direktør (CEO), Velliv A/S · Klient i 10 år" data-en="CEO, Velliv A/S · Client for 10 years">Adm. direktør (CEO), Velliv A/S · Klient i 10 år</span></figcaption>
+        </figure>
+        <p class="proof-line"><span data-da="Fortrolig sparringspartner for ledere hos bl.a." data-en="Confidential sparring partner to leaders at">Fortrolig sparringspartner for ledere hos bl.a.</span> <span class="proof-names">Velliv · Hong Kong Jockey Club · WILLY CHAVARRIA · Söderberg &amp; Partners · WTW · Atea · Jeudan · Banedanmark</span> <a href="testimonials.html" data-da="Se alle 33 navngivne referencer →" data-en="See all 33 named references →">Se alle 33 navngivne referencer →</a></p>
     </div>
 </section>
 <section class="sit rv" id="situationer" aria-labelledby="sit-heading">
@@ -439,7 +464,7 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
     </div>
 </section>
 <section class="clients rv" aria-labelledby="clients-heading">
-    <div class="c">
+    <div class="c cw">
         <p class="se" data-da="Typiske klienter" data-en="Typical clients">Typiske klienter</p>
         <h2 id="clients-heading" data-da="Hvem jeg arbejder <em>med</em>" data-en="Who I work <em>with</em>">Hvem jeg arbejder <em>med</em></h2>
         <p style="font-family:var(--body);font-size:.92rem;color:var(--gray-dark);line-height:1.8;max-width:620px;margin-bottom:24px" data-da="Jeg arbejder primært med:" data-en="I primarily work with:">Jeg arbejder primært med:</p>
@@ -449,12 +474,8 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
             <span class="cl-tag" data-da="Direktionsmedlemmer" data-en="Board members">Direktionsmedlemmer</span>
             <span class="cl-tag" data-da="Ledere med stort strategisk ansvar" data-en="Leaders with major strategic responsibility">Ledere med stort strategisk ansvar</span>
         </div>
-        <p style="font-family:var(--body);font-size:.88rem;color:var(--gray);line-height:1.8;max-width:620px;margin-top:28px;margin-bottom:14px" data-da="Det siger nogle af de ledere, jeg arbejder med – med navn og tilladelse:" data-en="What some of the leaders I work with say – by name, with permission:">Det siger nogle af de ledere, jeg arbejder med – med navn og tilladelse:</p>
+        <p style="font-family:var(--body);font-size:.88rem;color:var(--gray);line-height:1.8;max-width:620px;margin-top:28px;margin-bottom:14px" data-da="Flere af de ledere, jeg arbejder med – med navn og tilladelse:" data-en="More of the leaders I work with – by name, with permission:">Flere af de ledere, jeg arbejder med – med navn og tilladelse:</p>
         <div class="cl-quotes">
-            <figure class="cq">
-                <blockquote class="cq-q" data-da="Mit konkrete udbytte er en langt klarere forståelse af, hvorfor jeg reagerer og tænker, som jeg gør – og værktøjer til at udvikle mine kompetencer og mit potentiale. Man lærer hurtigt, at Thomas’ coaching ikke er et quick fix. Det er en ny måde at forbedre sig på – i en proces, der aldrig slutter." data-en="My specific output is a much clearer understanding of why I react and think as I do. And tools to develop my competencies and potentials. Soon you learn that Thomas’ coaching is not a quick fix. It’s a new way to improve yourself in a never-ending process.">Mit konkrete udbytte er en langt klarere forståelse af, hvorfor jeg reagerer og tænker, som jeg gør – og værktøjer til at udvikle mine kompetencer og mit potentiale. Man lærer hurtigt, at Thomas’ coaching ikke er et quick fix. Det er en ny måde at forbedre sig på – i en proces, der aldrig slutter.</blockquote>
-                <figcaption><span class="cq-n">Kim Kehlet Johansen</span><span class="cq-r"><span data-da="Adm. direktør (CEO)" data-en="CEO">Adm. direktør (CEO)</span> · Velliv A/S</span><span class="cq-y" data-da="Klient i 10 år" data-en="Client for 10 years">Klient i 10 år</span></figcaption>
-            </figure>
             <figure class="cq">
                 <blockquote class="cq-q" lang="en" data-da="To be a leader in the fashion industry requires a firm self-awareness. Thomas helps me to see ways to be better even when I think I’m at my best. It’s a great ongoing self-realization." data-en="To be a leader in the fashion industry requires a firm self-awareness. Thomas helps me to see ways to be better even when I think I’m at my best. It’s a great ongoing self-realization.">To be a leader in the fashion industry requires a firm self-awareness. Thomas helps me to see ways to be better even when I think I’m at my best. It’s a great ongoing self-realization.</blockquote>
                 <figcaption><span class="cq-n">Willy Chavarria</span><span class="cq-r"><span data-da="Owner &amp; Chief Creative Officer" data-en="Owner &amp; Chief Creative Officer">Owner &amp; Chief Creative Officer</span> · WILLY CHAVARRIA</span><span class="cq-y" data-da="Klient i 8 år" data-en="Client for 8 years">Klient i 8 år</span></figcaption>
@@ -469,14 +490,6 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
             </figure>
         </div>
         <p class="cl-plates-note"><a href="testimonials.html" data-da="Se alle 33 navngivne referencer →" data-en="See all 33 named references →">Se alle 33 navngivne referencer →</a></p>
-        <p style="font-family:var(--body);font-size:.88rem;color:var(--gray);line-height:1.8;max-width:620px;margin-top:28px;margin-bottom:8px" data-da="Ofte i situationer hvor:" data-en="Often in situations where:">Ofte i situationer hvor:</p>
-        <div class="client-sits">
-            <p data-da="Organisationen er vokset hurtigt" data-en="The organization has grown rapidly">Organisationen er vokset hurtigt</p>
-            <p data-da="Strategien skal eksekveres" data-en="The strategy needs to be executed">Strategien skal eksekveres</p>
-            <p data-da="Ledergruppen skal fungere stærkere" data-en="The leadership team needs to function better">Ledergruppen skal fungere stærkere</p>
-            <p data-da="En leder står alene med komplekse beslutninger" data-en="A leader stands alone with complex decisions">En leder står alene med komplekse beslutninger</p>
-        </div>
-        <p style="font-family:var(--body);font-size:.84rem;color:var(--gray);margin-top:24px"><a href="testimonials.html" style="color:var(--red);border-bottom:1px solid var(--red)" data-da="Se udvalgte referencer og klientudsagn" data-en="See selected references and client testimonials">Se udvalgte referencer og klientudsagn</a></p>
     </div>
 </section>
 <section class="proof rv" aria-labelledby="proof-heading">
@@ -491,7 +504,7 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
             <div class="proof-item"><p data-da="Højere performance og eksekveringskraft" data-en="Higher performance and execution power">Højere performance og eksekveringskraft</p></div>
         </div>
         <div style="text-align:center;margin-top:48px">
-            <a href="#kontakt" class="btn bp">Book en 20-minutters samtale</a>
+            <a href="#kontakt" class="btn bp">Aftal en 20-minutters samtale</a>
             <p style="font-family:var(--body);font-size:.75rem;color:var(--gray);margin-top:10px">20 minutter. Ét problem. Én plan.</p>
         </div>
     </div>
@@ -580,7 +593,12 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
     <div class="c cw">
         <p class="se" data-da="Kontakt" data-en="Contact">Kontakt</p>
         <h2 id="contact-heading" data-da="Skal vi tage en <em>kort samtale?</em>" data-en="Shall we have a <em>brief conversation?</em>">Skal vi tage en <em>kort samtale?</em></h2>
-        <p class="intro" data-da="Beskriv kort hvad der fylder. Jeg giver et perspektiv og en mulig retning. Du vurderer derefter selv om et samarbejde giver mening." data-en="Briefly describe what's on your mind. I'll give you a perspective and a possible direction. You then decide whether a collaboration makes sense.">Beskriv kort hvad der fylder. Jeg giver et perspektiv og en mulig retning. Du vurderer derefter selv om et samarbejde giver mening.</p>
+        <p class="intro" data-da="Sådan foregår det – ingen kalenderbooking, ingen mail-pingpong:" data-en="How it works – no calendar booking, no email ping-pong:">Sådan foregår det – ingen kalenderbooking, ingen mail-pingpong:</p>
+        <ol class="steps" aria-label="Tre trin">
+            <li><span class="st-n">1</span><span data-da="<strong>Du skriver tre linjer</strong> om, hvad der fylder – her på siden eller på mail." data-en="<strong>You write three lines</strong> about what's on your mind – here or by email."><strong>Du skriver tre linjer</strong> om, hvad der fylder – her på siden eller på mail.</span></li>
+            <li><span class="st-n">2</span><span data-da="<strong>Jeg svarer inden for 24 timer</strong> – personligt og med to-tre forslag til et tidspunkt." data-en="<strong>I reply within 24 hours</strong> – personally, with two or three suggested times."><strong>Jeg svarer inden for 24 timer</strong> – personligt og med to-tre forslag til et tidspunkt.</span></li>
+            <li><span class="st-n">3</span><span data-da="<strong>20 minutter på Teams eller telefon.</strong> Du får et første perspektiv og en mulig retning – og vurderer selv, om et samarbejde giver mening." data-en="<strong>20 minutes on Teams or by phone.</strong> You get a first perspective and a possible direction – and decide for yourself whether a collaboration makes sense."><strong>20 minutter på Teams eller telefon.</strong> Du får et første perspektiv og en mulig retning – og vurderer selv, om et samarbejde giver mening.</span></li>
+        </ol>
         <div class="contact-grid">
             <div>
                 <div class="contact-info">
@@ -599,7 +617,7 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
                 <div class="fg"><label for="name" class="fl" data-da="Navn" data-en="Name">Navn</label><input type="text" id="name" name="name" class="fi" placeholder="Dit navn" required autocomplete="name"></div>
                 <div class="fg"><label for="email" class="fl">Email</label><input type="email" id="email" name="email" class="fi" placeholder="din@email.dk" required autocomplete="email"></div>
                 <div class="fg"><label for="challenge" class="fl" data-da="Hvad fylder lige nu?" data-en="What's on your mind right now?">Hvad fylder lige nu?</label><textarea id="challenge" name="challenge" class="ft" placeholder="Skriv gerne kort – et par linjer er nok." style="min-height:120px"></textarea></div>
-                <button type="submit" class="btn bp submit-btn" data-da="Send besked" data-en="Send message">Send besked</button>
+                <button type="submit" class="btn bp submit-btn" data-da="Aftal en samtale" data-en="Arrange a conversation">Aftal en samtale</button>
                 <p style="font-family:var(--body);font-size:.78rem;color:rgba(255,255,255,.4);text-align:center;margin-top:14px" data-da="Fortroligt. Jeg vender tilbage inden for 24 timer." data-en="Confidential. I'll reply within 24 hours.">Fortroligt. Jeg vender tilbage inden for 24 timer.</p>
                 <p style="font-family:var(--body);font-size:.72rem;color:rgba(255,255,255,.4);text-align:center;margin-top:6px" data-da="Din besked sendes via Formspree og bruges kun til at svare dig. Læs mere under <a href=&quot;vilkaar.html#privatliv&quot; style=&quot;color:rgba(255,255,255,.65)&quot;>Privatliv</a>." data-en="Your message is sent via Formspree and used only to reply to you. Read more under <a href=&quot;vilkaar.html#privatliv&quot; style=&quot;color:rgba(255,255,255,.65)&quot;>Privacy</a>.">Din besked sendes via Formspree og bruges kun til at svare dig. Læs mere under <a href="vilkaar.html#privatliv" style="color:rgba(255,255,255,.65)">Privatliv</a>.</p>
             </form>
@@ -609,7 +627,7 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
 </main>
 <section style="background:var(--black);padding:60px 0;text-align:center" aria-label="Afsluttende opfordring">
     <div class="c">
-        <a href="#kontakt" class="btn bp" style="font-size:.82rem" data-da="Book en 20-minutters samtale" data-en="Book a 20-minute conversation">Book en 20-minutters samtale</a>
+        <a href="#kontakt" class="btn bp" style="font-size:.82rem" data-da="Aftal en 20-minutters samtale" data-en="Arrange a 20-minute conversation">Aftal en 20-minutters samtale</a>
         <p style="font-family:var(--body);font-size:.75rem;color:rgba(255,255,255,.3);margin-top:10px" data-da="20 minutter. Ét problem. Én plan." data-en="20 minutes. One problem. One plan.">20 minutter. Ét problem. Én plan.</p>
         <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);">
             <p style="font-family:var(--body);font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:8px;" data-da="Ikke klar endnu? Start med at kende dig selv." data-en="Not ready yet? Start by knowing yourself.">Ikke klar endnu? Start med at kende dig selv.</p>
