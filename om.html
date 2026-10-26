@@ -350,6 +350,20 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
 .contact-grid form > p a { text-decoration:underline; text-underline-offset:2px }
 .article-cta p:not(.se), .book-cta p:not(.se) { color:rgba(255,255,255,.66) !important }
 </style>
+<style id="fn-film-css">
+.fn-film{position:relative;background:#000;border:1px solid rgba(0,0,0,.08);aspect-ratio:16/9;overflow:hidden}
+.fn-film video{display:block;width:100%;height:100%;object-fit:cover;background:#000}
+.fn-film-play{position:absolute;inset:0;width:100%;height:100%;margin:0;border:0;padding:0;cursor:pointer;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.5) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;font-family:var(--body,'Outfit',sans-serif)}
+.fn-film-ico{width:72px;height:72px;border-radius:50%;background:#c0392b;position:relative;flex:none;box-shadow:0 8px 30px rgba(0,0,0,.45);transition:transform .2s ease,background .2s ease}
+.fn-film-ico::after{content:"";position:absolute;left:28px;top:21px;border-style:solid;border-width:15px 0 15px 24px;border-color:transparent transparent transparent #fff}
+.fn-film-play:hover .fn-film-ico,.fn-film-play:focus-visible .fn-film-ico{transform:scale(1.07);background:#d6453a}
+.fn-film-play:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+.fn-film-lbl{font-size:.9rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 1px 10px rgba(0,0,0,.7)}
+.fn-film.on .fn-film-play{display:none}
+@media (max-width:600px){.fn-film-ico{width:58px;height:58px}.fn-film-ico::after{left:22px;top:17px;border-width:12px 0 12px 20px}.fn-film-lbl{font-size:.78rem}}
+</style>
+<style id="fn-film-sec">.film{background:var(--black);border-top:1px solid rgba(255,255,255,.06)}.film .se{color:#e74c3c}.film h2{color:#fff;max-width:760px;margin-bottom:28px}.film h2 em{color:#e74c3c}.film .fn-film{max-width:960px;border-color:rgba(255,255,255,.1)}.film .film-note{font-family:var(--body);font-size:.84rem;color:rgba(255,255,255,.62);margin-top:16px;max-width:760px;line-height:1.7}</style>
+<script type="application/ld+json" id="fn-film-ld">{"@context": "https://schema.org", "@type": "VideoObject", "@id": "https://www.friisnaes.com/om.html#film", "name": "Thomas Friisnæs – executive coaching på 76 sekunder", "description": "Hvem jeg er, hvem jeg hjælper – og hvad der sker i de første 20 minutter. Executive coaching og fortrolig sparring for CEO's, ejerledere og direktioner, siden 2003.", "thumbnailUrl": ["https://www.friisnaes.com/friisnaes-film-poster.jpg"], "uploadDate": "2026-10-26", "duration": "PT1M16S", "contentUrl": "https://www.friisnaes.com/friisnaes-film.mp4", "embedUrl": "https://www.friisnaes.com/om.html", "width": 1920, "height": 1080, "inLanguage": "da", "author": {"@type": "Person", "@id": "https://www.friisnaes.com/#person", "name": "Thomas Friisnæs", "url": "https://www.friisnaes.com/"}, "publisher": {"@type": "Organization", "name": "Friisnæs", "url": "https://www.friisnaes.com/", "logo": {"@type": "ImageObject", "url": "https://www.friisnaes.com/og-image.jpg"}}}</script>
 </head>
 <body>
 <a id="top"></a>
@@ -416,6 +430,14 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
     </div>
 </section>
 
+<section class="film rv" aria-labelledby="film-heading">
+    <div class="c cw">
+        <p class="se">76 sekunder</p>
+        <h2 id="film-heading">Hvem jeg er, hvem jeg hjælper – og hvad der sker <em>i de første 20 minutter.</em></h2>
+        <div class="fn-film"><video preload="none" playsinline poster="friisnaes-film-poster.jpg" width="1920" height="1080" aria-label="Thomas Friisnæs – 76 sekunder om executive coaching, CEO-sparring og de første 20 minutter"><source src="friisnaes-film.mp4" type="video/mp4">Din browser understøtter ikke videoafspilning.</video><button class="fn-film-play" type="button" aria-label="Afspil filmen (1 minut og 16 sekunder, dansk tale)"><span class="fn-film-ico" aria-hidden="true"></span><span class="fn-film-lbl">Afspil · 1:16</span></button></div>
+        <p class="film-note">Dansk tale med undertekster. Ingen autoplay – filmen henter først, når du trykker.</p>
+    </div>
+</section>
 <section class="sit flow rv" aria-labelledby="flow-heading">
     <div class="c">
         <p class="se">Sådan arbejder jeg</p>
@@ -569,5 +591,6 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
 <script>
 (function(){var g=document.getElementById('omGuide');if(g&&new Date()>=new Date('2026-11-02T00:00:00+01:00'))g.hidden=false;})();
 </script>
+<script id="fn-film-js">(function(){var ws=document.querySelectorAll('.fn-film');for(var i=0;i<ws.length;i++){(function(w){var v=w.querySelector('video'),b=w.querySelector('.fn-film-play');if(!v||!b)return;b.addEventListener('click',function(){w.classList.add('on');v.setAttribute('controls','');v.focus();var p=v.play();if(p&&p.catch){p.catch(function(){});}});})(ws[i]);}})();</script>
 </body>
 </html>
