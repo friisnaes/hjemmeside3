@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siden findes ikke | Friisnæs</title>
+<meta name="description" content="Siden findes ikke længere. Find vej til executive coaching, Executive Library, bøgerne eller kontakt Thomas Friisnæs.">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --black:#111; --soft:#1a1a1a; --red:#c0392b; --red-h:#e74c3c; --line:#e8e0d0; --gray:#666; --display:'Playfair Display', Georgia, serif; --body:'Outfit', -apple-system, sans-serif; }
+  * { margin:0; padding:0; box-sizing:border-box; font-variant-numeric:lining-nums; }
+  html { scroll-behavior:smooth; }
+  body { font-family:var(--body); font-weight:300; color:#1a1a1a; background:#fff; line-height:1.7; font-size:17px; }
+  a { color:var(--red); text-decoration:underline; text-underline-offset:3px; text-decoration-thickness:1px; }
+  a:hover { color:var(--red-h); }
+  .top { background:var(--black); display:flex; justify-content:space-between; align-items:center; padding:22px clamp(20px,5vw,64px); border-bottom:1px solid rgba(255,255,255,.06); }
+  .brand { font-family:var(--display); font-size:1.45rem; color:#fff; text-decoration:none; }
+  .brand em { font-style:normal; color:var(--red); }
+  .back { font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.6); text-decoration:none; }
+  .back:hover { color:#fff; }
+  header.hero { background:var(--soft); color:#fff; text-align:center; padding:clamp(70px,10vw,110px) 20px clamp(60px,8vw,90px); }
+  .kick { font-size:.78rem; letter-spacing:.24em; text-transform:uppercase; color:var(--red-h); font-weight:500; margin-bottom:18px; }
+  h1 { font-family:var(--display); font-weight:500; font-size:clamp(2.3rem,5.5vw,3.6rem); line-height:1.1; }
+  .lead { max-width:620px; margin:20px auto 0; color:rgba(255,255,255,.75); font-size:1.02rem; }
+  nav.toc { max-width:760px; margin:0 auto; padding:34px 20px 0; display:flex; flex-wrap:wrap; gap:10px 22px; justify-content:center; }
+  nav.toc a { font-size:.8rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gray); text-decoration:none; border-bottom:1px solid transparent; }
+  nav.toc a:hover { color:var(--red); border-color:var(--red); }
+  main { max-width:760px; margin:0 auto; padding:30px 20px 80px; }
+  section { padding:46px 0 10px; border-bottom:1px solid var(--line); }
+  section:last-of-type { border-bottom:none; }
+  .se { font-size:.78rem; letter-spacing:.22em; text-transform:uppercase; color:var(--red); font-weight:600; margin-bottom:10px; }
+  h2 { font-family:var(--display); font-weight:500; font-size:clamp(1.6rem,3.4vw,2.1rem); line-height:1.2; color:var(--black); margin-bottom:18px; }
+  h3 { font-family:var(--body); font-weight:600; font-size:1rem; letter-spacing:.01em; color:var(--black); margin:24px 0 6px; }
+  p { margin-bottom:14px; }
+  ul { margin:4px 0 16px 1.1em; }
+  li { margin-bottom:6px; }
+  .note { background:#faf7f2; border-left:3px solid var(--red); padding:16px 20px; font-size:.95rem; margin:18px 0 22px; }
+  .meta { font-size:.88rem; color:var(--gray); }
+  footer { background:var(--black); color:rgba(255,255,255,.55); padding:34px clamp(20px,5vw,64px); display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; align-items:center; font-size:.82rem; }
+  footer .fb { font-family:var(--display); font-size:1.15rem; color:#fff; }
+  footer .fb em { font-style:normal; color:var(--red); }
+  footer a { color:rgba(255,255,255,.7); }
+  ol { margin:4px 0 16px 1.3em; }
+  .adresser { display:grid; grid-template-columns:1fr 1fr; gap:14px 24px; margin:6px 0 18px; }
+  .adresser div { border-top:1px solid var(--line); padding-top:10px; font-size:.95rem; }
+  .adresser b { display:block; font-weight:600; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--gray); margin-bottom:4px; }
+  .formular { border:1px solid var(--line); background:#fcfbf8; padding:18px 20px; font-size:.95rem; margin:14px 0 22px; }
+  .formular p { margin-bottom:8px; }
+  .formular .ft { font-weight:600; margin-bottom:4px; }
+  .formular ul { list-style:none; margin:6px 0 10px; }
+  .formular li { padding-left:1.1em; text-indent:-1.1em; }
+  .formular li::before { content:"– "; }
+  .afventer { border:2px dashed var(--red); background:#fff5f3; padding:14px 18px; font-size:.92rem; margin:16px 0 22px; }
+  .afventer strong { color:var(--red); }
+  a.knap { display:inline-block; background:var(--red); color:#fff; text-decoration:none; font-weight:500; padding:12px 24px; min-height:48px; border-radius:2px; }
+  a.knap:hover { background:var(--red-h); color:#fff; }
+  @media (max-width:560px){ .adresser{grid-template-columns:1fr;} }
+  @media (max-width:560px){ body{font-size:17px;} nav.toc{justify-content:flex-start;} }
+  @media print { .top, nav.toc, footer { display:none; } header.hero { background:#fff; color:#000; padding:20px 0; } .lead{color:#333;} section{break-inside:auto;} .formular{break-inside:avoid;} }
+</style>
+<style id="fn-nav-css">
+.fn-nav{position:sticky;top:0;z-index:90;background:#111;border-bottom:1px solid rgba(192,57,43,.14);font-family:'Outfit',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.fn-in{max-width:1100px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fn-brand{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:500;color:#fff;text-decoration:none;letter-spacing:.01em;white-space:nowrap}
+.fn-brand em{font-style:normal;color:#e74c3c}
+.fn-links{display:flex;gap:24px;align-items:center}
+.fn-links a{font-size:13px;color:rgba(255,255,255,.78);text-decoration:none;letter-spacing:.02em;transition:color .2s;white-space:nowrap;font-weight:400;text-transform:none;border:0;padding:0}
+.fn-links a:hover,.fn-links a.active{color:#e74c3c}
+.fn-links a.fn-cta{color:#fff !important;background:#c0392b;padding:8px 16px;border-radius:2px;font-weight:500}
+.fn-links a.fn-cta:hover{background:#e74c3c}
+.fn-dd{position:relative;display:inline-flex;align-items:center}
+.fn-dd-t{display:inline-flex;align-items:center;gap:4px}
+.fn-dd-c{font-size:9px;opacity:.7;transition:transform .2s}
+.fn-dd:hover .fn-dd-c,.fn-dd.open .fn-dd-c{transform:rotate(180deg)}
+.fn-dd-m{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);background:#1a1a1a;border:1px solid rgba(192,57,43,.18);padding:8px 0;min-width:210px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;display:flex;flex-direction:column;z-index:95;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.fn-dd-m::before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px}
+.fn-dd:hover .fn-dd-m,.fn-dd:focus-within .fn-dd-m,.fn-dd.open .fn-dd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(2px)}
+.fn-dd-m a{padding:9px 18px !important;font-size:12.5px;white-space:nowrap}
+.fn-dd-m a:hover{background:rgba(255,255,255,.04)}
+.fn-toggle{display:none;background:none;border:0;color:#fff;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1}
+@media (max-width:780px){
+  .fn-in{padding:0 20px}
+  .fn-links{display:none}
+  .fn-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:#111;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 14px;border-bottom:1px solid rgba(192,57,43,.14);max-height:calc(100vh - 62px);overflow-y:auto}
+  .fn-links.open a{padding:12px 24px}
+  .fn-links.open a.fn-cta{margin:10px 24px 0;text-align:center}
+  .fn-toggle{display:block}
+  .fn-dd{flex-direction:column;align-items:stretch;width:100%}
+  .fn-dd-m{position:static;transform:none;opacity:1;visibility:visible;background:none;border:0;padding:0 0 0 16px;min-width:0;box-shadow:none}
+  .fn-dd-m::before{display:none}
+  .fn-dd-c{display:none}
+}
+@media (pointer:coarse) and (min-width:781px){.fn-links a{padding-top:9px;padding-bottom:9px}}
+@media print{.fn-nav{display:none !important}}
+</style>
+<style id="a11y-contrast">
+/* --- a11y: kontrast (AA 4.5:1) --- */
+.pm-reset { color:rgba(255,255,255,.66) !important }
+.pg-desc, .pc-sub, .pc-meta { color:#666 !important }
+body > section.hero .eyebrow, nav.index .n, .start-card .sp, .site-kicker { color:#e74c3c !important }
+body > section.hero .tagline { color:#a8a29a !important }
+.start-card a.go, .tool-card a.go, a.go, section .eyebrow, .card .kicker { color:#e74c3c !important }
+.card .rel span, .card .rel { color:#a8a29a !important }
+.pc-go, .pcard .pc-go, .loop-box .loop-f, .loop-f { color:#666 !important }
+#seg .kicker, .seg-inner .kicker { color:#e74c3c !important }
+#seg .note, .seg-inner .note, footer.foot .meta { color:#a8a29a !important }
+.site-footer .footer-tagline, footer .fb em { color:#e74c3c !important }
+</style>
+<style>
+  .veje { list-style:none; display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px; margin:28px 0 36px; }
+  .veje a { display:block; padding:18px 20px; border:1px solid var(--line); text-decoration:none; color:#1a1a1a; background:#fff; transition:border-color .2s; }
+  .veje a:hover { border-color:var(--red); }
+  .veje b { display:block; font-family:var(--display); font-weight:500; font-size:1.15rem; color:var(--black); margin-bottom:4px; }
+  .veje span { font-size:.9rem; color:var(--gray); }
+  .hero .kick::before { content:'404 · '; }
+</style>
+<script>
+(function(){
+  var p = location.pathname.replace(/\/+$/, "").toLowerCase();
+  var map = {"/index.php":"/","/kontakt":"/#kontakt","/referencer":"/testimonials.html","/om-mig":"/om.html","/om-thomas":"/om.html",
+             "/kom-saa-tyksak-tag-dig-nu-sammen":"/blog.html","/eq-profile":"https://eq-profile.com/"};
+  if (p.indexOf("/eq-profile/") === 0) { location.replace("https://eq-profile.com/"); return; }
+  if (/^\/(kategori|category|tag|author|page|feed|wp-content|wp-admin|wp-json)(\/|$)/.test(p)) { location.replace("/blog.html"); return; }
+  if (map[p]) { location.replace(map[p]); return; }
+  var pages = ["17cm", "adhd-1", "adhd-2", "adhd-3", "adhd-4", "adhd-5", "adhd-6", "adhd-7", "adhd-8", "ai-udvidet-taenkning", "alkohol", "beslutning-under-afbrydelse", "bestyrelseskommunikation-som-disciplin", "blog", "boeger", "briefs", "c-level-brief-2026-35", "c-level-brief-2026-36", "c-level-brief-2026-38", "c-level-brief-2026-39", "c-level-brief-2026-40", "c-level-brief-2026-41", "c-level-brief-2026-42", "c-level-brief-2026-44", "c-level-serien", "ceo-sparring", "de-udskudte-samtaler", "den-bookede-kalender", "den-tavse-direktion", "den-usynlige-ceo", "disciplin-er-ikke-vilkaarsstyrke", "efter-strategien", "eksekveringsgabet", "eksekveringsserien", "ensomheden-i-toppen", "executive-coaching-2027-det-skal-ogsaa-vaere-godt-at-vaere-god", "executive-coaching-2027-din-naeste-styrke-er-maaske-at-fylde-mindre", "executive-coaching-2027-din-personlige-governance", "executive-coaching-2027-doemmekraft-kan-ikke-outsources", "executive-coaching-2027-du-leder-ogsaa-opad-udad-og-paa-tvaers", "executive-coaching-2027-erfaring-er-kapital-indtil-den-bliver-gammel-gaeld", "executive-coaching-2027-foer-du-hyrer-en-executive-coach", "executive-coaching-2027-jo-hoejere-du-kommer-jo-dyrere-bliver-aerlig-modstand", "executive-coaching-2027-jobbet-flytter-sig-mens-du-sidder-i-det", "executive-coaching-2027-performance-maa-ikke-finansieres-af-dig-selv", "executive-coaching-2027-tiden-viser-hvilket-job-du-faktisk-har", "executive-coaching-2027", "executive-coaching", "executive-longevity-ai-kompetence", "executive-longevity-alkohol", "executive-longevity-belastning", "executive-longevity-fokus", "executive-longevity-fysisk-kapacitet", "executive-longevity-kognitiv-reserve", "executive-longevity-laering", "executive-longevity-mening", "executive-longevity-restitution", "executive-longevity-soevn", "executive-longevity", "executive-sustainability-map", "forandringstraetheden", "fra-manager-til-leder", "holdet-bag-strategien-de-bedste-skal-ogsaa-ledes", "holdet-bag-strategien-holdet-bliver-aldrig-faerdigt", "holdet-bag-strategien-karakteren-bag-kompetencen", "holdet-bag-strategien-naar-pladsen-skal-skifte-haender", "holdet-bag-strategien-potentiale-skal-omsaettes", "holdet-bag-strategien-spejlet", "holdet-bag-strategien-strategien-bestemmer-holdet", "holdet-bag-strategien-syv-stjerner-er-ikke-et-stjernehold", "holdet-bag-strategien-uenighed-uden-krig", "holdet-bag-strategien-virksomheden-foer-funktionen", "holdet-bag-strategien", "index", "karakter-under-pres", "karakter", "klarhed-som-konkurrencefordel", "kontekstskiftet", "ledelse-paa-eliteniveau", "library", "lortekaldet", "modspillet-der-mangler", "moedekulturen", "om", "partnerskab", "personligt-lederskab", "prioriteringsparalysen", "punktlighed", "seg", "selvbedrag-i-toppen", "strategic-alignment-assessment", "strategien-sker-mellem-kvartalerne-beslutninger-er-en-del-af-produktionsapparatet", "strategien-sker-mellem-kvartalerne-demokratiser-udsynet-centraliser-metoden", "strategien-sker-mellem-kvartalerne-det-kvalitative-kan-godt-kvantificeres", "strategien-sker-mellem-kvartalerne-et-indeks-er-ikke-sandheden", "strategien-sker-mellem-kvartalerne-foer-resultatet-flytter-sig", "strategien-sker-mellem-kvartalerne-friktion-er-data", "strategien-sker-mellem-kvartalerne-groen-er-ikke-det-samme-som-sund", "strategien-sker-mellem-kvartalerne-kapacitet-findes-ikke-i-planen", "strategien-sker-mellem-kvartalerne-serie", "strategien-sker-mellem-kvartalerne-ved-vi-om-vi-kan-det-strategien-kraever", "strategien-sker-mellem-kvartalerne", "struktur-saetter-fri-dagen-skal-lukkes-ikke-bare-slutte", "struktur-saetter-fri-din-kalender-har-en-ejer", "struktur-saetter-fri-femten-minutter-der-styrer-otte-timer", "struktur-saetter-fri-fokus-er-ikke-en-personlig-praeference", "struktur-saetter-fri-fredag-er-ikke-et-gode-den-er-et-resultat", "struktur-saetter-fri-motivation-er-en-daarlig-chef", "struktur-saetter-fri-regnestykket-ingen-direktion-har-lavet", "struktur-saetter-fri-takt-for-hver-stol", "struktur-saetter-fri-takten-foer-reglerne", "struktur-saetter-fri-vend-kalenderen-om", "struktur-saetter-fri", "succession-som-strategi", "testimonials", "tredje-akt", "vaerktoejer", "vilkaar"];
+  var slug = p.replace(/^\//, "").replace(/\.html?$/, "");
+  if (slug && pages.indexOf(slug) >= 0 && location.pathname.toLowerCase() !== "/" + slug + ".html") { location.replace("/" + slug + ".html"); return; }
+})();
+</script>
+</head>
+<body data-pagefind-ignore>
+<nav class="fn-nav" aria-label="Hovednavigation">
+  <div class="fn-in">
+    <a href="/" class="fn-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <button class="fn-toggle" aria-label="Menu" aria-controls="fnLinks" aria-expanded="false" onclick="var n=document.getElementById('fnLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="fn-links" id="fnLinks">
+      <a href="/#situationer">Situationer</a>
+      <span class="fn-dd">
+        <a href="/executive-coaching.html" class="fn-dd-t" aria-haspopup="true">Ydelser <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/executive-coaching.html">Executive Coaching</a>
+          <a href="/ceo-sparring.html">CEO-sparring</a>
+          <a href="/seg.html">Ledergrupper (SEG)</a>
+          <a href="/#format">Sådan arbejder vi</a>
+        </span>
+      </span>
+      <a href="/om.html">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="fn-dd">
+        <a href="/library.html" class="fn-dd-t" aria-haspopup="true">Indsigter <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="fn-cta">Aftal en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="kick">Siden findes ikke</div>
+  <h1>Den side findes ikke længere.</h1>
+  <p class="lead">Sitet blev bygget om i 2026, og en del gamle adresser udgik. Kom du fra et link, er det sandsynligvis derfor. Her er de hurtigste veje videre.</p>
+</header>
+
+<main>
+<section id="veje">
+  <div class="se">Veje videre</div>
+  <h2>Det, folk oftest leder efter</h2>
+  <ul class="veje">
+    <li><a href="/"><b>Forsiden</b><span>Executive coaching for CEO's, ejerledere og direktioner</span></a></li>
+    <li><a href="/executive-coaching.html"><b>Executive Coaching</b><span>Sådan foregår et forløb – i Holte, København og online</span></a></li>
+    <li><a href="/ceo-sparring.html"><b>CEO-sparring</b><span>Et sted at tænke højt uden politiske konsekvenser</span></a></li>
+    <li><a href="/om.html"><b>Om Thomas Friisnæs</b><span>Din sparringspartner. Ikke din cheerleader.</span></a></li>
+    <li><a href="/testimonials.html"><b>Klienter</b><span>33 navngivne referencer – med tilladelse</span></a></li>
+    <li><a href="/library.html"><b>Executive Library</b><span>Papers i fire serier om ledelse, der bliver til resultater</span></a></li>
+    <li><a href="/blog.html"><b>Blogindlæg</b><span>Indsigter fra praksis</span></a></li>
+    <li><a href="/boeger.html"><b>Bøger</b><span>Ledelse, karakter og digte</span></a></li>
+  </ul>
+  <p>Leder du efter noget bestemt? <a href="/soeg.html">Søg på sitet</a> – eller <a href="/#kontakt">skriv tre linjer til mig</a>, så finder jeg det.</p>
+</section>
+</main>
+
+<footer>
+  <div class="fb">Fr<em>ii</em>snæs</div>
+  <div>&copy; 2026 Friisnæs · CVR-nr. 26569346. Alle rettigheder forbeholdes. · <a href="vilkaar.html">Vilkår, privatliv og ansvar</a> · <a href="fortryd.html">Fortryd aftale</a></div>
+</footer>
+<script>
+(function(){var ts=document.querySelectorAll('.fn-dd-t');for(var i=0;i<ts.length;i++){ts[i].addEventListener('touchend',function(e){if(window.innerWidth<=780)return;var p=this.parentNode;if(!p.classList.contains('open')){e.preventDefault();var o=document.querySelectorAll('.fn-dd.open');for(var k=0;k<o.length;k++)o[k].classList.remove('open');p.classList.add('open');}},{passive:false});}
+document.addEventListener('touchend',function(e){if(!e.target.closest('.fn-dd')){var o=document.querySelectorAll('.fn-dd.open');for(var k=0;k<o.length;k++)o[k].classList.remove('open');}},{passive:true});})();
+</script>
+</body>
+</html>
