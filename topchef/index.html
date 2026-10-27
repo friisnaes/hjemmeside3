@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparring for offentlige topchefer | Friisnæs</title>
+    <meta name="description" content="Fortrolig sparring for kommunaldirektører, regions- og hospitalsdirektører og topchefer i staten. Modspil uden politisk dagsorden. Aftal 20 minutter.">
+    <meta name="author" content="Thomas Friisnæs">
+    <!-- Skjult side: kun for dem, der kender adressen. Ikke i menu, sitemap eller søgeindeks. -->
+    <meta name="robots" content="noindex, follow">
+    <link rel="canonical" href="https://www.friisnaes.com/topchef/">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="apple-touch-icon" href="/favicon-apple.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.friisnaes.com/topchef/">
+    <meta property="og:title" content="Topchef mellem politik og drift. Et fortroligt sted at tænke højt.">
+    <meta property="og:description" content="Fortrolig sparring for kommunaldirektører, regions- og hospitalsdirektører og topchefer i staten. Modspil uden politisk dagsorden. Aftal 20 minutter.">
+    <meta property="og:image" content="https://www.friisnaes.com/og-topchef.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Thomas Friisnæs – sparring for offentlige topchefer">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Friisnæs">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Topchef mellem politik og drift. Et fortroligt sted at tænke højt.">
+    <meta name="twitter:description" content="Fortrolig sparring for kommunaldirektører, regions- og hospitalsdirektører og topchefer i staten. Modspil uden politisk dagsorden. Aftal 20 minutter.">
+    <meta name="twitter:image" content="https://www.friisnaes.com/og-topchef.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #111; --black-soft: #1a1a1a; --black-light: #222;
+            --gray-dark: #444; --gray: #777; --off-white: #f5f4f0; --white: #fafaf8;
+            --red: #c0392b; --red-hover: #e74c3c;
+            --display: 'Playfair Display', Georgia, serif;
+            --body: 'Outfit', -apple-system, sans-serif;
+            --max: 680px; --wide: 1100px; --pad: clamp(24px, 6vw, 64px);
+            --ease: cubic-bezier(.16, 1, .3, 1);
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--body); color: var(--black); background: var(--white); line-height: 1.75; }
+        a { text-decoration: none; color: inherit; transition: color .3s var(--ease); }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 0; background: rgba(17,17,17,.97); backdrop-filter: blur(12px); }
+        nav .ni { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: center; justify-content: space-between; }
+        nav .lo { font-family: var(--display); font-size: 1.22rem; font-weight: 600; color: var(--white); letter-spacing: .02em; margin-right: 24px; flex-shrink: 0; white-space: nowrap; }
+        nav .lo em { color: var(--red); font-style: normal; }
+        .nl { display: flex; align-items: center; gap: 14px; list-style: none; flex-wrap: nowrap; }
+        .nl a { font-size: .73rem; font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+        .nl a:hover { color: var(--white); }
+        .nl .cta-n { color: var(--white) !important; background: var(--red); padding: 9px 15px; font-weight: 600; white-space: nowrap; }
+        .nl .cta-n:hover { background: var(--red-hover); }
+        .nt { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+        .nt span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all .3s; }
+        .nt.act span:nth-child(1) { transform: rotate(45deg) translate(4px,5px); }
+        .nt.act span:nth-child(2) { opacity: 0; }
+        .nt.act span:nth-child(3) { transform: rotate(-45deg) translate(4px,-5px); }
+        .article-hero { background: var(--black); padding: 140px var(--pad) 80px; }
+        .article-hero .inner { max-width: var(--max); margin: 0 auto; }
+        .article-hero .tag { font-size: .65rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 20px; opacity: 0; animation: fu .7s var(--ease) .2s forwards; }
+        .article-hero h1 { font-family: var(--display); font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 400; color: var(--white); line-height: 1.12; letter-spacing: -.02em; margin-bottom: 24px; opacity: 0; animation: fu .7s var(--ease) .4s forwards; }
+        .article-hero .lead { font-size: 1.05rem; color: rgba(255,255,255,.5); line-height: 1.8; max-width: 560px; margin-bottom: 32px; opacity: 0; animation: fu .7s var(--ease) .6s forwards; }
+        .article-hero .meta { display: flex; align-items: center; gap: 20px; opacity: 0; animation: fu .7s var(--ease) .7s forwards; }
+        .meta-name { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.5); letter-spacing: .05em; }
+        .meta-sep { width: 1px; height: 12px; background: rgba(255,255,255,.15); }
+        .meta-tag { font-size: .72rem; color: rgba(255,255,255,.3); letter-spacing: .08em; text-transform: uppercase; }
+        @keyframes fu { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+        .social-proof { background: var(--black); padding: 0 var(--pad) 64px; }
+        .social-proof .inner { max-width: var(--max); margin: 0 auto; }
+        .sp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid rgba(255,255,255,.08); }
+        .sp-item { padding: 24px 16px; border-right: 1px solid rgba(255,255,255,.08); text-align: center; }
+        .sp-item:last-child { border-right: none; }
+        .sp-num { font-family: var(--display); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 400; color: var(--red); line-height: 1; margin-bottom: 6px; }
+        .sp-label { font-size: .62rem; font-weight: 500; color: rgba(255,255,255,.3); letter-spacing: .1em; text-transform: uppercase; }
+        .article-body { background: var(--white); padding: 80px var(--pad); }
+        .article-body .inner { max-width: var(--max); margin: 0 auto; }
+        .article-body p { font-family: var(--display); font-size: 1.18rem; font-weight: 400; color: var(--black); line-height: 1.8; margin-bottom: 28px; letter-spacing: -.005em; }
+        .article-body p.small { font-family: var(--body); font-size: .92rem; color: var(--gray-dark); line-height: 1.8; margin-bottom: 20px; }
+        .article-body .pull { font-family: var(--display); font-size: clamp(1.4rem, 3vw, 2rem); font-style: italic; color: var(--black); line-height: 1.4; border-left: 3px solid var(--red); padding-left: 28px; margin: 48px 0; letter-spacing: -.01em; }
+        .article-body .list-block { background: var(--off-white); border-left: 3px solid var(--red); padding: 28px 32px; margin: 40px 0; }
+        .article-body .list-block p { font-family: var(--body); font-size: .92rem; color: var(--gray-dark); margin-bottom: 10px; padding-left: 16px; position: relative; }
+        .article-body .list-block p::before { content: '—'; position: absolute; left: 0; color: var(--red); font-weight: 600; }
+        .article-body .list-block p:last-child { margin-bottom: 0; }
+        .article-cta { background: var(--off-white); border-top: 1px solid rgba(0,0,0,.06); padding: 80px var(--pad); text-align: center; }
+        .article-cta .inner { max-width: var(--max); margin: 0 auto; }
+        .article-cta .se { font-size: .65rem; font-weight: 600; color: var(--red); letter-spacing: .25em; text-transform: uppercase; margin-bottom: 16px; }
+        .article-cta h2 { font-family: var(--display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 400; color: var(--black); line-height: 1.2; letter-spacing: -.01em; margin-bottom: 16px; }
+        .article-cta h2 em { font-style: italic; color: var(--red); }
+        .article-cta p { font-size: .9rem; color: var(--gray); margin-bottom: 32px; max-width: 460px; margin-left: auto; margin-right: auto; }
+        .btn { display: inline-flex; align-items: center; font-family: var(--body); font-size: .78rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 14px 28px; cursor: pointer; border: none; transition: all .4s var(--ease); }
+        .bp { background: var(--red); color: var(--white); }
+        .bp:hover { background: var(--red-hover); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(192,57,43,.25); }
+        .back-bar { background: var(--black); padding: 20px var(--pad); }
+        .back-bar .inner { max-width: var(--wide); margin: 0 auto; }
+        .back-bar a { font-size: .72rem; font-weight: 500; color: rgba(255,255,255,.35); letter-spacing: .1em; text-transform: uppercase; transition: color .3s; }
+        .back-bar a:hover { color: var(--white); }
+        .back-bar a::before { content: '← '; }
+        footer { background: var(--black); padding: 36px 0 24px; border-top: 1px solid rgba(255,255,255,.04); }
+        footer .fi3 { max-width: var(--wide); margin: 0 auto; padding: 0 var(--pad); display: flex; justify-content: space-between; align-items: center; }
+        footer .fb { font-family: var(--display); font-size: .95rem; font-weight: 600; color: var(--white); }
+        footer .fb em { color: var(--red); font-style: normal; }
+        footer .fc { font-size: .68rem; color: rgba(255,255,255,.2); }
+        @media (max-width: 480px) { .sp-grid { grid-template-columns: repeat(2,1fr); } .sp-item:nth-child(2) { border-right: none; } .sp-item:nth-child(3),.sp-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,.08); } .sp-item:nth-child(4) { border-right: none; } }
+        @media (max-width: 1240px) and (min-width: 601px) {
+            .nl { gap: 11px; }
+            .nl a { font-size: .68rem; letter-spacing: .03em; }
+            nav .lo { margin-right: 18px; font-size: 1.12rem; }
+            .nl .cta-n { padding: 8px 12px; }
+        }
+        @media (max-width: 1080px) and (min-width: 601px) {
+            .nl { gap: 9px; }
+            .nl a { font-size: .63rem; letter-spacing: .02em; }
+            nav .lo { margin-right: 14px; font-size: 1.05rem; }
+            .nl .cta-n { padding: 7px 10px; }
+        }
+        @media (max-width: 600px) {
+            .nl { display: none; position: fixed; inset: 0; background: rgba(17,17,17,.98); backdrop-filter: blur(16px); flex-direction: column; justify-content: center; align-items: center; gap: 24px; z-index: 99; }
+            .nl.open { display: flex; }
+            .nl a { font-size: 1rem; }
+            .nt { display: flex; z-index: 101; }
+            .article-body p { font-size: 1.05rem; }
+            footer .fi3 { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    
+        /* Dropdown: Indsigter */
+        .nd { position: relative; }
+        .nd-t .nd-c { font-size: .6rem; margin-left: 3px; opacity: .6; transition: transform .3s ease; display: inline-block; }
+        .nd:hover .nd-t .nd-c, .nd:focus-within .nd-t .nd-c { transform: rotate(180deg); }
+        .nd-m { list-style: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(8px); min-width: 190px; background: rgba(17,17,17,.98); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.08); padding: 8px 0; opacity: 0; visibility: hidden; transition: all .3s ease; z-index: 200; }
+        .nd:hover .nd-m, .nd:focus-within .nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(4px); }
+        .nd-m li a { display: block; padding: 10px 20px; font-size: .72rem !important; color: rgba(255,255,255,.6); white-space: nowrap; letter-spacing: .04em; text-transform: uppercase; }
+        .nd-m li a:hover { color: #fff; background: rgba(255,255,255,.04); }
+        @media (max-width: 600px) {
+            .nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; -webkit-backdrop-filter: none; backdrop-filter: none; padding: 8px 0 0; min-width: 0; text-align: center; }
+            .nd:hover .nd-m, .nd:focus-within .nd-m { transform: none; }
+            .nd-m li a { padding: 8px 0; font-size: .85rem !important; color: rgba(255,255,255,.45); }
+            .nd-t .nd-c { display: none; }
+        }
+
+        /* nl-scrollfix: mobilmenu må scrolle når den er højere end skærmen */
+        @media (max-width: 600px) {
+            .nl.open { justify-content: flex-start; padding: 88px 24px 48px; overflow-y: auto; gap: 18px; height: 100vh; height: 100dvh; width: 100vw; }
+        }
+    
+        /* servicepage extras */
+        .article-body h2 { font-family: var(--display); font-size: clamp(1.5rem, 2.6vw, 1.95rem); font-weight: 400; color: var(--black); line-height: 1.25; letter-spacing: -.01em; margin: 64px 0 20px; }
+        .article-body h2:first-child { margin-top: 0; }
+        .article-body h2 em { font-style: italic; color: var(--red); }
+        .article-body h3 { font-family: var(--body); font-size: .78rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin: 36px 0 10px; }
+        .article-body ol.steps { list-style: none; counter-reset: st; margin: 32px 0 48px; padding: 0; border-top: 1px solid rgba(0,0,0,.08); }
+        .article-body ol.steps li { counter-increment: st; display: grid; grid-template-columns: 56px 1fr; gap: 12px; padding: 22px 0; border-bottom: 1px solid rgba(0,0,0,.08); font-family: var(--body); font-size: .95rem; color: var(--gray-dark); line-height: 1.7; }
+        .article-body ol.steps li::before { content: counter(st, decimal-leading-zero); font-family: var(--display); font-size: 1.4rem; color: var(--red); line-height: 1.1; }
+        .article-body ol.steps strong { display: block; font-family: var(--display); font-size: 1.15rem; font-weight: 500; color: var(--black); margin-bottom: 4px; }
+        .article-body .quote { margin: 48px 0; padding: 32px 36px; background: var(--black); color: var(--white); }
+        .article-body .quote p { color: var(--white); font-size: 1.15rem; font-style: italic; margin-bottom: 14px; }
+        .article-body .quote cite { font-family: var(--body); font-style: normal; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+        .article-body .faq { margin: 24px 0 8px; border-top: 1px solid rgba(0,0,0,.08); }
+        .article-body .faq details { border-bottom: 1px solid rgba(0,0,0,.08); }
+        .article-body .faq summary { cursor: pointer; list-style: none; padding: 20px 36px 20px 0; font-family: var(--display); font-size: 1.15rem; color: var(--black); position: relative; }
+        .article-body .faq summary::-webkit-details-marker { display: none; }
+        .article-body .faq summary::after { content: '+'; position: absolute; right: 4px; top: 16px; font-family: var(--body); font-size: 1.4rem; color: var(--red); transition: transform .3s var(--ease); }
+        .article-body .faq details[open] summary::after { transform: rotate(45deg); }
+        .article-body .faq summary:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+        .article-body .faq details p { font-family: var(--body); font-size: .95rem; color: var(--gray-dark); line-height: 1.75; margin: 0 0 22px; padding-right: 36px; }
+        .article-body .faq details p a { color: var(--red); border-bottom: 1px solid var(--red); }
+        .article-body p a { color: var(--red); border-bottom: 1px solid var(--red); }
+        .article-body .cta-inline { margin: 40px 0 8px; }
+        @media (max-width: 600px) { .article-body ol.steps li { grid-template-columns: 40px 1fr; } .article-body .quote { padding: 24px; } }
+    
+        /* topchef: fælles tilføjelser */
+        .article-hero .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 36px; opacity: 0; animation: fu .7s var(--ease) .65s forwards; }
+        .bg { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1px rgba(255,255,255,.35); }
+        .bg:hover { box-shadow: inset 0 0 0 1px var(--white); transform: translateY(-2px); }
+        .article-body p.small a, .article-body .list-block p a { color: var(--red); border-bottom: 1px solid var(--red); }
+        .article-body .list-block p strong { color: var(--black); font-weight: 600; }
+        .situ { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0 16px; }
+        .situ-card { background: var(--off-white); padding: 26px 22px; border-top: 3px solid var(--red); }
+        .situ-card .situ-n { font-family: var(--display); font-size: 1.3rem; color: #c0392b; margin: 0 0 6px; line-height: 1; }
+        .article-body .situ-card h3 { color: var(--black); font-family: var(--display); font-size: 1.15rem; font-weight: 500; letter-spacing: 0; text-transform: none; margin: 0 0 8px; }
+        .article-body .situ-card p:not(.situ-n) { font-family: var(--body); font-size: .9rem; color: var(--gray-dark); line-height: 1.7; margin: 0; }
+        .guide-card { margin: 56px 0 8px; padding: 32px 34px; background: var(--black); color: var(--white); }
+        .article-body .guide-card p.se { font-family: var(--body); font-size: .65rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: #e74c3c; margin: 0 0 12px; }
+        .article-body .guide-card h3 { font-family: var(--display); font-size: clamp(1.3rem, 2.4vw, 1.6rem); font-weight: 400; letter-spacing: -.01em; text-transform: none; color: var(--white); margin: 0 0 12px; line-height: 1.25; }
+        .article-body .guide-card p { font-family: var(--body); font-size: .95rem; color: rgba(255,255,255,.72); line-height: 1.7; margin: 0 0 18px; }
+        .article-body .guide-card .guide-links { display: flex; flex-wrap: wrap; gap: 22px; margin: 0; }
+        .article-body .guide-card .guide-links a { color: #fff; font-weight: 600; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid #e74c3c; padding-bottom: 2px; }
+        .article-body .guide-card .guide-links a:hover { color: #e74c3c; }
+        .tc-contact { background: var(--black); color: var(--white); padding: 88px var(--pad); scroll-margin-top: 72px; }
+        .tc-contact .inner { max-width: 880px; margin: 0 auto; }
+        .tc-contact .se { font-size: .65rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: #e74c3c; margin-bottom: 14px; }
+        .tc-contact h2 { font-family: var(--display); font-size: clamp(1.8rem, 3.6vw, 2.5rem); font-weight: 400; line-height: 1.15; letter-spacing: -.01em; margin-bottom: 28px; }
+        .tc-contact h2 em { font-style: italic; color: #e74c3c; }
+        .tc-steps { list-style: none; margin: 0 0 40px; padding: 0; display: grid; gap: 14px; }
+        .tc-steps li { display: grid; grid-template-columns: 32px 1fr; gap: 12px; font-size: .95rem; color: rgba(255,255,255,.72); line-height: 1.6; }
+        .tc-steps .n { font-family: var(--display); font-size: 1.2rem; color: #e74c3c; line-height: 1.3; }
+        .tc-steps strong { color: var(--white); font-weight: 600; }
+        .tc-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: start; }
+        .tc-form label { display: block; font-size: .7rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.66); margin: 0 0 6px; }
+        .tc-form label .opt { text-transform: none; letter-spacing: 0; font-weight: 400; }
+        .tc-form input, .tc-form textarea { width: 100%; font: inherit; font-size: 1rem; color: var(--white); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.18); padding: 12px 14px; margin: 0 0 18px; border-radius: 0; }
+        .tc-form input:focus, .tc-form textarea:focus { outline: 2px solid #e74c3c; outline-offset: 1px; border-color: transparent; }
+        .tc-form textarea { min-height: 120px; resize: vertical; }
+        .tc-form .btn { width: 100%; justify-content: center; }
+        .tc-note { font-size: .74rem; color: rgba(255,255,255,.55); line-height: 1.6; margin-top: 14px; }
+        .tc-note a { color: rgba(255,255,255,.8); text-decoration: underline; text-underline-offset: 2px; }
+        .tc-direct .lbl { font-size: .65rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #e74c3c; margin: 0 0 4px; }
+        .tc-direct p { font-size: .95rem; color: rgba(255,255,255,.8); margin: 0 0 18px; line-height: 1.6; }
+        .tc-direct a { color: var(--white); border-bottom: 1px solid rgba(255,255,255,.3); }
+        .tc-direct a:hover { border-color: #e74c3c; }
+        /* guide */
+        .article-body p.disclosure { font-family: var(--body); font-size: .9rem; color: var(--gray-dark); line-height: 1.7; border-top: 1px solid rgba(0,0,0,.1); border-bottom: 1px solid rgba(0,0,0,.1); padding: 18px 0; margin: 0 0 56px; }
+        .article-body p.disclosure a { display: inline-block; margin-top: 6px; color: var(--red); font-weight: 600; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; border-bottom: 1px solid var(--red); }
+        .article-body p.kicker { font-family: var(--body); font-size: .7rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #c0392b; margin: 72px 0 0; }
+        .article-body p.kicker + h2 { margin-top: 10px; }
+        .article-body .disclosure + .kicker { margin-top: 0; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 28px 0 32px; }
+        .two-col > div { background: var(--off-white); padding: 22px 24px; }
+        .article-body .two-col h3 { margin: 0 0 12px; }
+        .two-col ul { list-style: none; margin: 0; padding: 0; }
+        .two-col li { font-size: .92rem; color: var(--gray-dark); line-height: 1.6; padding: 6px 0 6px 26px; position: relative; border-top: 1px solid rgba(0,0,0,.06); }
+        .two-col li:first-child { border-top: none; }
+        .two-col ul.ticks li::before { content: '✓'; position: absolute; left: 0; color: #c0392b; font-weight: 600; }
+        .two-col ul.crosses li::before { content: '×'; position: absolute; left: 2px; color: var(--gray); font-weight: 600; font-size: 1.1rem; line-height: 1.3; }
+        .evidence, .sources { border: 1px solid rgba(0,0,0,.12); padding: 22px 26px; margin: 32px 0; }
+        .article-body .evidence p, .article-body .sources li { font-family: var(--body); font-size: .86rem; color: var(--gray-dark); line-height: 1.7; margin: 0; }
+        .article-body .evidence p.ev-label, .article-body .sources p.ev-label { font-size: .66rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: #c0392b; margin: 0 0 8px; }
+        .article-body .evidence a, .article-body .sources a { color: var(--red); border-bottom: 1px solid rgba(192,57,43,.4); word-break: break-word; }
+        .sources ol { margin: 0; padding-left: 20px; }
+        .sources li { margin: 0 0 6px; }
+        .sources { margin-top: 64px; }
+        .print-only { display: none; }
+        @media (max-width: 760px) {
+            .situ, .two-col, .tc-grid { grid-template-columns: 1fr; }
+            .tc-grid { gap: 32px; }
+            .guide-card { padding: 26px 22px; }
+        }
+        @media (pointer: coarse) {
+            .tc-direct a, .guide-card .guide-links a, .article-body p.disclosure a { display: inline-block; padding: 10px 0; }
+            .article-body .faq summary { padding-top: 22px; padding-bottom: 22px; }
+        }
+        html { scroll-padding-top: 88px; }
+        .article-body ol.steps a { color: var(--red); border-bottom: 1px solid var(--red); }
+        @media (max-width: 600px) {
+            .article-hero .meta { flex-wrap: wrap; gap: 4px 14px; }
+            .article-hero .meta-sep { display: none; }
+            .article-hero .hero-cta .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "name": "Sparring for offentlige topchefer",
+ "description": "Fortrolig sparring for kommunaldirektører, regions- og hospitalsdirektører og topchefer i staten. Modspil uden politisk dagsorden. Aftal 20 minutter.",
+ "url": "https://www.friisnaes.com/topchef/",
+ "inLanguage": "da",
+ "datePublished": "2026-11-02",
+ "dateModified": "2026-11-02",
+ "about": {
+  "@id": "https://www.friisnaes.com/#person"
+ },
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Service",
+ "name": "Sparring for offentlige topchefer",
+ "serviceType": "Executive coaching og sparring for offentlige topchefer",
+ "description": "Fortrolig sparring og executive coaching for kommunaldirektører, regions- og hospitalsdirektører og topchefer i statslige selskaber og styrelser.",
+ "url": "https://www.friisnaes.com/topchef/",
+ "inLanguage": "da",
+ "provider": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/",
+  "jobTitle": "Executive Coach"
+ },
+ "areaServed": [
+  {
+   "@type": "City",
+   "name": "København"
+  },
+  {
+   "@type": "City",
+   "name": "Holte"
+  },
+  {
+   "@type": "Country",
+   "name": "Denmark"
+  }
+ ],
+ "availableChannel": [
+  {
+   "@type": "ServiceChannel",
+   "name": "In person – Holte Stationsvej 18, 2840 Holte"
+  },
+  {
+   "@type": "ServiceChannel",
+   "name": "Online – Teams"
+  }
+ ],
+ "offers": {
+  "@type": "Offer",
+  "name": "Forløb på 9 måneder",
+  "description": "Sessioner hver anden uge og sparring med kort varsel imellem. Én samlet pris for hele forløbet, oplyses personligt.",
+  "url": "https://www.friisnaes.com/topchef/#kontakt"
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Er det coaching eller sparring?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Begge dele. Sessionerne hver anden uge er coaching: mønstre, prioriteter og den måde, du leder på. Telefonen imellem er sparring: den beslutning, der skal træffes i denne uge."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Hvad med partipolitik?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Jeg tager ikke stilling i partipolitik og giver ikke politisk rådgivning. Jeg arbejder med din rolle mellem det politiske niveau og organisationen, ikke med, hvem der bør vinde en politisk sag."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Kan min borgmester, formand eller departementschef få indsigt i forløbet?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Nej. Uanset hvem der betaler, er samtalen fortrolig. Ingen referater og ingen rapportering. Organisationen kender rammerne og målet, ikke indholdet."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Hvad sker der, hvis nogen søger aktindsigt?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Aftalen og fakturaerne ligger hos din organisation og kan som udgangspunkt udleveres. Derfor beskriver de kun rammerne. Samtalernes indhold findes ikke i jeres systemer. Det er praktiske forhold, ikke juridisk rådgivning; er du i tvivl, så spørg jeres egen jurist."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Hvor foregår samtalerne?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "I mit kontor på Holte Stationsvej 18 i Holte, i København eller online på Teams. Mange vælger en blanding."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Hvad hvis jeg bare vil have én samtale?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Så tag de 20 minutter. De er gratis og uforpligtende, og du får et reelt perspektiv med. Selve samarbejdet er et forløb på mindst 9 måneder, fordi det er dér, det flytter noget."
+   }
+  }
+ ]
+}
+</script>
+<style id="a11y-contrast">
+/* --- a11y: kontrast (AA 4.5:1) --- */
+nav .lo em, nav .lo i, footer .fb em, footer .fb i, .ls button.on, .nl .ls button.on { color:#e74c3c !important }
+.ls button, .nl .ls button { color:rgba(255,255,255,.62) }
+#kontakt .se, .contact .se, .ci-label, .hero .hl, .ph .hl, .page-hero .tag, .article-hero .tag, .article-cta .se, .book-cta .se, .cta-sec .se, .lb-tag, #libBannerTitle em, .sit .se, .cta2 .se, .skriv .se { color:#e74c3c }
+.hero .hp2, .hero .hm, .contact-grid form > p, .contact-grid .social a, label.fl, .page-hero p, #libBannerSub, .lb-sub, .meta-tag, .back-bar a, footer .fnav a, .ft3 { color:rgba(255,255,255,.66) !important }
+footer .fc, .footer-copy .fc { color:rgba(255,255,255,.55) !important }
+main ~ section[aria-label="Afsluttende opfordring"] p { color:rgba(255,255,255,.66) !important }
+main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { color:#e74c3c !important; border-bottom-color:#e74c3c !important }
+#request-pricing > .c > div[style*="letter-spacing"] { color:#e74c3c !important }
+#request-pricing > .c > p { color:rgba(255,255,255,.72) !important }
+.card-stat-label, .book-desc, .buy-option-type, .buy-option-info span, .preorder-note, .preorder-note a, .coming-desc, .books-section .inner > div > p, .fn-more .fn-kind { color:#666 !important }
+.coming-badge { color:#5f5f5f !important }
+.contact-grid form > p a { text-decoration:underline; text-underline-offset:2px }
+.article-cta p:not(.se) { color:#666 !important }
+.article-cta .se { color:#c0392b !important }
+</style>
+</head>
+<body data-pagefind-ignore="all">
+<nav role="navigation" aria-label="Hovednavigation">
+    <div class="ni">
+        <a href="/" class="lo" aria-label="Friisnæs forside">Fr<em>ii</em>snæs</a>
+        <ul class="nl" id="nm">
+            <li><a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a></li>
+            <li class="nd">
+                <a href="/executive-coaching.html" class="nd-t" style="color:#fff" data-da="Ydelser" data-en="Services" aria-haspopup="true" aria-expanded="false">Ydelser <span class="nd-c" aria-hidden="true">&#9662;</span></a>
+                <ul class="nd-m">
+                    <li><a href="/executive-coaching.html" data-da="Executive Coaching" data-en="Executive Coaching">Executive Coaching</a></li>
+                    <li><a href="/ceo-sparring.html" data-da="CEO-sparring" data-en="CEO sparring">CEO-sparring</a></li>
+                    <li><a href="/seg.html" data-da="Ledergrupper (SEG)" data-en="Executive teams (SEG)">Ledergrupper (SEG)</a></li>
+                    <li><a href="/#format" data-da="Sådan arbejder vi" data-en="How we work">Sådan arbejder vi</a></li>
+                </ul>
+            </li>
+            <li><a href="/om.html" data-da="Om" data-en="About">Om</a></li>
+            <li><a href="/testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
+            <li class="nd">
+                <a href="/library.html" class="nd-t" style="color:#fff" data-da="Indsigter" data-en="Insights" aria-haspopup="true" aria-expanded="false">Indsigter <span class="nd-c" aria-hidden="true">&#9662;</span></a>
+                <ul class="nd-m">
+                    <li><a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a></li>
+                    <li><a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
+                    <li><a href="/library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a></li>
+                    <li><a href="/vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a></li>
+                    <li><a href="/soeg.html" data-da="Søg" data-en="Search">Søg</a></li>
+                </ul>
+            </li>
+            <li><a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
+            <li><a href="/topchef/#kontakt" class="cta-n" data-da="Aftal en samtale" data-en="Arrange a conversation" aria-label="Aftal en samtale">Aftal en samtale</a></li>
+        </ul><button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+<article>
+    <header class="article-hero">
+        <div class="inner">
+            <p class="tag">For offentlige topchefer · Fortroligt</p>
+            <h1>Topchef mellem politik og drift.<br><em>Et fortroligt sted at tænke højt.</em></h1>
+            <p class="lead">For kommunaldirektører, regions- og hospitalsdirektører og topchefer i statslige selskaber og styrelser. Modspil fra en, der ikke har aktier i dit svar, og som ikke tager stilling i partipolitik.</p>
+            <div class="hero-cta">
+                <a href="#kontakt" class="btn bp">Aftal en 20-minutters samtale</a>
+                <a href="/topchef/guide/" class="btn bg">Læs guiden først</a>
+            </div>
+            <div class="meta">
+                <span class="meta-name">Thomas Friisnæs</span>
+                <span class="meta-sep"></span>
+                <span class="meta-tag">Executive Coach</span>
+                <span class="meta-sep"></span>
+                <span class="meta-tag">Holte · København · Online</span>
+            </div>
+        </div>
+    </header>
+    <section class="social-proof" aria-label="Erfaring og rammer">
+        <div class="inner">
+            <div class="sp-grid">
+                <div class="sp-item"><div class="sp-num">22+</div><div class="sp-label">års erfaring</div></div>
+                <div class="sp-item"><div class="sp-num">15.000+</div><div class="sp-label">sessioner</div></div>
+                <div class="sp-item"><div class="sp-num">24 t</div><div class="sp-label">svar på henvendelser</div></div>
+                <div class="sp-item"><div class="sp-num">9 mdr.</div><div class="sp-label">fast forløb</div></div>
+            </div>
+        </div>
+    </section>
+    <section class="article-body">
+        <div class="inner">
+
+            <h2>Alt, du siger, <em>kan blive læst politisk</em></h2>
+            <p>Som topchef i det offentlige står du mellem et politisk mandat og en organisation, der skal levere hver dag. Næsten alle omkring dig har en interesse i dit svar. Borgmesteren, formanden eller departementschefen vurderer dig. Direktionen refererer til dig. Pressen følger med.</p>
+            <p>Resultatet er, at de vigtigste beslutninger træffes af den person, der har færrest at teste dem på. Det er ikke et personligt problem. Det er et vilkår ved rollen.</p>
+            <div class="pull">Ensomheden i toppen er ikke fravær af mennesker.<br>Det er fravær af nogen at være usikker over for.</div>
+
+            <h2>Tre situationer, <em>jeg typisk bliver kaldt ind i</em></h2>
+            <div class="situ">
+                <div class="situ-card">
+                    <p class="situ-n">01</p>
+                    <h3>Ny i rollen</h3>
+                    <p>Det første år lægger meget fast: forholdet til borgmester eller bestyrelse, din direktion og det mandat, du faktisk har, ikke kun det, der stod i stillingsopslaget.</p>
+                </div>
+                <div class="situ-card">
+                    <p class="situ-n">02</p>
+                    <h3>Fusion og omorganisering</h3>
+                    <p>To kulturer skal blive til én, mens driften kører. Et nyt topteam skal fungere som hold, før det har haft tid til at blive det.</p>
+                </div>
+                <div class="situ-card">
+                    <p class="situ-n">03</p>
+                    <h3>Det lange topjob</h3>
+                    <p>Efter mange år på posten er risikoen sjældent, at du ved for lidt. Den er, at færre og færre siger dig imod.</p>
+                </div>
+            </div>
+
+            <h2>Det får du, <em>og det får du ikke</em></h2>
+            <div class="list-block">
+                <p><strong>Modspil.</strong> Jeg udfordrer præmisserne, før du forpligter dig. Ikke for at være besværlig, men fordi det er svært for andre omkring dig.</p>
+                <p><strong>Struktur.</strong> Jeg hjælper dig med at skille det, der haster, fra det, der betyder noget, og med at træffe beslutningen frem for at cirkle om den.</p>
+                <p><strong>Accountability.</strong> Jeg husker, hvad du besluttede sidst. Og spørger til det.</p>
+                <p><strong>Ingen politisk rådgivning.</strong> Jeg tager ikke stilling i partipolitik. Sparringen handler om din rolle, dine beslutninger og din ledelse.</p>
+            </div>
+
+            <h2>Sådan arbejder vi <em>sammen</em></h2>
+            <ol class="steps">
+                <li><div><strong>20 minutter om det, der fylder</strong>Én samtale. Ét problem. Du får et perspektiv og en mulig retning med, og du vurderer selv, om et samarbejde giver mening.</div></li>
+                <li><div><strong>Et forløb på 9 måneder</strong>Sessioner hver anden uge i Holte, i København eller online. Forandring tager tid, og det er over måneder, at mønstrene bliver synlige.</div></li>
+                <li><div><strong>Sparring med kort varsel</strong>Normalt inden for 24 timer ved kritiske beslutninger. De venter ikke på næste session, og det gør jeg heller ikke.</div></li>
+                <li><div><strong>Ledergruppen, når du er klar</strong>Nogle forløb udvides til direktionen gennem <a href="/seg.html">Strategy Execution Governance</a>, så det, du har fået klarhed over, også bliver eksekveret af holdet.</div></li>
+            </ol>
+
+            <h2>Fortroligt, <em>også med aktindsigt</em></h2>
+            <p>Fortrolighed er udgangspunktet. I det offentlige skal den også kunne tåle aktindsigt. Derfor er rammerne enkle:</p>
+            <div class="list-block">
+                <p>Aftalen beskriver rammer, ikke indhold.</p>
+                <p>Fakturaen er neutral: »ledelsessparring, jf. aftale«.</p>
+                <p>Din organisation får rammer og mål at vide, aldrig indholdet af samtalerne.</p>
+                <p>Jeg transskriberer ikke samtalerne. Mine noter opbevares kun, mens forløbet er aktivt, og slettes senest 12 måneder efter, at det er slut.</p>
+                <p>Bruger jeg AI i min forberedelse, er det kun på anonymiseret materiale uden navne og organisation.</p>
+            </div>
+            <p class="small">De fulde vilkår står under <a href="/vilkaar.html">Vilkår, privatliv og ansvar</a>.</p>
+
+            <h2>Praktisk <em>for en offentlig køber</em></h2>
+            <div class="list-block">
+                <p>Én samlet pris for hele forløbet, så kontraktværdien er kendt fra start. Prisen oplyses personligt.</p>
+                <p>Et individuelt forløb ligger under EU's udbudsgrænse for tjenesteydelser: 1.044.400 kr. i staten og 1.611.360 kr. i kommuner og regioner, ekskl. moms (2026–27).</p>
+                <p>Aftalen indgås med organisationen, og der faktureres direkte. Efter de 9 måneder kan begge parter opsige med løbende måned plus én måned.</p>
+                <p>Skal en anden godkende forløbet, sender jeg en kort beskrivelse af rammerne, som kan ligge i sagen.</p>
+            </div>
+
+            <div class="quote">
+                <p>Man lærer hurtigt, at Thomas’ coaching ikke er et quick fix. Det er en ny måde at forbedre sig på – i en proces, der aldrig slutter.</p>
+                <cite>Kim Kehlet Johansen · Adm. direktør (CEO), Velliv A/S · Klient i 10 år</cite>
+            </div>
+            <p class="small">Fortrolig sparringspartner for ledere hos bl.a. Velliv · Hong Kong Jockey Club · WILLY CHAVARRIA · Söderberg &amp; Partners · WTW · Atea · Jeudan · Banedanmark. <a href="/testimonials.html">Se alle 33 navngivne referencer.</a></p>
+
+            <div class="guide-card">
+                <p class="se">Gratis guide · ca. 6 min læsning</p>
+                <h3>Før du vælger en sparringspartner som offentlig topchef</h3>
+                <p>Hvad sparring kan og ikke kan, fortrolighed i en verden med aktindsigt, indkøbet i praksis og seks spørgsmål, du bør stille. Skrevet, så du også kan bruge den til at vælge en anden.</p>
+                <p class="guide-links"><a href="/topchef/guide/">Læs guiden</a><a href="/topchef/guide/foer-du-vaelger-en-sparringspartner.pdf">Hent som PDF</a></p>
+            </div>
+
+            <h2 id="faq">Ofte stillede <em>spørgsmål</em></h2>
+<div class="faq">
+<details>
+<summary>Er det coaching eller sparring?</summary>
+<p>Begge dele. Sessionerne hver anden uge er coaching: mønstre, prioriteter og den måde, du leder på. Telefonen imellem er sparring: den beslutning, der skal træffes i denne uge.</p>
+</details>
+<details>
+<summary>Hvad med partipolitik?</summary>
+<p>Jeg tager ikke stilling i partipolitik og giver ikke politisk rådgivning. Jeg arbejder med din rolle mellem det politiske niveau og organisationen, ikke med, hvem der bør vinde en politisk sag.</p>
+</details>
+<details>
+<summary>Kan min borgmester, formand eller departementschef få indsigt i forløbet?</summary>
+<p>Nej. Uanset hvem der betaler, er samtalen fortrolig. Ingen referater og ingen rapportering. Organisationen kender rammerne og målet, ikke indholdet.</p>
+</details>
+<details>
+<summary>Hvad sker der, hvis nogen søger aktindsigt?</summary>
+<p>Aftalen og fakturaerne ligger hos din organisation og kan som udgangspunkt udleveres. Derfor beskriver de kun rammerne. Samtalernes indhold findes ikke i jeres systemer. Det er praktiske forhold, ikke juridisk rådgivning; er du i tvivl, så spørg jeres egen jurist.</p>
+</details>
+<details>
+<summary>Hvor foregår samtalerne?</summary>
+<p>I mit kontor på Holte Stationsvej 18 i Holte, i København eller online på Teams. Mange vælger en blanding.</p>
+</details>
+<details>
+<summary>Hvad hvis jeg bare vil have én samtale?</summary>
+<p>Så tag de 20 minutter. De er gratis og uforpligtende, og du får et reelt perspektiv med. Selve samarbejdet er et forløb på mindst 9 måneder, fordi det er dér, det flytter noget.</p>
+</details>
+</div>
+
+        </div>
+    </section>
+</article>
+<section class="tc-contact" id="kontakt" aria-labelledby="kontakt-h">
+    <div class="inner">
+        <p class="se">Kontakt</p>
+        <h2 id="kontakt-h">Hvad fylder <em>lige nu?</em></h2>
+        <ol class="tc-steps" aria-label="Tre trin">
+            <li><span class="n">1</span><span><strong>Du skriver tre linjer</strong> om, hvad der fylder, her eller på mail.</span></li>
+            <li><span class="n">2</span><span><strong>Jeg svarer inden for 24 timer</strong>, personligt og med to-tre forslag til et tidspunkt.</span></li>
+            <li><span class="n">3</span><span><strong>20 minutter på Teams eller telefon.</strong> Du får et første perspektiv og vurderer selv, om et samarbejde giver mening.</span></li>
+        </ol>
+        <div class="tc-grid">
+            <form class="tc-form" action="https://formspree.io/f/mnjgnrlb" method="POST" aria-label="Kontaktformular">
+                <input type="hidden" name="_subject" value="Henvendelse via friisnaes.com/topchef">
+                <input type="hidden" name="kilde" value="topchef">
+                <label for="tc-name">Navn</label>
+                <input type="text" id="tc-name" name="name" required autocomplete="name">
+                <label for="tc-email">Email</label>
+                <input type="email" id="tc-email" name="email" required autocomplete="email">
+                <label for="tc-org">Organisation <span class="opt">(valgfrit)</span></label>
+                <input type="text" id="tc-org" name="organisation" autocomplete="organization">
+                <label for="tc-msg">Hvad fylder lige nu?</label>
+                <textarea id="tc-msg" name="challenge" rows="4" placeholder="Tre linjer er nok."></textarea>
+                <button type="submit" class="btn bp">Aftal en samtale</button>
+                <p class="tc-note">Fortroligt. Din besked sendes via Formspree og bruges kun til at svare dig. Læs mere under <a href="/vilkaar.html#privatliv">Privatliv</a>.</p>
+            </form>
+            <div class="tc-direct">
+                <p class="lbl">Direkte</p>
+                <p><a href="mailto:info@friisnaes.com?subject=Samtale%20via%20friisnaes.com%2Ftopchef">info@friisnaes.com</a></p>
+                <p><a href="tel:+4526818218">+45 2681 8218</a></p>
+                <p class="lbl">Kontor</p>
+                <p>Holte Stationsvej 18, 1.<br>2840 Holte</p>
+                <p class="lbl">Thomas Friisnæs</p>
+                <p><a href="https://www.linkedin.com/in/friisnaes/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="back-bar">
+    <div class="inner">
+        <a href="/om.html">Mere om Thomas Friisnæs</a>
+    </div>
+</div>
+<style>
+.fn-more{max-width:760px;margin:0 auto;padding:56px clamp(24px,6vw,64px) 64px;border-top:1px solid rgba(0,0,0,.08);font-family:inherit}
+.fn-more h2{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#c0392b;margin:0 0 20px;font-weight:600}
+.fn-more ul{list-style:none;margin:0;padding:0}
+.fn-more li{margin:0 0 12px}
+.fn-more a{color:#111;text-decoration:none;font-size:1.05rem;line-height:1.45;border-bottom:1px solid rgba(17,17,17,.25);transition:border-color .2s,color .2s}
+.fn-more a:hover{color:#c0392b;border-color:#c0392b}
+.fn-more .fn-kind{display:block;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#777;margin-bottom:3px}
+</style>
+<section class="fn-more" aria-label="Læs også">
+<h2>Læs også</h2>
+<ul>
+<li><span class="fn-kind">Guide</span><a href="/topchef/guide/">Før du vælger en sparringspartner som offentlig topchef</a></li>
+<li><span class="fn-kind">White paper</span><a href="/ensomheden-i-toppen.html">Ensomheden i toppen</a></li>
+<li><span class="fn-kind">White paper</span><a href="/modspillet-der-mangler.html">Modspillet der mangler</a></li>
+</ul>
+</section>
+<footer role="contentinfo">
+    <div class="fi3">
+        <div class="fb">Fr<em>ii</em>snæs</div>
+        <div class="fc">&copy; 2026 Friisnæs · CVR-nr. 26569346 · <a href="/vilkaar.html" style="color:inherit;text-decoration:underline;text-underline-offset:2px">Vilkår, privatliv og ansvar</a></div>
+    </div>
+</footer>
+<script>
+(function(){
+    var tg=document.getElementById('nt'),mn=document.getElementById('nm');
+    tg.addEventListener('click',function(){
+        var o=mn.classList.toggle('open');
+        tg.classList.toggle('act');
+        tg.setAttribute('aria-expanded',o);
+        document.body.style.overflow=o?'hidden':'';
+    });
+    mn.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click',function(){
+            mn.classList.remove('open');tg.classList.remove('act');
+            tg.setAttribute('aria-expanded','false');document.body.style.overflow='';
+        });
+    });
+})();
+</script>
+</body>
+</html>
