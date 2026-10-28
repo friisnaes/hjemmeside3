@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introspektion er ikke det samme som indsigt | Selvindsigt</title>
+<meta name="description" content="Paper 03 i Selvindsigt er en disciplin: hvorfor mere selvransagelse ikke automatisk giver mere indsigt – med Hvad-spørgsmålene og kameratesten.">
+<meta name="keywords" content="selvindsigt, refleksion, grubleri, introspektion, executive coaching, topleder, CEO, hvad-spørgsmål, kameratesten, Selvrevisionen">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/selvindsigt-introspektion-er-ikke-det-samme-som-indsigt.html">
+
+<meta property="og:title" content="Introspektion er ikke det samme som indsigt | Selvindsigt er en disciplin">
+<meta property="og:description" content="At kigge længe ind i sig selv er ikke det samme som at se sig selv tydeligt. Paper 03 om refleksion, grubleri og Hvad-spørgsmålene.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/selvindsigt-introspektion-er-ikke-det-samme-som-indsigt.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-serie-09.jpg">
+<meta property="og:image:alt" content="Selvindsigt er en disciplin – serie af Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta property="article:section" content="Selvindsigt er en disciplin">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Introspektion er ikke det samme som indsigt">
+<meta name="twitter:description" content="Spørg ikke, hvorfor du gør det. Spørg, hvad du gør. Paper 03 i Selvindsigt er en disciplin.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-serie-09.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+
+
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; margin: 28px 0 8px; }
+  .flow span { font-size: 13.5px; font-weight: 500; color: var(--navy); background: #fff; border: 1px solid var(--border); padding: 7px 12px; border-radius: 2px; }
+  .flow .flow-end { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .flow i { font-style: normal; color: var(--gold); font-size: 14px; }
+  @media print { .flow .flow-end { background: #fff !important; color: #111 !important; border: 1px solid #111; } }
+  /* ===== VISUALS (vz) ===== */
+  .vz { margin: 38px 0 32px; border: 1px solid var(--border); border-radius: 5px; background: #fff; overflow: hidden; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .vz-head { padding: 20px 28px 16px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .vz-kicker { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .vz-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 25px; line-height: 1.2; color: var(--navy); }
+  .vz-art { padding: 26px 28px 8px; }
+  .vz-art svg { display: block; width: 100%; max-width: 580px; height: auto; margin: 0 auto; }
+  .vz-art .t-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; }
+  .vz-art .t-sans { font-family: 'Outfit', -apple-system, sans-serif; font-weight: 400; }
+  .vz-punch { padding: 6px 28px 22px; text-align: center; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-style: italic; font-size: 19px; line-height: 1.4; color: var(--navy); }
+  .vz figcaption { padding: 12px 28px 16px; border-top: 1px solid var(--border); font-size: 12.5px; line-height: 1.5; color: var(--text-light); font-style: italic; }
+  @media (max-width: 640px) {
+    .vz-head, .vz-art, .vz-punch, .vz figcaption { padding-left: 16px; padding-right: 16px; }
+    .vz-title { font-size: 21px; }
+    .vz-punch { font-size: 17px; }
+  }
+  @media print {
+    .vz { page-break-inside: avoid; break-inside: avoid; border: 0.75pt solid #ccc; }
+    .vz-head { background: #fff !important; }
+  }
+  /* ===== REFLEKSIONSARK ===== */
+  .sheet-card { display: flex; gap: 28px; align-items: center; justify-content: space-between; border: 1px solid var(--border); border-left: 3px solid var(--gold); background: #fff; border-radius: 5px; padding: 26px 30px; margin: 30px 0; }
+  .section .sheet-card h3 { margin: 0 0 8px; font-size: 22px; }
+  .section .sheet-card p { font-size: 15px; line-height: 1.6; color: var(--text-mid); margin: 0; }
+  .sheet-card .pdf-btn { flex-shrink: 0; }
+  @media (max-width: 720px) { .sheet-card { flex-direction: column; align-items: flex-start; } }
+  .refl-sheet { display: none; }
+  @media print {
+    .sheet-card { display: none !important; }
+    .refl-sheet { display: block; break-before: page; page-break-before: always; break-inside: avoid; page-break-inside: avoid; font-family: 'Outfit', sans-serif; color: #1a1a1a; font-size: 9.5pt; line-height: 1.45; }
+    body.print-sheet > *:not(#refleksionsark) { display: none !important; }
+    body.print-sheet .refl-sheet { break-before: auto; page-break-before: auto; }
+    .refl-sheet .rs-kicker { border-top: 2px solid #c0392b; padding-top: 7pt; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: #c0392b; font-weight: 600; }
+    .refl-sheet .rs-title { font-family: 'Playfair Display', Georgia, serif; font-size: 23pt; line-height: 1.12; margin: 5pt 0 2pt; color: #111; }
+    .refl-sheet .rs-sub { font-size: 9.5pt; color: #555; margin-bottom: 12pt; }
+    .refl-sheet .rs-lbl { font-size: 7pt; letter-spacing: .12em; text-transform: uppercase; color: #c0392b; font-weight: 600; margin-bottom: 4pt; }
+    .refl-sheet .rs-prov { background: #f5f2ec !important; padding: 11pt 14pt 13pt; margin-bottom: 12pt; }
+    .refl-sheet .rs-prov-t { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17pt; line-height: 1.25; color: #111; }
+    .refl-sheet .rs-cq { font-family: 'Playfair Display', Georgia, serif; font-size: 13.5pt; line-height: 1.3; color: #111; padding-bottom: 11pt; margin-bottom: 11pt; border-bottom: 1px solid #ddd; }
+    .refl-sheet .rs-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18pt; margin-bottom: 11pt; }
+    .refl-sheet .rs-list { list-style: none; counter-reset: rs; margin: 0; padding: 0; }
+    .refl-sheet .rs-list li { counter-increment: rs; position: relative; padding-left: 18pt; margin-bottom: 6pt; font-size: 9pt; }
+    .refl-sheet .rs-list li::before { content: counter(rs, decimal-leading-zero); position: absolute; left: 0; color: #c0392b; font-weight: 600; font-size: 8pt; }
+    .refl-sheet .rs-strong li { font-weight: 500; }
+    .refl-sheet .rs-now { background: #111 !important; color: #fff !important; padding: 11pt 14pt; border-radius: 3pt; margin-bottom: 11pt; }
+    .refl-sheet .rs-now .rs-lbl { color: #e74c3c; }
+    .refl-sheet .rs-now-h { font-size: 10.5pt; font-weight: 500; color: #fff; margin-bottom: 3pt; }
+    .refl-sheet .rs-now-p { font-size: 9pt; color: rgba(255,255,255,.8); margin-bottom: 5pt; }
+    .refl-sheet .rs-now-a { font-size: 9pt; color: #f0c8a8; font-weight: 500; }
+    .refl-sheet .rs-clocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7pt; margin-bottom: 26pt; }
+    .refl-sheet .rs-clocks > div { background: #f5f2ec !important; padding: 9pt 10pt; }
+    .refl-sheet .rs-clocks strong { display: block; font-size: 9.5pt; color: #111; margin-bottom: 3pt; }
+    .refl-sheet .rs-clocks span { display: block; font-size: 8.3pt; color: #555; line-height: 1.4; }
+    .refl-sheet .rs-foot { display: flex; justify-content: space-between; gap: 12pt; border-top: 1px solid #ccc; padding-top: 6pt; font-size: 7.5pt; color: #666; }
+    .refl-sheet .rs-foot-r { color: #c0392b; }
+  }
+  /* ===== EXECUTIVE COACHING 2027 · seriesignatur ===== */
+  .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .contrast { margin: 38px 0; border-top: 2px solid var(--navy); border-bottom: 1px solid var(--border); }
+  .contrast-head { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(22px, 3.2vw, 28px); color: var(--navy); line-height: 1.25; padding: 22px 0 18px; }
+  .contrast-cols { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); }
+  .contrast-cols > div { padding: 20px 22px 22px 0; }
+  .contrast-cols > div + div { padding-left: 22px; border-left: 1px solid var(--border); }
+  .contrast-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .contrast-cols ul { list-style: none; }
+  .contrast-cols li { font-size: 14.5px; line-height: 1.55; color: var(--text-mid); padding: 6px 0; border-bottom: 1px dotted var(--border); }
+  .contrast-cols li:last-child { border-bottom: 0; }
+  .contrast-foot { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.45; color: var(--navy); padding: 18px 0 20px; border-top: 1px solid var(--border); }
+  .coach-q { margin: 10px 0 6px; padding: 54px 0 46px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .section .coach-q .cq-text { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: clamp(28px, 4.6vw, 42px); line-height: 1.22; color: var(--navy); letter-spacing: -0.01em; margin: 0 0 26px; }
+  .section .coach-q .cq-note { font-size: 15px; line-height: 1.65; color: var(--text-light); max-width: 540px; margin: 0; }
+  .clocks { display: grid; grid-template-columns: repeat(3, 1fr); margin: 32px 0 14px; background: var(--navy); color: #fff; border-radius: 5px; overflow: hidden; }
+  .clock { padding: 30px 26px 30px; }
+  .clock + .clock { border-left: 1px solid rgba(255,255,255,0.12); }
+  .clock-h { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: #fff; line-height: 1.1; margin-bottom: 12px; }
+  .section .clock .clock-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.4; color: var(--gold-light); margin-bottom: 14px; }
+  .section .clock p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.78); margin-bottom: 0; }
+  .section .clocks-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 10px 0 30px; }
+  .ro-box { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 5px; background: #fff; margin: 10px 0 20px; }
+  .ro { padding: 24px 26px; }
+  .ro + .ro { border-left: 1px solid var(--border); }
+  .ro-h { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .section .ro p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; }
+  .section .ex-intro { font-size: 15.5px; color: var(--text-mid); margin-bottom: 20px; }
+  .section .ex-out { font-size: 15px; color: var(--navy); font-weight: 500; margin: 8px 0 0; }
+  @media (max-width: 720px) {
+    .contrast-cols, .clocks, .ro-box { grid-template-columns: 1fr; }
+    .contrast-cols > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--border); }
+    .contrast-cols > div { padding-right: 0; }
+    .clock + .clock { border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); }
+    .ro + .ro { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .contrast, .coach-q, .clocks, .ro-box, .framework-box, .exercise-box, .micro-action, .commit-box, .cta-box { break-inside: avoid; page-break-inside: avoid; }
+    .clocks { background: #fff !important; color: #1a1a1a !important; border: 1px solid #ccc; }
+    .clock-h, .section .clock p { color: #1a1a1a !important; }
+    .section .clock .clock-q { color: #c0392b !important; }
+    .section .coach-q .cq-text { font-size: 22pt; }
+  }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
+</style>
+<style id="mobilstandard">@media (max-width:600px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}@media (min-width:601px) and (max-width:1000px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.nav-nd-c,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}@media (min-width:1001px) and (max-width:1300px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.nav-nd-c,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}@media (min-width:1301px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.nav-nd-c,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}.m-smal{display:none}@media (max-width:639px){.vz-art .m-bred{display:none}.vz-art .m-smal{display:block}.vz-art .m-smal svg{display:block;width:100%;max-width:420px;height:auto;margin:0 auto}figure.vz{margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;max-width:none!important;border-left:0!important;border-right:0!important;border-radius:0!important}figure.vz .vz-art{padding-left:0!important;padding-right:0!important}}</style>
+<style>
+  /* Selvindsigt er en disciplin · tilføjelser til Executive Library-skabelonen */
+  .wp-lead { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(19px, 2.4vw, 22px); line-height: 1.6; color: var(--navy); font-weight: 400; margin-bottom: 22px; }
+  .wp-lead strong { font-weight: 400; }
+  .section ul.pl, .section ol.pl { margin: 4px 0 24px 22px; }
+  .section ul.pl { list-style: disc; } .section ol.pl { list-style: decimal; }
+  .section ul.pl li, .section ol.pl li { font-size: 17px; line-height: 1.75; color: var(--text-mid); margin-bottom: 10px; padding-left: 4px; }
+  .section ul.pl li::marker, .section ol.pl li::marker { color: var(--gold); }
+  .section li strong { color: var(--navy); font-weight: 500; }
+  .case-note { font-size: 14px !important; line-height: 1.6 !important; color: var(--text-light) !important; border-left: 2px solid var(--border); padding-left: 16px; }
+  .takeaway { background: var(--cream); border-left: 3px solid var(--gold); padding: 18px 24px; margin: 26px 0; font-size: 16.5px; line-height: 1.7; color: var(--text-mid); }
+  .takeaway strong { color: var(--navy); font-weight: 600; }
+  .step-p strong { color: var(--navy); font-weight: 600; }
+  .pull-quote.sig { font-style: normal; font-weight: 500; }
+  .tbl-wrap { margin: 18px 0 30px; }
+  @media (min-width: 601px) {
+    .sig-table.nr td:first-child { width: 12%; }
+    .sig-table.c3 td:first-child { width: 34%; }
+    .sig-table.c5 td:first-child { width: 20%; }
+    .sig-table.c5 td, .sig-table.c5 th { font-size: 13.5px; }
+  }
+  .roles { margin: 10px 0 8px; border-top: 2px solid var(--navy); }
+  .roles .faq-a ul { margin: 0 0 4px 20px; list-style: disc; }
+  .roles .faq-a li { margin-bottom: 8px; }
+  .roles .faq-a li::marker { color: var(--gold); }
+  .roles .faq-q .rq-sub { display: block; font-size: 13px; font-weight: 300; color: var(--text-light); margin-top: 2px; }
+  .tool-card .pdf-btn { text-decoration: none; white-space: nowrap; }
+  .author-note { font-size: 14.5px !important; color: var(--text-light) !important; border-top: 1px solid var(--border); padding-top: 18px; margin-top: 30px; }
+  .wp-collection .cpart-papers li .soon small:empty { display: none; }
+  .read-also a[hidden] { display: none; }
+  [data-sid-on][hidden] { display: none !important; }
+  .wp-collection .cpart-papers li .soon small { margin-left: 8px; }
+  @media (max-width: 639px) { .takeaway { padding: 16px 18px; } }
+  @media print {
+    .roles .faq-a { display: block !important; }
+    .takeaway, .framework-box, .vz, .roles .faq-item { page-break-inside: avoid; break-inside: avoid; }
+    .section ul.pl li, .section ol.pl li { font-size: 10.5pt; }
+    .wp-collection { break-before: page; page-break-before: always; }
+    .sec-head { break-inside: avoid; page-break-inside: avoid; }
+    .sec-head::after { content: ""; display: block; height: 140px; margin-bottom: -140px; }
+    .step-p, .section h3 { break-after: avoid; page-break-after: avoid; }
+    .tbl-wrap tr, .exercise-box, .commit-box, .ro-box { break-inside: avoid; page-break-inside: avoid; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Introspektion er ikke det samme som indsigt",
+ "alternativeHeadline": "Spørg ikke, hvorfor du gør det. Spørg, hvad du gør. Om forskellen på refleksion og grubleri – og fem spørgsmål, der vender et hvorfor til en observation.",
+ "description": "Paper 03 i Selvindsigt er en disciplin: hvorfor mere selvransagelse ikke automatisk giver mere indsigt – med Hvad-spørgsmålene og kameratesten.",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/",
+  "jobTitle": "Executive coach og forfatter"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/selvindsigt-introspektion-er-ikke-det-samme-som-indsigt.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/selvindsigt-introspektion-er-ikke-det-samme-som-indsigt.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Selvindsigt er en disciplin",
+  "url": "https://www.friisnaes.com/selvindsigt-er-en-disciplin.html"
+ },
+ "position": 3,
+ "inLanguage": "da",
+ "datePublished": "2027-03-29",
+ "keywords": "selvindsigt, refleksion, grubleri, introspektion, executive coaching, topleder, CEO, hvad-spørgsmål, kameratesten, Selvrevisionen",
+ "wordCount": 4713,
+ "timeRequired": "PT20M",
+ "about": [
+  "Selvindsigt",
+  "Refleksion",
+  "Introspektion",
+  "Ledelse"
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Forside",
+   "item": "https://www.friisnaes.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Executive Library",
+   "item": "https://www.friisnaes.com/library.html"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "Selvindsigt er en disciplin",
+   "item": "https://www.friisnaes.com/selvindsigt-er-en-disciplin.html"
+  },
+  {
+   "@type": "ListItem",
+   "position": 4,
+   "name": "Introspektion er ikke det samme som indsigt",
+   "item": "https://www.friisnaes.com/selvindsigt-introspektion-er-ikke-det-samme-som-indsigt.html"
+  }
+ ]
+}
+</script>
+<style id="fn-nav-css">
+.fn-nav{position:sticky;top:0;z-index:90;background:#111;border-bottom:1px solid rgba(192,57,43,.14);font-family:'Outfit',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.fn-in{max-width:1100px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fn-brand{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:500;color:#fff;text-decoration:none;letter-spacing:.01em;white-space:nowrap}
+.fn-brand em{font-style:normal;color:#e74c3c}
+.fn-links{display:flex;gap:24px;align-items:center}
+.fn-links a{font-size:13px;color:rgba(255,255,255,.78);text-decoration:none;letter-spacing:.02em;transition:color .2s;white-space:nowrap;font-weight:400;text-transform:none;border:0;padding:0}
+.fn-links a:hover,.fn-links a.active{color:#e74c3c}
+.fn-links a.fn-cta{color:#fff !important;background:#c0392b;padding:8px 16px;border-radius:2px;font-weight:500}
+.fn-links a.fn-cta:hover{background:#e74c3c}
+.fn-dd{position:relative;display:inline-flex;align-items:center}
+.fn-dd-t{display:inline-flex;align-items:center;gap:4px}
+.fn-dd-c{font-size:9px;opacity:.7;transition:transform .2s}
+.fn-dd:hover .fn-dd-c,.fn-dd.open .fn-dd-c{transform:rotate(180deg)}
+.fn-dd-m{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);background:#1a1a1a;border:1px solid rgba(192,57,43,.18);padding:8px 0;min-width:210px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;display:flex;flex-direction:column;z-index:95;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.fn-dd-m::before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px}
+.fn-dd:hover .fn-dd-m,.fn-dd:focus-within .fn-dd-m,.fn-dd.open .fn-dd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(2px)}
+.fn-dd-m a{padding:9px 18px !important;font-size:12.5px;white-space:nowrap}
+.fn-dd-m a:hover{background:rgba(255,255,255,.04)}
+.fn-toggle{display:none;background:none;border:0;color:#fff;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1}
+@media (max-width:780px){
+  .fn-in{padding:0 20px}
+  .fn-links{display:none}
+  .fn-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:#111;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 14px;border-bottom:1px solid rgba(192,57,43,.14);max-height:calc(100vh - 62px);overflow-y:auto}
+  .fn-links.open a{padding:12px 24px}
+  .fn-links.open a.fn-cta{margin:10px 24px 0;text-align:center}
+  .fn-toggle{display:block}
+  .fn-dd{flex-direction:column;align-items:stretch;width:100%}
+  .fn-dd-m{position:static;transform:none;opacity:1;visibility:visible;background:none;border:0;padding:0 0 0 16px;min-width:0;box-shadow:none}
+  .fn-dd-m::before{display:none}
+  .fn-dd-c{display:none}
+}
+@media (pointer:coarse) and (min-width:781px){.fn-links a{padding-top:9px;padding-bottom:9px}}
+@media print{.fn-nav{display:none !important}}
+</style>
+<style id="fb-signup-css">
+.fb-signup{max-width:760px;margin:0 auto;padding:8px 32px 56px;font-family:'Outfit',-apple-system,sans-serif}
+.fb-signup-in{background:#111;color:#f5f4f0;padding:2.3rem 2.2rem;display:flex;flex-wrap:wrap;gap:1.4rem 2rem;align-items:center;justify-content:space-between;border-radius:4px}
+.fb-signup-k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#e74c3c;font-weight:500;margin-bottom:10px}
+.fb-signup h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.4rem;line-height:1.25;margin:0 0 .45rem;color:#fff}
+.fb-signup h3 em{font-style:italic;color:#e74c3c}
+.fb-signup p{font-size:.95rem;color:rgba(245,244,240,.72);margin:0;max-width:440px;line-height:1.55;font-weight:300}
+.fb-signup a.fb-signup-btn{display:inline-block;background:#c0392b;color:#fff;font-family:'Outfit',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:.95rem 1.6rem;border-radius:2px;white-space:nowrap;transition:background .2s;border:0}
+.fb-signup a.fb-signup-btn:hover{background:#e74c3c}
+@media (max-width:640px){.fb-signup{padding:8px 20px 44px}.fb-signup-in{padding:1.8rem 1.4rem}.fb-signup a.fb-signup-btn{width:100%;text-align:center}}
+@media print{.fb-signup{display:none !important}}
+</style>
+<style id="a11y-contrast">
+/* --- a11y: kontrast (AA 4.5:1) --- */
+:root { --text-light:#666666 }
+.wp-toc-title, .wp-toc ol li::before, .sg-type, .footer-tagline, .opi-meter .opi-label, .opi-meter .opi-eq, .framework-box h3, .framework-box .fw-num, .wp-references .ref-label { color:#e74c3c }
+.wp-badge, .ma-tag { color:#fff !important }
+.wp-readtime, .series-next, .wp-footer .series-label, .site-footer .series-label { color:rgba(255,255,255,.66) }
+.fn-more .fn-kind { color:#666 !important }
+.closing-box p a { text-decoration:underline !important; text-underline-offset:3px; text-decoration-color:rgba(192,57,43,.5) }
+.wp-collection .collection-label, .wp-collection .cpart-num, .wp-collection .cpart-papers li::before { color:#e74c3c }
+.cpart-papers .current { color:rgba(255,255,255,.66) }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="fn-nav" aria-label="Hovednavigation">
+  <div class="fn-in">
+    <a href="/" class="fn-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <button class="fn-toggle" aria-label="Menu" aria-controls="fnLinks" aria-expanded="false" onclick="var n=document.getElementById('fnLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="fn-links" id="fnLinks">
+      <a href="/#situationer">Situationer</a>
+      <span class="fn-dd">
+        <a href="/executive-coaching.html" class="fn-dd-t" aria-haspopup="true">Ydelser <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/executive-coaching.html">Executive Coaching</a>
+          <a href="/ceo-sparring.html">CEO-sparring</a>
+          <a href="/seg.html">Ledergrupper (SEG)</a>
+          <a href="/#format">Sådan arbejder vi</a>
+        </span>
+      </span>
+      <a href="/om.html">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="fn-dd">
+        <a href="/library.html" class="fn-dd-t active" aria-haspopup="true">Indsigter <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="fn-cta">Aftal en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Selvindsigt er en disciplin · Serie 09 · Paper 03 af 10</div>
+  <div class="pc-title">Introspektion er ikke det samme som indsigt</div>
+  <div class="pc-sub">Spørg ikke, hvorfor du gør det. Spørg, hvad du gør. Om forskellen på refleksion og grubleri – og fem spørgsmål, der vender et hvorfor til en observation.</div>
+  <div class="pc-author">Af Thomas Friisnæs · executive coach og forfatter · friisnaes.com</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Selvindsigt er en disciplin</span>
+      <span class="wp-series">Serie 09 · Executive Self-Insight · Del 1: Det, du ikke kan se · Paper 03 af 10</span>
+      <span class="wp-readtime">ca. 20 min læsning</span>
+    </div>
+    <h1>Introspektion er ikke det samme <em>som indsigt</em></h1>
+    <p class="wp-subtitle">Spørg ikke, hvorfor du gør det. Spørg, hvad du gør. Om forskellen på refleksion og grubleri – og fem spørgsmål, der vender et hvorfor til en observation.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · executive coach og forfatter · 22+ år</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#start">Fra andres øjne til dine egne</a></li>
+      <li><a href="#mere-selvransagelse-giver-ikke-automatis">Mere selvransagelse giver ikke automatisk mere indsigt</a></li>
+      <li><a href="#klokken-er-fire-om-morgenen">Klokken er fire om morgenen</a></li>
+      <li><a href="#refleksion-og-grubleri">Refleksion og grubleri</a></li>
+      <li><a href="#hvorfor-spoergsmaalet-og-hvornaar-det-al">Hvorfor-spørgsmålet – og hvornår det alligevel hjælper</a></li>
+      <li><a href="#hvad-du-kan-vide-indefra-og-hvad-du-ikke">Hvad du kan vide indefra – og hvad du ikke kan</a></li>
+      <li><a href="#hvad-spoergsmaalene">Hvad-spørgsmålene</a></li>
+      <li><a href="#tre-faldgruber">Tre faldgruber</a></li>
+      <li><a href="#fra-registrering-til-naeste-skridt">Fra registrering til næste skridt</a></li>
+      <li><a href="#tilbage-til-casen">Tilbage til casen</a></li>
+      <li><a href="#konkludere">Hvad du kan se – og hvad du ikke må konkludere</a></li>
+      <li><a href="#roller">Til dig selv, ledergruppen, HR og bestyrelsen</a></li>
+      <li><a href="#konkret">Gør det konkret · Øvelse og dit næste skridt</a></li>
+      <li><a href="#metode">Metode og næste paper</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+<article>
+
+<section class="section first" id="intro">
+  <div class="container">
+    <p class="wp-lead"><strong>At kigge længe ind i sig selv er ikke det samme som at se sig selv tydeligt. Forskningen skelner mellem at bruge tid på selvransagelse og at få klarhed ud af den – og den finder, at gentagne, selvkritiske tankerunder kan gøre det sværere, ikke lettere, at handle. For en topleder er det mest brugbare første spørgsmål derfor sjældent »hvorfor er jeg sådan?«, men »hvad gjorde jeg, og hvad skete der så?«. Dette paper viser forskellen og giver dig fem spørgsmål, der vender et hvorfor til en observation, du kan gøre noget ved.</strong></p>
+    <div class="research-note"><strong>Grundlag:</strong> Forskning er kildeangivet. Min praksis står som erfaring. Hvad-spørgsmålene og seriens skel mellem refleksion og grubleri er praksisværktøjer, ikke validerede måleinstrumenter.</div>
+  </div>
+</section>
+
+<section class="section" id="start">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">01</div>
+    <h2>Fra andres øjne til dine egne</h2>
+    </div>
+    <p><span class="dc">P</span>aper 01 og 02 pegede udad: på forskellen mellem dit billede og andres, og på hvorfor andres billede kan blive redigeret på vej op til dig.</p>
+    <p>Dette paper peger indad. For der er et øjeblik, som de fleste topledere, jeg arbejder med, kender. I min erfaring kommer det efter en dag, hvor noget gik skævt, og gerne sent. Man ligger og vender det. Hvorfor gjorde jeg det? Hvorfor er jeg sådan? Hvad siger det om mig?</p>
+    <p>Det føles som selvindsigt. Det er ikke nødvendigvis det.</p>
+    <p>I seriens metode, Selvrevisionen, er første trin at <em>registrere adfærden – hvad du gør, ikke hvorfor du gør det</em>. Dette paper handler om det trin. Det handler ikke om at holde op med at tænke over dig selv, men om at gøre det på en måde, der fører et sted hen.</p>
+  </div>
+</section>
+
+<section class="section" id="mere-selvransagelse-giver-ikke-automatis">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">02 — Problemet</div>
+    <h2>Mere selvransagelse giver ikke automatisk mere indsigt</h2>
+    </div>
+    <p>Det ligger lige for at tro, at jo mere du tænker over dig selv, jo bedre kender du dig selv. Forskningen giver flere grunde til at tvivle på det.</p>
+    <p>Timothy Wilson og Elizabeth Dunn konkluderede i deres gennemgang af forskningen i selverkendelse, som Paper 01 også byggede på, at en stor del af det, der styrer vores adfærd, ikke er tilgængeligt for introspektion. Når vi kigger ind efter årsagen til det, vi gør, finder vi ikke nødvendigvis årsagen. Vi finder en forklaring, der lyder rimelig. Den kan være rigtig. Den kan også være en historie, vi har konstrueret bagefter. Indefra er det svært at se forskel.</p>
+    <p>Anthony Grant, Joanna Franklin og Peter Langford udviklede et spørgeskema, der skelner mellem to ting, som let bliver blandet sammen: hvor meget man reflekterer over sig selv, og hvor klart man forstår sig selv. De kaldte det første <em>selvrefleksion</em> og det andet <em>indsigt</em>. I tre studier med psykologistuderende – 260, 28 og 121 deltagere – viste de to sig at være forskellige ting. Selvrefleksion hang sammen med mere angst og stress. Indsigt hang sammen med mindre depression, angst og stress og med bedre selvregulering. Studierne er korrelationsstudier med studerende, så de viser ikke, at refleksion skaber angst, eller at indsigt fjerner den. Men de viser, at mængden af selvransagelse og klarheden i den er to forskellige størrelser.</p>
+    <p>Susan Nolen-Hoeksema, Blair Wisco og Sonja Lyubomirsky gennemgik i 2008 forskningen i grublen – på engelsk <em>rumination</em>: gentagne tankerunder om, hvad der er gået galt, og hvad det betyder. Gennemgangen samler resultater, der knytter grublen til forværret nedtrykthed, mere negativ tænkning, dårligere problemløsning og svagere social støtte. Den er skrevet om grublen i forbindelse med psykiske belastninger, ikke om ledere i arbejde. Men mekanismen er genkendelig: Tankerne kører i ring, og løsningen kommer ikke nærmere.</p>
+    <p>Edward Watkins gik i en stor gennemgang samme år et skridt videre og spurgte, hvornår gentagne tanker hjælper, og hvornår de skader. Hans svar var, at de kan gøre begge dele. De kan hjælpe med planlægning og bearbejdning, og de kan holde problemer ved lige. Tre forhold ser ud til at afgøre, hvilken vej det går: om indholdet er negativt, hvilken situation tankerne opstår i, og hvor abstrakt man tænker. Abstrakte, vurderende tanker – den slags, der spørger <em>hvorfor</em> og <em>hvad betyder det om mig</em> – var oftere forbundet med de uhensigtsmæssige udfald end konkrete tanker om, <em>hvordan</em> noget skete. Gennemgangen er en samlet fortolkning af mange studier, ikke et nyt eksperiment, og den er skrevet ud fra klinisk og eksperimentel psykologi.</p>
+    <p>Tilsammen peger de fire kilder på det samme: At bruge tid på at tænke over dig selv er ikke i sig selv en vej til indsigt. Det afhænger af, hvordan du gør det.</p>
+    <p>For en topleder er der en ekstra grund til at tage det alvorligt. Dine forklaringer på dig selv bliver ikke i dit hoved. De bliver sagt højt, i ledergruppen, i medarbejdersamtaler og over for bestyrelsen: »Jeg er bare direkte.« »Jeg har altid været utålmodig.« »Det er min baggrund i finans.« I mit arbejde med topledere hører jeg den slags forklaringer ofte, og de har en bivirkning. En forklaring på din karakter kan blive en tilladelse. Hvis du er sådan, er der ikke så meget at gøre ved det, og de andre må indrette sig. En observation af din adfærd har den modsatte virkning. Den beskriver noget, du gjorde i en situation, og som du derfor kan gøre anderledes i den næste. Forskellen er ikke kun psykologisk. Den afgør, om ledergruppen hører en undskyldning eller en plan.</p>
+  </div>
+</section>
+
+<section class="section" id="klokken-er-fire-om-morgenen">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">03 — Casen</div>
+    <h2>Klokken er fire om morgenen</h2>
+    </div>
+    <p class="case-note"><em>Casen er konstrueret til serien. Halvø Pharma A/S og alle personer er opdigtede, og enhver lighed med virkelige virksomheder eller personer er tilfældig.</em></p>
+    <p>Det er natten efter ledergruppens månedsmøde. Anne Holm har bag sig de samtaler, Paper 02 beskrev: Karim har fortalt hende, at hun begyndte at rette hans tal, før han var færdig, og Line og Jesper har beskrevet det samme mønster. Hun ved altså, hvad de andre har set. På mødet i dag stillede hun for anden gang det faste spørgsmål: »Hvad har jeg gjort denne måned, der gjorde det sværere for jer at sige mig imod?« Igen blev der længe stille.</p>
+    <p>Nu ligger hun vågen.</p>
+    <p>Spørgsmålene kommer af sig selv. Hvorfor er jeg sådan? Er det banken? Mange år i en finansfunktion, hvor det var en dyd at finde fejlen i tallene først. Er det, fordi jeg inderst inde ikke stoler på dem? Er jeg ved at blive den direktør, jeg selv havde svært ved at arbejde for?</p>
+    <p>Hver forklaring lyder plausibel. Ingen af dem fører nogen steder hen. Klokken fire er hun ikke nærmere en beslutning om, hvad hun skal gøre i næste uge.</p>
+    <p>Så kommer hun i tanke om noget, hun selv plejer at sige til sine økonomifolk, når en prognose skrider: »Lad være med at forklare afvigelsen, før vi har set på posteringerne.«</p>
+    <p>Hun skifter spørgsmål. Ikke hvorfor er jeg sådan, men: <em>Hvad gjorde jeg de sidste tre gange, en beslutning blev lukket for tidligt?</em></p>
+    <p>Det spørgsmål kan hun svare på. Hun finder en blok og begynder at skrive.</p>
+  </div>
+</section>
+
+<section class="section" id="refleksion-og-grubleri">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">04</div>
+    <h2>Refleksion og grubleri</h2>
+    </div>
+    <p>Serien skelner mellem to måder at tænke over sig selv på. Før definitionerne er det vigtigt at sige, hvad de er: seriens praktiske arbejdsdefinitioner, ikke faglige eller kliniske afgrænsninger. Skellet er mit, ikke forskningens, og det er formuleret, så det kan bruges klokken fire om morgenen:</p>
+    <p><strong>Refleksion er nysgerrig, lærende opmærksomhed på egne tanker og handlinger, som skaber større klarhed eller et bedre grundlag for handling.</strong></p>
+    <p><strong>Grubleri er gentagne, fastlåste tankerunder, som ikke tilfører væsentlig ny forståelse.</strong></p>
+    <p>Refleksion behøver altså ikke føre til en umiddelbar handling for at have værdi: Du kan få en ny forståelse, acceptere en svær situation eller se den fra en ny side. Og grubleri kan sagtens munde ud i en handling, blot en forhastet eller uhensigtsmæssig én. Når øvelserne i dette paper alligevel beder dig om at slutte med en konkret handling eller et spørgsmål til en anden, er det en praktisk kontrol, ikke en definition: Har jeg fået et bedre grundlag for at gøre noget?</p>
+    <p>Forskellen er ikke emnet. Du kan reflektere og gruble over præcis det samme møde. Forskellen er retningen og slutpunktet.</p>
+    <div class="tbl-wrap"><table class="sig-table c3"><thead><tr><th>Kendetegn</th><th>Refleksion</th><th>Grubleri</th></tr></thead><tbody><tr><td data-label="Kendetegn">Spørgsmålet</td><td data-label="Refleksion">Hvad skete der, og hvad gjorde jeg?</td><td data-label="Grubleri">Hvorfor er jeg sådan?</td></tr><tr><td data-label="Kendetegn">Tidsretning</td><td data-label="Refleksion">Fra det, der skete, mod det, der skal ske</td><td data-label="Grubleri">Kredser om det, der skete</td></tr><tr><td data-label="Kendetegn">Niveau</td><td data-label="Refleksion">Konkret: situation, ord, handling</td><td data-label="Grubleri">Abstrakt: personlighed, karakter, værd</td></tr><tr><td data-label="Kendetegn">Tonen</td><td data-label="Refleksion">Nysgerrig</td><td data-label="Grubleri">Anklagende eller forsvarende</td></tr><tr><td data-label="Kendetegn">Slutpunktet</td><td data-label="Refleksion">Ny klarhed, en handling eller et spørgsmål til en anden</td><td data-label="Grubleri">Ingen ny forståelse – tankerne starter forfra</td></tr></tbody></table></div>
+    <figure class="vz" aria-labelledby="vz-s03a-title">
+  <div class="vz-head">
+    <div class="vz-kicker">To måder at tænke over sig selv på</div>
+    <div class="vz-title" id="vz-s03a-title">Det ene kører i ring. Det andet går et sted hen.</div>
+  </div>
+  <div class="vz-art"><div class="m-bred"><svg viewBox="0 0 580 210" role="img" aria-labelledby="vz-s03a-t vz-s03a-d"><title id="vz-s03a-t">Grubleri og refleksion</title><desc id="vz-s03a-d">To måder at tænke over sig selv på. Grubleri kører i ring om spørgsmålet »hvorfor er jeg sådan?«. Refleksion går fra en situation over hvad du gjorde og hvad der skete til ny klarhed, en handling eller et spørgsmål til en anden.</desc><text x="0" y="18" text-anchor="start" class="t-sans" font-size="17" fill="#111" font-weight="500">Grubleri</text><text x="300" y="18" text-anchor="start" class="t-sans" font-size="17" fill="#c0392b" font-weight="500">Refleksion</text><circle cx="120" cy="110" r="62" fill="none" stroke="#d9d4cb" stroke-width="10"/><path d="M120 48 A62 62 0 1 1 63 88" fill="none" stroke="#111" stroke-width="2"/><path d="M58 80 l3 13 l10 -9 z" fill="#111"/><text x="120" y="104" text-anchor="middle" class="t-sans" font-size="14" fill="#111">Hvorfor er</text><text x="120" y="122" text-anchor="middle" class="t-sans" font-size="14" fill="#111">jeg sådan?</text><text x="120" y="196" text-anchor="middle" class="t-sans" font-size="13" fill="#777">ingen ny forståelse</text><rect x="300" y="36" width="270" height="34" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="316" y="58" text-anchor="start" class="t-sans" font-size="14" fill="#111">En situation</text><path d="M435 71 v8" stroke="#111" stroke-width="1.5"/><path d="M431 77 l4 5 l4 -5 z" fill="#111"/><rect x="300" y="82" width="270" height="34" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="316" y="104" text-anchor="start" class="t-sans" font-size="14" fill="#111">Hvad gjorde jeg?</text><path d="M435 117 v8" stroke="#111" stroke-width="1.5"/><path d="M431 123 l4 5 l4 -5 z" fill="#111"/><rect x="300" y="128" width="270" height="34" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="316" y="150" text-anchor="start" class="t-sans" font-size="14" fill="#111">Hvad skete der?</text><path d="M435 163 v8" stroke="#111" stroke-width="1.5"/><path d="M431 169 l4 5 l4 -5 z" fill="#111"/><rect x="300" y="174" width="270" height="34" rx="3" fill="#c0392b" stroke="#c0392b" stroke-width="1.5"/><text x="316" y="196" text-anchor="start" class="t-sans" font-size="14" fill="#fff">Klarhed · handling · spørgsmål</text></svg></div><div class="m-smal"><svg viewBox="0 0 360 440" role="img" aria-labelledby="vz-s03as-t vz-s03as-d"><title id="vz-s03as-t">Grubleri og refleksion</title><desc id="vz-s03as-d">To måder at tænke over sig selv på. Grubleri kører i ring om spørgsmålet »hvorfor er jeg sådan?«. Refleksion går fra en situation over hvad du gjorde og hvad der skete til ny klarhed, en handling eller et spørgsmål til en anden.</desc><text x="0" y="18" text-anchor="start" class="t-sans" font-size="17" fill="#111" font-weight="500">Grubleri</text><circle cx="180" cy="104" r="58" fill="none" stroke="#d9d4cb" stroke-width="10"/><path d="M180 46 A58 58 0 1 1 126 82" fill="none" stroke="#111" stroke-width="2"/><path d="M121 74 l3 13 l10 -9 z" fill="#111"/><text x="180" y="100" text-anchor="middle" class="t-sans" font-size="15" fill="#111">Hvorfor er</text><text x="180" y="119" text-anchor="middle" class="t-sans" font-size="15" fill="#111">jeg sådan?</text><text x="180" y="186" text-anchor="middle" class="t-sans" font-size="14" fill="#777">ingen ny forståelse</text><text x="0" y="228" text-anchor="start" class="t-sans" font-size="17" fill="#c0392b" font-weight="500">Refleksion</text><rect x="0" y="242" width="360" height="38" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="16" y="267" text-anchor="start" class="t-sans" font-size="15" fill="#111">En situation</text><path d="M180 281 v9" stroke="#111" stroke-width="1.5"/><path d="M176 288 l4 5 l4 -5 z" fill="#111"/><rect x="0" y="292" width="360" height="38" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="16" y="317" text-anchor="start" class="t-sans" font-size="15" fill="#111">Hvad gjorde jeg?</text><path d="M180 331 v9" stroke="#111" stroke-width="1.5"/><path d="M176 338 l4 5 l4 -5 z" fill="#111"/><rect x="0" y="342" width="360" height="38" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="16" y="367" text-anchor="start" class="t-sans" font-size="15" fill="#111">Hvad skete der?</text><path d="M180 381 v9" stroke="#111" stroke-width="1.5"/><path d="M176 388 l4 5 l4 -5 z" fill="#111"/><rect x="0" y="392" width="360" height="38" rx="3" fill="#c0392b" stroke="#c0392b" stroke-width="1.5"/><text x="16" y="417" text-anchor="start" class="t-sans" font-size="15" fill="#fff">Klarhed · handling · spørgsmål</text></svg></div></div>
+  <figcaption>Seriens arbejdsdefinitioner, ikke kliniske kategorier. Den samme tankerække kan rumme begge dele.</figcaption>
+</figure>
+    <p>Tabellen er inspireret af den skelnen, Grant og kolleger og Watkins gør mellem forskellige former for selvfokus, men den er ikke testet som et redskab. Den beskriver tendenser, ikke to rene kategorier, og den samme tankerække kan rumme begge dele.</p>
+    <p>Et praktisk tegn, jeg bruger med topledere: Hvis du gentager de samme spørgsmål uden at komme nærmere en ny forståelse eller en mulig handling, kan det være tid til at skifte spørgsmål eller holde pause. Som praktisk hjælp kan du sætte for eksempel 30 minutter af og derefter vurdere, om tænkningen bringer dig videre. Tidsrammen er en arbejdsvane, ikke en grænse mellem to psykologiske tilstande; nogle komplekse problemer kræver langt mere tid.</p>
+    <p>En grænse, som serien altid holder: Hvis tankerne bliver ved over længere tid, hvis de går ud over din søvn i en periode, eller hvis du føler dig nedtrykt det meste af tiden, er det ikke et spørgsmål om selvindsigt eller ledelse. Så er det en god idé at tale med din egen læge. Serien vurderer ikke helbred og kan ikke erstatte den samtale.</p>
+    <div class="takeaway"><strong>Hvad det betyder:</strong> Spørg dig selv, hvad din selvransagelse giver dig. Giver den ny klarhed, en handling eller et spørgsmål til en anden, er den sandsynligvis refleksion. Kører den i ring uden ny forståelse, er det tid til at skifte spørgsmål.</div>
+  </div>
+</section>
+
+<section class="section" id="hvorfor-spoergsmaalet-og-hvornaar-det-al">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">05</div>
+    <h2>Hvorfor-spørgsmålet – og hvornår det alligevel hjælper</h2>
+    </div>
+    <p>Det ville være for enkelt at sige, at hvorfor-spørgsmål er skadelige. Forskningen er mere nuanceret, og nuancen er brugbar.</p>
+    <p>Ethan Kross, Ozlem Ayduk og Walter Mischel undersøgte i to eksperimenter, hvad der skete, når studerende genkaldte sig en situation, hvor de var blevet vrede på en anden person. Deltagerne blev bedt om at tænke over situationen på forskellige måder: enten inde fra oplevelsen, som om de var der igen, eller på afstand, som om de så sig selv udefra. Og de blev enten bedt om at genkalde sig, <em>hvad</em> de følte, eller om at forstå, <em>hvorfor</em> de følte sådan.</p>
+    <p>Resultatet var tydeligt i de to studier med 155 og 123 deltagere: Det var kombinationen af afstand og hvorfor, der hjalp. Deltagere, der spurgte hvorfor, mens de så situationen på afstand, reagerede mindre følelsesmæssigt end deltagerne i de andre betingelser. Forfatterne fandt også, at de i højere grad tolkede situationen på ny i stedet for at genfortælle den. Studierne er korte laboratorieforsøg med studerende og vrede som eneste følelse, uden langsigtet opfølgning. Men de viser, at hvorfor-spørgsmålet ikke i sig selv er problemet.</p>
+    <p>Problemet er hvorfor-spørgsmålet stillet indefra. Når du ligger midt i følelsen og spørger, hvorfor du er sådan, er det sandsynligt, at du genfortæller det, der skete, og leder efter en forklaring på dig selv. Når du har fået afstand og spørger, hvorfor det gik, som det gik, kan spørgsmålet åbne for en ny forståelse.</p>
+    <p>Watkins' skelnen peger samme vej. Det er det abstrakte, vurderende hvorfor – det, der handler om, hvad noget siger om dig – der oftere hænger sammen med uhensigtsmæssige udfald. Det konkrete hvordan og hvad gør det sjældnere.</p>
+    <p>Det giver tre slags hvorfor-spørgsmål, der er meget forskellige at stille:</p>
+    <figure class="vz" aria-labelledby="vz-s03b-title">
+  <div class="vz-head">
+    <div class="vz-kicker">Forskningen</div>
+    <div class="vz-title" id="vz-s03b-title">Hvorfor-spørgsmålet hjælper – stillet på afstand</div>
+  </div>
+  <div class="vz-art"><div class="m-bred"><svg viewBox="0 0 580 190" role="img" aria-labelledby="vz-s03b-t vz-s03b-d"><title id="vz-s03b-t">Afstand og hvorfor</title><desc id="vz-s03b-d">Fire betingelser i Kross, Ayduk og Mischels forsøg: inde i oplevelsen eller på afstand, og hvad du følte eller hvorfor. Kun kombinationen af afstand og hvorfor gav den laveste følelsesmæssige reaktion.</desc><text x="270.0" y="28" text-anchor="middle" class="t-sans" font-size="14" fill="#111" font-weight="500">Hvad følte jeg?</text><text x="470.0" y="28" text-anchor="middle" class="t-sans" font-size="14" fill="#111" font-weight="500">Hvorfor følte jeg sådan?</text><rect x="173" y="43" width="194" height="64" rx="3" fill="#fff" stroke="#d9d4cb" stroke-width="1.5"/><text x="270.0" y="80.0" text-anchor="middle" class="t-sans" font-size="15" fill="#777">Højere reaktion</text><rect x="373" y="43" width="194" height="64" rx="3" fill="#fff" stroke="#d9d4cb" stroke-width="1.5"/><text x="470.0" y="80.0" text-anchor="middle" class="t-sans" font-size="15" fill="#777">Højere reaktion</text><rect x="173" y="113" width="194" height="64" rx="3" fill="#fff" stroke="#d9d4cb" stroke-width="1.5"/><text x="270.0" y="150.0" text-anchor="middle" class="t-sans" font-size="15" fill="#777">Højere reaktion</text><rect x="373" y="113" width="194" height="64" rx="3" fill="#c0392b" stroke="#c0392b" stroke-width="1.5"/><text x="470.0" y="150.0" text-anchor="middle" class="t-sans" font-size="15" fill="#fff" font-weight="500">Lavest reaktion</text><text x="160" y="80" text-anchor="end" class="t-sans" font-size="14" fill="#111">Inde i oplevelsen</text><text x="160" y="150" text-anchor="end" class="t-sans" font-size="14" fill="#111">På afstand</text></svg></div><div class="m-smal"><svg viewBox="0 0 360 226" role="img" aria-labelledby="vz-s03bs-t vz-s03bs-d"><title id="vz-s03bs-t">Afstand og hvorfor</title><desc id="vz-s03bs-d">Fire betingelser i Kross, Ayduk og Mischels forsøg: inde i oplevelsen eller på afstand, og hvad du følte eller hvorfor. Kun kombinationen af afstand og hvorfor gav den laveste følelsesmæssige reaktion.</desc><text x="90" y="20" text-anchor="middle" class="t-sans" font-size="13" fill="#111" font-weight="500">Hvad følte jeg?</text><text x="270" y="20" text-anchor="middle" class="t-sans" font-size="13" fill="#111" font-weight="500">Hvorfor følte jeg?</text><rect x="3" y="32" width="174" height="88" rx="3" fill="#fff" stroke="#d9d4cb" stroke-width="1.5"/><text x="90" y="64" text-anchor="middle" class="t-sans" font-size="13" fill="#777">Inde i oplevelsen</text><text x="90" y="90" text-anchor="middle" class="t-sans" font-size="15" fill="#111">Højere reaktion</text><rect x="183" y="32" width="174" height="88" rx="3" fill="#fff" stroke="#d9d4cb" stroke-width="1.5"/><text x="270" y="64" text-anchor="middle" class="t-sans" font-size="13" fill="#777">Inde i oplevelsen</text><text x="270" y="90" text-anchor="middle" class="t-sans" font-size="15" fill="#111">Højere reaktion</text><rect x="3" y="128" width="174" height="88" rx="3" fill="#fff" stroke="#d9d4cb" stroke-width="1.5"/><text x="90" y="160" text-anchor="middle" class="t-sans" font-size="13" fill="#777">På afstand</text><text x="90" y="186" text-anchor="middle" class="t-sans" font-size="15" fill="#111">Højere reaktion</text><rect x="183" y="128" width="174" height="88" rx="3" fill="#c0392b" stroke="#c0392b" stroke-width="1.5"/><text x="270" y="160" text-anchor="middle" class="t-sans" font-size="13" fill="#fff">På afstand</text><text x="270" y="186" text-anchor="middle" class="t-sans" font-size="15" fill="#fff" font-weight="500">Lavest reaktion</text></svg></div></div>
+  <figcaption>Kross, Ayduk og Mischel (2005): to korte laboratorieforsøg med studerende (155 og 123), vrede som eneste følelse, ingen langtidsopfølgning.</figcaption>
+</figure>
+    <ul class="pl"><li><strong>»Hvorfor er jeg sådan?«</strong> handler om din karakter. Det inviterer til en historie om dig, og den kan ikke efterprøves.</li><li><strong>»Hvorfor gjorde jeg det i det møde?«</strong> handler om en situation. Det kan undersøges, men kun hvis du først ved præcist, hvad du gjorde.</li><li><strong>»Hvorfor gik det, som det gik?«</strong> handler om et forløb. Stillet på afstand kan det give en ny forståelse.</li></ul>
+    <p>Afstand kan skabes på flere måder. En, jeg bruger med topledere, er at skifte perspektiv: »Hvis jeg var bestyrelsesformand og så en optagelse af mødet, hvad ville jeg så se – og hvorfor ville jeg tro, at diskussionen sluttede så hurtigt?« En anden er at lade der gå et døgn. Spørgsmålet er stadig et hvorfor, men det handler om forløbet og stilles af en, der ser på, ikke af en, der står midt i det. Begge greb er praksis, inspireret af Kross og kollegers forsøg, ikke afprøvet i dem.</p>
+    <p>Derfor er seriens regel ikke, at du aldrig må spørge hvorfor. Reglen er, at du begynder med hvad. Hvad-spørgsmålet giver dig noget at stå på, og det skaber den afstand, et godt hvorfor kræver.</p>
+    <p class="pull-quote sig">Spørg ikke, hvorfor du gør det. Spørg, hvad du gør.</p>
+    <p>Linjen er en praksisregel, ikke et forskningsresultat. Den er formuleret skarpt, fordi det er det første, der forsvinder klokken fire om morgenen. I praksis betyder den: Begynd med, hvad du gjorde. Undersøg hvorfor, når du har noget konkret at undersøge.</p>
+  </div>
+</section>
+
+<section class="section" id="hvad-du-kan-vide-indefra-og-hvad-du-ikke">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">06</div>
+    <h2>Hvad du kan vide indefra – og hvad du ikke kan</h2>
+    </div>
+    <p>Det betyder ikke, at dit indre er uden værdi. Paper 01 viste, med Simine Vazires forskning, at du selv er den bedste kilde til dine indre tilstande: din uro, din tvivl, dine hensigter. Andre ser din adfærd. Du ser, hvad der foregår, mens den sker.</p>
+    <p>Erika Carlson har i en teoretisk artikel beskrevet to slags barrierer for at kende sig selv. Den ene handler om information: Du har ikke altid den information om dig selv, der skal til. Den anden handler om motivation: Du har en interesse i at se dig selv i et godt lys, og den påvirker, hvordan du bearbejder det, du ved. Carlson foreslår, at evnen til at lægge mærke til sin aktuelle oplevelse uden at vurdere den kan hjælpe på begge barrierer. Det er et forslag, ikke et dokumenteret resultat; hun peger selv på, at der mangler forskning, før forbindelsen er fastslået. Men tanken er nyttig her: Det, der gør selvransagelse svær, er ikke kun, at vi mangler information. Det er også, at vi har travlt med at dømme den, vi kigger på.</p>
+    <p>I min erfaring hjælper hvad-spørgsmål på begge barrierer. De beder dig om at registrere i stedet for at vurdere. Og de gør det tydeligt, hvor din egen information slipper op, så du ved, hvad du skal spørge andre om.</p>
+    <p>Den danske Ledelseskommission skrev i sine anbefalinger fra 2018, at lederudvikling skal »kombinere viden, refleksion og handling«. Kommissionen skrev om offentlige ledere, og formuleringen er en anbefaling, ikke et forskningsresultat. Men den rammer seriens pointe: Refleksion er ikke målet. Den er et led mellem det, du ved, og det, du gør.</p>
+    <div class="takeaway"><strong>Hvad det betyder:</strong> Brug din indre viden til det, den er god til: hvad du mærkede, og hvad du ville. Brug registrering og andres øjne til det, den ikke er god til: hvad du gjorde, og hvad det gjorde ved andre.</div>
+  </div>
+</section>
+
+<section class="section" id="hvad-spoergsmaalene">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">07 — Værktøjet</div>
+    <h2>Hvad-spørgsmålene</h2>
+    </div>
+    <p>Hvad-spørgsmålene er fem spørgsmål, der vender et hvorfor til en observation. Sæt 15–30 minutter af første gang; når du kender metoden, kan du ofte gøre det på et kvarter. Jeg anbefaler, at du skriver svarene ned.</p>
+    <p class="step-p"><strong>Trin 1 · Skriv dit hvorfor ned.</strong> Skriv det spørgsmål, der kører, præcis som det lyder i dit hoved: »Hvorfor er jeg så utålmodig?« Det er ikke spild. Når det står på papiret, er det lettere at se, at det er et spørgsmål om dig og ikke om en situation.</p>
+    <p class="step-p"><strong>Trin 2 · Find op til tre situationer – og én undtagelse.</strong> Find op til tre konkrete situationer fra de seneste uger, hvor det, du spørger om, kunne være sket. Vælg situationer, du husker tydeligt nok til at kunne beskrive dem. Led derefter aktivt efter mindst én situation, hvor det ikke skete. Det er et værn mod at bekræfte det billede, du allerede har af dig selv: En leder, der på forhånd mener, at hun er utålmodig, kan let finde tre situationer, der passer. Gentagelse i selvvalgte erindringer er et muligt mønster, ikke dokumentation for et generelt mønster.</p>
+    <p class="step-p"><strong>Trin 3 · Stil de fem spørgsmål til hver situation.</strong></p>
+    <ol class="pl"><li><strong>Hvad skete der?</strong> Hvor, hvornår, hvem var til stede, og hvad handlede det om?</li><li><strong>Hvad gjorde jeg?</strong> Hvad sagde jeg, og hvad gjorde jeg – så præcist, at et kamera kunne have optaget det?</li><li><strong>Hvad skete der lige efter?</strong> Hvad sagde eller gjorde de andre i minutterne efter?</li><li><strong>Hvornår har jeg gjort det samme?</strong> Går det, jeg gjorde, igen i de andre situationer?</li><li><strong>Hvad vil jeg gøre næste gang – og hvornår er næste gang?</strong> Én konkret handling i en konkret situation, der ligger i kalenderen.</li></ol>
+    <p class="step-p"><strong>Trin 4 · Tjek med kameratesten.</strong> Læs dine svar på spørgsmål 2 og 3 igennem. Står der noget, et kamera ikke kunne have optaget – »jeg var arrogant«, »de blev frustrerede« – så omskriv det til det, kameraet ville have set: »jeg afbrød hende efter et minut«, »han sagde ikke mere resten af mødet«. Det første er en vurdering. Det andet er en observation.</p>
+    <p>Kameratesten gør din beskrivelse mere konkret. Den gør ikke din hukommelse objektiv. Kan du ikke huske de præcise ord eller handlinger, så skriv det. Du skal ikke opfinde detaljer for at få beskrivelsen til at ligne en observation. Det gælder især spørgsmål 3: Hvad andre gjorde, husker du kun i det omfang, du lagde mærke til det.</p>
+    <p class="step-p"><strong>Trin 5 · Skriv det spørgsmål, du ikke kan svare på.</strong> Nogle spørgsmål kan du ikke besvare indefra. Hvordan så du ud, da du sagde det? Hvad tænkte de andre? Skriv dem ned som spørgsmål til en anden. De er udgangspunktet for næste trin i Selvrevisionen, som Paper 04 handler om.</p>
+    <p class="step-p"><strong>Trin 6 · Stop.</strong> Når du har én handling og ét spørgsmål til en anden, er du færdig. Fortsæt ikke for at finde den dybere forklaring. Den kommer, hvis den kommer, når du har prøvet noget andet.</p>
+    <p>Sådan ser omvendingen ud i praksis:</p>
+    <div class="tbl-wrap"><table class="sig-table"><thead><tr><th>Hvorfor-spørgsmålet</th><th>Hvad-spørgsmålet</th></tr></thead><tbody><tr><td data-label="Hvorfor-spørgsmålet">Hvorfor er jeg så utålmodig?</td><td data-label="Hvad-spørgsmålet">Hvad gjorde jeg i de sidste tre møder, da nogen talte længere, end jeg havde regnet med?</td></tr><tr><td data-label="Hvorfor-spørgsmålet">Hvorfor stoler jeg ikke på dem?</td><td data-label="Hvad-spørgsmålet">Hvilke opgaver har jeg taget tilbage den seneste måned, og hvad skete der lige før?</td></tr><tr><td data-label="Hvorfor-spørgsmålet">Hvorfor kan jeg ikke lade være med at blande mig?</td><td data-label="Hvad-spørgsmålet">I hvilke møder sagde jeg min mening først, og hvad blev der sagt bagefter?</td></tr><tr><td data-label="Hvorfor-spørgsmålet">Hvorfor er jeg sådan?</td><td data-label="Hvad-spørgsmålet">Hvad gjorde jeg, sidste gang en beslutning blev lukket for tidligt?</td></tr></tbody></table></div>
+    <p><strong>Hvornår du gør det.</strong> Lad være med at gøre det klokken fire om morgenen. Hvis spørgsmålene kører om natten, så skriv dit hvorfor ned, og gem resten til dagen efter. Afstanden hjælper, og et fast tidspunkt hjælper endnu mere. Mange af de topledere, jeg arbejder med, lægger et kvarter i kalenderen dagen efter de møder, der betyder mest – ledergruppemødet, bestyrelsesmødet, den svære forhandling. Så bliver registreringen en del af rytmen og ikke noget, der kun sker, når noget er gået galt. Paper 06 handler om, hvordan du giver skrivningen en fast plads.</p>
+    <p>Tidsrammen, de tre situationer og de fem spørgsmål er praktiske rammer fra mit arbejde, ikke en valideret metode. Brug de rammer, der passer til dig, så længe du ender med en handling og et spørgsmål.</p>
+  </div>
+</section>
+
+<section class="section" id="tre-faldgruber">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">08</div>
+    <h2>Tre faldgruber</h2>
+    </div>
+    <p>Hvad-spørgsmålene er enkle. Men de kan også bruges forkert, og i min erfaring sker det især på tre måder.</p>
+    <p><strong>Hvad-spørgsmål kan også blive til grubleri.</strong> Det sker, når du bliver ved med at finde nye situationer og aldrig når til spørgsmål 5. En lang liste over alt, hvad du har gjort forkert, er ikke en registrering. Det er grubleri med bedre struktur. Hold dig til tre situationer og én handling.</p>
+    <p><strong>En vurdering kan forklæde sig som en observation.</strong> »Jeg lukkede diskussionen« lyder som en observation, men det er en tolkning. Hvad gjorde du? Sagde du »så er vi enige«? Rejste du dig? Gik du videre til næste punkt? Jo mere præcist du beskriver det, jo lettere er det at gøre noget andet næste gang – og at spørge andre, om de så det samme.</p>
+    <p><strong>Du leder kun efter bekræftelse.</strong> Derfor er undtagelsen en del af trin 2. Spring den ikke over: I min erfaring fortæller den dig mere om, hvad du kan ændre, end reglen gør.</p>
+    <p>Der er en fjerde begrænsning, som ikke er en fejl, men et vilkår: Du kan kun registrere det, du selv lagde mærke til. Det, der skete i dit ansigt, i din stemme eller i rummet efter, at du var gået, ser du ikke. Derfor ender værktøjet med et spørgsmål til en anden.</p>
+  </div>
+</section>
+
+<section class="section" id="fra-registrering-til-naeste-skridt">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">09</div>
+    <h2>Fra registrering til næste skridt</h2>
+    </div>
+    <p>Hvad-spørgsmålene giver dig to ting: en handling, du kan prøve, og et spørgsmål, du ikke kan besvare selv.</p>
+    <p>Handlingen er det første eksperiment. Den skal være lille og ligge i kalenderen. Den skal ikke løse problemet, men give dig ny information om, hvad der sker, når du gør noget andet. Paper 09 handler om, hvordan du bygger et egentligt eksperiment med et målepunkt.</p>
+    <p>Spørgsmålet er broen til andres øjne. Du har nu en observation, der er konkret nok til, at andre kan svare på den: »Jeg har lagt mærke til, at jeg i tre møder har sagt min egen konklusion i de første minutter. Ser du det samme? Og hvad gør det ved diskussionen?« Det kan besvares med en observation og ikke kun med en mening, som »Har du noget feedback til mig?« inviterer til.</p>
+    <p>For en direktion har det en ekstra fordel. En leder, der kommer med en konkret observation om sig selv, gør det lettere for andre at svare ærligt. Det viser, at du allerede har set noget, og at du ikke beder dem om at fælde en dom. Du beder dem om at tjekke dine data.</p>
+    <div class="takeaway"><strong>Hvad det betyder:</strong> Registrering er ikke målet. Den er det, der gør de næste trin mulige: et eksperiment, du kan prøve, og et spørgsmål, andre kan svare på.</div>
+  </div>
+</section>
+
+<section class="section" id="tilbage-til-casen">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">10</div>
+    <h2>Tilbage til casen</h2>
+    </div>
+    <p>Anne skriver sit hvorfor øverst på siden: »Hvorfor er jeg sådan?« Så finder hun tre situationer: budgetmødet i september, mødet om lanceringsplanen sidste forår og månedsmødet tidligere samme dag, hvor hun trods sin beslutning fra dag 30 var faldet tilbage. Og hun leder efter en undtagelse.</p>
+    <p>Kameratesten tvinger hende til at omskrive flere svar. »Jeg var for hurtig« bliver til »jeg sagde mit eget tal, før Line havde præsenteret sit«. »De gav op« bliver til »Karim lukkede sin computer og sagde ikke mere«.</p>
+    <p>Da hun er færdig, står der tre linjer:</p>
+    <div class="tbl-wrap"><table class="sig-table"><thead><tr><th>Spørgsmål</th><th>Hvad hun skrev</th></tr></thead><tbody><tr><td data-label="Spørgsmål">Hvad gjorde jeg?</td><td data-label="Hvad hun skrev">I alle tre møder sagde jeg min egen konklusion inden for de første minutter. I to af dem rettede jeg et tal, mens den, der præsenterede, stadig forklarede.</td></tr><tr><td data-label="Spørgsmål">Hvad skete der lige efter?</td><td data-label="Hvad hun skrev">Jeg oplevede, at diskussionen blev kortere. I to af møderne kan jeg ikke huske, at nogen stillede spørgsmål til min konklusion. (Min oplevelse – skal afprøves hos andre.)</td></tr><tr><td data-label="Spørgsmål">Hvornår gjorde jeg det ikke?</td><td data-label="Hvad hun skrev">På et strategiseminar sidste forår, hvor jeg havde besluttet at lytte den første time. Dér kom der tre alternativer på bordet.</td></tr></tbody></table></div>
+    <p>Den første linje er hendes egen registrering, og den stemmer med det, Karim, Line og Jesper har beskrevet. Men det er tre situationer, hun selv har valgt, ikke et repræsentativt billede af hendes mødeadfærd. Den anden er hendes oplevelse, ikke en observation: Hun har intet at sammenligne mødernes længde med. Hun tilføjer en note: <em>Jeg ved ikke, om diskussionerne bliver kortere eller flytter til formøderne, fordi jeg gør sådan. Det kan jeg ikke se herfra.</em> Det bliver hendes spørgsmål til andre.</p>
+    <p>Svaret på spørgsmål 5 bliver kort: »På budgetopfølgningen torsdag præsenterer jeg spørgsmålet og venter med min egen vurdering, til to andre har sagt noget.«</p>
+    <p>Hun ved stadig ikke, hvorfor hun gør det. Men hun ved, hvad hun gør, hvornår hun gør det, og hvad hun vil prøve på torsdag. Og hun har et spørgsmål til de mennesker, der ser hende arbejde. Det stiller hun i Paper 04.</p>
+    <p>Næste gang gør hun det ikke klokken fire om morgenen. Hun lægger et kvarter i kalenderen dagen efter hvert ledergruppemøde.</p>
+  </div>
+</section>
+
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">11 — Status</div>
+    <h2>Hvad du kan se, og hvad du ikke må konkludere</h2>
+    </div>
+    <div class="ro-box" role="group" aria-label="Hvad du kan se, og hvad du ikke må konkludere">
+      <div class="ro">
+        <div class="ro-h">Hvad kan du se nu?</div>
+        <p>Du kan se forskel på at tænke over dig selv og at få noget ud af det. Du kan genkende, hvornår din selvransagelse kører i ring. Og du har omformuleret ét hvorfor til en række konkrete observationer, én handling, du kan prøve, og ét spørgsmål, du ikke kan besvare selv.</p>
+      </div>
+      <div class="ro">
+        <div class="ro-h">Hvad må du ikke konkludere?</div>
+        <p>Du må ikke konkludere, at du aldrig må spørge hvorfor. Forskningen viser, at hvorfor-spørgsmål kan hjælpe, når de stilles på afstand. Tre selvvalgte situationer er heller ikke et bevis for et mønster; de er et godt sted at begynde at lede, og en undtagelse kan fortælle lige så meget. En konkret beskrivelse er heller ikke det samme som en præcis erindring. Og dine egne observationer viser kun det, du selv lagde mærke til. Om virkningen på andre er den, du tror, kan du først vide, når du har spurgt dem. Endelig siger dette paper intet om, hvordan du har det. Hvis tankerne fylder meget over længere tid, er det et spørgsmål til din læge, ikke til en ledelsesøvelse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="roller">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">12 — Fire roller</div>
+    <h2>Hvad betyder det for dig – og for dem omkring dig?</h2>
+    </div>
+    <div class="roles">
+      <details class="faq-item" open>
+        <summary class="faq-q"><span>Til dig selv<span class="rq-sub">Når du arbejder med det alene</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Når du opdager, at du spørger »hvorfor er jeg sådan?«, så skriv spørgsmålet ned og skift til »hvad gjorde jeg?«.</li><li>Brug kameratesten på dine egne svar. Det, et kamera ikke kunne optage, er en vurdering.</li><li>Stop, når du har én handling og ét spørgsmål til en anden.</li></ul></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>Til din ledergruppe<span class="rq-sub">Når du bruger det sammen med dem, du leder</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Brug hvad-spørgsmål i jeres egne evalueringer: »Hvad gjorde vi?« før »Hvorfor gik det galt?«.</li><li>Del én af dine observationer om dig selv og spørg, om de ser det samme. Det gør det lettere for dem at svare med observationer.</li></ul></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>Til HR<span class="rq-sub">Når HR understøtter direktionen</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Lad refleksionsøvelser i lederudvikling ende i en handling og et spørgsmål til en anden, ikke i en beskrivelse af lederens personlighed.</li><li>Vær opmærksom på grænsen: Ledelsesudvikling vurderer ikke helbred. Henvis til egen læge, hvis tankerne fylder meget over længere tid.</li></ul></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>Til bestyrelsen<span class="rq-sub">Når bestyrelsen spørger til direktøren</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Spørg i direktørevalueringen til konkrete situationer og adfærd, ikke til personlighed: »Hvad gjorde du, da ledergruppen var uenig om budgettet?«</li></ul></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="konkret">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">13 — Gør det konkret</div>
+    <h2>Øvelse og dit næste skridt</h2>
+    </div>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · Topleder · Skriftlig</div>
+      <div class="ex-meta">⏱ 15–30 minutter første gang · Ingen score. Øvelsen ender i én handling og ét spørgsmål til en anden.</div>
+      <ol>
+        <li><strong>Skriv det hvorfor, der oftest kører i dit hoved om dit eget lederskab, ned i dag.</strong></li>
+        <li><strong>Find op til tre konkrete situationer fra de seneste uger, hvor det kunne være sket, og mindst én, hvor det ikke skete.</strong></li>
+        <li><strong>Stil de fem hvad-spørgsmål til hver situation, og brug kameratesten på dine svar.</strong></li>
+        <li><strong>Skriv én handling, du vil prøve i en bestemt situation i kalenderen.</strong></li>
+        <li><strong>Skriv ét spørgsmål, du ikke kan besvare selv, og vælg den person, du vil stille det til.</strong></li>
+      </ol>
+      <p class="ex-out">Resultat: én handling i en bestemt situation i kalenderen · ét spørgsmål, du ikke kan besvare selv.</p>
+    </div>
+
+    <div class="sheet-card tool-card">
+      <div class="sc-text">
+        <div class="cta-label">Interaktivt værktøj · alt bliver i din browser</div>
+        <h3>Hvad-spørgsmålene</h3>
+        <p>Skriv dit hvorfor, find op til tre situationer og én undtagelse, og svar på de fem spørgsmål. Kameratesten markerer ord, der måske er vurderinger. Svarene bliver i din browser.</p>
+      </div>
+      <a class="pdf-btn primary" href="/selvindsigt-hvad-spoergsmaalene.html">Åbn værktøjet →</a>
+    </div>
+
+    <div class="sheet-card">
+      <div class="sc-text">
+        <div class="cta-label">Refleksionsark · 1 side A4</div>
+        <h3>Tag spørgsmålene med på papir</h3>
+        <p>Paperet giver argumentet. Refleksionsarket samler spørgsmålene og de næste skridt på én side, så du kan skrive i hånden.</p>
+      </div>
+      <button class="pdf-btn primary" type="button" onclick="friisnaesSheet()" aria-label="Print refleksionsarket til Paper 03 som én A4-side">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Hent refleksionsark
+      </button>
+    </div>
+
+    <div class="commit-box" id="commit">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 03 · Introspektion er ikke det samme som indsigt</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv dit commitment her. Det gemmes kun i din egen browser.</p>
+      <label for="commitText">Mit commitment</label>
+      <p class="commit-note">Den handling, jeg vil prøve, er ____, i mødet ____ / ____. Det spørgsmål, jeg vil stille en anden, er ____.</p>
+      <textarea id="commitText" placeholder="Den handling, jeg vil prøve · mødet · det spørgsmål, jeg vil stille en anden"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit commitment</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Selvindsigt er en disciplin</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="metode">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">14 — Metode og næste paper</div>
+    <h2>Hvad paperet bygger på</h2>
+    </div>
+    <p>Paperet bygger på forskning i selverkendelse, selvrefleksion, grublen og hvorfor- og hvad-spørgsmål samt på min praksis med topledere; seriens skel mellem refleksion og grubleri og Hvad-spørgsmålene er praksisværktøjer, ikke validerede instrumenter.</p>
+    <p><em>Grundlag: Forskning er kildeangivet. Min praksis står som erfaring. Hvad-spørgsmålene og seriens skel mellem refleksion og grubleri er praksisværktøjer, ikke validerede måleinstrumenter.</em></p>
+
+    <h3>Næste i serien</h3>
+    <p><strong>Paper 04 · Feedback er data, ikke en dom</strong> – hvordan du beder om feedback, tager imod den uden at gå i forsvar og læser mønstret i den.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="/selvindsigt-feedback-er-data-ikke-en-dom.html" data-sid-on="2027-04-12" hidden>
+        <div class="nc-tag">Paper 04</div>
+        <div class="nc-text"><strong>Feedback er data, ikke en dom</strong> — hvordan du beder om feedback, tager imod den uden at gå i forsvar og læser mønstret i den.</div>
+      </a>
+      <div class="next-card soon" aria-disabled="true" data-sid-off="2027-04-12">
+        <div class="nc-tag">Paper 04 · Udkommer 12. april 2027</div>
+        <div class="nc-text"><strong>Feedback er data, ikke en dom</strong> — hvordan du beder om feedback, tager imod den uden at gå i forsvar og læser mønstret i den.</div>
+      </div>
+      <a class="next-card" href="/selvindsigt-jo-hoejere-op-jo-daarligere-spejl.html">
+        <div class="nc-tag">Selvindsigt er en disciplin · Paper 02</div>
+        <div class="nc-text"><strong>Jo højere op, jo dårligere spejl</strong> — Feedbackflow-kortet</div>
+      </a>
+      <a class="next-card" href="/library.html">
+        <div class="nc-tag">Executive Library</div>
+        <div class="nc-text"><strong>Alle serier og papers</strong> om lederen, holdet, strategien og eksekveringen</div>
+      </a>
+    </div>
+    <p class="author-note"><strong>Om forfatteren:</strong> <em>Thomas Friisnæs er executive coach og forfatter til flere bøger og paper-serier om ledelse, karakter og disciplin. friisnaes.com</em></p>
+  </div>
+</section>
+
+</article>
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block" aria-label="Kilder">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">Selverkendelse, selvrefleksion og grublen</div>
+    <ul>
+      <li>Carlson, E. N. (2013). Overcoming the barriers to self-knowledge: Mindfulness as a path to seeing yourself as you really are. <em>Perspectives on Psychological Science</em>, 8(2), 173–186. <a href="https://doi.org/10.1177/1745691612462584" target="_blank" rel="noopener">doi.org/10.1177/1745691612462584</a></li>
+      <li>Grant, A. M., Franklin, J., &amp; Langford, P. (2002). The Self-Reflection and Insight Scale: A new measure of private self-consciousness. <em>Social Behavior and Personality</em>, 30(8), 821–836. <a href="https://doi.org/10.2224/sbp.2002.30.8.821" target="_blank" rel="noopener">doi.org/10.2224/sbp.2002.30.8.821</a></li>
+      <li>Kross, E., Ayduk, O., &amp; Mischel, W. (2005). When asking "why" does not hurt: Distinguishing rumination from reflective processing of negative emotions. <em>Psychological Science</em>, 16(9), 709–715. <a href="https://doi.org/10.1111/j.1467-9280.2005.01600.x" target="_blank" rel="noopener">doi.org/10.1111/j.1467-9280.2005.01600.x</a></li>
+      <li>Ledelseskommissionen (2018). <em>Sæt borgerne først. Ledelseskommissionens anbefalinger</em> (kortversion), s. 13. <a href="https://regeringen.dk/media/rgojuvil/ledelseskom_260518.pdf" target="_blank" rel="noopener">regeringen.dk</a></li>
+      <li>Nolen-Hoeksema, S., Wisco, B. E., &amp; Lyubomirsky, S. (2008). Rethinking rumination. <em>Perspectives on Psychological Science</em>, 3(5), 400–424. <a href="https://doi.org/10.1111/j.1745-6924.2008.00088.x" target="_blank" rel="noopener">doi.org/10.1111/j.1745-6924.2008.00088.x</a></li>
+      <li>Vazire, S. (2010). Who knows what about a person? The self–other knowledge asymmetry (SOKA) model. <em>Journal of Personality and Social Psychology</em>, 98(2), 281–300. <a href="https://doi.org/10.1037/a0017908" target="_blank" rel="noopener">doi.org/10.1037/a0017908</a></li>
+      <li>Watkins, E. R. (2008). Constructive and unconstructive repetitive thought. <em>Psychological Bulletin</em>, 134(2), 163–206. <a href="https://doi.org/10.1037/0033-2909.134.2.163" target="_blank" rel="noopener">doi.org/10.1037/0033-2909.134.2.163</a></li>
+      <li>Wilson, T. D., &amp; Dunn, E. W. (2004). Self-knowledge: Its limits, value, and potential for improvement. <em>Annual Review of Psychology</em>, 55, 493–518. <a href="https://doi.org/10.1146/annurev.psych.55.090902.141954" target="_blank" rel="noopener">doi.org/10.1146/annurev.psych.55.090902.141954</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- REFLEKSIONSARK -->
+<aside class="refl-sheet" id="refleksionsark" aria-label="Refleksionsark til Paper 03">
+  <div class="rs-kicker">Selvindsigt er en disciplin · Serie 09 · Paper 03</div>
+  <div class="rs-title">Introspektion er ikke det samme som indsigt</div>
+  <div class="rs-sub">Spørg ikke, hvorfor du gør det. Spørg, hvad du gør. Om forskellen på refleksion og grubleri – og fem spørgsmål, der vender et hvorfor til en observation.</div>
+  <div class="rs-prov">
+    <div class="rs-lbl">Signaturlinje</div>
+    <div class="rs-prov-t">Spørg ikke, hvorfor du gør det. Spørg, hvad du gør.</div>
+  </div>
+  <div class="rs-lbl">Spørgsmålet</div>
+  <div class="rs-cq">Hvad gjorde jeg de sidste tre gange, en beslutning blev lukket for tidligt?</div>
+  <div class="rs-cols">
+    <div>
+      <div class="rs-lbl">Tre pointer</div>
+      <ol class="rs-list rs-strong">
+        <li>At kigge længe ind i sig selv er ikke det samme som at se sig selv tydeligt.</li>
+        <li>En forklaring på din karakter kan blive en tilladelse. En observation kan blive en plan.</li>
+        <li>Begynd med, hvad du gjorde. Undersøg hvorfor, når du har noget konkret at undersøge.</li>
+      </ol>
+    </div>
+    <div>
+      <div class="rs-lbl">Fem spørgsmål</div>
+      <ol class="rs-list">
+        <li>Hvad skete der?</li>
+        <li>Hvad gjorde jeg – så et kamera kunne have optaget det?</li>
+        <li>Hvad skete der lige efter?</li>
+        <li>Hvornår har jeg gjort det samme – og hvornår ikke?</li>
+        <li>Hvad vil jeg gøre næste gang, og hvornår er næste gang?</li>
+      </ol>
+    </div>
+  </div>
+  <div class="rs-now">
+    <div class="rs-lbl">Mit commitment</div>
+    <div class="rs-now-h">Den handling, jeg vil prøve, er ____, i mødet ____ / ____. Det spørgsmål, jeg vil stille en anden, er ____.</div>
+    <div class="rs-now-a">Gør det ikke klokken fire om morgenen. Skriv dit hvorfor ned, og gem resten til dagen efter.</div>
+  </div>
+  <div class="rs-lbl">Hvad-spørgsmålene · tre skridt</div>
+  <div class="rs-clocks">
+    <div><div class="rs-lbl">Skriv</div><strong>Dit hvorfor.</strong><span>Præcis som det lyder i dit hoved.</span></div>
+    <div><div class="rs-lbl">Registrér</div><strong>Tre situationer og én undtagelse.</strong><span>De fem spørgsmål og kameratesten.</span></div>
+    <div><div class="rs-lbl">Stop</div><strong>Én handling, ét spørgsmål.</strong><span>Når du har dem, er du færdig.</span></div>
+  </div>
+  <div class="rs-foot"><span>Refleksionsark til Paper 03 · Selvindsigt er en disciplin · Thomas Friisnæs · friisnaes.com</span><span class="rs-foot-r">Ikke en test. Ikke en score. Et sted at tænke.</span></div>
+</aside>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Selvindsigt er en disciplin — serien</div>
+    <h2 class="collection-title">Executive playbook: coach dig selv, og forstå det, du ikke kan se selv</h2>
+    <p class="collection-intro">Ti papers om selvindsigt som en disciplin: præcis viden om din egen adfærd og dens virkning på andre, underbygget af evidens. I fire dele, fra det, du ikke kan se, til en personlig playbook.</p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 1</span><span class="cpart-name">Det, du ikke kan se</span></div>
+      <p class="cpart-desc">Hvorfor dit billede af dig selv kun er et udgangspunkt, og hvorfor spejlet bliver dårligere, jo højere du kommer op.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/selvindsigt-er-ikke-en-foelelse.html" data-sid-on="2027-03-01" hidden>Selvindsigt er ikke en følelse. Det er evidens.</a><span class="soon" data-sid-off="2027-03-01">Selvindsigt er ikke en følelse. Det er evidens.<small>Udkommer 1. marts 2027</small></span></li>
+        <li data-n="02"><a href="/selvindsigt-jo-hoejere-op-jo-daarligere-spejl.html" data-sid-on="2027-03-15" hidden>Jo højere op, jo dårligere spejl</a><span class="soon" data-sid-off="2027-03-15">Jo højere op, jo dårligere spejl<small>Udkommer 15. marts 2027</small></span></li>
+        <li data-n="03"><span class="current">Introspektion er ikke det samme som indsigt — du læser dette</span></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 2</span><span class="cpart-name">Instrumenterne</span></div>
+      <p class="cpart-desc">Feedback, tests og skriftlig refleksion som instrumenter, du kan bruge med en fast rytme.</p>
+      <ol class="cpart-papers">
+        <li data-n="04"><a href="/selvindsigt-feedback-er-data-ikke-en-dom.html" data-sid-on="2027-04-12" hidden>Feedback er data, ikke en dom</a><span class="soon" data-sid-off="2027-04-12">Feedback er data, ikke en dom<small>Udkommer 12. april 2027</small></span></li>
+        <li data-n="05"><a href="/selvindsigt-testen-er-et-sprog-ikke-en-diagnose.html" data-sid-on="2027-04-26" hidden>Testen er et sprog, ikke en diagnose</a><span class="soon" data-sid-off="2027-04-26">Testen er et sprog, ikke en diagnose<small>Udkommer 26. april 2027</small></span></li>
+        <li data-n="06"><a href="/selvindsigt-skriv-for-at-taenke.html" data-sid-on="2027-05-10" hidden>Skriv for at tænke</a><span class="soon" data-sid-off="2027-05-10">Skriv for at tænke<small>Udkommer 10. maj 2027</small></span></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 3</span><span class="cpart-name">Med og uden coach</span></div>
+      <p class="cpart-desc">Hvor langt du kan coache dig selv, og hvad der skal ske mellem samtalerne.</p>
+      <ol class="cpart-papers">
+        <li data-n="07"><a href="/selvindsigt-coach-dig-selv-og-kend-graensen.html" data-sid-on="2027-05-24" hidden>Coach dig selv – og kend grænsen</a><span class="soon" data-sid-off="2027-05-24">Coach dig selv – og kend grænsen<small>Udkommer 24. maj 2027</small></span></li>
+        <li data-n="08"><a href="/selvindsigt-forandringen-sker-mellem-samtalerne.html" data-sid-on="2027-06-07" hidden>Forandringen sker mellem samtalerne</a><span class="soon" data-sid-off="2027-06-07">Forandringen sker mellem samtalerne<small>Udkommer 7. juni 2027</small></span></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 4</span><span class="cpart-name">Fra indsigt til adfærd</span></div>
+      <p class="cpart-desc">Fra mønster til ét eksperiment og til en personlig playbook, du kan holde dig selv op på.</p>
+      <ol class="cpart-papers">
+        <li data-n="09"><a href="/selvindsigt-indsigt-uden-adfaerdsaendring-er-underholdning.html" data-sid-on="2027-06-21" hidden>Indsigt uden adfærdsændring er underholdning</a><span class="soon" data-sid-off="2027-06-21">Indsigt uden adfærdsændring er underholdning<small>Udkommer 21. juni 2027</small></span></li>
+        <li data-n="10"><a href="/selvindsigt-din-personlige-playbook.html" data-sid-on="2027-07-05" hidden>Din personlige playbook</a><span class="soon" data-sid-off="2027-07-05">Din personlige playbook<small>Udkommer 5. juli 2027</small></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4, klar til at læse, gemme eller tage med til næste samtale om din rolle og din tid. Refleksionsarket er én side til at skrive på.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesSheet()" aria-label="Print refleksionsarket som én A4-side">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+        Refleksionsark
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="fb-signup" aria-label="Tilmeld dig C-Level Brief">
+  <div class="fb-signup-in">
+    <div>
+      <div class="fb-signup-k">C-Level Brief · hver mandag</div>
+      <h3>Få briefen <em>hver mandag.</em></h3>
+      <p>Signaler med konsekvens for topledere – i din indbakke. Otte minutter. Afmeld med ét klik.</p>
+    </div>
+    <a class="fb-signup-btn" href="https://brief.subscribepage.io" target="_blank" rel="noopener">Tilmeld dig</a>
+  </div>
+</section>
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/selvindsigt-jo-hoejere-op-jo-daarligere-spejl.html" data-from="2027-03-15">
+      <span class="ra-tag">Selvindsigt er en disciplin · Paper 02</span>
+      <span class="ra-title">Jo højere op, jo dårligere spejl</span>
+    </a>
+    <a href="/selvindsigt-feedback-er-data-ikke-en-dom.html" data-from="2027-04-12">
+      <span class="ra-tag">Selvindsigt er en disciplin · Paper 04</span>
+      <span class="ra-title">Feedback er data, ikke en dom</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Selvindsigt er en disciplin · Serie 09 · Paper 03 af 10</div>
+        <div class="series-next"><span data-sid-on="2027-04-12" hidden>Næste: <a href="/selvindsigt-feedback-er-data-ikke-en-dom.html">Feedback er data, ikke en dom</a></span><span data-sid-off="2027-04-12">Næste: Feedback er data, ikke en dom · udkommer 12. april 2027</span></div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: sid_ (Selvindsigt er en disciplin)
+  var LS_C = 'sid_p03_commit', LS_D = 'sid_done', PAPER_N = 3, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // Rullebokse og FAQ åbne i print
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // Udgivelsesplan: links til papers i serien vises først fra deres udgivelsesdato (ét paper hver anden mandag)
+  (function () {
+    var now = new Date();
+    function on(d) { return now >= new Date(d + 'T00:00:00+01:00'); }
+    document.querySelectorAll('[data-sid-on]').forEach(function (el) { if (on(el.getAttribute('data-sid-on'))) el.removeAttribute('hidden'); });
+    document.querySelectorAll('[data-sid-off]').forEach(function (el) { if (on(el.getAttribute('data-sid-off'))) el.remove(); });
+  })();
+
+  // Læs også: links til papers i andre serier vises først fra deres udgivelsesdato
+  (function () {
+    var now = new Date();
+    document.querySelectorAll('.read-also a[data-from]').forEach(function (a) {
+      if (now < new Date(a.getAttribute('data-from') + 'T00:00:00+01:00')) a.setAttribute('hidden', '');
+    });
+  })();
+
+  // Refleksionsark: printer kun arket som én A4-side
+  function friisnaesSheet() {
+    try {
+      document.body.classList.add('print-sheet');
+      var cleanup = function () {
+        document.body.classList.remove('print-sheet');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

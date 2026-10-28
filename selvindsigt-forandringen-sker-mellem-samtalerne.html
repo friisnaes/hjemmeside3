@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forandringen sker mellem samtalerne | Selvindsigt</title>
+<meta name="description" content="Paper 08 i Selvindsigt er en disciplin: hvorfor forandring efter coaching og feedback afhænger af det, der sker imellem – med Mellemrummets plan.">
+<meta name="keywords" content="coaching, mentor, transfer, observatør, adfærdsændring, feedback, selvindsigt, executive coaching, topleder, CEO, Mellemrummets plan">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/selvindsigt-forandringen-sker-mellem-samtalerne.html">
+
+<meta property="og:title" content="Forandringen sker mellem samtalerne | Selvindsigt er en disciplin">
+<meta property="og:description" content="En god samtale kan give indsigt på en time. Men adfærden ændrer sig i ugerne efter – eller ikke. Paper 08 om mellemrummet og Mellemrummets plan.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/selvindsigt-forandringen-sker-mellem-samtalerne.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-serie-09.jpg">
+<meta property="og:image:alt" content="Selvindsigt er en disciplin – serie af Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta property="article:section" content="Selvindsigt er en disciplin">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Forandringen sker mellem samtalerne">
+<meta name="twitter:description" content="Samtalen giver indsigten. Ugen imellem giver forandringen. Paper 08 i Selvindsigt er en disciplin.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-serie-09.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+
+
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; margin: 28px 0 8px; }
+  .flow span { font-size: 13.5px; font-weight: 500; color: var(--navy); background: #fff; border: 1px solid var(--border); padding: 7px 12px; border-radius: 2px; }
+  .flow .flow-end { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .flow i { font-style: normal; color: var(--gold); font-size: 14px; }
+  @media print { .flow .flow-end { background: #fff !important; color: #111 !important; border: 1px solid #111; } }
+  /* ===== VISUALS (vz) ===== */
+  .vz { margin: 38px 0 32px; border: 1px solid var(--border); border-radius: 5px; background: #fff; overflow: hidden; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .vz-head { padding: 20px 28px 16px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .vz-kicker { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .vz-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 25px; line-height: 1.2; color: var(--navy); }
+  .vz-art { padding: 26px 28px 8px; }
+  .vz-art svg { display: block; width: 100%; max-width: 580px; height: auto; margin: 0 auto; }
+  .vz-art .t-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; }
+  .vz-art .t-sans { font-family: 'Outfit', -apple-system, sans-serif; font-weight: 400; }
+  .vz-punch { padding: 6px 28px 22px; text-align: center; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-style: italic; font-size: 19px; line-height: 1.4; color: var(--navy); }
+  .vz figcaption { padding: 12px 28px 16px; border-top: 1px solid var(--border); font-size: 12.5px; line-height: 1.5; color: var(--text-light); font-style: italic; }
+  @media (max-width: 640px) {
+    .vz-head, .vz-art, .vz-punch, .vz figcaption { padding-left: 16px; padding-right: 16px; }
+    .vz-title { font-size: 21px; }
+    .vz-punch { font-size: 17px; }
+  }
+  @media print {
+    .vz { page-break-inside: avoid; break-inside: avoid; border: 0.75pt solid #ccc; }
+    .vz-head { background: #fff !important; }
+  }
+  /* ===== REFLEKSIONSARK ===== */
+  .sheet-card { display: flex; gap: 28px; align-items: center; justify-content: space-between; border: 1px solid var(--border); border-left: 3px solid var(--gold); background: #fff; border-radius: 5px; padding: 26px 30px; margin: 30px 0; }
+  .section .sheet-card h3 { margin: 0 0 8px; font-size: 22px; }
+  .section .sheet-card p { font-size: 15px; line-height: 1.6; color: var(--text-mid); margin: 0; }
+  .sheet-card .pdf-btn { flex-shrink: 0; }
+  @media (max-width: 720px) { .sheet-card { flex-direction: column; align-items: flex-start; } }
+  .refl-sheet { display: none; }
+  @media print {
+    .sheet-card { display: none !important; }
+    .refl-sheet { display: block; break-before: page; page-break-before: always; break-inside: avoid; page-break-inside: avoid; font-family: 'Outfit', sans-serif; color: #1a1a1a; font-size: 9.5pt; line-height: 1.45; }
+    body.print-sheet > *:not(#refleksionsark) { display: none !important; }
+    body.print-sheet .refl-sheet { break-before: auto; page-break-before: auto; }
+    .refl-sheet .rs-kicker { border-top: 2px solid #c0392b; padding-top: 7pt; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: #c0392b; font-weight: 600; }
+    .refl-sheet .rs-title { font-family: 'Playfair Display', Georgia, serif; font-size: 23pt; line-height: 1.12; margin: 5pt 0 2pt; color: #111; }
+    .refl-sheet .rs-sub { font-size: 9.5pt; color: #555; margin-bottom: 12pt; }
+    .refl-sheet .rs-lbl { font-size: 7pt; letter-spacing: .12em; text-transform: uppercase; color: #c0392b; font-weight: 600; margin-bottom: 4pt; }
+    .refl-sheet .rs-prov { background: #f5f2ec !important; padding: 11pt 14pt 13pt; margin-bottom: 12pt; }
+    .refl-sheet .rs-prov-t { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17pt; line-height: 1.25; color: #111; }
+    .refl-sheet .rs-cq { font-family: 'Playfair Display', Georgia, serif; font-size: 13.5pt; line-height: 1.3; color: #111; padding-bottom: 11pt; margin-bottom: 11pt; border-bottom: 1px solid #ddd; }
+    .refl-sheet .rs-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18pt; margin-bottom: 11pt; }
+    .refl-sheet .rs-list { list-style: none; counter-reset: rs; margin: 0; padding: 0; }
+    .refl-sheet .rs-list li { counter-increment: rs; position: relative; padding-left: 18pt; margin-bottom: 6pt; font-size: 9pt; }
+    .refl-sheet .rs-list li::before { content: counter(rs, decimal-leading-zero); position: absolute; left: 0; color: #c0392b; font-weight: 600; font-size: 8pt; }
+    .refl-sheet .rs-strong li { font-weight: 500; }
+    .refl-sheet .rs-now { background: #111 !important; color: #fff !important; padding: 11pt 14pt; border-radius: 3pt; margin-bottom: 11pt; }
+    .refl-sheet .rs-now .rs-lbl { color: #e74c3c; }
+    .refl-sheet .rs-now-h { font-size: 10.5pt; font-weight: 500; color: #fff; margin-bottom: 3pt; }
+    .refl-sheet .rs-now-p { font-size: 9pt; color: rgba(255,255,255,.8); margin-bottom: 5pt; }
+    .refl-sheet .rs-now-a { font-size: 9pt; color: #f0c8a8; font-weight: 500; }
+    .refl-sheet .rs-clocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7pt; margin-bottom: 26pt; }
+    .refl-sheet .rs-clocks > div { background: #f5f2ec !important; padding: 9pt 10pt; }
+    .refl-sheet .rs-clocks strong { display: block; font-size: 9.5pt; color: #111; margin-bottom: 3pt; }
+    .refl-sheet .rs-clocks span { display: block; font-size: 8.3pt; color: #555; line-height: 1.4; }
+    .refl-sheet .rs-foot { display: flex; justify-content: space-between; gap: 12pt; border-top: 1px solid #ccc; padding-top: 6pt; font-size: 7.5pt; color: #666; }
+    .refl-sheet .rs-foot-r { color: #c0392b; }
+  }
+  /* ===== EXECUTIVE COACHING 2027 · seriesignatur ===== */
+  .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .contrast { margin: 38px 0; border-top: 2px solid var(--navy); border-bottom: 1px solid var(--border); }
+  .contrast-head { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(22px, 3.2vw, 28px); color: var(--navy); line-height: 1.25; padding: 22px 0 18px; }
+  .contrast-cols { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); }
+  .contrast-cols > div { padding: 20px 22px 22px 0; }
+  .contrast-cols > div + div { padding-left: 22px; border-left: 1px solid var(--border); }
+  .contrast-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .contrast-cols ul { list-style: none; }
+  .contrast-cols li { font-size: 14.5px; line-height: 1.55; color: var(--text-mid); padding: 6px 0; border-bottom: 1px dotted var(--border); }
+  .contrast-cols li:last-child { border-bottom: 0; }
+  .contrast-foot { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.45; color: var(--navy); padding: 18px 0 20px; border-top: 1px solid var(--border); }
+  .coach-q { margin: 10px 0 6px; padding: 54px 0 46px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .section .coach-q .cq-text { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: clamp(28px, 4.6vw, 42px); line-height: 1.22; color: var(--navy); letter-spacing: -0.01em; margin: 0 0 26px; }
+  .section .coach-q .cq-note { font-size: 15px; line-height: 1.65; color: var(--text-light); max-width: 540px; margin: 0; }
+  .clocks { display: grid; grid-template-columns: repeat(3, 1fr); margin: 32px 0 14px; background: var(--navy); color: #fff; border-radius: 5px; overflow: hidden; }
+  .clock { padding: 30px 26px 30px; }
+  .clock + .clock { border-left: 1px solid rgba(255,255,255,0.12); }
+  .clock-h { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: #fff; line-height: 1.1; margin-bottom: 12px; }
+  .section .clock .clock-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.4; color: var(--gold-light); margin-bottom: 14px; }
+  .section .clock p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.78); margin-bottom: 0; }
+  .section .clocks-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 10px 0 30px; }
+  .ro-box { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 5px; background: #fff; margin: 10px 0 20px; }
+  .ro { padding: 24px 26px; }
+  .ro + .ro { border-left: 1px solid var(--border); }
+  .ro-h { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .section .ro p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; }
+  .section .ex-intro { font-size: 15.5px; color: var(--text-mid); margin-bottom: 20px; }
+  .section .ex-out { font-size: 15px; color: var(--navy); font-weight: 500; margin: 8px 0 0; }
+  @media (max-width: 720px) {
+    .contrast-cols, .clocks, .ro-box { grid-template-columns: 1fr; }
+    .contrast-cols > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--border); }
+    .contrast-cols > div { padding-right: 0; }
+    .clock + .clock { border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); }
+    .ro + .ro { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .contrast, .coach-q, .clocks, .ro-box, .framework-box, .exercise-box, .micro-action, .commit-box, .cta-box { break-inside: avoid; page-break-inside: avoid; }
+    .clocks { background: #fff !important; color: #1a1a1a !important; border: 1px solid #ccc; }
+    .clock-h, .section .clock p { color: #1a1a1a !important; }
+    .section .clock .clock-q { color: #c0392b !important; }
+    .section .coach-q .cq-text { font-size: 22pt; }
+  }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
+</style>
+<style id="mobilstandard">@media (max-width:600px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}@media (min-width:601px) and (max-width:1000px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.nav-nd-c,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}@media (min-width:1001px) and (max-width:1300px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.nav-nd-c,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}@media (min-width:1301px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.nav-nd-c,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}.m-smal{display:none}@media (max-width:639px){.vz-art .m-bred{display:none}.vz-art .m-smal{display:block}.vz-art .m-smal svg{display:block;width:100%;max-width:420px;height:auto;margin:0 auto}figure.vz{margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;max-width:none!important;border-left:0!important;border-right:0!important;border-radius:0!important}figure.vz .vz-art{padding-left:0!important;padding-right:0!important}}</style>
+<style>
+  /* Selvindsigt er en disciplin · tilføjelser til Executive Library-skabelonen */
+  .wp-lead { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(19px, 2.4vw, 22px); line-height: 1.6; color: var(--navy); font-weight: 400; margin-bottom: 22px; }
+  .wp-lead strong { font-weight: 400; }
+  .section ul.pl, .section ol.pl { margin: 4px 0 24px 22px; }
+  .section ul.pl { list-style: disc; } .section ol.pl { list-style: decimal; }
+  .section ul.pl li, .section ol.pl li { font-size: 17px; line-height: 1.75; color: var(--text-mid); margin-bottom: 10px; padding-left: 4px; }
+  .section ul.pl li::marker, .section ol.pl li::marker { color: var(--gold); }
+  .section li strong { color: var(--navy); font-weight: 500; }
+  .case-note { font-size: 14px !important; line-height: 1.6 !important; color: var(--text-light) !important; border-left: 2px solid var(--border); padding-left: 16px; }
+  .takeaway { background: var(--cream); border-left: 3px solid var(--gold); padding: 18px 24px; margin: 26px 0; font-size: 16.5px; line-height: 1.7; color: var(--text-mid); }
+  .takeaway strong { color: var(--navy); font-weight: 600; }
+  .step-p strong { color: var(--navy); font-weight: 600; }
+  .pull-quote.sig { font-style: normal; font-weight: 500; }
+  .tbl-wrap { margin: 18px 0 30px; }
+  @media (min-width: 601px) {
+    .sig-table.nr td:first-child { width: 12%; }
+    .sig-table.c3 td:first-child { width: 34%; }
+    .sig-table.c5 td:first-child { width: 20%; }
+    .sig-table.c5 td, .sig-table.c5 th { font-size: 13.5px; }
+  }
+  .roles { margin: 10px 0 8px; border-top: 2px solid var(--navy); }
+  .roles .faq-a ul { margin: 0 0 4px 20px; list-style: disc; }
+  .roles .faq-a li { margin-bottom: 8px; }
+  .roles .faq-a li::marker { color: var(--gold); }
+  .roles .faq-q .rq-sub { display: block; font-size: 13px; font-weight: 300; color: var(--text-light); margin-top: 2px; }
+  .tool-card .pdf-btn { text-decoration: none; white-space: nowrap; }
+  .author-note { font-size: 14.5px !important; color: var(--text-light) !important; border-top: 1px solid var(--border); padding-top: 18px; margin-top: 30px; }
+  .wp-collection .cpart-papers li .soon small:empty { display: none; }
+  .read-also a[hidden] { display: none; }
+  [data-sid-on][hidden] { display: none !important; }
+  .wp-collection .cpart-papers li .soon small { margin-left: 8px; }
+  @media (max-width: 639px) { .takeaway { padding: 16px 18px; } }
+  @media print {
+    .roles .faq-a { display: block !important; }
+    .takeaway, .framework-box, .vz, .roles .faq-item { page-break-inside: avoid; break-inside: avoid; }
+    .section ul.pl li, .section ol.pl li { font-size: 10.5pt; }
+    .wp-collection { break-before: page; page-break-before: always; }
+    .sec-head { break-inside: avoid; page-break-inside: avoid; }
+    .sec-head::after { content: ""; display: block; height: 140px; margin-bottom: -140px; }
+    .step-p, .section h3 { break-after: avoid; page-break-after: avoid; }
+    .tbl-wrap tr, .exercise-box, .commit-box, .ro-box { break-inside: avoid; page-break-inside: avoid; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Forandringen sker mellem samtalerne",
+ "alternativeHeadline": "Samtalen giver indsigten. Ugen imellem giver forandringen. Om de fjorten dage mellem to samtaler – én observation, én handling og én person, der ser den.",
+ "description": "Paper 08 i Selvindsigt er en disciplin: hvorfor forandring efter coaching og feedback afhænger af det, der sker imellem – med Mellemrummets plan.",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/",
+  "jobTitle": "Executive coach og forfatter"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/selvindsigt-forandringen-sker-mellem-samtalerne.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/selvindsigt-forandringen-sker-mellem-samtalerne.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Selvindsigt er en disciplin",
+  "url": "https://www.friisnaes.com/selvindsigt-er-en-disciplin.html"
+ },
+ "position": 8,
+ "inLanguage": "da",
+ "datePublished": "2027-06-07",
+ "keywords": "coaching, mentor, transfer, observatør, adfærdsændring, feedback, selvindsigt, executive coaching, topleder, CEO, Mellemrummets plan",
+ "wordCount": 4476,
+ "timeRequired": "PT20M",
+ "about": [
+  "Coaching",
+  "Adfærdsændring",
+  "Transfer",
+  "Ledelse"
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Forside",
+   "item": "https://www.friisnaes.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Executive Library",
+   "item": "https://www.friisnaes.com/library.html"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "Selvindsigt er en disciplin",
+   "item": "https://www.friisnaes.com/selvindsigt-er-en-disciplin.html"
+  },
+  {
+   "@type": "ListItem",
+   "position": 4,
+   "name": "Forandringen sker mellem samtalerne",
+   "item": "https://www.friisnaes.com/selvindsigt-forandringen-sker-mellem-samtalerne.html"
+  }
+ ]
+}
+</script>
+<style id="fn-nav-css">
+.fn-nav{position:sticky;top:0;z-index:90;background:#111;border-bottom:1px solid rgba(192,57,43,.14);font-family:'Outfit',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.fn-in{max-width:1100px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fn-brand{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:500;color:#fff;text-decoration:none;letter-spacing:.01em;white-space:nowrap}
+.fn-brand em{font-style:normal;color:#e74c3c}
+.fn-links{display:flex;gap:24px;align-items:center}
+.fn-links a{font-size:13px;color:rgba(255,255,255,.78);text-decoration:none;letter-spacing:.02em;transition:color .2s;white-space:nowrap;font-weight:400;text-transform:none;border:0;padding:0}
+.fn-links a:hover,.fn-links a.active{color:#e74c3c}
+.fn-links a.fn-cta{color:#fff !important;background:#c0392b;padding:8px 16px;border-radius:2px;font-weight:500}
+.fn-links a.fn-cta:hover{background:#e74c3c}
+.fn-dd{position:relative;display:inline-flex;align-items:center}
+.fn-dd-t{display:inline-flex;align-items:center;gap:4px}
+.fn-dd-c{font-size:9px;opacity:.7;transition:transform .2s}
+.fn-dd:hover .fn-dd-c,.fn-dd.open .fn-dd-c{transform:rotate(180deg)}
+.fn-dd-m{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);background:#1a1a1a;border:1px solid rgba(192,57,43,.18);padding:8px 0;min-width:210px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;display:flex;flex-direction:column;z-index:95;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.fn-dd-m::before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px}
+.fn-dd:hover .fn-dd-m,.fn-dd:focus-within .fn-dd-m,.fn-dd.open .fn-dd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(2px)}
+.fn-dd-m a{padding:9px 18px !important;font-size:12.5px;white-space:nowrap}
+.fn-dd-m a:hover{background:rgba(255,255,255,.04)}
+.fn-toggle{display:none;background:none;border:0;color:#fff;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1}
+@media (max-width:780px){
+  .fn-in{padding:0 20px}
+  .fn-links{display:none}
+  .fn-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:#111;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 14px;border-bottom:1px solid rgba(192,57,43,.14);max-height:calc(100vh - 62px);overflow-y:auto}
+  .fn-links.open a{padding:12px 24px}
+  .fn-links.open a.fn-cta{margin:10px 24px 0;text-align:center}
+  .fn-toggle{display:block}
+  .fn-dd{flex-direction:column;align-items:stretch;width:100%}
+  .fn-dd-m{position:static;transform:none;opacity:1;visibility:visible;background:none;border:0;padding:0 0 0 16px;min-width:0;box-shadow:none}
+  .fn-dd-m::before{display:none}
+  .fn-dd-c{display:none}
+}
+@media (pointer:coarse) and (min-width:781px){.fn-links a{padding-top:9px;padding-bottom:9px}}
+@media print{.fn-nav{display:none !important}}
+</style>
+<style id="fb-signup-css">
+.fb-signup{max-width:760px;margin:0 auto;padding:8px 32px 56px;font-family:'Outfit',-apple-system,sans-serif}
+.fb-signup-in{background:#111;color:#f5f4f0;padding:2.3rem 2.2rem;display:flex;flex-wrap:wrap;gap:1.4rem 2rem;align-items:center;justify-content:space-between;border-radius:4px}
+.fb-signup-k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#e74c3c;font-weight:500;margin-bottom:10px}
+.fb-signup h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.4rem;line-height:1.25;margin:0 0 .45rem;color:#fff}
+.fb-signup h3 em{font-style:italic;color:#e74c3c}
+.fb-signup p{font-size:.95rem;color:rgba(245,244,240,.72);margin:0;max-width:440px;line-height:1.55;font-weight:300}
+.fb-signup a.fb-signup-btn{display:inline-block;background:#c0392b;color:#fff;font-family:'Outfit',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:.95rem 1.6rem;border-radius:2px;white-space:nowrap;transition:background .2s;border:0}
+.fb-signup a.fb-signup-btn:hover{background:#e74c3c}
+@media (max-width:640px){.fb-signup{padding:8px 20px 44px}.fb-signup-in{padding:1.8rem 1.4rem}.fb-signup a.fb-signup-btn{width:100%;text-align:center}}
+@media print{.fb-signup{display:none !important}}
+</style>
+<style id="a11y-contrast">
+/* --- a11y: kontrast (AA 4.5:1) --- */
+:root { --text-light:#666666 }
+.wp-toc-title, .wp-toc ol li::before, .sg-type, .footer-tagline, .opi-meter .opi-label, .opi-meter .opi-eq, .framework-box h3, .framework-box .fw-num, .wp-references .ref-label { color:#e74c3c }
+.wp-badge, .ma-tag { color:#fff !important }
+.wp-readtime, .series-next, .wp-footer .series-label, .site-footer .series-label { color:rgba(255,255,255,.66) }
+.fn-more .fn-kind { color:#666 !important }
+.closing-box p a { text-decoration:underline !important; text-underline-offset:3px; text-decoration-color:rgba(192,57,43,.5) }
+.wp-collection .collection-label, .wp-collection .cpart-num, .wp-collection .cpart-papers li::before { color:#e74c3c }
+.cpart-papers .current { color:rgba(255,255,255,.66) }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="fn-nav" aria-label="Hovednavigation">
+  <div class="fn-in">
+    <a href="/" class="fn-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <button class="fn-toggle" aria-label="Menu" aria-controls="fnLinks" aria-expanded="false" onclick="var n=document.getElementById('fnLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="fn-links" id="fnLinks">
+      <a href="/#situationer">Situationer</a>
+      <span class="fn-dd">
+        <a href="/executive-coaching.html" class="fn-dd-t" aria-haspopup="true">Ydelser <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/executive-coaching.html">Executive Coaching</a>
+          <a href="/ceo-sparring.html">CEO-sparring</a>
+          <a href="/seg.html">Ledergrupper (SEG)</a>
+          <a href="/#format">Sådan arbejder vi</a>
+        </span>
+      </span>
+      <a href="/om.html">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="fn-dd">
+        <a href="/library.html" class="fn-dd-t active" aria-haspopup="true">Indsigter <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="fn-cta">Aftal en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Selvindsigt er en disciplin · Serie 09 · Paper 08 af 10</div>
+  <div class="pc-title">Forandringen sker mellem samtalerne</div>
+  <div class="pc-sub">Samtalen giver indsigten. Ugen imellem giver forandringen. Om de fjorten dage mellem to samtaler – én observation, én handling og én person, der ser den.</div>
+  <div class="pc-author">Af Thomas Friisnæs · executive coach og forfatter · friisnaes.com</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Selvindsigt er en disciplin</span>
+      <span class="wp-series">Serie 09 · Executive Self-Insight · Del 3: Med og uden coach · Paper 08 af 10</span>
+      <span class="wp-readtime">ca. 20 min læsning</span>
+    </div>
+    <h1>Forandringen sker <em>mellem samtalerne</em></h1>
+    <p class="wp-subtitle">Samtalen giver indsigten. Ugen imellem giver forandringen. Om de fjorten dage mellem to samtaler – én observation, én handling og én person, der ser den.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · executive coach og forfatter · 22+ år</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#start">Fra grænsen til mellemrummet</a></li>
+      <li><a href="#samtalen-foeles-som-arbejdet">Samtalen føles som arbejdet</a></li>
+      <li><a href="#to-uger-der-forsvandt">To uger, der forsvandt</a></li>
+      <li><a href="#hvorfor-andres-oejne-trods-alt">Hvorfor andres øjne – trods alt</a></li>
+      <li><a href="#hvad-mellemrummet-har-brug-for">Hvad mellemrummet har brug for</a></li>
+      <li><a href="#mellemrummets-plan">Mellemrummets plan</a></li>
+      <li><a href="#saadan-beder-du-om-det">Sådan beder du om det</a></li>
+      <li><a href="#samtalen-der-bruger-mellemrummet">Samtalen, der bruger mellemrummet</a></li>
+      <li><a href="#fire-maader-mellemrummet-forsvinder-paa">Fire måder, mellemrummet forsvinder på</a></li>
+      <li><a href="#tilbage-til-casen">Tilbage til casen</a></li>
+      <li><a href="#konkludere">Hvad du kan se – og hvad du ikke må konkludere</a></li>
+      <li><a href="#roller">Til dig selv, ledergruppen, HR og bestyrelsen</a></li>
+      <li><a href="#konkret">Gør det konkret · Øvelse og dit næste skridt</a></li>
+      <li><a href="#metode">Metode og næste paper</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+<article>
+
+<section class="section first" id="intro">
+  <div class="container">
+    <p class="wp-lead"><strong>En god samtale kan give dig mere indsigt på en time end på en måned alene. Men indsigt fra en samtale er ikke det samme som ændret adfærd. Den egentlige prøve kommer i de uger, der følger, hvor du står i de situationer, samtalen handlede om. Forskningen i feedback og coaching peger det samme sted hen: Det, der hænger sammen med forbedring, er det, der sker bagefter. Dette paper handler om mellemrummet og giver dig Mellemrummets plan: én observation, én handling og én person, der ser den.</strong></p>
+    <div class="research-note"><strong>Grundlag:</strong> Forskning er kildeangivet. Min praksis står som erfaring. Mellemrummets plan er et praksisværktøj, ikke et valideret instrument. Paperet beskriver ikke en bestemt coachingmetode og lover ingen effekt af samtaler med en coach, en mentor eller en observatør.</div>
+  </div>
+</section>
+
+<section class="section" id="start">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">01</div>
+    <h2>Fra grænsen til mellemrummet</h2>
+    </div>
+    <p><span class="dc">P</span>aper 07 sluttede ved en grænse. Anne havde fundet ud af, at hun manglede to ting, hun ikke kunne give sig selv: en samtalepartner uden for linjen og øjne i rummet, mens det sker. Hun fandt en mentor, som hun mødes med hver anden uge, og besluttede at bede én i ledergruppen om at se efter.</p>
+    <p>Det lyder som slutningen på et problem. I min erfaring er det begyndelsen på et nyt. For når lederen har fundet nogen at tale med, flytter opmærksomheden let til samtalen: hvornår er den, hvad skal den handle om, hvad fik jeg ud af den. Samtalen er synlig, afgrænset og ofte givende. De fjorten dage mellem to samtaler er det ikke. De er fyldt med den kalender, der var der i forvejen.</p>
+    <p>Men det er i de fjorten dage, adfærden finder sted. I min praksis ser jeg det samme mønster igen og igen: Ledere husker samtalerne tydeligt og kan gengive, hvad de fik ud af dem. Spørger man, hvad de gjorde anderledes i ugen efter, er svaret ofte mere uklart. Det er der, møderne er, beslutningerne træffes, og andre ser, hvad du gør. Halvanden time hver anden uge er meget lidt sammenlignet med alle de møder, beslutninger og samtaler, hvor adfærden faktisk skal ændres. Resten er mellemrummet.</p>
+    <p>Det gælder, uanset om samtalepartneren er en coach, en mentor eller en betroet kollega. Dette paper handler ikke om, hvad der sker i samtalen. Det handler om, hvad du gør med tiden imellem – og hvem der ser det.</p>
+  </div>
+</section>
+
+<section class="section" id="samtalen-foeles-som-arbejdet">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">02 — Problemet</div>
+    <h2>Samtalen føles som arbejdet</h2>
+    </div>
+    <p>Det er let at tro, at den gode samtale er det, der skaber forandringen. Forskningen giver grund til at se på det, der sker efter.</p>
+    <p>James Smither, Manuel London og Richard Reilly samlede 24 længdestudier af ledere, der havde fået 360-graders feedback, og målte, om vurderingerne fra medarbejdere, kolleger og chefer blev bedre over tid. Paper 04 nævnte resultatet: Forbedringen var generelt lille. Men forfatterne pegede også på, hvad der hang sammen med mere forbedring. De skrev, at feedback alene ikke er årsagen til en ændring i adfærd; det er de mål, folk sætter sig som svar på feedbacken. Og de fandt, at det at handle hang positivt sammen med forbedring. Mange af studierne havde ikke en kontrolgruppe, og forfatterne understregede, at mange af sammenhængene i deres model ikke var undersøgt. Men retningen er tydelig.</p>
+    <p>Et af de studier, de byggede på, så specifikt på coaching. Smither og kolleger fulgte 1.361 ledere i én virksomhed, der fik 360-graders feedback. 404 af dem arbejdede derefter med en executive coach. Et år senere fik 1.202 af lederne feedback igen. De, der havde arbejdet med en coach, satte oftere specifikke frem for vage mål og bad oftere deres chef om idéer til forbedring. Deres vurderinger fra medarbejdere og chefer forbedrede sig mere – men forskellen var lille, d = 0,17. Studiet var et feltstudie uden tilfældig fordeling. Det viser ikke, at coachingen var årsagen. Det viser, at de to grupper adskilte sig både i det, de gjorde efter feedbacken, og i den senere udvikling i vurderingerne. Det dokumenterer ikke, at handlingerne forklarede forskellen – men det er værd at lægge mærke til, hvor forskellen lå.</p>
+    <p>Forskningen i, om det, man lærer, bliver brugt i arbejdet, peger samme vej. Brian Blume og kolleger samlede 89 kilder om overførsel fra træning til arbejde. Omgivelserne på arbejdspladsen hang sammen med, om det lærte blev brugt – og sammenhængen var stærkere for det, forfatterne kalder åbne færdigheder, som ledelse, hvor der ikke er én rigtig måde at gøre det på, end for lukkede færdigheder. Støtte fra chefen så ud til at betyde mere end støtte fra kolleger, men det byggede på få studier. Analysen handler om træning, ikke om coaching, og mange af tallene hviler på få studier. Et af dens mindre resultater er værd at nævne: Indsatser efter træningen, hvor deltagerne satte sig mål, hang kun svagt og usikkert sammen med overførsel, og det byggede på seks studier. Et mål alene er altså ikke nok. Det skal have en plads i den arbejdsdag, hvor det skal bruges.</p>
+    <p>Den danske forskning i overførsel siger noget lignende. Bjarne Wahlgren fra Nationalt Center for Kompetenceudvikling skrev i en gennemgang af forskningen, at organiseringen af den arbejdssituation, hvor det lærte skal bruges, har stor betydning for, om det bliver brugt, og at støtte fra kolleger og fra ledelsen fremmer overførsel. For en topleder er det en udfordring: Der er sjældent nogen over dig, der organiserer din arbejdssituation, så det, du har lært, får plads. Det må du gøre selv.</p>
+  </div>
+</section>
+
+<section class="section" id="to-uger-der-forsvandt">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">03 — Casen</div>
+    <h2>To uger, der forsvandt</h2>
+    </div>
+    <p class="case-note"><em>Casen er konstrueret til serien. Halvø Pharma A/S og alle personer er opdigtede, og enhver lighed med virkelige virksomheder eller personer er tilfældig.</em></p>
+    <p>Annes første samtale med mentoren varer halvanden time. Hun går derfra med mere klarhed, end hun har haft i måneder. Mentoren stillede ét spørgsmål, hun ikke havde stillet sig selv: »Hvad sker der med dit ansigt, når nogen er uenige med dig?« Hun vidste det ikke. På vejen hjem beslutter hun at finde ud af det.</p>
+    <p>To uger senere sidder hun over for mentoren igen. Han spørger, hvad hun har gjort. Hun tænker efter. Der har været en budgetrevision, et bestyrelsesmøde og en sag med en leverandør. Hun har tænkt over samtalen flere gange. Men hun har ikke afprøvet noget nyt ved måden, hun spørger på, og hun har ikke bedt nogen om at se efter.</p>
+    <p>»Så har vi haft en god samtale,« siger mentoren. »Og ellers ikke noget.«</p>
+    <p>Det er ikke en kritik af samtalen. Den gav hende indsigten. Men indsigten fik ingen plads i de fjorten dage, hvor hendes adfærd faktisk fandt sted. Kalenderen var fuld af møder, og ingen af dem var markeret som arbejde med det, hun havde lært.</p>
+    <p>Til næste samtale gør hun det anderledes. Hun skriver én observation, én handling og navnet på én person, der kan se den, på en side. Og hun spørger Jesper.</p>
+  </div>
+</section>
+
+<section class="section" id="hvorfor-andres-oejne-trods-alt">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">04</div>
+    <h2>Hvorfor andres øjne – trods alt</h2>
+    </div>
+    <p>Serien bygger på, at andres øjne er nødvendige. Men forskningen rummer to resultater, der går imod den tanke, og de skal siges højt.</p>
+    <p>Det første kender du fra Paper 04: Avraham Kluger og Angelo DeNisi fandt, at feedback i over en tredjedel af de analyserede tilfælde forringede præstationen. Det andet kommer fra Jones og kollegers metaanalyse af coaching, som Paper 07 beskrev. Når coaching blev kombineret med 360-graders feedback, var de positive effekter mindre end uden. Analysen byggede på 17 studier, og den kan ikke sige, hvorfor det var sådan.</p>
+    <p>Smither og kolleger undersøgte desuden, om det hjælper at gå tilbage til dem, der har givet feedback, og drøfte den med dem. Over 5.000 personer i en stor international virksomhed fik 360-graders feedback, og ni måneder senere blev de, der havde vurderet dem, spurgt, om personen havde delt feedbacken og bedt om forslag. Det hang sammen med forbedring ved næste måling – men forfatterne beskrev forskellen som meget lille, om end statistisk sikker.</p>
+    <p>Hvorfor bruger serien så andres øjne? Fordi alternativet er at stole på det, du kan se selv – og Paper 01, 02 og 07 har vist, hvor lidt det er. Men serien bruger dem på en bestemt måde. Kluger og DeNisis forklaring var, at feedback skader, når den flytter opmærksomheden fra opgaven til selvet. Feedback på en hel profil, fra mange personer, om mange egenskaber på én gang, kan gøre netop det. En observation af én bestemt adfærd i ét bestemt møde, fra én person, du selv har bedt om at se efter, gør det i min erfaring sjældnere. Den handler om, hvad der skete, ikke om, hvem du er.</p>
+    <p>Det er en praksispointe, ikke et forskningsresultat. Ingen af studierne har testet netop den forskel. Men den forklarer, hvorfor Mellemrummets plan beder om én observation og ikke om en vurdering.</p>
+  </div>
+</section>
+
+<section class="section" id="hvad-mellemrummet-har-brug-for">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">05</div>
+    <h2>Hvad mellemrummet har brug for</h2>
+    </div>
+    <p>Mellemrummet har i min erfaring brug for tre ting. Hver af dem svarer til noget, forskningen ovenfor peger på.</p>
+    <p><strong>Én observation.</strong> Noget konkret, du har set eller fået at vide – i samtalen, på Ugens side eller fra en anden. Ikke en indsigt om dig selv, men en beskrivelse af en adfærd i en situation. Observationen er det, du arbejder ud fra i de næste fjorten dage. Udgangspunktet er helst én konkret observation. Har du kun fået en andens oplevelse af din adfærd – en oplevet virkning, som Paper 04 kaldte det – så begynd dér, og lad det første skridt være at undersøge, hvad du gjorde, der gav det indtryk.</p>
+    <p><strong>Én handling.</strong> Én ting, du vil gøre anderledes, i en bestemt slags situation, der ligger i kalenderen inden næste samtale. Skrevet som en plan: »Når … , vil jeg …« – sådan som Paper 06 beskrev. Én, fordi to eller tre handlinger på én gang gør det svært at se, hvad der gjorde en forskel. Jonathan Passmore og kolleger interviewede 16 coaches og klienter om opgaver mellem coachingsamtaler. Klienterne foretrak korte opgaver med ét fokus frem for mange, og de brød sig ikke om ordet »lektier«; de foretrak ord som »eksperiment«. Det er en lille, kvalitativ undersøgelse fra Storbritannien. Men den passer med min erfaring.</p>
+    <p><strong>Én person, der ser den.</strong> Én, der er til stede i den situation, hvor du vil gøre det, og som kan fortælle dig, hvad der skete. Det er den del, der oftest mangler – og den, der gør, at mellemrummet ikke kun er din egen fortælling om det, du gjorde.</p>
+    <p>De tre ting gør noget, en samtale ikke kan alene. De gør det muligt at tale om noget, der faktisk skete, næste gang I ses. I stedet for at begynde forfra med generelle indtryk begynder samtalen med konkrete beskrivelser af situationer, der kan undersøges.</p>
+    <p class="pull-quote sig">Samtalen giver indsigten. Ugen imellem giver forandringen.</p>
+    <p>Linjen er seriens praksisregel, ikke et forskningsresultat, og den er ikke en bogstavelig adskillelse. Indsigt kan opstå i hverdagen, og en samtale kan ændre, hvad du gør lige bagefter. Pointen er, at en varig ændring kræver, at noget faktisk bliver gjort anderledes i de situationer, hvor adfærden normalt viser sig. Linjen bygger på forskningen i, hvad der hænger sammen med forbedring efter feedback og coaching, og på min erfaring med, hvor forandring går tabt.</p>
+  </div>
+</section>
+
+<section class="section" id="mellemrummets-plan">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">06 — Værktøjet</div>
+    <h2>Mellemrummets plan</h2>
+    </div>
+    <p>Mellemrummets plan er én side, du skriver lige efter en samtale og bruger frem til den næste. Det tager ti minutter at skrive og fem minutter midtvejs.</p>
+    <figure class="vz" aria-labelledby="vz-s08a-title">
+  <div class="vz-head">
+    <div class="vz-kicker">Værktøjet</div>
+    <div class="vz-title" id="vz-s08a-title">Mellemrummet</div>
+  </div>
+  <div class="vz-art"><div class="m-bred"><svg viewBox="0 0 580 146" role="img" aria-labelledby="vz-s08a-t vz-s08a-d"><title id="vz-s08a-t">Mellemrummet</title><desc id="vz-s08a-d">Mellemrummets plan over fjorten dage: samtale og plan på dag 0, handlingen i situation 1, fem minutter midtvejs, handlingen i situation 2, tre linjer før næste samtale – og en observatør, der ser handlingen i begge situationer.</desc><rect x="44" y="58" width="490" height="10" fill="#d9d4cb"/><text x="289" y="24" text-anchor="middle" class="t-sans" font-size="14" fill="#111" font-weight="500">Mellemrummet · fjorten dage</text><text x="44" y="136" text-anchor="middle" class="t-sans" font-size="11" fill="#777">dag 0</text><text x="534" y="136" text-anchor="middle" class="t-sans" font-size="11" fill="#777">dag 14</text><circle cx="44" cy="63" r="12" fill="#c0392b"/><text x="44" y="100" text-anchor="middle" class="t-sans" font-size="13" fill="#c0392b" font-weight="500">Samtale</text><text x="44" y="117" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">skriv planen</text><circle cx="142" cy="63" r="8" fill="#111"/><text x="142" y="100" text-anchor="middle" class="t-sans" font-size="13" fill="#111" font-weight="500">Situation 1</text><text x="142" y="117" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">handlingen</text><text x="142" y="46" text-anchor="middle" class="t-sans" font-size="12" fill="#c0392b">◉ ser</text><circle cx="240" cy="63" r="8" fill="#111"/><text x="240" y="100" text-anchor="middle" class="t-sans" font-size="13" fill="#111" font-weight="500">Midtvejs</text><text x="240" y="117" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">fem minutter</text><circle cx="338" cy="63" r="8" fill="#111"/><text x="338" y="100" text-anchor="middle" class="t-sans" font-size="13" fill="#111" font-weight="500">Situation 2</text><text x="338" y="117" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">handlingen</text><text x="338" y="46" text-anchor="middle" class="t-sans" font-size="12" fill="#c0392b">◉ ser</text><circle cx="436" cy="63" r="8" fill="#111"/><text x="436" y="100" text-anchor="middle" class="t-sans" font-size="13" fill="#111" font-weight="500">Tre linjer</text><text x="436" y="117" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">før samtalen</text><circle cx="534" cy="63" r="12" fill="#c0392b"/><text x="534" y="100" text-anchor="middle" class="t-sans" font-size="13" fill="#c0392b" font-weight="500">Samtale</text><text x="534" y="117" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">begynd med dem</text></svg></div><div class="m-smal"><svg viewBox="0 0 360 330" role="img" aria-labelledby="vz-s08as-t vz-s08as-d"><title id="vz-s08as-t">Mellemrummet</title><desc id="vz-s08as-d">Mellemrummets plan over fjorten dage: samtale og plan på dag 0, handlingen i situation 1, fem minutter midtvejs, handlingen i situation 2, tre linjer før næste samtale – og en observatør, der ser handlingen i begge situationer.</desc><line x1="22" y1="14" x2="22" y2="304" stroke="#d9d4cb" stroke-width="4"/><circle cx="22" cy="14" r="12" fill="#c0392b"/><text x="48" y="19" text-anchor="start" class="t-sans" font-size="15.5" fill="#c0392b" font-weight="500">Dag 0 · Samtale</text><text x="48" y="39" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">skriv planen</text><circle cx="22" cy="72" r="8" fill="#111"/><text x="48" y="77" text-anchor="start" class="t-sans" font-size="15.5" fill="#111" font-weight="500">Dag 3 · Situation 1</text><text x="48" y="97" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">handlingen · observatøren ser</text><circle cx="22" cy="130" r="8" fill="#111"/><text x="48" y="135" text-anchor="start" class="t-sans" font-size="15.5" fill="#111" font-weight="500">Dag 7 · Midtvejs</text><text x="48" y="155" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">fem minutter</text><circle cx="22" cy="188" r="8" fill="#111"/><text x="48" y="193" text-anchor="start" class="t-sans" font-size="15.5" fill="#111" font-weight="500">Dag 10 · Situation 2</text><text x="48" y="213" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">handlingen · observatøren ser</text><circle cx="22" cy="246" r="8" fill="#111"/><text x="48" y="251" text-anchor="start" class="t-sans" font-size="15.5" fill="#111" font-weight="500">Dag 13 · Tre linjer</text><text x="48" y="271" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">før samtalen</text><circle cx="22" cy="304" r="12" fill="#c0392b"/><text x="48" y="309" text-anchor="start" class="t-sans" font-size="15.5" fill="#c0392b" font-weight="500">Dag 14 · Samtale</text><text x="48" y="329" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">begynd med dem</text></svg></div></div>
+  <figcaption>En praksisramme fra Thomas Friisnæs' arbejde. Fjorten dage, to situationer og fem minutter midtvejs er praktiske rammer, ikke et forskningsresultat.</figcaption>
+</figure>
+    <p class="step-p"><strong>Trin 1 · Skriv udgangspunktet – inden for en time efter samtalen.</strong> Én sætning om en adfærd i en situation. Ikke »jeg skal blive bedre til at lytte«, men »når et punkt løber over tid, går jeg videre, mens andre stadig taler«. Skriv, om det er en observation – noget, du eller andre har set – eller en oplevet virkning, du vil undersøge.</p>
+    <p class="step-p"><strong>Trin 2 · Vælg én handling, og læg den i kalenderen.</strong> Skriv den som en plan: »Når … , vil jeg …« Find det møde eller den situation inden for de næste fjorten dage, hvor du vil gøre det, og skriv handlingen ind i kalenderen ved det møde. Kan du ikke finde en situation, er handlingen for generel.</p>
+    <p class="step-p"><strong>Trin 3 · Vælg én person, der ser den – og aftal hvad.</strong> Én, der er til stede i situationen. Aftal tre ting: hvad vedkommende skal se efter (kun den ene adfærd), hvordan og hvornår du får det at vide (én eller to sætninger, samme dag), og at vedkommende må sige nej eller stoppe.</p>
+    <p class="step-p"><strong>Trin 4 · Midtvejs: fem minutter.</strong> Efter en uge læser du siden igen. Har situationen været der? Gjorde du det? Hvad så personen? Skal handlingen justeres, eller skal den bare gentages?</p>
+    <p>Har du Ugens side fra Paper 06, så brug den. Midtvejskontrollen kan være Ugens side, og den ekstra linje, du skriver, når du afprøver et mønster, kan være det, din observatør så. Så har du ét sted, hvor sporet samles, og ikke to.</p>
+    <p class="step-p"><strong>Trin 5 · Før næste samtale: tre linjer.</strong> Hvad gjorde jeg? Hvad så den anden? Hvad vil jeg bringe op? Det er de tre linjer, næste samtale begynder med.</p>
+    <p>Sådan ser Annes første plan ud:</p>
+    <div class="tbl-wrap"><table class="sig-table"><thead><tr><th></th><th>Annes plan</th></tr></thead><tbody><tr><td data-label="">Udgangspunktet</td><td data-label="Annes plan">Line oplevede efter mødet om produktionslinjen, at jeg ikke virkede interesseret i indvendingerne. Det er en oplevet virkning. Jeg ved endnu ikke, hvad jeg gjorde, der gav det indtryk.</td></tr><tr><td data-label="">Handlingen</td><td data-label="Annes plan">Når jeg spørger om indvendinger i strategimødet, vil jeg lægge pennen fra mig, vende mig mod den, der taler, og vente, til nogen har sagt noget.</td></tr><tr><td data-label="">Situationerne</td><td data-label="Annes plan">De to strategimøder 12. og 19. – skrevet ind i kalenderen.</td></tr><tr><td data-label="">Personen</td><td data-label="Annes plan">Jesper. Ser efter: hvad jeg gør, fra jeg spørger, til jeg går videre – og hvad der sker i rummet. Én–to sætninger samme dag. Må sige nej.</td></tr><tr><td data-label="">Midtvejs</td><td data-label="Annes plan">Fredag i første uge, på Ugens side.</td></tr><tr><td data-label="">Til næste samtale</td><td data-label="Annes plan">Hvad jeg gjorde, hvad Jesper så, hvad jeg vil bringe op.</td></tr></tbody></table></div>
+    <p>Siden er kort. Den indeholder ikke en udviklingsplan, men det, der skal ske i de næste fjorten dage. Det er alt, den skal.</p>
+    <p>To grænser gælder. Personen, der ser, er ikke din coach og ikke din dommer; vedkommende beskriver det, der skete. Og planen er din. Den deles med samtalepartneren og med den, der ser – ikke med flere, medmindre du selv vælger det.</p>
+    <p>Fjorten dage, én handling og fem minutter midtvejs er praktiske rammer fra mit arbejde, ikke en valideret metode. Mødes du sjældnere eller oftere, så tilpas rytmen – men hold fast i, at der er én observation, én handling og én person.</p>
+  </div>
+</section>
+
+<section class="section" id="saadan-beder-du-om-det">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">07 — Observatøren</div>
+    <h2>Sådan beder du om det</h2>
+    </div>
+    <p>Den person, der kan se dig, mens det sker, er ofte en, der rapporterer til dig. Det var tegn 4 i Grænsetesten. Det betyder ikke, at du ikke kan spørge. Men det betyder, at du skal spørge på en måde, der gør det let at sige nej og let at sige det, der ikke er rart.</p>
+    <p>I min erfaring hjælper fem ting.</p>
+    <p><strong>Bed om én ting.</strong> »Vil du se efter, hvad der sker, fra jeg spørger om indvendinger, til jeg går videre?« er let at sige ja til og let at svare på. »Vil du give mig feedback på mine møder?« er ikke.</p>
+    <p><strong>Bed om det, der skete – ikke om en vurdering.</strong> »Hvad så du?« og ikke »Hvordan synes du, det gik?«. En observation er lettere at give opad end en vurdering, og den er mere brugbar.</p>
+    <p><strong>Gør det frivilligt – og sig det.</strong> Sig, at vedkommende må sige nej, og at det ikke får betydning. Sig, at vedkommende må stoppe når som helst. Og hold det. Men vær ærlig over for dig selv: Et ja fra en, der rapporterer til dig, er ikke i sig selv bevis for, at vedkommende følte sig fri til at sige nej. Det var en af pointerne i Paper 02. Gør relationen frivilligheden tvivlsom, så overvej en anden observatør, eller lad en neutral person stille spørgsmålet for dig.</p>
+    <p><strong>Tag imod som i Paper 04.</strong> Sig tak, og undgå som udgangspunkt at forklare eller forsvare dig. Stil et opklarende spørgsmål, hvis det er nødvendigt for at forstå observationen. Følg undtagelserne fra Paper 04, når noget kræver afklaring eller handling med det samme. Den første observation, du forsvarer dig imod, bliver i min erfaring ofte den sidste, du får.</p>
+    <p><strong>Afslut aftalen.</strong> Sig, hvornår det slutter – fx efter to møder – og sig tak, når det gør. En observatør, der aldrig får at vide, at opgaven er slut, bliver let en, der føler sig forpligtet til at blive ved.</p>
+    <p>Vær forberedt på at høre noget, du ikke kan lide. Den første observation, Anne fik, var, at hun kiggede på uret. Det er ikke rart at få at vide, og det er fristende at forklare, at der var et andet møde bagefter. Men forklaringen ændrer ikke det, Jesper så – og den lærer ham, at det næste, han ser, skal pakkes ind. Skriv forklaringen ned til dig selv, hvis du har brug for det, sådan som Paper 04 foreslog. Sig tak til ham.</p>
+    <p>Det kan også være klogt at skifte. Den samme person i måneder får ikke kun ét syn på dig; vedkommende får også en særlig rolle i ledergruppen. Spørg en anden næste gang, eller gør det gensidigt: Du ser efter én ting hos dem, de ser efter én ting hos dig.</p>
+    <p>Et forslag til, hvordan du kan sige det: »Jeg arbejder med, hvordan jeg spørger om indvendinger, når vi er ved at løbe tør for tid. Vil du se efter, hvad der sker i de næste to strategimøder, fra jeg spørger, til jeg går videre – og skrive en eller to sætninger til mig samme dag? Jeg vil ikke diskutere det, kun sige tak. Du må gerne sige nej, og du kan stoppe, når du vil.«</p>
+  </div>
+</section>
+
+<section class="section" id="samtalen-der-bruger-mellemrummet">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">08</div>
+    <h2>Samtalen, der bruger mellemrummet</h2>
+    </div>
+    <p>Mellemrummets plan ændrer også samtalen. Når du kommer med tre linjer – hvad du gjorde, hvad den anden så, hvad du vil bringe op – begynder samtalen et andet sted.</p>
+    <p>Uden planen begynder den ofte med et indtryk: »Det har været en travl periode, men jeg synes, det går bedre.« Med planen begynder den med noget, der skete. Det giver samtalepartneren noget at arbejde med, og det gør det sværere for jer begge at bruge tiden på at nå frem til den samme indsigt igen.</p>
+    <p>Det gælder, uanset hvem samtalepartneren er. En coach vil måske spørge til, hvad der gjorde det muligt i det ene møde og ikke i det andet. En mentor vil måske fortælle, hvad vedkommende selv har prøvet. En betroet kollega vil måske spørge, hvad de andre i rummet gjorde. Serien beskriver ikke, hvordan samtalen skal føres. Den beskriver, hvad du kan tage med ind i den.</p>
+    <p>Jones og kolleger fandt i deres metaanalyse ikke en statistisk sikker sammenhæng mellem coachingens effekt og antallet af samtaler eller forløbets længde – og heller ikke mellem effekten og, om samtalerne foregik ansigt til ansigt eller på anden måde. Det betyder ikke, at hyppigheden er uden betydning; analysen byggede på 17 studier. Men resultatet giver heller ikke grundlag for at antage, at flere samtaler automatisk skaber større forandring. Det passer med pointen i dette paper: Det er ikke kun, hvor ofte I taler, der afgør noget, men hvad der sker imellem.</p>
+    <p>Til sidst i hver samtale skriver du en ny plan. Den kan være den samme handling igen, en justeret handling eller en ny. Skifter du handling hver gang, ser du aldrig et mønster. Gentager du den samme i månedsvis uden at se en forskel, er det tid til at gøre den til et egentligt eksperiment – med et målepunkt og over flere uger. Det er emnet for Paper 09.</p>
+  </div>
+</section>
+
+<section class="section" id="fire-maader-mellemrummet-forsvinder-paa">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">09</div>
+    <h2>Fire måder, mellemrummet forsvinder på</h2>
+    </div>
+    <p><strong>Planen er for stor.</strong> »Blive bedre til at inddrage ledergruppen« kan ikke ses i et bestemt møde. Én handling i én slags situation kan. Hvis du ikke kan pege på mødet i kalenderen, hvor du vil gøre det, er planen for stor.</p>
+    <p><strong>Ingen ser det.</strong> Du gør det, men ingen er bedt om at se efter. Så er du tilbage ved din egen fortælling om, hvad der skete – og Paper 07 viste, hvor lidt du kan se af det, der betyder mest.</p>
+    <p><strong>Observatøren bliver dommer.</strong> Personen begynder at vurdere dig i stedet for at beskrive, hvad der skete – eller føler sig forpligtet til at finde noget positivt at sige. Gå tilbage til spørgsmålet: »Hvad så du?« Og overvej at skifte person.</p>
+    <p><strong>Samtalen begynder forfra.</strong> Du kommer til næste samtale uden de tre linjer, og I bruger tiden på at genopdage det, I talte om sidst. Skriv linjerne, før du går ind. Det tager fem minutter.</p>
+  </div>
+</section>
+
+<section class="section" id="tilbage-til-casen">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">10</div>
+    <h2>Tilbage til casen</h2>
+    </div>
+    <p>Anne og Jesper aftaler det på et kvarter. Hun beder ham om at holde øje med én ting i de to næste strategimøder: hvad hun gør, fra hun spørger om indvendinger, til hun går videre – og hvad der sker i rummet. Ikke hvad han synes om hende, men hvad han ser. Han skal skrive én eller to sætninger samme dag. Han må sige nej, og han må stoppe, når han vil. Hun siger tak hver gang og forklarer sig ikke.</p>
+    <p>Efter det første møde skriver Jesper: »Du spurgte, om der var noget, vi ikke havde hørt. Du kiggede på uret, mens du sagde det. Karim begyndte at sige noget og stoppede.«</p>
+    <p>Efter det andet: »Du spurgte og lagde pennen fra dig. Der gik et øjeblik. Line nævnte risikoen ved leverancen, som ikke havde været oppe før.«</p>
+    <figure class="vz" aria-labelledby="vz-s08b-title">
+  <div class="vz-head">
+    <div class="vz-kicker">Casen i ét billede</div>
+    <div class="vz-title" id="vz-s08b-title">To observationer – og intet hvorfor</div>
+  </div>
+  <div class="vz-art"><div class="m-bred"><svg viewBox="0 0 580 166" role="img" aria-labelledby="vz-s08b-t vz-s08b-d"><title id="vz-s08b-t">To observationer</title><desc id="vz-s08b-d">Jespers to observationer. Møde 1: Anne spurgte og kiggede på uret; Karim begyndte at sige noget og stoppede. Møde 2: Anne spurgte og lagde pennen fra sig; Line tog risikoen ved leverancen op. Ingen af dem skrev, hvorfor.</desc><text x="64" y="18" text-anchor="start" class="t-sans" font-size="12.5" fill="#111" font-weight="500">Det, hun gjorde</text><text x="264" y="18" text-anchor="start" class="t-sans" font-size="12.5" fill="#111" font-weight="500">Det, der skete i rummet</text><text x="472" y="18" text-anchor="start" class="t-sans" font-size="12.5" fill="#777" font-weight="500">Hvorfor?</text><text x="0" y="64" text-anchor="start" class="t-sans" font-size="13.5" fill="#111" font-weight="500">Møde 1</text><rect x="64" y="34" width="190" height="48" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="76" y="63" text-anchor="start" class="t-sans" font-size="12.5" fill="#111">Spurgte – kiggede på uret</text><rect x="264" y="34" width="198" height="48" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="276" y="55" text-anchor="start" class="t-sans" font-size="12.5" fill="#111">Karim begyndte at sige</text><text x="276" y="72" text-anchor="start" class="t-sans" font-size="12.5" fill="#111">noget og stoppede</text><rect x="472" y="34" width="104" height="48" rx="3" fill="none" stroke="#d9d4cb" stroke-width="1.5" stroke-dasharray="4 4"/><text x="524" y="63" text-anchor="middle" class="t-sans" font-size="12.5" fill="#c0392b">ikke skrevet</text><text x="0" y="126" text-anchor="start" class="t-sans" font-size="13.5" fill="#111" font-weight="500">Møde 2</text><rect x="64" y="96" width="190" height="48" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="76" y="125" text-anchor="start" class="t-sans" font-size="12.5" fill="#111">Spurgte – lagde pennen fra sig</text><rect x="264" y="96" width="198" height="48" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="276" y="117" text-anchor="start" class="t-sans" font-size="12.5" fill="#111">Line tog risikoen ved</text><text x="276" y="134" text-anchor="start" class="t-sans" font-size="12.5" fill="#111">leverancen op</text><rect x="472" y="96" width="104" height="48" rx="3" fill="none" stroke="#d9d4cb" stroke-width="1.5" stroke-dasharray="4 4"/><text x="524" y="125" text-anchor="middle" class="t-sans" font-size="12.5" fill="#c0392b">ikke skrevet</text></svg></div><div class="m-smal"><svg viewBox="0 0 360 290" role="img" aria-labelledby="vz-s08bs-t vz-s08bs-d"><title id="vz-s08bs-t">To observationer</title><desc id="vz-s08bs-d">Jespers to observationer. Møde 1: Anne spurgte og kiggede på uret; Karim begyndte at sige noget og stoppede. Møde 2: Anne spurgte og lagde pennen fra sig; Line tog risikoen ved leverancen op. Ingen af dem skrev, hvorfor.</desc><text x="0" y="16" text-anchor="start" class="t-sans" font-size="15" fill="#111" font-weight="500">Møde 1</text><text x="0" y="42" text-anchor="start" class="t-sans" font-size="12.5" fill="#777">Det, hun gjorde</text><text x="0" y="62" text-anchor="start" class="t-sans" font-size="14.5" fill="#111">Spurgte – kiggede på uret</text><text x="0" y="88" text-anchor="start" class="t-sans" font-size="12.5" fill="#777">Det, der skete i rummet</text><text x="0" y="108" text-anchor="start" class="t-sans" font-size="14.5" fill="#111">Karim begyndte at sige noget og stoppede</text><text x="0" y="132" text-anchor="start" class="t-sans" font-size="13.5" fill="#c0392b">Hvorfor? Ikke skrevet.</text><text x="0" y="166" text-anchor="start" class="t-sans" font-size="15" fill="#111" font-weight="500">Møde 2</text><text x="0" y="192" text-anchor="start" class="t-sans" font-size="12.5" fill="#777">Det, hun gjorde</text><text x="0" y="212" text-anchor="start" class="t-sans" font-size="14.5" fill="#111">Spurgte – lagde pennen fra sig</text><text x="0" y="238" text-anchor="start" class="t-sans" font-size="12.5" fill="#777">Det, der skete i rummet</text><text x="0" y="258" text-anchor="start" class="t-sans" font-size="14.5" fill="#111">Line tog risikoen ved leverancen op</text><text x="0" y="282" text-anchor="start" class="t-sans" font-size="13.5" fill="#c0392b">Hvorfor? Ikke skrevet.</text></svg></div></div>
+  <figcaption>Konstrueret case. To møder er to møder, ikke et mønster, og ingen ved, om Line havde sagt det alligevel.</figcaption>
+</figure>
+    <p>Anne læser de to sætninger flere gange. Den første beskriver noget, hun ikke kunne have set. Den anden beskriver noget, hun kan gentage. Jesper beskriver, hvad hun gjorde, og hvad andre gjorde bagefter. Han skriver ikke, hvorfor Karim stoppede, og det gør hun heller ikke. Hun skriver ingen konklusion. To møder er ikke et mønster, og hun ved ikke, om Line havde sagt det alligevel.</p>
+    <p>Hun sender to linjer til Jesper efter det andet møde: »Tak. Det var det, jeg havde brug for.« Hun skriver ikke, hvad hun har tænkt om det, han så, og hun spørger ikke, om han synes, hun er blevet bedre. Det var ikke det, han blev bedt om.</p>
+    <p>Til samtalen med mentoren tager hun siden med: én observation, én handling, det Jesper så. Samtalen handler ikke længere om, hvad hun tror, hun gør. Den handler om det, der skete.</p>
+    <p>Og den peger på det næste skridt. Hvis det, Jesper så i det andet møde, skal blive mere end et enkelttilfælde, må hun afprøve det systematisk – som ét eksperiment, med et målepunkt, over flere uger. Det er emnet for Paper 09.</p>
+  </div>
+</section>
+
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">11 — Status</div>
+    <h2>Hvad du kan se, og hvad du ikke må konkludere</h2>
+    </div>
+    <div class="ro-box" role="group" aria-label="Hvad du kan se, og hvad du ikke må konkludere">
+      <div class="ro">
+        <div class="ro-h">Hvad kan du se nu?</div>
+        <p>Du kan se, hvorfor den gode samtale ikke i sig selv ændrer noget, og hvorfor forskningen peger på det, der sker bagefter: mål, handling og omgivelser, der giver det lærte plads. Du kan se, hvorfor serien bruger andres øjne på trods af de resultater, der går imod, og hvorfor den beder om én konkret observation frem for en generel vurdering. Og du har en plan for de næste fjorten dage: én observation, én handling og én person, der ser den.</p>
+      </div>
+      <div class="ro">
+        <div class="ro-h">Hvad må du ikke konkludere?</div>
+        <p>Du må ikke konkludere, at samtaler med en coach, en mentor eller en kollega er overflødige; de giver indsigten, og mellemrummet har brug for noget at arbejde med. Du må heller ikke konkludere, at én observatørs sætninger er et mønster; to møder er to møder. Og forskningen finder små og usikre sammenhænge mellem det, ledere gør efter feedback, og senere forbedring. Den viser ikke, at Mellemrummets plan virker, eller at andres øjne altid hjælper.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="roller">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">12 — Fire roller</div>
+    <h2>Hvad betyder det for dig – og for dem omkring dig?</h2>
+    </div>
+    <div class="roles">
+      <details class="faq-item" open>
+        <summary class="faq-q"><span>Til dig selv<span class="rq-sub">Når du arbejder med det alene</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Skriv Mellemrummets plan inden for en time efter hver samtale.</li><li>Læg handlingen i kalenderen ved det møde, hvor du vil gøre den.</li><li>Begynd næste samtale med tre linjer: hvad du gjorde, hvad den anden så, hvad du vil bringe op.</li></ul></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>Til din ledergruppe<span class="rq-sub">Når du bruger det sammen med dem, du leder</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Hvis du bliver bedt om at være observatør: Beskriv, hvad der skete, ikke hvad du synes.</li><li>Overvej at gøre det gensidigt – én ting hver – og afslut aftalen, når den er slut.</li></ul></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>Til HR<span class="rq-sub">Når HR understøtter direktionen</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Når lederudvikling indeholder coaching eller mentorforløb, så byg tid og struktur til mellemrummet ind – ikke kun til samtalerne.</li><li>Gør det tydeligt, at observationer i et udviklingsforløb ikke indgår i vurderinger af hverken lederen eller observatøren.</li></ul></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>Til bestyrelsen<span class="rq-sub">Når bestyrelsen spørger til direktøren</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Spørg ikke kun, om direktøren har en samtalepartner. Spørg, hvad direktøren har gjort anderledes siden sidst, og hvem der har set det.</li></ul></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="konkret">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">13 — Gør det konkret</div>
+    <h2>Øvelse og dit næste skridt</h2>
+    </div>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · Topleder · Én observatør</div>
+      <div class="ex-meta">⏱ Ti minutter efter samtalen og fem minutter midtvejs · Ingen score. Planen ender i tre linjer til næste samtale.</div>
+      <ol>
+        <li><strong>Skriv én observation fra din seneste samtale, Ugens side eller feedback – en adfærd i en situation.</strong></li>
+        <li><strong>Vælg én handling, skriv den som »Når … , vil jeg …«, og læg den i kalenderen ved et bestemt møde.</strong></li>
+        <li><strong>Vælg én person, der er til stede, og spørg med de fem ting fra afsnit 07.</strong></li>
+        <li><strong>Læs planen igen efter en uge, og justér, hvis det er nødvendigt.</strong></li>
+        <li><strong>Skriv tre linjer før næste samtale: hvad du gjorde, hvad den anden så, hvad du vil bringe op.</strong></li>
+      </ol>
+      <p class="ex-out">Resultat: én handling i kalenderen · én person, der ser den · tre linjer til næste samtale.</p>
+    </div>
+
+    <div class="sheet-card tool-card">
+      <div class="sc-text">
+        <div class="cta-label">Interaktivt værktøj · alt bliver i din browser</div>
+        <h3>Mellemrummets plan</h3>
+        <p>Skriv udgangspunktet, vælg én handling og læg den i kalenderen, og send et link til den, der skal se den. Observationerne kommer tilbage som en kode – intet går gennem en server.</p>
+      </div>
+      <a class="pdf-btn primary" href="/selvindsigt-mellemrummets-plan.html">Åbn værktøjet →</a>
+    </div>
+
+    <div class="sheet-card">
+      <div class="sc-text">
+        <div class="cta-label">Refleksionsark · 1 side A4</div>
+        <h3>Tag spørgsmålene med på papir</h3>
+        <p>Paperet giver argumentet. Refleksionsarket samler spørgsmålene og de næste skridt på én side, så du kan skrive i hånden.</p>
+      </div>
+      <button class="pdf-btn primary" type="button" onclick="friisnaesSheet()" aria-label="Print refleksionsarket til Paper 08 som én A4-side">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Hent refleksionsark
+      </button>
+    </div>
+
+    <div class="commit-box" id="commit">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 08 · Forandringen sker mellem samtalerne</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv dit commitment her. Det gemmes kun i din egen browser.</p>
+      <label for="commitText">Mit commitment</label>
+      <p class="commit-note">Min handling er ____. Den, der ser den, er ____. Næste samtale er ____ / ____.</p>
+      <textarea id="commitText" placeholder="Min handling · den, der ser den · næste samtale"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit commitment</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Selvindsigt er en disciplin</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="metode">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">14 — Metode og næste paper</div>
+    <h2>Hvad paperet bygger på</h2>
+    </div>
+    <p>Paperet bygger på forskning i forbedring efter 360-graders feedback og coaching, overførsel fra læring til arbejde og opgaver mellem coachingsamtaler, på dansk forskning i overførsel samt på min praksis med topledere; Mellemrummets plan er et praksisværktøj, ikke et valideret instrument.</p>
+    <p><em>Grundlag: Forskning er kildeangivet. Min praksis står som erfaring. Mellemrummets plan er et praksisværktøj, ikke et valideret instrument. Paperet beskriver ikke en bestemt coachingmetode og lover ingen effekt af samtaler med en coach, en mentor eller en observatør.</em></p>
+
+    <h3>Næste i serien</h3>
+    <p><strong>Paper 09 · Indsigt uden adfærdsændring er underholdning</strong> – fra mønster til ét eksperiment med et målepunkt.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="/selvindsigt-indsigt-uden-adfaerdsaendring-er-underholdning.html" data-sid-on="2027-06-21" hidden>
+        <div class="nc-tag">Paper 09</div>
+        <div class="nc-text"><strong>Indsigt uden adfærdsændring er underholdning</strong> — fra mønster til ét eksperiment med et målepunkt.</div>
+      </a>
+      <div class="next-card soon" aria-disabled="true" data-sid-off="2027-06-21">
+        <div class="nc-tag">Paper 09 · Udkommer 21. juni 2027</div>
+        <div class="nc-text"><strong>Indsigt uden adfærdsændring er underholdning</strong> — fra mønster til ét eksperiment med et målepunkt.</div>
+      </div>
+      <a class="next-card" href="/selvindsigt-coach-dig-selv-og-kend-graensen.html">
+        <div class="nc-tag">Selvindsigt er en disciplin · Paper 07</div>
+        <div class="nc-text"><strong>Coach dig selv – og kend grænsen</strong> — Grænsetesten</div>
+      </a>
+      <a class="next-card" href="/library.html">
+        <div class="nc-tag">Executive Library</div>
+        <div class="nc-text"><strong>Alle serier og papers</strong> om lederen, holdet, strategien og eksekveringen</div>
+      </a>
+    </div>
+    <p class="author-note"><strong>Om forfatteren:</strong> <em>Thomas Friisnæs er executive coach og forfatter til flere bøger og paper-serier om ledelse, karakter og disciplin. friisnaes.com</em></p>
+  </div>
+</section>
+
+</article>
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block" aria-label="Kilder">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">Forbedring efter feedback og coaching, transfer og opgaver mellem samtaler</div>
+    <ul>
+      <li>Blume, B. D., Ford, J. K., Baldwin, T. T., &amp; Huang, J. L. (2010). Transfer of training: A meta-analytic review. <em>Journal of Management</em>, 36(4), 1065–1105. <a href="https://doi.org/10.1177/0149206309352880" target="_blank" rel="noopener">doi.org/10.1177/0149206309352880</a></li>
+      <li>Jones, R. J., Woods, S. A., &amp; Guillaume, Y. R. F. (2016). The effectiveness of workplace coaching: A meta-analysis of learning and performance outcomes from coaching. <em>Journal of Occupational and Organizational Psychology</em>, 89(2), 249–277. <a href="https://doi.org/10.1111/joop.12119" target="_blank" rel="noopener">doi.org/10.1111/joop.12119</a></li>
+      <li>Kluger, A. N., &amp; DeNisi, A. (1996). The effects of feedback interventions on performance: A historical review, a meta-analysis, and a preliminary feedback intervention theory. <em>Psychological Bulletin</em>, 119(2), 254–284. <a href="https://doi.org/10.1037/0033-2909.119.2.254" target="_blank" rel="noopener">doi.org/10.1037/0033-2909.119.2.254</a></li>
+      <li>Passmore, J., Day, C., &amp; Wang, Q. (2024). Hands up for homework: Exploring inter-sessional activities in coaching. <em>Journal of Work-Applied Management</em>, 16(1), 19–30. <a href="https://doi.org/10.1108/JWAM-04-2023-0026" target="_blank" rel="noopener">doi.org/10.1108/JWAM-04-2023-0026</a></li>
+      <li>Smither, J. W., London, M., Flautt, R., Vargas, Y., &amp; Kucine, I. (2003). Can working with an executive coach improve multisource feedback ratings over time? A quasi-experimental field study. <em>Personnel Psychology</em>, 56(1), 23–44. <a href="https://doi.org/10.1111/j.1744-6570.2003.tb00142.x" target="_blank" rel="noopener">doi.org/10.1111/j.1744-6570.2003.tb00142.x</a></li>
+      <li>Smither, J. W., London, M., &amp; Reilly, R. R. (2005). Does performance improve following multisource feedback? A theoretical model, meta-analysis, and review of empirical findings. <em>Personnel Psychology</em>, 58(1), 33–66. <a href="https://doi.org/10.1111/j.1744-6570.2005.514_1.x" target="_blank" rel="noopener">doi.org/10.1111/j.1744-6570.2005.514_1.x</a></li>
+      <li>Smither, J. W., London, M., Reilly, R. R., Flautt, R., Vargas, Y., &amp; Kucine, I. (2004). Discussing multisource feedback with raters and performance improvement. <em>Journal of Management Development</em>, 23(5), 456–468. <a href="https://doi.org/10.1108/02621710410537065" target="_blank" rel="noopener">doi.org/10.1108/02621710410537065</a></li>
+      <li>Wahlgren, B. (2009). <em>Transfer mellem uddannelse og arbejde</em>. Nationalt Center for Kompetenceudvikling, Aarhus Universitet. <a href="https://www.nck.au.dk/fileadmin/nck/Opgave_2.5/Transfer_-_mellem_uddannelse_og_arbejde._Med_summary._Haefte.pdf" target="_blank" rel="noopener">nck.au.dk</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- REFLEKSIONSARK -->
+<aside class="refl-sheet" id="refleksionsark" aria-label="Refleksionsark til Paper 08">
+  <div class="rs-kicker">Selvindsigt er en disciplin · Serie 09 · Paper 08</div>
+  <div class="rs-title">Forandringen sker mellem samtalerne</div>
+  <div class="rs-sub">Samtalen giver indsigten. Ugen imellem giver forandringen. Om de fjorten dage mellem to samtaler – én observation, én handling og én person, der ser den.</div>
+  <div class="rs-prov">
+    <div class="rs-lbl">Signaturlinje</div>
+    <div class="rs-prov-t">Samtalen giver indsigten. Ugen imellem giver forandringen.</div>
+  </div>
+  <div class="rs-lbl">Spørgsmålet</div>
+  <div class="rs-cq">Hvad gjorde jeg – og hvem så det?</div>
+  <div class="rs-cols">
+    <div>
+      <div class="rs-lbl">Tre pointer</div>
+      <ol class="rs-list rs-strong">
+        <li>Indsigt fra en samtale er ikke det samme som ændret adfærd.</li>
+        <li>Én observation, én handling, én person, der ser den.</li>
+        <li>Observationer beskriver adfærd og reaktioner, ikke årsager.</li>
+      </ol>
+    </div>
+    <div>
+      <div class="rs-lbl">Fem spørgsmål</div>
+      <ol class="rs-list">
+        <li>Hvad er udgangspunktet – en observation eller en oplevet virkning?</li>
+        <li>Hvilken ene handling vil jeg gøre, og i hvilket møde?</li>
+        <li>Hvem er til stede og kan se det – og hvad skal de se efter?</li>
+        <li>Hvad viste midtvejskontrollen?</li>
+        <li>Hvad gjorde jeg, hvad så den anden, og hvad vil jeg bringe op?</li>
+      </ol>
+    </div>
+  </div>
+  <div class="rs-now">
+    <div class="rs-lbl">Mit commitment</div>
+    <div class="rs-now-h">Min handling er ____. Den, der ser den, er ____. Næste samtale er ____ / ____.</div>
+    <div class="rs-now-a">Skriv planen inden for en time efter samtalen.</div>
+  </div>
+  <div class="rs-lbl">Mellemrummets plan · tre tidspunkter</div>
+  <div class="rs-clocks">
+    <div><div class="rs-lbl">Efter samtalen</div><strong>Én side.</strong><span>Udgangspunkt, handling, person.</span></div>
+    <div><div class="rs-lbl">Midtvejs</div><strong>Fem minutter.</strong><span>Justér eller gentag.</span></div>
+    <div><div class="rs-lbl">Før næste samtale</div><strong>Tre linjer.</strong><span>Hvad jeg gjorde, hvad de så, hvad jeg bringer op.</span></div>
+  </div>
+  <div class="rs-foot"><span>Refleksionsark til Paper 08 · Selvindsigt er en disciplin · Thomas Friisnæs · friisnaes.com</span><span class="rs-foot-r">Ikke en test. Ikke en score. Et sted at tænke.</span></div>
+</aside>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Selvindsigt er en disciplin — serien</div>
+    <h2 class="collection-title">Executive playbook: coach dig selv, og forstå det, du ikke kan se selv</h2>
+    <p class="collection-intro">Ti papers om selvindsigt som en disciplin: præcis viden om din egen adfærd og dens virkning på andre, underbygget af evidens. I fire dele, fra det, du ikke kan se, til en personlig playbook.</p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 1</span><span class="cpart-name">Det, du ikke kan se</span></div>
+      <p class="cpart-desc">Hvorfor dit billede af dig selv kun er et udgangspunkt, og hvorfor spejlet bliver dårligere, jo højere du kommer op.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/selvindsigt-er-ikke-en-foelelse.html" data-sid-on="2027-03-01" hidden>Selvindsigt er ikke en følelse. Det er evidens.</a><span class="soon" data-sid-off="2027-03-01">Selvindsigt er ikke en følelse. Det er evidens.<small>Udkommer 1. marts 2027</small></span></li>
+        <li data-n="02"><a href="/selvindsigt-jo-hoejere-op-jo-daarligere-spejl.html" data-sid-on="2027-03-15" hidden>Jo højere op, jo dårligere spejl</a><span class="soon" data-sid-off="2027-03-15">Jo højere op, jo dårligere spejl<small>Udkommer 15. marts 2027</small></span></li>
+        <li data-n="03"><a href="/selvindsigt-introspektion-er-ikke-det-samme-som-indsigt.html" data-sid-on="2027-03-29" hidden>Introspektion er ikke det samme som indsigt</a><span class="soon" data-sid-off="2027-03-29">Introspektion er ikke det samme som indsigt<small>Udkommer 29. marts 2027</small></span></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 2</span><span class="cpart-name">Instrumenterne</span></div>
+      <p class="cpart-desc">Feedback, tests og skriftlig refleksion som instrumenter, du kan bruge med en fast rytme.</p>
+      <ol class="cpart-papers">
+        <li data-n="04"><a href="/selvindsigt-feedback-er-data-ikke-en-dom.html" data-sid-on="2027-04-12" hidden>Feedback er data, ikke en dom</a><span class="soon" data-sid-off="2027-04-12">Feedback er data, ikke en dom<small>Udkommer 12. april 2027</small></span></li>
+        <li data-n="05"><a href="/selvindsigt-testen-er-et-sprog-ikke-en-diagnose.html" data-sid-on="2027-04-26" hidden>Testen er et sprog, ikke en diagnose</a><span class="soon" data-sid-off="2027-04-26">Testen er et sprog, ikke en diagnose<small>Udkommer 26. april 2027</small></span></li>
+        <li data-n="06"><a href="/selvindsigt-skriv-for-at-taenke.html" data-sid-on="2027-05-10" hidden>Skriv for at tænke</a><span class="soon" data-sid-off="2027-05-10">Skriv for at tænke<small>Udkommer 10. maj 2027</small></span></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 3</span><span class="cpart-name">Med og uden coach</span></div>
+      <p class="cpart-desc">Hvor langt du kan coache dig selv, og hvad der skal ske mellem samtalerne.</p>
+      <ol class="cpart-papers">
+        <li data-n="07"><a href="/selvindsigt-coach-dig-selv-og-kend-graensen.html" data-sid-on="2027-05-24" hidden>Coach dig selv – og kend grænsen</a><span class="soon" data-sid-off="2027-05-24">Coach dig selv – og kend grænsen<small>Udkommer 24. maj 2027</small></span></li>
+        <li data-n="08"><span class="current">Forandringen sker mellem samtalerne — du læser dette</span></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 4</span><span class="cpart-name">Fra indsigt til adfærd</span></div>
+      <p class="cpart-desc">Fra mønster til ét eksperiment og til en personlig playbook, du kan holde dig selv op på.</p>
+      <ol class="cpart-papers">
+        <li data-n="09"><a href="/selvindsigt-indsigt-uden-adfaerdsaendring-er-underholdning.html" data-sid-on="2027-06-21" hidden>Indsigt uden adfærdsændring er underholdning</a><span class="soon" data-sid-off="2027-06-21">Indsigt uden adfærdsændring er underholdning<small>Udkommer 21. juni 2027</small></span></li>
+        <li data-n="10"><a href="/selvindsigt-din-personlige-playbook.html" data-sid-on="2027-07-05" hidden>Din personlige playbook</a><span class="soon" data-sid-off="2027-07-05">Din personlige playbook<small>Udkommer 5. juli 2027</small></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4, klar til at læse, gemme eller tage med til næste samtale om din rolle og din tid. Refleksionsarket er én side til at skrive på.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesSheet()" aria-label="Print refleksionsarket som én A4-side">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+        Refleksionsark
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="fb-signup" aria-label="Tilmeld dig C-Level Brief">
+  <div class="fb-signup-in">
+    <div>
+      <div class="fb-signup-k">C-Level Brief · hver mandag</div>
+      <h3>Få briefen <em>hver mandag.</em></h3>
+      <p>Signaler med konsekvens for topledere – i din indbakke. Otte minutter. Afmeld med ét klik.</p>
+    </div>
+    <a class="fb-signup-btn" href="https://brief.subscribepage.io" target="_blank" rel="noopener">Tilmeld dig</a>
+  </div>
+</section>
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/selvindsigt-coach-dig-selv-og-kend-graensen.html" data-from="2027-05-24">
+      <span class="ra-tag">Selvindsigt er en disciplin · Paper 07</span>
+      <span class="ra-title">Coach dig selv – og kend grænsen</span>
+    </a>
+    <a href="/selvindsigt-feedback-er-data-ikke-en-dom.html" data-from="2027-04-12">
+      <span class="ra-tag">Selvindsigt er en disciplin · Paper 04</span>
+      <span class="ra-title">Feedback er data, ikke en dom</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Selvindsigt er en disciplin · Serie 09 · Paper 08 af 10</div>
+        <div class="series-next"><span data-sid-on="2027-06-21" hidden>Næste: <a href="/selvindsigt-indsigt-uden-adfaerdsaendring-er-underholdning.html">Indsigt uden adfærdsændring er underholdning</a></span><span data-sid-off="2027-06-21">Næste: Indsigt uden adfærdsændring er underholdning · udkommer 21. juni 2027</span></div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: sid_ (Selvindsigt er en disciplin)
+  var LS_C = 'sid_p08_commit', LS_D = 'sid_done', PAPER_N = 8, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // Rullebokse og FAQ åbne i print
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // Udgivelsesplan: links til papers i serien vises først fra deres udgivelsesdato (ét paper hver anden mandag)
+  (function () {
+    var now = new Date();
+    function on(d) { return now >= new Date(d + 'T00:00:00+01:00'); }
+    document.querySelectorAll('[data-sid-on]').forEach(function (el) { if (on(el.getAttribute('data-sid-on'))) el.removeAttribute('hidden'); });
+    document.querySelectorAll('[data-sid-off]').forEach(function (el) { if (on(el.getAttribute('data-sid-off'))) el.remove(); });
+  })();
+
+  // Læs også: links til papers i andre serier vises først fra deres udgivelsesdato
+  (function () {
+    var now = new Date();
+    document.querySelectorAll('.read-also a[data-from]').forEach(function (a) {
+      if (now < new Date(a.getAttribute('data-from') + 'T00:00:00+01:00')) a.setAttribute('hidden', '');
+    });
+  })();
+
+  // Refleksionsark: printer kun arket som én A4-side
+  function friisnaesSheet() {
+    try {
+      document.body.classList.add('print-sheet');
+      var cleanup = function () {
+        document.body.classList.remove('print-sheet');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indsigt uden adfærdsændring er underholdning | Selvindsigt</title>
+<meta name="description" content="Paper 09 i Selvindsigt er en disciplin: hvordan en topleder går fra indsigt til ét afgrænset eksperiment med målepunkt og observatør – med Eksperimentkortet.">
+<meta name="keywords" content="adfærdsændring, eksperiment, målepunkt, observatør, selvmonitorering, beslutningskvalitet, alternativer, selvindsigt, executive coaching, topleder, CEO, Eksperimentkortet">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://www.friisnaes.com/selvindsigt-indsigt-uden-adfaerdsaendring-er-underholdning.html">
+
+<meta property="og:title" content="Indsigt uden adfærdsændring er underholdning | Selvindsigt er en disciplin">
+<meta property="og:description" content="De andre i rummet oplever ikke din indsigt. De oplever det, du gør. Paper 09 om ét eksperiment ad gangen og Eksperimentkortet.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.friisnaes.com/selvindsigt-indsigt-uden-adfaerdsaendring-er-underholdning.html">
+<meta property="og:image" content="https://www.friisnaes.com/og-serie-09.jpg">
+<meta property="og:image:alt" content="Selvindsigt er en disciplin – serie af Thomas Friisnæs">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="da_DK">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="article:author" content="Thomas Friisnæs">
+<meta property="article:section" content="Selvindsigt er en disciplin">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Indsigt uden adfærdsændring er underholdning">
+<meta name="twitter:description" content="Indsigt, der ikke ændrer en handling, er underholdning. Paper 09 i Selvindsigt er en disciplin.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-serie-09.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #111111; --navy-mid: #1a1a1a; --navy-light: #222222;
+    --gold: #c0392b; --gold-light: #e74c3c; --gold-pale: #f5f4f0;
+    --cream: #faf7f2; --warm-white: #fafaf8;
+    --text: #111111; --text-mid: #444444; --text-light: #777777;
+    --border: #e8e0d0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', -apple-system, sans-serif; background: var(--warm-white); color: var(--text); font-size: 17px; line-height: 1.75; font-weight: 300; -webkit-font-smoothing: antialiased; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
+
+  /* PROGRESS BAR */
+  .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0; z-index: 100; transition: width 0.1s ease; }
+
+  /* NAV */
+  .site-nav { background: var(--navy); border-bottom: 1px solid rgba(192,57,43,0.14); position: sticky; top: 0; z-index: 50; }
+  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 62px; }
+  .nav-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; font-weight: 500; color: white; text-decoration: none; }
+  .nav-brand em { font-style: italic; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 26px; align-items: center; }
+  .nav-links a { font-size: 13px; color: rgba(255,255,255,0.72); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta { color: var(--navy) !important; background: var(--gold); padding: 8px 16px; border-radius: 2px; font-weight: 500; }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+  .nav-toggle { display: none; }
+  .nav-nd { position: relative; display: inline-flex; align-items: center; }
+  .nav-nd-t { display: inline-flex; align-items: center; gap: 4px; cursor: default; }
+  .nav-nd-c { font-size: 9px; opacity: .7; transition: transform .2s; }
+  .nav-nd:hover .nav-nd-c { transform: rotate(180deg); }
+  .nav-nd-m { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); background: var(--navy-mid); border: 1px solid rgba(192,57,43,0.18); padding: 6px 0; min-width: 180px; opacity: 0; visibility: hidden; transition: all .2s; z-index: 60; display: flex; flex-direction: column; }
+  .nav-nd:hover .nav-nd-m { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+  .nav-nd-m a { padding: 9px 18px !important; font-size: 12.5px; white-space: nowrap; }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; position: absolute; top: 62px; left: 0; right: 0; background: var(--navy); flex-direction: column; gap: 0; padding: 8px 0; border-bottom: 1px solid rgba(192,57,43,0.14); }
+    .nav-links.open a { padding: 12px 32px; }
+    .nav-toggle { display: block; background: none; border: none; color: white; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .nav-nd { flex-direction: column; align-items: flex-start; width: 100%; }
+    .nav-nd-m { position: static; transform: none; opacity: 1; visibility: visible; background: none; border: none; padding: 0 0 0 16px; min-width: 0; }
+    .nav-nd-c { display: none; }
+  }
+
+  /* ARTICLE HEADER */
+  .wp-header { background: var(--navy); color: white; padding: 60px 0 46px; position: relative; overflow: hidden; }
+  .wp-header::before { content: ''; position: absolute; top: -140px; right: -120px; width: 460px; height: 460px; border-radius: 50%; border: 1px solid rgba(192,57,43,0.10); pointer-events: none; }
+  .wp-header-inner { position: relative; z-index: 1; }
+  .wp-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 26px; }
+  .wp-badge { color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; }
+  .wp-series { color: rgba(255,255,255,0.6); font-weight: 500; }
+  .wp-readtime { color: rgba(255,255,255,0.45); font-weight: 400; }
+  .wp-header h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(36px, 5.6vw, 58px); font-weight: 400; line-height: 1.04; letter-spacing: -0.01em; color: white; margin-bottom: 22px; }
+  .wp-header h1 em { font-style: italic; color: var(--gold-light); }
+  .wp-subtitle { font-size: 18px; line-height: 1.7; color: rgba(255,255,255,0.78); max-width: 600px; font-weight: 300; margin-bottom: 30px; }
+  .wp-divider { width: 46px; height: 2px; background: var(--gold); margin-bottom: 22px; }
+  .wp-author { font-size: 14px; color: rgba(255,255,255,0.62); line-height: 1.7; font-weight: 300; }
+  .wp-author strong { color: white; font-weight: 500; }
+
+  /* TOC */
+  .wp-toc { background: var(--cream); border-bottom: 1px solid var(--border); padding: 34px 0; }
+  .wp-toc-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .wp-toc ol { list-style: none; counter-reset: toc; columns: 2; column-gap: 40px; }
+  .wp-toc li { counter-increment: toc; break-inside: avoid; margin-bottom: 9px; }
+  .wp-toc a { display: flex; gap: 11px; text-decoration: none; color: var(--text-mid); font-size: 14.5px; line-height: 1.45; transition: color 0.2s; }
+  .wp-toc a::before { content: counter(toc, decimal-leading-zero); color: var(--gold); font-size: 11px; font-weight: 600; padding-top: 2px; min-width: 20px; }
+  .wp-toc a:hover { color: var(--gold); }
+  @media (max-width: 600px) { .wp-toc ol { columns: 1; } }
+
+  /* BODY */
+  main.wp-body { padding: 8px 0 0; }
+  .section { padding: 46px 0 4px; }
+  .section-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .section h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 36px); font-weight: 400; line-height: 1.12; color: var(--navy); margin-bottom: 24px; letter-spacing: -0.005em; }
+  .section h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); margin: 8px 0 16px; }
+  .section p { font-size: 17.5px; line-height: 1.85; color: var(--text-mid); margin-bottom: 20px; }
+  .section p strong { color: var(--navy); font-weight: 500; }
+  .first p:first-of-type::first-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 0.8; float: left; color: var(--gold); margin: 8px 12px 0 0; font-weight: 500; }
+
+  /* PULL QUOTE */
+  .pull-quote { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(21px, 3vw, 27px); font-style: italic; font-weight: 400; color: var(--navy); line-height: 1.4; margin: 34px 0; padding-left: 24px; border-left: 2px solid var(--gold); }
+  .pull-quote cite { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-style: normal; color: var(--text-light); margin-top: 12px; letter-spacing: 0.02em; }
+
+  /* RESEARCH NOTE */
+  .research-note { background: var(--cream); border-left: 2px solid var(--border); padding: 16px 22px; margin: 22px 0; font-size: 13.5px; line-height: 1.6; color: var(--text-light); }
+  .research-note strong { color: var(--text-mid); font-weight: 500; }
+
+  /* COST BOX */
+  .cost-box { background: var(--navy); color: white; border-radius: 5px; padding: 40px 38px; margin: 40px 0; }
+  .cost-box .cb-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 24px; }
+  .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 34px; }
+  .cost-item .ci-h { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: var(--gold-light); font-weight: 500; margin-bottom: 7px; }
+  .cost-item p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.72); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .cost-grid { grid-template-columns: 1fr; } }
+
+  /* FRAMEWORK BOX */
+  .framework-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 40px 38px; margin: 34px 0; position: relative; }
+  .framework-box::before { content: ''; position: absolute; top: 0; left: 38px; right: 38px; height: 3px; background: var(--gold); }
+  .fw-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .fw-title { font-family: 'Playfair Display', Georgia, serif; font-size: 27px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .fw-sub { font-size: 14.5px; color: var(--text-mid); margin-bottom: 28px; font-weight: 300; }
+  .fw-step { display: flex; gap: 20px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .fw-step:first-of-type { border-top: none; }
+  .fw-letter { font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 600; color: var(--gold); line-height: 1; min-width: 34px; }
+  .fw-step-body h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 5px; }
+  .fw-step-body p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; font-weight: 300; }
+
+  /* SCENARIO */
+  .scenario { background: var(--gold-pale); border-radius: 5px; padding: 26px 30px; margin: 26px 0; }
+  .scenario .sc-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .scenario p { font-size: 16px; line-height: 1.75; color: var(--text-mid); margin: 0; font-style: italic; }
+
+  /* SIGNS LIST */
+  .signs { margin: 22px 0; }
+  .signs .signs-h { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .signs ul { list-style: none; }
+  .signs li { position: relative; padding-left: 24px; margin-bottom: 10px; font-size: 15.5px; line-height: 1.6; color: var(--text-mid); }
+  .signs li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+
+  /* REFLECTION */
+  .reflection { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 20px 0; margin: 26px 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5; color: var(--navy); }
+
+  /* EXERCISE */
+  .exercise-box { background: white; border: 1px solid var(--border); border-radius: 5px; padding: 38px 36px; margin: 30px 0; }
+  .ex-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .ex-meta { font-size: 13.5px; color: var(--text-light); margin-bottom: 22px; }
+  .exercise-box ol { counter-reset: ex; list-style: none; }
+  .exercise-box ol li { counter-increment: ex; position: relative; padding-left: 40px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.65; color: var(--text-mid); }
+  .exercise-box ol li::before { content: counter(ex); position: absolute; left: 0; top: 0; width: 26px; height: 26px; background: var(--navy); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; }
+  .exercise-box ol li strong { color: var(--navy); font-weight: 600; }
+
+  /* MICRO ACTION */
+  .micro-action { background: var(--navy); color: white; border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .micro-action .ma-tag { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 4px 11px; border-radius: 2px; font-weight: 600; margin-bottom: 18px; }
+  .micro-action h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 23px; color: white; font-weight: 500; margin-bottom: 14px; }
+  .micro-action p { font-size: 15.5px; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 14px; font-weight: 300; }
+  .micro-action p:last-child { margin-bottom: 0; }
+  .micro-action strong { color: var(--gold-light); font-weight: 500; }
+
+  /* COMMITMENT */
+  .commit-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 36px 34px; margin: 30px 0; }
+  .commit-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+  .commit-head .ch-paper { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: var(--navy); font-weight: 500; }
+  .commit-head .ch-status { font-size: 12px; color: var(--text-light); }
+  .commit-box > p { font-size: 15px; color: var(--text-mid); margin-bottom: 18px; }
+  .commit-box label { display: block; font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .commit-box textarea { width: 100%; min-height: 74px; border: 1px solid var(--border); border-radius: 3px; padding: 12px 14px; font-family: 'Outfit', sans-serif; font-size: 15px; color: var(--text); resize: vertical; background: white; }
+  .commit-box textarea:focus { outline: 2px solid var(--gold-light); outline-offset: 1px; border-color: var(--gold); }
+  .commit-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; align-items: center; }
+  .commit-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 22px; border-radius: 2px; border: none; cursor: pointer; transition: all 0.2s; }
+  .commit-btn.primary { background: var(--navy); color: white; }
+  .commit-btn.primary:hover { background: var(--navy-light); }
+  .commit-btn.ghost { background: transparent; color: var(--navy); border: 1px solid var(--border); }
+  .commit-btn.ghost:hover { border-color: var(--gold); }
+  .commit-saved { font-size: 13px; color: var(--gold); font-weight: 500; opacity: 0; transition: opacity 0.3s; }
+  .commit-saved.show { opacity: 1; }
+  .commit-progress { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .cp-label { display: flex; justify-content: space-between; font-size: 13px; color: var(--text-mid); margin-bottom: 8px; }
+  .cp-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .cp-fill { height: 100%; width: 0%; background: var(--gold); border-radius: 3px; transition: width 0.4s ease; }
+  .cp-link { display: inline-block; margin-top: 14px; font-size: 13px; color: var(--gold); text-decoration: none; }
+  .cp-link:hover { color: var(--navy); }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 0; cursor: pointer; font-size: 17px; font-weight: 500; color: var(--navy); list-style: none; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon { color: var(--gold); font-size: 20px; transition: transform 0.2s; flex-shrink: 0; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); }
+  .faq-a { padding: 0 0 22px; font-size: 15.5px; line-height: 1.75; color: var(--text-mid); }
+
+  /* NEXT STEPS */
+  .next-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .next-card { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; text-decoration: none; transition: all 0.2s; }
+  .next-card:hover { border-color: var(--gold); }
+  .next-card .nc-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .next-card .nc-text { font-size: 14.5px; color: var(--text-mid); line-height: 1.55; }
+  .next-card .nc-text strong { color: var(--navy); font-weight: 600; }
+  @media (max-width: 600px) { .next-grid { grid-template-columns: 1fr; } }
+  .start-btn { display: inline-block; background: var(--navy); color: white; padding: 14px 30px; border-radius: 2px; text-decoration: none; font-size: 15px; font-weight: 500; margin-top: 8px; transition: background 0.2s; }
+  .start-btn:hover { background: var(--navy-light); }
+
+  /* SOURCES */
+  .sources-block { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0; margin-top: 40px; }
+  .sources-block .sb-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 20px; }
+  .sources-block ul { list-style: none; }
+  .sources-block li { font-size: 14px; line-height: 1.6; color: var(--text-mid); margin-bottom: 12px; padding-left: 16px; position: relative; }
+  .sources-block li::before { content: '·'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+  .sources-block li em { font-style: italic; color: var(--navy); }
+  .sources-block li a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .sources-block li a:hover { border-bottom-color: var(--gold); }
+
+  /* COLLECTION (series overview at bottom) */
+  .wp-collection { background: var(--navy); color: white; padding: 60px 0; position: relative; overflow: hidden; }
+  .collection-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 14px; }
+  .collection-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(26px, 4vw, 34px); font-weight: 400; color: white; margin-bottom: 18px; }
+  .collection-intro { font-size: 15px; color: rgba(255,255,255,0.6); max-width: 580px; line-height: 1.7; margin-bottom: 40px; font-weight: 300; }
+  .collection-part { margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .collection-part:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .cpart-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .cpart-num { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .cpart-name { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: white; font-weight: 500; }
+  .cpart-desc { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 18px; font-weight: 300; }
+  .cpart-papers { list-style: none; counter-reset: cpaper; }
+  .cpart-papers.cont { counter-reset: none; }
+  .cpart-papers li { counter-increment: cpaper; display: flex; gap: 14px; padding: 9px 0; align-items: baseline; }
+  .cpart-papers li::before { content: attr(data-n); font-size: 10px; color: rgba(192,57,43,0.7); font-weight: 500; min-width: 20px; }
+  .cpart-papers a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 15px; transition: color 0.2s; }
+  .cpart-papers a:hover { color: var(--gold-light); }
+  .cpart-papers .current { color: rgba(255,255,255,0.4); font-size: 15px; }
+
+  /* PDF CTA */
+  .pdf-cta { background: var(--cream); border-top: 1px solid var(--border); padding: 44px 0 56px; }
+  .pdf-cta .container { text-align: center; }
+  .pdf-cta-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 8px; }
+  .pdf-cta-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: var(--navy); font-weight: 400; margin-bottom: 6px; }
+  .pdf-cta-sub { font-size: 14px; color: var(--text-mid); margin-bottom: 24px; font-weight: 300; }
+  .pdf-btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 9px; padding: 13px 24px; border-radius: 3px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; border: 1px solid var(--navy); transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; text-decoration: none; }
+  .pdf-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .pdf-btn.primary { background: var(--navy); color: #fff; }
+  .pdf-btn.primary:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(17,17,17,0.22); }
+  .pdf-btn.ghost { background: transparent; color: var(--navy); }
+  .pdf-btn.ghost:hover { background: rgba(17,17,17,0.05); transform: translateY(-1px); }
+  .pdf-hint { font-size: 12px; color: var(--text-light); margin-top: 16px; font-weight: 300; }
+
+  /* READ ALSO + FOOTER */
+  .read-also { padding: 46px 0; }
+  .read-also h2 { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: var(--navy); font-weight: 500; margin-bottom: 20px; }
+  .read-also a { display: block; padding: 16px 0; border-top: 1px solid var(--border); text-decoration: none; color: var(--text-mid); }
+  .read-also a .ra-tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 600; display: block; margin-bottom: 5px; }
+  .read-also a .ra-title { font-size: 16px; color: var(--navy); }
+  .read-also a:hover .ra-title { color: var(--gold); }
+
+  .site-footer { background: var(--navy); color: white; padding: 44px 0; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  .footer-brand { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: white; }
+  .footer-tagline { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+  .footer-series-info { text-align: right; }
+  .footer-series-info .series-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+  .footer-series-info .series-next { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: white; font-weight: 400; }
+  .footer-series-info a { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--gold-light); text-decoration: none; }
+  @media (max-width: 600px) {
+    .container { padding: 0 22px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-series-info { text-align: left; }
+    .first p:first-of-type::first-letter { font-size: 50px; }
+  }
+
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+
+  /* PRINT */
+  .print-only { display: none; }
+  @page { size: A4; margin: 20mm 18mm; }
+  @media print {
+    .progress-bar, .site-nav, .wp-toc, .pdf-cta, .commit-actions, .cp-link, .next-grid, .start-btn, .read-also, .faq-icon { display: none !important; }
+    html, body { background: #fff !important; }
+    body { font-size: 10.5pt; line-height: 1.5; color: #1a1a1a; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .container { max-width: 100% !important; padding: 0 !important; }
+    .print-only { display: block; }
+    .print-cover { text-align: left; padding: 0 0 20pt; border-bottom: 2pt solid var(--gold); margin-bottom: 20pt; }
+    .print-cover .pc-badge { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+    .print-cover .pc-title { font-family: 'Playfair Display', Georgia, serif; font-size: 24pt; line-height: 1.1; color: var(--navy); margin: 8pt 0; font-weight: 500; }
+    .print-cover .pc-sub { font-size: 11pt; color: #555; font-style: italic; }
+    .print-cover .pc-author { font-size: 9pt; color: #555; margin-top: 10pt; }
+    .wp-header { background: #fff !important; color: #1a1a1a !important; padding: 0 0 12pt !important; }
+    .wp-header::before { display: none !important; }
+    .wp-header h1, .wp-subtitle, .wp-author { display: none !important; }
+    .wp-meta { display: none !important; }
+    .wp-divider { display: none !important; }
+    .cost-box, .micro-action { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .cost-box *, .micro-action * { color: #1a1a1a !important; }
+    .framework-box, .exercise-box, .commit-box, .scenario { background: #fff !important; border: 0.75pt solid #ddd !important; }
+    .section-label, .fw-label, .cb-label, .sb-label, .collection-label { color: var(--gold) !important; }
+    .pull-quote, .cost-box, .framework-box, .exercise-box, .scenario, .faq-item, .research-note { page-break-inside: avoid; }
+    h2, h3, h4 { page-break-after: avoid; }
+    .wp-collection { background: #fff !important; color: #1a1a1a !important; }
+    .wp-collection * { color: #1a1a1a !important; }
+    .cpart-name, .collection-title { color: var(--navy) !important; }
+    .cpart-num, .cpart-papers li::before { color: var(--gold) !important; }
+    .faq-item[open] .faq-a { display: block !important; }
+    body.print-econo * { color: #000 !important; background: #fff !important; box-shadow: none !important; }
+    body.print-econo .framework-box::before { display: none !important; }
+    body.print-econo .section-label, body.print-econo .fw-label, body.print-econo .cb-label,
+    body.print-econo .sb-label, body.print-econo .print-cover .pc-badge { color: #333 !important; }
+    body.print-econo .print-cover { border-bottom-color: #333 !important; }
+    body.print-econo .cost-box, body.print-econo .framework-box, body.print-econo .exercise-box,
+    body.print-econo .commit-box, body.print-econo .scenario, body.print-econo .micro-action { border-color: #999 !important; }
+  }
+
+  /* Serie-specifikke tilføjelser (som Paper 01–09) */
+  .lens-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0; }
+  .lens { background: var(--cream); border: 1px solid var(--border); border-radius: 4px; padding: 22px 24px; }
+  .lens .l-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .lens h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 500; color: var(--navy); margin-bottom: 8px; }
+  .lens p { font-size: 14.5px !important; line-height: 1.6 !important; color: var(--text-mid); margin: 0 !important; }
+  @media (max-width: 700px) { .lens-grid { grid-template-columns: 1fr; } }
+  .dispo { margin: 24px 0 10px; }
+  .dispo-h { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .dispo-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .dispo-list li { font-size: 15px; line-height: 1.6; color: var(--text-mid); padding: 9px 0; border-bottom: 1px solid var(--border); }
+  .dispo-list li strong { color: var(--navy); font-weight: 600; letter-spacing: 0.02em; }
+  .dispo-list li em { color: var(--gold); font-style: normal; }
+  .cpart-papers .soon { color: rgba(255,255,255,0.55); font-size: 15px; }
+  .cpart-papers .soon small { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-left: 8px; }
+  .nav-links a.nav-cta { color: #fff !important; }
+  .nav-nd-t { color: rgba(255,255,255,0.72); font-size: 13px; letter-spacing: 0.02em; }
+  .nav-nd:hover .nav-nd-t { color: var(--gold-light); }
+  /* Serieoverblik — kun Paper 10 (finalen) */
+  .serieloop { border: 1px solid var(--border); border-radius: 4px; background: var(--cream); padding: 30px 32px; margin: 30px 0 10px; }
+  .serieloop .sl-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 18px; }
+  .serieloop ol { list-style: none; margin: 0; padding: 0; }
+  .serieloop li { display: flex; gap: 16px; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 15.5px; line-height: 1.55; color: var(--text-mid); }
+  .serieloop li:last-of-type { border-bottom: 0; }
+  .serieloop li span.sl-n { font-family: 'Playfair Display', Georgia, serif; font-size: 14px; color: var(--gold); min-width: 26px; font-weight: 500; }
+  .serieloop .sl-close { margin-top: 20px; font-size: 16px; line-height: 1.6; color: var(--navy); font-style: italic; font-family: 'Playfair Display', Georgia, serif; }
+  @media (max-width: 700px) { .serieloop { padding: 24px 20px; } .serieloop li { font-size: 15px; } }
+  @media print { .lens-grid, .dispo, .serieloop { page-break-inside: avoid; } .lens, .serieloop { background: #fff !important; border: 0.75pt solid #ddd !important; } }
+
+  /* Strategien sker mellem kvartalerne — seriens komponenter */
+  /* To vinduer */
+  .windows { display: grid; grid-template-columns: 1fr 1fr; margin: 34px 0; border: 1px solid var(--border); border-radius: 5px; overflow: hidden; background: #fff; }
+  .windows-head { grid-column: 1 / -1; padding: 22px 30px 18px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .windows-head .wh-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .windows-head .wh-title { font-family: 'Playfair Display', Georgia, serif; font-size: 25px; font-weight: 500; color: var(--navy); line-height: 1.2; }
+  .win { padding: 26px 30px 28px; }
+  .win + .win { border-left: 1px solid var(--border); }
+  .win .w-tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 8px; }
+  .win h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .section .win .w-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.45; color: var(--text-mid); margin: 0 0 14px; }
+  .win dl { margin: 0; }
+  .win dt { font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-top: 12px; }
+  .win dd { font-size: 14.5px; line-height: 1.6; color: var(--text-mid); margin: 3px 0 0; }
+  .windows-foot { grid-column: 1 / -1; padding: 16px 30px; border-top: 1px solid var(--border); background: var(--cream); font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 16.5px; line-height: 1.5; color: var(--navy); }
+  @media (max-width: 700px) {
+    .windows { grid-template-columns: 1fr; }
+    .win + .win { border-left: 0; border-top: 1px solid var(--border); }
+    .win, .windows-head, .windows-foot { padding-left: 22px; padding-right: 22px; }
+  }
+  /* Observabilitetskæden */
+  .chain { background: var(--navy); color: #fff; border-radius: 5px; padding: 32px 34px; margin: 30px 0; }
+  .chain .ch-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 600; margin-bottom: 18px; }
+  .chain ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; row-gap: 8px; margin: 0 0 20px; padding: 0; }
+  .chain li { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; color: #fff; display: inline-flex; align-items: center; }
+  .chain li:not(:last-child)::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 16px; color: var(--gold-light); margin: 0 11px; }
+  .chain .ch-rule { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 22px; color: var(--gold-light); margin-bottom: 12px; line-height: 1.3; }
+  .section .chain p { font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.78); margin: 0; font-weight: 300; }
+  @media (max-width: 600px) { .chain { padding: 26px 22px; } .chain li { font-size: 17px; } .chain li:not(:last-child)::after { margin: 0 8px; } }
+  /* Seriens signaturrubrikker */
+  .sig { background: #fff; border: 1px solid var(--border); border-left: 3px solid var(--navy); border-radius: 4px; padding: 30px 32px; margin: 30px 0; }
+  .sig-label { display: flex; align-items: center; gap: 12px; font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .sig-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .sig-title { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 500; color: var(--navy); line-height: 1.2; margin-bottom: 18px; }
+  .sig-table { width: 100%; border-collapse: collapse; }
+  .sig-table th { text-align: left; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; padding: 0 18px 10px 0; border-bottom: 1px solid var(--border); vertical-align: bottom; }
+  .sig-table td { font-size: 15px; line-height: 1.55; color: var(--text-mid); padding: 13px 18px 13px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .sig-table td:first-child { width: 38%; color: var(--navy); font-weight: 500; }
+  .sig-table tbody tr:last-child td { border-bottom: 0; }
+  .section .sig .sig-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--border); }
+  .section .sig .sig-note strong { color: var(--text-mid); font-weight: 600; }
+  .sig-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 34px; }
+  .sig-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; line-height: 1.45; color: var(--navy); margin-bottom: 10px; }
+  .sig-cols ul { list-style: none; margin: 0; padding: 0; }
+  .sig-cols li { position: relative; padding-left: 22px; margin-bottom: 8px; font-size: 15px; line-height: 1.55; color: var(--text-mid); }
+  .sig-cols li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
+  .sig-close { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--navy); margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+  @media (max-width: 600px) {
+    .sig { padding: 24px 20px; }
+    .sig-cols { grid-template-columns: 1fr; }
+    .sig-table thead { display: none; }
+    .sig-table, .sig-table tbody, .sig-table tr, .sig-table td { display: block; width: 100%; }
+    .sig-table tr { padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .sig-table tbody tr:last-child { border-bottom: 0; }
+    .sig-table td, .sig-table td:first-child { border: 0; padding: 0; width: 100%; }
+    .sig-table td + td::before { content: attr(data-label); display: block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 6px 0 2px; }
+  }
+  /* CTA, kommende paper, commitment-note, kildegrupper */
+  .cta-box { background: var(--cream); border: 1px solid var(--border); border-radius: 5px; padding: 32px 34px; margin: 34px 0 10px; }
+  .cta-label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 6px; }
+  .section .cta-box h3 { margin: 0 0 12px; }
+  .section .cta-box p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+  .next-card.soon { cursor: default; border-style: dashed; }
+  .next-card.soon:hover { border-color: var(--border); }
+  .next-card.soon .nc-text strong { color: var(--text-mid); }
+  .section .commit-box .commit-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: -2px 0 12px; }
+  .print-write { height: 90pt; border: 0.75pt solid #bbb; border-radius: 2pt; margin-top: 6pt; }
+  .sources-block .sb-group { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin: 24px 0 12px; }
+  .sources-block .sb-label + .sb-group { margin-top: 0; }
+  @media print {
+    .windows, .chain, .sig, .cta-box, .sig-table tr { page-break-inside: avoid; }
+    .windows, .windows-head, .windows-foot, .sig, .cta-box { background: #fff !important; }
+    .chain { background: #fff !important; border: 0.75pt solid #ccc !important; }
+    .chain *, .chain li:not(:last-child)::after { color: #1a1a1a !important; }
+    .chain .ch-label, .chain .ch-rule { color: var(--gold) !important; }
+    .micro-action .ma-tag { background: none !important; padding: 0 !important; }
+    .micro-action .ma-tag { color: var(--gold) !important; }
+    .commit-box textarea, .commit-progress, .commit-head .ch-status { display: none !important; }
+    .cpart-papers .soon, .cpart-papers .soon small { color: #555 !important; }
+    body.print-econo .windows, body.print-econo .chain, body.print-econo .sig, body.print-econo .cta-box { border-color: #999 !important; }
+    body.print-econo .chain .ch-label, body.print-econo .chain .ch-rule, body.print-econo .micro-action .ma-tag { color: #333 !important; }
+  }
+
+  /* --- iPad: ankerafstand + trykmål --- */
+  html { scroll-padding-top: 96px; }
+  @media (pointer: coarse) {
+    .wp-toc a { padding-top: 11px; padding-bottom: 11px; }
+    .wp-toc li { margin-bottom: 0; }
+    .cpart-papers li { padding-top: 14px; padding-bottom: 14px; }
+    .nav-links a { padding-top: 9px; padding-bottom: 9px; }
+  }
+
+
+  .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; margin: 28px 0 8px; }
+  .flow span { font-size: 13.5px; font-weight: 500; color: var(--navy); background: #fff; border: 1px solid var(--border); padding: 7px 12px; border-radius: 2px; }
+  .flow .flow-end { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .flow i { font-style: normal; color: var(--gold); font-size: 14px; }
+  @media print { .flow .flow-end { background: #fff !important; color: #111 !important; border: 1px solid #111; } }
+  /* ===== VISUALS (vz) ===== */
+  .vz { margin: 38px 0 32px; border: 1px solid var(--border); border-radius: 5px; background: #fff; overflow: hidden; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .vz-head { padding: 20px 28px 16px; border-bottom: 1px solid var(--border); background: var(--cream); }
+  .vz-kicker { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+  .vz-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 25px; line-height: 1.2; color: var(--navy); }
+  .vz-art { padding: 26px 28px 8px; }
+  .vz-art svg { display: block; width: 100%; max-width: 580px; height: auto; margin: 0 auto; }
+  .vz-art .t-serif { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; }
+  .vz-art .t-sans { font-family: 'Outfit', -apple-system, sans-serif; font-weight: 400; }
+  .vz-punch { padding: 6px 28px 22px; text-align: center; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-style: italic; font-size: 19px; line-height: 1.4; color: var(--navy); }
+  .vz figcaption { padding: 12px 28px 16px; border-top: 1px solid var(--border); font-size: 12.5px; line-height: 1.5; color: var(--text-light); font-style: italic; }
+  @media (max-width: 640px) {
+    .vz-head, .vz-art, .vz-punch, .vz figcaption { padding-left: 16px; padding-right: 16px; }
+    .vz-title { font-size: 21px; }
+    .vz-punch { font-size: 17px; }
+  }
+  @media print {
+    .vz { page-break-inside: avoid; break-inside: avoid; border: 0.75pt solid #ccc; }
+    .vz-head { background: #fff !important; }
+  }
+  /* ===== REFLEKSIONSARK ===== */
+  .sheet-card { display: flex; gap: 28px; align-items: center; justify-content: space-between; border: 1px solid var(--border); border-left: 3px solid var(--gold); background: #fff; border-radius: 5px; padding: 26px 30px; margin: 30px 0; }
+  .section .sheet-card h3 { margin: 0 0 8px; font-size: 22px; }
+  .section .sheet-card p { font-size: 15px; line-height: 1.6; color: var(--text-mid); margin: 0; }
+  .sheet-card .pdf-btn { flex-shrink: 0; }
+  @media (max-width: 720px) { .sheet-card { flex-direction: column; align-items: flex-start; } }
+  .refl-sheet { display: none; }
+  @media print {
+    .sheet-card { display: none !important; }
+    .refl-sheet { display: block; break-before: page; page-break-before: always; break-inside: avoid; page-break-inside: avoid; font-family: 'Outfit', sans-serif; color: #1a1a1a; font-size: 9.5pt; line-height: 1.45; }
+    body.print-sheet > *:not(#refleksionsark) { display: none !important; }
+    body.print-sheet .refl-sheet { break-before: auto; page-break-before: auto; }
+    .refl-sheet .rs-kicker { border-top: 2px solid #c0392b; padding-top: 7pt; font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase; color: #c0392b; font-weight: 600; }
+    .refl-sheet .rs-title { font-family: 'Playfair Display', Georgia, serif; font-size: 23pt; line-height: 1.12; margin: 5pt 0 2pt; color: #111; }
+    .refl-sheet .rs-sub { font-size: 9.5pt; color: #555; margin-bottom: 12pt; }
+    .refl-sheet .rs-lbl { font-size: 7pt; letter-spacing: .12em; text-transform: uppercase; color: #c0392b; font-weight: 600; margin-bottom: 4pt; }
+    .refl-sheet .rs-prov { background: #f5f2ec !important; padding: 11pt 14pt 13pt; margin-bottom: 12pt; }
+    .refl-sheet .rs-prov-t { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17pt; line-height: 1.25; color: #111; }
+    .refl-sheet .rs-cq { font-family: 'Playfair Display', Georgia, serif; font-size: 13.5pt; line-height: 1.3; color: #111; padding-bottom: 11pt; margin-bottom: 11pt; border-bottom: 1px solid #ddd; }
+    .refl-sheet .rs-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18pt; margin-bottom: 11pt; }
+    .refl-sheet .rs-list { list-style: none; counter-reset: rs; margin: 0; padding: 0; }
+    .refl-sheet .rs-list li { counter-increment: rs; position: relative; padding-left: 18pt; margin-bottom: 6pt; font-size: 9pt; }
+    .refl-sheet .rs-list li::before { content: counter(rs, decimal-leading-zero); position: absolute; left: 0; color: #c0392b; font-weight: 600; font-size: 8pt; }
+    .refl-sheet .rs-strong li { font-weight: 500; }
+    .refl-sheet .rs-now { background: #111 !important; color: #fff !important; padding: 11pt 14pt; border-radius: 3pt; margin-bottom: 11pt; }
+    .refl-sheet .rs-now .rs-lbl { color: #e74c3c; }
+    .refl-sheet .rs-now-h { font-size: 10.5pt; font-weight: 500; color: #fff; margin-bottom: 3pt; }
+    .refl-sheet .rs-now-p { font-size: 9pt; color: rgba(255,255,255,.8); margin-bottom: 5pt; }
+    .refl-sheet .rs-now-a { font-size: 9pt; color: #f0c8a8; font-weight: 500; }
+    .refl-sheet .rs-clocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7pt; margin-bottom: 26pt; }
+    .refl-sheet .rs-clocks > div { background: #f5f2ec !important; padding: 9pt 10pt; }
+    .refl-sheet .rs-clocks strong { display: block; font-size: 9.5pt; color: #111; margin-bottom: 3pt; }
+    .refl-sheet .rs-clocks span { display: block; font-size: 8.3pt; color: #555; line-height: 1.4; }
+    .refl-sheet .rs-foot { display: flex; justify-content: space-between; gap: 12pt; border-top: 1px solid #ccc; padding-top: 6pt; font-size: 7.5pt; color: #666; }
+    .refl-sheet .rs-foot-r { color: #c0392b; }
+  }
+  /* ===== EXECUTIVE COACHING 2027 · seriesignatur ===== */
+  .visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+  .contrast { margin: 38px 0; border-top: 2px solid var(--navy); border-bottom: 1px solid var(--border); }
+  .contrast-head { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(22px, 3.2vw, 28px); color: var(--navy); line-height: 1.25; padding: 22px 0 18px; }
+  .contrast-cols { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--border); }
+  .contrast-cols > div { padding: 20px 22px 22px 0; }
+  .contrast-cols > div + div { padding-left: 22px; border-left: 1px solid var(--border); }
+  .contrast-cols h4 { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+  .contrast-cols ul { list-style: none; }
+  .contrast-cols li { font-size: 14.5px; line-height: 1.55; color: var(--text-mid); padding: 6px 0; border-bottom: 1px dotted var(--border); }
+  .contrast-cols li:last-child { border-bottom: 0; }
+  .contrast-foot { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 18px; line-height: 1.45; color: var(--navy); padding: 18px 0 20px; border-top: 1px solid var(--border); }
+  .coach-q { margin: 10px 0 6px; padding: 54px 0 46px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .section .coach-q .cq-text { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: clamp(28px, 4.6vw, 42px); line-height: 1.22; color: var(--navy); letter-spacing: -0.01em; margin: 0 0 26px; }
+  .section .coach-q .cq-note { font-size: 15px; line-height: 1.65; color: var(--text-light); max-width: 540px; margin: 0; }
+  .clocks { display: grid; grid-template-columns: repeat(3, 1fr); margin: 32px 0 14px; background: var(--navy); color: #fff; border-radius: 5px; overflow: hidden; }
+  .clock { padding: 30px 26px 30px; }
+  .clock + .clock { border-left: 1px solid rgba(255,255,255,0.12); }
+  .clock-h { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: #fff; line-height: 1.1; margin-bottom: 12px; }
+  .section .clock .clock-q { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.4; color: var(--gold-light); margin-bottom: 14px; }
+  .section .clock p { font-size: 14.5px; line-height: 1.6; color: rgba(255,255,255,0.78); margin-bottom: 0; }
+  .section .clocks-note { font-size: 13.5px; line-height: 1.6; color: var(--text-light); margin: 10px 0 30px; }
+  .ro-box { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 5px; background: #fff; margin: 10px 0 20px; }
+  .ro { padding: 24px 26px; }
+  .ro + .ro { border-left: 1px solid var(--border); }
+  .ro-h { font-family: 'Outfit', sans-serif; font-size: 14.5px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .section .ro p { font-size: 15px; line-height: 1.65; color: var(--text-mid); margin: 0; }
+  .section .ex-intro { font-size: 15.5px; color: var(--text-mid); margin-bottom: 20px; }
+  .section .ex-out { font-size: 15px; color: var(--navy); font-weight: 500; margin: 8px 0 0; }
+  @media (max-width: 720px) {
+    .contrast-cols, .clocks, .ro-box { grid-template-columns: 1fr; }
+    .contrast-cols > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--border); }
+    .contrast-cols > div { padding-right: 0; }
+    .clock + .clock { border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); }
+    .ro + .ro { border-left: 0; border-top: 1px solid var(--border); }
+  }
+  @media print {
+    .contrast, .coach-q, .clocks, .ro-box, .framework-box, .exercise-box, .micro-action, .commit-box, .cta-box { break-inside: avoid; page-break-inside: avoid; }
+    .clocks { background: #fff !important; color: #1a1a1a !important; border: 1px solid #ccc; }
+    .clock-h, .section .clock p { color: #1a1a1a !important; }
+    .section .clock .clock-q { color: #c0392b !important; }
+    .section .coach-q .cq-text { font-size: 22pt; }
+  }
+
+  /* Robuste initialer og tal i fuld højde (Safari-sikker) */
+  body, body * { font-variant-numeric: lining-nums; }
+  .first p:first-of-type::first-letter { font-family: inherit !important; font-size: inherit !important; line-height: inherit !important; float: none !important; color: inherit !important; margin: 0 !important; font-weight: inherit !important; }
+  .dc { float: left; font-family: 'Playfair Display', Georgia, serif; font-size: 62px; line-height: 50px; padding-top: 7px; margin: 0 12px 0 0; color: var(--gold); font-weight: 500; }
+  @media (max-width: 640px) { .dc { font-size: 50px; line-height: 40px; padding-top: 6px; margin-right: 10px; } }
+  @media print { .dc { color: var(--gold) !important; } }
+  .section p a:not([class]), .section li a:not([class]) { color: var(--gold); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .section p a:not([class]):hover { color: var(--gold-light); }
+</style>
+<style id="mobilstandard">@media (max-width:600px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}@media (min-width:601px) and (max-width:1000px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.nav-nd-c,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}@media (min-width:1001px) and (max-width:1300px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.nav-nd-c,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}@media (min-width:1301px){div.collection-label,div.cta-label,div.ex-tag,div.fw-label,div.nc-tag,div.pdf-cta-label,div.sb-group,div.sb-label,div.section-label,div.series-label,div.vz-kicker,div.wp-toc-label,li > span.soon > small,span.cpart-num,span.ma-tag,span.nav-nd-c,span.ra-tag,span.wp-badge,span.wp-readtime,span.wp-series{font-size:12px!important}}.m-smal{display:none}@media (max-width:639px){.vz-art .m-bred{display:none}.vz-art .m-smal{display:block}.vz-art .m-smal svg{display:block;width:100%;max-width:420px;height:auto;margin:0 auto}figure.vz{margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;max-width:none!important;border-left:0!important;border-right:0!important;border-radius:0!important}figure.vz .vz-art{padding-left:0!important;padding-right:0!important}}</style>
+<style>
+  /* Selvindsigt er en disciplin · tilføjelser til Executive Library-skabelonen */
+  .wp-lead { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(19px, 2.4vw, 22px); line-height: 1.6; color: var(--navy); font-weight: 400; margin-bottom: 22px; }
+  .wp-lead strong { font-weight: 400; }
+  .section ul.pl, .section ol.pl { margin: 4px 0 24px 22px; }
+  .section ul.pl { list-style: disc; } .section ol.pl { list-style: decimal; }
+  .section ul.pl li, .section ol.pl li { font-size: 17px; line-height: 1.75; color: var(--text-mid); margin-bottom: 10px; padding-left: 4px; }
+  .section ul.pl li::marker, .section ol.pl li::marker { color: var(--gold); }
+  .section li strong { color: var(--navy); font-weight: 500; }
+  .case-note { font-size: 14px !important; line-height: 1.6 !important; color: var(--text-light) !important; border-left: 2px solid var(--border); padding-left: 16px; }
+  .takeaway { background: var(--cream); border-left: 3px solid var(--gold); padding: 18px 24px; margin: 26px 0; font-size: 16.5px; line-height: 1.7; color: var(--text-mid); }
+  .takeaway strong { color: var(--navy); font-weight: 600; }
+  .step-p strong { color: var(--navy); font-weight: 600; }
+  .pull-quote.sig { font-style: normal; font-weight: 500; }
+  .tbl-wrap { margin: 18px 0 30px; }
+  @media (min-width: 601px) {
+    .sig-table.nr td:first-child { width: 12%; }
+    .sig-table.c3 td:first-child { width: 34%; }
+    .sig-table.c5 td:first-child { width: 20%; }
+    .sig-table.c5 td, .sig-table.c5 th { font-size: 13.5px; }
+  }
+  .roles { margin: 10px 0 8px; border-top: 2px solid var(--navy); }
+  .roles .faq-a ul { margin: 0 0 4px 20px; list-style: disc; }
+  .roles .faq-a li { margin-bottom: 8px; }
+  .roles .faq-a li::marker { color: var(--gold); }
+  .roles .faq-q .rq-sub { display: block; font-size: 13px; font-weight: 300; color: var(--text-light); margin-top: 2px; }
+  .tool-card .pdf-btn { text-decoration: none; white-space: nowrap; }
+  .author-note { font-size: 14.5px !important; color: var(--text-light) !important; border-top: 1px solid var(--border); padding-top: 18px; margin-top: 30px; }
+  .wp-collection .cpart-papers li .soon small:empty { display: none; }
+  .read-also a[hidden] { display: none; }
+  [data-sid-on][hidden] { display: none !important; }
+  .wp-collection .cpart-papers li .soon small { margin-left: 8px; }
+  @media (max-width: 639px) { .takeaway { padding: 16px 18px; } }
+  @media print {
+    .roles .faq-a { display: block !important; }
+    .takeaway, .framework-box, .vz, .roles .faq-item { page-break-inside: avoid; break-inside: avoid; }
+    .section ul.pl li, .section ol.pl li { font-size: 10.5pt; }
+    .wp-collection { break-before: page; page-break-before: always; }
+    .sec-head { break-inside: avoid; page-break-inside: avoid; }
+    .sec-head::after { content: ""; display: block; height: 140px; margin-bottom: -140px; }
+    .step-p, .section h3 { break-after: avoid; page-break-after: avoid; }
+    .tbl-wrap tr, .exercise-box, .commit-box, .ro-box { break-inside: avoid; page-break-inside: avoid; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Indsigt uden adfærdsændring er underholdning",
+ "alternativeHeadline": "Indsigt, der ikke ændrer en handling, er underholdning. Om ét afgrænset eksperiment ad gangen – to tal, et værn og en observatør – og Eksperimentkortet.",
+ "description": "Paper 09 i Selvindsigt er en disciplin: hvordan en topleder går fra indsigt til ét afgrænset eksperiment med målepunkt og observatør – med Eksperimentkortet.",
+ "author": {
+  "@type": "Person",
+  "@id": "https://www.friisnaes.com/#person",
+  "name": "Thomas Friisnæs",
+  "url": "https://www.friisnaes.com/",
+  "jobTitle": "Executive coach og forfatter"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "Friisnæs",
+  "url": "https://www.friisnaes.com/"
+ },
+ "url": "https://www.friisnaes.com/selvindsigt-indsigt-uden-adfaerdsaendring-er-underholdning.html",
+ "mainEntityOfPage": "https://www.friisnaes.com/selvindsigt-indsigt-uden-adfaerdsaendring-er-underholdning.html",
+ "image": "https://www.friisnaes.com/og-image.jpg",
+ "isPartOf": {
+  "@type": "CreativeWorkSeries",
+  "name": "Selvindsigt er en disciplin",
+  "url": "https://www.friisnaes.com/selvindsigt-er-en-disciplin.html"
+ },
+ "position": 9,
+ "inLanguage": "da",
+ "datePublished": "2027-06-21",
+ "keywords": "adfærdsændring, eksperiment, målepunkt, observatør, selvmonitorering, beslutningskvalitet, alternativer, selvindsigt, executive coaching, topleder, CEO, Eksperimentkortet",
+ "wordCount": 5188,
+ "timeRequired": "PT22M",
+ "about": [
+  "Adfærdsændring",
+  "Eksperiment",
+  "Selvindsigt",
+  "Ledelse"
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Forside",
+   "item": "https://www.friisnaes.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Executive Library",
+   "item": "https://www.friisnaes.com/library.html"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "Selvindsigt er en disciplin",
+   "item": "https://www.friisnaes.com/selvindsigt-er-en-disciplin.html"
+  },
+  {
+   "@type": "ListItem",
+   "position": 4,
+   "name": "Indsigt uden adfærdsændring er underholdning",
+   "item": "https://www.friisnaes.com/selvindsigt-indsigt-uden-adfaerdsaendring-er-underholdning.html"
+  }
+ ]
+}
+</script>
+<style id="fn-nav-css">
+.fn-nav{position:sticky;top:0;z-index:90;background:#111;border-bottom:1px solid rgba(192,57,43,.14);font-family:'Outfit',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.fn-in{max-width:1100px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fn-brand{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:500;color:#fff;text-decoration:none;letter-spacing:.01em;white-space:nowrap}
+.fn-brand em{font-style:normal;color:#e74c3c}
+.fn-links{display:flex;gap:24px;align-items:center}
+.fn-links a{font-size:13px;color:rgba(255,255,255,.78);text-decoration:none;letter-spacing:.02em;transition:color .2s;white-space:nowrap;font-weight:400;text-transform:none;border:0;padding:0}
+.fn-links a:hover,.fn-links a.active{color:#e74c3c}
+.fn-links a.fn-cta{color:#fff !important;background:#c0392b;padding:8px 16px;border-radius:2px;font-weight:500}
+.fn-links a.fn-cta:hover{background:#e74c3c}
+.fn-dd{position:relative;display:inline-flex;align-items:center}
+.fn-dd-t{display:inline-flex;align-items:center;gap:4px}
+.fn-dd-c{font-size:9px;opacity:.7;transition:transform .2s}
+.fn-dd:hover .fn-dd-c,.fn-dd.open .fn-dd-c{transform:rotate(180deg)}
+.fn-dd-m{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);background:#1a1a1a;border:1px solid rgba(192,57,43,.18);padding:8px 0;min-width:210px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;display:flex;flex-direction:column;z-index:95;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.fn-dd-m::before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px}
+.fn-dd:hover .fn-dd-m,.fn-dd:focus-within .fn-dd-m,.fn-dd.open .fn-dd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(2px)}
+.fn-dd-m a{padding:9px 18px !important;font-size:12.5px;white-space:nowrap}
+.fn-dd-m a:hover{background:rgba(255,255,255,.04)}
+.fn-toggle{display:none;background:none;border:0;color:#fff;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1}
+@media (max-width:780px){
+  .fn-in{padding:0 20px}
+  .fn-links{display:none}
+  .fn-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:#111;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 14px;border-bottom:1px solid rgba(192,57,43,.14);max-height:calc(100vh - 62px);overflow-y:auto}
+  .fn-links.open a{padding:12px 24px}
+  .fn-links.open a.fn-cta{margin:10px 24px 0;text-align:center}
+  .fn-toggle{display:block}
+  .fn-dd{flex-direction:column;align-items:stretch;width:100%}
+  .fn-dd-m{position:static;transform:none;opacity:1;visibility:visible;background:none;border:0;padding:0 0 0 16px;min-width:0;box-shadow:none}
+  .fn-dd-m::before{display:none}
+  .fn-dd-c{display:none}
+}
+@media (pointer:coarse) and (min-width:781px){.fn-links a{padding-top:9px;padding-bottom:9px}}
+@media print{.fn-nav{display:none !important}}
+</style>
+<style id="fb-signup-css">
+.fb-signup{max-width:760px;margin:0 auto;padding:8px 32px 56px;font-family:'Outfit',-apple-system,sans-serif}
+.fb-signup-in{background:#111;color:#f5f4f0;padding:2.3rem 2.2rem;display:flex;flex-wrap:wrap;gap:1.4rem 2rem;align-items:center;justify-content:space-between;border-radius:4px}
+.fb-signup-k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#e74c3c;font-weight:500;margin-bottom:10px}
+.fb-signup h3{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-size:1.4rem;line-height:1.25;margin:0 0 .45rem;color:#fff}
+.fb-signup h3 em{font-style:italic;color:#e74c3c}
+.fb-signup p{font-size:.95rem;color:rgba(245,244,240,.72);margin:0;max-width:440px;line-height:1.55;font-weight:300}
+.fb-signup a.fb-signup-btn{display:inline-block;background:#c0392b;color:#fff;font-family:'Outfit',sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:.95rem 1.6rem;border-radius:2px;white-space:nowrap;transition:background .2s;border:0}
+.fb-signup a.fb-signup-btn:hover{background:#e74c3c}
+@media (max-width:640px){.fb-signup{padding:8px 20px 44px}.fb-signup-in{padding:1.8rem 1.4rem}.fb-signup a.fb-signup-btn{width:100%;text-align:center}}
+@media print{.fb-signup{display:none !important}}
+</style>
+<style id="a11y-contrast">
+/* --- a11y: kontrast (AA 4.5:1) --- */
+:root { --text-light:#666666 }
+.wp-toc-title, .wp-toc ol li::before, .sg-type, .footer-tagline, .opi-meter .opi-label, .opi-meter .opi-eq, .framework-box h3, .framework-box .fw-num, .wp-references .ref-label { color:#e74c3c }
+.wp-badge, .ma-tag { color:#fff !important }
+.wp-readtime, .series-next, .wp-footer .series-label, .site-footer .series-label { color:rgba(255,255,255,.66) }
+.fn-more .fn-kind { color:#666 !important }
+.closing-box p a { text-decoration:underline !important; text-underline-offset:3px; text-decoration-color:rgba(192,57,43,.5) }
+.wp-collection .collection-label, .wp-collection .cpart-num, .wp-collection .cpart-papers li::before { color:#e74c3c }
+.cpart-papers .current { color:rgba(255,255,255,.66) }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- NAV -->
+<nav class="fn-nav" aria-label="Hovednavigation">
+  <div class="fn-in">
+    <a href="/" class="fn-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <button class="fn-toggle" aria-label="Menu" aria-controls="fnLinks" aria-expanded="false" onclick="var n=document.getElementById('fnLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="fn-links" id="fnLinks">
+      <a href="/#situationer">Situationer</a>
+      <span class="fn-dd">
+        <a href="/executive-coaching.html" class="fn-dd-t" aria-haspopup="true">Ydelser <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/executive-coaching.html">Executive Coaching</a>
+          <a href="/ceo-sparring.html">CEO-sparring</a>
+          <a href="/seg.html">Ledergrupper (SEG)</a>
+          <a href="/#format">Sådan arbejder vi</a>
+        </span>
+      </span>
+      <a href="/om.html">Om</a>
+      <a href="/testimonials.html">Klienter</a>
+      <span class="fn-dd">
+        <a href="/library.html" class="fn-dd-t active" aria-haspopup="true">Indsigter <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/blog.html">Blogindlæg</a>
+          <a href="/library.html" class="active">Executive Library</a>
+          <a href="/library.html#brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html">Værktøjer</a>
+          <a href="/soeg.html">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html">Bøger</a>
+      <a href="/#kontakt" class="fn-cta">Aftal en samtale</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PRINT COVER -->
+<div class="print-only print-cover">
+  <div class="pc-badge">Selvindsigt er en disciplin · Serie 09 · Paper 09 af 10</div>
+  <div class="pc-title">Indsigt uden adfærdsændring er underholdning</div>
+  <div class="pc-sub">Indsigt, der ikke ændrer en handling, er underholdning. Om ét afgrænset eksperiment ad gangen – to tal, et værn og en observatør – og Eksperimentkortet.</div>
+  <div class="pc-author">Af Thomas Friisnæs · executive coach og forfatter · friisnaes.com</div>
+</div>
+
+<!-- HEADER -->
+<header class="wp-header">
+  <div class="container wp-header-inner">
+    <div class="wp-meta">
+      <span class="wp-badge">Selvindsigt er en disciplin</span>
+      <span class="wp-series">Serie 09 · Executive Self-Insight · Del 4: Fra indsigt til adfærd · Paper 09 af 10</span>
+      <span class="wp-readtime">ca. 22 min læsning</span>
+    </div>
+    <h1>Indsigt uden adfærdsændring <em>er underholdning</em></h1>
+    <p class="wp-subtitle">Indsigt, der ikke ændrer en handling, er underholdning. Om ét afgrænset eksperiment ad gangen – to tal, et værn og en observatør – og Eksperimentkortet.</p>
+    <div class="wp-divider"></div>
+    <p class="wp-author">Af <strong>Thomas Friisnæs</strong> · executive coach og forfatter · 22+ år</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<nav class="wp-toc" aria-label="Indholdsfortegnelse">
+  <div class="container">
+    <div class="wp-toc-label">Indholdsfortegnelse</div>
+    <ol>
+      <li><a href="#start">Fra plan til eksperiment</a></li>
+      <li><a href="#indsigt-foeles-som-forandring">Indsigt føles som forandring</a></li>
+      <li><a href="#fire-uger-hvor-hun-taler-sidst">Fire uger, hvor hun taler sidst</a></li>
+      <li><a href="#hvorfor-et-eksperiment">Hvorfor ét eksperiment</a></li>
+      <li><a href="#det-der-kan-taelles-uden-at-taelle-dig">Det, der kan tælles – uden at tælle dig</a></li>
+      <li><a href="#eksperimentkortet">Eksperimentkortet</a></li>
+      <li><a href="#hvem-taeller-hvad">Hvem tæller hvad</a></li>
+      <li><a href="#saadan-laeser-du-resultatet-og-fortaelle">Sådan læser du resultatet – og fortæller det</a></li>
+      <li><a href="#fire-faldgruber">Fire faldgruber</a></li>
+      <li><a href="#tilbage-til-casen">Tilbage til casen</a></li>
+      <li><a href="#konkludere">Hvad du kan se – og hvad du ikke må konkludere</a></li>
+      <li><a href="#roller">Til dig selv, ledergruppen, HR og bestyrelsen</a></li>
+      <li><a href="#konkret">Gør det konkret · Øvelse og dit næste skridt</a></li>
+      <li><a href="#metode">Metode og næste paper</a></li>
+    </ol>
+  </div>
+</nav>
+
+<main class="wp-body">
+<article>
+
+<section class="section first" id="intro">
+  <div class="container">
+    <p class="wp-lead"><strong>Du kan vide meget om dig selv og stadig gøre præcis det samme i næste møde. Indsigt er ikke en ændring. Den bliver først til en, når du gør noget andet i en bestemt situation – og kan se, hvad der skete. Dette paper viser, hvordan du går fra et mønster til ét afgrænset eksperiment med et målepunkt og en observatør, hvordan du tæller uden at tælle dig selv, og hvordan du fortæller dem, der var med, hvad du så. Du får Eksperimentkortet: adfærd, situation, varighed, målepunkt og observatør på én side.</strong></p>
+    <div class="research-note"><strong>Grundlag:</strong> Forskning er kildeangivet. Min praksis står som erfaring. Eksperimentkortet er et praksisværktøj, ikke et valideret instrument. Et eksperiment i denne serie er en struktureret afprøvning i hverdagen, ikke et videnskabeligt forsøg, og det kan ikke bevise, at en ændring virker.</div>
+  </div>
+</section>
+
+<section class="section" id="start">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">01</div>
+    <h2>Fra plan til eksperiment</h2>
+    </div>
+    <p><span class="dc">S</span>erien begyndte med et budget, der blev godkendt på tyve minutter, og en usikkerhed, der aldrig nåede bordet. Anne Holm så sig selv som en leder, der inviterer til uenighed. Hendes ledergruppe havde holdt et formøde uden hende og besluttet ikke at sige det, de tvivlede på. Hendes mest brugbare tanke dengang var et spørgsmål: Hvad gør jeg, der gør det lettere at tie end at sige det?</p>
+    <p>Otte papers senere har hun – og du – arbejdet med det spørgsmål fra flere sider. Del 1 handlede om det, du ikke kan se, og om at registrere, hvad du gør. Del 2 gav dig instrumenterne til at se mere: feedbacken, testen og skrivningen. Del 3 handlede om grænsen for, hvad du kan se alene, og om de fjorten dage mellem to samtaler. Del 4 handler om det, alt det andet skal føre til: at du gør noget anderledes – og kan se, hvad der sker.</p>
+    <p>I min erfaring er det her, flest udviklingsforløb går i stå. Ikke fordi lederen ikke vil, men fordi indsigten føles som fremskridt. Man har fundet mønstret, talt om det, måske skrevet det ned. Det føles, som om noget er sket. Men de andre i rummet oplever ikke din indsigt. De oplever det, du gør.</p>
+    <p>Mellemrummets plan fra Paper 08 gav dig én handling ad gangen og én person, der ser den. Det er en god begyndelse. Men en handling, der skifter fra uge til uge, giver dig enkeltobservationer, ikke et grundlag at beslutte på. Selvrevisionens fjerde trin hedder <em>Justér med ét eksperiment – én afgrænset adfærdsændring ad gangen, med et målepunkt.</em> Dette paper folder det trin ud.</p>
+    <p>Et eksperiment betyder her noget ret enkelt: at du vælger én ændring, holder fast i den i en aftalt periode i en bestemt slags situation og på forhånd beslutter, hvad du vil se på for at vide, hvad der skete. Det er ikke et videnskabeligt forsøg. Det er en måde at gøre det, du lærer om dig selv, til noget, du og andre kan se – og tælle.</p>
+  </div>
+</section>
+
+<section class="section" id="indsigt-foeles-som-forandring">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">02 — Problemet</div>
+    <h2>Indsigt føles som forandring</h2>
+    </div>
+    <p>Der er to grunde til, at indsigt så ofte bliver stående som indsigt. Den ene handler om, hvordan vi følger op på det, vi har lært. Den anden handler om, hvad der hjælper, når vi gør.</p>
+    <p>Den første kan ses i dansk lederuddannelse. VIVE spurgte i 2020 deltagere fra Den Offentlige Lederuddannelse om, hvad de gjorde med det, de lærte. 855 svarede, en svarprocent på 35. Godt halvdelen, 53 procent, svarede, at de afprøvede det lærte i deres organisation. Kun 36 procent fik feedback eller sparring på noget, de havde afprøvet. Tre ud af fire svarede, at der ikke blev lagt en plan, og kun 6 procent fulgte i høj eller meget høj grad op på læringen sammen med deres chef. Undersøgelsen handler om offentlige ledere og bygger på deres egne svar. Men den viser et mønster, jeg genkender fra topledere: Det, man lærer, bliver ofte afprøvet uden plan, uden måling og uden at nogen ser det.</p>
+    <p>Den anden grund handler om, hvad der hjælper. Benjamin Harkin og kolleger samlede 138 randomiserede forsøg med i alt 19.951 deltagere, hvor nogle blev hjulpet til at følge deres fremskridt mod et mål, og andre ikke blev. At følge sine fremskridt hang sammen med, at man oftere nåede sine mål, med en gennemsnitlig effekt på d = 0,40. Effekten var større, når fremskridtene blev skrevet ned, og når de blev rapporteret til andre eller gjort offentlige. Målene i studierne handlede mest om helbred – vægt, rygning, kost – ikke om ledelse, og analysen kan ikke sige, hvordan det samme ville se ud i en direktion. Men den peger på to ting, dette paper bygger på: at det, du følger, bør skrives ned, og at det hjælper, at en anden kender det.</p>
+    <p>Edwin Locke og Gary Latham, der har sammenfattet 35 års forskning i mål, peger på det samme fra en anden vinkel. Når mennesker bliver bedt om at gøre deres bedste, gør de det ikke, skriver de; specifikke mål fører til mere indsats end vage. Og kombinationen af mål og feedback om fremskridtet er mere effektiv end mål alene. De peger også på et forbehold, der er vigtigt for ledelse: Ved komplekse opgaver er effekten af mål mindre, og et præstationsmål kan i nogle tilfælde gøre det sværere at lære det, opgaven kræver. Det taler for, at målet i et ledelseseksperiment skal handle om en adfærd, du kan gøre, ikke om et resultat, du ikke selv styrer.</p>
+    <p>Endelig er der Selvrevisionens egen præmis. Anna Sutton, Helen Williams og Christopher Allinson undersøgte træning i selvindsigt blandt fuldtidsansatte og fandt, at selvindsigten kunne forbedres gennem træning, og at træningen oftere førte til aktive forbedringer i arbejdet end til ændringer i refleksionen. Studiet var lille, og forfatterne skriver selv, at stikprøvens størrelse begrænsede, hvad der kunne påvises. Men retningen passer med seriens tese: Selvindsigt bliver mest værd, når den bliver til noget, man gør.</p>
+  </div>
+</section>
+
+<section class="section" id="fire-uger-hvor-hun-taler-sidst">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">03 — Casen</div>
+    <h2>Fire uger, hvor hun taler sidst</h2>
+    </div>
+    <p class="case-note"><em>Casen er konstrueret til serien. Halvø Pharma A/S og alle personer er opdigtede, og enhver lighed med virkelige virksomheder eller personer er tilfældig.</em></p>
+    <p>Efter en måned med Mellemrummets plan har Anne et godt spor. Jesper har sagt ja til at fortsætte og har sendt hende sætninger fra fire møder. Hun har lagt pennen fra sig og spurgt om indvendinger. Nogle gange er der kommet noget frem, andre gange ikke. Hun føler, at noget har ændret sig. Men da mentoren spørger, hvad der konkret er anderledes i strategimøderne nu end for to måneder siden, kan hun ikke svare. Hendes handling har skiftet lidt fra uge til uge, møderne har været forskellige, og ingen har talt noget.</p>
+    <p>»Hvad ville du gøre,« spørger han, »hvis du skulle vide det?«</p>
+    <p>Hun går tilbage til det mønster, der har fulgt hende gennem serien: Hun lukker diskussioner, før alternativerne er på bordet. Hendes hypotese fra Paper 05 og 06 var, at det sker under tidspres, og når hun har tænkt færdigt alene. Det, hun aldrig har afprøvet, er det mest direkte: Hvad sker der, hvis hun ikke siger sin vurdering, før alle andre har sagt deres?</p>
+    <p>Hun skriver ét kort. Adfærden: I strategimøderne siger hun sin egen vurdering sidst, når et punkt skal ende i en beslutning. Situationen: de ugentlige strategimøder, kun punkter med en beslutning. Varigheden: fire uger. Målepunktet: andelen af beslutningspunkter, hvor mindst to forskellige alternativer er på bordet, før beslutningen tages – og det, der ikke må blive dårligere: at beslutninger, der skal tages, bliver taget. Observatøren: Line, som tæller alternativerne, og Jesper, som ser, om Anne holder sig til det, hun har sagt.</p>
+    <p>Inden hun ændrer noget, spørger hun Line, om hun vil føre en optælling i de næste to strategimøder: hvor mange forskellige forslag der ligger på bordet, før hvert beslutningspunkt afgøres. Line siger ja. Hun ved, at det er en del af noget, Anne vil afprøve, men ikke hvad. Så har Anne et udgangspunkt.</p>
+    <p>Bagefter fortæller hun ledergruppen, hvad hun gør, og hvad det ikke betyder: »I de næste fire uger siger jeg min vurdering til sidst i strategimøderne. Det betyder ikke, at jeg ikke har en. Line tæller, hvor mange forslag der er på bordet, før vi beslutter. Jesper ser, om jeg holder det.«</p>
+    <p>Hun ved, at det har en pris for det, hun kan lære. Når ledergruppen kender forsøget, kan tallene også ændre sig, fordi de ved, at der bliver talt. Hun kan derfor ikke bruge en forskel som bevis for, at det alene var hendes nye adfærd, der gjorde udslaget. Hun vælger alligevel at fortælle det. At afprøve noget i det skjulte på dem, hun leder, ville stride mod det, hun prøver at blive bedre til.</p>
+  </div>
+</section>
+
+<section class="section" id="hvorfor-et-eksperiment">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">04</div>
+    <h2>Hvorfor ét eksperiment</h2>
+    </div>
+    <p>Når en leder har fundet et mønster, er det fristende at ændre det hele på én gang: tale mindre, lytte mere, give mere plads, være mere tålmodig. Det er forståeligt. Men det gør det umuligt at se, hvad der gjorde en forskel – og det gør det svært at holde fast.</p>
+    <p>Ét eksperiment ad gangen har i min erfaring tre fordele. Det er overskueligt. Andre kan se, om du holder det, fordi de ved, hvad de skal se efter. Og det gør det muligt at lære noget, fordi du kan sammenligne situationer, hvor du gjorde det, med situationer, hvor du ikke gjorde.</p>
+    <p>Det er også en anden måde at tænke disciplin på. I denne serie betyder disciplin beslutninger, der er vigtige nok til ikke at skulle genforhandles hver morgen. Et eksperiment er netop sådan en beslutning. Du beslutter én gang, hvad du vil gøre, i hvilke situationer og hvor længe. Så behøver du ikke beslutte det igen i hvert møde. Det handler ikke om at tage dig sammen. Det handler om at have besluttet på forhånd. Serien »Struktur sætter fri« uddyber tanken i Paper 03, »Motivation er en dårlig chef«.</p>
+    <p class="pull-quote sig">Indsigt, der ikke ændrer en handling, er underholdning.</p>
+    <p>Linjen er seriens praksisregel, ikke et forskningsresultat. Den betyder ikke, at indsigt er værdiløs. Den betyder, at det i denne serie ikke er nok, at indsigt føles værdifuld. Den skal kunne forbindes med en ændring i det, du gør eller undlader at gøre, og med noget, du kan undersøge bagefter.</p>
+  </div>
+</section>
+
+<section class="section" id="det-der-kan-taelles-uden-at-taelle-dig">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">05 — Målepunktet</div>
+    <h2>Det, der kan tælles – uden at tælle dig</h2>
+    </div>
+    <p>Det sværeste ved et ledelseseksperiment er i min erfaring målepunktet. Hvad skal du se på for at vide, hvad der skete?</p>
+    <p>Et eksperiment har i virkeligheden to spørgsmål, og de skal holdes adskilt. Det første er: <em>Gjorde jeg det, jeg havde besluttet?</em> Det kan tælles direkte – i hvor mange af de aftalte situationer holdt du adfærden? Det andet er: <em>Hvad skete der i rummet?</em> Det er målepunktet. Blander du dem sammen, kan du ende med at kalde et eksperiment vellykket, fordi du holdt det, eller mislykket, fordi rummet ikke reagerede, som du håbede.</p>
+    <figure class="vz" aria-labelledby="vz-s09a-title">
+  <div class="vz-head">
+    <div class="vz-kicker">Værktøjet</div>
+    <div class="vz-title" id="vz-s09a-title">To tal og et værn</div>
+  </div>
+  <div class="vz-art"><div class="m-bred"><svg viewBox="0 0 580 186" role="img" aria-labelledby="vz-s09a-t vz-s09a-d"><title id="vz-s09a-t">To tal og et værn</title><desc id="vz-s09a-d">Et eksperiment har to tal og et værn. Tal 1, gjorde jeg det: andelen af de aftalte situationer, hvor du holdt adfærden – registreret af den, der ser dig. Tal 2, hvad skete der i rummet: målepunktet som andel, før og under. Under begge ligger værnet: det, der ikke må blive dårligere. Ingen af dem måler, hvem du er.</desc><text x="0" y="18" text-anchor="start" class="t-sans" font-size="13" fill="#777">Adfærden</text><text x="298" y="18" text-anchor="start" class="t-sans" font-size="13" fill="#777">Rummet</text><rect x="0" y="28" width="282" height="86" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="16" y="56" text-anchor="start" class="t-sans" font-size="15" fill="#111" font-weight="500">Tal 1 · Gjorde jeg det?</text><text x="16" y="80" text-anchor="start" class="t-sans" font-size="13" fill="#777">andelen af aftalte situationer,</text><text x="16" y="98" text-anchor="start" class="t-sans" font-size="13" fill="#777">hvor jeg holdt adfærden</text><rect x="298" y="28" width="282" height="86" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="314" y="56" text-anchor="start" class="t-sans" font-size="15" fill="#111" font-weight="500">Tal 2 · Hvad skete der i rummet?</text><text x="314" y="80" text-anchor="start" class="t-sans" font-size="13" fill="#777">målepunktet som andel,</text><text x="314" y="98" text-anchor="start" class="t-sans" font-size="13" fill="#777">før og under eksperimentet</text><path d="M282 71 H298" stroke="#111" stroke-width="1.5"/><rect x="0" y="132" width="580" height="44" rx="3" fill="#fbeeed" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="5 4"/><text x="16" y="159" text-anchor="start" class="t-sans" font-size="14" fill="#c0392b" font-weight="500">Værnet · det, der ikke må blive dårligere, mens du arbejder med tallene</text></svg></div><div class="m-smal"><svg viewBox="0 0 360 280" role="img" aria-labelledby="vz-s09as-t vz-s09as-d"><title id="vz-s09as-t">To tal og et værn</title><desc id="vz-s09as-d">Et eksperiment har to tal og et værn. Tal 1, gjorde jeg det: andelen af de aftalte situationer, hvor du holdt adfærden – registreret af den, der ser dig. Tal 2, hvad skete der i rummet: målepunktet som andel, før og under. Under begge ligger værnet: det, der ikke må blive dårligere. Ingen af dem måler, hvem du er.</desc><rect x="0" y="0" width="360" height="90" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="14" y="28" text-anchor="start" class="t-sans" font-size="15.5" fill="#111" font-weight="500">Tal 1 · Gjorde jeg det?</text><text x="14" y="52" text-anchor="start" class="t-sans" font-size="14" fill="#777">andelen af aftalte situationer,</text><text x="14" y="72" text-anchor="start" class="t-sans" font-size="14" fill="#777">hvor jeg holdt adfærden</text><rect x="0" y="104" width="360" height="90" rx="3" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="14" y="132" text-anchor="start" class="t-sans" font-size="15.5" fill="#111" font-weight="500">Tal 2 · Hvad skete der i rummet?</text><text x="14" y="156" text-anchor="start" class="t-sans" font-size="14" fill="#777">målepunktet som andel,</text><text x="14" y="176" text-anchor="start" class="t-sans" font-size="14" fill="#777">før og under eksperimentet</text><rect x="0" y="212" width="360" height="62" rx="3" fill="#fbeeed" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="5 4"/><text x="14" y="238" text-anchor="start" class="t-sans" font-size="15.5" fill="#c0392b" font-weight="500">Værnet</text><text x="14" y="260" text-anchor="start" class="t-sans" font-size="14" fill="#c0392b">det, der ikke må blive dårligere</text></svg></div></div>
+  <figcaption>En praksisramme fra Thomas Friisnæs' arbejde, ikke et valideret instrument. Tallene står hver for sig og lægges ikke sammen.</figcaption>
+</figure>
+    <p>Et godt målepunkt har tre egenskaber. Det kan observeres i situationen – ikke vurderes bagefter. Det ligger så tæt på adfærden som muligt, så færrest mulige andre ting påvirker det. Og det kan registreres af en anden, så det ikke kun hviler på din egen hukommelse.</p>
+    <p>Annes målepunkt er andelen af beslutningspunkter, hvor mindst to forskellige alternativer er på bordet, før beslutningen tages. Line noterer antallet af alternativer ved hvert punkt, men det er andelen, der sammenlignes mellem perioderne. Det er ikke tilfældigt valgt. Paul Nutt undersøgte over 350 beslutninger truffet i mellemstore og store organisationer i USA og Canada. Lederne overvejede flere muligheder i under 20 procent af beslutningerne. Når der blev udviklet flere muligheder, steg andelen af beslutninger, der blev vurderet som vellykkede, fra 56 til 70 procent. Studiet bygger på interviews og viser en sammenhæng, ikke en årsag. Og Carrie Leana fandt i et forsøg med 208 studerende i grupper på fire, at grupper med en styrende leder foreslog og drøftede færre alternative løsninger end grupper, hvor lederen opfordrede til deltagelse – og at medlemmerne fulgte lederens løsning, når lederen sagde sin præference tidligt. Det er et laboratorieforsøg med studerende og en hypotetisk opgave, ikke en direktion. Men tilsammen gør de antallet af alternativer til et rimeligt sted at kigge for en leder, hvis mønster er at lukke diskussioner.</p>
+    <p>Et målepunkt er ikke en score for dig. Line tæller forslag, ikke Annes kvaliteter. Det er lettere for andre at registrere noget, der kan tælles i rummet, end at vurdere deres chef. Og det holder opmærksomheden på opgaven – det, der skete i mødet – og væk fra selvet, som Paper 04 beskrev med Kluger og DeNisis forklaring.</p>
+    <p>Andre mønstre kræver andre målepunkter. Her er tre eksempler fra min praksis, hvor de to spørgsmål står hver for sig:</p>
+    <div class="tbl-wrap"><table class="sig-table c4"><thead><tr><th>Mønstret</th><th>Adfærden i eksperimentet</th><th>Gjorde jeg det?</th><th>Hvad skete der i rummet?</th></tr></thead><tbody><tr><td data-label="Mønstret">Jeg afbryder, når andre forklarer</td><td data-label="Adfærden i eksperimentet">Lade den, der præsenterer, tale færdigt, før jeg spørger</td><td data-label="Gjorde jeg det?">Antal gange, jeg afbrød</td><td data-label="Hvad skete der i rummet?">Hvor mange forskellige personer der siger noget i punktet</td></tr><tr><td data-label="Mønstret">Mine opgaver bliver uklare</td><td data-label="Adfærden i eksperimentet">Slutte hver opgave med leverance og dato</td><td data-label="Gjorde jeg det?">Andel af opgaver med leverance og dato</td><td data-label="Hvad skete der i rummet?">Hvor mange modtagere der kan gentage leverance og dato bagefter</td></tr><tr><td data-label="Mønstret">Kritik bliver blødt op på vej op</td><td data-label="Adfærden i eksperimentet">Spørge »hvad er den største risiko, vi ikke har talt om?« i hvert projektmøde</td><td data-label="Gjorde jeg det?">Andel af møder, hvor jeg stillede spørgsmålet</td><td data-label="Hvad skete der i rummet?">Hvor mange risici der kommer frem, som ikke stod i oplægget</td></tr></tbody></table></div>
+    <p>Den sidste kolonne ligger længere fra din adfærd end den tredje. At du afbryder mindre, er ikke en garanti for, at flere siger noget. Det er netop derfor, de to tal skal stå hver for sig. Tabellen er en praksisramme, ikke en liste over validerede mål.</p>
+    <p>Et målepunkt kan også skabe sin egen adfærd. Hvis ledergruppen ved, at der bliver talt alternativer, kan der komme flere forslag, fordi de bliver talt – ikke fordi de er bedre. Derfor skal du ved siden af målepunktet beslutte, hvad der ikke må blive dårligere, mens du arbejder med det. For Anne er det, at de beslutninger, der skal tages, bliver taget, og at mødet ikke fyldes med forslag, der ikke bidrager med noget nyt. Det er ikke endnu et mål. Det er et værn mod følgevirkninger, du ikke ønsker. Gør det så konkret, at du ved, hvornår du skal justere: En udskydelse er ikke automatisk et brud. Skeln mellem beslutninger, der kan vente for at få et bedre grundlag, og beslutninger med en reel frist eller en alvorlig konsekvens ved forsinkelse.</p>
+    <p>Bestem målepunktet, før du begynder. Vælger du det bagefter, vælger du det, der ser bedst ud.</p>
+    <div class="takeaway"><strong>Hvad det betyder:</strong> Et eksperiment har to tal – om du gjorde det, og hvad der skete i rummet – og et værn for det, der ikke må blive dårligere. Ingen af dem måler, hvem du er.</div>
+  </div>
+</section>
+
+<section class="section" id="eksperimentkortet">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">06 — Værktøjet</div>
+    <h2>Eksperimentkortet</h2>
+    </div>
+    <p>Eksperimentkortet er én side med fem felter. Det tager et kvarter at udfylde og fire uger at gennemføre.</p>
+    <p class="step-p"><strong>Trin 1 · Vælg mønstret.</strong> Tag det mønster, der har størst betydning for beslutninger, samarbejde eller eksekvering – fra Ugens side, feedbacken eller Grænsetesten. Skriv det som »jeg gør X, når Y«.</p>
+    <p class="step-p"><strong>Trin 2 · Udfyld de fem felter.</strong></p>
+    <div class="tbl-wrap"><table class="sig-table c3"><thead><tr><th>Felt</th><th>Spørgsmålet</th><th>Annes kort</th></tr></thead><tbody><tr><td data-label="Felt">Adfærd</td><td data-label="Spørgsmålet">Hvad vil du gøre anderledes – så præcist, at et kamera kunne optage det?</td><td data-label="Annes kort">Jeg siger min vurdering sidst, når et punkt skal ende i en beslutning</td></tr><tr><td data-label="Felt">Situation</td><td data-label="Spørgsmålet">I hvilke situationer – og kun dem?</td><td data-label="Annes kort">De ugentlige strategimøder, kun punkter med en beslutning</td></tr><tr><td data-label="Felt">Varighed</td><td data-label="Spørgsmålet">Hvor længe, før du ser på resultatet?</td><td data-label="Annes kort">Fire uger</td></tr><tr><td data-label="Felt">Målepunkt</td><td data-label="Spørgsmålet">Hvad vil du se på for at vide, hvad der skete – og hvad må ikke blive dårligere?</td><td data-label="Annes kort">Andelen af beslutningspunkter med mindst to alternativer på bordet før beslutningen. Må ikke blive dårligere: at beslutninger, der skal tages, bliver taget</td></tr><tr><td data-label="Felt">Observatør</td><td data-label="Spørgsmålet">Hvem registrerer målepunktet – og hvem ser, om du holder adfærden?</td><td data-label="Annes kort">Line tæller alternativer. Jesper ser, om jeg siger min vurdering sidst</td></tr></tbody></table></div>
+    <p class="step-p"><strong>Trin 3 · Få et udgangspunkt.</strong> Registrér målepunktet i en eller flere relevante situationer, før du ændrer adfærden. Notér også, hvilke møder det var, og hvad der kunne påvirke resultatet: dagsordenen, hvem der deltog, om der var tidspres. Det giver dig et foreløbigt sammenligningsgrundlag – ikke en sikker førmåling. Jo færre situationer, jo mere forsigtigt skal du læse forskellen.</p>
+    <p class="step-p"><strong>Trin 4 · Fortæl dem, det angår.</strong> Sig til dem, der er i rummet, hvad du gør, hvor længe, og hvad det ikke betyder. Harkin og kollegers metaanalyse tyder på, at det kan hjælpe, når fremskridt bliver rapporteret til andre. Og det gør det lettere for de andre at forstå, hvorfor du opfører dig anderledes.</p>
+    <p class="step-p"><strong>Trin 5 · Gennemfør – og registrér undtagelserne.</strong> Skriv ned, når du ikke gjorde det, du havde besluttet, og hvorfor. Undtagelserne er data.</p>
+    <p class="step-p"><strong>Trin 6 · Læs resultatet efter perioden – og fortæl, hvad du så.</strong> Se afsnit 08.</p>
+    <p>En optælling behøver ikke være mere end en linje pr. møde. Sådan kan den se ud – tallene er opdigtede og kun til illustration, ikke Annes:</p>
+    <div class="tbl-wrap"><table class="sig-table c6"><thead><tr><th>Møde</th><th>Periode</th><th>Beslutningspunkter</th><th>Punkter med mindst to alternativer</th><th>Holdt jeg adfærden?</th><th>Noter</th></tr></thead><tbody><tr><td data-label="Møde">1</td><td data-label="Periode">Udgangspunkt</td><td data-label="Beslutningspunkter">3</td><td data-label="Punkter med mindst to alternativer">1</td><td data-label="Holdt jeg adfærden?">–</td><td data-label="Noter">Kort møde, budgetopfølgning</td></tr><tr><td data-label="Møde">2</td><td data-label="Periode">Udgangspunkt</td><td data-label="Beslutningspunkter">2</td><td data-label="Punkter med mindst to alternativer">0</td><td data-label="Holdt jeg adfærden?">–</td><td data-label="Noter">Begge punkter forberedt af mig</td></tr><tr><td data-label="Møde">3</td><td data-label="Periode">Eksperiment</td><td data-label="Beslutningspunkter">3</td><td data-label="Punkter med mindst to alternativer">2</td><td data-label="Holdt jeg adfærden?">3 af 3</td><td data-label="Noter"></td></tr><tr><td data-label="Møde">4</td><td data-label="Periode">Eksperiment</td><td data-label="Beslutningspunkter">2</td><td data-label="Punkter med mindst to alternativer">1</td><td data-label="Holdt jeg adfærden?">1 af 2</td><td data-label="Noter">Mødet løb over tid</td></tr></tbody></table></div>
+    <p>Læg mærke til to ting. Sammenlign andele, ikke antal: Møderne har forskelligt antal beslutningspunkter, så »1 af 5 punkter før« og »3 af 5 under« siger mere end »1 og 3«. Og læs noterne med. I eksemplet skete undtagelsen i det møde, der løb over tid. Med så få møder er forskellen et spor at følge, ikke et resultat.</p>
+    <p>To grænser gælder. Vælg en adfærd, der ikke skader beslutningerne, mens du afprøver den; at tale sidst er ikke det samme som ikke at tage ansvar. Og stop eksperimentet, hvis det skaber et problem, der er større end det, du prøver at løse.</p>
+    <p>Fem felter, fire uger og et udgangspunkt er praktiske rammer fra mit arbejde, ikke en valideret metode. Fire uger er ikke valgt, fordi en adfærd så er blevet en vane. De er valgt, fordi det i min erfaring er længe nok til, at der er flere situationer at sammenligne, og kort nok til at holde fast.</p>
+  </div>
+</section>
+
+<section class="section" id="hvem-taeller-hvad">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">07 — Observatørerne</div>
+    <h2>Hvem tæller hvad</h2>
+    </div>
+    <p>Du har brug for at skelne mellem de to spørgsmål fra afsnit 05: Gjorde du det, du havde besluttet? Og hvad skete der med målepunktet? De kan registreres af samme person eller fordeles på to. I et mindre team er én omhyggelig observatør ofte nok. I Annes tilfælde giver det mening at fordele opgaven: Jesper fortsætter fra Paper 08 med at se, om hun holder adfærden, og Line tæller, hvad der sker i rummet. Når hver ser én ting, er det lettere at være præcis, og det er sværere for Anne at læse resultatet, som hun gerne vil have det.</p>
+    <p>Michie og kolleger har samlet de teknikker, forskningen i adfærdsændring bruger, i en fælles taksonomi. To af dem svarer til det, dette paper beskriver: at registrere sin egen adfærd som en del af en ændring, og at andre observerer eller registrerer adfærden med personens viden. En tredje kalder de adfærdseksperimenter: at afprøve hypoteser om en adfærd, dens årsager og følger ved at indsamle og fortolke data. Taksonomien er et fælles sprog, ikke en dokumentation for, at teknikkerne virker. Men den viser, at det, Anne gør, er kendte byggesten, sat sammen til en ledelsessituation.</p>
+    <p>De samme regler gælder som for observatøren i Paper 08. Bed om én ting. Gør det frivilligt, og vær ærlig over for dig selv om, at et ja fra en, der rapporterer til dig, ikke altid er et frit ja. Tag imod uden at forsvare dig. Og afslut aftalen, når perioden er slut.</p>
+    <p>Et forslag til, hvordan du kan bede om optællingen: »Jeg afprøver noget i strategimøderne de næste fire uger. Vil du tælle, hvor mange forskellige forslag der er på bordet, før vi beslutter – og give mig tallet efter mødet? Du skal ikke vurdere forslagene eller mig, kun tælle. Du må gerne sige nej.«</p>
+    <p>Der er en fristelse mere i et eksperiment: at observatørerne og de andre i rummet begynder at hjælpe dig. Hvis ledergruppen ved, at Line tæller forslag, kan de komme med flere forslag for at støtte eksperimentet. Det er ikke nødvendigvis et problem – det er måske netop det, der skal ske. Men det betyder, at du ikke kan skelne din adfærds betydning fra den opmærksomhed, eksperimentet selv skaber. Skriv det ned under det, du ikke ved.</p>
+  </div>
+</section>
+
+<section class="section" id="saadan-laeser-du-resultatet-og-fortaelle">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">08</div>
+    <h2>Sådan læser du resultatet – og fortæller det</h2>
+    </div>
+    <p>Efter fire uger sætter du dig med kortet, optællingen, observatørens sætninger og dine egne undtagelser. Der er i min erfaring fire spørgsmål, der hjælper.</p>
+    <p><strong>Gjorde jeg det, jeg havde besluttet?</strong> I hvor mange af de aftalte situationer holdt du adfærden, og hvornår gjorde du ikke? Se på undtagelserne. De fortæller ofte mere end reglen.</p>
+    <p><strong>Hvad skete der med målepunktet – og med værnet?</strong> Sammenlign andelen med udgangspunktet. Hvor var forskellen størst, og hvor var der ingen? Og blev det, der ikke måtte blive dårligere, dårligere?</p>
+    <p><strong>Hvad skete der ellers?</strong> Blev møderne længere? Blev en beslutning udskudt? Sagde nogen noget, de ikke plejer? Det, du ikke målte, kan være lige så vigtigt som det, du målte.</p>
+    <p><strong>Hvad ved jeg ikke?</strong> Fire uger er få møder. Emnerne var forskellige. Ledergruppen vidste, at der blev talt. Du ved ikke, om beslutningerne blev bedre, og du kan ikke vide, om det samme ville ske i andre møder.</p>
+    <p>På baggrund af de fire spørgsmål træffer du én af tre beslutninger. Du kan fortsætte, fordi du så noget, der er værd at holde fast i. Du kan justere adfærden eller situationen og køre en ny periode. Eller du kan stoppe, fordi det ikke gjorde den forskel, du havde håbet, og vælge et andet eksperiment. Alle tre er gode udfald. Det eneste dårlige udfald er at slutte uden at have besluttet noget.</p>
+    <p>Og så lukker du sløjfen, som Paper 02 beskrev det. Dem, der var med, har set dig opføre dig anderledes i fire uger. Fortæl dem kort, hvad du så, hvad du ikke ved, og hvad du har besluttet. Ikke tallene som et resultat, men som det, de er: et spor. Det tager to minutter i starten af et møde. Det viser, at det, de gjorde – at tælle, at sige noget, at vente på din vurdering – blev brugt til noget. Og det gør det lettere at bede om hjælp næste gang.</p>
+    <div class="takeaway"><strong>Hvad det betyder:</strong> Et eksperiment beviser ikke, at noget virker. Det giver dig et bedre grundlag for at beslutte, hvad du gør nu – og en historie, du kan fortælle dem, der var med.</div>
+  </div>
+</section>
+
+<section class="section" id="fire-faldgruber">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">09</div>
+    <h2>Fire faldgruber</h2>
+    </div>
+    <p><strong>Eksperimentet er for stort.</strong> »Være mere inddragende« kan ikke observeres i et bestemt møde. »Sige min vurdering sidst, når et punkt skal ende i en beslutning« kan. Kan observatøren ikke se, om du gjorde det, er eksperimentet for stort.</p>
+    <p><strong>Målepunktet er et resultat.</strong> »Bedre beslutninger« eller »højere engagement« bliver påvirket af alt muligt andet end din adfærd. Vælg noget, der sker i rummet, mens du gør det.</p>
+    <p><strong>Du ændrer flere ting på én gang.</strong> Når du både taler sidst, holder kortere møder og ændrer dagsordenen, kan du ikke se, hvad der gjorde en forskel. Én ting ad gangen.</p>
+    <p><strong>Du stopper uden at beslutte.</strong> Fire uger går, og eksperimentet glider ud. Læg læsningen i kalenderen den dag, du begynder.</p>
+  </div>
+</section>
+
+<section class="section" id="tilbage-til-casen">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">10</div>
+    <h2>Tilbage til casen</h2>
+    </div>
+    <p>Efter fire uger sætter Anne sig med Line og Jesper i en halv time.</p>
+    <p>Jespers sætninger viser, at hun holdt adfærden i de fleste af punkterne. To gange sagde hun sin vurdering tidligt. Den ene gang var mødet ved at løbe over tid; den anden gang havde hun forberedt punktet alene aftenen før.</p>
+    <p>Lines optællinger viser, at andelen af punkter med mindst to alternativer på bordet var højere end i de to møder før. Ikke hver gang. I det møde, hvor tiden løb ud, var der ét. Line siger noget, der ikke står i optællingen: »Karim har sagt mere end før. Men han siger det stadig først, når du har kigget på ham.«</p>
+    <p>Der skete også andet. To beslutninger blev udskudt til næste møde, fordi der var kommet et alternativ frem, som ingen havde regnet på. Det havde Anne ikke forudset, og det berører hendes værn. Ingen af dem havde en frist, der blev overskredet, så værnet holdt. Om det var godt eller skidt, ved hun ikke. Det kostede en uge. Det kan også have sparet en fejl.</p>
+    <p>Hun skriver sin læsning på kortet. Hun holdt sin aftale i de fleste registrerede situationer. De to brud skete henholdsvis under tidspres og efter en forberedelse, hun havde lavet alene. Det passer med hendes tidligere hypoteser, men to episoder er ikke nok til at bekræfte dem. Der var oftere flere alternativer, men ledergruppen vidste, at der blev talt. Hun ved ikke, om beslutningerne blev bedre. Hun ved ikke, om det samme ville ske i økonomimøderne.</p>
+    <p>Hun afslutter forsøget og beslutter at fastholde det at sige sin vurdering sidst i strategimøderne. Nu afprøver hun én ny ændring i fire uger: Når hun har forberedt et punkt alene, sender hun oplægget ud dagen før uden sin konklusion. Det er Karims hypotese fra Paper 05, omsat til et eksperiment.</p>
+    <figure class="vz" aria-labelledby="vz-s09b-title">
+  <div class="vz-head">
+    <div class="vz-kicker">Casen i ét billede</div>
+    <div class="vz-title" id="vz-s09b-title">Fra kort til beslutning</div>
+  </div>
+  <div class="vz-art"><div class="m-bred"><svg viewBox="0 0 580 124" role="img" aria-labelledby="vz-s09b-t vz-s09b-d"><title id="vz-s09b-t">Fra kort til beslutning</title><desc id="vz-s09b-d">Annes eksperiment fra kort til beslutning: et udgangspunkt i to møder, fire uger hvor Line tæller og Jesper ser, en halv times læsning, en beslutning om at fastholde det at tale sidst og afprøve én ny ændring, og to minutter i næste møde, hvor hun fortæller ledergruppen, hvad hun så.</desc><line x1="58" y1="40" x2="522" y2="40" stroke="#d9d4cb" stroke-width="4"/><circle cx="58" cy="40" r="8" fill="#111"/><text x="58" y="78" text-anchor="middle" class="t-sans" font-size="13.5" fill="#111" font-weight="500">Udgangspunkt</text><text x="58" y="96" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">to møder,</text><text x="58" y="112" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">Line tæller</text><circle cx="174" cy="40" r="8" fill="#111"/><text x="174" y="78" text-anchor="middle" class="t-sans" font-size="13.5" fill="#111" font-weight="500">Fire uger</text><text x="174" y="96" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">Line tæller,</text><text x="174" y="112" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">Jesper ser</text><circle cx="290" cy="40" r="8" fill="#111"/><text x="290" y="78" text-anchor="middle" class="t-sans" font-size="13.5" fill="#111" font-weight="500">Læsningen</text><text x="290" y="96" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">en halv time,</text><text x="290" y="112" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">tre personer</text><circle cx="406" cy="40" r="11" fill="#c0392b"/><text x="406" y="78" text-anchor="middle" class="t-sans" font-size="13.5" fill="#c0392b" font-weight="500">Beslutningen</text><text x="406" y="96" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">fastholde · ét</text><text x="406" y="112" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">nyt forsøg</text><circle cx="522" cy="40" r="11" fill="#c0392b"/><text x="522" y="78" text-anchor="middle" class="t-sans" font-size="13.5" fill="#c0392b" font-weight="500">Sløjfen</text><text x="522" y="96" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">to minutter</text><text x="522" y="112" text-anchor="middle" class="t-sans" font-size="11.5" fill="#777">i mødet</text></svg></div><div class="m-smal"><svg viewBox="0 0 360 290" role="img" aria-labelledby="vz-s09bs-t vz-s09bs-d"><title id="vz-s09bs-t">Fra kort til beslutning</title><desc id="vz-s09bs-d">Annes eksperiment fra kort til beslutning: et udgangspunkt i to møder, fire uger hvor Line tæller og Jesper ser, en halv times læsning, en beslutning om at fastholde det at tale sidst og afprøve én ny ændring, og to minutter i næste møde, hvor hun fortæller ledergruppen, hvad hun så.</desc><line x1="22" y1="14" x2="22" y2="246" stroke="#d9d4cb" stroke-width="4"/><circle cx="22" cy="14" r="8" fill="#111"/><text x="48" y="19" text-anchor="start" class="t-sans" font-size="15.5" fill="#111" font-weight="500">Udgangspunkt</text><text x="48" y="39" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">to møder, Line tæller</text><circle cx="22" cy="72" r="8" fill="#111"/><text x="48" y="77" text-anchor="start" class="t-sans" font-size="15.5" fill="#111" font-weight="500">Fire uger</text><text x="48" y="97" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">Line tæller, Jesper ser</text><circle cx="22" cy="130" r="8" fill="#111"/><text x="48" y="135" text-anchor="start" class="t-sans" font-size="15.5" fill="#111" font-weight="500">Læsningen</text><text x="48" y="155" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">en halv time, tre personer</text><circle cx="22" cy="188" r="11" fill="#c0392b"/><text x="48" y="193" text-anchor="start" class="t-sans" font-size="15.5" fill="#c0392b" font-weight="500">Beslutningen</text><text x="48" y="213" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">fastholde · ét nyt forsøg</text><circle cx="22" cy="246" r="11" fill="#c0392b"/><text x="48" y="251" text-anchor="start" class="t-sans" font-size="15.5" fill="#c0392b" font-weight="500">Sløjfen</text><text x="48" y="271" text-anchor="start" class="t-sans" font-size="13.5" fill="#777">to minutter i mødet</text></svg></div></div>
+  <figcaption>Konstrueret case. Fire uger er få møder, og ledergruppen vidste, at der blev talt. Et spor, ikke en dokumentation.</figcaption>
+</figure>
+    <p>Ved næste strategimøde bruger hun to minutter i starten. Hun takker Line og Jesper. Hun siger, at der oftere har været flere forslag på bordet, at to beslutninger blev en uge forsinkede, og at hun ikke ved, om det var det værd. Hun siger, hvad hun fastholder, og hvad hun afprøver nu. Ingen siger noget. Efter mødet stopper Karim i døren. »Det med oplægget uden konklusion,« siger han. »Det har jeg ønsket mig i to år.«</p>
+    <p>Hun tænker på torsdagen i september, hvor budgettet blev godkendt på tyve minutter. Hun ved ikke, om tvivlen om tredje kvartal var kommet frem, hvis hun havde talt sidst dengang. Det kan ingen vide. Men hun har nu et svar på en del af det spørgsmål, hun stillede sig selv i januar. Hun ser sig stadig som en, der inviterer til uenighed. Forskellen er, at hun nu kan se, hvornår hun gør det, og hvornår hun ikke gør – og at andre kan se, at hun arbejder med det.</p>
+    <p>Indsigt uden adfærdsændring er underholdning. Det, Anne har på sit kort, er noget andet: en handling, et spor og en beslutning om, hvad hun gør nu. Hvordan hun gør det til en del af sin måde at lede på, når serien og eksperimenterne ikke længere holder hende i hånden, er emnet for Paper 10.</p>
+  </div>
+</section>
+
+<section class="section" id="konkludere">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">11 — Status</div>
+    <h2>Hvad du kan se, og hvad du ikke må konkludere</h2>
+    </div>
+    <div class="ro-box" role="group" aria-label="Hvad du kan se, og hvad du ikke må konkludere">
+      <div class="ro">
+        <div class="ro-h">Hvad kan du se nu?</div>
+        <p>Du kan se, hvorfor indsigt så ofte bliver stående som indsigt, og hvad der skal til for at gøre den til en ændring: én adfærd, én slags situation, en fast periode, et målepunkt med et værn og nogen, der ser det. Du kan skelne mellem det, der siger, om du holdt din aftale, og det, der siger, hvad der skete i rummet. Og du ved, hvordan du fortæller dem, der var med, hvad du så.</p>
+      </div>
+      <div class="ro">
+        <div class="ro-h">Hvad må du ikke konkludere?</div>
+        <p>Du må ikke konkludere, at et eksperiment på fire uger beviser, at en ændring virker; det giver dig et bedre grundlag for din næste beslutning, ikke en dokumentation. Du må heller ikke konkludere, at et målepunkt er en score for dig; det beskriver, hvad der sker i rummet. En forskel mellem få møder er et spor, ikke en effekt – især når de andre ved, at der bliver talt. Forskningen i at følge sine fremskridt bygger mest på mål om helbred, og forskningen i alternativer og lederadfærd er gjort med studerende og gennem interviews, ikke med din ledergruppe. Og fire uger er ikke tiden, det tager at ændre en vane. Det er en praktisk periode.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="roller">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">12 — Fire roller</div>
+    <h2>Hvad betyder det for dig – og for dem omkring dig?</h2>
+    </div>
+    <div class="roles">
+      <details class="faq-item" open>
+        <summary class="faq-q"><span>Til dig selv<span class="rq-sub">Når du arbejder med det alene</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Skriv ét Eksperimentkort ad gangen – og læg læsningen i kalenderen, før du begynder.</li><li>Hold to tal adskilt: om du gjorde det, og hvad der skete i rummet. Beslut, hvad der ikke må blive dårligere.</li><li>Registrér undtagelserne. De er data.</li><li>Luk sløjfen: Fortæl dem, der var med, hvad du så og besluttede.</li></ul></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>Til din ledergruppe<span class="rq-sub">Når du bruger det sammen med dem, du leder</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Hvis I bliver bedt om at tælle eller observere: Registrér det, der skete, ikke det, I synes.</li><li>Overvej at køre eksperimenter sideløbende – én adfærd hver – og læse dem sammen efter perioden.</li></ul></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>Til HR<span class="rq-sub">Når HR understøtter direktionen</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Byg plan, observation og opfølgning ind i lederudvikling, så det, ledere lærer, bliver afprøvet og fulgt op – ikke kun drøftet.</li><li>Hold målepunkter i et eksperiment adskilt fra vurderinger af lederen.</li></ul></div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q"><span>Til bestyrelsen<span class="rq-sub">Når bestyrelsen spørger til direktøren</span></span> <span class="faq-icon">+</span></summary>
+        <div class="faq-a"><ul><li>Spørg ikke kun, hvad direktøren har lært. Spørg, hvilket eksperiment direktøren har kørt, hvad målepunktet var, og hvad direktøren besluttede bagefter.</li></ul></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="konkret">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">13 — Gør det konkret</div>
+    <h2>Øvelse og dit næste skridt</h2>
+    </div>
+    <div class="exercise-box">
+      <div class="ex-tag">Individuel øvelse · Topleder · Én eller to observatører</div>
+      <div class="ex-meta">⏱ Et kvarter til kortet og en halv time efter fire uger · Ingen score. To tal og et værn.</div>
+      <ol>
+        <li><strong>Vælg det mønster, der har størst betydning, og skriv det som »jeg gør X, når Y«.</strong></li>
+        <li><strong>Udfyld Eksperimentkortets fem felter – og skriv under målepunktet, hvad der ikke må blive dårligere.</strong></li>
+        <li><strong>Få et udgangspunkt i en eller flere situationer, og notér, hvad der kunne påvirke det.</strong></li>
+        <li><strong>Fortæl dem, det angår, hvad du gør, hvor længe og hvad det ikke betyder.</strong></li>
+        <li><strong>Læg læsningen i kalenderen. Beslut bagefter: fortsæt, justér eller stop – og luk sløjfen med dem, der var med.</strong></li>
+      </ol>
+      <p class="ex-out">Resultat: ét Eksperimentkort · et udgangspunkt · en læsning og en beslutning: fortsæt, justér eller stop.</p>
+    </div>
+
+    <div class="sheet-card tool-card">
+      <div class="sc-text">
+        <div class="cta-label">Interaktivt værktøj · alt bliver i din browser</div>
+        <h3>Eksperimentkortet</h3>
+        <p>Skriv kortet med de fem felter og værnet, få et udgangspunkt, og send et link til den, der tæller. Optællingen kommer tilbage som en kode og står møde for møde – med andele, ikke en score. Intet går gennem en server.</p>
+      </div>
+      <a class="pdf-btn primary" href="/selvindsigt-eksperimentkortet.html">Åbn værktøjet →</a>
+    </div>
+
+    <div class="sheet-card">
+      <div class="sc-text">
+        <div class="cta-label">Refleksionsark · 1 side A4</div>
+        <h3>Tag spørgsmålene med på papir</h3>
+        <p>Paperet giver argumentet. Refleksionsarket samler spørgsmålene og de næste skridt på én side, så du kan skrive i hånden.</p>
+      </div>
+      <button class="pdf-btn primary" type="button" onclick="friisnaesSheet()" aria-label="Print refleksionsarket til Paper 09 som én A4-side">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Hent refleksionsark
+      </button>
+    </div>
+
+    <div class="commit-box" id="commit">
+      <div class="commit-head">
+        <span class="ch-paper">Paper 09 · Indsigt uden adfærdsændring er underholdning</span>
+        <span class="ch-status" id="commitStatus">Ikke gennemført endnu</span>
+      </div>
+      <p>Serien er bygget til at blive brugt, ikke bare læst. Skriv dit commitment her. Det gemmes kun i din egen browser.</p>
+      <label for="commitText">Mit commitment</label>
+      <p class="commit-note">Mit eksperiment er ____. Målepunktet er ____, udgangspunktet er ____ af ____ situationer, og ____ registrerer det. Det, der ikke må blive dårligere, er ____. Jeg læser resultatet den ____ / ____ og fortæller det til ____.</p>
+      <textarea id="commitText" placeholder="Mit eksperiment · målepunktet og værnet · hvem der tæller · læsningens dato"></textarea>
+      <div class="print-only print-write" aria-hidden="true"></div>
+      <div class="commit-actions">
+        <button class="commit-btn primary" type="button" onclick="saveCommit()">Gem dit commitment</button>
+        <button class="commit-btn ghost" type="button" onclick="markDone()">Markér paper som gennemført</button>
+        <span class="commit-saved" id="commitSaved" aria-live="polite">✓ Gemt lokalt</span>
+      </div>
+      <div class="commit-progress">
+        <div class="cp-label"><span>Din vej gennem Selvindsigt er en disciplin</span><span id="cpCount">0 af 10 gennemført</span></div>
+        <div class="cp-track" role="progressbar" aria-label="Gennemførte papers i serien" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="cpTrack"><div class="cp-fill" id="cpFill"></div></div>
+        <a class="cp-link" href="/library.html">Se alle serier i Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="metode">
+  <div class="container">
+    <div class="sec-head">
+    <div class="section-label">14 — Metode og næste paper</div>
+    <h2>Hvad paperet bygger på</h2>
+    </div>
+    <p>Paperet bygger på forskning i at følge sine fremskridt, mål og feedback, adfærdsændringsteknikker, alternativer i beslutninger og lederadfærd i grupper, på danske undersøgelser af opfølgning på lederuddannelse samt på min praksis med topledere; Eksperimentkortet er et praksisværktøj, ikke et valideret instrument.</p>
+    <p><em>Grundlag: Forskning er kildeangivet. Min praksis står som erfaring. Eksperimentkortet er et praksisværktøj, ikke et valideret instrument. Et eksperiment i denne serie er en struktureret afprøvning i hverdagen, ikke et videnskabeligt forsøg, og det kan ikke bevise, at en ændring virker.</em></p>
+
+    <h3>Næste i serien</h3>
+    <p><strong>Paper 10 · Din personlige playbook</strong> – hvordan alt det, du har fundet, bliver til én side og en kvartalsrytme, du kan dele med andre og holde dig selv op på.</p>
+
+    <div class="next-grid">
+      <a class="next-card" href="/selvindsigt-din-personlige-playbook.html" data-sid-on="2027-07-05" hidden>
+        <div class="nc-tag">Paper 10</div>
+        <div class="nc-text"><strong>Din personlige playbook</strong> — hvordan alt det, du har fundet, bliver til én side og en kvartalsrytme, du kan dele med andre og holde dig selv op på.</div>
+      </a>
+      <div class="next-card soon" aria-disabled="true" data-sid-off="2027-07-05">
+        <div class="nc-tag">Paper 10 · Udkommer 5. juli 2027</div>
+        <div class="nc-text"><strong>Din personlige playbook</strong> — hvordan alt det, du har fundet, bliver til én side og en kvartalsrytme, du kan dele med andre og holde dig selv op på.</div>
+      </div>
+      <a class="next-card" href="/selvindsigt-forandringen-sker-mellem-samtalerne.html">
+        <div class="nc-tag">Selvindsigt er en disciplin · Paper 08</div>
+        <div class="nc-text"><strong>Forandringen sker mellem samtalerne</strong> — Mellemrummets plan</div>
+      </a>
+      <a class="next-card" href="/library.html">
+        <div class="nc-tag">Executive Library</div>
+        <div class="nc-text"><strong>Alle serier og papers</strong> om lederen, holdet, strategien og eksekveringen</div>
+      </a>
+    </div>
+    <p class="author-note"><strong>Om forfatteren:</strong> <em>Thomas Friisnæs er executive coach og forfatter til flere bøger og paper-serier om ledelse, karakter og disciplin. friisnaes.com</em></p>
+  </div>
+</section>
+
+</article>
+</main>
+
+<!-- SOURCES -->
+<section class="sources-block" aria-label="Kilder">
+  <div class="container">
+    <div class="sb-label">Kilder og forskningsgrundlag</div>
+    <div class="sb-group">At følge sine fremskridt, mål og feedback, adfærdsændring og alternativer i beslutninger</div>
+    <ul>
+      <li>Harkin, B., Webb, T. L., Chang, B. P. I., Prestwich, A., Conner, M., Kellar, I., Benn, Y., &amp; Sheeran, P. (2016). Does monitoring goal progress promote goal attainment? A meta-analysis of the experimental evidence. <em>Psychological Bulletin</em>, 142(2), 198–229. <a href="https://doi.org/10.1037/bul0000025" target="_blank" rel="noopener">doi.org/10.1037/bul0000025</a></li>
+      <li>Jensen, H. L. S., &amp; Mortensen, N. P. (2021). <em>Den Offentlige Lederuddannelse: Et brugerperspektiv på uddannelsen. Delrapport 6</em>. VIVE. <a href="https://vive.dk/media/pure/16277/5812978" target="_blank" rel="noopener">vive.dk/media/pure/16277/5812978</a></li>
+      <li>Leana, C. R. (1985). A partial test of Janis' groupthink model: Effects of group cohesiveness and leader behavior on defective decision making. <em>Journal of Management</em>, 11(1), 5–18. <a href="https://doi.org/10.1177/014920638501100102" target="_blank" rel="noopener">doi.org/10.1177/014920638501100102</a></li>
+      <li>Locke, E. A., &amp; Latham, G. P. (2002). Building a practically useful theory of goal setting and task motivation: A 35-year odyssey. <em>American Psychologist</em>, 57(9), 705–717. <a href="https://doi.org/10.1037/0003-066X.57.9.705" target="_blank" rel="noopener">doi.org/10.1037/0003-066X.57.9.705</a></li>
+      <li>Michie, S., Richardson, M., Johnston, M., Abraham, C., Francis, J., Hardeman, W., Eccles, M. P., Cane, J., &amp; Wood, C. E. (2013). The behavior change technique taxonomy (v1) of 93 hierarchically clustered techniques: Building an international consensus for the reporting of behavior change interventions. <em>Annals of Behavioral Medicine</em>, 46(1), 81–95. <a href="https://doi.org/10.1007/s12160-013-9486-6" target="_blank" rel="noopener">doi.org/10.1007/s12160-013-9486-6</a></li>
+      <li>Nutt, P. C. (1999). Surprising but true: Half the decisions in organizations fail. <em>Academy of Management Executive</em>, 13(4), 75–90. <a href="https://www.jstor.org/stable/4165588" target="_blank" rel="noopener">jstor.org/stable/4165588</a> (åbent eksemplar: <a href="https://cebma.org/assets/Uploads/Nutt-1999-gecomprimeerd.pdf" target="_blank" rel="noopener">cebma.org</a>)</li>
+      <li>Sutton, A., Williams, H. M., &amp; Allinson, C. W. (2015). A longitudinal, mixed method evaluation of self-awareness training in the workplace. <em>European Journal of Training and Development</em>, 39(7), 610–627. <a href="https://doi.org/10.1108/EJTD-04-2015-0031" target="_blank" rel="noopener">doi.org/10.1108/EJTD-04-2015-0031</a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- REFLEKSIONSARK -->
+<aside class="refl-sheet" id="refleksionsark" aria-label="Refleksionsark til Paper 09">
+  <div class="rs-kicker">Selvindsigt er en disciplin · Serie 09 · Paper 09</div>
+  <div class="rs-title">Indsigt uden adfærdsændring er underholdning</div>
+  <div class="rs-sub">Indsigt, der ikke ændrer en handling, er underholdning. Om ét afgrænset eksperiment ad gangen – to tal, et værn og en observatør – og Eksperimentkortet.</div>
+  <div class="rs-prov">
+    <div class="rs-lbl">Signaturlinje</div>
+    <div class="rs-prov-t">Indsigt, der ikke ændrer en handling, er underholdning.</div>
+  </div>
+  <div class="rs-lbl">Spørgsmålet</div>
+  <div class="rs-cq">Gjorde jeg det – og hvad skete der i rummet?</div>
+  <div class="rs-cols">
+    <div>
+      <div class="rs-lbl">Tre pointer</div>
+      <ol class="rs-list rs-strong">
+        <li>Én adfærd, én slags situation, en fast periode.</li>
+        <li>To tal holdes adskilt – og et værn for det, der ikke må blive dårligere.</li>
+        <li>Et eksperiment beviser ikke noget. Det giver dig et bedre grundlag for at beslutte.</li>
+      </ol>
+    </div>
+    <div>
+      <div class="rs-lbl">Fem spørgsmål</div>
+      <ol class="rs-list">
+        <li>Hvilket mønster har størst betydning – som »jeg gør X, når Y«?</li>
+        <li>Hvad vil jeg gøre, så præcist, at et kamera kunne optage det?</li>
+        <li>Hvad er målepunktet – og hvad må ikke blive dårligere?</li>
+        <li>Hvem tæller, og hvem ser, om jeg holder det?</li>
+        <li>Hvad besluttede jeg – og hvad fortalte jeg dem, der var med?</li>
+      </ol>
+    </div>
+  </div>
+  <div class="rs-now">
+    <div class="rs-lbl">Mit commitment</div>
+    <div class="rs-now-h">Mit eksperiment er ____. Målepunktet er ____, udgangspunktet er ____ af ____ situationer, og ____ registrerer det. Det, der ikke må blive dårligere, er ____. Jeg læser resultatet den ____ / ____ og fortæller det til ____.</div>
+    <div class="rs-now-a">Bestem målepunktet og læsningens dato, før du begynder.</div>
+  </div>
+  <div class="rs-lbl">Eksperimentkortet · tre tidspunkter</div>
+  <div class="rs-clocks">
+    <div><div class="rs-lbl">Før</div><strong>Et udgangspunkt.</strong><span>En eller flere situationer, og hvad der kunne påvirke dem.</span></div>
+    <div><div class="rs-lbl">Under</div><strong>Fire uger.</strong><span>Gennemfør, og registrér undtagelserne.</span></div>
+    <div><div class="rs-lbl">Efter</div><strong>En halv time.</strong><span>Fortsæt, justér eller stop – og luk sløjfen.</span></div>
+  </div>
+  <div class="rs-foot"><span>Refleksionsark til Paper 09 · Selvindsigt er en disciplin · Thomas Friisnæs · friisnaes.com</span><span class="rs-foot-r">Ikke en test. Ikke en score. Et sted at tænke.</span></div>
+</aside>
+
+<!-- COLLECTION -->
+<section class="wp-collection">
+  <div class="container">
+    <div class="collection-label">Selvindsigt er en disciplin — serien</div>
+    <h2 class="collection-title">Executive playbook: coach dig selv, og forstå det, du ikke kan se selv</h2>
+    <p class="collection-intro">Ti papers om selvindsigt som en disciplin: præcis viden om din egen adfærd og dens virkning på andre, underbygget af evidens. I fire dele, fra det, du ikke kan se, til en personlig playbook.</p>
+
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 1</span><span class="cpart-name">Det, du ikke kan se</span></div>
+      <p class="cpart-desc">Hvorfor dit billede af dig selv kun er et udgangspunkt, og hvorfor spejlet bliver dårligere, jo højere du kommer op.</p>
+      <ol class="cpart-papers">
+        <li data-n="01"><a href="/selvindsigt-er-ikke-en-foelelse.html" data-sid-on="2027-03-01" hidden>Selvindsigt er ikke en følelse. Det er evidens.</a><span class="soon" data-sid-off="2027-03-01">Selvindsigt er ikke en følelse. Det er evidens.<small>Udkommer 1. marts 2027</small></span></li>
+        <li data-n="02"><a href="/selvindsigt-jo-hoejere-op-jo-daarligere-spejl.html" data-sid-on="2027-03-15" hidden>Jo højere op, jo dårligere spejl</a><span class="soon" data-sid-off="2027-03-15">Jo højere op, jo dårligere spejl<small>Udkommer 15. marts 2027</small></span></li>
+        <li data-n="03"><a href="/selvindsigt-introspektion-er-ikke-det-samme-som-indsigt.html" data-sid-on="2027-03-29" hidden>Introspektion er ikke det samme som indsigt</a><span class="soon" data-sid-off="2027-03-29">Introspektion er ikke det samme som indsigt<small>Udkommer 29. marts 2027</small></span></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 2</span><span class="cpart-name">Instrumenterne</span></div>
+      <p class="cpart-desc">Feedback, tests og skriftlig refleksion som instrumenter, du kan bruge med en fast rytme.</p>
+      <ol class="cpart-papers">
+        <li data-n="04"><a href="/selvindsigt-feedback-er-data-ikke-en-dom.html" data-sid-on="2027-04-12" hidden>Feedback er data, ikke en dom</a><span class="soon" data-sid-off="2027-04-12">Feedback er data, ikke en dom<small>Udkommer 12. april 2027</small></span></li>
+        <li data-n="05"><a href="/selvindsigt-testen-er-et-sprog-ikke-en-diagnose.html" data-sid-on="2027-04-26" hidden>Testen er et sprog, ikke en diagnose</a><span class="soon" data-sid-off="2027-04-26">Testen er et sprog, ikke en diagnose<small>Udkommer 26. april 2027</small></span></li>
+        <li data-n="06"><a href="/selvindsigt-skriv-for-at-taenke.html" data-sid-on="2027-05-10" hidden>Skriv for at tænke</a><span class="soon" data-sid-off="2027-05-10">Skriv for at tænke<small>Udkommer 10. maj 2027</small></span></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 3</span><span class="cpart-name">Med og uden coach</span></div>
+      <p class="cpart-desc">Hvor langt du kan coache dig selv, og hvad der skal ske mellem samtalerne.</p>
+      <ol class="cpart-papers">
+        <li data-n="07"><a href="/selvindsigt-coach-dig-selv-og-kend-graensen.html" data-sid-on="2027-05-24" hidden>Coach dig selv – og kend grænsen</a><span class="soon" data-sid-off="2027-05-24">Coach dig selv – og kend grænsen<small>Udkommer 24. maj 2027</small></span></li>
+        <li data-n="08"><a href="/selvindsigt-forandringen-sker-mellem-samtalerne.html" data-sid-on="2027-06-07" hidden>Forandringen sker mellem samtalerne</a><span class="soon" data-sid-off="2027-06-07">Forandringen sker mellem samtalerne<small>Udkommer 7. juni 2027</small></span></li>
+      </ol>
+    </div>
+    <div class="collection-part">
+      <div class="cpart-head"><span class="cpart-num">Del 4</span><span class="cpart-name">Fra indsigt til adfærd</span></div>
+      <p class="cpart-desc">Fra mønster til ét eksperiment og til en personlig playbook, du kan holde dig selv op på.</p>
+      <ol class="cpart-papers">
+        <li data-n="09"><span class="current">Indsigt uden adfærdsændring er underholdning — du læser dette</span></li>
+        <li data-n="10"><a href="/selvindsigt-din-personlige-playbook.html" data-sid-on="2027-07-05" hidden>Din personlige playbook</a><span class="soon" data-sid-off="2027-07-05">Din personlige playbook<small>Udkommer 5. juli 2027</small></span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- PDF CTA -->
+<section class="pdf-cta">
+  <div class="container">
+    <div class="pdf-cta-label">Tag paperet med dig</div>
+    <div class="pdf-cta-title">Download som PDF</div>
+    <div class="pdf-cta-sub">Hele paperet i A4, klar til at læse, gemme eller tage med til næste samtale om din rolle og din tid. Refleksionsarket er én side til at skrive på.</div>
+    <div class="pdf-btn-row">
+      <button class="pdf-btn primary" type="button" onclick="friisnaesPdf(false)" aria-label="Download som PDF i fuldt design">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download som PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesPdf(true)" aria-label="Download printvenlig PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Printvenlig PDF
+      </button>
+      <button class="pdf-btn ghost" type="button" onclick="friisnaesSheet()" aria-label="Print refleksionsarket som én A4-side">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></svg>
+        Refleksionsark
+      </button>
+    </div>
+    <div class="pdf-hint">Åbner din browsers udskriv-dialog — vælg “Gem som PDF” som destination.</div>
+  </div>
+</section>
+
+<!-- READ ALSO -->
+<section class="fb-signup" aria-label="Tilmeld dig C-Level Brief">
+  <div class="fb-signup-in">
+    <div>
+      <div class="fb-signup-k">C-Level Brief · hver mandag</div>
+      <h3>Få briefen <em>hver mandag.</em></h3>
+      <p>Signaler med konsekvens for topledere – i din indbakke. Otte minutter. Afmeld med ét klik.</p>
+    </div>
+    <a class="fb-signup-btn" href="https://brief.subscribepage.io" target="_blank" rel="noopener">Tilmeld dig</a>
+  </div>
+</section>
+<section class="read-also">
+  <div class="container">
+    <h2>Læs også</h2>
+    <a href="/selvindsigt-forandringen-sker-mellem-samtalerne.html" data-from="2027-06-07">
+      <span class="ra-tag">Selvindsigt er en disciplin · Paper 08</span>
+      <span class="ra-title">Forandringen sker mellem samtalerne</span>
+    </a>
+    <a href="/selvindsigt-din-personlige-playbook.html" data-from="2027-07-05">
+      <span class="ra-tag">Selvindsigt er en disciplin · Paper 10</span>
+      <span class="ra-title">Din personlige playbook</span>
+    </a>
+    <a href="/library.html">
+      <span class="ra-tag">Executive Library</span>
+      <span class="ra-title">Alle serier og papers</span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Friisn&aelig;s</div>
+        <div class="footer-tagline">Karakter · Disciplin · Klarhed</div>
+      </div>
+      <div class="footer-series-info">
+        <div class="series-label">Selvindsigt er en disciplin · Serie 09 · Paper 09 af 10</div>
+        <div class="series-next"><span data-sid-on="2027-07-05" hidden>Næste: <a href="/selvindsigt-din-personlige-playbook.html">Din personlige playbook</a></span><span data-sid-off="2027-07-05">Næste: Din personlige playbook · udkommer 5. juli 2027</span></div>
+        <a href="/library.html">Se Executive Library →</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progress bar
+  var pb = document.getElementById('progressBar');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    pb.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+
+  // Commitment (localStorage) — serie-specifikt namespace: sid_ (Selvindsigt er en disciplin)
+  var LS_C = 'sid_p09_commit', LS_D = 'sid_done', PAPER_N = 9, TOTAL = 10;
+  (function init() {
+    try {
+      var c = localStorage.getItem(LS_C);
+      if (c) document.getElementById('commitText').value = c;
+      renderProgress();
+    } catch (e) {}
+  })();
+  function saveCommit() {
+    try {
+      localStorage.setItem(LS_C, document.getElementById('commitText').value);
+      var s = document.getElementById('commitSaved'); s.classList.add('show');
+      setTimeout(function () { s.classList.remove('show'); }, 2000);
+    } catch (e) {}
+  }
+  function markDone() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      if (done.indexOf(PAPER_N) === -1) done.push(PAPER_N);
+      localStorage.setItem(LS_D, JSON.stringify(done));
+      document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+      renderProgress();
+    } catch (e) {}
+  }
+  function renderProgress() {
+    try {
+      var done = JSON.parse(localStorage.getItem(LS_D) || '[]');
+      var n = done.length;
+      document.getElementById('cpCount').textContent = n + ' af ' + TOTAL + ' gennemført';
+      document.getElementById('cpFill').style.width = Math.max(0, Math.min(100, (n / TOTAL) * 100)) + '%';
+      document.getElementById('cpTrack').setAttribute('aria-valuenow', n);
+      if (done.indexOf(PAPER_N) !== -1) document.getElementById('commitStatus').textContent = 'Gennemført ✓';
+    } catch (e) {}
+  }
+
+  // Rullebokse og FAQ åbne i print
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+  });
+
+  // Udgivelsesplan: links til papers i serien vises først fra deres udgivelsesdato (ét paper hver anden mandag)
+  (function () {
+    var now = new Date();
+    function on(d) { return now >= new Date(d + 'T00:00:00+01:00'); }
+    document.querySelectorAll('[data-sid-on]').forEach(function (el) { if (on(el.getAttribute('data-sid-on'))) el.removeAttribute('hidden'); });
+    document.querySelectorAll('[data-sid-off]').forEach(function (el) { if (on(el.getAttribute('data-sid-off'))) el.remove(); });
+  })();
+
+  // Læs også: links til papers i andre serier vises først fra deres udgivelsesdato
+  (function () {
+    var now = new Date();
+    document.querySelectorAll('.read-also a[data-from]').forEach(function (a) {
+      if (now < new Date(a.getAttribute('data-from') + 'T00:00:00+01:00')) a.setAttribute('hidden', '');
+    });
+  })();
+
+  // Refleksionsark: printer kun arket som én A4-side
+  function friisnaesSheet() {
+    try {
+      document.body.classList.add('print-sheet');
+      var cleanup = function () {
+        document.body.classList.remove('print-sheet');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+
+  // PDF handler
+  function friisnaesPdf(econo) {
+    try {
+      document.querySelectorAll('.faq-item').forEach(function (it) { it.setAttribute('open', ''); });
+      if (econo) document.body.classList.add('print-econo');
+      var cleanup = function () {
+        if (econo) document.body.classList.remove('print-econo');
+        window.removeEventListener('afterprint', cleanup);
+      };
+      window.addEventListener('afterprint', cleanup);
+      window.print();
+      setTimeout(cleanup, 1500);
+    } catch (e) { window.print(); }
+  }
+</script>
+</body>
+</html>
