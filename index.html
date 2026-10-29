@@ -354,17 +354,17 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
 <body>
 <nav class="fn-nav fn-nav--fixed" aria-label="Hovednavigation">
   <div class="fn-in">
-    <a href="/" class="fn-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <a href="#top" class="fn-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
     <button class="fn-toggle" type="button" aria-label="Menu" aria-controls="fnLinks" aria-expanded="false" onclick="var n=document.getElementById('fnLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
     <div class="fn-links" id="fnLinks">
-      <a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a>
+      <a href="#situationer" data-da="Situationer" data-en="Situations">Situationer</a>
       <span class="fn-dd">
         <a href="/executive-coaching.html" class="fn-dd-t" aria-haspopup="true"><span data-da="Ydelser" data-en="Services">Ydelser</span> <span class="fn-dd-c" aria-hidden="true">▾</span></a>
         <span class="fn-dd-m">
           <a href="/executive-coaching.html" data-da="Executive Coaching" data-en="Executive Coaching">Executive Coaching</a>
           <a href="/ceo-sparring.html" data-da="CEO-sparring" data-en="CEO sparring">CEO-sparring</a>
           <a href="/seg.html" data-da="Ledergrupper (SEG)" data-en="Executive teams (SEG)">Ledergrupper (SEG)</a>
-          <a href="/#format" data-da="Sådan arbejder vi" data-en="How we work">Sådan arbejder vi</a>
+          <a href="#format" data-da="Sådan arbejder vi" data-en="How we work">Sådan arbejder vi</a>
         </span>
       </span>
       <a href="/om.html" data-da="Om" data-en="About">Om</a>
@@ -380,8 +380,9 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
         </span>
       </span>
       <a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a>
-      <a href="/#kontakt" class="fn-cta" data-da="Aftal en samtale" data-en="Arrange a conversation">Aftal en samtale</a>
+      <a href="#kontakt" class="fn-cta" data-da="Aftal en samtale" data-en="Arrange a conversation">Aftal en samtale</a>
       <span class="fn-ls ls" aria-label="Sprog"><button type="button" onclick="setLang('da')" class="on" aria-label="DA – skift til dansk">DA</button><span aria-hidden="true">/</span><button type="button" onclick="setLang('en')" aria-label="EN – switch to English">EN</button></span>
+      <script>/* Sprogvalget EN følger med til næste side (sider uden engelsk ignorerer det) */document.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a||document.documentElement.lang!=='en')return;var u=new URL(a.getAttribute('href'),location.href);if(u.origin!==location.origin||u.pathname===location.pathname||u.searchParams.has('lang'))return;u.searchParams.set('lang','en');a.href=u.href;});</script>
     </div>
   </div>
 </nav>

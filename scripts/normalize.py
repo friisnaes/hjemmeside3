@@ -74,11 +74,14 @@ def active_for(rel, html):
         return 'indsigter'
     return None
 
-def render_nav(fixed, lang, active):
+def render_nav(fixed, lang, active, rel=''):
     out = NAV_TPL.replace('{{fixed}}', ' fn-nav--fixed' if fixed else '')
     out = out.replace('{{lang}}', NAV_LANG if lang else '')
     for key in HUBS:
         out = out.replace('{{a:%s}}' % key, ' active' if active == key else '')
+    if rel == 'index.html':
+        # På forsiden skal ankre blive på siden (ellers genindlæses den og sprogvalget EN tabes)
+        out = out.replace('href="/#', 'href="#').replace('href="/" class="fn-brand"', 'href="#top" class="fn-brand"')
     return out.replace(' class=""', '').rstrip('\n')
 
 def render_footer(slim):
@@ -131,7 +134,7 @@ def process(path):
     else:
         fixed = bool(FIXED_CSS.search(html[:m.start()] + html[m.end():]))
     lang = 'setLang' in html.replace(old_nav, '')
-    nav = render_nav(fixed, lang, active_for(rel, html))
+    nav = render_nav(fixed, lang, active_for(rel, html), rel)
     html = html[:m.start()] + nav + html[m.end():]
     notes.append('menu' + (' (fast)' if fixed else '') + (' +DA/EN' if lang else ''))
 
