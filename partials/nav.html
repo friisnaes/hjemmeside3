@@ -1,0 +1,36 @@
+<!-- Fælles hovedmenu. Rediger KUN her; scripts/normalize.py skriver den ind på alle sider.
+     {{fixed}}  -> " fn-nav--fixed" på sider, hvor menuen ligger fast over indholdet (forsiden m.fl.)
+     {{a:...}}  -> " active" på det punkt, der passer til siden
+     {{lang}}   -> DA/EN-knapper på de sider, der har sprogskift (setLang) -->
+<nav class="fn-nav{{fixed}}" aria-label="Hovednavigation">
+  <div class="fn-in">
+    <a href="/" class="fn-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <button class="fn-toggle" type="button" aria-label="Menu" aria-controls="fnLinks" aria-expanded="false" onclick="var n=document.getElementById('fnLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="fn-links" id="fnLinks">
+      <a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a>
+      <span class="fn-dd">
+        <a href="/executive-coaching.html" class="fn-dd-t{{a:ydelser}}" aria-haspopup="true"><span data-da="Ydelser" data-en="Services">Ydelser</span> <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/executive-coaching.html" data-da="Executive Coaching" data-en="Executive Coaching">Executive Coaching</a>
+          <a href="/ceo-sparring.html" data-da="CEO-sparring" data-en="CEO sparring">CEO-sparring</a>
+          <a href="/seg.html" data-da="Ledergrupper (SEG)" data-en="Executive teams (SEG)">Ledergrupper (SEG)</a>
+          <a href="/#format" data-da="Sådan arbejder vi" data-en="How we work">Sådan arbejder vi</a>
+        </span>
+      </span>
+      <a href="/om.html" class="{{a:om}}" data-da="Om" data-en="About">Om</a>
+      <a href="/testimonials.html" class="{{a:klienter}}" data-da="Klienter" data-en="Clients">Klienter</a>
+      <span class="fn-dd">
+        <a href="/library.html" class="fn-dd-t{{a:indsigter}}" aria-haspopup="true"><span data-da="Indsigter" data-en="Insights">Indsigter</span> <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a>
+          <a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a>
+          <a href="/library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a>
+          <a href="/soeg.html" data-da="Søg" data-en="Search">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html" class="{{a:boeger}}" data-da="Bøger" data-en="Books">Bøger</a>
+      <a href="/#kontakt" class="fn-cta" data-da="Aftal en samtale" data-en="Arrange a conversation">Aftal en samtale</a>{{lang}}
+    </div>
+  </div>
+</nav>

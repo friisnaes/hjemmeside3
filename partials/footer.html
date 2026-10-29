@@ -1,0 +1,18 @@
+<!-- Fælles sidefod med vilkår og CVR. Rediger KUN her; scripts/normalize.py skriver den ind på alle sider.
+     {{slim}} -> " fn-legal--slim" under sider, der allerede har en indholds-footer (serie-footer m.fl.)
+     {{year}} -> årstal -->
+<footer class="fn-legal{{slim}}" role="contentinfo">
+  <div class="fn-legal-in">
+    <a href="/" class="fn-legal-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <nav class="fn-legal-links" aria-label="Sidefod">
+      <a href="/" data-da="Forside" data-en="Home">Forside</a>
+      <a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a>
+      <a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a>
+      <a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a>
+      <a href="/#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
+      <a href="/vilkaar.html" data-da="Vilkår, privatliv og ansvar" data-en="Terms, privacy and liability">Vilkår, privatliv og ansvar</a>
+      <a href="/fortryd.html" data-da="Fortryd aftale" data-en="Cancel a purchase">Fortryd aftale</a>
+    </nav>
+    <div class="fn-legal-copy">&copy; {{year}} Friisnæs · CVR-nr. 26569346. <span data-da="Alle rettigheder forbeholdes." data-en="All rights reserved.">Alle rettigheder forbeholdes.</span></div>
+  </div>
+</footer>

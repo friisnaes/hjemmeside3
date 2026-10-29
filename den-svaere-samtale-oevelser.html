@@ -27,7 +27,7 @@
     <meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -403,39 +403,41 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
 .contact-grid form > p a { text-decoration:underline; text-underline-offset:2px }
 .article-cta p:not(.se), .book-cta p:not(.se) { color:rgba(255,255,255,.66) !important }
 </style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
 
-<nav role="navigation" aria-label="Hovednavigation">
-    <div class="ni">
-        <a href="/" class="lo" aria-label="Friisnæs forside">Fr<em>ii</em>snæs</a>
-        <ul class="nl" id="nm" aria-label="Primær navigation">
-            <li><a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a></li>
-            <li class="nd">
-                <a href="/executive-coaching.html" class="nd-t" data-da="Ydelser" data-en="Services" aria-haspopup="true" aria-expanded="false">Ydelser <span class="nd-c" aria-hidden="true">&#9662;</span></a>
-                <ul class="nd-m">
-                    <li><a href="/executive-coaching.html" data-da="Executive Coaching" data-en="Executive Coaching">Executive Coaching</a></li>
-                    <li><a href="/ceo-sparring.html" data-da="CEO-sparring" data-en="CEO sparring">CEO-sparring</a></li>
-                    <li><a href="/seg.html" data-da="Ledergrupper (SEG)" data-en="Executive teams (SEG)">Ledergrupper (SEG)</a></li>
-                    <li><a href="/#format" data-da="Sådan arbejder vi" data-en="How we work">Sådan arbejder vi</a></li>
-                </ul>
-            </li>
-            <li><a href="/om.html" data-da="Om" data-en="About">Om</a></li>
-            <li><a href="/testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
-            <li class="nd">
-                <a href="/library.html" class="nd-t" data-da="Indsigter" data-en="Insights" aria-haspopup="true" aria-expanded="false">Indsigter <span class="nd-c" aria-hidden="true">&#9662;</span></a>
-                <ul class="nd-m">
-                    <li><a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a></li>
-                    <li><a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
-                    <li><a href="/library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a></li>
-                    <li><a href="/vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a></li>
-                    <li><a href="/soeg.html" data-da="Søg" data-en="Search">Søg</a></li>
-                </ul>
-            </li>
-            <li><a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
-            <li><a href="/#kontakt" class="cta-n" data-da="Aftal en samtale" data-en="Arrange a conversation" aria-label="Aftal en samtale">Aftal en samtale</a></li>
-        </ul><button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<nav class="fn-nav fn-nav--fixed" aria-label="Hovednavigation">
+  <div class="fn-in">
+    <a href="/" class="fn-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <button class="fn-toggle" type="button" aria-label="Menu" aria-controls="fnLinks" aria-expanded="false" onclick="var n=document.getElementById('fnLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="fn-links" id="fnLinks">
+      <a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a>
+      <span class="fn-dd">
+        <a href="/executive-coaching.html" class="fn-dd-t" aria-haspopup="true"><span data-da="Ydelser" data-en="Services">Ydelser</span> <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/executive-coaching.html" data-da="Executive Coaching" data-en="Executive Coaching">Executive Coaching</a>
+          <a href="/ceo-sparring.html" data-da="CEO-sparring" data-en="CEO sparring">CEO-sparring</a>
+          <a href="/seg.html" data-da="Ledergrupper (SEG)" data-en="Executive teams (SEG)">Ledergrupper (SEG)</a>
+          <a href="/#format" data-da="Sådan arbejder vi" data-en="How we work">Sådan arbejder vi</a>
+        </span>
+      </span>
+      <a href="/om.html" data-da="Om" data-en="About">Om</a>
+      <a href="/testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a>
+      <span class="fn-dd">
+        <a href="/library.html" class="fn-dd-t" aria-haspopup="true"><span data-da="Indsigter" data-en="Insights">Indsigter</span> <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a>
+          <a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a>
+          <a href="/library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a>
+          <a href="/soeg.html" data-da="Søg" data-en="Search">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a>
+      <a href="/#kontakt" class="fn-cta" data-da="Aftal en samtale" data-en="Arrange a conversation">Aftal en samtale</a>
     </div>
+  </div>
 </nav>
 
 <header class="page-hero">
@@ -536,30 +538,26 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
 </div></section>
 </main>
 
-<footer role="contentinfo">
-    <div class="fi3">
-        <div class="fb">Fr<em>ii</em>snæs</div>
-        <div class="fc">&copy; 2026 Friisnæs. Alle rettigheder forbeholdes.</div>
-    </div>
+<footer class="fn-legal" role="contentinfo">
+  <div class="fn-legal-in">
+    <a href="/" class="fn-legal-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <nav class="fn-legal-links" aria-label="Sidefod">
+      <a href="/" data-da="Forside" data-en="Home">Forside</a>
+      <a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a>
+      <a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a>
+      <a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a>
+      <a href="/#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
+      <a href="/vilkaar.html" data-da="Vilkår, privatliv og ansvar" data-en="Terms, privacy and liability">Vilkår, privatliv og ansvar</a>
+      <a href="/fortryd.html" data-da="Fortryd aftale" data-en="Cancel a purchase">Fortryd aftale</a>
+    </nav>
+    <div class="fn-legal-copy">&copy; 2026 Friisnæs · CVR-nr. 26569346. <span data-da="Alle rettigheder forbeholdes." data-en="All rights reserved.">Alle rettigheder forbeholdes.</span></div>
+  </div>
 </footer>
 
 <script type="application/json" id="rumdata">{"m": [{"id": "kamp", "navn": "Kamp", "bog": "Du eskalerer. Argumenterer hårdere. Angriber.", "greb": ["Balkonen: stop, zoom ud, se mønstret, vælg respons. Det kan gøres på 30 sekunder.", "Tre sekunders stilhed, før du svarer. Tæl til tre.", "Opfølgende spørgsmål i stedet for modargumenter: »Sig mere om det.«"]}, {"id": "flugt", "navn": "Flugt", "bog": "Du trækker dig. Skifter emne. Afslutter for tidligt.", "greb": ["Kom til sagen inden for de første 90 sekunder.", "Speaksheetet, trin 6: Beslut på forhånd, hvad du gør, hvis modparten græder, går, angriber eller bliver tavs.", "Gå ikke ud af lokalet uden en aftale med ejer og dato."]}, {"id": "frys", "navn": "Frys", "bog": "Du bliver passiv. Ordene forsvinder. Du nikker til ting, du er uenig i.", "greb": ["Skriv åbningen ordret, og sig den højt tre gange. Så er ordene der.", "Hav ét spørgsmål klar, der begynder med hvad eller hvordan.", "Sæt ord på det, du mærker, i én sætning, før du går ind."]}, {"id": "foejelighed", "navn": "Føjelighed", "bog": "Du tilpasser dig for at dæmpe konflikten. Giver efter. Undskylder for at have sagt det.", "greb": ["Speaksheetet, trin 1: Skriv, hvad der ikke er til forhandling.", "Speaksheetet, trin 7: Skriv det mindste, du kan acceptere, før du går ind.", "Klarhed er en venlighed. Tvetydighed er en byrde."]}, {"id": "ulmen", "navn": "Ulmen", "bog": "Du forlader situationen, men tager den med dig ud til kolleger, venner og familie, og dér lever den videre.", "greb": ["Samtalegældsregnskabet: Skriv de samtaler ned, du ved, du skal tage, og regn dagene ud.", "En regel, der er stærkere end refleksen: tre samtaler som det første om morgenen.", "Gennemgang efter samtalen samme dag: fire spørgsmål, ti minutter."]}], "t": [{"id": "sandhed", "navn": "Sandhedstriggeren", "replik": "Det passer ikke.", "bog": "Feedbacken er forkert, uretfærdig, baseret på et enkelt tilfælde."}, {"id": "relation", "navn": "Relationstriggeren", "replik": "Ikke fra dig.", "bog": "Afsenderen har ikke retten. Han gør det selv. Hun har aldrig anerkendt noget."}, {"id": "identitet", "navn": "Identitetstriggeren", "replik": "Det er ikke mig.", "bog": "Feedbacken rammer noget, der er så tæt på selvbilledet, at det føles, som om det eneste mulige svar er at afvise den."}], "s": [["A", "Afskedssamtalen", "Beslutningen er truffet. Sig den i første sætning."], ["B", "Opad-konfrontationen", "Forbehold, enighed først, anerkend, sig det positivt."], ["C", "Feedback til den, der ikke leverer", "Situation, adfærd, virkning. Ingen personord."], ["D", "Den upopulære beslutning", "Sig, hvad der er besluttet, og hvad der er åbent."], ["E", "Den personlige grænse", "Her er, hvad jeg kan og vil levere. Og her er, hvad jeg ikke længere gør."]], "h": [["\\b(bare lige|lige hurtigt|egentlig)\\b", "Lyder det som udsættelse? Lang småsnak før en svær samtale er sjældent venlighed."], ["det rette tidspunkt", "En undskyldning før sagen. Kom til sagen inden for de første 90 sekunder."], ["tage det personligt", "Ordene varsler et angreb. Sig observationen i stedet."], ["\\b(altid|aldrig)\\b", "Altid og aldrig er generaliseringer. Brug observationer: hvornår, hvor, hvor mange gange."], ["\\b(doven|sjusket|negativ|illoyal|ustruktureret|uprofessionel|respektløs|umulig|useriøs|ikke engageret)\\b", "Et personord. Stryg det, og skriv, hvad du faktisk så eller hørte."], ["hvorfor[^.!?]*\\?", "Vær varsom med hvorfor, som let lyder som en anklage. Prøv hvad eller hvordan."], ["\\bjeg forstår\\b", "Undgå helst »jeg forstår«, som let lyder som en lukning. »Det lyder som …« inviterer til korrektion."], ["\\bvi har tænkt lidt\\b|\\bnogle bemærkninger\\b", "Vaghed får modparten til at gætte. Sig det direkte."]], "d": [["Regnskabet", "Skriv de tre samtaler ned, du ved, du skal tage. For hver: hvem, hvad, den dato, du første gang vidste, den skulle tages, hvad det koster at vente, og hvad næste skridt er."], ["Datoen", "Se på dine tre samtaler. Hvilken venter med en begrundelse og en dato, og hvilken venter på, at det føles bedre?"], ["Én sætning", "Næste gang du mærker aktiveringen, så sig for dig selv, hvad du mærker, i én sætning, før du reagerer. Prøv det fem gange denne uge."], ["Dit mønster", "Lav refleksionen »Dit mønster under pres«. Skriv ét greb ned, du vil prøve i den næste svære samtale."], ["Åbningen", "Tag den vigtigste samtale fra dag 1, som du har grundlag nok til at tage. Skriv åbningssætningen. Sig den højt tre gange. Tæl, hvor mange gange du starter forfra."], ["De fire test", "Test åbningen i Åbningstræneren: 90 sekunder, de fire greb, det værste først og den tredje historie. Skriv den om."], ["Feedbacken", "Vælg én person, du skylder feedback. Skriv den som situation, adfærd og virkning, og stryg hvert ord, der beskriver personen."], ["Reglerne", "Skriv de fem tavshedsregler ned, du selv lever efter opad. Sæt et mærke ved hver: set ske, hørt om eller antaget."], ["To lister", "Tag den næste beslutning, du skal kommunikere. Skriv to lister: det, der er besluttet, og det, der er åbent for input."], ["De seks", "Tænk på en, hvis adfærd eller arbejdssituation har ændret sig, og som du er bekymret for. Tegnene kan have flere forklaringer. Gå igennem de seks områder som hypoteser om arbejdet, ikke som diagnose: byrde, kontrol, belønning, fællesskab, retfærdighed, værdier. Hvor er der sket en ændring?"], ["Tre publikummer", "Har du en opsigelse foran dig, så skriv dine tre publikummer op. Ellers: Hvem af de tre glemte du ved den seneste?"], ["Spørgsmålet", "Spørg en af dine nærmeste: »Hvad har mit arbejde kostet dig det seneste år?« Lyt uden at forsvare dig, og aftal, hvornår I taler videre."], ["Gennemgangen", "Lav en gennemgang efter din næste samtale samme dag: fire spørgsmål, ti minutter, skriftligt. Gør det tre dage i træk."], ["Vælg tre", "Vælg tre af de øvelser, du har lavet, og sæt dato på inden for 14 dage. Sæt tre felter i kalenderen hver fredag: ét afvigende synspunkt, én feedback på dig selv, én spænding ryddet."]]}</script>
 <script>
 (function(){
-    var tg=document.getElementById('nt'),mn=document.getElementById('nm');
-    tg.addEventListener('click',function(){
-        var o=mn.classList.toggle('open');
-        tg.classList.toggle('act');
-        tg.setAttribute('aria-expanded',o);
-        document.body.style.overflow=o?'hidden':'';
-    });
-    mn.querySelectorAll('a').forEach(function(a){
-        a.addEventListener('click',function(){
-            mn.classList.remove('open');tg.classList.remove('act');
-            tg.setAttribute('aria-expanded','false');document.body.style.overflow='';
-        });
-    });
-})();
+    })();
 (function(){
 var D = JSON.parse(document.getElementById('rumdata').textContent), MBY = {};
 D.m.forEach(function(m){ MBY[m.id] = m; });

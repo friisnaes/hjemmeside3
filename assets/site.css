@@ -1,0 +1,64 @@
+/* Fælles hovedmenu og sidefod for friisnaes.com.
+   Indsættes på alle sider af scripts/normalize.py. Sidernes egen stil ligger fortsat i den enkelte side;
+   denne fil styrer kun .fn-nav (menu) og .fn-legal (sidefod).
+   Dobbelt klasse (.fn-nav.fn-nav) sikrer, at ældre sider med regler på bare "nav" / "footer" ikke slår igennem. */
+
+/* ---------- Hovedmenu ---------- */
+.fn-nav.fn-nav{position:sticky;top:0;left:auto;right:auto;z-index:90;margin:0;padding:0;background:#111;border:0;border-bottom:1px solid rgba(192,57,43,.14);border-radius:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;font-family:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;-webkit-font-smoothing:antialiased;display:block;width:auto;max-width:none;height:auto}
+.fn-nav.fn-nav--fixed{position:fixed;left:0;right:0}
+.fn-in{max-width:1100px;margin:0 auto;padding:0 32px;height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.fn-brand{font-family:'Playfair Display',Georgia,serif;font-size:24px;font-weight:500;color:#fff;text-decoration:none;letter-spacing:.01em;white-space:nowrap;border:0;background:none}
+.fn-brand em{font-style:normal;color:#e74c3c}
+.fn-links{display:flex;gap:24px;align-items:center;margin:0;padding:0}
+.fn-links a{font-family:'Outfit',-apple-system,sans-serif;font-size:13px;line-height:1.4;color:rgba(255,255,255,.78);text-decoration:none;letter-spacing:.02em;transition:color .2s;white-space:nowrap;font-weight:400;text-transform:none;border:0;padding:0;margin:0;background:none;opacity:1}
+.fn-links a:hover,.fn-links a.active{color:#e74c3c}
+.fn-links a.fn-cta{color:#fff!important;background:#c0392b;padding:8px 16px;border-radius:2px;font-weight:500}
+.fn-links a.fn-cta:hover{background:#e74c3c}
+.fn-dd{position:relative;display:inline-flex;align-items:center}
+.fn-dd-t{display:inline-flex;align-items:center;gap:4px}
+.fn-dd-c{font-size:9px;opacity:.7;transition:transform .2s}
+.fn-dd:hover .fn-dd-c,.fn-dd.open .fn-dd-c{transform:rotate(180deg)}
+.fn-dd-m{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);background:#1a1a1a;border:1px solid rgba(192,57,43,.18);padding:8px 0;min-width:210px;opacity:0;visibility:hidden;transition:opacity .2s,transform .2s,visibility .2s;display:flex;flex-direction:column;z-index:95;box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.fn-dd-m::before{content:"";position:absolute;top:-10px;left:0;right:0;height:10px}
+.fn-dd:hover .fn-dd-m,.fn-dd:focus-within .fn-dd-m,.fn-dd.open .fn-dd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(2px)}
+.fn-dd-m a{padding:9px 18px!important;font-size:12.5px;white-space:nowrap}
+.fn-dd-m a:hover{background:rgba(255,255,255,.04)}
+.fn-toggle{display:none;background:none;border:0;color:#fff;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1;margin:0;width:auto;height:auto;position:static;border-radius:0;box-shadow:none}
+.fn-toggle:hover{background:none;color:#fff}
+/* Sprogskift (kun på sider med setLang) */
+.fn-ls{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:rgba(255,255,255,.4);margin-left:4px}
+.fn-ls button{font:inherit;font-size:12px;letter-spacing:.04em;background:none;border:0;padding:2px 3px;margin:0;cursor:pointer;color:rgba(255,255,255,.5);border-radius:0;box-shadow:none;width:auto;height:auto}
+.fn-ls button.on{color:#fff}
+.fn-ls button:hover{color:#e74c3c;background:none}
+@media (max-width:780px){
+  .fn-in{padding:0 20px}
+  .fn-links{display:none}
+  .fn-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:#111;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 14px;border-bottom:1px solid rgba(192,57,43,.14);max-height:calc(100vh - 62px);overflow-y:auto}
+  .fn-links.open a{padding:12px 24px}
+  .fn-links.open a.fn-cta{margin:10px 24px 0;text-align:center}
+  .fn-links.open .fn-ls{padding:12px 24px 0}
+  .fn-toggle{display:block}
+  .fn-dd{flex-direction:column;align-items:stretch;width:100%}
+  .fn-dd-m{position:static;transform:none;opacity:1;visibility:visible;background:none;border:0;padding:0 0 0 16px;min-width:0;box-shadow:none}
+  .fn-dd-m::before{display:none}
+  .fn-dd-c{display:none}
+}
+@media (pointer:coarse) and (min-width:781px){.fn-links a{padding-top:9px;padding-bottom:9px}}
+
+/* ---------- Sidefod ---------- */
+.fn-legal.fn-legal{background:#111;color:rgba(255,255,255,.55);margin:0;padding:40px 0 30px;border:0;border-top:1px solid rgba(192,57,43,.14);font-family:'Outfit',-apple-system,BlinkMacSystemFont,sans-serif;font-size:13px;line-height:1.6;text-align:left;display:block;max-width:none;width:auto;position:static;box-shadow:none}
+.fn-legal.fn-legal--slim{padding:18px 0 16px;border-top:1px solid rgba(255,255,255,.06)}
+.fn-legal-in{max-width:1100px;margin:0 auto;padding:0 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 28px}
+.fn-legal-brand{font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:500;color:#fff;text-decoration:none;border:0;background:none}
+.fn-legal-brand em{font-style:normal;color:#e74c3c}
+.fn-legal--slim .fn-legal-brand{display:none}
+.fn-legal-links{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0;padding:0;background:none;border:0;position:static;max-width:none}
+.fn-legal-links a{color:rgba(255,255,255,.62);text-decoration:none;font-size:12.5px;letter-spacing:.02em;white-space:nowrap;border:0;padding:0;background:none}
+.fn-legal-links a:hover{color:#e74c3c}
+.fn-legal-copy{flex-basis:100%;font-size:12px;color:rgba(255,255,255,.35);margin:0;padding:0}
+.fn-legal--slim .fn-legal-copy{flex-basis:auto;margin-left:auto}
+@media (max-width:780px){
+  .fn-legal-in{padding:0 20px;flex-direction:column;align-items:flex-start;gap:10px}
+  .fn-legal--slim .fn-legal-copy{margin-left:0}
+}
+@media print{.fn-nav.fn-nav,.fn-legal.fn-legal{display:none!important}}

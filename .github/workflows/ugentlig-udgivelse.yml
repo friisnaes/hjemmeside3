@@ -1,4 +1,4 @@
-name: Ugentlig udgivelse (søgning og sitemap)
+name: Ugentlig udgivelse (menu, søgning og sitemap)
 
 on:
   schedule:
@@ -25,6 +25,9 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: '20'
+      - name: Fælles menu og sidefod på alle sider
+        # Nye sider, der er lagt op med en gammel menu, får den fælles menu/sidefod her
+        run: python3 scripts/normalize.py
       - name: Byg søgeindeks, sitemap og situationsfinder
         run: |
           pip install --quiet beautifulsoup4
@@ -34,11 +37,11 @@ jobs:
         run: |
           git config user.name "friisnaes-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add -A pagefind sitemap.xml situationsfinder-index.json
+          git add -A
           if git diff --cached --quiet; then
             echo "Ingen ændringer denne uge."
           else
-            git commit -m "Ugentlig udgivelse: søgeindeks og sitemap ($(TZ=Europe/Copenhagen date +%F))"
+            git commit -m "Ugentlig udgivelse: menu, søgeindeks og sitemap ($(TZ=Europe/Copenhagen date +%F))"
             git push
             # Et push fra en Action starter ikke altid GitHub Pages af sig selv, så vi beder om en ny build
             curl -s -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github+json" \

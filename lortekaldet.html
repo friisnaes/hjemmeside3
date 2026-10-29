@@ -25,7 +25,7 @@
     <meta name="twitter:image" content="https://www.friisnaes.com/lortekaldet.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #111; --black-soft: #1a1a1a; --black-light: #222;
@@ -220,38 +220,40 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
 .contact-grid form > p a { text-decoration:underline; text-underline-offset:2px }
 .article-cta p:not(.se), .book-cta p:not(.se) { color:rgba(255,255,255,.66) !important }
 </style>
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
-<nav role="navigation" aria-label="Hovednavigation">
-    <div class="ni">
-        <a href="/" class="lo" aria-label="Friisnæs forside">Fr<em>ii</em>snæs</a>
-        <ul class="nl" id="nm">
-            <li><a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a></li>
-            <li class="nd">
-                <a href="/executive-coaching.html" class="nd-t" data-da="Ydelser" data-en="Services" aria-haspopup="true" aria-expanded="false">Ydelser <span class="nd-c" aria-hidden="true">&#9662;</span></a>
-                <ul class="nd-m">
-                    <li><a href="/executive-coaching.html" data-da="Executive Coaching" data-en="Executive Coaching">Executive Coaching</a></li>
-                    <li><a href="/ceo-sparring.html" data-da="CEO-sparring" data-en="CEO sparring">CEO-sparring</a></li>
-                    <li><a href="/seg.html" data-da="Ledergrupper (SEG)" data-en="Executive teams (SEG)">Ledergrupper (SEG)</a></li>
-                    <li><a href="/#format" data-da="Sådan arbejder vi" data-en="How we work">Sådan arbejder vi</a></li>
-                </ul>
-            </li>
-            <li><a href="/om.html" data-da="Om" data-en="About">Om</a></li>
-            <li><a href="/testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a></li>
-            <li class="nd">
-                <a href="/library.html" class="nd-t" data-da="Indsigter" data-en="Insights" aria-haspopup="true" aria-expanded="false">Indsigter <span class="nd-c" aria-hidden="true">&#9662;</span></a>
-                <ul class="nd-m">
-                    <li><a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a></li>
-                    <li><a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a></li>
-                    <li><a href="/library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a></li>
-                    <li><a href="/vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a></li>
-                    <li><a href="/soeg.html" data-da="Søg" data-en="Search">Søg</a></li>
-                </ul>
-            </li>
-            <li><a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a></li>
-            <li><a href="/#kontakt" class="cta-n" data-da="Aftal en samtale" data-en="Arrange a conversation" aria-label="Aftal en samtale">Aftal en samtale</a></li>
-        </ul><button class="nt" id="nt" aria-label="Åbn menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<nav class="fn-nav fn-nav--fixed" aria-label="Hovednavigation">
+  <div class="fn-in">
+    <a href="/" class="fn-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <button class="fn-toggle" type="button" aria-label="Menu" aria-controls="fnLinks" aria-expanded="false" onclick="var n=document.getElementById('fnLinks');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">☰</button>
+    <div class="fn-links" id="fnLinks">
+      <a href="/#situationer" data-da="Situationer" data-en="Situations">Situationer</a>
+      <span class="fn-dd">
+        <a href="/executive-coaching.html" class="fn-dd-t" aria-haspopup="true"><span data-da="Ydelser" data-en="Services">Ydelser</span> <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/executive-coaching.html" data-da="Executive Coaching" data-en="Executive Coaching">Executive Coaching</a>
+          <a href="/ceo-sparring.html" data-da="CEO-sparring" data-en="CEO sparring">CEO-sparring</a>
+          <a href="/seg.html" data-da="Ledergrupper (SEG)" data-en="Executive teams (SEG)">Ledergrupper (SEG)</a>
+          <a href="/#format" data-da="Sådan arbejder vi" data-en="How we work">Sådan arbejder vi</a>
+        </span>
+      </span>
+      <a href="/om.html" data-da="Om" data-en="About">Om</a>
+      <a href="/testimonials.html" data-da="Klienter" data-en="Clients">Klienter</a>
+      <span class="fn-dd">
+        <a href="/library.html" class="fn-dd-t" aria-haspopup="true"><span data-da="Indsigter" data-en="Insights">Indsigter</span> <span class="fn-dd-c" aria-hidden="true">▾</span></a>
+        <span class="fn-dd-m">
+          <a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a>
+          <a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a>
+          <a href="/library.html#brief" data-da="C-Level Brief" data-en="C-Level Brief">C-Level Brief</a>
+          <a href="/vaerktoejer.html" data-da="Værktøjer" data-en="Tools">Værktøjer</a>
+          <a href="/soeg.html" data-da="Søg" data-en="Search">Søg</a>
+        </span>
+      </span>
+      <a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a>
+      <a href="/#kontakt" class="fn-cta" data-da="Aftal en samtale" data-en="Arrange a conversation">Aftal en samtale</a>
     </div>
+  </div>
 </nav>
 
 <article>
@@ -351,29 +353,25 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
 <li><span class="fn-kind">Artikel</span><a href="ai-udvidet-taenkning.html">Jeg har ikke outsourcet min tænkning til AI — jeg har udvidet den</a></li>
 </ul>
 </section>
-<footer role="contentinfo">
-    <div class="fi3">
-        <div class="fb">Fr<em>ii</em>snæs</div>
-        <div class="fc">&copy; 2026 Friisnæs. Alle rettigheder forbeholdes.</div>
-    </div>
+<footer class="fn-legal" role="contentinfo">
+  <div class="fn-legal-in">
+    <a href="/" class="fn-legal-brand" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+    <nav class="fn-legal-links" aria-label="Sidefod">
+      <a href="/" data-da="Forside" data-en="Home">Forside</a>
+      <a href="/blog.html" data-da="Blogindlæg" data-en="Blog posts">Blogindlæg</a>
+      <a href="/library.html" data-da="Executive Library" data-en="Executive Library">Executive Library</a>
+      <a href="/boeger.html" data-da="Bøger" data-en="Books">Bøger</a>
+      <a href="/#kontakt" data-da="Kontakt" data-en="Contact">Kontakt</a>
+      <a href="/vilkaar.html" data-da="Vilkår, privatliv og ansvar" data-en="Terms, privacy and liability">Vilkår, privatliv og ansvar</a>
+      <a href="/fortryd.html" data-da="Fortryd aftale" data-en="Cancel a purchase">Fortryd aftale</a>
+    </nav>
+    <div class="fn-legal-copy">&copy; 2026 Friisnæs · CVR-nr. 26569346. <span data-da="Alle rettigheder forbeholdes." data-en="All rights reserved.">Alle rettigheder forbeholdes.</span></div>
+  </div>
 </footer>
 
 <script>
 (function(){
-    var tg=document.getElementById('nt'),mn=document.getElementById('nm');
-    tg.addEventListener('click',function(){
-        var o=mn.classList.toggle('open');
-        tg.classList.toggle('act');
-        tg.setAttribute('aria-expanded',o);
-        document.body.style.overflow=o?'hidden':'';
-    });
-    mn.querySelectorAll('a').forEach(function(a){
-        a.addEventListener('click',function(){
-            mn.classList.remove('open');tg.classList.remove('act');
-            tg.setAttribute('aria-expanded','false');document.body.style.overflow='';
-        });
-    });
-})();
+    })();
 </script>
 </body>
 </html>
