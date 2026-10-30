@@ -429,6 +429,8 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
 </style>
 <style id="mobilstandard">@media (max-width:600px){a.btn-buy,div.buy-option > div.buy-option-info > span,div.fc,p.book-genre,p.se,p.section-label,p.tag,span.buy-option-type,span.coming-badge{font-size:12px!important}}@media (min-width:601px) and (max-width:1000px){a.btn-buy,a.cta-n,a.nd-t,div.buy-option > div.buy-option-info > span,div.fc,p.book-genre,p.se,p.section-label,p.tag,span.buy-option-type,span.coming-badge,span.nd-c,ul.nl > li > a{font-size:12px!important}ul.nl{gap:6px!important}ul.nl a{letter-spacing:0!important}ul.nl .cta-n{padding:7px 9px!important}ul.nl .ls{margin-left:0!important}}@media (min-width:1001px) and (max-width:1300px){a.btn-buy,a.cta-n,a.nd-t,div.buy-option > div.buy-option-info > span,div.fc,p.book-genre,p.se,p.section-label,p.tag,span.buy-option-type,span.coming-badge,span.nd-c,ul.nl > li > a{font-size:12px!important}}@media (min-width:1301px){a.btn-buy,a.cta-n,a.nd-t,div.buy-option > div.buy-option-info > span,div.fc,p.book-genre,p.se,p.section-label,p.tag,span.buy-option-type,span.coming-badge,span.nd-c,ul.nl > li > a{font-size:12px!important}}</style>
 <link rel="stylesheet" href="/assets/site.css">
+<style id="bog-gate-css">.only-live{display:none}.bog-live .only-live{display:block}.bog-live .buy-option .btn-buy.only-live{display:inline-flex}.bog-live .preorder-badge.only-live{display:inline-flex}.bog-live .only-pre{display:none!important}.buy-option .btn-buy{margin-left:12px}</style>
+<script>(function(){var live=new Date()>=new Date('2026-11-07T00:00:00+01:00')||/[?&]koeb=1/.test(location.search);document.documentElement.classList.add(live?'bog-live':'bog-pre');if(live){document.addEventListener('DOMContentLoaded',function(){var s=null;if(s){s.textContent=s.textContent.split('schema.org/PreOrder').join('schema.org/InStock');}});}})();</script>
 </head>
 <body>
 
@@ -498,20 +500,23 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
         <div class="book-card" id="det-vigtigste-du-ikke-kan-koebe-til-dit-barn">
             <div class="book-info">
                 <p class="book-genre">Til forældre og bedsteforældre · Ny</p>
-                <h2 class="book-title">Det vigtigste, du ikke kan købe til dit barn</h2>
+                <h2 class="book-title"><a href="/det-vigtigste-du-ikke-kan-koebe-til-dit-barn.html" style="color:inherit;text-decoration:none">Det vigtigste, du ikke kan købe til dit barn</a></h2>
                 <p class="book-desc">Børn har ikke brug for perfekte forældre. De har brug for voksne med retning og en klar stemme. Ti mentale muskler, fra ansvarlighed til håb, med ti konkrete greb til hver. Fire aldre fra 0 til 20 år. Ét lille eksperiment pr. kapitel, du kan starte i morgen. Og to kapitler om bedsteforældrene: ét til dem, ét til dig.</p>
                 <p class="book-desc" style="margin-top:14px;font-size:.78rem;color:var(--gray);">E-bog i bogformat · 214 sider · PDF, HTML til laptop, iPad og mobil samt Word · ISBN 978-87-976175-0-2</p>
-                <p style="margin-top:20px;"><a href="/laeseproever/det-vigtigste-du-ikke-kan-koebe-til-dit-barn-v2.html" style="font-size:.8rem;font-weight:600;color:var(--red);border-bottom:1px solid rgba(192,57,43,.35);padding-bottom:2px;display:inline-block;padding:12px 0;">Bladr i læseprøven: prologen og hele kapitel 1 →</a></p>
+                <p style="margin-top:20px;"><a href="/det-vigtigste-du-ikke-kan-koebe-til-dit-barn.html" style="font-size:.8rem;font-weight:600;color:var(--red);border-bottom:1px solid rgba(192,57,43,.35);padding-bottom:2px;display:inline-block;padding:12px 0;">Læs mere om bogen: indhold, licenser og spørgsmål →</a></p>
+                <p style="margin-top:2px;"><a href="/laeseproever/det-vigtigste-du-ikke-kan-koebe-til-dit-barn-v2.html" style="font-size:.8rem;font-weight:600;color:var(--red);border-bottom:1px solid rgba(192,57,43,.35);padding-bottom:2px;display:inline-block;padding:12px 0;">Bladr i læseprøven: prologen og hele kapitel 1 →</a></p>
                 <p style="margin-top:2px;"><a href="#cv-bogen" style="font-size:.78rem;color:var(--gray);display:inline-block;padding:13px 0;text-decoration:underline;text-decoration-color:rgba(0,0,0,.25);text-underline-offset:3px;">Tvillingebogen til ledere: Du ansætter på CV – men du leder på karakter →</a></p>
             </div>
             <div class="book-buy">
                 <div class="buy-mode">
-                    <div class="preorder-badge"><span>Udkommer lørdag 7. november</span></div>
+                    <div class="preorder-badge only-live"><span>Udkommet · sendes personligt senest første hverdag efter betaling</span></div>
+                    <div class="preorder-badge only-pre"><span>Udkommer lørdag 7. november</span></div>
                     <div class="buy-options" style="margin-top:12px;">
-                        <div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Enkeltlicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til én læser</span><span class="buy-option-price">199 kr</span></div></div><div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Familielicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til forældre og bedsteforældre omkring samme barn</span><span class="buy-option-price">299 kr</span></div></div>
+                        <div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Enkeltlicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til én læser</span><span class="buy-option-price">199 kr</span></div><a class="btn-buy only-live" href="https://buy.stripe.com/5kQ8wP3Fp4qScqn2zR8bS0i" rel="noopener">Køb</a></div><div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Familielicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til forældre og bedsteforældre omkring samme barn</span><span class="buy-option-price">299 kr</span></div><a class="btn-buy only-live" href="https://buy.stripe.com/bJe5kDa3N0aC9ebeiz8bS0x" rel="noopener">Køb</a></div>
                     </div>
-                    <p class="preorder-note" style="margin-top:14px;">Bogen kan købes her fra lørdag 7. november. Den udkommer kun digitalt og altid i nyeste udgave. Indtil da kan du bladre i læseprøven.</p>
-                    <div class="vl-box" id="venteliste">
+                    <p class="preorder-note only-live" style="margin-top:14px;">Kort via Stripe. Du får bogen som PDF, HTML og Word, sendt personligt senest første hverdag efter betaling. 14 dages fortrydelsesret.</p>
+                    <p class="preorder-note only-pre" style="margin-top:14px;">Bogen kan købes her fra lørdag 7. november. Den udkommer kun digitalt og altid i nyeste udgave. Indtil da kan du bladre i læseprøven.</p>
+                    <div class="vl-box only-pre" id="venteliste">
 <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1793197");</style>
     <style type="text/css">
     /* LOADER */
@@ -1236,20 +1241,23 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
         <div class="book-card" id="cv-bogen">
             <div class="book-info">
                 <p class="book-genre">Til ledere og ledergrupper · Ny</p>
-                <h2 class="book-title">Du ansætter på CV – men du leder på karakter</h2>
+                <h2 class="book-title"><a href="/du-ansaetter-paa-cv-men-du-leder-paa-karakter.html" style="color:inherit;text-decoration:none">Du ansætter på CV – men du leder på karakter</a></h2>
                 <p class="book-desc">Faglighed er forventet. Karakter er forskellen. CV’er ligner efterhånden hinanden. Alle kan skrive resultater, alle kan tale strategi – og i dag kan en maskine hjælpe dem med begge dele.</p>
                 <p class="book-desc" style="margin-top:14px;font-size:.78rem;color:var(--gray);">E-bog i bogformat · 140 sider · 45 modeller · PDF, HTML til laptop, iPad og mobil samt Word · ISBN <span style="white-space:nowrap">978-87-976175-2-6</span></p>
-                <p style="margin-top:20px;"><a href="/laeseproever/du-ansaetter-paa-cv-men-du-leder-paa-karakter.html" style="font-size:.8rem;font-weight:600;color:var(--red);border-bottom:1px solid rgba(192,57,43,.35);padding-bottom:2px;display:inline-block;padding:12px 0;">Bladr i læseprøven: forordet, kapitel 1 og kapitel 3 →</a></p>
+                <p style="margin-top:20px;"><a href="/du-ansaetter-paa-cv-men-du-leder-paa-karakter.html" style="font-size:.8rem;font-weight:600;color:var(--red);border-bottom:1px solid rgba(192,57,43,.35);padding-bottom:2px;display:inline-block;padding:12px 0;">Læs mere om bogen: indhold, licenser og spørgsmål →</a></p>
+                <p style="margin-top:2px;"><a href="/laeseproever/du-ansaetter-paa-cv-men-du-leder-paa-karakter.html" style="font-size:.8rem;font-weight:600;color:var(--red);border-bottom:1px solid rgba(192,57,43,.35);padding-bottom:2px;display:inline-block;padding:12px 0;">Bladr i læseprøven: forordet, kapitel 1 og kapitel 3 →</a></p>
                 <p style="margin-top:2px;"><a href="#det-vigtigste-du-ikke-kan-koebe-til-dit-barn" style="font-size:.78rem;color:var(--gray);display:inline-block;padding:13px 0;text-decoration:underline;text-decoration-color:rgba(0,0,0,.25);text-underline-offset:3px;">Tvillingebogen til forældre og bedsteforældre: Det vigtigste, du ikke kan købe til dit barn →</a></p>
             </div>
             <div class="book-buy">
                 <div class="buy-mode">
-                    <div class="preorder-badge"><span>Ny digital udgave · udkommer lørdag 7. november</span></div>
+                    <div class="preorder-badge only-live"><span>Udkommet · sendes personligt senest første hverdag efter betaling</span></div>
+                    <div class="preorder-badge only-pre"><span>Ny digital udgave · udkommer lørdag 7. november</span></div>
                     <div class="buy-options" style="margin-top:12px;">
-                        <div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Enkeltlicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til én læser</span><span class="buy-option-price">199 kr</span></div></div><div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Ledergruppelicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til op til otte læsere i samme ledergruppe</span><span class="buy-option-price">795 kr</span></div></div>
+                        <div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Enkeltlicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til én læser</span><span class="buy-option-price">199 kr</span></div><a class="btn-buy only-live" href="https://buy.stripe.com/5kQ5kD5NxaPg2PN3DV8bS0k" rel="noopener">Køb</a></div><div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Ledergruppelicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til op til otte læsere i samme ledergruppe</span><span class="buy-option-price">795 kr</span></div><a class="btn-buy only-live" href="https://buy.stripe.com/28E8wPcbVaPg9eb3DV8bS0n" rel="noopener">Køb</a></div>
                     </div>
-                    <p class="preorder-note" style="margin-top:14px;">Bogen kan købes her fra lørdag 7. november. Den udkommer kun digitalt og altid i nyeste udgave. Indtil da kan du bladre i læseprøven.</p>
-                    <div class="vl-box" id="venteliste-du-ansaetter">
+                    <p class="preorder-note only-live" style="margin-top:14px;">Kort via Stripe. Du får bogen som PDF, HTML og Word, sendt personligt senest første hverdag efter betaling. 14 dages fortrydelsesret.</p>
+                    <p class="preorder-note only-pre" style="margin-top:14px;">Bogen kan købes her fra lørdag 7. november. Den udkommer kun digitalt og altid i nyeste udgave. Indtil da kan du bladre i læseprøven.</p>
+                    <div class="vl-box only-pre" id="venteliste-du-ansaetter">
 <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1793197");</style>
     <style type="text/css">
     /* LOADER */
