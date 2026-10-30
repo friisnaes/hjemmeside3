@@ -16,7 +16,7 @@ der skal køres for at se en side – men **menu og sidefod er fælles** og skri
 | Ugentlig udgivelse (mandag nat) | `.github/workflows/ugentlig-udgivelse.yml` |
 
 Den ugentlige Action gør tre ting: kører `normalize.py`, bygger søgeindekset (Pagefind) og
-situationsfinderen, og opdaterer `sitemap.xml` ud fra udgivelsesplanen. Den kan også startes manuelt
+situationsfinderen, og bygger `sitemap.xml` forfra ud fra de sider, der faktisk må indekseres (minus kommende sider i udgivelsesplanen). Den kan også startes manuelt
 under *Actions → Ugentlig udgivelse → Run workflow*.
 
 ## Ny side
@@ -25,7 +25,8 @@ under *Actions → Ugentlig udgivelse → Run workflow*.
 2. Skriv indholdet. Lad `<nav class="fn-nav">` og `<footer class="fn-legal">` stå tomme – de fyldes.
 3. Læg filen op. Menu og sidefod kommer på ved næste ugentlige kørsel, eller med det samme hvis du kører
    `python3 scripts/normalize.py` lokalt først.
-4. Skal siden først være søgbar fra en bestemt dato, så tilføj den i `release-schedule.json`.
+4. Sitemappet passer sig selv: Hver mandag tages alle indekserbare sider i roden med (ingen noindex, egen kanonisk adresse), og kommende sider fra `release-schedule.json` holdes ude – fra søgning og sitemap – indtil deres dato. Skal en side først være synlig fra en bestemt dato, så tilføj den i `release-schedule.json`; skal den holdes ude af sitemappet uden noindex, så skriv den under `_ikke_i_sitemap`.
+5. Lanceringssider (en ny bog, en ny serie): bed om indeksering i Search Console samme dag, de er oppe – det er det eneste manuelle skridt tilbage.
 
 Sider lavet i en anden Claude-tråd kan uploades, som de er: har de en gammel menu, bliver den også
 skiftet ud. Kun sider helt uden hovedmenu (værktøjer, redirect-stubbe, præsentationer, `sandbox/`)
