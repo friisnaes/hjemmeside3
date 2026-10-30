@@ -566,6 +566,9 @@ html { scroll-padding-top: 96px; }
 .hint span { font-size: .8rem; line-height: 1.45; color: rgba(255,255,255,.78); }
 .hint i { font-style: normal; font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: #e5675a; margin-top: 4px; }
 .bog:hover .hint, .ryg:focus-visible + .hint { opacity: 1; transform: translate(calc(-50% + var(--dx, 0px)), 0); }
+/* lagdeling: den hylde, der har en åben hint, lægges over hylden ovenover (skilt z3 + bræt z2), og rækken over sit eget skilt */
+.raekke { z-index: 4; }
+.hylde:has(.bog:hover), .hylde:has(.bog:focus-within) { z-index: 20; }
 
 /* hvor skal du begynde */
 /* dæmpning uden opacity/filter på selve bogen, så 3D-formen bevares */
