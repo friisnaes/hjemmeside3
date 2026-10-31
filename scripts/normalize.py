@@ -42,6 +42,8 @@ NAV_PATTERNS = [
 FN_NAV_CSS = re.compile(r'\s*<style id="fn-nav-css">.*?</style>', re.S)
 # Gammelt menu-script: fra "tg=getElementById('nt')" til og med luk-ved-klik-blokken
 LEGACY_JS = [
+    # Variant med vagt: if(tg && mn){ ... } – hele blokken inkl. if'ens afsluttende } skal væk, ellers står en løs } tilbage
+    re.compile(r"(?:var|const|let)\s+tg\s*=\s*document\.getElementById\('nt'\)[^;]*;\s*if\s*\(\s*tg\s*&&\s*mn\s*\)\s*\{.*?mn\.querySelectorAll\('a'\)\.forEach\(.*?\}\);\s*\}\);\s*\}[ \t]*\n?", re.S),
     re.compile(r"(?:var|const|let)\s+tg\s*=\s*document\.getElementById\('nt'\).*?mn\.querySelectorAll\('a'\)\.forEach\(.*?\}\);\s*\}\);[ \t]*\n?", re.S),
     re.compile(r"(?:var|const|let)\s+tg\s*=\s*document\.getElementById\('nt'\).*?tg\.addEventListener\('click'.*?\}\);[ \t]*\n?", re.S),
 ]
