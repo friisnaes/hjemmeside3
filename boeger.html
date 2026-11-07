@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.friisnaes.com/boeger.html">
     <meta property="og:title" content="Bøger | Thomas Friisnæs">
-    <meta property="og:description" content="Bøger om topledelse, lederskab, karakter og poesi af Thomas Friisnæs. Ny: En anatomi af topledelse. Udkommer 7. november: Det vigtigste, du ikke kan købe til dit barn og Du ansætter på CV – men du leder på karakter.">
+    <meta property="og:description" content="Bøger om topledelse, lederskab, karakter og poesi af Thomas Friisnæs. Nye: Det vigtigste, du ikke kan købe til dit barn og Du ansætter på CV – men du leder på karakter.">
     <meta property="og:locale" content="da_DK">
     <meta property="og:site_name" content="Friisnæs">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -189,7 +189,16 @@
         @media (max-width: 600px) {
             .nl.open { justify-content: flex-start; padding: 88px 24px 48px; overflow-y: auto; gap: 18px; height: 100vh; height: 100dvh; width: 100vw; }
         }
-    </style>
+    /* --- mindst 12 px på bogkortenes etiketter og knapper --- */
+.book-genre,.buy-option-type,.btn-buy{font-size:12px}
+/* --- tvillingepakken: begge bøger --- */
+.twin-strip{display:grid;grid-template-columns:1fr minmax(260px,340px);gap:24px 40px;align-items:center;background:#321A12;color:#fff;padding:28px 32px;margin:2px 0 56px}
+.twin-strip .twin-k{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#E74C3C;margin-bottom:8px}
+.twin-strip .twin-t{font-family:var(--display);font-size:1.15rem;line-height:1.45;color:#f4ede2}
+.twin-strip .buy-option{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14)}
+.twin-strip .buy-option-type,.twin-strip .buy-option-price{color:#fff}.twin-strip .buy-option-info span[style]{color:#d9cfc2!important}
+@media (max-width:760px){.twin-strip{grid-template-columns:1fr;padding:24px 20px}}
+</style>
 <meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -219,6 +228,100 @@
   "url": "https://www.friisnaes.com/"
  },
  "hasPart": [
+  {
+   "@type": "Book",
+   "name": "Det vigtigste, du ikke kan købe til dit barn",
+   "alternativeHeadline": "Ti mentale muskler, fire aldre og tre generationer – et træningsprogram i karakter",
+   "author": {
+    "@id": "https://www.friisnaes.com/#person"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Friisnæs",
+    "url": "https://www.friisnaes.com/"
+   },
+   "inLanguage": "da",
+   "isbn": "9788797617502",
+   "bookFormat": "https://schema.org/EBook",
+   "bookEdition": "1. udgave",
+   "datePublished": "2026-11-07",
+   "numberOfPages": 218,
+   "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Forældre og bedsteforældre"
+   },
+   "image": "https://www.friisnaes.com/laeseproever/det-vigtigste-du-ikke-kan-koebe-til-dit-barn-v2-og.jpg",
+   "url": "https://www.friisnaes.com/boeger.html#det-vigtigste-du-ikke-kan-koebe-til-dit-barn",
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "Enkeltlicens",
+     "price": "199",
+     "priceCurrency": "DKK",
+     "availability": "https://schema.org/InStock",
+     "url": "https://buy.stripe.com/5kQ8wP3Fp4qScqn2zR8bS0i"
+    },
+    {
+     "@type": "Offer",
+     "name": "Familielicens, forældre og bedsteforældre omkring samme barn",
+     "price": "299",
+     "priceCurrency": "DKK",
+     "availability": "https://schema.org/InStock",
+     "url": "https://buy.stripe.com/bJe5kDa3N0aC9ebeiz8bS0x"
+    }
+   ]
+  },
+  {
+   "@type": "Book",
+   "name": "Du ansætter på CV – men du leder på karakter",
+   "alternativeHeadline": "Mennesker, du kan bygge på",
+   "author": {
+    "@id": "https://www.friisnaes.com/#person"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Friisnæs",
+    "url": "https://www.friisnaes.com/"
+   },
+   "inLanguage": "da",
+   "isbn": "9788797617526",
+   "bookFormat": "https://schema.org/EBook",
+   "bookEdition": "1. udgave",
+   "datePublished": "2026-11-07",
+   "numberOfPages": 140,
+   "audience": {
+    "@type": "BusinessAudience",
+    "audienceType": "Ledere og ledergrupper"
+   },
+   "image": "https://www.friisnaes.com/laeseproever/du-ansaetter-paa-cv-men-du-leder-paa-karakter-og.jpg",
+   "url": "https://www.friisnaes.com/boeger.html#cv-bogen",
+   "offers": [
+    {
+     "@type": "Offer",
+     "name": "Enkeltlicens",
+     "price": "199",
+     "priceCurrency": "DKK",
+     "availability": "https://schema.org/InStock",
+     "url": "https://buy.stripe.com/5kQ5kD5NxaPg2PN3DV8bS0k"
+    },
+    {
+     "@type": "Offer",
+     "name": "Ledergruppelicens, op til otte læsere i samme ledergruppe",
+     "price": "795",
+     "priceCurrency": "DKK",
+     "availability": "https://schema.org/InStock",
+     "url": "https://buy.stripe.com/28E8wPcbVaPg9eb3DV8bS0n"
+    },
+    {
+     "@type": "Offer",
+     "name": "Tvillingepakke: Du ansætter på CV – men du leder på karakter og Det vigtigste, du ikke kan købe til dit barn",
+     "price": "299",
+     "priceCurrency": "DKK",
+     "availability": "https://schema.org/InStock",
+     "url": "https://buy.stripe.com/fZueVd8ZJbTk8a7car8bS0m"
+    }
+   ]
+  },
   {
    "@type": "Book",
    "name": "Den svære samtale",
@@ -345,30 +448,6 @@
      "url": "https://www.friisnaes.com/boeger.html#en-anatomi-af-topledelse"
     }
    ]
-  },
-  {
-   "@type": "Book",
-   "name": "Det vigtigste, du ikke kan købe til dit barn",
-   "author": {
-    "@id": "https://www.friisnaes.com/#person"
-   },
-   "isbn": "978-87-976175-0-2",
-   "bookFormat": "https://schema.org/EBook",
-   "datePublished": "2026-11-07",
-   "inLanguage": "da",
-   "url": "https://www.friisnaes.com/boeger.html#det-vigtigste-du-ikke-kan-koebe-til-dit-barn"
-  },
-  {
-   "@type": "Book",
-   "name": "Du ansætter på CV – men du leder på karakter",
-   "author": {
-    "@id": "https://www.friisnaes.com/#person"
-   },
-   "isbn": "978-87-976175-2-6",
-   "bookFormat": "https://schema.org/EBook",
-   "datePublished": "2026-11-07",
-   "inLanguage": "da",
-   "url": "https://www.friisnaes.com/boeger.html#cv-bogen"
   },
   {
    "@type": "Book",
@@ -516,13 +595,13 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
                 <p style="margin-top:2px;"><a href="#cv-bogen" style="font-size:.78rem;color:var(--gray);display:inline-block;padding:13px 0;text-decoration:underline;text-decoration-color:rgba(0,0,0,.25);text-underline-offset:3px;">Tvillingebogen til ledere: Du ansætter på CV – men du leder på karakter →</a></p>
             </div>
             <div class="book-buy">
-                <div class="buy-mode">
+                <div class="buy-mode" id="mode-vigtigste">
                     <div class="preorder-badge only-live"><span>Udkommet · sendes personligt senest første hverdag efter betaling</span></div>
                     <div class="preorder-badge only-pre"><span>Udkommer lørdag 7. november</span></div>
                     <div class="buy-options" style="margin-top:12px;">
                         <div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Enkeltlicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til én læser</span><span class="buy-option-price">199 kr</span></div><a class="btn-buy only-live" href="https://buy.stripe.com/5kQ8wP3Fp4qScqn2zR8bS0i" rel="noopener">Køb</a></div><div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Familielicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til forældre og bedsteforældre omkring samme barn</span><span class="buy-option-price">299 kr</span></div><a class="btn-buy only-live" href="https://buy.stripe.com/bJe5kDa3N0aC9ebeiz8bS0x" rel="noopener">Køb</a></div>
                     </div>
-                    <p class="preorder-note only-live" style="margin-top:14px;">Kort via Stripe. Du får bogen som PDF, HTML og Word, sendt personligt senest første hverdag efter betaling. 14 dages fortrydelsesret.</p>
+                    <p class="preorder-note only-live" style="margin-top:14px;">Kort via Stripe. Du får bogen som PDF, HTML og Word, sendt personligt senest første hverdag efter betaling. 14 dages fortrydelsesret. Den udkommer kun digitalt og altid i nyeste udgave. <a href="/vilkaar.html#det-vigtigste" style="border-bottom:1px solid rgba(0,0,0,.25);">Licensvilkår</a>.</p>
                     <p class="preorder-note only-pre" style="margin-top:14px;">Bogen kan købes her fra lørdag 7. november. Den udkommer kun digitalt og altid i nyeste udgave. Indtil da kan du bladre i læseprøven.</p>
                     <div class="vl-box only-pre" id="venteliste">
 <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1793197");</style>
@@ -1257,13 +1336,13 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
                 <p style="margin-top:2px;"><a href="#det-vigtigste-du-ikke-kan-koebe-til-dit-barn" style="font-size:.78rem;color:var(--gray);display:inline-block;padding:13px 0;text-decoration:underline;text-decoration-color:rgba(0,0,0,.25);text-underline-offset:3px;">Tvillingebogen til forældre og bedsteforældre: Det vigtigste, du ikke kan købe til dit barn →</a></p>
             </div>
             <div class="book-buy">
-                <div class="buy-mode">
+                <div class="buy-mode" id="mode-cv">
                     <div class="preorder-badge only-live"><span>Udkommet · sendes personligt senest første hverdag efter betaling</span></div>
                     <div class="preorder-badge only-pre"><span>Ny digital udgave · udkommer lørdag 7. november</span></div>
                     <div class="buy-options" style="margin-top:12px;">
                         <div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Enkeltlicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til én læser</span><span class="buy-option-price">199 kr</span></div><a class="btn-buy only-live" href="https://buy.stripe.com/5kQ5kD5NxaPg2PN3DV8bS0k" rel="noopener">Køb</a></div><div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Ledergruppelicens</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">til op til otte læsere i samme ledergruppe</span><span class="buy-option-price">795 kr</span></div><a class="btn-buy only-live" href="https://buy.stripe.com/28E8wPcbVaPg9eb3DV8bS0n" rel="noopener">Køb</a></div>
                     </div>
-                    <p class="preorder-note only-live" style="margin-top:14px;">Kort via Stripe. Du får bogen som PDF, HTML og Word, sendt personligt senest første hverdag efter betaling. 14 dages fortrydelsesret.</p>
+                    <p class="preorder-note only-live" style="margin-top:14px;">Kort via Stripe. Du får bogen som PDF, HTML og Word, sendt personligt senest første hverdag efter betaling. 14 dages fortrydelsesret. Den udkommer kun digitalt og altid i nyeste udgave. Bogen kan gives som gave – Gaveværkstedet følger med. Flere end otte læsere: <a href="/#kontakt" style="border-bottom:1px solid rgba(0,0,0,.25);">skriv til mig</a>.</p>
                     <p class="preorder-note only-pre" style="margin-top:14px;">Bogen kan købes her fra lørdag 7. november. Den udkommer kun digitalt og altid i nyeste udgave. Indtil da kan du bladre i læseprøven.</p>
                     <div class="vl-box only-pre" id="venteliste-du-ansaetter">
 <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1793197");</style>
@@ -1985,6 +2064,15 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
             </div>
         </div>
 
+        <!-- TVILLINGEPAKKE: begge bøger -->
+        <div class="twin-strip" id="tvillingepakke">
+            <div>
+                <p class="twin-k">To bøger · én tanke</p>
+                <p class="twin-t">Den ene bog er ikke afledt af den anden. De går i dybden hvert sit sted: den ene ved køkkenbordet, den anden i ledergruppen.</p>
+            </div>
+            <div class="buy-option"><div class="buy-option-info"><span class="buy-option-type">Tvillingepakke</span><span style="font-size:12px;line-height:1.35;color:var(--gray);margin-top:2px;">begge bøger, én læser</span><span class="buy-option-price">299 kr</span></div><a href="https://buy.stripe.com/fZueVd8ZJbTk8a7car8bS0m" target="_blank" rel="noopener" class="btn-buy" style="min-height:44px;">Køb →</a></div>
+        </div>
+
         <!-- BOG: Den svære samtale -->
         <div class="book-card" id="den-svaere-samtale">
             <div class="book-info">
@@ -2029,7 +2117,7 @@ main ~ section[aria-label="Afsluttende opfordring"] a[href*="eq-profile"] { colo
         <!-- BOG: En anatomi af topledelse -->
         <div class="book-card" id="en-anatomi-af-topledelse">
             <div class="book-info">
-                <p class="book-genre">Topledelse · Executive Library · Serie 02 · Ny</p>
+                <p class="book-genre">Topledelse · Executive Library · Serie 02</p>
                 <h2 class="book-title">En anatomi af topledelse</h2>
                 <p class="book-desc">Topledere fejler sjældent på det, de ikke kan. De fejler på det, de ikke kan se. Ti kapitler om det, der faktisk sker i toppen – når presset er reelt, og ingen siger det højt. Hvert kapitel navngiver ét mønster og giver dig en øvelse, en diagnoseskabelon og den samtale, mange organisationer udskyder.</p>
                 <p class="book-desc" style="margin-top:14px;font-size:.78rem;color:var(--gray);">E-bog i bogformat · 154 sider · PDF, HTML til laptop, iPad og mobil samt DOCX · ISBN 978-87-976175-7-1</p>
