@@ -38,15 +38,23 @@ sm_path = os.path.join(ROOT, 'sitemap.xml')
 sm_old = open(sm_path, encoding='utf-8').read() if os.path.exists(sm_path) else ''
 old_lastmod = dict(re.findall(r'<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>', sm_old))
 entries, skipped = [], []
-for name in sorted(os.listdir(ROOT)):
+# Udover roden tages den engelske bogside under en/ med (samme regler: noindex og kanonisk adresse afgør)
+SUBDIRS = ['en']
+cands = [(n, os.path.join(ROOT, n), BASE + n) for n in sorted(os.listdir(ROOT))]
+for sub in SUBDIRS:
+    d = os.path.join(ROOT, sub)
+    if os.path.isdir(d):
+        cands += [(sub + '/' + n, os.path.join(d, n), BASE + sub + '/' + n) for n in sorted(os.listdir(d))]
+for name, path, url in cands:
     if not name.endswith('.html') or name in future or name in EXCLUDE:
         continue
-    html = open(os.path.join(ROOT, name), encoding='utf-8').read()
-    url = BASE if name == 'index.html' else BASE + name
+    html = open(path, encoding='utf-8').read()
+    if name.endswith('index.html'):
+        url = url[:-len('index.html')]
     if NOINDEX.search(html):
         skipped.append((name, 'noindex')); continue
     m = CANON.search(html)
-    if m and m.group(1).rstrip('/') != url.rstrip('/') and not (name == 'index.html' and m.group(1).rstrip('/') == BASE.rstrip('/')):
+    if m and m.group(1).rstrip('/') != url.rstrip('/'):
         skipped.append((name, 'kanonisk peger andetsteds')); continue
     entries.append((url, old_lastmod.get(url) or released.get(name) or today))
 entries.sort(key=lambda e: (e[0] != BASE, e[0]))
