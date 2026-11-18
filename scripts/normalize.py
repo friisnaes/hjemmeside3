@@ -19,7 +19,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 DRY = '--dry-run' in sys.argv
 YEAR = str(datetime.now().year)
 
-SKIP_DIRS = {'.git', 'pagefind', 'sandbox', 'scripts', 'assets', 'partials', 'node_modules'}
+SKIP_DIRS = {'.git', 'pagefind', 'sandbox', 'scripts', 'assets', 'partials', 'node_modules', 'en'}  # en: engelsk bogside med egen engelsk menu/sidefod
 
 def read(p):
     with open(p, encoding='utf-8') as f:
