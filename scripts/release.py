@@ -15,21 +15,28 @@ future = {f for f, d in sched.items() if d > today}
 print(f'Dato: {today} · udgivet: {len(released)} · kommende: {len(future)}')
 
 # 1) Pagefind: kun sider i roden, uden kommende filer (samme valg som hidtil: sandbox/ m.fl. indekseres ikke)
+#    --kun-sitemap springer søgeindekset over (hurtigt lokalt tjek af sitemappet)
+if '--kun-sitemap' in sys.argv:
+    print('Pagefind sprunget over (--kun-sitemap)')
 stage = tempfile.mkdtemp()
 for name in os.listdir(ROOT):
     if name.endswith('.html') and name not in future:
         shutil.copy2(os.path.join(ROOT, name), stage)
 out = os.path.join(ROOT, 'pagefind')
-shutil.rmtree(out, ignore_errors=True)  # rydder også gamle, ubrugte fragmenter
-r = subprocess.run(['npx', '-y', 'pagefind@1.5.2', '--site', stage, '--glob', '*.html', '--output-path', out, '--force-language', 'da', '--exclude-selectors', 'nav,.site-nav,footer,.site-footer,.wp-toc,.wp-collection,.pdf-cta,.read-also,.progress-bar,.ix-progress-wrap,.fnlyt-bar,.nav-links'], capture_output=True, text=True)
-print(r.stdout[-600:]); 
-if r.returncode != 0:
-    print(r.stderr); sys.exit(1)
+if '--kun-sitemap' not in sys.argv:
+    shutil.rmtree(out, ignore_errors=True)  # rydder også gamle, ubrugte fragmenter
+r = None if '--kun-sitemap' in sys.argv else subprocess.run(['npx', '-y', 'pagefind@1.5.2', '--site', stage, '--glob', '*.html', '--output-path', out, '--force-language', 'da', '--exclude-selectors', 'nav,.site-nav,footer,.site-footer,.wp-toc,.wp-collection,.pdf-cta,.read-also,.progress-bar,.ix-progress-wrap,.fnlyt-bar,.nav-links'], capture_output=True, text=True)
+if r is not None:
+    print(r.stdout[-600:])
+    if r.returncode != 0:
+        print(r.stderr); sys.exit(1)
 
 # 2) Sitemap: bygges ud fra virkeligheden, hver gang.
 #    Med: alle sider i roden, der må indekseres (ingen noindex, kanonisk adresse = egen adresse).
 #    Uden: kommende sider fra udgivelsesplanen, 404-siden og filer under "_ikke_i_sitemap" i planen.
 #    lastmod bevares for sider, der allerede står i sitemappet; nye får udgivelsesdatoen eller dagens dato.
+#    Sider med hreflang-par (scripts/engelsk.py) får deres sprogudgaver med som xhtml:link.
+ALT = re.compile(r'<link\s+rel="alternate"\s+hreflang="([^"]+)"\s+href="([^"]+)"', re.I)
 NOINDEX = re.compile(r'<meta\s+name="robots"\s+content="[^"]*noindex', re.I)
 CANON = re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.I)
 plan_raw = json.load(open(os.path.join(ROOT, 'release-schedule.json'), encoding='utf-8'))
@@ -38,13 +45,17 @@ sm_path = os.path.join(ROOT, 'sitemap.xml')
 sm_old = open(sm_path, encoding='utf-8').read() if os.path.exists(sm_path) else ''
 old_lastmod = dict(re.findall(r'<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>', sm_old))
 entries, skipped = [], []
-# Udover roden tages den engelske bogside under en/ med (samme regler: noindex og kanonisk adresse afgør)
+# Udover roden tages de engelske sider under en/ med – også i undermapper som en/lead-on-character/
+# (samme regler: noindex og kanonisk adresse afgør; læseprøverne i en/samples/ er noindex)
 SUBDIRS = ['en']
 cands = [(n, os.path.join(ROOT, n), BASE + n) for n in sorted(os.listdir(ROOT))]
 for sub in SUBDIRS:
     d = os.path.join(ROOT, sub)
-    if os.path.isdir(d):
-        cands += [(sub + '/' + n, os.path.join(d, n), BASE + sub + '/' + n) for n in sorted(os.listdir(d))]
+    for dp, dns, fns in os.walk(d):
+        dns.sort()
+        for n in sorted(fns):
+            rel = os.path.relpath(os.path.join(dp, n), ROOT).replace(os.sep, '/')
+            cands.append((rel, os.path.join(dp, n), BASE + rel))
 for name, path, url in cands:
     if not name.endswith('.html') or name in future or name in EXCLUDE:
         continue
@@ -56,13 +67,14 @@ for name, path, url in cands:
     m = CANON.search(html)
     if m and m.group(1).rstrip('/') != url.rstrip('/'):
         skipped.append((name, 'kanonisk peger andetsteds')); continue
-    entries.append((url, old_lastmod.get(url) or released.get(name) or today))
+    entries.append((url, old_lastmod.get(url) or released.get(name) or today, ALT.findall(html)))
 entries.sort(key=lambda e: (e[0] != BASE, e[0]))
-added = [u.replace(BASE, '') or '/' for u, _ in entries if u not in old_lastmod]
+added = [u.replace(BASE, '') or '/' for u, _, _ in entries if u not in old_lastmod]
 removed = [u.replace(BASE, '') or '/' for u in old_lastmod if u not in {e[0] for e in entries}]
-xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-for url, d in entries:
-    xml.append(f'  <url>\n    <loc>{url}</loc>\n    <lastmod>{d}</lastmod>\n  </url>')
+xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+for url, d, alts in entries:
+    links = ''.join(f'\n    <xhtml:link rel="alternate" hreflang="{l}" href="{h}"/>' for l, h in alts)
+    xml.append(f'  <url>\n    <loc>{url}</loc>\n    <lastmod>{d}</lastmod>{links}\n  </url>')
 xml.append('</urlset>\n')
 open(sm_path, 'w', encoding='utf-8').write('\n'.join(xml))
 print(f'Sitemap: {len(entries)} sider · tilføjet: {added or "intet"} · fjernet: {removed or "intet"}')

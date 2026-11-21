@@ -76,9 +76,17 @@ def active_for(rel, html):
         return 'indsigter'
     return None
 
+# Sider med en rigtig engelsk udgave (scripts/engelsk.py): EN-knappen bliver et link dertil,
+# så søgemaskiner og læsere kommer til en indekserbar engelsk side i stedet for et JavaScript-skift
+EN_TWIN = {'index.html': '/en/executive-coach.html', 'boeger.html': '/en/books.html', 'om.html': '/en/about.html'}
+EN_BUTTON = '<button type="button" onclick="setLang(\'en\')" aria-label="EN – switch to English">EN</button>'
+
 def render_nav(fixed, lang, active, rel=''):
     out = NAV_TPL.replace('{{fixed}}', ' fn-nav--fixed' if fixed else '')
-    out = out.replace('{{lang}}', NAV_LANG if lang else '')
+    nav_lang = NAV_LANG
+    if rel in EN_TWIN:
+        nav_lang = nav_lang.replace(EN_BUTTON, '<a href="%s" hreflang="en" aria-label="EN – switch to English">EN</a>' % EN_TWIN[rel])
+    out = out.replace('{{lang}}', nav_lang if lang else '')
     for key in HUBS:
         out = out.replace('{{a:%s}}' % key, ' active' if active == key else '')
     if rel == 'index.html':

@@ -28,6 +28,9 @@ jobs:
       - name: Fælles menu og sidefod på alle sider
         # Nye sider, der er lagt op med en gammel menu, får den fælles menu/sidefod her
         run: python3 scripts/normalize.py
+      - name: Engelsk forside og hreflang-par
+        # /en/executive-coach.html bygges ud fra index.html; sider på begge sprog peger på hinanden
+        run: python3 scripts/engelsk.py
       - name: Byg søgeindeks, sitemap og situationsfinder
         run: |
           pip install --quiet beautifulsoup4
