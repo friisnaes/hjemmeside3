@@ -1,0 +1,69 @@
+/* Gratisniveauet på friisnaes.com: lyst som papers, én rød streg i hjørnet, kicker og vej videre.
+   Lægges ind i hvert gratisværktøj af scripts/gratis.py. Overskriver kun de delte variabler og
+   de få steder, hvor værktøjerne har hårdkodet lys tekst på mørk bund. */
+:root{
+  --navy:#fafaf8;--navy2:#ffffff;--navy3:#f5f4f0;--navy4:#ecebe6;
+  --blue:#c0392b;--blue2:#e74c3c;
+  --gold:#c0392b;--gold2:#e74c3c;--gdim:rgba(192,57,43,.08);--gbrd:rgba(192,57,43,.35);
+  --text:#111111;--text2:#444444;--text3:#777777;
+  --green:#2e7d4f;--red:#c0392b;--orange:#b7791f;
+  --brd:rgba(17,17,17,.10);--brd2:rgba(17,17,17,.22);
+  /* Generation 2 (Coaching 101/201, Commercial Excellence, Selvledelse) */
+  --navy-light:#ffffff;--navy-mid:#f5f4f0;--navy-border:rgba(17,17,17,.12);
+  --text-light:#555555;--text-muted:#777777;--white:#111111;
+  --gold-dark:#c0392b;--gold-light:#e74c3c;
+  --shadow:0 2px 16px rgba(17,17,17,.06);--shadow-hover:0 4px 24px rgba(17,17,17,.10);
+  --fg-serif:'Playfair Display',Georgia,serif;
+  --fg-sans:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+html{background:#fafaf8}
+body{-webkit-font-smoothing:antialiased}
+#sc-client-login,#sc-admin-login,#sc-landing{background:var(--navy)!important}
+.login-logo h1,.login-card h2,.tb-brand .nm,.mod-header h1,.mod-header h2{color:var(--text)}
+.login-card h2.gold-text{color:var(--gold)}
+.btn-gold{color:#fff!important}
+.tb-btn.gold{color:#fff!important}
+input,textarea,select{background:#fff!important;border-color:var(--brd2)!important;color:var(--text)!important}
+input::placeholder,textarea::placeholder{color:#9a9a9a}
+::-webkit-scrollbar-track{background:#f0efea}::-webkit-scrollbar-thumb{background:#cfcdc6}
+a{color:var(--text)}
+.topbar,.test-top{background:rgba(250,250,248,.96)!important;border-bottom:1px solid var(--brd)!important}
+[style*="background:#1a1a1a"],[style*="background: #1a1a1a"]{background:#ffffff!important}
+.tb-btn{color:var(--text2)!important;border-color:var(--brd2)!important}
+.tb-btn:hover{background:var(--navy3)!important;color:var(--text)!important}
+.admin-side,.as-title,.as-nav li{color:var(--text)}
+.mod-header{background:var(--navy2)!important}
+
+/* Niveaumærke: én rød streg. Kicker: Gratis · lag. */
+.fg-mark{position:fixed;top:22px;right:24px;z-index:900;pointer-events:none}
+.fg-mark i{display:block;width:22px;height:2px;background:#c0392b}
+.fg-kicker{position:fixed;top:19px;left:28px;z-index:900;font-family:var(--fg-sans);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#c0392b;font-weight:500;pointer-events:none}
+body.fg-has-topbar .fg-kicker{display:none}
+
+/* Begynd uden navn */
+.fg-start{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.fg-start button{font-family:var(--fg-sans);font-size:14px;font-weight:500;padding:12px 18px;border:0;border-radius:2px;background:#111;color:#fff;cursor:pointer}
+.fg-start button:hover{background:#c0392b}
+.fg-start small{font-size:12px;color:#777;line-height:1.5}
+
+/* Det næste niveau */
+.fg-next{font-family:var(--fg-sans);font-weight:300;background:#111;color:#fff;padding:44px 24px 40px;margin-top:40px}
+.fg-next-in{max-width:760px;margin:0 auto}
+.fg-next .fg-lbl{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#e74c3c;font-weight:600;margin-bottom:8px}
+.fg-next h2{font-family:var(--fg-serif);font-weight:500;font-size:26px;line-height:1.15;color:#fff;margin:0 0 10px}
+.fg-next p{font-size:15px;line-height:1.65;color:rgba(255,255,255,.72);margin:0 0 18px;max-width:600px}
+.fg-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.fg-tier{border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+.fg-tier .tm{display:flex;gap:4px;margin-bottom:8px}
+.fg-tier .tm i{display:block;width:14px;height:2px;background:#e74c3c}
+.fg-tier h3{font-family:var(--fg-serif);font-weight:500;font-size:18px;color:#fff;margin:0 0 4px}
+.fg-tier p{font-size:14px;margin:0 0 10px}
+.fg-tier a{display:inline-block;font-size:13px;font-weight:500;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:1px}
+.fg-tier a:hover{color:#e74c3c;border-bottom-color:#e74c3c}
+.fg-tier a.fg-btn{background:#c0392b;border:0;padding:10px 16px;border-radius:2px}
+.fg-tier a.fg-btn:hover{background:#e74c3c;color:#fff}
+.fg-tier .soon{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.fg-src{font-size:12.5px;color:rgba(255,255,255,.45);margin-top:22px;line-height:1.6}
+.fg-src a{color:rgba(255,255,255,.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+@media(max-width:700px){.fg-tiers{grid-template-columns:1fr}.fg-kicker{display:none}.fg-mark{top:18px;right:18px}}
+@media print{.fg-mark,.fg-kicker,.fg-next,.fg-start{display:none!important}}
