@@ -1,0 +1,36 @@
+# Motoren bag abonnementet på friisnaes.com: én Cloudflare Worker foran mail, Stripe og AI-modellen.
+# Drift: se motor/README.md. Hemmeligheder sættes med "wrangler secret put", aldrig her.
+name = "friisnaes-motor"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+[vars]
+# Hvor abonnementets app ligger (det magiske link sender brugeren tilbage hertil).
+APP_URL = "https://www.friisnaes.com/abonnement/"
+# Hvilke sider må kalde motoren fra browseren.
+ALLOWED_ORIGINS = "https://www.friisnaes.com,https://friisnaes.com"
+# Mailadresser, der kommer ind uden invitation og uden abonnement (Thomas selv, til afprøvning).
+ADMIN_EMAILS = "friisnaes@gmail.com"
+# AI
+AI_MODEL = "claude-sonnet-5-5"
+AI_DAILY_LIMIT = "60"
+AI_MAX_TOKENS = "900"
+# Mail
+MAIL_FROM = "Thomas Friisnæs <motor@friisnaes.com>"
+# Hvor lang tid et magisk link og en session holder (sekunder).
+LINK_TTL = "900"
+SESSION_TTL = "2592000"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "friisnaes-motor"
+# Udfyldes efter "wrangler d1 create friisnaes-motor" (se README).
+database_id = "00000000-0000-0000-0000-000000000000"
+
+[triggers]
+# Påmindelser: mandag 07:00 og fredag 15:00 dansk vintertid (UTC+1). Justér en time om sommeren, eller lad det ligge.
+crons = ["0 6 * * 1", "0 14 * * 5"]
+
+[observability]
+enabled = true
