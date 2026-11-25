@@ -172,6 +172,11 @@
   .reads a{text-decoration:none;border-bottom:1px solid rgba(192,57,43,.35)}
   .reads a:hover{color:var(--red);border-bottom-color:var(--red)}
   .reads .ser{font-size:12px;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;margin-left:auto;white-space:nowrap}
+  .p-src{font-size:13.5px;color:var(--ink-faint);line-height:1.6;margin:0 0 10px}
+  .p-src a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule-2)}
+  .p-src a:hover{color:var(--red);border-bottom-color:var(--red)}
+  .steps .src{font-size:12.5px;color:var(--ink-faint);margin-top:4px}
+  .steps .src a{color:var(--ink-soft);text-decoration:none;border-bottom:1px solid var(--rule-2)}
   .own{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.45;border-left:2px solid var(--red);padding:4px 0 4px 20px;margin:8px 0 14px}
   .own.empty{color:var(--ink-faint);font-size:16px;font-style:normal;font-family:var(--sans)}
   .care{background:var(--off);border-left:2px solid var(--red);padding:16px 20px;font-size:15px;color:var(--ink-soft);margin:10px 0 6px}
@@ -254,6 +259,7 @@
         <button type="button" class="btn btn-ink" id="start">Begynd</button>
         <button type="button" class="btn btn-ghost" id="open-last" hidden>Se din seneste side</button>
       </div>
+      <p class="privacy" style="margin-top:0;margin-bottom:14px"><b>Bygger på de bedstes praksis.</b> Parathed måles med Egon Zehnders fire tegn på potentiale. Læsningerne trækker på Korn Ferry, Marshall Goldsmith, Hogan og McKinsey, og på 59 papers fra biblioteket. Kilderne står på din side.</p>
       <p class="privacy"><b>Hvor er dine svar?</b> I din browser og ingen andre steder. Ingen konto, ingen e-mail, intet sendes. Du kan printe siden eller kopiere den, og du kan slette den igen med ét klik.</p>
     </div>
   </section>
@@ -336,6 +342,7 @@
         <section class="p-sec">
           <div class="p-label">Hvor parat du er</div>
           <h2>Udviklingsparathed</h2>
+          <p class="p-src">De fire dimensioner er Egon Zehnders fire tegn på potentiale: nysgerrighed, indsigt, engagement og beslutsomhed. Potentiale er noget andet end præstation. <a href="https://www.egonzehnder.com/what-we-do/executive-search/insight/potential-the-raw-material-of-the-future" rel="noopener">Kilde</a>.</p>
           <ul class="dims" id="p-dims"></ul>
           <p id="p-dimsum"></p>
         </section>
@@ -350,6 +357,13 @@
           <div class="p-label">Læs</div>
           <h2>Fra biblioteket</h2>
           <ul class="reads" id="p-reads"></ul>
+        </section>
+
+        <section class="p-sec">
+          <div class="p-label">Best practice</div>
+          <h2>Hvad de bedste gør</h2>
+          <ol class="steps" id="p-best"></ol>
+          <p class="p-src" id="p-src"></p>
         </section>
 
         <section class="p-sec">
@@ -482,6 +496,30 @@ const STATEMENTS=[
   {d:'beslutsomhed',s:'Når jeg har besluttet noget, ved jeg, hvad jeg gør på tirsdag.'}
 ];
 
+// Best practice fra de bedste executive coaches, headhuntere og konsulenthuse. Vælges efter svarene.
+const BEST=[
+  {k:'zehnder',when:()=>true,
+   t:'Mål potentiale, ikke kun præstation',
+   a:'Egon Zehnder vurderer topledere på nysgerrighed, indsigt, engagement og beslutsomhed, fordi de forudsiger, hvad du kan blive, ikke kun hvad du har leveret. Din laveste af de fire er det sted, udviklingen ligger.',
+   src:'Egon Zehnder: Potential, the raw material of the future',url:'https://www.egonzehnder.com/what-we-do/executive-search/insight/potential-the-raw-material-of-the-future'},
+  {k:'goldsmith',when:r=>r.lowest==='engagement'||r.lowest==='nysgerrighed',
+   t:'Inddrag dem, din adfærd rammer',
+   a:'Marshall Goldsmiths metode: vælg fem til otte nøglepersoner, fortæl dem, hvad du arbejder på at ændre, og bed om fremadrettede forslag, ikke vurderinger af fortiden. Spørg igen hver måned.',
+   src:'Marshall Goldsmith: Stakeholder centered coaching',url:'https://www.marshallgoldsmith.com/post/stakeholder-centered-coaching'},
+  {k:'hogan',when:r=>r.lowest==='indsigt'||r.fylderK==='blind',
+   t:'Kend den styrke, der vælter dig under pres',
+   a:'Hogans forskning i afsporing: ledere falder sjældent på svagheder. De falder på styrker, der bliver overbrugt, når presset stiger, og de holder op med at holde øje med sig selv. Sæt navn på din.',
+   src:'Hogan Assessments: The dark side of leadership',url:'https://www.hoganassessments.com/blog/the-dark-side-of-leadership-derailment/'},
+  {k:'kornferry',when:r=>r.lowest==='nysgerrighed'||r.lowest==='beslutsomhed',
+   t:'Lær af det, der skete, før du gør det igen',
+   a:'Korn Ferrys vurderinger af topledere peger på læringsagilitet, evnen til at lære af erfaring og bruge det i nye situationer, som den bedste enkeltindikator for succes i toppen. Det kræver, at du skriver ned, hvad du besluttede, og hvad du forventede.',
+   src:'IEDP: Why learning agility is key to leadership success',url:'https://www.iedp.com/insights/why-learning-agility-is-key-to-leadership-success'},
+  {k:'mckinsey',when:r=>r.rolleK==='ceo'||r.rolleK==='direktion'||r.sitK==='eksekvering',
+   t:'Hold de seks ansvarsområder i luften samtidig',
+   a:'McKinseys arbejde med de bedste CEO\'er: retning, organisation, topteam, bestyrelse, interessenter og personlig effektivitet. Tjek din kalender mod de seks. Det, der ikke har tid, har du ikke prioriteret.',
+   src:'SHRM om McKinseys CEO-forskning',url:'https://www.shrm.org/executive-network/insights/key-factors-make-difference-successful-leadership'}
+];
+
 // Emner, et værktøj ikke skal arbejde videre med.
 const CARE_RE=/(\bsygemeld\w*|\bsygdom\w*|\bhelbred\w*|\bkræft\b|\bdepress\w*|\bangst\w*|\budbrændt\w*|\bsammenbrud\b|\bselvmord\w*|\bskilsmisse\w*|\bdødsfald\b|\bmisbrug\w*|personlig krise|krise i familien)/i;
 
@@ -576,7 +614,9 @@ function compute(){
   add(fyl.tools[1],`Fordi det, der fylder mest, er ${fyl.place}.`);
   add(rolle.tools[1],`Fordi du er ${rolle.place}.`);
   const reads=[...sit.reads.slice(0,2),fyl.read].filter((r,i,a)=>a.findIndex(x=>x[0]===r[0])===i).slice(0,3);
-  return{at:new Date().toISOString(),version:VERSION,ini:A.ini,own:A.own,rolle:rolle.place,situation:sit.place,fylder:fyl.place,dims,lowest:lowest.k,total,picks,why,reads,care:CARE_RE.test(A.own)};
+  const r={at:new Date().toISOString(),version:VERSION,ini:A.ini,own:A.own,rolle:rolle.place,rolleK:rolle.k,situation:sit.place,sitK:sit.k,fylder:fyl.place,fylderK:fyl.k,dims,lowest:lowest.k,total,picks,why,reads,care:CARE_RE.test(A.own)};
+  r.best=BEST.filter(b=>b.when(r)).slice(0,3).map(b=>b.k);
+  return r;
 }
 function finish(){const r=compute();LS.s(STORE_KEY,r);$('open-last').hidden=false;renderResult(r);setProgress(1);show('result')}
 
@@ -589,6 +629,9 @@ function renderResult(r){
   $('p-dimsum').innerHTML=`Samlet <strong>${r.total} af 40</strong>. ${r.total>=32?'Du er parat. Så er det ikke parathed, der mangler, men en konkret aftale med dig selv.':r.total>=22?'Du er parat nok til at flytte dig, hvis du vælger ét sted at begynde. Det er '+esc(low.n.toLowerCase())+'.':'Parathed kommer før udvikling. Begynd med '+esc(low.n.toLowerCase())+', og lad resten vente.'}`;
   $('p-steps').innerHTML=r.picks.map(s=>`<li><div><a href="/vaerktoejer/${s}/">${esc(TOOLS[s].t)}</a><div class="why">${esc(r.why[s])} ${esc(TOOLS[s].d)}</div></div></li>`).join('');
   $('p-reads').innerHTML=r.reads.map(x=>`<li><a href="/${x[0]}">${esc(x[1])}</a><span class="ser">${esc(x[2])}</span></li>`).join('');
+  const best=(r.best||['zehnder']).map(k=>BEST.find(b=>b.k===k)).filter(Boolean);
+  $('p-best').innerHTML=best.map(b=>`<li><div><span style="font-family:var(--serif);font-size:19px">${esc(b.t)}</span><div class="why">${esc(b.a)}</div><div class="src">Kilde: <a href="${b.url}" rel="noopener">${esc(b.src)}</a></div></div></li>`).join('');
+  $('p-src').textContent='Kilderne er læst i uddrag af Thomas Friisnæs og oversat til hans egne begreber. Læs dem selv, før du citerer dem.';
   const own=$('p-own');
   if(r.own){own.textContent=r.own;own.classList.remove('empty')}else{own.textContent='Du skrev ikke, hvad der skal være anderledes om 90 dage. Det er i sig selv et svar.';own.classList.add('empty')}
   $('p-first').innerHTML=`<strong>Første skridt:</strong> åbn ${esc(TOOLS[r.picks[0]].t)} i dag, og sæt 20 minutter af i kalenderen til det. Ikke i morgen.`;
@@ -601,6 +644,7 @@ function resultText(r){
   t+=`\n${line}\n\nSTART HER\n`;
   r.picks.forEach((s,i)=>{t+=`${i+1}. ${TOOLS[s].t}: https://www.friisnaes.com/vaerktoejer/${s}/\n   ${r.why[s]}\n`});
   t+=`\nLÆS\n`;r.reads.forEach(x=>{t+=`- ${x[1]} (${x[2]}): https://www.friisnaes.com/${x[0]}\n`});
+  t+=`\nHVAD DE BEDSTE GØR\n`;(r.best||[]).forEach(k=>{const b=BEST.find(x=>x.k===k);if(b)t+=`- ${b.t}. ${b.a} Kilde: ${b.url}\n`});
   t+=`\nOM 90 DAGE\n${r.own||'–'}\nFørste skridt: åbn ${TOOLS[r.picks[0]].t} i dag.\n\n${line}\nThomas Friisnæs · Personal Excellence Partner · friisnaes.com\n`;
   return t;
 }
