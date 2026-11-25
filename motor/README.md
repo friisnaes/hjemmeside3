@@ -12,7 +12,7 @@ Afprøvningssiden ligger på `/abonnement/` og peger på motoren via `MOTOR_URL`
 | --- | --- |
 | `GET /` · `GET /health` | Version, kildekort, databasetjek |
 | `POST /auth/request` `{email, invite?}` | Sender magisk link. Nye brugere skal have en invitationskode, medmindre de står i `ADMIN_EMAILS` |
-| `GET /auth/verify?token=` | Bytter linket til en session-cookie og sender videre til `APP_URL` |
+| `GET /auth/verify?token=` | Bytter linket til en session og sender videre til `APP_URL#session=...`; appen sender den som `Authorization: Bearer` |
 | `GET /me` · `POST /auth/logout` | Hvem er jeg, abonnementsstatus, lagerversion |
 | `GET/PUT/DELETE /store` | Det krypterede lager `{v, salt, iv, ct}`, højst 512 KB, versioneret med `If-Match` |
 | `DELETE /account` | Sletter bruger, lager, sessioner og forbrug |
@@ -63,6 +63,7 @@ Senere ændringer: ret koden, `npm test`, `npm run deploy`. Skemaændringer læg
 
 ## Det, der med vilje ikke er her
 
+- Ingen cookies: sessionen gives videre i URL-fragmentet og sendes som bearer-token, fordi browsere blokerer tredjepartscookies mellem friisnaes.com og workers.dev.
 - Ingen adgangskoder. Ingen klartekst fra brugeren i databasen. Ingen navne i AI-kald (mailadresser og de navne, klienten oplyser, erstattes med `[mail]` og `[navn]` før afsendelse).
 - Ingen vektordatabase. Kildekortene i `src/kort/` er kurateret i hånden ud fra Thomas' papers og de bedstes praksis.
 - Ingen hukommelse hos AI-leverandøren. Hukommelsen er det krypterede lager, som kun brugeren kan læse.
