@@ -160,7 +160,7 @@
 // OPSÆTNING
 // ══════════════════════════════════════════════════════════════════
 // Motorens adresse. Lokalt: wrangler dev på 8787. Live: Workerens adresse (sæt den her, når den findes).
-const MOTOR_URL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'http://localhost:8787' : 'https://friisnaes-motor.workers.dev';
+const MOTOR_URL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'http://localhost:8787' : 'https://friisnaes-motor.friisnaes.workers.dev';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fixQuotes=s=>String(s??'').replace(/[\u00BB\u00AB\u201E\u201C\u201D]/g,'"').replace(/[\u2018\u2019\u201A]/g,"'");
