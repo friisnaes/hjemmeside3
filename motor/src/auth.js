@@ -59,18 +59,22 @@ export async function verifyLink(request, env) {
   await env.DB.prepare('INSERT INTO sessions (hash, user_id, expires_at, created_at) VALUES (?, ?, ?, ?)')
     .bind(await sha256hex(session), user.id, now() + ttl, now()).run();
 
-  const headers = new Headers({ Location: appUrl + '?login=ok' });
-  headers.append('Set-Cookie', sessionCookie(session, ttl, env));
+  // Sessionen gives videre i URL-fragmentet (#session=...), som aldrig sendes til nogen server og ikke lander i logs.
+  // Appen gemmer den i browseren og sender den som "Authorization: Bearer". Ingen cookies: browsere blokerer
+  // tredjepartscookies mellem friisnaes.com og workers.dev, så cookies virker ikke her.
+  const headers = new Headers({ Location: `${appUrl}?login=ok#session=${session}` });
   return new Response(null, { status: 302, headers });
 }
 
-function sessionCookie(value, maxAge, env) {
-  // SameSite=None, fordi appen ligger på friisnaes.com og motoren på workers.dev. Secure gælder også på localhost.
-  return `${COOKIE}=${value}; Max-Age=${maxAge}; Path=/; HttpOnly; Secure; SameSite=None`;
+function sessionToken(request) {
+  const auth = request.headers.get('Authorization') || '';
+  const m = auth.match(/^Bearer\s+([A-Za-z0-9_-]{20,})$/);
+  if (m) return m[1];
+  return parseCookies(request)[COOKIE] || null; // bagudkompatibelt, hvis motoren senere ligger på samme domæne
 }
 
 export async function requireUser(request, env) {
-  const token = parseCookies(request)[COOKIE];
+  const token = sessionToken(request);
   if (!token) throw new HttpError(401, 'not_logged_in', 'Du er ikke logget ind.');
   const row = await env.DB.prepare(
     'SELECT u.id, u.email, s.hash, s.expires_at FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.hash = ?'
@@ -98,9 +102,7 @@ export function isActive(sub, user) {
 }
 
 export async function logout(request, env) {
-  const token = parseCookies(request)[COOKIE];
+  const token = sessionToken(request);
   if (token) await env.DB.prepare('DELETE FROM sessions WHERE hash = ?').bind(await sha256hex(token)).run();
-  const headers = new Headers();
-  headers.append('Set-Cookie', `${COOKIE}=; Max-Age=0; Path=/; HttpOnly; Secure; SameSite=None`);
-  return json({ ok: true }, 200, Object.fromEntries(headers));
+  return json({ ok: true });
 }

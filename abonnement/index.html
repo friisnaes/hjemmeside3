@@ -164,8 +164,13 @@ const MOTOR_URL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'http:/
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fixQuotes=s=>String(s??'').replace(/[\u00BB\u00AB\u201E\u201C\u201D]/g,'"').replace(/[\u2018\u2019\u201A]/g,"'");
+const SESSION_KEY='fm_session';
+function session(){try{return localStorage.getItem(SESSION_KEY)||''}catch(e){return ''}}
+function setSession(t){try{t?localStorage.setItem(SESSION_KEY,t):localStorage.removeItem(SESSION_KEY)}catch(e){}}
 async function api(path,opts={}){
-  const r=await fetch(MOTOR_URL+path,{credentials:'include',headers:{'Content-Type':'application/json',...(opts.headers||{})},...opts});
+  const headers={'Content-Type':'application/json',...(opts.headers||{})};
+  const t=session();if(t)headers['Authorization']='Bearer '+t;
+  const r=await fetch(MOTOR_URL+path,{...opts,headers});
   let data=null;try{data=await r.json()}catch(e){}
   if(!r.ok){const e=new Error(data?.message||('Motoren svarede '+r.status));e.code=data?.error||r.status;e.data=data;throw e}
   return data;
@@ -206,8 +211,11 @@ async function boot(){
   if(q.get('login')==='udloebet')msg('login-msg','Linket er udløbet eller brugt. Bed om et nyt.',true);
   if(q.get('login')==='ugyldig')msg('login-msg','Linket var ugyldigt. Bed om et nyt.',true);
   if(q.get('betaling')==='ok')sessionStorage.setItem('fm_betaling','ok');
-  if(q.has('login')||q.has('betaling'))history.replaceState(null,'',location.pathname);
-  try{ME=await api('/me')}catch(e){ME=null}
+  // Sessionen kommer fra det magiske link som #session=... og gemmes kun i denne browser.
+  const h=new URLSearchParams(location.hash.replace(/^#/,''));
+  if(h.get('session')){setSession(h.get('session'))}
+  if(q.has('login')||q.has('betaling')||location.hash)history.replaceState(null,'',location.pathname);
+  try{ME=await api('/me')}catch(e){ME=null;if(e.code==='session_expired'||e.code==='not_logged_in')setSession('')}
   if(!ME)return show('login');
   enterPin();
 }
@@ -290,9 +298,9 @@ $('b-save').addEventListener('click',async()=>{D.log=fixQuotes($('log').value);m
 $('b-reload').addEventListener('click',async()=>{try{await reload();msg('save-msg','Hentet version '+VERSION)}catch(err){msg('save-msg',err.message,true)}});
 $('b-checkout').addEventListener('click',async()=>{msg('st-msg','');try{const r=await api('/billing/checkout',{method:'POST'});location.href=r.url}catch(err){msg('st-msg',err.message,true)}});
 $('b-portal').addEventListener('click',async()=>{msg('st-msg','');try{const r=await api('/billing/portal',{method:'POST'});location.href=r.url}catch(err){msg('st-msg',err.message,true)}});
-async function logout(){try{await api('/auth/logout',{method:'POST'})}catch(e){}KEY=null;D=null;ME=null;location.href=location.pathname}
+async function logout(){try{await api('/auth/logout',{method:'POST'})}catch(e){}setSession('');KEY=null;D=null;ME=null;location.href=location.pathname}
 $('b-logout').addEventListener('click',logout);$('b-logout-pin').addEventListener('click',logout);
-$('b-wipe').addEventListener('click',async()=>{if(!confirm('Slet din konto, dit krypterede lager og alle sessioner? Det kan ikke fortrydes.'))return;try{await api('/account',{method:'DELETE'});location.href=location.pathname}catch(err){msg('st-msg',err.message,true)}});
+$('b-wipe').addEventListener('click',async()=>{if(!confirm('Slet din konto, dit krypterede lager og alle sessioner? Det kan ikke fortrydes.'))return;try{await api('/account',{method:'DELETE'});setSession('');location.href=location.pathname}catch(err){msg('st-msg',err.message,true)}});
 
 boot();
 </script>
