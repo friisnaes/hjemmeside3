@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="0.1.0">
+<title>Hvor står du nu? | Friisnæs</title>
+<meta name="description" content="Ti minutter, der viser, hvor du står som leder, hvor parat du er til at flytte dig, og hvilke tre skridt du skal tage først. Gratis, uden konto. Alt bliver i din browser.">
+<meta name="keywords" content="hvor står du nu, lederdiagnose, udviklingsparathed, executive coaching, selvindsigt, ledelse, Thomas Friisnæs">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#fafaf8">
+<link rel="canonical" href="https://www.friisnaes.com/vaerktoejer/hvor-staar-du-nu/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="og:locale" content="da_DK">
+<meta property="og:url" content="https://www.friisnaes.com/vaerktoejer/hvor-staar-du-nu/">
+<meta property="og:title" content="Hvor står du nu? | Friisnæs">
+<meta property="og:description" content="Ti minutter, der viser, hvor du står som leder, hvor parat du er til at flytte dig, og hvilke tre skridt du skal tage først. Gratis, uden konto.">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Friisnæs – Executive Coaching">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hvor står du nu? | Friisnæs">
+<meta name="twitter:description" content="Ti minutter, der viser, hvor du står som leder, hvor parat du er til at flytte dig, og hvilke tre skridt du skal tage først.">
+<meta name="twitter:image" content="https://www.friisnaes.com/og-image.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Hvor står du nu?",
+  "description": "Ti minutters indgang til Friisnæs' gratis værktøjer: hvor du står som leder, hvor parat du er til at flytte dig, og hvilke tre skridt du skal tage først. Ingen konto. Alt bliver i brugerens browser.",
+  "url": "https://www.friisnaes.com/vaerktoejer/hvor-staar-du-nu/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "inLanguage": "da",
+  "isAccessibleForFree": true,
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "DKK"},
+  "author": {"@type": "Person", "name": "Thomas Friisnæs", "url": "https://www.friisnaes.com/"},
+  "publisher": {"@type": "Person", "name": "Thomas Friisnæs"},
+  "isPartOf": {"@type": "WebSite", "name": "Friisnæs", "url": "https://www.friisnaes.com/"}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Gratisniveauet er lyst som papers på friisnaes.com: #111, #f5f4f0, #c0392b. Én rød streg i hjørnet. */
+  :root{
+    --ink:#111; --ink-soft:rgba(17,17,17,.66); --ink-faint:rgba(17,17,17,.46);
+    --off:#f5f4f0; --white:#fafaf8; --card:#fff;
+    --red:#c0392b; --red-l:#e74c3c;
+    --rule:rgba(17,17,17,.12); --rule-2:rgba(17,17,17,.22);
+    --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+    --sans:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15}
+  button,input,textarea{font-family:var(--sans);font-size:inherit;color:inherit}
+  button{cursor:pointer;border:0;background:none;transition:background .18s,color .18s,border-color .18s}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--red);outline-offset:3px}
+  [hidden]{display:none!important}
+  @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:100;transition:width .45s ease}
+  .mark{position:fixed;top:22px;right:24px;z-index:90;pointer-events:none}
+  .mark i{display:block;width:22px;height:2px;background:var(--red)}
+  .top{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;z-index:80;pointer-events:none}
+  .top>*{pointer-events:auto}
+  .brand{font-family:var(--serif);font-size:20px;font-weight:500;text-decoration:none;color:var(--ink)}
+  .brand em{font-style:italic;color:var(--red)}
+  .kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--red);font-weight:500;margin-right:52px}
+
+  .screen{display:none;min-height:100vh;padding:112px 24px 64px;align-items:center;justify-content:center}
+  .screen.active{display:flex}
+  .inner{width:100%;max-width:640px;animation:rise .4s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+  .step-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin-bottom:22px}
+  .step-kicker b{color:var(--red);font-weight:500}
+  .q{font-size:clamp(30px,5vw,44px);font-weight:400;letter-spacing:-.01em;color:var(--ink);margin-bottom:14px}
+  .q em{font-style:italic;color:var(--red)}
+  .hint{font-size:15px;color:var(--ink-soft);margin-bottom:30px;max-width:520px}
+
+  .opts{list-style:none;display:flex;flex-direction:column;gap:8px;margin:0 0 24px}
+  .opt{display:flex;gap:16px;align-items:baseline;width:100%;text-align:left;padding:14px 18px;background:var(--card);border:1px solid var(--rule);border-radius:3px;font-size:17px;line-height:1.5;color:var(--ink);font-weight:300}
+  .opt:hover{border-color:var(--ink)}
+  .opt[aria-pressed=true]{border-color:var(--red);box-shadow:inset 3px 0 0 var(--red)}
+  .opt .n{font-size:11px;letter-spacing:.1em;color:var(--red);font-weight:500;min-width:18px;font-variant-numeric:tabular-nums}
+  .scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 10px}
+  .scale button{padding:18px 6px 14px;background:var(--card);border:1px solid var(--rule);border-radius:3px;font-family:var(--serif);font-size:24px;color:var(--ink)}
+  .scale button:hover{border-color:var(--ink)}
+  .scale button[aria-pressed=true]{border-color:var(--red);background:var(--off);box-shadow:inset 0 -3px 0 var(--red)}
+  .scale-lbl{display:flex;justify-content:space-between;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:24px}
+
+  textarea,input[type=text]{display:block;width:100%;background:var(--card);border:1px solid var(--rule-2);border-radius:3px;padding:14px 16px;font-size:17px;line-height:1.6;color:var(--ink);resize:vertical;transition:border-color .2s}
+  textarea:focus,input:focus{border-color:var(--red);outline:none}
+  textarea::placeholder,input::placeholder{color:var(--ink-faint)}
+  label{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px;font-weight:500}
+  .fg{margin-bottom:18px}
+  .row{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:22px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 24px;border-radius:2px;font-size:15px;font-weight:500;letter-spacing:.02em;text-decoration:none}
+  .btn-ink{background:var(--ink);color:#fff}
+  .btn-ink:hover{background:var(--red)}
+  .btn-ghost{color:var(--ink-soft);border:1px solid var(--rule-2);background:transparent}
+  .btn-ghost:hover{color:var(--ink);border-color:var(--ink)}
+  .link{background:none;border:0;color:var(--ink-faint);font-size:13px;text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+  .link:hover{color:var(--red)}
+  .kbd{font-size:12px;color:var(--ink-faint);margin-left:auto}
+  .kbd kbd{font-family:var(--sans);border:1px solid var(--rule-2);border-radius:3px;padding:1px 6px;font-size:11px}
+  .err{color:var(--red);font-size:14px;margin-top:12px}
+
+  .intro h1{font-size:clamp(40px,7vw,68px);font-weight:400;letter-spacing:-.015em;line-height:1.02;margin-bottom:22px}
+  .intro h1 em{font-style:italic;color:var(--red)}
+  .intro .lead{font-size:clamp(17px,2.2vw,20px);color:var(--ink-soft);max-width:540px;margin-bottom:30px}
+  .rule{width:46px;height:2px;background:var(--red);margin:0 0 28px}
+  .parts{list-style:none;counter-reset:s;margin:0 0 34px;border-top:1px solid var(--rule)}
+  .parts li{counter-increment:s;display:flex;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:16px}
+  .parts li::before{content:counter(s,decimal-leading-zero);color:var(--red);font-size:11px;letter-spacing:.1em;font-weight:500;padding-top:6px;min-width:22px}
+  .parts li span{color:var(--ink-soft)}
+  .privacy{font-size:13.5px;color:var(--ink-faint);line-height:1.65;border-left:1px solid var(--rule-2);padding-left:16px;margin-top:30px}
+  .privacy b{color:var(--ink-soft);font-weight:500}
+
+  /* Siden */
+  #sc-result{background:var(--off);padding:96px 24px 80px;align-items:flex-start}
+  #sc-result .inner{max-width:720px}
+  .paper-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:28px}
+  .paper{background:var(--card);border:1px solid var(--rule);padding:clamp(34px,6vw,64px) clamp(26px,6vw,64px) clamp(30px,5vw,48px);position:relative;box-shadow:0 18px 50px rgba(17,17,17,.08)}
+  .paper .p-mark{position:absolute;top:30px;right:30px}
+  .paper .p-mark i{display:block;width:18px;height:2px;background:var(--red)}
+  .p-kicker{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--red);font-weight:500;margin-bottom:22px}
+  .p-title{font-family:var(--serif);font-weight:600;font-size:clamp(36px,6vw,54px);line-height:1.06;letter-spacing:-.012em;margin-bottom:18px}
+  .p-title em{font-style:italic;color:var(--red)}
+  .p-sig{width:56px;height:3px;background:var(--red);margin:0 0 22px}
+  .p-byline{display:flex;flex-wrap:wrap;gap:.3rem 1rem;align-items:baseline;font-size:14px;color:var(--ink-soft);letter-spacing:.02em;padding-bottom:22px;border-bottom:1px solid var(--rule);margin-bottom:10px}
+  .p-byline .name{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink);letter-spacing:0}
+  .p-byline .sep{color:var(--ink-faint)}
+  .p-byline .brand-t{color:var(--red);font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:12px}
+  .p-sec{padding:26px 0 10px;border-bottom:1px solid var(--rule)}
+  .p-sec:last-of-type{border-bottom:0}
+  .p-label{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);font-weight:600;margin-bottom:6px}
+  .p-sec h2{font-size:clamp(24px,3.4vw,30px);font-weight:500;margin-bottom:12px}
+  .p-sec p{font-size:16.5px;line-height:1.75;margin-bottom:12px}
+  .p-sec p strong{font-weight:500}
+  .dims{list-style:none;margin:6px 0 10px}
+  .dim{display:grid;grid-template-columns:150px 1fr;gap:6px 18px;align-items:center;padding:12px 0;border-top:1px solid var(--rule)}
+  .dim:first-child{border-top:0}
+  .dim .dn{font-family:var(--serif);font-size:19px}
+  .dim .bar{height:6px;background:var(--off);border-radius:3px;overflow:hidden;position:relative}
+  .dim .bar i{display:block;height:100%;background:var(--red);width:0;transition:width .6s ease}
+  .dim .dt{grid-column:1/-1;font-size:15px;color:var(--ink-soft);line-height:1.6}
+  .dim .dt b{color:var(--ink);font-weight:500}
+  .steps{list-style:none;counter-reset:st;margin:4px 0 8px}
+  .steps li{counter-increment:st;display:grid;grid-template-columns:26px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--rule)}
+  .steps li:first-child{border-top:0}
+  .steps li::before{content:counter(st);font-family:var(--serif);font-size:22px;color:var(--red);line-height:1.1}
+  .steps a{font-family:var(--serif);font-size:19px;text-decoration:none;border-bottom:1px solid rgba(192,57,43,.35)}
+  .steps a:hover{border-bottom-color:var(--red);color:var(--red)}
+  .steps .why{font-size:15px;color:var(--ink-soft);line-height:1.6;margin-top:3px}
+  .reads{list-style:none;margin:4px 0 8px}
+  .reads li{padding:10px 0;border-top:1px solid var(--rule);display:flex;gap:12px;align-items:baseline}
+  .reads li:first-child{border-top:0}
+  .reads li::before{content:'·';color:var(--red);font-weight:700}
+  .reads a{text-decoration:none;border-bottom:1px solid rgba(192,57,43,.35)}
+  .reads a:hover{color:var(--red);border-bottom-color:var(--red)}
+  .reads .ser{font-size:12px;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;margin-left:auto;white-space:nowrap}
+  .own{font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.45;border-left:2px solid var(--red);padding:4px 0 4px 20px;margin:8px 0 14px}
+  .own.empty{color:var(--ink-faint);font-size:16px;font-style:normal;font-family:var(--sans)}
+  .care{background:var(--off);border-left:2px solid var(--red);padding:16px 20px;font-size:15px;color:var(--ink-soft);margin:10px 0 6px}
+  .next{background:var(--ink);color:#fff;padding:30px 32px;margin:30px -8px 0;border-radius:3px}
+  .next .p-label{color:var(--red-l)}
+  .next h3{font-size:24px;color:#fff;margin-bottom:10px}
+  .next p{font-size:15px;color:rgba(255,255,255,.72);line-height:1.65;margin-bottom:14px}
+  .next .tiers{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:6px}
+  .next .tier{border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+  .next .tier .tm{display:flex;gap:4px;margin-bottom:8px}
+  .next .tier .tm i{display:block;width:14px;height:2px;background:var(--red-l)}
+  .next .tier h4{font-family:var(--serif);font-size:18px;font-weight:500;margin-bottom:4px}
+  .next .tier p{margin:0 0 10px}
+  .next a.btn{background:var(--red);color:#fff}
+  .next a.btn:hover{background:var(--red-l)}
+  .next .soon{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+  .p-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 20px;margin-top:38px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-faint);letter-spacing:.03em}
+  .paper-end{font-size:13px;color:var(--ink-faint);margin-top:26px;line-height:1.7}
+  .paper-end a{color:var(--ink-faint)}
+
+  @media(max-width:600px){
+    .top{padding:16px 18px}.kicker{display:none}.mark{top:18px;right:18px}
+    .screen{padding:90px 18px 48px}
+    .row .kbd{display:none}
+    .scale button{font-size:20px;padding:14px 4px 11px}
+    .dim{grid-template-columns:1fr}
+    .next .tiers{grid-template-columns:1fr}
+    .reads li{flex-wrap:wrap}.reads .ser{margin-left:0}
+    .p-foot{flex-direction:column}
+  }
+
+  @media print{
+    @page{size:A4;margin:16mm 17mm 18mm}
+    html,body{background:#fff!important}
+    .progress,.mark,.top,.paper-actions,.paper-end,.next,.no-print{display:none!important}
+    .screen{display:none!important}
+    #sc-result{display:block!important;padding:0!important;background:#fff!important;min-height:0}
+    #sc-result .inner{max-width:none;animation:none}
+    .paper{box-shadow:none;border:0;padding:0}
+    .paper .p-mark{top:0;right:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .p-kicker,.p-label,.p-byline .brand-t,.p-title em,.steps li::before{color:#c0392b!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .p-sig,.dim .bar i{background:#c0392b!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .dim .bar{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .p-title{font-size:30pt}
+    .p-sec{break-inside:avoid;padding:12pt 0 4pt}
+    .p-sec h2{font-size:17pt}
+    .p-sec p,.dim .dt,.steps .why{font-size:10.5pt}
+    .steps a,.dim .dn{font-size:13pt}
+    .reads li{font-size:10.5pt}
+    .care{background:#f5f4f0!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .p-byline{font-size:9.5pt}
+    .p-foot{font-size:8.5pt;margin-top:18pt}
+    a{color:inherit;text-decoration:none}
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="mark" aria-hidden="true"><i></i></div>
+<header class="top">
+  <a class="brand" href="/" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+  <div class="kicker">Gratis · Diagnose</div>
+</header>
+
+<main id="app">
+
+  <!-- Intro -->
+  <section id="sc-intro" class="screen intro active" aria-labelledby="intro-h">
+    <div class="inner">
+      <div class="step-kicker">Ti minutter · tre dele · én side</div>
+      <h1 id="intro-h">Hvor står <em>du nu?</em></h1>
+      <p class="lead">Ikke en test. En placering. Du svarer på, hvor du står, hvor parat du er til at flytte dig, og hvad der skal være anderledes om 90 dage. Så får du tre skridt, ikke tredive.</p>
+      <div class="rule"></div>
+      <ol class="parts">
+        <li>Hvor du står <span>· tre valg</span></li>
+        <li>Hvor parat du er <span>· otte udsagn</span></li>
+        <li>Hvad der skal være anderledes <span>· én sætning</span></li>
+      </ol>
+      <div class="row">
+        <button type="button" class="btn btn-ink" id="start">Begynd</button>
+        <button type="button" class="btn btn-ghost" id="open-last" hidden>Se din seneste side</button>
+      </div>
+      <p class="privacy"><b>Hvor er dine svar?</b> I din browser og ingen andre steder. Ingen konto, ingen e-mail, intet sendes. Du kan printe siden eller kopiere den, og du kan slette den igen med ét klik.</p>
+    </div>
+  </section>
+
+  <!-- Valg: ét spørgsmål pr. skærm -->
+  <section id="sc-choice" class="screen" aria-live="polite">
+    <div class="inner">
+      <div class="step-kicker" id="ch-kicker"></div>
+      <h1 class="q" id="ch-q"></h1>
+      <p class="hint" id="ch-hint"></p>
+      <ul class="opts" id="ch-opts"></ul>
+      <div class="row">
+        <button type="button" class="link" id="ch-back">Tilbage</button>
+        <span class="kbd">Tast <kbd>1</kbd> til <kbd>7</kbd></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skala -->
+  <section id="sc-scale" class="screen" aria-live="polite">
+    <div class="inner">
+      <div class="step-kicker" id="sk-kicker"></div>
+      <h1 class="q" id="sk-q"></h1>
+      <p class="hint" id="sk-hint"></p>
+      <div class="scale" id="sk-scale" role="group" aria-label="Hvor godt passer udsagnet"></div>
+      <div class="scale-lbl"><span>Passer ikke</span><span>Passer helt</span></div>
+      <div class="row">
+        <button type="button" class="link" id="sk-back">Tilbage</button>
+        <span class="kbd">Tast <kbd>1</kbd> til <kbd>5</kbd></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Én sætning -->
+  <section id="sc-text" class="screen" aria-labelledby="tx-q">
+    <div class="inner">
+      <div class="step-kicker"><b>3</b> / 3 · Én sætning</div>
+      <h1 class="q" id="tx-q">Hvad skal være <em>anderledes om 90 dage?</em></h1>
+      <p class="hint">Noget, man kan se. Ikke en følelse. Skriv den, som du ville sige den til en, der holder dig fast på den.</p>
+      <form id="tx-form" novalidate>
+        <div class="fg"><textarea id="tx-a" rows="3" placeholder="Om 90 dage har jeg ..."></textarea></div>
+        <div class="fg"><label for="tx-ini">Dine initialer, hvis du vil have dem på siden</label><input type="text" id="tx-ini" maxlength="4" placeholder="Valgfrit" autocapitalize="characters" spellcheck="false" style="max-width:200px"></div>
+        <div class="row">
+          <button type="submit" class="btn btn-ink">Vis min side</button>
+          <button type="button" class="link" id="tx-back">Tilbage</button>
+          <span class="kbd"><kbd>⌘</kbd> + <kbd>Enter</kbd></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Siden -->
+  <section id="sc-result" class="screen" aria-labelledby="p-title">
+    <div class="inner">
+      <div class="paper-actions no-print">
+        <button type="button" class="btn btn-ink" id="p-print">Udskriv eller gem som PDF</button>
+        <button type="button" class="btn btn-ghost" id="p-copy">Kopiér teksten</button>
+        <button type="button" class="link" id="p-again">Svar igen</button>
+      </div>
+
+      <article class="paper" id="paper">
+        <div class="p-mark" aria-hidden="true"><i></i></div>
+        <div class="p-kicker">Gratis · Diagnose · Hvor står du nu?</div>
+        <h1 class="p-title" id="p-title">Du står <em>her.</em></h1>
+        <div class="p-sig" aria-hidden="true"></div>
+        <div class="p-byline">
+          <span class="name" id="p-ini">–</span>
+          <span class="sep">·</span>
+          <span id="p-date"></span>
+          <span class="sep">·</span>
+          <span class="brand-t">friisnaes.com</span>
+        </div>
+
+        <section class="p-sec">
+          <div class="p-label">Hvor du står</div>
+          <h2>Placeringen</h2>
+          <p id="p-place"></p>
+        </section>
+
+        <section class="p-sec">
+          <div class="p-label">Hvor parat du er</div>
+          <h2>Udviklingsparathed</h2>
+          <ul class="dims" id="p-dims"></ul>
+          <p id="p-dimsum"></p>
+        </section>
+
+        <section class="p-sec">
+          <div class="p-label">Start her</div>
+          <h2>Tre skridt, ikke tredive</h2>
+          <ol class="steps" id="p-steps"></ol>
+        </section>
+
+        <section class="p-sec">
+          <div class="p-label">Læs</div>
+          <h2>Fra biblioteket</h2>
+          <ul class="reads" id="p-reads"></ul>
+        </section>
+
+        <section class="p-sec">
+          <div class="p-label">Dit næste skridt</div>
+          <h2>Om 90 dage</h2>
+          <p class="own" id="p-own"></p>
+          <p id="p-first"></p>
+          <div class="care" id="p-care" hidden>Det her skal ikke løses af et værktøj. Tal med et menneske, du stoler på, eller <a href="/#kontakt">skriv til mig</a>.</div>
+        </section>
+
+        <div class="next no-print">
+          <div class="p-label">Det næste niveau</div>
+          <h3>Det her er de første 40 procent.</h3>
+          <p>Alt ovenfor kan du bruge alene, gratis og uden konto. Det, der kommer efter, kræver enten en motor, der kender min tankegang, eller mig.</p>
+          <div class="tiers">
+            <div class="tier">
+              <div class="tm" aria-hidden="true"><i></i><i></i></div>
+              <h4>Abonnement</h4>
+              <p>Træning, beslutning og hukommelse. Sparring i min tankegang, mellem dine møder.</p>
+              <span class="soon">Under opbygning</span>
+            </div>
+            <div class="tier">
+              <div class="tm" aria-hidden="true"><i></i><i></i><i></i></div>
+              <h4>Retainer</h4>
+              <p>Den personlige rejse med mig. Minimum ni måneder, fortroligt, ingen rapportering.</p>
+              <a class="btn" href="/executive-coaching.html">Læs om executive coaching</a>
+            </div>
+          </div>
+        </div>
+
+        <footer class="p-foot">
+          <span>Thomas Friisnæs · Personal Excellence Partner · friisnaes.com</span>
+          <span id="p-ed">Karakter · Disciplin · Klarhed</span>
+        </footer>
+      </article>
+
+      <p class="paper-end no-print">
+        Siden ligger kun i din browser. <button type="button" class="link" id="p-wipe">Slet den</button> ·
+        <a href="/vaerktoejer.html">Alle værktøjer</a> · <a href="/library.html">Executive Library</a> · <a href="/vilkaar.html">Vilkår og privatliv</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// INDHOLD
+// ══════════════════════════════════════════════════════════════════
+const VERSION='0.1.0', STORE_KEY='hsdn_v1';
+
+// Gratisværktøjer på friisnaes.com (lag 1 og 2). Beskrivelserne er værktøjernes egne.
+const TOOLS={
+  'jeg-er-blevet-leder':{t:'Jeg er blevet leder',d:'Det første skifte: fra at gøre det selv til at få det gjort gennem andre.'},
+  'jeg-er-blevet-leders-leder':{t:'Leders leder',d:'At lede ledere er sin egen disciplin.'},
+  'saadan-leder-du-din-leder':{t:'Sådan leder du din leder',d:'Relationen opad er også dit ansvar.'},
+  'den-gode-1-on-1':{t:'Den gode 1:1',d:'Det tilbagevendende møde, der afgør relationen.'},
+  'den-gode-mus-leder':{t:'Den gode MUS som leder',d:'Samtalen, der skal være mere end et skema.'},
+  'kvaliteten-i-ledelsesdialoger':{t:'Kvaliteten i ledelsesdialoger',d:'Frameworks til organisationens vigtigste samtaler.'},
+  'den-svaere-samtale':{t:'Den svære samtale',d:'Lederkommunikation under pres: de fem mønstre og deres pris.'},
+  'personal-excellence-diagnostic':{t:'Personal Excellence Diagnostic',d:'Den grundige udgave: 16 dimensioner i karakter, disciplin og klarhed.'},
+  'selvledelse':{t:'Selvledelse',d:'Ledelse af dig selv, før du leder andre.'},
+  'selvtillid':{t:'Selvtillid',d:'Troen på, at du kan, bygget på det, du faktisk gør.'},
+  'selvvaerd':{t:'Selvværd',d:'Værdien uafhængigt af præstation. Det dybere lag under alt det andet.'},
+  'impostor-syndrom':{t:'Impostor-syndrom',d:'Når du venter på at blive afsløret, selv om tallene siger noget andet.'},
+  'arbejdsglaeden':{t:'Arbejdsglæden',d:'Hvor den kommer fra, og hvad der dræner den.'},
+  'purpose':{t:'Purpose',d:'Dit hvorfor som dagligt beslutningsfilter.'},
+  'strategi-for-dig-selv':{t:'Strategi for dig selv',d:'Samme disciplin, som du bruger på virksomheden, brugt på dig.'},
+  'not-to-do':{t:'Not-to-do',d:'Ledelsens mest oversete disciplin: det, du holder op med.'},
+  'hvad-er-kultur':{t:'Hvad er kultur',d:'Det, organisationen gør, når du ikke kigger.'},
+  'blinde-vinkler':{t:'Blinde vinkler',d:'Det, alle andre kan se, og du ikke kan.'},
+  'coaching101':{t:'Coaching 101',d:'Grundforløbet. Fordi kun de, der vokser, forbliver relevante.'}
+};
+
+// Del 1: tre valg
+const CHOICES=[
+  {id:'rolle',q:'Hvad er <em>din rolle</em> lige nu?',hint:'Den, du faktisk har. Ikke titlen.',opts:[
+    {k:'ny',t:'Jeg er lige blevet leder',place:'ny leder',tools:['jeg-er-blevet-leder','den-gode-1-on-1']},
+    {k:'leders',t:'Jeg leder ledere',place:'leder af ledere',tools:['jeg-er-blevet-leders-leder','kvaliteten-i-ledelsesdialoger']},
+    {k:'direktion',t:'Jeg sidder i direktionen',place:'medlem af direktionen',tools:['saadan-leder-du-din-leder','blinde-vinkler']},
+    {k:'ceo',t:'Jeg er CEO eller ejerleder',place:'CEO eller ejerleder',tools:['blinde-vinkler','strategi-for-dig-selv']},
+    {k:'selv',t:'Jeg leder ikke andre. Jeg leder mig selv',place:'leder af dig selv',tools:['selvledelse','purpose']}
+  ]},
+  {id:'situation',q:'Hvilken sætning er <em>tættest på</em> din situation?',hint:'Vælg den, der gør mest ondt. Ikke den, der lyder bedst.',opts:[
+    {k:'eksekvering',t:'Strategien er god, men organisationen leverer ikke',place:'strategien bliver ikke eksekveret',reads:[['eksekveringsgabet.html','Eksekveringsgabet','Eksekveringsserien'],['prioriteringsparalysen.html','Prioriteringsparalysen','Eksekveringsserien'],['holdet-bag-strategien-strategien-bestemmer-holdet.html','Strategien bestemmer holdet','Holdet bag strategien']]},
+    {k:'hold',t:'Direktionen er dygtig, men fungerer ikke som hold',place:'direktionen fungerer ikke som hold',reads:[['holdet-bag-strategien-syv-stjerner-er-ikke-et-stjernehold.html','Syv stjerner er ikke et stjernehold','Holdet bag strategien'],['den-tavse-direktion.html','Den tavse direktion','C-Level Serien'],['holdet-bag-strategien-uenighed-uden-krig.html','Uenighed uden krig','Holdet bag strategien']]},
+    {k:'udvikle',t:'Jeg skal vurdere og udvikle mine ledere',place:'du skal vurdere og udvikle dine ledere',reads:[['holdet-bag-strategien-karakteren-bag-kompetencen.html','Karakteren bag kompetencen','Holdet bag strategien'],['karakter-under-pres.html','Karakter under pres','C-Level Serien'],['holdet-bag-strategien-potentiale-skal-omsaettes.html','Potentiale skal omsættes','Holdet bag strategien']]},
+    {k:'skifte',t:'Der skal skiftes i toppen',place:'der skal skiftes i toppen',reads:[['holdet-bag-strategien-spejlet.html','Spejlet','Holdet bag strategien'],['succession-som-strategi.html','Succession som strategi','C-Level Serien'],['holdet-bag-strategien-naar-pladsen-skal-skifte-haender.html','Når pladsen skal skifte hænder','Holdet bag strategien']]},
+    {k:'tempo',t:'Jeg kan ikke holde til det tempo, jeg har lagt',place:'tempoet holder ikke',reads:[['executive-longevity-belastning.html','Den usynlige regning: stress og regulering','Executive Longevity'],['executive-longevity-restitution.html','Restitution som disciplin','Executive Longevity'],['personligt-lederskab.html','Personligt lederskab','Eksekveringsserien']]},
+    {k:'jobbet',t:'Jobbet har flyttet sig under mig',place:'jobbet har flyttet sig under dig',reads:[['executive-coaching-2027-jobbet-flytter-sig-mens-du-sidder-i-det.html','Jobbet flytter sig, mens du sidder i det','Executive Coaching 2027'],['ensomheden-i-toppen.html','Ensomheden i toppen','Eksekveringsserien'],['modspillet-der-mangler.html','Modspillet der mangler','C-Level Serien']]},
+    {k:'mig',t:'Det handler mere om mig end om organisationen',place:'det handler om dig, før det handler om organisationen',reads:[['personligt-lederskab.html','Personligt lederskab','Eksekveringsserien'],['selvbedrag-i-toppen.html','Selvbedrag i toppen','C-Level Serien'],['disciplin-er-ikke-viljestyrke.html','Disciplin er ikke viljestyrke','C-Level Serien']]}
+  ]},
+  {id:'fylder',q:'Hvad fylder <em>mest hos dig selv?</em>',hint:'Ét svar. Det, du tænker på, når ingen spørger.',opts:[
+    {k:'samtale',t:'Samtalen, jeg udskyder',place:'en samtale, du udskyder',tools:['den-svaere-samtale','kvaliteten-i-ledelsesdialoger'],read:['de-udskudte-samtaler.html','De udskudte samtaler','Eksekveringsserien']},
+    {k:'tid',t:'Tiden og prioriteringerne',place:'tiden og prioriteringerne',tools:['not-to-do','strategi-for-dig-selv'],read:['struktur-saetter-fri-din-kalender-har-en-ejer.html','Din kalender har en ejer','Struktur sætter fri']},
+    {k:'tvivl',t:'Tvivlen på mig selv',place:'tvivlen på dig selv',tools:['selvvaerd','impostor-syndrom'],read:['karakter-under-pres.html','Karakter under pres','C-Level Serien']},
+    {k:'retning',t:'Retning og mening',place:'retning og mening',tools:['purpose','strategi-for-dig-selv'],read:['executive-longevity-mening.html','Motivet bag motoren','Executive Longevity']},
+    {k:'blind',t:'Det, jeg ikke selv kan se',place:'det, du ikke selv kan se',tools:['blinde-vinkler','personal-excellence-diagnostic'],read:['selvbedrag-i-toppen.html','Selvbedrag i toppen','C-Level Serien']},
+    {k:'energi',t:'Energi og tempo',place:'energi og tempo',tools:['arbejdsglaeden','not-to-do'],read:['executive-longevity-restitution.html','Restitution som disciplin','Executive Longevity']}
+  ]}
+];
+
+// Del 2: udviklingsparathed. Fire dimensioner, to udsagn hver.
+const DIMS={
+  nysgerrighed:{n:'Nysgerrighed',tool:'blinde-vinkler',
+    lav:'Du opsøger ikke det, du ikke vil høre. Det er der, udviklingen ligger, og du kommer ikke udenom den.',
+    mellem:'Du tager feedback, når den kommer. Du henter den ikke selv. Forskellen er stor over et år.',
+    hoej:'Du henter selv det ubehagelige. Så er spørgsmålet, hvad du gør med det.'},
+  indsigt:{n:'Indsigt',tool:'personal-excellence-diagnostic',
+    lav:'Du kan ikke sætte dit problem i én sætning. Så kan du heller ikke løse det. Start der.',
+    mellem:'Du ved, hvad der trykker. Du ved ikke, hvilken af dine styrker der skaber det.',
+    hoej:'Du ser dig selv tydeligt. Pas på, at indsigt ikke bliver en erstatning for handling.'},
+  engagement:{n:'Engagement',tool:'not-to-do',
+    lav:'Ingen omkring dig ved, hvad du arbejder på at ændre. Så sker det heller ikke.',
+    mellem:'Du mener det. Men ugen ser ikke sådan ud, når man kigger i kalenderen.',
+    hoej:'Du har sagt det højt, og din uge viser det. Det er den sjældneste af de fire.'},
+  beslutsomhed:{n:'Beslutsomhed',tool:'den-svaere-samtale',
+    lav:'Du beslutter, når det er trygt. Det, der venter på dig, er ikke trygt.',
+    mellem:'Du beslutter. Men du ved ikke altid, hvad du gør på tirsdag. Beslutningen stopper ved ordene.',
+    hoej:'Du beslutter og står ved det. Tjek, om det går ud over nogen, du ikke har spurgt.'}
+};
+const STATEMENTS=[
+  {d:'nysgerrighed',s:'Jeg opsøger selv feedback, også den, der er ubehagelig.'},
+  {d:'indsigt',s:'Jeg kan sige, hvad mit vigtigste problem er, i én sætning.'},
+  {d:'engagement',s:'Der er mennesker omkring mig, som ved, hvad jeg arbejder på at ændre ved mig selv.'},
+  {d:'beslutsomhed',s:'Jeg har inden for det seneste kvartal truffet en upopulær beslutning og stået ved den.'},
+  {d:'nysgerrighed',s:'Jeg har ændret mening om noget vigtigt inden for det seneste år.'},
+  {d:'indsigt',s:'Jeg ved, hvilken af mine styrker der bliver et problem under pres.'},
+  {d:'engagement',s:'Jeg bruger tid hver uge på det, der er vigtigst, ikke kun på det, der haster.'},
+  {d:'beslutsomhed',s:'Når jeg har besluttet noget, ved jeg, hvad jeg gør på tirsdag.'}
+];
+
+// Emner, et værktøj ikke skal arbejde videre med.
+const CARE_RE=/(\bsygemeld\w*|\bsygdom\w*|\bhelbred\w*|\bkræft\b|\bdepress\w*|\bangst\w*|\budbrændt\w*|\bsammenbrud\b|\bselvmord\w*|\bskilsmisse\w*|\bdødsfald\b|\bmisbrug\w*|personlig krise|krise i familien)/i;
+
+// ══════════════════════════════════════════════════════════════════
+// TILSTAND
+// ══════════════════════════════════════════════════════════════════
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fixQuotes=s=>String(s??'').replace(/[\u00BB\u00AB\u201E\u201C\u201D]/g,'"').replace(/[\u2018\u2019\u201A]/g,"'");
+const daDate=d=>new Date(d).toLocaleDateString('da-DK',{day:'numeric',month:'long',year:'numeric'});
+const LS={g(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null}catch(e){return null}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},d(k){try{localStorage.removeItem(k)}catch(e){}}};
+
+const TOTAL=CHOICES.length+STATEMENTS.length+1; // skærme før siden
+let A={choices:{},scale:[],own:'',ini:''};
+let pos=0; // 0..TOTAL-1
+
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const el=$('sc-'+id);el.classList.add('active');window.scrollTo(0,0);const inner=el.querySelector('.inner');if(inner){inner.style.animation='none';void inner.offsetWidth;inner.style.animation=''}}
+function setProgress(f){$('progress').style.width=Math.max(0,Math.min(1,f))*100+'%'}
+
+function render(){
+  setProgress(pos/TOTAL);
+  if(pos<CHOICES.length)return renderChoice(CHOICES[pos]);
+  if(pos<CHOICES.length+STATEMENTS.length)return renderScale(pos-CHOICES.length);
+  renderText();
+}
+function next(){pos=Math.min(TOTAL,pos+1);if(pos>=TOTAL)return finish();render()}
+function back(){if(pos===0){show('intro');setProgress(0);return}pos-=1;render()}
+
+function renderChoice(c){
+  const i=CHOICES.indexOf(c);
+  $('ch-kicker').innerHTML=`<b>1</b> / 3 · Hvor du står · ${i+1} af ${CHOICES.length}`;
+  $('ch-q').innerHTML=c.q;$('ch-hint').textContent=c.hint;
+  const sel=A.choices[c.id];
+  $('ch-opts').innerHTML=c.opts.map((o,k)=>`<li><button type="button" class="opt" data-k="${o.k}" aria-pressed="${sel===o.k}"><span class="n">0${k+1}</span><span>${esc(o.t)}</span></button></li>`).join('');
+  $('ch-opts').querySelectorAll('.opt').forEach(b=>b.addEventListener('click',()=>{A.choices[c.id]=b.dataset.k;b.setAttribute('aria-pressed','true');setTimeout(next,160)}));
+  show('choice');
+}
+function renderScale(i){
+  const st=STATEMENTS[i];
+  $('sk-kicker').innerHTML=`<b>2</b> / 3 · Hvor parat du er · ${i+1} af ${STATEMENTS.length}`;
+  $('sk-q').textContent=st.s;$('sk-hint').textContent='Svar på det seneste år, ikke på dit bedste år.';
+  const v=A.scale[i];
+  $('sk-scale').innerHTML=[1,2,3,4,5].map(n=>`<button type="button" data-v="${n}" aria-pressed="${v===n}" aria-label="${n} af 5">${n}</button>`).join('');
+  $('sk-scale').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{A.scale[i]=+b.dataset.v;b.setAttribute('aria-pressed','true');setTimeout(next,160)}));
+  show('scale');
+}
+function renderText(){
+  $('tx-a').value=A.own||'';$('tx-ini').value=A.ini||'';
+  show('text');setTimeout(()=>$('tx-a').focus(),60);
+}
+
+document.addEventListener('keydown',e=>{
+  const act=document.querySelector('.screen.active')?.id;
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  if(act==='sc-choice'&&/^[1-7]$/.test(e.key)){const b=$('ch-opts').querySelectorAll('.opt')[+e.key-1];if(b){e.preventDefault();b.click()}}
+  if(act==='sc-scale'&&/^[1-5]$/.test(e.key)){const b=$('sk-scale').querySelector(`[data-v="${e.key}"]`);if(b){e.preventDefault();b.click()}}
+});
+$('ch-back').addEventListener('click',back);
+$('sk-back').addEventListener('click',back);
+$('tx-back').addEventListener('click',back);
+$('tx-a').addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();$('tx-form').requestSubmit()}});
+$('tx-form').addEventListener('submit',e=>{e.preventDefault();A.own=fixQuotes($('tx-a').value.trim());A.ini=$('tx-ini').value.trim().toUpperCase().replace(/[^A-ZÆØÅ.]/g,'').slice(0,4);finish()});
+
+$('start').addEventListener('click',()=>{A={choices:{},scale:[],own:'',ini:''};pos=0;render()});
+$('open-last').addEventListener('click',()=>{const r=LS.g(STORE_KEY);if(r){renderResult(r);show('result');setProgress(1)}});
+$('p-again').addEventListener('click',()=>{pos=0;render()});
+$('p-print').addEventListener('click',()=>window.print());
+$('p-copy').addEventListener('click',async()=>{const r=LS.g(STORE_KEY);if(!r)return;await copyText(resultText(r));const b=$('p-copy');const o=b.textContent;b.textContent='Kopieret';setTimeout(()=>b.textContent=o,1600)});
+$('p-wipe').addEventListener('click',()=>{LS.d(STORE_KEY);A={choices:{},scale:[],own:'',ini:''};$('open-last').hidden=true;show('intro');setProgress(0)});
+async function copyText(t){try{await navigator.clipboard.writeText(t)}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}}
+
+(function boot(){const r=LS.g(STORE_KEY);if(r&&r.at)$('open-last').hidden=false})();
+
+// ══════════════════════════════════════════════════════════════════
+// BEREGNING
+// ══════════════════════════════════════════════════════════════════
+function opt(id){const c=CHOICES.find(x=>x.id===id);return c.opts.find(o=>o.k===A.choices[id])||c.opts[0]}
+function level(score){return score<=4?'lav':score<=7?'mellem':'hoej'}
+function compute(){
+  const rolle=opt('rolle'),sit=opt('situation'),fyl=opt('fylder');
+  const scores={};
+  STATEMENTS.forEach((st,i)=>{scores[st.d]=(scores[st.d]||0)+(A.scale[i]||3)});
+  const dims=Object.keys(DIMS).map(k=>({k,n:DIMS[k].n,score:scores[k],lvl:level(scores[k]),text:DIMS[k][level(scores[k])],tool:DIMS[k].tool}));
+  const lowest=[...dims].sort((a,b)=>a.score-b.score)[0];
+  const total=dims.reduce((s,d)=>s+d.score,0);
+  // Tre skridt: det, der fylder, rollen, den laveste dimension. Uden gentagelser.
+  const picks=[];const why={};
+  const add=(slug,w)=>{if(slug&&TOOLS[slug]&&!picks.includes(slug)&&picks.length<3){picks.push(slug);why[slug]=w}};
+  add(fyl.tools[0],`Fordi det, der fylder mest, er ${fyl.place}.`);
+  add(rolle.tools[0],`Fordi du er ${rolle.place}.`);
+  add(lowest.tool,`Fordi ${lowest.n.toLowerCase()} er din laveste af de fire.`);
+  add(fyl.tools[1],`Fordi det, der fylder mest, er ${fyl.place}.`);
+  add(rolle.tools[1],`Fordi du er ${rolle.place}.`);
+  const reads=[...sit.reads.slice(0,2),fyl.read].filter((r,i,a)=>a.findIndex(x=>x[0]===r[0])===i).slice(0,3);
+  return{at:new Date().toISOString(),version:VERSION,ini:A.ini,own:A.own,rolle:rolle.place,situation:sit.place,fylder:fyl.place,dims,lowest:lowest.k,total,picks,why,reads,care:CARE_RE.test(A.own)};
+}
+function finish(){const r=compute();LS.s(STORE_KEY,r);$('open-last').hidden=false;renderResult(r);setProgress(1);show('result')}
+
+function renderResult(r){
+  $('p-ini').textContent=r.ini||'–';
+  $('p-date').textContent=daDate(r.at);
+  $('p-place').innerHTML=`Du er <strong>${esc(r.rolle)}</strong>. Tættest på din situation: <strong>${esc(r.situation)}</strong>. Det, der fylder mest hos dig selv: <strong>${esc(r.fylder)}</strong>.`;
+  $('p-dims').innerHTML=r.dims.map(d=>`<li class="dim"><span class="dn">${esc(d.n)}</span><span class="bar" aria-label="${d.score} af 10"><i style="width:${(d.score/10)*100}%"></i></span><span class="dt"><b>${d.score} af 10.</b> ${esc(d.text)}</span></li>`).join('');
+  const low=r.dims.find(d=>d.k===r.lowest);
+  $('p-dimsum').innerHTML=`Samlet <strong>${r.total} af 40</strong>. ${r.total>=32?'Du er parat. Så er det ikke parathed, der mangler, men en konkret aftale med dig selv.':r.total>=22?'Du er parat nok til at flytte dig, hvis du vælger ét sted at begynde. Det er '+esc(low.n.toLowerCase())+'.':'Parathed kommer før udvikling. Begynd med '+esc(low.n.toLowerCase())+', og lad resten vente.'}`;
+  $('p-steps').innerHTML=r.picks.map(s=>`<li><div><a href="/vaerktoejer/${s}/">${esc(TOOLS[s].t)}</a><div class="why">${esc(r.why[s])} ${esc(TOOLS[s].d)}</div></div></li>`).join('');
+  $('p-reads').innerHTML=r.reads.map(x=>`<li><a href="/${x[0]}">${esc(x[1])}</a><span class="ser">${esc(x[2])}</span></li>`).join('');
+  const own=$('p-own');
+  if(r.own){own.textContent=r.own;own.classList.remove('empty')}else{own.textContent='Du skrev ikke, hvad der skal være anderledes om 90 dage. Det er i sig selv et svar.';own.classList.add('empty')}
+  $('p-first').innerHTML=`<strong>Første skridt:</strong> åbn ${esc(TOOLS[r.picks[0]].t)} i dag, og sæt 20 minutter af i kalenderen til det. Ikke i morgen.`;
+  $('p-care').hidden=!r.care;
+}
+function resultText(r){
+  const line='─'.repeat(44);
+  let t=`HVOR STÅR DU NU?\nGratis · Diagnose\n${r.ini||'–'} · ${daDate(r.at)} · friisnaes.com\n${line}\n\nPLACERINGEN\nDu er ${r.rolle}. Tættest på din situation: ${r.situation}. Det, der fylder mest hos dig selv: ${r.fylder}.\n\n${line}\n\nUDVIKLINGSPARATHED (${r.total} af 40)\n`;
+  r.dims.forEach(d=>{t+=`${d.n}: ${d.score} af 10. ${d.text}\n`});
+  t+=`\n${line}\n\nSTART HER\n`;
+  r.picks.forEach((s,i)=>{t+=`${i+1}. ${TOOLS[s].t}: https://www.friisnaes.com/vaerktoejer/${s}/\n   ${r.why[s]}\n`});
+  t+=`\nLÆS\n`;r.reads.forEach(x=>{t+=`- ${x[1]} (${x[2]}): https://www.friisnaes.com/${x[0]}\n`});
+  t+=`\nOM 90 DAGE\n${r.own||'–'}\nFørste skridt: åbn ${TOOLS[r.picks[0]].t} i dag.\n\n${line}\nThomas Friisnæs · Personal Excellence Partner · friisnaes.com\n`;
+  return t;
+}
+</script>
+</body>
+</html>
