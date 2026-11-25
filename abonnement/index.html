@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="version" content="0.1.0">
-<title>Abonnement | Friisnæs</title>
-<meta name="description" content="Abonnementet på friisnaes.com: træning, beslutning og hukommelse med modspil i Thomas Friisnæs' tankegang. Adgang efter invitation.">
+<meta name="version" content="0.2.0">
+<title>Processen | Friisnæs</title>
+<meta name="description" content="Abonnementet på friisnaes.com: en automatiseret coachingproces på 12 uger med modspil i Thomas Friisnæs' tankegang. Adgang efter invitation.">
 <meta name="author" content="Thomas Friisnæs">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
@@ -15,8 +15,8 @@
 <meta property="og:site_name" content="Friisnæs">
 <meta property="og:locale" content="da_DK">
 <meta property="og:url" content="https://www.friisnaes.com/abonnement/">
-<meta property="og:title" content="Abonnement | Friisnæs">
-<meta property="og:description" content="Træning, beslutning og hukommelse med modspil i Thomas Friisnæs' tankegang. Adgang efter invitation.">
+<meta property="og:title" content="Processen | Friisnæs">
+<meta property="og:description" content="En automatiseret coachingproces på 12 uger med modspil i Thomas Friisnæs' tankegang. Adgang efter invitation.">
 <meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -29,57 +29,91 @@
   /* Abonnementet er mørkt, to røde streger. Samme familie som papers: #111, #f5f4f0, #c0392b. */
   :root{--ink:#111;--ink-2:#1a1a1a;--ink-3:#222;--off:#f5f4f0;--red:#c0392b;--red-l:#e74c3c;--txt:rgba(245,244,240,.92);--txt-2:rgba(245,244,240,.64);--txt-3:rgba(245,244,240,.44);--rule:rgba(245,244,240,.12);--rule-2:rgba(245,244,240,.22);--serif:'Playfair Display',Georgia,serif;--sans:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
   body{background:var(--ink);color:var(--txt);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.65;min-height:100vh;-webkit-font-smoothing:antialiased}
   h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15}
   button,input,textarea,select{font-family:var(--sans);font-size:inherit;color:inherit}
   button{cursor:pointer;border:0;background:none}
+  a{color:inherit}
   :focus-visible{outline:2px solid var(--red-l);outline-offset:3px}
   [hidden]{display:none!important}
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:100;transition:width .45s ease}
   .mark{position:fixed;top:22px;right:24px;display:flex;flex-direction:column;gap:5px;z-index:90;pointer-events:none}
   .mark i{display:block;width:22px;height:2px;background:var(--red)}.mark i:nth-child(2){width:16px}
-  .top{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;z-index:80;pointer-events:none}
+  .top{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;z-index:80;pointer-events:none;background:linear-gradient(var(--ink),rgba(17,17,17,0))}
   .top>*{pointer-events:auto}
   .brand{font-family:var(--serif);font-size:20px;color:#fff;text-decoration:none}.brand em{font-style:italic;color:var(--red-l)}
   .kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--red-l);font-weight:500;margin-right:52px}
-  main{max-width:720px;margin:0 auto;padding:110px 24px 80px}
+  main{max-width:720px;margin:0 auto;padding:100px 24px 80px}
   .screen{display:none}.screen.active{display:block;animation:rise .4s ease both}
   @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
   .step-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-3);font-weight:500;margin-bottom:18px}
-  h1{font-size:clamp(34px,5.5vw,52px);font-weight:400;letter-spacing:-.01em;color:#fff;margin-bottom:14px}h1 em{font-style:italic;color:var(--red-l)}
-  .hint{color:var(--txt-2);margin-bottom:26px;max-width:540px}
+  .step-kicker b{color:var(--red-l);font-weight:500}
+  h1{font-size:clamp(32px,5.5vw,50px);font-weight:400;letter-spacing:-.01em;color:#fff;margin-bottom:14px}h1 em{font-style:italic;color:var(--red-l)}
+  .hint{color:var(--txt-2);margin-bottom:24px;max-width:560px}
+  .lead{font-family:var(--serif);font-size:clamp(18px,2.4vw,21px);line-height:1.5;color:var(--txt);max-width:600px;margin-bottom:22px}
   label{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-2);margin-bottom:8px;font-weight:500}
   .fg{margin-bottom:16px}
   input[type=text],input[type=email],input[type=password],textarea,select{display:block;width:100%;background:var(--ink-2);border:1px solid var(--rule-2);border-radius:3px;padding:12px 14px;color:var(--txt);transition:border-color .2s}
   input:focus,textarea:focus,select:focus{border-color:var(--red-l);outline:none}
   input::placeholder,textarea::placeholder{color:var(--txt-3)}
-  textarea{min-height:120px;resize:vertical;line-height:1.6}
+  textarea{min-height:100px;resize:vertical;line-height:1.6}
   .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:2px;font-size:15px;font-weight:500}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:2px;font-size:15px;font-weight:500;text-decoration:none}
   .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-l)}.btn-red:disabled{opacity:.45;cursor:default}
   .btn-ghost{color:var(--txt-2);border:1px solid var(--rule-2)}.btn-ghost:hover{color:#fff;border-color:var(--txt-3)}
   .link{color:var(--txt-3);font-size:13px;text-decoration:underline;text-underline-offset:3px}.link:hover{color:var(--red-l)}
   .msg{font-size:14px;margin-top:12px;color:var(--txt-2)}.msg.err{color:var(--red-l)}
-  .card{border:1px solid var(--rule);border-radius:3px;padding:22px 24px;margin:0 0 18px;background:var(--ink-2)}
-  .card h2{font-size:22px;margin-bottom:6px;color:#fff}.card .sub{font-size:13px;color:var(--txt-3);margin-bottom:14px}
+  .card{border:1px solid var(--rule);border-radius:3px;padding:22px 24px;margin:0 0 16px;background:var(--ink-2);position:relative}
+  .card h2{font-size:22px;margin-bottom:6px;color:#fff}.card .sub{font-size:13px;color:var(--txt-3);margin-bottom:12px}
+  .card.done{border-color:rgba(192,57,43,.45)}
+  .card .day{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red-l);font-weight:600;margin-bottom:6px}
+  .card .state{position:absolute;top:22px;right:24px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--txt-3)}
+  .card .state.ok{color:var(--red-l)}
+  .card p{color:var(--txt-2);font-size:15px;margin-bottom:10px}
+  .card p.own{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--txt);border-left:2px solid var(--red);padding-left:16px}
+  .links{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:8px}
+  .links a{font-size:14px;text-decoration:none;border-bottom:1px solid rgba(231,76,60,.4);padding-bottom:1px}
+  .links a:hover{color:var(--red-l);border-bottom-color:var(--red-l)}
+  .links .ser{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--txt-3);margin-left:6px}
   .status{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:8px 0 4px}
   .status div{border-top:1px solid var(--rule);padding-top:10px}.status b{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-3);font-weight:500;margin-bottom:4px}
-  .chat{display:flex;flex-direction:column;gap:12px;max-height:420px;overflow:auto;padding:4px 0 8px}
+  .weeks{list-style:none;margin:10px 0 0;border-top:1px solid var(--rule)}
+  .weeks li{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px}
+  .weeks li .n{font-family:var(--serif);color:var(--red-l)}
+  .weeks li .blok{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--txt-3)}
+  .weeks li.locked{color:var(--txt-3)}
+  .weeks li button{text-align:left;color:inherit;font:inherit}
+  .weeks li button:hover{color:var(--red-l)}
+  .chat{display:flex;flex-direction:column;gap:12px;max-height:50vh;overflow:auto;padding:4px 0 8px}
   .m{max-width:88%;padding:12px 16px;border-radius:3px;line-height:1.6;white-space:pre-wrap}
   .m.user{align-self:flex-end;background:var(--ink-3);border:1px solid var(--rule)}
   .m.ai{align-self:flex-start;border-left:2px solid var(--red);padding-left:16px;font-family:var(--serif);font-size:17px}
-  .m.sys{align-self:center;color:var(--txt-3);font-size:13px}
+  .m.sys{align-self:center;color:var(--txt-3);font-size:13px;text-align:center}
   .thinking{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--txt-3);min-height:20px}
   .thinking i{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 1.1s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
-  .foot{font-size:13px;color:var(--txt-3);margin-top:30px;line-height:1.7}
-  @media(max-width:600px){.top{padding:16px 18px}.kicker{display:none}main{padding:90px 18px 48px}}
+  .choice{display:flex;gap:8px;flex-wrap:wrap}
+  .choice button{padding:10px 16px;border:1px solid var(--rule-2);border-radius:3px;color:var(--txt-2);font-size:15px}
+  .choice button[aria-pressed=true]{border-color:var(--red);color:#fff;box-shadow:inset 0 -3px 0 var(--red)}
+  .paper{background:var(--off);color:#111;padding:clamp(28px,5vw,48px);border-radius:3px;margin-top:8px}
+  .paper .p-kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--red);font-weight:500;margin-bottom:12px}
+  .paper h2{font-size:28px;color:#111;margin-bottom:12px}
+  .paper .body{font-size:16px;line-height:1.7;white-space:pre-wrap;color:#111}
+  .paper .foot{margin-top:18px;padding-top:12px;border-top:1px solid rgba(17,17,17,.12);font-size:12px;color:rgba(17,17,17,.5)}
+  .foot-nav{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px;font-size:13px;color:var(--txt-3)}
+  .foot-nav button,.foot-nav a{color:var(--txt-3);text-decoration:underline;text-underline-offset:3px;font-size:13px}
+  .foot-nav button:hover,.foot-nav a:hover{color:var(--red-l)}
+  @media(max-width:600px){.top{padding:16px 18px}.kicker{display:none}main{padding:84px 18px 48px}.card .state{position:static;margin-bottom:6px}.weeks li{grid-template-columns:30px 1fr}.weeks li .blok{grid-column:2}}
+  @media print{.progress,.mark,.top,.foot-nav,.row,.btn,.hint,.step-kicker,h1{display:none!important}body{background:#fff;color:#111}.paper{padding:0}}
 </style>
 </head>
 <body>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <div class="mark" aria-hidden="true"><i></i><i></i></div>
 <header class="top">
   <a class="brand" href="/" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
-  <div class="kicker">Abonnement · Spring 1</div>
+  <div class="kicker" id="top-kicker">Abonnement</div>
 </header>
 
 <main>
@@ -99,7 +133,7 @@
   <!-- PIN -->
   <section id="sc-pin" class="screen">
     <div class="step-kicker" id="pin-kicker">Logget ind</div>
-    <h1 id="pin-h">Din <em>PIN.</em></h1>
+    <h1>Din <em>PIN.</em></h1>
     <p class="hint" id="pin-hint"></p>
     <form id="f-pin" novalidate>
       <div class="fg"><label for="pin">PIN (4 til 8 cifre)</label><input type="password" id="pin" inputmode="numeric" maxlength="8" placeholder="••••" autocomplete="current-password" style="max-width:240px"></div>
@@ -110,14 +144,135 @@
     </form>
   </section>
 
-  <!-- App -->
-  <section id="sc-app" class="screen">
-    <div class="step-kicker">Spring 1 · motoren</div>
-    <h1>Motoren <em>kører.</em></h1>
-    <p class="hint">Det her er afprøvningssiden. Den viser, at login, det krypterede lager og modspillet virker, før processen bygges ovenpå.</p>
-
+  <!-- Start: før uge 1 -->
+  <section id="sc-start" class="screen">
+    <div class="step-kicker">Processen · 12 uger</div>
+    <h1>Om 12 uger har du <em>ændret én ting.</em></h1>
+    <p class="lead">Ikke indsigt. Ikke inspiration. Én adfærd, som mennesker omkring dig kan se. Tre blokke: Karakter, Disciplin, Klarhed. Ét tema om ugen, modspil undervejs, review om fredagen.</p>
+    <div class="card" id="start-placering" hidden>
+      <div class="day">Din placering fra døren</div>
+      <p id="start-placering-text"></p>
+      <p class="own" id="start-own"></p>
+    </div>
     <div class="card">
-      <h2>Status</h2>
+      <div class="day">Sådan ser en uge ud</div>
+      <p><strong style="font-weight:500;color:var(--txt)">Mandag.</strong> Ugens tema åbner: ét spørgsmål, ét paper, ét værktøj. 20 minutter.</p>
+      <p><strong style="font-weight:500;color:var(--txt)">Tirsdag til torsdag.</strong> Træning med modspil, 15 minutter ad gangen, når det passer dig.</p>
+      <p><strong style="font-weight:500;color:var(--txt)">Fredag.</strong> Tre spørgsmål, én aftale for næste uge, tre linjer i logbogen. Ti minutter.</p>
+      <p><strong style="font-weight:500;color:var(--txt)">Hver fjerde uge.</strong> Mønsterspejlet læser dine fire uger og viser det, der gentager sig.</p>
+    </div>
+    <div class="row"><button type="button" class="btn btn-red" id="b-start">Begynd uge 1</button><button type="button" class="link" id="b-konto-start">Konto</button></div>
+    <p class="msg">Ugen regnes fra i dag. Det, du skriver, krypteres i din browser og følger dig på tværs af enheder.</p>
+  </section>
+
+  <!-- Ugen -->
+  <section id="sc-week" class="screen">
+    <div class="step-kicker" id="wk-kicker"></div>
+    <h1 id="wk-title"></h1>
+    <p class="lead" id="wk-intro"></p>
+
+    <div class="card" id="wk-monday">
+      <div class="day">Mandag · ugens tema</div>
+      <span class="state" id="wk-monday-state"></span>
+      <p id="wk-monday-text"></p>
+      <div class="links" id="wk-links"></div>
+      <form id="f-monday" novalidate style="margin-top:16px">
+        <div class="fg"><label for="monday-a" id="monday-q"></label><textarea id="monday-a" rows="2" placeholder="Én sætning."></textarea></div>
+        <div class="row" style="margin-top:6px"><button type="submit" class="btn btn-ghost">Gem</button><span class="msg" id="monday-msg" style="margin:0"></span></div>
+      </form>
+    </div>
+
+    <div class="card" id="wk-training">
+      <div class="day">Tirsdag til torsdag · træning</div>
+      <span class="state" id="wk-training-state"></span>
+      <p>Modspil i Thomas' tankegang. Skriv kort og konkret. Skriv "stop" for at bryde et rollespil.</p>
+      <div class="row" id="wk-training-btns" style="margin-top:8px"></div>
+    </div>
+
+    <div class="card" id="wk-friday">
+      <div class="day">Fredag · ugens review</div>
+      <span class="state" id="wk-friday-state"></span>
+      <p>Tre spørgsmål, én aftale for næste uge, tre linjer i logbogen. Ti minutter.</p>
+      <div class="row" style="margin-top:8px"><button type="button" class="btn btn-red" id="b-review">Åbn ugens review</button></div>
+    </div>
+
+    <div class="card" id="wk-moenster" hidden>
+      <div class="day">Hver fjerde uge · mønsterspejlet</div>
+      <span class="state" id="wk-moenster-state"></span>
+      <p>Fire ugers aftaler, reviews og logbog, læst igennem for det, der gentager sig. Én side, ingen råd.</p>
+      <div class="row" style="margin-top:8px"><button type="button" class="btn btn-red" id="b-moenster">Åbn mønsterspejlet</button></div>
+    </div>
+
+    <div class="foot-nav">
+      <button type="button" id="b-weeks">Alle uger</button>
+      <button type="button" id="b-next-week" hidden>Gå til næste uge nu</button>
+      <button type="button" id="b-konto">Konto</button>
+    </div>
+  </section>
+
+  <!-- Alle uger -->
+  <section id="sc-weeks" class="screen">
+    <div class="step-kicker">Processen · 12 uger</div>
+    <h1>Alle <em>uger.</em></h1>
+    <p class="hint">Uger, der ligger forude, åbner på deres mandag. Du kan altid gå tilbage.</p>
+    <ol class="weeks" id="weeks-list"></ol>
+    <div class="foot-nav"><button type="button" id="b-weeks-back">Tilbage til ugen</button></div>
+  </section>
+
+  <!-- Samtale: ét kildekort i én uge -->
+  <section id="sc-chat" class="screen">
+    <div class="step-kicker" id="ch-kicker"></div>
+    <h1 id="ch-title"></h1>
+    <p class="hint" id="ch-hint"></p>
+    <div class="chat" id="chat"></div>
+    <div class="thinking" id="thinking" hidden><i></i><span>Læser med.</span></div>
+    <form id="f-chat" novalidate>
+      <div class="fg"><textarea id="say" rows="3" placeholder="Skriv kort og konkret. Cmd+Enter sender."></textarea></div>
+      <div class="row"><button type="submit" class="btn btn-red" id="b-say">Send</button><button type="button" class="btn btn-ghost" id="b-chat-back">Tilbage til ugen</button><span class="msg" id="chat-msg" style="margin:0"></span></div>
+    </form>
+    <div class="foot-nav"><button type="button" id="b-clear">Ryd samtalen</button></div>
+  </section>
+
+  <!-- Fredagens review -->
+  <section id="sc-review" class="screen">
+    <div class="step-kicker" id="rv-kicker"></div>
+    <h1>Ugens <em>review.</em></h1>
+    <p class="hint">Skriv det, som det er. Et "delvist" er et nej med en forklaring.</p>
+    <form id="f-review" novalidate>
+      <div class="fg"><label>1. Holdt du aftalen fra mandag?</label><p id="rv-aftale" style="font-family:var(--serif);font-style:italic;font-size:17px;color:var(--txt);border-left:2px solid var(--red);padding-left:14px;margin:0 0 10px"></p><div class="choice" id="rv-q1"><button type="button" data-v="ja">Ja</button><button type="button" data-v="nej">Nej</button><button type="button" data-v="delvist">Delvist</button></div></div>
+      <div class="fg"><label for="rv-q2">2. Hvad skete der faktisk, da du prøvede?</label><textarea id="rv-q2" rows="3" placeholder="Det, der skete. Ikke det, du tænkte om det."></textarea></div>
+      <div class="fg"><label for="rv-q3">3. Hvad gør du anderledes i næste uge, og hvilken dag?</label><textarea id="rv-q3" rows="2"></textarea></div>
+      <div class="fg"><label for="rv-next">Aftalen for næste uge, i én sætning med en dag</label><input type="text" id="rv-next" placeholder="Tirsdag kl. 9 ringer jeg til ..."></div>
+      <div class="fg"><label for="rv-log">Logbogen: tre linjer. Det, jeg gjorde. Det, jeg undgik. Det, jeg vil huske om fire uger.</label><textarea id="rv-log" rows="3"></textarea></div>
+      <div class="row"><button type="button" class="btn btn-ghost" id="b-review-ai">Få modspil på reviewet</button><button type="submit" class="btn btn-red" id="b-review-close">Luk ugen</button><button type="button" class="link" id="b-review-back">Tilbage</button></div>
+      <div class="thinking" id="rv-thinking" hidden><i></i><span>Læser med.</span></div>
+      <div class="m ai" id="rv-ai" hidden style="margin-top:14px;max-width:100%"></div>
+      <p class="msg" id="rv-msg"></p>
+    </form>
+  </section>
+
+  <!-- Mønsterspejlet -->
+  <section id="sc-moenster" class="screen">
+    <div class="step-kicker" id="mo-kicker"></div>
+    <h1>Mønster<em>spejlet.</em></h1>
+    <p class="hint">Det, du selv har skrevet i fire uger, læst igennem for det, der gentager sig. Ingen råd. Det sidste punkt er et spørgsmål, som kun Thomas kan svare på.</p>
+    <div class="row" style="margin-top:0"><button type="button" class="btn btn-red" id="b-moenster-run">Hent mønstret</button><button type="button" class="link" id="b-moenster-back">Tilbage til ugen</button></div>
+    <div class="thinking" id="mo-thinking" hidden><i></i><span>Læser fire uger.</span></div>
+    <p class="msg" id="mo-msg"></p>
+    <div class="paper" id="mo-paper" hidden>
+      <div class="p-kicker">Abonnement · Mønsterspejlet</div>
+      <h2>Det, der gentager sig.</h2>
+      <div class="body" id="mo-body"></div>
+      <div class="foot"><span id="mo-foot"></span> · Thomas Friisnæs · friisnaes.com</div>
+    </div>
+    <div class="row" id="mo-actions" hidden><button type="button" class="btn btn-ghost" id="b-moenster-copy">Kopiér teksten</button><button type="button" class="btn btn-ghost" id="b-moenster-print">Udskriv</button><button type="button" class="btn btn-red" id="b-moenster-share">Del med Thomas</button></div>
+  </section>
+
+  <!-- Konto -->
+  <section id="sc-konto" class="screen">
+    <div class="step-kicker">Konto</div>
+    <h1>Din <em>konto.</em></h1>
+    <div class="card">
       <div class="status">
         <div><b>Logget ind som</b><span id="st-email"></span></div>
         <div><b>Abonnement</b><span id="st-sub"></span></div>
@@ -131,27 +286,8 @@
       </div>
       <p class="msg" id="st-msg"></p>
     </div>
-
-    <div class="card">
-      <h2>Modspil</h2>
-      <div class="sub">Vælg kildekort. Skriv som til Thomas. Skriv "stop" for at bryde et rollespil.</div>
-      <div class="fg"><select id="kort"></select></div>
-      <div class="chat" id="chat"></div>
-      <div class="thinking" id="thinking" hidden><i></i><span>Læser med.</span></div>
-      <form id="f-chat" novalidate>
-        <div class="fg"><textarea id="say" rows="3" placeholder="Skriv kort og konkret. Cmd+Enter sender."></textarea></div>
-        <div class="row"><button type="submit" class="btn btn-red" id="b-say">Send</button><button type="button" class="link" id="b-clear">Ryd samtalen</button><span class="msg" id="chat-msg" style="margin:0"></span></div>
-      </form>
-    </div>
-
-    <div class="card">
-      <h2>Logbog</h2>
-      <div class="sub">Tre linjer. Gemmes krypteret og følger dig på tværs af enheder.</div>
-      <div class="fg"><textarea id="log" rows="4" placeholder="Det, jeg gjorde. Det, jeg undgik. Det, jeg vil huske om fire uger."></textarea></div>
-      <div class="row"><button type="button" class="btn btn-red" id="b-save">Gem krypteret</button><button type="button" class="btn btn-ghost" id="b-reload">Hent igen</button><span class="msg" id="save-msg" style="margin:0"></span></div>
-    </div>
-
-    <p class="foot">Alt, du skriver, krypteres i din browser med en nøgle afledt af din PIN, før det sendes. Motoren og Thomas kan ikke læse det. Modspillet sendes til AI-modellen uden navne og uden at blive gemt. <button type="button" class="link" id="b-wipe">Slet min konto og alt indhold</button></p>
+    <p class="msg">Alt, du skriver, krypteres i din browser med en nøgle afledt af din PIN, før det sendes. Motoren og Thomas kan ikke læse det. Modspillet sendes til AI-modellen uden navne og uden at blive gemt. <button type="button" class="link" id="b-wipe">Slet min konto og alt indhold</button></p>
+    <div class="foot-nav"><button type="button" id="b-konto-back">Tilbage</button></div>
   </section>
 </main>
 
@@ -159,12 +295,14 @@
 // ══════════════════════════════════════════════════════════════════
 // OPSÆTNING
 // ══════════════════════════════════════════════════════════════════
-// Motorens adresse. Lokalt: wrangler dev på 8787. Live: Workerens adresse (sæt den her, når den findes).
 const MOTOR_URL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'http://localhost:8787' : 'https://friisnaes-motor.friisnaes.workers.dev';
+const COACH_EMAIL='friisnaes@gmail.com';
+const SESSION_KEY='fm_session';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fixQuotes=s=>String(s??'').replace(/[\u00BB\u00AB\u201E\u201C\u201D]/g,'"').replace(/[\u2018\u2019\u201A]/g,"'");
-const SESSION_KEY='fm_session';
+const QRE=new RegExp('['+String.fromCharCode(0xBB,0xAB,0x201E,0x201C,0x201D)+']','g'),ARE=new RegExp('['+String.fromCharCode(0x2018,0x2019,0x201A)+']','g');
+const fixQuotes=s=>String(s??'').replace(QRE,'"').replace(ARE,"'");
+const daDate=d=>new Date(d).toLocaleDateString('da-DK',{day:'numeric',month:'long',year:'numeric'});
 function session(){try{return localStorage.getItem(SESSION_KEY)||''}catch(e){return ''}}
 function setSession(t){try{t?localStorage.setItem(SESSION_KEY,t):localStorage.removeItem(SESSION_KEY)}catch(e){}}
 async function api(path,opts={}){
@@ -177,6 +315,38 @@ async function api(path,opts={}){
 }
 function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$('sc-'+id).classList.add('active');window.scrollTo(0,0)}
 function msg(id,text,err){const el=$(id);el.textContent=text||'';el.classList.toggle('err',!!err)}
+function setProgress(f){$('progress').style.width=Math.max(0,Math.min(1,f))*100+'%'}
+async function copyText(t){try{await navigator.clipboard.writeText(t)}catch(e){const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}}
+
+// ══════════════════════════════════════════════════════════════════
+// PROCESSEN: 12 UGER. Uge 1 til 4 er bygget; 5 til 12 åbner i næste spring.
+// ══════════════════════════════════════════════════════════════════
+const WEEKS=[
+  {n:1,blok:'Karakter',tema:'Det, jeg undgår',kort:'det-jeg-undgaar',
+   intro:'Undgåelse er ikke dovenskab. Det er en identitetstrussel: samtalen undgås, fordi den truer dit selvbillede, ikke fordi den er svær. Derfor hjælper det ikke at planlægge bedre. Det hjælper at sætte navn på, hvad der er på spil for dig selv.',
+   mandag:'Hvad undgår du lige nu? Et menneske, en beslutning eller en samtale. Én sætning, rolle i stedet for navn.',
+   paper:{t:'De udskudte samtaler',u:'/de-udskudte-samtaler.html',s:'Eksekveringsserien'},tool:{t:'Den svære samtale',u:'/vaerktoejer/den-svaere-samtale/'},
+   traening:[{kort:'det-jeg-undgaar',navn:'Sæt navn på det'},{kort:'rollespil',navn:'Rollespilsbanken'}]},
+  {n:2,blok:'Karakter',tema:'Styrken, der vælter mig under pres',kort:'styrken-under-pres',
+   intro:'Ledere falder sjældent på det, de er dårlige til. De falder på det, de er gode til, brugt for meget, på det forkerte tidspunkt. Den skarpe bliver kold. Den loyale bliver tavs. Det er ikke en karakterfejl. Det er en styrke uden tilsyn.',
+   mandag:'Hvad er du særligt god til, og hvad bliver det til under pres? Én sætning.',
+   paper:{t:'Karakter under pres',u:'/karakter-under-pres.html',s:'C-Level Serien'},tool:{t:'Blinde vinkler',u:'/vaerktoejer/blinde-vinkler/'},
+   traening:[{kort:'styrken-under-pres',navn:'Find styrken'},{kort:'rollespil',navn:'Rollespilsbanken'}]},
+  {n:3,blok:'Karakter',tema:'Interessenterne, min adfærd rammer',kort:'interessentkortet',
+   intro:'Din tilstand bliver ikke i dig. Den siver ud og sætter sig i alle omkring dig. Derfor er adfærdsændring ikke en privat opgave. Den lykkes kun, når de mennesker, adfærden rammer, er inddraget og kan se forskellen.',
+   mandag:'Hvem rammes af den adfærd, du arbejder på at ændre? Fem til otte roller, adskilt med komma.',
+   paper:{t:'Den usynlige CEO',u:'/den-usynlige-ceo.html',s:'C-Level Serien'},tool:{t:'Personal Excellence Diagnostic',u:'/vaerktoejer/personal-excellence-diagnostic/'},
+   traening:[{kort:'interessentkortet',navn:'Interessentkortet'},{kort:'rollespil',navn:'Rollespilsbanken'}]},
+  {n:4,blok:'Karakter',tema:'Den samtale, jeg skylder',kort:'den-samtale-jeg-skylder',
+   intro:'Prisen for den samtale, du tager, er synlig. Prisen for den, du ikke tager, betaler du hver dag uden at få regningen. Det er ugen, hvor samtalen føres. Ikke planlægges. Føres.',
+   mandag:'Hvilken samtale skylder du, og hvilken dag i denne uge fører du den? Rolle, dag, klokkeslæt.',
+   paper:{t:'Modspillet der mangler',u:'/modspillet-der-mangler.html',s:'C-Level Serien'},tool:{t:'Den svære samtale',u:'/vaerktoejer/den-svaere-samtale/'},
+   traening:[{kort:'den-samtale-jeg-skylder',navn:'Samtalen ud af hovedet'},{kort:'rollespil',navn:'Rollespilsbanken'}],moenster:true},
+  {n:5,blok:'Disciplin',tema:'Aftaler med mig selv'},{n:6,blok:'Disciplin',tema:'Kalenderen som bevis'},{n:7,blok:'Disciplin',tema:'Det, jeg holder op med'},{n:8,blok:'Disciplin',tema:'Beslutningen, jeg har udskudt',moenster:true},
+  {n:9,blok:'Klarhed',tema:'Mit vigtigste problem i én sætning'},{n:10,blok:'Klarhed',tema:'Generalprøven for bestyrelsen'},{n:11,blok:'Klarhed',tema:'Det, der gentager sig'},{n:12,blok:'Klarhed',tema:'De næste 90 dage',moenster:true},
+];
+const KORT_NAVN={'rollespil':'Rollespilsbanken','det-jeg-undgaar':'Det, jeg undgår','styrken-under-pres':'Styrken, der vælter mig under pres','interessentkortet':'Interessentkortet','den-samtale-jeg-skylder':'Den samtale, jeg skylder','ugens-review':'Ugens review','moensterspejlet':'Mønsterspejlet'};
+const DIM_NAVN={nysgerrighed:'nysgerrighed',indsigt:'indsigt',engagement:'engagement',beslutsomhed:'beslutsomhed'};
 
 // ══════════════════════════════════════════════════════════════════
 // KRYPTERING: PBKDF2 -> AES-GCM, som i de øvrige værktøjer
@@ -188,10 +358,19 @@ async function decryptWith(key,blob){const pt=await crypto.subtle.decrypt({name:
 // ══════════════════════════════════════════════════════════════════
 // TILSTAND
 // ══════════════════════════════════════════════════════════════════
-let ME=null,KEY=null,SALT=null,VERSION=0,D=null; // D = dekrypteret: {log, chats:{kortId:[...]}}
+let ME=null,KEY=null,SALT=null,VERSION=0,D=null;
+let cur={week:1,kort:null};
+function week(n){return WEEKS[n-1]}
+function wk(n){D.weeks=D.weeks||{};if(!D.weeks[n])D.weeks[n]={monday:{},review:{},chats:{}};const w=D.weeks[n];w.monday=w.monday||{};w.review=w.review||{};w.chats=w.chats||{};return w}
+function currentWeek(){
+  if(!D.process||!D.process.startedAt)return 0;
+  const days=Math.floor((Date.now()-new Date(D.process.startedAt).getTime())/86400000);
+  return Math.max(1,Math.min(12,Math.floor(days/7)+1+(D.process.advance||0)));
+}
+function builtWeek(n){return !!week(n).kort}
 
 // ══════════════════════════════════════════════════════════════════
-// LOGIN
+// LOGIN OG PIN
 // ══════════════════════════════════════════════════════════════════
 $('f-login').addEventListener('submit',async e=>{
   e.preventDefault();msg('login-msg','');
@@ -200,29 +379,23 @@ $('f-login').addEventListener('submit',async e=>{
   $('b-login').disabled=true;
   try{
     const r=await api('/auth/request',{method:'POST',body:JSON.stringify({email,invite})});
-    if(r.devLink){msg('login-msg','Lokal udvikling: linket vises her i stedet for at blive sendt.');const a=document.createElement('a');a.href=r.devLink;a.textContent='Åbn linket';a.className='link';a.style.marginLeft='8px';$('login-msg').appendChild(a)}
+    if(r.devLink){msg('login-msg','Lokal udvikling: linket vises her i stedet for at blive sendt. ');const a=document.createElement('a');a.href=r.devLink;a.textContent='Åbn linket';a.className='link';$('login-msg').appendChild(a)}
     else msg('login-msg','Linket er sendt. Tjek din mail, også spam. Det virker i 15 minutter.');
   }catch(err){msg('login-msg',err.message,true)}
   $('b-login').disabled=false;
 });
-
 async function boot(){
   const q=new URLSearchParams(location.search);
   if(q.get('login')==='udloebet')msg('login-msg','Linket er udløbet eller brugt. Bed om et nyt.',true);
   if(q.get('login')==='ugyldig')msg('login-msg','Linket var ugyldigt. Bed om et nyt.',true);
   if(q.get('betaling')==='ok')sessionStorage.setItem('fm_betaling','ok');
-  // Sessionen kommer fra det magiske link som #session=... og gemmes kun i denne browser.
   const h=new URLSearchParams(location.hash.replace(/^#/,''));
-  if(h.get('session')){setSession(h.get('session'))}
+  if(h.get('session'))setSession(h.get('session'));
   if(q.has('login')||q.has('betaling')||location.hash)history.replaceState(null,'',location.pathname);
   try{ME=await api('/me')}catch(e){ME=null;if(e.code==='session_expired'||e.code==='not_logged_in')setSession('')}
   if(!ME)return show('login');
   enterPin();
 }
-
-// ══════════════════════════════════════════════════════════════════
-// PIN OG LAGER
-// ══════════════════════════════════════════════════════════════════
 function enterPin(){
   const first=!ME.store;
   $('pin-kicker').textContent='Logget ind som '+ME.email;
@@ -239,67 +412,248 @@ $('f-pin').addEventListener('submit',async e=>{
   try{
     if(!ME.store){
       if(pin!==$('pin2').value)throw new Error('De to PIN-koder er ikke ens.');
-      SALT=crypto.getRandomValues(new Uint8Array(16));KEY=await deriveKey(pin,SALT);D={log:'',chats:{},createdAt:new Date().toISOString()};VERSION=0;
+      SALT=crypto.getRandomValues(new Uint8Array(16));KEY=await deriveKey(pin,SALT);D={v:2,createdAt:new Date().toISOString(),weeks:{},process:null};VERSION=0;
       await save();
     }else{
       const s=await api('/store');VERSION=s.version;SALT=new Uint8Array(s.blob.salt);const key=await deriveKey(pin,SALT);
       try{D=await decryptWith(key,s.blob)}catch(err){throw new Error('Forkert PIN.')}
-      KEY=key;
+      KEY=key;upgrade();
     }
-    enterApp();
+    enter();
   }catch(err){msg('pin-msg',err.message,true)}
   $('b-pin').disabled=false;
 });
+// Data fra afprøvningssiden (v1) gemmes under legacy, så intet går tabt.
+function upgrade(){
+  if(D.v>=2)return;
+  const old=D;D={v:2,createdAt:old.createdAt||new Date().toISOString(),weeks:{},process:null,legacy:{log:old.log||'',chats:old.chats||{}}};
+}
 async function save(){
   const blob=await encryptWith(KEY,SALT,D);
-  try{const r=await api('/store',{method:'PUT',headers:{'If-Match':'"'+VERSION+'"'},body:JSON.stringify({blob})});VERSION=r.version;$('st-store').textContent='version '+VERSION;return true}
-  catch(err){if(err.code==='conflict'){msg('save-msg','Lageret er ændret fra en anden enhed. Tryk "Hent igen", før du gemmer.',true);return false}throw err}
+  try{const r=await api('/store',{method:'PUT',headers:{'If-Match':'"'+VERSION+'"'},body:JSON.stringify({blob})});VERSION=r.version;return true}
+  catch(err){if(err.code==='conflict'){alert('Dit lager er ændret fra en anden enhed. Siden genindlæses, så du får den nyeste udgave.');location.reload();return false}throw err}
 }
-async function reload(){
-  const s=await api('/store');if(!s.blob)return;VERSION=s.version;D=await decryptWith(KEY,s.blob);$('log').value=D.log||'';renderChat();$('st-store').textContent='version '+VERSION;
+async function logout(){try{await api('/auth/logout',{method:'POST'})}catch(e){}setSession('');KEY=null;D=null;ME=null;location.href=location.pathname}
+$('b-logout').addEventListener('click',logout);$('b-logout-pin').addEventListener('click',logout);
+
+// ══════════════════════════════════════════════════════════════════
+// START
+// ══════════════════════════════════════════════════════════════════
+function enter(){
+  if(sessionStorage.getItem('fm_betaling')==='ok')sessionStorage.removeItem('fm_betaling');
+  if(!D.process||!D.process.startedAt)return enterStart();
+  cur.week=currentWeek();renderWeek(cur.week);
+}
+function enterStart(){
+  // Placeringen fra døren, hvis den ligger i samme browser.
+  let p=null;try{p=JSON.parse(localStorage.getItem('hsdn_v1')||'null')}catch(e){}
+  if(p&&p.rolle){
+    D.placering={rolle:p.rolle,situation:p.situation,fylder:p.fylder,lowest:p.lowest,own:p.own||'',total:p.total};
+    $('start-placering-text').textContent=`Du er ${p.rolle}. Tættest på din situation: ${p.situation}. Det, der fylder mest: ${p.fylder}. Laveste dimension: ${DIM_NAVN[p.lowest]||p.lowest}.`;
+    $('start-own').textContent=p.own||'';$('start-own').hidden=!p.own;$('start-placering').hidden=false;
+  }
+  show('start');setProgress(0);
+}
+$('b-start').addEventListener('click',async()=>{
+  D.process={startedAt:new Date().toISOString(),advance:0};
+  await save();cur.week=1;renderWeek(1);
+});
+$('b-konto-start').addEventListener('click',()=>enterKonto('start'));
+
+// ══════════════════════════════════════════════════════════════════
+// UGEN
+// ══════════════════════════════════════════════════════════════════
+function renderWeek(n){
+  cur.week=n;const w=week(n);const d=wk(n);const now=currentWeek();
+  setProgress((n-1)/12+(d.review.doneAt?1/12:0));
+  $('top-kicker').textContent=`Abonnement · Uge ${n} af 12`;
+  $('wk-kicker').innerHTML=`<b>Uge ${n}</b> af 12 · ${esc(w.blok)}${n===now?'':' · <span style="color:var(--txt-3)">'+(n<now?'afsluttet':'kommende')+'</span>'}`;
+  $('wk-title').innerHTML=esc(w.tema).replace(/,(.*)$/,',<em>$1</em>');
+  if(!builtWeek(n)){
+    $('wk-intro').textContent='Denne uge bygges i næste spring. Du kan gå tilbage til en uge, du har haft.';
+    ['wk-monday','wk-training','wk-friday','wk-moenster'].forEach(id=>$(id).hidden=true);
+    $('b-next-week').hidden=true;show('week');return;
+  }
+  ['wk-monday','wk-training','wk-friday'].forEach(id=>$(id).hidden=false);
+  $('wk-intro').textContent=w.intro;
+  // Mandag
+  $('wk-monday-text').textContent='Læs paperet, og åbn værktøjet, hvis du vil have mere end overskriften. Svar så på ugens spørgsmål i én sætning.';
+  $('wk-links').innerHTML=`<a href="${w.paper.u}" target="_blank" rel="noopener">${esc(w.paper.t)}<span class="ser">${esc(w.paper.s)}</span></a><a href="${w.tool.u}" target="_blank" rel="noopener">${esc(w.tool.t)}<span class="ser">Gratis værktøj</span></a>`;
+  $('monday-q').textContent=w.mandag;$('monday-a').value=d.monday.answer||'';msg('monday-msg','');
+  const prev=n>1?wk(n-1).review.next:'';
+  $('wk-monday-state').textContent=d.monday.answer?'Svaret':'';$('wk-monday-state').className='state'+(d.monday.answer?' ok':'');
+  $('wk-monday').classList.toggle('done',!!d.monday.answer);
+  const aft=$('wk-monday').querySelector('.own');if(aft)aft.remove();
+  if(prev){const p=document.createElement('p');p.className='own';p.textContent='Aftalen fra sidste uge: '+prev;$('wk-monday-text').after(p)}
+  // Træning
+  const sessions=w.traening.filter(t=>(d.chats[t.kort]||[]).length).length;
+  $('wk-training-state').textContent=sessions?`${sessions} af ${w.traening.length} brugt`:'';$('wk-training-state').className='state'+(sessions?' ok':'');
+  $('wk-training').classList.toggle('done',sessions===w.traening.length);
+  $('wk-training-btns').innerHTML=w.traening.map(t=>`<button type="button" class="btn ${(d.chats[t.kort]||[]).length?'btn-ghost':'btn-red'}" data-kort="${t.kort}">${esc(t.navn)}</button>`).join('');
+  $('wk-training-btns').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>openChat(n,b.dataset.kort)));
+  // Fredag
+  $('wk-friday-state').textContent=d.review.doneAt?'Lukket '+daDate(d.review.doneAt):'';$('wk-friday-state').className='state'+(d.review.doneAt?' ok':'');
+  $('wk-friday').classList.toggle('done',!!d.review.doneAt);
+  $('b-review').textContent=d.review.doneAt?'Se ugens review':'Åbn ugens review';
+  // Mønsterspejlet
+  $('wk-moenster').hidden=!w.moenster;
+  if(w.moenster){$('wk-moenster-state').textContent=d.moenster?'Hentet':'';$('wk-moenster-state').className='state'+(d.moenster?' ok':'');$('wk-moenster').classList.toggle('done',!!d.moenster)}
+  // Næste uge nu: kun når reviewet er lukket, og næste uge er bygget og ikke allerede åben.
+  $('b-next-week').hidden=!(d.review.doneAt&&n===now&&n<12&&builtWeek(n+1));
+  show('week');
+}
+$('f-monday').addEventListener('submit',async e=>{e.preventDefault();const d=wk(cur.week);d.monday.answer=fixQuotes($('monday-a').value.trim());d.monday.at=new Date().toISOString();await save();renderWeek(cur.week);msg('monday-msg','Gemt.')});
+$('b-weeks').addEventListener('click',renderWeeks);
+$('b-weeks-back').addEventListener('click',()=>renderWeek(cur.week));
+$('b-konto').addEventListener('click',()=>enterKonto('week'));
+$('b-next-week').addEventListener('click',async()=>{D.process.advance=(D.process.advance||0)+1;await save();renderWeek(currentWeek())});
+function renderWeeks(){
+  const now=currentWeek();
+  $('weeks-list').innerHTML=WEEKS.map(w=>{const d=D.weeks&&D.weeks[w.n];const locked=w.n>now||!builtWeek(w.n);const st=d&&d.review&&d.review.doneAt?'lukket':(w.n===now?'denne uge':(locked?(builtWeek(w.n)?'åbner mandag':'bygges'):'åben'));
+    return `<li class="${locked?'locked':''}"><span class="n">${w.n}</span>${locked?`<span>${esc(w.tema)}</span>`:`<button type="button" data-n="${w.n}">${esc(w.tema)}</button>`}<span class="blok">${esc(w.blok)} · ${st}</span></li>`}).join('');
+  $('weeks-list').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>renderWeek(+b.dataset.n)));
+  show('weeks');
 }
 
 // ══════════════════════════════════════════════════════════════════
-// APP
+// SAMTALE MED ET KILDEKORT
 // ══════════════════════════════════════════════════════════════════
-async function enterApp(){
-  $('st-email').textContent=ME.email+(ME.admin?' (admin)':'');
-  const sub=ME.subscription;$('st-sub').textContent=sub.active?(sub.status==='none'?'adgang som admin':sub.status):'intet aktivt';
-  $('st-store').textContent='version '+VERSION;
-  try{const m=await api('/');$('st-motor').textContent='v'+m.version+' · instruks '+m.instruks}catch(e){$('st-motor').textContent='svarer ikke'}
-  const k=await api('/kort');$('kort').innerHTML=k.kort.map(x=>`<option value="${x.id}">${esc(x.navn)} · ${esc(x.lag)}</option>`).join('');
-  $('log').value=D.log||'';renderChat();
-  if(sessionStorage.getItem('fm_betaling')==='ok'){msg('st-msg','Betalingen er registreret. Status opdateres, når Stripe har bekræftet.');sessionStorage.removeItem('fm_betaling')}
-  show('app');
+function context(n){
+  const w=week(n);const d=wk(n);const p=D.placering;
+  const parts=[`Uge ${n} af 12, blok ${w.blok}, tema "${w.tema}".`];
+  if(p)parts.push(`Placering fra døren: ${p.rolle}; situation: ${p.situation}; fylder mest: ${p.fylder}; laveste dimension: ${p.lowest}.`);
+  if(p&&p.own)parts.push(`Brugerens 90-dages sætning: "${p.own}".`);
+  if(d.monday.answer)parts.push(`Svar på ugens spørgsmål mandag: "${d.monday.answer}".`);
+  const prev=n>1?wk(n-1).review:null;
+  if(prev&&prev.next)parts.push(`Aftalen fra sidste uge: "${prev.next}".`);
+  return '[Kontekst, som brugeren ikke ser] '+parts.join(' ');
 }
+function openChat(n,kort){
+  cur.week=n;cur.kort=kort;const w=week(n);
+  $('ch-kicker').innerHTML=`<b>Uge ${n}</b> · ${esc(w.tema)}`;
+  $('ch-title').innerHTML=esc(KORT_NAVN[kort]||kort).replace(/,(.*)$/,',<em>$1</em>');
+  $('ch-hint').textContent=kort==='rollespil'?'Modspillet spiller modparten, så ubekvemt som modparten ville være. Skriv "stop" for at bryde rollen og få modspil på det, der skete.':'Ét spørgsmål ad gangen. Svar konkret: navn, dag, handling, tal.';
+  $('say').value='';msg('chat-msg','');renderChat();show('chat');setTimeout(()=>$('say').focus(),60);
+}
+function chatList(){const d=wk(cur.week);d.chats[cur.kort]=d.chats[cur.kort]||[];return d.chats[cur.kort]}
 function renderChat(){
-  const id=$('kort').value;const list=(D.chats&&D.chats[id])||[];
-  $('chat').innerHTML=list.length?list.map(m=>`<div class="m ${m.role==='user'?'user':'ai'}">${esc(m.content)}</div>`).join(''):'<div class="m sys">Ingen samtale endnu på dette kort.</div>';
+  const list=chatList();
+  $('chat').innerHTML=list.length?list.map(m=>`<div class="m ${m.role==='user'?'user':'ai'}">${esc(m.content)}</div>`).join(''):'<div class="m sys">Begynd med det, der er sket. Ikke det, du har tænkt om det.</div>';
   $('chat').scrollTop=$('chat').scrollHeight;
 }
-$('kort').addEventListener('change',renderChat);
 $('say').addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();$('f-chat').requestSubmit()}});
 $('f-chat').addEventListener('submit',async e=>{
   e.preventDefault();msg('chat-msg','');
   const text=fixQuotes($('say').value.trim());if(text.length<2)return;
-  const id=$('kort').value;D.chats=D.chats||{};const list=D.chats[id]=(D.chats[id]||[]);
-  list.push({role:'user',content:text});$('say').value='';renderChat();
+  const list=chatList();list.push({role:'user',content:text});$('say').value='';renderChat();
   $('thinking').hidden=false;$('b-say').disabled=true;
   try{
-    const r=await api('/ai',{method:'POST',body:JSON.stringify({kort:id,messages:list.slice(-20)})});
-    list.push({role:'assistant',content:r.text});renderChat();
-    msg('chat-msg',(r.remaining)+' svar tilbage i dag');
-    await save();
+    // Konteksten lægges foran den første brugerbesked i det, der sendes; den gemmes ikke i samtalen.
+    const tail=list.slice(-20);const start=tail[0].role==='user'?0:1;
+    const hist=tail.slice(start).map((m,i)=>i===0?{role:'user',content:context(cur.week)+'\n\n'+m.content}:m);
+    const r=await api('/ai',{method:'POST',body:JSON.stringify({kort:cur.kort,messages:hist})});
+    list.push({role:'assistant',content:r.text});renderChat();msg('chat-msg',r.remaining+' svar tilbage i dag');await save();
   }catch(err){list.pop();renderChat();msg('chat-msg',err.message,true)}
   $('thinking').hidden=true;$('b-say').disabled=false;
 });
-$('b-clear').addEventListener('click',async()=>{const id=$('kort').value;if(D.chats)delete D.chats[id];renderChat();await save()});
-$('b-save').addEventListener('click',async()=>{D.log=fixQuotes($('log').value);msg('save-msg','');if(await save())msg('save-msg','Gemt krypteret som version '+VERSION)});
-$('b-reload').addEventListener('click',async()=>{try{await reload();msg('save-msg','Hentet version '+VERSION)}catch(err){msg('save-msg',err.message,true)}});
+$('b-chat-back').addEventListener('click',()=>renderWeek(cur.week));
+$('b-clear').addEventListener('click',async()=>{if(!confirm('Ryd samtalen på dette kort i denne uge?'))return;const d=wk(cur.week);delete d.chats[cur.kort];renderChat();await save()});
+
+// ══════════════════════════════════════════════════════════════════
+// FREDAGENS REVIEW
+// ══════════════════════════════════════════════════════════════════
+let rvQ1='';
+$('b-review').addEventListener('click',()=>openReview(cur.week));
+function openReview(n){
+  cur.week=n;const w=week(n);const d=wk(n);const r=d.review;
+  $('rv-kicker').innerHTML=`<b>Uge ${n}</b> · ${esc(w.tema)}`;
+  const prev=n>1?wk(n-1).review.next:'';const aftale=d.monday.answer||prev||'';
+  $('rv-aftale').textContent=aftale?aftale:'Du skrev ingen aftale mandag. Svar alligevel: hvad ville du gøre i denne uge?';
+  rvQ1=r.q1||'';$('rv-q1').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v===rvQ1));
+  $('rv-q2').value=r.q2||'';$('rv-q3').value=r.q3||'';$('rv-next').value=r.next||'';$('rv-log').value=(r.log||[]).join('\n');
+  $('rv-ai').hidden=!r.ai;$('rv-ai').textContent=r.ai||'';msg('rv-msg',r.doneAt?'Ugen er lukket '+daDate(r.doneAt)+'. Du kan stadig rette.':'');
+  show('review');
+}
+$('rv-q1').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{rvQ1=b.dataset.v;$('rv-q1').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b))}));
+function collectReview(){
+  const d=wk(cur.week);const r=d.review;
+  r.q1=rvQ1;r.q2=fixQuotes($('rv-q2').value.trim());r.q3=fixQuotes($('rv-q3').value.trim());r.next=fixQuotes($('rv-next').value.trim());
+  r.log=fixQuotes($('rv-log').value).split('\n').map(s=>s.trim()).filter(Boolean).slice(0,3);
+  return r;
+}
+$('b-review-ai').addEventListener('click',async()=>{
+  const r=collectReview();msg('rv-msg','');
+  if(!r.q1||!r.q2)return msg('rv-msg','Svar på de to første spørgsmål, før du beder om modspil.',true);
+  $('rv-thinking').hidden=false;$('b-review-ai').disabled=true;
+  try{
+    const text=`${context(cur.week)}\n\nFREDAGENS REVIEW, uge ${cur.week}.\n1. Holdt du aftalen? ${r.q1}\n2. Hvad skete der faktisk? ${r.q2}\n3. Anderledes i næste uge: ${r.q3||'(ikke svaret)'}\nAftale for næste uge: ${r.next||'(ikke skrevet)'}\nLogbog: ${r.log.join(' / ')||'(tom)'}\n\nGiv modspil på reviewet efter kildekortet. Slut med de tre spørgsmål og "Luk. Det er fredag."`;
+    const out=await api('/ai',{method:'POST',body:JSON.stringify({kort:'ugens-review',messages:[{role:'user',content:text}]})});
+    r.ai=out.text;$('rv-ai').textContent=out.text;$('rv-ai').hidden=false;await save();
+  }catch(err){msg('rv-msg',err.message,true)}
+  $('rv-thinking').hidden=true;$('b-review-ai').disabled=false;
+});
+$('f-review').addEventListener('submit',async e=>{
+  e.preventDefault();const r=collectReview();
+  if(!r.q1)return msg('rv-msg','Svar ja, nej eller delvist på det første spørgsmål.',true);
+  if(!r.next)return msg('rv-msg','Skriv aftalen for næste uge. Én sætning med en dag.',true);
+  r.doneAt=r.doneAt||new Date().toISOString();await save();renderWeek(cur.week);
+});
+$('b-review-back').addEventListener('click',()=>renderWeek(cur.week));
+
+// ══════════════════════════════════════════════════════════════════
+// MØNSTERSPEJLET
+// ══════════════════════════════════════════════════════════════════
+$('b-moenster').addEventListener('click',()=>openMoenster(cur.week));
+function openMoenster(n){
+  cur.week=n;const d=wk(n);
+  $('mo-kicker').innerHTML=`<b>Uge ${n}</b> · efter fire uger`;
+  if(d.moenster){$('mo-body').textContent=d.moenster.text;$('mo-foot').textContent='Hentet '+daDate(d.moenster.at)+' · uge '+Math.max(1,n-3)+' til '+n;$('mo-paper').hidden=false;$('mo-actions').hidden=false;$('b-moenster-run').textContent='Hent igen'}
+  else{$('mo-paper').hidden=true;$('mo-actions').hidden=true;$('b-moenster-run').textContent='Hent mønstret'}
+  msg('mo-msg','');show('moenster');
+}
+function fourWeeksText(n){
+  let t='';
+  for(let i=Math.max(1,n-3);i<=n;i++){const w=week(i);const d=D.weeks&&D.weeks[i];if(!d)continue;
+    t+=`UGE ${i}: ${w.tema}\n`;
+    if(d.monday&&d.monday.answer)t+=`Mandag: ${d.monday.answer}\n`;
+    const r=d.review||{};
+    if(r.q1)t+=`Aftalen holdt: ${r.q1}\n`;if(r.q2)t+=`Hvad skete: ${r.q2}\n`;if(r.q3)t+=`Anderledes næste uge: ${r.q3}\n`;if(r.next)t+=`Aftale for næste uge: ${r.next}\n`;
+    if(r.log&&r.log.length)t+=`Logbog: ${r.log.join(' / ')}\n`;
+    t+='\n';
+  }
+  return t;
+}
+$('b-moenster-run').addEventListener('click',async()=>{
+  msg('mo-msg','');const text=fourWeeksText(cur.week);
+  if(text.replace(/UGE \d+: [^\n]+\n\n/g,'').trim().length<80)return msg('mo-msg','Der er for lidt skrevet i de fire uger til at læse et mønster. Det er i sig selv et mønster.',true);
+  $('mo-thinking').hidden=false;$('b-moenster-run').disabled=true;
+  try{
+    const r=await api('/ai',{method:'POST',body:JSON.stringify({kort:'moensterspejlet',max_tokens:900,messages:[{role:'user',content:context(cur.week)+'\n\nFIRE UGERS MATERIALE, skrevet af brugeren selv:\n\n'+text}]})});
+    wk(cur.week).moenster={text:r.text,at:new Date().toISOString()};await save();openMoenster(cur.week);
+  }catch(err){msg('mo-msg',err.message,true)}
+  $('mo-thinking').hidden=true;$('b-moenster-run').disabled=false;
+});
+$('b-moenster-back').addEventListener('click',()=>renderWeek(cur.week));
+$('b-moenster-copy').addEventListener('click',async()=>{await copyText(moensterText());msg('mo-msg','Kopieret.')});
+$('b-moenster-print').addEventListener('click',()=>window.print());
+$('b-moenster-share').addEventListener('click',()=>{const t=moensterText();const href=`mailto:${COACH_EMAIL}?subject=${encodeURIComponent('Mønsterspejlet · uge '+cur.week)}&body=${encodeURIComponent(t)}`;if(href.length>7000){copyText(t);alert('Teksten er for lang til et mail-link. Den er kopieret; sæt den ind i en mail til '+COACH_EMAIL+'.');return}location.href=href});
+function moensterText(){const d=wk(cur.week);return `MØNSTERSPEJLET · UGE ${Math.max(1,cur.week-3)} TIL ${cur.week}\n\n${d.moenster?d.moenster.text:''}\n\nSkrevet ud fra mine egne aftaler, reviews og logbog. Sendt af mig.\n`}
+
+// ══════════════════════════════════════════════════════════════════
+// KONTO
+// ══════════════════════════════════════════════════════════════════
+let kontoBack='week';
+async function enterKonto(back){
+  kontoBack=back;
+  $('st-email').textContent=ME.email+(ME.admin?' (admin)':'');
+  const sub=ME.subscription;$('st-sub').textContent=sub.active?(sub.status==='none'?'adgang som admin':sub.status):'intet aktivt';
+  $('st-store').textContent='version '+VERSION;
+  try{const m=await api('/');$('st-motor').textContent='v'+m.version+' · instruks '+m.instruks}catch(e){$('st-motor').textContent='svarer ikke'}
+  msg('st-msg','');show('konto');
+}
+$('b-konto-back').addEventListener('click',()=>kontoBack==='start'?show('start'):renderWeek(cur.week));
 $('b-checkout').addEventListener('click',async()=>{msg('st-msg','');try{const r=await api('/billing/checkout',{method:'POST'});location.href=r.url}catch(err){msg('st-msg',err.message,true)}});
 $('b-portal').addEventListener('click',async()=>{msg('st-msg','');try{const r=await api('/billing/portal',{method:'POST'});location.href=r.url}catch(err){msg('st-msg',err.message,true)}});
-async function logout(){try{await api('/auth/logout',{method:'POST'})}catch(e){}setSession('');KEY=null;D=null;ME=null;location.href=location.pathname}
-$('b-logout').addEventListener('click',logout);$('b-logout-pin').addEventListener('click',logout);
 $('b-wipe').addEventListener('click',async()=>{if(!confirm('Slet din konto, dit krypterede lager og alle sessioner? Det kan ikke fortrydes.'))return;try{await api('/account',{method:'DELETE'});setSession('');location.href=location.pathname}catch(err){msg('st-msg',err.message,true)}});
 
 boot();
