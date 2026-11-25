@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="version" content="0.1.0">
+<title>Abonnement | Friisnæs</title>
+<meta name="description" content="Abonnementet på friisnaes.com: træning, beslutning og hukommelse med modspil i Thomas Friisnæs' tankegang. Adgang efter invitation.">
+<meta name="author" content="Thomas Friisnæs">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#111111">
+<link rel="canonical" href="https://www.friisnaes.com/abonnement/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Friisnæs">
+<meta property="og:locale" content="da_DK">
+<meta property="og:url" content="https://www.friisnaes.com/abonnement/">
+<meta property="og:title" content="Abonnement | Friisnæs">
+<meta property="og:description" content="Træning, beslutning og hukommelse med modspil i Thomas Friisnæs' tankegang. Adgang efter invitation.">
+<meta property="og:image" content="https://www.friisnaes.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/favicon-apple.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Abonnementet er mørkt, to røde streger. Samme familie som papers: #111, #f5f4f0, #c0392b. */
+  :root{--ink:#111;--ink-2:#1a1a1a;--ink-3:#222;--off:#f5f4f0;--red:#c0392b;--red-l:#e74c3c;--txt:rgba(245,244,240,.92);--txt-2:rgba(245,244,240,.64);--txt-3:rgba(245,244,240,.44);--rule:rgba(245,244,240,.12);--rule-2:rgba(245,244,240,.22);--serif:'Playfair Display',Georgia,serif;--sans:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--ink);color:var(--txt);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.65;min-height:100vh;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15}
+  button,input,textarea,select{font-family:var(--sans);font-size:inherit;color:inherit}
+  button{cursor:pointer;border:0;background:none}
+  :focus-visible{outline:2px solid var(--red-l);outline-offset:3px}
+  [hidden]{display:none!important}
+  .mark{position:fixed;top:22px;right:24px;display:flex;flex-direction:column;gap:5px;z-index:90;pointer-events:none}
+  .mark i{display:block;width:22px;height:2px;background:var(--red)}.mark i:nth-child(2){width:16px}
+  .top{position:fixed;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:20px 28px;z-index:80;pointer-events:none}
+  .top>*{pointer-events:auto}
+  .brand{font-family:var(--serif);font-size:20px;color:#fff;text-decoration:none}.brand em{font-style:italic;color:var(--red-l)}
+  .kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--red-l);font-weight:500;margin-right:52px}
+  main{max-width:720px;margin:0 auto;padding:110px 24px 80px}
+  .screen{display:none}.screen.active{display:block;animation:rise .4s ease both}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .step-kicker{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--txt-3);font-weight:500;margin-bottom:18px}
+  h1{font-size:clamp(34px,5.5vw,52px);font-weight:400;letter-spacing:-.01em;color:#fff;margin-bottom:14px}h1 em{font-style:italic;color:var(--red-l)}
+  .hint{color:var(--txt-2);margin-bottom:26px;max-width:540px}
+  label{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-2);margin-bottom:8px;font-weight:500}
+  .fg{margin-bottom:16px}
+  input[type=text],input[type=email],input[type=password],textarea,select{display:block;width:100%;background:var(--ink-2);border:1px solid var(--rule-2);border-radius:3px;padding:12px 14px;color:var(--txt);transition:border-color .2s}
+  input:focus,textarea:focus,select:focus{border-color:var(--red-l);outline:none}
+  input::placeholder,textarea::placeholder{color:var(--txt-3)}
+  textarea{min-height:120px;resize:vertical;line-height:1.6}
+  .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:2px;font-size:15px;font-weight:500}
+  .btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-l)}.btn-red:disabled{opacity:.45;cursor:default}
+  .btn-ghost{color:var(--txt-2);border:1px solid var(--rule-2)}.btn-ghost:hover{color:#fff;border-color:var(--txt-3)}
+  .link{color:var(--txt-3);font-size:13px;text-decoration:underline;text-underline-offset:3px}.link:hover{color:var(--red-l)}
+  .msg{font-size:14px;margin-top:12px;color:var(--txt-2)}.msg.err{color:var(--red-l)}
+  .card{border:1px solid var(--rule);border-radius:3px;padding:22px 24px;margin:0 0 18px;background:var(--ink-2)}
+  .card h2{font-size:22px;margin-bottom:6px;color:#fff}.card .sub{font-size:13px;color:var(--txt-3);margin-bottom:14px}
+  .status{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:8px 0 4px}
+  .status div{border-top:1px solid var(--rule);padding-top:10px}.status b{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-3);font-weight:500;margin-bottom:4px}
+  .chat{display:flex;flex-direction:column;gap:12px;max-height:420px;overflow:auto;padding:4px 0 8px}
+  .m{max-width:88%;padding:12px 16px;border-radius:3px;line-height:1.6;white-space:pre-wrap}
+  .m.user{align-self:flex-end;background:var(--ink-3);border:1px solid var(--rule)}
+  .m.ai{align-self:flex-start;border-left:2px solid var(--red);padding-left:16px;font-family:var(--serif);font-size:17px}
+  .m.sys{align-self:center;color:var(--txt-3);font-size:13px}
+  .thinking{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--txt-3);min-height:20px}
+  .thinking i{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 1.1s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
+  .foot{font-size:13px;color:var(--txt-3);margin-top:30px;line-height:1.7}
+  @media(max-width:600px){.top{padding:16px 18px}.kicker{display:none}main{padding:90px 18px 48px}}
+</style>
+</head>
+<body>
+<div class="mark" aria-hidden="true"><i></i><i></i></div>
+<header class="top">
+  <a class="brand" href="/" aria-label="Friisnæs – forside">Fr<em>ii</em>snæs</a>
+  <div class="kicker">Abonnement · Spring 1</div>
+</header>
+
+<main>
+  <!-- Login -->
+  <section id="sc-login" class="screen active">
+    <div class="step-kicker">Adgang efter invitation</div>
+    <h1>Log ind <em>med et link.</em></h1>
+    <p class="hint">Ingen adgangskode. Du får et link på mail, som virker i 15 minutter. Første gang skal du bruge din invitationskode.</p>
+    <form id="f-login" novalidate>
+      <div class="fg"><label for="email">Din mailadresse</label><input type="email" id="email" autocomplete="email" placeholder="navn@firma.dk" required></div>
+      <div class="fg"><label for="invite">Invitationskode, hvis det er første gang</label><input type="text" id="invite" placeholder="XXXX-XXXX" autocapitalize="characters" spellcheck="false" style="max-width:240px"></div>
+      <div class="row"><button type="submit" class="btn btn-red" id="b-login">Send mig linket</button></div>
+      <p class="msg" id="login-msg" role="status"></p>
+    </form>
+  </section>
+
+  <!-- PIN -->
+  <section id="sc-pin" class="screen">
+    <div class="step-kicker" id="pin-kicker">Logget ind</div>
+    <h1 id="pin-h">Din <em>PIN.</em></h1>
+    <p class="hint" id="pin-hint"></p>
+    <form id="f-pin" novalidate>
+      <div class="fg"><label for="pin">PIN (4 til 8 cifre)</label><input type="password" id="pin" inputmode="numeric" maxlength="8" placeholder="••••" autocomplete="current-password" style="max-width:240px"></div>
+      <div class="fg" id="pin2-wrap" hidden><label for="pin2">Gentag PIN</label><input type="password" id="pin2" inputmode="numeric" maxlength="8" placeholder="••••" autocomplete="new-password" style="max-width:240px"></div>
+      <div class="row"><button type="submit" class="btn btn-red" id="b-pin">Lås op</button><button type="button" class="link" id="b-logout-pin">Log ud</button></div>
+      <p class="msg" id="pin-msg" role="status"></p>
+      <p class="msg" id="pin-warn" hidden>Glemmer du din PIN, kan ingen låse op, heller ikke Thomas. Det er prisen for, at kun du kan læse det, du skriver. Skriv den et sikkert sted.</p>
+    </form>
+  </section>
+
+  <!-- App -->
+  <section id="sc-app" class="screen">
+    <div class="step-kicker">Spring 1 · motoren</div>
+    <h1>Motoren <em>kører.</em></h1>
+    <p class="hint">Det her er afprøvningssiden. Den viser, at login, det krypterede lager og modspillet virker, før processen bygges ovenpå.</p>
+
+    <div class="card">
+      <h2>Status</h2>
+      <div class="status">
+        <div><b>Logget ind som</b><span id="st-email"></span></div>
+        <div><b>Abonnement</b><span id="st-sub"></span></div>
+        <div><b>Lager</b><span id="st-store"></span></div>
+        <div><b>Motor</b><span id="st-motor"></span></div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn btn-ghost" id="b-checkout">Start abonnement</button>
+        <button type="button" class="btn btn-ghost" id="b-portal">Administrér abonnement</button>
+        <button type="button" class="link" id="b-logout">Log ud</button>
+      </div>
+      <p class="msg" id="st-msg"></p>
+    </div>
+
+    <div class="card">
+      <h2>Modspil</h2>
+      <div class="sub">Vælg kildekort. Skriv som til Thomas. Skriv "stop" for at bryde et rollespil.</div>
+      <div class="fg"><select id="kort"></select></div>
+      <div class="chat" id="chat"></div>
+      <div class="thinking" id="thinking" hidden><i></i><span>Læser med.</span></div>
+      <form id="f-chat" novalidate>
+        <div class="fg"><textarea id="say" rows="3" placeholder="Skriv kort og konkret. Cmd+Enter sender."></textarea></div>
+        <div class="row"><button type="submit" class="btn btn-red" id="b-say">Send</button><button type="button" class="link" id="b-clear">Ryd samtalen</button><span class="msg" id="chat-msg" style="margin:0"></span></div>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>Logbog</h2>
+      <div class="sub">Tre linjer. Gemmes krypteret og følger dig på tværs af enheder.</div>
+      <div class="fg"><textarea id="log" rows="4" placeholder="Det, jeg gjorde. Det, jeg undgik. Det, jeg vil huske om fire uger."></textarea></div>
+      <div class="row"><button type="button" class="btn btn-red" id="b-save">Gem krypteret</button><button type="button" class="btn btn-ghost" id="b-reload">Hent igen</button><span class="msg" id="save-msg" style="margin:0"></span></div>
+    </div>
+
+    <p class="foot">Alt, du skriver, krypteres i din browser med en nøgle afledt af din PIN, før det sendes. Motoren og Thomas kan ikke læse det. Modspillet sendes til AI-modellen uden navne og uden at blive gemt. <button type="button" class="link" id="b-wipe">Slet min konto og alt indhold</button></p>
+  </section>
+</main>
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// OPSÆTNING
+// ══════════════════════════════════════════════════════════════════
+// Motorens adresse. Lokalt: wrangler dev på 8787. Live: Workerens adresse (sæt den her, når den findes).
+const MOTOR_URL = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'http://localhost:8787' : 'https://friisnaes-motor.workers.dev';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fixQuotes=s=>String(s??'').replace(/[\u00BB\u00AB\u201E\u201C\u201D]/g,'"').replace(/[\u2018\u2019\u201A]/g,"'");
+async function api(path,opts={}){
+  const r=await fetch(MOTOR_URL+path,{credentials:'include',headers:{'Content-Type':'application/json',...(opts.headers||{})},...opts});
+  let data=null;try{data=await r.json()}catch(e){}
+  if(!r.ok){const e=new Error(data?.message||('Motoren svarede '+r.status));e.code=data?.error||r.status;e.data=data;throw e}
+  return data;
+}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$('sc-'+id).classList.add('active');window.scrollTo(0,0)}
+function msg(id,text,err){const el=$(id);el.textContent=text||'';el.classList.toggle('err',!!err)}
+
+// ══════════════════════════════════════════════════════════════════
+// KRYPTERING: PBKDF2 -> AES-GCM, som i de øvrige værktøjer
+// ══════════════════════════════════════════════════════════════════
+async function deriveKey(pw,salt){const enc=new TextEncoder();const km=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},km,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
+async function encryptWith(key,salt,data){const iv=crypto.getRandomValues(new Uint8Array(12));const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,new TextEncoder().encode(JSON.stringify(data)));return{v:1,salt:Array.from(salt),iv:Array.from(iv),ct:Array.from(new Uint8Array(ct))}}
+async function decryptWith(key,blob){const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:new Uint8Array(blob.iv)},key,new Uint8Array(blob.ct));return JSON.parse(new TextDecoder().decode(pt))}
+
+// ══════════════════════════════════════════════════════════════════
+// TILSTAND
+// ══════════════════════════════════════════════════════════════════
+let ME=null,KEY=null,SALT=null,VERSION=0,D=null; // D = dekrypteret: {log, chats:{kortId:[...]}}
+
+// ══════════════════════════════════════════════════════════════════
+// LOGIN
+// ══════════════════════════════════════════════════════════════════
+$('f-login').addEventListener('submit',async e=>{
+  e.preventDefault();msg('login-msg','');
+  const email=$('email').value.trim(),invite=$('invite').value.trim().toUpperCase();
+  if(!email)return msg('login-msg','Skriv din mailadresse.',true);
+  $('b-login').disabled=true;
+  try{
+    const r=await api('/auth/request',{method:'POST',body:JSON.stringify({email,invite})});
+    if(r.devLink){msg('login-msg','Lokal udvikling: linket vises her i stedet for at blive sendt.');const a=document.createElement('a');a.href=r.devLink;a.textContent='Åbn linket';a.className='link';a.style.marginLeft='8px';$('login-msg').appendChild(a)}
+    else msg('login-msg','Linket er sendt. Tjek din mail, også spam. Det virker i 15 minutter.');
+  }catch(err){msg('login-msg',err.message,true)}
+  $('b-login').disabled=false;
+});
+
+async function boot(){
+  const q=new URLSearchParams(location.search);
+  if(q.get('login')==='udloebet')msg('login-msg','Linket er udløbet eller brugt. Bed om et nyt.',true);
+  if(q.get('login')==='ugyldig')msg('login-msg','Linket var ugyldigt. Bed om et nyt.',true);
+  if(q.get('betaling')==='ok')sessionStorage.setItem('fm_betaling','ok');
+  if(q.has('login')||q.has('betaling'))history.replaceState(null,'',location.pathname);
+  try{ME=await api('/me')}catch(e){ME=null}
+  if(!ME)return show('login');
+  enterPin();
+}
+
+// ══════════════════════════════════════════════════════════════════
+// PIN OG LAGER
+// ══════════════════════════════════════════════════════════════════
+function enterPin(){
+  const first=!ME.store;
+  $('pin-kicker').textContent='Logget ind som '+ME.email;
+  $('pin-hint').textContent=first?'Første gang: vælg en PIN. Den bliver nøglen til alt, du skriver, og den forlader aldrig din browser.':'Lås dit lager op. Nøglen afledes af din PIN her i browseren.';
+  $('pin2-wrap').hidden=!first;$('pin-warn').hidden=!first;$('b-pin').textContent=first?'Opret og fortsæt':'Lås op';
+  $('pin').value='';$('pin2').value='';msg('pin-msg','');
+  show('pin');setTimeout(()=>$('pin').focus(),60);
+}
+$('f-pin').addEventListener('submit',async e=>{
+  e.preventDefault();msg('pin-msg','');
+  const pin=$('pin').value;
+  if(!/^\d{4,8}$/.test(pin))return msg('pin-msg','PIN er 4 til 8 cifre.',true);
+  $('b-pin').disabled=true;
+  try{
+    if(!ME.store){
+      if(pin!==$('pin2').value)throw new Error('De to PIN-koder er ikke ens.');
+      SALT=crypto.getRandomValues(new Uint8Array(16));KEY=await deriveKey(pin,SALT);D={log:'',chats:{},createdAt:new Date().toISOString()};VERSION=0;
+      await save();
+    }else{
+      const s=await api('/store');VERSION=s.version;SALT=new Uint8Array(s.blob.salt);const key=await deriveKey(pin,SALT);
+      try{D=await decryptWith(key,s.blob)}catch(err){throw new Error('Forkert PIN.')}
+      KEY=key;
+    }
+    enterApp();
+  }catch(err){msg('pin-msg',err.message,true)}
+  $('b-pin').disabled=false;
+});
+async function save(){
+  const blob=await encryptWith(KEY,SALT,D);
+  try{const r=await api('/store',{method:'PUT',headers:{'If-Match':'"'+VERSION+'"'},body:JSON.stringify({blob})});VERSION=r.version;$('st-store').textContent='version '+VERSION;return true}
+  catch(err){if(err.code==='conflict'){msg('save-msg','Lageret er ændret fra en anden enhed. Tryk "Hent igen", før du gemmer.',true);return false}throw err}
+}
+async function reload(){
+  const s=await api('/store');if(!s.blob)return;VERSION=s.version;D=await decryptWith(KEY,s.blob);$('log').value=D.log||'';renderChat();$('st-store').textContent='version '+VERSION;
+}
+
+// ══════════════════════════════════════════════════════════════════
+// APP
+// ══════════════════════════════════════════════════════════════════
+async function enterApp(){
+  $('st-email').textContent=ME.email+(ME.admin?' (admin)':'');
+  const sub=ME.subscription;$('st-sub').textContent=sub.active?(sub.status==='none'?'adgang som admin':sub.status):'intet aktivt';
+  $('st-store').textContent='version '+VERSION;
+  try{const m=await api('/');$('st-motor').textContent='v'+m.version+' · instruks '+m.instruks}catch(e){$('st-motor').textContent='svarer ikke'}
+  const k=await api('/kort');$('kort').innerHTML=k.kort.map(x=>`<option value="${x.id}">${esc(x.navn)} · ${esc(x.lag)}</option>`).join('');
+  $('log').value=D.log||'';renderChat();
+  if(sessionStorage.getItem('fm_betaling')==='ok'){msg('st-msg','Betalingen er registreret. Status opdateres, når Stripe har bekræftet.');sessionStorage.removeItem('fm_betaling')}
+  show('app');
+}
+function renderChat(){
+  const id=$('kort').value;const list=(D.chats&&D.chats[id])||[];
+  $('chat').innerHTML=list.length?list.map(m=>`<div class="m ${m.role==='user'?'user':'ai'}">${esc(m.content)}</div>`).join(''):'<div class="m sys">Ingen samtale endnu på dette kort.</div>';
+  $('chat').scrollTop=$('chat').scrollHeight;
+}
+$('kort').addEventListener('change',renderChat);
+$('say').addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();$('f-chat').requestSubmit()}});
+$('f-chat').addEventListener('submit',async e=>{
+  e.preventDefault();msg('chat-msg','');
+  const text=fixQuotes($('say').value.trim());if(text.length<2)return;
+  const id=$('kort').value;D.chats=D.chats||{};const list=D.chats[id]=(D.chats[id]||[]);
+  list.push({role:'user',content:text});$('say').value='';renderChat();
+  $('thinking').hidden=false;$('b-say').disabled=true;
+  try{
+    const r=await api('/ai',{method:'POST',body:JSON.stringify({kort:id,messages:list.slice(-20)})});
+    list.push({role:'assistant',content:r.text});renderChat();
+    msg('chat-msg',(r.remaining)+' svar tilbage i dag');
+    await save();
+  }catch(err){list.pop();renderChat();msg('chat-msg',err.message,true)}
+  $('thinking').hidden=true;$('b-say').disabled=false;
+});
+$('b-clear').addEventListener('click',async()=>{const id=$('kort').value;if(D.chats)delete D.chats[id];renderChat();await save()});
+$('b-save').addEventListener('click',async()=>{D.log=fixQuotes($('log').value);msg('save-msg','');if(await save())msg('save-msg','Gemt krypteret som version '+VERSION)});
+$('b-reload').addEventListener('click',async()=>{try{await reload();msg('save-msg','Hentet version '+VERSION)}catch(err){msg('save-msg',err.message,true)}});
+$('b-checkout').addEventListener('click',async()=>{msg('st-msg','');try{const r=await api('/billing/checkout',{method:'POST'});location.href=r.url}catch(err){msg('st-msg',err.message,true)}});
+$('b-portal').addEventListener('click',async()=>{msg('st-msg','');try{const r=await api('/billing/portal',{method:'POST'});location.href=r.url}catch(err){msg('st-msg',err.message,true)}});
+async function logout(){try{await api('/auth/logout',{method:'POST'})}catch(e){}KEY=null;D=null;ME=null;location.href=location.pathname}
+$('b-logout').addEventListener('click',logout);$('b-logout-pin').addEventListener('click',logout);
+$('b-wipe').addEventListener('click',async()=>{if(!confirm('Slet din konto, dit krypterede lager og alle sessioner? Det kan ikke fortrydes.'))return;try{await api('/account',{method:'DELETE'});location.href=location.pathname}catch(err){msg('st-msg',err.message,true)}});
+
+boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "friisnaes-motor",
+  "private": true,
+  "type": "module",
+  "description": "Motoren bag abonnementet på friisnaes.com: Cloudflare Worker med magisk link, krypteret lager, AI-proxy og Stripe.",
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "migrate:local": "wrangler d1 migrations apply friisnaes-motor --local",
+    "migrate": "wrangler d1 migrations apply friisnaes-motor --remote",
+    "deploy": "wrangler deploy",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
