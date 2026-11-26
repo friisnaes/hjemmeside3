@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="version" content="0.2.0">
+<meta name="version" content="0.3.0">
 <title>Processen | Friisnæs</title>
 <meta name="description" content="Abonnementet på friisnaes.com: en automatiseret coachingproces på 12 uger med modspil i Thomas Friisnæs' tankegang. Adgang efter invitation.">
 <meta name="author" content="Thomas Friisnæs">
@@ -203,6 +203,13 @@
       <div class="row" style="margin-top:8px"><button type="button" class="btn btn-red" id="b-moenster">Åbn mønsterspejlet</button></div>
     </div>
 
+    <div class="card" id="wk-papir" hidden>
+      <div class="day">Uge 12 · din side</div>
+      <span class="state" id="wk-papir-state"></span>
+      <p>Tolv uger samlet på én side i dine egne ord: hvad der ændrede sig, hvad der ikke gjorde, hvad du ved nu, og hvad der kun kan ske i en samtale. Kan printes eller sendes til Thomas.</p>
+      <div class="row" style="margin-top:8px"><button type="button" class="btn btn-red" id="b-papir">Åbn din side</button></div>
+    </div>
+
     <div class="foot-nav">
       <button type="button" id="b-weeks">Alle uger</button>
       <button type="button" id="b-next-week" hidden>Gå til næste uge nu</button>
@@ -266,6 +273,24 @@
       <div class="foot"><span id="mo-foot"></span> · Thomas Friisnæs · friisnaes.com</div>
     </div>
     <div class="row" id="mo-actions" hidden><button type="button" class="btn btn-ghost" id="b-moenster-copy">Kopiér teksten</button><button type="button" class="btn btn-ghost" id="b-moenster-print">Udskriv</button><button type="button" class="btn btn-red" id="b-moenster-share">Del med Thomas</button></div>
+  </section>
+
+  <!-- Uge 12-papiret -->
+  <section id="sc-papir" class="screen">
+    <div class="step-kicker">Uge 12 · efter tolv uger</div>
+    <h1>Din <em>side.</em></h1>
+    <p class="hint">Tolv ugers svar, aftaler, reviews, logbog og mønsterspejle, skrevet sammen til én side i dine egne ord. Ingen ros, ingen råd. Det sidste afsnit er det, der kun kan ske i en samtale.</p>
+    <div class="row" style="margin-top:0"><button type="button" class="btn btn-red" id="b-papir-run">Skriv min side</button><button type="button" class="link" id="b-papir-back">Tilbage til ugen</button></div>
+    <div class="thinking" id="pa-thinking" hidden><i></i><span>Læser tolv uger.</span></div>
+    <p class="msg" id="pa-msg"></p>
+    <div class="paper" id="pa-paper" hidden>
+      <div class="p-kicker">Abonnement · Uge 12 · Karakter · Disciplin · Klarhed</div>
+      <h2>Tolv uger. Én side.</h2>
+      <div class="body" id="pa-body"></div>
+      <div class="foot"><span id="pa-foot"></span> · Thomas Friisnæs · friisnaes.com</div>
+    </div>
+    <div class="row" id="pa-actions" hidden><button type="button" class="btn btn-ghost" id="b-papir-copy">Kopiér teksten</button><button type="button" class="btn btn-ghost" id="b-papir-print">Udskriv</button><button type="button" class="btn btn-red" id="b-papir-share">Del med Thomas</button></div>
+    <div class="card" style="margin-top:28px"><div class="day">Det, der kommer efter</div><p>Det, der står under "kun i en samtale", er det, processen ikke kan. Det kan Thomas. <a href="/executive-coaching.html" style="color:var(--red-l)">Læs om executive coaching</a>, eller skriv til ham med siden vedhæftet.</p></div>
   </section>
 
   <!-- Konto -->
@@ -342,10 +367,48 @@ const WEEKS=[
    mandag:'Hvilken samtale skylder du, og hvilken dag i denne uge fører du den? Rolle, dag, klokkeslæt.',
    paper:{t:'Modspillet der mangler',u:'/modspillet-der-mangler.html',s:'C-Level Serien'},tool:{t:'Den svære samtale',u:'/vaerktoejer/den-svaere-samtale/'},
    traening:[{kort:'den-samtale-jeg-skylder',navn:'Samtalen ud af hovedet'},{kort:'rollespil',navn:'Rollespilsbanken'}],moenster:true},
-  {n:5,blok:'Disciplin',tema:'Aftaler med mig selv'},{n:6,blok:'Disciplin',tema:'Kalenderen som bevis'},{n:7,blok:'Disciplin',tema:'Det, jeg holder op med'},{n:8,blok:'Disciplin',tema:'Beslutningen, jeg har udskudt',moenster:true},
-  {n:9,blok:'Klarhed',tema:'Mit vigtigste problem i én sætning'},{n:10,blok:'Klarhed',tema:'Generalprøven for bestyrelsen'},{n:11,blok:'Klarhed',tema:'Det, der gentager sig'},{n:12,blok:'Klarhed',tema:'De næste 90 dage',moenster:true},
+  {n:5,blok:'Disciplin',tema:'Aftaler med mig selv',kort:'aftaler-med-mig-selv',
+   intro:'Disciplin er ikke viljestyrke. De beslutninger, der koster dyrest, er sjældent morgenbeslutninger. Når en aftale med dig selv ikke holdt, er det som regel ikke en karakterfejl. Det er en beslutning, der burde have været taget for dig på forhånd.',
+   mandag:'Hvilken aftale med dig selv holdt ikke i de første fire uger, og hvor i kalenderen lå den? Én sætning.',
+   paper:{t:'Disciplin er ikke viljestyrke',u:'/disciplin-er-ikke-viljestyrke.html',s:'C-Level Serien'},tool:{t:'Selvledelse',u:'/vaerktoejer/selvledelse/'},
+   traening:[{kort:'aftaler-med-mig-selv',navn:'Byg aftalen'},{kort:'rollespil',navn:'Rollespilsbanken'}]},
+  {n:6,blok:'Disciplin',tema:'Kalenderen som bevis',kort:'kalenderen-som-bevis',
+   intro:'Kalenderen er beviset. Det, der ikke har en tid, er ikke prioriteret, uanset hvad du siger. Og den fuldt bookede kalender er ikke effektivitet. Den er en flaskehals under opbygning.',
+   mandag:'Hvor mange timer i den seneste hele uge valgte du selv, og hvor mange lagde andre ind? To tal.',
+   paper:{t:'Din kalender har en ejer',u:'/struktur-saetter-fri-din-kalender-har-en-ejer.html',s:'Struktur sætter fri'},tool:{t:'Strategi for dig selv',u:'/vaerktoejer/strategi-for-dig-selv/'},
+   traening:[{kort:'kalenderen-som-bevis',navn:'Kalenderspejlet'},{kort:'rollespil',navn:'Rollespilsbanken'}]},
+  {n:7,blok:'Disciplin',tema:'Det, jeg holder op med',kort:'det-jeg-holder-op-med',
+   intro:'Not-to-do er ledelsens mest oversete disciplin. Når alt er vigtigt, kan intet prioriteres. Det er ikke en fejl i din dømmekraft. Det er en overbelastning af den. Fravalget er halvdelen af klarhed, og det har en modtager.',
+   mandag:'Hvad holder du op med i denne uge, og hvem mærker det? Én sætning, rolle i stedet for navn.',
+   paper:{t:'Prioriteringsparalysen',u:'/prioriteringsparalysen.html',s:'Eksekveringsserien'},tool:{t:'Not-to-do',u:'/vaerktoejer/not-to-do/'},
+   traening:[{kort:'det-jeg-holder-op-med',navn:'Fravalget'},{kort:'rollespil',navn:'Rollespilsbanken'}]},
+  {n:8,blok:'Disciplin',tema:'Beslutningen, jeg har udskudt',kort:'beslutningen-jeg-har-udskudt',
+   intro:'Afbrydelsen er selektiv. Den lader de simple beslutninger passere og retter hele sin kraft mod de komplekse. En tung beslutning taget mellem to møder er ikke en beslutning. Og udskydelse er også en beslutning, bare uden ejer.',
+   mandag:'Hvilken beslutning har ligget længst, og hvor længe? Én sætning og et tal.',
+   paper:{t:'Beslutning under afbrydelse',u:'/beslutning-under-afbrydelse.html',s:'Eksekveringsserien'},tool:{t:'Blinde vinkler',u:'/vaerktoejer/blinde-vinkler/'},
+   traening:[{kort:'beslutningen-jeg-har-udskudt',navn:'Beslutningsjournalen'},{kort:'rollespil',navn:'Rollespilsbanken'}],moenster:true},
+  {n:9,blok:'Klarhed',tema:'Mit vigtigste problem i én sætning',kort:'problemet-i-en-saetning',
+   intro:'Uklarhed er en af de dyreste former for spild, og den står aldrig i budgettet. Klarhed er ikke et kommunikationsproblem. Det er et tænkeproblem: du kan ikke sige klart, hvad du ikke har afklaret. Det, der ikke kan siges i én sætning, kan ikke løses.',
+   mandag:'Dit vigtigste problem lige nu i én sætning. Første udkast; det må gerne være dårligt.',
+   paper:{t:'Klarhed som konkurrencefordel',u:'/klarhed-som-konkurrencefordel.html',s:'C-Level Serien'},tool:{t:'Personal Excellence Diagnostic',u:'/vaerktoejer/personal-excellence-diagnostic/'},
+   traening:[{kort:'problemet-i-en-saetning',navn:'Sætningen'},{kort:'rollespil',navn:'Rollespilsbanken'}]},
+  {n:10,blok:'Klarhed',tema:'Generalprøven for bestyrelsen',kort:'generalproeven',
+   intro:'Ingen CEO informerer bestyrelsen neutralt. Hvert møde er en fortolkning af virkeligheden, struktureret af dine valg om, hvad der vises, i hvilken rækkefølge og med hvilken vægt. Valgene er sjældent bevidste. De er altid konsekvente.',
+   mandag:'Hvilket oplæg skal du holde i de kommende uger, for hvem, og hvad er den ene beslutning, du vil have dem til at træffe?',
+   paper:{t:'Bestyrelseskommunikation som disciplin',u:'/bestyrelseskommunikation-som-disciplin.html',s:'C-Level Serien'},tool:{t:'Den svære samtale',u:'/vaerktoejer/den-svaere-samtale/'},
+   traening:[{kort:'generalproeven',navn:'Generalprøven'},{kort:'rollespil',navn:'Rollespilsbanken'}]},
+  {n:11,blok:'Klarhed',tema:'Det, der gentager sig',kort:'det-der-gentager-sig',
+   intro:'Selvindsigt er en disciplin, ikke en følelse. Indsigt uden adfærdsændring er underholdning. Det, der gentager sig under pres, er mere sandt end det, du siger om dig selv i ro. Du har to mønsterspejle. Nu er det dig, der læser.',
+   mandag:'Hvad gik igen i dine to mønsterspejle? Dine egne ord, ikke AI\'ens. Én sætning.',
+   paper:{t:'Selvbedrag i toppen',u:'/selvbedrag-i-toppen.html',s:'C-Level Serien'},tool:{t:'Blinde vinkler',u:'/vaerktoejer/blinde-vinkler/'},
+   traening:[{kort:'det-der-gentager-sig',navn:'Mønstret'},{kort:'rollespil',navn:'Rollespilsbanken'}]},
+  {n:12,blok:'Klarhed',tema:'De næste 90 dage',kort:'de-naeste-90-dage',
+   intro:'Organisationen kopierer ikke dine ord. Den kopierer din tilstand. En proces, der ender i indsigt, har ikke flyttet noget. Den skal ende i én adfærd, som mennesker omkring dig kan se. Det er sidste uge. Nu tælles der sammen.',
+   mandag:'Din 90-dages sætning fra uge 1: blev den til noget? Ja, nej eller delvist, og hvad kan andre se?',
+   paper:{t:'Før du hyrer en executive coach',u:'/executive-coaching-2027-foer-du-hyrer-en-executive-coach.html',s:'Executive Coaching 2027'},tool:{t:'Strategi for dig selv',u:'/vaerktoejer/strategi-for-dig-selv/'},
+   traening:[{kort:'de-naeste-90-dage',navn:'Sammentællingen'},{kort:'rollespil',navn:'Rollespilsbanken'}],moenster:true,papir:true},
 ];
-const KORT_NAVN={'rollespil':'Rollespilsbanken','det-jeg-undgaar':'Det, jeg undgår','styrken-under-pres':'Styrken, der vælter mig under pres','interessentkortet':'Interessentkortet','den-samtale-jeg-skylder':'Den samtale, jeg skylder','ugens-review':'Ugens review','moensterspejlet':'Mønsterspejlet'};
+const KORT_NAVN={'rollespil':'Rollespilsbanken','det-jeg-undgaar':'Det, jeg undgår','styrken-under-pres':'Styrken, der vælter mig under pres','interessentkortet':'Interessentkortet','den-samtale-jeg-skylder':'Den samtale, jeg skylder','ugens-review':'Ugens review','moensterspejlet':'Mønsterspejlet','aftaler-med-mig-selv':'Aftaler med mig selv','kalenderen-som-bevis':'Kalenderen som bevis','det-jeg-holder-op-med':'Det, jeg holder op med','beslutningen-jeg-har-udskudt':'Beslutningen, jeg har udskudt','problemet-i-en-saetning':'Mit vigtigste problem, i én sætning','generalproeven':'Generalprøven for bestyrelsen','det-der-gentager-sig':'Det, der gentager sig','de-naeste-90-dage':'De næste 90 dage','uge-12-papiret':'Uge 12-papiret'};
 const DIM_NAVN={nysgerrighed:'nysgerrighed',indsigt:'indsigt',engagement:'engagement',beslutsomhed:'beslutsomhed'};
 
 // ══════════════════════════════════════════════════════════════════
@@ -471,7 +534,7 @@ function renderWeek(n){
   $('wk-title').innerHTML=esc(w.tema).replace(/,(.*)$/,',<em>$1</em>');
   if(!builtWeek(n)){
     $('wk-intro').textContent='Denne uge bygges i næste spring. Du kan gå tilbage til en uge, du har haft.';
-    ['wk-monday','wk-training','wk-friday','wk-moenster'].forEach(id=>$(id).hidden=true);
+    ['wk-monday','wk-training','wk-friday','wk-moenster','wk-papir'].forEach(id=>$(id).hidden=true);
     $('b-next-week').hidden=true;show('week');return;
   }
   ['wk-monday','wk-training','wk-friday'].forEach(id=>$(id).hidden=false);
@@ -498,6 +561,9 @@ function renderWeek(n){
   // Mønsterspejlet
   $('wk-moenster').hidden=!w.moenster;
   if(w.moenster){$('wk-moenster-state').textContent=d.moenster?'Hentet':'';$('wk-moenster-state').className='state'+(d.moenster?' ok':'');$('wk-moenster').classList.toggle('done',!!d.moenster)}
+  // Uge 12-papiret
+  $('wk-papir').hidden=!w.papir;
+  if(w.papir){$('wk-papir-state').textContent=d.papir?'Skrevet':'';$('wk-papir-state').className='state'+(d.papir?' ok':'');$('wk-papir').classList.toggle('done',!!d.papir)}
   // Næste uge nu: kun når reviewet er lukket, og næste uge er bygget og ikke allerede åben.
   $('b-next-week').hidden=!(d.review.doneAt&&n===now&&n<12&&builtWeek(n+1));
   show('week');
@@ -532,7 +598,7 @@ function openChat(n,kort){
   cur.week=n;cur.kort=kort;const w=week(n);
   $('ch-kicker').innerHTML=`<b>Uge ${n}</b> · ${esc(w.tema)}`;
   $('ch-title').innerHTML=esc(KORT_NAVN[kort]||kort).replace(/,(.*)$/,',<em>$1</em>');
-  $('ch-hint').textContent=kort==='rollespil'?'Modspillet spiller modparten, så ubekvemt som modparten ville være. Skriv "stop" for at bryde rollen og få modspil på det, der skete.':'Ét spørgsmål ad gangen. Svar konkret: navn, dag, handling, tal.';
+  $('ch-hint').textContent=kort==='rollespil'?'Modspillet spiller modparten, så ubekvemt som modparten ville være. Skriv "stop" for at bryde rollen og få modspil på det, der skete.':kort==='generalproeven'?'Modspillet spiller formanden, der har læst materialet. Først tre spørgsmål, så prøven. Skriv "stop", når du vil ud af rollen.':'Ét spørgsmål ad gangen. Svar konkret: navn, dag, handling, tal.';
   $('say').value='';msg('chat-msg','');renderChat();show('chat');setTimeout(()=>$('say').focus(),60);
 }
 function chatList(){const d=wk(cur.week);d.chats[cur.kort]=d.chats[cur.kort]||[];return d.chats[cur.kort]}
@@ -639,6 +705,47 @@ $('b-moenster-copy').addEventListener('click',async()=>{await copyText(moensterT
 $('b-moenster-print').addEventListener('click',()=>window.print());
 $('b-moenster-share').addEventListener('click',()=>{const t=moensterText();const href=`mailto:${COACH_EMAIL}?subject=${encodeURIComponent('Mønsterspejlet · uge '+cur.week)}&body=${encodeURIComponent(t)}`;if(href.length>7000){copyText(t);alert('Teksten er for lang til et mail-link. Den er kopieret; sæt den ind i en mail til '+COACH_EMAIL+'.');return}location.href=href});
 function moensterText(){const d=wk(cur.week);return `MØNSTERSPEJLET · UGE ${Math.max(1,cur.week-3)} TIL ${cur.week}\n\n${d.moenster?d.moenster.text:''}\n\nSkrevet ud fra mine egne aftaler, reviews og logbog. Sendt af mig.\n`}
+
+// ══════════════════════════════════════════════════════════════════
+// UGE 12-PAPIRET
+// ══════════════════════════════════════════════════════════════════
+$('b-papir').addEventListener('click',()=>openPapir(cur.week));
+function openPapir(n){
+  cur.week=n;const d=wk(n);
+  if(d.papir){$('pa-body').textContent=d.papir.text;$('pa-foot').textContent='Skrevet '+daDate(d.papir.at)+(D.placering&&D.placering.rolle?' · '+D.placering.rolle:'');$('pa-paper').hidden=false;$('pa-actions').hidden=false;$('b-papir-run').textContent='Skriv igen'}
+  else{$('pa-paper').hidden=true;$('pa-actions').hidden=true;$('b-papir-run').textContent='Skriv min side'}
+  msg('pa-msg','');show('papir');
+}
+function allWeeksText(){
+  let t='';const p=D.placering;
+  if(p&&p.own)t+=`90-DAGES SÆTNING FRA DØREN: ${p.own}\n\n`;
+  for(let i=1;i<=12;i++){const w=week(i);const d=D.weeks&&D.weeks[i];if(!d)continue;
+    t+=`UGE ${i} (${w.blok}): ${w.tema}\n`;
+    if(d.monday&&d.monday.answer)t+=`Mandag: ${d.monday.answer}\n`;
+    const r=d.review||{};
+    if(r.q1)t+=`Aftalen holdt: ${r.q1}\n`;if(r.q2)t+=`Hvad skete: ${r.q2}\n`;if(r.q3)t+=`Anderledes næste uge: ${r.q3}\n`;if(r.next)t+=`Aftale for næste uge: ${r.next}\n`;
+    if(r.log&&r.log.length)t+=`Logbog: ${r.log.join(' / ')}\n`;
+    if(!r.doneAt)t+=`Ugen blev ikke lukket.\n`;
+    if(d.moenster&&d.moenster.text)t+=`MØNSTERSPEJL UGE ${i}:\n${d.moenster.text}\n`;
+    t+='\n';
+  }
+  return t;
+}
+$('b-papir-run').addEventListener('click',async()=>{
+  msg('pa-msg','');const text=allWeeksText();
+  if(text.length<400)return msg('pa-msg','Der er for lidt skrevet i de tolv uger til en side. Det er i sig selv en side.',true);
+  $('pa-thinking').hidden=false;$('b-papir-run').disabled=true;
+  try{
+    const r=await api('/ai',{method:'POST',body:JSON.stringify({kort:'uge-12-papiret',max_tokens:1200,messages:[{role:'user',content:context(cur.week)+'\n\nTOLV UGERS MATERIALE, skrevet af brugeren selv:\n\n'+text}]})});
+    wk(cur.week).papir={text:r.text,at:new Date().toISOString()};await save();openPapir(cur.week);
+  }catch(err){msg('pa-msg',err.message,true)}
+  $('pa-thinking').hidden=true;$('b-papir-run').disabled=false;
+});
+$('b-papir-back').addEventListener('click',()=>renderWeek(cur.week));
+function papirText(){const d=wk(cur.week);return `TOLV UGER. ÉN SIDE.\nKarakter · Disciplin · Klarhed\n\n${d.papir?d.papir.text:''}\n\nSkrevet ud fra mine egne svar, aftaler, reviews og logbog gennem tolv uger. Sendt af mig.\n`}
+$('b-papir-copy').addEventListener('click',async()=>{await copyText(papirText());msg('pa-msg','Kopieret.')});
+$('b-papir-print').addEventListener('click',()=>window.print());
+$('b-papir-share').addEventListener('click',()=>{const t=papirText();const href=`mailto:${COACH_EMAIL}?subject=${encodeURIComponent('Tolv uger. Én side.')}&body=${encodeURIComponent(t)}`;if(href.length>7000){copyText(t);alert('Teksten er for lang til et mail-link. Den er kopieret; sæt den ind i en mail til '+COACH_EMAIL+'.');return}location.href=href});
 
 // ══════════════════════════════════════════════════════════════════
 // KONTO
