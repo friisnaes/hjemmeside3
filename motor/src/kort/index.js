@@ -16,6 +16,7 @@ import { GENERALPROEVEN } from './generalproeven.js';
 import { DET_DER_GENTAGER_SIG } from './det-der-gentager-sig.js';
 import { DE_NAESTE_90_DAGE } from './de-naeste-90-dage.js';
 import { UGE_12_PAPIRET } from './uge-12-papiret.js';
+import { PEJLINGEN } from './pejlingen.js';
 
 export const KORT = {
   [ROLLESPIL.id]: ROLLESPIL,
@@ -34,4 +35,5 @@ export const KORT = {
   [DET_DER_GENTAGER_SIG.id]: DET_DER_GENTAGER_SIG,
   [DE_NAESTE_90_DAGE.id]: DE_NAESTE_90_DAGE,
   [UGE_12_PAPIRET.id]: UGE_12_PAPIRET,
+  [PEJLINGEN.id]: PEJLINGEN,
 };

@@ -7,8 +7,9 @@ import { checkout, portal, webhook } from './billing.js';
 import { runReminders } from './reminders.js';
 import { KORT } from './kort/index.js';
 import { INSTRUKS_VERSION } from './instruks.js';
+import { perspektivFor, isoWeek } from './perspektiver.js';
 
-const VERSION = '0.1.0';
+const VERSION = '0.2.0';
 
 export default {
   async fetch(request, env, ctx) {
@@ -59,6 +60,14 @@ async function route(request, env, ctx, path, method) {
   if (path === '/ai' && method === 'POST') return ai(request, env);
   if (path === '/kort' && method === 'GET') {
     return json({ kort: Object.values(KORT).map(k => ({ id: k.id, navn: k.navn, lag: k.lag })) });
+  }
+
+  // Ugens perspektiv: offentligt indhold, ingen persondata.
+  if (path === '/perspektiv' && method === 'GET') {
+    const q = new URL(request.url).searchParams.get('uge');
+    const uge = /^\d{4}-W\d{2}$/.test(q || '') ? q : isoWeek();
+    const p = perspektivFor(uge);
+    return json({ uge, perspektiv: p });
   }
 
   // Betaling

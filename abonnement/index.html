@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="version" content="0.3.0">
+<meta name="version" content="0.4.0">
 <title>Processen | Friisnæs</title>
 <meta name="description" content="Abonnementet på friisnaes.com: en automatiseret coachingproces på 12 uger med modspil i Thomas Friisnæs' tankegang. Adgang efter invitation.">
 <meta name="author" content="Thomas Friisnæs">
@@ -75,6 +75,12 @@
   .links{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:8px}
   .links a{font-size:14px;text-decoration:none;border-bottom:1px solid rgba(231,76,60,.4);padding-bottom:1px}
   .links a:hover{color:var(--red-l);border-bottom-color:var(--red-l)}
+  .pick{display:block;width:100%;text-align:left;background:none;border:1px solid var(--rule-2);border-radius:3px;padding:12px 14px;margin-top:8px;cursor:pointer;color:var(--txt);font-family:var(--sans);font-size:15px;transition:border-color .2s}
+  .pick b{display:block;font-weight:500;color:#fff}.pick span{display:block;color:var(--txt-2);font-size:14px;margin-top:2px}.pick:hover{border-color:var(--red-l)}
+  .kort-row{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;padding:12px 0;border-top:1px solid var(--rule)}
+  .kort-row>div{display:flex;flex-direction:column;gap:2px;min-width:0}.kort-row b{font-weight:500;color:var(--txt)}.kort-row span{color:var(--txt-2);font-size:14px}.kort-row em{font-style:normal;color:var(--txt-3);font-size:12.5px}
+  .kort-row.used em{color:var(--red-l)}.kort-row .btn{flex:none;white-space:nowrap}
+  .weeks li.q{border:0;padding:18px 0 2px;display:block}
   .links .ser{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--txt-3);margin-left:6px}
   .status{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:8px 0 4px}
   .status div{border-top:1px solid var(--rule);padding-top:10px}.status b{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-3);font-weight:500;margin-bottom:4px}
@@ -146,9 +152,9 @@
 
   <!-- Start: før uge 1 -->
   <section id="sc-start" class="screen">
-    <div class="step-kicker">Processen · 12 uger</div>
+    <div class="step-kicker">Processen · kvartal for kvartal</div>
     <h1>Om 12 uger har du <em>ændret én ting.</em></h1>
-    <p class="lead">Ikke indsigt. Ikke inspiration. Én adfærd, som mennesker omkring dig kan se. Tre blokke: Karakter, Disciplin, Klarhed. Ét tema om ugen, modspil undervejs, review om fredagen.</p>
+    <p class="lead">Ikke indsigt. Ikke inspiration. Én adfærd, som mennesker omkring dig kan se. Rytmen er fast: ét tema om ugen, modspil undervejs, review om fredagen. Temaet vælger du selv hver mandag, ud fra det, du står i.</p>
     <div class="card" id="start-placering" hidden>
       <div class="day">Din placering fra døren</div>
       <p id="start-placering-text"></p>
@@ -156,10 +162,11 @@
     </div>
     <div class="card">
       <div class="day">Sådan ser en uge ud</div>
-      <p><strong style="font-weight:500;color:var(--txt)">Mandag.</strong> Ugens tema åbner: ét spørgsmål, ét paper, ét værktøj. 20 minutter.</p>
+      <p><strong style="font-weight:500;color:var(--txt)">Mandag.</strong> Et nyt perspektiv fra Thomas. Du skriver, hvad du står i, og Pejlingen peger på to eller tre kort. Du vælger ét. Så åbner temaet: ét spørgsmål, ét paper, ét værktøj. 20 minutter.</p>
       <p><strong style="font-weight:500;color:var(--txt)">Tirsdag til torsdag.</strong> Træning med modspil, 15 minutter ad gangen, når det passer dig.</p>
       <p><strong style="font-weight:500;color:var(--txt)">Fredag.</strong> Tre spørgsmål, én aftale for næste uge, tre linjer i logbogen. Ti minutter.</p>
       <p><strong style="font-weight:500;color:var(--txt)">Hver fjerde uge.</strong> Mønsterspejlet læser dine fire uger og viser det, der gentager sig.</p>
+      <p><strong style="font-weight:500;color:var(--txt)">Hver tolvte uge.</strong> Papiret: én side i dine egne ord, en ny 90-dages sætning, og videre.</p>
     </div>
     <div class="row"><button type="button" class="btn btn-red" id="b-start">Begynd uge 1</button><button type="button" class="link" id="b-konto-start">Konto</button></div>
     <p class="msg">Ugen regnes fra i dag. Det, du skriver, krypteres i din browser og følger dig på tværs af enheder.</p>
@@ -170,6 +177,24 @@
     <div class="step-kicker" id="wk-kicker"></div>
     <h1 id="wk-title"></h1>
     <p class="lead" id="wk-intro"></p>
+
+    <div class="card" id="wk-perspektiv" hidden>
+      <div class="day">Ugens perspektiv</div>
+      <p><strong id="pv-title" style="font-weight:500;color:var(--txt)"></strong></p>
+      <p id="pv-text"></p>
+      <p class="own" id="pv-q"></p>
+      <div class="links" id="pv-link"></div>
+      <p class="msg" id="pv-kort" style="margin:8px 0 0"></p>
+    </div>
+
+    <div class="card" id="wk-pejling" hidden>
+      <div class="day">Mandag · vælg ugens tema</div>
+      <div class="fg"><label for="pj-situation">Hvad står du i lige nu? Et møde, en person, en beslutning. To eller tre linjer.</label><textarea id="pj-situation" rows="3" maxlength="2000" placeholder="Fx: Bestyrelsesmøde om 14 dage. Tallene for fjerde kvartal holder ikke, og min CFO og jeg er ikke enige om, hvad vi siger."></textarea></div>
+      <div class="row" style="margin-top:8px"><button type="button" class="btn btn-red" id="b-pejl">Pejl</button><button type="button" class="btn btn-ghost" id="b-std"></button><button type="button" class="link" id="b-kort-fra-pejl">Vælg selv i landkortet</button></div>
+      <div class="thinking" id="pj-thinking" hidden><i></i><span>Pejler.</span></div>
+      <p class="msg" id="pj-msg"></p>
+      <div id="pj-forslag" hidden></div>
+    </div>
 
     <div class="card" id="wk-monday">
       <div class="day">Mandag · ugens tema</div>
@@ -204,7 +229,7 @@
     </div>
 
     <div class="card" id="wk-papir" hidden>
-      <div class="day">Uge 12 · din side</div>
+      <div class="day">Kvartalets sidste uge · din side</div>
       <span class="state" id="wk-papir-state"></span>
       <p>Tolv uger samlet på én side i dine egne ord: hvad der ændrede sig, hvad der ikke gjorde, hvad du ved nu, og hvad der kun kan ske i en samtale. Kan printes eller sendes til Thomas.</p>
       <div class="row" style="margin-top:8px"><button type="button" class="btn btn-red" id="b-papir">Åbn din side</button></div>
@@ -212,6 +237,7 @@
 
     <div class="foot-nav">
       <button type="button" id="b-weeks">Alle uger</button>
+      <button type="button" id="b-kort">Landkortet</button>
       <button type="button" id="b-next-week" hidden>Gå til næste uge nu</button>
       <button type="button" id="b-konto">Konto</button>
     </div>
@@ -219,11 +245,21 @@
 
   <!-- Alle uger -->
   <section id="sc-weeks" class="screen">
-    <div class="step-kicker">Processen · 12 uger</div>
+    <div class="step-kicker">Processen · kvartal for kvartal</div>
     <h1>Alle <em>uger.</em></h1>
-    <p class="hint">Uger, der ligger forude, åbner på deres mandag. Du kan altid gå tilbage.</p>
+    <p class="hint">Uger, der ligger forude, åbner på deres mandag, og temaet vælges den dag. Du kan altid gå tilbage.</p>
     <ol class="weeks" id="weeks-list"></ol>
     <div class="foot-nav"><button type="button" id="b-weeks-back">Tilbage til ugen</button></div>
+  </section>
+
+  <!-- Landkortet -->
+  <section id="sc-kort" class="screen">
+    <div class="step-kicker">Landkortet · det, du kan blive udfordret på</div>
+    <h1>Tolv temaer. <em>Intet låst.</em></h1>
+    <p class="hint">Tre blokke, fire kort i hver. Alt kan åbnes når som helst. Det, du ikke har åbnet, er også et mønster.</p>
+    <div id="kort-list"></div>
+    <div class="card" style="margin-top:28px"><div class="day">Under alle temaer</div><p><strong style="font-weight:500;color:var(--txt)">Rollespilsbanken.</strong> Modparten, så ubekvem som i virkeligheden. <strong style="font-weight:500;color:var(--txt)">Ugens review.</strong> Holdt, flyttet eller opgivet. <strong style="font-weight:500;color:var(--txt)">Mønsterspejlet.</strong> Det, der går igen i fire uger. <strong style="font-weight:500;color:var(--txt)">Papiret.</strong> Én side hver tolvte uge, og det, der kun kan ske i en samtale.</p></div>
+    <div class="foot-nav"><button type="button" id="b-kort-back">Tilbage til ugen</button></div>
   </section>
 
   <!-- Samtale: ét kildekort i én uge -->
@@ -277,7 +313,7 @@
 
   <!-- Uge 12-papiret -->
   <section id="sc-papir" class="screen">
-    <div class="step-kicker">Uge 12 · efter tolv uger</div>
+    <div class="step-kicker" id="pa-kicker">Efter tolv uger</div>
     <h1>Din <em>side.</em></h1>
     <p class="hint">Tolv ugers svar, aftaler, reviews, logbog og mønsterspejle, skrevet sammen til én side i dine egne ord. Ingen ros, ingen råd. Det sidste afsnit er det, der kun kan ske i en samtale.</p>
     <div class="row" style="margin-top:0"><button type="button" class="btn btn-red" id="b-papir-run">Skriv min side</button><button type="button" class="link" id="b-papir-back">Tilbage til ugen</button></div>
@@ -409,6 +445,9 @@ const WEEKS=[
    traening:[{kort:'de-naeste-90-dage',navn:'Sammentællingen'},{kort:'rollespil',navn:'Rollespilsbanken'}],moenster:true,papir:true},
 ];
 const KORT_NAVN={'rollespil':'Rollespilsbanken','det-jeg-undgaar':'Det, jeg undgår','styrken-under-pres':'Styrken, der vælter mig under pres','interessentkortet':'Interessentkortet','den-samtale-jeg-skylder':'Den samtale, jeg skylder','ugens-review':'Ugens review','moensterspejlet':'Mønsterspejlet','aftaler-med-mig-selv':'Aftaler med mig selv','kalenderen-som-bevis':'Kalenderen som bevis','det-jeg-holder-op-med':'Det, jeg holder op med','beslutningen-jeg-har-udskudt':'Beslutningen, jeg har udskudt','problemet-i-en-saetning':'Mit vigtigste problem, i én sætning','generalproeven':'Generalprøven for bestyrelsen','det-der-gentager-sig':'Det, der gentager sig','de-naeste-90-dage':'De næste 90 dage','uge-12-papiret':'Uge 12-papiret'};
+const KORT_LINJE={'det-jeg-undgaar':'Den samtale eller beslutning, du går udenom, og hvad det koster','styrken-under-pres':'Den overbrugte styrke, der bliver din afsporing','interessentkortet':'Hvem der mærker dig, og hvad de ville sige, hvis de blev spurgt','den-samtale-jeg-skylder':'Den udskudte samtale, trænet til den holdes','aftaler-med-mig-selv':'Hvorfor aftalen faldt, og hvilken beslutning der skulle have været taget på forhånd','kalenderen-som-bevis':'Hvad din kalender siger om dine prioriteter, uanset hvad du siger','det-jeg-holder-op-med':'Fravalget, og hvem der mærker det','beslutningen-jeg-har-udskudt':'Den tunge beslutning uden ejer','problemet-i-en-saetning':'Problemet, sagt så en kollega kan handle på det','generalproeven':'Formandens spørgsmål, før de bliver stillet','det-der-gentager-sig':'Dit mønster: karakter, struktur eller forklaring','de-naeste-90-dage':'Hvad der er ændret, og hvad andre kan se'};
+const KORT_DEF=Object.fromEntries(WEEKS.map(w=>[w.kort,w]));
+const TEMA_KORT=WEEKS.map(w=>w.kort);
 const DIM_NAVN={nysgerrighed:'nysgerrighed',indsigt:'indsigt',engagement:'engagement',beslutsomhed:'beslutsomhed'};
 
 // ══════════════════════════════════════════════════════════════════
@@ -423,14 +462,26 @@ async function decryptWith(key,blob){const pt=await crypto.subtle.decrypt({name:
 // ══════════════════════════════════════════════════════════════════
 let ME=null,KEY=null,SALT=null,VERSION=0,D=null;
 let cur={week:1,kort:null};
-function week(n){return WEEKS[n-1]}
+// Ugen: det valgte kort bestemmer tema, paper, værktøj og træning. Uden valg: standardstien. Ældre data fra det låste forløb får standardstiens kort.
+function week(n){
+  const std=WEEKS[(n-1)%12];const d=D&&D.weeks&&D.weeks[n];
+  if(d&&!d.kort&&((d.monday&&d.monday.answer)||(d.review&&d.review.doneAt)))d.kort=std.kort;
+  const def=d&&d.kort&&KORT_DEF[d.kort]||null;
+  return Object.assign({},def||std,{n,moenster:n%4===0,papir:n%12===0,chosen:!!def,std,kvartal:Math.ceil(n/12),i:((n-1)%12)+1});
+}
 function wk(n){D.weeks=D.weeks||{};if(!D.weeks[n])D.weeks[n]={monday:{},review:{},chats:{}};const w=D.weeks[n];w.monday=w.monday||{};w.review=w.review||{};w.chats=w.chats||{};return w}
 function currentWeek(){
   if(!D.process||!D.process.startedAt)return 0;
   const days=Math.floor((Date.now()-new Date(D.process.startedAt).getTime())/86400000);
-  return Math.max(1,Math.min(12,Math.floor(days/7)+1+(D.process.advance||0)));
+  return Math.max(1,Math.floor(days/7)+1+(D.process.advance||0));
 }
-function builtWeek(n){return !!week(n).kort}
+function builtWeek(n){return true}
+// Ugens perspektiv fra motoren: ét om ugen, hentes én gang pr. besøg.
+const PERSP={cur:null,uge:null,loaded:false};
+function isoWeekNow(){const d=new Date();const x=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));const day=x.getUTCDay()||7;x.setUTCDate(x.getUTCDate()+4-day);const ys=new Date(Date.UTC(x.getUTCFullYear(),0,1));return `${x.getUTCFullYear()}-W${String(Math.ceil(((x-ys)/86400000+1)/7)).padStart(2,'0')}`}
+async function perspektiv(){if(PERSP.loaded)return PERSP.cur;PERSP.loaded=true;try{const r=await api('/perspektiv?uge='+isoWeekNow());PERSP.cur=r.perspektiv||null;PERSP.uge=r.uge}catch(e){PERSP.cur=null}return PERSP.cur}
+// Hvilke kort er brugt, og i hvilke uger: som ugens tema eller som træning.
+function brugteKort(){const r={};for(const [k,v] of Object.entries(D.weeks||{})){const n=+k;const w=week(n);if(w.chosen)(r[w.kort]=r[w.kort]||[]).push(n);for(const c of Object.keys(v.chats||{}))if(KORT_DEF[c]&&(v.chats[c]||[]).length)(r[c]=r[c]||[]).push(n)}for(const k in r)r[k]=[...new Set(r[k])].sort((a,b)=>a-b);return r}
 
 // ══════════════════════════════════════════════════════════════════
 // LOGIN OG PIN
@@ -526,17 +577,26 @@ $('b-konto-start').addEventListener('click',()=>enterKonto('start'));
 // ══════════════════════════════════════════════════════════════════
 // UGEN
 // ══════════════════════════════════════════════════════════════════
-function renderWeek(n){
+async function renderWeek(n){
   cur.week=n;const w=week(n);const d=wk(n);const now=currentWeek();
-  setProgress((n-1)/12+(d.review.doneAt?1/12:0));
-  $('top-kicker').textContent=`Abonnement · Uge ${n} af 12`;
-  $('wk-kicker').innerHTML=`<b>Uge ${n}</b> af 12 · ${esc(w.blok)}${n===now?'':' · <span style="color:var(--txt-3)">'+(n<now?'afsluttet':'kommende')+'</span>'}`;
-  $('wk-title').innerHTML=esc(w.tema).replace(/,(.*)$/,',<em>$1</em>');
-  if(!builtWeek(n)){
-    $('wk-intro').textContent='Denne uge bygges i næste spring. Du kan gå tilbage til en uge, du har haft.';
+  setProgress((w.i-1)/12+(d.review.doneAt?1/12:0));
+  $('top-kicker').textContent=`Abonnement · Uge ${n}`;
+  $('wk-kicker').innerHTML=`<b>Uge ${n}</b> · kvartal ${w.kvartal}, uge ${w.i} af 12${w.chosen?' · '+esc(w.blok):''}${n===now?'':' · <span style="color:var(--txt-3)">'+(n<now?'afsluttet':'kommende')+'</span>'}`;
+  // Ugens perspektiv vises i den aktuelle uge.
+  const P=n===now?await perspektiv():null;
+  $('wk-perspektiv').hidden=!P;
+  if(P){$('pv-title').textContent=P.titel;$('pv-text').textContent=P.tekst;$('pv-q').textContent=P.spoergsmaal;$('pv-link').innerHTML=P.paper?`<a href="${P.paper.u}" target="_blank" rel="noopener">${esc(P.paper.t)}<span class="ser">${esc(P.paper.s||'')}</span></a>`:'';$('pv-kort').textContent='Peger på: '+(P.kort||[]).map(k=>KORT_NAVN[k]||k).join(' · ')}
+  // Intet tema valgt endnu: mandagens pejling.
+  if(!w.chosen){
+    $('wk-title').innerHTML='Hvad står du <em>i lige nu?</em>';
+    $('wk-intro').textContent=n>now?'Ugen åbner på sin mandag. Temaet vælger du den dag.':'Mandag. Ugens tema vælger du, ikke appen. Skriv to eller tre linjer om det, du står i, og lad Pejlingen pege på de kort, der rammer det. Eller tag standardstien.';
     ['wk-monday','wk-training','wk-friday','wk-moenster','wk-papir'].forEach(id=>$(id).hidden=true);
-    $('b-next-week').hidden=true;show('week');return;
+    $('wk-pejling').hidden=n>now;$('b-next-week').hidden=true;
+    $('pj-situation').value=d.situation||'';$('b-std').textContent='Tag standardstien: '+w.std.tema;
+    renderForslag(d);msg('pj-msg','');show('week');return;
   }
+  $('wk-pejling').hidden=true;
+  $('wk-title').innerHTML=esc(w.tema).replace(/,(.*)$/,',<em>$1</em>');
   ['wk-monday','wk-training','wk-friday'].forEach(id=>$(id).hidden=false);
   $('wk-intro').textContent=w.intro;
   // Mandag
@@ -565,8 +625,57 @@ function renderWeek(n){
   $('wk-papir').hidden=!w.papir;
   if(w.papir){$('wk-papir-state').textContent=d.papir?'Skrevet':'';$('wk-papir-state').className='state'+(d.papir?' ok':'');$('wk-papir').classList.toggle('done',!!d.papir)}
   // Næste uge nu: kun når reviewet er lukket, og næste uge er bygget og ikke allerede åben.
-  $('b-next-week').hidden=!(d.review.doneAt&&n===now&&n<12&&builtWeek(n+1));
+  $('b-next-week').hidden=!(d.review.doneAt&&n===now);
   show('week');
+}
+// Mandagens pejling
+function renderForslag(d){
+  const pj=d.pejling;const box=$('pj-forslag');box.innerHTML='';
+  if(!pj){box.hidden=true;return}
+  box.hidden=false;
+  if(pj.thomas){const p=document.createElement('p');p.className='own';p.textContent=pj.thomas;box.appendChild(p)}
+  (pj.forslag||[]).forEach(f=>{const b=document.createElement('button');b.type='button';b.className='pick';b.innerHTML=`<b>${esc(KORT_NAVN[f.kort]||f.kort)}</b><span>${esc(f.hvorfor)}</span>`;b.addEventListener('click',()=>vaelgKort(f.kort,cur.week));box.appendChild(b)});
+}
+async function vaelgKort(kort,n){
+  if(!KORT_DEF[kort])return;const d=wk(n);d.kort=kort;d.valgtAt=new Date().toISOString();
+  if(n===currentWeek()&&PERSP.cur)d.perspektivTitel=PERSP.cur.titel;
+  await save();renderWeek(n);
+}
+function pejlingText(n){
+  const p=D.placering;const d=wk(n);const w=week(n);const parts=[`Uge ${n}, kvartal ${w.kvartal}, uge ${w.i} af 12.`];
+  parts.push(`SITUATIONEN, i brugerens egne ord: ${d.situation||'(ikke skrevet)'}`);
+  if(p)parts.push(`PLACERING FRA DØREN: ${p.rolle}; situation: ${p.situation}; fylder mest: ${p.fylder}; laveste dimension: ${p.lowest}.`+(p.own?` 90-dages sætning: "${p.own}".`:''));
+  const P=PERSP.cur;if(P)parts.push(`UGENS PERSPEKTIV: "${P.titel}". Spørgsmål: ${P.spoergsmaal} Peger på: ${(P.kort||[]).join(', ')}.`);
+  const prev=n>1?wk(n-1).review:null;if(prev&&(prev.q1||prev.next))parts.push(`SIDSTE FREDAGS REVIEW: holdt aftalen: ${prev.q1||'?'}; hvad skete: ${prev.q2||''}; aftale for denne uge: ${prev.next||''}; logbog: ${(prev.log||[]).join(' / ')}.`);
+  const brugt=brugteKort();
+  parts.push(`BRUGTE KORT: ${Object.entries(brugt).map(([k,ws])=>`${k} (uge ${ws.join(', ')})`).join('; ')||'ingen'}.`);
+  parts.push(`IKKE BRUGTE KORT: ${TEMA_KORT.filter(k=>!brugt[k]).join(', ')||'ingen'}.`);
+  const mo=[];for(let i=1;i<n;i++){const x=D.weeks&&D.weeks[i];if(x&&x.moenster&&x.moenster.text)mo.push(`uge ${i}: ${x.moenster.text.slice(0,500)}`)}
+  if(mo.length)parts.push(`SENESTE MØNSTERSPEJLE: ${mo.slice(-2).join(' || ')}`);
+  return parts.join('\n');
+}
+$('b-pejl').addEventListener('click',async()=>{
+  const d=wk(cur.week);d.situation=fixQuotes($('pj-situation').value.trim());msg('pj-msg','');
+  $('pj-thinking').hidden=false;$('b-pejl').disabled=true;
+  try{
+    const r=await api('/ai',{method:'POST',body:JSON.stringify({kort:'pejlingen',max_tokens:400,messages:[{role:'user',content:pejlingText(cur.week)}]})});
+    const forslag=[];let thomas='';
+    for(const l of String(r.text||'').split('\n')){const m=l.match(/^\s*KORT:\s*([a-z0-9-]+)\s*\|\s*(.+)$/i);const t=l.match(/^\s*THOMAS:\s*(.+)$/i);if(m){const k=m[1].toLowerCase();if(KORT_DEF[k]&&!forslag.some(f=>f.kort===k))forslag.push({kort:k,hvorfor:m[2].trim()})}else if(t)thomas=t[1].trim()}
+    if(!forslag.length&&!thomas)throw new Error('Pejlingen svarede ikke i et format, appen kan læse. Prøv igen, eller vælg selv i landkortet.');
+    d.pejling={forslag:forslag.slice(0,3),thomas,at:new Date().toISOString()};await save();renderForslag(d);
+  }catch(err){msg('pj-msg',err.message,true)}
+  $('pj-thinking').hidden=true;$('b-pejl').disabled=false;
+});
+$('b-std').addEventListener('click',()=>vaelgKort(week(cur.week).std.kort,cur.week));
+$('b-kort-fra-pejl').addEventListener('click',renderKort);
+$('b-kort').addEventListener('click',renderKort);
+$('b-kort-back').addEventListener('click',()=>renderWeek(cur.week));
+// Landkortet: alle kort, status, og valg af ugens tema eller træning nu.
+function renderKort(){
+  const brugt=brugteKort();const now=currentWeek();const canPick=!week(now).chosen;
+  $('kort-list').innerHTML=['Karakter','Disciplin','Klarhed'].map(b=>`<div class="card"><div class="day">${b}</div>`+WEEKS.filter(w=>w.blok===b).map(w=>{const u=brugt[w.kort];return `<div class="kort-row${u?' used':''}"><div><b>${esc(w.tema)}</b><span>${esc(KORT_LINJE[w.kort]||'')}</span><em>${u?'Brugt i uge '+u.join(', '):'Ikke åbnet'}</em></div><button type="button" class="btn ${canPick?'btn-red':'btn-ghost'}" data-kort="${w.kort}">${canPick?'Ugens tema':'Træn nu'}</button></div>`}).join('')+'</div>').join('');
+  $('kort-list').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(canPick)vaelgKort(b.dataset.kort,now);else openChat(now,b.dataset.kort)}));
+  show('kort');
 }
 $('f-monday').addEventListener('submit',async e=>{e.preventDefault();const d=wk(cur.week);d.monday.answer=fixQuotes($('monday-a').value.trim());d.monday.at=new Date().toISOString();await save();renderWeek(cur.week);msg('monday-msg','Gemt.')});
 $('b-weeks').addEventListener('click',renderWeeks);
@@ -574,9 +683,12 @@ $('b-weeks-back').addEventListener('click',()=>renderWeek(cur.week));
 $('b-konto').addEventListener('click',()=>enterKonto('week'));
 $('b-next-week').addEventListener('click',async()=>{D.process.advance=(D.process.advance||0)+1;await save();renderWeek(currentWeek())});
 function renderWeeks(){
-  const now=currentWeek();
-  $('weeks-list').innerHTML=WEEKS.map(w=>{const d=D.weeks&&D.weeks[w.n];const locked=w.n>now||!builtWeek(w.n);const st=d&&d.review&&d.review.doneAt?'lukket':(w.n===now?'denne uge':(locked?(builtWeek(w.n)?'åbner mandag':'bygges'):'åben'));
-    return `<li class="${locked?'locked':''}"><span class="n">${w.n}</span>${locked?`<span>${esc(w.tema)}</span>`:`<button type="button" data-n="${w.n}">${esc(w.tema)}</button>`}<span class="blok">${esc(w.blok)} · ${st}</span></li>`}).join('');
+  const now=currentWeek();const last=Math.max(12,Math.ceil(now/12)*12);let html='';
+  for(let n=1;n<=last;n++){const w=week(n);const d=D.weeks&&D.weeks[n];const locked=n>now;const st=d&&d.review&&d.review.doneAt?'lukket':(n===now?'denne uge':(locked?'åbner mandag':'åben'));
+    const tema=w.chosen?w.tema:(locked?'Tema vælges mandag':(n<now?'Intet tema valgt':'Vælg ugens tema'));
+    if(w.i===1)html+=`<li class="q"><span class="blok">Kvartal ${w.kvartal}</span></li>`;
+    html+=`<li class="${locked?'locked':''}"><span class="n">${n}</span>${locked?`<span>${esc(tema)}</span>`:`<button type="button" data-n="${n}">${esc(tema)}</button>`}<span class="blok">${w.chosen?esc(w.blok)+' · ':''}${st}</span></li>`}
+  $('weeks-list').innerHTML=html;
   $('weeks-list').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>renderWeek(+b.dataset.n)));
   show('weeks');
 }
@@ -586,7 +698,9 @@ function renderWeeks(){
 // ══════════════════════════════════════════════════════════════════
 function context(n){
   const w=week(n);const d=wk(n);const p=D.placering;
-  const parts=[`Uge ${n} af 12, blok ${w.blok}, tema "${w.tema}".`];
+  const parts=[`Uge ${n}, kvartal ${w.kvartal}, uge ${w.i} af 12, blok ${w.blok}, tema "${w.tema}".`];
+  if(d.situation)parts.push(`Brugerens situation mandag: "${d.situation}".`);
+  if(d.perspektivTitel)parts.push(`Ugens perspektiv: "${d.perspektivTitel}".`);
   if(p)parts.push(`Placering fra døren: ${p.rolle}; situation: ${p.situation}; fylder mest: ${p.fylder}; laveste dimension: ${p.lowest}.`);
   if(p&&p.own)parts.push(`Brugerens 90-dages sætning: "${p.own}".`);
   if(d.monday.answer)parts.push(`Svar på ugens spørgsmål mandag: "${d.monday.answer}".`);
@@ -714,12 +828,13 @@ function openPapir(n){
   cur.week=n;const d=wk(n);
   if(d.papir){$('pa-body').textContent=d.papir.text;$('pa-foot').textContent='Skrevet '+daDate(d.papir.at)+(D.placering&&D.placering.rolle?' · '+D.placering.rolle:'');$('pa-paper').hidden=false;$('pa-actions').hidden=false;$('b-papir-run').textContent='Skriv igen'}
   else{$('pa-paper').hidden=true;$('pa-actions').hidden=true;$('b-papir-run').textContent='Skriv min side'}
-  msg('pa-msg','');show('papir');
+  $('pa-kicker').textContent=`Uge ${n} · efter tolv uger`;msg('pa-msg','');show('papir');
 }
-function allWeeksText(){
+function allWeeksText(n){
   let t='';const p=D.placering;
   if(p&&p.own)t+=`90-DAGES SÆTNING FRA DØREN: ${p.own}\n\n`;
-  for(let i=1;i<=12;i++){const w=week(i);const d=D.weeks&&D.weeks[i];if(!d)continue;
+  for(let i=Math.max(1,n-11);i<=n;i++){const w=week(i);const d=D.weeks&&D.weeks[i];if(!d)continue;
+    if(d.situation)t+=`Situation mandag: ${d.situation}\n`;
     t+=`UGE ${i} (${w.blok}): ${w.tema}\n`;
     if(d.monday&&d.monday.answer)t+=`Mandag: ${d.monday.answer}\n`;
     const r=d.review||{};
@@ -732,11 +847,11 @@ function allWeeksText(){
   return t;
 }
 $('b-papir-run').addEventListener('click',async()=>{
-  msg('pa-msg','');const text=allWeeksText();
+  msg('pa-msg','');const text=allWeeksText(cur.week);
   if(text.length<400)return msg('pa-msg','Der er for lidt skrevet i de tolv uger til en side. Det er i sig selv en side.',true);
   $('pa-thinking').hidden=false;$('b-papir-run').disabled=true;
   try{
-    const r=await api('/ai',{method:'POST',body:JSON.stringify({kort:'uge-12-papiret',max_tokens:1200,messages:[{role:'user',content:context(cur.week)+'\n\nTOLV UGERS MATERIALE, skrevet af brugeren selv:\n\n'+text}]})});
+    const r=await api('/ai',{method:'POST',body:JSON.stringify({kort:'uge-12-papiret',max_tokens:1200,messages:[{role:'user',content:context(cur.week)+'\n\nTOLV UGERS MATERIALE (uge '+Math.max(1,cur.week-11)+' til '+cur.week+'), skrevet af brugeren selv:\n\n'+text}]})});
     wk(cur.week).papir={text:r.text,at:new Date().toISOString()};await save();openPapir(cur.week);
   }catch(err){msg('pa-msg',err.message,true)}
   $('pa-thinking').hidden=true;$('b-papir-run').disabled=false;
