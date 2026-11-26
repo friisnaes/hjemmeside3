@@ -67,3 +67,22 @@ test('alle kildekort har id, navn, lag og tekst', () => {
     assert.ok(k.navn && k.lag && k.text.length > 500, id);
   }
 });
+
+import { isoWeek, perspektivFor, PERSPEKTIVER } from '../src/perspektiver.js';
+import { KORT as ALLE_KORT } from '../src/kort/index.js';
+test('isoWeek: mandag 23. november 2026 er uge 48, 4. januar 2027 er uge 1', () => {
+  assert.equal(isoWeek(new Date(Date.UTC(2026, 10, 23))), '2026-W48');
+  assert.equal(isoWeek(new Date(Date.UTC(2027, 0, 4))), '2027-W01');
+  assert.equal(isoWeek(new Date(Date.UTC(2027, 0, 1))), '2026-W53');
+});
+test('perspektivFor: præcis uge, ellers seneste før, ellers null', () => {
+  assert.equal(perspektivFor('2026-W49').uge, '2026-W49');
+  assert.equal(perspektivFor('2026-W53').uge, '2026-W52');
+  assert.equal(perspektivFor('2026-W40'), null);
+});
+test('perspektiver peger kun på kendte kort og bruger kun " som anførselstegn', () => {
+  for (const p of PERSPEKTIVER) {
+    for (const k of p.kort) assert.ok(ALLE_KORT[k], `${p.uge}: ukendt kort ${k}`);
+    assert.ok(!/[\u00BB\u00AB\u201C\u201D]/.test(p.tekst + p.titel + p.spoergsmaal), p.uge);
+  }
+});

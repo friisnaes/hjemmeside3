@@ -99,6 +99,9 @@ async function callAnthropic(env, system, messages, maxTokens) {
 // Lokal udvikling uden nøgle: et fast, genkendeligt modspil.
 function mock(kort, messages) {
   const last = messages[messages.length - 1].content;
+  if (kort.id === 'pejlingen') {
+    return { text: 'KORT: det-jeg-holder-op-med | Du skriver om for meget på én gang, og intet er taget fra.\nKORT: kalenderen-som-bevis | Det, du kalder prioritet, har ingen tid i din kalender.\nKORT: den-samtale-jeg-skylder | Der er en person i det, du skriver, som ikke har hørt det endnu.', model: 'mock', inputTokens: 0, outputTokens: 0 };
+  }
   const text = `[mock · ${kort.id}] Du skriver: "${last.slice(0, 80)}". Det er en beskrivelse, ikke en handling. Hvem gør hvad, og hvilken dag?`;
   return { text, model: 'mock', inputTokens: 0, outputTokens: 0 };
 }
