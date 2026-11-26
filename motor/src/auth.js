@@ -49,7 +49,9 @@ export async function verifyLink(request, env) {
     user = { id: newId(), email: row.email };
     await env.DB.batch([
       env.DB.prepare('INSERT INTO users (id, email, created_at, last_seen_at) VALUES (?, ?, ?, ?)').bind(user.id, user.email, now(), now()),
-      env.DB.prepare('INSERT INTO subscriptions (user_id, status, updated_at) VALUES (?, ?, ?)').bind(user.id, 'none', now()),
+      // Inviterede får prøveadgang (TRIAL_DAYS, standard 90 dage), så afprøvningen kan køre uden Stripe.
+      env.DB.prepare('INSERT INTO subscriptions (user_id, status, current_period_end, updated_at) VALUES (?, ?, ?, ?)')
+        .bind(user.id, row.invite ? 'trialing' : 'none', row.invite ? now() + Number(env.TRIAL_DAYS || 90) * 86400 : null, now()),
       ...(row.invite ? [env.DB.prepare('UPDATE invites SET used_by = ?, used_at = ? WHERE code = ? AND used_by IS NULL').bind(user.email, now(), row.invite)] : []),
     ]);
   }
@@ -98,7 +100,9 @@ export async function me(request, env) {
 
 export function isActive(sub, user) {
   if (user?.admin) return true;
-  return !!sub && ['active', 'trialing', 'past_due'].includes(sub.status);
+  if (!sub) return false;
+  if (sub.status === 'trialing') return !sub.current_period_end || sub.current_period_end > now();
+  return ['active', 'past_due'].includes(sub.status);
 }
 
 export async function logout(request, env) {

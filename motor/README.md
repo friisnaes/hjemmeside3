@@ -11,7 +11,7 @@ Afprøvningssiden ligger på `/abonnement/` og peger på motoren via `MOTOR_URL`
 | Rute | Hvad |
 | --- | --- |
 | `GET /` · `GET /health` | Version, kildekort, databasetjek |
-| `POST /auth/request` `{email, invite?}` | Sender magisk link. Nye brugere skal have en invitationskode, medmindre de står i `ADMIN_EMAILS` |
+| `POST /auth/request` `{email, invite?}` | Sender magisk link. Nye brugere skal have en invitationskode, medmindre de står i `ADMIN_EMAILS`. Inviterede får prøveadgang til modspillet i `TRIAL_DAYS` dage (standard 90) |
 | `GET /auth/verify?token=` | Bytter linket til en session og sender videre til `APP_URL#session=...`; appen sender den som `Authorization: Bearer` |
 | `GET /me` · `POST /auth/logout` | Hvem er jeg, abonnementsstatus, lagerversion |
 | `GET/PUT/DELETE /store` | Det krypterede lager `{v, salt, iv, ct}`, højst 512 KB, versioneret med `If-Match` |

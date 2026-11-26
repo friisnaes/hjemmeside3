@@ -9,7 +9,7 @@ const MAX_CHARS = 12_000;
 
 export async function ai(request, env) {
   const user = await requireUser(request, env);
-  const sub = await env.DB.prepare('SELECT status FROM subscriptions WHERE user_id = ?').bind(user.id).first();
+  const sub = await env.DB.prepare('SELECT status, current_period_end FROM subscriptions WHERE user_id = ?').bind(user.id).first();
   if (!isActive(sub, user)) return fail(402, 'no_subscription', 'Modspillet kræver et aktivt abonnement.');
 
   const body = await readJson(request, 200_000);
