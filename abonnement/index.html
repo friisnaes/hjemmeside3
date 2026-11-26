@@ -227,7 +227,7 @@
     <div class="chat" id="chat"></div>
     <div class="thinking" id="thinking" hidden><i></i><span>Læser med.</span></div>
     <form id="f-chat" novalidate>
-      <div class="fg"><textarea id="say" rows="3" placeholder="Skriv kort og konkret. Cmd+Enter sender."></textarea></div>
+      <div class="fg"><textarea id="say" rows="3" placeholder="Skriv kort og konkret. Cmd+Enter sender." maxlength="12000"></textarea><div class="msg" id="say-count" style="margin-top:6px;font-size:12px" hidden></div></div>
       <div class="row"><button type="submit" class="btn btn-red" id="b-say">Send</button><button type="button" class="btn btn-ghost" id="b-chat-back">Tilbage til ugen</button><span class="msg" id="chat-msg" style="margin:0"></span></div>
     </form>
     <div class="foot-nav"><button type="button" id="b-clear">Ryd samtalen</button></div>
@@ -542,6 +542,7 @@ function renderChat(){
   $('chat').scrollTop=$('chat').scrollHeight;
 }
 $('say').addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();$('f-chat').requestSubmit()}});
+$('say').addEventListener('input',()=>{const n=$('say').value.length;const c=$('say-count');c.hidden=n<2000;c.textContent=n>=2000?`${n.toLocaleString('da-DK')} af 12.000 tegn. Modspillet er bedst på korte, konkrete beskeder.`:''});
 $('f-chat').addEventListener('submit',async e=>{
   e.preventDefault();msg('chat-msg','');
   const text=fixQuotes($('say').value.trim());if(text.length<2)return;

@@ -17,7 +17,8 @@ export async function ai(request, env) {
   if (!kort) return fail(400, 'unknown_kort', `Ukendt kildekort. Kendte: ${Object.keys(KORT).join(', ')}.`);
 
   const messages = sanitizeMessages(body.messages, user, body.names);
-  if (!messages) return fail(400, 'bad_messages', 'messages skal være en liste af {role, content} med skiftende roller, højst 30.');
+  if (messages && messages.error) return fail(400, messages.error, messages.message);
+  if (!messages) return fail(400, 'bad_messages', 'Samtalen kunne ikke sendes. Ryd samtalen, og prøv igen.');
 
   // Dagsgrænse pr. bruger.
   const day = dayKey();
@@ -53,12 +54,14 @@ function sanitizeMessages(list, user, names) {
   for (const m of list) {
     if (!m || (m.role !== 'user' && m.role !== 'assistant') || typeof m.content !== 'string') return null;
     if (out.length && out[out.length - 1].role === m.role) return null;
-    const content = scrub(m.content.trim()).slice(0, MAX_CHARS);
+    if (m.content.length > MAX_CHARS) return { error: 'too_long', message: `Beskeden er for lang: ${m.content.length.toLocaleString('da-DK')} tegn, højst ${MAX_CHARS.toLocaleString('da-DK')}. Skriv kortere, og brug roller i stedet for navne.` };
+    const content = scrub(m.content.trim());
     total += content.length;
     if (!content) return null;
     out.push({ role: m.role, content });
   }
-  if (out[0].role !== 'user' || out[out.length - 1].role !== 'user' || total > MAX_CHARS * 2) return null;
+  if (total > MAX_CHARS * 2) return { error: 'too_long', message: 'Samtalen er blevet for lang til ét kald. Ryd samtalen, og begynd en ny.' };
+  if (out[0].role !== 'user' || out[out.length - 1].role !== 'user') return null;
   return out;
 }
 
