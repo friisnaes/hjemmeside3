@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="version" content="0.4.0">
+<meta name="version" content="0.5.0">
 <title>Processen | Friisnæs</title>
 <meta name="description" content="Abonnementet på friisnaes.com: en automatiseret coachingproces på 12 uger med modspil i Thomas Friisnæs' tankegang. Adgang efter invitation.">
 <meta name="author" content="Thomas Friisnæs">
@@ -80,6 +80,13 @@
   .kort-row{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;padding:12px 0;border-top:1px solid var(--rule)}
   .kort-row>div{display:flex;flex-direction:column;gap:2px;min-width:0}.kort-row b{font-weight:500;color:var(--txt)}.kort-row span{color:var(--txt-2);font-size:14px}.kort-row em{font-style:normal;color:var(--txt-3);font-size:12.5px}
   .kort-row.used em{color:var(--red-l)}.kort-row .btn{flex:none;white-space:nowrap}
+  .opt{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}.opt button{font:inherit;font-size:14px;color:var(--txt-2);border:1px solid var(--rule-2);border-radius:3px;padding:8px 12px;background:none;cursor:pointer}.opt button[aria-pressed=true]{color:#fff;border-color:var(--red-l);background:rgba(192,57,43,.18)}
+  .rm{border-top:1px solid var(--rule);padding:14px 0}.rm .blk{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red-l);font-weight:600;margin:10px 0 4px}.rm .q{color:var(--txt);font-size:15px;margin-bottom:6px}.rm input{margin-top:8px;font-size:14px;padding:9px 12px}
+  .dots{display:inline-flex;gap:5px;vertical-align:middle;margin-left:10px}.dots i{width:10px;height:10px;border-radius:50%;border:1px solid rgba(17,17,17,.3);display:block}.dots i.on{background:var(--red);border-color:var(--red)}.dots i.half{background:linear-gradient(90deg,var(--red) 50%,transparent 50%);border-color:var(--red)}
+  .paper .blok-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(17,17,17,.1);font-size:15px}.paper .sig{font-family:var(--serif);font-style:italic;font-size:17px;border-left:2px solid var(--red);padding-left:14px;margin:10px 0}.paper .sig small{display:block;font-family:var(--sans);font-style:normal;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(17,17,17,.5);margin-bottom:2px}
+  .paper .pick{border-color:rgba(17,17,17,.25);color:#111}.paper .pick b{color:#111}.paper .pick span{color:rgba(17,17,17,.65)}.paper .pick:hover{border-color:var(--red)}
+  .ov{list-style:none;margin:10px 0 0;border-top:1px solid var(--rule)}.ov li{display:grid;grid-template-columns:28px 1fr auto;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:start}.ov .n{font-family:var(--serif);color:var(--red-l);font-size:18px}.ov b{display:block;font-weight:500;color:var(--txt)}.ov span{color:var(--txt-2);font-size:14px}.ov em{display:block;font-style:normal;color:var(--txt-3);font-size:12.5px;margin-top:3px}.ov li.done .n{color:var(--txt-3)}.ov .btn{white-space:nowrap}
+  .sti-dots{display:inline-flex;gap:6px;margin-left:8px;vertical-align:middle}.sti-dots i{width:8px;height:8px;border-radius:50%;border:1px solid var(--txt-3);display:block}.sti-dots i.on{background:var(--red-l);border-color:var(--red-l)}
   .weeks li.q{border:0;padding:18px 0 2px;display:block}
   .links .ser{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--txt-3);margin-left:6px}
   .status{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:8px 0 4px}
@@ -168,7 +175,7 @@
       <p><strong style="font-weight:500;color:var(--txt)">Hver fjerde uge.</strong> Mønsterspejlet læser dine fire uger og viser det, der gentager sig.</p>
       <p><strong style="font-weight:500;color:var(--txt)">Hver tolvte uge.</strong> Papiret: én side i dine egne ord, en ny 90-dages sætning, og videre.</p>
     </div>
-    <div class="row"><button type="button" class="btn btn-red" id="b-start">Begynd uge 1</button><button type="button" class="link" id="b-konto-start">Konto</button></div>
+    <div class="row"><button type="button" class="btn btn-red" id="b-start">Begynd: profilen, et minut</button><button type="button" class="link" id="b-konto-start">Konto</button></div>
     <p class="msg">Ugen regnes fra i dag. Det, du skriver, krypteres i din browser og følger dig på tværs af enheder.</p>
   </section>
 
@@ -179,7 +186,7 @@
     <p class="lead" id="wk-intro"></p>
 
     <div class="card" id="wk-perspektiv" hidden>
-      <div class="day">Ugens perspektiv</div>
+      <div class="day" id="pv-day">Ugens udfordring</div>
       <p><strong id="pv-title" style="font-weight:500;color:var(--txt)"></strong></p>
       <p id="pv-text"></p>
       <p class="own" id="pv-q"></p>
@@ -188,9 +195,12 @@
     </div>
 
     <div class="card" id="wk-pejling" hidden>
-      <div class="day">Mandag · vælg ugens tema</div>
+      <div class="day">Mandag · vælg din sti</div>
+      <p id="pj-intro"></p>
+      <div class="row" style="margin-top:8px;margin-bottom:18px"><button type="button" class="btn btn-red" id="b-ramme">Kør spørgerammen, fem minutter</button><button type="button" class="btn btn-ghost" id="b-kort-fra-pejl">Sæt selv en sti sammen</button></div>
+      <div class="day" style="margin-top:6px">Eller én uge ad gangen</div>
       <div class="fg"><label for="pj-situation">Hvad står du i lige nu? Et møde, en person, en beslutning. To eller tre linjer.</label><textarea id="pj-situation" rows="3" maxlength="2000" placeholder="Fx: Bestyrelsesmøde om 14 dage. Tallene for fjerde kvartal holder ikke, og min CFO og jeg er ikke enige om, hvad vi siger."></textarea></div>
-      <div class="row" style="margin-top:8px"><button type="button" class="btn btn-red" id="b-pejl">Pejl</button><button type="button" class="btn btn-ghost" id="b-std"></button><button type="button" class="link" id="b-kort-fra-pejl">Vælg selv i landkortet</button></div>
+      <div class="row" style="margin-top:8px"><button type="button" class="btn btn-ghost" id="b-pejl">Pejl én uge</button><button type="button" class="link" id="b-std"></button></div>
       <div class="thinking" id="pj-thinking" hidden><i></i><span>Pejler.</span></div>
       <p class="msg" id="pj-msg"></p>
       <div id="pj-forslag" hidden></div>
@@ -237,6 +247,7 @@
 
     <div class="foot-nav">
       <button type="button" id="b-weeks">Alle uger</button>
+      <button type="button" id="b-oversigt">Oversigt</button>
       <button type="button" id="b-kort">Landkortet</button>
       <button type="button" id="b-next-week" hidden>Gå til næste uge nu</button>
       <button type="button" id="b-konto">Konto</button>
@@ -257,6 +268,7 @@
     <div class="step-kicker">Landkortet · det, du kan blive udfordret på</div>
     <h1>Tolv temaer. <em>Intet låst.</em></h1>
     <p class="hint">Tre blokke, fire kort i hver. Alt kan åbnes når som helst. Det, du ikke har åbnet, er også et mønster.</p>
+    <div class="card" id="kort-sti" hidden><div class="day">Sæt en sti sammen</div><p>Vælg fire kort i den rækkefølge, du vil arbejde med dem. Det bliver de næste fire mandage.</p><div class="row" style="margin-top:8px"><span class="msg" id="kort-sti-state" style="margin:0"></span><button type="button" class="btn btn-red" id="b-sti-start" hidden>Start stien</button><button type="button" class="link" id="b-sti-nulstil">Nulstil</button></div></div>
     <div id="kort-list"></div>
     <div class="card" style="margin-top:28px"><div class="day">Under alle temaer</div><p><strong style="font-weight:500;color:var(--txt)">Rollespilsbanken.</strong> Modparten, så ubekvem som i virkeligheden. <strong style="font-weight:500;color:var(--txt)">Ugens review.</strong> Holdt, flyttet eller opgivet. <strong style="font-weight:500;color:var(--txt)">Mønsterspejlet.</strong> Det, der går igen i fire uger. <strong style="font-weight:500;color:var(--txt)">Papiret.</strong> Én side hver tolvte uge, og det, der kun kan ske i en samtale.</p></div>
     <div class="foot-nav"><button type="button" id="b-kort-back">Tilbage til ugen</button></div>
@@ -329,6 +341,57 @@
     <div class="card" style="margin-top:28px"><div class="day">Det, der kommer efter</div><p>Det, der står under "kun i en samtale", er det, processen ikke kan. Det kan Thomas. <a href="/executive-coaching.html" style="color:var(--red-l)">Læs om executive coaching</a>, eller skriv til ham med siden vedhæftet.</p></div>
   </section>
 
+  <!-- Profilen -->
+  <section id="sc-profil" class="screen">
+    <div class="step-kicker">Trin 1 af 3 · profilen</div>
+    <h1>Hvor <em>står du?</em></h1>
+    <p class="hint">Fem valg, et minut. Profilen afgør, hvilke udfordringer og stier der rammer dig. Du kan rette den senere under Konto.</p>
+    <div id="profil-form"></div>
+    <p class="own" id="profil-saetning" style="margin-top:18px" hidden></p>
+    <p class="msg err" id="profil-msg"></p>
+    <div class="row"><button type="button" class="btn btn-red" id="b-profil-next">Videre til spørgerammen</button><button type="button" class="link" id="b-profil-back">Tilbage</button></div>
+  </section>
+
+  <!-- Spørgerammen -->
+  <section id="sc-ramme" class="screen">
+    <div class="step-kicker">Trin 2 af 3 · spørgerammen</div>
+    <h1>Hvor gør <em>det ondt?</em></h1>
+    <p class="hint">Seksten spørgsmål, fem minutter. Svar ja, nej eller delvist. Én sætning er frivillig, men det er sætningerne, diagnosen bliver præcis af. Svar ærligt; ingen andre ser det.</p>
+    <div id="ramme-form"></div>
+    <p class="msg" id="ramme-msg"></p>
+    <div class="thinking" id="ramme-thinking" hidden><i></i><span>Stiller diagnosen.</span></div>
+    <div class="row"><button type="button" class="btn btn-red" id="b-ramme-submit">Stil diagnosen</button><span class="msg" id="ramme-count" style="margin:0"></span></div>
+  </section>
+
+  <!-- Diagnosen -->
+  <section id="sc-diagnose" class="screen">
+    <div class="step-kicker">Trin 3 af 3 · diagnosen</div>
+    <h1>Her gør <em>det ondt.</em></h1>
+    <p class="hint">Fire blokke, tre signaler i dine egne ord, og de stier, der rammer det. Vælg én. Ingen ros, ingen råd.</p>
+    <div class="paper" id="dg-paper">
+      <div class="p-kicker">Abonnement · Diagnosen</div>
+      <h2>Hvor det gør ondt.</h2>
+      <div id="dg-blokke"></div>
+      <div id="dg-signaler" style="margin-top:16px"></div>
+      <div class="body" id="dg-text" style="margin-top:16px"></div>
+      <p class="body" id="dg-delta" style="margin-top:12px;color:rgba(17,17,17,.6)"></p>
+      <div id="dg-thomas"></div>
+      <div style="margin-top:22px"><div class="p-kicker">Stier, der rammer det</div><div id="dg-stier"></div></div>
+      <div class="foot"><span id="dg-foot"></span> · Thomas Friisnæs · friisnaes.com</div>
+    </div>
+    <div class="row"><button type="button" class="btn btn-ghost" id="b-dg-kort">Sæt selv en sti sammen</button><button type="button" class="btn btn-ghost" id="b-dg-copy">Kopiér</button><button type="button" class="btn btn-ghost" id="b-dg-print">Udskriv</button><button type="button" class="btn btn-ghost" id="b-dg-share">Del med Thomas</button></div>
+    <p class="msg" id="dg-msg"></p>
+  </section>
+
+  <!-- Oversigten -->
+  <section id="sc-oversigt" class="screen">
+    <div class="step-kicker">Oversigten · hvor du er, og hvad der venter</div>
+    <h1>Lidt ind, <em>meget ud.</em></h1>
+    <p class="hint">Hvert trin koster lidt og giver meget. Du kan altid gå tilbage til et trin.</p>
+    <ol class="ov" id="ov-list"></ol>
+    <div class="foot-nav"><button type="button" id="b-ov-back">Tilbage til ugen</button></div>
+  </section>
+
   <!-- Konto -->
   <section id="sc-konto" class="screen">
     <div class="step-kicker">Konto</div>
@@ -348,6 +411,7 @@
       <p class="msg" id="st-msg"></p>
     </div>
     <p class="msg">Alt, du skriver, krypteres i din browser med en nøgle afledt af din PIN, før det sendes. Motoren og Thomas kan ikke læse det. Modspillet sendes til AI-modellen uden navne og uden at blive gemt. <button type="button" class="link" id="b-wipe">Slet min konto og alt indhold</button></p>
+    <div class="row" style="margin-top:4px"><button type="button" class="btn btn-ghost" id="b-konto-profil">Ret profilen</button></div>
     <div class="foot-nav"><button type="button" id="b-konto-back">Tilbage</button></div>
   </section>
 </main>
@@ -447,6 +511,41 @@ const WEEKS=[
 const KORT_NAVN={'rollespil':'Rollespilsbanken','det-jeg-undgaar':'Det, jeg undgår','styrken-under-pres':'Styrken, der vælter mig under pres','interessentkortet':'Interessentkortet','den-samtale-jeg-skylder':'Den samtale, jeg skylder','ugens-review':'Ugens review','moensterspejlet':'Mønsterspejlet','aftaler-med-mig-selv':'Aftaler med mig selv','kalenderen-som-bevis':'Kalenderen som bevis','det-jeg-holder-op-med':'Det, jeg holder op med','beslutningen-jeg-har-udskudt':'Beslutningen, jeg har udskudt','problemet-i-en-saetning':'Mit vigtigste problem, i én sætning','generalproeven':'Generalprøven for bestyrelsen','det-der-gentager-sig':'Det, der gentager sig','de-naeste-90-dage':'De næste 90 dage','uge-12-papiret':'Uge 12-papiret'};
 const KORT_LINJE={'det-jeg-undgaar':'Den samtale eller beslutning, du går udenom, og hvad det koster','styrken-under-pres':'Den overbrugte styrke, der bliver din afsporing','interessentkortet':'Hvem der mærker dig, og hvad de ville sige, hvis de blev spurgt','den-samtale-jeg-skylder':'Den udskudte samtale, trænet til den holdes','aftaler-med-mig-selv':'Hvorfor aftalen faldt, og hvilken beslutning der skulle have været taget på forhånd','kalenderen-som-bevis':'Hvad din kalender siger om dine prioriteter, uanset hvad du siger','det-jeg-holder-op-med':'Fravalget, og hvem der mærker det','beslutningen-jeg-har-udskudt':'Den tunge beslutning uden ejer','problemet-i-en-saetning':'Problemet, sagt så en kollega kan handle på det','generalproeven':'Formandens spørgsmål, før de bliver stillet','det-der-gentager-sig':'Dit mønster: karakter, struktur eller forklaring','de-naeste-90-dage':'Hvad der er ændret, og hvad andre kan se'};
 const KORT_DEF=Object.fromEntries(WEEKS.map(w=>[w.kort,w]));
+const PROFIL={
+  rolle:{navn:'Din rolle',valg:[['ceo','CEO'],['ejerleder','Ejerleder'],['direktoer','Direktør'],['formand','Bestyrelsesformand']]},
+  tid:{navn:'Tid i jobbet',valg:[['u1','Under et år'],['1-3','Et til tre år'],['3-8','Tre til otte år'],['8+','Over otte år']]},
+  fase:{navn:'Virksomhedens fase',valg:[['vaekst','Vækst'],['turnaround','Turnaround'],['drift','Stabil drift'],['skifte','Salg eller generationsskifte']]},
+  livsfase:{navn:'Hvor du er i arbejdslivet',valg:[['foerste','Mit første topjob'],['midt','Midt i det'],['tredje','Tredje akt']]},
+  pres:{navn:'Det, der presser lige nu',valg:[['bestyrelse','Bestyrelse eller ejer'],['direktion','Direktionen'],['kalender','Kalenderen'],['mig','Mig selv'],['marked','Markedet']]}};
+const PROFIL_NAVN=Object.fromEntries(Object.entries(PROFIL).flatMap(([k,g])=>g.valg.map(([v,t])=>[k+':'+v,t])));
+// Spørgerammen: seksten spørgsmål. ondt = det svar, der gør ondt. delvist tæller halvt.
+const RAMME=[
+  {blok:'Karakter',q:'Er der en samtale, du skylder nogen, som har ventet mere end en måned?',ondt:'ja'},
+  {blok:'Karakter',q:'Ved dine tre nærmeste, hvad de ville sige om dig under pres, og har du spurgt dem i år?',ondt:'nej'},
+  {blok:'Karakter',q:'Har en af dine styrker kostet dig noget i den seneste måned?',ondt:'ja'},
+  {blok:'Karakter',q:'Er der nogen i din direktion, der ikke har modsagt dig i et halvt år?',ondt:'ja'},
+  {blok:'Disciplin',q:'Holdt du de aftaler, du gav dig selv i den seneste måned?',ondt:'nej'},
+  {blok:'Disciplin',q:'Valgte du selv mere end halvdelen af timerne i den seneste hele uge?',ondt:'nej'},
+  {blok:'Disciplin',q:'Er der noget, I har besluttet at holde op med i år, som nogen har mærket?',ondt:'nej'},
+  {blok:'Disciplin',q:'Ligger der en tung beslutning, som har ventet mere end et kvartal?',ondt:'ja'},
+  {blok:'Klarhed',q:'Kan du sige dit vigtigste problem i én sætning, så din CFO kunne handle på den?',ondt:'nej'},
+  {blok:'Klarhed',q:'Ved din formand, hvad du bliver målt på i år, i dine egne ord?',ondt:'nej'},
+  {blok:'Klarhed',q:'Er der et spørgsmål, du håber ikke bliver stillet på næste bestyrelsesmøde?',ondt:'ja'},
+  {blok:'Klarhed',q:'Kan andre se noget nyt om dig i dag, som de ikke kunne se for 90 dage siden?',ondt:'nej'},
+  {blok:'Position',q:'Er det job, du har nu, det job, du blev ansat til?',ondt:'nej'},
+  {blok:'Position',q:'Kunne nogen overtage dit job om et år, og ved vedkommende det?',ondt:'nej'},
+  {blok:'Position',q:'Koster dit niveau dig noget lige nu: søvn, relationer, krop?',ondt:'ja'},
+  {blok:'Position',q:'Er der noget, du ville fortryde ikke at have begyndt på, hvis jobbet sluttede om to år?',ondt:'ja'}];
+const BLOKKE=['Karakter','Disciplin','Klarhed','Position'];
+const STIER=[
+  {id:'bestyrelsen',navn:'Bestyrelsen',kort:['problemet-i-en-saetning','generalproeven','den-samtale-jeg-skylder','interessentkortet']},
+  {id:'kalenderen',navn:'Kalenderen',kort:['kalenderen-som-bevis','det-jeg-holder-op-med','aftaler-med-mig-selv','beslutningen-jeg-har-udskudt']},
+  {id:'direktionen',navn:'Direktionen',kort:['det-jeg-undgaar','den-samtale-jeg-skylder','interessentkortet','det-der-gentager-sig']},
+  {id:'det-jeg-udskyder',navn:'Det, jeg udskyder',kort:['beslutningen-jeg-har-udskudt','den-samtale-jeg-skylder','aftaler-med-mig-selv','det-jeg-undgaar']},
+  {id:'mig-under-pres',navn:'Mig under pres',kort:['styrken-under-pres','det-der-gentager-sig','aftaler-med-mig-selv','interessentkortet']},
+  {id:'det-nye-job',navn:'Det nye job',kort:['problemet-i-en-saetning','interessentkortet','kalenderen-som-bevis','de-naeste-90-dage']},
+  {id:'overdragelsen',navn:'Overdragelsen',kort:['de-naeste-90-dage','beslutningen-jeg-har-udskudt','det-jeg-holder-op-med','den-samtale-jeg-skylder']},
+  {id:'klarheden',navn:'Klarheden',kort:['problemet-i-en-saetning','det-jeg-holder-op-med','generalproeven','de-naeste-90-dage']}];
 const TEMA_KORT=WEEKS.map(w=>w.kort);
 const DIM_NAVN={nysgerrighed:'nysgerrighed',indsigt:'indsigt',engagement:'engagement',beslutsomhed:'beslutsomhed'};
 
@@ -463,12 +562,17 @@ async function decryptWith(key,blob){const pt=await crypto.subtle.decrypt({name:
 let ME=null,KEY=null,SALT=null,VERSION=0,D=null;
 let cur={week:1,kort:null};
 // Ugen: det valgte kort bestemmer tema, paper, værktøj og træning. Uden valg: standardstien. Ældre data fra det låste forløb får standardstiens kort.
+function stiFor(n){return (D&&D.stier||[]).find(s=>n>=s.start&&n<s.start+4)||null}
 function week(n){
-  const std=WEEKS[(n-1)%12];const d=D&&D.weeks&&D.weeks[n];
-  if(d&&!d.kort&&((d.monday&&d.monday.answer)||(d.review&&d.review.doneAt)))d.kort=std.kort;
-  const def=d&&d.kort&&KORT_DEF[d.kort]||null;
-  return Object.assign({},def||std,{n,moenster:n%4===0,papir:n%12===0,chosen:!!def,std,kvartal:Math.ceil(n/12),i:((n-1)%12)+1});
+  const std=WEEKS[(n-1)%12];const d=D&&D.weeks&&D.weeks[n];const sti=stiFor(n);
+  if(d&&!d.kort&&!sti&&((d.monday&&d.monday.answer)||(d.review&&d.review.doneAt)))d.kort=std.kort;
+  const kortId=sti?sti.kort[n-sti.start]:(d&&d.kort);
+  const def=kortId&&KORT_DEF[kortId]||null;
+  const stiI=sti?n-sti.start+1:0;
+  return Object.assign({},def||std,{n,moenster:sti?stiI===4:n%4===0,papir:n%12===0,chosen:!!def,std,kvartal:Math.ceil(n/12),i:((n-1)%12)+1,sti,stiI});
 }
+function profilParams(){const p=D.profil||{};return `rolle=${encodeURIComponent(p.rolle||'')}&fase=${encodeURIComponent(p.fase||'')}&livsfase=${encodeURIComponent(p.livsfase||'')}`}
+function profilSaetning(){const p=D.profil;if(!p)return '';const t=k=>PROFIL_NAVN[k+':'+p[k]]||'';return `Du er ${t('rolle')}, ${t('tid').toLowerCase()} i jobbet, i ${t('fase').toLowerCase()}, ${t('livsfase').toLowerCase()}. Det, der presser, er ${t('pres').toLowerCase()}.`}
 function wk(n){D.weeks=D.weeks||{};if(!D.weeks[n])D.weeks[n]={monday:{},review:{},chats:{}};const w=D.weeks[n];w.monday=w.monday||{};w.review=w.review||{};w.chats=w.chats||{};return w}
 function currentWeek(){
   if(!D.process||!D.process.startedAt)return 0;
@@ -568,10 +672,122 @@ function enterStart(){
   }
   show('start');setProgress(0);
 }
-$('b-start').addEventListener('click',async()=>{
-  D.process={startedAt:new Date().toISOString(),advance:0};
-  await save();cur.week=1;renderWeek(1);
+$('b-start').addEventListener('click',()=>{if(!D.profil)renderProfil('start');else if(!(D.rammer||[]).length)renderRamme();else startProcessAt(1)});
+async function startProcessAt(n){if(!D.process||!D.process.startedAt){D.process={startedAt:new Date().toISOString(),advance:0};await save()}cur.week=n;renderWeek(n)}
+// Den uge, en ny sti kan begynde: den aktuelle, hvis den er fri; ellers næste.
+function naesteFrieUge(){if(!D.process||!D.process.startedAt)return 1;const now=currentWeek();const w=week(now);return (w.chosen||w.sti)?now+1:now}
+
+// ══════════════════════════════════════════════════════════════════
+// PROFILEN
+// ══════════════════════════════════════════════════════════════════
+let profilBack='start';
+function renderProfil(back){
+  profilBack=back||'week';const p=D.profil||{};
+  $('profil-form').innerHTML=Object.entries(PROFIL).map(([k,g])=>`<div class="fg" style="margin-top:14px"><label>${g.navn}</label><div class="opt" data-k="${k}">${g.valg.map(([v,t])=>`<button type="button" data-v="${v}" aria-pressed="${p[k]===v}">${esc(t)}</button>`).join('')}</div></div>`).join('');
+  $('profil-form').querySelectorAll('.opt').forEach(o=>o.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{o.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));D.profil=D.profil||{};D.profil[o.dataset.k]=b.dataset.v;$('profil-saetning').textContent=profilSaetning();$('profil-saetning').hidden=!profilKomplet()})));
+  $('profil-saetning').textContent=profilSaetning();$('profil-saetning').hidden=!profilKomplet();msg('profil-msg','');
+  show('profil');setProgress(0.05);
+}
+function profilKomplet(){const p=D.profil||{};return Object.keys(PROFIL).every(k=>p[k])}
+$('b-profil-next').addEventListener('click',async()=>{if(!profilKomplet())return msg('profil-msg','Fem valg, før du går videre.',true);D.profil.at=new Date().toISOString();await save();renderRamme()});
+$('b-profil-back').addEventListener('click',()=>profilBack==='start'?show('start'):renderWeek(cur.week));
+
+// ══════════════════════════════════════════════════════════════════
+// SPØRGERAMMEN
+// ══════════════════════════════════════════════════════════════════
+let rmSvar=[];
+function renderRamme(){
+  rmSvar=RAMME.map(()=>({v:'',s:''}));let last='';
+  $('ramme-form').innerHTML=RAMME.map((r,i)=>{const h=r.blok!==last?`<div class="blk">${r.blok}</div>`:'';last=r.blok;return h+`<div class="rm" data-i="${i}"><div class="q">${esc(r.q)}</div><div class="opt">${['ja','nej','delvist'].map(v=>`<button type="button" data-v="${v}" aria-pressed="false">${v[0].toUpperCase()+v.slice(1)}</button>`).join('')}</div><input type="text" maxlength="200" placeholder="Én sætning, hvis du vil: et navn, en dag, et tal."></div>`}).join('');
+  $('ramme-form').querySelectorAll('.rm').forEach(row=>{const i=+row.dataset.i;row.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{rmSvar[i].v=b.dataset.v;row.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));rammeCount()}));row.querySelector('input').addEventListener('input',e=>{rmSvar[i].s=fixQuotes(e.target.value.trim())})});
+  rammeCount();msg('ramme-msg','');show('ramme');setProgress(0.1);
+}
+function rammeCount(){const n=rmSvar.filter(a=>a.v).length;$('ramme-count').textContent=`${n} af 16 besvaret`}
+// Blokkenes tal: 1 pr. svar, der gør ondt, 0,5 for delvist.
+function rammeScore(svar){const sc={};BLOKKE.forEach(b=>sc[b]=0);RAMME.forEach((r,i)=>{const a=svar[i]||{};if(a.v===r.ondt)sc[r.blok]+=1;else if(a.v==='delvist')sc[r.blok]+=0.5});return sc}
+function rammeSignaler(svar){return RAMME.map((r,i)=>({r,a:svar[i]||{},i})).filter(x=>x.a.v===x.r.ondt||x.a.v==='delvist').sort((x,y)=>(y.a.s?1:0)-(x.a.s?1:0)||(x.a.v==='delvist'?1:0)-(y.a.v==='delvist'?1:0)).slice(0,3)}
+function rammeText(svar){return RAMME.map((r,i)=>{const a=svar[i]||{};return `${i+1}. [${r.blok}] ${r.q} Svar: ${a.v||'(ikke svaret)'}${a.v===r.ondt?' (gør ondt)':a.v==='delvist'?' (gør halvt ondt)':''}${a.s?` Sætning: "${a.s}"`:''}`}).join('\n')}
+// Reservestier uden motor: den blok, der gør mest ondt, og profilen.
+function reserveStier(sc){
+  const p=D.profil||{};const out=[];const add=id=>{const s=STIER.find(x=>x.id===id);if(s&&!out.some(o=>o.id===id))out.push({...s,hvorfor:'Valgt ud fra rammen og din profil, uden motoren.'})};
+  if(p.tid==='u1'||p.livsfase==='foerste')add('det-nye-job');if(p.fase==='skifte'||p.livsfase==='tredje')add('overdragelsen');
+  const top=[...BLOKKE].sort((a,b)=>sc[b]-sc[a]);
+  for(const b of top){if(b==='Karakter'){add(p.pres==='direktion'?'direktionen':'mig-under-pres');add('direktionen')}if(b==='Disciplin'){add('kalenderen');add('det-jeg-udskyder')}if(b==='Klarhed'){add(p.pres==='bestyrelse'?'bestyrelsen':'klarheden');add('bestyrelsen')}if(out.length>=3)break}
+  return out.slice(0,3);
+}
+$('b-ramme-submit').addEventListener('click',async()=>{
+  const n=rmSvar.filter(a=>a.v).length;if(n<16)return msg('ramme-msg',`Svar på alle seksten. Du mangler ${16-n}.`,true);
+  const run={at:new Date().toISOString(),svar:rmSvar.map(a=>({v:a.v,s:a.s})),score:rammeScore(rmSvar)};
+  D.rammer=D.rammer||[];D.rammer.push(run);await save();
+  msg('ramme-msg','');$('ramme-thinking').hidden=false;$('b-ramme-submit').disabled=true;
+  try{
+    const prev=D.rammer.length>1?D.rammer[D.rammer.length-2]:null;
+    const brugt=brugteKort();
+    const text=[`PROFIL: ${profilSaetning()}`,D.placering?`PLACERING FRA DØREN: ${D.placering.rolle}; situation: ${D.placering.situation}; fylder mest: ${D.placering.fylder}; laveste dimension: ${D.placering.lowest}.`:'',`RAMMEN, seksten svar:\n${rammeText(rmSvar)}`,`BLOKKENES TAL (gør ondt, af 4): ${BLOKKE.map(b=>`${b} ${run.score[b]}`).join(', ')}.`,prev?`FORRIGE KØRSEL (${daDate(prev.at)}): ${BLOKKE.map(b=>`${b} ${prev.score[b]}`).join(', ')}.`:'Første kørsel af rammen.',`BRUGTE KORT: ${Object.entries(brugt).map(([k,ws])=>`${k} (uge ${ws.join(', ')})`).join('; ')||'ingen'}.`,`TIDLIGERE STIER: ${(D.stier||[]).map(s=>s.navn).join(', ')||'ingen'}.`].filter(Boolean).join('\n\n');
+    const r=await api('/ai',{method:'POST',body:JSON.stringify({kort:'diagnosen',max_tokens:900,messages:[{role:'user',content:text}]})});
+    run.diagnose=parseDiagnose(r.text);
+  }catch(err){run.diagnose={fejl:err.message,signaler:[],tekst:'',stier:[]}}
+  if(!run.diagnose.stier.length)run.diagnose.stier=reserveStier(run.score);
+  await save();$('ramme-thinking').hidden=true;$('b-ramme-submit').disabled=false;renderDiagnose(D.rammer.length-1);
 });
+function parseDiagnose(t){
+  const d={signaler:[],tekst:'',stier:[],thomas:''};
+  for(const l of String(t||'').split('\n')){
+    let m;
+    if((m=l.match(/^\s*SIGNAL:\s*([^|]+)\|\s*(.+)$/i)))d.signaler.push({blok:m[1].trim(),s:m[2].trim()});
+    else if((m=l.match(/^\s*DIAGNOSE:\s*(.+)$/i)))d.tekst=m[1].trim();
+    else if((m=l.match(/^\s*THOMAS:\s*(.+)$/i)))d.thomas=m[1].trim();
+    else if((m=l.match(/^\s*STI:\s*([^|]+)\|([^|]+)\|\s*(.+)$/i))){const kort=m[2].split(',').map(x=>x.trim().toLowerCase()).filter(k=>KORT_DEF[k]);if(kort.length===4&&new Set(kort).size===4&&d.stier.length<3)d.stier.push({navn:m[1].trim(),kort,hvorfor:m[3].trim()})}
+    else if(d.tekst&&l.trim()&&!/^\s*(SIGNAL|STI|THOMAS):/i.test(l))d.tekst+=' '+l.trim();
+  }
+  return d;
+}
+const tal=v=>String(v).replace('.',',');
+function dots(v){let h='<span class="dots">';for(let i=1;i<=4;i++)h+=`<i class="${v>=i?'on':(v>=i-0.5?'half':'')}"></i>`;return h+'</span>'}
+function renderDiagnose(idx){
+  const run=D.rammer[idx];const dg=run.diagnose||{signaler:[],tekst:'',stier:[]};const prev=idx>0?D.rammer[idx-1]:null;
+  $('dg-blokke').innerHTML=BLOKKE.map(b=>`<div class="blok-row"><span>${b}</span><span>${tal(run.score[b])} af 4${dots(run.score[b])}</span></div>`).join('');
+  const sig=dg.signaler.length?dg.signaler:rammeSignaler(run.svar).map(x=>({blok:x.r.blok,s:x.a.s||x.r.q}));
+  $('dg-signaler').innerHTML=sig.map(x=>`<div class="sig"><small>${esc(x.blok)}</small>${esc(x.s)}</div>`).join('');
+  $('dg-text').textContent=dg.tekst||(dg.fejl?'Motoren svarede ikke: '+dg.fejl+' Blokkene og signalerne står alligevel. Stierne nedenfor er valgt uden motoren.':'');
+  const tot=r=>BLOKKE.reduce((a,b)=>a+r.score[b],0);
+  $('dg-delta').textContent=prev?`Sidst, ${daDate(prev.at)}: ${tal(tot(prev))} af 16 gjorde ondt. Nu: ${tal(tot(run))}.`:`${tal(tot(run))} af 16 gør ondt. Det er dit udgangspunkt. Næste gang rammen køres, kan du se forskellen.`;
+  $('dg-thomas').innerHTML=dg.thomas?`<p class="sig" style="border-color:#111"><small>Tag den med Thomas</small>${esc(dg.thomas)}</p>`:'';
+  $('dg-stier').innerHTML=dg.stier.map((s,i)=>`<button type="button" class="pick" data-i="${i}"><b>${esc(s.navn)}</b><span>${esc(s.hvorfor)}</span><span>${s.kort.map(k=>KORT_NAVN[k]||k).join(' · ')}</span></button>`).join('');
+  $('dg-stier').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{const s=dg.stier[+b.dataset.i];startSti(s.navn,s.kort,s.hvorfor)}));
+  $('dg-foot').textContent='Rammen kørt '+daDate(run.at)+(D.profil?' · '+(PROFIL_NAVN['rolle:'+D.profil.rolle]||''):'');
+  msg('dg-msg','');show('diagnose');setProgress(0.15);
+}
+function diagnoseText(){const run=D.rammer[D.rammer.length-1];if(!run)return '';const dg=run.diagnose||{};const sig=(dg.signaler||[]).map(x=>`${x.blok}: ${x.s}`).join('\n');return `DIAGNOSEN · ${daDate(run.at)}\n${profilSaetning()}\n\n${BLOKKE.map(b=>`${b}: ${tal(run.score[b])} af 4`).join('\n')}\n\n${sig}\n\n${dg.tekst||''}\n\n${dg.thomas?'Tag den med Thomas: '+dg.thomas+'\n\n':''}Stier: ${(dg.stier||[]).map(s=>s.navn).join(', ')}\n\nSkrevet ud fra mine egne svar i spørgerammen. Sendt af mig.\n`}
+$('b-dg-copy').addEventListener('click',async()=>{await copyText(diagnoseText());msg('dg-msg','Kopieret.')});
+$('b-dg-print').addEventListener('click',()=>window.print());
+$('b-dg-share').addEventListener('click',()=>{const t=diagnoseText();const href=`mailto:${COACH_EMAIL}?subject=${encodeURIComponent('Diagnosen')}&body=${encodeURIComponent(t)}`;if(href.length>7000){copyText(t);alert('Teksten er for lang til et mail-link. Den er kopieret; sæt den ind i en mail til '+COACH_EMAIL+'.');return}location.href=href});
+$('b-dg-kort').addEventListener('click',renderKort);
+async function startSti(navn,kort,hvorfor){
+  const n=naesteFrieUge();D.stier=D.stier||[];D.stier.push({navn,kort,hvorfor:hvorfor||'',start:n,at:new Date().toISOString()});
+  if(!D.process||!D.process.startedAt)D.process={startedAt:new Date().toISOString(),advance:0};
+  await save();cur.week=n;renderWeek(Math.min(n,currentWeek()));
+}
+$('b-ramme').addEventListener('click',()=>D.profil?renderRamme():renderProfil('week'));
+
+// ══════════════════════════════════════════════════════════════════
+// OVERSIGTEN
+// ══════════════════════════════════════════════════════════════════
+$('b-oversigt').addEventListener('click',renderOversigt);$('b-ov-back').addEventListener('click',()=>renderWeek(cur.week));
+function renderOversigt(){
+  const now=D.process&&D.process.startedAt?currentWeek():0;const w=now?week(now):null;const runs=D.rammer||[];const last=runs[runs.length-1];const tot=r=>BLOKKE.reduce((a,b)=>a+r.score[b],0);
+  const sti=w&&w.sti;const moen=Object.values(D.weeks||{}).filter(x=>x.moenster).length;const pap=Object.values(D.weeks||{}).filter(x=>x.papir).length;
+  const rows=[
+    {t:'Døren: otte udsagn',g:'to minutter, gratis',f:'Din placering og tre skridt',done:!!D.placering,st:D.placering?`${D.placering.rolle}, laveste dimension ${DIM_NAVN[D.placering.lowest]||D.placering.lowest||''}`:'Ikke kørt i denne browser',act:D.placering?null:{t:'Åbn døren',href:'/vaerktoejer/hvor-staar-du-nu/'}},
+    {t:'Profilen: fem valg',g:'et minut',f:'Her står du, i én sætning',done:profilKomplet(),st:profilKomplet()?profilSaetning():'Ikke sat',act:{t:profilKomplet()?'Ret':'Sæt profilen',fn:()=>renderProfil('week')}},
+    {t:'Spørgerammen: seksten svar',g:'fem minutter',f:'Diagnosen: hvor det gør ondt, og to eller tre stier',done:!!last,st:last?`Kørt ${runs.length} gang${runs.length>1?'e':''}, sidst ${daDate(last.at)}: ${tal(tot(last))} af 16 gør ondt`:'Ikke kørt',act:{t:last?'Se diagnosen':'Kør rammen',fn:()=>last?renderDiagnose(runs.length-1):(D.profil?renderRamme():renderProfil('week'))}},
+    {t:'Stien: fire uger',g:'ét tryk',f:'Fire uger lagt frem, første udfordring med det samme',done:!!sti,st:sti?`${sti.navn}, uge ${w.stiI} af 4<span class="sti-dots">${[1,2,3,4].map(i=>`<i class="${i<=w.stiI?'on':''}"></i>`).join('')}</span>`:((D.stier||[]).length?'Ingen sti i gang. Kør rammen igen, eller sæt en sammen.':'Ingen sti endnu'),act:sti?{t:'Til ugen',fn:()=>renderWeek(now)}:{t:'Vælg en sti',fn:()=>last?renderDiagnose(runs.length-1):renderKort()}},
+    {t:'Mandag og fredag',g:'tyve og ti minutter',f:"Modspil i Thomas' stemme, logbogen begynder",done:!!(w&&wk(now).review.doneAt),st:now?`Uge ${now}${wk(now).review.doneAt?', reviewet er lukket':', reviewet venter'}`:'Processen er ikke begyndt',act:now?{t:'Til ugen',fn:()=>renderWeek(now)}:null},
+    {t:'Efter fire uger',g:'et kvarter',f:'Mønsterspejlet, og rammen igen: forskellen kan ses',done:moen>0,st:moen?`${moen} mønsterspejl${moen>1?'e':''}, ${pap} papir${pap===1?'':'er'}`:'Kommer efter første sti',act:null}];
+  $('ov-list').innerHTML=rows.map((r,i)=>`<li class="${r.done?'done':''}"><span class="n">${i+1}</span><div><b>${esc(r.t)}<em style="display:inline;margin-left:8px">${esc(r.g)}</em></b><span>${esc(r.f)}</span><em>${r.st}</em></div>${r.act?(r.act.href?`<a class="btn btn-ghost" href="${r.act.href}" target="_blank" rel="noopener">${esc(r.act.t)}</a>`:`<button type="button" class="btn ${r.done?'btn-ghost':'btn-red'}" data-i="${i}">${esc(r.act.t)}</button>`):''}</li>`).join('');
+  $('ov-list').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>rows[+b.dataset.i].act.fn()));
+  show('oversigt');
+}
 $('b-konto-start').addEventListener('click',()=>enterKonto('start'));
 
 // ══════════════════════════════════════════════════════════════════
@@ -581,15 +797,23 @@ async function renderWeek(n){
   cur.week=n;const w=week(n);const d=wk(n);const now=currentWeek();
   setProgress((w.i-1)/12+(d.review.doneAt?1/12:0));
   $('top-kicker').textContent=`Abonnement · Uge ${n}`;
-  $('wk-kicker').innerHTML=`<b>Uge ${n}</b> · kvartal ${w.kvartal}, uge ${w.i} af 12${w.chosen?' · '+esc(w.blok):''}${n===now?'':' · <span style="color:var(--txt-3)">'+(n<now?'afsluttet':'kommende')+'</span>'}`;
-  // Ugens perspektiv vises i den aktuelle uge.
-  const P=n===now?await perspektiv():null;
+  $('wk-kicker').innerHTML=`<b>Uge ${n}</b>${w.sti?' · '+esc(w.sti.navn)+', uge '+w.stiI+' af 4<span class="sti-dots">'+[1,2,3,4].map(i=>`<i class="${i<=w.stiI?'on':''}"></i>`).join('')+'</span>':' · kvartal '+w.kvartal+', uge '+w.i+' af 12'}${w.chosen?' · '+esc(w.blok):''}${n===now?'':' · <span style="color:var(--txt-3)">'+(n<now?'afsluttet':'kommende')+'</span>'}`;
+  // Ugens udfordring: efter ugens kort og profilen, ikke efter datoen. Den første, der blev vist, bliver stående.
+  let P=null;
+  if(w.chosen&&n<=now){
+    try{
+      if(d.udfordring&&d.udfordring.id){P=(await api('/udfordring?id='+encodeURIComponent(d.udfordring.id))).udfordring}
+      else{const seen=Object.values(D.weeks||{}).map(x=>x.udfordring&&x.udfordring.id).filter(Boolean);P=(await api(`/udfordring?kort=${encodeURIComponent(w.kort)}&${profilParams()}&seen=${encodeURIComponent(seen.join(','))}`)).udfordring;if(P){d.udfordring={id:P.id,titel:P.titel};await save()}}
+    }catch(e){P=null}
+  }
   $('wk-perspektiv').hidden=!P;
-  if(P){$('pv-title').textContent=P.titel;$('pv-text').textContent=P.tekst;$('pv-q').textContent=P.spoergsmaal;$('pv-link').innerHTML=P.paper?`<a href="${P.paper.u}" target="_blank" rel="noopener">${esc(P.paper.t)}<span class="ser">${esc(P.paper.s||'')}</span></a>`:'';$('pv-kort').textContent='Peger på: '+(P.kort||[]).map(k=>KORT_NAVN[k]||k).join(' · ')}
-  // Intet tema valgt endnu: mandagens pejling.
+  if(P){$('pv-title').textContent=P.titel;$('pv-text').textContent=P.tekst;$('pv-q').textContent=P.spoergsmaal;$('pv-link').innerHTML=P.paper?`<a href="${P.paper.u}" target="_blank" rel="noopener">${esc(P.paper.t)}<span class="ser">${esc(P.paper.s||'')}</span></a>`:'';$('pv-kort').textContent=''}
+  // Ingen sti og intet tema: vælg din sti.
   if(!w.chosen){
-    $('wk-title').innerHTML='Hvad står du <em>i lige nu?</em>';
-    $('wk-intro').textContent=n>now?'Ugen åbner på sin mandag. Temaet vælger du den dag.':'Mandag. Ugens tema vælger du, ikke appen. Skriv to eller tre linjer om det, du står i, og lad Pejlingen pege på de kort, der rammer det. Eller tag standardstien.';
+    const slut=(D.stier||[]).find(s=>s.start+4===n);
+    $('wk-title').innerHTML=slut?'Stien er <em>slut.</em>':'Vælg din <em>sti.</em>';
+    $('wk-intro').textContent=n>now?'Ugen åbner på sin mandag. Stien vælger du den dag.':(slut?`"${slut.navn}" er slut. Hent mønsterspejlet for de fire uger under Alle uger, og kør så rammen igen, så du kan se forskellen, før du vælger næste sti.`:'Mandag. Rammen stiller diagnosen og foreslår to eller tre stier på fire uger. Du vælger én. Eller sæt selv en sammen i landkortet.');
+    $('pj-intro').textContent=(D.rammer||[]).length?`Rammen er kørt ${D.rammer.length} gang${D.rammer.length>1?'e':''}, sidst ${daDate(D.rammer[D.rammer.length-1].at)}. Kør den igen, så diagnosen er frisk, eller vælg en sti fra sidste diagnose under Oversigt.`:'Fem minutter, seksten svar, og du får diagnosen: hvor det gør ondt, og hvilke stier der rammer det.';
     ['wk-monday','wk-training','wk-friday','wk-moenster','wk-papir'].forEach(id=>$(id).hidden=true);
     $('wk-pejling').hidden=n>now;$('b-next-week').hidden=true;
     $('pj-situation').value=d.situation||'';$('b-std').textContent='Tag standardstien: '+w.std.tema;
@@ -619,7 +843,7 @@ async function renderWeek(n){
   $('wk-friday').classList.toggle('done',!!d.review.doneAt);
   $('b-review').textContent=d.review.doneAt?'Se ugens review':'Åbn ugens review';
   // Mønsterspejlet
-  $('wk-moenster').hidden=!w.moenster;
+  $('wk-moenster').hidden=!w.moenster;if(w.moenster)$('wk-moenster').querySelector('.day').textContent=w.sti?'Stiens sidste uge · mønsterspejlet':'Hver fjerde uge · mønsterspejlet';
   if(w.moenster){$('wk-moenster-state').textContent=d.moenster?'Hentet':'';$('wk-moenster-state').className='state'+(d.moenster?' ok':'');$('wk-moenster').classList.toggle('done',!!d.moenster)}
   // Uge 12-papiret
   $('wk-papir').hidden=!w.papir;
@@ -637,7 +861,7 @@ function renderForslag(d){
   (pj.forslag||[]).forEach(f=>{const b=document.createElement('button');b.type='button';b.className='pick';b.innerHTML=`<b>${esc(KORT_NAVN[f.kort]||f.kort)}</b><span>${esc(f.hvorfor)}</span>`;b.addEventListener('click',()=>vaelgKort(f.kort,cur.week));box.appendChild(b)});
 }
 async function vaelgKort(kort,n){
-  if(!KORT_DEF[kort])return;const d=wk(n);d.kort=kort;d.valgtAt=new Date().toISOString();
+  if(!KORT_DEF[kort]||stiFor(n))return;const d=wk(n);d.kort=kort;d.valgtAt=new Date().toISOString();
   if(n===currentWeek()&&PERSP.cur)d.perspektivTitel=PERSP.cur.titel;
   await save();renderWeek(n);
 }
@@ -671,12 +895,17 @@ $('b-kort-fra-pejl').addEventListener('click',renderKort);
 $('b-kort').addEventListener('click',renderKort);
 $('b-kort-back').addEventListener('click',()=>renderWeek(cur.week));
 // Landkortet: alle kort, status, og valg af ugens tema eller træning nu.
+let stiValg=[];
 function renderKort(){
-  const brugt=brugteKort();const now=currentWeek();const canPick=!week(now).chosen;
-  $('kort-list').innerHTML=['Karakter','Disciplin','Klarhed'].map(b=>`<div class="card"><div class="day">${b}</div>`+WEEKS.filter(w=>w.blok===b).map(w=>{const u=brugt[w.kort];return `<div class="kort-row${u?' used':''}"><div><b>${esc(w.tema)}</b><span>${esc(KORT_LINJE[w.kort]||'')}</span><em>${u?'Brugt i uge '+u.join(', '):'Ikke åbnet'}</em></div><button type="button" class="btn ${canPick?'btn-red':'btn-ghost'}" data-kort="${w.kort}">${canPick?'Ugens tema':'Træn nu'}</button></div>`}).join('')+'</div>').join('');
-  $('kort-list').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(canPick)vaelgKort(b.dataset.kort,now);else openChat(now,b.dataset.kort)}));
+  const brugt=brugteKort();const now=D.process&&D.process.startedAt?currentWeek():1;const w=D.process&&D.process.startedAt?week(now):null;const canPick=!w||!(w.chosen||w.sti);
+  $('kort-sti').hidden=!canPick;
+  $('kort-list').innerHTML=['Karakter','Disciplin','Klarhed'].map(b=>`<div class="card"><div class="day">${b}</div>`+WEEKS.filter(x=>x.blok===b).map(x=>{const u=brugt[x.kort];const i=stiValg.indexOf(x.kort);return `<div class="kort-row${u?' used':''}"><div><b>${esc(x.tema)}</b><span>${esc(KORT_LINJE[x.kort]||'')}</span><em>${u?'Brugt i uge '+u.join(', '):'Ikke åbnet'}</em></div><button type="button" class="btn ${canPick?(i>=0?'btn-red':'btn-ghost'):'btn-ghost'}" data-kort="${x.kort}">${canPick?(i>=0?'Uge '+(i+1):'Vælg'):'Træn nu'}</button></div>`}).join('')+'</div>').join('');
+  $('kort-list').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(!canPick)return openChat(now,b.dataset.kort);const k=b.dataset.kort;const i=stiValg.indexOf(k);if(i>=0)stiValg.splice(i,1);else if(stiValg.length<4)stiValg.push(k);renderKort()}));
+  $('kort-sti-state').textContent=stiValg.length?`Valgt ${stiValg.length} af 4: ${stiValg.map(k=>KORT_NAVN[k]).join(' · ')}`:'Ingen kort valgt endnu.';$('b-sti-start').hidden=stiValg.length!==4;
   show('kort');
 }
+$('b-sti-nulstil').addEventListener('click',()=>{stiValg=[];renderKort()});
+$('b-sti-start').addEventListener('click',async()=>{if(stiValg.length!==4)return;const kort=[...stiValg];stiValg=[];await startSti('Min egen sti',kort,'Sat sammen i landkortet.')});
 $('f-monday').addEventListener('submit',async e=>{e.preventDefault();const d=wk(cur.week);d.monday.answer=fixQuotes($('monday-a').value.trim());d.monday.at=new Date().toISOString();await save();renderWeek(cur.week);msg('monday-msg','Gemt.')});
 $('b-weeks').addEventListener('click',renderWeeks);
 $('b-weeks-back').addEventListener('click',()=>renderWeek(cur.week));
@@ -685,9 +914,9 @@ $('b-next-week').addEventListener('click',async()=>{D.process.advance=(D.process
 function renderWeeks(){
   const now=currentWeek();const last=Math.max(12,Math.ceil(now/12)*12);let html='';
   for(let n=1;n<=last;n++){const w=week(n);const d=D.weeks&&D.weeks[n];const locked=n>now;const st=d&&d.review&&d.review.doneAt?'lukket':(n===now?'denne uge':(locked?'åbner mandag':'åben'));
-    const tema=w.chosen?w.tema:(locked?'Tema vælges mandag':(n<now?'Intet tema valgt':'Vælg ugens tema'));
+    const tema=w.chosen?w.tema:(locked?'Stien vælges mandag':(n<now?'Intet tema valgt':'Vælg din sti'));
     if(w.i===1)html+=`<li class="q"><span class="blok">Kvartal ${w.kvartal}</span></li>`;
-    html+=`<li class="${locked?'locked':''}"><span class="n">${n}</span>${locked?`<span>${esc(tema)}</span>`:`<button type="button" data-n="${n}">${esc(tema)}</button>`}<span class="blok">${w.chosen?esc(w.blok)+' · ':''}${st}</span></li>`}
+    html+=`<li class="${locked?'locked':''}"><span class="n">${n}</span>${locked?`<span>${esc(tema)}</span>`:`<button type="button" data-n="${n}">${esc(tema)}</button>`}<span class="blok">${w.sti?esc(w.sti.navn)+' '+w.stiI+'/4 · ':(w.chosen?esc(w.blok)+' · ':'')}${st}</span></li>`}
   $('weeks-list').innerHTML=html;
   $('weeks-list').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>renderWeek(+b.dataset.n)));
   show('weeks');
@@ -699,6 +928,8 @@ function renderWeeks(){
 function context(n){
   const w=week(n);const d=wk(n);const p=D.placering;
   const parts=[`Uge ${n}, kvartal ${w.kvartal}, uge ${w.i} af 12, blok ${w.blok}, tema "${w.tema}".`];
+  if(D.profil)parts.push(`Profil: ${profilSaetning()}`);
+  if(w.sti)parts.push(`Stien "${w.sti.navn}", uge ${w.stiI} af 4: ${w.sti.kort.map(k=>KORT_NAVN[k]||k).join(', ')}.`);
   if(d.situation)parts.push(`Brugerens situation mandag: "${d.situation}".`);
   if(d.perspektivTitel)parts.push(`Ugens perspektiv: "${d.perspektivTitel}".`);
   if(p)parts.push(`Placering fra døren: ${p.rolle}; situation: ${p.situation}; fylder mest: ${p.fylder}; laveste dimension: ${p.lowest}.`);
@@ -795,7 +1026,7 @@ function openMoenster(n){
 function fourWeeksText(n){
   let t='';
   for(let i=Math.max(1,n-3);i<=n;i++){const w=week(i);const d=D.weeks&&D.weeks[i];if(!d)continue;
-    t+=`UGE ${i}: ${w.tema}\n`;
+    t+=`UGE ${i}${w.sti?' (stien '+w.sti.navn+', uge '+w.stiI+' af 4)':''}: ${w.tema}\n`;
     if(d.monday&&d.monday.answer)t+=`Mandag: ${d.monday.answer}\n`;
     const r=d.review||{};
     if(r.q1)t+=`Aftalen holdt: ${r.q1}\n`;if(r.q2)t+=`Hvad skete: ${r.q2}\n`;if(r.q3)t+=`Anderledes næste uge: ${r.q3}\n`;if(r.next)t+=`Aftale for næste uge: ${r.next}\n`;
@@ -874,6 +1105,7 @@ async function enterKonto(back){
   try{const m=await api('/');$('st-motor').textContent='v'+m.version+' · instruks '+m.instruks}catch(e){$('st-motor').textContent='svarer ikke'}
   msg('st-msg','');show('konto');
 }
+$('b-konto-profil').addEventListener('click',()=>renderProfil(D.process&&D.process.startedAt?'week':'start'));
 $('b-konto-back').addEventListener('click',()=>kontoBack==='start'?show('start'):renderWeek(cur.week));
 $('b-checkout').addEventListener('click',async()=>{msg('st-msg','');try{const r=await api('/billing/checkout',{method:'POST'});location.href=r.url}catch(err){msg('st-msg',err.message,true)}});
 $('b-portal').addEventListener('click',async()=>{msg('st-msg','');try{const r=await api('/billing/portal',{method:'POST'});location.href=r.url}catch(err){msg('st-msg',err.message,true)}});

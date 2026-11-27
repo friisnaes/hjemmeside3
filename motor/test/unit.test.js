@@ -86,3 +86,28 @@ test('perspektiver peger kun på kendte kort og bruger kun " som anførselstegn'
     assert.ok(!/[\u00BB\u00AB\u201C\u201D]/.test(p.tekst + p.titel + p.spoergsmaal), p.uge);
   }
 });
+
+import { UDFORDRINGER, vaelgUdfordring, udfordringById } from '../src/udfordringer.js';
+import { STIER } from '../src/stier.js';
+test('udfordringsbanken: 53 tekster, ingen kalenderord, kun kendte kort, kun " som anførselstegn', () => {
+  assert.equal(UDFORDRINGER.length, 53);
+  const kal = /\b(januar|februar|marts|april|juni|juli|august|september|oktober|november|december|nytår|jul|sommerferien|efterårsferie|vinterferie|folkemødet|i disse uger|halvår)\b/i;
+  for (const u of UDFORDRINGER) {
+    assert.ok(!kal.test(u.titel + ' ' + u.tekst + ' ' + u.spoergsmaal), `${u.id} binder sig til kalenderen`);
+    for (const k of u.kort) assert.ok(ALLE_KORT[k], `${u.id}: ukendt kort ${k}`);
+    assert.ok(!/[\u00BB\u00AB\u201C\u201D]/.test(u.tekst + u.titel + u.spoergsmaal), u.id);
+  }
+});
+test('vaelgUdfordring: ugens kort er med, profilen vægter, sete springes over', () => {
+  const u = vaelgUdfordring({ kort: 'generalproeven', rolle: 'ceo', fase: 'drift', livsfase: 'midt' });
+  assert.ok(u.kort.includes('generalproeven'));
+  const u2 = vaelgUdfordring({ kort: 'generalproeven', rolle: 'ceo', fase: 'drift', livsfase: 'midt', seen: [u.id] });
+  assert.notEqual(u2.id, u.id);
+  const ejer = vaelgUdfordring({ kort: 'det-jeg-undgaar', rolle: 'ejerleder', fase: 'skifte', livsfase: 'tredje' });
+  assert.equal(ejer.id, '2027-W23');
+  assert.equal(udfordringById('2027-W48').titel, 'Samtalegælden');
+});
+test('stierne: otte, fire kendte kort hver, ingen gentagelser', () => {
+  assert.equal(STIER.length, 8);
+  for (const s of STIER) { assert.equal(s.kort.length, 4); assert.equal(new Set(s.kort).size, 4); for (const k of s.kort) assert.ok(ALLE_KORT[k], k); }
+});

@@ -8,8 +8,10 @@ import { runReminders } from './reminders.js';
 import { KORT } from './kort/index.js';
 import { INSTRUKS_VERSION } from './instruks.js';
 import { perspektivFor, isoWeek } from './perspektiver.js';
+import { vaelgUdfordring, udfordringById } from './udfordringer.js';
+import { STIER } from './stier.js';
 
-const VERSION = '0.2.0';
+const VERSION = '0.3.0';
 
 export default {
   async fetch(request, env, ctx) {
@@ -68,6 +70,16 @@ async function route(request, env, ctx, path, method) {
     const uge = /^\d{4}-W\d{2}$/.test(q || '') ? q : isoWeek();
     const p = perspektivFor(uge);
     return json({ uge, perspektiv: p });
+  }
+
+  // Stierne og udfordringsbanken: offentligt indhold uden persondata. Profilen sendes som tre ord, ikke som identitet.
+  if (path === '/stier' && method === 'GET') return json({ stier: STIER });
+  if (path === '/udfordring' && method === 'GET') {
+    const q = new URL(request.url).searchParams;
+    if (q.get('id')) return json({ udfordring: udfordringById(q.get('id')) });
+    const seen = (q.get('seen') || '').split(',').filter(Boolean).slice(0, 200);
+    const u = vaelgUdfordring({ kort: q.get('kort') || '', rolle: q.get('rolle') || '', fase: q.get('fase') || '', livsfase: q.get('livsfase') || '', seen });
+    return json({ udfordring: u });
   }
 
   // Betaling

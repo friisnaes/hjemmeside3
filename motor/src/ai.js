@@ -99,6 +99,9 @@ async function callAnthropic(env, system, messages, maxTokens) {
 // Lokal udvikling uden nøgle: et fast, genkendeligt modspil.
 function mock(kort, messages) {
   const last = messages[messages.length - 1].content;
+  if (kort.id === 'diagnosen') {
+    return { text: 'SIGNAL: Karakter | Du skrev selv, at din CFO ikke har modsagt dig siden foråret.\nSIGNAL: Disciplin | Du valgte under en tredjedel af timerne i sidste uge.\nSIGNAL: Klarhed | Du kan ikke sige problemet i én sætning, og du ved, hvilket spørgsmål du håber ikke kommer.\nDIAGNOSE: Du står med en direktion, der er tavs, og en kalender, andre ejer. Det er ikke to problemer. Det er ét: du har ikke taget den samtale, der ville give dig tiden tilbage. Det koster dig hver uge, og din formand har bemærket det.\nSTI: Direktionen | det-jeg-undgaar, den-samtale-jeg-skylder, interessentkortet, det-der-gentager-sig | Tre af fire svar om karakter gør ondt, og du har aldrig åbnet Den samtale, jeg skylder.\nSTI: Kalenderen | kalenderen-som-bevis, det-jeg-holder-op-med, aftaler-med-mig-selv, beslutningen-jeg-har-udskudt | Under en tredjedel selvvalgte timer er ikke en kalender. Det er en flaskehals.', model: 'mock', inputTokens: 0, outputTokens: 0 };
+  }
   if (kort.id === 'pejlingen') {
     return { text: 'KORT: det-jeg-holder-op-med | Du skriver om for meget på én gang, og intet er taget fra.\nKORT: kalenderen-som-bevis | Det, du kalder prioritet, har ingen tid i din kalender.\nKORT: den-samtale-jeg-skylder | Der er en person i det, du skriver, som ikke har hørt det endnu.', model: 'mock', inputTokens: 0, outputTokens: 0 };
   }
